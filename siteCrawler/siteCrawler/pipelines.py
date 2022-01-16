@@ -41,3 +41,4 @@ class SiteCrawlerPipeline(object):
                 self.cursor.execute(sql)
                 # 提交事务
                 self.conn.commit()
+                print('{} 的信息已更新'.format(item['domain']))
