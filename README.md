@@ -28,4 +28,16 @@
 ```scrapy crawl keywordSpider -a keyword=Spider-Man -a se=baidu -a pages=50```
 
 #### Google
-```scrapy crawl keywordSpider -a keyword=Spider-Man -a se=google -a pages=50```
+```scrapy crawl keywordSpider -a keyword=Spider-Man -a se=google -a pages=50```  
+
+
+
+## htmlCrawler
+### 更改数据库配置
+在htmlSpider.py中的coonect中配置数据库连接的参数
+### 手动输入参数运行
+
+进入htmlCrawler目录后运行如下命令
+```scrapy crawl html```  
+
+
