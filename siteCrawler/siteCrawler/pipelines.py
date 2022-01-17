@@ -9,7 +9,13 @@ from siteCrawler.items import ResultItem
 
 
 class SiteCrawlerPipeline(object):
+    conn = None
+    cursor = None
+
     def __init__(self):
+        self.db_connect()
+
+    def db_connect(self):
         self.conn = pymysql.Connect(  # 配置数据库
             host='localhost',
             port=3306,
@@ -19,10 +25,13 @@ class SiteCrawlerPipeline(object):
             charset='UTF8'
         )
         self.cursor = self.conn.cursor()
-        # self.file = open('urls.txt', 'w+')
-        # self.bloomFilter = rBloomFilter.rBloomFilter(100000, 0.01, 'bing')
 
     def process_item(self, item, spider):
+        try:
+            self.conn.ping(reconnect=True)
+        except Exception as e:
+            self.db_connect()
+            print("数据库已重新连接")
         # print(item['url']+'\n')
         # self.file.write(item['url'] + '\n')
         if isinstance(item, ResultItem):

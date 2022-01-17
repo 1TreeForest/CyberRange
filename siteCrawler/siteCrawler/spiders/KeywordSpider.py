@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import random
 import time
 import requests
 import pymysql
@@ -53,6 +54,7 @@ class KeywordSpider(Spider):
                 if flag:
                     print(url)
                     flag = False
+        random.shuffle(self.start_urls)  # 用以随机排列start_urls，使每次爬取更加随机化
 
     def parse(self, response):
         # 提取页面中的元素
@@ -67,10 +69,10 @@ class KeywordSpider(Spider):
             if self.search_engine == 'baidu':
                 item['name'] = ''.join(names[i].xpath('./text() | ./em/text()').extract())  # baidu的标题经过高亮处理，需要进一步提取
                 try:
-                    resp = requests.get(urls[i], timeout=5)
+                    resp = requests.get(urls[i], timeout=10)
                 except Exception as e:
-                    print(e)
-                    print('{}: {} is not alive, skip it'.format(item['name'], urls[i]))
+                    #print(e)
+                    print('{}: {} 网站无法访问，已跳过'.format(item['name'], urls[i]))
                     continue
                 item['url'] = resp.url
             elif self.search_engine == 'bing':  # bing的标题经过高亮处理，需要进一步提取
@@ -83,4 +85,3 @@ class KeywordSpider(Spider):
             print(item)
 
             yield item
-        pass
