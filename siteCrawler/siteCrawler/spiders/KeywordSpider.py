@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import logging
 import random
 import time
 import requests
@@ -52,7 +53,7 @@ class KeywordSpider(Spider):
             for url in page_urls:
                 self.start_urls.append(url)
                 if flag:
-                    print(url)
+                    logging.debug(url)
                     flag = False
         random.shuffle(self.start_urls)  # 用以随机排列start_urls，使每次爬取更加随机化
 
@@ -65,14 +66,15 @@ class KeywordSpider(Spider):
         for i in range(len(urls)):  # 对页面中所有的结果进行处理
             item = ResultItem()
             item['keyword'] = keyword[0]
-            item['date'] = now
+            item['crawledDate'] = now
+            item['aliveDate'] = now
             if self.search_engine == 'baidu':
                 item['name'] = ''.join(names[i].xpath('./text() | ./em/text()').extract())  # baidu的标题经过高亮处理，需要进一步提取
                 try:
                     resp = requests.get(urls[i], timeout=10)
                 except Exception as e:
-                    #print(e)
-                    print('{}: {} 网站无法访问，已跳过'.format(item['name'], urls[i]))
+                    # print(e)
+                    logging.warning('{}: {} 网站无法访问，已跳过'.format(item['name'], urls[i]))
                     continue
                 item['url'] = resp.url
             elif self.search_engine == 'bing':  # bing的标题经过高亮处理，需要进一步提取
@@ -82,6 +84,6 @@ class KeywordSpider(Spider):
                 item['name'] = names[i]
                 item['url'] = urls[i]
             item['domain'] = re.search(r'://(.+?)/', item['url']).group(1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
-            print(item)
+            logging.debug(item)
 
             yield item

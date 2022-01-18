@@ -19,5 +19,6 @@ class ResultItem(scrapy.Item):
     name = scrapy.Field()
     url = scrapy.Field()
     keyword = scrapy.Field()
-    date = scrapy.Field()
+    crawledDate = scrapy.Field()
+    aliveDate = scrapy.Field()
     pass
