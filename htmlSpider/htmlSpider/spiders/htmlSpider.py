@@ -2,58 +2,56 @@ import scrapy
 import pandas as pd  # 导入pandas库
 import MySQLdb
 import re
+import pymysql
 
 from urllib.parse import urlparse
 
-count=0
-
-connect= MySQLdb.connect(
-        host='localhost',
-        port = 3306,
-        user='root',
-        passwd='',
-        db ='ip',
-        )
-cursor = connect.cursor()
-
-sql = "select url from results"
-cursor.execute(sql)
-urls = cursor.fetchall() #取到数据放到data里,返回值是多个元组,即返回多个行记录,
-url_list = []
-for url in urls:
-    url_list.append(url[0])
-    count = count + 1
-
-sql = "select domain from results"
-cursor.execute(sql)
-domains = cursor.fetchall()  # 取数据库中的domain放到name里,便于之后的命名返回值是多个元组,即返回多个行记录
-domain_list = []
-for domain in domains:
-    domain_list.append(domain[0])
-
-cursor.close()
-connect.close()
-
-print("写入完成,共写入%d条数据……" % count)
-
-num = 0
-
-
 class HtmlSpider(scrapy.Spider):
     name = 'html'
+    num = 0
+    url_list = []
+    domain_list = []
 
 
     def start_requests(self):
-         for url in url_list:
+        conn = pymysql.Connect(  # 配置数据库
+            host='localhost',
+            port=3306,
+            user='test',
+            password='991125',
+            db='spider',
+            charset='UTF8'
+        )
+        cursor = conn.cursor()
+        #从数据库中读取需要爬取html的url
+        sql = "select url from results"
+        cursor.execute(sql)
+        urls = cursor.fetchall()
+        count = 0 #便于记录从数据库中读到多少条url
+        for url in urls: # 将取出的url放入url_list里
+            self.url_list.append(url[0])
+            count = count + 1
+        print("写入完成,共写入%d条数据……" % count)
+
+        # 从数据库中读取给html文件命名需要的domain
+        sql = "select domain from results"
+        cursor.execute(sql)
+        domains = cursor.fetchall()
+        for domain in domains:  # 将取出的domain放入domain_list里
+            self.domain_list.append(domain[0])
+
+        cursor.close()
+
+        #对url_list中的url依次爬取
+        for url in self.url_list:
              yield scrapy.Request(url=url, callback=self.parse)
 
 
     def parse(self, response):
-        global num
-        filename = '%s.html' % (domain_list[num])
-        with open(r"./html/" + filename, 'wb') as f:
-            f.write(response.body)
-            num = num+1
+        filename = '%s.html' % (self.domain_list[self.num]) #利用domian命名html文件
+        with open(r"./html/" + filename, 'wb') as f:  #html文件保存在html目录下
+            f.write(response.body) #将返回的html保存到html文件
+            self.num = self.num+1
         self.log('Saved file %s' % filename)
 
 
