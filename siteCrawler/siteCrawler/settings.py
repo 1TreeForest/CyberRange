@@ -58,7 +58,6 @@ DOWNLOAD_DELAY = 10  # 无代理池时设置高延时以防止ban掉IP
 RANDOM_DELAY = 20  # 无代理池时设置高延时以防止ban掉IP，random范围是<DOWNLOAD_DELAY+0 ~ DOWNLOAD_DELAY+RANDOM_DELAY>
 DOWNLOADER_MIDDLEWARES = {
     'siteCrawler.middlewares.SiteCrawlerDownloaderMiddleware': 543,
-    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,  # 关闭默认方法
     'siteCrawler.middlewares.RandomDelayMiddleware': 450,
     'scrapy_fake_useragent.middleware.RandomUserAgentMiddleware': 400,  # 开启random UA
 }

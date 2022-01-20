@@ -22,7 +22,7 @@ class KeywordSpider(Spider):
     name_selector = None
     keyword_selector = None
 
-    def __init__(self, keyword, se='baidu', pages=5, *args, **kwargs):
+    def __init__(self, keyword='all', se='baidu', pages=5, *args, **kwargs):
         super(KeywordSpider, self).__init__(*args, **kwargs)
         if keyword == 'all':  # 用户选择根据数据库中的词库进行搜索
             self.conn = pymysql.Connect(

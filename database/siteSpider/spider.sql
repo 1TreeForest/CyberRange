@@ -11,11 +11,39 @@
  Target Server Version : 50529
  File Encoding         : 65001
 
- Date: 18/01/2022 12:39:33
+ Date: 20/01/2022 14:05:58
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for querys
+-- ----------------------------
+DROP TABLE IF EXISTS `querys`;
+CREATE TABLE `querys`  (
+  `keyword` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  INDEX `keyword`(`keyword`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of querys
+-- ----------------------------
+INSERT INTO `querys` VALUES ('免费电影');
+INSERT INTO `querys` VALUES ('免费观看');
+INSERT INTO `querys` VALUES ('在线影院');
+INSERT INTO `querys` VALUES ('在线电影');
+INSERT INTO `querys` VALUES ('在线观看');
+INSERT INTO `querys` VALUES ('影视资源');
+INSERT INTO `querys` VALUES ('最新电影');
+INSERT INTO `querys` VALUES ('电影1080P');
+INSERT INTO `querys` VALUES ('电影720P');
+INSERT INTO `querys` VALUES ('电影下载');
+INSERT INTO `querys` VALUES ('电影分享');
+INSERT INTO `querys` VALUES ('电影网');
+INSERT INTO `querys` VALUES ('电影资源');
+INSERT INTO `querys` VALUES ('蓝光电影');
+INSERT INTO `querys` VALUES ('超请下载');
 
 -- ----------------------------
 -- Table structure for results
@@ -38,35 +66,35 @@ CREATE TABLE `results`  (
 -- ----------------------------
 INSERT INTO `results` VALUES ('258.tv', '电影1080P', '最初的梦想 Chhichhore - 蓝光电影-720P高清1080P蓝光3D电...', 'http://258.tv/film/chhichhore/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('258.tv', '电影720P', '造访职业杀手 - 蓝光电影-720P高清1080P蓝光3D电影下载网-...', 'http://258.tv/interview-with-a-hitman-film/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('258.tv', '蓝光电影', '军火贩 War Dogs - 蓝光电影-720P高清1080P蓝光3D电影下载...', 'http://258.tv/film/war-dogs/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('258.tv', '蓝光电影', '无名之辈 - 蓝光电影-720P高清1080P蓝光3D电影下载网-正版...', 'http://258.tv/film/a-cool-fish/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('3g.163.com', '最新电影', '一家只招待怪物的旅社,老板是只千年吸血鬼,最新动画电影_网易...', 'https://3g.163.com/v/video/VMSS0N7RD.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('4k-m.com', '超请下载', '4K电影-超高清电影下载', 'https://4k-m.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('4kwu.net', '电影下载', '4k屋-4k电影高清免费下载-720P|1080p电影下载-4k影院', 'http://4kwu.net/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('585.tv', '免费电影', '585TV电影-电视剧|高清蓝光|百度网盘免费在线看|迅雷磁力...', 'http://585.tv/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('585.tv', '蓝光电影', '585TV电影-电视剧|高清蓝光|百度网盘免费在线看|迅雷磁力...', 'http://585.tv/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('585.tv', '蓝光电影', '585TV电影-电视剧|高清蓝光|百度网盘免费在线看|迅雷磁力...', 'http://585.tv/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('588ku.com', '影视资源', '影视资源图片-影视资源图片素材免费下载-千库网', 'https://588ku.com/image/yingshiziyuan.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('58921.com', '最新电影', '万达统计 - 电影票房数据库', 'http://58921.com/boxoffice/wanda', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('699pic.com', '超请下载', '1080P超清视频素材下载-1080P超清小视频模板大全-摄图网', 'https://699pic.com/movie/21927.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('80s.tw', '电影下载', '80s电影网 - 高清手机电影迅雷下载_最新MP4电视剧磁力下载', 'https://80s.tw/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('85128.net', '电影下载', '85电影网-高清电影下载', 'http://85128.net/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('85128.net', '电影下载', '85电影网-高清电影下载', 'http://85128.net/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('91zhaoren.com', '免费电影', '无极电影_免费电影_迅雷电影下载-电影天堂', 'http://91zhaoren.com/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('a.ik123.com', '超请下载', '超高清壁纸,手机高清壁纸,高清壁纸下载,', 'http://a.ik123.com/q/haokan/gqbz.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('aot.v.61.com', '在线观看', '进击的巨人动画全集在线观看 - 进击的巨人中文网 - 淘米视频', 'http://aot.v.61.com/donghua/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('app.eebbk.com', '超请下载', '家教机_H8_V1.05_Recovery恢复工具 - 步步高下载中心', 'http://app.eebbk.com/content/soft?prodId=e9b0de13b404cd0855c4cd6e7433c861&id=322137&classId=116688', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('app.pptv.com', '在线观看', 'PP视频Android客户端应用下载 - PP视频 - 原PPTV聚力视频', 'http://app.pptv.com/pg_get_aph', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('app.shafa.com', '电影下载', '南瓜电影_南瓜电影电视TV版免费下载_apk官网下载_沙发管家...', 'http://app.shafa.com/apk/nanguadianying.html', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('app.shafa.com', '电影下载', '南瓜电影_南瓜电影电视TV版免费下载_apk官网下载_沙发管家...', 'http://app.shafa.com/apk/nanguadianying.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('app.tvhuan.com', '电影下载', '智能电视影视点播软件下载_最新TV版影视点播下载-欢视商店', 'http://app.tvhuan.com/list/ysdb', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('auto.youku.com', '在线观看', '汽车频道 - 优酷', 'https://auto.youku.com/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('baijiahao.baidu.com', '影视资源', '最新看电影公众号推荐。10万部电影资源,5千篇解读趣文', 'https://baijiahao.baidu.com/s?id=1687078996173467614&wfr=spider&for=pc', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('baijiahao.baidu.com', '影视资源', '如何找到90%的电影资源?赶紧收了!', 'https://baijiahao.baidu.com/s?id=1583332680917730137&wfr=spider&for=pc', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('baijiahao.baidu.com', '最新电影', '保密宣传教育微电影《多米诺行动》首映', 'https://baijiahao.baidu.com/s?id=1721943045384458268&wfr=spider&for=pc', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('baijiahao.baidu.com', '电影分享', '电影分享—心灵奇旅', 'https://baijiahao.baidu.com/s?id=1696436498888538698&wfr=spider&for=pc', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('baijiahao.baidu.com', '电影资源', '独家调查:盗版屡见不鲜,我在闲鱼上买电影资源', 'https://baijiahao.baidu.com/s?id=1663909212663819528&wfr=spider&for=pc', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('baijiahao.baidu.com', '蓝光电影', 'blue movie不是“蓝光电影”,不懂真的会出事!', 'https://baijiahao.baidu.com/s?id=1681129335260646662&wfr=spider&for=pc', '2022-01-18', '2022-01-18');
-INSERT INTO `results` VALUES ('baike.baidu.com', '免费电影', '免费电影 - 百度百科', 'https://baike.baidu.com/error.html?status=403&uri=/item/%E5%85%8D%E8%B4%B9%E7%94%B5%E5%BD%B1/400752?fr=aladdin', '2022-01-16', '2022-01-16');
+INSERT INTO `results` VALUES ('baike.baidu.com', '免费电影', '免费电影 - 百度百科', 'https://baike.baidu.com/error.html?status=403&uri=/item/%E5%85%8D%E8%B4%B9%E7%94%B5%E5%BD%B1/400752?fr=aladdin', '2022-01-16', '2022-01-18');
 INSERT INTO `results` VALUES ('baike.baidu.com', '在线影院', '在线电影网 - 百度百科', 'https://baike.baidu.com/error.html?status=403&uri=/item/%E5%9C%A8%E7%BA%BF%E7%94%B5%E5%BD%B1%E7%BD%91/1717467?fr=aladdin', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('baike.baidu.com', '影视资源', '电影资源网 - 百度百科', 'https://baike.baidu.com/error.html?status=403&uri=/item/%E7%94%B5%E5%BD%B1%E8%B5%84%E6%BA%90%E7%BD%91/2521398?fr=aladdin', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('baike.baidu.com', '电影1080P', '1080P电影网 - 百度百科', 'https://baike.baidu.com/error.html?status=403&uri=/item/1080P%E7%94%B5%E5%BD%B1%E7%BD%91/5717899?fr=aladdin', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('baike.baidu.com', '蓝光电影', '蓝光高清电影 - 百度百科', 'https://baike.baidu.com/error.html?status=403&uri=/item/%E8%93%9D%E5%85%89%E9%AB%98%E6%B8%85%E7%94%B5%E5%BD%B1/2979120?fr=aladdin', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('baike.baidu.com', '蓝光电影', '蓝光格式电影 - 百度百科', 'https://baike.baidu.com/error.html?status=403&uri=/item/%E8%93%9D%E5%85%89%E6%A0%BC%E5%BC%8F%E7%94%B5%E5%BD%B1/11063773?fr=aladdin', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('bbs.cnliti.com', '免费电影', '立体中国-3d立体电影_电影大全_最新电影在线看', 'http://bbs.cnliti.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('bbs.cnliti.com', '最新电影', '立体中国-3d立体电影_电影大全_最新电影在线看', 'http://bbs.cnliti.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('bbs.jjwxc.net', '影视资源', '大家更希望有时尚高奢资源还是影视资源,如果有人ssq资源很...', 'https://bbs.jjwxc.net/showmsg.php?board=2&boardpagemsg=1&id=5951773', '2022-01-17', '2022-01-17');
@@ -78,7 +106,7 @@ INSERT INTO `results` VALUES ('beijing.movie.iecity.com', '电影网', '北京�
 INSERT INTO `results` VALUES ('blog.sina.com.cn', '电影720P', '高清电影720p下载,720p高清电影,720p高_ruixia133_新浪博客', 'http://blog.sina.com.cn/s/blog_6b2d7b820100kexa.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('blog.sina.com.cn', '蓝光电影', '【危情时速】蓝光电影 中文字幕 26.2GB_蓝光爱好者俱乐部_...', 'http://blog.sina.com.cn/s/blog_7a6277770100s1az.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('blu-raydisc.tv', '影视资源', '蓝光电影-虚拟现实-720P高清1080P蓝光原盘3D电影VR游戏下...', 'http://blu-raydisc.tv/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('blu-raydisc.tv', '蓝光电影', '蓝光电影-虚拟现实-720P高清1080P蓝光原盘3D电影VR游戏下...', 'http://blu-raydisc.tv/index.php/', '2022-01-18', '2022-01-18');
+INSERT INTO `results` VALUES ('blu-raydisc.tv', '蓝光电影', '蓝光电影-虚拟现实-720P高清1080P蓝光原盘3D电影VR游戏下...', 'http://blu-raydisc.tv/', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('btwuji.com', '电影下载', '无极电影_免费电影_迅雷电影下载-电影天堂', 'http://btwuji.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('callback.58.com', '免费电影', '【58同城】北京电影票|北京电影票信息', 'https://callback.58.com/antibot/deny.do?namespace=huangyelistpc&serialID=4499ed1e745acf87c441864fcdc7a125_0382bb352d074e7ba44805e9e483fb7b', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('careers.iqiyi.com', '在线观看', '爱奇艺招聘-热门职位', 'https://careers.iqiyi.com/', '2022-01-17', '2022-01-17');
@@ -129,7 +157,7 @@ INSERT INTO `results` VALUES ('ent.sina.com.cn', '免费电影', '最新热门�
 INSERT INTO `results` VALUES ('ent.sina.com.cn', '最新电影', '最新热门电影资讯专题_新浪娱乐_新浪网', 'http://ent.sina.com.cn/zt/movie/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('family.pconline.com.cn', '蓝光电影', '高清电影专区_最新电影_蓝光电影_太平洋电脑网', 'https://family.pconline.com.cn/szjtzt/movie/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('film.blu-raydisc.tv', '电影1080P', '蓝光电影-虚拟现实-720P高清1080P蓝光原盘3D电影VR游戏下...', 'http://film.blu-raydisc.tv/film/time', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('film.blu-raydisc.tv', '蓝光电影', '蓝光电影-虚拟现实-720P高清1080P蓝光原盘3D电影VR游戏下...', 'http://film.blu-raydisc.tv/search/content', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('film.blu-raydisc.tv', '蓝光电影', '后来的我们 | 蓝光电影-虚拟现实-720P高清1080P蓝光原盘3D...', 'http://film.blu-raydisc.tv/index.php/node/1464', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('fox-studio.net', '影视资源', 'Premiere 资源 | 狐狸影视城', 'https://fox-studio.net/share/premiere-res/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('fun.youku.com', '在线观看', '搞笑频道 - 优酷', 'https://fun.youku.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('g.manmankan.com', '最新电影', '电影大全_2022最新电影_2022已上映好看的电影排行榜_漫漫...', 'http://g.manmankan.com/dy2013/dianying/', '2022-01-17', '2022-01-17');
@@ -138,7 +166,7 @@ INSERT INTO `results` VALUES ('game.youku.com', '在线观看', '游戏频道 - 
 INSERT INTO `results` VALUES ('games.iqiyi.com', '在线观看', '游戏频道-热门游戏视频大全-单机游戏_电子竞技游戏视频-爱...', 'https://games.iqiyi.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('gaoqing.3zitie.cn', '超请下载', '...故宫博物院藏真迹扫描大图超高清书画图片资料下载TIF', 'http://gaoqing.3zitie.cn/pro/201411/201411107.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('gaoqing.la', '电影下载', '中国高清网 | 高清电影网|720P|1080P|蓝光原盘|磁力链迅雷...', 'http://gaoqing.la/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('gaoqing.la', '蓝光电影', '中国高清网 | 高清电影网|720P|1080P|蓝光原盘|磁力链迅雷...', 'http://gaoqing.la/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('gaoqing.la', '蓝光电影', '中国高清网 | 高清电影网|720P|1080P|蓝光原盘|磁力链迅雷...', 'http://gaoqing.la/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('gaoqing.la', '超请下载', '...高清电影网|720P|1080P|蓝光原盘|磁力链迅雷下载高清的...', 'http://gaoqing.la/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('gongyi.iqiyi.com', '在线观看', '公益频道-公益活动视频-爱心公益活动-爱奇艺', 'https://gongyi.iqiyi.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('gongyi.youku.com', '在线观看', '公益频道 - 优酷', 'https://gongyi.youku.com/', '2022-01-17', '2022-01-17');
@@ -174,7 +202,7 @@ INSERT INTO `results` VALUES ('kan.sogou.com', '在线观看', '搜狗影视-热
 INSERT INTO `results` VALUES ('kan.sogou.com', '影视资源', '搜狗影视-热播电影,热播电视剧免费在线观看', 'http://kan.sogou.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('kan.sogou.com', '最新电影', '搜狗影视-热播电影,热播电视剧免费在线观看', 'http://kan.sogou.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('life.youku.com', '在线观看', '生活频道 - 优酷', 'https://life.youku.com/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('list.iqiyi.com', '免费电影', '免费电影大全-好看的免费电影排行榜-爱奇艺', 'https://list.iqiyi.com/www/1/----------0---11-6-1-iqiyi--.html', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('list.iqiyi.com', '免费电影', '免费电影大全-好看的免费电影排行榜-爱奇艺', 'https://list.iqiyi.com/www/1/----------0---11-5-1---.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('list.iqiyi.com', '在线观看', '内地电视剧大全-好看的内地电视剧排行榜-爱奇艺', 'https://list.iqiyi.com/www/2/15------------3-1-1-1---.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('list.iqiyi.com', '最新电影', '电影大全-好看的电影排行榜-爱奇艺', 'https://list.iqiyi.com/www/1/-------------11-1-1-iqiyi--.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('list.iqiyi.com', '电影网', '电影大全-好看的电影排行榜-爱奇艺', 'https://list.iqiyi.com/www/1/-------------11-1-1-iqiyi--.html', '2022-01-17', '2022-01-17');
@@ -211,12 +239,12 @@ INSERT INTO `results` VALUES ('movie.baidu.com', '在线影院', '百度视频�
 INSERT INTO `results` VALUES ('movie.baidu.com', '在线电影', '百度视频——业界领先的中文视频搜索引擎之一', 'http://movie.baidu.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('movie.chuangxiang360.com', '在线影院', '在线播放,免费看电影,在线看电影,最全电影,最新电影', 'http://movie.chuangxiang360.com/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('movie.douban.com', '在线影院', '豆瓣电影', 'https://movie.douban.com/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('movie.douban.com', '影视资源', '影视资源君看过的电影(57)', 'https://movie.douban.com/people/96431073/collect?sort=time&start=0&filter=all&mode=grid', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('movie.douban.com', '影视资源', '求电影资源', 'https://movie.douban.com/subject/5050685/discussion/616936534/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('movie.douban.com', '最新电影', '最受关注电影预告片', 'https://movie.douban.com/trailers', '2022-01-18', '2022-01-18');
-INSERT INTO `results` VALUES ('movie.douban.com', '电影1080P', '马克爱马克看过的电影/1080p(79)', 'https://movie.douban.com/people/guyuemuziye2/collect?sort=rating&filter=video&tag=1080p&mode=grid', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('movie.douban.com', '电影720P', 'SeeM看过的电影(1080)', 'https://movie.douban.com/people/fyfy123/collect', '2022-01-18', '2022-01-18');
+INSERT INTO `results` VALUES ('movie.douban.com', '电影1080P', '宇宙塑胶魔怪看过的电影/1080p(44)', 'https://movie.douban.com/people/Aragon/collect?sort=rating&tag=1080p&mode=grid', '2022-01-17', '2022-01-18');
+INSERT INTO `results` VALUES ('movie.douban.com', '电影720P', 'Sarah看过的电影(1080)', 'https://movie.douban.com/people/3727771/collect?sort=title&start=0&mode=grid', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('movie.douban.com', '电影分享', '私人分享看过的电影(66)', 'https://movie.douban.com/people/51986422/collect?sort=time&start=0&filter=all&mode=grid', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('movie.douban.com', '电影资源', '求电影资源(长袜子皮皮)剧评', 'https://movie.douban.com/review/12078398/', '2022-01-18', '2022-01-18');
+INSERT INTO `results` VALUES ('movie.douban.com', '电影资源', '求罗马十一时电影资源', 'https://movie.douban.com/subject/1466243/discussion/616946050/?author=0', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('movie.douban.com', '蓝光电影', '蓝光版画质与电影频道的对比!', 'https://movie.douban.com/subject/1307766/discussion/637040022/?author=1', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('movie.douban.com', '超请下载', '求1080p超清无删减版下载资源', 'https://movie.douban.com/subject/4050029/discussion/615046684/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('movie.iecity.com', '免费观看', '电影《老师·好》在线观看_高清视频 - 城市电影网', 'http://movie.iecity.com/video10411011811710710210157505649494851.html', '2022-01-17', '2022-01-17');
@@ -229,11 +257,11 @@ INSERT INTO `results` VALUES ('movie.poco.cn', '免费电影', '颇可网 - 领�
 INSERT INTO `results` VALUES ('movie.pptv.com', '免费电影', '电影', 'http://movie.pptv.com/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('movie.pptv.com', '在线影院', '电影', 'http://movie.pptv.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('movie.vmcc.cn', '电影1080P', '国外电影网 | BT天堂_BT种子下载_1080P高清电影分享 |最新...', 'http://movie.vmcc.cn/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('movie.xunlei.com', '免费电影', '迅雷电影官网-热门高清电影-在线观看-新一代影视资讯推荐...', 'https://movie.xunlei.com/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('movie.xunlei.com', '免费电影', '迅雷电影官网-热门高清电影-在线观看-新一代影视资讯推荐...', 'https://movie.xunlei.com/activity/year-award-result', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('movie.xunlei.com', '最新电影', '迅雷电影官网-热门高清电影-在线观看-新一代影视资讯推荐...', 'https://movie.xunlei.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('movie.youku.com', '在线影院', '电影频道 - 优酷', 'https://movie.youku.com/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('movie.youku.com', '在线电影', '电影频道 - 优酷', 'https://movie.youku.com/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('movie123.com.cn', '免费电影', '免费电影大全正片,免费电影网站大全,2022最新电影在线观看...', 'http://movie123.com.cn/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('movie123.com.cn', '免费电影', '免费电影大全正片,免费电影网站大全,2022最新电影在线观看...', 'http://movie123.com.cn/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('mtop.chinaz.com', '电影下载', '电影下载网www.dyxiazai.com - 网站排行榜', 'https://mtop.chinaz.com/site_www.dyxiazai.com.html', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('mtop.chinaz.com', '蓝光电影', '蓝光电影网www.hd1080.cn - 网站排行榜', 'https://mtop.chinaz.com/site_www.hd1080.cn.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('music.iqiyi.com', '在线观看', '音乐频道-高清正版MV_流行音乐视频在线观看-爱奇艺', 'https://music.iqiyi.com/', '2022-01-17', '2022-01-17');
@@ -264,7 +292,7 @@ INSERT INTO `results` VALUES ('shanghai.baixing.com', '免费电影', '【上海
 INSERT INTO `results` VALUES ('shantianfang.zgpingshu.com', '超请下载', '明英烈(电台超清版)在线收听-单田芳评书明英烈(电台超清版...', 'http://shantianfang.zgpingshu.com/4812/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('shenzhen.movie.iecity.com', '最新电影', '深圳影讯_深圳电影_深圳电影院排片表 - 深圳电影网', 'http://shenzhen.movie.iecity.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('shenzhen.movie.iecity.com', '电影网', '深圳影讯_深圳电影_深圳电影院排片表 - 深圳电影网', 'http://shenzhen.movie.iecity.com/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('shouyou.3dmgame.com', '超请下载', '免费超清影视下载_免费超清影视最新版下载_免费超清影视ap...', 'https://shouyou.3dmgame.com/zt/44964_game/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('shouyou.3dmgame.com', '超请下载', '超高清壁纸下载_超高清壁纸最新版下载_超高清壁纸app下载_...', 'https://shouyou.3dmgame.com/zt/35774_game/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('shubuzi.com', '影视资源', '电影- 树不子资源站', 'http://shubuzi.com/movie', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('sj.zol.com.cn', '超请下载', '【唯美手机壁纸】高清唯美手机壁纸大全-ZOL手机壁纸', 'https://sj.zol.com.cn/bizhi/5/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('slide.ent.sina.com.cn', '电影分享', '电影-娱乐图集汇总_新浪图集_新浪网', 'http://slide.ent.sina.com.cn/film/', '2022-01-17', '2022-01-17');
@@ -281,9 +309,9 @@ INSERT INTO `results` VALUES ('thefountains.cn', '电影分享', '分享精彩�
 INSERT INTO `results` VALUES ('tieba.baidu.com', '免费电影', '免费电影吧 - 百度贴吧', 'https://tieba.baidu.com/f?kw=%C3%E2%B7%D1%B5%E7%D3%B0&fr=ala0&tpl=5&dyTabStr=MCwyLDMsNiw0LDEsNSw4LDcsOQ%3D%3D', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('tieba.baidu.com', '免费观看', '免费观看吧 - 百度贴吧', 'https://tieba.baidu.com/f?kw=%C3%E2%B7%D1%B9%DB%BF%B4&fr=ala0&tpl=5&dyTabStr=MCwyLDYsMyw0LDEsNSw4LDcsOQ%3D%3D', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('tieba.baidu.com', '在线影院', '手机在线影院-吧友热议 - 百度贴吧', 'https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=797730', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('tieba.baidu.com', '影视资源', '影视资源-吧友热议 - 百度贴吧', 'https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=1140703', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('tieba.baidu.com', '影视资源', '电影资源-吧友热议 - 百度贴吧', 'https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=1301550', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('tieba.baidu.com', '电影分享', '电影分享【微云吧】 - 百度贴吧', 'https://tieba.baidu.com/p/2946919029', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('tieba.baidu.com', '电影资源', '【资源】6.6-6.18欧美电影资源下载_欧美电影吧 - 百度贴吧', 'https://tieba.baidu.com/p/1113295398', '2022-01-18', '2022-01-18');
+INSERT INTO `results` VALUES ('tieba.baidu.com', '电影资源', '影视资源更新~【高清电影资源吧】 - 百度贴吧', 'https://tieba.baidu.com/p/7270374229', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('tieba.baidu.com', '蓝光电影', '蓝光电影吧 - 百度贴吧', 'https://tieba.baidu.com/f?kw=%C0%B6%B9%E2%B5%E7%D3%B0&fr=ala0&tpl=5&dyTabStr=MCwyLDMsNiw0LDEsNSw3LDgsOQ%3D%3D', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('tieba.baidu.com', '超请下载', '【分享】百度网盘700G超清720P/1080P电影!!可以正常下载', 'https://tieba.baidu.com/p/2941670236', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('tuyaya.com', '影视资源', '影视资源app软件下载-影视资源软件都有哪些-免费高清影视...', 'http://tuyaya.com/zt/yszyapprjxz/', '2022-01-17', '2022-01-17');
@@ -304,17 +332,17 @@ INSERT INTO `results` VALUES ('tv.sohu.com', '免费电影', '武林外传(电�
 INSERT INTO `results` VALUES ('tv.sohu.com', '免费观看', '《沧海》全集 - 高清在线观看 - 搜狐视频', 'http://tv.sohu.com/s2009/canghai/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('tv.sohu.com', '在线影院', '搜狐视频-中国领先的综合视频网站,正版高清视频在线观看,...', 'https://tv.sohu.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('tv.sohu.com', '在线电影', '幸福终点站-电影-高清视频在线观看-搜狐视频', 'https://tv.sohu.com/item/MTA3NTM1OA==.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('tv.sohu.com', '在线观看', '《特警力量》第3集 - 高清正版在线观看 - 搜狐视频', 'https://tv.sohu.com/v/MjAxNTA0MjkvbjQxMjA3NTQ2MS5zaHRtbA==.html?txid=4e4df35dda9d8ed32c874b1ad590ef59', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('tv.sohu.com', '在线观看', 'Running Man-Running Man在线观看 - 搜狐视频', 'https://tv.sohu.com/s2012/rmwzmb/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('tv.sohu.com', '电影下载', '迅雷好_迅雷电影下载_免费电影下载_高清电影_好看的电影-影视...', 'https://tv.sohu.com/v/dXMvNjMzMTcxODUvNTYzNzE0Nzguc2h0bWw=.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('tv.sohu.com', '电影资源', '影视电影资源私享', 'http://tv.sohu.com/user/336995204', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('uuhd.cc', '在线电影', '由由影视-在线免费高清电影-在线电视剧', 'http://uuhd.cc/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('v.360.cn', '在线观看', '360影视-更新更全更受欢迎的影视网站-在线观看', 'http://v.360.cn/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('v.baidu.com', '免费电影', '在线免费电影 _高清在线观看_百度视频', 'http://v.baidu.com/watch/2919080264542118438.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('v.baidu.com', '免费观看', '奇缘-电影-高清在线观看-hao123影视', 'http://v.baidu.com/dianying/23616.htm?frp=browse', '2022-01-17', '2022-01-18');
-INSERT INTO `results` VALUES ('v.baidu.com', '在线影院', '经典惊悚电影_惊悚电影在线观看_hao123影视', 'http://v.baidu.com/recommend/dianying/?kw=%E6%83%8A%E6%82%9A', '2022-01-17', '2022-01-18');
-INSERT INTO `results` VALUES ('v.baidu.com', '在线电影', '殓师-电影-高清在线观看-hao123影视', 'http://v.baidu.com/dianying/124650.html?frm=browse', '2022-01-18', '2022-01-18');
-INSERT INTO `results` VALUES ('v.baidu.com', '在线观看', '百度视频动漫频道_高清动漫在线观看', 'http://v.baidu.com/cartoonindex/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('v.baidu.com', '最新电影', '李连杰最新电影/电视剧/综艺/音乐作品-李连杰明星资料库-...', 'http://v.baidu.com/person_intro/?id=23', '2022-01-18', '2022-01-18');
+INSERT INTO `results` VALUES ('v.baidu.com', '免费观看', '归去来 普通话-电视剧-高清在线观看-百度视频', 'http://v.baidu.com/tv/27709.htm?frp=browse', '2022-01-17', '2022-01-18');
+INSERT INTO `results` VALUES ('v.baidu.com', '在线影院', '经典光棍电影_光棍电影在线观看_hao123影视', 'http://v.baidu.com/recommend/dianying/?kw=%E5%85%89%E6%A3%8D', '2022-01-17', '2022-01-18');
+INSERT INTO `results` VALUES ('v.baidu.com', '在线电影', '宫锁沉香-电影-高清在线观看-hao123影视', 'http://v.baidu.com/dianying/41292.htm?frp=browse', '2022-01-18', '2022-01-18');
+INSERT INTO `results` VALUES ('v.baidu.com', '在线观看', '少儿动画 - 百度视频少儿频道_少儿节目在线观看', 'http://v.baidu.com/channel/shaoer', '2022-01-17', '2022-01-18');
+INSERT INTO `results` VALUES ('v.baidu.com', '最新电影', '鲍国安最新电影/电视剧/综艺/音乐作品-鲍国安明星资料库-...', 'http://v.baidu.com/person_intro/?id=21777', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('v.baidu.com', '电影1080P', '蓝光1080p电影 _高清在线观看_百度视频', 'http://v.baidu.com/watch/6359571464743066437.html?recFrom=site&list=5&page=videoMultiNeed', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('v.baidu.com', '电影720P', '蓝光1080p电影 _高清在线观看_百度视频', 'http://v.baidu.com/watch/6359571464743066437.html?recFrom=site&list=2&page=videoMultiNeed', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('v.baidu.com', '电影资源', '先锋电影资源 _高清在线观看_百度视频', 'http://v.baidu.com/watch/1702419286929512512.html?page=videoMultiNeed', '2022-01-17', '2022-01-17');
@@ -348,19 +376,19 @@ INSERT INTO `results` VALUES ('v.qq.com', '电影资源', '最新电影资源网
 INSERT INTO `results` VALUES ('v.qq.com', '蓝光电影', '4k超清蓝光电影大片!简直太震撼', 'https://v.qq.com/x/page/x0961x5p80y.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('v.qq.com', '超请下载', '手机投屏到电视上原来这么简单,超清画质不需要下载软件', 'https://v.qq.com/x/page/r3068hlj1hp.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('v.shensgo.com', '在线观看', '绅士Go影剧网_热门韩剧_热门电视剧_免费在线观看', 'http://v.shensgo.com/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('v.youku.com', '免费电影', '推荐3个电影导航站100多个免费电影站-电影-高清完整正版视频在...', 'https://v.youku.com/v_show/id_XNTE2MDExNzIwNA==.html', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('v.youku.com', '免费电影', '更多电影在线观看,全部免费!-电影-高清完整正版视频在线观看-...', 'https://v.youku.com/v_show/id_XNTA5Nzg5MDc5Mg==', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('v.youku.com', '免费观看', '长城-电影-高清完整正版视频在线观看-优酷', 'https://v.youku.com/v_show/id_XMjc4NTczOTM3Ng==.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('v.youku.com', '在线影院', 'V影院-电视剧-高清完整正版视频在线观看-优酷', 'https://v.youku.com/v_show/id_XOTEzNDE0NDc2.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('v.youku.com', '在线电影', '小电影-电影-高清完整正版视频在线观看-优酷', 'https://v.youku.com/v_show/id_XNDc4OTE0OTgwOA==', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('v.youku.com', '在线观看', '视频在线观看-优酷-电视剧-高清完整正版视频在线观看-优酷', 'https://v.youku.com/v_show/id_XNDI1MDU1MjIwOA==', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('v.youku.com', '影视资源', '2020年最佳免费影视软件,10万+影视资源任意白嫖!-科技-高...', 'https://v.youku.com/v_show/id_XNDk4OTU2Njc5Ng==.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('v.youku.com', '最新电影', '影视:2020最新大片(封神榜·妖灭),姜子牙和妲己的终极一战!-电...', 'https://v.youku.com/v_show/id_XNDY1MTkyNDIzMg==.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('v.youku.com', '电影1080P', '电影[DIVX 1080p]—在线播放—优酷网,视频高清在线观看', 'https://v.youku.com/v_show/id_XMzExMTUyMTA3Mg==.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('v.youku.com', '电影720P', '[MP4 720p] 趣味搞笑 合集10—电影—视频高清在线观看-优酷', 'https://v.youku.com/v_show/id_XMjUxNTcyNjQ0OA==.html', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('v.youku.com', '电影1080P', '红粉动江湖-国语版_1080p-电影-高清完整正版视频在线观看-...', 'https://v.youku.com/v_show/id_XNDM5NTkxNDE3Mg==.html', '2022-01-17', '2022-01-18');
+INSERT INTO `results` VALUES ('v.youku.com', '电影720P', 'Cassandras.Dream.(卡珊德拉之梦).tlr1_h720p-电影-高清完整正...', 'https://v.youku.com/v_show/id_XMjgwODU5OTU2.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('v.youku.com', '电影下载', '怎么下载视频 怎么下载电影 如何下载电影 如何下载视频-广...', 'https://v.youku.com/v_show/id_XMzg3OTUzNjA0.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('v.youku.com', '电影分享', '人工智能的影片分享-电影-高清完整正版视频在线观看-优酷', 'https://v.youku.com/v_show/id_XNDYwNzQzNTk0NA==', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('v.youku.com', '电影资源', '需要电影资源的 我免费分享给大家哦-电影-高清完整正版视频在...', 'https://v.youku.com/v_show/id_XNDU3NDUyOTcxNg==.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('v.youku.com', '蓝光电影', '蓝光电影-生活-高清完整正版视频在线观看-优酷', 'https://v.youku.com/v_show/id_XNjE5MjAxMzEy.html', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('v.youku.com', '蓝光电影', '最新蓝光高清-电影-高清完整正版视频在线观看-优酷', 'https://v.youku.com/v_show/id_XNDIxNDIwMTA4.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('v.youku.com', '超请下载', '超清完整版 cad2006 64位破解版下载-教育-高清完整正版视...', 'https://v.youku.com/v_show/id_XNjg2NzUxNzg0.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('v.yy233.com', '免费电影', '全网VIP电影电视剧无广告免费抢先在线观看 _ yy233影院', 'https://v.yy233.com/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('v.yy233.com', '在线观看', '全网VIP电影电视剧无广告免费抢先在线观看 _ yy233影院', 'https://v.yy233.com/', '2022-01-17', '2022-01-17');
@@ -411,11 +439,11 @@ INSERT INTO `results` VALUES ('www.0546120.cn', '免费电影', '今日影视,�
 INSERT INTO `results` VALUES ('www.0546120.cn', '免费观看', '今日影视,手机在线电影,最新电影免费观看,最新电视剧免费...', 'https://www.0546120.cn/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.0724web.com', '免费电影', '90s电影天堂_2021在线电影免费 - 0724电影网', 'http://www.0724web.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.0731a.com', '在线电影', '亲豆网 - 在线影视 - 站天下_http://www.qd2019.net', 'http://www.0731a.com/w/537.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.100yys.cc', '免费电影', '百元电影-最新电影,西瓜影音免费电影,吉吉影音电影高清观看', 'http://www.100yys.cc/', '2022-01-16', '2022-01-16');
+INSERT INTO `results` VALUES ('www.100yys.cc', '免费电影', '百元电影-最新电影,西瓜影音免费电影,吉吉影音电影高清观看', 'http://www.100yys.cc/', '2022-01-16', '2022-01-18');
 INSERT INTO `results` VALUES ('www.1080pbd.com', '蓝光电影', '印度电影蓝光合集-11TB', 'http://www.1080pbd.com/filmsetDetail.html?set.id=ea590f634756eedd0aeec27ae6decf4f', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.1080pro.net', '蓝光电影', '蓝光高清网-专注4K电影|蓝光电影|蓝光原盘|高清电影|演唱...', 'https://www.1080pro.net/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.1080t.cn', '蓝光电影', '蓝光电影网 - Powered by Discuz!', 'http://www.1080t.cn/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.1080t.net', '蓝光电影', '蓝光电影网 - Powered by Discuz!', 'http://www.1080t.net/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.1080t.net', '蓝光电影', '蓝光原盘下载 - 蓝光电影网 - Powered by Discuz!', 'http://www.1080t.net/forum.php?mod=forumdisplay&fid=45&filter=heat&orderby=heats', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.115fhd.com', '蓝光电影', '极视界高清蓝光电影站-115FHD | 蓝光电影 | 蓝光原盘 | 蓝...', 'https://www.115fhd.com/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.12345good.com', '免费电影', '电影盒子有免费电影,最新电影,高清精彩在线看-网站简介', 'https://www.12345good.com/a/20180925/152910.shtml', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('www.163.com', '电影资源', '靠谱!肖战的电影资源看似有着落了,和贾玲合作,女主是张小...', 'https://www.163.com/dy/article/GTU2D5N90552B235.html', '2022-01-17', '2022-01-17');
@@ -425,11 +453,11 @@ INSERT INTO `results` VALUES ('www.16pic.com', '超请下载', '超清1080图片
 INSERT INTO `results` VALUES ('www.17sucai.com', '电影下载', '电影网页模板下载_电影网站模板下载_17素材网', 'https://www.17sucai.com/pins/tag/2348.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.18183.com', '影视资源', '最全的影视资源下载_最全的影视资源app下载_18183软件下载', 'https://www.18183.com/down/3143341.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.18600.org', '免费电影', '18600电影大全 - 最新电影大全_电视剧大全免费在线观看网站', 'https://www.18600.org/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.1905.com', '免费电影', '影-高清完整版在线观看-电影网', 'https://www.1905.com/vod/play/1353439.shtml', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.1905.com', '免费电影', '电影资料库_1905电影网', 'https://www.1905.com/mdb/film/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.1905.com', '免费观看', '电影网_1905.com', 'https://www.1905.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.1905.com', '在线影院', '力王-高清完整版在线观看-电影网', 'https://www.1905.com/vod/play/85588.shtml', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.1905.com', '在线电影', '十月围城-高清完整版在线观看-电影网', 'https://www.1905.com/vod/play/312291.shtml', '2022-01-18', '2022-01-18');
-INSERT INTO `results` VALUES ('www.1905.com', '在线观看', '小王子The Little Prince(3D) (2015)_1905电影网', 'https://www.1905.com/mdb/film/2220153/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.1905.com', '在线观看', '天机·富春山居图-高清完整版在线观看-电影网', 'https://www.1905.com/vod/play/681708.shtml', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.1905.com', '影视资源', '中国影视基地资源亟待整合_要闻_电影网_1905.com', 'https://www.1905.com/news/20191108/1419082.shtml', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.1905.com', '最新电影', '全球已上映最新电影-1905电影网', 'https://www.1905.com/mdb/film/newfilm/c4s1.html', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('www.1905.com', '电影下载', '电影网_1905.com', 'https://www.1905.com/', '2022-01-18', '2022-01-18');
@@ -439,14 +467,14 @@ INSERT INTO `results` VALUES ('www.1905.com', '蓝光电影', '蓝光Blaue Licht
 INSERT INTO `results` VALUES ('www.2265.com', '影视资源', '海外影视剧app-免费影视剧app-资源最全的影视剧app-2265安...', 'http://www.2265.com/k/yingshijuapp/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.2265.com', '超请下载', '超清影视vip破解版下载-超清影视破解版下载v6.3.0 最新安...', 'http://www.2265.com/soft/247906.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.2345.com', '电影网', '【2345影视大全】最新电影网推荐—好看的电影网站', 'https://www.2345.com/wangmei.htm', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.360doc.cn', '影视资源', '找资源终极指南:90%的人都不知道的电影资源下载站!', 'http://www.360doc.cn/article/12457359_469783942.html', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.360doc.cn', '影视资源', '你有什么高清电影资源网站推荐?', 'http://www.360doc.cn/mip/745291118.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.360doc.cn', '电影分享', '这十个高清电影分享网站,你知道多少个?', 'http://www.360doc.cn/mip/837979843.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.360doc.cn', '电影资源', '找资源终极指南:90%的人都不知道的电影资源下载站', 'http://www.360doc.cn/mip/458450705.html', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('www.360doc.cn', '超请下载', '推荐几个无广告可以在线看超清影视的网站(提供多种版本下载)', 'http://www.360doc.cn/mip/601871561.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.360doc.com', '免费电影', '十大免费电影网站推荐(下)', 'http://www.360doc.com/content/21/0804/02/5049843_989483738.shtml', '2022-01-16', '2022-01-16');
-INSERT INTO `results` VALUES ('www.360doc.com', '影视资源', '【新提醒】电影资源都是在哪下载的,分享一些找电影的经验(...', 'http://www.360doc.com/content/13/1031/23/7863900_325715155.shtml', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.360doc.com', '影视资源', '【新提醒】电影资源都是在哪下载的,分享一些找电影的经验(...', 'http://www.360doc.com/content/13/1031/23/7863900_325715155.shtml', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.360doc.com', '电影1080P', '720p和1080p电影的区别是什么?', 'http://www.360doc.com/content/20/0115/18/51570800_886368299.shtml', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.360doc.com', '电影资源', '110个电影网站资源推荐(短视频自媒体素材必备)', 'http://www.360doc.com/document/17/1229/11/21576415_964946154.shtml', '2022-01-18', '2022-01-18');
+INSERT INTO `results` VALUES ('www.360doc.com', '电影资源', '如何快速找到90﹪以上的免费电影资源?', 'http://www.360doc.com/content/12/0121/07/1405817_679517042.shtml', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('www.360doc.com', '蓝光电影', '蓝光电影与 4K 视频的差别是什么?', 'http://www.360doc.com/content/20/1224/19/65238170_953269640.shtml', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.360kan.com', '免费电影', '360电影频道-更新更全更受欢迎的影视网站-在线观看', 'https://www.360kan.com/dianying/index.html?src=dhkz1', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.360kan.com', '在线影院', '专题汇总-360影视', 'https://www.360kan.com/special/summary.html', '2022-01-16', '2022-01-16');
@@ -458,11 +486,11 @@ INSERT INTO `results` VALUES ('www.3d2000.com', '超请下载', 'SU超高清Skm�
 INSERT INTO `results` VALUES ('www.3daosika.com', '影视资源', '3D电影下载资源区 - 3daosika.com - 3D奥斯卡电影论坛', 'http://www.3daosika.com/forum.php?gid=36', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.3dckck.com', '免费电影', '2022最新免费电影_热播电视剧_CK手机电影网_CK免费电影网', 'http://www.3dckck.com/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('www.3dkeji.net', '免费电影', '免费电影在线观看-好看的电视剧排行榜-免费下载电影电视剧...', 'http://www.3dkeji.net/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.3dmoli.com', '电影下载', '3D电影下载_红蓝3DTV左右格式电影下载_3D高清蓝光电影下载...', 'http://www.3dmoli.com/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.3dmoli.com', '电影下载', '3D电影下载_红蓝3DTV左右格式电影下载_3D高清蓝光电影下载...', 'http://www.3dmoli.com/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.4355.cn', '影视资源', '24小时免费资源在线观看的影视软件-24小时免费观看日本完...', 'http://www.4355.cn/zt/24xsmf/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.4399j.com', '超请下载', '120帧画质助手超高清下载-120帧画质助手超高清不闪退下载-...', 'http://www.4399j.com/game/221403.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.4k1080.com', '电影下载', '...| 4K超高清电影网|720P|1080P|蓝光原盘|磁力链迅雷下载...', 'http://www.4k1080.com/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.4k1080.com', '蓝光电影', '蓝光电影网 | 4K超高清电影网|720P|1080P|蓝光原盘|磁力链...', 'http://www.4k1080.com/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.4k1080.com', '蓝光电影', '蓝光电影网 | 4K超高清电影网|720P|1080P|蓝光原盘|磁力链...', 'http://www.4k1080.com/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.4k1080.com', '超请下载', '...| 4K超高清电影网|720P|1080P|蓝光原盘|磁力链迅雷下载...', 'http://www.4k1080.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.4k123.com', '蓝光电影', '值得观看的10部蓝光电影_4K123', 'https://www.4k123.com/article-1284-1.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.4k123.com', '超请下载', '4K论坛_4K电影壁纸_2160P超高清_4K123', 'https://www.4k123.com/', '2022-01-17', '2022-01-17');
@@ -479,17 +507,17 @@ INSERT INTO `results` VALUES ('www.4kting.com', '蓝光电影', '4K厅-专注4K�
 INSERT INTO `results` VALUES ('www.4kting.com', '超请下载', '韩国MV 4K超清下载 – 4K厅-专注4K蓝光资源 海量2160P超清...', 'http://www.4kting.com/4k_mv_korean/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.4ktt.com', '电影下载', '4K天堂,4K电影下载,4K视频,4K全高清电影,高清电影下载,全...', 'http://www.4ktt.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.517v.com', '免费电影', '最新电影_最新电视剧_综艺_动漫_直播_打造最热门最全最新...', 'https://www.517v.com/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.5199dy.com', '免费电影', '电影在线高清免费观看完整版_免费观看电视剧全集 - 久久影院', 'https://www.5199dy.com/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.5199dy.com', '免费电影', '电影在线高清免费观看完整版_免费观看电视剧全集 - 久久影院', 'https://www.5199dy.com/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.51yuansu.com', '电影下载', '电影 黑白免抠素材免费下载_觅元素51yuansu.com', 'https://www.51yuansu.com/sc/evjkcpphuz.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.52bug.cn', '在线电影', '首页- 最受欢迎的黑客电影网站_在线观看「吾爱漏洞」', 'http://www.52bug.cn/dianying', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.555yy.cc', '最新电影', '好看的电影_最新电影排行榜_电影大全-五杀电影院', 'https://www.555yy.cc/sort/movie.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.5566.net', '免费电影', '热门好看的免费电影大全', 'http://www.5566.net/film1-5.htm', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.5566.net', '免费电影', '热门好看的免费电影大全', 'http://www.5566.net/film1-5.htm', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.5566.net', '最新电影', '热门好看的免费电影大全', 'http://www.5566.net/film1-5.htm', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.558cq.com', '免费电影', '酷猫电影网_最新电影_免费看片_手机看片神器', 'http://www.558cq.com/', '2022-01-16', '2022-01-16');
+INSERT INTO `results` VALUES ('www.558cq.com', '免费电影', '酷猫电影网_最新电影_免费看片_手机看片神器', 'http://www.558cq.com/', '2022-01-16', '2022-01-18');
 INSERT INTO `results` VALUES ('www.558cq.com', '在线影院', '酷猫电影网_最新电影_免费看片_手机看片神器', 'http://www.558cq.com/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('www.56.com', '免费电影', '56视频首页', 'https://www.56.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.56.com', '免费观看', '囡囡电影免费观看_视频在线观看 - 56.com', 'https://www.56.com/w55/album-aid-10719204.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.56.com', '在线影院', '《DVD高清电影》_视频在线观看 - 56.com', 'https://www.56.com/w55/album-aid-5986985.html', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.56.com', '在线影院', '精彩影院_视频在线观看 - 56.com', 'https://www.56.com/w58/album-aid-3906524.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.56.com', '在线电影', '电影(44部小电影)_视频在线观看 - 56.com', 'https://www.56.com/w74/album-aid-5723143.html', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('www.56.com', '在线观看', '↖_视频在线观看 - 56.com', 'https://www.56.com/w11/album-aid-5733464.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.56.com', '最新电影', '56电影-分享全球最新电影资讯,实时展播精彩影片。', 'https://www.56.com/movie', '2022-01-17', '2022-01-17');
@@ -508,7 +536,7 @@ INSERT INTO `results` VALUES ('www.5zcake.com', '在线影院', '星辰影院-20
 INSERT INTO `results` VALUES ('www.64mv.com', '超请下载', '原版超清_[1080P]高清MV_MP4_MV下载_视频_最好的1080P高清...', 'https://www.64mv.com/yuanban/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.66s.cc', '在线电影', '6v电影-新版', 'https://www.66s.cc/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.66s.cc', '在线观看', '万部电影免费在线观看 - 6v电影-新版', 'https://www.66s.cc/', '2022-01-16', '2022-01-16');
-INSERT INTO `results` VALUES ('www.66ys.cc', '免费电影', '66电影网', 'http://www.66ys.cc/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.66ys.cc', '免费电影', '电影港_高清电影下载_720p高清_1080p高清', 'http://www.66ys.cc/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.66ys.cc', '电影下载', '66高清电影下载', 'http://www.66ys.cc/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.66ys.cc', '电影网', '66电影网', 'http://www.66ys.cc/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.68h5.com', '超请下载', '天翼超高清下载安装下载-天翼超高清5G最新版下载地址 v5.5...', 'https://www.68h5.com/app/gongju/1534060806.html', '2022-01-17', '2022-01-17');
@@ -516,7 +544,7 @@ INSERT INTO `results` VALUES ('www.6ukan.com', '在线影院', '最新电影_最
 INSERT INTO `results` VALUES ('www.6vgood.com', '电影下载', '6v电影网,最新电影,最新电视剧,免费电影下载,电视剧下载,...', 'https://www.6vgood.com/?xsfafw=nooba3&bgjevq=ztimo1&bmvgng=9grha3&tutqhe=nouro1&zqjize=rczck1&jybylq=hhf0z3&kgxele=ex31z3&omfqha=6tv6b3&wylcbe=mqe7a3', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.6vhao.tv', '免费电影', '6v电影网,最新电影,最新电视剧,免费电影下载,电视剧下载,...', 'http://www.6vhao.tv/?qqdrsign=07e00', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.6vhao.tv', '最新电影', '6v电影网,最新电影,最新电视剧,免费电影下载,电视剧下载,...', 'http://www.6vhao.tv/?qqdrflag=055ee', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.6vhao.tv', '电影下载', '欧美剧_最新欧美剧下载_好看的欧美剧电影_迅雷下载', 'http://www.6vhao.tv/mj/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.6vhao.tv', '电影下载', '《玩家[全集]》下载_迅雷下载_日韩剧_6v电影网', 'http://www.6vhao.tv/rj/2018-10-10/34847.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.720mp4.com', '电影下载', '犯罪片,犯罪片下载,最新犯罪片,电影天堂,电影之家,影视之...', 'https://www.720mp4.com/fanzuipian/list_10_1.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.7k8k.com', '影视资源', '资源最全的免费影视app推荐-资源最全的免费影视app汇总_7K...', 'http://www.7k8k.com/zt/new_zyzqdmfysapptj/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.80s.so', '电影下载', '最新热门电影迅雷下载 (热门排行) -80s电影网电影频道', 'http://www.80s.so/html/movie/list/----h', '2022-01-17', '2022-01-17');
@@ -529,9 +557,9 @@ INSERT INTO `results` VALUES ('www.880sy.com', '影视资源', '免费资源还�
 INSERT INTO `results` VALUES ('www.8825.com', '免费电影', '电影壁纸 电影图片大全 电影桌面壁纸大全 免费电影高清壁...', 'http://www.8825.com/dianying/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.88dyc.com', '免费电影', '88影院最新电影在线观看,88影视免费电视剧_88电影城', 'https://www.88dyc.com/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('www.8gdyhd.com', '免费电影', '八哥网 - 电影,视频,高清电视剧垂直收录_八哥电影', 'https://www.8gdyhd.com/', '2022-01-16', '2022-01-16');
-INSERT INTO `results` VALUES ('www.8vdy.com', '影视资源', '最新免费百度云电影_360云盘高清电影资源', 'http://www.8vdy.com/list/index39.html', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.8vdy.com', '影视资源', '最新免费百度云电影_360云盘高清电影资源', 'http://www.8vdy.com/list/index12.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.8vdy.com', '电影下载', '8V电影网_百度云网盘电影/迅雷下载最新资', 'http://www.8vdy.com/index.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.8vdy.com', '电影资源', '最新免费百度云电影_360云盘高清电影资源', 'http://www.8vdy.com/list/index39.html', '2022-01-18', '2022-01-18');
+INSERT INTO `results` VALUES ('www.8vdy.com', '电影资源', '最新免费百度云电影_360云盘高清电影资源', 'http://www.8vdy.com/list/index9.html', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('www.8ziyuan.com', '影视资源', '影视资源 - 8资源分享论坛 - 资源分享,资源共享|www.8ziyu...', 'https://www.8ziyuan.com/forum-51-1.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.8ziyuan.com', '电影资源', '影视资源 - 8资源分享论坛 - 资源分享,资源共享|www.8ziyu...', 'https://www.8ziyuan.com/forum-51-1.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.90duluodi.com', '免费电影', '破晓电影,最新好看电影电视剧免费在线欣赏,吉吉影音,破晓...', 'http://www.90duluodi.com/', '2022-01-17', '2022-01-17');
@@ -589,20 +617,20 @@ INSERT INTO `results` VALUES ('www.bd-film.com', '免费电影', '高清电影�
 INSERT INTO `results` VALUES ('www.bd-film.com', '最新电影', '高清电影下载 - BD影视分享 - 最新高清电影资源免费下载', 'https://www.bd-film.com/gq/index.htm', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.bd-film.com', '电影下载', '高清电影下载 - BD影视分享 - 最新高清电影资源免费下载', 'https://www.bd-film.com/gq/index.htm', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.bd2020.com', '影视资源', '首页- BD影视分享 - 最新高清电影资源免费下载', 'https://www.bd2020.com/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.bdhdtv.com', '蓝光电影', '...原盘电影 蓝光ISO BDMV 1080P 蓝光原盘4K UHD原盘 蓝光...', 'http://www.bdhdtv.com/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.bdhdtv.com', '蓝光电影', '...原盘电影 蓝光ISO BDMV 1080P 蓝光原盘4K UHD原盘 蓝光...', 'http://www.bdhdtv.com/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.bestmov.net', '免费电影', '百思电影网_最新电影_免费电影_高清电影', 'http://www.bestmov.net/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.bilibili.com', '免费电影', '给大家推荐些可以免费看电影的网站 - 哔哩哔哩', 'https://www.bilibili.com/read/cv7752087', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.bilibili.com', '免费观看', '免费看电影的10个最佳网站,美国大片,最新电影在线免费观看!', 'https://www.bilibili.com/video/BV1st4y1Q76Q?ivk_sa=1024320u', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.bilibili.com', '在线影院', '在线电影资源网站推荐_哔哩哔哩_bilibili', 'https://www.bilibili.com/video/av754595916', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.bilibili.com', '在线观看', '...推荐热门院线影片日剧韩剧美剧泰剧动漫这些网站都可以...', 'https://www.bilibili.com/video/av501628779/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.bilibili.com', '影视资源', '福利!免费高清电影、电视剧就来这几个网站找 - 哔哩哔哩', 'https://www.bilibili.com/read/mobile?from=articledetail&id=131909', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.bilibili.com', '电影1080P', '【王晴】微电影三部合集全高清[1080P]_哔哩哔哩_bilibili', 'https://www.bilibili.com/video/av25217224/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.bilibili.com', '电影720P', '【剧情】车水马龙 1981年【东方电影1080p】_哔哩哔哩_bilibili', 'https://www.bilibili.com/video/av11864083', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.bilibili.com', '电影下载', '电影下载 - 哔哩哔哩', 'https://www.bilibili.com/read/mobile?id=6657253', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.bilibili.com', '影视资源', '【电影资源网站】三个网站,网罗所有资源_哔哩哔哩_bilibili', 'https://www.bilibili.com/video/BV1tb411a7Vj/', '2022-01-17', '2022-01-18');
+INSERT INTO `results` VALUES ('www.bilibili.com', '电影1080P', '超凡双生 游戏电影 纯享版 1080p 60fps 完结_哔哩哔哩 (゜...', 'https://www.bilibili.com/video/av414312400', '2022-01-17', '2022-01-18');
+INSERT INTO `results` VALUES ('www.bilibili.com', '电影720P', '【剧情】车水马龙 1981年【东方电影1080p】_哔哩哔哩_bilibili', 'https://www.bilibili.com/video/av11864083?from=search&seid=13541417124926331350', '2022-01-17', '2022-01-18');
+INSERT INTO `results` VALUES ('www.bilibili.com', '电影下载', '3个高品质电影下载网站,可免费下载4K和蓝光电影!_哔哩哔哩_bil...', 'https://www.bilibili.com/video/BV1d54y137vo/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.bilibili.com', '电影分享', '分享电影_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili', 'https://www.bilibili.com/video/av927793491', '2022-01-18', '2022-01-18');
-INSERT INTO `results` VALUES ('www.bilibili.com', '电影资源', '免费看剧、看电影和下载电影网站资源大全! - 哔哩哔哩', 'https://www.bilibili.com/read/mobile?id=6277775&ivk_sa=1021577l', '2022-01-18', '2022-01-18');
-INSERT INTO `results` VALUES ('www.bilibili.com', '蓝光电影', '【YouTube】2019年蓝光电影全集!!_哔哩哔哩_bilibili', 'https://www.bilibili.com/video/av62576676/', '2022-01-18', '2022-01-18');
-INSERT INTO `results` VALUES ('www.bilibili.com', '超请下载', '【超高清】BOSS打歌舞台合集 全部1080P以上画质 收藏下载...', 'https://www.bilibili.com/video/av19982432/?p=8', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.bilibili.com', '电影资源', '【电影资源素材寻找】能找到所有想观看的电影资源和素材,收藏...', 'https://www.bilibili.com/video/av53826575', '2022-01-18', '2022-01-18');
+INSERT INTO `results` VALUES ('www.bilibili.com', '蓝光电影', '免费蓝光高清影视网站,分享给你们,高清4K画质免费观看_哔...', 'https://www.bilibili.com/video/av929706834', '2022-01-18', '2022-01-18');
+INSERT INTO `results` VALUES ('www.bilibili.com', '超请下载', '[迅雷下载www.DY2046.Net]不能说的秘密.BD1280超清国语中字', 'https://www.bilibili.com/video/av456725854/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.bjsglglc.com', '免费电影', '悟空电影网 - 最好看的电影大全_电视剧免费全集在线观看', 'http://www.bjsglglc.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.bjsglglc.com', '在线影院', '悟空电影网 - 最好看的电影大全_电视剧免费全集在线观看', 'http://www.bjsglglc.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.bjsglglc.com', '在线电影', '悟空电影网 - 最好看的电影大全_电视剧免费全集在线观看', 'http://www.bjsglglc.com/', '2022-01-17', '2022-01-17');
@@ -715,10 +743,10 @@ INSERT INTO `results` VALUES ('www.filmaker.cn', '电影网', '拍电影', 'http
 INSERT INTO `results` VALUES ('www.fodizi.com', '在线观看', '净界法师视频讲座在线观看 - 佛弟子', 'http://www.fodizi.com/fofa/6-12.htm', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('www.fun.tv', '免费电影', '风行电影网-新一代平台', 'http://www.fun.tv/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.fun.tv', '免费观看', '风行-新一代平台', 'http://www.fun.tv/', '2022-01-16', '2022-01-18');
-INSERT INTO `results` VALUES ('www.fun.tv', '在线影院', '风行- 高清电影,网络电视,免费电影,在线电影,电影下载', 'https://www.fun.tv/download', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.fun.tv', '在线影院', '风行电影网-新一代平台', 'http://www.fun.tv/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.fun.tv', '在线观看', '电视剧频道 - 最新电视剧 - 全集在线观看 - 高清下载 - 风...', 'https://www.fun.tv/tv/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.fun.tv', '最新电影', '风行- 高清电影,网络电视,免费电影,在线电影,电影下载', 'https://www.fun.tv/download/home/pc', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.fun.tv', '电影下载', '综艺频道 - 综艺节目 - 在线观看 - 高清下载 - 风行网', 'https://www.fun.tv/variety', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.fun.tv', '电影下载', '风行- 高清电影,网络电视,免费电影,在线电影,电影下载', 'https://www.fun.tv/help/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.fun.tv', '电影网', '风行电影频道 - 在线观看 - 高清下载 - 风行网', 'https://www.fun.tv/movie/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.funshion.com', '在线影院', '风行电影网-新一代平台', 'http://www.funshion.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.funshion.com', '电影下载', '风行电影网-新一代平台', 'http://www.funshion.com/', '2022-01-17', '2022-01-17');
@@ -730,7 +758,7 @@ INSERT INTO `results` VALUES ('www.goupu.com.cn', '免费电影', '【狗狗电�
 INSERT INTO `results` VALUES ('www.gqcyy.com', '在线电影', '最新电影大全_无插件_在线电影_在线播放', 'https://www.gqcyy.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.greenxf.com', '影视资源', '6v电影网(电影资源共享下载)V1.0 免费版软件下载 - 绿色先...', 'https://www.greenxf.com/soft/170325.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.greenxf.com', '电影资源', '6v电影网(电影资源共享下载)V1.0 免费版软件下载 - 绿色先...', 'https://www.greenxf.com/soft/170325.html', '2022-01-18', '2022-01-18');
-INSERT INTO `results` VALUES ('www.gtzyb.com', '影视资源', '中国国土资源报网 - 最新电视剧电影尽在格子影院-格子影院', 'http://www.gtzyb.com/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.gtzyb.com', '影视资源', '中国国土资源报网 - 最新电视剧电影尽在格子影院-格子影院', 'http://www.gtzyb.com/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.gtzyb.com', '电影资源', '中国国土资源报网 - 最新电视剧电影尽在格子影院-格子影院', 'http://www.gtzyb.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.guanxiangying.cn', '免费电影', '高清影视大全-高清电影-最新电影电视剧在线观看', 'http://www.guanxiangying.cn/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('www.gxybs.com', '免费电影', '免费电影大全高清在线观看 _ 高清电影', 'http://www.gxybs.com/', '2022-01-17', '2022-01-17');
@@ -747,7 +775,7 @@ INSERT INTO `results` VALUES ('www.hdchd.cc', '蓝光电影', 'HDCHD论坛丨高
 INSERT INTO `results` VALUES ('www.hdshare.cn', '影视资源', '蓝光电影拷贝|蓝光原盘拷贝|蓝光电影资源拷贝', 'http://www.hdshare.cn/copy.bd', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.hdshare.cn', '电影分享', '4K蓝光电影下载|蓝光电影网|蓝光高清分享网', 'http://www.hdshare.cn/bluray.bd', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.hdshare.cn', '电影资源', '正版蓝光原盘ISO下载网站|4K蓝光电影资源|蓝光高清分享网', 'http://www.hdshare.cn/index.bd', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.hdshare.cn', '蓝光电影', '正版蓝光原盘ISO下载网站|4K蓝光电影资源|蓝光高清分享网', 'http://www.hdshare.cn/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.hdshare.cn', '蓝光电影', '蓝光电影|蓝光原盘 [北极].Arctic.2018.USA.BluRay.1080p...', 'http://www.hdshare.cn/bluraydetail_2395_0.bd', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.hfsstz.com', '在线观看', '龙虎人生剧情最新热播-龙虎人生剧情在线观看', 'https://www.hfsstz.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.hjenglish.com', '免费电影', '电影_文化娱乐_沪江英语', 'https://www.hjenglish.com/new/movie/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.hkpanamie.com', '超请下载', '权力的游戏1-8全季无删减资源百度云,冰与火之歌网盘超清中...', 'http://www.hkpanamie.com/p/302', '2022-01-17', '2022-01-17');
@@ -755,35 +783,35 @@ INSERT INTO `results` VALUES ('www.hndksy.com', '在线影院', '最新电影在
 INSERT INTO `results` VALUES ('www.hndksy.com', '电影网', '...观看-最新电影大全-好看的电影电视剧免费在线观看-可乐...', 'http://www.hndksy.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.hrlyok.com', '免费观看', '完整版电视剧在线观看 _ 农民影视', 'http://www.hrlyok.com/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('www.hrqy.com', '电影分享', '八哥网分享最新电影全集免费观看在线观看 _ 八哥电影', 'http://www.hrqy.com/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.hspaomo.com', '免费电影', '人人影视-手机高清电影电视剧免费在线观看', 'http://www.hspaomo.com/', '2022-01-16', '2022-01-16');
+INSERT INTO `results` VALUES ('www.hspaomo.com', '免费电影', '人人影视-手机高清电影电视剧免费在线观看', 'http://www.hspaomo.com/', '2022-01-16', '2022-01-18');
 INSERT INTO `results` VALUES ('www.huaherobot.com', '在线电影', '花和影院-更新更快更全的影视大全网站,免费电影天堂', 'http://www.huaherobot.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.huya.com', '在线影院', '一起看直播_电影直播_电视剧直播_影视频道直播间_虎牙直播', 'https://www.huya.com/g/2135', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.huya.com', '电影下载', '一起看直播_电影直播_电视剧直播_影视频道直播间_虎牙直播', 'https://www.huya.com/g/2135', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.i264.net', '免费电影', '完美高清.免费电影-I264.net,电影电视视频在线看影院,绝对...', 'http://www.i264.net/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.i264.net', '免费电影', '完美高清.免费电影-I264.net,电影电视视频在线看影院,绝对...', 'http://www.i264.net/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.iccc.vip', '超请下载', 'ICCC.VIP_免费电影_在线观看_超清mp4下载', 'http://www.iccc.vip/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.icezmz.com', '在线观看', '冰冰字幕组 ice字幕组 最新英剧下载 英剧字幕 英剧在线观看', 'http://www.icezmz.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.icourses.cn', '在线观看', '爱课程', 'http://www.icourses.cn/home/', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('www.ihutui.com', '电影720P', '电影港_高清电影下载_720p高清_1080p高清 - 好资源导航网', 'https://www.ihutui.com/url-114.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.ik123.com', '超请下载', '超高清壁纸,手机高清壁纸,高清壁纸下载,精品库', 'http://www.ik123.com/q/haokan/gqbz.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.imahuatv.com', '在线电影', '麻花影视-麻花电影-免费在线观看最新电视剧和电影,就上最...', 'https://www.imahuatv.com/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.imiking.net', '蓝光电影', '美剧英剧_BD25蓝光电影_凯越蓝光', 'http://www.imiking.net/category.php?id=1156', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.imiking.net', '蓝光电影', '50G蓝光3D电影_凯越蓝光', 'http://www.imiking.net/category.php?id=1139', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.iq.com', '免费电影', '爱奇艺-在线视频网站-海量正版高清视频在线观看', 'https://www.iq.com/?_from=iqiyi', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.iq.com', '免费观看', '电视剧频道-好看的电视剧大全-热门电视剧排行榜-爱奇艺', 'https://www.iq.com/drama?_from=iqiyi', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.iq.com', '在线影院', '电影频道-热门好看的电影大全-正版高清电影在线观看-爱奇艺', 'https://www.iq.com/movie?_from=iqiyi', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.iq.com', '在线电影', '爱奇艺-在线视频网站-海量正版高清视频在线观看', 'https://www.iq.com/?_from=iqiyi', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.iq.com', '在线观看', '无限挑战-综艺-高清正版视频在线观看-爱奇艺', 'https://www.iq.com/album/19rrguce1p?_from=iqiyi', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.iq.com', '电影下载', '爱奇艺-在线视频网站-海量正版高清视频在线观看', 'https://www.iq.com/?_from=iqiyi', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.iqiyi.com', '免费电影', '煎饼侠-电影-完整版视频在线观看-爱奇艺', 'https://www.iqiyi.com/v_19rro8dev0.html', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.iq.com', '电影下载', '爱奇艺-在线视频网站-海量正版高清视频在线观看', 'https://www.iq.com/?_from=iqiyi', '2022-01-17', '2022-01-18');
+INSERT INTO `results` VALUES ('www.iqiyi.com', '免费电影', '免费电影在线观看-爱奇艺', 'https://www.iqiyi.com/dianying/freemovie.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.iqiyi.com', '免费观看', '3D电影专区-电影频道-正版高清视频在线观看-爱奇艺', 'https://www.iqiyi.com/dianying/3dmovie.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.iqiyi.com', '在线影院', '网络大电影-最新电影在线观看-电影天堂-爱奇艺', 'https://www.iqiyi.com/dianying/fgtwqa.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.iqiyi.com', '在线电影', '烈日灼心-电影-完整版视频在线观看-爱奇艺', 'https://www.iqiyi.com/v_19rrklv244.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.iqiyi.com', '在线观看', '韩剧专区', 'https://www.iqiyi.com/dianshiju/hanju.html', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.iqiyi.com', '在线电影', '神魂颠倒-电影-高清正版视频--爱奇艺', 'https://www.iqiyi.com/lib/m_205796014.html', '2022-01-17', '2022-01-18');
+INSERT INTO `results` VALUES ('www.iqiyi.com', '在线观看', '捉妖记-电影-完整版视频在线观看-爱奇艺', 'https://www.iqiyi.com/v_19rrnr18nc.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.iqiyi.com', '最新电影', '网络大电影', 'https://www.iqiyi.com/dianying/internetfilm.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.iqiyi.com', '电影1080P', '[我们]1080p-电影-完整版视频在线观看-爱奇艺', 'https://www.iqiyi.com/v_owzncqxkoc.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.iqiyi.com', '电影下载', '冰雪奇缘-电影-高清正版视频--爱奇艺', 'https://www.iqiyi.com/lib/m_200031214.html', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.iqiyi.com', '电影下载', '下载-电影-完整版视频在线观看-爱奇艺', 'https://www.iqiyi.com/w_19s9t1gh3t.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.iqiyi.com', '电影分享', '几分钟看电影,分享好看的影视资源-片花-高清正版视频在线...', 'https://www.iqiyi.com/a_19rri0x5vh.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.iqiyi.com', '电影网', '红高粱-电影-高清正版视频--爱奇艺', 'https://www.iqiyi.com/lib/m_201362614.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.iqiyi.com', '电影资源', '免费电影资源怎么找?教你4种方法,快速找到各种优质电影资源', 'https://www.iqiyi.com/v_1ushsp08s1c.html', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.iqiyi.com', '电影资源', '《爱奇艺网大公开课》第2018-06-22期-电影-完整版视频在线...', 'https://www.iqiyi.com/v_19rr0wgc4o.html?vfm=2002_2345f', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.iqiyi.com', '蓝光电影', '蓝光电影-纪录片-完整版视频在线观看-爱奇艺', 'https://www.iqiyi.com/w_19rumntw8l.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.iqiyi.com', '超请下载', '超清“无码”下载视频很难吗?不,一点都不难!-科技-完整版视频...', 'https://www.iqiyi.com/v_1bkyzgiguow.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.itbear.com.cn', '电影资源', '什么软件看电影免费?就这八款软件你可收好了,不仅免费资源...', 'http://www.itbear.com.cn/html/2021-08/411138.html', '2022-01-17', '2022-01-17');
@@ -834,7 +862,7 @@ INSERT INTO `results` VALUES ('www.kuaikanmanhua.com', '免费观看', '快看_�
 INSERT INTO `results` VALUES ('www.lailook.com', '在线电影', '来看影视_最新电影,最新电视剧,最新电视剧下载,迅雷电影下...', 'http://www.lailook.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.lailook.com', '电影网', '来看影视_最新电影,最新电视剧,最新电视剧下载,迅雷电影下...', 'http://www.lailook.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.languangdy.com', '影视资源', '中国蓝光网丨蓝光电影网|蓝光影院|高清电影网|高清电影|蓝...', 'http://www.languangdy.com/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.languangdy.com', '蓝光电影', '中国蓝光网丨蓝光电影网|蓝光影院|高清电影网|高清电影|蓝...', 'http://www.languangdy.com/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.languangdy.com', '蓝光电影', '中国蓝光网丨蓝光电影网|蓝光影院|高清电影网|高清电影|蓝...', 'http://www.languangdy.com/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.lanmeiys.com', '电影资源', '蓝莓影院 电影-高清完整版在线观看-百度云网盘资源-迅雷种...', 'http://www.lanmeiys.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.laodianying.org', '影视资源', '老电影,-老电影资源分享论坛,香港老电影,经典老电影,国产...', 'https://www.laodianying.org/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.laodianying.org', '电影分享', '老电影,-老电影资源分享论坛,香港老电影,经典老电影,国产...', 'https://www.laodianying.org/', '2022-01-17', '2022-01-17');
@@ -847,7 +875,7 @@ INSERT INTO `results` VALUES ('www.le.com', '免费电影', '闯入者电影高�
 INSERT INTO `results` VALUES ('www.le.com', '免费观看', '暮光之城2:新月 高清在线观看电影_手机乐视视频', 'http://www.le.com/ptv/vplay/1385018.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.le.com', '在线影院', '手机乐视_乐视视频,高清极速观看体验,丰富热剧乐享其中', 'http://www.le.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.le.com', '在线电影', '电影敢死队高清在线电影_手机乐视视频', 'http://www.le.com/ptv/vplay/922967.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.le.com', '在线观看', '念念电影_手机乐视视频', 'http://www.le.com/ptv/vplay/22932318.html', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.le.com', '在线观看', '网球王子 中文版_网球王子 中文版_动漫_全集在线观看-乐视网', 'http://www.le.com/comic/85167.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.le.com', '影视资源', '最新电影资源网站 值得收藏短视频_手机乐视视频', 'http://www.le.com/error/?msg=mmsDataErr', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.le.com', '电影资源', '最新电影资源网站 值得收藏短视频_手机乐视视频', 'http://www.le.com/error/?msg=mmsDataErr', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('www.le.com', '超请下载', 'Epic Romance (电影《了不起的盖茨比》原声 1080p超清下载...', 'http://www.le.com/ptv/vplay/2108734.html', '2022-01-17', '2022-01-17');
@@ -875,7 +903,7 @@ INSERT INTO `results` VALUES ('www.lwgod.org', '电影1080P', '『日韩电视�
 INSERT INTO `results` VALUES ('www.lwgod.org', '电影720P', '『BT游戏区』 - 梦幻天堂·龙网 - 最新电影下载,720p,1080...', 'http://www.lwgod.org/forum-104-1.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.lzclean.com', '在线电影', '星辰影院-免费在线观看最新热门电影电视剧「星辰影院」', 'http://www.lzclean.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.lzclean.com', '在线观看', '星辰影院-免费在线观看最新热门电影电视剧「星辰影院」', 'http://www.lzclean.com/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.lzdcctv.cn', '影视资源', '分享一个替代人人影视的资源网站,内含人人影视全部的资源 ...', 'http://www.lzdcctv.cn/zhsh/13599.html', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.lzdcctv.cn', '影视资源', '「阿房影视」一个资源超全、免费看剧的观影网站,十分良心 ...', 'http://www.lzdcctv.cn/zhsh/19069.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.lzdcctv.cn', '蓝光电影', '推荐一个4K、蓝光、3D高清影视下载站,影视资源丰富 发烧友...', 'http://www.lzdcctv.cn/zhsh/9573.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.m.baidu.com', '在线电影', '重生-电影-高清在线观看-百度视频', 'http://www.m.baidu.com/movie/134210.htm', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.manmankan.com', '在线影院', '印度电影大全_2021好看的印度电影推荐_印度电影排行榜 - ...', 'http://www.manmankan.com/dy2013/dianying/yindu/', '2022-01-16', '2022-01-16');
@@ -887,7 +915,7 @@ INSERT INTO `results` VALUES ('www.meiju56.com', '在线影院', '美剧网-全�
 INSERT INTO `results` VALUES ('www.meiju56.com', '在线电影', '美剧网-全网最全影视库', 'https://www.meiju56.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.meituan.com', '电影下载', '美团网-美食_酒店_旅游_团购_电影_吃喝玩乐', 'https://www.meituan.com/error/403', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.mgtv.com', '免费观看', '湖南经视在线观看 - 芒果TV', 'https://www.mgtv.com/zq/hnetv/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.mgtv.com', '在线观看', '湖南经视在线观看 - 芒果TV', 'https://www.mgtv.com/zq/hnetv/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.mgtv.com', '在线观看', '芒果TV-直播频道', 'https://www.mgtv.com/live/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.miobt.com', '电影1080P', '电影1080 - *MioBT*', 'http://www.miobt.com/search.php?keyword=%E7%94%B5%E5%BD%B1+1080', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.mkvok.com', '在线影院', '天天影院,天天影视,手机电影网,电影天堂在线观看 - 天天电...', 'http://www.mkvok.com/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('www.mkvok.com', '在线电影', '天天影院,天天影视,手机电影网,电影天堂在线观看 - 天天电...', 'http://www.mkvok.com/', '2022-01-17', '2022-01-17');
@@ -908,7 +936,7 @@ INSERT INTO `results` VALUES ('www.mtvxz.cn', '电影下载', '电影在线观�
 INSERT INTO `results` VALUES ('www.munromotor.com', '免费电影', '免费影视大全-影视大全-免费电影-私人影视', 'http://www.munromotor.com/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('www.muslimwww.com', '在线影院', '电影- 穆斯林在线(muslimwww)', 'http://www.muslimwww.com/html/video/dianying/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('www.mvm123.cn', '影视资源', '爱时代网 - 影视游戏资源网', 'http://www.mvm123.cn/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.mybluhd.cn', '蓝光电影', '蓝光电影论坛|高清电影下载|720P和1080P电影下载|BD蓝光电...', 'https://www.mybluhd.cn/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.mybluhd.cn', '蓝光电影', '蓝光电影论坛|高清电影下载|720P和1080P电影下载|BD蓝光电...', 'https://www.mybluhd.cn/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.mydown.com', '超请下载', '超清手机视频 _超清手机视频下载[2021官方最新版]超清手机...', 'https://www.mydown.com/soft/413/725725913.shtml', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.myts.cc', '免费电影', '好看的免费电视剧排行榜 免费在线电影大全-TS影院', 'http://www.myts.cc/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('www.myts.cc', '在线影院', '好看的免费电视剧排行榜 免费在线电影大全-TS影院', 'http://www.myts.cc/', '2022-01-16', '2022-01-16');
@@ -932,7 +960,7 @@ INSERT INTO `results` VALUES ('www.omnijoi.cn', '在线影院', '幸福蓝海国
 INSERT INTO `results` VALUES ('www.onionvideo.cn', '免费电影', '洋葱电影_电影天堂_全集网_最新电影迅雷下载_免费电影下载', 'http://www.onionvideo.cn/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.onionvideo.cn', '电影网', '洋葱电影_电影天堂_全集网_最新电影迅雷下载_免费电影下载', 'http://www.onionvideo.cn/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.onlinedown.net', '免费电影', '免费看电影软件下载_免费看电影应用软件【专题】-华军软件园', 'https://www.onlinedown.net/zt/2931/', '2022-01-16', '2022-01-16');
-INSERT INTO `results` VALUES ('www.onlinedown.net', '电影下载', '风行网络电视播放器下载_风行网络电影官方下载【网络电视...', 'https://www.onlinedown.net/soft/22871.htm', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.onlinedown.net', '电影下载', 'mp4电影格式转换器下载-mp4电影格式转换器最新版下载-华军...', 'https://www.onlinedown.net/soft/98970.htm', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.oohmovies.com', '免费观看', 'Ooh影视-最新最全最好看的电影视频热播电视剧在线观看', 'http://www.oohmovies.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.ooopic.com', '超请下载', '高清超万能快闪视频AE模板素材(aep格式)免费下载_其他AE模...', 'https://www.ooopic.com/pic_27453334.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.paopao8.cc', '免费电影', '80DVD影院_最新好看的电影和电视剧_免费电影 - 80DVD电影网', 'http://www.paopao8.cc/', '2022-01-16', '2022-01-16');
@@ -988,13 +1016,13 @@ INSERT INTO `results` VALUES ('www.sohu.com', '电影资源', '电影资源已�
 INSERT INTO `results` VALUES ('www.sohu.com', '蓝光电影', '非高清无码不看!值得收藏的9大蓝光电影下载站', 'https://www.sohu.com/a/63881562_197790', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('www.soku.com', '免费电影', '.看免费的电影 – 搜库', 'https://www.soku.com/t/nisearch/.%E7%9C%8B%E5%85%8D%E8%B4%B9%E7%9A%84%E7%94%B5%E5%BD%B1', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.soku.com', '电影1080P', '1080p 电影下载 – 搜库', 'https://www.soku.com/v?keyword=1080p+%E7%94%B5%E5%BD%B1%E4%B8%8B%E8%BD%BD', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.soku.com', '电影下载', '英语电影免费下载 – 搜库', 'https://www.soku.com/t/nisearch/%E8%8B%B1%E8%AF%AD%E7%94%B5%E5%BD%B1%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BD/_time__sort_score_display_album?site=1&limitdate=0&_lg=10&cid=0', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.soku.com', '电影下载', '英语电影免费下载 – 搜库', 'https://www.soku.com/t/nisearch/%E8%8B%B1%E8%AF%AD%E7%94%B5%E5%BD%B1%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BD/_time__sort_score_display_album?site=1&limitdate=0&_lg=10&cid=0', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.soku.com', '蓝光电影', '蓝光电影 – 搜库', 'https://www.soku.com/v?keyword=%E8%93%9D%E5%85%89%E7%94%B5%E5%BD%B1', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.sowang.com', '在线电影', '热搜影视排行榜、热门电影电视剧在线观看 - 中文搜索引擎...', 'http://www.sowang.com/ZY/MOVIES.HTM', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.stt100.com', '免费观看', '最新电影在线观看 最新电视剧在线观看 _ 小小影视', 'http://www.stt100.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.stt100.com', '在线影院', '最新电影在线观看 最新电视剧在线观看 _ 小小影视', 'http://www.stt100.com/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('www.sx0371.com', '免费电影', '奇优影院-奇优影视,2020手机影院,影视大全,免费电影网,高...', 'https://www.sx0371.com/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.sysfzy.cn', '免费电影', '扫一扫在线电影-最新电影-免费电影-电影在线观看', 'http://www.sysfzy.cn/', '2022-01-16', '2022-01-16');
+INSERT INTO `results` VALUES ('www.sysfzy.cn', '免费电影', '扫一扫在线电影-最新电影-免费电影-电影在线观看', 'http://www.sysfzy.cn/', '2022-01-16', '2022-01-18');
 INSERT INTO `results` VALUES ('www.sysfzy.cn', '在线影院', '扫一扫在线电影-最新电影-免费电影-电影在线观看', 'http://www.sysfzy.cn/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('www.szkingswin.com', '免费观看', '4399在线观看免费韩国', 'http://www.szkingswin.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.szsdfz.net', '免费电影', '电影盒子 - 免费最新高清电影在线观看', 'http://www.szsdfz.net/?ivk_sa=1024320u', '2022-01-17', '2022-01-17');
@@ -1044,7 +1072,7 @@ INSERT INTO `results` VALUES ('www.wbdy.tv', '超请下载', '《超级英雄蜻
 INSERT INTO `results` VALUES ('www.wh-ccic.com.cn', '免费电影', '免费电影-好看的电视剧大全-2021更新最快的电影网站-九七...', 'http://www.wh-ccic.com.cn/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('www.win4000.com', '超请下载', '超高清山水风景壁纸下载第一辑_风景壁纸_壁纸下载_美桌网', 'http://www.win4000.com/wallpaper_detail_108167.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.winwin7.com', '超请下载', '闪电超清直播下载_闪电超清直播V1.2.2去广告版破解版', 'http://www.winwin7.com/azapp/8151.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.wodehd.com', '蓝光电影', '蓝光电影 西西高清影视 www.xixiHD.com', 'https://www.wodehd.com/?list=bluray', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.wodehd.com', '蓝光电影', '蓝光电影 西西高清影视 www.xixiHD.com', 'https://www.wodehd.com/?list=bluray', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.wuhushengwei.com', '电影分享', '声威影视-实时在线分享最新电影电视剧动漫等影视大全', 'http://www.wuhushengwei.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.wxykzg.com', '在线影院', '悟空电影网 - 悟空韩国电影免费观看|悟空电影高清在线观看', 'http://www.wxykzg.com/', '2022-01-16', '2022-01-16');
 INSERT INTO `results` VALUES ('www.wzdq.com', '在线影院', '雅图在线影院', 'https://www.wzdq.com/site/www.yatu.tv.shtml', '2022-01-17', '2022-01-17');
@@ -1062,7 +1090,7 @@ INSERT INTO `results` VALUES ('www.xiepp.cc', '电影下载', '最新电影|剧�
 INSERT INTO `results` VALUES ('www.xigua57.com', '免费观看', '龙无目_电影_在线免费看[高清流畅]_龙无目免费观看-西瓜影视', 'https://www.xigua57.com/voddetail/84693.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.xiqu5.com', '免费观看', '莆仙戏网-莆仙戏在线观看,莆仙戏全场戏,莆仙戏视频-戏曲屋...', 'http://www.xiqu5.com/pxx/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.xiy.tv', '电影网', '兴影网-领先的一站式影视信息网站!', 'http://www.xiy.tv/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.xlg678.com', '免费电影', '最新电影下载_迅雷哥_免费电影_迅雷哥电影网', 'https://www.xlg678.com/', '2022-01-16', '2022-01-16');
+INSERT INTO `results` VALUES ('www.xlg678.com', '免费电影', '最新电影下载_迅雷哥_免费电影_迅雷哥电影网', 'https://www.xlg678.com/', '2022-01-16', '2022-01-18');
 INSERT INTO `results` VALUES ('www.xlg678.com', '电影下载', '最新电影下载_迅雷哥_免费电影_迅雷哥电影网', 'https://www.xlg678.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.xlpdy.cc', '电影下载', '最新免费电影下载_GVOD在线电影_迅雷高清电影下载 - 迅雷...', 'http://www.xlpdy.cc/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.xpiaohua.com', '影视资源', '新飘花电影网_飘花迅雷电影下载_最新电影迅雷高清下载', 'http://www.xpiaohua.com/', '2022-01-17', '2022-01-17');
@@ -1081,7 +1109,7 @@ INSERT INTO `results` VALUES ('www.yccctv.com', '免费电影', '最新高清免
 INSERT INTO `results` VALUES ('www.yehes.com', '影视资源', '影视资源采集站收录大全-夜河资源网', 'http://www.yehes.com/jianzhan/xiaojiqiao/52608.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.yeyulingfeng.com', '最新电影', '最新电影', 'https://www.yeyulingfeng.com/category/qita/dianying', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.ygbnedu.com', '免费观看', '...影视大全-免费电影-最全影视TV-高清影视在线观看-免费...', 'https://www.ygbnedu.com/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.ygdy8.com', '免费电影', '阳光电影_免费电影_迅雷电影下载_你的电影天堂', 'https://www.ygdy8.com/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.ygdy8.com', '免费电影', '阳光电影_免费电影_迅雷电影下载_你的电影天堂', 'https://www.ygdy8.com/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.ygdy8.com', '电影下载', '阳光电影_免费电影_迅雷电影下载_你的电影天堂', 'https://www.ygdy8.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.ygdy8.com', '电影网', '阳光电影_免费电影_迅雷电影下载_你的电影天堂', 'https://www.ygdy8.com/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.ygdyw.net', '免费电影', '阳光电影网_新电影天堂_免费电影_电影天堂网', 'http://www.ygdyw.net/', '2022-01-16', '2022-01-16');
@@ -1093,7 +1121,7 @@ INSERT INTO `results` VALUES ('www.youku.com', '免费观看', '21克拉-电影-
 INSERT INTO `results` VALUES ('www.youku.com', '在线影院', '黑客帝国-电影-高清完整正版视频在线观看-优酷', 'https://www.youku.com/index/y404?type=videoLimited&detail=', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.youku.com', '在线电影', '长津湖-电影-高清完整正版视频在线观看-优酷', 'https://www.youku.com/index/y404?type=videoLimited&detail=', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.youku.com', '在线观看', '刑警队长 第1集 刑警队长 01-电视剧-高清完整正版视频在线...', 'https://www.youku.com/index/y404?type=videoLimited&detail=', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('www.youku.com', '电影1080P', 'Y1_1080p-电影-高清完整正版视频在线观看-优酷', 'https://www.youku.com/index/y404?type=videoLimited&detail=', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('www.youku.com', '电影1080P', '《盛开》1080P-电影-高清完整正版视频在线观看-优酷', 'https://www.youku.com/index/y404?type=videoLimited&detail=', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('www.youku.com', '电影720P', '【微电影】遇见720P-电影-高清完整正版视频在线观看-优酷', 'https://www.youku.com/index/y404?type=videoLimited&detail=', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.youku.com', '蓝光电影', '为地球而战[蓝光]-电影-高清完整正版视频在线观看-优酷', 'https://www.youku.com/index/y404?type=videoLimited&detail=', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.youku.com', '超请下载', '【宠】【4K超清】BAMBINO朴恩率透视邪恶饭拍-New Thang 20...', 'https://www.youku.com/index/y404?type=urlInvalid&detail=id_XMTQxODM1MzU5Mg%3D%3D_type_99.html', '2022-01-17', '2022-01-17');
@@ -1118,7 +1146,7 @@ INSERT INTO `results` VALUES ('www.zhichenghuishou.com', '电影网', '至诚电
 INSERT INTO `results` VALUES ('www.zhihu.com', '影视资源', '现在还有什么好的影视资源网站? - 知乎', 'https://www.zhihu.com/question/427769674', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.zhihu.com', '电影分享', '神经影FUN的电影分享会 - 知乎', 'https://www.zhihu.com/column/YingFun', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.zhihu.com', '电影资源', '电影资源 - 知乎', 'https://www.zhihu.com/topic/19837315/top-answers?page=1', '2022-01-18', '2022-01-18');
-INSERT INTO `results` VALUES ('www.zhihu.com', '蓝光电影', '蓝光电影究竟好在哪里?哪里下载? - 知乎', 'https://www.zhihu.com/question/309973520', '2022-01-18', '2022-01-18');
+INSERT INTO `results` VALUES ('www.zhihu.com', '蓝光电影', '蓝光电影究竟好在哪里?哪里下载? - 知乎', 'https://www.zhihu.com/question/309973520?ivk_sa=1024320u', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('www.zhihu.com', '超请下载', '哪些网站可以免费下载超清/蓝光电影? - 知乎', 'https://www.zhihu.com/question/29286142', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.zhumengwl.com', '超请下载', '2017.[动作/犯罪][光灵/Bright HD1080P迅雷超清下载]-筑梦...', 'https://www.zhumengwl.com/2017/1225/10477.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('www.zhuoku.com', '免费电影', '欧美影视|欧美电影壁纸,欧美电视剧壁纸 下载', 'http://www.zhuoku.com/zhuomianbizhi/movie-oumei/index-1.htm', '2022-01-17', '2022-01-17');
@@ -1145,15 +1173,15 @@ INSERT INTO `results` VALUES ('ygdy8.com', '电影下载', '阳光电影_免费�
 INSERT INTO `results` VALUES ('yingshiku.xunlei.com', '在线电影', '迅雷在线 - 影视库', 'https://yingshiku.xunlei.com/', '2022-01-18', '2022-01-18');
 INSERT INTO `results` VALUES ('yl.szhk.com', '在线影院', '好看的电影、最新电影、电影排行榜-深港在线电影推荐栏目', 'http://yl.szhk.com/movie/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('yl.szhk.com', '在线电影', '好看的电影、最新电影、电影排行榜-深港在线电影推荐栏目', 'http://yl.szhk.com/movie/', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('yn-flowers.com', '免费电影', '免费电影大全|高清电影在线观看|2020最新最热最好看的电影...', 'https://yn-flowers.com/', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('yn-flowers.com', '免费电影', '免费电影大全|高清电影在线观看|2020最新最热最好看的电影...', 'https://yn-flowers.com/', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('yule.izhufu.net', '最新电影', '最新电影_娱乐频道_主妇网', 'http://yule.izhufu.net/zuixindianying/', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('zhidao.baidu.com', '电影1080P', '哪里可以下载到全高清1080p的电影? - 百度知道', 'https://zhidao.baidu.com/question/311495746.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('zhidao.baidu.com', '电影720P', '高清电影720P,到哪可以看到的。。 - 百度知道', 'https://zhidao.baidu.com/question/202723465.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('zhidao.baidu.com', '电影分享', '谁知道那些好电影,分享分享 - 百度知道', 'https://zhidao.baidu.com/question/202848463.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('zhidao.baidu.com', '电影资源', '求复联系列电影资源? - 百度知道', 'https://zhidao.baidu.com/question/653772844855220525.html', '2022-01-17', '2022-01-17');
 INSERT INTO `results` VALUES ('zhidao.baidu.com', '蓝光电影', '什么是蓝光电影?具体点、、 - 百度知道', 'https://zhidao.baidu.com/question/759083647543178804.html', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('zhidao.baidu.com', '超请下载', '超清(1080p)MP4电影下载网站 - 百度知道', 'https://zhidao.baidu.com/question/540740610.html', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('zhidao.baidu.com', '超请下载', '超高清电影一般都在哪下载啊! - 百度知道', 'https://zhidao.baidu.com/question/449988702.html', '2022-01-17', '2022-01-18');
 INSERT INTO `results` VALUES ('zhuanlan.zhihu.com', '电影分享', '影片分享 - 知乎', 'https://zhuanlan.zhihu.com/p/96758043', '2022-01-17', '2022-01-17');
-INSERT INTO `results` VALUES ('zhuanlan.zhihu.com', '超请下载', '怎么下载全网超清无水印的视频素材(附下载工具) - 知乎', 'https://zhuanlan.zhihu.com/p/181198384?utm_source=qq', '2022-01-17', '2022-01-17');
+INSERT INTO `results` VALUES ('zhuanlan.zhihu.com', '超请下载', '怎么下载全网超清无水印的视频素材(附下载工具) - 知乎', 'https://zhuanlan.zhihu.com/p/181198384?ivk_sa=1024320u', '2022-01-17', '2022-01-18');
 
 SET FOREIGN_KEY_CHECKS = 1;
