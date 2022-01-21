@@ -22,7 +22,7 @@ class KeywordSpider(Spider):
     name_selector = None
     keyword_selector = None
 
-    def __init__(self, keyword='all', se='baidu', pages=5, *args, **kwargs):
+    def __init__(self, keyword='all', se='bing', pages=50, *args, **kwargs):
         super(KeywordSpider, self).__init__(*args, **kwargs)
         if keyword == 'all':  # 用户选择根据数据库中的词库进行搜索
             self.conn = pymysql.Connect(
@@ -34,7 +34,7 @@ class KeywordSpider(Spider):
                 charset='UTF8'
             )
             self.cursor = self.conn.cursor()
-            sql = 'SELECT keyword from querys'
+            sql = 'SELECT keyword FROM querys'
             # 执行
             self.cursor.execute(sql)
             # 提交事务
@@ -56,6 +56,7 @@ class KeywordSpider(Spider):
                     logging.debug(url)
                     flag = False
         random.shuffle(self.start_urls)  # 用以随机排列start_urls，使每次爬取更加随机化
+        logging.debug('已获取{}个关键词，即将开始进行搜索'.format(len(self.keyword_list)))
 
     def parse(self, response):
         # 提取页面中的元素
@@ -71,7 +72,7 @@ class KeywordSpider(Spider):
             if self.search_engine == 'baidu':
                 item['name'] = ''.join(names[i].xpath('./text() | ./em/text()').extract())  # baidu的标题经过高亮处理，需要进一步提取
                 try:
-                    resp = requests.get(urls[i], timeout=10)
+                    resp = requests.get(urls[i], timeout=5)
                 except Exception as e:
                     # print(e)
                     logging.warning('{}: {} 网站无法访问，已跳过'.format(item['name'], urls[i]))

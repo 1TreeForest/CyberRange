@@ -53,13 +53,13 @@ DEPTH_LIMIT = 1
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-
-DOWNLOAD_DELAY = 10  # 无代理池时设置高延时以防止ban掉IP
-RANDOM_DELAY = 20  # 无代理池时设置高延时以防止ban掉IP，random范围是<DOWNLOAD_DELAY+0 ~ DOWNLOAD_DELAY+RANDOM_DELAY>
+DOWNLOAD_DELAY = 1
+RANDOM_DELAY = 3  # 无代理池时设置高延时以防止ban掉IP，random范围是 < 0 ~ RANDOM_DELAY >
 DOWNLOADER_MIDDLEWARES = {
     'siteCrawler.middlewares.SiteCrawlerDownloaderMiddleware': 543,
-    'siteCrawler.middlewares.RandomDelayMiddleware': 450,
-    'scrapy_fake_useragent.middleware.RandomUserAgentMiddleware': 400,  # 开启random UA
+    # 'siteCrawler.middlewares.RandomDelayMiddleware': 450,  # 随机延时
+    'scrapy_fake_useragent.middleware.RandomUserAgentMiddleware': 500,  # 随机UA
+    'siteCrawler.middlewares.RandomProxyMiddleware': 450  # 随机代理
 }
 
 # Enable or disable extensions

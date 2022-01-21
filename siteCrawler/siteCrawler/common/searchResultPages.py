@@ -14,7 +14,6 @@ class SearchResultPages:
         self.search_engine_url = SearchEngines[self.search_engine]
         self.total_page = total_page
         self.keyword = keyword
-        print("total page:{0}".format(self.total_page))
 
     def __iter__(self):
         return self
