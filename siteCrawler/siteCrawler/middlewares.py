@@ -135,7 +135,7 @@ class RandomProxyMiddleware:
     def __init__(self):
         self.get_proxy_list()
         self.check_proxy_list()
-        logging.warning(
+        logging.info(
             '已成功获取代理池, 代理池余额为:\nhttp:{}\nhttps:{}'.format(len(self.http_proxy_list), len(self.https_proxy_list)))
 
     def get_proxy_list(self):
@@ -167,7 +167,7 @@ class RandomProxyMiddleware:
                     self.https_proxy_list.remove(proxy)
             except:
                 self.https_proxy_list.remove(proxy)
-            print('可用https代理余额:{}'.format(len(self.https_proxy_list)))
+            logging.info('可用https代理余额:{}'.format(len(self.https_proxy_list)))
 
     @classmethod
     def from_crawler(cls, crawler):
