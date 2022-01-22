@@ -56,7 +56,7 @@ class KeywordSpider(Spider):
                     logging.debug(url)
                     flag = False
         random.shuffle(self.start_urls)  # 用以随机排列start_urls，使每次爬取更加随机化
-        logging.debug('已获取{}个关键词，即将开始进行搜索'.format(len(self.keyword_list)))
+        logging.info('已获取{}个关键词，即将开始进行搜索'.format(len(self.keyword_list)))
 
     def parse(self, response):
         # 提取页面中的元素
@@ -85,6 +85,5 @@ class KeywordSpider(Spider):
                 item['name'] = names[i]
                 item['url'] = urls[i]
             item['domain'] = re.search(r'://(.+?)/', item['url']).group(1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
-            logging.debug(item)
 
             yield item

@@ -5,6 +5,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import logging
+import datetime
 
 import pymysql
 from siteCrawler.items import ResultItem
@@ -13,9 +14,12 @@ from siteCrawler.items import ResultItem
 class SiteCrawlerPipeline(object):
     conn = None
     cursor = None
+    count = None
 
     def __init__(self):
         self.db_connect()
+        self.count = 0
+
 
     def db_connect(self):
         self.conn = pymysql.Connect(  # 配置数据库
@@ -45,6 +49,7 @@ class SiteCrawlerPipeline(object):
                 self.cursor.execute(sql)
                 # 提交事务
                 self.conn.commit()
+                logging.info('获取到新对象: {}'.format(item['domain']))
             except Exception as e:
                 sql = 'UPDATE `results` SET name="%s", url="%s", aliveDate="%s" WHERE domain="%s" AND keyword="%s" ' \
                       % (item['name'], item['url'], item['aliveDate'], item['domain'], item['keyword'])
@@ -53,3 +58,5 @@ class SiteCrawlerPipeline(object):
                 # 提交事务
                 self.conn.commit()
                 logging.debug('{} 的信息已更新'.format(item['domain']))
+            self.count += 1
+            logging.info('已进行 {} 次数据采集'.format(self.count))

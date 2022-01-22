@@ -134,7 +134,7 @@ class RandomProxyMiddleware:
 
     def __init__(self):
         self.get_proxy_list()
-        self.check_proxy_list()
+        #self.check_proxy_list()
         logging.warning(
             '已成功获取代理池, 代理池余额为:\nhttp:{}\nhttps:{}'.format(len(self.http_proxy_list), len(self.https_proxy_list)))
 

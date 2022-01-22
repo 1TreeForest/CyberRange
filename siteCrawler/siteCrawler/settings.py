@@ -19,6 +19,8 @@ ITEM_PIPELINES = {'siteCrawler.pipelines.SiteCrawlerPipeline': 1}
 
 DEPTH_LIMIT = 1
 
+LOG_LEVEL = 'INFO'
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'seCrawler (+http://www.yourdomain.com)'
 
