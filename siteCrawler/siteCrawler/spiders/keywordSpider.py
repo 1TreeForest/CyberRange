@@ -26,7 +26,7 @@ class KeywordSpider(Spider):
         super(KeywordSpider, self).__init__(*args, **kwargs)
         if keyword == 'all':  # 用户选择根据数据库中的词库进行搜索
             self.conn = pymysql.Connect(
-                host='localhost',
+                host='1.15.220.155',
                 port=3306,
                 user='test',
                 password='991125',

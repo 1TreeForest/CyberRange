@@ -19,7 +19,7 @@ class SiteCrawlerPipeline(object):
 
     def db_connect(self):
         self.conn = pymysql.Connect(  # 配置数据库
-            host='localhost',
+            host='1.15.220.155',
             port=3306,
             user='test',
             password='991125',
