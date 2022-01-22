@@ -55,7 +55,8 @@ LOG_LEVEL = 'INFO'
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-DOWNLOAD_DELAY = 1
+
+# DOWNLOAD_DELAY = 0.2
 RANDOM_DELAY = 3  # 无代理池时设置高延时以防止ban掉IP，random范围是 < 0 ~ RANDOM_DELAY >
 DOWNLOADER_MIDDLEWARES = {
     'siteCrawler.middlewares.SiteCrawlerDownloaderMiddleware': 543,

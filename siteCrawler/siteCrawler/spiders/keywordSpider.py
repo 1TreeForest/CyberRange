@@ -84,8 +84,6 @@ class KeywordSpider(Spider):
             elif self.search_engine == 'google':  # 谷歌的结果无需进行额外处理
                 item['name'] = names[i]
                 item['url'] = urls[i]
-            try:
                 item['domain'] = re.search(r'://(.+?)/', item['url']).group(1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
-                yield item
-            except:
-                continue
+                
+            yield item
