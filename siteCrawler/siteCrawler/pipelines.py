@@ -57,9 +57,9 @@ class SiteCrawlerPipeline(object):
                 self.conn.commit()
                 logging.info('已进行 {} 次数据采集\t{} 的信息已更新'.format(self.count, item['domain']))
             self.count += 1
-            sql = 'select name from `results` where domain="%s" and keyword="%s"' % (item['domain'], item['keyword'])
+            # sql = 'select name from `results` where domain="%s" and keyword="%s"' % (item['domain'], item['keyword'])
             # 执行
-            self.cursor.execute(sql)
+            # self.cursor.execute(sql)
             # 提交事务
-            self.conn.commit()
+            # self.conn.commit()
             print(item)
