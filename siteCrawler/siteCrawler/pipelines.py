@@ -49,7 +49,7 @@ class SiteCrawlerPipeline(object):
                 self.cursor.execute(sql)
                 # 提交事务
                 self.conn.commit()
-                logging.info('获取到新对象: {}'.format(item['domain']))
+                logging.info('已进行 {} 次数据采集\t获取到新对象: {}'.format(self.count, item['domain']))
             except Exception as e:
                 sql = 'UPDATE `results` SET name="%s", url="%s", aliveDate="%s" WHERE domain="%s" AND keyword="%s" ' \
                       % (item['name'], item['url'], item['aliveDate'], item['domain'], item['keyword'])
@@ -57,6 +57,5 @@ class SiteCrawlerPipeline(object):
                 self.cursor.execute(sql)
                 # 提交事务
                 self.conn.commit()
-                logging.debug('{} 的信息已更新'.format(item['domain']))
+                logging.info('已进行 {} 次数据采集\t{} 的信息已更新'.format(self.count, item['domain']))
             self.count += 1
-            logging.info('已进行 {} 次数据采集'.format(self.count))
