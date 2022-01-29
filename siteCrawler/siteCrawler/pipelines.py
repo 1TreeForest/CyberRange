@@ -28,7 +28,6 @@ class SiteCrawlerPipeline(object):
             password='991125',
             db='spider',
             charset='UTF8',
-            autocommit=True
         )
         self.cursor = self.conn.cursor()
 
@@ -37,13 +36,19 @@ class SiteCrawlerPipeline(object):
         if isinstance(item, ResultItem):
             # 拼接insert SQL语句，把每项数据的5个属性填充到SQL中作为参数
             # 在插入时若数据库中已存在该主键对，则进行更新操作
-            sql = 'REPLACE INTO `results`(`domain`, `name`, `url`, `keyword`, `crawledDate`, `aliveDate`) VALUES("{}","{}","{}","{}","{}","{}");'.format(
-                item['domain'], item['name'], item['url'], item['keyword'], item['crawledDate'], item['aliveDate'])
-            # 执行
-            affected_rows = self.cursor.execute(sql)
-            print('{}\n{}'.format(sql, affected_rows))
-            # 提交事务
-            # self.conn.commit()
+            try:
+                sql = 'INSERT INTO `results`(`domain`, `name`, `url`, `keyword`, `crawledDate`, `aliveDate`)VALUES("{}","{}","{}","{}","{}","{}");'.format(
+                    item['domain'], item['name'], item['url'], item['keyword'], item['crawledDate'], item['aliveDate'])
+                # 执行
+                self.cursor.execute(sql)
+                # 提交事务
+                self.conn.commit()
+            except Exception as e:
+                sql = 'UPDATE `results` SET `name`="{}", `aliveDate`="{}" WHERE `domain`="{}"'.format(item['name'], item['crawledDate'], item['domain'])
+                # 执行
+                self.cursor.execute(sql)
+                # 提交事务
+                self.conn.commit()
             logging.info('已进行 {} 次数据采集'.format(self.count))
             self.count += 1
             print(item)

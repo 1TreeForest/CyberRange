@@ -33,14 +33,13 @@ class KeywordSpider(Spider):
                 password='991125',
                 db='spider',
                 charset='UTF8',
-                autocommit=True
             )
             self.cursor = self.conn.cursor()
             sql = 'SELECT keyword FROM `querys`;'
             # 执行
             self.cursor.execute(sql)
             # 提交事务
-            # self.conn.commit()
+            self.conn.commit()
             self.keyword_list = self.cursor.fetchall()[:]  # 定义爬取范围
         else:  # 用户制定了一个keyword进行搜索
             self.keyword_list = [(keyword,)]
