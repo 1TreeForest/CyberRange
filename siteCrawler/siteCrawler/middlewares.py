@@ -218,7 +218,10 @@ class RandomProxyMiddleware:
                     request.meta['proxy'] = 'https://' + random.choice(self.https_proxy_list)
 
         if 'bing' in request.url:
-            pass
+            if request.url.startswith('http://'):
+                request.meta['proxy'] = 'http://' + random.choice(self.http_proxy_list)
+            elif request.url.startswith('https://'):
+                request.meta['proxy'] = 'https://' + random.choice(self.https_proxy_list)
 
     def process_response(self, request, response, spider):
         # Called with the response returned from the downloader.

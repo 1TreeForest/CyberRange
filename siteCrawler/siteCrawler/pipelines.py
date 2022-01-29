@@ -22,6 +22,7 @@ class SiteCrawlerPipeline(object):
     def db_connect(self):
         self.conn = pymysql.Connect(  # 配置数据库
             host='1.15.220.155',
+            # host='localhost',
             port=3306,
             user='test',
             password='991125',
@@ -36,10 +37,8 @@ class SiteCrawlerPipeline(object):
         if isinstance(item, ResultItem):
             # 拼接insert SQL语句，把每项数据的5个属性填充到SQL中作为参数
             # 在插入时若数据库中已存在该主键对，则进行更新操作
-            sql = 'INSERT INTO `spider`.`results`(`domain`, `name`, `url`, `keyword`, `crawledDate`, `aliveDate`) VALUES("%s","%s","%s","%s","%s","%s") ' \
-                  'ON DUPLICATE KEY UPDATE `aliveDate`="%s";' % (
-                      item['domain'], item['name'], item['url'], item['keyword'], item['crawledDate'],
-                      item['aliveDate'], item['aliveDate'])
+            sql = 'REPLACE INTO `results`(`domain`, `name`, `url`, `keyword`, `crawledDate`, `aliveDate`) VALUES("{}","{}","{}","{}","{}","{}");'.format(
+                item['domain'], item['name'], item['url'], item['keyword'], item['crawledDate'], item['aliveDate'])
             # 执行
             affected_rows = self.cursor.execute(sql)
             print('{}\n{}'.format(sql, affected_rows))
