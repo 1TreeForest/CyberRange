@@ -27,14 +27,16 @@ class KeywordSpider(Spider):
         if keyword == 'all':  # 用户选择根据数据库中的词库进行搜索
             self.conn = pymysql.Connect(
                 host='1.15.220.155',
+                # host='localhost',
                 port=3306,
                 user='test',
                 password='991125',
                 db='spider',
-                charset='UTF8'
+                charset='UTF8',
+                autocommit=True
             )
             self.cursor = self.conn.cursor()
-            sql = 'SELECT keyword FROM querys'
+            sql = 'SELECT keyword FROM `querys`'
             # 执行
             self.cursor.execute(sql)
             # 提交事务
