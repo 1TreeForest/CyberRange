@@ -163,8 +163,6 @@ class RandomProxyMiddleware:
             }
             try:
                 resp = requests.get(url, proxies=proxies, timeout=5)
-                if 'wappass' in resp.text:
-                    self.https_proxy_list.remove(proxy)
             except:
                 self.https_proxy_list.remove(proxy)
             logging.info('可用https代理余额:{}'.format(len(self.https_proxy_list)))
@@ -218,7 +216,10 @@ class RandomProxyMiddleware:
                     request.meta['proxy'] = 'https://' + random.choice(self.https_proxy_list)
 
         if 'bing' in request.url:
-            pass
+            if request.url.startswith('http://'):
+                request.meta['proxy'] = 'http://' + random.choice(self.http_proxy_list)
+            elif request.url.startswith('https://'):
+                request.meta['proxy'] = 'https://' + random.choice(self.https_proxy_list)
 
     def process_response(self, request, response, spider):
         # Called with the response returned from the downloader.
