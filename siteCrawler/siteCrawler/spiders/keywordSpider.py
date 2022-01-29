@@ -33,9 +33,10 @@ class KeywordSpider(Spider):
                 password='991125',
                 db='spider',
                 charset='UTF8',
+                autocommit=True
             )
             self.cursor = self.conn.cursor()
-            sql = 'SELECT keyword FROM `querys`;'
+            sql = 'SELECT keyword FROM `querys`'
             # 执行
             self.cursor.execute(sql)
             # 提交事务
