@@ -146,16 +146,16 @@ class RandomProxyMiddleware:
         self.https_proxy_list = [i['proxy'] for i in json if i['https'] is True]
 
     def check_proxy_list(self):
-        pass
-        url = 'https://cn.bing.com/search?q=%E5%BD%B1%E8%A7%86%E8%B5%84%E6%BA%90&first=250'
+        url = 'https://www.bing.com/search?q=%E5%85%8D%E8%B4%B9%E7%94%B5%E5%BD%B1&first=20'
         # for proxy in self.http_proxy_list:  # 检查http代理可用性
         #     proxies = {
-        #         'http' :'http://' + proxy
+        #         'http': 'http://' + proxy
         #     }
         #     try:
         #         requests.get(url, proxies=proxies, timeout=5)
         #     except:
         #         self.http_proxy_list.remove(proxy)
+        #     logging.info('可用http代理余额:{}'.format(len(self.http_proxy_list)))
 
         for proxy in self.https_proxy_list:  # 检查https代理可用性
             proxies = {
@@ -165,7 +165,7 @@ class RandomProxyMiddleware:
                 resp = requests.get(url, proxies=proxies, timeout=5)
             except:
                 self.https_proxy_list.remove(proxy)
-            logging.info('可用https代理余额:{}'.format(len(self.https_proxy_list)))
+                logging.info('可用https代理余额:{}'.format(len(self.https_proxy_list)))
 
     @classmethod
     def from_crawler(cls, crawler):
@@ -220,6 +220,7 @@ class RandomProxyMiddleware:
                 request.meta['proxy'] = 'http://' + random.choice(self.http_proxy_list)
             elif request.url.startswith('https://'):
                 request.meta['proxy'] = 'https://' + random.choice(self.https_proxy_list)
+
 
     def process_response(self, request, response, spider):
         # Called with the response returned from the downloader.

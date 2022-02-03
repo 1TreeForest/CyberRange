@@ -2,8 +2,11 @@
 import logging
 import random
 import time
+from urllib.parse import quote
+
 import requests
 import pymysql
+from scrapy import Request
 from scrapy.spiders import Spider
 from siteCrawler.common.searchResultPages import SearchResultPages
 from siteCrawler.common.searchEngines import SearchEngineResultSelectors
@@ -21,6 +24,7 @@ class KeywordSpider(Spider):
     url_selector = None
     name_selector = None
     keyword_selector = None
+    urls_before = []
 
     def __init__(self, keyword='all', se='bing', pages=50, *args, **kwargs):
         super(KeywordSpider, self).__init__(*args, **kwargs)
@@ -50,22 +54,33 @@ class KeywordSpider(Spider):
         self.keyword_selector = SearchEngineResultSelectors[self.search_engine + '_keyword']
 
         for keyword in self.keyword_list:  # 对搜索词列表进行遍历
-            page_urls = SearchResultPages(keyword[0], se, int(pages))
+            keyword = quote(keyword[0])
+            page_urls = SearchResultPages(keyword, se, int(pages))
             for url in page_urls:
                 self.start_urls.append(url)
-        # random.shuffle(self.start_urls)  # 用以随机排列start_urls，使每次爬取更加随机化
+        random.shuffle(self.start_urls)  # 用以随机排列start_urls，使每次爬取更加随机化
         logging.info('已获取{}个关键词，即将开始进行搜索'.format(len(self.keyword_list)))
         print(self.start_urls)
 
+    def start_requests(self):
+        for url in self.start_urls:
+            yield Request(url, dont_filter=False)
+
+
     def parse(self, response):
         # 提取页面中的元素
-        keyword = Selector(response).xpath(self.keyword_selector).extract()
-        names = Selector(response).xpath(self.name_selector)
-        urls = Selector(response).xpath(self.url_selector).extract()
+        keyword = response.selector.xpath(self.keyword_selector).extract()
+        names = response.selector.xpath(self.name_selector)
+        urls = response.selector.xpath(self.url_selector).extract()
         now = time.strftime("%Y-%m-%d", time.localtime(time.time()))
-        print(response.url,'\n',urls)
+        if urls == self.urls_before or not urls:  # 对相同url去重
+            print(response.url, '\n', '重复')
+            yield Request(url=response.url)
+            return
+        print(response.url, '\n', urls)
+        self.urls_before = urls
+        item = ResultItem()
         for i in range(len(urls)):  # 对页面中所有的结果进行处理
-            item = ResultItem()
             item['keyword'] = keyword[0]
             item['crawledDate'] = now
             item['aliveDate'] = now
