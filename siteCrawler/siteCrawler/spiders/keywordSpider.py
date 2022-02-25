@@ -60,12 +60,11 @@ class KeywordSpider(Spider):
                 self.start_urls.append(url)
         random.shuffle(self.start_urls)  # 用以随机排列start_urls，使每次爬取更加随机化
         logging.info('已获取{}个关键词，即将开始进行搜索'.format(len(self.keyword_list)))
-        print(self.start_urls)
+        # print(self.start_urls)
 
     def start_requests(self):
         for url in self.start_urls:
-            yield Request(url, dont_filter=False)
-
+            yield Request(url, dont_filter=True)
 
     def parse(self, response):
         # 提取页面中的元素
@@ -74,10 +73,12 @@ class KeywordSpider(Spider):
         urls = response.selector.xpath(self.url_selector).extract()
         now = time.strftime("%Y-%m-%d", time.localtime(time.time()))
         if urls == self.urls_before or not urls:  # 对相同url去重
-            print(response.url, '\n', '重复')
+            print(response.url, '\t', '重复')
             yield Request(url=response.url)
             return
-        print(response.url, '\n', urls)
+        # with open('./urls.txt', 'a+') as f:
+        #     f.write(str(response.url) + '\t' + str(urls) + '\n')
+        # print(response.url, '\t', urls)
         self.urls_before = urls
         item = ResultItem()
         for i in range(len(urls)):  # 对页面中所有的结果进行处理
@@ -93,12 +94,11 @@ class KeywordSpider(Spider):
                     logging.warning('{}: {} 网站无法访问，已跳过'.format(item['name'], urls[i]))
                     continue
                 item['url'] = resp.url
-            elif self.search_engine == 'bing':  # bing的标题经过高亮处理，需要进一步提取
+            elif 'bing' in self.search_engine:  # bing的标题经过高亮处理，需要进一步提取
                 item['name'] = ''.join(names[i].xpath('./text() | ./strong/text()').extract())
                 item['url'] = urls[i]
             elif self.search_engine == 'google':  # 谷歌的结果无需进行额外处理
                 item['name'] = names[i]
                 item['url'] = urls[i]
-
             item['domain'] = re.search(r'://(.+?)/', item['url']).group(1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
             yield item
