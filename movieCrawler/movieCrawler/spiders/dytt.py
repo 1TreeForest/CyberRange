@@ -11,8 +11,6 @@ class DyttSpider(scrapy.Spider):
     start_urls = ['http://www.dytt8.net/html/gndy/dyzz/list_23_1.html']
 
     def parse(self, response):
-        # 定义一个存放item的列表
-        items = []
         # 标题列表
         name = response.xpath('//table//b/a/text()').extract()
         # 详情列表
@@ -26,14 +24,15 @@ class DyttSpider(scrapy.Spider):
             item['name'] = re.findall('《(.*?)》', name[i])[0]
             # 拼接URL，获取所有电影详情的URL，拼成完整的URL来访问地址
             item['link'] = 'http://www.dytt8.net' + link[i]
-            item['site'] = 'http://www.dytt8.net'
+            item['site'] = 'http://www.dytt8.net/'
             # print(item)
             yield item
-
-            items.append(item)
 
             # 翻页，从第二页开始
             next_urls = response.xpath('//select[@name="sldd"]/option/@value').extract()[2:]
             for next_url in next_urls:
                 yield response.follow(next_url, callback=self.parse)
+
+
+
 
