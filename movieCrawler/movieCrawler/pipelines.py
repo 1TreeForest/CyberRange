@@ -44,7 +44,7 @@ class MoviecrawlerPipeline(object):
             logging.warning("数据库已重新连接")
 
         # 拼接insert SQL语句
-        sql = 'INSERT INTO `movies`(name, link, site)VALUES("%s","%s","%s") ON DUPLICATE KEY UPDATE link = \'"%s"\'' % (
+        sql = 'INSERT INTO `movies`(name, link, site)VALUES("%s","%s","%s") ON DUPLICATE KEY UPDATE link = "%s"' % (
             item['name'], item['link'], item['site'], item['link'])
         # 执行
         self.cursor.execute(sql)
