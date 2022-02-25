@@ -1,5 +1,5 @@
 import scrapy
-from movieCrawler.items import MoviecrawlerItem
+from movieCrawler.items import SpecialItem
 import re
 
 class DyttSpider(scrapy.Spider):
@@ -19,7 +19,7 @@ class DyttSpider(scrapy.Spider):
         # 遍历列表，将结果存入items
         for i in range(0, len(name)):
             # 实例化一个item类，然后将结果全部存入items
-            item = MoviecrawlerItem()
+            item = SpecialItem()
             #提取出的电影名中包含其他信息，如”2012年喜剧《男人如衣服》720p.BD国粤双语中字“，需进一步使用正则匹配出书名号中的电影名
             item['name'] = re.findall('《(.*?)》', name[i])[0]
             # 拼接URL，获取所有电影详情的URL，拼成完整的URL来访问地址

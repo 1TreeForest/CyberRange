@@ -12,6 +12,8 @@ BOT_NAME = 'movieCrawler'
 SPIDER_MODULES = ['movieCrawler.spiders']
 NEWSPIDER_MODULE = 'movieCrawler.spiders'
 
+LOG_LEVEL = 'INFO'
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'movieCrawler (+http://www.yourdomain.com)'
