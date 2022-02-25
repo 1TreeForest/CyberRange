@@ -24,6 +24,8 @@ class KeywordSpider(Spider):
     url_selector = None
     name_selector = None
     keyword_selector = None
+    conn = None
+    cursor = None
     urls_before = []
 
     def __init__(self, keyword='all', se='bing', pages=50, *args, **kwargs):
