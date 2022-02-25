@@ -43,7 +43,7 @@ class MoviecrawlerPipeline(object):
             self.db_connect()
             logging.warning("数据库已重新连接")
 
-            # 拼接insert SQL语句，把每项数据的5个属性填充到SQL中作为参数
+            # 拼接insert SQL语句
             sql = 'INSERT INTO `movies`(name, link, site)VALUES("%s","%s","%s")' % (
                 item['name'], item['link'], item['site'])
             # 执行
