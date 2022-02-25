@@ -3,6 +3,8 @@ import logging
 import pymysql
 import scrapy
 
+from movieCrawler.items import MoviecrawlerItem
+
 
 class UniversalSpider(scrapy.Spider):
     conn = None
@@ -37,4 +39,20 @@ class UniversalSpider(scrapy.Spider):
 
 
     def parse(self, response):
-        pass
+        tag_list = response.selector.xpath('//*[@title]')  # 提取所有含title属性的tag，用以解析其中内容
+        site_url = response.url
+        for tag in tag_list:
+            try:
+                title = tag.xpath('./@title').extract()[0]
+                href = tag.xpath('./@href').extract()[0]
+                item = MoviecrawlerItem()
+                if href.startswith('/'):  # 处理本站内数据，即站内数据要加上前缀url
+                    href = site_url[:-1] + href
+                item['link'] = href
+                item['name'] = title
+                item['site'] = site_url
+                yield item
+            except Exception as e:
+                print(e)
+
+

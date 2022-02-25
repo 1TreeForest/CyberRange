@@ -43,16 +43,16 @@ class MoviecrawlerPipeline(object):
             self.db_connect()
             logging.warning("数据库已重新连接")
 
-            # 拼接insert SQL语句
-            sql = 'INSERT INTO `movies`(name, link, site)VALUES("%s","%s","%s")' % (
-                item['name'], item['link'], item['site'])
-            # 执行
-            self.cursor.execute(sql)
-            # 提交事务
-            self.conn.commit()
-            logging.info('已进行 {} 次数据采集\t\t获取到新对象: {}，{}'.format(self.count, item['name'], item['link']))
-            self.count += 1
-            print(item)
+        # 拼接insert SQL语句
+        sql = 'INSERT INTO `movies`(name, link, site)VALUES("%s","%s","%s") ON DUPLICATE KEY UPDATE link = \'"%s"\'' % (
+            item['name'], item['link'], item['site'], item['link'])
+        # 执行
+        self.cursor.execute(sql)
+        # 提交事务
+        self.conn.commit()
+        logging.info('已进行 {} 次数据采集\t\t获取到新对象: {}，{}'.format(self.count, item['name'], item['link']))
+        self.count += 1
+        print(item)
 
         # content = json.dumps(dict(item), ensure_ascii=False) + '\n'
         # self.filename.write(content)
