@@ -1,0 +1,852 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>食品与生物工程学院</title><meta name="pageType" content="1">
+<meta name="pageTitle" content="食品与生物工程学院">
+<META Name="keywords" Content="食品与生物工程学院" />
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link href="css/lrtk.css" rel="stylesheet" type="text/css" />
+
+<!--Announced by Visual SiteBuilder 9-->
+<link rel="stylesheet" type="text/css" href="_sitegray/_sitegray_d.css" />
+<script language="javascript" src="_sitegray/_sitegray.js"></script>
+<!-- CustomerNO:77656262657232307764465753565742000100044655 -->
+<link rel="stylesheet" type="text/css" href="index.vsb.css" />
+<script type="text/javascript" src="/system/resource/js/counter.js"></script>
+<script type="text/javascript">_jsq_(1001,'/index.jsp',-1,1361745521)</script>
+</head>
+<body>
+<div><script language="javascript" src="/system/resource/js/dynclicks.js"></script>   
+</SCRIPT></div>
+<div class="top_box">
+  <div class="top_txt"><span class="pl">欢迎访问江苏大学食品与生物工程学院官方网站！</span><span class="pr">
+<a target="_blank" href="new.htm">中文版</a> | <a target="_blank" href="en2020.htm">English</a> | <a target="_blank" href="https://www.ujs.edu.cn/">江大主页</a></span></div>
+  <div class="top">
+    <div class="logo"><img src="images/logo.jpg" width="776" height="71" alt="江苏大学食品与生物工程学院" /></div>
+    <div class="search">
+
+
+<script language="javascript" src="/system/resource/js/base64.js"></script><script language="javascript" src="/system/resource/js/jquery/jquery-latest.min.js"></script><script language="javascript" src="/system/resource/vue/vue.js"></script><script language="javascript" src="/system/resource/vue/bluebird.min.js"></script><script language="javascript" src="/system/resource/vue/axios.js"></script><script language="javascript" src="/system/resource/vue/polyfill.js"></script><script language="javascript" src="/system/resource/vue/token.js"></script><LINK href="/system/resource/vue/static/element/index.css" type="text/css" rel="stylesheet"><script language="javascript" src="/system/resource/vue/static/element/index.js"></script><script language="javascript" src="/system/resource/vue/static/public.js"></script><style>
+    #appu2 .qwss{
+        height: 31px;
+        font-size: 12px;
+      
+        width: 60%;
+        margin-top: -15px;
+        outline: none;
+        padding-left: 10px;
+        border-radius: 2px;
+        border: 1px solid #e4e7ed;}
+    #appu2 .tj{
+        padding-left: 6px;
+        letter-spacing: 5px;
+        color: white;
+        min-width: 53px;
+        max-width: 150px;
+        height: 32px;
+        border: 0;
+        border-radius: 2px;
+        background-color: #1890FF;
+        position: relative;
+        top: 1px;
+        width: 20%;
+        margin-top: -15px;}
+</style>
+<div id="divu2"></div>
+<script type="text/html" id="htmlu2">
+    <div id="appu2">
+        <div v-if="!isError">
+            <input type="text" class="qwss" placeholder="全文搜索" autocomplete=off v-model=query.keyWord @keyup.enter="onSubmit">
+            <input class="tj" name="submit_button" type="button" value="提交" v-on:click="onSubmit()"/>
+        </div>
+        <div v-if="isError" style="color: #b30216; font-size:18px;text-align: center;padding:20px;">
+            应用维护中！
+        </div>
+    </div>
+</script>
+<script>
+    $("#divu2").html($("#htmlu2").text());
+</script>
+<script>
+    var appOwner = "1361745521";
+    var token = gettoken(10);
+    var urlPrefix = "/aop_component/";
+
+    jQuery.support.cors = true;
+    $.ajaxSetup({
+        beforeSend: function (request, settings) {
+            request.setRequestHeader("Authorization", token);
+            request.setRequestHeader("owner", appOwner);
+        }
+    });
+
+    new Vue({
+        el: "#appu2",
+        data: function () {
+            return {
+                query: {
+                    keyWord: "",//搜索关键词
+                    owner: appOwner,
+                    token: token,
+                    urlPrefix: urlPrefix,
+                    lang:"i18n_zh_CN"
+                },
+                isError: false
+            }
+        },
+        mounted: function () {
+            var _this = this;
+            // _this.init();
+        },
+        methods: {
+            init: function(){
+                $.ajax({
+                    url: "/aop_component//webber/search/test",
+                    type: "get",
+                    success: function (response) {
+                        if (response.code == "0000") {
+                        } else if (response.code == "220") {
+                            _this.isError = true;
+                            console.log(response);
+                        } else if (!response.code) {
+                            _this.isError = true;
+                            console.log(response);
+                        }
+                    },
+                    error: function (response) {
+                        _this.isError = true;
+                    }
+                });
+            },
+            onSubmit: function (e) {
+                var url = "/views/search/modules/resultpc/soso.html";
+                if ("10" == "1" || "10" == "2") {
+                    url = "http://202.195.160.223:8083/" + url;
+                }
+                var _this = this;
+                var query = _this.query;
+                if (url.indexOf("?") > -1) {
+                    url = url.split("?")[0];
+                }
+                if (query.keyWord) {
+                    var query = new Base64().encode(JSON.stringify(query));
+                    window.open(url + "?query=" + query);
+                } else {
+                    alert("请填写搜索内容")
+                }
+            },
+        }
+    })
+</script></div>
+  </div>
+  <div class="menu">
+    <ul><table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+            <div class="nav_menustyle_1_1">
+                <ul>
+                    <li><a href="index.htm">首页<!--[if gte IE 7]><!--></a><!--<![endif]-->  
+                    <!--[if lte IE 6]></a><![endif]-->
+                    </li>
+                    <li><span class="lijg"></span>
+                    <li><a href="xygk/xyjj.htm">学院概况<!--[if gte IE 7]><!--></a><!--<![endif]-->  
+                    <!--[if lte IE 6]><table><tr><td><![endif]-->
+                    <ul id="ul_1130">
+                        <li><a href="xygk/xyjj.htm">学院简介<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="xygk/xyld.htm">学院领导<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="xygk/xssz.htm">系室设置<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                    </ul>
+                    <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                    </li>
+                    <li><span class="lijg"></span>
+                    <li><a href="szll/szgk.htm">师资力量<!--[if gte IE 7]><!--></a><!--<![endif]-->  
+                    <!--[if lte IE 6]><table><tr><td><![endif]-->
+                    <ul id="ul_1131">
+                        <li><a href="szll/szgk.htm">师资概况<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="szll/bssds.htm">博士生导师<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="szll/sssds.htm">硕士生导师<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="szll/szzp.htm">师资招聘<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                    </ul>
+                    <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                    </li>
+                    <li><span class="lijg"></span>
+                    <li><a href="dqgz/zzjg.htm">党群工作<!--[if gte IE 7]><!--></a><!--<![endif]-->  
+                    <!--[if lte IE 6]><table><tr><td><![endif]-->
+                    <ul id="ul_1132">
+                        <li><a href="dqgz/zzjg.htm">组织机构<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="dqgz/djdt.htm">党建动态<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="dqgz/tzgz.htm">统战工作<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="dqgz/fghgz.htm">分工会工作<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="dqgz/ggwgz.htm">关工委工作<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="dqgz/dsxxjy.htm">党史学习教育<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                    </ul>
+                    <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                    </li>
+                    <li><span class="lijg"></span>
+                    <li><a href="xkky/xkjs.htm">学科科研<!--[if gte IE 7]><!--></a><!--<![endif]-->  
+                    <!--[if lte IE 6]><table><tr><td><![endif]-->
+                    <ul id="ul_1133">
+                        <li><a href="xkky/xkjs.htm">学科建设<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="xkky/kypt.htm">科研平台<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="xkky/kytd_fx_.htm">科研团队（方向）<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="xkky/kycg.htm">科研成果<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="xkky/kyxx.htm">科研信息<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="xkky/shfw.htm">社会服务<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                    </ul>
+                    <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                    </li>
+                    <li><span class="lijg"></span>
+                    <li><a href="rcpy/bkspy.htm">人才培养<!--[if gte IE 7]><!--></a><!--<![endif]-->  
+                    <!--[if lte IE 6]><table><tr><td><![endif]-->
+                    <ul id="ul_1134">
+                        <li><a href="rcpy/bkspy.htm">本科生培养<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="rcpy/yjspy.htm">研究生培养<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="rcpy/lxspy.htm">留学生培养<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="rcpy/jxcg.htm">教学成果<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="rcpy/jpkc.htm">精品课程<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                    </ul>
+                    <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                    </li>
+                    <li><span class="lijg"></span>
+                    <li><a href="gjjl/hzbx.htm">国际交流<!--[if gte IE 7]><!--></a><!--<![endif]-->  
+                    <!--[if lte IE 6]><table><tr><td><![endif]-->
+                    <ul id="ul_1135">
+                        <li><a href="gjjl/hzbx.htm">合作办学<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="gjjl/hzxm.htm">合作项目<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="gjjl/hzpt.htm">合作平台<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                    </ul>
+                    <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                    </li>
+                    <li><span class="lijg"></span>
+                    <li><a href="xsgz/gztd.htm">学生工作<!--[if gte IE 7]><!--></a><!--<![endif]-->  
+                    <!--[if lte IE 6]><table><tr><td><![endif]-->
+                    <ul id="ul_1136">
+                        <li><a href="xsgz/gztd.htm">工作团队<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="xsgz/kjcx.htm">科技创新<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="xsgz/jycy.htm">就业创业<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="xsgz/txfc.htm">团学风采<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                    </ul>
+                    <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                    </li>
+                    <li><span class="lijg"></span>
+                    <li><a href="zdjs/xk.htm">制度建设<!--[if gte IE 7]><!--></a><!--<![endif]-->  
+                    <!--[if lte IE 6]><table><tr><td><![endif]-->
+                    <ul id="ul_1137">
+                        <li><a href="zdjs/xk.htm">学科<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="zdjs/ky.htm">科研<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="zdjs/jx.htm">教学<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="zdjs/rs.htm">人事<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="zdjs/dj.htm">党建<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="zdjs/xs.htm">学生<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                        <li><a href="zdjs/aq.htm">安全<!--[if gte IE 7]><!--></a><!--<![endif]--> 
+                        <!--[if lte IE 6]></a><![endif]-->
+                        </li>
+                    </ul>
+                    <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+                    </li>
+                    
+                </ul>
+            </div>
+        </td>
+    </tr>
+</table></ul>
+  </div>
+</div>
+<div id="banner">
+  <div id="ban">
+    <div style="background:url(images/b20211022.jpg) no-repeat center top"></div>
+    <div style="background:url(images/b20210927.jpg) no-repeat center top"></div>
+    <div style="background:url(images/b20210331.jpg) no-repeat center top"></div>
+    <div style="background:url(images/b20210413.jpg) no-repeat center top"></div>
+    <div style="background:url(new/images/b2.jpg) no-repeat center top"></div>
+    <div style="background:url(new/images/b3.jpg) no-repeat center top"></div>
+    <div style="background:url(new/images/b4.jpg) no-repeat center top"></div>
+  </div>
+  <div style="position: relative; margin: auto; width: 100%">
+    <div id="bando"><img src="new/images/bt1.png" tab="0">&nbsp;&nbsp;<img src="new/images/bt1.png" tab="1">&nbsp;&nbsp;<img src="new/images/bt1.png" tab="2">&nbsp;&nbsp;<img src="new/images/bt1.png" tab="3">&nbsp;&nbsp;<img src="new/images/bt1.png" tab="4">&nbsp;&nbsp;<img src="new/images/bt1.png" tab="5">&nbsp;&nbsp;<img src="new/images/bt1.png" tab="6">&nbsp;</div>
+  </div>
+ 
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="content_ny1">
+  <div class="zxdt">
+    <div class="zxdt_top"><span class="zxdt_top_title">学院新闻</span><span class="zxdt_top_more"><a href="xydt/xyxw.htm" target="_blank">更多+</a></span></div>
+    <div class="zxdt_pic"> 
+    <div class="focus">
+        <div class="flexslider">
+          <ul class="slides">
+            <script language="javascript" src="/system/resource/js/centerCutImg.js"></script><script language="javascript" src="/system/resource/js/ajax.js"></script>
+<li><a href="info/1176/11376.htm" title="食生学院召开党史学习教育总结会议" target="_blank"> <img src="/__local/B/CC/E4/F5FA94352785364730AEC961566_79994F69_5BD09.jpg" alt="食生学院召开党史学习教育总结会议" border="0" />
+<p class="flex-caption">食生学院召开党史学习教育总结会议</p>
+</a></li>
+
+
+<li><a href="info/1176/11356.htm" title="食生学院召开党史学习教育专题民主生活会" target="_blank"> <img src="/__local/8/9F/F4/3922D772A0D68C068C6BF61B565_FC7106A4_59BB0.png" alt="食生学院召开党史学习教育专题民主生活会" border="0" />
+<p class="flex-caption">食生学院召开党史学习教育专题民主生活会</p>
+</a></li>
+
+
+<li><a href="info/1176/11266.htm" title="食品与生物工程学院成功举办四届三次教..." target="_blank"> <img src="/__local/E/8B/43/497F8A61A0DAD12106D02D32CF7_DC51D813_176F2.png" alt="食品与生物工程学院成功举办四届三次教..." border="0" />
+<p class="flex-caption">食品与生物工程学院成功举办四届三次教...</p>
+</a></li>
+
+
+<li><a href="info/1176/11256.htm" title="食生学院举办2021年度领导班子述职会议" target="_blank"> <img src="/__local/3/9D/7C/6F8FC05D9076B3BC10C131E1544_C93E990C_1AA73.jpg" alt="食生学院举办2021年度领导班子述职会议" border="0" />
+<p class="flex-caption">食生学院举办2021年度领导班子述职会议</p>
+</a></li>
+
+
+<li><a href="info/1176/11186.htm" title="食生学院党委召开2021年度基层党支部书..." target="_blank"> <img src="/__local/0/C1/36/DDBEF2095148EE0799DCCBA13C9_0CF181D0_85C04.png" alt="食生学院党委召开2021年度基层党支部书..." border="0" />
+<p class="flex-caption">食生学院党委召开2021年度基层党支部书...</p>
+</a></li>
+
+
+<li><a href="info/1176/10968.htm" title="江苏大学在2021年江苏省研究生未来食品..." target="_blank"> <img src="/__local/7/7D/CA/171DF565B90A008EE42CE2EC5FF_45EBF628_1880F.png" alt="江苏大学在2021年江苏省研究生未来食品..." border="0" />
+<p class="flex-caption">江苏大学在2021年江苏省研究生未来食品...</p>
+</a></li>
+
+<script>_showDynClickBatch(['dynclicks_u4_11376','dynclicks_u4_11356','dynclicks_u4_11266','dynclicks_u4_11256','dynclicks_u4_11186','dynclicks_u4_10968'],[11376,11356,11266,11256,11186,10968],"wbnews", 1361745521)</script>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="zxdt_toutiao">
+<a href="info/1176/11376.htm" target="_blank">食生学院召开党史学习教育总结会议</a>
+
+<script>_showDynClickBatch(['dynclicks_u5_11376'],[11376],"wbnews", 1361745521)</script>
+</div>
+    <div class="zxdt_content">
+      <ul><li>
+          <p class="pl"><a target="_blank" href="info/1176/11356.htm">食生学院召开党史学习教育专题民主生活会</a></p>
+          <p class="pr2">[01-12]</p>
+        </li>
+<li>
+          <p class="pl"><a target="_blank" href="info/1176/11266.htm">食品与生物工程学院成功举办四届三次教职工和工会...</a></p>
+          <p class="pr2">[01-06]</p>
+        </li>
+<li>
+          <p class="pl"><a target="_blank" href="info/1176/11256.htm">食生学院举办2021年度领导班子述职会议</a></p>
+          <p class="pr2">[01-06]</p>
+        </li>
+<li>
+          <p class="pl"><a target="_blank" href="info/1176/11506.htm">食生学院领导深入宿舍看望返校学生</a></p>
+          <p class="pr2">[02-22]</p>
+        </li>
+<li>
+          <p class="pl"><a target="_blank" href="info/1176/11456.htm">食生学院召开新学期学生工作会议</a></p>
+          <p class="pr2">[02-13]</p>
+        </li>
+<li>
+          <p class="pl"><a target="_blank" href="info/1176/11436.htm">食生学院召开2021年度关工委工作总结研讨会</a></p>
+          <p class="pr2">[01-17]</p>
+        </li>
+<script>_showDynClickBatch(['dynclicks_u6_11376','dynclicks_u6_11356','dynclicks_u6_11266','dynclicks_u6_11256','dynclicks_u6_11506','dynclicks_u6_11456','dynclicks_u6_11436'],[11376,11356,11266,11256,11506,11456,11436],"wbnews", 1361745521)</script>
+</ul>
+    </div>
+  </div>
+  <div class="kstd">
+    <div class="kstd_top">
+      <div class="kstd_top_title">快速通道</div>
+    </div>
+    <div class="kstd_s1"><a href="xfyx/xfyx.htm" target="_blank"><img src="images/xfyx.jpg" width="220" height="69" alt="信访邮箱" border="0" /></a></div>
+    <div class="kstd_s2"><a href="http://foodsfzx.ujs.edu.cn/" target="_blank"><img src="images/syzxglxt.jpg" width="220" height="69" alt="实验中心管理系统" border="0" /></a></div>
+    <div class="kstd_s2"><a href="https://ncp.ujs.edu.cn/" target="_blank"><img src="images/ncpjggcyjy.jpg" width="220" height="69" alt="农产品加工工程研究院" border="0" /></a></div>
+    <div class="kstd_s2"><a href="https://fpp.ujs.edu.cn/" target="_blank"><img src="images/spwljgyjy.jpg" width="220" height="69" alt="食品物理加工研究院" border="0" /></a></div>
+  </div>
+</div>
+<div class="content_ny2_box">
+  <div class="content_ny2">
+    <div class="tzgg">
+      <div class="tzgg_top">
+        <div class="tzgg_top_title"><a href="xydt/tzgg.htm" target="_blank">通知公告</a></div>
+      </div>
+      <div class="tzgg_list">
+        <ul><li>
+            <div class="tzgg_list_time">
+              <div class="tzgg_list_time_s1"><script type="text/javascript">
+var str="2021-12-21"
+document.write(str.substr(8,10))
+</script></div>
+              <div class="tzgg_list_time_s2"><script type="text/javascript">
+var str="2021-12-21"
+document.write(str.substr(0,7))
+</script></div>
+            </div>
+            <div class="tzgg_list_title"><a target="_blank" href="info/1177/11136.htm">食品与生物工程学院2020级硕士研究生开题信息汇总表——食品无损检测与智能装备方向</a></div>
+          </li>
+          
+<li>
+            <div class="tzgg_list_time">
+              <div class="tzgg_list_time_s1"><script type="text/javascript">
+var str="2021-12-21"
+document.write(str.substr(8,10))
+</script></div>
+              <div class="tzgg_list_time_s2"><script type="text/javascript">
+var str="2021-12-21"
+document.write(str.substr(0,7))
+</script></div>
+            </div>
+            <div class="tzgg_list_title"><a target="_blank" href="info/1177/11126.htm">2021年食品与生物工程学院博士综合考核名单公示</a></div>
+          </li>
+          
+<li>
+            <div class="tzgg_list_time">
+              <div class="tzgg_list_time_s1"><script type="text/javascript">
+var str="2021-12-16"
+document.write(str.substr(8,10))
+</script></div>
+              <div class="tzgg_list_time_s2"><script type="text/javascript">
+var str="2021-12-16"
+document.write(str.substr(0,7))
+</script></div>
+            </div>
+            <div class="tzgg_list_title"><a target="_blank" href="info/1177/11021.htm">关于调整食品与生物工程学院关工委组成人员的通知</a></div>
+          </li>
+          
+<li>
+            <div class="tzgg_list_time">
+              <div class="tzgg_list_time_s1"><script type="text/javascript">
+var str="2021-12-15"
+document.write(str.substr(8,10))
+</script></div>
+              <div class="tzgg_list_time_s2"><script type="text/javascript">
+var str="2021-12-15"
+document.write(str.substr(0,7))
+</script></div>
+            </div>
+            <div class="tzgg_list_title"><a target="_blank" href="info/1177/11010.htm">食品与生物工程学院2020级硕士研究生开题信息汇总表-食品生物工程与智能装备方向</a></div>
+          </li>
+          
+<li>
+            <div class="tzgg_list_time">
+              <div class="tzgg_list_time_s1"><script type="text/javascript">
+var str="2021-12-13"
+document.write(str.substr(8,10))
+</script></div>
+              <div class="tzgg_list_time_s2"><script type="text/javascript">
+var str="2021-12-13"
+document.write(str.substr(0,7))
+</script></div>
+            </div>
+            <div class="tzgg_list_title"><a target="_blank" href="info/1177/10992.htm">食品与生物工程学院2021年硕士研究生开题信息汇总表——食品物理加工方向</a></div>
+          </li>
+          
+<li>
+            <div class="tzgg_list_time">
+              <div class="tzgg_list_time_s1"><script type="text/javascript">
+var str="2021-12-10"
+document.write(str.substr(8,10))
+</script></div>
+              <div class="tzgg_list_time_s2"><script type="text/javascript">
+var str="2021-12-10"
+document.write(str.substr(0,7))
+</script></div>
+            </div>
+            <div class="tzgg_list_title"><a target="_blank" href="info/1177/10987.htm">食品与生物工程学院2020年硕士研究生开题信息汇总表——食品营养与健康方向</a></div>
+          </li>
+          
+<script>_showDynClickBatch(['dynclicks_u7_11136','dynclicks_u7_11126','dynclicks_u7_11021','dynclicks_u7_11010','dynclicks_u7_10992','dynclicks_u7_10987'],[11136,11126,11021,11010,10992,10987],"wbnews", 1361745521)</script>
+</ul>
+      </div>
+    </div>
+    <div class="xszl">
+      <div class="xszl_top">
+        <div class="xszl_top_title"><a href="xydt/xszl.htm" target="_blank">学术专栏</a></div>
+      </div>
+      <div class="xszl_list">
+        <ul><li>
+            <div class="xszl_list_time">
+              <div class="xszl_list_time_s1"><script type="text/javascript">
+var str="2021-12-24"
+document.write(str.substr(8,10))
+</script></div>
+              <div class="xszl_list_time_s2"><script type="text/javascript">
+var str="2021-12-24"
+document.write(str.substr(0,7))
+</script></div>
+            </div>
+            <div class="xszl_list_title"><a target="_blank" href="info/1178/11196.htm">齐向辉教授微生物生物合成与智能制造团队在Trends in Food Sc...</a></div>
+            <div class="xszl_list_txt"></div>
+            <div class="xszl_list_txt"></div>
+          </li>
+          
+<li>
+            <div class="xszl_list_time">
+              <div class="xszl_list_time_s1"><script type="text/javascript">
+var str="2021-10-05"
+document.write(str.substr(8,10))
+</script></div>
+              <div class="xszl_list_time_s2"><script type="text/javascript">
+var str="2021-10-05"
+document.write(str.substr(0,7))
+</script></div>
+            </div>
+            <div class="xszl_list_title"><a target="_blank" href="info/1178/10681.htm">我校张红印教授团队在国际食品领域顶级期刊发表最新研究成果</a></div>
+            <div class="xszl_list_txt"></div>
+            <div class="xszl_list_txt"></div>
+          </li>
+          
+<li>
+            <div class="xszl_list_time">
+              <div class="xszl_list_time_s1"><script type="text/javascript">
+var str="2021-09-27"
+document.write(str.substr(8,10))
+</script></div>
+              <div class="xszl_list_time_s2"><script type="text/javascript">
+var str="2021-09-27"
+document.write(str.substr(0,7))
+</script></div>
+            </div>
+            <div class="xszl_list_title"><a target="_blank" href="info/1178/10666.htm">我院高瑞昌团队在国际食品领域顶级期刊发表最新研究进展</a></div>
+            <div class="xszl_list_txt"></div>
+            <div class="xszl_list_txt"></div>
+          </li>
+          
+<li>
+            <div class="xszl_list_time">
+              <div class="xszl_list_time_s1"><script type="text/javascript">
+var str="2021-09-13"
+document.write(str.substr(8,10))
+</script></div>
+              <div class="xszl_list_time_s2"><script type="text/javascript">
+var str="2021-09-13"
+document.write(str.substr(0,7))
+</script></div>
+            </div>
+            <div class="xszl_list_title"><a target="_blank" href="info/1178/10632.htm">林琳教授团队在Top期刊Advanced Science上发表最新研究成果</a></div>
+            <div class="xszl_list_txt"></div>
+            <div class="xszl_list_txt"></div>
+          </li>
+          
+<li>
+            <div class="xszl_list_time">
+              <div class="xszl_list_time_s1"><script type="text/javascript">
+var str="2021-06-21"
+document.write(str.substr(8,10))
+</script></div>
+              <div class="xszl_list_time_s2"><script type="text/javascript">
+var str="2021-06-21"
+document.write(str.substr(0,7))
+</script></div>
+            </div>
+            <div class="xszl_list_title"><a target="_blank" href="info/1178/10460.htm">会议通知：“全球食品品质、安全与保障：技术与供应链体系创...</a></div>
+            <div class="xszl_list_txt"></div>
+            <div class="xszl_list_txt"></div>
+          </li>
+          
+<li>
+            <div class="xszl_list_time">
+              <div class="xszl_list_time_s1"><script type="text/javascript">
+var str="2021-06-01"
+document.write(str.substr(8,10))
+</script></div>
+              <div class="xszl_list_time_s2"><script type="text/javascript">
+var str="2021-06-01"
+document.write(str.substr(0,7))
+</script></div>
+            </div>
+            <div class="xszl_list_title"><a target="_blank" href="info/1178/10264.htm">高瑞昌教授团队在国际食品领域顶级期刊发表综述文章</a></div>
+            <div class="xszl_list_txt"></div>
+            <div class="xszl_list_txt"></div>
+          </li>
+          
+<script>_showDynClickBatch(['dynclicks_u8_11196','dynclicks_u8_10681','dynclicks_u8_10666','dynclicks_u8_10632','dynclicks_u8_10460','dynclicks_u8_10264'],[11196,10681,10666,10632,10460,10264],"wbnews", 1361745521)</script>
+</ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content_ny3">
+  <div class="djyd">
+    <div class="djyd_top"> <span class="djyd_top_title">党建园地</span> <span class="djyd_top_more"><a href="dqgz/djdt.htm" target="_blank"><img src="images/more.jpg" width="41" height="11" alt="更多" border="0" /></a></span></div>
+    <div class="djyd_content">
+      <ul><li>
+          <p class="pl"><a target="_blank" href="info/1147/11386.htm">食生学院召开党史学习教育总结会议</a></p>
+          <p class="pr2">[01-13]</p>
+        </li>
+        
+<li>
+          <p class="pl"><a target="_blank" href="info/1147/11366.htm">食生学院召开党史学习教育专题民主生活会</a></p>
+          <p class="pr2">[01-12]</p>
+        </li>
+        
+<li>
+          <p class="pl"><a target="_blank" href="info/1147/11041.htm">“忆伟大先驱，传时代火炬”——食生学院举办2021年第四期读...</a></p>
+          <p class="pr2">[12-17]</p>
+        </li>
+        
+<li>
+          <p class="pl"><a target="_blank" href="info/1147/11031.htm">食生学院党委举行预备党员转正暨新发展党员预审答辩会</a></p>
+          <p class="pr2">[12-17]</p>
+        </li>
+        
+<li>
+          <p class="pl"><a target="_blank" href="info/1147/11045.htm">以习近平法治思想为引领 深入学习宣传宪法精神</a></p>
+          <p class="pr2">[12-08]</p>
+        </li>
+        
+<li>
+          <p class="pl"><a target="_blank" href="info/1147/10855.htm">食生学院召开党外代表人士集中学习党的十九届六中全会精神座谈会</a></p>
+          <p class="pr2">[11-17]</p>
+        </li>
+        
+<script>_showDynClickBatch(['dynclicks_u9_11386','dynclicks_u9_11366','dynclicks_u9_11041','dynclicks_u9_11031','dynclicks_u9_11045','dynclicks_u9_10855'],[11386,11366,11041,11031,11045,10855],"wbnews", 1361745521)</script>
+</ul>
+    </div>
+  </div>
+  <div class="txfc">
+    <div class="djyd_top"> <span class="djyd_top_title">团学风采</span> <span class="djyd_top_more"><a href="xsgz/txfc.htm" target="_blank"><img src="images/more.jpg" width="41" height="11" alt="更多" border="0" /></a></span></div>
+    <div class="djyd_content">
+      <ul><li>
+          <p class="pl"><a target="_blank" href="info/1168/11466.htm">食生学院召开新学期学生工作会议</a></p>
+          <p class="pr2">[02-13]</p>
+        </li>
+        
+<li>
+          <p class="pl"><a target="_blank" href="info/1168/11426.htm">食生学院召开2022年寒假留校学生会议</a></p>
+          <p class="pr2">[01-16]</p>
+        </li>
+        
+<li>
+          <p class="pl"><a target="_blank" href="info/1168/11406.htm">食生学院召开各年级学生会议</a></p>
+          <p class="pr2">[01-13]</p>
+        </li>
+        
+<li>
+          <p class="pl"><a target="_blank" href="info/1168/11296.htm">食生学院召开2022年寒假海外学习项目行前辅导会</a></p>
+          <p class="pr2">[01-06]</p>
+        </li>
+        
+<li>
+          <p class="pl"><a target="_blank" href="info/1168/11246.htm">食生学院举办防范网络电信诈骗专题讲座</a></p>
+          <p class="pr2">[01-05]</p>
+        </li>
+        
+<li>
+          <p class="pl"><a target="_blank" href="info/1168/11176.htm">食生学院组织“情暖冬至 共享‘食’光”冬至日包饺子活动</a></p>
+          <p class="pr2">[12-22]</p>
+        </li>
+        
+<script>_showDynClickBatch(['dynclicks_u10_11466','dynclicks_u10_11426','dynclicks_u10_11406','dynclicks_u10_11296','dynclicks_u10_11246','dynclicks_u10_11176'],[11466,11426,11406,11296,11246,11176],"wbnews", 1361745521)</script>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="foot_yqlj">
+  <div class="foot_yqlj_top">
+    <div class="foot_yqlj_top_title">友情链接</div>
+  </div>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><div class="foot_yqlj_content"><script language="javascript" src="/system/resource/js/openlink.js"></script><a target="_blank" href="http://www.ujs.edu.cn/site1/">江苏大学</a> 
+<a target="_blank" href="http://www.ec.js.edu.cn/">江苏教育厅</a> 
+<a target="_blank" href="http://www.jstd.gov.cn/">江苏科技厅</a> 
+<a target="_blank" href="http://www.moe.edu.cn/">国家教育部</a> 
+<a target="_blank" href="http://www.most.gov.cn/index.htm">国家科技部</a> 
+<a target="_blank" href="http://www.cifst.org.cn/">中国食品科技协会</a> 
+<a target="_blank" href="http://202.127.42.111/index_1.asp">中国农业工程学会</a> 
+<a target="_blank" href="http://www.foodjob.cn/">中国食品人才网</a> 
+<a target="_blank" href="http://www.foodhr.cn/">食品人才招聘网</a> 
+</div></td>
+    </tr>
+  </table>
+</div>
+<div class="foot_menu_box">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><div class="foot_menu">
+          <div class="foot_menu_s1"><div class="foot_menu_s1_title"><a href="xygk/xyjj.htm" target="_blank">学院概况</a></div>
+<div class="foot_menu_s1_txt"><a href="xygk/xyjj.htm" target="_blank">学院简介</a></div>  
+<div class="foot_menu_s1_txt"><a href="xygk/xyld.htm" target="_blank">学院领导</a></div>  
+<div class="foot_menu_s1_txt"><a href="xygk/xssz.htm" target="_blank">系室设置</a></div>  
+</div>
+          <div class="foot_menu_s1"><div class="foot_menu_s1_title"><a href="szll/szgk.htm" target="_blank">师资力量</a></div>
+<div class="foot_menu_s1_txt"><a href="szll/szgk.htm" target="_blank">师资概况</a></div>  
+<div class="foot_menu_s1_txt"><a href="szll/bssds.htm" target="_blank">博士生导师</a></div>  
+<div class="foot_menu_s1_txt"><a href="szll/sssds.htm" target="_blank">硕士生导师</a></div>  
+<div class="foot_menu_s1_txt"><a href="szll/szzp.htm" target="_blank">师资招聘</a></div>  
+</div>
+          <div class="foot_menu_s1"><div class="foot_menu_s1_title"><a href="dqgz/zzjg.htm" target="_blank">党群工作</a></div>
+<div class="foot_menu_s1_txt"><a href="dqgz/zzjg.htm" target="_blank">组织机构</a></div>  
+<div class="foot_menu_s1_txt"><a href="dqgz/djdt.htm" target="_blank">党建动态</a></div>  
+<div class="foot_menu_s1_txt"><a href="dqgz/tzgz.htm" target="_blank">统战工作</a></div>  
+<div class="foot_menu_s1_txt"><a href="dqgz/fghgz.htm" target="_blank">分工会工作</a></div>  
+<div class="foot_menu_s1_txt"><a href="dqgz/ggwgz.htm" target="_blank">关工委工作</a></div>  
+<div class="foot_menu_s1_txt"><a href="dqgz/dsxxjy.htm" target="_blank">党史学习教育</a></div>  
+</div>
+          <div class="foot_menu_s1"><div class="foot_menu_s1_title"><a href="xkky/xkjs.htm" target="_blank">学科科研</a></div>
+<div class="foot_menu_s1_txt"><a href="xkky/xkjs.htm" target="_blank">学科建设</a></div>  
+<div class="foot_menu_s1_txt"><a href="xkky/kypt.htm" target="_blank">科研平台</a></div>  
+<div class="foot_menu_s1_txt"><a href="xkky/kytd_fx_.htm" target="_blank">科研团队（方向）</a></div>  
+<div class="foot_menu_s1_txt"><a href="xkky/kycg.htm" target="_blank">科研成果</a></div>  
+<div class="foot_menu_s1_txt"><a href="xkky/kyxx.htm" target="_blank">科研信息</a></div>  
+<div class="foot_menu_s1_txt"><a href="xkky/shfw.htm" target="_blank">社会服务</a></div>  
+</div>
+          <div class="foot_menu_s1"><div class="foot_menu_s1_title"><a href="rcpy/bkspy.htm" target="_blank">人才培养</a></div>
+<div class="foot_menu_s1_txt"><a href="rcpy/bkspy.htm" target="_blank">本科生培养</a></div>  
+<div class="foot_menu_s1_txt"><a href="rcpy/yjspy.htm" target="_blank">研究生培养</a></div>  
+<div class="foot_menu_s1_txt"><a href="rcpy/lxspy.htm" target="_blank">留学生培养</a></div>  
+<div class="foot_menu_s1_txt"><a href="rcpy/jxcg.htm" target="_blank">教学成果</a></div>  
+<div class="foot_menu_s1_txt"><a href="rcpy/jpkc.htm" target="_blank">精品课程</a></div>  
+</div>
+          <div class="foot_menu_s1"><div class="foot_menu_s1_title"><a href="gjjl/hzbx.htm" target="_blank">国际交流</a></div>
+<div class="foot_menu_s1_txt"><a href="gjjl/hzbx.htm" target="_blank">合作办学</a></div>  
+<div class="foot_menu_s1_txt"><a href="gjjl/hzxm.htm" target="_blank">合作项目</a></div>  
+<div class="foot_menu_s1_txt"><a href="gjjl/hzpt.htm" target="_blank">合作平台</a></div>  
+</div>
+          <div class="foot_menu_s1"><div class="foot_menu_s1_title"><a href="xsgz/gztd.htm" target="_blank">学生工作</a></div>
+<div class="foot_menu_s1_txt"><a href="xsgz/gztd.htm" target="_blank">工作团队</a></div>  
+<div class="foot_menu_s1_txt"><a href="xsgz/kjcx.htm" target="_blank">科技创新</a></div>  
+<div class="foot_menu_s1_txt"><a href="xsgz/jycy.htm" target="_blank">就业创业</a></div>  
+<div class="foot_menu_s1_txt"><a href="xsgz/txfc.htm" target="_blank">团学风采</a></div>  
+</div>
+          <div class="foot_menu_s2">
+            <div class="foot_menu_s1_title">联系我们</div>
+            <div class="foot_menu_s1_txt">地 址：江苏省镇江市学府路301号</div>
+            <div class="foot_menu_s1_txt">邮 编：212013</div>
+            <div class="foot_menu_s1_txt">电话(传真)：0511-88780201</div>
+            <div class="foot_menu_s1_txt">E-mail：spxy@ujs.edu.cn</div>
+          </div>
+        </div></td>
+    </tr>
+  </table>
+</div>
+<div class="foot_s2_box">
+  <div class="foot_s2"> Copyright@ 2020-2023 江苏大学食品与生物工程学院 版权所有</div>
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+
+
+ <script language="javascript" type="text/javascript">
+            var speed =30
+            var MyMar = setInterval(Marquee, speed)
+            var demo_ = document.getElementById("demo");//用getElememtById是为了兼容FF
+            var demo2_ = document.getElementById("demo2");
+            var demo1_ = document.getElementById("demo1");
+            demo2_.innerHTML = demo1_.innerHTML
+            demo.onmouseover =function () { clearInterval(MyMar) }
+            demo.onmouseout =function () { MyMar = setInterval(Marquee, speed) }
+            function Marquee() {
+                if (demo2_.offsetWidth - demo_.scrollLeft <=0)
+                    demo_.scrollLeft -= demo1_.offsetWidth
+                else {
+                    demo_.scrollLeft++
+                }
+            }
+        </script> 
+<script type="text/javascript">
+var banner=document.getElementById("ban").getElementsByTagName("div");
+var bannerdo=document.getElementById("bando").getElementsByTagName("img");
+var num=banner.length;
+var thisban=1;
+function show(obj){
+    for(var i=0;i<num;i++){
+        banner[i].style.display="none";
+        bannerdo[i].src="/new/images/bt1.png";
+    }
+    $(banner[obj]).fadeIn(1000);
+    bannerdo[obj].src="/new/images/bt2.png";
+}
+function autoshow(){
+    if(thisban>num-1){thisban=0}
+    show(thisban);
+    thisban++;
+}
+show(0);
+var autoban=setInterval(autoshow,6000);
+for(var i=0;i<bannerdo.length;i++){
+    bannerdo[i].onclick=function(){
+        clearInterval(autoban);
+        show(this.getAttribute("tab"));
+        thisban=parseInt(this.getAttribute("tab"))+1;
+        autoban=setInterval(autoshow,6000);
+    }
+}
+</script>
+</body>
+</html>
