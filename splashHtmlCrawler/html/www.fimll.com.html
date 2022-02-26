@@ -55,7 +55,7 @@
 
 
 			<div class="nav_l"></div>
-        	<ul id="nav_C05TVr" class="navigation">
+        	<ul id="nav_fMp02k" class="navigation">
 			    <li>
         <a href="index.php?_m=frontpage&_a=index" >
     首页</a>
@@ -133,7 +133,7 @@
 <script type="text/javascript">
 //$(".navigation li:first").css("background-image","none");
 var topMenuNum = 0;
-$("#nav_C05TVr li span").hover(
+$("#nav_fMp02k li span").hover(
 	function(){
 		topMenuNum++;
 		$(this).attr("id","kindMenuHover"+topMenuNum);
@@ -202,7 +202,7 @@ $("#nav_C05TVr li span").hover(
 <h3 class="blk_t">会员登录</h3>
 <script type="text/javascript" language="javascript">
 <!--
-function on_success_XEvUFaGv(response) {
+function on_success_d92VmzCS(response) {
     var o_result = _eval_json(response);
     if (!o_result) {
         return on_failure(response);
@@ -211,7 +211,7 @@ function on_success_XEvUFaGv(response) {
     var stat = document.getElementById("loginform_stat");
     if (o_result.result == "ERROR") {
         document.forms["loginform"].reset();
-        reload_captcha("NUkM");
+        reload_captcha("DqVXZa");
         
         stat.innerHTML = o_result.errmsg;
         return false;
@@ -223,16 +223,16 @@ function on_success_XEvUFaGv(response) {
     }
 }
 
-function on_failure_XEvUFaGv(response) {
+function on_failure_d92VmzCS(response) {
     document.forms["loginform"].reset();
-    reload_captcha("NUkM");
+    reload_captcha("DqVXZa");
     
     document.getElementById("loginform_stat").innerHTML = "请求失败！";
     return false;
 }
 
-function reload_captcha(NUkM) {
-    var captcha = document.getElementById("login_captchaNUkM");
+function reload_captcha(DqVXZa) {
+    var captcha = document.getElementById("login_captchaDqVXZa");
     if (captcha) {
         captcha.src = "captcha.php?s=" + random_str(6);
     }
@@ -262,7 +262,7 @@ function reload_captcha(NUkM) {
             	$("#rand_rs").focus(function(){
 					
 					$("#yzmshow").show();
-					reload_captcha("NUkM");
+					reload_captcha("DqVXZa");
 				});
 				$("#rand_rs").blur(function(){
 					$("#yzmshow").hide();
@@ -294,7 +294,7 @@ if (/^\s*$/.test(thisForm.elements["rand_rs"].value))
 }
 $("#loginform_stat").css({"display":"block"});
 $("#loginform_stat").html("正在检查用户......");
-_ajax_submit(thisForm, on_success_XEvUFaGv, on_failure_XEvUFaGv);
+_ajax_submit(thisForm, on_success_d92VmzCS, on_failure_d92VmzCS);
 return false;
 return true;
 }
