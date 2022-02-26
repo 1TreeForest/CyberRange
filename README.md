@@ -13,10 +13,10 @@
 
 |-- movieCrawler/   
 |   |-- movieCrawler/   
-|   |   |--spider/
-|   |   |  |--dytt.py #爬取电影天堂网站上信息的爬虫
-|   |   |  |--movie——2345.py #爬取2345电影网站上信息的爬虫
-|   |   |  |--universalSpider.py #爬取所有侵权网站上信息的普适性爬虫
+|   |   |--spider/  
+|   |   |  |--dytt.py #爬取电影天堂网站上信息的爬虫  
+|   |   |  |--movie——2345.py #爬取2345电影网站上信息的爬虫  
+|   |   |  |--universalSpider.py #爬取所有侵权网站上信息的普适性爬虫  
 |   |-- scrapy.cfg   
 
 ## SiteCrawler
