@@ -13,7 +13,7 @@ SPIDER_MODULES = ['movieCrawler.spiders']
 NEWSPIDER_MODULE = 'movieCrawler.spiders'
 
 LOG_LEVEL = 'INFO'
-
+# CONCURRENT_REQUESTS = 100  # 并发数
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'movieCrawler (+http://www.yourdomain.com)'
@@ -66,9 +66,11 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'movieCrawler.middlewares.MoviecrawlerDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARLES = {
+    'scrapy_splash.SplashCookiesMiddleware': 723,
+    'scrapy_splash.SplashMiddleware': 725,
+    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html

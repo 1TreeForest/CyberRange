@@ -9,6 +9,9 @@
 
 BOT_NAME = 'splashHtmlCrawler'
 
+# CONCURRENT_REQUESTS = 100  # 并发数
+LOG_LEVEL = 'INFO'
+
 SPIDER_MODULES = ['splashHtmlCrawler.spiders']
 NEWSPIDER_MODULE = 'splashHtmlCrawler.spiders'
 
@@ -52,7 +55,6 @@ DOWNLOADER_MIDDLEWARLES = {
     'scrapy_splash.SplashCookiesMiddleware': 723,
     'scrapy_splash.SplashMiddleware': 725,
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
-    'splashHtmlCrawler.middlewares.RandomUserAgentMiddleware': 500,  # 随机UA
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
 }
 # 去重过滤器

@@ -54,9 +54,9 @@ class MoviecrawlerPipeline(object):
         self.cursor.execute(sql)
         # 提交事务
         self.conn.commit()
-        logging.info('已进行 {} 次数据采集\t\t获取到新对象: {}，{}'.format(self.count, item['name'], item['link']))
+        logging.info('已进行 {} 次数据采集\t\t获取到对象: {}，{}'.format(self.count, item['name'], item['link']))
         self.count += 1
-        print(item)
+        # print(item)
 
         # content = json.dumps(dict(item), ensure_ascii=False) + '\n'
         # self.filename.write(content)

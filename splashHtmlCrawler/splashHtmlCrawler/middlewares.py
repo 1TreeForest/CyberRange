@@ -2,7 +2,7 @@
 #
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-
+import pymysql
 from scrapy import signals
 
 from fake_useragent import UserAgent
