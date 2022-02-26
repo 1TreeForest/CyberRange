@@ -24,7 +24,7 @@ class DyttSpider(scrapy.Spider):
             item['name'] = re.findall('《(.*?)》', name[i])[0]
             # 拼接URL，获取所有电影详情的URL，拼成完整的URL来访问地址
             item['link'] = 'http://www.dytt8.net' + link[i]
-            item['site'] = 'http://www.dytt8.net/'
+            item['site'] = 'www.dytt8.net'
             # print(item)
             yield item
 

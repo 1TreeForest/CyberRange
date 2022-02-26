@@ -1,0 +1,1517 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta name="keywords" content="低俗喜剧 低俗喜剧  Vulgaria影讯 剧情介绍 主演 海报剧照 影评 彭浩翔 杜汶泽邵音音詹瑞文叶山豪邹凯光陈静薛凯琪郑中基" />  
+<meta name="description" content="低俗喜剧 详细介绍 图片剧照及影评" />  
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<link href="//mat1.gtimg.com/ent/css/datalib/2011/movie_v1.8.0.css" rel="stylesheet" type="text/css" />
+<title>低俗喜剧_电影资料库_腾讯娱乐</title>
+<script type="text/javascript">
+var libname = 'movie';
+var site = 'ent';
+</script>
+
+<script type="text/javascript">
+try
+{
+    document.domain = "qq.com";
+}
+catch (e)
+{
+}
+window.onbeforeunload = function() { 
+var o = document.getElementById('ifr_comment_ent');
+	o.parentNode.removeChild(o);
+}
+function setTab(name,cursel,n){
+	for(i=1;i<=n;i++){
+		var menu=document.getElementById(name+i);
+		var con=document.getElementById("con_"+name+"_"+i);
+		menu.className=i==cursel?"on":"";
+		con.style.display=i==cursel?"block":"none";
+	}
+}
+</script>
+<script language="javascript">
+var $ = function (d){
+    typeof d == "string" &&(d = document.getElementById(d)); 
+    return $.fn.call(d);
+};
+$.fn = function (){
+	this.$ADD = function (fn){CLS.add(this,fn)};
+	this.addEvent = function (sEventType,fnHandler){
+		if (this.addEventListener) {this.addEventListener(sEventType, fnHandler, false);} 
+	    else if (this.attachEvent) {this.attachEvent("on" + sEventType, fnHandler);} 
+	    else {this["on" + sEventType] = fnHandler;}
+	}
+	this.removeEvent = function (sEventType,fnHandler){
+		if (this.removeEventListener) {this.removeEventListener(sEventType, fnHandler, false);} 
+	    else if (this.detachEvent) {this.detachEvent("on" + sEventType, fnHandler);} 
+	    else { this["on" + sEventType] = null;}
+	}
+	return this;
+};
+var Class = {create: function() {return function() { this.initialize.apply(this, arguments); }}};
+var Bind = function (obj,fun,arr){return function() {return fun.apply(obj,arr);}}
+var Marquee = Class.create();
+Marquee.prototype = {
+  initialize: function(id,name,out,speed) {
+    this.name = name;
+	this.box = $(id);
+	this.out  = 3;//滚动间隔时间,单位秒
+	this.speed = speed;
+	this.d = 1;
+	this.box.style.position = "relative";
+	this.box.scrollTop = 0;
+	var _li = this.box.firstChild;
+	while(typeof(_li.tagName)=="undefined")_li = _li.nextSibling;
+	this.lis = this.box.getElementsByTagName(_li.tagName);
+	this.len = this.lis.length;	
+	for(var i=0;i<this.lis.length;i++){
+	    var __li = document.createElement(_li.tagName);
+		__li.innerHTML = this.lis[i].innerHTML;
+		this.box.appendChild(__li);
+		if(this.lis[i].offsetTop>=this.box.offsetHeight)break;
+	}
+	this.Start();
+	this.box.addEvent("mouseover",Bind(this,function(){clearTimeout(this.timeout);},[]));
+	this.box.addEvent("mouseout",Bind(this,this.Start,[]));
+  },
+  Start:function (){
+	  clearTimeout(this.timeout);
+	  this.timeout = setTimeout(this.name+".Up()",this.out*1000)
+  },
+  Up:function(){
+	  clearInterval(this.interval);
+	  this.interval = setInterval(this.name+".Fun()",10);
+  },
+  Fun:function (){
+      this.box.scrollTop+=this.speed;
+	  if(this.lis[this.d].offsetTop <= this.box.scrollTop){
+	    clearInterval(this.interval);
+		this.box.scrollTop = this.lis[this.d].offsetTop;
+		this.Start();
+		this.d++;
+	  }
+	  if(this.d >= this.len + 1){
+	     this.d = 1;
+	     this.box.scrollTop = 0;
+	  }
+  }
+};
+$(window).addEvent("load",function (){
+marquee = new Marquee("weibo_scroll01","marquee",1,2); //"weibo_scroll01"为要滚动的容器ID，一定要设置高度
+});
+</script>
+<script type="text/javascript">
+function rate(obj,oEvent){
+
+	var imgSrc = '//mat1.gtimg.com/ent/datalib/2011/movie/star_mid_n.png';
+	var imgSrc_2 = '//mat1.gtimg.com/ent/datalib/2011/movie/star_mid.png';
+	var imgSrc_3 = '//mat1.gtimg.com/ent/datalib/2011/movie/star_mid.png';
+
+	var e = oEvent || window.event;
+	var target = e.target || e.srcElement; 
+	var imgArray = obj.getElementsByTagName("img");
+
+	for(var i=0;i<imgArray.length;i++)
+	{
+		imgArray[i]._num = i;
+		hover(target._num);
+
+		imgArray[i].onclick=function()
+		{
+		     hover(target._num);  
+		     obj.rateFlag=target._num;
+
+		  //  alert("您的评分为"+imgArray[this._num].title);
+
+		    document.getElementById('c_grade').value = this._num + 1;
+		    document.getElementById('gradeLevel').innerHTML = imgArray[this._num].title;
+		    document.getElementById('grd_req').style.display='none';
+		    return;
+
+		};
+	}
+
+	if(target.tagName=="IMG")
+	{
+	   document.getElementById('gradeLevel').innerHTML = imgArray[target._num].title;
+	   for(var j=0;j<imgArray.length;j++)
+	   {
+		if(j<=target._num)
+			imgArray[j].src=imgSrc_3;
+		else
+			imgArray[j].src=imgSrc;
+	   }
+	}
+	else 
+	{
+	   for(var k=0;k<imgArray.length;k++)
+		imgArray[k].src=imgSrc;
+	}
+
+	function hover(n)
+	{
+		 for(var j=0;j<imgArray.length;j++)
+		 {
+			if(j<=n)
+				imgArray[j].src=imgSrc_2;
+			 else
+				imgArray[j].src=imgSrc;
+		 }
+	}
+}
+
+function backrate(obj,oEvent)
+{
+	var imgSrc = '//mat1.gtimg.com/ent/datalib/2011/movie/star_mid_n.png';
+	var imgSrc_2 = '//mat1.gtimg.com/ent/datalib/2011/movie/star_mid.png';
+	var imgSrc_3 = '//mat1.gtimg.com/ent/datalib/2011/movie/star_mid.png';
+
+	var e = oEvent || window.event;
+	var target = e.target || e.srcElement; 
+	var imgArray = obj.getElementsByTagName("img");
+	if(!obj.rateFlag && obj.rateFlag !=0)
+		obj.rateFlag = -1;
+	hover(obj.rateFlag);
+	function hover(n)
+	{
+                                 if(n < 0)
+                                 {
+                                       for(var j=0;j<imgArray.length;j++)
+                                                 imgArray[j].src=imgSrc;
+                                       document.getElementById('gradeLevel').innerHTML = '';
+                                 }
+		 for(var j=0;j<imgArray.length;j++)
+		 {
+			if(j<=n)
+				imgArray[j].src=imgSrc_2;
+			 else
+				imgArray[j].src=imgSrc;
+		 }
+	}
+                if(obj.rateFlag >0)
+	document.getElementById('gradeLevel').innerHTML = imgArray[obj.rateFlag].title;
+
+}
+</script>
+</head>
+<body>
+<div id="mask" style="display:none;position:absolute;width:100%;background:#000;filter:alpha(opacity=30);opacity:0.30;-moz-opacity:0.3;"></div>
+<div id="login_div" style="display:none; position:absolute; z-index:2000; left: 500px; top: 180px; width:400px;
+height:330px;padding:0px; margin:0px;" align="center">
+<iframe name="login_frame" id="login_frame" frameborder="0" scrolling="auto" width="100%" height="100%" src=""></iframe></div>
+<!--公共导航 sta-->
+<style type="text/css">
+div,
+input,
+button{ margin:0; padding:0;}
+.b_nav{ width:100%; height:55px; background:url(http://mat1.gtimg.com/ent/datalib/2011/b_nav.png) repeat-x; font-size:12px; font-family:Verdana, Geneva, sans-serif; text-align:center;}
+.b_nav_wrap,
+.b_nav_wrap .b_links a:hover,
+.b_nav_wrap .b_links .b_link_1_on,
+.b_nav_wrap .b_links .b_link_2_on,
+.b_nav_wrap .b_links .b_link_3_on,
+.b_nav_wrap .b_links .b_link_4_on,
+.b_nav_wrap .b_search .b_input_box,
+.b_nav_wrap .b_search button{ background-image:url(http://mat1.gtimg.com/ent/datalib/2011/b_nav_index.png); background-repeat:no-repeat;}
+.b_nav_wrap{ width:960px; height:55px; margin:0 auto; position:relative; text-align:left; z-index:10;}
+.b_nav_wrap .b_links{ float:left;}
+.b_nav_wrap .b_links a{ float:left; height:55px; width:71px; text-indent:-9999px; overflow:hidden;}
+.b_nav_wrap .b_links .b_index_a{ width:235px; height:55px;}
+.b_nav_wrap .b_links a.b_index_a:hover{ background:none;}
+.b_nav_wrap .b_links a.b_link_1:hover,
+.b_nav_wrap .b_links a.b_link_1_on,
+.b_nav_wrap .b_links a.b_link_1_on:hover{ background-position:0 -80px;}
+.b_nav_wrap .b_links a.b_link_2:hover,
+.b_nav_wrap .b_links a.b_link_2_on,
+.b_nav_wrap .b_links a.b_link_2_on:hover{ background-position:-80px -80px;}
+.b_nav_wrap .b_links a.b_link_3:hover,
+.b_nav_wrap .b_links a.b_link_3_on,
+.b_nav_wrap .b_links a.b_link_3_on:hover{ background-position:-160px -80px;}
+.b_nav_wrap .b_links a.b_link_4:hover,
+.b_nav_wrap .b_links a.b_link_4_on,
+.b_nav_wrap .b_links a.b_link_4_on:hover{ background-position:-240px -80px;}
+.b_nav_wrap .b_search{ float:right; margin-top:15px; height:36px; position:relative;}
+.b_nav_wrap .b_search .b_input_box{ float:left; width:163px; height:22px; background-position:0 -160px; padding-left:22px;}
+.b_nav_wrap .b_search input{ float:left; width:163px; height:22px; line-height:22px; font-size:12px; margin-right:5px; _display:inline; border:0; background:none;}
+.b_nav_wrap .b_search .b_sea_btn{ float:left; width:50px; height:22px; text-indent:-9999px; overflow:hidden; background-position:-190px -160px; border:0; cursor:pointer;}
+.b_nav_wrap .b_search .b_sec_sea{ position:absolute; top:23px; left:0; width:181px; border:1px solid #D0D0D0; background:#FFFFFF; padding:5px 1px; z-index:1000;}
+.b_nav_wrap .b_search .b_sec_sea a{ display:block; height:21px; color:#333333; text-indent:10px; text-decoration:none; line-height:21px;}
+.b_nav_wrap .b_search .b_sec_sea a:hover{ background:#E9E9E9; text-decoration:none;}
+/*添加广告*/
+#ent_ZL_Width1{ margin:0 auto; padding:10px 0px;}
+#ent_ZL_Rectangle{ margin-top:10px;}
+#ent_ZL_Width2{ margin-bottom:10px;}
+.bothad{background:#fff;}
+</style>
+<style>
+/*专题导航*/
+#topic_nav_box{width:100%;height:30px;background:#fff;overflow:visible;}
+#topic_nav{width:960px;height:30px; margin:0 auto;padding:0;font-size:12px;font-family:"宋体","Arial Narrow"; background:#fff;clear:both;}
+#topic_nav img{border:none;}
+#topic_nav ul,#topic_nav li{margin:0;padding:0;list-style:none;}
+#topic_nav .logo{float:left;padding:3px 8px 3px 10px;}
+#topic_nav .link{float:left;width:186px;}
+#topic_nav .end{border:none;}
+#topic_nav ul{float:right;padding:10px 3px 0 0;}
+#topic_nav li{float:left;padding:0 8px;*padding-top:1px;border-right:#ddd 1px solid;line-height:12px;color:#666;}
+#topic_nav a{color:#666; text-decoration:none;line-height:14px;}
+#topic_nav a:visited{color:#666;}
+#topic_nav a:hover{color:#666; text-decoration: underline;}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+/* Safari 3.0 and Opera 9 rules here */
+#topic_nav{font-family:宋体, STSong;}
+}
+#site_nav_mblogin{margin-top:4px;}
+#site_nav_mblogin a{line-height:24px;}
+#topic_nav .mininavRight a{line-height:28px;}
+</style>
+<div id="topic_nav_box">
+<div id="topic_nav">
+		<div class="logo"><a target="_blank" href="http://ent.qq.com/"><img src="//mat1.gtimg.com/www/images/channel_logo/ent_logo_s.png" alt="腾讯娱乐"></a><!--[if !IE]>|xGv00|630ca41700b8943e4ca516e8a507553a<![endif]--></div>
+		<div class="link">
+			<ul>
+				<li><a href="http://www.qq.com/" target="_blank">腾讯网首页</a></li>
+				<li><a href="http://www.qq.com/map/" target="_blank">网站导航</a></li>
+				<li class="end"><a href="http://mail.qq.com/cgi-bin/loginpage" target="_blank">邮箱</a></li>
+			</ul>
+		</div>
+		
+
+<style type="text/css">
+				ul,li{margin:0;padding:0;}
+				li{list-style:none;}
+				.fl{float:left;}
+				.fr{float:right;}
+				.dis{display:block;}
+				.undis{display:none;}
+				.loginSmartTop,.loginSmartBottom{background-image:url(//mat1.gtimg.com/www/images/qq2012/qqbg_1.5.2.png); background-repeat:no-repeat;}
+				a.login,a.login:hover,a.weiboLogin,a.weiboLogin:hover,a.qzoneLogin,a.qzoneLogin:hover,a.mailLogin,a.mailLogin:hover,a.pengyouLogin,a.pengyouLogin:hover,.mininavRight .weibo,.mininavRight .weibo:hover,.mininavRight .qzone,.mininavRight .qzone:hover,.mininavRight .mail,.mininavRight .mail:hover,.mininavRight .pengyou,.mininavRight .pengyou:hover{background-image:url(//mat1.gtimg.com/www/images/qq2012/loginall_1.2.png); background-repeat:no-repeat;}
+				a.login{width:70px;height:28px;display:block;float:right;background-position:left -450px;}
+				a.login:hover{background-position:left -500px;}
+				a.weiboLogin{width:30px;height:28px;display:block;float:right;background-position:left -50px;}
+				a.weiboLogin:hover{background-position:right -50px;}
+				a.qzoneLogin{width:30px;height:28px;display:block;float:right;background-position:left -100px;}
+				a.qzoneLogin:hover{background-position:right -100px;}
+				a.mailLogin{width:30px;height:28px;display:block;float:right;background-position:left -150px;}
+				a.mailLogin:hover{background-position:right -150px;}
+				a.pengyouLogin{width:28px;height:28px;display:block;float:right;background-position:left -200px;}
+				a.pengyouLogin:hover{background-position:right -200px;}
+				.mininavRight{font-size:12px;}
+				.mininavRight .weibo{background-position:7px -243px;}
+				.mininavRight .weibo:hover{background-position:-79px -243px;}
+				.mininavRight .qzone{background-position:7px -294px;}
+				.mininavRight .qzone:hover{background-position:-74px -294px;}
+				.mininavRight .mail{background-position:7px -340px;}
+				.mininavRight .mail:hover{background-position:-77px -340px;}
+				.mininavRight .pengyou{background-position:7px -394px;}
+				.mininavRight .pengyou:hover{background-position:-76px -394px;}
+				.mininavRight{float:right;color:#c7c7c7;line-height:28px;}
+				.mininavRight a{color:#666;}
+				.mininavRight .qqNameLayout{margin-right:4px;color:#c7c7c7;}
+				.mininavRight .qqName{margin-right:12px;color:#666;float:left;}
+				.mininavRight .weibo{font-family:Tahoma,"宋体";padding:0 7px;display:block;height:28px;float:left;text-indent:17px;}
+				.mininavRight .weibo:hover{color:#fff;background-color:#458fce;}
+				.mininavRight .qzone{font-family:Tahoma,"宋体";padding:0 7px;display:block;height:28px;float:left;text-indent:22px;}
+				.mininavRight .qzone:hover{color:#fff;background-color:#458fce;}
+				.mininavRight .mail{font-family:Tahoma,"宋体";padding:0 7px;display:block;height:28px;float:left;text-indent:19px;}
+				.mininavRight .mail:hover{color:#fff;background-color:#458fce;}
+				.mininavRight .pengyou{font-family:Tahoma,"宋体";padding:0 7px;display:block;height:28px;float:left;text-indent:20px;}
+				.mininavRight .pengyou:hover{color:#fff;background-color:#458fce;}
+				.loginSmartBox{width:120px;height:auto;background:#fffbef;position:absolute;top:28px;z-index:100;}
+				.loginSmartTop{width:120px;height:3px;overflow:hidden;background-position:-350px -210px;}
+				.loginSmartBottom{width:120px;height:3px;overflow:hidden;background-position:-350px -230px;}
+				.loginSmartContent{width:118px;border-left:1px solid #f1f1f1;border-right:1px solid #f1f1f1;}
+				.loginSmartInner{width:116px;border-left:1px solid #f4d9a4;border-right:1px solid #f4d9a4;}
+				.loginSmartInner ul{width:100%;padding:2px 0;}
+				.loginSmartInner li{width:100%;height:20px;line-height:20px;color:#666;text-indent:8px;text-align:left;}
+				.loginSmartInner li a{color:#666;}
+				.loginSmartInner li a:hover span{color:#cd0200;}
+				.loginSmartInner li a span,.loginSmartInner li a:hover span{font-family:Tahoma;}
+				#pengyouIcon{position:relative;z-index:10000;}
+				#mailIcon{position:relative;z-index:10000;}
+				#qzoneIcon{position:relative;z-index:10000;}
+				#weiboIcon{position:relative;z-index:10000;}
+				#loginOut:hover{text-decoration:underline;color:#cd0200;}
+				.loginBg{width:100%;min-width:1024px;position:absolute;top:0;left:0;z-index:8888;display:none;background:url(//mat1.gtimg.com/www/images/qq2012/alphabg.png); _background:#000;_opacity:0.3_;filter:alpha(opacity=30);}
+
+				.mininavRight .qzone{width:auto;}
+				.mininavLeft div{line-height:14px;}
+				.mininavRight div{line-height:28px;}
+				</style>
+				<div class="login mininavRight" id="loginWrap">
+    <a href="http://mail.qq.com" class="mailLogin" id="qmail" target="_blank" bosszone="qmail"></a>
+    <a href="http://qzone.qq.com" class="qzoneLogin" id="qzone" target="_blank" bosszone="qzone"></a>
+    <a href="javascript:void(0);" class="login" onclick="userLogin();" target="_self" id="onekey"></a>
+ 
+    <!-- <div class="quickArea menu">
+      <a href="http://qzone.qq.com" id="qzoneLink" target="_blank" class="quickLink menu-hd qzoneLink" aria-expanded="true" bosszone="gqqzone"><em>Qzone</em></a>
+    </div>
+    <div class="quickArea menu">
+      <a href="http://mail.qq.com" id="qmailLink" target="_blank" class="quickLink menu-hd qmailLink" aria-expanded="true" bosszone="gqqmail"><em>QQ邮箱</em></a>
+    </div>	   -->
+</div>
+
+<script type="text/javascript">var MI = {};(function(b){var a=document.createElement("script");a.setAttribute("charset","utf-8");a.setAttribute("type","text/javascript");a.setAttribute("src",b);document.getElementsByTagName("head")[0].appendChild(a)})("//mat1.gtimg.com/www/mb/js/portal/mi.MiniNav__v1.0.0.js");</script>
+<script type="text/javascript" src="//mat1.gtimg.com/www/ptlogin/js/ptlogiHL.js" charset="utf-8"></script>
+<!--[if !IE]>|xGv00|a06ce509e32367110c60d18e9ea9e530<![endif]--><!--[if !IE]>|xGv00|fcb7151e303110b6aedb3a23e34141e5<![endif]-->
+</div></div>
+
+
+
+
+
+
+
+
+ <!--[if !IE]>|xGv00|73be827056f6f0f54d75d3ea0a3d7ec8<![endif]-->
+<div class="clear"></div>
+<script type="text/javascript" src="//imgcache.qq.com/qzone/biz/comm/js/qbs.js"></script>
+<script type="text/javascript">
+var TIME_BEFORE_LOAD_CRYSTAL = (new Date).getTime();
+</script>
+<script src="//ra.gtimg.com/web/crystal/v4.7Beta04Build040/crystal-min.js" id="l_qq_com" arguments="{'extension_js_src':'//ra.gtimg.com/web/crystal/v4.7Beta04Build040/crystal_ext-min.js', 'jsProfileOpen':'true', 'mo_page_ratio':'0.01', 'mo_ping_ratio':'0.01', 'mo_ping_script':'//ra.gtimg.com/sc/mo_ping-min.js'}"></script>
+<script type="text/javascript">
+if(typeof crystal === 'undefined' && Math.random() <= 1) {
+  (function() {
+    var TIME_AFTER_LOAD_CRYSTAL = (new Date).getTime();
+    var img = new Image(1,1);
+    img.src = "//dp3.qq.com/qqcom/?adb=1&dm=ent&err=1002&blockjs="+(TIME_AFTER_LOAD_CRYSTAL-TIME_BEFORE_LOAD_CRYSTAL);
+  })();
+}
+</script>
+<style>.absolute{position:absolute;}</style>
+<!--[if !IE]>|xGv00|1123edab23e0d7d4f0defb43951fc6aa<![endif]-->
+<div class="bothad">
+<!--ent_ZL_Width1_div AD begin...."l=ent_ZL_Width1&log=off"--><!-- ent_ZL_Width1 --><!--ent_ZL_Width1 AD end --><!--[if !IE]>|xGv00|1484deb67e18e73bdaa1c0143a92f83f<![endif]-->
+</div>
+<div class="b_nav">
+	<div class="b_nav_wrap">
+		<div class="b_links">
+			<a href="/data/index.htm" class="b_index_a">娱乐首页</a>
+			<a href="/data/index.htm" class="b_link_1">首页</a>
+			<a href="/d/movie/search.shtml" class="b_link_2_on">电影</a>
+			<a href="/d/tv/search.shtml" class="b_link_3">电视</a>
+			<a href="/data/rank.htm" class="b_link_4">排行榜</a>
+		</div>
+		<div class="b_search">
+			<span class="b_input_box">
+				<input type="text" id="skeyword" value="输入搜索内容" onkeyup="sbObj.autoComplete(event);" style="color: rgb(141, 141, 141);"/>
+			</span>
+			<button type="submit" class="b_sea_btn" onclick="sbConf.buttonOnclick()">搜索</button>
+			<div id="autoid" class="b_sec_sea" style="display:none;"><!--自动完成 DIV--></div>
+			<link type="text/css" rel="stylesheet" href="http://mat1.gtimg.com/www/js/datalib/smartbox/smartbox.conf.css"/>
+			<script type="text/javascript" src="http://mat1.gtimg.com/www/js/datalib/smartbox/smartbox.conf.min.js"></script>
+			<script type="text/javascript" src="http://mat1.gtimg.com/www/js/datalib/smartbox/smartbox.min.js"></script>
+			<script type="text/javascript" src="http://mat1.gtimg.com/www/js/datalib/ui.v1.js"></script>
+			<script>
+				var sbConf = new SmartBoxDefaultConf('skeyword', 'autoid', '输入搜索内容', '暂无搜索结果', [58], 2);
+				var sbObj = new AutoComplete(sbConf);
+			</script>
+		</div>
+	</div>
+</div>
+<!--公共导航 end-->
+
+<!--[if !IE]>|xGv00|02b857fa739447495f3cf1a7b377cfe9<![endif]-->
+
+		<div class="wrapper">
+        <div class="hd top_banner">
+            <p class="crumb"><a href="http://ent.qq.com/" target="_blank">腾讯娱乐</a> > <a href="http://ent.qq.com/data/index.htm" target="_blank">娱乐资料库</a> > <a href="http://ent.qq.com/d/movie/search.shtml"  target="_blank">电影资料库</a> > 低俗喜剧</p>
+            <p class="wel_box" id="login_p"></p>
+        </div>
+	</div>
+       
+    
+<div class="wrapper">
+
+		<div class="hd top_hd">
+
+          <h2>低俗喜剧 (2012)</h2>
+
+		  <div class="nav_hd"> <a href="#" class="link_1 on">概述</a><a href="video.shtml" class="link_2">视频</a><a href="pic.shtml" class="link_3" >图片</a><a href="commentlist.shtml" class="link_4">影评</a><a href="news.shtml" class="link_5" >资讯</a> </div>
+</div>
+
+
+        <div class="bd"><!--[if !IE]>|xGv00|f2e240ca5c3bd35579e58ce5137d8c06<![endif]--><div class='mode_col_21'><div class='mode_col_l'><div class="main">
+	<!--头部简介-->
+	<div class="detl_box">
+		<div class="left left_detl" id="a1">
+			<div class="b_pic_box">
+				<a href="http://ent.qq.com/mdisppics.htm#did=37085&tid=" target="_blank"  class="img_wrap"><img src="http://img2.gtimg.com//ent/d/movie/picinfo/20120711/03/867ccfc63c1ffec7ab4022d76d9f11c32.jpg" width="172" onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/ent-moren240.jpg'"/></a>
+				<!--注释<a href="#none" class="free_bg"></a>注释-->
+				
+			</div>
+								<div class="p_detl_box">
+									<p>导演：<a href="javascript:window.location.href=encodeURI('http://ent.qq.com/d/movie/search.shtml?TD=彭浩翔');" target="_blank">彭浩翔</a></p>
+									<p>编剧：<a href="javascript:window.location.href=encodeURI('http://ent.qq.com/d/movie/search.shtml?TE=彭浩翔');" target="_blank">彭浩翔</a></p>
+									<p>主演：<a href="javascript:window.location.href=encodeURI('http://ent.qq.com/d/movie/search.shtml?TF=杜汶泽');" target="_blank" title="查看TA的相关影片" alt="查看TA的相关影片">杜汶泽</a> / <a href="javascript:window.location.href=encodeURI('http://ent.qq.com/d/movie/search.shtml?TF=邵音音');" target="_blank" title="查看TA的相关影片" alt="查看TA的相关影片">邵音音</a> / <a href="javascript:window.location.href=encodeURI('http://ent.qq.com/d/movie/search.shtml?TF=詹瑞文');" target="_blank" title="查看TA的相关影片" alt="查看TA的相关影片">詹瑞文</a> / <a href="javascript:window.location.href=encodeURI('http://ent.qq.com/d/movie/search.shtml?TF=叶山豪');" target="_blank" title="查看TA的相关影片" alt="查看TA的相关影片">叶山豪</a> / <a href="javascript:window.location.href=encodeURI('http://ent.qq.com/d/movie/search.shtml?TF=邹凯光');" target="_blank" title="查看TA的相关影片" alt="查看TA的相关影片">邹凯光</a> / <a href="javascript:window.location.href=encodeURI('http://ent.qq.com/d/movie/search.shtml?TF=陈静');" target="_blank" title="查看TA的相关影片" alt="查看TA的相关影片">陈静</a> / <a href="javascript:window.location.href=encodeURI('http://ent.qq.com/d/movie/search.shtml?TF=薛凯琪');" target="_blank" title="查看TA的相关影片" alt="查看TA的相关影片">薛凯琪</a> / <a href="javascript:window.location.href=encodeURI('http://ent.qq.com/d/movie/search.shtml?TF=郑中基');" target="_blank" title="查看TA的相关影片" alt="查看TA的相关影片">郑中基</a></p>
+									<p>类型：<a href="javascript:window.location.href=encodeURI('http://ent.qq.com/d/movie/search.shtml?CC=喜剧');" target="_blank">喜剧 </a> / <a href="javascript:window.location.href=encodeURI('http://ent.qq.com/d/movie/search.shtml?CC=情色');" target="_blank">情色 </a></p>
+									<p>国家/地区：<a href="javascript:window.location.href=encodeURI('http://ent.qq.com/d/movie/search.shtml?CB=香港');" target="_blank">香港</a></p>
+									<p>语言：粤语</p>
+									<p>片长：90分钟</p>
+									<p>上映日期：2012-08-09</p>
+                                                                        <p><!-- 注释 --><!--[if !IE]>|xGv00|55bbc8d5db0ee3382987c3520a409b92<![endif]--></p>
+								</div>
+							</div>
+							<div class="right right_detl">
+	<div id="right_detlbg">								<div class="num_detl"><span id="vote_num">0</span>共<strong id="vote_count">0</strong>人打分</div>
+								<div class="num_star" id="num_star_tag"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_big_n.png" /><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_big_n.png" /><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_big_n.png" /><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_big_n.png" /><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_big_n.png" /><span id="num_star_msg">不推荐</span><a href="#do_comm"> 我要打分</a></div>
+								<div class="sco_box">
+									<p><span class="txt_sco">推荐</span><span class="color_sco"><em class="yel_sco1" id="vote_ssco5" style="width:0%"></em></span><strong id="vote_psco5" style="width:32px;text-align:right;">0%</strong></p>
+									<p><span class="txt_sco">挺好</span><span class="color_sco"><em class="yel_sco2" id="vote_ssco4" style="width:0%"></em></span><strong id="vote_psco4" style="width:32px;text-align:right;">0%</strong></p>
+									<p><span class="txt_sco">还可以</span><span class="color_sco"><em class="yel_sco3" id="vote_ssco3" style="width:0%"></em></span><strong id="vote_psco3" style="width:32px;text-align:right;">0%</strong></p>
+									<p><span class="txt_sco">不推荐</span><span class="color_sco"><em class="yel_sco4" id="vote_ssco2" style="width:0%"></em></span><strong id="vote_psco2" style="width:32px;text-align:right;">0%</strong></p>
+									<p><span class="txt_sco">别看了</span><span class="color_sco"><em class="yel_sco5" id="vote_ssco1" style="width:0%"></em></span><strong id="vote_psco1" style="width:32px;text-align:right;">0%</strong></p>
+								</div>
+								<div id="pst_id"><!--<a href="" class="pst_bg"><span>9.2</span></a>--></div>
+							</div></div>
+							<div class="other_detl">
+								<p class="want_box"><a href="#" onclick="voting(33);return false;">想看</a><span class="b_gray"><span id="xiangkan_span">0</span>人</span></p>
+								<p class="ed_box"><a href="#" onclick="voting(34);return false;">看过</a><span class="b_gray"><span id="kanguo_span">0</span>人</span></p>
+								<!--左边按钮区域-->
+								<span class="left_btn_box" style="display:none" id="discount_span"><a href="#" class="btn_sizhe" id="discount_a" target="_blank">四折购票</a></span>
+								<span class="left_btn_box" style="display:none" id="online_span">
+<a href="http://v.qq.com/cover/t/tqnbpif4ic97ana.html" class="btn_zaixian" target="_blank">在线观看</a></span>
+								<!--右边按钮区域-->
+								<span class="right_btn_box" id="comment_span"><a href="#do_comm" class="btn_yingping">发表影评</a></span>
+								<span class="right_btn_box b_gray" style="display:none;" id="else_span">暂无视频，去<a href="#" id="soso_a"  target="_blank">搜搜</a>看看</span>
+								<!--分享-->
+								<p class="share_box"><span>分享到</span><a href="javascript::void(0);" onclick="postToWb()" class="wb_share">微博</a></p>
+							</div>
+						</div><!--[if !IE]>|xGv00|eff49d894d94d94efc3bcfa5f22803e0<![endif]--><style>
+	pktitle_a{
+		color: #003399;
+		text-decoration: none;
+	}
+</style>
+<div class="mod_1 pk_box" id="pk_box_id" style="display:none">
+	<div class="hd"><span class="speaks"><a href="#do_comm">我也说几句</a></span><h3>一句话PK</h3><!--<span class="words_bg"><a href="#">一句话影评</a></span>--></div>
+	<div  class="clearfix bd2">
+		<div class="pk_wrap">
+			<div class="left_pk_box">
+				<div class="left_pk">
+					<a href="http://ent.qq.com/d/movie/38/37085/commentlist.shtml#haoping" target="_blank"><span id="left_pk_n" title="点击查看全部好评" alt="点击查看全部好评" style="color: #003399;cursor:pointer;">0篇</span></a>
+					<span id="left_pk_t" class="orange_sc" style="width:0px;"></span>
+				</div>
+			</div>
+			<span class="mid_pk">VS</span>
+			<div class="right_pk_box">
+				<div class="right_pk">
+					<span id="right_pk_t" class="blue_sc" style="width:0px;"></span>
+					<a href="http://ent.qq.com/d/movie/38/37085/commentlist.shtml#chaping" target="_blank"><span id="right_pk_n" title="点击查看全部差评" alt="点击查看全部差评" style="color: #003399;cursor:pointer;">0篇</span></a>
+				</div>
+			</div>
+		</div>
+		<div class="list_pk" id="l_pk">
+			<div class="left_list_pk">
+				<p class="bor_t" id="left_list_0" style="word-break:break-all;position:relative; z-index:999;"></p>
+				<p class="" id="left_list_1" style="word-break:break-all;"></p>
+			</div>
+			<div class="right_list_pk">
+				<p class="bor_t" id="right_list_0" style="word-break:break-all;position:relative; z-index:999;"></p>
+				<p class="" id="right_list_1" style="word-break:break-all;"></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script language="javascript" src="//mat1.gtimg.com/www/js/datalib/ui.v1.js"></script>
+<script language="javascript" src="//mat1.gtimg.com/www/js/datalib/user/user1.0.js"></script> 
+<script>
+	function create_pk(pk, libid, siteid, url)
+	{
+		var qq = 0;
+		if (typeof(info) != 'undefined' && typeof(info.userinfo) != 'undefined') {
+			qq = info.userinfo.uin;
+		}
+
+		if (typeof(pk) == 'undefined' || pk.left.dp.length < 2 || pk.right.dp.length < 2) {
+			return;
+		}
+
+		function pktitle(dirc, max, maxpx)
+		{
+			var width = Math.ceil(maxpx * pk[dirc].total/max);
+			if (maxpx / width > 20) {
+				width = Math.ceil(maxpx/20);
+			}
+			document.getElementById(dirc + '_pk_n').innerHTML = pk[dirc].total + '篇';
+			document.getElementById(dirc + '_pk_t').style.width =  width + 'px';
+		}
+
+		function pkdp(dirc)
+		{
+			var da = pk[dirc];
+			for (var i = 0; i < 2 && i < da.dp.length; i++) {
+				var dp = da.dp[i];
+				var id = dirc + '_num_' + i;
+				var link = ' <b><span> <img src="//mat1.gtimg.com/ent/datalib/2011/movie/open.gif"></span></b>';
+				var link2 = '<a href="' + url + '?postid=' + dp.postid + '" target="_blank">[详细]</a>';
+				var html = cnStrTruncate(dp.content, 76, '...', link);				
+				if(html.indexOf("img") !=-1){
+					html = '<a class="qzk" href="#" onclick=\'fndishidden1(this' + ',"'+dirc + '_list_' +i+1+'");return false\' title="张开">' + cnStrTruncate(dp.content, 76, '...', link) +
+					'</a>';
+				}
+				//alert(id);
+
+				var hs = '<em id="'+ dirc + '_list_' + i+1+'" style="display:block"><a target="_blank" href="' + dp.url + '" alt="' + dp.name + '" title="' + dp.name + '">' + 
+					 cnStrTruncate(dp.name, 8, '..', '') + ':</a>' + html +
+					'<span class="tj_box"><span id="' + id + '">' + dp.recom + ' </span><span id="' + id + '_a' + 
+					'"><a href="#" onclick=\'recommend('+ siteid + ',' + libid + ',"' + dp.postid + '",' + qq + 
+					',"' + id + '");return false;\'>推荐</a></span></span></em>' + '<em id="'+ dirc + '_list_' + i+2+'" class="pk_all" style="display:none"><a target="_blank" href="' + dp.url + '" alt="' + dp.name + '" title="' + dp.name + '">' + 
+					 cnStrTruncate(dp.name, 8, '..', '') + ':</a><a class="qzk" href="#" onclick=\'fnundishidden1(this' + ',"'+dirc + '_list_' +i+1+'");return false\' title="收起">' + cnStrTruncate(dp.content, 232, '...', link2) +
+					'</a> <b onclick=\'fnundishidden1(this' + ',"'+dirc + '_list_' +i+1+'");\'><span><a href="#" onclick="return false" title="收起" class=""><img src="//mat1.gtimg.com/ent/datalib/2011/movie/close.gif"></a></span></b><span class="tj_box"><span id="' + id + 'T' + '">' + dp.recom + ' </span><span id="' + id + '_b' + 
+					'"><a href="#" onclick=\'recommend('+ siteid + ',' + libid + ',"' + dp.postid + '",' + qq + 
+					',"' + id + '");return false;\'>推荐</a></span></span></em>';
+				var elm = document.getElementById(dirc + '_list_' + i); 
+				elm.innerHTML = hs ;
+				// elm.style.display = '';
+			}
+		}
+
+		function pkmaxpx(n)
+		{
+			var max = 200;
+			if (n > 100) {
+				return max;
+			}
+			var px = Math.ceil(max * Math.sqrt(n) * 10 / 100);
+			if (px < 5)
+				return 5;
+			return px;
+		}
+
+		pk['left'].total = parseInt(pk['left'].total);
+		pk['right'].total = parseInt(pk['right'].total);
+		var max = (function(a, b) { return a > b ? a : b;})(pk['left'].total, pk['right'].total);
+		var maxpx = pkmaxpx(max);
+		pktitle('left', max, maxpx);
+		pktitle('right', max, maxpx);
+		pkdp('left');
+		pkdp('right');
+		document.getElementById('pk_box_id').style.display='';
+	}
+
+	function recommend(siteid, libid, postid, qq, id)
+	{
+		DBUI.getScript("http://app.data.qq.com/?umod=commentsoutlet&act=recommend&siteid="+siteid+"&libid="+libid+"&postid="+postid+"&qq="+qq,function(){});
+		var elm = document.getElementById(id);
+		var num = elm.innerHTML;
+		elm.innerHTML = parseInt(num) + 1 + ' ';
+		elm = document.getElementById(id + '_a');
+		elm.innerHTML = '<span style="color:#666666;">推荐</span>';
+		
+		var elmB = document.getElementById(id + 'T');
+		var numB = elmB.innerHTML;
+		elmB.innerHTML = parseInt(numB) + 1 + ' ';		
+		elmB = document.getElementById(id + '_b');
+		elmB.innerHTML = '<span style="color:#666666;">推荐</span>';
+	}
+
+	function cnStrTruncate(str, maxwidth, ext, exterurl)
+	{
+		var strwidth = function(s) { return s.replace(/[\x00-\xff]/g, '').length + s.length; };
+
+		if (maxwidth >= strwidth(str))
+			return str;
+		if ((maxwidth -= strwidth(ext)) < 0)
+			return ext;
+		var off = 0, sw = 0, len = 0;
+		while (off < str.length) {
+			len = Math.ceil((maxwidth - sw)/2);
+			sw += strwidth(str.substr(off, len));
+			if (sw >= maxwidth) {
+				if (sw > maxwidth)
+					len--;
+				break;
+			}
+			off += len;
+		}
+		ext += exterurl;
+		return str.substr(0, off + len) + ext;
+	}
+	DBUI.getScript("http://app.data.qq.com/?umod=dianping&act=pk&siteid=2&libid=58&dataid=37085", 
+		function() {
+			if (typeof(dianPingPKInfo) == 'undefined')
+				return;
+			create_pk(dianPingPKInfo,58, 2, 'http://ent.qq.com/d/movie/38/37085/comment.shtml');
+	});
+</script><!--[if !IE]>|xGv00|5f71678786250d38150b6332f46163eb<![endif]--><div class="mod_1 jqjs">
+							<div class="hd"><h3><a style="text-decoration: none; color: rgb(0, 0, 0);" onmouseover="this.style.color='#000000'" name="brief_desc">剧情介绍</a></h3></div>
+							<div class="bd dianping" >
+							<div id="init_d" style="display:block">
+　　电影监制杜惠彰(杜汶泽 饰)，在电影圈混了多年仍是寂寂无名，“捞极唔掂”的他莫讲话要有资金开拍新片，甚至连付给大律师前妻(田蕊妮 饰)的赡养费都要一拖再拖。前妻鄙视他，但难得乖女仍当他是偶像，更说希望能在电视上看到他接受访问。為了...  
+<div class="zhankai" onclick="fndishidden1(this,'init_d')"><span><a href="#" class="zk" onclick="return false">展开↓</a></span></div></div><div class="user_comm_cnt" style="display:none"><p> 　　电影监制杜惠彰(杜汶泽 饰)，在电影圈混了多年仍是寂寂无名，“捞极唔掂”的他莫讲话要有资金开拍新片，甚至连付给大律师前妻(田蕊妮 饰)的赡养费都要一拖再拖。前妻鄙视他，但难得乖女仍当他是偶像，更说希望能在电视上看到他接受访问。為了达成女儿愿望，杜惠彰势要开拍新戏来个谷底反弹！<br />
+　　经好友雷永成(雷宇扬 饰)介绍下，杜惠彰结识内地投资人暴龙(郑中基 饰)，他是广西黑社会老大，最爱吃野味及有另类性癖好。杜与雷為了得到开拍新电影的机会，為电影作出最终极最壮烈牺牲……最后他们得到暴龙的鼎力投资，但暴龙指定找其儿时偶像邵音音，复出重拍经典春宫片，更命名为《官人我又要》。<br />
+　　杜惠彰排除万难邀得邵音音(邵音音 饰)复出，以及因拍摄3D三级片而患上“人体爆炸恐惧症”的叶山豪(叶山豪 饰)担任男主角，更有出名口技了得的“爆炸嘴”口模徐家欣(陈静 饰)瞓身演出。可惜导演黑仔达(邹凯光 饰)死性不改，例牌临时改剧本，不但令製作严重超支，更令谈好了的安全套赞助见财化水！<br />
+　　所谓祸不单行，此时暴龙提出一个无理要求、杜被助理Quin(薛凯琪 饰)告他性骚扰、叶山豪“人体爆炸恐惧症”复发辞演、杜又因拖欠赡养费而被前妻禁止见女儿……几经辛苦把电影拍成，却因暴龙不满而下令烧片，杜面对如此严峻兼疯癲的形势，究竟如何收拾？而他到底又会為电影作出如何壮烈的牺牲呢……　</p>
+<div class="shouqi" onclick="fnundishidden1(this,'init_d')"><a href="#" class="zk" onclick="return false">收起↑</a></div>
+</div>
+ 
+</div>
+</div>
+<script>
+var currDivIndex=100; 
+function fndishidden1(o,id){	
+	var bb= o.parentNode.nextSibling;	
+	if(bb.style.display == "none"){
+		bb.style.display = "block";
+		bb.style.zIndex=currDivIndex;
+		currDivIndex+=1;
+		//alert(bb.style.zIndex);	
+	}
+	else{bb.style.display = "none";}
+	//o.style.visibility = "hidden";
+	
+	document.getElementById(id).style.display = "none";
+	
+	var ppk =document.getElementById("l_pk").getElementsByTagName("em");
+	for(i=1;i<ppk.length;i+=2)
+	{
+		if(ppk[i].style.display == "block"){
+			ppk[i].style.display = "none";
+			
+		}
+		ppk[i-1].style.display = "block";
+		o.parentNode.style.display = "none";
+		//alert();
+		
+	}
+	bb.style.display = "block";
+	
+}
+function fnundishidden1(o,id){
+	var bb= o.parentNode;
+	if(bb.style.display == "block"){
+	bb.style.display = "none";}
+	else {bb.style.display = "none";}
+	bb.previousSibling.style.visibility = "visible";
+	
+	document.getElementById(id).style.display = "block";
+}
+</script><!--[if !IE]>|xGv00|ec1e47f90310212c6ddab3c96ae00f17<![endif]--><div class="mod_1 hbjz">
+	<div class="hd"><h3><a href="http://ent.qq.com/d/movie/38/37085/pic.shtml" target="_blank" style="color: #333333;">海报剧照</a><em class="b_gray">(2张)</em></h3><span><a href="http://ent.qq.com/d/movie/38/37085/pic.shtml" target="_blank">更多</a></span></div>
+	<div class="bd">
+				<ul class="list_pics">
+							<li><strong><a href="http://ent.qq.com/mdisppics.htm#did=37085&tid=33&pid=71034" target="_blank"><img src="http://img2.gtimg.com/dbimg/2012/piclib/20120829/14/c65b53383b4620cbb45e99334665e0443.jpg" alt="《低俗喜剧》海报"></a></strong></li>
+			
+							<li><strong><a href="http://ent.qq.com/mdisppics.htm#did=37085&tid=33&pid=71033" target="_blank"><img src="http://img2.gtimg.com/dbimg/2012/piclib/20120829/14/700a5a1e0da60cbe7c47d02e5cd66c0b3.jpg" alt="《低俗喜剧》海报"></a></strong></li>
+			
+				</ul>
+			</div>
+</div><!--[if !IE]>|xGv00|4593db8ff53dd9e34603eeaaa69e44ec<![endif]--><!--预告片和视频-->
+		<div class="mod_1 ygsp">
+	<div class="hd"><h3><a href="http://ent.qq.com/d/movie/38/37085/video.shtml" target="_blank" style="color: #333333;">预告片和视频</a><em class="b_gray"></em></h3><span>
+	<a href="http://ent.qq.com/d/movie/38/37085/video.shtml" target="_blank">更多</a></span></div>
+	<div class="bd">
+		<ul class="list_video">
+		
+						
+					<li><a href="http://v.qq.com/cover/7/7ssgwzpr6du0z9m.html" class="img_wrap" target="_blank">
+						<img src="http://i.gtimg.cn/qqlive/img/jpgcache/files/qqvideo/hori/7/7ssgwzpr6du0z9m_z.jpg"  height="90" alt="[专辑]低俗喜剧[国语版]" onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/video-moren120.jpg'"></a>
+						<a href="http://v.qq.com/cover/7/7ssgwzpr6du0z9m.html" target="_blank" class="title"><span title="[专辑]低俗喜剧[国语版]">[专辑]低俗喜剧[国..</span></a>
+					</li>
+				
+						
+					<li><a href="http://v.qq.com/page/t/0/g/t0012m4l7hg.html" class="img_wrap" target="_blank">
+						<img src="http://vpic.video.qq.com/57741322/t0012m4l7hg_160_90_3.jpg"  height="90" alt="低俗喜剧[国语版]" onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/video-moren120.jpg'"></a>
+						<a href="http://v.qq.com/page/t/0/g/t0012m4l7hg.html" target="_blank" class="title"><span title="低俗喜剧[国语版]">低俗喜剧[国语版]</span></a>
+					</li>
+				
+						
+					<li><a href="http://v.qq.com/page/c/0/g/c0112rcv89g.html" class="img_wrap" target="_blank">
+						<img src="http://vpic.video.qq.com/81961098/c0112rcv89g_160_90_3.jpg"  height="90" alt="低俗喜剧热播" onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/video-moren120.jpg'"></a>
+						<a href="http://v.qq.com/page/c/0/g/c0112rcv89g.html" target="_blank" class="title"><span title="低俗喜剧热播">低俗喜剧热播</span></a>
+					</li>
+				
+						
+					<li><a href="http://v.qq.com/page/p/0/o/p01122mdxlo.html" class="img_wrap" target="_blank">
+						<img src="http://vpic.video.qq.com/10599338/p01122mdxlo_160_90_3.jpg"  height="90" alt="低俗喜剧预热" onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/video-moren120.jpg'"></a>
+						<a href="http://v.qq.com/page/p/0/o/p01122mdxlo.html" target="_blank" class="title"><span title="低俗喜剧预热">低俗喜剧预热</span></a>
+					</li>
+				
+						
+					<li><a href="http://v.qq.com/cover/n/n25yld957up03ed.html" class="img_wrap" target="_blank">
+						<img src="http://i.gtimg.cn/qqlive/img/jpgcache/files/qqvideo/hori/n/n25yld957up03ed_z.jpg"  height="90" alt="[专辑]飞虎出征" onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/video-moren120.jpg'"></a>
+						<a href="http://v.qq.com/cover/n/n25yld957up03ed.html" target="_blank" class="title"><span title="[专辑]飞虎出征">[专辑]飞虎出征</span></a>
+					</li>
+				
+						
+		</ul>
+	</div>
+</div><!--预告片和视频--><!--[if !IE]>|xGv00|7b6bf0a166faf893417a4cbea2e5ad35<![endif]--><!-- 相关资讯-->
+<div class="mod_1 xgzx">
+	<div class="hd"><h3><a href="http://ent.qq.com/d/movie/38/37085/news.shtml" target="_blank" style="color: #333333;">相关资讯</a></h3><span><a href="http://ent.qq.com/d/movie/38/37085/news.shtml " target="_blank">更多</a></span></div>
+	<div class="bd">
+		<ul class="list_news">
+							<li>·<a href="http://ent.qq.com/a/20131101/007446.htm" target="_blank" title="《低俗喜剧》女星陈静复出 原致歉担心导演弃用">《低俗喜剧》女星陈静复出 原致歉担心导演弃用</a><span>11月01日</span></li>
+							<li>·<a href="http://ent.qq.com/a/20130304/000008.htm" target="_blank" title="《低俗喜剧》办慈善场谢票 彭浩翔：多谢来破处">《低俗喜剧》办慈善场谢票 彭浩翔：多谢来破处</a><span>03月04日</span></li>
+							<li>·<a href="http://ent.qq.com/a/20130301/000313.htm" target="_blank" title="《低俗喜剧》的影评获得“艺评奖”引发风波">《低俗喜剧》的影评获得“艺评奖”引发风波</a><span>03月01日</span></li>
+							<li>·<a href="http://ent.qq.com/a/20120822/000706.htm" target="_blank" title="香港票房：《低俗喜剧》夺冠军《听风者》遇冷">香港票房：《低俗喜剧》夺冠军《听风者》遇冷</a><span>08月22日</span></li>
+							<li>·<a href="http://ent.qq.com/a/20120428/000144.htm" target="_blank" title="传彭浩翔新片影射某女星 《低俗喜剧》曝圈内事">传彭浩翔新片影射某女星 《低俗喜剧》曝圈内事</a><span>04月28日</span></li>
+					</ul>	
+</div>
+</div>
+<!--相关资讯--><!--[if !IE]>|xGv00|3ed7bc92fd3087ad90c24536726f524f<![endif]--><script language="javascript" src="//mat1.gtimg.com/ent/js/datalib/2011/comments/dl_rendercommV3.js"></script>
+<div class="mod_1 jhdp">
+							<div class="hd"><h3><a href="http://ent.qq.com/d/movie/38/37085/commentlist.shtml" target="_blank" style="color: #333333;">网友点评</a>
+<!--|<a href="#none" id="one2" onclick="setTab('one',2,2);">一句话点评</a--></h3></div>
+							<div class="bd" id="con_one_1">
+								<p class="fenlei_box">
+									<span>按评分看：</span><em class="bor_em" style="border-left:0;"><a href="#"  id="star0"  class="select" id="user_comment">全部</a></em><em class="bor_em"><a href="#" id="star5" onclick="DL_Comment.condition=5;DL_Comment.getcomms(1);return false;">好评</a></em><em class="bor_em"><a href="#"  id="star4"  onclick="DL_Comment.condition=4;DL_Comment.getcomms(1);return false;">中评</a></em><em class="bor_em"><a href="#"  id="star3" onclick="DL_Comment.condition=3;DL_Comment.getcomms(1);return false;">差评</a></em><em class="bor_em"><a href="#"  id="star1" onclick="DL_Comment.condition=1;DL_Comment.getcomms(1);return false;">评审团</a></em><em class="bor_em"><a href="#" onclick="DL_Comment.condition=6;DL_Comment.getcomms(1);return false;">豆瓣影评</a></em>
+								</p>
+<div class="userlist cl" id="s_cl">
+<span style="text-align:center;display:none;" id="nocomm">暂无相关影评，快来抢发第一篇吧！</span>
+        <div class="listitem cl">
+        <div class="userpic"><a href="http://app.data.qq.com/?umod=user&uid=173751002&t=1&c=2" target="_blank"><img src="http://qlogo2.store.qq.com/qzone/105596867/105596867/50" alt="暴龙传说" width="50" height="50" /></a>
+            <p><a href="http://app.data.qq.com/?umod=user&uid=173751002&t=1&c=2" target="_blank">暴龙传..</a><br />点评:1<br />精华:0</p>
+        </div>
+        <div class="usercon">
+	<div class="usercon_t">
+	    <div class="left"><a href="http://ent.qq.com/d/movie/38/37085/comment.shtml?postid=2012_26185_37085" target="_blank" >金马影帝必属你</a></div>
+	    <div class="koubei" id="ststars_2012_26185_37085"></div>
+	</div>
+	<div class="dianping"> <p style="word-wrap:break-word;">知道为什么要用公筷吗？看了就知了</p>
+                </div>
+	<div class="dianping_b">
+	        <span class="time_dp">2012-11-23 19:07:53</span>
+	        <span class="links_dp"><a href="http://ent.qq.com/d/movie/38/37085/comment.shtml?postid=2012_26185_37085" target="_blank">回复</a><span class="b_gray">(0)</span> | <a href="#" onclick='phonyicr("recnum_2012_26185_37085");takeicr(2,58,"2012_26185_37085",105596867,"2012_26185_37085");return false;' >推荐</a><span class="b_gray" id="recnum_2012_26185_37085" val="0">(0)</span> | <a href="#" onclick='commPostToWb_2("","http://ent.qq.com/d/movie/38/37085/comment.shtml?postid=2012_26185_37085", "","知道为什么要用公筷吗？看了就知了")'>转播</a></span>
+	</div>
+	<!--dianping_b end--> 
+        </div>
+        <!--usercon end-->					
+    </div>
+    <script>
+var starsdiv = document.getElementById("ststars_2012_26185_37085");
+starsdiv.innerHTML = renderstar(10);
+</script>
+        <div class="listitem cl">
+        <div class="userpic"><a href="http://app.data.qq.com/?umod=user&uid=141307174&t=1&c=2" target="_blank"><img src="http://qlogo2.store.qq.com/qzone/405993944/405993944/50" alt="飛" width="50" height="50" /></a>
+            <p><a href="http://app.data.qq.com/?umod=user&uid=141307174&t=1&c=2" target="_blank">飛</a><br />点评:1<br />精华:0</p>
+        </div>
+        <div class="usercon">
+	<div class="usercon_t">
+	    <div class="left"><a href="http://ent.qq.com/d/movie/38/37085/comment.shtml?postid=2012_26174_37085" target="_blank" >风格强烈，水准之作</a></div>
+	    <div class="koubei" id="ststars_2012_26174_37085"></div>
+	</div>
+	<div class="dianping"> <p style="word-wrap:break-word;">这部电影的基调在那里，所以一众演员的表演比平时稍显浮夸，但是对于这部片子确是恰如其分。不光影射了很多娱乐界、电影圈的内幕，中间还有很多咋看好夸张却不突兀的桥段。片中无裸露，但是语言很生活，内地是绝不可能上映，所以上网搜吧！个人观影认..<a href="http://ent.qq.com/d/movie/38/37085/comment.shtml?postid=2012_26174_37085" target="_blank">[详细]</a></p>
+                </div>
+	<div class="dianping_b">
+	        <span class="time_dp">2012-11-23 15:18:42</span>
+	        <span class="links_dp"><a href="http://ent.qq.com/d/movie/38/37085/comment.shtml?postid=2012_26174_37085" target="_blank">回复</a><span class="b_gray">(0)</span> | <a href="#" onclick='phonyicr("recnum_2012_26174_37085");takeicr(2,58,"2012_26174_37085",405993944,"2012_26174_37085");return false;' >推荐</a><span class="b_gray" id="recnum_2012_26174_37085" val="0">(0)</span> | <a href="#" onclick='commPostToWb_2("","http://ent.qq.com/d/movie/38/37085/comment.shtml?postid=2012_26174_37085", "","这部电影的基调在那里，所以一众演员的表演比平时稍显浮夸，但是对于这部片子确是恰如其分。不光影射了很多娱乐界、电影圈的内幕，中间还有很多咋看好夸张却不突兀的桥段。片中无裸露，但是语言很生活，内地是绝不可能上映，所以上网搜吧！个人观影认为杜汶泽有希望得到主、配两个金马奖，预祝成功！")'>转播</a></span>
+	</div>
+	<!--dianping_b end--> 
+        </div>
+        <!--usercon end-->					
+    </div>
+    <script>
+var starsdiv = document.getElementById("ststars_2012_26174_37085");
+starsdiv.innerHTML = renderstar(10);
+</script>
+							
+</div>
+<div class="paging" id="staticpage"></div>
+</div>
+<script>
+DL_Comment.tctotal=2;
+
+DL_Comment.firstpgoffset=9;
+
+DL_Comment.siteid=2;
+DL_Comment.libid=58;
+DL_Comment.dataid=37085;
+DL_Comment.getDianpingCount();
+DL_Comment.condition=0;
+DL_Comment.getcomms(1);
+
+document.getElementById("staticpage").innerHTML = DL_Comment.renderpage(1);
+
+</script>
+
+<div class="bd" id="con_one_2" style="display:none;"></div>
+
+</div><!--[if !IE]>|xGv00|e0a241530092b342201ac55642060699<![endif]--><div class="mod_1 fbyp">
+							<div class="hd"><h3><a name="do_comm" onmouseover="this.style.color='#000000'" style="text-decoration: none;color:#000000;">发表影评</a></h3></div>
+							<div class="bd">
+								<p class="login_p" id="comment_login_p"></p>
+
+<iframe id="ifr_comment_ent" name="ifr_comment_ent" style="display:none;"></iframe>
+<form id="comm" name="comm" action="http://app.data.qq.com/?umod=comments&act=inlet&siteid=2&libid=58&dataid=37085" target="ifr_comment_ent" method="post" enctype="multipart/form-data" rows="10">
+
+<div class="table_box">
+									<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tablecomm">
+									<tr>
+										<td width="75" height="35" class="sc_td">我要收藏：</td>
+										<td class="in_td"><input type="radio" id="c_collect" name="c_collect" value=1 align="absmiddle" onclick="document.getElementById('col_req').style.display='none'" /><label for="In1">想看</label><input type="radio" id="c_collect" name="c_collect" value=3 onclick="document.getElementById('col_req').style.display='none'" /><label for="In2">看过</label><p class="zishu" style="margin-top:0; margin-left:20px;display:none;" id="col_req">请您选择收藏状态</p></td>
+									</tr>
+									<tr>
+										<td height="32">电影评分：</td>
+										<td><div style=" margin-left:-10px; overflow:hidden; zoom:1; float:left;"><p class="starWrapper" onmouseover="rate(this,event)" onmouseout="backrate(this,event)" id='m_grade'><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_mid_n.png" title="糟糕"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_mid_n.png" title="较差"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_mid_n.png" title="还行"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_mid_n.png" title="挺好"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_mid_n.png" title="很棒">
+</p><span id="gradeLevel" class="star_name"></span>
+<input id="c_grade" name="c_grade" style="display:none;" /></div>
+<p class="zishu" style="margin-top:0; margin-left:15px;display:none;" id="grd_req">请您打个分吧</p></td>
+									</tr>
+									<tr>
+										<td class="pd_td1">点评标题：</td>
+										<td height="44" style="position:relative;"><input  type="text" name='c_title' id='c_title' class="dptitle" style="width:357px;float: left; margin-right: 15px;" onFocus="document.getElementById('til_req').style.display='none';check_login(1);"  oninput="titlelimit(this,20,'til_req')" onpropertychange="titlelimit(this,20,'til_req')" onKeyDown="titlelimit(this,20,'til_req')" onKeyUp="titlelimit(this,20,'til_req')" /><p class="zishu" style="display:none;" id='til_req'>标题过长</p><input id="data_title" name="data_title" value="低俗喜剧" style="display:none;" /></td>
+									</tr>
+									<tr>
+										<td class="pd_td">点评内容：</td>
+										<td height="157"><textarea class="ganshou" name='c_feeling' id='c_feeling' onFocus="document.getElementById('c_zishu').style.display='none';fnfocus(this);check_login(1);" onBlur="fnblur(this);" oninput="textCounter(this,10000,'word_check_10')" onpropertychange="textCounter(this,10000,'word_check_10')" onKeyDown="textCounter(this,10000,'word_check_10')" onKeyUp="textCounter(this,10000,'word_check_10')">快来分享你的观影感受吧</textarea>											<p class="zishu" id="c_zishu" style="display:none;">请输入至少10个字</p>
+											<p class="zishu2">(10-10000汉字，已经输入<span class="red_t" id="word_check_10">0</span>/10000字)</p>
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td class="sub_td">
+											<a href="#" onclick="check_input();return false;" class="btn_yingping">发表影评</a><input type="checkbox" name="c_syncwb" id="c_syncwb" value="syncwb" checked="1" onclick="check_wbsync_enable()"><label for="In3"><span class="tb_span">同步到微博</span><span class="wb_share"></span></label><input type="checkbox" name="c_atzc" id="c_atzc" value="atzc"><label for="In3"><span class="tb_span">@相关主创</span></label></td>
+									</tr>
+								</table>
+								</div>
+<input type="hidden" id='c_qq' name='c_qq' />
+</form>
+							</div>
+						</div>
+
+
+</div>
+
+<!--点评成功-->
+<div id="lightB" style="display:none"></div>
+	<div id="showconB" style="display:none">
+	<div class="con_cen" id="con_cen">
+		<div class="cen_tit"><h3>点评成功</h3></div>
+		<div class="dp_succ" id="dp_succ">
+		<img src="//mat1.gtimg.com/ent/datalib/2011/movie/pl_succ.png" align="absmiddle"> <span></span></div>	
+		<!--/相关-->
+		<div  class="xg_piclist">
+			<h3>其它同类影片推荐：</h3>
+			<ul class="list_pic_2" id="list_pic_xg">				
+			</ul>
+		</div>	
+	</div>
+</div>
+<!--/点评成功-->
+
+<script language="javascript">	
+
+function check_wbsync_enable()
+{
+	var wb = document.getElementById('c_syncwb');
+	var at = document.getElementById('c_atzc');
+
+        if (at.style.display == 'none')
+                return;
+	if (wb.checked) {
+		at.disabled = false;
+	} else {
+		at.disabled = true;
+	}
+}
+
+function checkShowAt(flag)
+{
+	var at = document.getElementById('c_atzc');
+        if (flag) {
+                at.style.display = '';
+        } else {
+                at.style.display = 'none';
+                at.disabled = true;
+                if (at.nextSibling) {
+                        at.nextSibling.style.display = 'none';
+                }
+        }
+}
+DBUI.getScript('http://app.data.qq.com/?umod=comments&act=matchs&libid=58&func=checkShowAt', function() {});
+
+	DBUI.getScript("http://app.data.qq.com/?umod=data&libid=58&t=喜剧|情色", 
+	function() {
+	for(i=0;i<datainfo.length;i++){		
+		var html= '<li><em class="img_box"><a href="http://ent.qq.com/d/movie/'+ Math.ceil(datainfo[i].FID/1000)+'/'+datainfo[i].FID+'" class="img_wrap" target="_blank"><img href="http://www.qq.com/" src="http://img1.gtimg.com/'+datainfo[i].F3.replace('.jpg','5.jpg')+'" alt="'+datainfo[i].F1+'" onerror=\"javascript:this.src=\'http:\/\/mat1.gtimg.com\/ent\/datalib\/2011\/movie\/ent-moren134.jpg\'\" \/></a></em><span  title="'+datainfo[i].F1+'"><a href="http://ent.qq.com/d/movie/'+Math.ceil(datainfo[i].FID/1000)+'/'+datainfo[i].FID+'" class="img_wrap" target="_blank">'+datainfo[i].F1+'</a></span></li>'
+		
+		DBUI.G("list_pic_xg").innerHTML += html;	
+	}		
+	})
+</script><!--[if !IE]>|xGv00|6de7633b637b7fc7fbb37e937f5a229e<![endif]--></div><div class='mode_col_r'><!--ent_ZL_Rectangle_div AD begin...."l=ent_ZL_Rectangle&log=off"--><!-- ent_ZL_Rectangle --><!--ent_ZL_Rectangle AD end --><!--[if !IE]>|xGv00|4481bbfd667cd54e1020e67eed8613fb<![endif]-->
+<div class="mod_2 tjyp" style="display:none">
+        <div class="hd t_userPictit">
+                <span><a href="#" target="_blank" id="entWBTalkTo">对他们说</a></span><h3>主创微博</h3>
+        </div>
+        <div class="bd" id="entWBFamousList"></div>
+</div>
+
+<script type="text/javascript" src="//mat1.gtimg.com/ent/js/datalib/2011/wb/WBFamous.min.js"></script>
+<script>
+        WBFamous.init('低俗喜剧', "http://img1.gtimg.com/ent/d/movie/picinfo/20120711/03/867ccfc63c1ffec7ab4022d76d9f11c3.jpg", 58, 37085, 'cd88589c5ad9419683b0a80e6eea20fd');
+</script><!--[if !IE]>|xGv00|a60cc3d342f7add5cc6f4f84cd02b664<![endif]--><div class="side">
+<!--模块4-->
+<div class="mod_2 tjyp">
+	<div class="hd"><h3>可能感兴趣的影片</h3></div>
+	<div class="bd">
+		<ul class="list_pic_2">
+		<li><em class="img_box">
+	<a href="http://ent.qq.com/d/movie/19/18934" class="img_wrap" target="_blank">
+		<img href="http://www.qq.com/" src="http://img2.gtimg.com/dbimg/2011/mainpiclib/20111122/16/3c050f515f2ff570260c2fc4ffd4b4b15.jpg" alt="三傻大闹宝莱坞"  onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/ent-moren134.jpg'"/>
+		<strong class="pic_star"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><strong>9.7</strong>
+			</strong></a></em>
+		<span  title="三傻大闹宝莱坞"><a href="http://ent.qq.com/d/movie/19/18934" class="img_wrap" target="_blank">三傻大闹宝莱...</a></span>
+	
+</li><li><em class="img_box">
+	<a href="http://ent.qq.com/d/movie/36/35761" class="img_wrap" target="_blank">
+		<img href="http://www.qq.com/" src="http://img2.gtimg.com/dbimg/2011/mainpiclib/20111223/17/f8b0745936a1f078e739bba6b0d166945.jpg" alt="新天生一对"  onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/ent-moren134.jpg'"/>
+		<strong class="pic_star"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><strong>9.5</strong>
+			</strong></a></em>
+		<span  title="新天生一对"><a href="http://ent.qq.com/d/movie/36/35761" class="img_wrap" target="_blank">新天生一对</a></span>
+	
+</li><li><em class="img_box">
+	<a href="http://ent.qq.com/d/movie/29/28772" class="img_wrap" target="_blank">
+		<img href="http://www.qq.com/" src="http://img2.gtimg.com/ent/d/movie/picinfo/20110402/05/6ca178f527d9df2495e31c267e3041f15.jpg" alt="单身男女"  onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/ent-moren134.jpg'"/>
+		<strong class="pic_star"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><strong>8.6</strong>
+			</strong></a></em>
+		<span  title="单身男女"><a href="http://ent.qq.com/d/movie/29/28772" class="img_wrap" target="_blank">单身男女</a></span>
+	
+</li><li><em class="img_box">
+	<a href="http://ent.qq.com/d/movie/36/35911" class="img_wrap" target="_blank">
+		<img href="http://www.qq.com/" src="http://img2.gtimg.com/dbimg/2012/mainpiclib/20120302/14/ad57859a6822d5e8e7b9d2d4ebaae7365.jpg" alt="春娇与志明"  onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/ent-moren134.jpg'"/>
+		<strong class="pic_star"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><strong>9.2</strong>
+			</strong></a></em>
+		<span  title="春娇与志明"><a href="http://ent.qq.com/d/movie/36/35911" class="img_wrap" target="_blank">春娇与志明</a></span>
+	
+</li>		</ul>
+	</div>
+</div>
+<!--模块4--><!--[if !IE]>|xGv00|cea3e34a329837d1445a73e81a05e909<![endif]--><!--模块4-->
+<div class="mod_2 tjyp tjyp_2">
+	<div class="hd"><h3>相关主创影片</h3></div>
+	<div class="bd">
+		<ul class="list_pic_2">
+		<li><em class="img_box">
+	<a href="http://ent.qq.com/d/movie/3/2312" class="img_wrap" target="_blank">
+		<img src="http://img2.gtimg.com/ent/d/movie/picinfo/20110401/19/37f7ea809261839a1e348710c30761035.jpg"  alt="大丈夫"  onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/ent-moren134.jpg'">
+			<strong class="pic_star"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><strong>8.8</strong></strong></a></em>
+		<span  title="大丈夫"><a href="http://ent.qq.com/d/movie/3/2312" class="img_wrap" target="_blank">大丈夫</a></span>
+	
+</li><li><em class="img_box">
+	<a href="http://ent.qq.com/d/movie/2/1111" class="img_wrap" target="_blank">
+		<img src="http://img2.gtimg.com/ent/d/movie/picinfo/20110401/18/2a4986f297e62d730daba1b473af0dd75.jpg"  alt="黑道风云"  onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/ent-moren134.jpg'">
+			<strong class="pic_star"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_n.png"><strong>7.0</strong></strong></a></em>
+		<span  title="黑道风云"><a href="http://ent.qq.com/d/movie/2/1111" class="img_wrap" target="_blank">黑道风云</a></span>
+	
+</li><li><em class="img_box">
+	<a href="http://ent.qq.com/d/movie/1/539" class="img_wrap" target="_blank">
+		<img src="http://img2.gtimg.com/ent/d/movie/picinfo/20110401/18/aa05250e10cd4da8e1749e8d7d4d519b5.jpg"  alt="尸气逼人"  onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/ent-moren134.jpg'">
+			<strong class="pic_star"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_n.png"><strong>6.2</strong></strong></a></em>
+		<span  title="尸气逼人"><a href="http://ent.qq.com/d/movie/1/539" class="img_wrap" target="_blank">尸气逼人</a></span>
+	
+</li><li><em class="img_box">
+	<a href="http://ent.qq.com/d/movie/1/533" class="img_wrap" target="_blank">
+		<img src="http://img2.gtimg.com/ent/d/movie/picinfo/20110401/18/b613abbab3a21f8e0cbcfff42ff733b95.jpg"  alt="身骄肉贵"  onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/ent-moren134.jpg'">
+			<strong class="pic_star"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_n.png"><strong>7.1</strong></strong></a></em>
+		<span  title="身骄肉贵"><a href="http://ent.qq.com/d/movie/1/533" class="img_wrap" target="_blank">身骄肉贵</a></span>
+	
+</li>		</ul>
+	</div>
+</div>
+<!--模块4-->
+
+<script language="javascript" src="//mat1.gtimg.com/www/js/datalib/ui.v1.js"></script>
+<script language="javascript" src="//mat1.gtimg.com/www/js/datalib/user/user1.0.js"></script>
+<script>
+
+// DBUI.G('pst_id').innerHTML  = '<a href="#nome" class="pst_bg"><span>9.2</span></a>';
+
+DBUI.getScript("http://app.data.qq.com/?umod=vote&act=get&libid=58&dataid=37085",
+	function() 
+	{
+		if (voteInfo == undefined || voteInfo.res != 0 || voteInfo.vote.count == 0) {
+			return;
+		}
+
+		function vote_nums(votes, count)
+		{
+			var ret = 0;
+			for (var i = 0; i < 5; i++) {
+				ret += 2 * (i + 1) * votes[i];
+			}
+			
+			ret = ret / count;
+			return ret.toFixed(1);
+		}
+		
+		var p = vote_nums(voteInfo.vote.data, voteInfo.vote.count);
+		if (p > 8) {
+			DBUI.G("num_star_msg").innerHTML = '推荐';
+		} else if (p > 6) {
+			DBUI.G("num_star_msg").innerHTML = '挺好';
+		} else if (p > 4) {
+			DBUI.G("num_star_msg").innerHTML = '还可以';
+		} else if (p > 2) {
+			DBUI.G("num_star_msg").innerHTML = '不推荐';
+		} else {
+			DBUI.G("num_star_msg").innerHTML = '别看了';
+		}
+		
+		DBUI.G("vote_num").innerHTML = p;
+		DBUI.G("vote_count").innerHTML = voteInfo.vote.count;
+		
+		for (var i = 0; i < 5; i++) {
+			var pre = Math.ceil(100 * voteInfo.vote.data[i + 5] / voteInfo.vote.count);
+			DBUI.G("vote_psco" + (i + 1)).innerHTML = pre + "%";
+			DBUI.G("vote_ssco" + (i + 1)).style.width = pre + "%";
+		}
+		
+		var elm = DBUI.G("num_star_tag");
+		var starts = elm.getElementsByTagName('img');
+		for (var i = 0; i < 5; i++) {
+			if (p >= 2) {
+				starts[i].src = "//mat1.gtimg.com/ent/datalib/2011/movie/star_big.png";
+			} else if (p > 0) {
+				starts[i].src = "//mat1.gtimg.com/ent/datalib/2011/movie/star_big_m.png";
+			} else {
+				starts[i].src = "//mat1.gtimg.com/ent/datalib/2011/movie/star_big_n.png";
+			}
+			p -= 2;
+		}
+
+		if (voteInfo.vote.pstc != undefined && voteInfo.vote.pstc > 0) {
+			var p = vote_nums(voteInfo.vote.pstda, voteInfo.vote.pstc);
+			if (p >= 10) {
+				p = 10;
+			}
+			
+			var html = '<p class="pst_bg"><a href="' + 'http://ent.qq.com/d/movie/' + Math.ceil(37085/1000) + '/' + 37085 + '/commentlist.shtml#pst"  target="_blank" alt="点击查看详细" title="点击查看详细"><span>' + p + '</span></a><p>';
+			DBUI.G('pst_id').innerHTML = html;
+DBUI.G('right_detlbg').className = "right_detlbg";
+		}
+	});
+
+var g_db_mb=new Image(1,1);
+var db_sop="movie_product";
+function postToWb(){
+g_db_mb.src="http://btrace.qq.com/collect?sIp=&iQQ=&sBiz=&sOp=" + db_sop + "&iSta=&iTy=457&iFlow=&_d=" + Math.random();//上报boss
+
+	var con = "我在#腾讯网娱乐库#看到一部电影："+"低俗喜剧"+"，我很喜欢，希望你也喜欢~";
+	var _t = encodeURIComponent(con);
+	var _url = encodeURIComponent(document.location.href);
+	var _appkey = encodeURI("cd88589c5ad9419683b0a80e6eea20fd");//你从腾讯获得的appkey
+	var _pic = encodeURI("http://img2.gtimg.com//ent/d/movie/picinfo/20120711/03/867ccfc63c1ffec7ab4022d76d9f11c32.jpg");
+	var _site = encodeURI('http://www.qq.com');//你的网站地址
+	var _u = 'http://v.t.qq.com/share/share.php?title='+_t+'&url='+_url+'&appkey='+_appkey+'&site='+_site+'&pic='+_pic;
+	window.open( _u,'转播到腾讯微博', 'width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no' );
+}
+
+DBUI.getScript("http://app.data.qq.com/?umod=voting&act=get&field=F33&libid=58&dataid=37085",
+    function()
+    {
+        if (votingInfo.res == 0&&votingInfo.vote.count>0)
+        {
+            DBUI.G("xiangkan_span").innerHTML = votingInfo.vote.count;
+
+        }
+votingInfo=undefined;
+ DBUI.getScript("http://app.data.qq.com/?umod=voting&act=get&field=F34&libid=58&dataid=37085",
+    function()
+    {
+        if (votingInfo.res == 0&&votingInfo.vote.count>0)
+        {
+            DBUI.G("kanguo_span").innerHTML = votingInfo.vote.count;
+
+        }
+});
+});
+
+var g_user_vote=new Image(1,1);
+var g_user_rec=new Image(1,1);
+
+var user_vote_sop="ent_vote";
+var user_rec_sop="ent_rec";
+
+function voting(id)
+{g_user_vote.src="http://btrace.qq.com/collect?sIp=&iQQ=&sBiz=&sOp=" + user_vote_sop + "&iSta=&iTy=460&iFlow=&_d=" + Math.random();
+    DBUI.getScript("http://app.data.qq.com/?umod=voting&act=post&field=F"+id+"&libid=58&dataid=37085",
+    function()
+    {
+    if (votingInfo.res == 0)
+    {
+        if (id == 33)
+        {
+            DBUI.G("xiangkan_span").innerHTML = parseInt(DBUI.G("xiangkan_span").innerHTML)+1;
+        }
+        else
+        {
+            DBUI.G("kanguo_span").innerHTML = parseInt(DBUI.G("kanguo_span").innerHTML)+1;
+        }
+
+    }
+    else if(votingInfo.res == 2)
+        {
+            alert('您操作太频繁了，稍微休息一下吧：）');
+        }
+
+
+    });
+}
+</script>
+
+<script type="text/javascript" language="javascript" src="/d/movie/movielist.js"></script>
+<script type="text/javascript">
+function judgeDiscount()
+{
+var f=0;//0表示没有折扣电影票，1表示有。
+if (typeof(movielist) != 'undefined' && movielist)
+{
+for(var i=0;i<movielist.length;i++)
+{
+if (movielist[i].moviename=='低俗喜剧')
+{
+	f=1;
+	break;
+}
+}
+}
+return f;
+}
+
+var online_flag=judgeDiscount();
+if (online_flag==1)
+{
+if (1=='1')
+{
+DBUI.G("discount_a").href="http://piao.qq.com/dianying/movie_detail.html?movie_name="+encodeURIComponent('低俗喜剧')+"&pvsrc=1301";
+DBUI.G("discount_span").style.left='240px';
+DBUI.G("online_span").style.left='353px';
+DBUI.G("comment_span").style.left='455px';
+DBUI.G("online_span").style.display='block';
+DBUI.G("discount_span").style.display='block';
+}
+else
+{
+DBUI.G("discount_span").style.display='block';
+DBUI.G("discount_a").href="http://piao.qq.com/dianying/movie_detail.html?movie_name="+encodeURIComponent('低俗喜剧')+"&pvsrc=1301";
+}
+}
+else
+{
+if (1=='1')
+{
+DBUI.G("online_span").style.display='block';
+}
+else
+{
+DBUI.G("soso_a").href="http://video.soso.com/search/?cid=w.q.in.sb.web&ie=utf8&w="+encodeURIComponent('低俗喜剧');
+DBUI.G("comment_span").className='left_btn_box';
+DBUI.G("else_span").style.display='block';
+}
+}
+
+</script>
+<script language="javascript">
+function check_login(n)
+{
+    if(typeof(info.userinfo)=='undefined')
+    {
+        if(n == 1)
+        {openLogin(1);return;}
+        alert('请先登录~');
+        return false;
+    }
+    else
+    {
+        if(info.userinfo)
+        {
+            document.getElementById("c_qq").value = info.userinfo.uin;
+            return true;
+        }
+        else
+        {
+            if(n == 1)
+                {openLogin(1);return;}
+
+            alert('请先登录~');
+            return false;
+        }
+    }
+}
+
+function check_input()
+{
+    var login = check_login(2);
+    if(login == false)
+        return false;
+    var testflag = 0;
+    var t=document.getElementById('c_title');
+    if(t.value.length > 25)
+    {
+                document.getElementById('til_req').style.display = 'block';
+	testflag = 1;
+    }
+
+                var g=document.getElementById('c_grade');
+	if(g.value == 0)
+	{
+	    document.getElementById('grd_req').style.display = 'inline';
+	    testflag = 1;
+	}
+
+	var collect=document.getElementsByName('c_collect');
+	var ischecked =false;
+	var i=0;
+	for(i=0;i<collect.length;i++)
+	{
+	    if(collect[i].checked)
+	   {
+	       ischecked=true;
+	       break;
+	   }
+	}
+
+	if(!ischecked)
+	{
+	    document.getElementById('col_req').style.display='block';
+	    testflag = 1;
+	}
+
+	var c=document.getElementById('c_feeling');
+                cval = c.value;
+                cval = cval.replace(/^\s+|\s+$/g,"");
+	if(cval =='' || cval =='快来分享你的观影感受吧')
+	{
+	     var lw = document.getElementById('c_zishu');
+	    lw.innerHTML="您还没有写点评哦";
+	    lw.style.display="block";
+		testflag = 1;
+	}
+
+	if(c.value.length<10)
+	{
+	    var lw = document.getElementById('c_zishu');
+		lw.innerHTML="请输入至少10个字";
+		lw.style.display="block";
+		testflag = 1;
+	}
+	else if(c.value.length>10000)
+	{
+	    var lw = document.getElementById('c_zishu');
+	    lw.innerHTML="请输入10000字以内";
+	    lw.style.display="block";
+	    testflag  = 1;
+	}
+
+              if(testflag == 1)
+                      return false;
+
+               var obj=document.getElementById('comm');
+
+               obj.submit();
+	return true;
+}
+
+function add_current(qq)
+{
+	var dydiv = document.getElementById("con_one_2");
+	var stdiv = document.getElementById("con_one_1");
+        var ncdiv = document.getElementById("nocomm");
+	stdiv.style.display = "";
+	dydiv.style.display = 'none';
+        if (ncdiv)
+                ncdiv.style.display = 'none';
+
+	var author = info.userinfo.nick;
+	var contents = document.getElementById('c_feeling');
+	var title = document.getElementById('c_title');
+	if(title.value == '')
+	{
+		var datatitle = document.getElementById('data_title').value;
+		title.value = '《'+datatitle +'》的影评';
+	}
+	var score = document.getElementById('c_grade');
+
+	var stdcl = document.getElementById("s_cl");
+	var con = '';
+	con += '<div class="listitem cl">';
+	con += '<div class="userpic"><a href="http://app.data.qq.com/?umod=user&uid='+info.userinfo.uid+'&t=1&c='+2+'"><img src="http://qlogo2.store.qq.com/qzone/'+info.userinfo.uin+'/'+info.userinfo.uin+'/50" alt="'+author+'" width="50" height="50" />';
+	con += '<p><a href="http://app.data.qq.com/?umod=user&uid='+info.userinfo.uid+'&t=1&c='+2+'">';
+	con += realSlice(author,5);
+	con += '</a>';
+	con += '</div>';
+	con += '<div class="usercon">';
+	con += '<div class="usercon_t">';
+	con += '<div class="left"><b>'+title.value.replace(/[<>]/g,'')+'</b><font color="#D8D8D8">(审核中)</font></div>';
+	con += '<div class="koubei">';
+	con += renderstar(score.value*2);
+	con += '</div>';
+	con += '</div>';
+	var tmpstr=contents.value.replace(/</g,'<').replace(/>/g, '>');
+	if(tmpstr.length > 116)
+	{
+		var tmp1=tmpstr.slice(0,116)+'..';
+		var tmp2=tmpstr.slice(116);
+		con += '<div class="dianping"><p style="word-wrap:break-word;">'+tmp1+'</p></div>';
+	}
+	else
+	{
+		con += '<div class="dianping"><p style="word-wrap:break-word;">'+contents.value.replace(/[<>]/g,'')+'</p></div>';
+	}
+	con += '<div class="dianping_b">';
+	con += '</div>';
+	con += '<!--dianping_b end-->';
+	con += '</div>';
+	con += '<!--usercon end-->';
+	con += '</div>';
+	stdcl.innerHTML = con+stdcl.innerHTML;
+	/*show alert*/
+	DL_Comment.showalert();
+}
+
+function clear_vote()
+{
+	document.getElementById("c_title").value= '';
+	document.getElementById("c_feeling").value= '';
+                document.getElementById('c_grade').value=0;
+                document.getElementById('m_grade').rateFlag = -1;
+	var collect = document.getElementsByName('c_collect');
+	for(i=0;i<collect.length;i++)
+	{
+		collect[i].checked = false;
+	}
+	document.getElementById("m_grade").innerHTML = '<img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_mid_n.png" title="糟糕"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_mid_n.png" title="较差"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_mid_n.png" title="还行"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_mid_n.png" title="挺好"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_mid_n.png" title="很棒">';
+	document.getElementById("gradeLevel").innerHTML = '';
+}
+var g_dbc_mb=new Image(1,1);
+var dbc_sop="movie_comment";
+function commPostToWb(img,url,pname,content){
+g_dbc_mb.src="http://btrace.qq.com/collect?sIp=&iQQ=&sBiz=&sOp=" + dbc_sop + "&iSta=&iTy=457&iFlow=&_d=" + Math.random();//上报boss
+	var con = "#分享点评##"+"低俗喜剧"+"#"+ content;
+var urllen = Math.ceil(url.length/2);
+if (con.length + urllen > 140)
+	con = con.substr(0, 140 - urllen - 3) + '...';
+
+	var _t = encodeURIComponent(con);
+	var _url = encodeURIComponent(url);
+	var _appkey = encodeURI("3eef3dc2a3254c5cb5b2506bc8f9765f");//你从腾讯获得的appkey
+	var _pic = encodeURI("http://img2.gtimg.com"+"/ent/d/movie/picinfo/20120711/03/867ccfc63c1ffec7ab4022d76d9f11c3.jpg");//图片ur
+	var _site = encodeURI('http://www.qq.com');//你的网站地址
+	var _u = 'http://v.t.qq.com/share/share.php?title='+_t+'&url='+_url+'&appkey='+_appkey+'&site='+_site+'&pic='+_pic;
+	window.open( _u,'转播到腾讯微博', 'width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no' );
+}
+
+DBUI.getScript("http://app.data.qq.com/?umod=user&act=asyn&site=2",function()
+{
+var res_html='';
+var comment_login_html='';
+if(info.userinfo)
+{
+comment_login_html += '欢迎您，<a href="http://app.data.qq.com/?umod=user&c=2&uid='+info.userinfo.uid+'" class="red_t" target="_blank">'+info.userinfo.nick+'</a> <a href="#" onclick="ptlogout();return false;">[退出]</a>';
+if (info.userinfo.newmsgcount>0)
+{
+res_html += '欢迎您，<a href="http://app.data.qq.com/?umod=user&c=2&uid='+info.userinfo.uid+'" target="_blank">'+info.userinfo.nick+'</a><em class="msg_bg"><a href="http://app.data.qq.com/?umod=user&c=2&t=3&uid='+info.userinfo.uid+'" target="_blank">'+info.userinfo.newmsgcount+'条</a>未读消息 <a href="#" onclick="ptlogout();return false;">[退出]</a></em><em> | </em><a href="http://support.qq.com/discuss/413_1.shtml" target="_blank">反馈</a>';
+}
+else
+{
+res_html += '欢迎您，<a href="http://app.data.qq.com/?umod=user&c=2&uid='+info.userinfo.uid+'" target="_blank">'+info.userinfo.nick+'</a><em class="msg_bg" style="background-image:none;padding-left:8px"><a href="#" onclick="ptlogout();return false;">[退出]</a></em><em> | </em><a href="http://support.qq.com/discuss/413_1.shtml" target="_blank">反馈</a>';
+}
+}
+else
+{
+res_html+='<em class="msg_bg" style="background-image:none;"><a href="#" onclick="openLogin();return false;">我要登录</a></em><em> | </em><a href="http://support.qq.com/discuss/413_1.shtml" target="_blank">反馈</a>';
+comment_login_html += '您还未登录，请<a href="#" onclick="openLogin(1);return false;" class="red_t">登录</a>';
+}
+
+DBUI.G("login_p").innerHTML = res_html;
+DBUI.G("comment_login_p").innerHTML = comment_login_html;
+    });
+</script><!--[if !IE]>|xGv00|4d2deeeab41d8fc74c7451d74bf3a806<![endif]--><div class="mod_2 ypgz">
+<div class="hd"><h3><a href="#none" class="on" id="two1" onclick="setTab('two',1,2);" style="border-right:1px solid #D8D8D8;">影片关注榜</a><a href="#none" id="two2" onclick="setTab('two',2,2);" style="border-left:1px solid #FFFFFF;">豆瓣口碑榜</a></h3></div><div class="bd" id="con_two_1">
+	<div class="num_1"><a href="http://ent.qq.com/d/movie/6/5443/" class="img_wrap" title="精英部队：大敌当前" target="_blank"><img src="http://img2.gtimg.com//dbimg/2011/mainpiclib/20111118/22/d6b74989b0015f809ac8fe3f170963353.jpg" height="75" alt="精英部队：大敌当前" onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/ent-moren75.jpg'"></a>
+		<p class="tit_num"><span> 9.2</span>
+		<img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_s.png"></p>
+
+			<p><a href="http://ent.qq.com/d/movie/6/5443/" title="精英部队：大敌当前" target="_blank">精英部队：大敌当前</a></p>
+			<p class="b_gray">类型：动作 犯罪   </p>
+			<p class="b_gray">评分人数：29940</p></div>
+<ul class="list_ph">
+				<li><a href="http://ent.qq.com/d/movie/35/34120/" title="功夫熊猫2" target="_blank">功夫熊猫2</a><span><strong>10396</strong>评</span></li>			<li><a href="http://ent.qq.com/d/movie/4/3641/" title="建党伟业" target="_blank">建党伟业</a><span><strong>4763</strong>评</span></li>			<li><a href="http://ent.qq.com/d/movie/35/34124/" title="速度与激情5" target="_blank">速度与激情5</a><span><strong>4743</strong>评</span></li>			<li><a href="http://ent.qq.com/d/movie/35/34904/" title="失恋33天" target="_blank">失恋33天</a><span><strong>4601</strong>评</span></li>			<li><a href="http://ent.qq.com/d/movie/35/34109/" title="加勒比海盗4：惊涛怪浪" target="_blank">加勒比海盗4：惊涛怪浪</a><span><strong>4528</strong>评</span></li>			<li><a href="http://ent.qq.com/d/movie/17/16223/" title="金陵十三钗" target="_blank">金陵十三钗</a><span><strong>3289</strong>评</span></li>			<li><a href="http://ent.qq.com/d/movie/14/13488/" title="哈利·波特与死亡圣器(下)" target="_blank">哈利·波特与死亡圣器(下)</a><span><strong>2299</strong>评</span></li>			<li><a href="http://ent.qq.com/d/movie/19/18934/" title="三傻大闹宝莱坞" target="_blank">三傻大闹宝莱坞</a><span><strong>1740</strong>评</span></li>			<li><a href="http://ent.qq.com/d/movie/36/35196/" title="龙门飞甲" target="_blank">龙门飞甲</a><span><strong>1597</strong>评</span></li>	</ul>
+</div>
+<!--影片关注--><!--[if !IE]>|xGv00|8e5d306a589235dd5a5cb49f0f180b42<![endif]--><div class="bd" id="con_two_2" style="display:none;">
+<div class="num_1"><span class="img_wrap"><img src="" height="75" alt="" onerror="this.src='//mat1.gtimg.com/ent/datalib/2011/movie/ent-moren75.jpg'"/></span><p class="tit_num"><span> </span><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_n.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_n.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_n.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_n.png"><img src="//mat1.gtimg.com/ent/datalib/2011/movie/star_n.png"></p>
+
+<p title=""></p><!--<p class="b_gray">人数：</p>--></div>
+
+<ul class="list_ph"></ul></div></div>
+<!--豆瓣排行榜--><!--[if !IE]>|xGv00|d00234f20811bcfe87e18594ffca5e78<![endif]--><div class="mod_2 djzk">
+	<div class="hd"><h3>大家正在看</h3></div>
+	<div class="bd">
+		<ul class="wbList" id="weibo_scroll01">
+
+					</ul>
+	</div>
+</div>
+<!--大家正在看--><!--[if !IE]>|xGv00|26ef1b4af2ca50d5fdbc36a34bd61512<![endif]--></div></div><script language="javascript" src="//mat1.gtimg.com/ent/js/datalib/2011/alert.js
+" type="text/javascript"></script>
+<style>
+.tcopyright {width:960px;margin:0 auto;padding:8px 0;font-size:12px;line-height:28px;color:#333; text-align:center; overflow:hidden;clear:both;}
+.tcopyright .en{font-family:Arial;}
+.tcopyright a{color:#333;text-decoration: none;}
+.tcopyright a:hover{color:#bd0a01;text-decoration: underline;}
+</style>
+
+<div class="wrapper">
+
+<div id="tcopyright" class="tcopyright">
+<!--ent_ZL_Width2_div AD begin...."l=ent_ZL_Width2&log=off"--><!-- ent_ZL_Width2 --><!--ent_ZL_Width2 AD end --><!--[if !IE]>|xGv00|b5cafb9688585a8b998f15efaa0e3880<![endif]-->
+	<div class="ft">
+		<p><a href="http://www.tencent.com/">关于腾讯</a> | <a href="http://www.tencent.com/index_e.shtml">About Tencent</a> | <a href="http://www.qq.com/contract.shtml">服务条款</a> | <a href="http://www.tencentmind.com/">广告服务</a> | <a href="http://hr.tencent.com/">腾讯招聘</a> | <a href="http://gongyi.qq.com/">腾讯公益</a> | <a href="http://service.qq.com/">客服中心</a> | <a href="http://www.qq.com/map/">网站导航</a></p>
+		<p class="en">Copyright &copy; 1998 - 2012 Tencent. All Rights Reserved <a href="http://www.sznet110.gov.cn/netalarm/index.jsp" target="_blank"><img src="http://img1.qq.com/www/pics/816/816587.gif" align="absmiddle" border="0" hspace="5"></a></p>
+		<p>腾讯公司 <a href="http://www.tencent.com/zh-cn/le/copyrightstatement.shtml" target="_blank">版权所有</a></p>
+	</div>
+</div>
+<script language="javascript" src="//mat1.gtimg.com/ping.js"></script>
+<script language="javascript">
+if(typeof(pgvMain) == 'function')
+{
+pvCurDomain = "data.movie.qq.com";
+pvCurUrl = window.location.href.substring(window.location.href.indexOf(".com") + 4);
+pgvMain();
+}
+</script>
+<!-- START NNR Site Census V5.1 -->
+<!-- COPYRIGHT 2004 Nielsen // Netratings -->
+<script language="JavaScript" type="text/javascript">
+<!--
+var _rsCI="cn-tencent";
+var _rsCG="0";
+var _rsDT=0;
+var _rsDU=0; 
+var _rsDO=0; 
+var _rsX6=0;  
+var _rsSI=escape(window.location);
+var _rsLP=location.protocol.indexOf('https')>-1?'https:':'http:';
+var _rsRP=escape(document.referrer);
+var _rsND=_rsLP+'//secure-cn.imrworldwide.com/';
+
+if (parseInt(navigator.appVersion)>=4)
+{
+	var _rsRD=(new Date()).getTime();
+	var _rsSE=1;	
+	var _rsSV="";
+	var _rsSM=0.01;
+	_rsCL='<scr'+'ipt language="JavaScript" type="text/javascript" src="'+_rsND+'v51.js"><\/scr'+'ipt>';
+}
+else
+{
+	_rsCL='<img src="'+_rsND+'cgi-bin/m?ci='+_rsCI+'&cg='+_rsCG+'&si='+_rsSI+'&rp='+_rsRP+'">';
+}
+document.write(_rsCL);
+//-->
+</script>
+<noscript>
+<img src="//secure-cn.imrworldwide.com/cgi-bin/m?ci=cn-tencent&cg=0" alt="">
+</noscript>
+<!-- END NNR Site Census V5.1 -->
+</div>
+</body>
+</html><!--[if !IE]>|xGv00|754a23cf0cca8cdf32a079340cdaa420<![endif]--><!--[if !IE]>|xGv00|0c5b9fc4a9c79c8edf1f0d4932c43282<![endif]-->

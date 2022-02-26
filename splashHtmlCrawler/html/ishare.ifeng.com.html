@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html xmlns:wb="http://open.weibo.com/wb" lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="always" name="referrer">
+    <meta http-equiv="Cache-Control" content="no-transform " /> 
+    <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
+    <title>手机鳳凰網</title>
+    <meta name="keywords" content="凤凰,凤凰网,凤凰新媒体,凤凰卫视,凤凰卫视中文台,资讯台,电影台,欧洲台,美洲台,凤凰周刊,phoenix,phoenixtv">
+    <meta name="description" content="凤凰网是中国领先的综合门户网站，提供含文图音视频的全方位综合新闻资讯、深度访谈、观点评论、财经产品、互动应用、分享社区等服务，同时与凤凰无线、凤凰宽频形成三屏联动，为全球主流华人提供互联网、无线通信、电视网三网融合无缝衔接的新媒体优质体验。">
+    
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="always" name="referrer">
+    <meta name="baidu-site-verification" content="WIjhOJgM3N">
+    <link href="//y0.ifengimg.com/index/favicon.ico" mce_href="//y0.ifengimg.com/index/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="//y0.ifengimg.com/index/favicon.ico" mce_href="//y0.ifengimg.com/index/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="//y1.ifengimg.com/index/72x72_2520ifeng.png" rel="apple-touch-icon">
+    <style></style>
+    
+    <link href="https://x2.ifengimg.com/fe/shank/channel/weMediaShare_main_mobile~dev_release~.mobile.ea08f0c1e12a420818ee.css" data-prefetch="true" rel="stylesheet">
+    
+        <script>
+            window.__IFENG_ENV__ = window.__IFENG_ENV__ || {}
+            window.__IFENG_ENV__.maxDocWidth = parseInt(510) || 812
+        </script>
+        <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
+        
+        
+        
+        <script>
+            var isGrounds = function () {
+                return typeof grounds !== 'undefined' && typeof grounds.getDeviceInfo === 'function';
+            }
+            var getGroundsWidth = function () {
+                if(window && window.location && window.location.href) {
+                    var match = window.location.href.match(/\?.*?screen=(\d+x\d+)/);
+                    if(match) {
+                        return match[1].split('x')[0] / window.devicePixelRatio;
+                    }
+                }
+                var deviceInfo = grounds.getDeviceInfo();
+                if(!deviceInfo || !deviceInfo.getScreen){
+                    return window.innerWidth;
+                }
+                var screen = deviceInfo.getScreen();
+                return screen.split('x')[0] / window.devicePixelRatio;
+            }
+            var getWidth = function () {
+                var width = 320;
+                if (isGrounds()) {
+                    width =  getGroundsWidth();
+                } else {
+                    width = window.innerWidth;
+                }
+                return width > 0 ? width : 320;
+            }
+            var isWeixin = function() {
+                //判断是否是微信
+                var ua = navigator.userAgent.toLowerCase();
+                return ua.match(/MicroMessenger/i) == 'micromessenger';
+            };
+        
+            function getBigFont() {
+                var docEl = document.documentElement;
+                // var docWidth = window.innerWidth;
+                var docWidth = getWidth();
+                var fakeBody = document.createElement('body');
+        
+                var rem = docWidth / 10;
+                docEl.style.fontSize = rem + 'px';
+                var d = document.createElement('div');
+                d.style.cssText =
+                    'width:1rem;height:0;overflow: hidden;position:absolute;z-index:-1;visibility: hidden;';
+                fakeBody.appendChild(d);
+                docEl.appendChild(fakeBody);
+                // var realRem = (window.getComputedStyle(d, null).width.split('px')[0]/1).toFixed(1)/1;
+                var realRem = isGrounds() ?  getGroundsWidth() / 10 : d.getBoundingClientRect().width.toFixed(1) / 1;
+                // var realRem = d.offsetWidth;
+                docEl.removeChild(fakeBody);
+                docEl.style.cssText = '';
+                console.log(realRem, rem);
+                // alert(realRem + ':' + rem + ':' + realRem/rem);
+                return {
+                    realRem: realRem,
+                    rem: rem
+                };
+                // alert(realRem + ':' + rem);
+            }
+            var __fontDiff = getBigFont();
+        </script>
+        
+        <script>
+            (function() {
+                if (typeof WeixinJSBridge == 'object' && typeof WeixinJSBridge.invoke == 'function') {
+                    handleFontSize();
+                } else {
+                    document.addEventListener('WeixinJSBridgeReady', handleFontSize, false);
+                }
+                function handleFontSize() {
+                    // var docEl = doc.documentElement;
+                    // var docWidth = docEl.clientWidth;
+                    var docWidth = getWidth();
+                    var rem = docWidth / 10;
+                    // 按照iphone X的高度定制最大宽度
+                    if (docWidth >= window.__IFENG_ENV__.maxDocWidth) {
+                        rem = window.__IFENG_ENV__.maxDocWidth / 10;
+                    }
+        
+                    // 设置网页字体为默认大小
+                    WeixinJSBridge.invoke('setFontSizeCallback', { fontSize: 0 });
+                    setTimeout(function() {
+                        document.documentElement.style.fontSize = rem + 'px';
+                    }, 0);
+                    // 重写设置网页字体大小的事件
+                    WeixinJSBridge.on('menu:setfont', function() {
+                        WeixinJSBridge.invoke('setFontSizeCallback', { fontSize: 0 });
+                        setTimeout(function() {
+                            document.documentElement.style.fontSize = rem + 'px';
+                        }, 0);
+                    });
+                }
+            })();
+        </script>
+        
+        <script>
+                (function(win, doc) {
+                    var docEl = doc.documentElement;
+        
+                    function setRemUnit() {
+                        console.log('runSetRemUnit');
+                        console.log('docEl.clientWidth=======>', docEl.clientWidth);
+                        // var docWidth = docEl.clientWidth;
+                        var docWidth = getWidth();
+                        var rem = docWidth / 10;
+                        // 按照iphone X的高度定制最大宽度
+                        if (docWidth >= window.__IFENG_ENV__.maxDocWidth) {
+                            rem = window.__IFENG_ENV__.maxDocWidth / 10;
+                        }
+                        if (typeof __articleEditMode__ !== 'undefined' && __articleEditMode__) {
+                            docEl.classList.add('article-edit-mode');
+                        } else {
+                            if (__fontDiff.realRem !== __fontDiff.rem) {
+                                // docEl.style.cssText = 'font-size: ' + rem + 'px !important';
+                                // docEl.style.cssText = 'font-size: 37.6px !important';
+                                docEl.style.cssText =
+                                    'font-size: ' + rem / (__fontDiff.realRem / __fontDiff.rem) + 'px !important';
+                            } else {
+                                docEl.style.cssText = 'font-size: ' + rem + 'px';
+                            }
+                        }
+                    }
+        
+                    var resetRemUnit = null;
+        
+                    win.addEventListener(
+                        'resize',
+                        function() {
+                            clearTimeout(resetRemUnit);
+                            resetRemUnit = setTimeout(setRemUnit, 200);
+                        },
+                        false
+                    );
+                    win.addEventListener(
+                        'pageshow',
+                        function(e) {
+                            if (e.persisted) {
+                                clearTimeout(resetRemUnit);
+                                resetRemUnit = setTimeout(setRemUnit, 200);
+                            }
+                        },
+                        false
+                    );
+        
+                    setRemUnit();
+        
+                    if (win.devicePixelRatio && win.devicePixelRatio >= 2) {
+                        var testEl = doc.createElement('div');
+                        var fakeBody = doc.createElement('body');
+        
+                        testEl.style.border = '0.5px solid transparent';
+                        fakeBody.appendChild(testEl);
+                        docEl.appendChild(fakeBody);
+        
+                        if (testEl.offsetHeight === 1) {
+                            docEl.classList.add('hairlines');
+                        }
+        
+                        docEl.removeChild(fakeBody);
+                    }
+        
+                    if (doc.readyState === 'complete') {
+                        if (__fontDiff.realRem !== __fontDiff.rem) {
+                            doc.body.style.fontSize = 12 / (__fontDiff.realRem / __fontDiff.rem) + 'px';
+                        } else {
+                            doc.body.style.fontSize = 12 + 'px';
+                        }
+                    } else {
+                        doc.addEventListener(
+                            'DOMContentLoaded',
+                            function(e) {
+                                if (__fontDiff.realRem !== __fontDiff.rem) {
+                                    doc.body.style.fontSize = 12 / (__fontDiff.realRem / __fontDiff.rem) + 'px';
+                                } else {
+                                    doc.body.style.fontSize = 12 + 'px';
+                                }
+                            },
+                            false
+                        );
+                    }
+                })(window, document);
+            </script>
+            <link href="https://x2.ifengimg.com/fe/shank/channel/weMediaShare_main~dev_release~.mobile.07e15de3490c29dde654.css" data-prefetch="true" rel="stylesheet"> 
+    
+        <!--[if lt IE 8]>
+            <script src="https://x2.ifengimg.com/fe/shank/channel/ie8-d4b847ee67.polyfill.min.js" crossorigin="anonymous"></script>
+        <![endif]-->
+        
+        <script>
+            var bj_config = {
+                cache_error_list: [],
+                didMountEndTime: -1,
+                firstScreenEndtime: -1,
+                config : {
+                    namespace: 'shank',
+                    appname:  'channel',
+                    level: 4,
+                    bid:  "5a5a551096b111ecbfa9652218eac046",
+                    router: "/dev_release/mobile/:domain/mediaShare/home/(vs)?/:cid/:type",
+                    perf_filter_list:  ["/inice","/fa.min.js"],
+                    perf_timeout: 0,
+                    pref_count: 1
+                }
+            };
+            var BJ_REPORT = {
+                    report: function(msg, isReportNow, type) {
+                        bj_config.cache_error_list.push(["report", arguments]);
+                    },
+                    push: function(err) {
+                        bj_config.cache_error_list.push(["push", arguments]);
+                    },
+                    firstScreen: function(err) {
+                        bj_config.didMountEndTime = (new Date()-0);
+                        setTimeout(function(){
+                            bj_config.firstScreenEndtime = (new Date()-0);
+                        })
+                    }
+                };
+                window.onerror = function() {
+                    bj_config.cache_error_list.push(["handleError", arguments]);
+                };
+        
+            (function(global){var _onthrow=function(errObj){if(global.BJ_REPORT&&global.BJ_REPORT&&global.BJ_REPORT.push){global.BJ_REPORT.push(errObj)}};var tryJs={};global.tryJs=function(throwCb){throwCb&&(_onthrow=throwCb);return tryJs};var timeoutkey;var cat=function(foo,args){return function(){try{return foo.apply(this,args||arguments)}catch(error){try{error.message=error.message+foo.toString()}catch(err){}_onthrow(error);if(error.stack&&console&&console.error){console.error("[BJ-REPORT]",error.stack)}if(!timeoutkey){var orgOnerror=global.onerror;global.onerror=function(){};timeoutkey=setTimeout(function(){global.onerror=orgOnerror;timeoutkey=null},50)}throw error}}};var catTimeout=function(foo){return function(cb,timeout){if(typeof cb==="string"){try{cb=new Function(cb)}catch(err){throw err}}var args=[].slice.call(arguments,2);cb=cat(cb,args.length&&args);return foo(cb,timeout)}};tryJs.spySystem=function(){global.setTimeout=catTimeout(global.setTimeout);global.setInterval=catTimeout(global.setInterval);return tryJs};tryJs.spyAll=function(){tryJs.spySystem();return tryJs}})(window);if(window&&window.tryJs){window.tryJs().spyAll()};
+        </script>
+        
+                <script src="https://x2.ifengimg.com/fe/shank/channel/errorupload-f348bc846f.min.js" crossorigin="anonymous" async></script>
+        <script>
+            var allData = {"time":1645844901121,"token":"944f63fb94b40c10a2038d6d8ac959e2","sockpuppetInfo":{"weMediaName":"电影资源","logo":"//d.ifengimg.com/w90_h90_q90/img1.ugc.ifeng.com/newugc/20170326/23/wemedia/b6e58ced317b5425480031af308a2d0cd035b7c4_size31_w200_h200.png","description":"每日精彩电影推荐！最新影讯推荐!","honorName":"","honorImg":"","fansNum":874,"online":1,"level":2,"unsubNum":0,"behavioralControl":{"edit_aggregation":1,"algorithm_vote":2,"miniVideo":1,"content_mark":2,"coop_only":2,"edit_move":2,"icon":1,"video":1,"click":1,"article":1,"edit_add":1,"wxbWhiteList":2,"attention":1,"logo":1,"short":1,"mix":1},"honorDesc":""},"cid":"552972","type":"media","isVideoShare":false,"__env__":"production"};
+            var adData = {"adHead":"%0D%0A%3C!--s_all-indexs_180823_ad_qpdggtb%202020.10.30%2011%3A35%3A50--%3E%0D%0A%0D%0A%3Cscript%20src%3D%22https%3A%2F%2Fx0.ifengimg.com%2Ffeprod%2Fc%2Fm%2Fmobile_inice_v202.js%22%20%20crossorigin%3D%22anonymous%22%3E%3C%2Fscript%3E%0D%0A%0D%0A%0D%0A%3C!--%2Fs_all-indexs_180823_ad_qpdggtb--%3E%0D%0A","adBody":"%0D%0A%3C!--s_all_indexs_180823_ad_qpdpcggdb%202022.02.26%2009%3A17%3A16--%3E%0D%0A%0D%0A%3Cscript%3EIfengAmgr.start()%3C%2Fscript%3E%0D%0A%0D%0A%0D%0A%3C!--%2Fs_all_indexs_180823_ad_qpdpcggdb--%3E%0D%0A"};
+            var staticData = {};
+            var __chipsData = [];
+            var __apiReport = (Math.random() > 0.99);
+            var __apiReportMaxCount = 50;
+        
+            var getChipsDataByKey = function (data, key) {
+                for (var i = 0, iLen = data.length; i<iLen;i++) {
+                    if (data[i].key === key) {
+                        return data[i];
+                    }
+                }
+        
+                return null;
+            }
+        
+            for (var key in adData) {
+                try{
+                    if(key==='adHead' || key == 'adBody'){
+                        continue;
+                    }
+                    allData[key] = new Function('return ' + decodeURIComponent(adData[key]))();
+                    if (typeof __chipsData !== 'undefined') {
+                        allData[key].desc = getChipsDataByKey(__chipsData, key);
+                        allData[key].code = adData[key];
+                    }
+                }catch(e){
+                    console.error(key, e);
+                    allData[key] = {};
+                    e.message = key + ' ' +e.message;
+                    if (window && window.BJ_REPORT) window.BJ_REPORT.report(e, false, 'ad');
+                }
+        
+            }
+        
+            for (var key in staticData) {
+                try{
+                    if (typeof staticData[key] === 'string'){
+                        allData[key] = decodeURIComponent(staticData[key]);
+                    } else {
+                        allData[key] = staticData[key]
+                    }
+                }catch(e){
+                    console.error(key, e);
+                    allData[key] = [];
+                    e.message = key + ' ' +e.message;
+                    if (window && window.BJ_REPORT) window.BJ_REPORT.report(e, false, 'data');
+                }
+            }
+        </script>
+        
+        <script>
+            (function(window){
+                window.__IFENG_GO_NATIVE__ = function (type, url) {
+                    if (!window.grounds) return
+        
+                    if(navigator.userAgent.toLocaleLowerCase().indexOf('android') === -1){
+                        if(window.grounds.closeNoAnimation) {
+                            window.grounds.closeNoAnimation();
+                        } else {
+                            window.grounds.close();
+                        }
+                    } else {
+                        window.grounds.close();
+                    }
+        
+                    window.grounds.dispatch(type, url)
+                }
+            })(window)
+        </script>
+            <!--[if lt IE 9]>
+                <script src="https://x2.ifengimg.com/fe/shank/weblist/es-32df44c794.polyfill.min.js" crossorigin="anonymous"></script>
+                <script>
+                    window.__IFENG_LOW__ = true
+                    document.head = document.head || document.getElementsByTagName('head')[0];
+                </script>
+            <![endif]-->
+        
+        <script src="https://x2.ifengimg.com/fe/shank/channel/es-0684d763c9.polyfill.modern.min.js" crossorigin="anonymous"></script>
+        <script>
+            window.raf.polyfill()
+        </script>
+            <script>
+                if(window.__IFENG_LOW__){
+                    try {
+                        var errmsg = "Route matching error ";
+                        if(navigator&&navigator.userAgent){
+                            errmsg += ", UA: " + navigator.userAgent;
+                        }
+                        var err = new Error(errmsg);
+                        if (window && window.BJ_REPORT) {
+                            window.BJ_REPORT.report(err, false, 'match');
+                            window.BJ_REPORT.matchAutoRepair();
+                        }
+                    } catch (error){
+                        console && console.log(error);
+                    }
+                    
+                }
+            </script>
+        
+        <script>
+        (function() {
+          var d = document;
+          var c = d.createElement('script');
+          if (!('noModule' in c) && 'onbeforeload' in c) {
+            var s = false;
+            d.addEventListener('beforeload', function(e) {
+              if (e.target === c) {
+                s = true;
+              } else if (!e.target.hasAttribute('nomodule') || !s) {
+                return;
+              }
+              e.preventDefault();
+            }, true);
+        
+            c.type = 'module';
+            c.src = '.';
+            d.head.appendChild(c);
+            c.remove();
+          }
+        }());
+        </script>    
+    
+    
+    <meta http-equiv="Cache-Control" content="no-transform " />
+<script src="//p3.ifengimg.com/a/2018/0820/fa.min.js"></script>
+    
+    <link href="" rel="stylesheet"> 
+    
+<!--s_all-indexs_180823_ad_qpdggtb 2020.10.30 11:35:50-->
+
+<script src="https://x0.ifengimg.com/feprod/c/m/mobile_inice_v202.js"  crossorigin="anonymous"></script>
+
+
+<!--/s_all-indexs_180823_ad_qpdggtb-->
+
+</head>
+<body>
+    <div id="root"></div>
+            <script type="module" src="https://x2.ifengimg.com/fe/shank/channel/externals.9fc90e97.js" crossorigin="anonymous" defer></script>
+    <script type="module" src="https://x2.ifengimg.com/fe/shank/channel/innerLibs_mobile_modern.5534d8e1.js" crossorigin="anonymous" defer></script>
+    <script type="module" data-prefetch="true" src="https://x2.ifengimg.com/fe/shank/channel/pages.e9701dee457ff82ea822~weMediaShare_maindev_release~.js" crossorigin="anonymous" defer></script>
+    <script type="module" data-prefetch="true" src="https://x2.ifengimg.com/fe/shank/channel/vendors.264e79377fe849f4e2e7.js" crossorigin="anonymous" defer></script>
+
+                <script nomodule src="https://x2.ifengimg.com/fe/shank/channel/externals.9fc90e97.js" type="text/javascript" crossorigin="anonymous"></script>
+                <script nomodule src="https://x2.ifengimg.com/fe/shank/channel/innerLibs_mobile.5534d8e1.js" type="text/javascript" crossorigin="anonymous"></script>
+                <script nomodule data-prefetch="true" src="https://x2.ifengimg.com/fe/shank/channel/pages.6a696b8378bc7b5591b8~weMediaShare_maindev_release~.js" type="text/javascript"  crossorigin="anonymous"></script>
+                <script nomodule data-prefetch="true" src="https://x2.ifengimg.com/fe/shank/channel/vendors.438b1ad76b5b4a9b0178.js" type="text/javascript"  crossorigin="anonymous"></script>
+    
+        <script defer>
+            function injectPrefetchSource (html) {
+                var xhr = new XMLHttpRequest()
+                xhr.open("GET", html)
+                xhr.responseType = "document"
+                xhr.send()
+    
+                xhr.onload = function() {
+                    var sources = this.responseXML.querySelectorAll("[data-prefetch=true]")
+    
+                    for (var index = 0; index < sources.length; index ++) {
+                        var ele = document.createElement('link')
+                        ele.setAttribute('rel', 'prefetch')
+                        ele.setAttribute('href', sources[index].href || sources[index].src)
+                        document.head.appendChild(ele)
+                    }
+                }
+            }
+    
+            var htmls = typeof [] != 'undefined' ? [] : [];
+    
+            for (var index = 0; index < htmls.length; index ++) {
+                injectPrefetchSource(htmls[index])
+            }
+        </script>
+    
+    
+    
+<!--s_all_indexs_180823_ad_qpdpcggdb 2022.02.26 09:17:16-->
+
+<script>IfengAmgr.start()</script>
+
+
+<!--/s_all_indexs_180823_ad_qpdpcggdb-->
+
+             <script> var sta_collection_time = new Date().getTime();</script>
+         <script id="sta_collection_new">
+         window.analytics(encodeURIComponent(window.location.href));
+         setTimeout(function(){
+             window.aptracker.collection();
+         },800);
+         </script>
+</body>
+
+</html>

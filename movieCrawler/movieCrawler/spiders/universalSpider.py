@@ -3,6 +3,7 @@ import random
 
 import pymysql
 import scrapy
+import re
 
 from movieCrawler.items import UniversalItem
 
@@ -10,10 +11,10 @@ from movieCrawler.items import UniversalItem
 class UniversalSpider(scrapy.Spider):
     conn = None
     cursor = None
-    url_list = None
+    item_list = []
     name = 'universalSpider'
     #  黑名单短语列表，若出现在name中则剔除
-    black_word_list = ['最新', 'topics', '会员', 'vip', 'VIP', '围观了', '点击图标', '分享到', '客户端', '热线', 'rss', 'RSS', '排行榜', '留言', '电影大全']
+    black_word_list = ['最新', 'topics', '会员', 'vip', 'VIP', '围观了', '点击图标', '分享到', '客户端', '热线', 'rss', 'RSS', '排行榜', '留言', '电影大全', '？？', '??']
     #  黑名单题目列表，若与提取所得title相等则剔除
     black_title_list = ['招聘英才', '联系我们', '关于我们', '', ]
     #  黑名单url列表，若与提取所得link相等则剔除
@@ -33,15 +34,15 @@ class UniversalSpider(scrapy.Spider):
             autocommit=True
         )
         self.cursor = self.conn.cursor()
-        sql = 'SELECT url FROM `pms`'
+        sql = 'SELECT url, domain FROM `pms`'
         # 执行
         self.cursor.execute(sql)
         # 提交事务
         self.conn.commit()
-        self.url_list = self.cursor.fetchall()[:]  # 定义爬取范围
-        for url in self.url_list:
-            self.start_urls.append(url[0])
-        logging.info('通用资源爬虫已获取 {} 个url，即将开始进行爬取'.format(len(self.url_list)))
+        self.item_list = dict(self.cursor.fetchall()[:])  # 定义爬取范围
+        for url in self.item_list.keys():
+            self.start_urls.append(url)
+        logging.info('通用资源爬虫已获取 {} 个url，即将开始进行爬取'.format(len(self.item_list)))
         random.shuffle(self.start_urls)  # 用以随机排列start_urls，使每次爬取更加随机化
         print(self.start_urls)
 
@@ -62,10 +63,12 @@ class UniversalSpider(scrapy.Spider):
                         href = site_url + '/' + href
                     else:
                         print('error!\n{}'.format(title, '\t', href, '\t', '*' * 100))
-
+                # title_in_brackets = re.search(r'《(.+?)》', title).group(1)  # 去除书名号，慎用
+                # if title_in_brackets:
+                #     title = title_in_brackets
                 item['link'] = href
                 item['name'] = title
-                item['site'] = site_url
+                item['site'] = self.item_list.get(site_url)
                 # print(item)
 
                 if any(word in item['name'] for word in self.black_word_list) or any(

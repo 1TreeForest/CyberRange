@@ -1,6 +1,5 @@
 import scrapy
 import pandas as pd  # 导入pandas库
-import MySQLdb
 import re
 import pymysql
 
@@ -24,14 +23,14 @@ class HtmlSpider(scrapy.Spider):
         )
         cursor = conn.cursor()
         #从数据库中读取需要爬取html的url
-        sql = "select url from results"
+        sql = "select url, domain from results where isPMS is not null"
         cursor.execute(sql)
         urls = cursor.fetchall()
         count = 0 #便于记录从数据库中读到多少条url
         for url in urls: # 将取出的url放入url_list里
             self.url_list.append(url[0])
             count = count + 1
-        print("写入完成,共写入%d条数据……" % count)
+        print("读取完成,共需爬取%d个网页" % count)
 
         # 从数据库中读取给html文件命名需要的domain
         sql = "select domain from results"

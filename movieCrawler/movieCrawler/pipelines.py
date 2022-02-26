@@ -45,7 +45,7 @@ class MoviecrawlerPipeline(object):
 
         # 拼接insert SQL语句
         if isinstance(item, SpecialItem):
-            sql = 'INSERT INTO `movies`(name, link, site)VALUES("%s","%s","%s") ON DUPLICATE KEY UPDATE link = "%s"' % (
+            sql = 'INSERT INTO `movies_special`(name, link, site)VALUES("%s","%s","%s") ON DUPLICATE KEY UPDATE link = "%s"' % (
                 item['name'], item['link'], item['site'], item['link'])
         if isinstance(item, UniversalItem):
             sql = 'INSERT INTO `movies_universal`(name, link, site)VALUES("%s","%s","%s") ON DUPLICATE KEY UPDATE link = "%s"' % (

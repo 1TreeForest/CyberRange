@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta name="google-site-verification" content="AclyhO0-4dQY20g3Gg0upVsjbwhQM1qb6931iglmiz4" />
+<meta name="baidu-site-verification" content="oNr0cepQ3M" />
+
+<style>
+#christmas {
+
+  position: relative;
+  width: 100%;
+  height: 1000px;
+  overflow: hidden;
+  /* iOS hack for border radius bleed with transforms */
+  -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+}
+#christmas .ground {
+  -moz-border-radius-topright: 130px 40px;
+  -webkit-border-top-right-radius: 130px 40px;
+  border-top-right-radius: 130px 40px;
+  position: absolute;
+  width: 133px;
+  height: 61px;
+  left: 0;
+  bottom: 0;
+}
+#christmas .ground:before {
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  content: " ";
+  position: absolute;
+  width: 130px;
+  height: 100px;
+  top: 10px;
+  right: -60px;
+  background: white;
+}
+#christmas .ground:after {
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  content: " ";
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  top: 5px;
+  right: -75px;
+  background: white;
+}
+#christmas .tree {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent transparent #23915b transparent;
+}
+#christmas .tree:before {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent transparent #23915b transparent;
+}
+#christmas .tree:after {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent transparent #23915b transparent;
+}
+#christmas .tree.left {
+  left: 28px;
+  bottom: 78px;
+  border-width: 0 18px 24px 18px;
+}
+#christmas .tree.left:before {
+  top: 10px;
+  left: -21px;
+  border-width: 0 21px 28px 21px;
+}
+#christmas .tree.left:after {
+  top: 22px;
+  left: -24px;
+  border-width: 0 24px 32px 24px;
+}
+#christmas .tree.left .snow {
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -moz-box-shadow: -2px 2px 0 0 white, 2px 2px 0 0 white, -3px 3px 0 0 white, 3px 3px 0 0 white, -12px 14px 0 0 white, -13px 17px 0 1px white, -16px 19px 0 0 white, -9px 16px 0 0 white, -5px 15px 0 2px white, -9px 13px 0 0 white, 6px 15px 0 2px white, 0 13px 0 1px white, 11px 14px 0 1px white, 13px 17px 0 1px white, 15px 19px 0 0 white;
+  -webkit-box-shadow: -2px 2px 0 0 white, 2px 2px 0 0 white, -3px 3px 0 0 white, 3px 3px 0 0 white, -12px 14px 0 0 white, -13px 17px 0 1px white, -16px 19px 0 0 white, -9px 16px 0 0 white, -5px 15px 0 2px white, -9px 13px 0 0 white, 6px 15px 0 2px white, 0 13px 0 1px white, 11px 14px 0 1px white, 13px 17px 0 1px white, 15px 19px 0 0 white;
+  box-shadow: -2px 2px 0 0 white, 2px 2px 0 0 white, -3px 3px 0 0 white, 3px 3px 0 0 white, -12px 14px 0 0 white, -13px 17px 0 1px white, -16px 19px 0 0 white, -9px 16px 0 0 white, -5px 15px 0 2px white, -9px 13px 0 0 white, 6px 15px 0 2px white, 0 13px 0 1px white, 11px 14px 0 1px white, 13px 17px 0 1px white, 15px 19px 0 0 white;
+  position: absolute;
+  top: 1px;
+  left: -3px;
+  width: 6px;
+  height: 6px;
+  background: white;
+  z-index: 1;
+}
+#christmas .tree.left .snow:after {
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -moz-box-shadow: -14px 14px 0 0 white, -15px 17px 0 1px white, -18px 19px 0 0 white, -9px 16px 0 0 white, -5px 15px 0 2px white, -9px 13px 0 0 white, 6px 15px 0 2px white, 0 13px 0 1px white, 12px 17px 0 3px white, 16px 17px 0 1px white, 18px 19px 0 0 white, 11px 20px 0 1px white, 16px 20px 0 1px white, 18px 22px 0 1px white, 21px 25px 0 0 white, -2px 27px 0 1px white;
+  -webkit-box-shadow: -14px 14px 0 0 white, -15px 17px 0 1px white, -18px 19px 0 0 white, -9px 16px 0 0 white, -5px 15px 0 2px white, -9px 13px 0 0 white, 6px 15px 0 2px white, 0 13px 0 1px white, 12px 17px 0 3px white, 16px 17px 0 1px white, 18px 19px 0 0 white, 11px 20px 0 1px white, 16px 20px 0 1px white, 18px 22px 0 1px white, 21px 25px 0 0 white, -2px 27px 0 1px white;
+  box-shadow: -14px 14px 0 0 white, -15px 17px 0 1px white, -18px 19px 0 0 white, -9px 16px 0 0 white, -5px 15px 0 2px white, -9px 13px 0 0 white, 6px 15px 0 2px white, 0 13px 0 1px white, 12px 17px 0 3px white, 16px 17px 0 1px white, 18px 19px 0 0 white, 11px 20px 0 1px white, 16px 20px 0 1px white, 18px 22px 0 1px white, 21px 25px 0 0 white, -2px 27px 0 1px white;
+  content: " ";
+  position: absolute;
+  top: 14px;
+  left: 0px;
+  width: 6px;
+  height: 6px;
+  background: white;
+  z-index: 1;
+}
+#christmas .tree.right {
+  left: 60px;
+  bottom: 45px;
+  border-width: 0 18px 24px 18px;
+}
+#christmas .tree.right:before, #christmas .tree.right:after {
+  display: none;
+}
+#christmas .tree.right .snow {
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -moz-box-shadow: -1px 2px 0 0 white, -2px 3px 0 0 white, 2px 2px 0 0 white, 3px 3px 0 0 white, 4px 4px 0 0 white, 6px 6px 0 0 white, 6px 15px 0 0 white, 8px 16px 0 0 white, 10px 16px 0 0 white, 11px 16px 0 0 white, -5px 13px 0 0 white, -7px 12px 0 0 white;
+  -webkit-box-shadow: -1px 2px 0 0 white, -2px 3px 0 0 white, 2px 2px 0 0 white, 3px 3px 0 0 white, 4px 4px 0 0 white, 6px 6px 0 0 white, 6px 15px 0 0 white, 8px 16px 0 0 white, 10px 16px 0 0 white, 11px 16px 0 0 white, -5px 13px 0 0 white, -7px 12px 0 0 white;
+  box-shadow: -1px 2px 0 0 white, -2px 3px 0 0 white, 2px 2px 0 0 white, 3px 3px 0 0 white, 4px 4px 0 0 white, 6px 6px 0 0 white, 6px 15px 0 0 white, 8px 16px 0 0 white, 10px 16px 0 0 white, 11px 16px 0 0 white, -5px 13px 0 0 white, -7px 12px 0 0 white;
+  position: absolute;
+  top: 0;
+  left: -3px;
+  width: 6px;
+  height: 6px;
+  background: white;
+}
+#christmas .flake {
+  -webkit-animation: snow infinite linear 2s;
+  -moz-animation: snow infinite linear 2s;
+  -ms-animation: snow infinite linear 2s;
+  -o-animation: snow infinite linear 2s;
+  animation: snow infinite linear 2s;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+@-webkit-keyframes snow {
+  0% {
+    -moz-transform: translateY(-1500px);
+    -ms-transform: translateY(-1500px);
+    -webkit-transform: translateY(-1500px);
+    transform: translateY(-1500px);
+  }
+  100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@-moz-keyframes snow {
+  0% {
+    -moz-transform: translateY(-1500px);
+    -ms-transform: translateY(-1500px);
+    -webkit-transform: translateY(-1500px);
+    transform: translateY(-1500px);
+  }
+  100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+
+  }
+}
+@-ms-keyframes snow {
+  0% {
+    -moz-transform: translateY(-1500px);
+    -ms-transform: translateY(-1500px);
+    -webkit-transform: translateY(-1500px);
+    transform: translateY(-1500px);
+  }
+  100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+
+  }
+}
+@keyframes snow {
+  0% {
+    -moz-transform: translateY(-1500px);
+    -ms-transform: translateY(-1500px);
+    -webkit-transform: translateY(-1500px);
+    transform: translateY(-1500px);
+  }
+  100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+
+  }
+}
+</style>
+<link rel="Bookmark" href="https://51.ruyo.net/favicon.ico" />
+<link rel="shortcut icon" href="https://51.ruyo.net/favicon.ico" />
+<title>《羞羞的铁拳》高清1080P资源在线下载 &#045; 影视小说 &#45; 如有乐享</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="https://51.ruyo.net/xmlrpc.php" />
+<link rel="canonical" href="https://51.ruyo.net/6994.html" />
+<link href="https://51.ruyo.net/wp-content/themes/dmeng2.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://51.ruyo.net/wp-content/themes/dmeng2.0/css/dmeng-2.0.7.1.css" rel="stylesheet">
+<!--[if lt IE 9]><script src="https://51.ruyo.net/wp-content/themes/dmeng2.0/js/html5shiv-3.7.0.js"></script><script src="https://51.ruyo.net/wp-content/themes/dmeng2.0/js/respond-1.4.2.min.js"></script><![endif]-->
+
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="如有乐享 &raquo; 《羞羞的铁拳》高清1080P资源在线下载评论Feed" href="https://51.ruyo.net/6994.html/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/51.ruyo.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.0.3"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='yarppWidgetCss-css'  href='https://51.ruyo.net/wp-content/plugins/yet-another-related-posts-plugin/style/widget.css?ver=5.0.3' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-css'  href='https://51.ruyo.net/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://51.ruyo.net/wp-includes/css/dist/block-library/style.min.css?ver=5.0.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-postratings-css'  href='https://51.ruyo.net/wp-content/plugins/wp-postratings/css/postratings-css.css?ver=1.86.2' type='text/css' media='all' />
+<script type='text/javascript' src='https://51.ruyo.net/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://51.ruyo.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"https:\/\/51.ruyo.net\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://51.ruyo.net/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<link rel='https://api.w.org/' href='https://51.ruyo.net/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://51.ruyo.net/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://51.ruyo.net/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='『已到账』腾讯云代金券赠送计划，领取2000元代金券' href='https://51.ruyo.net/6987.html' />
+<link rel='next' title='酷站推荐：拼红包 &#8211; 美团外卖&#038;饿了么红包' href='https://51.ruyo.net/6983.html' />
+<link rel='shortlink' href='https://51.ruyo.net/?p=6994' />
+<link rel="alternate" type="application/json+oembed" href="https://51.ruyo.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2F51.ruyo.net%2F6994.html" />
+<link rel="alternate" type="text/xml+oembed" href="https://51.ruyo.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2F51.ruyo.net%2F6994.html&#038;format=xml" />
+<meta name="keywords" content="开心麻花,羞羞的铁拳,羞羞的铁拳百度网盘,羞羞的铁拳磁力链接,高清下载,影视小说" /><meta name="description" content="No related posts." />		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		<script type="text/javascript">var ajaxurl = 'https:\/\/51.ruyo.net\/wp-admin\/admin-ajax.php';var isUserLoggedIn = 0;var loginUrl = 'https:\/\/51.ruyo.net\/wp-login.php?redirect_to=https%3A%2F%2F51.ruyo.net%2F6994.html';var dmengPath = 'https:\/\/51.ruyo.net\/wp-content\/themes\/dmeng2.0/';var dmengTracker = {"type":"single","pid":6994};</script><script src="https://51.ruyo.net/wp-content/themes/dmeng2.0/js/bootstrap.min.js"></script><script src="https://51.ruyo.net/wp-content/themes/dmeng2.0/js/dmeng-2.0.7.1.js"></script>
+
+
+
+<!--百度熊掌号添加JSON_LD数据-->
+<script type="application/ld+json">
+    {
+        "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+        "@id": "https://51.ruyo.net/6994.html",
+        "appid": "1584293044929457",
+        "title": "《羞羞的铁拳》高清1080P资源在线下载",
+        "images": [
+            "https://51.ruyo.net/wp-content/uploads/2018/01/ruyo.net_.64.png"
+            ],
+        "description": "",
+        "pubDate": "2017-12-24T13:00:47"
+    }
+</script>
+<script src="//msite.baidu.com/sdk/c.js?appid=1584293044929457"></script>
+</head>
+<body class="post-template-default single single-post postid-6994 single-format-standard">
+<header id="masthead" itemscope itemtype="http://schema.org/WPHeader">
+	<div class="container header-content"><div class="row"><div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"><div class="header-logo"><a href="https://51.ruyo.net/" rel="home"><img src="https://51.ruyo.net/wp-content/uploads/2018/01/ruyo.net_.64.png" width="64" height="64" alt="如有乐享" /></a></div><div class="header-text"><div class="name"><a href="https://51.ruyo.net/" rel="home" id="name">如有乐享</a></div><div class="description" id="desc">分享是一种美德，是一种态度。</div></div></div><div class="col-lg-4 col-md-5 col-sm-6 col-xs-12"><div class="header-profile"><ul class="user-profile"><li>2022年02月26日，星期六</li><li class="tabs">登录：<a href="https://51.ruyo.net/wp-login.php?redirect_to=https%3A%2F%2F51.ruyo.net%2F6994.html" class="wordpress" rel="nofollow">本地账号</a></li></ul></div></div></div></div>	<div class="navbar navbar-default navbar-static-top" role="banner">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".header-navbar-collapse"><span class="sr-only">切换菜单</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+				<a class="navbar-brand" href="https://51.ruyo.net/" rel="home" itemprop="headline">如有乐享</a>			</div>
+			<nav id="navbar" class="collapse navbar-collapse header-navbar-collapse" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+			<ul class="nav navbar-nav"><li><a href="https://51.RUYO.net/" itemprop="url">首页</a></li><li class="dropdown"><a href="https://51.ruyo.net/category/vps/" data-toggle="dropdown" class="dropdown-toggle" itemprop="url">云服务 <span class="caret"></span></a></a><ul class="dropdown-menu" role="menu"><li><a href="https://51.ruyo.net/category/vps/" itemprop="url">云服务器</a></li><li><a href="https://51.ruyo.net/category/vps/zhujipingce/" itemprop="url">主机评测</a></li><li><a href="https://51.ruyo.net/category/%e7%bd%91%e7%bb%9c%e8%b5%84%e6%ba%90/domain/" itemprop="url">域名优惠</a></li><li><a href="https://51.ruyo.net/tag/oracle-cloud/" itemprop="url"><span class="glyphicon glyphicon-fire"></span>甲骨文云</a></li></ul></li><li class="dropdown"><a href="https://51.ruyo.net/category/%e7%bd%91%e7%bb%9c%e8%b5%84%e6%ba%90/" data-toggle="dropdown" class="dropdown-toggle" itemprop="url">网络资源 <span class="caret"></span></a></a><ul class="dropdown-menu" role="menu"><li><a href="https://51.ruyo.net/category/jiaocheng/" itemprop="url">教程资源</a></li><li><a href="https://51.ruyo.net/category/jishu/" itemprop="url">技术分享</a></li><li><a href="https://51.ruyo.net/category/%e7%bd%91%e7%bb%9c%e8%b5%84%e6%ba%90/youxiang/" itemprop="url">邮箱资源</a><li class="divider"></li><li><a href="https://51.ruyo.net/tag/edu%e9%82%ae%e7%ae%b1/" itemprop="url">教育邮箱</a></li></li><li><a href="https://51.ruyo.net/tag/%e5%a2%83%e5%a4%96%e7%94%b5%e8%af%9d%e5%8d%a1/" itemprop="url">国外号码</a></li><li><a href="https://51.ruyo.net/?s=%E5%AD%A6%E7%94%9F%E8%AE%A4%E8%AF%81" itemprop="url">学生认证</a></li><li><a href="https://51.ruyo.net/tag/windows%e6%bf%80%e6%b4%bb%e4%b9%8b%e8%b7%af/" itemprop="url">Windows激活</a></li><li><a href="https://51.ruyo.net/tag/onedrive/" itemprop="url">OneDrive</a></li></ul></li><li><a href="https://51.ruyo.net/category/%e7%bd%91%e7%bb%9c%e6%b4%bb%e5%8a%a8/" itemprop="url">活动线报</a></li><li><a href="https://51.ruyo.net/category/%e8%bd%af%e4%bb%b6/" itemprop="url">软件推荐</a></li><li class="dropdown"><a href="http://51.RUYO.net" data-toggle="dropdown" class="dropdown-toggle" itemprop="url">小工具 <span class="caret"></span></a></a><ul class="dropdown-menu" role="menu"><li><a target="_blank" href="https://51.ruyo.net/test/duanlian.html" itemprop="url">短链服务</a></li><li><a target="_blank" href="https://51.ruyo.net/test/download_xshell_xftp.html" itemprop="url">Xshell下载</a></li><li><a target="_blank" href="https://jiketuchuang.com" itemprop="url">即刻图床扩展</a></li><li><a target="_blank" href="https://51.ruyo.net/test/ximalaya-vip.html" itemprop="url">喜马拉雅会员</a></li></ul></li></ul><ul class="nav navbar-nav navbar-right"><li><a href="http://51.ruyo.net/feed" itemprop="url"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>订阅</a></li><li><a href="https://51.ruyo.net/about/" itemprop="url"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>关于</a></li><li><a href="https://51.ruyo.net/%e7%94%a8%e6%88%b7%e6%8a%95%e7%a8%bf/" itemprop="url"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>投稿</a></li></ul>			<form class="navbar-form navbar-left" role="search" method="get" id="searchform" action="https://51.ruyo.net/">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="搜索 &hellip;" name="s" id="s" required>
+				</div>
+				<button type="submit" class="btn btn-default" id="searchsubmit"><span class="glyphicon glyphicon-search"></span></button>
+			</form>
+			</nav><!-- #navbar -->
+		</div>
+	</div>
+</header><!-- #masthead -->
+<div id="main" class="container" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+	<div class="row">
+					<article id="content" class="col-lg-8 col-md-8 single" data-post-id="6994" role="article" itemscope itemtype="http://schema.org/Article">
+					<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="entry-header page-header">
+						<h1 class="entry-title h3" itemprop="name">《羞羞的铁拳》高清1080P资源在线下载</h1>
+						<div class="entry-meta">
+	<div class="entry-set-font"><span id="set-font-small" class="disabled">A<sup>-</sup></span><span id="set-font-big">A<sup>+</sup></span></div>
+	<span class="glyphicon glyphicon-user"></span> <a href="https://51.ruyo.net/author/admin/" itemprop="author">我是小马甲~</a>
+	<span class="glyphicon glyphicon-time"></span> <time class="entry-date" datetime="2017-12-24T13:00:47+00:00"  itemprop="datePublished">2017年12月24日</time>
+	<span class="glyphicon glyphicon-comment"></span> <a href="https://51.ruyo.net/6994.html#comments" itemprop="discussionUrl" itemscope itemtype="http://schema.org/Comment"><span itemprop="interactionCount">2</span></a>
+	<span class="glyphicon glyphicon-eye-open"></span> 3856 次浏览<span class="glyphicon glyphicon-folder-open"></span> <a href="https://51.ruyo.net/category/%e5%bd%b1%e8%a7%86%e5%b0%8f%e8%af%b4/" rel="category" itemprop="articleSection">影视小说</a><span itemprop="keywords"><span class="glyphicon glyphicon-tags"></span> <a href="https://51.ruyo.net/tag/%e5%bc%80%e5%bf%83%e9%ba%bb%e8%8a%b1/" rel="tag">开心麻花</a> | <a href="https://51.ruyo.net/tag/%e7%be%9e%e7%be%9e%e7%9a%84%e9%93%81%e6%8b%b3/" rel="tag">羞羞的铁拳</a> | <a href="https://51.ruyo.net/tag/%e7%be%9e%e7%be%9e%e7%9a%84%e9%93%81%e6%8b%b3%e7%99%be%e5%ba%a6%e7%bd%91%e7%9b%98/" rel="tag">羞羞的铁拳百度网盘</a> | <a href="https://51.ruyo.net/tag/%e7%be%9e%e7%be%9e%e7%9a%84%e9%93%81%e6%8b%b3%e7%a3%81%e5%8a%9b%e9%93%be%e6%8e%a5/" rel="tag">羞羞的铁拳磁力链接</a> | <a href="https://51.ruyo.net/tag/%e9%ab%98%e6%b8%85%e4%b8%8b%e8%bd%bd/" rel="tag">高清下载</a></span></div>
+							</div>
+					<div class="entry-content"  itemprop="articleBody">
+						<div class="article_index"><h5>文章目录<span class="caret"></span></h5><ul><li><a href="#1">电影评分</a></li><li><a href="#2">下载地址</a></li></ul></div><p><img class="alignnone" src="https://ae01.alicdn.com/kf/HTB1KNgOS5LaK1RjSZFxq6ymPFXac.jpg" alt="《羞羞的铁拳》高清1080P资源在线下载" width="333" height="466" /></p>
+<div class="well">靠打假拳混日子的艾迪生（艾伦 饰），本来和正义感十足的体育记者马小（马丽 饰）是一对冤家，没想到因为一场意外的电击，男女身体互换。性别错乱后，两人互坑互害，引发了拳坛的大地震，也揭开了假拳界的秘密，惹来一堆麻烦，最终两人在“卷莲门”副掌门张茱萸（沈腾 饰）的指点下，向恶势力挥起了羞羞的铁拳。</div>
+<h2 id="1">电影评分</h2>
+<p>豆瓣：7.2</p>
+<p>IMDb：6.5</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 id="2">下载地址</h2>
+<p>百度网盘：链接: https://pan.baidu.com/s/1mhBcMZA 密码: 6dvg</p>
+<p>磁力链接：magnet:?xt=urn:btih:F69F6475A7D2E65EF067D10784E9CFD0121C6ED2</p>
+<div class='yarpp-related yarpp-related-none'>
+<p>No related posts.</p>
+</div>
+											</div>
+					<div class="entry-details" itemprop="copyrightHolder" itemtype="http://schema.org/Organization" itemscope>
+			<details>
+				<summary>原文链接：<a href="https://51.ruyo.net/6994.html" rel="author">《羞羞的铁拳》高清1080P资源在线下载</a>，转发请注明来源！</summary>
+			</details>
+	</div>				</div>
+								<div class="entry-footer clearfix" role="toolbar">
+					<div class="bd-share">
+						<div class="bdsharebuttonbox"><a class="bds_qzone" data-cmd="qzone"></a><a class="bds_tsina" data-cmd="tsina"></a><a class="bds_weixin" data-cmd="weixin"></a><a class="bds_more" data-cmd="more"></a></div><script>var share_excerpt = '【《羞羞的铁拳》高清1080P资源在线下载】靠打假拳混日子的艾迪生（艾伦 饰），本来和正义感十足的体育记者马小（马丽 饰）是一对冤家，没想到因为一场意外的电击，男女身体互换。性别错乱后，两人互坑互害，引发了拳坛的大地震，也揭开了假拳界的...';var share_pic = '';var share_url = 'https://51.ruyo.net/6994.html?fid=0';var wkey = '1833210419';var qkey = '101190611';window._bd_share_config = { common : { bdText : share_excerpt,bdDesc : share_excerpt,bdUrl : share_url, bdPic : share_pic, bdSnsKey : {'tsina':wkey, 'tqq':qkey,'qzone':qkey} }, share : [{ 'bdStyle' : 1, 'bdSize' : 24 }] };with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>					</div>
+					<div class="btn-group vote-group" data-votes-up="0" data-votes-down="1" data-vote-id="6994" data-vote-type="post" itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
+<a href="javascript:;" class="btn btn-default up"><span class="glyphicon glyphicon-thumbs-up"></span> <span class="votes">-1</span><div class="hide" itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating"><span itemprop="average">1</span><span itemprop="votes">1</span><span itemprop="count">2</span></div></a>
+<a href="javascript:;" class="btn btn-default down"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+</div><span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="https://51.ruyo.net/" title="如有乐享" itemprop="url"><span itemprop="title">如有乐享</span></a></span> › <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="https://51.ruyo.net/category/%e5%bd%b1%e8%a7%86%e5%b0%8f%e8%af%b4/" title="影视小说" itemprop="url"><span itemprop="title">影视小说</span></a></span> › <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="https://51.ruyo.net" title="文章" itemprop="url"><span itemprop="title">文章</span></a></span> › <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="https://51.ruyo.net/6994.html" title="《羞羞的铁拳》高清1080P资源在线下载" itemprop="url"><span itemprop="title">《羞羞的铁拳》高清1080P资源在线下载</span></a></span>				</div>
+				<div class="panel-footer profile clearfix" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<a class="author-avatar" href="https://51.ruyo.net/author/admin/">
+						<img src="https://51.ruyo.net/wp-content/themes/dmeng2.0/images/grey.png" data-original="https://secure.gravatar.com/avatar/dfa45a82b261c63a5b0107a0a1a3f292?s=50&#038;d=monsterid&#038;r=g" class="avatar" width="50" height="50" />					</a>
+					<div class="author-description">
+						<div class="author-name"> 作者 : <span itemprop="name"><a href="https://51.RUYO.net" title="访问我是小马甲~的站点" rel="author external">我是小马甲~</a></span> </div>
+						<div itemprop="description">没有个人说明</div>
+					</div>
+				</div>
+			</div>
+			<nav class="pager" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+			<li class="previous"><a href="https://51.ruyo.net/6972.html" rel="prev"><span class="text-muted">上一篇：</span> <span itemprop="name">推荐一部科幻小说《三体》（1-3全本）</span></a></li><li class="next"><a href="https://51.ruyo.net/7116.html" rel="next"><span class="text-muted">下一篇：</span> <span itemprop="name">《请以你的名字呼唤我》DVD中字在线下载</span></a></li>	</nav><!-- .navigation -->			<div class="panel panel-default"><div class="panel-body adsense"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2073396170871664"
+     crossorigin="anonymous"></script>
+<!-- 评论上方的广告 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2073396170871664"
+     data-ad-slot="5971711201"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div>			<div class="panel panel-default" id="comments">
+	<div class="panel-body">评论已关闭。</div>
+	<ul class="list-group commentlist">
+				<li class="list-group-item respond-title">2 Responses to &#8220;《羞羞的铁拳》高清1080P资源在线下载&#8221;</li>
+		<ul id="thread-comments">
+			<li class="comment even thread-even depth-1 list-group-item top" id="comment-25257" data-comment-id="25257">
+<div class="comment-votes vote-group" data-votes-up="0" data-votes-down="0" data-vote-id="25257" >
+<a href="javascript:;" class="up"><span class="glyphicon glyphicon-chevron-up"></span> <span class="votes">0</span></a>
+<a href="javascript:;" class="down"><span class="glyphicon glyphicon-chevron-down"></span></a>
+</div>	<div id="comment-body">
+		<cite >br</cite>		<div id="comment-content"><p>和谐了  手慢了 哎</p>
+</div>
+		<div id="comment-meta">
+						<time datetime="2017-12-24" title="2017年12月24日 下午7:46">2017-12-24 19:46</time>
+					</div>
+		</div>
+</li>
+</li><!-- #comment-## -->
+<li class="comment odd alt thread-odd thread-alt depth-1 list-group-item top" id="comment-25249" data-comment-id="25249">
+<div class="comment-votes vote-group" data-votes-up="0" data-votes-down="1" data-vote-id="25249" >
+<a href="javascript:;" class="up"><span class="glyphicon glyphicon-chevron-up"></span> <span class="votes">-1</span></a>
+<a href="javascript:;" class="down"><span class="glyphicon glyphicon-chevron-down"></span></a>
+</div>	<div id="comment-body">
+		<cite ><a href="http://www.baidu.com" rel="external nofollow" target="_blank">游客</a></cite>		<div id="comment-content"><p>《正义联盟》网盘：https://pan.baidu.com/s/1bDyYdg 密码: p4gm</p>
+<p>《骗子》网盘：https://pan.baidu.com/s/1i5RDYcP 密码: 9brv</p>
+<p>磁力：magnet:?xt=urn:btih:49893c798e2c681b1bafa26e6259c33aade4517a</p>
+</div>
+		<div id="comment-meta">
+						<time datetime="2017-12-24" title="2017年12月24日 下午1:21">2017-12-24 13:21</time>
+					</div>
+		</div>
+</li>
+</li><!-- #comment-## -->
+		</ul>
+	</ul>
+	
+</div>
+					 </article><!-- #content -->
+		<div id="sidebar" class="col-lg-4 col-md-4" role="complementary" itemscope itemtype="http://schema.org/WPSideBar">
+	<aside id="text-30" class="panel panel-default widget clearfix widget_text">			<div class="textwidget"><a href="http://51.ruyo.net/tgchannel" target="_blank" title="telegram群组">TG广播</a> /  <a href="https://51.ruyo.net/get-our-team/" target="_blank" title="寻找组织">寻找组织 </a>/ <a href="http://51.ruyo.net/about/#3" target="_blank" title="公告">公告 </a>/ <a href="http://51.ruyo.net/feed" target="_blank" title="订阅">RSS订阅</a>
+<br/>
+<p><b>庆六一，高考，香港回归！本博已经关闭评论！</b></p></div>
+		</aside><aside id="text-16" class="panel panel-default widget clearfix widget_text">			<div class="textwidget"><a href="http://51.ruyo.net/vultr11" target="_blank" title="VULTR - 最低月付2.5刀，支持日本/洛杉矶"><span class="glyphicon glyphicon-hand-right"></span> VULTR - 最低月付2.5刀，支持日本/洛杉矶 </a><br>
+<a href="http://51.ruyo.net/bwg" target="_blank" title="搬瓦工CN2直连 -优惠码:BWHNY2022"><span class="glyphicon glyphicon-hand-right"></span> 搬瓦工 - 12.22%的优惠码：BWHNY2022</a><br>
+<a href="http://51.ruyo.net/linode" target="_blank" title="Linode - 最低月付5刀，注册送20刀"><span class="glyphicon glyphicon-hand-right"></span> Linode - 月付5刀，新注册注册送20刀</a>
+<br>
+<a href="https://51.ruyo.net/kryptcloud" target="_blank" title="iON cloud - 新加坡/洛杉矶服务器+虚拟主机"><span class="glyphicon glyphicon-hand-right"></span> iON cloud - 新加坡/洛杉矶服务器+虚拟主机</a></div>
+		</aside><aside id="recent-comments-4" class="panel panel-default widget clearfix widget_recent_comments"><h3 class="panel-heading widget-title">近期评论</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">dengyong</span>发表在《<a href="https://51.ruyo.net/17163.html/#comment-43223">甲骨文云(Oracle Cloud)免费开通ARM云服务器</a>》</li><li class="recentcomments"><span class="comment-author-link">马灼堂</span>发表在《<a href="https://51.ruyo.net/17163.html/#comment-43189">甲骨文云(Oracle Cloud)免费开通ARM云服务器</a>》</li><li class="recentcomments"><span class="comment-author-link">chahu</span>发表在《<a href="https://51.ruyo.net/17163.html/#comment-43173">甲骨文云(Oracle Cloud)免费开通ARM云服务器</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href='https://simplove.me' rel='external nofollow' class='url'>Jacklove</a></span>发表在《<a href="https://51.ruyo.net/17163.html/#comment-43169">甲骨文云(Oracle Cloud)免费开通ARM云服务器</a>》</li><li class="recentcomments"><span class="comment-author-link">emmm</span>发表在《<a href="https://51.ruyo.net/16250.html/#comment-43163">Money Yandex 万事达实体卡申请实战教程</a>》</li></ul></aside>		<aside id="recent-posts-4" class="panel panel-default widget clearfix widget_recent_entries">		<h3 class="panel-heading widget-title">最新文章</h3>		<ul>
+											<li>
+					<a href="https://51.ruyo.net/17687.html">RunAsDate.exe一款可修改软件系统时间，实现软“破解”（含源码）</a>
+									</li>
+											<li>
+					<a href="https://51.ruyo.net/17684.html">电信天浙卡19元/月：65G全国流量+30G定向流量+100分钟通话</a>
+									</li>
+											<li>
+					<a href="https://51.ruyo.net/17666.html">XShell最新免费版已不再限制4个标签页，但是退出会弹窗，附解决方案！</a>
+									</li>
+											<li>
+					<a href="https://51.ruyo.net/17657.html">微信公众号送我价值10000元的微信红包封面，见者有份！</a>
+									</li>
+											<li>
+					<a href="https://51.ruyo.net/17650.html">电信长期纯流量天彩卡 29元/月：每月包含70G全国流量+30G定向流量</a>
+									</li>
+											<li>
+					<a href="https://51.ruyo.net/17646.html">夸克网盘完成学生认证仅10.9元/年即可享受会员服务</a>
+									</li>
+											<li>
+					<a href="https://51.ruyo.net/17625.html">华为云领取1010元代金券，白嫖9个月服务器，老用户可上车！速度！</a>
+									</li>
+											<li>
+					<a href="https://51.ruyo.net/17617.html">中国电信长期流量卡29元/月：每月含95G流量，不返费不参加活动</a>
+									</li>
+											<li>
+					<a href="https://51.ruyo.net/17611.html">体验Navicat Premium 16，无限重置试用14天方法(附源码)</a>
+									</li>
+											<li>
+					<a href="https://51.ruyo.net/17604.html">给自己的网站换个圣诞节的气氛背景&#x1f384;&#x1f385;</a>
+									</li>
+					</ul>
+		</aside><aside id="rss-11" class="panel panel-default widget clearfix widget_rss"><h3 class="panel-heading widget-title"><a class="rsswidget" href="https://jike.info/category/5.rss?uid=6&#038;token=c5cd3a8d-a15d-4b13-9383-43400d0e092b"><img class="rss-widget-icon" style="border:0" width="14" height="14" src="https://51.ruyo.net/wp-includes/images/rss.png" alt="RSS" /></a> <a class="rsswidget" href="https://jike.info/category/5">优惠活动</a></h3><ul><li><a class='rsswidget' href='https://jike.info/topic/5961/%E9%9B%86%E4%B8%AD%E5%B8%96-%E8%85%BE%E8%AE%AF%E4%BC%9A%E8%AE%AE%E6%8C%82%E6%9C%BA%E5%8F%91%E5%B8%83%E5%B8%96'>#集中帖# 腾讯会议挂机发布帖</a></li><li><a class='rsswidget' href='https://jike.info/topic/8642/%E5%93%AA%E4%B8%AA%E5%9F%9F%E5%90%8D%E5%95%86%E7%9A%84org%E5%92%8Cink%E5%9F%9F%E5%90%8D%E6%9C%80%E4%BE%BF%E5%AE%9C'>哪个域名商的org和ink域名最便宜</a></li><li><a class='rsswidget' href='https://jike.info/topic/8639/%E6%97%A9%E6%99%9A%E9%83%BD%E4%BC%9A%E6%9D%A5-%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98vip%E6%9D%A5%E4%BA%86'>早晚都会来，阿里云盘VIP来了！</a></li><li><a class='rsswidget' href='https://jike.info/topic/8636/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E4%BC%9A%E5%91%98%E6%9D%A5%E4%BA%86-1%E5%91%A8%E5%B9%B4%E9%80%81%E4%BC%9A%E5%91%98%E6%B4%BB%E5%8A%A8'>阿里云盘会员来了！（1周年送会员活动）</a></li><li><a class='rsswidget' href='https://jike.info/topic/8621/%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8%E6%98%9F%E8%BE%B0%E5%8D%A1-19%E5%85%83-%E6%9C%88%E5%90%AB50g%E9%80%9A%E7%94%A8%E6%B5%81%E9%87%8F-30g%E5%AE%9A%E5%90%91%E6%B5%81%E9%87%8F-50%E5%88%86%E9%92%9F%E9%80%9A%E8%AF%9D'>中国移动星辰卡 19元&#x2F;月含50G通用流量+30G定向流量+50分钟通话</a></li></ul></aside><aside id="calendar-3" class="panel panel-default widget clearfix widget_calendar"><div id="calendar_wrap" class="calendar_wrap"><table id="wp-calendar">
+	<caption>2022年二月</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="星期一">一</th>
+		<th scope="col" title="星期二">二</th>
+		<th scope="col" title="星期三">三</th>
+		<th scope="col" title="星期四">四</th>
+		<th scope="col" title="星期五">五</th>
+		<th scope="col" title="星期六">六</th>
+		<th scope="col" title="星期日">日</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="https://51.ruyo.net/date/2022/01/">&laquo; 1月</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next" class="pad">&nbsp;</td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="1" class="pad">&nbsp;</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+	</tr>
+	<tr>
+		<td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
+	</tr>
+	<tr>
+		<td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td><a href="https://51.ruyo.net/date/2022/02/19/" aria-label="于2022年2月19日上发布的文章">19</a></td><td>20</td>
+	</tr>
+	<tr>
+		<td><a href="https://51.ruyo.net/date/2022/02/21/" aria-label="于2022年2月21日上发布的文章">21</a></td><td>22</td><td>23</td><td>24</td><td><a href="https://51.ruyo.net/date/2022/02/25/" aria-label="于2022年2月25日上发布的文章">25</a></td><td id="today">26</td><td>27</td>
+	</tr>
+	<tr>
+		<td>28</td>
+		<td class="pad" colspan="6">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></aside></div><!-- #sidebar -->
+	</div>
+ </div><!-- #main -->
+<footer id="colophon" class="container" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+	<div class="panel panel-default text-muted">
+		<div class="panel-body">
+<aside id="analytics-8" class="widget clearfix footer-widget widget_analytics"><ul><li class="update">统计时间 : <time title="统计数据最后更新时间：2022-02-26 10:33:45 ">02-26 10:33</time></li><li>文章 : 1456</li><li>分类 : 37</li><li>标签 : 4113</li><li>用户 : 29592</li><li>评论 : 13994</li><li>浏览总数 : 34983946</li><li>搜索次数 : 598637</li></ul></aside><!-- cached 2022-02-26 10:33:45 -->		</div>
+		<div class="panel-footer clearfix">
+			&copy; 2022 <a href="https://51.ruyo.net/">如有乐享</a> 版权所有 <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备14015671号-1</a><script>
+(function(){
+var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?c70a69acf0b514c5188637d9429438b6":"https://jspassport.ssl.qhimg.com/11.0.1.js?c70a69acf0b514c5188637d9429438b6";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?0bd90052898d11e61495657b34d773e3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- 
+<script>
+var check = (function () {
+            var callbacks = [], timeLimit = 50, open = false;
+            setInterval(loop, 1);
+            return {
+                addListener: function (fn) {
+                    callbacks.push(fn);
+                },
+                cancleListenr: function (fn) {
+                    callbacks = callbacks.filter(function (v) {
+                        return v !== fn;
+                    });
+                }
+            }
+            function loop() {
+                var startTime = new Date();
+                debugger;
+                if (new Date() - startTime > timeLimit) {
+                    if (!open) {
+                        callbacks.forEach(function (fn) {
+                            fn.call(null);
+                        });
+                    }
+                    open = true;
+                    window.stop();
+                } else {
+                    open = false;
+                }
+            }
+        })();
+
+        check.addListener(function () {
+            window.location.reload();
+        });
+</script> -->
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-144188525-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<!-- Baidu Auto Push -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Auto Push -->
+
+
+
+<script>
+
+    jQuery("#christmas").click(function(){
+        jQuery(this).hide()
+    })
+    for(i=1;i<=200;i++){
+    top1=900+Math.ceil(Math.random()*100); 
+    left=1+Math.ceil(Math.random()*99); 
+    src=Math.ceil(Math.random()*4); 
+    s=5+Math.random()*13; 
+
+    h=3+Math.ceil(Math.random()*10); 
+    console.log(src)
+    newf=jQuery('<div class="flake"></div>').css({
+      "-webkit-animation-duration":s+"s",
+      "-moz-animation-duration":s+"s",
+      "-ms-animation-duration":s+"s",
+      "-o-animation-duration":s+"s",
+      "animation-duration":s+"s",
+    "margin-top":top1+"px",
+    "border-radius":100+"px",
+    "background":"white",
+    "width":h+"px",
+    "height":h+"px",
+    "left":left+"%",
+    "z-index":"1",
+  })
+    jQuery("#christmas").append(newf);
+  }
+  for(i=1;i<=50;i++){
+    top1=900+Math.ceil(Math.random()*100); 
+    
+    left=1+Math.ceil(Math.random()*99); 
+    src=Math.ceil(Math.random()*4); 
+    s=5+Math.random()*13; 
+    h=20+Math.ceil(Math.random()*30); 
+    console.log(src)
+    newf=jQuery('<div class="flake">'
+      +'<img src="https://www.chinaredflag.cn/a_data/image/'+src+'.png" style="width:100%">'
+      +'</div>').css({
+      "-webkit-animation-duration":s+"s",
+      "-moz-animation-duration":s+"s",
+      "-ms-animation-duration":s+"s",
+      "-o-animation-duration":s+"s",
+      "animation-duration":s+"s",
+    "margin-top":top1+"px",
+    "border-radius":100+"px",
+    "width":h+"px",
+    "left":left+"%",
+    "z-index":"1",
+
+  })
+    jQuery("#christmas").append(newf);
+  }
+
+</script>
+
+
+
+
+
+
+
+		</div>
+	</div>
+</footer>
+<div class="btn-group-vertical floatButton"><button type="button" class="btn btn-default" id="goTop" title="去顶部"><span class="glyphicon glyphicon-arrow-up"></span></button><button type="button" class="btn btn-default" id="refresh" title="刷新"><span class="glyphicon glyphicon-repeat"></span></button><button type="button" class="btn btn-default" id="goComments" title="评论"><span class="glyphicon glyphicon-align-justify"></span></button><button type="button" class="btn btn-default" id="goBottom" title="去底部"><span class="glyphicon glyphicon-arrow-down"></span></button></div><link rel='stylesheet' id='yarppRelatedCss-css'  href='https://51.ruyo.net/wp-content/plugins/yet-another-related-posts-plugin/style/related.css?ver=5.0.3' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ratingsL10n = {"plugin_url":"https:\/\/51.ruyo.net\/wp-content\/plugins\/wp-postratings","ajax_url":"https:\/\/51.ruyo.net\/wp-admin\/admin-ajax.php","text_wait":"Please rate only 1 item at a time.","image":"stars_crystal","image_ext":"gif","max":"5","show_loading":"0","show_fading":"0","custom":"0"};
+var ratings_mouseover_image=new Image();ratings_mouseover_image.src="https://51.ruyo.net/wp-content/plugins/wp-postratings/images/stars_crystal/rating_over.gif";;
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://51.ruyo.net/wp-content/plugins/wp-postratings/js/postratings-js.js?ver=1.86.2'></script>
+<script type='text/javascript' src='https://51.ruyo.net/wp-includes/js/wp-embed.min.js?ver=5.0.3'></script>
+</body>
+</html>
+
+<!-- Dynamic page generated in 0.921 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2022-02-26 10:42:00 -->
+
+<!-- Super Cache dynamic page detected but late init not set. See the readme.txt for further details. -->
+<!-- Dynamic Super Cache -->

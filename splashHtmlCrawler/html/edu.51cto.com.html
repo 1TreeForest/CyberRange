@@ -1,0 +1,2662 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="360-site-verification" content="241e96c767f8d3e702b658267e7dcf2f" />
+    <meta name="format-detection" content="telephone=no,email=no,address=no">
+    <link rel="canonical" href="https://edu.51cto.com/course/22222.html">    <meta name="csrf-param" content="_csrf">
+    <meta name="csrf-token" content="LRdwI-CeLvNAdBZV5bs3Eo886Y23uDuRXf7FXZzBcvva2P84yZAJGauvynIv1cQ6m9julvf3Ujz3xsjIFKR3_A==">
+    <title>影院在线售票云平台（仿猫眼电影，附SpringBoot项目源码）【共31课时】_Java课程-51CTO学堂</title>
+    <meta name="keywords" content="影院在线售票云平台（仿猫眼电影，附SpringBoot项目源码）,Java,视频课程,IT在线教育,51CTO学堂">
+<meta name="description" content="影院在线售票云平台（仿猫眼电影，附SpringBoot项目源码）,Java,学习SpringBoot等技术，熟悉电影在线售票云平台全后端开发，主要功能有影院管理，排片购票等,51CTO学堂为您提供全面的视频课程和专项解答,it人充电,就上51CTO学堂">
+<link href="https://edu.51cto.com/course/22222.html" rel="canonical">        <link href="https://static1.51ctocdn.cn/edu/center/css/base.css|v=1.9.38,center/css/activity_tab.css|v=1.9.38,css/cto/font/fontface.css|v=1.9.38,center/css/course_detail/scss/index.css|v=1.9.38,center/css/swiper-3.3.1.min.css|v=1.9.38,center/css/car_rec.css|v=1.9.38,center/css/service_box/index.min.css|v=1.9.38" rel="stylesheet">
+    <script src="//aeu.alicdn.com/waf/antidomxss_v640.js"></script><script src="//aeu.alicdn.com/waf/interfaceacting211222.js"></script><script type="text/javascript">_centerURL='https://edu.51cto.com/center/',imgpath='https://static1.51ctocdn.cn/edu/images/whitestyle/',upDomain = 'https://upload.51cto.com/',EDU_URL = 'https://edu.51cto.com/',ImgUpDomain = 'https://upload.51cto.com/index.php?c=upload&m=upimg';_urls={user:'https://edu.51cto.com/center/user/user-index/index?user_id=888',lec:'https://edu.51cto.com/lecturer/888.html',spec:'https://edu.51cto.com/topic/888.html',pack:'https://edu.51cto.com/atlas/888.html',wejob:'https://edu.51cto.com/px/train/888.html?source=ss',course:'https://edu.51cto.com/course/888.html'},hmtPro='其他',HOME_URL='https://home.51cto.com/';</script>
+    <script src="https://static1.51ctocdn.cn/edu/center/js/jquery.min.js|v=1.9.38,center/js/prototype_create.js|v=1.9.38,center/js/plugins.js|v=1.9.38,plugin/mbox.v2.js|v=1.9.38,center/js/autoload_list.js|v=1.0.2|v=1.9.38,js/second_origin.js|v=1.9.38,center/js/base.js|v=1.9.38,center/js/shence.js|v=1.9.38,center/js/379ef4bd50c30e261ccfb18dfc626d9f.js|v=1.9.38"></script></head>
+<body>
+                                
+            <div class="eduadvtop" style="background:#c01b53; height:60px;">
+                <div class="Page">
+                    <a href="https://edu.51cto.com/hyk/YKCPGk" target="_blank"   class="TOP_commonpic">
+                        <img src="https://static1.51ctocdn.cn/edu/center/images/user_loginout_aug.jpg"  width="1200" height="60" />
+                    </a>
+                </div>
+            </div>
+                    
+        
+    
+<script type="text/javascript">
+  var _picdomin = "https://s9.51cto.com/";
+  var STATICPATH = "https://static1.51ctocdn.cn/edu/";
+  var EDU_URL = 'https://edu.51cto.com/';
+  var user_id = '';
+  var HOME_URL = 'https://home.51cto.com/';
+  var indexrouter = 'course/index/index';
+  var indexAbValue = 0;
+  var abCourseList = 0;
+  var abCourseListSearch = 0;
+</script>
+  <div class="Header3 white ">
+    <div class="Page">
+      <ul>
+        <li class="fl logo">
+          <a href="/" rel="nofollow">
+            <img class="bottom_logo_pic_new" src="https://s2.51cto.com/images/202107/05/237c1834e3a817d393873f56f39e7c60.png?x-oss-process=image/resize,m_lfit,w_120" alt="logo" />
+          </a>
+        </li>
+        <li class="fl hasMore classify">
+          <a href="https://edu.51cto.com/courselist/index-f1.html?utm_source=topbar" target="_blank" rel="nofollow">
+            <i class="icon-left"></i>视频课程 <i class="icon-right"></i>
+          </a>
+          <div class="More">
+            <ul id="ALLCourseList"></ul>
+          </div>
+          <div class="empty"></div>
+        </li>
+        <li class="fl hasMore findslist" style="position: relative;">
+          <a href="https://edu.51cto.com/topiclist?utm_source=topbar" rel="nofollow">好课秒杀<i class="icon-right"></i></a>
+          <div class="findslist-More">
+            <ul>
+              <li class="li2"><a href="https://edu.51cto.com/topiclist" target="_blank" rel="nofollow"><i></i>专题套餐</a></li>
+              <li class="li4"><a href="https://edu.51cto.com/center/activity/index/day-seckill" target="_blank" rel="nofollow"><i></i>秒杀专区</a></li>
+              <li class="li3"><a href="https://edu.51cto.com/ranking/index.html" target="_blank" rel="nofollow"><i></i>好课排行榜</a></li>
+              <li class="li5"><a href="https://edu.51cto.com/courselist/index-zh7.html" target="_blank" rel="nofollow"><i></i>会员免费</a></li>
+            </ul>
+          </div>
+                  </li>
+        <li class="line fl"></li>
+        <li class="fl"><a href="https://e.51cto.com/?utm_platform=pc&utm_medium=51cto&utm_source=edu&utm_content=topbar&rtm_frd=" target="_blank" rel="nofollow">精品班</a></li>
+        <li class="fl link_qy"><a href="https://b.51cto.com?utm_source=topbar" target="_blank" rel="nofollow">企业版<i class="icon_qy"></i></a></li>
+                  <li class="topSearch fl">
+            <form action="/center/course/index/search" method="get" id="TopSearchFrom">
+              <input type="text" placeholder="后端开发" name="q" maxlength="30" autocomplete="off" id="searchbtns">
+              <button class="icon search" type="submit"></button>
+            </form>
+            <div class="hotsuggestlist-common" id="Hotsuggestlist-common"></div>
+            <div class="hotsearchlist-common" id="Hotsearchlist-common"></div>
+          </li>
+                <li class="fr links">
+          <a href="javascript:void(0);" rel="nofollow">
+            <i class="icon"></i>
+          </a>
+          <div class="bridge"></div>
+          <div class="More link-more">
+            <a class="a1" href="https://www.51cto.com?utm_source=topbar" target="_blank" rel="nofollow">
+              <span>51CTO媒体</span>
+              <span>中国优质的IT技术网站</span>
+            </a>
+            <a class="a6" href="https://blog.51cto.com/?utm_source=topbar" target="_blank" rel="nofollow">
+              <span>51CTO博客</span>
+              <span>专业IT技术创作平台</span>
+            </a>
+            <a class="a2" href="https://b.51cto.com?utm_source=wzdh" target="_blank" rel="nofollow">
+              <span>企业内训</span>
+              <span>51CTO企业学堂</span>
+            </a>
+            <a class="a3" href="http://x.51cto.com?utm_source=topbar" target="_blank" rel="nofollow">
+              <span>CTO训练营</span>
+              <span>技术管理者的MBA课堂</span>
+            </a>
+            <a class="a4" href="http://e-learning.51cto.com?utm_source=topbar" target="_blank" rel="nofollow">
+              <span>教育版</span>
+              <span>高校的IT学堂</span>
+            </a>
+            <a class="a5" href="https://edu.51cto.com/center/lec/university/index?utm_source=topbar" target="_blank" rel="nofollow">
+              <span>讲师帮助中心</span>
+              <span>讲师/机构入驻指导</span>
+            </a>
+          </div>
+          <!-- <div class="empty"></div> -->
+        </li>
+                  <li class="fr">
+            <a class="fr LoginReg login-register-sensors" platform_X="1" page_type_X="1" banner_name_X="1" href="https://edu.51cto.com/user/login.html" rel="nofollow">登录/注册</a>
+            <div class="content-wrap login-content">
+              <div class="detail">
+                <div class="tips">登录后你可以:</div>
+                <ul class="detail-list">
+                  <li><img src="https://s5.51cto.com/images/202108/04/1b60bcd8f72b31b0e77835ee4ba1efb6.png?x-oss-process=image/resize,m_lfit,w_50">首单视频课程7折</li>
+                  <li><img src="https://s6.51cto.com/images/202108/04/546a999f06675a4249250970e5946e1b.png?x-oss-process=image/resize,m_lfit,w_50">免费领取月卡</li>
+                  <li><img src="https://s7.51cto.com/images/202108/04/9f3320b17539cd90353d5fab9e835eab.png?x-oss-process=image/resize,m_lfit,w_50">免费领取资料包</li>
+                  <li><img src="https://s8.51cto.com/images/202108/04/b7ea92b2adf4820ba883fe7ce3f931fd.png?x-oss-process=image/resize,m_lfit,w_50">3000门课免费送</li>
+                </ul>
+                <a class="login-btn login-register-sensors" platform_X="1" page_type_X="1" banner_name_X="1" href="https://edu.51cto.com/user/login.html">立即登录/注册</a>
+              </div>
+            </div>
+          </li>
+                        <li class="fr Appicon">
+          <div class="i-wrap">
+            <i class="icon-app"></i>
+          </div>
+           APP下载            <div class="hidebox">
+              <div class="app_code cl_6">
+                <div><img width="114" height="114" src="https://s1.51ctocdn.cn//images/202109/23/5ecbc36983820826eddcf52dc659e900.jpg" alt="" /></div>
+                <p>下载Android客户端</p>
+                <p>下载iphone 客户端</p>
+              </div>
+            </div>
+        </li>
+        <li class="clear"></li>
+      </ul>
+    </div>
+  </div>
+<script type="text/javascript">
+  $("#TopSearchFrom").find('input').keyup(function() {
+    $(this).val($(this).val().substr(0, 30))
+  }).keydown(function(e) {
+    if (e.keyCode == 13 && $.trim($(this).val()).length == 0) {
+      return false;
+    };
+  }).next().click(function() {
+    if ($.trim($(this).prev().val()).length == 0) return false;
+  });
+</script>
+<!-- 诸葛埋点start -->
+<script type="text/javascript">
+  var index_flag = 1;
+    $(function() {
+    //神策
+    var page_title = window.location.href;
+    $('.LoginReg').click(function() {
+      var btn_name = $(this).text();
+      try {
+        sensors.track('RegisterButtonClick', {
+          page_title: page_title,
+          button_name: btn_name,
+        });
+      } catch (error) {}
+    })
+    $('.Header3 .cart').click(function() {
+      sensors.track('ViewShoppingCart', {
+        entrance: '顶部icon',
+      });
+    })
+    $('#TopSearchFrom button').click(function() {
+      sensors.track('SearchButtonClick', {
+        page_title: page_title,
+        key_word: $('#searchbtns').val(),
+      });
+    })
+    $('#searchbtns').click(function() {
+      sensors.track('SearchColumClick', {});
+    })
+  })
+  var searchlist = '0';
+</script>    <link rel="stylesheet" href="https://static1.51ctocdn.cn/edu/center/css/course_detail/css/default_eval.css?v=v=1.9.38">
+<div class="new-course-wrap-sun">
+  <header class="header header4">
+  
+    <div class="breadcrumb-nav">
+        <p class="Page">
+		<a href="https://edu.51cto.com/" shence-data="1">首页</a>
+        <span>&gt;</span>
+        <a href="https://edu.51cto.com/courselist/index.html" shence-data="2">视频课程</a>
+        <span>&gt;</span>
+        <a href="https://edu.51cto.com/courselist/11.html" shence-data="3">后端开发</a>
+        <span>&gt;</span>
+        <a href="https://edu.51cto.com/courselist/14.html" shence-data="4">Java</a>
+        <span>&gt;</span>
+        <a class="color2" href="https://edu.51cto.com/course/22222.html" shence-data="5">影院在线售票云平台（仿猫眼电影，附SpringBoot项目源码）</a>
+        </p>
+    </div>
+	<div class="Page padding">
+		<img class="code-bg" src="https://static1.51ctocdn.cn/edu/center/css/course_detail/images/header-code3.png" alt="" width="580" height="273">
+		<span class="height-light"></span>
+		<h1 class="header_title">
+			<span class="til ">
+								影院在线售票云平台（仿猫眼电影，附SpringBoot项目源码）			</span>			
+		</h1>
+		<h2 class="header_target">
+									
+			学习SpringBoot等技术，熟悉电影在线售票云平台全后端开发，主要功能有影院管理，排片购票等		</h2>
+		<!-- <a class="efbc63 underline">已收录到《Java深度学习合集》，98%的同学在这里找到的满意的课程，戳查看>></a> -->
+		<div class="advert-text">
+			<a href="https://edu.51cto.com/surl=6iXYg4" target="_blank"  style="font-size:14px; color:#ff9900; font-weight:bold;" title="Java深度学习挑战高薪，深入理解微服务主流框架思想，系统化架构设计实操分享，精选好课，立即查看">Java深度学习挑战高薪，深入理解微服务主流框架思想，系统化架构设计实操分享，精选好课，立即查看</a>		</div>
+		<div class="header_other-detail clearfix2">
+			<div class="detail-wrap fl">
+				<p class="rank clearfix2">
+										<span class="appraise-start">
+						<i class="star_gray"></i>
+						<i class="star_yel" style="width:76.5px;"></i>
+					</span>
+					<span class="score">5.0</span>
+										<span class="appraise-count-box">
+						(<span class="appraise-count"></span>个评分)
+						<span class="split-point ty-t-1"></span>
+					</span>
+					
+					<span>940人学习</span>
+					<!-- <span class="updatetime">更新： 2020/03/19</span> -->
+					
+				</p>
+				<p class="action">
+					<!-- <span>新课榜</span>
+					<span>NO.1</span> -->
+										
+					<span class="difficulty">高级</span>
+					<span class="split-point ty-t-1"></span>
+					<span>31课时</span>
+					<span class="split-point ty-t-1"></span>
+					<span class="normal">共<b>9</b>小时<b>55</b>分钟</span>
+					<span class="split-point ty-t-1"></span>
+					<span class="updatetime">2020/03/19更新</span>
+				</p>
+			</div>
+			<div class="study-wrap fr">
+				<span class="study_num collect span1  login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="11" id="fav">
+					<i class="top right-icon collect-icon">
+						<!-- <img src="https://s4.51ctocdn.cn/images/202109/15/def2ca069c6ba7e1896d243b70000518.png"/> -->
+					</i>
+					<i class="bottom">收藏<span id="favNum" class="fontDin">24</span></i>
+					<b class="success"></b>
+					</span>
+				<span class="study_time span1 share hover-icon">
+					<i class="top right-icon share-icon">
+						<!-- <img src="https://s4.51ctocdn.cn/images/202109/15/3904d64070068656b828c2e4602dec37.png"/> -->
+					</i>
+					<i class="bottom">分享</i>
+				</span>
+				<p class="share-box tc common-box">
+						<img src="" alt="二维码" width="118" height="118">
+						<i>打开微信、微博、QQ 扫描二维码,即可分享</i>
+				</p>
+															<span class="study_time download span1" onclick="loginPopover()" platform_X="1" page_type_X="5" banner_name_X="14">
+							<i class="top right-icon download-icon">
+								<!-- <img src="https://s4.51ctocdn.cn/images/202109/15/2db2b7990154151e95cfde689c0cb881.png"/> -->
+							</i>
+							<i class="bottom">资料下载</i>
+						</span>
+													
+				<p class="download-box tc common-box">
+					<img src="https://static1.51ctocdn.cn/edu/center/css/course_detail/images/header-download.png" alt="二维码" width="81" height="81">
+					<i>下载学堂APP</i>
+					<i>缓存视频离线看</i>
+				</p>
+
+			</div>
+		</div>
+
+
+		<!-- 右侧价格 -->
+		<aside class="right-content-wrap" style="position: relative;">
+		<!-- 价格 -->
+		<!--右侧图片价格 start-->
+
+        
+		<style>
+	.date-discount-text{
+		position:relative;
+	}
+	.date-discount-b{
+		display:none;
+		position: absolute;
+		top: 25px;
+		left: 0;
+		font-size: 12px;
+		font-weight: normal;
+		color: #ffffff;
+		width: 180px;
+		line-height: 24px;
+		background: rgba(76, 79, 82, 0.7);
+		border-radius: 3px;
+		box-sizing: border-box;
+		text-align: center;
+		transition: all .2s linear;
+	}
+	.date-discount-text:hover .date-discount-b{
+		display:block;
+	}
+	.manjian {
+		overflow: hidden;
+	}
+	.new-course-wrap-sun aside.right-content-wrap .info-card .tab-list li i.green {
+		float: left;
+		background: #E31537;
+		width: 19px;
+		height: 19px;
+		border-radius: 4px;
+		margin-right: 5px;
+		margin-top:2px;
+	}
+	.manjian .txt {
+	}
+	.manjian .txt .s2 {
+		color: #E31537;
+	}
+
+    .manjian .txt .s2.normal {
+		color: #30353d;
+	}
+</style>
+<link rel="stylesheet" href="https://static1.51ctocdn.cn/edu/center/css/one_seckill/course.min.css?v=v=1.9.38"/>
+<style id="k1"></style>
+<article class="info-card common-wrap-hide" id="infoCard">
+	<!-- 封面 -->
+	<div class="pic-wrap">
+		<img id="courseCorver" width="279" height="166" src="https://s2.51ctocdn.cn/images/202003/17/d0e916dee8eec58f0c3bfcf5f0d4d0f0.jpg?x-oss-process=image/resize,m_fixed,w_279,h_166" alt="影院在线售票云平台（仿猫眼电影，附SpringBoot项目源码）">
+		<div class="pic-shade"></div>
+				
+			<!-- <a href="https://edu.51cto.com/user/login.html" class="play">免费试看</a> -->
+			<a onclick="loginPopover()" class="play login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="8">免费试看</a>
+				
+				<a class="sale-first" href="https://edu.51cto.com/center/lec/university/index?utm_source=topbar#id=62" target="_blank">首发</a>
+		                <!-- louzb推广，视频课详情挂件 -->
+        	</div>
+    <div class="price-wrap">
+		<!-- 广告横幅box -->
+		<div class="banner-ad-box">
+                        <!-- louzb推广，视频课详情角标 -->
+            		</div>
+					<div class="price-inner">
+				<p class="price">
+					<span class="new"><b>￥251.30</b></span>
+					<del class="old">￥359.00</del>
+				</p>
+			</div>
+			<p class="active-type first discount">
+							</p>
+		
+					<div class="price-inner tab-list-box">
+		
+				<ul class="tab-list">
+											<li class="">
+																						<a href="https://edu.51cto.com/courselist/index-zh6.html" target="_blank" rel="noopener noreferrer">
+							
+																	<i class="red">折</i>
+									<span class="txt  red date-discount-text">新年开学优惠活动																													<b class="date-discount-b">仅2022-02-02 至 2022-04-30</b>
+																	</span>
+																
+															</a>
+														
+						</li>
+					                    <!-- louzb推广，视频课详情文案 -->
+                                        				</ul>
+			</div>
+		
+		
+	</div>
+	
+	
+			<div class="btn-action-wrap clearfix2">
+			
+
+							<div class="addCart inline-btn ">
+					加入购物车
+														</div>
+			
+
+							<div class="goBuy inline-btn ">
+					立即购买
+																									</div>
+					</div>
+	
+			<div class="discount">
+							<!-- <p>现在购买课程，<span>最高可减107.70元</span></p> -->
+										<a class="addCart newCart login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="9">加入购物车</a>
+					</div>
+		<div class="course-info-box">
+		<p class="title">本课程包括：</p>
+		<ul class="course-info-ul">
+				
+				<li class="video-li" data-to="lessonFile">9.9小时的视频随时观看</li>
+										
+											<li class="download-li login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="12" onclick="loginPopover()">
+							<span class="doc-list-num" ></span>个资料可打包下载
+						</li>
+									</li>
+													<li class="no-underline course-li">课程相关内容答疑</li>
+						<li class="refund-li">
+				<p>15分钟无理由退款</p>
+				<div class="box">
+					<p>1、仅限付费视频课程适用</p>
+					<p>2、购买后15分钟内可以找到客服进行沟通退款</p>
+					<p>3、下载资料后不再享有退款特权</p>
+					<p>4、客服（Tel：400-101-1651）</p>
+				</>
+				</b>
+			</li>
+					</ul>
+	</div>
+	
+</article>
+<script>
+	$(function(){
+		//showPlay
+		var hashArr = location.hash;
+		if(hashArr.indexOf("#showPlay") >= 0){
+			$("#infoCard .play").trigger("click");
+		}
+		var discount_end_time = '04月30日';
+		if(discount_end_time){
+			$("#discountEndTime").text("截止至"+discount_end_time);
+		}
+		//右侧立即购买登录注册神策事件
+		$(".btn-action-wrap .goBuy,#subHeader .goBuy").click(function(){
+			if(typeof user_id != "undefined" && user_id == ""){
+				var pageUrl = window.location.href;
+				sensors.track('Login_X', {
+					$url:pageUrl,
+					product_name:'51CTO学堂',
+					platform_type:'PC',
+					platform_X:'1',
+					page_type_X:'5',
+					banner_name_X:'7'
+				});
+			}
+		});
+	})
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+        
+        
+                
+        
+		<!-- 优惠券 -->
+        <ul class="coupon-wrap couponList common-wrap-hide" id="couponList"></ul>
+
+
+        <!-- 销量榜 -->
+        
+        <div id="CourseRanking">
+        <script id="CourseRankingScript" type="text/html">
+        {{if coursePayRanking.list || courseNewRanking.list}}
+        <div class="secbox mb30 ranking-list">
+            <div class="titles mb20">
+            {{if coursePayRanking.list}}
+                <p data-text="sale" class="active">销量榜</p>
+                <a href="{{coursePayRanking.url}}" target="_blank" class="more">更多</a>
+            {{/if}}
+            {{if courseNewRanking.list}}
+                <p data-text="new" class="{{coursePayRanking.list ? '' : 'active'}}">新课榜</p>
+                <a href="{{courseNewRanking.url}}" target="_blank" class="more">更多</a>
+            {{/if}}
+            </div>
+            <div class="contents hotrank">
+            {{if coursePayRanking.list}}
+                <div class="item-content" data-text="sale" style="display: block;">
+                    <ul class="courselist_july">
+                    {{each coursePayRanking.list value index}}
+                    <li class="{{ index == 0 ? 'item_rank_course_active' : '' }}">
+                        <div class="course_info_july clearfix2">
+                            <div class="leftimg fl">
+                                <span class="corner corner{{value.ranking}}">{{value.ranking}}</span>
+                                <a href="https://edu.51cto.com/course/{{value.course_id}}.html" target="_blank">
+                                    <img src="{{value.image_url}}"/>
+                                </a>
+                            </div>
+                            <div class="fl infobox">
+                                <div class="top">
+                                    <a href="https://edu.51cto.com/course/{{value.course_id}}.html" target="_blank">
+                                        <p class="title">{{value.title}}</p>
+                                    </a>
+                                </div>
+                                <div class="detail clearfix2">
+                                    {{if value.appraise_score > 0}}
+                                    <span class="rank-start fl">
+                                        <i class="star_gray"></i>
+                                        <i class="star_yel" style="width: {{value.appraise_score > 5 ? 5 : value.appraise_score*66/5}}px"></i>
+                                    </span>
+                                    <span class="score fl" data="{{value.appraise_score}}">{{value.appraise_score}}</span>
+                                    {{else}}
+                                    <span class="score fl" data="0">暂无评分</span>
+                                    {{/if}}
+                                    <span class="split-point bg-bcc0c6 ty-t-1"></span>
+                                    <span class="lec-name" title="{{value.lec_name}}">{{value.lec_name}}</span>
+                                </div>
+                                <div class="price-line">
+                                    <span class="now-price fontDin">￥{{value.newPrice}}</span>
+                                    {{if value.newPrice != value.price}}
+                                    <span class="origin-price fontDin">￥{{value.price}}</span>
+                                    {{/if}}
+                                    {{if value.actinfo}}
+                                    <span class="cheap-desc">{{value.actinfo.cheap_desc}}</span>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{/each}}
+                    </ul>
+                </div>
+            {{/if}}
+            {{if courseNewRanking.list}}
+                <div class="item-content" data-text="new" style="display: none;">
+                    <ul class="courselist_july">
+                    {{each courseNewRanking.list value index}}
+                    <li class="{{ index == 0 ? 'item_rank_course_active' : '' }}">
+                        <div class="course_info_july clearfix2">
+                            <div class="leftimg fl">
+                                <span class="corner corner{{value.ranking}}">{{value.ranking}}</span>
+                                <a href="https://edu.51cto.com/course/{{value.course_id}}.html" target="_blank">
+                                    <img src="{{value.image_url}}"/>
+                                </a>
+                                <!-- <span class="cs_num fr">{{value.lesson_num}}课时</span> -->
+                            </div>
+                            <div class="fr infobox">
+                                <div class="top">
+                                    <a href="https://edu.51cto.com/course/{{value.course_id}}.html" target="_blank">
+                                        
+                                        <p class="title">{{value.title}}</p>
+                                    </a>
+                                </div>
+                                <div class="detail clearfix2">
+                                    {{if value.appraise_score > 0}}
+                                    <span class="rank-start fl">
+                                        <i class="star_gray"></i>
+                                        <i class="star_yel" style="width: {{value.appraise_score > 5 ? 5 : value.appraise_score*66/5}}px"></i>
+                                    </span>
+                                    <span class="score fl" data="{{value.appraise_score}}">{{value.appraise_score}}</span>
+                                    {{else}}
+                                    <span class="score fl" data="0">暂无评分</span>
+                                    {{/if}}
+                                    <span class="split-point bg-bcc0c6 ty-t-1"></span>
+                                    <span class="lec-name" title="{{value.lec_name}}">{{value.lec_name}}</span>
+                                </div>
+                                <div class="price-line">
+                                    <span class="now-price fontDin">￥{{value.newPrice}}</span>
+                                    {{if value.newPrice != value.price}}
+                                    <span class="origin-price fontDin">￥{{value.price}}</span>
+                                    {{/if}}
+                                    {{if value.actinfo}}
+                                    <span class="cheap-desc">{{value.actinfo.cheap_desc}}</span>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{/each}}
+                    </ul>
+                </div>
+            {{/if}}
+            </div>
+        </div>
+        {{/if}}
+        </script>
+        </div>
+
+        <!-- 热门分类 -->
+        		<div class="realtime-download top-categories common-wrap-hide">
+            <p class="top-categories-title">热门分类</p>
+            <div class="top-categories-detail">
+                <ul class="top-categories-list">
+                                            <li >
+                            <!-- <a href="#">深度学习</a> -->
+                            <a target="_blank" href="https://edu.51cto.com/courselist/78.html">Python</a>
+                        </li>
+                                            <li class="active" >
+                            <!-- <a href="#">深度学习</a> -->
+                            <a target="_blank" href="https://edu.51cto.com/courselist/14.html">Java</a>
+                        </li>
+                                            <li >
+                            <!-- <a href="#">深度学习</a> -->
+                            <a target="_blank" href="https://edu.51cto.com/courselist/12.html">C/C++</a>
+                        </li>
+                                            <li >
+                            <!-- <a href="#">深度学习</a> -->
+                            <a target="_blank" href="https://edu.51cto.com/courselist/27.html">Go语言</a>
+                        </li>
+                                            <li >
+                            <!-- <a href="#">深度学习</a> -->
+                            <a target="_blank" href="https://edu.51cto.com/courselist/25.html">PHP</a>
+                        </li>
+                                            <li >
+                            <!-- <a href="#">深度学习</a> -->
+                            <a target="_blank" href="https://edu.51cto.com/courselist/187.html">R语言</a>
+                        </li>
+                                            <li >
+                            <!-- <a href="#">深度学习</a> -->
+                            <a target="_blank" href="https://edu.51cto.com/courselist/13.html">.Net</a>
+                        </li>
+                                            <li >
+                            <!-- <a href="#">深度学习</a> -->
+                            <a target="_blank" href="https://edu.51cto.com/courselist/313.html">架构设计</a>
+                        </li>
+                                            <li >
+                            <!-- <a href="#">深度学习</a> -->
+                            <a target="_blank" href="https://edu.51cto.com/courselist/201.html">少儿编程</a>
+                        </li>
+                                            <li >
+                            <!-- <a href="#">深度学习</a> -->
+                            <a target="_blank" href="https://edu.51cto.com/courselist/202.html">PMP</a>
+                        </li>
+                                            <li >
+                            <!-- <a href="#">深度学习</a> -->
+                            <a target="_blank" href="https://edu.51cto.com/courselist/308.html">产品设计</a>
+                        </li>
+                                            <li >
+                            <!-- <a href="#">深度学习</a> -->
+                            <a target="_blank" href="https://edu.51cto.com/courselist/239.html">数字货币</a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+        
+        <div class="common-fixed-wrap">
+            <div class="common-list-wrap edu-ad hot-type" ad_id="290" info_id="22222" type="course"></div>
+        </div>
+       
+	</aside>	</div>
+  </header>
+
+  <!-- 讲师权益 -->
+  <!--   <div class="course-rights">
+    <div class="Page">
+		<span class="title">课程权益</span>
+        <span class="divider"></span>
+        <span class="item drawback">
+            <i class="icon-1"></i>15分钟内无条件退款
+            <b class="box">
+                1、仅限付费视频课程适用<br>
+                2、购买后15分钟内可以找到客服进行沟通退款<br>
+                3、下载资料后不再享有退款特权<br>
+                4、客服（Tel：400-101-1651）<br>
+            </br>
+            </b>
+            <span class="tt">下载资料后不支持</span>
+        </span>
+        <span class="item">
+            <i class="icon-2"></i>24小时内答疑
+        </span>
+        <span class="item">
+            <i class="icon-3"></i>随时随地观看课程
+        </span>
+                                    <a onclick="loginPopover()" class="item login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="12" style="cursor:pointer;"><i class="icon-4"></i>专属资料下载</a>
+                        </div>
+  </div>   -->
+
+	
+
+
+  <article class="article-wrap Page clearfix2">
+	<div class="fl">
+			
+			
+		
+				<section class="lecturer-info">
+			<div class="photo fl">
+				<a href="https://edu.51cto.com/lecturer/8307455.html" target="_blank">
+					<img class="avatar" width="70" height="70" alt="赖国荣" src="https://s1.51ctocdn.cn/images/201606/e8611a709e0afc5de7c39267cdbaf242efcdd1.jpg?x-oss-process=image/resize,m_fixed,h_120,w_120" />
+				</a>
+			</div>
+			<div class="info fl">
+				<div class="top-line">
+					<a class="nm font-22 bold" href="https://edu.51cto.com/lecturer/8307455.html" target="_blank" rel="noopener noreferrer">赖国荣</a>
+					<span class="lecturur-honor">高级讲师</span>
+											<span class="font-16">讲师评分<span class="fontDin m-l-2">4.6</span></span>
+										<span class="split-point"></span>
+					<span class="font-16">学员<span class="fontDin m-l-2">284559</span></span>
+					<span class="split-point"></span>
+					<span class="font-16 hover-red" onclick="toPersonAllCourse()"><strong>课程</strong><span class="fontDinMedium m-l-2">46</span></span>
+					<div class="fr lecturer-right-box">
+						<!-- <span>粉丝群</span> -->
+												<a href="javascript:;" class="common-flow-wechat hover-text font-14 login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="10" lecid="8307455" tip1="关注51CTO精品课" tip2="第一时间获取讲师更新信息">更新提醒</a>
+					</div>
+				</div>
+				<a href="https://edu.51cto.com/lecturer/8307455.html" target="_blank" class="detail">
+					<p class="line-1">负责的项目有：
+企业ERP管理系统ASP.NET2008+SQL2000 +AJAX  
+网络大学 :           ASP.NET2005+SQLSERVER2005
+桥牌游戏:VC(客户端）+JAVA（服务器）+SQL2000　+ASP（网站）
+...</p>
+					<span class="hover-red font-14">更多</span>
+				</a>
+			</div>
+		</section>
+		<!-- 套餐 -->
+					
+		<section class="course-package">
+			<ul class="package-top">
+				<ul class="clearfix2">
+					<span class="package-top-active"></span>
+											<li class="cur">畅销套餐</li>
+																<li>精选套餐</li>
+																<li>人气套餐</li>
+																<li>尊享套餐</li>
+																<li>高薪套餐</li>
+									</ul>
+			</ul>
+			<div class="package-content">
+									<a class="package-ui" href="https://edu.51cto.com/topic/1361.html" target="_blank">
+						<div class="package-one">
+							<div class="title">大学软件工程等相关专业的系列视频课程学习路线图</div>
+							<div class="total-price clearfix2 line margin-t-16">
+								<div class="total-price-title">总价：<span>￥</span></div>
+								<div class="total-price-num">768.00</div>
+							</div>
+							<div class="total-price clearfix2 margin-t-8">
+								<div class="total-price-title color-red">套餐价：<span>￥</apan></div>
+								<div class="total-price-num color-red">624.00</div>
+							</div>
+							<div class="package-btn margin-t-24">
+								<div class="save">节省</div>
+								<div class="num">￥144.00</div>
+							</div>
+						</div>
+													<div class="package-li">
+								<div class="package-li-img">
+									<img src="https://s1.51ctocdn.cn/images/202012/28/9d56ae7a2c9012f3e55977b5cd72d023.jpg" alt="">
+								</div>
+								<div class="package-content">
+									<div class="title">JAVA语言基础与提升（数据类型+类的封装与继承+常用集合+反射机制）+项目实训</div>
+									<div class="details">
+										<div class="study-num">120人学习</div>
+										<div class="amount">￥119.00</div>
+									</div>
+								</div>
+							</div>
+													<div class="package-li">
+								<div class="package-li-img">
+									<img src="https://s1.51ctocdn.cn/images/201608/2189d0e91ba25ea1ca6115fe158cd43b6b1971.jpg" alt="">
+								</div>
+								<div class="package-content">
+									<div class="title">SQL Server 2005基础与提升实训视频教程</div>
+									<div class="details">
+										<div class="study-num">25人学习</div>
+										<div class="amount">￥48.00</div>
+									</div>
+								</div>
+							</div>
+													<div class="package-li">
+								<div class="package-li-img">
+									<img src="https://s1.51ctocdn.cn/images/202011/12/f67b19af069129c941cd9451186ba6ed.jpg" alt="">
+								</div>
+								<div class="package-content">
+									<div class="title">C语言基础与提升-贪吃蛇游戏开发实战视频课程</div>
+									<div class="details">
+										<div class="study-num">47人学习</div>
+										<div class="amount">￥48.00</div>
+									</div>
+								</div>
+							</div>
+												<div class="package-more">
+						更 多 15 门 课 程
+						</div>
+					</a>
+									<a class="package-ui" href="https://edu.51cto.com/topic/2068.html" target="_blank">
+						<div class="package-one">
+							<div class="title">SSM基础与提升系列套餐课程</div>
+							<div class="total-price clearfix2 line margin-t-16">
+								<div class="total-price-title">总价：<span>￥</span></div>
+								<div class="total-price-num">517.00</div>
+							</div>
+							<div class="total-price clearfix2 margin-t-8">
+								<div class="total-price-title color-red">套餐价：<span>￥</apan></div>
+								<div class="total-price-num color-red">414.00</div>
+							</div>
+							<div class="package-btn margin-t-24">
+								<div class="save">节省</div>
+								<div class="num">￥103.00</div>
+							</div>
+						</div>
+													<div class="package-li">
+								<div class="package-li-img">
+									<img src="https://s1.51ctocdn.cn/images/201608/2189d0e91ba25ea1ca6115fe158cd43b6b1971.jpg" alt="">
+								</div>
+								<div class="package-content">
+									<div class="title">SQL Server 2005基础与提升实训视频教程</div>
+									<div class="details">
+										<div class="study-num">25人学习</div>
+										<div class="amount">￥48.00</div>
+									</div>
+								</div>
+							</div>
+													<div class="package-li">
+								<div class="package-li-img">
+									<img src="https://s1.51ctocdn.cn/images/202012/28/9d56ae7a2c9012f3e55977b5cd72d023.jpg" alt="">
+								</div>
+								<div class="package-content">
+									<div class="title">JAVA语言基础与提升（数据类型+类的封装与继承+常用集合+反射机制）+项目实训</div>
+									<div class="details">
+										<div class="study-num">120人学习</div>
+										<div class="amount">￥119.00</div>
+									</div>
+								</div>
+							</div>
+													<div class="package-li">
+								<div class="package-li-img">
+									<img src="https://s1.51ctocdn.cn/images/201611/87d918916cdc0982dea570d0d1b1cef6340484.jpg" alt="">
+								</div>
+								<div class="package-content">
+									<div class="title">JavaScript基础与提升2016版教学视频</div>
+									<div class="details">
+										<div class="study-num">15人学习</div>
+										<div class="amount">￥19.00</div>
+									</div>
+								</div>
+							</div>
+												<div class="package-more">
+						更 多 9 门 课 程
+						</div>
+					</a>
+									<a class="package-ui" href="https://edu.51cto.com/topic/1171.html" target="_blank">
+						<div class="package-one">
+							<div class="title">初级JAVA工程师必学系列专题</div>
+							<div class="total-price clearfix2 line margin-t-16">
+								<div class="total-price-title">总价：<span>￥</span></div>
+								<div class="total-price-num">214.00</div>
+							</div>
+							<div class="total-price clearfix2 margin-t-8">
+								<div class="total-price-title color-red">套餐价：<span>￥</apan></div>
+								<div class="total-price-num color-red">202.00</div>
+							</div>
+							<div class="package-btn margin-t-24">
+								<div class="save">节省</div>
+								<div class="num">￥12.00</div>
+							</div>
+						</div>
+													<div class="package-li">
+								<div class="package-li-img">
+									<img src="https://s1.51ctocdn.cn/images/202011/12/f67b19af069129c941cd9451186ba6ed.jpg" alt="">
+								</div>
+								<div class="package-content">
+									<div class="title">C语言基础与提升-贪吃蛇游戏开发实战视频课程</div>
+									<div class="details">
+										<div class="study-num">47人学习</div>
+										<div class="amount">￥48.00</div>
+									</div>
+								</div>
+							</div>
+													<div class="package-li">
+								<div class="package-li-img">
+									<img src="https://s1.51ctocdn.cn/images/201608/2189d0e91ba25ea1ca6115fe158cd43b6b1971.jpg" alt="">
+								</div>
+								<div class="package-content">
+									<div class="title">SQL Server 2005基础与提升实训视频教程</div>
+									<div class="details">
+										<div class="study-num">25人学习</div>
+										<div class="amount">￥48.00</div>
+									</div>
+								</div>
+							</div>
+													<div class="package-li">
+								<div class="package-li-img">
+									<img src="https://s1.51ctocdn.cn/images/202012/28/9d56ae7a2c9012f3e55977b5cd72d023.jpg" alt="">
+								</div>
+								<div class="package-content">
+									<div class="title">JAVA语言基础与提升（数据类型+类的封装与继承+常用集合+反射机制）+项目实训</div>
+									<div class="details">
+										<div class="study-num">120人学习</div>
+										<div class="amount">￥119.00</div>
+									</div>
+								</div>
+							</div>
+												<div class="package-more">
+						更 多 3 门 课 程
+						</div>
+					</a>
+									<a class="package-ui" href="https://edu.51cto.com/topic/1172.html" target="_blank">
+						<div class="package-one">
+							<div class="title">中级JAVA工程师必学系列专题</div>
+							<div class="total-price clearfix2 line margin-t-16">
+								<div class="total-price-title">总价：<span>￥</span></div>
+								<div class="total-price-num">213.00</div>
+							</div>
+							<div class="total-price clearfix2 margin-t-8">
+								<div class="total-price-title color-red">套餐价：<span>￥</apan></div>
+								<div class="total-price-num color-red">203.00</div>
+							</div>
+							<div class="package-btn margin-t-24">
+								<div class="save">节省</div>
+								<div class="num">￥10.00</div>
+							</div>
+						</div>
+													<div class="package-li">
+								<div class="package-li-img">
+									<img src="https://s1.51ctocdn.cn/images/201611/87d918916cdc0982dea570d0d1b1cef6340484.jpg" alt="">
+								</div>
+								<div class="package-content">
+									<div class="title">JavaScript基础与提升2016版教学视频</div>
+									<div class="details">
+										<div class="study-num">15人学习</div>
+										<div class="amount">￥19.00</div>
+									</div>
+								</div>
+							</div>
+													<div class="package-li">
+								<div class="package-li-img">
+									<img src="https://s1.51ctocdn.cn/images/201608/2189d0e91ba25ea1ca6115fe158cd43b6b1971.jpg" alt="">
+								</div>
+								<div class="package-content">
+									<div class="title">SQL Server 2005基础与提升实训视频教程</div>
+									<div class="details">
+										<div class="study-num">25人学习</div>
+										<div class="amount">￥48.00</div>
+									</div>
+								</div>
+							</div>
+													<div class="package-li">
+								<div class="package-li-img">
+									<img src="https://s1.51ctocdn.cn/images/202012/25/22b27354cd2b572be67c75d861a938ad.jpg" alt="">
+								</div>
+								<div class="package-content">
+									<div class="title">JSP基础与提升2016+在线视频教学平台项目实训视频课程</div>
+									<div class="details">
+										<div class="study-num">82人学习</div>
+										<div class="amount">￥89.00</div>
+									</div>
+								</div>
+							</div>
+												<div class="package-more">
+						更 多 5 门 课 程
+						</div>
+					</a>
+									<a class="package-ui" href="https://edu.51cto.com/topic/1170.html" target="_blank">
+						<div class="package-one">
+							<div class="title">JSP+SSH+Ajax+Jquery+EasyUI基础与提升系列专题</div>
+							<div class="total-price clearfix2 line margin-t-16">
+								<div class="total-price-title">总价：<span>￥</span></div>
+								<div class="total-price-num">355.00</div>
+							</div>
+							<div class="total-price clearfix2 margin-t-8">
+								<div class="total-price-title color-red">套餐价：<span>￥</apan></div>
+								<div class="total-price-num color-red">347.00</div>
+							</div>
+							<div class="package-btn margin-t-24">
+								<div class="save">节省</div>
+								<div class="num">￥8.00</div>
+							</div>
+						</div>
+													<div class="package-li">
+								<div class="package-li-img">
+									<img src="https://s1.51ctocdn.cn/images/201611/87d918916cdc0982dea570d0d1b1cef6340484.jpg" alt="">
+								</div>
+								<div class="package-content">
+									<div class="title">JavaScript基础与提升2016版教学视频</div>
+									<div class="details">
+										<div class="study-num">15人学习</div>
+										<div class="amount">￥19.00</div>
+									</div>
+								</div>
+							</div>
+													<div class="package-li">
+								<div class="package-li-img">
+									<img src="https://s1.51ctocdn.cn/images/201608/2189d0e91ba25ea1ca6115fe158cd43b6b1971.jpg" alt="">
+								</div>
+								<div class="package-content">
+									<div class="title">SQL Server 2005基础与提升实训视频教程</div>
+									<div class="details">
+										<div class="study-num">25人学习</div>
+										<div class="amount">￥48.00</div>
+									</div>
+								</div>
+							</div>
+													<div class="package-li">
+								<div class="package-li-img">
+									<img src="https://s1.51ctocdn.cn/images/202012/25/22b27354cd2b572be67c75d861a938ad.jpg" alt="">
+								</div>
+								<div class="package-content">
+									<div class="title">JSP基础与提升2016+在线视频教学平台项目实训视频课程</div>
+									<div class="details">
+										<div class="study-num">82人学习</div>
+										<div class="amount">￥89.00</div>
+									</div>
+								</div>
+							</div>
+												<div class="package-more">
+						更 多 10 门 课 程
+						</div>
+					</a>
+								
+			</div>
+		</section>
+	
+
+
+	<!-- 4宫格推荐 -->
+			<section class="four-grid-rec clearfix2">
+							<a href="https://edu.51cto.com/surl=ohsYp3" class="grid-rec" target="_blank">
+					<img src="https://s1.51ctocdn.cn/images/202201/17/65febec0d7e7f227d627b47993f5ed82.jpg?x-oss-process=?x-oss-process=" alt="Java">
+				</a>
+							<a href="https://edu.51cto.com/surl=kWQBe3" class="grid-rec" target="_blank">
+					<img src="https://s1.51ctocdn.cn/images/202201/17/545077c7778831d8f65f73833678b72a.jpg?x-oss-process=?x-oss-process=?x-oss-process=" alt="好课上新">
+				</a>
+							<a href="https://edu.51cto.com/surl=PjoAN2" class="grid-rec" target="_blank">
+					<img src="https://s1.51ctocdn.cn/images/202201/17/6cdbc04d20f02ba6421a8c5b23f8c2e1.jpg?x-oss-process=" alt="新人礼包">
+				</a>
+							<a href="https://edu.51cto.com/surl=S6avU2" class="grid-rec" target="_blank">
+					<img src="https://s1.51ctocdn.cn/images/202201/17/ee8e3131f4efc71dc239305f0db30bc7.jpg?x-oss-process=?x-oss-process=?x-oss-process=?x-oss-process=?x-oss-process=?x-oss-process=" alt="会员免费领">
+				</a>
+					</section>
+	
+
+		<section class="main-content-wrap">
+
+
+			<!-- 内容导航 -->
+			<ul class="tabs-list clearfix2">
+				<span class="tab_active-bar"></span>
+				<li class="on">课程介绍</li>
+				<li>
+					课程大纲
+										<span class="try-see">试看</span>
+									</li>
+				
+									<li>
+							讲师好课 <b>45</b>
+					</li>
+								<!-- 列表页、课程详情页改版2.0的需求，去掉套餐推荐 -->
+					
+									<li>
+						学员评价<b class="appraise-num"></b>
+					</li>
+							</ul>
+			<div class="content-list"></div>
+                <!-- <div class="tab-content"></div> -->
+				<!-- 课程简介 -->
+				<div class="course-intro tab-content" id="courseIntro" >
+						<div class="content-inner">
+																						<p class="sub-title">适合人群：</p>
+								<p class="study_crow sub-content">有SpringBoot，MyBatis等技术基础的学生，工程师及对软件开发有兴趣的相关人士</p>
+														 
+
+
+                                                        								<p class="sub-title">课程目标：</p>
+								<p class="course_target sub-content">学习SpringBoot等技术，熟悉电影在线售票云平台全后端开发，主要功能有影院管理，排片购票等</p>
+                            
+                            								<p class="sub-title">课程简介：</p>
+								<div class="course_desc sub-content"><p>影院在线售票云平台是模仿猫眼电影开发的在线售票系统，系统分为前端网站及后台管理2部分，主要功能有影院管理，电影管理，影厅管理，排片管理，选座售票，演员管理，评论管理，影片排名，票房收入，票房排名，财务报表，权限控制及系统日志等功能，系统采用SpringBoot ,mybatis,easyui,ajax,mssql数据库等技术开发。提供项目源代码下载，系统功能完善，可直接运行。</p><p><br/></p><p>项目开发语言：SpringBoot ,mybatis,easyui,ajax,mssql数据库</p><p>项目运行环境：jdk1.8及以上版本,tomcat8.0及以上版本,mysql5.5及以上版本</p><p>项目开发工具: 本项目开发工具是Intellij Idea</p><p><img src="https://s2.51cto.com/images/20200322/1584870110479316.png" title="1584870110479316.png" alt="movie1.png"/></p><p><img src="https://s2.51cto.com/images/20200322/1584870123832073.png" title="1584870123832073.png" alt="movie2.png"/></p><p><img src="https://s2.51cto.com/images/20200322/1584870138507423.png" title="1584870138507423.png" alt="movie3.png"/></p><p><img src="https://s2.51cto.com/images/20200322/1584870149971470.png" title="1584870149971470.png" alt="movie4.png"/></p><p><img src="https://s2.51cto.com/images/20200322/1584870162124190.png" title="1584870162124190.png" alt="movie5.png"/></p><p><br/></p></div>
+                                                        
+						</div>
+						<div class="content-show-more">
+							展开更多<i class="icon-down"></i>
+						</div>	
+				</div>
+			
+				<!-- 课程大纲 -->
+				<div class="lesson-file tab-content module-box" id="lessonFile">
+
+                    <div class="all-download-wrap clearfix2">
+                        <p class="tit fl">课程大纲-<span class="course-title" style="padding-left: 0px">影院在线售票云平台（仿猫眼电影，附SpringBoot项目源码）</span></p>
+                                                    								<a onclick="loginPopover()" class="txt fr hover-text login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="14">资料下载</a>
+                                                                        </div>
+
+                    <ul class="list content-inner syllabus ul-has-next" id="syListHtml">
+                                                    															                                                                    <li class="item chapter clearfix2">
+                                        <div class="main clearfix2">
+                                            <i class="icon"></i>
+                                            <p class="p1">
+                                                <span class="span1">第1章</span>
+                                                <span class="span1">影院在线售票云平台课程介绍（仿猫眼电影，附完整项目源代码）</span>
+																								<span class="span3">(1小时38分钟</span>
+																								<span class="span4">4节)</span>
+                                            </p>
+                                            <i class="icon-unfold toggle-fold icon-fold"></i>
+                                        </div>
+                                    </li>
+																		                                                            															                                                                    <li class="item lesson clearfix2  ">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>1-1</p>
+																						<p class="mylesson-title" title="影院在线售票系统前端功能介绍">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533500" class="title">影院在线售票系统前端功能介绍</a>
+																																														<span class="desc-box">
+																								<span>影院在线售票系统前端功能介绍</span>
+																							</span>
+																																													</p>
+                                                                                            <p class="free-look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="8">
+																									<a href="https://edu.51cto.com/center/course/lesson/index?id=533500"></a>
+																								</p>
+                                                                                        
+                                                                                            <span class="time">[34:59]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533500"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533500"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  ">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>1-2</p>
+																						<p class="mylesson-title" title="影院在线售票系统后台功能介绍">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533499" class="title">影院在线售票系统后台功能介绍</a>
+																																														<span class="desc-box">
+																								<span>影院在线售票系统后台功能介绍</span>
+																							</span>
+																																													</p>
+                                                                                            <p class="free-look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="8">
+																									<a href="https://edu.51cto.com/center/course/lesson/index?id=533499"></a>
+																								</p>
+                                                                                        
+                                                                                            <span class="time">[21:39]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533499"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533499"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  ">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>1-3</p>
+																						<p class="mylesson-title" title="配置运行环境发布及运行系统">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533498" class="title">配置运行环境发布及运行系统</a>
+																																														<span class="desc-box">
+																								<span>配置运行环境发布及运行系统</span>
+																							</span>
+																																													</p>
+                                                                                            <p class="free-look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="8">
+																									<a href="https://edu.51cto.com/center/course/lesson/index?id=533498"></a>
+																								</p>
+                                                                                        
+                                                                                            <span class="time">[15:36]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533498"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533498"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2 is-last-lesson ">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>1-4</p>
+																						<p class="mylesson-title" title="50多门JAVA系列精品课程学习顺序介绍">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533497" class="title">50多门JAVA系列精品课程学习顺序介绍</a>
+																																														<span class="desc-box">
+																								<span>50多门JAVA系列精品课程学习顺序介绍</span>
+																							</span>
+																																													</p>
+                                                                                            <p class="free-look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="8">
+																									<a href="https://edu.51cto.com/center/course/lesson/index?id=533497"></a>
+																								</p>
+                                                                                        
+                                                                                            <span class="time">[26:14]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533497"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533497"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item chapter clearfix2">
+                                        <div class="main clearfix2">
+                                            <i class="icon"></i>
+                                            <p class="p1">
+                                                <span class="span1">第2章</span>
+                                                <span class="span1">影院在线售票云平台后台功能实现（仿猫眼电影，附完整项目源代码</span>
+																								<span class="span3">(5小时32分钟</span>
+																								<span class="span4">17节)</span>
+                                            </p>
+                                            <i class="icon-unfold toggle-fold "></i>
+                                        </div>
+                                    </li>
+																		                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-1</p>
+																						<p class="mylesson-title" title="详细讲解数据库表结构及设计思想">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533496" class="title">详细讲解数据库表结构及设计思想</a>
+																																														<span class="desc-box">
+																								<span>详细讲解数据库表结构及设计思想</span>
+																							</span>
+																																													</p>
+                                                                                        
+                                                                                            <span class="time">[19:00]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533496"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533496"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-2</p>
+																						<p class="mylesson-title" title="导入项目源代码及配置详细讲解">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533494" class="title">导入项目源代码及配置详细讲解</a>
+																																														<span class="desc-box">
+																								<span>导入项目源代码及配置详细讲解</span>
+																							</span>
+																																													</p>
+                                                                                                                                                                                            <p class="no-file-url-wrap">
+                                                        <span class="zip-down-icon"></span>
+                                                        <span class="tip">「仅限付费用户」点击下载“影院在线售票云平台源代码等资料包.rar”</span>
+                                                    </p>
+                                                                                            
+                                                                                            <span class="time">[23:58]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533494"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533494"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-3</p>
+																						<p class="mylesson-title" title="实现影院管理分页查询功能">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533493" class="title">实现影院管理分页查询功能</a>
+																																														<span class="desc-box">
+																								<span>实现影院管理分页查询功能</span>
+																							</span>
+																																													</p>
+                                                                                        
+                                                                                            <span class="time">[35:44]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533493"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533493"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-4</p>
+																						<p class="mylesson-title" title="实现影院资料新增及上传图片等功能">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533492" class="title">实现影院资料新增及上传图片等功能</a>
+																																														<span class="desc-box">
+																								<span>实现影院资料新增及上传图片等功能</span>
+																							</span>
+																																													</p>
+                                                                                        
+                                                                                            <span class="time">[30:46]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533492"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533492"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-5</p>
+																						<p class="mylesson-title" title="实现管理员功能一">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533491" class="title">实现管理员功能一</a>
+																																														<span class="desc-box">
+																								<span>实现管理员功能一</span>
+																							</span>
+																																													</p>
+                                                                                        
+                                                                                            <span class="time">[24:29]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533491"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533491"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-6</p>
+																						<p class="mylesson-title" title="实现管理员功能二">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533490" class="title">实现管理员功能二</a>
+																																														<span class="desc-box">
+																								<span>实现管理员功能二</span>
+																							</span>
+																																													</p>
+                                                                                        
+                                                                                            <span class="time">[20:35]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533490"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533490"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-7</p>
+																						<p class="mylesson-title" title="验证码的原理及实现">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533489" class="title">验证码的原理及实现</a>
+																																														<span class="desc-box">
+																								<span>验证码的原理及实现</span>
+																							</span>
+																																													</p>
+                                                                                        
+                                                                                            <span class="time">[16:39]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533489"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533489"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-8</p>
+																						<p class="mylesson-title" title="实现用户登录功能">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533488" class="title">实现用户登录功能</a>
+																																														<span class="desc-box">
+																								<span>实现用户登录功能</span>
+																							</span>
+																																													</p>
+                                                                                        
+                                                                                            <span class="time">[11:11]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533488"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533488"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-9</p>
+																						<p class="mylesson-title" title="使用拦截器实现用户权限控制">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533487" class="title">使用拦截器实现用户权限控制</a>
+																																														<span class="desc-box">
+																								<span>使用拦截器实现用户权限控制</span>
+																							</span>
+																																													</p>
+                                                                                        
+                                                                                            <span class="time">[13:09]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533487"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533487"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-10</p>
+																						<p class="mylesson-title" title="实现影厅类别等基础数据功能">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533486" class="title">实现影厅类别等基础数据功能</a>
+																																														<span class="desc-box">
+																								<span>实现影厅类别等基础数据功能</span>
+																							</span>
+																																													</p>
+                                                                                        
+                                                                                            <span class="time">[09:55]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533486"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533486"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-11</p>
+																						<p class="mylesson-title" title="实现影厅管理功能">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533485" class="title">实现影厅管理功能</a>
+																																														<span class="desc-box">
+																								<span>实现影厅管理功能</span>
+																							</span>
+																																													</p>
+                                                                                        
+                                                                                            <span class="time">[21:04]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533485"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533485"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-12</p>
+																						<p class="mylesson-title" title="实现设置影厅座位的功能">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533484" class="title">实现设置影厅座位的功能</a>
+																																														<span class="desc-box">
+																								<span>实现设置影厅座位的功能</span>
+																							</span>
+																																													</p>
+                                                                                        
+                                                                                            <span class="time">[23:08]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533484"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533484"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-13</p>
+																						<p class="mylesson-title" title="实现电影管理功能">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533481" class="title">实现电影管理功能</a>
+																																														<span class="desc-box">
+																								<span>实现电影管理功能</span>
+																							</span>
+																																													</p>
+                                                                                        
+                                                                                            <span class="time">[21:59]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533481"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533481"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-14</p>
+																						<p class="mylesson-title" title="实现演职人员及电影评论管理功能">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533483" class="title">实现演职人员及电影评论管理功能</a>
+																																														<span class="desc-box">
+																								<span>实现演职人员及电影评论管理功能</span>
+																							</span>
+																																													</p>
+                                                                                        
+                                                                                            <span class="time">[11:11]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533483"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533483"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-15</p>
+																						<p class="mylesson-title" title="实现影院排片及购票功能">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533482" class="title">实现影院排片及购票功能</a>
+																																														<span class="desc-box">
+																								<span>实现影院排片及购票功能</span>
+																							</span>
+																																													</p>
+                                                                                        
+                                                                                            <span class="time">[18:37]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533482"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533482"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                            															                                                                    <li class="item lesson clearfix2  displaynone">
+                                        <div class="main clearfix2">
+                                            <i class="icon type1"></i>
+                                            <p>2-16</p>
+																						<p class="mylesson-title" title="实现用户管理及系统日志功能">
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533480" class="title">实现用户管理及系统日志功能</a>
+																																														<span class="desc-box">
+																								<span>实现用户管理及系统日志功能</span>
+																							</span>
+																																													</p>
+                                                                                        
+                                                                                            <span class="time">[16:13]</span>
+                                            																																													<!-- <span class="time">[练习]</span> -->
+																							<a href="https://edu.51cto.com/center/course/lesson/index?id=533480"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+																						                                                <!-- <a href="https://edu.51cto.com/center/course/lesson/index?id=533480"><span class="look">开始学习</span></a> -->
+											
+                                        </div>
+                                    </li>
+                                                                                                            
+					</ul>
+					<script id="syListScript" type="text/html">
+						{{each lessonList value index}}
+							{{if value.type=='chapter'}}	
+							<li class="item chapter clearfix2">
+								<div class="main clearfix2">
+									<i class="icon"></i>
+									<p class="p1">
+										<span class="span1">第{{value.sorted}}章</span>
+										<span class="span1">{{value.title}}</span>
+										<span class="span3">({{value.video_duration}}</span>
+										<span class="span4">{{value.lesson_num}}节)</span>
+									</p>
+									<i class="icon-unfold toggle-fold"></i>
+								</div>
+							</li>
+							{{else}}
+							{{if lessonList[index] && lessonList[index].type != "chapter" && lessonList[index+1] && lessonList[index+1].type == "chapter"}}
+							<li class="item lesson clearfix2 is-last-lesson" >
+							{{else}}
+							<li class="item lesson clearfix2">
+							{{/if}}
+							<!-- <li class="item lesson clearfix2" > -->
+								<div class="main clearfix2">
+									<i class="icon type{{value.lesson_type}}"></i>
+									<p>{{value.weight}}</p>
+									<!--<p title="{{value.title}}">{{value.title.substr(0,26)}}</p>-->
+									<p class="mylesson-title" title="{{value.title}}"><a href="{{value.url}}">{{value.title.substr(0,26)}}</a>
+									{{if value.describe != ""}}
+										<span class="desc-box">
+											<span>实现用户管理及系统日志功能</span>
+										</span>
+									{{/if}}
+									</p>
+									{{if value.is_look==1 || course_price==0}}
+									<p class="free-look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="8"></p>
+									{{/if}}
+									{{if value.file_name != ''}}
+										{{if value.file_url != '' }}
+											<a href="{{value.file_url}}" class="zip-down-icon"></a>
+										{{else}}										
+										<p class="no-file-url-wrap">
+											<span class="zip-down-icon"></span>
+											<span class="tip">「仅限付费用户」点击下载“{{value.file_name}}”</span>
+										</p>
+										{{/if}}
+									{{/if}}
+									{{if value.lesson_type == 1}}
+										<span class="time">[{{value.video_duration}}]</span>
+									{{else if value.lesson_type ==2}}
+										{{if value.exam_type == 1}}
+										<span class="time">[作业]</span>
+										{{else}}
+										<span class="time">[练习]</span>
+										{{/if}}										
+									{{else if value.lesson_type ==3}}
+										<span class="time">[说明]</span>
+									{{/if}}
+									{{if !isBuy && ( course_price =='0' ||  (vip_type=='1' && is_vip=='1') || course_free_time_vip)}}
+										<a href="{{value.url}}" class="open_service_box"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+									{{else}}
+										<a href="{{value.url}}"><span class="look login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="15">开始学习</span></a>
+									{{/if}}
+										<!-- <a href="{{value.url}}"><span class="look">开始学习</span></a> -->
+								</div>
+							</li>
+							{{/if}}
+						 {{/each}}
+						</script>
+					<div id="syList_loading" class="loading" style="display:none;"></div>
+                    					<div class="content-show-more syList_loadNext tc" id="syList_loadNext" data_page = '1' data_page_count = '2'>
+						<span>展开更多<i class="icon-down"></i></span>
+					</div>
+										
+				</div>	
+				
+				<!-- 更多课程 -->
+				<div class="hover-temporary-box"></div>
+				<div class="bottom_rec tab-content" id="bottomRec" slot="pagination">
+					<script id="bottomRecScript" type="text/html">
+							{{if data.length > 0}}
+									<div class="tab-content1 module-box" style="padding-right: 20px !important">
+                                        <p class="top clearfix2" style="margin-bottom: 10px;">
+                                            <span class="name fl">“赖国荣”老师的其他课程</span>
+                                            <a href="https://edu.51cto.com/lecturer/8307455.html" target="_blank" class="more fr">更多 <b>+</b></a>
+                                        </p>
+                                        
+                                        {{if data.length > 4}}
+                                            <span class="btn_prev"></span>
+                                            <span class="btn_next"></span>
+                                        {{/if }}
+                                        <div class="content" id="swiperContainer" style="overflow:hidden; padding-right: 10px; padding-top: 10px;">
+                                            <ul class="swiper-wrapper swiper-no-swiping lecturer-more-course" >
+                                                {{each data value index}}
+                                                    <li class="swiper-slide" data-cid="{{value.course_id}}">
+                                                        <!-- louzb推广，导师其他课程 -->
+                                                        {{if value.corner_url}}
+                                                            <a href="{{value.corner_url}}" target="_blank" style="position: absolute; right: -10px; top: -10px;">
+                                                                <img src="{{value.corner_img}}" width="56">
+                                                            </a>
+                                                        {{else}}
+                                                            <img src="{{value.corner_img}}" width="56" style="position: absolute; right: -10px; top: -10px;">
+                                                        {{/if}}
+                                                        <a href="{{value.course_url}}" class="pic-wrap" target="_blank">
+                                                            <img src="{{value.image_url}}" alt="{{value.title}}" width="182" height="108">
+                                                        </a>
+                                                        <div class="content">
+                                                            <a href="{{value.course_url}}" class="title" target="_blank" title="{{value.title}}">{{value.title}}</a>
+                                                            <p class="detail clearfix2">
+                                                            {{if value.appraise == "暂无评分"}}
+                                                                <span class="fl">{{value.appraise}}</span>
+                                                            {{else}}
+                                                                <span class="appraise-start fl">
+                                                                    <i class="star_gray"></i>
+                                                                    <i class="star_yel" style="width:{{+value.appraise.slice(0, -1)*13.8}}px"></i>
+                                                                </span>
+                                                                <span class="score fl">{{value.appraise.slice(0, -1)}}</span>
+                                                            {{/if}}
+                                                                <span class="fr name">{{value.lec_name}}</span>
+                                                            </p>
+                                                            <p class="price">
+                                                                {{if value.price == 0}}
+                                                                    <span class="new">免费</span>
+                                                                {{ else if is_vip == 1}}
+                                                                    <span class="new">会员免费</span>
+                                                                {{else }}
+                                                                    <span class="new">￥{{value.price}}</span>
+                                                                {{/if}}
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                {{/each}}
+                                            </ul>	
+                                        </div>
+									</div>
+							{{/if}}
+					</script>
+				</div>
+
+				<script id="itemCourseInfoScript" type="text/html">
+					<div class="item_courseinfo">
+							<p class="course_title_july"><a href="{{course_url}}" target="_blank" class="color_13f">{{title}}</a></p>
+							<div class="course_tec_july">
+									<div><div class="tec_pic"><a href="{{lec_url}}" target="_blank" class="color_13f"><img src="{{lec_avatar}}" /></a></div></div>
+									<div>
+											<p class="mrg_btm_6"><a href="{{lec_url}}" target="_blank" class="color_13f"><span class="tec_name">{{lec_name}}</span></a><span class="dot"></span><a href="{{course_url}}" target="_blank" class="color_13f"><span class="tec_genxin">{{last_updated}}更新</span></a></p>
+											<p class="font-size-0">
+													{{ if is_best }}
+															<span class="best_seller">畅销课程</span>
+													{{/if}}
+													<a href="{{course_url}}" target="_blank" class="color_13f">{{difficulty}}{{ if duration != 0}}<span class="dot"></span>共{{duration}}{{/if}}
+													</a>
+											</p>
+									</div>
+							</div>
+							{{ if study_profit.length != 0 ||  target != ""}}
+							<p class="mrg_btm_10">你将会学到：</p>
+							{{ /if}}
+							{{ if study_profit.length }}
+							<dl>
+									{{each study_profit.slice(0,3) value index}}
+									<dt>{{value.content}}</dt>
+									{{/each}}
+							</dl>                  
+							{{ else if(target != "")}}
+									<p class="tec_target">{{ target }}</p>
+							{{ /if}}
+							<div class="toolbox">
+									{{ if is_show_cart == 0}}
+											<a href="{{ free_study_course }}" target="_blank" class="bg_red">免费试看</a>
+									{{ else }}
+											{{if is_cart == 0}}
+											<a href="javascript:void(0)" class="btn_red_border addCart">加入购物车</a>
+											{{ else }}
+											<a href="javascript:void(0)" class="btn_red_border addCart lock">已加入购物车</a>
+											{{/if}}
+											<a href="{{ free_study_course }}" target="_blank" class="bg_red">免费试看</a>
+									{{/if}}
+							</div>
+					</div>
+			</script>
+				<!-- 列表页、课程详情页改版2.0的需求，去掉套餐推荐 -->
+
+				<!-- 专题套餐 -->
+				<!-- <div class="study-path tab-content module-box" id="studyPath">
+                    <script id="studyPathScript" type="text/html">
+                        <h2 class="main-tit">
+                            <span>组合购买更优惠</span>
+                        </h2>
+						{{if data.length > 0}}
+                        {{set cate_id_sp = 0}}
+						<ul class="list content-inner clearfix2">
+							{{each data value index}}
+								{{if cate_id_sp==0}}
+									{{set cate_id_sp1 = cate_id_sp = value.cate_id}}
+								{{/if}}
+							<li class="item" style="position: relative;">
+                                {{if value.corner_url}}
+                                    <a href="{{value.corner_url}}" target="_blank" style="position: absolute; right: -10px; top: -10px; z-index: 9;">
+                                        <img src="{{value.corner_img}}" width="56px">
+                                    </a>
+                                {{else}}
+                                    <img src="{{value.corner_img}}" width="56" style="position: absolute; right: -10px; top: -10px; z-index: 9;">
+                                {{/if}}
+								<a href="https://edu.51cto.com/topic/{{value.id}}.html" target="_blank" class="pic-wrap">
+									<img src="{{value.cover_img}}" alt="{{value.title}}" width="241" height="143">
+									<p class="txt-container clearfix2">
+										<span class="fl"><b>{{value.course_nums}}</b>门课</span>
+										<span class="fr"><b>{{value.study_nums}}</b>人学习</span>
+									</p>
+									{{if value.has_now_course}}
+											<b class="now-path">课程所属专题</b>
+									{{/if}}
+								</a>
+								<div class="main">
+									<a href="https://edu.51cto.com/topic/{{value.id}}.html" target="_blank" class="title" title="{{value.title}}">{{value.title}}</a>
+									<p class="inner-list">
+										{{each value.course_list item index}}
+											<a href="{{item.course_url}}" target="_blank" title="{{item.title}}" rel="noopener noreferrer">{{item.title}}</a>
+										{{/each}}
+									</p>
+									<p class="price-wrap">
+										<span class="new">￥{{value.price}}</span>
+										<span class="save">立省{{value.save_price}}</span>
+										<del class="old">￥{{value.original_price}}</del>
+									</p>
+								</div>
+							</li>
+							{{/each}}
+						</ul>
+						<a href="https://edu.51cto.com/topiclist/{{cate_id_sp}}.html" target="_blank" class="more fr">更多 <b>+</b></a>
+						{{/if}}
+					</script>
+				</div> -->
+
+				<!-- 学员评价 -->
+								<div class="student-appraise tab-content clearfix2 module-box">
+					<div class="myAppraise clearfix2">
+						<div class="fl L1">
+							<p><span id="hasNumbers">5</span></p>
+							<strong class="start-wrap">
+							<i class="star_gray"></i>
+							<i class="star_yel" style="width:167px;"></i>
+							</strong>
+							<!-- <p class="tip">学员评分</p> -->
+						</div>
+						<div class="fl appraise-score">
+							<span class="appraise-count"></span>条学员评分
+							<span class="pass-rank">
+															超过&nbsp;&nbsp;“<a href="https://edu.51cto.com/courselist/14.html">Java</a>”&nbsp;&nbsp;
+															99%的课程</span>
+								<ul class="L2"></ul>
+						</div>
+						
+						
+					</div>
+					<div class="real-eval-container" style="position: relative">
+                        <ul id="arList"></ul>
+                        <div class="content-show-more arList_loadNext tc" id="arList_loadNext">
+                            展开更多<i class="icon-down"></i>
+                        </div>
+                        <div id="arList_loading" class="loading">加载中</div>
+                        <div id="arList_Empty" class="Empty">没有了哦~</div>
+                    </div>
+                    <!--  默认评价   -->
+                    <div class="defaultEval-container" id="defaultEvalContainer"></div>
+                </div>
+
+							</div>
+		</section>
+	</div>
+
+	
+  </article>
+
+  <!-- 吸顶导航 -->
+  <article class="sub-header" id="subHeader">
+	<section class="Page clearfix2">
+		<ul class="tabs-list clearfix2 fl">
+			<span class="tab_active-bar"></span>
+			<li class="on">课程介绍</li>
+			<li>
+				课程大纲
+									<span class="try-see">试看</span>
+							</li>			
+							<li>
+					讲师好课 <b>45</b>
+				</li>
+						
+							<li>
+					学员评价<b class="appraise-num"></b>
+				</li>
+					</ul>
+
+		<div class="price-detail">
+			
+							                                                                                <div class="txt">
+                                    
+																																					<div class="inner-box">
+																				<p class="color-red"><strong class="detail-text line-h-30">限时优惠</strong></p>
+																				<p id="discountEndTime"></p>
+																			</div>
+																			<div class="inner-box">
+																				<p class="color-red"><strong>￥251.30</strong></p>
+																				<p><del class="old fontDin">￥359.00</del></p>
+																			</div>
+                                    																		
+                                </div>
+														                            <div class="conom-btn red buy-btn goBuy tc" style="cursor:pointer;"> 立即购买</div>
+															
+                    										
+							                    					
+					                    
+									                    					
+					                    
+																			<div class="addCartIcon addCart login-register-sensors" platform_X="1" page_type_X="5" banner_name_X="9"><img src="https://s1.51ctocdn.cn/images/202109/14/104c3e4bd30d32bcf6f01f1e77bc1457.png"/></div>
+					</div>
+	</section>
+  </article>
+  <div class="tog-qrcode">
+	<div class="shade-07"></div>
+	<div class="qrcode-con">
+		<div class="qrcode-cnt">
+			<img src="" />
+    </div>
+		<div class="qrcode-til">关注公众号   领VIP会员</div>
+		<div class="btn-close">下次再说</div>
+	</div>
+</div>
+</div>
+<div class="mask"></div>
+<div class="files_popbox">
+	<div class="ins">
+		<span class="close"></span>
+		<p>点击打包下载，即可获取该课程全部资料</p>
+					<div class="btn_down_file btn_down_file_lock"><span>打包下载</span></div>
+				
+		<ul class="table_head clearfix2">
+			<li class="li_1">所属章节</li>
+			<li class="li_2">资料名称</li>
+			<li class="li_3">文件大小</li>
+			<li class="li_4">下载</li>
+		</ul>
+		<div class="filescroll">
+			<div class="table_body"  id="fileList"></div>
+		</div>
+	</div>
+</div>
+<div class="activity-pop">
+	<div class="ins">
+		<span class="close"></span>
+		<h5><strong>迎新春</strong>满300减35 满400减50</h5>
+		<div class="p1"></div>
+		<div class="p2">是否单独购买该课程？</div>
+		<div class="btns tc">
+			<span class="goBuy goBuyActivity">直接购买</span>
+			<span class="addCartActivity">去凑单</span>
+		</div>
+	</div>
+</div>
+<style>
+.floatright-ad.edu-ad{
+	position: fixed;
+    right: 18px;
+    top: 19%;
+    z-index: 99;
+    width: 91px;
+}
+.floatright-ad .close-gg {
+	display: none;
+	position: relative;
+	height: 29px;
+	margin-bottom: 10px;
+}
+.floatright-ad .close-gg img{
+	width: 29px;
+	height: 100%;
+	cursor: pointer;
+	position: absolute;
+	right: -9px;
+	border-radius: 8px;
+}
+.floatright-ad.edu-ad a{
+	width: 91px;
+	height: 117px;
+    display: inline-block;
+
+}
+.floatright-ad.edu-ad a img{
+	object-fit: cover;
+	width:100%;
+	height:100%;
+}
+</style> 
+<div class="common-list-wrap floatright-ad edu-ad" ad_id="301" info_id="22222">
+	<div class="close-gg" id="closeGg"><img src="https://static1.51ctocdn.cn/edu/center/images/closegg.png" /></div>
+	<div class="content" ad_id="301" info_id="22222" type="course"></div>
+</div>
+<style>
+	#login_iframe_mask{
+		z-index:9999;
+	}
+</style>
+
+<!-- <script type="text/javascript" src="//static4.51cto.com/home/web/js/new_login/iframe.js?v=1.0.5"></script> -->
+<script src="https://static1.51ctocdn.cn/edu/center/js/interaction_iframe.js?v=1.9.38"></script>
+<script src="https://static1.51ctocdn.cn/edu/center/js/service_box.js?v=1.1.0"></script>
+<script src="https://static1.51ctocdn.cn/edu/center/js/one_seckill/course.js?v=1.0.1"></script>
+<script src="https://static1.51ctocdn.cn/edu/center/js/login_popover.js"></script>
+<script>
+	//预热处理
+	$(document).ready(function(){
+		$.ajax({
+			url:"/center/course/cache-warm-up/index",
+			type:"get",
+			data:{
+				course_id:22222			},
+			success:function(){
+
+			}
+		})
+	})
+
+	function toPersonAllCourse() {
+    	var t = $('#bottomRec').offset().top-80;
+      	$(window).scrollTop(t);
+    }
+</script>
+
+<script type="text/javascript">
+	var courseId = 22222;
+	var pid = 11;
+	var cid = 14;
+	var courseFirstCate = '后端开发';
+	var courseSecondCate = 'Java';
+	var course_price = '359.00';
+	var user_id = '';
+
+	var lecturerId = 8307455;
+	var isBindWechatFlag = 1;
+	var wsHost = 'eduws.51cto.com';
+	var wsPort = '9527';
+	var vip_type = '0';
+	var  _price = parseInt('359.00');
+	var isBuy = '';
+    var ab_test = '2';
+	var shence_isCourse = 1;
+	var course_free_time_vip =''
+	var course_is_vip = '0';
+	
+var click_service_flag = true;
+$(document).on("click",".open_service_box",function(e){
+	if(user_id != "") {
+		if(click_service_flag){
+			click_service_flag= false;
+	        setTimeout(function(){
+				click_service_flag = true;        
+			},1000);
+	    }else{
+			return false;
+	    }
+		var url = $(this).attr("href")
+		e.preventDefault();
+		if(course_free_time_vip){        //课程为会员限免
+			if(vip_type =='0'){
+				window.location.href= url;
+			}
+		}
+		service_box.checkBind(function(){
+			window.location.href= url;
+		},{subTxt:"关注【51CTO精品课】, 马上免费学课程",closeTxt:"放弃免费学"})
+	}
+})
+
+$('#closeGg').on("click", function() {
+	$('.edu-ad').html('')
+})
+
+	//   开始学习
+$('.buyVip').on('click', function () {
+	if(user_id==''){
+		loginPopover();
+		return false;
+	}
+	window.open('https://home.51cto.com/members/in-fo');
+})
+$('.startStudy').click(function(){
+	/* service_box.checkBind(function(){
+		window.open('https://edu.51cto.com/center/course/lesson/index?id=533500');
+	},{subTxt:"关注【51CTO精品课】, 马上免费学课程",closeTxt:"放弃免费学"}) */
+	window.open('https://edu.51cto.com/center/course/lesson/index?id=533500');
+        
+})
+var mobile_bind_box;
+var click_flag = true;
+$(".SignUp, .goSign, .goVipSign").click(function(){
+	if(click_flag){
+		click_flag= false;
+        setTimeout(function(){
+			click_flag = true;        
+		},1000);
+    }else{
+		return false;
+    }
+	var $this = $(this);
+	if(user_id==''){
+	//goLoginPage()
+	loginPopover();
+	return false;
+	}
+	$.post(_centerURL+'common/api/get-login-mobile',{user_id:user_id},function(res){
+	if(res.status==1){
+		asul($this)
+		return false
+	}
+	var _pReg = /^0?1[3|4|5|6|7|8][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/;
+	var bindMobile = $('<div style="width:330px;padding:10px 30px 0 30px;" class="tc"><p class="f16">绑定手机号</p><p class="color81 f12 mb30">为了保障您的账户安全，请绑定手机号</p></div>')
+	var _pn = $('<input type="text" placeholder="手机号" style="border:none;border-bottom:1px solid #DDD;width:100%;height:30px;line-height:30px;margin-bottom:20px;">')
+	var _code=$('<input type="text" placeholder="输入验证码" style="border:none;border-bottom:1px solid #DDD;width:100%;height:30px;line-height:30px;">')
+	var _codeT=$('<p class="fr" style="line-height:30px;top:144px;position:absolute;right:35px;z-index:10;"><a class="blue" href="javascript:void(0);">短信验证</a></p>')
+	var _no = $('<button class="mr10" style="background:#FFF;border:1px solid #00baf2;color:#00baf2;height:30px;line-height:1">跳过</button>')
+	var _yes= $('<button class="ml10" style="border:1px solid #00baf2;height:30px;line-height:1;">提交</button>')
+	var btns = $('<div style="margin:20px auto 10px auto;"></div>')
+	.append(_no).append(_yes)
+	bindMobile.append(_pn).append(_code).append(_codeT).append(btns);
+	_codeT.find('a').click(function(e){
+		if(e.target.tagName!='A') return false;
+		if(!_pReg.test(_pn.val())){
+		new AutoBox({content:'请输入正确的手机号',img:'remind',autoClose:2})
+		return false
+		}
+		$.post(_centerURL+'common/api/send-code',{mobile:_pn.val(),is_check:1},function(e){
+		if(e.status == 1){
+			sendCodeDjs(_codeT);
+			new AutoBox({content:e.msg,mask:true,autoClose:2})
+		}else{
+			new AutoBox({content:e.msg,img:'remind',autoClose:2})
+			return false
+		}
+		},'json')
+	})
+	_no.click(function(){
+		asul($this)
+	})
+	_yes.click(function(){
+		if(!_pReg.test(_pn.val())){
+		new AutoBox({content:'请输入正确的手机号',img:'remind',autoClose:2})
+		return false
+		}
+		if(_code.val().length<5){
+		new AutoBox({content:'请输入正确的验证码',img:'remind',autoClose:2})
+		return false
+		}
+		Introduce.show()
+		$.post(_centerURL+'common/api/bind-mobile',{mobile:_pn.val(),verify_code:_code.val()},function(e){
+		if(e.status == 1){
+			asul($this)
+		}else{
+			Introduce.hide()
+			new AutoBox({content:e.msg,mask:true,autoClose:2,img:'remind'})
+		}
+		},'json')
+	})
+	mobile_bind_box = new AutoBox({
+		noCBtn:true,
+		noCon:true,
+		W:390,
+		mask:"#000",
+		ADD:bindMobile
+	})
+	return false
+	},'json')
+})
+function asul(target){
+	var source_type = ''
+	if(mobile_bind_box){
+		mobile_bind_box.close();
+	}
+	Introduce.hide()
+	if (target.hasClass('goVipSign')) {
+		source_type = 'course_vip';
+		if(vip_type == 1){
+			new AutoBox({
+				content:'季会员和年会员专享，马上开通立享会员限免特权。',
+				img:'remind',
+				autoClose:false,
+				No:'知道了',
+				Yes:'立即升级VIP',
+				yc: function () {
+					window.open('https://home.51cto.com/members/in-fo')
+				}
+			})
+			return false;
+		}else if(vip_type == 0){
+			new AutoBox({
+				content:'季会员和年会员专享，马上开通立享会员限免特权。',
+				img:'remind',
+				autoClose:false,
+				No:'知道了',
+				Yes:'立即开通VIP',
+				yc: function () {
+					window.open('https://home.51cto.com/members/in-fo')
+				}
+			})
+			return false;
+		}
+	} else {
+		source_type = 'course';
+	}
+	
+	service_box.checkBind(function(){
+		addSignUpLog(source_type);
+	},{subTxt:"关注【51CTO精品课】, 马上免费学课程",closeTxt:"放弃免费学"})
+
+
+/* $.get(_centerURL+'course/index/add-sign-up-log',{course_id:'22222',source_type: source_type},function(res){
+
+	if(res.status==-9){
+	goLoginPage()
+	return false
+	}
+	if(res.status==-10){
+		if(vip_type == 1){
+			new AutoBox({
+				content:'季会员和年会员专享，马上开通立享会员限免特权。',
+				img:'remind',
+				autoClose:false,
+				No:'知道了',
+				Yes:'立即升级VIP',
+				yc: function () {
+					window.open('https://home.51cto.com/members/in-fo')
+				}
+			})
+		}else{
+			new AutoBox({
+				content:'季会员和年会员专享，马上开通立享会员限免特权。',
+				img:'remind',
+				autoClose:false,
+				No:'知道了',
+				Yes:'立即开通VIP',
+				yc: function () {
+					window.open('https://home.51cto.com/members/in-fo')
+				}
+			})
+		}
+
+		return false
+	}
+	if(res.status==1){
+		if(source_type == 'course_vip'){
+			//添加服务号弹出
+            location.href="https://edu.51cto.com/index.php?do=course&m=recommend&course_ids=22222&from=sign_up_free_course_vip"
+        }else{
+            location.href="https://edu.51cto.com/index.php?do=course&m=recommend&course_ids=22222&from=sign_up"
+        }
+	}
+	if(res.status == -1){
+		new AutoBox({content:res.msg,img:'remind',autoClose:2})
+	}
+	Introduce.hide()
+},'json') */
+}
+
+function addSignUpLog(source_type){
+	$.get(_centerURL+'course/index/add-sign-up-log',{course_id:'22222',source_type: source_type},function(res){
+
+	if(res.status==-9){
+		goLoginPage()
+		return false
+	}
+	if(res.status==-10){
+		if(vip_type == 1){
+			new AutoBox({
+				content:'季会员和年会员专享，马上开通立享会员限免特权。',
+				img:'remind',
+				autoClose:false,
+				No:'知道了',
+				Yes:'立即升级VIP',
+				yc: function () {
+					window.open('https://home.51cto.com/members/in-fo')
+				}
+			})
+		}else{
+			new AutoBox({
+				content:'季会员和年会员专享，马上开通立享会员限免特权。',
+				img:'remind',
+				autoClose:false,
+				No:'知道了',
+				Yes:'立即开通VIP',
+				yc: function () {
+					window.open('https://home.51cto.com/members/in-fo')
+				}
+			})
+		}
+
+		return false
+	}
+	if(res.status==1){
+		if(source_type == 'course_vip'){
+			//添加服务号弹出
+			location.href="https://edu.51cto.com/index.php?do=course&m=recommend&course_ids=22222&from=sign_up_free_course_vip"
+		}else{
+			location.href="https://edu.51cto.com/index.php?do=course&m=recommend&course_ids=22222&from=sign_up"
+		}
+	}
+	if(res.status == -1){
+		new AutoBox({content:res.msg,img:'remind',autoClose:2})
+	}
+	Introduce.hide()
+	},'json')
+}
+////满减
+$('.goBuyFrame').on('click', function (e) {
+	$('.activity-pop,.mask').show();
+})
+$('.activity-pop .close').on('click', function (e) {
+	$('.activity-pop,.mask').hide();
+})
+
+////
+
+$('.goBuy').on('click', function (e) {
+
+    if ($(e.target).hasClass('goBuy')) {
+        setGoCat();
+    }
+})
+
+
+
+$('.goBuy,.goBuyFrame').mouseenter(function(){
+	//$('.quickPay-wrap').show();
+	
+	if(user_id !==''){
+			$(".goBuy,.goBuyFrame").each(function(index,item){
+				if($(this).hasClass('goBuyActivity')){//满减
+					return false;
+				}
+				if($(item).children(".quick_pay_box").length == 0){
+					var bottom = '';
+					if(is_vip !='1'&& course_is_vip =='1'){
+						bottom = '<div class="vip_bottom"><div class="line1">会员免费学习<span class="price">￥128</span><span class="origin_price">￥360</span></div><div class="line2"><span>年度会员抢购中</span><a href="https://home.51cto.com/members/in-fo" target="_blank">立即抢购</a></div></div>';
+					}
+					var quickPay = 
+						'<div class="quick_pay_box">'+
+						'<div class="quickPay">'+
+							'<div style="height: 12px;background: url(https://s1.51ctocdn.cn///images/202109/23/bb52d0bbf26dd3d2e73050f7a791d156.png) left no-repeat;background-size: contain;margin-bottom: 5px;"></div>'+
+							'<p class="title">扫码快速支付<span>￥251.30</span></p>'+
+							'<p class="img">'+
+								'<img src="" alt="" class="payQrcode">'+
+							'</p>'+
+							'<p class="sub">请使用支付宝/微信扫码付款</p>'+
+							bottom+
+						'</div>'+
+						'</div>'
+					$(item).append(quickPay)
+				}
+		})
+		$(this).children(".quick_pay_box").show();	
+		/* if($(this).children(".quickPay").length == 0){
+			var bottom = '';
+			if(is_vip !='1'&& course_is_vip =='1'){
+				bottom = '<div class="vip_bottom"><div class="line1">会员免费学习<span class="price">￥128</span><span class="origin_price">￥360</span></div><div class="line2"><span>年度会员抢购中</span><a href="https://home.51cto.com/members/in-fo">立即抢购</a></div></div>';
+			}
+			var quickPay = 
+				'<div class="quickPay">'+
+					'<div class="logo"></div>'+
+					'<p class="title">扫码快速支付<span>￥251.30</span></p>'+
+					'<p class="img">'+
+						'<img src="" alt="" class="payQrcode">'+
+					'</p>'+
+					'<p class="sub">请使用支付宝/微信扫码付款</p>'+
+					bottom+
+				'</div>'
+			$(this).append(quickPay);
+		}else{
+			$(this).children(".quickPay").show();	
+		} */
+	}
+	
+		
+}).mouseleave(function(){
+	$(this).children(".quick_pay_box").hide();
+    //$('.quickPay-wrap').hide();
+})
+$('#quickPay').mouseenter(function(){
+    $('.quickPay-wrap').show();
+
+}).mouseleave(function(){
+    $('.quickPay-wrap').hide();
+})
+function setGoCat(){
+	var source = "";
+	var hidden_text='';
+	if(source){
+		hidden_text = '<input type="hidden" name="source" value="">';
+	}
+	if(user_id==''){
+		$('.activity-pop,.mask').hide();//满减
+		loginPopover();
+		return false;
+	}
+	$.ajax({
+		url:"/center/orders/buy/ajax-check-wait-order",
+		type:"post",
+		data:{good_id:courseId},
+		dataType:"json",
+		success:function(data){
+			if(data.status == 1){
+				//正常流程
+				$('body').html('<form action="/center/course/index/confirm" method="post" id="buyForm"><input type="hidden" name="course_id[]" value="22222">'+hidden_text+'</form>');
+				$('#buyForm').submit();
+			}else if(data.status == 0){
+				//存在未支付订单
+				unpaidInBuy(data.data,function(){
+					/* $('body').html('<form action="/center/course/index/confirm" method="post" id="buyForm"><input type="hidden" name="course_id[]" value="22222">'+hidden_text+'</form>');
+					$('#buyForm').submit(); */
+					/* window.open("/center/orders/order/get-order-list#tab4"); */
+					$(".unpaid_mask").remove();
+				});
+			}
+		}
+
+	})
+	/* $('body').html('<form action="/center/course/index/confirm" method="post" id="buyForm"><input type="hidden" name="course_id[]" value="22222">'+hidden_text+'</form>');
+	$('#buyForm').submit(); */
+
+}
+
+/* function unpaidInCart(){
+	$(".unpaid_mask").remove();
+	var toolbox = $('<div class="unpaid_mask"><div class="unpaid_box"><p>该课程目前处于“待支付”状态请完成支付</p><div class="btn_group"><a href="/center/orders/order/get-order-list#tab2" target="_blank" class="pay_btn">继续支付</a></div></div></div>');
+	$("body").append(toolbox);
+
+} */
+$(document).on("click",".unpaid_box .close_btn",function(){
+	$(".unpaid_mask").remove();
+})
+function unpaidInBuy(trade_number,callback,type){
+	$('.activity-pop,.mask').hide();//满减
+	var text = type == 'cart' ? '如果加入购物车':'如果单独购买该课程'; 
+	$(".unpaid_mask").remove();
+	var toolbox = $('<div class="unpaid_mask"><div class="unpaid_box"><div class="close_btn"></div><p class="p">您有一笔包含该课程的订单待支付，</p><p class="p">'+text+'，原订单将会自动关闭</p><p class="sub">是否关闭原订单</p><div class="btn_group"><a href="/center/orders/order/get-order-list#tab2" target="_blank" class="pay_btn"  id="pay_btn">查看原订单</a><a class="close_order" id="close_order">确认关闭</a></div></div></div>');
+	$("body").append(toolbox);
+	
+	$(document).on("click","#close_order",function(){
+		$.ajax({
+			url:"/center/orders/to-buy/close-order",
+			type:"post",
+			data:{trade_number:trade_number},
+			dataType:"json",
+			success:function(data){
+				if(data.status == 1){
+					//关闭成功
+					callback();
+				}else{
+					new AutoBox({content:data.msg,img:'remind',autoClose:2});
+				}
+			}
+
+		})
+	})
+}
+
+$(document).on("click",".pay_btn",function(){
+	//window.location.href = '/center/orders/order/get-order-list#tab2';  ///跳转到个人中心
+	//window.open('/center/orders/order/get-order-list#tab2');
+	$(".unpaid_mask").remove();
+})
+
+function sendCodeDjs(dom){
+  var t = 60
+  zTime = setInterval(function(){
+    t--;
+    dom.html(t+'s')
+    if( t == 0) {
+      dom.html('<a class="blue" href="javascript:void(0);">重新发送</a>')
+      clearInterval(zTime)
+    }
+  },1000)
+  dom.html(t+'s')
+}
+</script>
+<script>
+	var course_id = '22222',
+		course_name = '影院在线售票云平台（仿猫眼电影，附SpringBoot项目源码）',
+		first_course = '后端开发',
+		second_course = 'Java',
+		original_price = 359.00,
+		present_price = 251.30,
+		discount_price = 107.7,
+		course_charge_type = '付费',
+		teacher_id = '8307455',
+		teacher_name = '赖国荣',
+		teacher_level = '高级讲师',
+		viewpoint_height = $(document).scrollTop(),
+		page_title = window.location.href; 
+
+
+</script>
+
+<script defer="defer">
+	//注册来源
+	if(user_id == "" && ( window.location.search.indexOf("?hm")>=0 || window.location.search.indexOf("&hm")>=0) && typeof CreateSecondOrigin =="function" ){
+		new CreateSecondOrigin("harmony")
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://static1.51ctocdn.cn/edu/center/js/jquery.nicescroll.min.js|v=1.9.38,center/js/template-web.js|v=1.9.38,center/js/swiper-3.3.1.jquery.min.js|v=1.9.38,center/js/new_course.js|v=1.9.38,css/actlist/js/ext_mbox.js|v=1.9.38,center/js/wechat_box.js|v=1.9.38,center/js/follow_wechat.js|v=1.9.38"></script>    <style>
+  .list_title{
+    display: inline-block;
+    font-size: 18px;
+    color: #333;
+    margin-right: 10px;
+  }
+</style>
+<div class="footer_bg">
+      <div class="footer">
+    <ul class="footer_list">
+      <li><span class="list_title">新手指南</span></li>
+      <li><a href="https://edu.51cto.com/center/about/index/help" target="_blank" rel="nofollow">如何购买</a></li>
+      <li><a href="https://edu.51cto.com/center/about/index/help" target="_blank" rel="nofollow">如何使用优惠券</a></li>
+      <li><a href="https://edu.51cto.com/center/about/index/help" target="_blank" rel="nofollow">如何开发票</a></li>
+      <li><a href="https://edu.51cto.com/center/about/index/help" target="_blank" rel="nofollow">退款政策</a></li>
+    </ul>
+    <ul class="footer_list">
+      <li><span class="list_title">关于课程</span></li>
+      <li><a href="https://edu.51cto.com/center/about/index/help" target="_blank" rel="nofollow">手机上如何看课程</a></li>
+      <li><a href="https://edu.51cto.com/center/about/index/help" target="_blank" rel="nofollow">如何下载资料</a></li>
+      <li><a href="javascript:;"  class="zhiCustomBtn" rel="nofollow">视频卡顿反馈</a></li>
+      <li><a href="http://blog.51cto.com/51edu/2105647" target="_blank" rel="nofollow">想学习的课程登记贴</a></li>
+    </ul>
+    <ul class="footer_list">
+      <li><span class="list_title">互动交流</span></li>
+      <li><a href="https://edu.51cto.com/center/about/index/feedback" target="_blank" rel="nofollow">意见反馈</a></li>
+      <!-- <li><a href="http://bbs.51cto.com" target="_blank" rel="nofollow">论坛交流</a></li> -->
+            <li><a href="https://edu.51cto.com/courselist/index-zh2.html" target="_blank" rel="nofollow">最新课程</a></li>
+    </ul>
+    <ul class="footer_list">
+      <li><span class="list_title">学习产品</span></li>
+      <li><a href="https://edu.51cto.com/courselist/index-f1.html?edunav" target="_blank" rel="nofollow">全部课程</a></li>
+      <li><a href="https://edu.51cto.com/topiclist?edunav" target="_blank" rel="nofollow">专题套餐</a></li>
+      <li><a href="https://e.51cto.com/?utm_platform=pc&utm_medium=51cto&utm_source=edu&utm_content=bottomwzl&rtm_frd=" target="_blank" rel="nofollow">精品班</a></li>
+      <li><a href="https://harmonyos.51cto.com/study#edusitemap" target="_blank" rel="nofollow">鸿蒙学堂</a></li>
+    </ul>
+    <ul class="footer_list">
+      <li><span class="list_title">关于我们</span></li>
+      <li><a href="https://edu.51cto.com/center/about/index/about" target="_blank" rel="nofollow">关于我们</a></li>
+      <li><a href="https://edu.51cto.com/lecturer/lectopics" target="_blank" rel="nofollow">成为讲师</a></li>
+      <li><a href="https://edu.51cto.com/partner/index.html" target="_blank" rel="nofollow">合作机构</a></li>
+      <li><a href="https://edu.51cto.com/friendlink" target="_blank" rel="nofollow">友情链接</a></li>
+    </ul>
+    <ul class="footer_last">
+      <li><span class="list_title">客服/不良信息举报热线</span></li>
+      <li class="telbox"><span class="tel">400-101-1651</sapn></li>
+      <li class="time">09:00-19:00</li>     
+      <li>
+        <div class="sbox_more">
+          <a class="sina fl" href="http://weibo.com/51ctoedu?refer_flag=1001030101_&is_hot=1" target="_blank" rel="nofollow"></a>
+          <div class="wechat_bg fl" >
+            <a class="wechat" href="javascript:;"></a>
+            <div class="wechat_box" style="padding:0; box-shadow:none;">
+              <img src="https://s1.51ctocdn.cn//images/202109/23/5dff650291e3af166362c66d7fd305b9.png" alt="" width="110" height="110" alt="51CTO学堂">
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="footer_company">
+    <a href="https://edu.51cto.com/" target="_blank" title="51CTO学堂-专业IT技能在线培训平台" rel="nofollow">
+      <!-- <span class="bottom_logo_pic"></span> -->
+      <img class="bottom_logo_pic_new" src="https://s2.51cto.com/images/202107/05/237c1834e3a817d393873f56f39e7c60.png?x-oss-process=image/resize,m_lfit,w_120" alt="bottom_logo" />
+    </a>
+    <div>
+      <a href="https://edu.51cto.com/center/about/index/publish" target="_blank" style="display: inline-block;margin-right: 10px;margin-bottom: 10px;">北京无忧创想信息技术有限公司</a>
+      <a href="https://edu.51cto.com/center/about/index/business" target="_blank" style="display: inline-block;margin-right: 10px;margin-bottom: 10px;">出版物经营许可证 新出发京零字第海170131号</a>
+      <a style="display: inline-block;margin-right: 10px;margin-bottom: 10px;">北京市海淀区中关村南一条甲一号2号楼602A</a><br>
+      <div class="mb10">PMI, PMP and PMBOK are registered marks of the Project Management Institute, Inc.</div>
+      <a style="display: inline-block;margin-right: 10px;margin-bottom: 10px;" rel="nofollow">京ICP备09067568号</a><br>
+      Copyright © 2005-2022 51CTO.COM 京ICP证060544 版权所有 未经许可 请勿转载
+    </div>
+  </div>
+</div>
+  <div class="exit_slide">
+    <div style=" position: relative;">
+            <div class="customer zhiCustomBtn item" style="display:block;">
+          <span class="pre"><i></i></span>
+          <span class="after">在线<br>客服</span>
+          <b class="line"></b>
+      </div>
+      <!-- louzb推广，详情右侧导航 -->
+            <div class="bots">
+          <div class="item item_app" id="item_app">
+              <span class="pre"><i></i></span>
+              <span class="after cl_6">APP<br />下载</span>
+              <div class="app_code whitebox cl_6 trans_scale" id="app_code">
+                  <div><img width="114" height="114" src="https://s1.51ctocdn.cn//images/202109/23/5ecbc36983820826eddcf52dc659e900.jpg" alt="" /></div>
+                  <p>下载Android客户端</p>
+                  <p>下载iphone 客户端</p>
+              </div>
+              <b class="line"></b>
+          </div>
+          <div class="item item_app_wc">
+              <span class="pre"><i></i></span>
+              <span class="after cl_6">官方<br />微信</span>
+              <div class="app_code whitebox cl_6 trans_scale">
+                  <div><img width="114" height="114" src="https://s2.51cto.com/images/202110/29/b5ab06a2109d87e040e4b6eae0099728.jpg" alt="" /></div>
+                  <p>关注官方微信</p>
+              </div>
+              <b class="line"></b>
+          </div>
+          <div class="item item_top">
+              <span class="pre cur"><i></i></span>
+              <span class="after cl_6">返回<br />顶部</span>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    $(".exit_slide .item").each(function(index, el) {
+      $(this).hover(function() {
+          $(this).find('.app_code').addClass('trans_scale_h');
+      }, function() {
+          $(this).find('.app_code').removeClass('trans_scale_h');
+      });
+    });
+    $('.item_top').click(function(event) {
+      $(window).scrollTop(0);
+    });
+
+    // 关闭全局活动图片
+    $('.activity-globel .close').on('click', function(event) {
+      var event = event || window.event;
+      if(event && event.stopPropagation){
+        event.stopPropagation();
+      }else{
+        event.cancelBubble = true;
+      }
+      $(this).parents('.activity-globel').hide();
+    })
+  </script>
+
+<script src="//www.sobot.com/chat/frame/js/entrance.js?sysNum=a8d9379eaf884b4f81a48348979e3b1a" id="zhichiScript" class="zhiCustomBtn" data-args="manual=true"></script>
+
+<script type="text/javascript">
+var user_id = '';
+var zhiManager = (getzhiSDKInstance());
+zhiManager.on("load", function() {
+    zhiManager.initBtnDOM();
+});
+zhiManager.set('title','欢迎咨询');
+zhiManager.set('powered',false);
+zhiManager.set('customBtn', 'true');
+zhiManager.set('size',{'width':360,'height':500});
+zhiManager.set('userinfo', {partnerId:user_id,uname:'',params:'{"用户名":""}'});
+zhiManager.set('customMargin', 20);
+zhiManager.set('preVisitArgs',{'preVisitUrl': document.referrer?document.referrer:''});
+zhiManager.set('curVisitArgs',{'curVisitUrl': location.href,curVisitTitle:document.title,});
+(function() {
+    var arrlen = [{"url":"http:\/\/edu.51cto.com\/center\/course\/index\/search?q=AWS","starTime":1543248000,"endTime":1543593300},{"url":"http:\/\/edu.51cto.com\/center\/course\/index\/search?q=AWS","starTime":1542038400,"endTime":1542124500},{"url":"http:\/\/edu.51cto.com\/center\/course\/index\/search?q=AWS","starTime":1542211200,"endTime":1542297300}];
+  var f_time = '1645844895';
+  if(arrlen != ""){
+    $.each(arrlen,function(k,v){
+      var len = v.url.replace(/[\u0391-\uFFE5]/g,"").length;
+          v_url = v.url.replace(/\\/g,"")
+      if(window.location.href.substring(window.location.pathname, 0, len)==v_url && f_time>v.starTime && f_time<v.endTime){window.bid = '6c61a2685dbd239c797664864e560f45'}
+    })
+  }
+})();
+$(".LoginReg").click(function(){
+  if(typeof hmtPro == 'undefined') var hmtPro = '其他'
+  _hmt.push(['_trackEvent', '顶部-注册/登录', '点击',hmtPro]);
+})
+</script>
+
+<!-- 统计代码公共部分 -->
+<div style="display:none;"><script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1279534624&web_id=1279534624"></script></div><!-- 神策start -->
+<script>
+(function(para) {
+    var p = para.sdk_url, n = para.name, w = window, d = document, s = 'script',x = null,y = null;
+    w['sensorsDataAnalytic201505'] = n;
+    w[n] = w[n] || function(a) {return function() {(w[n]._q = w[n]._q || []).push([a, arguments]);}};
+    var ifs = ['track','quick','register','registerPage','registerOnce','clearAllRegister','trackSignup', 'trackAbtest',    'setProfile','setOnceProfile','appendProfile', 'incrementProfile', 'deleteProfile', 'unsetProfile',     'identify','login','logout','trackLink','clearAllRegister'];
+    for (var i = 0; i < ifs.length; i++) {
+        w[n][ifs[i]] = w[n].call(null, ifs[i]);
+    }
+    if (!w[n]._t) {
+        x = d.createElement(s), y = d.getElementsByTagName(s)[0];
+        x.async = 1;
+        x.src = p;
+        w[n].para = para;
+        y.parentNode.insertBefore(x, y);
+    }
+})({
+    sdk_url: 'https://static1.51ctocdn.cn/edu/sa-sdk-js/sensorsdata.min.js',
+    name: 'sensors',
+    server_url:'https://sc.51cto.com/sa?project=production',
+    show_log:false,
+    heatmap: {
+        clickmap:'default',
+        scroll_notice_map:'not_collect'
+    },
+    preset_properties: {      
+        url: true
+    }
+
+});
+//公共属性
+sensors.login(user_id)
+var is_member = false;
+var is_vip = '0';
+if(is_vip == 1){
+  is_member = true;
+}else{
+  is_member = false;
+}
+if((typeof(abTest)) == "undefined"){
+    abTest = '';
+}
+sensors.registerPage({
+  platform_type:'PC',
+  product_name:'51CTO学堂',
+  is_login:user_id!=''? true : false,
+  is_member:is_member,
+  member_type:'',
+  abTest : abTest
+});
+sensors.quick('autoTrack');
+
+$('.exit_slide .customer').click(function(){      
+  sensors.track('Contact', {
+      page_title: window.location.href, 
+  });
+})
+</script>
+<!-- 神策end -->
+    <!-- 中间广告 -->
+
+<!-- 底部广告 -->
+    
+        <script type="text/javascript">
+                        
+    </script>
+    </body>
+</html>

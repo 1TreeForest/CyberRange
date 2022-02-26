@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="en-US"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>For The Record</title>
+    <script type="text/javascript">
+      /* source: https://github.com/faisalman/ua-parser-js/blob/master/src/ua-parser.js
+      note: modified to exclude chromium edge */
+      const isIE = new RegExp(/(?:ms|\()(ie)\s([\w\.]+)/i).test(navigator.userAgent)
+      const isIE11 = new RegExp(/(trident).+rv[:\s]([\w\.]{1,9}).+like\sgecko/i).test(navigator.userAgent)
+      const isEdge = new RegExp(/(edge|edgios|edga)\/((\d+)?[\w\.]+)/i).test(navigator.userAgent)
+      if (isIE || isIE11 || isEdge) {
+        window.location.replace('/unsupported-browser.html')
+      }
+    </script>
+    <meta name="description" content="For The Record">
+    <!-- See: https://developer.mozilla.org/en-US/docs/Web/Manifest -->
+    <link rel="manifest" href="/assets/manifest.json">
+    <!-- See: https://developers.google.com/web/fundamentals/design-and-ux/browser-customization/#meta_theme_color_for_chrome_and_opera -->
+    <meta name="theme-color" content="#3e3e3d">
+    <!-- DO NOT REMOVE -->
+    <meta name="google-site-verification" content="UfLm9OJrW_uTVfvM98KrhyH35XSdfTjzChqqsb9ihRc">
+    <!-- See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base -->
+    <base href="/">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="For the Record">
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon-180x180.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="For the Record">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)" href="/assets/images/apple-touch-startup-image-320x460.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" href="/assets/images/apple-touch-startup-image-640x920.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="/assets/images/apple-touch-startup-image-640x1096.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="/assets/images/apple-touch-startup-image-750x1294.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)" href="/assets/images/apple-touch-startup-image-1182x2208.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" href="/assets/images/apple-touch-startup-image-1242x2148.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" href="/assets/images/apple-touch-startup-image-748x1024.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)" href="/assets/images/apple-touch-startup-image-768x1004.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" href="/assets/images/apple-touch-startup-image-1496x2048.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="/assets/images/apple-touch-startup-image-1536x2008.png">
+    <!-- PRELOADER STYLE -->
+    <style>
+      .pre-bootstrap {
+        background-color: #f6f7f8;
+        opacity: 1;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: all linear 0.3s;
+        -webkit-transition: all linear 0.3s;
+        z-index: 999999;
+      }
+      .pre-bootstrap__logo {
+        display: block;
+        width: 250px;
+        height: 48px;
+      }
+      .pre-bootstrap__loader {
+        width: 100%;
+        position: fixed;
+        top: 0;
+      }
+      .pre-bootstrap__line {
+        display: block;
+        height: 10px;
+        background-color: #fff;
+        margin: 0 auto;
+      }
+      .pre-bootstrap__indeterminate::before,
+      .pre-bootstrap__indeterminate::after {
+        content: '';
+        position: absolute;
+        height: 100%;
+        background-color: #ef3e39;
+        animation: pre-bootstrap__indeterminate_first 8s infinite ease-out;
+      }
+      .pre-bootstrap__indeterminate::after {
+        animation: pre-bootstrap__indeterminate_second 8s infinite ease-in;
+      }
+      @keyframes pre-bootstrap__indeterminate_first {
+        0% {
+          left: -100%;
+          width: 100%;
+        }
+        100% {
+          left: 100%;
+          width: 10%;
+        }
+      }
+      @keyframes pre-bootstrap__indeterminate_second {
+        0% {
+          left: -150%;
+          width: 100%;
+        }
+        100% {
+          left: 100%;
+          width: 10%;
+        }
+      }
+      .modal-open {
+        overflow: hidden;
+      }
+    </style>
+  <style>*{-webkit-box-sizing:border-box;box-sizing:border-box}@font-face{font-family:proxima-nova;src:url(/assets/fonts/proximanova-regular-webfont.woff2) format("woff2"),url(/assets/fonts/proximanova-regular-webfont.woff) format("woff");font-weight:400;font-style:normal}@font-face{font-family:proxima-nova;src:url(/assets/fonts/proximanova-semibold-webfont.woff2) format("woff2"),url(/assets/fonts/proximanova-semibold-webfont.woff) format("woff");font-weight:700;font-style:normal}body{font-family:proxima-nova,avenir,sans-serif;font-size:1rem;line-height:1.5rem;font-weight:400;color:#424242}@-webkit-keyframes shake{0%,to{-webkit-transform:translateX(0);transform:translate(0)}20%,60%{-webkit-transform:translateX(-.375rem);transform:translate(-.375rem)}40%,80%{-webkit-transform:translateX(.375rem);transform:translate(.375rem)}}@-webkit-keyframes indeterminate_first{0%{left:-100%;width:100%}to{left:100%;width:10%}}@-webkit-keyframes indeterminate_second{0%{left:-150%;width:100%}to{left:100%;width:10%}}@-webkit-keyframes fadeIn{0%{opacity:0}to{opacity:1}}html,body{min-height:100%;height:100%;margin:0;padding:0;background-color:#f6f7f8;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}</style><link rel="stylesheet" href="styles.bb748dece9937359.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.bb748dece9937359.css"></noscript></head>
+  <body>
+    <ftr-app></ftr-app>
+    <!-- PRELOADER -->
+    <script type="text/javascript">
+      document.addEventListener('appready', handleAppReady)
+      function handleAppReady() {
+        var a = document.getElementsByClassName('pre-bootstrap')[0]
+        a &&
+          ((a.className = 'pre-bootstrap loaded'),
+          setTimeout(function () {
+            var b = a.parentNode
+            b && b.removeChild(a)
+          }, 300))
+      }
+    </script>
+    <div class="pre-bootstrap" aria-busy="true">
+      <div class="pre-bootstrap__loader" role="progressbar" aria-valuetext="Loading For The Record">
+        <div class="pre-bootstrap__line">
+          <div class="pre-bootstrap__indeterminate"></div>
+        </div>
+      </div>
+      <div>
+        <img class="pre-bootstrap__logo" alt="For The Record" src="/assets/images/logo-colored.svg">
+      </div>
+    </div>
+  <script src="runtime.279b55d342b34915.js" type="module"></script><script src="polyfills.a69a36a6cbeffb4e.js" type="module"></script><script src="main.ba3721596b697048.js" type="module"></script>
+
+</body></html>
