@@ -31,7 +31,7 @@ class SplashhtmlspiderSpider(scrapy.Spider):
 
     def start_requests(self):
         for url in self.start_urls:
-            yield SplashRequest(url=url, callback=self.parse, args={'wait': '10'}, endpoint='render.html')  # 最大时长、固定参数
+            yield SplashRequest(url=url, callback=self.parse, args={'wait': '30'}, endpoint='render.html')  # 最大时长、固定参数
 
     def parse(self, response):
         with open('../html/{}.html'.format(self.item_dict.get(response.request.url)), 'wb') as f:

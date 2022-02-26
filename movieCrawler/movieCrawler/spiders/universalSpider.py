@@ -4,6 +4,7 @@ import random
 import pymysql
 import scrapy
 import re
+from scrapy_splash import SplashRequest
 
 from movieCrawler.items import UniversalItem
 
@@ -15,7 +16,7 @@ class UniversalSpider(scrapy.Spider):
     name = 'universalSpider'
     #  黑名单短语列表，若出现在name中则剔除
     black_word_list = ['最新', 'topics', '会员', 'vip', 'VIP', '围观了', '点击图标', '分享到', '客户端', '热线', 'rss', 'RSS',
-                       '排行榜', '留言', '电影大全', '？？', '??']
+                       '排行榜', '留言', '电影大全', '？？', '??', '频道']
     #  黑名单题目列表，若与提取所得title相等则剔除
     black_title_list = ['招聘英才', '联系我们', '关于我们', '', '首页', '观看历史', '播放记录']
     #  黑名单url列表，若与提取所得link相等则剔除
@@ -46,6 +47,10 @@ class UniversalSpider(scrapy.Spider):
         logging.info('通用资源爬虫已获取 {} 个url，即将开始进行爬取'.format(len(self.item_list)))
         random.shuffle(self.start_urls)  # 用以随机排列start_urls，使每次爬取更加随机化
         print(self.start_urls)
+
+    def start_requests(self):
+        for url in self.start_urls:
+            yield SplashRequest(url=url, callback=self.parse, args={'wait': '30'}, endpoint='render.html')  # 最大时长、固定参数
 
     def parse(self, response):
         tag_list = response.selector.xpath('//*[@title]')  # 提取所有含title属性的tag，用以解析其中内容
