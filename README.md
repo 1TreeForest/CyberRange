@@ -2,13 +2,21 @@
 ## 目录结构
 /CyberRange  
 
-|-- htmlSpider/    
-|   |-- html/  #分别保存对每个URL进行爬取后得到的HTML    
-|   |-- htmlSpider/ #爬虫文件，对每个url的HTML代码进行爬取  
+|-- splashHtmlCrawler/    
+|   |-- html/  #保存对URL进行爬取后得到的经过渲染的HTML文件    
+|   |-- splashHtmlCrawler/ #爬虫文件
 |   |-- scrapy.cfg  
 
 |-- siteCrawler/   
 |   |-- siteCrawler/   
+|   |-- scrapy.cfg   
+
+|-- movieCrawler/   
+|   |-- movieCrawler/   
+|   |   |--spider/
+|   |   |  |--dytt.py #爬取电影天堂网站上信息的爬虫
+|   |   |  |--movie——2345.py #爬取2345电影网站上信息的爬虫
+|   |   |  |--universalSpider.py #爬取所有侵权网站上信息的普适性爬虫
 |   |-- scrapy.cfg   
 
 ## SiteCrawler
@@ -39,5 +47,12 @@
 
 进入htmlCrawler目录后运行如下命令
 ```scrapy crawl html```  
+
+## movieCrawler
+### universalSpider.py
+运行run_universal.py文件开启爬虫
+### movie_2345.py、 dytt.py
+运行run_special.py文件开启爬虫
+
 
 
