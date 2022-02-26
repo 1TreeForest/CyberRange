@@ -5,8 +5,13 @@
 
 from scrapy import signals
 
-# useful for handling different item types with a single interface
-from itemadapter import is_item, ItemAdapter
+from fake_useragent import UserAgent
+
+
+class RandomUserAgentMiddleware(object):
+    def process_request(self, request, spider):
+        ua = UserAgent()
+        request.headers['User-Agent'] = ua.random
 
 
 class SplashhtmlcrawlerSpiderMiddleware:

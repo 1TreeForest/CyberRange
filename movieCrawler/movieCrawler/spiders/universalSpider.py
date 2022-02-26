@@ -16,9 +16,10 @@ class UniversalSpider(scrapy.Spider):
     name = 'universalSpider'
     #  黑名单短语列表，若出现在name中则剔除
     black_word_list = ['最新', 'topics', '会员', 'vip', 'VIP', '围观了', '点击图标', '分享到', '客户端', '热线', 'rss', 'RSS',
-                       '排行榜', '留言', '电影大全', '？？', '??', '频道']
+                       '排行榜', '留言', '电影大全', '？？', '??', '频道', '影院', '站点地图', '跳转']
     #  黑名单题目列表，若与提取所得title相等则剔除
-    black_title_list = ['招聘英才', '联系我们', '关于我们', '', '首页', '观看历史', '播放记录']
+    black_title_list = ['招聘英才', '联系我们', '关于我们', '', '首页', '观看历史', '播放记录', '资讯', '分享', '评论', '生活',
+                        '电影', '少儿', '剧情', '动作', '歌舞', '冒险', '惊悚', '悬疑', '剧情', '喜剧', '科幻', '爱情']
     #  黑名单url列表，若与提取所得link相等则剔除
     black_link_list = ['javascript::', '#', '']
     start_urls = []
@@ -79,7 +80,7 @@ class UniversalSpider(scrapy.Spider):
 
                 if any(word in item['name'] for word in self.black_word_list) or any(
                         title == item['name'] for title in self.black_title_list) or any(
-                        url == item['link'] for url in self.black_link_list):  # 若不符合三个黑名单所定义的规则就剔除
+                    url == item['link'] for url in self.black_link_list):  # 若不符合三个黑名单所定义的规则就剔除
                     continue
 
                 yield item

@@ -6,13 +6,14 @@
 import logging
 import random
 import time
-
 import requests
 from scrapy import signals
+from fake_useragent import UserAgent
 
-# useful for handling different item types with a single interface
-from itemadapter import is_item, ItemAdapter
-
+class RandomUserAgentMiddleware(object):
+    def process_request(self, request, spider):
+        ua = UserAgent()
+        request.headers['User-Agent'] = ua.random
 
 class SiteCrawlerSpiderMiddleware:
     # Not all methods need to be defined. If a method is not defined,
