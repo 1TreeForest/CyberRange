@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script type="text/javascript">
+
+        window.lang = {
+            'locale': "en",
+            'locale_date_string': "dddd MMMM DD",
+            'locale_time_format': "h:mm A",
+            'now_playing': "NOW PLAYING",
+            'coming_soon': "COMING SOON",
+            'coming_soon_to': "Coming Soon to",
+            'more': "MORE",
+            'book': "Reserve",
+            'trailer': "TRAILER",
+            'directed_by': "Directed by",
+            'starring': "Starring",
+            'language': "Language",
+            'menu': "MENU",
+            'find_us': "FIND US",
+            'welcome_to': "Welcome to",
+            'closest_cinema': "Your closest cinema is",
+            'select_location': "Please select your location.",
+            'continue': "CONTINUE",
+            'cinema_selector_text': "If this isn’t the location you want, no drama, please select from the below.",
+            'see_all': "SEE ALL",
+            'at': "at",
+            'undated': "Undated",
+            'no_release_date': "No Release Date",
+            'minutes': "mins",
+            'rated': "Rated",
+            'tbc': "TBC",
+            'read_more': "Read more...",
+            'tweet': "Tweet",
+            'share': "Share",
+            'times_and_tickets': "Times &amp; Tickets",
+            'movie_times_and_tickets': "movie times &amp; tickets",
+            'by_day': "BY DAY",
+            'by_movie': "BY TITLE",
+            'newest_first': "Newest first",
+            'order_alphabetically': "A-Z",
+            'order_by_session': "By showtimes",
+            'print': "PRINT",
+            'movie_times': "Movie Times",
+            'advance_tickets': "ADVANCE TICKETS",
+            '404_communicate': "<h1>404 - Page not found.</h1><p>Looks like the page you’re looking for is unavailable.</p><p>Please head back to our <a href="/">homepage</a>.</p>",
+            'today': "Today",
+            'no_sessions': "No Session Times Available",
+            'no_movies_today': "No movies left today, try tomorrow.",
+            'sessions_key': "SESSIONS KEY. ",
+            'timezone': "Australia/Darwin",
+        }
+
+
+    </script>
+
+    <title>Deckchair Cinema - movie times &amp; tickets</title>
+
+
+        <link rel="icon" href="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1574679576718_favicon_RGB.png">
+        <link rel="android-icon" href="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1574679576718_favicon_RGB.png" sizes="36x36 48x48 72x72 96x96" type="image/x-icon">
+        <link rel="apple-touch-icon" href="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1574679576718_favicon_RGB.png" sizes="57x57 60x60 72x72 76x76 114x114 120x120 144x144 152x152 180x180" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.standalone.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- add custom font files -->
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,700&display=swap' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Capriola|Open+Sans&display=swap' rel='stylesheet' type='text/css'>
+
+    <!-- add styles here -->
+    <!-- add suffix to fix bug with multi sites.  The problem was multi sites have different styles, and browser uses incorrect cache styles when user clicks the browser's back' button-->
+    <link rel="stylesheet" type="text/css" href="/style.css?id=5d030727c131a61c26af990c" />
+
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/8.6.0/lazyload.min.js"></script>
+
+
+
+
+    <script type="text/javascript" src="https://yc.cldmlk.com/template_1/js/sly.min.js?c=v2.15.8"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="https://yc.cldmlk.com/template_1/js/moment-timezone-with-data.min.js?c=v2.15.8"></script>
+    
+    <script type="text/javascript" src="https://yc.cldmlk.com/template_1/js/jquery.mobile.custom.min.js?c=v2.15.8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <!-- need to add other locale files from CDN library when adding new language to our system -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.en-NZ.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.fi.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.fr.min.js"></script>
+
+    <template id="templateMovieTimesByDay">
+        <div class="movie">
+            <div class="movie-details">
+                <a href="" class="poster-portrait-link"><img data-src="" class="poster-portrait mobile-hide"></a>
+                <a href="" class="poster-landscape-link"><img data-src="" class="poster-landscape mobile-show"></a>
+                <a href="" class="poster-landscape-link-ie hidden"><div class="poster-landscape mobile-show"></div></a>
+
+                <div class="movie-info">
+                    <a href="" class="movie-link"><h2></h2></a>
+                    <p class="duration-rating"></p>
+
+                    <div class="director mobile-hide"><b>Directed by </b></div>
+                    <div class="actors mobile-hide"><b>Starring </b></div>
+                </div>
+            </div>
+            <div class="movie-times"></div>
+        </div>
+    </template>
+
+    <template id="templateMovieTimesByMovie">
+        <div class="movie layout-by-movie">
+            <div class="posters">
+                <a href="" class="poster-portrait-link"><img src="" class="poster-portrait mobile-hide"></a>
+                <a href="" class="poster-landscape-link"><img src="" class="poster-landscape mobile-show"></a>
+                <a href="" class="poster-landscape-link-ie hidden"><div class="poster-landscape mobile-show"></div></a>
+
+                <div class="movie-info">
+                    <a href="" class="movie-link"><h2></h2></a>
+                    <p class="duration-rating"></p>
+                </div>
+            </div>
+            <div class="movie-details">
+                <div class="movie-info">
+                    <a href="" class="movie-link"><h2></h2></a>
+                    <p class="duration-rating"></p>
+
+                    <a href="" class="details-page-link">MORE / TRAILER</a>
+                </div>
+
+                <div class="movie-times"></div>
+            </div>
+        </div>
+    </template>
+
+    <template id="templateMovieWithSynopsis">
+        <div class="movie layout-by-movie with-synopsis">
+            <div class="posters">
+                <a href="" class="poster-portrait-link"><img src="" class="poster-portrait mobile-hide"></a>
+                <a href="" class="poster-landscape-link"><img src="" class="poster-landscape mobile-show"></a>
+                <a href="" class="poster-landscape-link-ie hidden"><div class="poster-landscape mobile-show"></div></a>
+
+                <div class="movie-info">
+                    <a href="" class="movie-link"><h2></h2></a>
+                    <div class="synopsis"></div>
+                </div>
+            </div>
+            <div class="movie-details">
+                <div class="movie-info">
+                    <a href="" class="movie-link"><h2></h2></a>
+                    <div class="synopsis"></div>
+
+                    <a href="" class="details-page-link">MORE / TRAILER</a>
+                </div>
+            </div>
+        </div>
+    </template>
+</head>
+<body>
+    <header>
+        <div class="main-menu " >
+            <a href="#" class="menu-icon"></a>
+            <div class="menu-mobile">
+                <a href="#" class="close-menu">&times;</a>
+
+                <h2>MENU</h2>
+
+                <nav>
+                    <ul>
+                        <li  class="active" ><a href="/">NOW PLAYING</a></li>
+                        <li ><a href="/coming-soon">COMING SOON</a></li>
+
+                            <li  ><a href="https://ticketing.oz.veezi.com/sessions/apk8pc95yqj95hjbgpbwt8hc7m"  target="_blank" >Tickets</a></li>
+                            <li  ><a href="/food-and-drink" >Food and Drink</a></li>
+                            <li  ><a href="/membership" >Membership</a></li>
+
+                            <li ><a href="/about-deckchair-cinema" >About Deckchair Cinema</a></li>
+                            <li ><a href="https://diff.net.au/"  target="_blank" >DIFF</a></li>
+                            <li ><a href="/gifts" >Gifts</a></li>
+                            <li ><a href="/groups-and-events" >Groups and Events</a></li>
+                            <li ><a href="/history" >History</a></li>
+                            <li ><a href="/programs" >Programs</a></li>
+                            <li ><a href="/submit-a-short-film" >Submit a Short Film</a></li>
+                            <li ><a href="/the-darwin-film-society" >The Darwin Film Society</a></li>
+                            <li ><a href="/work-with-us" >Work With Us</a></li>
+                    </ul>
+                </nav>
+
+                <div class="social-media-header">
+                    <p class="find-us">FIND US</p>
+
+                    <a href="https://www.youtube.com/channel/UCoqPogHqT6rSpU3A2uMri7w" target="_blank" class="youtube-header"></a> 
+                    <a href="http://www.twitter.com/deckchaircinema" target="_blank" class="twitter-header"></a> 
+                    <a href="http://www.instagram.com/deckchair_cinema/" target="_blank" class="instagram-header"></a> 
+                    <a href="https://www.facebook.com/deckchaircinema" target="_blank" class="facebook-header"></a> 
+                </div>
+            </div>
+
+            <div class="logo"><a href="/"><img src="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1574678993792_deckchairlogo_long_colour_purple_RGB.png"></a><br />
+          </div>
+
+
+            <div class="menu-desktop">
+                <div class="social-media-header">
+                    <a href="https://www.youtube.com/channel/UCoqPogHqT6rSpU3A2uMri7w" target="_blank" class="youtube-header"></a> 
+                    <a href="http://www.twitter.com/deckchaircinema" target="_blank" class="twitter-header"></a> 
+                    <a href="http://www.instagram.com/deckchair_cinema/" target="_blank" class="instagram-header"></a> 
+                    <a href="https://www.facebook.com/deckchaircinema" target="_blank" class="facebook-header"></a> 
+                </div>
+
+                <nav>
+                    <ul>
+                        <li  class="active" ><a href="/">NOW PLAYING</a></li>
+                        <li ><a href="/coming-soon">COMING SOON</a></li>
+
+                            <li  ><a href="https://ticketing.oz.veezi.com/sessions/apk8pc95yqj95hjbgpbwt8hc7m"  target="_blank" >Tickets</a></li>
+                            <li  ><a href="/food-and-drink" >Food and Drink</a></li>
+                            <li  ><a href="/membership" >Membership</a></li>
+
+                        <li>
+                            <a href="#" class="more">MORE</a>
+
+                            <nav class="sub-menu">
+                                <ul>
+                                       <li><a  
+                                       href="/about-deckchair-cinema">About Deckchair Cinema </a></li>
+                                       <li><a  target="_blank"  
+                                       href="https://diff.net.au/">DIFF </a></li>
+                                       <li><a  
+                                       href="/gifts">Gifts </a></li>
+                                       <li><a  
+                                       href="/groups-and-events">Groups and Events </a></li>
+                                       <li><a  
+                                       href="/history">History </a></li>
+                                       <li><a  
+                                       href="/programs">Programs </a></li>
+                                       <li><a  
+                                       href="/submit-a-short-film">Submit a Short Film </a></li>
+                                       <li><a  
+                                       href="/the-darwin-film-society">The Darwin Film Society </a></li>
+                                       <li><a  
+                                       href="/work-with-us">Work With Us </a></li>
+                                </ul>
+                            </nav>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+            <div class="previews mobile-hide">
+            <!-- carousel goes here -->
+            <div id="moviePreviews" class="carousel slide" data-ride="carousel" data-interval="5000">
+                <div class="carousel-inner" role="listbox">
+                        <div class="preview item  active  ">
+                                <a href="https://deckchaircinema.com/work-with-us"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://deckchaircinema.com/work-with-us');">
+                            <img src="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1644213016637_Damo21141x422.png" alt="">
+                            <div class="carousel-image hidden"></div>
+                                 </a>
+
+                            <div class="info carousel-caption">
+                                <div class="caption-container">
+                                    <div class="caption-details">
+                                        <h2>Work with us</h2>
+                                        <p>We&#x27;re hiring for the Deckchair Cinema season, come and find out more</p>
+                                    </div>
+                                    <div class="caption-link">
+                                        <a href="https://deckchaircinema.com/work-with-us"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://deckchaircinema.com/work-with-us');">more info</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview item  ">
+                                <a href="https://www.flixinthewet.com"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://www.flixinthewet.com');">
+                            <img src="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1638843270357_Balloon1000crop2.jpg" alt="">
+                            <div class="carousel-image hidden"></div>
+                                 </a>
+
+                            <div class="info carousel-caption">
+                                <div class="caption-container">
+                                    <div class="caption-details">
+                                        <h2>Flix in the Wet</h2>
+                                        <p>Flix returns to BCC Casuarina this year with nine great films from across the globe. Head over to flixinthewet.com for more info and tickets!</p>
+                                    </div>
+                                    <div class="caption-link">
+                                        <a href="https://www.flixinthewet.com"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://www.flixinthewet.com');">flixinthewet.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview item  ">
+                                <a href="https://deckchaircinema.com/about-deckchair-cinema"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://deckchaircinema.com/about-deckchair-cinema');">
+                            <img src="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1568935204872_carousel.png" alt="">
+                            <div class="carousel-image hidden"></div>
+                                 </a>
+
+                            <div class="info carousel-caption">
+                                <div class="caption-container">
+                                    <div class="caption-details">
+                                        <h2>Welcome to Darwin&#x27;s premiere outdoor cinema (currently closed for Wet Season)</h2>
+                                        <p>Deckchair Cinema screens films 7 nights a week during the Dry Season</p>
+                                    </div>
+                                    <div class="caption-link">
+                                        <a href="https://deckchaircinema.com/about-deckchair-cinema"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://deckchaircinema.com/about-deckchair-cinema');">More info</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview item  ">
+                                <a href="https://oceanfilmfestivalaustralia.com.au/"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://oceanfilmfestivalaustralia.com.au/');">
+                            <img src="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1622176499681_OceansFilmFestivalc.jpg" alt="">
+                            <div class="carousel-image hidden"></div>
+                                 </a>
+
+                            <div class="info carousel-caption">
+                                <div class="caption-container">
+                                    <div class="caption-details">
+                                        <h2>Oceans Film Festival</h2>
+                                        <p>The worlds best oceans films, from above and below the surface. Tickets are only availalbe from oceanfilmfestivalaustralia.com.au </p>
+                                    </div>
+                                    <div class="caption-link">
+                                        <a href="https://oceanfilmfestivalaustralia.com.au/"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://oceanfilmfestivalaustralia.com.au/');">Tickets</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview item  ">
+                                <a href="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1644820079730_AnnualReview2021-DarwinFilmSociety.pdf"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1644820079730_AnnualReview2021-DarwinFilmSociety.pdf');">
+                            <img src="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1644820427164_annualreview.png" alt="">
+                            <div class="carousel-image hidden"></div>
+                                 </a>
+
+                            <div class="info carousel-caption">
+                                <div class="caption-container">
+                                    <div class="caption-details">
+                                        <h2>Darwin Film Society Annual Review</h2>
+                                        <p>In 2021 broke the all time attendance record for the cinema. Click here to download our annual review</p>
+                                    </div>
+                                    <div class="caption-link">
+                                        <a href="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1644820079730_AnnualReview2021-DarwinFilmSociety.pdf"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1644820079730_AnnualReview2021-DarwinFilmSociety.pdf');">download</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview item  ">
+                                <a href="https://banffaustralia.com.au/"  onclick="ga('dTracker.send', 'event', 'carousel', 'image', 'https://banffaustralia.com.au/');">
+                            <img src="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1645154366962_banff22.jpg" alt="">
+                            <div class="carousel-image hidden"></div>
+                                 </a>
+
+                            <div class="info carousel-caption">
+                                <div class="caption-container">
+                                    <div class="caption-details">
+                                        <h2>The Banff Mountain Film Festival is reaching new heights as it tours Australia in 2022.</h2>
+                                        <p>The world&#x27;s most prestigious mountain film festival is coming back to Australia.</p>
+                                    </div>
+                                    <div class="caption-link">
+                                        <a href="https://banffaustralia.com.au/"  onclick="ga('dTracker.send', 'event', 'carousel', 'button', 'https://banffaustralia.com.au/');">Tickets</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <a class="left carousel-control" href="#moviePreviews" role="button" data-slide="prev">
+                    <img src="https://yc.cldmlk.com/template_1/img/CarouselArrowLeft@2x.png">
+                </a>
+                <a class="right carousel-control" href="#moviePreviews" role="button" data-slide="next">
+                    <img src="https://yc.cldmlk.com/template_1/img/CarouselArrowRight@2x.png">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="homepage">
+        <div class="main-content">
+            <div class="date-picker">
+                <div class="date-picker-header">
+                    <p>
+                        <a href="#" class="theme-selector active" data-theme="by-day"><i class="fa fa-calendar fa-inverse"></i><span>BY DAY</span></a>
+                        <a href="#" class="theme-selector " data-theme="by-movie"><i class="fa fa-film fa-inverse"></i><span>BY TITLE</span></a>
+                    </p>
+
+                    <div class="order-by-container">
+                        <select id="order-by" name="order-by" class="order-by">
+                            <option value="release-date" >Newest first</option>
+                            <option value="alpha" >A-Z</option>
+                            <option value="session-times" selected>By showtimes</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- sly here displaying date list -->
+                <div class="dates" id="datePicker">
+                    <a id="prev" class="disabled" disabled><img src="https://yc.cldmlk.com/template_1/img/CarouselArrowLeft@2x.png"></a>
+
+                    <div id="date-scroller" class="frame  hasCalendar ">
+                        <ul class="slidee">
+                            <!-- adding dates -->
+                        </ul>
+                    </div>
+
+                    <a id="next"><img src="https://yc.cldmlk.com/template_1/img/CarouselArrowRight@2x.png"></a>
+
+                        <i id="movieCalendar" class="glyphicon glyphicon-calendar"></i>
+
+                </div>
+            </div>
+
+            <div id="movie-list">
+                <!-- display list of movies here -->
+            </div>
+
+            <div id="session-keys"></div>
+
+
+            <ul class="options flex-container flex-container-nowrap flex-centre promotion-footer-ul-row">
+            </ul>
+
+        </div>
+
+        <aside class="mobile-hide tablet-hide">
+                    <a href="https://www.flixinthewet.com/"  onclick="ga('dTracker.send', 'event', 'promo', 'vertical', 'https://www.flixinthewet.com/');" ><img data-src="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1638843024475_SidebarPlacement.png" class="vertical-advertisement" alt=""></a>
+                    <a href="http://eepurl.com/TfYGb"  onclick="ga('dTracker.send', 'event', 'promo', 'vertical', 'http://eepurl.com/TfYGb');" ><img data-src="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1622184004432_Enews-FilmReelVersion.png" class="vertical-advertisement" alt=""></a>
+                    <a href="https://www.deckchaircinema.com/membership"  onclick="ga('dTracker.send', 'event', 'promo', 'vertical', 'https://www.deckchaircinema.com/membership');" ><img data-src="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1622183991332_MembershipOwl-FilmReelVersion.png" class="vertical-advertisement" alt=""></a>
+
+            <div class="coming-soon">
+                <h2>COMING SOON</h2>
+
+                <ul class="coming-soon">
+                        <li><a href="/movie/regenerating-australia">Regenerating Australia with Special Guests</a></li>
+                        <li><a href="/movie/banff-mountain-film-festival-banffaustraliacomau">Banff (Tickets: banffaustralia.com.au)</a></li>
+                        <li><a href="/movie/ocean-film-fest---oceanfilmfestivalaustraliacom">Ocean Film Fest - oceanfilmfestivalaustralia.com</a></li>
+
+                    <li><a href="/coming-soon" class="see-all">SEE ALL</a></li>
+                </ul>
+            </div>
+        </aside>
+    </section>
+
+    <section id="printArea">
+        <h1>Deckchair Cinema - Movie Times</h1>
+    </section>
+    <div id="session-keys-print"></div>
+
+    <!-- Get movie data -->
+    <script type="text/javascript">
+        var theme = 'by-day',
+            movieData = {
+            '2022-05-09': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'regenerating-australia',
+                    'image-portrait': 'https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1644875671611_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1644875671949_Poster.jpg',
+                    'title': 'Regenerating Australia with Special Guests',
+                    'releaseDate': '2022-05-09',
+                    'endpoint': 'ST00001922',
+                    'duration': '75 mins',
+                    'rating': 'Rated CTC',
+                    'director': '',
+                    'actors': '',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '7:00pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/1972?siteToken&#x3D;prgdyvf8b05s4ycnrm94a0yt7w', 'attributes': [] },
+                    ]
+                },
+            ],
+        }, movieDataByReleaseDate = {
+            '2022-05-09': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'regenerating-australia',
+                    'image-portrait': 'https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1644875671611_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1644875671949_Poster.jpg',
+                    'title': 'Regenerating Australia with Special Guests',
+                    'releaseDate': '2022-05-09',
+                    'endpoint': 'ST00001922',
+                    'duration': '75 mins',
+                    'rating': 'Rated CTC',
+                    'director': '',
+                    'actors': '',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '7:00pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/1972?siteToken&#x3D;prgdyvf8b05s4ycnrm94a0yt7w', 'attributes': [] },
+                    ]
+                },
+            ],
+        }, movieDataBySessionTimes = {
+            '2022-05-09': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'regenerating-australia',
+                    'image-portrait': 'https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1644875671611_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1644875671949_Poster.jpg',
+                    'title': 'Regenerating Australia with Special Guests',
+                    'releaseDate': '2022-05-09',
+                    'endpoint': 'ST00001922',
+                    'duration': '75 mins',
+                    'rating': 'Rated CTC',
+                    'director': '',
+                    'actors': '',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '7:00pm', 'bookingLink': 'https://ticketing.oz.veezi.com/purchase/1972?siteToken&#x3D;prgdyvf8b05s4ycnrm94a0yt7w', 'attributes': [] },
+                    ]
+                },
+            ],
+        };
+    </script>
+
+    <link rel="stylesheet" type="text/css" media="print" href="https://yc.cldmlk.com/template_1/css/print-times.css">
+
+
+    <footer>
+        <section>
+            <nav>
+                <ul>
+                    <li><a    href="/about-deckchair-cinema">About Deckchair Cinema</a></li>
+                    <li><a    href="/gifts">Gifts</a></li>
+                    <li><a    href="/group-bookings">Group bookings</a></li>
+                    <li><a    href="/membership">Membership</a></li>
+                    <li><a    href="/the-darwin-film-society">The Darwin Film Society</a></li>
+                    <li><a    href="/tickets">Tickets</a></li>
+                    <li><a    href="/history">History</a></li>
+                    <li><a    href="/submit-a-short-film">Submit a Short Film</a></li>
+                    <li><a    href="/terms-of-sale">Terms of Sale</a></li>
+                    <li><a    href="/deckchair-photo-competition">Deckchair Photo Competition</a></li>
+                    <li><a    href="/conditions-of-entry">Conditions of Entry</a></li>
+                    <li><a    href="/venue-hire-and-events">Venue Hire and Events</a></li>
+                    <li><a    href="/fundraisers">Fundraisers</a></li>
+                    <li><a    href="/groups-and-events">Groups and Events</a></li>
+                    <li><a    href="/food-and-drink">Food and Drink</a></li>
+                    <li><a    href="/volunteers">Volunteers</a></li>
+                    <li><a    href="/covid19-information">COVID19 Information</a></li>
+                    <li><a    href="/programs">Programs</a></li>
+                    <li><a    href="/middle-eastern-feast">Middle Eastern Feast</a></li>
+                    <li><a    href="/work-with-us">Work With Us</a></li>
+                </ul>
+            </nav>
+
+            <hr />
+
+            <div class="custom-footer-info">Deckchair Cinema | Jervois Road, Darwin City NT 0800 | 08 8941 4377 | info@deckchaircinema.com</div>
+
+            <div class="social-media">
+                <a href="https://www.youtube.com/channel/UCoqPogHqT6rSpU3A2uMri7w" target="_blank" class="youtube-footer"></a> 
+                <a href="http://www.twitter.com/deckchaircinema" target="_blank" class="twitter-footer"></a> 
+                <a href="http://www.instagram.com/deckchair_cinema/" target="_blank" class="instagram-footer"></a> 
+                <a href="https://www.facebook.com/deckchaircinema" target="_blank" class="facebook-footer"></a> 
+
+                <p class="copyright">Website &copy; 2019 <a href="https://www.flicks.com.au" target="_blank">Flicks Ltd</a></p>
+            </div>
+        </section>
+    </footer>
+
+    <!-- include main script file -->
+    <script type="text/javascript" src="https://yc.cldmlk.com/template_1/js/main.js?c=v2.15.8"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://yc.cldmlk.com/cvy86hyjwpxqqkcj9k5qvmstk0/1592964362394_deckchair.css">
+
+    <link rel="stylesheet" type="text/css" media="print" href="https://yc.cldmlk.com/template_1/css/print.css?c=v2.15.8">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-128894583-47', 'auto');
+        ga('create', 'UA-104063286-5', 'auto', 'dTracker');
+        ga('dTracker.send', 'pageview');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+
+
+            <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3"></script>
+
+<meta name="facebook-domain-verification" content="s2z8sfq8xr0oshntt9y10fbbup4ieq" />
+
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3578184172309255');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=3578184172309255&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+
+
+
+
+
+     <script type="text/javascript">
+        var myLazyLoad,
+            userLocation = null,
+            distance = 0,
+            closestCinema = {};
+
+        $('#cinemaSelector2').hide();
+        /**
+         * find out user's current location and/or do something when successfully get the location
+         * @param  boolean dosomethingOnSuccess indicate whether we want to do something when we have the user's location
+         * @param  object  e                    event object
+         * @return
+         */
+        function geoFindMe() {
+            var options = {
+                            enableHighAccuracy: true,
+                            timeout: 10000,
+                            maximumAge: 0
+                    };
+
+            if (!navigator.geolocation){
+                //Geolocation is not supported by your browser;
+                return;
+            }
+
+            function success(position) {
+                var minDistance = null,
+                    requestUrl = "/",
+                    distance = 0;
+
+                userLocation = {
+                    'lat': position.coords.latitude,
+                    'lon': position.coords.longitude
+                };
+                $('#cinemaSelector').hide();
+                $('#cinemaSelector2').show();
+
+                //calculate the distance
+
+                /// now we update the info of popup 2 (indicates closest cinema)
+                //console.log(closestCinema);
+                $('#cinemaSelector2 a.active-cinema').attr('data-cinemaId', closestCinema._id);
+                $('#cinemaSelector2 a.active-cinema').attr('href', '/' + closestCinema.cinemaUrl + requestUrl);
+                $('#cinemaSelector2 a.active-cinema').html('<i class="fa fa-map-marker" aria-hidden="true"></i> ' + closestCinema.name);
+                $('#cinemaSelector2 a.cinema[data-cinemaId="' + closestCinema._id +'"]').hide();
+
+            };
+
+            function error(err) {
+                if (err.message.startsWith("Only secure origins are allowed")) {
+                    console.log("Only secure origins are allowed to get user location.");
+                } else {
+                    console.log("Exception: Unable to retrieve your location.");
+                }
+            };
+
+            navigator.geolocation.getCurrentPosition(success, error, options);
+
+            return false;
+        }
+        $(document).ready(function () {
+            var showCinemaSelector = "",
+                forceHideGeoRequest = "";
+            //hide the pop up if cookies are not enabled on client's browser, we don't
+            //normally get here
+            if (!navigator.cookieEnabled) {
+                $('#cinemaSelector').hide();
+                $('#cinemaSelector2').hide();
+            } else {
+                try {
+                    if (showCinemaSelector && !forceHideGeoRequest) {
+                        geoFindMe();
+                    }
+                } catch (e) {
+                    console.log('exception');
+                }
+            }
+
+             myLazyLoad = new LazyLoad();
+        });
+    </script>
+
+</body>
+</html>

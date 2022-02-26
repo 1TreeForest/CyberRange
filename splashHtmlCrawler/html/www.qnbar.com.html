@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title>青柠微影官网_私人影院加盟|点播影院加盟|影咖加盟|私人影吧加盟|私人电影院加盟</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="baidu-site-verification" content="VQ9DVR9zla" />
+     <!-- 避免IE使用兼容模式(IE8以上才支持) -->
+     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <meta name="csrf-token" content="">
+    <meta name="keywords" content="青柠微影,私人影院加盟,私人影院,点播影院加盟,点播影院,私人电影院加盟,私人电影院,私人影吧加盟,影吧,私人影咖加盟,影咖"/>
+    <meta name="description" content="私人影院加盟首选青柠影咖。青柠影咖是国内最早进入点播影院行业的私人影院加盟品牌，也是运营、管理等最为成熟的点播院线。青柠影咖私人影院加盟，致力于在全国建立一个让加盟商和青柠均长期稳定获利的连锁品牌。"/>
+    <link rel="stylesheet" href="/css/app.css?id=bdf5b8cd112e295e243c"/>
+    <!--[if lte IE 9]>
+        <script type="text/javascript">
+            alert('检测到您的IE浏览器版本过旧，内容可能无法正常显示，请升级您的IE浏览器 或者 用其他浏览器打开！')
+        </script>
+    <![endif]-->
+
+    <!-- 统计相关 -->
+    <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?b6dedf5106a6e975b3104734e614a1f8";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <script type="text/javascript">
+        // 全局环境变量
+        window.basePath = "http://www.qnbar.com";
+        window.cAssetBasePath = "http://store.qnbar.com/new_www/media/";
+        window.serviceHref = 'http://p.qiao.baidu.com/cps/chat?siteId=7886659&userId=18170749&siteToken=b6dedf5106a6e975b3104734e614a1f8'
+        window.getNewsImgUrl = function(path) {
+            var baseBath = 'http://store.qnbar.com/www';
+            if (/^http/.test(path)) return path;
+            return baseBath + path;
+        }
+        // 从php变量获取的全局数据放到globalData
+        window.globalData = {};
+    </script>
+        <link rel="stylesheet" href="http://www.qnbar.com/css/home.css"/>
+    <script type="text/javascript" src="/js/manifest.js?id=a86ce09eff1841988270"></script>
+    <script type="text/javascript" src="/js/vendor.js?id=59afabf45aedd796300a"></script>
+    <script type="text/javascript" src="/js/app.js?id=463c8a5cb29d623b88cb"></script>
+    </head>
+<body>
+    <div id="app">
+        <qn-side-bar></qn-side-bar>
+            <qn-header :hidden="hiddenHeader"></qn-header>
+        <main class="main">
+                <swiper :options="mainSwiper" class="main-swiper">
+        <swiper-slide data-hash="banner">
+            <swiper ref="bannerSwiper" :options="bannerSwiper" class="banner-swiper">
+                <swiper-slide key="video">
+                    <div class="banner-page">
+                        <video class="banner-page-bg" muted autoplay loop>
+                            <source :src="medias.bannerVideo" type="video/mp4">
+                        </video>
+                    </div>
+                </swiper-slide>
+                <swiper-slide
+                    v-for="banner in medias.bannerImgs"
+                    :key="banner.id">
+                    <a class="banner-page" :href="banner.web_url">
+                        <img class="banner-page-img" :src="banner.pic_url" :alt="banner.name"> 
+                    </a>
+                </swiper-slide>
+                <div class="swiper-pagination customer-pagination" slot="pagination"></div>
+            </swiper>
+        </swiper-slide>
+        <swiper-slide data-hash="brand">
+            <div class="brand">
+                <div class="title line">
+                    <h2>品牌<b>介绍</b></h2>
+                    <sub>Brand introduction</sub>
+                </div>
+                <div class="content">
+                    <div class="media">
+                        <div class="media-left">
+                            <div class="video-box media-object">
+                                <button v-if="showPlayBtn" class="video-box-btn" @click="handlePlayVideo"></button>
+                                <video id="brandVideo" class="video-box-src" :poster="medias.brandFirstFrame" preload="none">
+                                    <source :src="medias.brandVideo" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-title">关于青柠</h3>
+                            <p class="media-text">青柠微影团队组建于2014年，旗下点播影院连锁品牌——青柠影咖是目前点播影院行业最大的连锁品牌。<p>
+                            <p class="media-text">青柠微影是大屏娱乐生态概念的提出者和践行者，是最早进入影院改造产业的企业。</p>
+                            <p class="media-text">公司现有点播影院超过600家，已改造影院式足浴超6000家、影院式酒店超4000家，全国覆盖银幕超150000块，市场占有率行业领先。</p>
+                            <a class="more-btn" :href="serviceHref" target="_blank"><svg-icon icon-class="plus"></svg-icon>了解更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </swiper-slide>
+        <swiper-slide data-hash="business">
+            <div class="product">
+                <div class="title line">
+                    <h2>产业<b>布局</b></h2>
+                    <sub>Industrial Distribution</sub>
+                </div>
+                <div class="content">
+                    <swiper ref="businessSwiper" :options="businessSwiper">
+                        <swiper-slide>
+                            <h3 class="content-title">全新观影娱乐方式</h3>
+                            <p class="content-text">点播影院投资小、回本周期短，单店投资仅为传统影院的5-10%，回本周期在6-18个月</p>
+                            <figure class="bg">
+                                <img :src="medias.businessImgs[0]" alt="影吧">
+                            </figure>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <h3 class="content-title">酒店运营新模式</h3>
+                            <p class="content-text">将酒店改造成音视听效果俱佳的观影场所，低成本投入换取高收益回报的良好方案</p>
+                            <figure class="bg">
+                                <img :src="medias.businessImgs[1]" alt="酒店">
+                            </figure>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <h3 class="content-title">足浴行业全新变革</h3>
+                            <p class="content-text">为足浴店量身定制升级方案，低成本打造媲美大型影院的超凡观影体验</p>
+                            <figure class="bg">
+                                <img :src="medias.businessImgs[2]" alt="足浴">
+                            </figure>
+                        </swiper-slide>
+                        <!-- <swiper-slide>
+                            <h3 class="content-title">智能影音娱乐空间</h3>
+                            <p class="content-text">可移动、可拆卸、可回收，承载多种娱乐影音业态，全智能声控，娱乐平台</p>
+                            <figure class="bg">
+                                <img :src="medias.businessImgs[3]" alt="时空仓">
+                            </figure>
+                        </swiper-slide> -->
+                    </swiper>
+                    <ul class="nav">
+                        <li
+                            v-for="nav in businessNavs"
+                            :key="nav.label"
+                            :class="['nav-item', nav.isActive ? 'active' : '']"
+                            @mouseenter="handleBusinessNavMouseEnter(nav)">
+                            <a :href="nav.link" target="_blank">
+                                <i class="icon">
+                                    <svg-icon :icon-class="nav.icon"></svg-icon>
+                                </i>
+                                <p>{{ nav.label }}<sub>{{ nav.labelEn }}</sub></p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </swiper-slide>
+        <swiper-slide data-hash="movies">
+            <div class="movies">
+                <div class="title">
+                    <h2>最近<b>上映</b></h2>
+                    <sub>Recently released</sub>
+                </div>
+                <div class="content">
+                    <p class="content-title"><b>10000+</b>  正版授权影片，每周更新~</p>
+                    <swiper ref="moviesSwiper" :options="moviesSwiper">
+                        <swiper-slide v-for="movie in movies" :key="movie.id" class="poster">
+                            <a :href="basePath + '/cinema_Line/' + movie.id + '.html'" target="_blank">
+                                <div class="poster-img">
+                                    <img :src="movie.oss_url" alt="海报">
+                                </div>
+                                <p class="poster-label text-ellipsis">{{ movie.title }}</p>
+                            </a>
+                        </swiper-slide>
+                    </swiper>
+                    <a class="more-btn" :href="basePath + '/cinema_Line'" target="_blank"><svg-icon icon-class="plus"></svg-icon>了解更多</a>
+                </div>
+            </div>
+        </swiper-slide>
+        <swiper-slide data-hash="news">
+            <div class="news">
+                <div class="title line">
+                    <h2>新闻<b>中心</b></h2>
+                    <sub>News Center</sub>
+                </div>
+                <div class="content">
+                    <div class="nav">
+                        <a
+                            v-for="nav in newsNavs"
+                            :key="nav.label"
+                            :href="nav.link"
+                            :class="['nav-item', nav.isActive ? 'active' : '']"
+                            @mouseenter="handleNewsNavMouseEnter(nav)">
+                            {{ nav.label }}
+                        </a>
+                    </div>
+                    <swiper ref="newsSwiper" :options="newsSwiper">
+                        <swiper-slide>
+                            <div class="articles">
+                                <a
+                                    v-for="info in news.company.data"
+                                    :key="info.clientId"
+                                    :href="newsNavs[0].link + '/' + info.clientId + '.html'"
+                                    class="article">
+                                    <div class="article-img">
+                                        <el-image fit="cover" :src="getNewsImgUrl(info.NewsPic)"></el-image>
+                                    </div>
+                                    <div class="article-date">{{ info.createTime.slice(5, 10) }}<sub> / {{ info.createTime.slice(0, 4) }}</sub></div>
+                                    <h3 :title="info.NewsTitle" class="article-title text-ellipsis">{{ info.NewsTitle }}</h3>
+                                    <p class="article-content text-ellipsis">{{ info.Introduction }}</p>
+                                </a>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="articles">
+                                <a
+                                    v-for="info in news.activity.data"
+                                    :key="info.clientId"
+                                    :href="newsNavs[1].link + '/' + info.clientId + '.html'"
+                                    class="article">
+                                    <div class="article-img">
+                                        <el-image fit="cover" :src="getNewsImgUrl(info.NewsPic)"></el-image>
+                                    </div>
+                                    <div class="article-date">{{ info.createTime.slice(5, 10) }}<sub> / {{ info.createTime.slice(0, 4) }}</sub></div>
+                                    <h3 :title="info.NewsTitle" class="article-title text-ellipsis">{{ info.NewsTitle }}</h3>
+                                    <p class="article-content text-ellipsis">{{ info.Introduction }}</p>
+                                </a>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="articles">
+                                <a
+                                    v-for="info in news.story.data"
+                                    :key="info.clientId"
+                                    :href="newsNavs[2].link + '/' + info.clientId + '.html'"
+                                    class="article">
+                                    <div class="article-img">
+                                        <el-image fit="cover" :src="getNewsImgUrl(info.NewsPic)"></el-image>
+                                    </div>
+                                    <div class="article-date">{{ info.createTime.slice(5, 10) }}<sub> / {{ info.createTime.slice(0, 4) }}</sub></div>
+                                    <h3 :title="info.NewsTitle" class="article-title text-ellipsis">{{ info.NewsTitle }}</h3>
+                                    <p class="article-content text-ellipsis">{{ info.Introduction }}</p>
+                                </a>
+                            </div>
+                        </swiper-slide>
+                        <swiper-slide>
+                            <div class="articles">
+                                <a
+                                    v-for="info in news.new.data"
+                                    :key="info.clientId"
+                                    :href="basePath + '/' + getNewsType(info.NewsType) + '/' + info.clientId + '.html'"
+                                    class="article">
+                                    <div class="article-img">
+                                        <el-image fit="cover" :src="getNewsImgUrl(info.NewsPic)"></el-image>
+                                    </div>
+                                    <div class="article-date">{{ info.createTime.slice(5, 10) }}<sub> / {{ info.createTime.slice(0, 4) }}</sub></div>
+                                    <h3 :title="info.NewsTitle" class="article-title text-ellipsis">{{ info.NewsTitle }}</h3>
+                                    <p class="article-content text-ellipsis">{{ info.Introduction }}</p>
+                                </a>
+                            </div>
+                        </swiper-slide>
+                    </swiper>
+                </div>
+            </div>
+        </swiper-slide>
+        <swiper-slide data-hash="join">
+            <qn-footer></qn-footer>
+        </swiper-slide>
+    </swiper>
+        </main>
+            </div>
+    <script type="text/javascript" src="/js/home.js?id=d2c64af44b09cd16edd3"></script>
+</body>
+</html>

@@ -14,9 +14,10 @@ class UniversalSpider(scrapy.Spider):
     item_list = []
     name = 'universalSpider'
     #  黑名单短语列表，若出现在name中则剔除
-    black_word_list = ['最新', 'topics', '会员', 'vip', 'VIP', '围观了', '点击图标', '分享到', '客户端', '热线', 'rss', 'RSS', '排行榜', '留言', '电影大全', '？？', '??']
+    black_word_list = ['最新', 'topics', '会员', 'vip', 'VIP', '围观了', '点击图标', '分享到', '客户端', '热线', 'rss', 'RSS',
+                       '排行榜', '留言', '电影大全', '？？', '??']
     #  黑名单题目列表，若与提取所得title相等则剔除
-    black_title_list = ['招聘英才', '联系我们', '关于我们', '', ]
+    black_title_list = ['招聘英才', '联系我们', '关于我们', '', '首页', '观看历史', '播放记录']
     #  黑名单url列表，若与提取所得link相等则剔除
     black_link_list = ['javascript::', '#', '']
     start_urls = []

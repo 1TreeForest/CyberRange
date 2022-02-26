@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>鼎新影院售票管理平台解决方案</title>
+<meta name="keywords" content="影合众,鼎新,鼎新软件,影院,影院管理系统,售票系统,售票软件,电影院软件,在线购票,电影票系统,电影院管理" />
+<meta name="description" content="鼎新影院售票管理平台解决方案 - 是由影院售票管理系统、集团中心管理系统、数据接口开放平台、影院会员专属服务平台、电子券平台五大部分构成，是目前中国电影行业功能最全、最符合市场发展需要、售卖速度最快、使用最便捷、运行最稳定、后续服务最好的行业解决方案！">
+<link href="style2.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.7.2.min.js"></script>
+<script language="javascript">
+$(function(){
+	nav_arr = ['index','product','service','cases','aboutus'];
+	$("div.nav li").click(function(){
+		$("div.nav li").removeClass("cur");
+		var index = $(this).parent().find("li").index(this);
+		$(this).addClass("cur");
+		var this_id = $(this).attr("id");
+		currentId = this_id.substr(2);
+		getSize();
+	});
+
+	var url =  window.location.href;
+	var ulrArray = url.split("#");
+	currentId = ulrArray[1] ? ulrArray[1] : 'index';
+	getSize = function(id){
+		var cw = document.body.scrollWidth;	
+		if(id){
+			currentId = id;
+			$("div.nav li").removeClass("cur");
+			$('#n_'+currentId).addClass("cur");
+		}
+		if( $('#p_'+currentId).html() ==''){
+			$('#p_'+currentId).load('pages/'+ currentId +'.html',function(){
+				getSize(currentId);
+			});
+			return false;
+		}
+		var ch = $('#p_'+currentId).height();
+		//alert(cw + "/" + cw1 + "/" + cw2 + "/" + cw3);
+		cw = $.browser.msie ? cw : cw - 16;
+		cw = cw < 1008 ? 1008 : cw; 
+		$(".page_move").css({"width":cw});
+		$("div.cover").css({"width":cw,"height":ch});
+		for(var i=0;i<nav_arr.length; i++){
+			$("#p_"+nav_arr[i]).animate({"left":cw*(i-$.inArray(currentId,nav_arr))},1000);
+		}
+	}
+	getSize();
+	$(window).resize(function(){
+		getSize();
+	}); 
+	
+});
+
+var testIEComplete;	//检测IE页面是否加载完成的时间轮转
+window.onload = function () {
+	if(document.all) {//简单判断是否是IE
+		testIEComplete = setInterval('updateComplete()', 1000);
+	} else {
+		//火狐完成页面加载后，执行以下语句
+		dynamicLoad();
+	}
+}
+function updateComplete() {
+	if (document.readyState == "complete") {
+		try{
+			//IE完成页面加载后，执行以下语句
+			dynamicLoad();
+			clearInterval(testIEComplete);//执行成功，清除监听
+		 }catch(err){
+			return true;
+		}
+	 }
+}
+function dynamicLoad(){
+	//页面加载完成后执行
+	$('#p_product').load('pages/product.html');
+	$('#p_service').load('pages/service.html');
+	$('#p_cases').load('pages/cases.html');
+	$('#p_aboutus').load('pages/aboutus.html');
+}
+
+function show(t,s,h){
+	$(t).parent().parent().find('a').removeClass('tree_h');
+	$(t).addClass('tree_h');
+	$(h).hide();
+	$(s).show();
+	$("div.cover").css("height",$(s).height()+200);
+}
+
+</script>
+</head>
+<body>
+<div class="top_div">
+	<div class="top_logo"></div>
+</div>
+<div class="top_nav">
+	<div class="nav">
+		<ul>
+			<li id="n_index" class="cur"><a href="javascript:void(0)" title="返回首页">首页<span></span></a></li>
+			<li class="" id="n_product"><a href="javascript:void(0)" title="产品方案">产品方案<span></span></a></li>
+			<li id="n_service"><a href="javascript:void(0)" title="服务与支持">服务与支持<span></span></a></li>
+			<li id="n_cases"><a href="javascript:void(0)" title="客户案例">客户案例<span></span></a></li>
+			<li id="n_aboutus"><a href="javascript:void(0)" title="关于我们">关于我们<span></span></a></li>
+		</ul>
+	</div>
+</div>
+<div style="width: 1008px; height: 1028px;" class="cover">
+	<div id="p_aboutus" class="page_move"></div>
+	<div id="p_cases" class="page_move"></div>
+	<div id="p_service" class="page_move"></div>
+	<div id="p_product" class="page_move"></div>
+	<div id="p_index" class="page_move">
+		<div class="index_con">
+			<div class="i_banner">
+				<p class="i_pl"><img src="images/banner.jpg" alt="电影院影厅座位"></p>
+				<p class="i_pr">
+					<!--
+
+				基于web技术一体化影院售票管理系统解决方案
+
+				提供服务于影院会员的专属平台
+
+				数据接口开放平台（银行、团购等多渠道接入）
+
+				以客户诉求为己任，追求卓越的用户体验
+
+				为影院行业创造价值
+
+				-->
+				</p>
+			</div>
+		</div>
+		<div class="index_bot">
+			<div class="cpfa_div">
+				<ul class="cpfa_tit">
+					<li><a href="javascript:getSize('product');"><img src="images/title_1.png" alt="产品方案 product solutions"></a></li>
+					<li class="cpfa_more"><a href="#product" title="了解更多">更多</a></li>
+				</ul>
+				<p><img src="images/tit_botx.png" width="440" height="7"></p>
+				<ul class="cpfa_bot">
+					<li class="cp_li1"><a href="javascript:getSize('product');"><img src="images/img_1.png" width="218" height="165"></a></li>
+					<li class="cp_li2">
+						<h3><a href="javascript:getSize('product');">鼎新影院计算机售票管理系统V1.0</a></h3>
+						<p>——面向所有影院的一整套便捷高效安全的票务系统解决方案。</p>
+						<br>
+						<h3><a href="javascript:getSize('product');">鼎新影院集团中心管理系统</a></h3>
+						<p>——面向电影院线或影院投资管理公司，用于统筹管理下属影院经营策略和数据分析的整体解决方案。</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cpfa_div" style="float: right;">
+				<ul class="cpfa_tit">
+					<li><a href="javascript:getSize('service');"><img src="images/title_2.png" alt="服务&amp;支持 service &amp; support"></a></li>
+					<li class="cpfa_more"><a href="javascript:getSize('service');" title="了解更多">更多</a></li>
+				</ul>
+				<p><img src="images/tit_botx.png" width="440" height="7"></p>
+				<ul class="cpfa_bot">
+					<li class="cp_li1"><a href="javascript:getSize('service');"><img src="images/img_2.png" width="218" height="178"></a></li>
+					<li class="cp_li2">
+						<h3><a href="javascript:getSize('service');">鼎新全方位的用户服务</a></h3>
+						<p>——我们尊重客户自身的管理个性，“随需应变”地满足影院实际管理需求，业内独家提供7X24小时监控，热点体检、软件升级等多种无忧服务。</p>
+					</li>
+				</ul>
+			</div>
+			<div class="khal_div">
+				<ul class="khal_tit">
+					<li><a href="javascript:getSize('cases');"><img src="images/title_3.png" alt="客户&amp;案例 customers &amp; cases" width="316" height="34"></a></li>
+					<li class="khal_more"><a href="javascript:getSize('cases');" title="了解更多">更多</a></li>
+				</ul>
+				<p><img src="images/tit_botx2.png" width="629" height="7"></p>
+				<ul class="khal_bot">
+					<li><a href="javascript:getSize('cases');"><img src="images/anli_01.jpg" alt="万达集团电影院"><br>
+						万达集团</a></li>
+					<li><a href="javascript:getSize('cases');"><img src="images/anli_02.jpg" alt="星美集团电影院">星美集团</a></li>
+					<li><a href="javascript:getSize('cases');"><img src="images/anli_03.jpg" alt="新南国影城">新南国</a></li>
+					<style>
+					.khal_div .khal_bot li{width:197px; height:178px;}
+					.khal_div .khal_bot img{margin: 5px 5px 0px; _margin-bottom:5px;}
+					.khal_div .khal_bot{padding-top:20px;}
+					.contact .contact_bg ul{padding-top:30px;}
+					</style>
+				</ul>
+			</div>
+			<div class="contact">
+				<p><img src="images/title_4.png" alt="联系我们 contact us" width="296" height="62"></p>
+				<div class="contact_bg">
+					<ul>
+						<li>
+							<p>业务咨询：</p>
+							<p>400 815 5550<br>
+							</p>
+						</li>
+						<li>传真：010-67160905</li>
+						<li>邮箱：bd@leying365.com</li>
+					</ul>
+				</div>
+			</div>
+			<p class="clear"></p>
+		</div>
+	</div>
+</div>
+<div class="footer" >
+	<p>版权所有<span style="font-family: Arial,Helvetica,sans-serif;">©</span>北京影合众新媒体技术服务有限公司 </p> 
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010102004662" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="images/gongan.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11010102004662号</p></a>
+        <a target="_blank" href="https://beian.miit.gov.cn" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"> <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京ICP备11003845号-2</p></a>
+	<p>地址：北京市东城区白桥大街15号嘉禾国信大厦 &nbsp; 邮编：100062 &nbsp;&nbsp;   业务咨询：400 815 5550</p>
+		 
+</div>
+</body>
+</html>
