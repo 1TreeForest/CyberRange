@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script type="text/javascript">var _speedMark = new Date();</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+    <meta name="viewport" content="width=device-width">
+    <title>中影新农村影片管理系统-用户登录</title>
+    <link href="/HYUI/themes/login/css/css.css" rel="stylesheet" />
+    <link href="/HYUI/themes/login/xiunoui/icon.css" rel="stylesheet" />
+    <script src="/HYUI/js/jquery.js"></script>
+    <script src="/HYUI/js/jquery.backstretch.js"></script>
+    <script src="/BJUI/js/jquery.cookie.js"></script>
+    <script src="/BJUI/plugins/crypto/core-min.js"></script>
+    <script src="/BJUI/plugins/crypto/aes.js"></script>
+    <script src="/Scripts/Login/encrypt.js"></script>
+    <script src="/Scripts/Login/login.js?v=20210626"></script>
+</head>
+<body> 
+    <script type="text/javascript">
+
+        $.backstretch([
+        "/HYUI/themes/login/img/1.jpg",
+        "/HYUI/themes/login/img/2.jpg",
+        "/HYUI/themes/login/img/3.jpg",
+        ], {
+            fade: 750,
+            duration: 3000
+        });
+        $("#coffee1").click(function (e) {
+            e.preventDefault();
+            var bg = Math.floor(Math.random() * 4 + 1);
+            $.backstretch("/HYUI/themes/login/img/" + bg + ".jpg");
+        });
+        $("#coffee2").click(function (e) {
+            e.preventDefault();
+            var bg = Math.floor(Math.random() * 4 + 1);
+            $.backstretch("/HYUI/themes/login/img/" + bg + ".jpg");
+        });
+        $("#coffee3").click(function (e) {
+            e.preventDefault();
+            var bg = Math.floor(Math.random() * 4 + 1);
+            $.backstretch("/HYUI/themes/login/img/" + bg + ".jpg");
+        });
+        $("#coffee4").click(function (e) {
+            e.preventDefault();
+            var bg = Math.floor(Math.random() * 4 + 1);
+            $.backstretch("/HYUI/themes/login/img/" + bg + ".jpg");
+        });
+
+    </script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            loginServer.ChangeValidateCode();
+            $(".yzm").bind("click", function () {
+                loginServer.ChangeValidateCode();
+            });
+        });
+        //window.onload = function () {
+        //    //<div id="jsNode"></div>
+        //    var jsNode = document.getElementById("jsNode");            
+        //    jsNode.innerHTML = "<h3> CSP Not Supported</h3> Your browser does not support CSP, the inline script executed and replaced this div content";
+        //    jsNode.className = "alert alert-danger";
+        //};
+        $(function () {
+            rs();//判断是否要跳出iframe到顶层
+            loginServer.ChangeValidateCode();
+            $(".yzm").bind("click", function () {
+                loginServer.ChangeValidateCode();
+            });
+            $("input[name=yanzheng]").keyup(function () {
+                var zy = this.value;
+                var rs = "";
+                if (zy.length > 4) {
+                    rs = zy.substr(0, 4);
+                } else {
+                    for (i = 0; i < zy.length ; i++) {
+                        var dgyz = zy.substr(i, 1);
+                        if (!isNaN(dgyz)) {
+                            rs += String(dgyz);
+                        }
+                    }
+                }
+                this.value = rs;
+            });
+
+            loginServer.LoadCookie();
+            loginServer.AutoLogin();
+
+            //回车事件绑定
+            $('input[name=username]').bind('keyup', function (event) {
+                if (event.keyCode == 13) {
+                    var id = this.id.replace("username", "password");
+                    var pwd = $("#" + id).val();
+                    $("#" + id).val("").focus().val(pwd);
+                }
+            });
+            //回车事件绑定
+            $('input[name=password]').bind('keyup', function (event) {
+                if (event.keyCode == 13) {
+                    var id = this.getAttribute("flag") + "ValidateText";
+                    var validateText = $("#" + id).val();
+                    $("#" + id).val("").focus().val(validateText);
+                }
+            });
+            //回车事件绑定
+            $('input[name=yanzheng]').bind('keyup', function (event) {
+                if (event.keyCode == 13) {
+                    var id = this.getAttribute("flag");
+                    loginServer.login(id);
+                }
+            });
+        });
+        function rs() {
+            //判断一下当前是不是做顶层，如果不是，则做一下顶层页面重定向
+            if (top !== self) {
+                top.location.href = location.href;
+            }
+        }
+    </script>
+    <div class="bgtitle1"><img src="/HYUI/themes/login/img/title.png" /></div>
+    <div class="loginlist">        
+        <div class="bgtitle"><img src="/HYUI/themes/login/img/t.png" /></div>
+        <input name="__RequestVerificationToken" type="hidden" value="RSzpWYdUhaQgBe4p4U24ywhrMIUHjQDNotSbO6od30s1JPCAuLdX8n3AP0cHwlRbERqK9glIl4tzWKihW3HveWE0a9b1AbbIuRLKhfZvXrU1" />
+    <div class="login_box">
+
+
+        <!-- 宣传网站登录入口 -->
+        <div class="lobox">
+            <div class="login-pic xuanchuan">
+                <div class="login-top">WEB</div>
+                <div class="login-bottom">影片宣传网站</div>
+            </div>
+            <div id="login1" class="ss">
+                <div class="popup-box">
+                    <div class="popup-title-bg"><div class="popup-title">影片宣传网站</div><div class="popup-close"><a href="javascript:;" id="coffee3"><i class="icon th-large"></i></a></div></div>
+                    <div class="web_box">
+                        <div class="web_bnt"><a href="/wHome/Index">>>点击进入</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 放映员登录入口 -->
+        <div class="lobox">
+            <div class="login-pic fangying">
+                <div class="login-top">LOGIN</div>
+                <div class="login-bottom">放映员选片系统</div>
+            </div>
+            <div id="login5" class="ss">
+                <div class="popup-box">
+                    <div class="popup-title-bg">
+                        <div class="popup-title">放映员选片系统</div>
+                        <div class="popup-close">
+                            <a href="javascript:;" id="coffee5">
+                                <i class="icon th-large"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="popup-content">
+                        <div class="row">
+                            <ul class="list">
+                                <li>
+                                    <span class="text-r">用户名：</span>
+                                    <input type="text" name="username" id="fydusername" value="" />
+                                </li>
+                                <li>
+                                    <span class="text-r">密码：</span>
+                                    <input type="password" name="password" id="fydpassword" value="" flag="fyd" autocomplete="off" />
+                             
+                                </li>
+                                <li>
+                                    <span class="text-r">验证码：</span>
+                                    <input type="text" name="yanzheng" id="fydValidateText" flag="fyd" style="width:57px;" value="" />
+                                    <img id="fydValidateCode" class="yzm" />
+                                </li>
+                                <li><span class="text-a"><input type="checkbox" name="remember" id="fydremember" value="1">记住密码<input type="button" class="bnt-green" value="登录" onclick="loginServer.login('fyd');"><input type="reset" id="fydreset" class="bnt-blue" value="重置" onclick="loginServer.reset('fyd');" /></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 院线方登录入口 -->
+        <div class="lobox">
+            <div class="login-pic yuanxian">
+                <div class="login-top">LOGIN</div>
+                <div class="login-bottom">院线订购平台</div>
+            </div>
+            <div id="login2" class="ss">
+                <div class="popup-box">
+                    <div class="popup-title-bg"><div class="popup-title">院线订购平台</div><div class="popup-close"><a href="javascript:;" id="coffee3"><i class="icon th-large"></i></a></div></div>
+                    <div class="popup-content">
+                        <div class="row">
+                            <ul class="list">
+                                <li><span class="text-r">用户名：</span><input type="text" name="username" id="yxusername" value="" /></li>
+                                <li>
+                                    <span class="text-r">密码：</span><input type="password" name="password" id="yxpassword" value="" flag="yx" autocomplete=off />
+                                
+                                </li>
+                                <li>
+                                    <span class="text-r">验证码：</span><input type="text" name="yanzheng" id="yxValidateText" flag="yx" style="width:57px;" value="" /><img id="yxValidateCode" class="yzm" />
+                                </li>
+                                <li><span class="text-a"><input type="checkbox" name="remember" id="yxremember" value="1">记住密码<input type="button" class="bnt-green" value="登录" onclick="loginServer.login('yx');"><input type="reset" id="yxreset" class="bnt-blue" value="重置" onclick="loginServer.reset('yx');" /></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 版权方登录入口 -->
+        <div class="lobox">
+            <div class="login-pic banquan">
+                <div class="login-top">LOGIN</div>
+                <div class="login-bottom">片方查询平台</div>
+            </div>
+            <div id="login3" class="ss">
+                <div class="popup-box">
+                    <div class="popup-title-bg"><div class="popup-title">片方查询平台</div><div class="popup-close"><a href="javascript:;" id="coffee1"><i class="icon th-large"></i></a></div></div>
+                    <div class="popup-content">
+                        <div class="row">
+                            <ul class="list">
+                                <li><span class="text-r">用户名：</span><input type="text" name="username" id="bqfusername" value=""></li>
+                                <li>
+                                    <span class="text-r">密码：</span><input type="password" name="password" id="bqfpassword" value="" flag="bqf" autocomplete=off>
+                         
+                                </li>
+                                <li>
+                                    <span class="text-r">验证码：</span><input type="text" name="yanzheng" id="bqfValidateText" flag="bqf" style="width:57px;" value="" /><img id="bqfValidateCode" class="yzm">
+                                </li>
+                                <li><span class="text-a"><input type="checkbox" name="remember" id="bqfremember" value="1">记住密码<input type="button" class="bnt-green" value="登录" onclick="loginServer.login('bqf');"><input type="reset" id="bqfreset" class="bnt-blue" value="重置" onclick="loginServer.reset('bqf');" /></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 内部管理入口 -->
+        <div class="lobox">
+            <div class="login-pic neibu">
+                <div class="login-top">LOGIN</div>
+                <div class="login-bottom">内部管理平台</div>
+            </div>
+            <div id="login4" class="ss">
+                <div class="popup-box">
+                    <div class="popup-title-bg"><div class="popup-title">内部管理平台</div><div class="popup-close"><a href="javascript:;" id="coffee2"><i class="icon th-large"></i></a></div></div>
+                    <div class="popup-content">
+                        <div class="row">
+                            <ul class="list">
+                                <li><span class="text-r">用户名：</span><input type="text" name="username" id="glusername" value=""></li>
+                                <li>
+                                    <span class="text-r">密码：</span><input type="password" name="password" id="glpassword" flag="gl" value="" autocomplete=off>
+                      
+                                </li>
+                                <li>
+                                    <span class="text-r">验证码：</span><input type="text" name="yanzheng" id="glValidateText" flag="gl" style="width:57px;" value="" /><img id="glValidateCode" class="yzm">
+                                </li>
+                                <li><span class="text-a"><input type="checkbox" name="remember" id="glremember" value="1">记住密码<input type="button" class="bnt-green" value="登录" onclick="loginServer.login('gl');"><input type="reset" id="glreset" class="bnt-blue" value="重置" onclick="loginServer.reset('gl');" /></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 财务管理入口 -->
+        <div class="lobox">
+            <div class="login-pic caiwu">
+                <div class="login-top">LOGIN</div>
+                <div class="login-bottom">财务管理平台</div>
+            </div>
+            <div id="login6" class="ss">
+                <div class="popup-box">
+                    <div class="popup-title-bg"><div class="popup-title">财务管理平台</div><div class="popup-close"><a href="javascript:;" id="coffee2"><i class="icon th-large"></i></a></div></div>
+                    <div class="popup-content">
+                        <div class="row">
+                            <ul class="list">
+                                <li><span class="text-r">用户名：</span><input type="text" name="username" id="cwusername" value="" autocomplete="off"></li>
+                                <li>
+                                    <span class="text-r">密码：</span><input type="password" name="password" id="cwpassword" flag="cw" value="" autocomplete=off>
+                        
+                                </li>
+                                <li>
+                                    <span class="text-r">验证码：</span><input type="text" name="yanzheng" id="cwValidateText" flag="cw" style="width:57px;" value="" /><img id="cwValidateCode" class="yzm">
+                                </li>
+                                <li><span class="text-a"><input type="checkbox" name="remember" id="cwremember" value="1">记住密码<input type="button" class="bnt-green" value="登录" onclick="loginServer.login('cw');"><input type="reset" id="cwreset" class="bnt-blue" value="重置" onclick="loginServer.reset('cw');" /></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <object id="SSOCert1" style="display:none" classid="clsid:A5595D29-4D76-4AFB-8D23-799BC33C3287" codebase="/BJUI/Obj/SSOCert.ocx#version=1,0,0,4" viewastext></object>
+</body>
+</html>

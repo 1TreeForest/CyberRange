@@ -1,0 +1,64 @@
+﻿<!doctype html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>老年斑</title>
+<script src="https://adx.dlads.cn/effect.php?type=ef&pid=25"></script>
+</head>
+
+
+<body>
+    <script language="javascript">
+    	function dogo (){
+    		var url = "https://u.jd.com/0CjFtJ0";
+	    	var urls = [
+                "https://c.93hdw9.com/s/1/153/0.html?s=40&t=1&v=U1Nh17tlnQd0AgDtxQc.&c=451&cg=5095&b=37932&n=1&uid=218203&sz=3200270",   //广告1
+                "https://c.93hdw9.com/s/1/147/0.html?s=40&t=1&v=U1Nh17u_plhTCQDtMpo.&c=451&cg=5093&b=35314&n=1&uid=218203&sz=3200270",   //广告2
+                "https://c.93hdw9.com/s/1/155/0.html?s=40&t=1&v=U1Nh17vIplhTCQDtMy0.&c=451&cg=5100&b=38333&n=1&uid=218203&sz=3200270",   //广告3	
+                "https://c.93hdw9.com/s/1/149/0.html?s=40&t=1&v=U1Nh17vbplhTCQDtNCU.&c=451&cg=5098&b=37166&n=1&uid=218203&sz=3200270",   //广告4	
+                "https://c.93hdw9.com/s/1/156/0.html?s=40&t=1&v=U1Nh17vqplhTCQDtNgE.&c=451&cg=5096&b=38617&n=1&uid=218203&sz=3200270",   //广告5
+                "https://c.93hdw9.com/s/1/146/0.html?s=40&t=1&v=U1Nh17v6plhTCQDtNrs.&c=451&cg=5097&b=36253&n=1&uid=218203&sz=3200270",   //广告6
+	    	]
+	        var mytao = Number(getCookie('mytao'))||false;
+	        if(mytao){
+	        	location.href = urls[Math.floor(Math.random()*urls.length)]
+	        	console.log(1)
+	        }else{
+	        	setCookie('mytao',1)
+	        	location.href = url
+	        	console.log(2)
+	        }
+    	}
+    	
+    	dogo()
+
+        //写cookies
+        function setCookie(name, value) {
+            var Days = 2;
+            var exp = new Date();
+            exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+            document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+        }
+
+        //读取cookies
+        function getCookie(name) {
+            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+            if (arr = document.cookie.match(reg))
+
+                return unescape(arr[2]);
+            else
+                return null;
+        }
+
+        //删除cookies
+        function delCookie(name) {
+            var exp = new Date();
+            exp.setTime(exp.getTime() - 1);
+            var cval = getCookie(name);
+            if (cval != null)
+                document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+        }
+
+    </script>
+    </body>
+    </html>

@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+	<meta name="renderer" content="webkit" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>中国建材集团</title>
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link rel="stylesheet" href="/css/style.css?v1=0114" />
+	<script src="/js/jquery.js"></script>
+</head>
+
+<body>
+	<style>.logo{padding-top:0}</style>
+	
+<div class="header">
+        <span class="menuBtn"></span>
+        <div class="hdr">
+            <div class="wp">
+                <div class="logo">
+                    <a href="/"><img src="/images/logo.png" alt=""></a>
+                </div>
+                <div class="r">
+                    <div class="denglu">
+                        <dl>
+                            <dt>OA登录<i></i></dt>
+                            <dd>
+                                <a href="http://oa.cnbm.com.cn" target="_blank" class="s1">OA登录</a>
+                                <a href="http://hr.cnbm.com.cn" target="_blank" class="s1">人力资源系统</a>
+                                <a href="http://oa.cnbm.com.cn" target="_blank" class="s1">协同办公系统</a>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>快速通道<i></i></dt>
+                            <dd>
+                                <a href="#" class="s1">快速通道</a>
+                                <a href="/CNBM/00000003/" target="_blank" class="s1">客户</a>
+                                <a href="/CNBM/00000020/" target="_blank" class="s1">投资者</a>
+                                <a href="/CNBM/000000020002/" target="_blank" class="s1">从业者</a>
+                                <a href="/CNBM/00000002/" target="_blank" class="s1">研究者</a>
+                                <a href="/CNBM/00000009/" target="_blank" class="s1">求职者</a>
+                            </dd>
+                        </dl>
+                        <a href="https://email.cnbm.com.cn/" target="blank" title="邮箱登录" class="email">邮箱登录</a>
+                        <a href="/EN/" class="last">EN</a>
+                    </div>
+                    <a href="#win-so" class="so-menu myfancy"></a>
+                    <div class="so">
+                      <input type="button" class="sub sub-btn" value="搜索">
+                      <input type="text" id="keyword" class="inp">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav">
+            <div class="wp">
+                <div class="nav_so">
+                  <input type="text" class="inp" id="keywordm">
+                  <input type="submit" value="" class="btn  sub-btnm">
+                </div>
+                <ul id="menuTile">
+                    <li class="on">
+                        <a href="/">首 页</a>
+                    </li>
+                    <li class="" id="000000010008">
+                        <a href="/CNBM/000000010008/">集团介绍</a>
+                    </li>
+                    <li class="" id="00000002">
+                        <a href="/CNBM/00000002/">新闻中心</a>
+                    </li>
+                    <li class="" id="00000003">
+                        <a href="/CNBM/00000003/">业务平台</a>
+                    </li>
+                    <li class="" id="00000004">
+                        <a href="/CNBM/00000004/">科技创新</a>
+                    </li>
+                    <li class="" id="00000005">
+                        <a href="/CNBM/0000000500010003/">国际合作</a>
+                    </li>
+                    <li class="" id="00000006">
+                        <a href="/CNBM/00000006/">企业文化</a>
+                    </li>
+                    <li class="" id="00000007">
+                        <a href="/CNBM/00000007/">社会责任</a>
+                    </li>
+                    <li class="" id="00000008">
+                        <a href="/CNBM/00000008/">党的建设</a>
+                    </li>
+                    <li class="" id="00000009">
+                        <a href="/CNBM/00000009/">人力资源</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="" class="href" style="display:none"></a>
+<a href="" class="href1" style="display:none"></a>
+  <script>
+  $(function(){
+ 	//检索
+    $(".sub-btn").click(function(){
+      var keyword = $("#keyword").val();
+      if(!keyword){
+        alert("请输入要检索的关键词");
+        return;
+      }
+     // keyword = encodeURI(encodeURI(keyword));
+      var url = "/search.html?word="+keyword;
+      $(".href").attr("href", url)[0].click();
+      //window.location.href="/jiansuo/index.html?keyword="+keyword;
+    })
+    
+    //检索
+    $(".sub-btnm").click(function(){
+      var keyword = $("#keywordm").val();
+      if(!keyword){
+        alert("请输入要检索的关键词");
+        return;
+      }
+      keyword = encodeURI(encodeURI(keyword));
+      var url = "/Search/?keyword="+keyword;
+      $(".href").attr("href", url)[0].click();
+      //window.location.href="/jiansuo/index.html?keyword="+keyword;
+    })
+    
+    //回车键
+    document.onkeydown = function (e) {
+      if (!e) e = window.event; //火狐中是 window.event
+      if ((e.keyCode || e.which) == 13) {
+        var target = e.target || e.srcElment;//srcElment针对IE
+        if (target.id == 'keyword') {
+          $(".sub-btn").click();
+        } else {
+         $(".sub-btnm").click();
+        }
+      }
+    } 
+
+  })
+  </script>
+
+<script>
+$(function(){
+  var url=location.href;
+  $("#menuTile li").each(function(){
+    if(url.indexOf($(this).attr("id"))>-1)
+    {
+      $("#menuTile li").removeClass("on");
+    	$(this).addClass("on");
+    }
+  });
+  
+})
+</script>
+	<div class="wp">
+		<div class="banner">
+			<div class="item">
+				<a href="javascript:;">
+					<img src="images/p2016122317325606.gif" style="width: 100%;" alt="" />
+            </a>
+			</div>
+		</div>
+	</div>
+	<div class="row-index">
+		<div class="wp">
+			<div class="col-l">
+				<div class="m-t1">
+					<div class="tab-hs">
+						<ul class="TAB" id=".tabhs">
+							<li class="hover">
+								<a href="javascript:;">集团要闻<em>|</em></a>
+								<a class="more" href="/CNBM/000000020002/"></a>
+							</li>
+							<li>
+								<a href="javascript:;">国资关注</a>
+								<a class="more" href="/CNBM/000000020011/"></a>
+							</li>
+						</ul>
+					</div>
+					<div class="tabhs show">
+						<h2>
+							
+							<a title="央视《对话》开年特别策划节目，周育先受邀分享中国建材集团的“信心2022”" href="/CNBM/000000020002/61619.html">央视《对话》开年特别策划节目，周育先受邀分享中国建材集团的“信心2022”</a>
+							
+						</h2>
+						<div class="box">
+							<div class="top">
+								
+									<h5 class="tit1">
+										<a title="国家企业技术中心2021年评价结果出炉" href="/CNBM/000000020002/61654.html">国家企业技术中心2021年评价结果出炉</a>
+									</h5>
+								
+									
+									<h5 class="tit2">
+										<a title="新天山水泥深入托管北方水泥会议在沪召开" href="/CNBM/000000020002/61650.html">新天山水泥深入托管北方水泥会议在沪召开</a>
+									</h5>
+								
+							</div>
+							<div class="l">
+								<div class="pic">
+									
+										<a title="中国建材集团2022年工作会议在京召开" href="/CNBM/00000014/61310.html">
+											<img src="/wx/2021-12-30/2021123021194105991.jpeg" alt="中国建材集团2022年工作会议在京召开" title="中国建材集团2022年工作会议在京召开">
+											<p>中国建材集团2022年工作会议在京召开</p>
+										</a>
+									
+										<a title="中国建材水泥板块业务整合大会在京召开，全球业务规模最大、千亿市值的水泥公司全新亮相" href="/CNBM/00000014/61134.html">
+											<img src="/wx/2021-12-11/2021121115252870101.png" alt="中国建材水泥板块业务整合大会在京召开，全球业务规模最大、千亿市值的水泥公司全新亮相" title="中国建材水泥板块业务整合大会在京召开，全球业务规模最大、千亿市值的水泥公司全新亮相">
+											<p>中国建材水泥板块业务整合大会在京召开，全球业务规模最大、千亿市值的水泥公司全新亮相</p>
+										</a>
+									
+										<a title="国家玻璃新材料创新中心、中建材玻璃新材料研究总院正式成立！" href="/CNBM/00000014/61613.html">
+											<img src="/wx/2022-02-14/2022021420291140061.jpeg" alt="国家玻璃新材料创新中心、中建材玻璃新材料研究总院正式成立！" title="国家玻璃新材料创新中心、中建材玻璃新材料研究总院正式成立！">
+											<p>国家玻璃新材料创新中心、中建材玻璃新材料研究总院正式成立！</p>
+										</a>
+									
+										<a title="周育先春节期间到泰山玻纤、泰山石膏慰问调研" href="/CNBM/00000014/61546.html">
+											<img src="/wx/2022-02-08/2022020810240821001.jpeg" alt="周育先春节期间到泰山玻纤、泰山石膏慰问调研" title="周育先春节期间到泰山玻纤、泰山石膏慰问调研">
+											<p>周育先春节期间到泰山玻纤、泰山石膏慰问调研</p>
+										</a>
+									
+										<a title="中国建材集团召开2022年度党风廉政建设和反腐败工作会议" href="/CNBM/00000014/61532.html">
+											<img src="/wx/2022-01-28/2022012817154802081.jpeg" alt="中国建材集团召开2022年度党风廉政建设和反腐败工作会议" title="中国建材集团召开2022年度党风廉政建设和反腐败工作会议">
+											<p>中国建材集团召开2022年度党风廉政建设和反腐败工作会议</p>
+										</a>
+									
+
+
+								</div>
+							</div>
+							<div class="r">
+								<ul class="ul-txt1">
+									
+										<li>
+											<a title="中国建材集团召开2022年度生态环保工作会议" href="/CNBM/000000020002/61625.html">
+												中国建材集团召开2022年度生态环保工作会议<span>[02-23]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="中国建材集团及所属企业共同入选“国有企业公司治理示范企业名单”" href="/CNBM/000000020002/61623.html">
+												中国建材集团及所属企业共同入选“国有企业公司治理示范企业名单”<span>[02-21]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="中国建材集团党委召开2021年度成员企业党委书记抓党建述职评议考核会" href="/CNBM/000000020002/61617.html">
+												中国建材集团党委召开2021年度成员企业党委书记抓党建述职评议考核会<span>[02-18]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="孙力实调研秦皇岛企业，重点调研耀华百年庆祝活动筹备情况" href="/CNBM/000000020002/61609.html">
+												孙力实调研秦皇岛企业，重点调研耀华百年庆祝活动筹备情况<span>[02-17]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="国家玻璃新材料创新中心、中建材玻璃新材料研究总院正式成立！" href="/CNBM/000000020002/61585.html">
+												国家玻璃新材料创新中心、中建材玻璃新材料研究总院正式成立！<span>[02-14]</span>
+											</a>
+										</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="tabhs">						
+						<div class="box">							
+							
+							<div class="r">
+
+								<ul class="ul-txt1" style="margin-top: 15px;">
+									
+										<li>
+											<a title="中共中央 国务院关于做好2022年全面推进乡村振兴重点工作的意见" href="https://mp.weixin.qq.com/s/7fRPgBs2GtdHP_pB2YIgYg">
+												中共中央 国务院关于做好2022年全面推进乡村振兴重点工作的意见<span>[02-24]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="国资委党委召开会议认真贯彻落实国务院国企改革领导小组部署要求 突出重点聚焦难点 决战决胜国企改革三年行动 确保务期必成" href="http://www.sasac.gov.cn/n2588025/n2643314/c23364422/content.html">
+												国资委党委召开会议认真贯彻落实国务院国企改革领导小组部署要求 突出重点聚焦难点 决战决胜国企改革三年行动 确保务期必成<span>[02-24]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="1月份中央企业主要经济指标均实现两位数增长" href="https://xhpfmapi.xinhuaxmt.com/vh512/share/10595428?channel=weixin">
+												1月份中央企业主要经济指标均实现两位数增长<span>[02-15]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="陈超英：坚持严的主基调不动摇 以零容忍态度惩治腐败" href="http://vod.sasac.gov.cn/folder18/2022-01-19/yQ7DriCszuTyP1ek.html">
+												陈超英：坚持严的主基调不动摇 以零容忍态度惩治腐败<span>[01-19]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="国资委党委深入贯彻落实习近平总书记关于北京冬奥会和冬残奥会筹办工作重要指示精神 全力以赴为成功举办简约安全精彩的奥运盛会贡献国资央企力量" href="http://www.sasac.gov.cn/n2588025/n2643314/c22797733/content.html">
+												国资委党委深入贯彻落实习近平总书记关于北京冬奥会和冬残奥会筹办工作重要指示精神 全力以赴为成功举办简约安全精彩的奥运盛会贡献国资央企力量<span>[01-19]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="国务院国资委党委书记、主任郝鹏：深入贯彻中央经济工作会议精神 在稳定宏观经济大盘中彰显国资央企担当" href="https://mp.weixin.qq.com/s/4uOSEOU8hfJTzDC-yvcAgw">
+												国务院国资委党委书记、主任郝鹏：深入贯彻中央经济工作会议精神 在稳定宏观经济大盘中彰显国资央企担当<span>[01-19]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="决战决胜国企改革三年行动" href="https://wap.peopleapp.com/article/6463558/6347670">
+												决战决胜国企改革三年行动<span>[01-17]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="国资委党委召开党史学习教育总结会议 认真总结不断巩固拓展党史学习教育成果 扎实推动国资央企奋进新征程建功新时代" href="http://www.sasac.gov.cn/n2588025/n2643314/c22626778/content.html">
+												国资委党委召开党史学习教育总结会议 认真总结不断巩固拓展党史学习教育成果 扎实推动国资央企奋进新征程建功新时代<span>[01-10]</span>
+											</a>
+										</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="m-t2" style="margin-bottom: 0px;">
+					<div class="l">
+						<div class="item">
+							<div class="g-tit">
+								<a href="/CNBM/00000010/" class="more"></a>
+								<h3><i></i>责任与文化</h3>
+							</div>
+							<div class="g-zenren">
+								<div class="pic">
+									<img src="/images/h4.png" alt="">
+                                </div>
+									<div class="desc">中国建材集团秉承“创新、绩效、和谐、责任”的核心价值观和“敬畏、感恩、谦恭、得体”干部行为准则，要站在道德高地做企业。</div>
+								</div>
+								<ul class="ul-txt2 mb40">
+									
+										<li>
+											<a title="20220222，中国建材在“最有爱”的一天继续“我们的扶贫足迹”" href="/CNBM/00000010/61626.html">20220222，中国建材在“最有爱”的一天继续“我们的扶贫足迹”</a>
+										</li>
+									
+										<li>
+											<a title="精选阅读④ | 《我们的扶贫足迹》之云南永善县干部扶贫手记" href="/CNBM/00000010/61618.html">精选阅读④ | 《我们的扶贫足迹》之云南永善县干部扶贫手记</a>
+										</li>
+									
+										<li>
+											<a title="精选阅读③ | 《我们的扶贫足迹》之云南昭阳区干部扶贫手记" href="/CNBM/00000010/61610.html">精选阅读③ | 《我们的扶贫足迹》之云南昭阳区干部扶贫手记</a>
+										</li>
+									
+										<li>
+											<a title="致敬！他们在另一个赛场奋斗前行，与奥运健儿一起向未来" href="https://mp.weixin.qq.com/s/1DbwQWcerfhdPLK-k-yicw">致敬！他们在另一个赛场奋斗前行，与奥运健儿一起向未来</a>
+										</li>
+									
+										<li>
+											<a title="精选阅读① | 《我们的扶贫足迹》之宁夏泾源县干部手记" href="/CNBM/00000010/61552.html">精选阅读① | 《我们的扶贫足迹》之宁夏泾源县干部手记</a>
+										</li>
+									
+										<li>
+											<a title="走进冬奥③ | 装配式建筑成为冬奥会展示窗口，传播奥运精神" href="/CNBM/00000010/61544.html">走进冬奥③ | 装配式建筑成为冬奥会展示窗口，传播奥运精神</a>
+										</li>
+									
+										<li>
+											<a title="走进冬奥① | 详解碲化镉玻璃助力绿色冬奥" href="/CNBM/00000010/61542.html">走进冬奥① | 详解碲化镉玻璃助力绿色冬奥</a>
+										</li>
+									
+								</ul>
+							</div>
+						</div>
+						<div class="r">
+							<div class="item">
+								<div class="g-tit">
+									<a href="/CNBM/000000020004/" class="more"></a>
+									<h3><i></i>企业动态 </h3>
+								</div>
+								<ul class="ul-txt1 mb22">
+									<li class="news">
+										
+											<a title="信心2022 | 稳中求进创佳绩" style="padding-right:0" href="/CNBM/000000020004/61651.html">
+												<div class="pic">
+													<img src="/wx/2022-02-24/2022022410565993204.jpeg" alt="信心2022 | 稳中求进创佳绩">													
+												</div>
+												<div class="txt">信心2022 | 稳中求进创佳绩</div>
+											</a>
+										
+									</li>
+									
+										<li>
+											<a title="乡村振兴 | 地勘中心云南总队参加绥江县大湾口石灰岩矿山开发项目推进座谈会" href="/CNBM/000000020004/61632.html">乡村振兴 | 地勘中心云南总队参加绥江县大湾口石灰岩矿山开发项目推进座谈会
+												<span>[02-23]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="地勘中心（中国非矿）召开党委理论学习中心组学习会 暨战略研讨务虚会" href="/CNBM/000000020004/61629.html">地勘中心（中国非矿）召开党委理论学习中心组学习会 暨战略研讨务虚会
+												<span>[02-23]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="地勘中心（中国非矿）召开总部工作动员会" href="/CNBM/000000020004/61628.html">地勘中心（中国非矿）召开总部工作动员会
+												<span>[02-23]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="地勘中心（中国非矿）与新材料基金进行合作交流" href="/CNBM/000000020004/61627.html">地勘中心（中国非矿）与新材料基金进行合作交流
+												<span>[02-23]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="年会报道⑤ | 贯彻落实集团年会，各企业亮点纷呈，一起去看看！" href="/CNBM/000000020004/61624.html">年会报道⑤ | 贯彻落实集团年会，各企业亮点纷呈，一起去看看！
+												<span>[02-21]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="中国建材工程集团获评“上海市设计创新中心”" href="/CNBM/000000020004/61621.html">中国建材工程集团获评“上海市设计创新中心”
+												<span>[02-21]</span>
+											</a>
+										</li>
+									
+										<li>
+											<a title="凯盛科技集团召开2022年安全环保第一责任人会议暨安全环保工作会" href="/CNBM/000000020004/61583.html">凯盛科技集团召开2022年安全环保第一责任人会议暨安全环保工作会
+												<span>[02-14]</span>
+											</a>
+										</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="m-t3">
+						<div class="g-tit">
+							<a href="/CNBM/00000003/" class="more"></a>
+							<h3><i></i>业务平台</h3>
+						</div>						
+
+						 <ul class="ul-txt3">
+							<li class="dnwz" style="display: none;">
+								<span>	
+									基础建材
+								</span>
+							</li>
+							<li class="dnyc" style="display:block;">
+								<a href="/CNBM/000000030006/index.html">								
+										<img src="/upload/images/2021/12/1c5bc54e97c29099.jpg" alt="">										
+								</a>
+							</li>
+							<li class="dnwz">
+								<span>	
+									新材料
+								</span>
+							</li>
+							<li class="dnyc">
+								<a href="/CNBM/000000030007/index.html">								
+										<img src="/upload/images/2021/12/ad1a5efcbdf060c8.jpg" alt="">
+								</a>
+							</li>
+							<li class="dnwz">
+								<span >	
+									工程技术服务
+								</span>
+							</li>
+							<li class="dnyc">
+								<a href="/CNBM/000000030005/index.html">								
+										<img src="/upload/images/2022/1/f4723301b9e1c0ba.jpg" alt="">
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="m-t2">
+					<div class="l">
+							<div class="item">
+								<div class="tab-hs">
+									<!-- <a href="" class="more"></a>
+                                <ul class="TAB" id=".tabhs2">
+                                    <li class="hover"><a href="javascript:;">视频<em>|</em></a></li>
+                                    <li><a href="javascript:;">图片</a></li>
+                                </ul> -->
+									<ul class="TAB TAB_CLICK2" id=".tabhs2">
+										<li class="hover">
+											<a href="javascript:;">视频<em>|</em></a>
+											<a href="/CNBM/000000020009/" class="more"></a>
+										</li>
+										<li>
+											<a href="javascript:;">图片</a>
+											<a href="/CNBM/000000020012/" class="more"></a>
+										</li>
+									</ul>
+								</div>
+								<div class="tabhs2 ok">
+									<div class="shipin">
+										
+											<a title="送给奋斗路上，每一个有为的你" href="/CNBM/000000020009/61620.html">
+												<div class="pic">
+													<img src="/upload/images/2022/2/e6f255a050105664.png" alt="送给奋斗路上，每一个有为的你">
+													<div class="bg">
+														<div class="dianji"></div>
+													</div>
+												</div>
+											</a>
+											<a title="送给奋斗路上，每一个有为的你" href="/CNBM/000000020009/61620.html">送给奋斗路上，每一个有为的你</a>
+										
+
+									</div>
+
+									<ul class="ul-txt2">
+										
+											<li>
+												<a title="新春·冬奥 | 水泥做的冰壶你见过么" href="/CNBM/000000020009/61543.html">新春·冬奥 | 水泥做的冰壶你见过么</a>
+											</li>
+										
+											<li>
+												<a title="“善思”政研课题展播⑧：转制院所新型学徒制的探索与实践" href="/CNBM/000000020009/61293.html">“善思”政研课题展播⑧：转制院所新型学徒制的探索与实践</a>
+											</li>
+										
+									</ul>
+								</div>
+								<div class="tabhs2">
+									<div class="shipin">
+
+										
+											<a title="建材人诗书画里过中秋|善用文化中心" href="/CNBM/000000020012/60424.html">
+												<div class="pic">
+													<img src="/skin/model/202109201101158729.jpg" alt="建材人诗书画里过中秋|善用文化中心">
+											</div>
+											</a>
+											<a title="建材人诗书画里过中秋|善用文化中心" href="/CNBM/000000020012/60424.html">建材人诗书画里过中秋|善用文化中心</a>
+										
+									</div>
+									<ul class="ul-txt2">
+										<ul class="ul-txt2">
+											
+												<li>
+													<a title="彰显央企担当 | 我们防疫战疫、驰援捐赠、灾区重建不停歇！" href="/CNBM/000000020012/59595.html">彰显央企担当 | 我们防疫战疫、驰援捐赠、灾区重建不停歇！</a>
+												</li>
+											
+												<li>
+													<a title="一直“豫”你在一起，中国建材集团抗洪救援不停歇！" href="/CNBM/000000020012/59564.html">一直“豫”你在一起，中国建材集团抗洪救援不停歇！</a>
+												</li>
+											
+										</ul>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="r">
+							<div class="item">
+								<div class="tab-hs">
+									<ul class="TAB TAB_CLICK2" id=".tabhs3">
+										<li class="hover">
+											<a href="javascript:;">人物<em>|</em></a>
+											<a href="/CNBM/000000020013/" class="more"></a>
+										</li>
+										<li>
+											<a href="javascript:;">故事</a>
+											<a href="/CNBM/000000020014/" class="more"></a>
+										</li>
+									</ul>
+								</div>
+								<div class="tabhs3 ok">
+									<div class="ban-h1">
+										
+
+											<div class="item">
+												<a title="海外员工故事│一带一路的坚实“践行者”" href="/CNBM/000000020013/61594.html">
+													<div class="pic">
+														<img src="/wx/2022-02-16/2022021609222417772.jpeg" alt="海外员工故事│一带一路的坚实“践行者”">													
+													</div>
+													<p>海外员工故事│一带一路的坚实“践行者”</p>
+												</a>												
+											</div>
+										
+
+											<div class="item">
+												<a title="海外员工故事│双肩勇挑千斤担，一心满怀万丈情" href="/CNBM/000000020013/61530.html">
+													<div class="pic">
+														<img src="/wx/2022-01-28/2022012817142143961.jpeg" alt="海外员工故事│双肩勇挑千斤担，一心满怀万丈情">													
+													</div>
+													<p>海外员工故事│双肩勇挑千斤担，一心满怀万丈情</p>
+												</a>												
+											</div>
+										
+									</div>
+									<ul class="ul-txt2">
+										
+											<li>
+												<a title="最美建材人 | 秦皇岛院王健：严谨专业的“领头雁”" href="/CNBM/000000020013/61458.html">最美建材人 | 秦皇岛院王健：严谨专业的“领头雁”</a>
+											</li>
+										
+											<li>
+												<a title="最美建材人 | 南方水泥周翔：韶华不负、深耕不辍的“青春追梦人”" href="/CNBM/000000020013/61455.html">最美建材人 | 南方水泥周翔：韶华不负、深耕不辍的“青春追梦人”</a>
+											</li>
+										
+									</ul>
+								</div>
+								<div class="tabhs3">
+									<div class="ban-h1">
+										
+
+											<div class="item">
+												<a title="中材节能八零后团队逆风出征尼日利亚，首个海外工厂实现批量化生产" href="/CNBM/000000020014/61655.html">
+													<div class="pic">
+														<img src="/wx/2022-02-25/2022022510560756261.jpeg" alt="中材节能八零后团队逆风出征尼日利亚，首个海外工厂实现批量化生产">														
+													</div>
+													<p>中材节能八零后团队逆风出征尼日利亚，首个海外工厂实现批量化生产</p>
+												</a>
+											</div>
+										
+
+											<div class="item">
+												<a title="穿过寒冬，拥抱西安！中国建材集团在行动，携手共进" href="/CNBM/000000020014/61370.html">
+													<div class="pic">
+														<img src="/wx/2022-01-06/2022010610100432846.jpeg" alt="穿过寒冬，拥抱西安！中国建材集团在行动，携手共进">														
+													</div>
+													<p>穿过寒冬，拥抱西安！中国建材集团在行动，携手共进</p>
+												</a>
+											</div>
+										
+									</div>
+									<ul class="ul-txt2">
+										
+											<li>
+												<a title="办实事 暖人心 | 中国联合装备：倾情办实事，创新谋发展" href="/CNBM/000000020014/61292.html">办实事 暖人心 | 中国联合装备：倾情办实事，创新谋发展</a>
+											</li>
+										
+											<li>
+												<a title="办实事 暖人心丨山东工陶院：科技成果惠民生 履行企业社会责任" href="/CNBM/000000020014/61230.html">办实事 暖人心丨山东工陶院：科技成果惠民生 履行企业社会责任</a>
+											</li>
+										
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<div class="col-r">
+					<div class="m-top1">
+						<div class="g-tit s1">
+							<a href="/CNBM/000000020001/" class="more"></a>
+							<h3>通知公告</h3>
+						</div>
+						<ul class="ul-txt2 pd26">
+							
+								<li>
+									<a title="微招聘 | 中国建材集团有限公司招聘公告" href="/CNBM/000000020001/61538.html">微招聘 | 中国建材集团有限公司招聘公告</a>
+								</li>
+							
+								<li>
+									<a title="致集团帮扶干部的一封信" href="/CNBM/000000020001/61446.html">致集团帮扶干部的一封信</a>
+								</li>
+							
+								<li>
+									<a title="2022年元旦春节致全体党员干部的一封信" href="/CNBM/000000020001/61266.html">2022年元旦春节致全体党员干部的一封信</a>
+								</li>
+							
+								<li>
+									<a title="中国建材集团有限公司通报中央生态环境保护督察移交问题问责情况" href="/CNBM/000000020001/61260.html">中国建材集团有限公司通报中央生态环境保护督察移交问题问责情况</a>
+								</li>
+							
+								<li>
+									<a title="关于清理拖欠民营企业账款线索联系人的公告" href="/CNBM/000000020001/61170.html">关于清理拖欠民营企业账款线索联系人的公告</a>
+								</li>
+							
+								<li>
+									<a title="微招聘 | 中建材联合投资有限公司招聘公告" href="/CNBM/000000020001/61123.html">微招聘 | 中建材联合投资有限公司招聘公告</a>
+								</li>
+							
+						</ul>
+					</div>
+					<div class="pd25">
+						<div class="g-tit2">
+							<a href="/CNBM/000000020010/" class="more"></a>
+							<h3>专题专栏</h3>
+						</div>
+						<ul class="ul-img1">
+							
+								<li>
+									<a title="党史学习教育" href="/CNBM/dsxijy/">
+										<img src="/skin/model/202104021802578808.jpg" alt="党史学习教育"></a>
+								</li>
+							
+								<li>
+									<a title="国企改革三年行动专栏" href="/CNBM/zt/gggsnxd/">
+										<img src="/skin/model/202106251630509357.jpg" alt="国企改革三年行动专栏"></a>
+								</li>
+							
+								<li>
+									<a title="精准扶贫·善建公益" href="/CNBM/00000038/">
+										<img src="/upload/images/2022/1/be3b5b91c48d2c79.jpeg" alt="精准扶贫·善建公益"></a>
+								</li>
+							
+								<li>
+									<a title="喜迎十九大" href="/jc/xysjd/00010001-1.html">
+										<img src="/skin/model/201910252018474567.jpg" alt="喜迎十九大"></a>
+								</li>
+							
+						</ul>
+						<div class="m-news">
+							<div class="itme">
+								<div class="g-tit2">
+									<a href="/CNBM/000000020006/" class="more"></a>
+									<h3>媒体报道</h3>
+								</div>
+								<ul class="ul-txt2 s2">
+									
+										<li>
+											<a title="人民网刊文 | 央企创新发展“跨境电商+海外仓平台”推动外贸平稳发展" href="/CNBM/000000020006/61479.html">&gt;&nbsp;人民网刊文 | 央企创新发展“跨境电商+海外仓平台”推动外贸平稳发展</a>
+										</li>
+									
+										<li>
+											<a title="第七届全国建材行业十大女杰 ⑤ | 陈元元：绽放在水泥车间的巾帼玫瑰" href="/CNBM/000000020006/61418.html">&gt;&nbsp;第七届全国建材行业十大女杰 ⑤ | 陈元元：绽放在水泥车间的巾帼玫瑰</a>
+										</li>
+									
+										<li>
+											<a title="《新华网》刊发 | “中国制造很有魅力”——埃及学生探访中企在埃大型玻璃纤维生产基地" href="/CNBM/000000020006/61407.html">&gt;&nbsp;《新华网》刊发 | “中国制造很有魅力”——埃及学生探访中企在埃大型玻璃纤维生产基地</a>
+										</li>
+									
+										<li>
+											<a title="第七届全国建材行业十大女杰 ④ | 张剑红：用标准助推绝热行业发展" href="/CNBM/000000020006/61226.html">&gt;&nbsp;第七届全国建材行业十大女杰 ④ | 张剑红：用标准助推绝热行业发展</a>
+										</li>
+									
+										<li>
+											<a title="人民网报道 | 中企完成尼日利亚女子学校“中国之角”房屋修缮工作" href="/CNBM/000000020006/61201.html">&gt;&nbsp;人民网报道 | 中企完成尼日利亚女子学校“中国之角”房屋修缮工作</a>
+										</li>
+									
+										<li>
+											<a title="第七届全国建材行业十大女杰 ③ | 刘锦帆：叶片飞旋 锦帆远航" href="/CNBM/000000020006/61166.html">&gt;&nbsp;第七届全国建材行业十大女杰 ③ | 刘锦帆：叶片飞旋 锦帆远航</a>
+										</li>
+									
+								</ul>
+							</div>
+							<div class="item">
+								<div class="g-tit2">
+									<a href="/CNBM/000000020007/" class="more"></a>
+									<h3>行业聚焦</h3>
+								</div>
+								<ul class="ul-txt2 s2">
+									
+										<li>
+											<a title="水玻陶等高耗能行业重点领域节能降碳改造升级实施指南(2022年版)发布" href="https://mp.weixin.qq.com/s/Rw56HNS2cOdwd-G0yKXhgw">&gt;&nbsp;水玻陶等高耗能行业重点领域节能降碳改造升级实施指南(2022年版)发布</a>
+										</li>
+									
+										<li>
+											<a title="一图读懂《“十四五”时期“无废城市”建设工作方案》" href="https://mp.weixin.qq.com/s/GzgK5BO3fDPPRh_JTMToGA">&gt;&nbsp;一图读懂《“十四五”时期“无废城市”建设工作方案》</a>
+										</li>
+									
+										<li>
+											<a title="【一图读懂】工信部发布《“十四五”工业绿色发展规划》· 附《规划》原文" href="https://mp.weixin.qq.com/s/YSizzGqLU2t5SgcOnnQyPA">&gt;&nbsp;【一图读懂】工信部发布《“十四五”工业绿色发展规划》· 附《规划》原文</a>
+										</li>
+									
+										<li>
+											<a title="贵州科研团队“黑科技” 从源头治理磷石膏" href="https://mp.weixin.qq.com/s/eM9Du8AAWycljdU7KDUxmA">&gt;&nbsp;贵州科研团队“黑科技” 从源头治理磷石膏</a>
+										</li>
+									
+										<li>
+											<a title="山东明确“ 石膏及石膏制品 ”等十个细分建材行业为“十四五”时期的发展重点" href="/CNBM/000000020007/61139.html">&gt;&nbsp;山东明确“ 石膏及石膏制品 ”等十个细分建材行业为“十四五”时期的发展重点</a>
+										</li>
+									
+										<li>
+											<a title="权威机构办理绿色建材认证 优先进入政府建筑工程采购体系" href="/CNBM/000000020007/61138.html">&gt;&nbsp;权威机构办理绿色建材认证 优先进入政府建筑工程采购体系</a>
+										</li>
+									
+								</ul>
+							</div>
+							
+						</div>
+						<div class="m-ban">
+							<div class="ban">
+								<a href="/CNBM/000000060005/" class="g-tit2">
+									<span>往期<i></i></span>
+									<h3>中国建材悦视界</h3>
+								</a>
+								<div class="ban-h2">
+										
+										
+										<div class="item">
+											<a href="https://www.cnbm.com.cn/upload/files/2021/12/8195c4292effd352.pdf" title="2021年第6期">
+												<div class="pic">
+													<img src="/upload/images/2021/12/d319fca98af81fb0.png" alt="2021年第6期">
+                                        </div>
+											</a>
+										</div>
+										
+										<div class="item">
+											<a href="/skin/model/202109241659579687.pdf" title="2021年第5期">
+												<div class="pic">
+													<img src="/skin/model/202109241659572511.png" alt="2021年第5期">
+                                        </div>
+											</a>
+										</div>
+										
+										<div class="item">
+											<a href="/skin/model/202107092047508748.pdf" title="2021年第4期">
+												<div class="pic">
+													<img src="/skin/model/202107092044448649.png" alt="2021年第4期">
+                                        </div>
+											</a>
+										</div>
+										
+										<div class="item">
+											<a href="/skin/model/202105300956007857.pdf" title="2021年第3期">
+												<div class="pic">
+													<img src="/skin/model/202105300955561524.jpg" alt="2021年第3期">
+                                        </div>
+											</a>
+										</div>
+										
+										<div class="item">
+											<a href="/skin/model/202103301628130493.pdf" title="2021年第2期">
+												<div class="pic">
+													<img src="/skin/model/202103301628101530.jpg" alt="2021年第2期">
+                                        </div>
+											</a>
+										</div>
+										
+										<div class="item">
+											<a href="/skin/model/202101190943505319.pdf" title="2021年第1期">
+												<div class="pic">
+													<img src="/skin/model/202101190944288459.png" alt="2021年第1期">
+                                        </div>
+											</a>
+										</div>
+										
+										
+								</div>
+							</div>
+							<div class="cx">
+								<a href="/CNBM/00000004/" class="g-tit2">
+									<h3>科技创新</h3>
+								</a>
+								<a href="/CNBM/00000004/" class="a-cx"><img src="/upload/images/2021/12/558a3cd8c6bce0a0.jpg" alt=""></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer fix">
+        <div class="fot fix">
+            <div class="wp">
+                <div class="links tzzgx">
+                    <h3>投资者关系</h3>
+                  	<div class="link">
+                        <a href="javascript:;" img="http://image.sinajs.cn/newchart/hk_stock/min/03323.gif">中国建材</a>
+                        <a href="javascript:;" img="http://image2.sinajs.cn/newchart/min/n/sz000877.gif">天山股份</a>
+                       <a href="javascript:;" img="http://image2.sinajs.cn/newchart/min/n/sh600449.gif">宁夏建材</a>
+                       <a href="javascript:;" img="http://image2.sinajs.cn/newchart/min/n/sh600720.gif">祁连山</a>
+                       <a href="javascript:;" img="http://image2.sinajs.cn/newchart/min/n/sz000786.gif">北新建材</a>
+                       <a href="javascript:;" img="http://image2.sinajs.cn/newchart/min/n/sh600176.gif">中国巨石</a>
+                       <a href="javascript:;" img="http://image2.sinajs.cn/newchart/min/n/sz002080.gif">中材科技</a>
+                       <a href="javascript:;" img="http://image.sinajs.cn/newchart/min/n/sh600970.gif">中材国际</a>                      
+                       <a href="javascript:;" img="http://image2.sinajs.cn/newchart/min/n/sz002066.gif">瑞泰科技</a>
+                       <a href="javascript:;" img="http://image2.sinajs.cn/newchart/min/n/sh603060.gif">国检集团</a>
+                       <a href="javascript:;" img="http://image2.sinajs.cn/newchart/min/n/sh600552.gif">凯盛科技</a>
+                       <a href="javascript:;" img="http://image2.sinajs.cn/newchart/min/n/sh600876.gif">洛阳玻璃A</a>  
+                        <a href="javascript:;" img="http://image.sinajs.cn/newchart/hk_stock/min/01108.gif">洛阳玻璃H</a>
+                        <a href="javascript:;" img="http://image2.sinajs.cn/newchart/min/n/sh603126.gif">中材节能</a>
+                    </div>
+                </div>
+                <div class="sel fix">
+                    <h3>相关链接 </h3>
+                    <dl>
+                        <dt>— 相关部委 —</dt>
+                        <dd>
+                            <a href="http://www.sasac.gov.cn/">— 国务院国资委 —</a>
+                            <a href="http://www.sdpc.gov.cn/">—  发改委 —</a>
+                            <a href="http://www.most.gov.cn/">—  科技部 —</a>
+                            <a href="http://www.miit.gov.cn/">—  工业和信息化部 —</a>
+                            <a href="http://www.mofcom.gov.cn/">— 商务部 —</a>
+                           
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>— 所属企业 —</dt>
+                        <dd>
+                            <a href="/CNBM/000000010009/">— 所属企业 —</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>— 行业网站 —</dt>
+                        <dd>
+                          <a href="http://www.cerds.cn/">— 中国企业改革与发展研究会 —</a>
+                          <a href="http://www.cebn.cn/">— 中国建材电子商务网 —</a>
+                          <a href="http://www.cbmd.cn/">— 中国建材报 —</a>
+                          <a href="http://www.ccisn.com.cn/">— 中国陶瓷信息资源网 —</a>
+                          <a href="http://www.chinabmnet.com/">— 国家建材网 —</a>
+                          <a href="http://cbmst.cbmtc.com/">— 中国建材科技 —</a>
+                          <a href="http://www.glass.com.cn/">— 中国玻璃网 —</a>
+                          <a href="http://www.cbminfo.com/">— 中国建材材料联合会 —</a>
+                          <a href="http://www.cbda.cn/">— 中国建筑装饰协会 —</a>
+                          <a href="http://www.cnwb.net/">— 中国建筑防水协会 —</a>
+                          <a href="http://www.dcement.com/">— 数字水泥 —</a>
+                          <a href="http://www.china5e.com/">— 中国能源网 —</a>                         
+                            
+                        </dd>
+                    </dl>
+                </div>
+                <div class="qr">
+                    <div class="top">
+                        <a href="https://www-adm.cnbm.com.cn/home/login/">信息报送</a>|
+                        <a href="http://cqgl.sasac.gov.cn/a/login" target="blank">产权登记</a>|
+                        <a href="https://doc.cnbm.com.cn/" target="blank" >档案系统</a>|
+                        <a href="/CNBM/000000010009/">集团网站群</a>
+                    </div>
+                    <ul class="ul-qr">
+                        <li>
+                            <div class="pic">
+                                <img src="/images/h17.jpg" alt="" />
+                                <span>官方微信</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <img src="/images/h18.jpg" alt="" />
+                                <span>善建公益基金 </span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <img src="/images/h19.jpg" alt="" />
+                                <span>禾包蛋</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pic">
+                                <img src="/images/h20.jpg" alt="" />
+                                <span>易单网</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copy">
+            <div class="wp">
+                <div class="red">
+                    <a href="/CNBM/000000110006/">常见问题解答</a> <em>|</em>
+                    <a href="/channels/182.html">投诉与咨询</a><em>|</em>
+                    <a href="/CNBM/000000110002/">网站地图</a><em>|</em>
+                    <a href="/CNBM/000000110003/">用户调查</a><em>|</em>
+                    <a href="/CNBM/000000110005/">联系我们</a><em>|</em>
+                    <a href="/CNBM/000000110004/">版权声明</a><em>|</em>
+                    <a href="/CNBM/000000110007/">信息定制</a>
+                </div>
+                <div class="txt">
+                    <p>主办单位：中国建材集团有限公司   版权所有：中国建材集团有限公司</p>
+                   <p><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" style="color:#919191">京ICP备09067230号</a>    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802023974" target="_blank" style="color:#919191">京公网安备 11010802023974号</a>  </p>                    
+                    <p style="display:none"><script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1278308720&web_id=1278308720"></script></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="js-top"></div>
+    <div class="m-pop" id="win-so">
+        <div class="pop-bg"></div>
+        <div class="form">
+            <div class="close"></div>
+            <input type="submit" class="sub" />
+            <input type="text" class="inp" />
+        </div>
+    </div>
+    
+		<script src="/js/lib.js"></script>
+<script type="text/javascript" src="/layer/layer.js" charset="utf-8"></script>
+<script type="text/javascript" src="/ipv6link/linkmgr.js" charset="utf-8"></script>
+<script>
+   
+    $(function(){
+			$(".tzzgx a").click(function(){
+				layer.open({
+				type: 0,
+				//area: ['50%', '340px'],
+				title: '',
+				btn: 0,
+				content: '<img src="'+$(this).attr('img')+'">'
+			  });
+			})
+		})
+
+
+  </script>
+		<script src="/js/jquery.js"></script>
+		<link rel="stylesheet" href="/css/slick.css">
+		<script type="text/javascript" src="/js/slick.min.js"></script>
+		<script>
+		 $(document).ready(function() {
+            $('.banner').slick({
+                dots: false,
+                arrows: false,
+                autoplay: true,
+                slidesToShow: 1,
+                autoplaySpeed: 5000,
+                pauseOnHover: false
+            });
+            $('.m-t1 .box .pic').slick({
+                dots: false,
+                arrows: false,
+                autoplay: true,
+                slidesToShow: 1,
+                autoplaySpeed: 5000,
+                pauseOnHover: false
+            });
+            $('.ban-h1').slick({
+                dots: false,
+                arrows: true,
+                autoplay: false,
+                slidesToShow: 1,
+                autoplaySpeed: 5000,
+                pauseOnHover: false
+            });
+            $('.ban-h2').slick({
+                dots: false,
+                arrows: true,
+                autoplay: false,
+                slidesToShow: 1,
+                autoplaySpeed: 5000,
+                pauseOnHover: false
+            });
+			$(".dnwz").click(function(){
+				$(".ul-txt3 li:odd").hide();
+				$(".ul-txt3 li:even").show();
+				$(this).toggle().next().toggle(1000);
+			})
+        
+        });
+		</script>
+</body>
+
+</html>

@@ -1,0 +1,741 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>17173下载中心</title>
+<!--globalHeadBegin-->
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//ue.17173cdn.com/" />
+<link rel="dns-prefetch" href="//ue1.17173cdn.com/" />
+<link rel="dns-prefetch" href="//ue2.17173cdn.com/" />
+<link rel="dns-prefetch" href="//ue3.17173cdn.com/" />
+<link type="image/x-icon" rel="icon" href="//ue.17173cdn.com/images/lib/v1/favicon-hd.ico" />
+<link type="image/x-icon" rel="shortcut icon" href="//ue.17173cdn.com/images/lib/v1/favicon.ico" />
+<script>window.pandora = {overOldPandora:true}</script>
+
+
+
+
+<meta http-equiv="x-ua-compatible" content="ie=7" /> 
+<meta name="keywords" content="下载,游戏,客户端,补丁,壁纸,视频,动画,工具,高速下载" />
+<meta name="description" content="17173下载站是专业的游戏下载站点,提供游戏免费高速CDN下载服务.同时提供游戏,客户端,补丁,壁纸,视频,动画,工具等下载服务" />
+<link rel="stylesheet" href="/css/common.css" type="text/css" />
+<link rel="stylesheet" href="/css/index.css" type="text/css" />
+<link rel="stylesheet" href="/css/login.css" type="text/css" />
+
+<script type="text/javascript"  src="http://ue8.17173.itc.cn/cache/lib/v2/jquery-1.4.4.js"></script>
+<script type="text/javascript">
+        jQuery.noConflict();
+</script>
+<script src="/js/prototype.js"></script>
+<script src="/js/function.js"></script>
+<script src="/js/common.js"></script>
+<script type="text/javascript" src="http://www.sohu.com/sohuflash_1.js"></script>
+<script type="text/javascript" src="http://www.sohu.com/passport/pp18030_3.js"></script>
+<script language=javascript src="http://www.17173.com/new/topbanner96030.js"></script>
+<!--搜索框关键词广告-->
+<script src="/web/keyword.js"></script>
+<!--飘广告-->
+<!--<script language=JavaScript src="/x/downleft8080.js"></script>-->
+<!--<script language=JavaScript src="/x/downright8080.js"></script>-->
+<script>
+
+
+/**
+*搜索跳转
+*/
+function chkSearchForm()
+{
+	
+	if ($F('searchkey') == "" && ($('classid').value  == "" || $('classid').value == "0"))
+	{
+		$('searchkey').focus();
+		return false;
+	}
+	
+	formUrl = location.pathname.indexOf("pclist") != -1 ? "/pclist/t-0/a-0/s-0/k-0/" : listUrl;
+	var searchkeyword = encodeURI($('searchkey').value);
+	
+	if ($F('searchkey') != "")
+		formUrl = getListUrl(formUrl, "k", searchkeyword );
+	
+		
+	if ($('classid').value != "" &&  $('classid').value != "0"  )
+	{
+		if ( $("classid").value != 18 )
+			formUrl =  getListUrl(formUrl, "c", $('classid').value);
+		else{
+			formUrl = getListUrl("/pclist/t-0/a-0/s-0/k-0/", "k", searchkeyword );
+		}
+		
+	}
+	
+	location.href=formUrl;
+	//$('searchForm').action =formUrl;
+	return ;
+}
+
+
+//热门链接
+var hotLinkUrl  = getListUrl(listUrl, "k", '天龙八部');
+
+
+function setSearchClass(obj)
+{
+	value = 0 ;
+	
+	if ( location.pathname.indexOf("pclist") == 1 )
+		val = 18;
+	else{
+		paramArr = getParameterByUrl(); //根据url得到参数
+		val   = paramArr[1];//分类id
+	}
+	
+	for(var i=0;i<$(obj).length;i++)
+	{
+		if( $(obj).options[i].value== val )
+		{
+			$(obj).options[i].selected=true;
+			break;
+		}
+	}	
+}
+
+
+function getRankTitle(obj)
+{
+	if ( location.pathname.indexOf("pclist") == 1  )
+		$(obj).innerHTML = '<a href="http://game.17173.com/index_data.shtml" target="_blank">下载排行榜</a>';
+	else
+		$(obj).innerHTML = '下载排行榜>>';
+}
+</script>
+<script>
+//关闭pandora和sjs
+window.pandora = {overOldPandora:false}
+window.ued = window.ued || {sjs:true}
+</script>
+
+
+
+<script type="text/javascript" src="//ue.17173cdn.com/a/lib/vda/seed.js"></script>
+
+<script type="text/javascript" src="//ue.17173cdn.com/a/lib/v4/pandora2.js?t=202109141809"></script>
+<script type="text/javascript" src="//ue.17173cdn.com/a/lib/v5/sjs/sjs.js?t=202109131413"></script>
+
+
+
+
+
+
+
+</head>
+<body>
+<!--头部-->
+<div id="top"><!--
+<script type="text/javascript" src="http://news.17173.com/2014/popupnews.config.js" charset="gbk"></script>
+<script type="text/javascript" src="http://ue.17173cdn.com/a/money/2014/zq-pop/js/popupnews.js"></script>
+-->
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="//ue.17173cdn.com/a/module/ie67/2021/browser-update-min.js"></script>
+<![endif]-->
+
+<!--全站统一广告-->
+<script>
+    function enterIn(evt){
+        var evt=evt?evt:(window.event?window.event:null);//兼容IE和FF
+        if (evt.keyCode==13){
+            return chkSearchForm();
+        }
+    }
+</script>
+<div id="commontop_adv"></div>
+<script>getTopAdv('commontop_adv');</script>
+<!--全站统一头部导航栏-->
+<div class="commontop_banner">
+    <dt class="commontop_bannerl">
+        <a href="http://www.17173.com" target="_blank"><img src="http://i1.17173.itc.cn/netbar/newimages/dingtiao_1.gif" alt="" width="96" height="22" border="0" /></a><a href="http://download.17173.com" ><img src="http://images.17173.com/downsite/images/download_toplogo.gif" alt=""  border="0" /></a>
+    </dt>
+    <dt class="commontop_bannerr">
+        <a href="http://news.17173.com" target="_blank">看新闻</a> - <a href="http://newgame.17173.com/" target="_blank">找游戏</a> - <a href="http://game.17173.com/" target="_blank">单机站</a> - <a href="http://bbs.17173.com/" target="_blank">社区</a> -  <a href="http://v.17173.com/" target="_blank">视频</a> - <a href="http://download.17173.com/" target="_blank">下载</a> - <a href="http://kf.yeyou.com/" target="_blank" class="cRed">热门网页游戏</a>
+    </dt>
+
+</div>
+
+
+<!--头部标志及广告-->
+<div class="commontop_top">
+    <div class="top_icon">
+        &nbsp;&nbsp;&nbsp;<a href="/"><img src="http://ue1.17173cdn.com/a/lib/logo/download.png" alt="17173下载站" border="0"/></a> </div>
+    <div class="top_advers AdDownloadBannerTop">
+        <!--<IFRAME align=center marginWidth=0 marginHeight=0 src="/x/down01banner77080.htm" frameBorder=0 width=770 scrolling=no height=80></IFRAME>-->
+    </div>
+</div>
+
+</div>
+<div id="banner">
+<!--搜索框关键词广告-->
+<script src="/web/keyword.js"></script>
+<script>
+/**
+*搜索跳转
+*/
+function chkSearchForm()
+{
+	
+	if ($F('searchkey') == "" && ($('classid').value  == "" || $('classid').value == "0"))
+	{
+		$('searchkey').focus();
+		return false;
+	}
+	
+	formUrl = location.pathname.indexOf("pclist") != -1 ? "/pclist/t-0/a-0/s-0/k-0/" : listUrl;
+	var searchkeyword = encodeURI($('searchkey').value);
+	
+	if ($('searchkey').value != "")
+		formUrl = getListUrl(formUrl, "k", searchkeyword );
+	
+		
+	if ($('classid').value != "" &&  $('classid').value != "0"  )
+	{
+		if ( $("classid").value != 18 )
+			formUrl =  getListUrl(formUrl, "c", $('classid').value);
+		else{
+			formUrl = getListUrl("/pclist/t-0/a-0/s-0/k-0/", "k", searchkeyword );
+		}
+		
+	}
+	
+	location.href=formUrl;
+	//$('searchForm').action =formUrl;
+	return ;
+}
+//热门链接
+var hotLinkUrl  = getListUrl(listUrl, "k", '天龙八部');
+
+
+function setSearchClass(obj)
+{
+	value = 0 ;
+	
+	if ( location.pathname.indexOf("pclist") == 1 )
+		val = 18;
+	else{
+		paramArr = getParameterByUrl(); //根据url得到参数
+		val   = paramArr[1];//分类id
+	}
+	
+	for(var i=0;i<$(obj).length;i++)
+	{
+		if( $(obj).options[i].value== val )
+		{
+			$(obj).options[i].selected=true;
+			break;
+		}
+	}	
+}
+
+
+function getRankTitle(obj)
+{
+	if ( location.pathname.indexOf("pclist") == 1  )
+		$(obj).innerHTML = '<a href="http://game.17173.com/index_data.shtml" target="_blank">下载排行榜</a>';
+	else
+		$(obj).innerHTML = '<a href="/rank/">下载排行榜>></a>';
+}
+
+
+
+function getSearchHtml(obj)
+{
+	if ( !$(obj) )
+		return;
+		
+	if ( location.pathname == "" || location.pathname == "/" || location.pathname.indexOf("index") != -1  )
+	{
+		getIndexDownInfo("index_today", obj);
+		$(obj).innerHTML = $(obj).innerHTML;
+	}else{
+	
+	 //'<form name="searchForm" id="searchForm" method="post"  onSubmit="return chkSearchForm();">'+
+	 //<option value="18">PC</option
+	 $(obj).innerHTML = 
+	 '搜索 <input type="text" class="text" id="searchkey" name="searchkey"  style="color:#FF0000" onFocus="this.value=\'\'" onkeydown="enterIn(event);" />'+
+	 '&nbsp;<select id="classid" name="classid"><option value="0">网游</option><option value="10">客户端</option>'+
+	 '<option value="11">补丁</option><option value="12">动画</option><option value="13">壁纸</option>'+
+	 '<option value="16">音乐</option><option value="15">其它</option>></select>'+
+	 '<input type="button" name="Submit" value="搜索" class="searchButton" onClick="return chkSearchForm();">';
+	 /*
+	 '<span class="top_hotkeyword">&nbsp;热门关键字：<a href="/11205/">诺亚传说</a>  <a href="/118/" target="_blank">梦幻西游</a>   <a href="/10095/" target="_blank">天龙八部OL</a>   '+
+	 '<a href="/121/" target="_blank">魔兽世界</a> '+
+	 '<a href="/20061/" target="_blank">三国无双</a>   <a href="/1074/" target="_blank">劲舞团</a>   '+
+	 '<a href="/10055/" target="_blank">跑跑卡丁车</a>   <a href="/20011/" target="_blank">地下城与勇士</a></span>';
+	 */
+			  
+	  setSearchClass('classid');
+	  $('searchkey').value = typeof (keyword) == "undefined" ? "" : keyword;
+   }
+}
+
+</script>
+<!--下载站通用导航栏-->
+<div class="top_banner">
+  <!--导航按钮-->
+  <div class="top_banner_top">
+    <ul>
+     <li class="index_l_banner" ></li>
+      <li class="index_banner" id="1_m">
+        <dt><a href="/">下载站首页</a></dt>
+      </li>
+      <li class="class_banner">
+        <dt><a href="/list/g-0/c-10/t-0/a-0/f-0/y-0/h-0/k-0/">客户端</a></dt>
+      </li>
+      <li class="split_banner"></li>
+      <li class="class_banner">
+        <dt><a href="/list/g-0/c-11/t-0/a-0/f-0/y-0/h-0/k-0/">补 丁</a></dt>
+      </li>
+      <li class="split_banner"></li>
+      <li class="class_banner">
+        <dt><a href="/list/g-0/c-12/t-0/a-0/f-0/y-0/h-0/k-0/">动 画</a></dt>
+      </li>
+      <li class="split_banner"></li>
+      <li class="class_banner">
+        <dt><a href="/list/g-0/c-13/t-0/a-0/f-0/y-0/h-0/k-0/">壁 纸</a></dt>
+      </li>
+      <li class="split_banner"></li>
+      <li class="class_banner">
+        <dt><a href="/list/g-0/c-16/t-0/a-0/f-0/y-0/h-0/k-0/">音 乐</a></dt>
+      </li>
+      <li class="split_banner"></li>
+      <li class="class_banner">
+        <dt><a href="/list/g-0/c-15/t-0/a-0/f-0/y-0/h-0/k-0/">其 它</a></dt>
+      </li>
+      <li class="split_banner"></li>
+     
+      <li class="class_banner">
+        <dt><img src="http://images.17173.com/download/images/new.gif" width="28" height="14" align="absmiddle"/><a href="/list/g-10076/c-10/t-0/a-0/f-0/y-0/h-0/k-0/">PC</a></dt>
+      </li>
+	  <!--
+       <li class="class_banner"><dt>&nbsp;</dt></li>
+	   -->
+      <li class="split_banner"></li>
+      <li class="class_banner">
+      	<dt>&nbsp;</dt>
+       </li>
+      
+      <li class="blank_banner"><dt>&nbsp;</dt></li>
+      <li class="r_banner"><dt>&nbsp;</dt></li>
+    </ul>
+  </div>
+  <div class="top_banner_bottom">
+    <ul>
+      <li class="l_bottombanner"></li>
+      <li class="m_bottombanner">
+		<dt>
+			<span id="bannerinfo"></span>
+			<script>getSearchHtml('bannerinfo');</script>
+			<span class="top_hotkeyword">&nbsp;热门关键字：<a href="/11261/" target="_blank">上古世纪</a> <a href="/1000297/" target="_blank">传奇永恒</a> <a href="/1000296/" target="_blank">恋战</a>  <a href="/118/" target="_blank" target="_blank">梦幻西游</a>  <a href="/10898/" target="_blank" target="_blank">英雄联盟</a>  <a href="/10345/" target="_blank" target="_blank">穿越火线</a>  <a href="/1000061/" target="_blank" target="_blank">龙武</a>  <a href="/10520/" target="_blank" target="_blank">QQ飞车</a>  <a href="/11961/" target="_blank" target="_blank">射雕英雄传OL</a></span>
+		</dt>
+      </li>
+      <li class="r_bottombanner"><dt>&nbsp;</dt>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</div>
+
+<!--下载站导航栏-->
+<div id="wrapper">
+
+	
+  <div class="wrapper_top">
+    	<div class="wrapper_top_top"></div>
+         <div class="wrapper_top_main">
+            <div class="wrapper_top_left">
+           	  <div class="index_search">
+         <!-- <form name="searchForm" id="searchForm" method="post"  onSubmit="return chkSearchForm();">-->
+                	<div class="index_search_key">
+                       <div>
+                      搜索选项&nbsp;
+                      <select id="classid" name="classid" style="width:160px !important; width:158px;">
+                        <option value="0">网游</option>
+                        <option value="10">客户端</option>
+                        <option value="11">补丁</option>
+                        <option value="12">动画</option>
+                        <option value="13">壁纸</option>
+                        <option value="16">音乐</option>
+                        <option value="15">其它</option>
+                      </select>
+                      </div>
+                      <div>
+                       	游戏搜索&nbsp;
+                   	     <input type="text" class="text" id="searchkey" name="searchkey"   style="color:#FF0000" onFocus="this.value=''" onkeydown="enterIn(event);" />
+						 <script>$('searchkey').value = typeof (keyword) == "undefined" ? "" : keyword;</script>
+                      </div>
+                    </div>
+               	    <div class="index_search_butt">
+               	      <input type="image" src="http://images.17173.com/downsite/images/search.jpg" onclick="return chkSearchForm();" />
+               	    </div>
+         <!--</form>-->
+              </div>
+                <div class="game-list">
+                    <div class="con"><span class="item1 fb">热门关键字</span><span class="item2">|</span><span class="item"><a 
+href="http://download.17173.com/11057/10/64341/" target="_blank">最终幻想14</a></span> <span class="item"><a href="http://download.17173.com/11302/10/62751/" target="_blank">《神武4》电脑版</a></span> <span class="item"><a href="http://download.17173.com/1034670//" target="_blank">梦想世界3</a></span> <span class="item"><a href="http://download.17173.com/10268/" target="_blank">剑网3</a></span> <span class="item"><a href="http://download.17173.com/118/" target="_blank">梦幻西游</a></span> <span class="item"><a href="http://download.17173.com/1000551/" target="_blank">灵山奇缘</a></span> <span class="item"><a href="http://hao.17173.com/gift-info-47020.html" target="_blank"><font color="red"></font></a></span></div>
+                </div>
+                <div class="index_search_type">
+                  <dt><span class="search_game_type">游戏类型</span>&nbsp;
+                  <span class="search_game_split">|</span> 
+                  <span id="gamespecial">
+				   <a href="/list/g-0/c-0/t-11/a-0/f-0/y-0/h-0/k-0/">角色扮演</a>
+				   <a href="/list/g-0/c-0/t-12/a-0/f-0/y-0/h-0/k-0/">运动休闲</a>
+				   <a href="/list/g-0/c-0/t-13/a-0/f-0/y-0/h-0/k-0/">射击游戏</a>
+				   <a href="/list/g-0/c-0/t-14/a-0/f-0/y-0/h-0/k-0/">回合游戏</a>
+				   
+				  </span>
+			      </dt>
+                </div>
+                <div class="index_search_type"><dt><span class="search_game_area">游戏地区</span>&nbsp;
+                	<span class="search_game_split">|</span> 
+                	<span id="gamearea" ><a href="/list/g-0/c-0/t-0/a-2/f-0/y-0/h-0/k-0/">大陆</a>
+                 <a href="/list/g-0/c-0/t-0/a-3/f-0/y-0/h-0/k-0/">欧美</a>
+                 <a href="/list/g-0/c-0/t-0/a-4/f-0/y-0/h-0/k-0/">港台</a>
+                  <a href="/list/g-0/c-0/t-0/a-5/f-0/y-0/h-0/k-0/">韩国</a>
+                  <a href="/list/g-0/c-0/t-0/a-6/f-0/y-0/h-0/k-0/">日本</a>
+                  <a href="/list/g-0/c-0/t-0/a-7/f-0/y-0/h-0/k-0/">其他</a>
+                  </span>
+					
+                 
+              </div>
+                <div class="index_search_type"><dt><span class="search_game_face">游戏画面</span>&nbsp; 
+               	 	<span class="search_game_split">|</span> 
+                	<span id="gameface">  <a href="/list/g-0/c-0/t-0/a-0/f-1/y-0/h-0/k-0/">3D</a>
+                    <a href="/list/g-0/c-0/t-0/a-0/f-2/y-0/h-0/k-0/">2D</a>
+                    <a href="/list/g-0/c-0/t-0/a-0/f-3/y-0/h-0/k-0/">2.5D</a></span>
+				</dt>
+               
+              </div>
+                
+            </div>
+            <div class="wrapper_top_right">
+               <!--游戏列表页-->
+                 <div class="gamelist">
+                   <div class="gamelist_left">
+                    <div id="game_1" class="game_sel"><font class="fontcolor_qblue">>></font><a href="javascript:getGameList('hot','gamelist_info','game_1');">&nbsp; 热门游戏</a></div>
+                    <div id="game_3" class="game_unsel"><font class="fontcolor_qblue">>></font><a href="javascript:getGameList('abcd','gamelist_info','game_3');">&nbsp; ABCD</a></div>
+                    <div id="game_4" class="game_unsel"><font class="fontcolor_qblue">>></font><a href="javascript:getGameList('efgh','gamelist_info','game_4');">&nbsp; EFGH</a></div>
+                    <div id="game_5" class="game_unsel"><font class="fontcolor_qblue">>></font><a href="javascript:getGameList('ijkl','gamelist_info','game_5');">&nbsp; IJKL</a></div>
+                    <div id="game_6" class="game_unsel"><font class="fontcolor_qblue">>></font><a href="javascript:getGameList('mnop','gamelist_info','game_6');">&nbsp; MNOP</a></div>
+                    <div id="game_7" class="game_unsel"><font class="fontcolor_qblue">>></font><a href="javascript:getGameList('qrst','gamelist_info','game_7');">&nbsp; QRST</a></div>
+                    <div id="game_8" class="game_unsel"><font class="fontcolor_qblue">>></font><a href="javascript:getGameList('wxyz','gamelist_info','game_8');">&nbsp; WXYZ</a></div>
+                  </div>
+                  <div class="gb-tab-pn" id="gamelist_info">
+                    <div class="tab-con">
+<ul class="list-tag0">
+      <li><a href="/1034670/" title="梦想世界3" target="_blank">梦想世界3</a></li>
+     <li><a href="/118/" title="梦幻西游" target="_blank">梦幻西游</a></li>
+     <li><a href="/20011/" title="地下城与勇士" target="_blank">地下城与勇士</a></li>
+      <li><a href="/11857/" title="古剑奇谭网络版" target="_blank">古剑奇谭网络版</a></li>
+      <li><a href="/11904/" title="吞噬苍穹" target="_blank">吞噬苍穹</a></li>
+      <li><a href="/1000550/" title="鬼谷无双" target="_blank">鬼谷无双</a></li>
+      <li><a href="/1000425/" title="不败传说" target="_blank">不败传说</a></li>
+      <li><a href="/11925/" title="仙侠世界" target="_blank">仙侠世界</a></li>
+      <li><a href="/1000388/" title="决战轩辕" target="_blank">决战轩辕</a></li>
+      <li><a href="/10898/" title="英雄联盟" target="_blank">英雄联盟</a></li>
+      <li><a href="/10874/" title="第九大陆" target="_blank">第九大陆</a></li>
+      <li><a href="/1000555/" title="仙侠世界2" target="_blank">仙侠世界2</a></li>
+      <li><a href="/11302/" title="《神武4》电脑版" target="_blank">《神武4》电脑版</a></li>
+      <li><a href="/11889/" title="逍遥江湖3" target="_blank">逍遥江湖3</a></li>
+      <li><a href="/10540/" title="王者世界" target="_blank">王者世界</a></li>
+      <li><a href="/32/" title="金庸群侠传" target="_blank">金庸群侠传</a></li>
+      <li><a href="/1000281/" title="盖世豪侠外传" target="_blank">盖世豪侠外传</a></li>
+      <li><a href="/1000650/" title="海之乐章2" target="_blank">海之乐章2</a></li>
+      <li><a href="/1031565/" title="原神" target="_blank">原神</a></li>
+      <li><a href="/1034262/" title="传奇之梦" target="_blank">传奇之梦</a></li>
+      <li><a href="/1034721/" title="英魂之刃" target="_blank">英魂之刃</a></li>
+      <li><a href="/1000497/" title="桃花源记2" target="_blank">桃花源记2</a></li>
+      <li><a href="/10613/" title="激战2" target="_blank">激战2</a></li>
+      <li><a href="/1000366/" title="战国破坏神" target="_blank">战国破坏神</a></li>
+      <li><a href="/12002/" title="血杀英雄" target="_blank">血杀英雄</a></li>
+      <li><a href="/11330/" title="桃花源记" target="_blank">桃花源记</a></li>
+      <li><a href="/1000264/" title="装甲战争" target="_blank">装甲战争</a></li>
+      <li><a href="/1000083/" title="圣王重制版" target="_blank">圣王重制版</a></li>
+      </ul>
+</div>
+
+
+                  </div>
+                </div>
+                 <!--游戏列表页-->
+                 
+                 <!--厂商列表-->
+                 <div class="gamelist_company">
+                 	<ul>
+                    	<li ><a href="/list/g-0/c-0/t-0/a-0/f-0/y-265/"  target="_blank">搜狐<br />畅游</a></li><li ><a href="/list/g-0/c-0/t-0/a-0/f-0/y-106/"  target="_blank">网易<br />游戏</a></li><li ><a href="/list/g-0/c-0/t-0/a-0/f-0/y-87/"  target="_blank">盛大<br />游戏</a></li><li ><a href="/list/g-0/c-0/t-0/a-0/f-0/y-127/"  target="_blank">腾讯<br />游戏</a></li><li ><a href="/list/g-0/c-0/t-0/a-0/f-0/y-360/"  target="_blank">金山<br />软件</a></li><li ><a href="/list/g-0/c-0/t-0/a-0/f-0/y-32/"  target="_blank">完美<br />世界</a></li><li ><a href="/list/g-0/c-0/t-0/a-0/f-0/y-220/"  target="_blank">世纪<br />天成</a></li><li ><a href="/list/g-0/c-0/t-0/a-0/f-0/y-130/"  target="_blank">游戏<br />蜗牛</a></li>
+                   </ul>
+                 </div>
+            </div>
+        </div>   
+	  <div class="wrapper_top_bottom"></div>
+</div>	
+		
+		
+	
+	<!--通栏广告(960x60)-->
+	<div class="middel_advers AdDownloadBanner1">
+	</div>
+	
+	
+	
+	<!--推荐下载信息框架-->
+	<div class="recommanddown">
+		
+        <!--左边显示推荐信息-->
+		<div class="recommanddown_left">
+		
+			<!--热门下载信息-->
+			<div class="newdownhot">
+				
+				<div class="newdownhot_con">
+                	<div class="newdownhot_top">网游推荐下载</div>
+					<div class="newdownhot_info">
+						<ul><li class="newdownhotinfo_img"><a href="/118/10/62011/" target="_blank"><img src="http://images.17173.com/2022/downsite/uploadimg/2022/02/25/1645753812.jpg" /></a></li><li class="newdownhotinfo_info">《梦幻西游》（曾用名《梦幻西游2》，现更名《梦幻西游... <a href="/118/10/62011/" target="_blank"><img src="http://images.17173.com/downsite/images/xiazai_1.gif" /></a></li></ul><ul><li class="newdownhotinfo_img"><a href="/1000650/10/10901815/" target="_blank"><img src="http://images.17173.com/2020/downsite/uploadimg/2020/10/15/1602728873.jpg" /></a></li><li class="newdownhotinfo_info">《海之乐章2》是由珠海心游独家代理运营的3D动漫Q版幻... <a href="/1000650/10/10901815/" target="_blank"><img src="http://images.17173.com/downsite/images/xiazai_1.gif" /></a></li></ul><ul><li class="newdownhotinfo_img"><a href="/12002/10/64359/" target="_blank"><img src="http://images.17173.com/2020/downsite/uploadimg/2020/10/19/1603071392.jpg" /></a></li><li class="newdownhotinfo_info">《血杀英雄》是心游科技代理、传奇教父陈浩健倾心打造... <a href="/12002/10/64359/" target="_blank"><img src="http://images.17173.com/downsite/images/xiazai_1.gif" /></a></li></ul>
+					</div> 
+				</div>
+			</div>
+            
+			
+			<!--下载排行-->
+		    <div class="newdownhot">
+				
+				<div class="newdownhot_con">
+                	<div class="newdownhot_top"><span></span>下载排行榜</div>
+					<div class="newdownrank_info">
+					  <ul>
+                       		<li class="newdownrank_info_local"><dt class="local_red">1</dt></li><li class="newdownrank_info_split">|</li><li class="newdownrank_info_title"><a href="/10898/" class="linktitle" target="_blank"  title="英雄联盟">英雄联盟</a></li><li class="newdownrank_info_num">31011</li><li class="newdownrank_info_local"><dt class="local_red">2</dt></li><li class="newdownrank_info_split">|</li><li class="newdownrank_info_title"><a href="/11382/" class="linktitle" target="_blank"  title="流放之路">流放之路</a></li><li class="newdownrank_info_num">23245</li><li class="newdownrank_info_local"><dt class="local_red">3</dt></li><li class="newdownrank_info_split">|</li><li class="newdownrank_info_title"><a href="/34/" class="linktitle" target="_blank"  title="热血传奇">热血传奇</a></li><li class="newdownrank_info_num">21834</li><li class="newdownrank_info_local"><dt class="local_hc">4</dt></li><li class="newdownrank_info_split">|</li><li class="newdownrank_info_title"><a href="/10268/" class="linktitle" target="_blank"  title="剑网3">剑网3</a></li><li class="newdownrank_info_num">19223</li><li class="newdownrank_info_local"><dt class="local_hc">5</dt></li><li class="newdownrank_info_split">|</li><li class="newdownrank_info_title"><a href="/10095/" class="linktitle" target="_blank"  title="新天龙八部">新天龙八部</a></li><li class="newdownrank_info_num">11214</li><li class="newdownrank_info_local"><dt class="local_hc">6</dt></li><li class="newdownrank_info_split">|</li><li class="newdownrank_info_title"><a href="/10628/" class="linktitle" target="_blank"  title="洛奇英雄传">洛奇英雄传</a></li><li class="newdownrank_info_num">9229</li><li class="newdownrank_info_local"><dt class="local_hc">7</dt></li><li class="newdownrank_info_split">|</li><li class="newdownrank_info_title"><a href="/10345/" class="linktitle" target="_blank"  title="穿越火线">穿越火线</a></li><li class="newdownrank_info_num">8772</li><li class="newdownrank_info_local"><dt class="local_hc">8</dt></li><li class="newdownrank_info_split">|</li><li class="newdownrank_info_title"><a href="/11290/" class="linktitle" target="_blank"  title="坦克世界">坦克世界</a></li><li class="newdownrank_info_num">8767</li><li class="newdownrank_info_local"><dt class="local_hc">9</dt></li><li class="newdownrank_info_split">|</li><li class="newdownrank_info_title"><a href="/10055/" class="linktitle" target="_blank"  title="跑跑卡丁车">跑跑卡丁车</a></li><li class="newdownrank_info_num">8158</li><li class="newdownrank_info_local"><dt class="local_hc">10</dt></li><li class="newdownrank_info_split">|</li><li class="newdownrank_info_title"><a href="/118/" class="linktitle" target="_blank"  title="梦幻西游">梦幻西游</a></li><li class="newdownrank_info_num">8093</li>
+                      </ul>
+					</div> 
+				</div>
+			</div>
+			
+		</div>
+		
+		<!--右边：最新下载、最近测试表-->
+		<div class="recommanddown_right">
+          <!-- 最新信息列表 -->
+          <div class="recommanddown_right_left">
+            <!--最新客户端下载（带图) -->
+            <div class="newdown">
+              <div class="newdown_top"><span><a href="/list/g-0/c-10/t-0/a-0/f-0/y-0/h-0/k-0/" target="_blank">更多>></a></span>最新游戏</div>
+              <div class="newdown_info">
+                   <ul>
+                    <li><a href="/1000650/10/10901815/" target="_blank" ><img src="http://images.17173.com/2020/downsite/uploadimg/2020/10/15/1602728873.jpg" /></a><br /><a href="/1000650/10/10901815/" title="《海之乐章2》完整客户端" target="_blank">《海之乐章2》完整客</a></li><li><a href="/1025786/10/10901871/" target="_blank" ><img src="http://images.17173.com/2022/downsite/uploadimg/2022/02/25/1645753173.jpg" /></a><br /><a href="/1025786/10/10901871/" title="《超激斗梦境》最新客户端" target="_blank">《超激斗梦境》最新</a></li><li><a href="/12002/10/64359/" target="_blank" ><img src="http://images.17173.com/2020/downsite/uploadimg/2020/10/19/1603071392.jpg" /></a><br /><a href="/12002/10/64359/" title="《血杀英雄》最新完整客户端" target="_blank">《血杀英雄》最新完</a></li>
+                </ul>
+              </div>
+            </div>
+                
+                
+                <!--最新客户端下载列表-->
+                <div class="newdownlist">
+                  <div class="newdownlist_top">
+                     <ul >
+                      <li class="li_title">&nbsp; 客户端名称</li>
+                      <li class="li_time">发布时间</li>
+                      <li class="li_size">大小</li>
+                      <li class="li_down">下载</li>
+                     </ul>
+                  </div>
+                    <div class="newdownlist_info">
+                      <ul> <li class="li_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/1025786/10/10901871/" target="_blank">《超激斗梦境》最新客户端</a></li><li class="li_time">02-25</li><li class="li_size">5.65GB</li><li class="li_down"><a href="/1025786/10/10901871/" target="_blank"><img src="http://images.17173.com/download/images/xiazai_3.gif" /></a></li><li class="li_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/1000650/10/10901815/" target="_blank">《海之乐章2》完整客户端</a></li><li class="li_time">02-25</li><li class="li_size">1.92G</li><li class="li_down"><a href="/1000650/10/10901815/" target="_blank"><img src="http://images.17173.com/download/images/xiazai_3.gif" /></a></li><li class="li_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/12002/10/64359/" target="_blank">《血杀英雄》最新完整客户端</a></li><li class="li_time">02-24</li><li class="li_size">1.60GB</li><li class="li_down"><a href="/12002/10/64359/" target="_blank"><img src="http://images.17173.com/download/images/xiazai_3.gif" /></a></li><li class="li_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/1000497/10/10901675/" target="_blank">《桃花源记2》最新客户端</a></li><li class="li_time">02-23</li><li class="li_size">1.33G</li><li class="li_down"><a href="/1000497/10/10901675/" target="_blank"><img src="http://images.17173.com/download/images/xiazai_3.gif" /></a></li><li class="li_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/11330/10/62794/" target="_blank">《桃花源记》最新客户端</a></li><li class="li_time">02-21</li><li class="li_size">1.33G</li><li class="li_down"><a href="/11330/10/62794/" target="_blank"><img src="http://images.17173.com/download/images/xiazai_3.gif" /></a></li><li class="li_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/1031565/10/10901896/" target="_blank">《原神》最新客户端</a></li><li class="li_time">02-18</li><li class="li_size">96.8M</li><li class="li_down"><a href="/1031565/10/10901896/" target="_blank"><img src="http://images.17173.com/download/images/xiazai_3.gif" /></a></li><li class="li_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/1000425/10/10901579/" target="_blank">《不败传说》最新客户端</a></li><li class="li_time">02-14</li><li class="li_size">1.84GB</li><li class="li_down"><a href="/1000425/10/10901579/" target="_blank"><img src="http://images.17173.com/download/images/xiazai_3.gif" /></a></li><li class="li_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/10920/10/63502/" target="_blank">《远征》最新完整客户端</a></li><li class="li_time">02-14</li><li class="li_size">334MB</li><li class="li_down"><a href="/10920/10/63502/" target="_blank"><img src="http://images.17173.com/download/images/xiazai_3.gif" /></a></li><li class="li_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/1000555/10/10901750/" target="_blank">《仙侠世界2》最新客户端</a></li><li class="li_time">02-14</li><li class="li_size">16G</li><li class="li_down"><a href="/1000555/10/10901750/" target="_blank"><img src="http://images.17173.com/download/images/xiazai_3.gif" /></a></li><li class="li_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/118/10/62011/" target="_blank">《梦幻西游》最新客户端</a></li><li class="li_time">02-11</li><li class="li_size">2.88GB</li><li class="li_down"><a href="/118/10/62011/" target="_blank"><img src="http://images.17173.com/download/images/xiazai_3.gif" /></a></li></ul>
+                    </div>
+                </div>
+                
+                <!-- 其他类的下载列表(补丁、动画)-->
+                <div class="newdownlist">
+                    <div class="othernewdownlist_top">
+                        <ul>
+                            <li class="othernewdownlist_l"></li>
+                            <li class="othernewdownlist_m">
+                            	<dt class="othernewdownlist_sel" id="list_11">
+                                	<a href="javascript:getIndexDownList('indexnew_11','newdownlist_con','list_11');">补丁</a>
+                                </dt>
+                                <dt class="othernewdownlist_unsel" id="list_12">
+                                	<a href="javascript:getIndexDownList('indexnew_12','newdownlist_con','list_12');">动 画</a>
+                                </dt>
+                                <dt class="othernewdownlist_unsel" id="list_13">
+                                	<a href="javascript:getIndexDownList('indexnew_13','newdownlist_con','list_13');">壁 纸</a>
+                                </dt>
+                                <dt class="othernewdownlist_unsel" id="list_16">
+                                	<a href="javascript:getIndexDownList('indexnew_16','newdownlist_con','list_16');">音 乐</a>
+                                </dt>
+                                <dt class="othernewdownlist_unsel" id="list_15">
+                                	<a href="javascript:getIndexDownList('indexnew_15','newdownlist_con','list_15');">其 它</a>
+                                </dt>
+                                <dt class="othernewdownlist_more" id="infolist_more">
+                                <a href="/list/g-0/c-11/t-0/a-0/f-0/y-0/h-0/k-0/" target="_blank">更多>></a>
+                                </dt>
+                            </li>
+                            <li class="othernewdownlist_r"></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="othernewdownlist_info">
+                        <ul id="newdownlist_con">
+                             <li class="othernewdownlist_info_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/12053/11/64216/" target="_blank">《自由篮球》最新补丁</a></li><li class="othernewdownlist_info_time">2020-12-09</li> <li class="othernewdownlist_info_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/10055/11/47910/" target="_blank">《跑跑卡丁车》最新补丁</a></li><li class="othernewdownlist_info_time">2020-05-25</li> <li class="othernewdownlist_info_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/11948/11/10901518/" target="_blank">《使命召唤ol》V2.11.9.1_2.11.9.2_PATCH</a></li><li class="othernewdownlist_info_time">2015-09-16</li> <li class="othernewdownlist_info_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/11290/11/63140/" target="_blank">《坦克世界》官网最新补丁V0.9.10</a></li><li class="othernewdownlist_info_time">2015-09-10</li> <li class="othernewdownlist_info_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/11026/11/63548/" target="_blank">《仙途》最新补丁</a></li><li class="othernewdownlist_info_time">2015-02-09</li> <li class="othernewdownlist_info_title"><img src="http://images.17173.com/downsite/images/dian.gif" />&nbsp;<a href="/11298/11/10901517/" target="_blank">战神传奇V0.2.24.352更新补丁包</a></li><li class="othernewdownlist_info_time">2014-09-26</li>
+                        </ul></div></div>
+       	  </div>
+            
+            <!-- 网游测试表 -->
+            <div class="recommanddown_right_right">
+            <div class="testgamelist">
+                	<div class="testgamelist_top">网游测试时间表</div>
+                    <div class="testgamelist_info">
+                    	<div class="testgamelist_info_top">
+                            <ul>
+                                <li class="testgamelist_info_time">时间</li>
+                                <li class="testgamelist_info_title">游戏名</li>
+                                <li class="testgamelist_info_status">状态</li>
+                                <li class="testgamelist_info_down">下载</li>
+                            </ul>
+                    	</div>
+                   		<div class="testgamelist_info_info">
+                            <ul >
+                             <li class="testgamelist_info_time">03-16</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-11057.html" target="_blank">最终幻想14</a></li><li class="testgamelist_info_status">资料片</li><li class="testgamelist_info_down"><a href="/11057/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">03-04</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-10613.html" target="_blank">激战2</a></li><li class="testgamelist_info_status">资料片</li><li class="testgamelist_info_down"><a href="/10613/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">03-01</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-1034262.html" target="_blank">传奇之梦</a></li><li class="testgamelist_info_status">内测</li><li class="testgamelist_info_down"><a href="/1034262/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">03-01</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-1034262.html" target="_blank">传奇之梦</a></li><li class="testgamelist_info_status">内测</li><li class="testgamelist_info_down"><a href="/1034262/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">02-27</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-1000650.html" target="_blank">海之乐章2</a></li><li class="testgamelist_info_status">内测</li><li class="testgamelist_info_down"><a href="/1000650/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">02-25</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-12002.html" target="_blank">血杀英雄</a></li><li class="testgamelist_info_status">内测</li><li class="testgamelist_info_down"><a href="/12002/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">02-22</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-11330.html" target="_blank">桃花源记</a></li><li class="testgamelist_info_status">资料片</li><li class="testgamelist_info_down"><a href="/11330/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">02-19</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-1000386.html" target="_blank">天子剑</a></li><li class="testgamelist_info_status">内测</li><li class="testgamelist_info_down"><a href="/1000386/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">02-19</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-1000597.html" target="_blank">修魔世界</a></li><li class="testgamelist_info_status">内测</li><li class="testgamelist_info_down"><a href="/1000597/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">02-19</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-1000504.html" target="_blank">逆水寒</a></li><li class="testgamelist_info_status">资料片</li><li class="testgamelist_info_down"><a href="/1000504/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">02-18</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-1000555.html" target="_blank">仙侠世界2</a></li><li class="testgamelist_info_status">资料片</li><li class="testgamelist_info_down"><a href="/1000555/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">02-15</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-11689.html" target="_blank">剑啸九州</a></li><li class="testgamelist_info_status">资料片</li><li class="testgamelist_info_down"><a href="/11689/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">02-15</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-1000425.html" target="_blank">不败传说</a></li><li class="testgamelist_info_status">资料片</li><li class="testgamelist_info_down"><a href="/1000425/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">02-11</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-1000497.html" target="_blank">桃花源记2</a></li><li class="testgamelist_info_status">资料片</li><li class="testgamelist_info_down"><a href="/1000497/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">02-09</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-1000388.html" target="_blank">决战轩辕</a></li><li class="testgamelist_info_status">资料片</li><li class="testgamelist_info_down"><a href="/1000388/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">02-04</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-1034262.html" target="_blank">传奇之梦</a></li><li class="testgamelist_info_status">内测</li><li class="testgamelist_info_down"><a href="/1034262/" target="_blank" class="linktext" >下载</a></li><li class="testgamelist_info_time">02-01</li><li class="testgamelist_info_title textleft"><a href="http://newgame.17173.com/game-info-11925.html" target="_blank">仙侠世界</a></li><li class="testgamelist_info_status">资料片</li><li class="testgamelist_info_down"><a href="/11925/" target="_blank" class="linktext" >下载</a></li>
+                            </ul>
+                   		</div>
+                   </div>
+                </div></div></div>
+    </div>
+
+	<!--通栏广告(960x60)-->
+	<div class="middel_advers AdDownloadBanner2"></div>
+	
+	
+    <!--PC单机、壁纸-->
+	<div class="otherinfo">
+    
+      <div class="otherinfo_left">
+       		<!--
+            <div class="pclist">
+            
+            	<div class="pclist_top"><span><a href="/pclist/t-0/a-0/s-0/k-0/" target="_blank">更多>></a></span> <img src="http://images.17173.com/downsite/images/xiazai_4.gif" /> &nbsp;PC 游戏</div>
+                <div class="pclist_info">
+                  <ul>
+                    >>><li><a href="http://download.17173.com/pclist/t-0/a-0/s-0/k-0/"><img src="http://images.17173.com/2011/game/07/0710554439.jpg" /></a><br /><a href="http://download.17173.com/pclist/t-0/a-0/s-0/k-0/"  target="_blank" class="linktitle"  title="极度恐慌3">极度恐慌3</a></li><li><a href="http://download.17173.com/pclist/t-0/a-0/s-0/k-0/"><img src="http://images.17173.com/2011/game/04/0716294741.jpg" /></a><br /><a href="http://download.17173.com/pclist/t-0/a-0/s-0/k-0/"  target="_blank" class="linktitle"  title="激情滑雪：腾空版">激情滑雪：腾空版</a></li><li><a href="http://download.17173.com/pclist/t-0/a-0/s-0/k-0/"><img src="http://images.17173.com/2011/game/07/0710521623.jpg" /></a><br /><a href="http://download.17173.com/pclist/t-0/a-0/s-0/k-0/"  target="_blank" class="linktitle"  title="爱丽丝：疯狂回归">爱丽丝：疯狂回归</a></li><li><a href="http://download.17173.com/pclist/t-0/a-0/s-0/k-0/"><img src="http://images.17173.com/2011/game/07/0710510524.jpg" /></a><br /><a href="http://download.17173.com/pclist/t-0/a-0/s-0/k-0/"  target="_blank" class="linktitle"  title="拳皇13">拳皇13</a></li>
+                  </ul>
+                </div>
+               
+            </div>
+             -->
+            
+            
+             <div class="piclist">
+            	<div class="piclist_top"><span><a href="/list/g-0/c-13/t-0/a-0/f-0/y-0/h-0/k-0/">更多>></a></span> <img src="http://images.17173.com/downsite/images/xiazai_4.gif" /> &nbsp;游戏壁纸</div>
+                <div class="piclist_info">
+                	 <div class="piclist_info_left"><a href="http://download.17173.com/1000106/13/64419/  " target="_blank"><img src="http://images.17173.com/2014/downsite/uploadimg/2014/07/11/1405065287.jpg" /></a><br /><a href="http://download.17173.com/1000106/13/64419/  "  target="_blank" class="linktitle" >《洛神》四大职业首爆</a></div><div class="piclist_info_right"><ul class="piclist_info_split"><li><a href="/1000641/13/10901804/" target="_blank" ><img src="http://images.17173.com/2017/downsite/uploadimg/2017/07/13/1499929927.jpg" alt="《天之禁2》精美壁纸" /></a><br /><a href="/1000641/13/10901804/" target="_blank" class="linktitle"  title="《天之禁2》精美壁纸">《天之禁2》精美壁纸</a></li><li><a href="/1000583/13/10901779/" target="_blank" ><img src="http://images.17173.com/2017/downsite/uploadimg/2017/03/20/1490001428.jpg" alt="《守护神之觉醒》原画壁纸" /></a><br /><a href="/1000583/13/10901779/" target="_blank" class="linktitle"  title="《守护神之觉醒》原画壁纸">《守护神之觉醒》原画</a></li><li><a href="/1000597/13/10901772/" target="_blank" ><img src="http://images.17173.com/2017/downsite/uploadimg/2017/03/01/1488359122.jpg" alt="《修魔世界》精美壁纸" /></a><br /><a href="/1000597/13/10901772/" target="_blank" class="linktitle"  title="《修魔世界》精美壁纸">《修魔世界》精美壁纸</a></li></ul><ul><li><a href="/1000104/13/10901767/" target="_blank" ><img src="http://images.17173.com/2017/downsite/uploadimg/2017/01/26/1485401643.jpg" alt="《勇者斗恶龙X》新春壁纸" /></a><br /><a href="/1000104/13/10901767/" target="_blank" class="linktitle"  title="《勇者斗恶龙X》新春壁纸">《勇者斗恶龙X》新春壁</a></li><li><a href="/1000506/13/10901758/" target="_blank" ><img src="http://images.17173.com/2016/downsite/uploadimg/2016/12/21/1482294509.jpg" alt="《天衍录》梦幻星宠图鉴" /></a><br /><a href="/1000506/13/10901758/" target="_blank" class="linktitle"  title="《天衍录》梦幻星宠图鉴">《天衍录》梦幻星宠图</a></li><li><a href="/1000506/13/10901754/" target="_blank" ><img src="http://images.17173.com/2016/downsite/uploadimg/2016/12/08/1481185504.jpg" alt="《天衍录》战祸级BOSS强势来袭 壁纸" /></a><br /><a href="/1000506/13/10901754/" target="_blank" class="linktitle"  title="《天衍录》战祸级BOSS强势来袭 壁纸">《天衍录》战祸级BOSS</a></li></ul></div>
+                </div>
+            </div>
+            
+      </div>
+        
+        
+        <div class="otherinfo_right">
+        
+        	  
+            <!--常用工具-->
+         	<div class="toolslist">
+            	<div class="toolslist_top">常用工具</div>
+                <div class="toolslist_info">
+                	 <ul><li ><dt class="tootslist_title">&nbsp;<img src="http://images.17173.com/downsite/images/jianhao.jpg" />&nbsp;&nbsp;系统应用</dt><dt class="toolslist_item">&middot;  <a href="/10678/10/10901834/" target="_blank" title="福昕阅读器领鲜版">福昕阅读器领鲜</a></dt><dt class="toolslist_item">&middot;  <a href="/10678/15/55050/" target="_blank" title="Google Chrome（64.0.3282.140）">Google Chrome（</a></dt><dt class="toolslist_item">&middot;  <a href="/10678/15/55207/" target="_blank" title="搜狗拼音输入法最新版">搜狗拼音输入法</a></dt></li><li ><dt class="tootslist_title">&nbsp;<img src="http://images.17173.com/downsite/images/jianhao.jpg" />&nbsp;&nbsp;系统安全</dt><dt class="toolslist_item">&middot;  <a href="/10678/15/55919/" target="_blank" title="MSE微软安全套装简体中文版 64位">MSE微软安全套装</a></dt><dt class="toolslist_item">&middot;  <a href="/10678/15/46753/" target="_blank" title="360杀毒v5.0正式版">360杀毒v5.0正式</a></dt><dt class="toolslist_item">&middot;  <a href="/10678/15/55920/" target="_blank" title="360安全卫士 v10.0正式版">360安全卫士 v1</a></dt></li><div style="clear:both"></div></ul><ul><li ><dt class="tootslist_title">&nbsp;<img src="http://images.17173.com/downsite/images/jianhao.jpg" />&nbsp;&nbsp;游戏工具</dt><dt class="toolslist_item">&middot;  <a href="/10678/15/64409/" target="_blank" title="《TGP腾讯游戏平台》最新客户端">《TGP腾讯游戏平</a></dt><dt class="toolslist_item">&middot;  <a href="/10678/15/64336/" target="_blank" title="安卓模拟器——靠谱助手">安卓模拟器——</a></dt><dt class="toolslist_item">&middot;  <a href="/10678/14/64399/" target="_blank" title="《迅游》2014版">《迅游》2014版</a></dt></li><li ><dt class="tootslist_title">&nbsp;<img src="http://images.17173.com/downsite/images/jianhao.jpg" />&nbsp;&nbsp;游戏平台</dt><dt class="toolslist_item">&middot;  <a href="/10678/15/48414/" target="_blank" title="游戏橘子">游戏橘子</a></dt><dt class="toolslist_item">&middot;  <a href="/10678/15/48415/" target="_blank" title="steam">steam</a></dt><dt class="toolslist_item">&middot;  <a href="/10678/15/64434/" target="_blank" title="爱玩游戏大厅">爱玩游戏大厅</a></dt></li><div style="clear:both"></div></ul><ul><li ><dt class="tootslist_title">&nbsp;<img src="http://images.17173.com/downsite/images/jianhao.jpg" />&nbsp;&nbsp;系统驱动</dt><dt class="toolslist_item">&middot;  <a href="/10678/15/55100/" target="_blank" title="鲁大师">鲁大师</a></dt><dt class="toolslist_item">&middot;  <a href="/10678/15/55108/" target="_blank" title="驱动精灵">驱动精灵</a></dt><dt class="toolslist_item">&middot;  <a href="/10678/15/55110/" target="_blank" title="驱动人生6.0">驱动人生6.0</a></dt></li><li ><dt class="tootslist_title">&nbsp;<img src="http://images.17173.com/downsite/images/jianhao.jpg" />&nbsp;&nbsp;游戏必备</dt><dt class="toolslist_item">&middot;  <a href="/10678/15/54568/" target="_blank" title="游戏运行库合集安装包">游戏运行库合集</a></dt><dt class="toolslist_item">&middot;  <a href="/10678/15/3122/" target="_blank" title="Daemon Tools Lite v4.35.6">Daemon Tools L</a></dt><dt class="toolslist_item">&middot;  <a href="/13/15/54569/" target="_blank" title="Fraps 3.5.99">Fraps 3.5.99</a></dt></li><div style="clear:both"></div></ul><ul></ul>
+                </div>
+            </div>
+            <!--常用工具-->
+        </div>
+    </div>
+    
+    <!--通栏广告(960x60)-->
+    <div class="middel_advers AdDownloadBanner3"></div>
+    
+    <!-- 游戏厂商 -->
+   
+     <div class="companylist"><div class="companylist_wrapper"><div class="companylist_top"><ul><li class="companylist_title"><img src="http://images.17173.com/downsite/images/xiazai_4.gif" />&nbsp;<a href="/list/g-0/c-0/t-0/a-0/f-0/y-265/"  target="_blank">搜狐畅游</a></li><li class="companylist_sel" id="companyinfo265_10"><a href="javascript:getCompanyDownList(265,10)">客户端</a></li><li class="companylist_unsel" id="companyinfo265_11"><a href="javascript:getCompanyDownList(265,11)">补丁</a></li><li class="companylist_unsel" id="companyinfo265_12"><a href="javascript:getCompanyDownList(265,12)">动画</a></li><li class="companylist_unsel" id="companyinfo265_13"><a href="javascript:getCompanyDownList(265,13)">壁纸</a></li><li class="companylist_unsel" id="companyinfo265_16"><a href="javascript:getCompanyDownList(265,16)">音乐</a></li><li class="companylist_unsel" id="companyinfo265_15"><a href="javascript:getCompanyDownList(265,15)">其它</a></li></ul></div><div class="companylist_info"><ul id="company265_con"></ul></div><script>getCompanyDownList(265,10);</script></div><div class="companylistsplit"></div><div class="companylist_wrapper"><div class="companylist_top"><ul><li class="companylist_title"><img src="http://images.17173.com/downsite/images/xiazai_4.gif" />&nbsp;<a href="/list/g-0/c-0/t-0/a-0/f-0/y-106/"  target="_blank">网易</a></li><li class="companylist_sel" id="companyinfo106_10"><a href="javascript:getCompanyDownList(106,10)">客户端</a></li><li class="companylist_unsel" id="companyinfo106_11"><a href="javascript:getCompanyDownList(106,11)">补丁</a></li><li class="companylist_unsel" id="companyinfo106_12"><a href="javascript:getCompanyDownList(106,12)">动画</a></li><li class="companylist_unsel" id="companyinfo106_13"><a href="javascript:getCompanyDownList(106,13)">壁纸</a></li><li class="companylist_unsel" id="companyinfo106_16"><a href="javascript:getCompanyDownList(106,16)">音乐</a></li><li class="companylist_unsel" id="companyinfo106_15"><a href="javascript:getCompanyDownList(106,15)">其它</a></li></ul></div><div class="companylist_info"><ul id="company106_con"></ul></div><script>getCompanyDownList(106,10);</script></div></div><div class="companylist"><div class="companylist_wrapper"><div class="companylist_top"><ul><li class="companylist_title"><img src="http://images.17173.com/downsite/images/xiazai_4.gif" />&nbsp;<a href="/list/g-0/c-0/t-0/a-0/f-0/y-87/"  target="_blank">盛大游戏</a></li><li class="companylist_sel" id="companyinfo87_10"><a href="javascript:getCompanyDownList(87,10)">客户端</a></li><li class="companylist_unsel" id="companyinfo87_11"><a href="javascript:getCompanyDownList(87,11)">补丁</a></li><li class="companylist_unsel" id="companyinfo87_12"><a href="javascript:getCompanyDownList(87,12)">动画</a></li><li class="companylist_unsel" id="companyinfo87_13"><a href="javascript:getCompanyDownList(87,13)">壁纸</a></li><li class="companylist_unsel" id="companyinfo87_16"><a href="javascript:getCompanyDownList(87,16)">音乐</a></li><li class="companylist_unsel" id="companyinfo87_15"><a href="javascript:getCompanyDownList(87,15)">其它</a></li></ul></div><div class="companylist_info"><ul id="company87_con"></ul></div><script>getCompanyDownList(87,10);</script></div><div class="companylistsplit"></div><div class="companylist_wrapper"><div class="companylist_top"><ul><li class="companylist_title"><img src="http://images.17173.com/downsite/images/xiazai_4.gif" />&nbsp;<a href="/list/g-0/c-0/t-0/a-0/f-0/y-127/"  target="_blank">腾讯</a></li><li class="companylist_sel" id="companyinfo127_10"><a href="javascript:getCompanyDownList(127,10)">客户端</a></li><li class="companylist_unsel" id="companyinfo127_11"><a href="javascript:getCompanyDownList(127,11)">补丁</a></li><li class="companylist_unsel" id="companyinfo127_12"><a href="javascript:getCompanyDownList(127,12)">动画</a></li><li class="companylist_unsel" id="companyinfo127_13"><a href="javascript:getCompanyDownList(127,13)">壁纸</a></li><li class="companylist_unsel" id="companyinfo127_16"><a href="javascript:getCompanyDownList(127,16)">音乐</a></li><li class="companylist_unsel" id="companyinfo127_15"><a href="javascript:getCompanyDownList(127,15)">其它</a></li></ul></div><div class="companylist_info"><ul id="company127_con"></ul></div><script>getCompanyDownList(127,10);</script></div></div><div class="companylist"><div class="companylist_wrapper"><div class="companylist_top"><ul><li class="companylist_title"><img src="http://images.17173.com/downsite/images/xiazai_4.gif" />&nbsp;<a href="/list/g-0/c-0/t-0/a-0/f-0/y-360/"  target="_blank">金山软件</a></li><li class="companylist_sel" id="companyinfo360_10"><a href="javascript:getCompanyDownList(360,10)">客户端</a></li><li class="companylist_unsel" id="companyinfo360_11"><a href="javascript:getCompanyDownList(360,11)">补丁</a></li><li class="companylist_unsel" id="companyinfo360_12"><a href="javascript:getCompanyDownList(360,12)">动画</a></li><li class="companylist_unsel" id="companyinfo360_13"><a href="javascript:getCompanyDownList(360,13)">壁纸</a></li><li class="companylist_unsel" id="companyinfo360_16"><a href="javascript:getCompanyDownList(360,16)">音乐</a></li><li class="companylist_unsel" id="companyinfo360_15"><a href="javascript:getCompanyDownList(360,15)">其它</a></li></ul></div><div class="companylist_info"><ul id="company360_con"></ul></div><script>getCompanyDownList(360,10);</script></div><div class="companylistsplit"></div><div class="companylist_wrapper"><div class="companylist_top"><ul><li class="companylist_title"><img src="http://images.17173.com/downsite/images/xiazai_4.gif" />&nbsp;<a href="/list/g-0/c-0/t-0/a-0/f-0/y-32/"  target="_blank">完美世界</a></li><li class="companylist_sel" id="companyinfo32_10"><a href="javascript:getCompanyDownList(32,10)">客户端</a></li><li class="companylist_unsel" id="companyinfo32_11"><a href="javascript:getCompanyDownList(32,11)">补丁</a></li><li class="companylist_unsel" id="companyinfo32_12"><a href="javascript:getCompanyDownList(32,12)">动画</a></li><li class="companylist_unsel" id="companyinfo32_13"><a href="javascript:getCompanyDownList(32,13)">壁纸</a></li><li class="companylist_unsel" id="companyinfo32_16"><a href="javascript:getCompanyDownList(32,16)">音乐</a></li><li class="companylist_unsel" id="companyinfo32_15"><a href="javascript:getCompanyDownList(32,15)">其它</a></li></ul></div><div class="companylist_info"><ul id="company32_con"></ul></div><script>getCompanyDownList(32,10);</script></div></div>
+          
+     <!--通栏广告(960x60)-->
+     <div class="middel_advers AdDownloadBannerBottom"></div>
+</div>
+<div id="bottom"><div id="footer" class="global-footer black op60">
+    
+<div class="global-footer">
+	<a href="http://about.17173.com/" target="_blank">&#x5173;&#x4E8E;17173</a> |
+	<a href="http://about.17173.com/join-us.shtml" target="_blank">&#x4EBA;&#x624D;&#x62DB;&#x8058;</a> |
+	<a href="http://marketing.17173.com" target="_blank">&#x5E7F;&#x544A;&#x670D;&#x52A1;</a> |
+	<a href="http://about.17173.com/business-cooperate.shtml" target="_blank">&#x5546;&#x52A1;&#x6D3D;&#x8C08;</a> |
+	<a href="http://about.17173.com/contact-us.shtml" target="_blank">&#x8054;&#x7CFB;&#x65B9;&#x5F0F;</a> |
+	<a href="http://help.17173.com/" target="_blank">&#x5BA2;&#x670D;&#x4E2D;&#x5FC3;</a> |
+	<a href="http://about.17173.com/site-map.shtml" target="_blank">&#x7F51;&#x7AD9;&#x5BFC;&#x822A;</a> <br />
+	<span class="copyright">Copyright &copy; 2001-2022 17173. All rights reserved.</span>
+</div>
+<script type="text/javascript">
+(function() {
+    if (/Android|iPhone|SymbianOS|Windows Phone|iPod/gi.test(navigator.userAgent) && window.$) {
+        $('.global-footer a:last').after(' | <a href="javascript:;" onclick="var date = new Date();date.setTime(date.getTime() - 10086);document.cookie = \'__stay_on_pc=1; expires=\' + date.toUTCString() + \'; path=\' + location.pathname;location.reload();">\u79fb\u52a8\u7248</a>');
+    }
+})()
+</script>
+
+
+
+
+
+    
+
+<script type="text/javascript" src="//ue.17173cdn.com/a/lib/passport/v2/js/passport.js?202109071539"></script>
+
+<script type="text/javascript">
+    advConfigs.loadConfigFile('https://s.17173cdn.com/global/global.js');
+</script>
+
+
+
+<script type="text/javascript">
+    advConfigs.loadConfigFile('https://ue.17173cdn.com/a/lib/vda/routes/global.js');
+</script>
+<!-- START 17173 Site Census -->
+<script type="text/javascript" src="https://js.17173.com/ping.js?202202211602"></script>
+<!-- END 17173 Site Census -->
+<script type="text/javascript" src="https://ue.17173cdn.com/cache/lib/v2/odvmonitor/lp.min.js"></script>
+<script type="text/javascript" src="https://ue.17173cdn.com/a/lib/global/weixinsdk.js?v=43"></script>
+
+
+<script type="text/javascript">
+advConfigs.loadConfigFile('http://s.17173cdn.com/download/site.js');
+advConfigs.loadConfigFile('http://s.17173cdn.com/qiyu/index.js');
+</script>
+</div>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=27127800" charset="UTF-8"></script>
+<script type=text/javascript src="http://ue8.17173.itc.cn/a/www/index/2013/js/setLink.min.js" charset="UTF-8"></script>
+<script type=text/javascript src="http://download.17173.com/js/forsetlink.js" charset="UTF-8"></script>
+
+ <script type="text/javascript" src="http://www.17173.com/new/tx/download-banner.js"></script>
+<script type="text/javascript" src="http://www.17173.com/new/tx/download-left.js"></script>
+<script type="text/javascript" src="http://www.17173.com/new/tx/download-right.js"></script>
+<script type="text/javascript">
+advConfigs.loadConfigFile('http://s.17173cdn.com/global/tuiguangbottombanner.js');
+</script>
+
+</div>
+<script>//getBottomInfo('bottom');</script>
+<script type="text/javascript">
+advConfigs.loadConfigFile('http://s.17173cdn.com/download/index.js');
+</script>
+
+
+</body>
+</html>

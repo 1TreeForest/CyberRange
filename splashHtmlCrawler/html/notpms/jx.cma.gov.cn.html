@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <title>江西省气象局外网</title>
+    <meta name="SiteName" content="江西省气象局外网">
+    <meta name="SiteDomain" content="http://jx.cma.gov.cn">
+    <meta name="SiteIDCode" content='bm54140001'>
+
+<meta name="ColumnName" content="">
+<meta name="ColumnType" content="">
+<meta name="ColumnDescription" content="">
+<meta name="ColumnKeywords" content="">
+
+<meta name="ArticleTitle" content="">
+<meta name="PubDate" content="">
+<meta name="ContentSource" content="江西省气象局外网">
+
+<script type="text/javascript" src="./images/jquery.js"></script>
+<script type="text/javascript">
+ 
+</script>
+
+
+<link rel="stylesheet" type="text/css" href='http://jx.cma.gov.cn/material/css/index.css' />
+<link rel="stylesheet" type="text/css" href='http://jx.cma.gov.cn/material/css/common.css' />
+<link rel="stylesheet" type="text/css" href='http://jx.cma.gov.cn/material/css/web.css' />
+<link rel="stylesheet" type="text/css" href='http://jx.cma.gov.cn/material/css/lrtk.css' />
+
+
+<script type="text/javascript" src="./images/slide.js"></script>
+<script language="javascript" src="./images/syztgd_jquery.js"></script>
+<script type="text/javascript" src="/material/js/language.js"></script>
+<script src="/material/js/flexible.js"></script>
+
+<script type="text/javascript">
+$(function(){
+//台风动态6-10月份显示，其他时间隐藏
+var date=new Date();
+var month=date.getMonth()+1;
+if(month>5 && month<11){
+   $('#two2').show();
+   $('#con_two_2').show();
+}else{
+   $('#two2').hide();     //子站
+   $('#con_two_2').hide();
+}
+});
+</script>
+<script src="/material/js/grayscale.js?20200403" type="text/javascript"></script>
+<script type="text/javascript" src="/material/js/add_gray.js?20200403"></script>
+<!--	
+<style>
+    body {
+        font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei","Helvetica Neue",Helvetica,Arial,sans-serif;
+        background: url(http://www.cma.gov.cn/ztimages/2021jdbnsybjt.jpg) top center no-repeat;
+        padding-top: 320px;
+    }
+</style>
+-->
+
+<style type="text/css">  
+       
+	/*body{background: url(/material/images/2019gqbanner1.jpg) top center no-repeat;}*/
+
+	.top-contentBox{width: 100%; margin: 0 auto;background-color: #fff;margin-top: 0px;}
+        .htmlgray{
+        -webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+-ms-filter: grayscale(100%);
+-o-filter: grayscale(100%);
+filter: grayscale(100%);
+filter:gray;
+    }
+.Notice {
+    position: fixed;
+    top: 355px;
+    z-index: 20;
+    left: 10px;
+}
+.Notice .con span.close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 20px;
+    display: inline-block;
+    color: #fff;
+    background: #cfe7f8;
+    cursor: pointer;
+}
+.Notice img {
+    width: 120px;
+}
+</style>
+
+    <script type="text/javascript">
+        function setTab(name,cursel,n){
+            for(i=1;i<=n;i++){
+                var menu=document.getElementById(name+i);
+                var con=document.getElementById("con_"+name+"_"+i);
+                menu.className=i==cursel?"hover":"";
+                con.style.display=i==cursel?"block":"none";
+            }
+        }
+
+		
+$(function(){
+$(".close").click(function () {
+				$(this).parent().fadeOut();
+		});
+
+//给跨域iframe添加监听点击事件
+var IframeOnClick = {  
+   resolution: 200,  
+   iframes: [],  
+   interval: null,  
+   Iframe: function() {  
+       this.element = arguments[0];  
+       this.cb = arguments[1];   
+       this.hasTracked = false;  
+   },  
+   track: function(element, cb) {  
+       this.iframes.push(new this.Iframe(element, cb));  
+       if (!this.interval) {  
+           var _this = this;  
+           this.interval = setInterval(function() { _this.checkClick(); }, this.resolution);  
+       }  
+   },  
+   checkClick: function() {  
+       if (document.activeElement) {  
+           var activeElement = document.activeElement;  
+           for (var i in this.iframes) {  
+               if (activeElement === this.iframes[i].element) { // user is in this Iframe  
+                   if (this.iframes[i].hasTracked == false) {   
+                       this.iframes[i].cb.apply(window, []);   
+                       this.iframes[i].hasTracked = true;  
+                   }  
+               } else {  
+                   this.iframes[i].hasTracked = false;  
+               }  
+           }  
+       }  
+   }  
+};  
+IframeOnClick.track(document.getElementById("YuJing"), function() { 
+window.open("/zhyj/"); 
+});
+IframeOnClick.track(document.getElementById("Yubao"), function() { 
+window.open("/tqyb/"); 
+});
+});
+	
+	
+
+function getDay(day){  
+       var today = new Date();  
+         
+       var targetday_milliseconds=today.getTime() + 1000*60*60*24*day;          
+  
+       today.setTime(targetday_milliseconds); //注意，这行是关键代码
+         
+       var tYear = today.getFullYear();  
+       var tMonth = today.getMonth();  
+       var tDate = today.getDate();  
+       tMonth = doHandleMonth(tMonth + 1);  
+       tDate = doHandleMonth(tDate);  
+       return tYear+"-"+tMonth+"-"+tDate;  
+} 
+
+
+
+
+//图片路径全局变量
+ 
+//天气预报域名
+ 
+ </script>
+
+</head>
+<body>
+<style>
+    #sj_head{display:none;}
+    #sj_foot{display:none;}
+    @media (max-width: 1024px) {
+        #pc_head{display:none;}
+        #sj_head{display:block;}
+        #pc_foot{display:none;}
+        #sj_foot{display:block;}
+    }
+</style>
+<!--
+ <div id="img1" style="position:absolute; z-index:999;">
+			<a href="http://wx.weather.cn/vote/" target="_blank">
+				<img src="http://jx.cma.gov.cn/material/images/sjpx02.png" />
+			</a>
+		</div>
+-->
+
+<div id="barrierfree_container">
+
+<!--
+<div> <img src="material/images/0701.jpg" width="100%" /> </div>
+-->
+
+
+  <div class="top-contentBox">
+   <!--header-->
+    <script type="text/javascript">
+//图片路径全局变量
+ 
+//天气预报域名
+ 
+ </script>
+<!--top-->
+<div class="top">
+      <div class="top_nav w1198">
+        <div class="top_nl">
+          <ul>
+            <li><a href="http://www.gov.cn/" target="_blank">中央人民政府</a></li>
+            <li><span>|</span></li>
+            <li><a href="http://www.jiangxi.gov.cn/" target="_blank">江西省人民政府</a></li>
+            <li><span>|</span></li>
+            <li><a href="http://www.cma.gov.cn/" target="_blank">中国气象局</a></li>
+          </ul>
+        </div>
+        <div class="top_nm"> 
+		 <label class="xdate" id="dayDate">
+                        <script>
+                        window.onload = function () {
+                        // 获取日期
+                        var myDate = new Date();
+                        var oDay = document.getElementById('dayDate');
+                        function toChinese(day) {
+                            switch(day){
+                                case 0:
+                                    return "日";
+                                case 1:
+                                    return "一";
+                                case 2:
+                                    return "二";
+                                case 3:
+                                    return "三";
+                                case 4:
+                                    return "四";
+                                case 5:
+                                    return "五";
+                                case 6:
+                                    return "六";
+                            }
+                        }
+                        oDay.innerHTML =myDate.getFullYear()+"年"+(myDate.getMonth()+1)+"月"+myDate.getDate()+"日 星期"+toChinese(myDate.getDay());
+                    };
+					
+                    </script>
+                    </label>	
+		  <span>|</span>
+          <a href="http://weibo.com/2730752854/profile?s=6cm7D0" target="_blank"><img src="/material/images/wb-i.png" alt="" />气象微博</a>
+          <span>|</span>
+          <a id="zh_click_s" href="javascript:zh_tran('s');">简体</a>
+          <span>|</span>
+          <a id="zh_click_t" href="javascript:zh_tran('t');">繁体</a>
+        </div>
+        <div class="top_nr"> 
+          <div class="search">
+              <script type="text/javascript">
+				$(function(){
+					$("#osubmit").click(function () {
+                    var textContent=encodeURIComponent($("#textContent").val());
+                    $("#formBox").attr("action","http://jx.cma.gov.cn/site/jxqxj/search.html?searchWord="+textContent+"&siteId=37");
+                    $("#formBox").submit();
+                    });
+				});		
+				</script>
+						<form name="search-form" action="" method="post" target="_blank" id="formBox">
+						<input class="search_txt" id="textContent" name="textContent" type="text" placeholder="请输入关键词" />
+						<input type="button" class="search_tj" value="搜索" id="osubmit" />
+						</form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+        <!--banner-->
+        <div class="header">
+              <div class="w1100">  
+					<!--天气预报 start-->
+					<!--<div class="xweather">
+					<div id="scroll_div" class="fl" style="width:1100px;"><iframe src="http://wx.weather.cn/weather/common/page/cityweather" width="1100" height="36"></iframe> </div>
+					</div>-->
+					<!--天气预报 end-->
+<div style="clear:both;"></div>
+                <!--logo-->
+                <div class="fl logo"><img src="http://jx.cma.gov.cn/material/images/logo1.png" alt="logo.png" /></div>
+                <!--logo-->
+              </div>
+        </div>
+        <!--banner-->
+        <!--nav-->
+        <div class="nav-bar">
+                <div class="w1100">
+                        <div class="nav">
+<ul>
+<li><label class="nva-a"><a href="/home">首页</a></label></li>
+
+<li>
+<label class="nva-a"><a href="./zwxx/" target="_blank" title="要闻动态">要闻动态</a></label>
+	    <div class="list-div">
+            
+                   <a href="./zwxx/tzgg/" target="_blank" title="通知公告">通知公告</a>
+            
+                   <a href="./zwxx/tpxw/" target="_blank" title="图片新闻">图片新闻</a>
+            
+                   <a href="./zwxx/qxyw/" target="_blank" title="气象要闻">气象要闻</a>
+            
+                   <a href="./zwxx/tqdt/" target="_blank" title="气象服务">气象服务</a>
+            
+                   <a href="./zwxx/jcdt/" target="_blank" title="基层动态">基层动态</a>
+            
+                   <a href="./zwxx/djwh/" target="_blank" title="党建廉政">党建廉政</a>
+            
+                   <a href="./zwxx/qxkp/" target="_blank" title="气象科普">气象科普</a>
+            
+		</div>
+</li>
+ 
+<li>
+<label class="nva-a"><a href="./zfxxgk/" target="_blank" title="信息公开">信息公开</a></label>
+	    <div class="list-div">
+            
+                   <a href="./zfxxgk/gkzn/" target="_blank" title="政府信息公开指南">政府信息公开指南</a>
+            
+                   <a href="./zfxxgk/gkzd/" target="_blank" title="政府信息公开制度">政府信息公开制度</a>
+            
+                   <a href="./zfxxgk/zwgk/" target="_blank" title="法定主动公开内容">法定主动公开内容</a>
+            
+                   <a href="./zfxxgk/ysqgk/" target="_blank" title="依申请公开">依申请公开</a>
+            
+                   <a href="./zfxxgk/gknb/" target="_blank" title="政府信息公开年报">政府信息公开年报</a>
+            
+		</div>
+</li>
+ 
+<li>
+<label class="nva-a"><a href="http://www.jxzwfww.gov.cn/jxzw/czbm/index.do?webId=1&orgCode=3600000091&type=0/" target="_blank" title="网上办事">网上办事</a></label>
+	    <div class="list-div">
+            
+		</div>
+</li>
+ 
+<li>
+<label class="nva-a"><a href="./gzcy/" target="_blank" title="互动交流">互动交流</a></label>
+	    <div class="list-div">
+            
+                   <a href="./gzcy/wsdc/" target="_blank" title="网上调查">网上调查</a>
+            
+                   <a href="./gzcy/jzxx/" target="_blank" title="局长信箱">局长信箱</a>
+            
+                   <a href="./gzcy/yjzq/" target="_blank" title="意见征求">意见征求</a>
+            
+                   <a href="./gzcy/hdft/" target="_blank" title="互动访谈">互动访谈</a>
+            
+                   <a href="./gzcy/gzly/" target="_blank" title="公众留言">公众留言</a>
+            
+		</div>
+</li>
+ 
+</ul>
+                        </div>
+                </div>
+        </div>
+        <!--nav-->
+
+<!--二维码悬浮 start-->
+<div class="cndns-right">
+    <div class="cndns-right-meau meau-code">
+        <a href="javascript:" class="cndns-right-btn">
+            <span class="demo-icon"></span>
+            <p>
+                气象<br />
+                微信
+            </p>
+        </a>
+        <div class="cndns-right-box">
+            <div class="box-border">
+                <div class="sev-t">
+                    <img src="http://jx.cma.gov.cn/material/images/ewm1.jpg" />
+                    <i>关注气象微信</i>
+                </div>
+                <span class="arrow-right"></span>
+            </div>
+        </div>
+    </div>
+	<div class="cndns-right-meau meau-sev">
+        <a href="javascript:" class="cndns-right-btn">
+            <span class="demo-icon"></span>
+            <p>
+                江西<br />
+                气象
+            </p>
+        </a>
+        <div class="cndns-right-box">
+            <div class="box-border">
+                <div class="sev-t">
+                    <img src="http://jx.cma.gov.cn/material/images/ewm2.jpg" />
+                    <i>关注江西气象</i>
+                </div>
+                <span class="arrow-right"></span>
+            </div>
+        </div>
+    </div>
+<div class="cndns-right-meau meau-app">
+        <a href="javascript:" class="cndns-right-btn">
+            <span class="demo-icon"></span>
+            <p>
+                赣服通
+            </p>
+        </a>
+        <div class="cndns-right-box">
+            <div class="box-border">
+                <div class="sev-t">
+                    <img src="http://jx.cma.gov.cn/material/images/ewm5.jpg" />
+                    <i>支付宝扫一扫</i>
+                </div>
+                <span class="arrow-right"></span>
+            </div>
+        </div>
+    </div>
+	<div class="cndns-right-meau meau-car">
+        <a href="javascript:" class="cndns-right-btn">
+            <span class="demo-icon"></span>
+            <p>
+                预警<br />
+                微信
+            </p>
+        </a>
+        <div class="cndns-right-box">
+            <div class="box-border">
+                <div class="sev-t">
+                    <img src="http://jx.cma.gov.cn/material/images/ewm3.jpg" />
+                    <i>关注预警发布</i>
+                </div>
+                <span class="arrow-right"></span>
+            </div>
+        </div>
+    </div>
+	<div class="cndns-right-meau meau-contact">
+        <a href="javascript:" class="cndns-right-btn">
+            <span class="demo-icon"></span>
+            <p>
+                预警<br />
+                微博
+            </p>
+        </a>
+        <div class="cndns-right-box">
+            <div class="box-border">
+                <div class="sev-t">
+                    <img src="http://jx.cma.gov.cn/material/images/ewm4.jpg" />
+                    <i>关注预警发布</i>
+                </div>
+                <span class="arrow-right"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--二维码悬浮 end-->
+    <!--header-->
+    <div class="w1100" style="margin-top:0;height: 40px;">
+ <!--预警 start-->
+        <div id="scroll_div" class="fl" style="margin-top: 5px;"><iframe src="http://wx.weather.cn/weather/common/page/yujing?city=" width="1100" height="36" id="YuJing"></iframe></div>
+<!--预警 end-->
+
+    </div>
+<!--天气预报 start-->
+<div class="w1100" style="  border-top: 1px solid #f5f5f5; height: 30px;">
+	<div id="scroll_div" class="fl" style="width:1100px;"><iframe src="http://wx.weather.cn/weather/common/page/cityweather?city=" width="1100" height="36" id="Yubao"></iframe> </div>
+</div>
+<!--天气预报 end-->
+
+
+    <!--主体-->
+<div class="Notice">
+		<div class="con" style="position: relative;">
+			<span class="close"> × </span>
+			<a href="http://fpzg.cpad.gov.cn/" target="_blank">
+				<img src="http://jx.cma.gov.cn/material/images/adimg.jpg" />
+			</a>
+		</div>
+	</div>
+
+    <!--中间-->
+    <div class="w1100 p20">
+
+<!--专题1 start-->
+<a href="http://jx.cma.gov.cn/zt/qxxdh/index.html" target="_blank" class="zt-ad"><img src="./images/zfwj2.jpg" width="1080" height="120" /></a>
+<!--专题1 end-->
+
+        <div class="headline">
+             <a class="icon-rd" href="/rdxw/"></a>
+                
+                <a href="./zwxx/qxyw/202202/t20220225_4543476.html" target="_blank" title="聚焦“生命安全”，筑牢气象防灾减灾“第一道防线”">聚焦“生命安全”，筑牢气象防灾减灾“第一道防线”</a>
+                
+                
+        </div>
+
+        <div class="lastest">
+      
+        </div>
+        <!--第一部分-->
+        <div class="part1">
+            <div class="pic-news fl">
+                <div class="ck-slide" id="ck-slide">
+                    <ul class="ck-slide-wrapper">
+                        
+                            <li>
+                                <a href="./zwxx/tpxw/202202/t20220218_4523170.html" target="_blank"><img src="./zwxx/tpxw/202202/W020220218555145626862.png"/></a>
+                                <p><a href="./zwxx/tpxw/202202/t20220218_4523170.html" target="_blank">二十四节气——雨水</a></p>
+                            </li>
+                        
+                            <li>
+                                <a href="./zwxx/tpxw/202202/t20220211_4505117.html" target="_blank"><img src="./zwxx/tpxw/202202/W020220211668823528229.jpg"/></a>
+                                <p><a href="./zwxx/tpxw/202202/t20220211_4505117.html" target="_blank">解读：2022年全省气象工作会议报告</a></p>
+                            </li>
+                        
+                            <li>
+                                <a href="./zwxx/tpxw/202202/t20220211_4504172.html" target="_blank"><img src="./zwxx/tpxw/202202/W020220211563366203635.jpg"/></a>
+                                <p><a href="./zwxx/tpxw/202202/t20220211_4504172.html" target="_blank">2022年全省气象工作会议召开 全面推动江西气象事业高...</a></p>
+                            </li>
+                        
+                            <li>
+                                <a href="./zwxx/qxyw/202202/t20220208_4497728.html" target="_blank"><img src="./zwxx/qxyw/202202/W020220208612494884239.JPG"/></a>
+                                <p><a href="./zwxx/qxyw/202202/t20220208_4497728.html" target="_blank">罗小云副省长走访调研省气象局</a></p>
+                            </li>
+                        
+                            <li>
+                                <a href="./zwxx/qxyw/202201/t20220130_4488861.html" target="_blank"><img src="./zwxx/qxyw/202201/W020220131352831321394.jpg"/></a>
+                                <p><a href="./zwxx/qxyw/202201/t20220130_4488861.html" target="_blank">新年新气象│江西省气象局党组书记、局长詹丰兴与您共...</a></p>
+                            </li>
+                        
+                    </ul>
+                    <div class="ck-slidebox">
+                        <div class="slideWrap">
+                            <ul class="dot-wrap">
+                                <li class="current">1</li>
+                                <li>2</li>
+                                <li>3</li>
+                                <li>4</li>
+                                <li>5</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="qxyw fr">
+                <div class="soso">
+<span class="hover" id="one1" onmouseover="setTab(&#39;one&#39;,1,6)"><a href="./zwxx/qxyw/">气象要闻</a></span>
+<span id="one5" onmouseover="setTab(&#39;one&#39;,5,6)"><a href="./zwxx/jcdt/">基层动态</a></span>
+<span id="one3" onmouseover="setTab(&#39;one&#39;,3,6)"><a href="http://www.cma.gov.cn/2011xwzx/2011xqxxw/2011xqxyw/" target="_blank">中国气象局</a></span>
+<span id="one2" onmouseover="setTab(&#39;one&#39;,2,6)" style="display:none;"><a href="" target="_blank">省政府信息</a></span>
+
+<span id="one4" onmouseover="setTab(&#39;one&#39;,4,6)"><a href="http://www.gov.cn/guowuyuan/xinwen.htm" target="_blank">国务院要闻</a></span>
+                </div>
+                <div style="display: none;" id="con_one_4" class="con_one_Item">
+                    <div id="testDiv" style="overflow: hidden;height:330px">
+                        <ul id="tblgov">
+
+                            <script type="text/javascript">
+                                $(function(){
+                                    $.ajax({
+                                        url : 'http://www.gov.cn/pushinfo/v150203/pushinfo.jsonp',
+                                        dataType : "jsonp",
+                                        jsonp : "pushInfoJsonpCallBack",
+                                        jsonpCallback:"pushInfoJsonpCallBack",
+                                        success : function(data) {
+                                            var infoNum=1;
+                                            $.each(data,function(i,json){
+                                                if (infoNum>13)
+                                                    return false;
+                                                var str1= json.pubDate;
+                                                str1=str1.substr(0,10);
+                                                $("#tblgov").append("<li><a href='" + json.link + "' title='" + json.title + "' target='_blank'>" +
+
+                                                    json.title.substr(0,23) +"..."+ "</a>" + "<span class='date'>" + str1 + "</span></li>");
+                                                infoNum++;
+                                            })
+                                        },
+                                        error:function(){
+                                            return true;
+                                        }
+                                    });
+                                })
+                            </script>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="display: none;" id="con_one_3" class="con_one_Item">
+                    <div class="govpushinfo150203"   style=" width:490px; height:330px; overflow:hidden;" >
+                <script language="javascript" type="text/javascript" src="http://www.cma.gov.cn/2011xzt/sjts/js/pushinfo.js"></script>
+<!--
+<script language="javascript" type="text/javascript" src="./images/pushinfo.js"></script>-->
+
+                    </div>
+                </div>
+                <div style="display: none;" id="con_one_2" class="con_one_Item">
+                    <!--<script language="javascript" type="text/javascript" src="http://www.zj.gov.cn/module/freshnews/getinfo/getinfo.jsp?
+
+type=0&amp;num=11&amp;limit=23&amp;column=41146&amp;webid=1"></script>-->
+                </div>
+
+                <div style="display: block;" id="con_one_1" class="con_one_Item">
+                    <ul>
+                        
+                            <li><a href="./zwxx/qxyw/202202/t20220225_4543691.html" target="_blank" title="江西11位设区市气象局长，本周在忙这些事">江西11位设区市气象局长，本周在忙这些事</a><span>2022-02-25</span></li>
+                        
+                            <li><a href="./zwxx/qxyw/202202/t20220225_4543476.html" target="_blank" title="聚焦“生命安全”，筑牢气象防灾减灾“第一道防线”">聚焦“生命安全”，筑牢气象防灾减灾“第一道防线”</a><span>2022-02-25</span></li>
+                        
+                            <li><a href="./zwxx/qxyw/202202/t20220224_4537570.html" target="_blank" title="省气象台首席预报员解读2月21-23日雨雪天气过程">省气象台首席预报员解读2月21-23日雨雪天气过程</a><span>2022-02-24</span></li>
+                        
+                            <li><a href="./zwxx/qxyw/202202/t20220223_4536094.html" target="_blank" title="南昌市副市长彭开先走访省气象局">南昌市副市长彭开先走访省气象局</a><span>2022-02-23</span></li>
+                        
+                            <li><a href="./zwxx/qxyw/202202/t20220223_4535457.html" target="_blank" title="江西：精细化滚动服务 应对雨雪冰冻天气">江西：精细化滚动服务 应对雨雪冰冻天气</a><span>2022-02-23</span></li>
+                        
+                            <li><a href="./zwxx/qxyw/202202/t20220222_4531563.html" target="_blank" title="婺源发布2022年油菜花花期预报">婺源发布2022年油菜花花期预报</a><span>2022-02-22</span></li>
+                        
+                            <li><a href="./zwxx/qxyw/202202/t20220221_4529711.html" target="_blank" title="江西：启动四级应急响应应对雨雪冰冻天气">江西：启动四级应急响应应对雨雪冰冻天气</a><span>2022-02-21</span></li>
+                        
+                            <li><a href="./zwxx/qxyw/202202/t20220221_4529694.html" target="_blank" title="1月下旬以来我省出现持续阴雨寡照天气 多项数据创同期之最">1月下旬以来我省出现持续阴雨寡照天气 多项数据创同期...</a><span>2022-02-21</span></li>
+                        
+                            <li><a href="./zwxx/qxyw/202202/t20220221_4529674.html" target="_blank" title="萍乡：市委书记对气象服务作出批示">萍乡：市委书记对气象服务作出批示</a><span>2022-02-21</span></li>
+                        
+                            <li><a href="./zwxx/qxyw/202202/t20220218_4524442.html" target="_blank" title="江西11位设区市气象局长，本周在忙这些事">江西11位设区市气象局长，本周在忙这些事</a><span>2022-02-18</span></li>
+                        
+                            <li><a href="./rdxw/202202/t20220218_4524411.html" target="_blank" title="守护粮丰民安 春耕备耕气象服务正当时">守护粮丰民安 春耕备耕气象服务正当时</a><span>2022-02-18</span></li>
+                        
+                    </ul>
+                </div>
+                <div style="display: none;" id="con_one_5" class="con_one_Item">
+                    <ul>
+                        
+                            <li><a href="./zwxx/jcdt/202202/t20220223_4536532.html" target="_blank" title="东乡：气象服务调研，助力设施蔬菜基地应对低温降雪">东乡：气象服务调研，助力设施蔬菜基地应对低温降雪</a><span>2022-02-23</span></li>
+                        
+                            <li><a href="./zwxx/jcdt/202202/t20220217_4516304.html" target="_blank" title="丰城：喜获2021年高质量发展多项表彰">丰城：喜获2021年高质量发展多项表彰</a><span>2022-02-17</span></li>
+                        
+                            <li><a href="./zwxx/jcdt/202202/t20220208_4497412.html" target="_blank" title="庐山:市领导调度雨雪冰冻天气应对工作">庐山:市领导调度雨雪冰冻天气应对工作</a><span>2022-02-08</span></li>
+                        
+                            <li><a href="./zwxx/jcdt/202201/t20220126_4470499.html" target="_blank" title="中国气象局视频连线慰问铜鼓县气象局全体干部职工">中国气象局视频连线慰问铜鼓县气象局全体干部职工</a><span>2022-01-26</span></li>
+                        
+                            <li><a href="./zwxx/jcdt/202201/t20220120_4439222.html" target="_blank" title="会昌： 市人大常委会张景霖副主任一行走访慰问县气象局驻村工作队">会昌： 市人大常委会张景霖副主任一行走访慰问县气象...</a><span>2022-01-20</span></li>
+                        
+                            <li><a href="./zwxx/jcdt/202201/t20220114_4425884.html" target="_blank" title="会昌：气象服务助力烟农做好烟田起垄覆膜工作">会昌：气象服务助力烟农做好烟田起垄覆膜工作</a><span>2022-01-14</span></li>
+                        
+                            <li><a href="./zwxx/jcdt/202112/t20211229_4336060.html" target="_blank" title="余干：气象服务助力2021年环鄱阳湖自行车精英赛总决赛（余干站） 顺利进行">余干：气象服务助力2021年环鄱阳湖自行车精英赛总决赛...</a><span>2021-12-29</span></li>
+                        
+                            <li><a href="./zwxx/jcdt/202112/t20211222_4320390.html" target="_blank" title="彭泽：县领导公开表扬气象部门">彭泽：县领导公开表扬气象部门</a><span>2021-12-22</span></li>
+                        
+                            <li><a href="./zwxx/jcdt/202112/t20211210_4301542.html" target="_blank" title="上犹：县政协主席刘鸿懿指导工作">上犹：县政协主席刘鸿懿指导工作</a><span>2021-12-10</span></li>
+                        
+                            <li><a href="./zwxx/jcdt/202112/t20211208_4296201.html" target="_blank" title="德安：政府出台关于推进人工影响天气工作高质量发展的实施意见">德安：政府出台关于推进人工影响天气工作高质量发展的...</a><span>2021-12-08</span></li>
+                        
+                            <li><a href="./zwxx/jcdt/202112/t20211208_4296160.html" target="_blank" title="余江：政府出台文件推进人工影响天气高质量发展工作">余江：政府出台文件推进人工影响天气高质量发展工作</a><span>2021-12-08</span></li>
+                        
+                    </ul>
+                </div>
+               
+
+            </div>
+        </div>
+        <!--第一部分-->
+        <!--第二部分-->
+        <div class="part2">
+            <div style="width:530px; float:left;">
+                <div class="notice">
+                    <div class="xtit">
+
+
+                        <span id="notice1" class="hover" onmouseover="setTab(&#39;notice&#39;,1,2)"><a href="./zwxx/tzgg/">通知公告</a></span>
+						<span id="notice2" onmouseover="setTab(&#39;notice&#39;,2,2)"><a href="./zwxx/jcdt/">气象服务</a></span>
+     <!--
+                   <span id="notice2" onmouseover="setTab(&#39;notice&#39;,2,3)"><a href="./xxgk/">信息公开</a></span>
+                        <span id="notice3" onmouseover="setTab(&#39;notice&#39;,3,3)"><a href="./xxgk/zzjg/">组织机构</a></span>
+  -->
+                    </div>
+                    <div class="xlist">
+
+                        <div style="display: block;" id="con_notice_1">
+                       <ul>
+                            
+                                <li><a href="./zwxx/tzgg/202112/t20211210_4301374.html" target="_blank" title="江西信息应用职业技术学院博士和高技能人才  公开招聘公告">江西信息应用职业技术学院博士和高技能人才  公开招聘公告</a><span style="float:right;">2021-12-10</span></li>
+                            
+                                <li><a href="./zwxx/tzgg/202202/t20220214_4508396.html" target="_blank" title="江西省气象局关于做好2022年升放气球安全工作的公告">江西省气象局关于做好2022年升放气球安全工作的公告</a><span style="float:right;">2022-02-14</span></li>
+                            
+                                <li><a href="./zwxx/tzgg/202202/t20220214_4508394.html" target="_blank" title="江西省气象局关于做好2022年度防雷装置定期检测工作的公告">江西省气象局关于做好2022年度防雷装置定期检测工作的公告</a><span style="float:right;">2022-02-14</span></li>
+                            
+                                <li><a href="./zwxx/tzgg/201907/t20190704_769293.html" target="_blank" title="关于启用雷电防护装置检测资质管理系统的通知">关于启用雷电防护装置检测资质管理系统的通知</a><span style="float:right;">2019-07-04</span></li>
+                            
+                                <li><a href="./zwxx/tzgg/202104/t20210430_3149980.html" target="_blank" title="江西省雷电防护管理局关于进一步规范雷电防护装置检测有关信息报告工作的通知">江西省雷电防护管理局关于进一步规范雷电防护装置检测有关信息...</a><span style="float:right;">2022-01-24</span></li>
+                            
+                                <li><a href="./zwxx/tzgg/202201/t20220124_4450437.html" target="_blank" title="江西气象网站工作年度报表（2021年）">江西气象网站工作年度报表（2021年）</a><span style="float:right;">2022-01-24</span></li>
+                            
+                                <li><a href="./zwxx/tzgg/202008/t20200820_2003008.html" target="_blank" title="在江西省开展雷电防护装置检测活动的资质单位信息公示（截至2022年1月24日)">在江西省开展雷电防护装置检测活动的资质单位信息公示（截至202...</a><span style="float:right;">2022-01-24</span></li>
+                            
+                                <li><a href="./zwxx/tzgg/202201/t20220117_4428808.html" target="_blank" title="首届 江西“避寒养生福地”评选名单公示发布。">首届 江西“避寒养生福地”评选名单公示发布。</a><span style="float:right;">2022-01-17</span></li>
+                            
+                        </ul>
+                        </div>
+                        <!--<div style="display: none;" id="con_notice_2" class="xxlist">
+                            <ul class="msg_public">
+                                <li class="pub1"><a href="./xxgk/zwgg/gkml/gkzn/" target="_blank"><span></span><p>公开指南</p></a></li>
+                                <li class="pub2"><a href="./xxgk/zwgg/gkml/gknb/" target="_blank"><span></span><p>公开年报</p></a></li>
+                                <li class="pub3"><a href="./xxgk/zwgg/gkml/gkbf/" target="_blank"><span></span><p>公开办法</p></a></li>
+                                <li class="pub4"><a href="./xxgk/zwgg/gkml/gkml/" target="_blank"><span></span><p>公开目录</p></a></li>
+                                <li class="pub5"><a href="http://www.jxzwfww.gov.cn/jxzw/xzql/gotoxzqlmore.do?code=360000-0091-GG-002&wid=1&ts=0/" target="_blank"><span></span><p>依申请公开</p></a></li>
+                                <li class="pub6"><a href="./xxgk/rsxx/" target="_blank"><span></span><p>人事信息</p></a></li>
+                            </ul>
+                        </div>
+                        <div style="display: none;" id="con_notice_3" class="jg-list">
+                            <ul>
+                                <li><a href="./xxgk/zzjg/jgzn/">
+                                    <img class="vshow" src="./images/zzjg1.png" />
+                                    <div class="hidden"><img src="./images/zzjg1-hover.png" /></div>
+                                    <p style="margin-top: 92px;">机构职能</p></a></li>
+
+                                <li><a href="./xxgk/zzjg/ldbz/">
+                                    <img class="vshow" src="./images/zzjg2.png" />
+                                    <div class="hidden"><img src="./images/zzjg2-hover.png" /></div>
+                                    <p style="margin-top: 92px;">省局领导</p></a></li>
+
+                                <li><a href="./xxgk/zzjg/nsjg/">
+                                    <img class="vshow" src="./images/zzjg3.png" />
+                                    <div class="hidden"><img src="./images/zzjg3-hover.png" /></div>
+                                    <p style="margin-top: 92px;">内设机构</p></a></li>
+
+                                <li><a href="./xxgk/zzjg/zsjg/">
+                                    <img class="vshow" src="./images/zzjg4.png" />
+                                    <div class="hidden"><img src="./images/zzjg4-hover.png" /></div>
+                                    <p style="margin-top: 92px;">直属单位</p></a></li>
+                            </ul>
+                        </div>-->
+						<div style="display: none;" id="con_notice_2">
+                    <ul>
+                        
+                            <li><a href="./zwxx/tqdt/202201/t20220128_4481087.html" target="_blank" title="江西省2022年2月份短期气候预测">江西省2022年2月份短期气候预测</a><span style="float:right;">2022-01-28</span></li>
+                        
+                            <li><a href="./zwxx/tqdt/202201/t20220104_4345261.html" target="_blank" title="江西省2022年1月份短期气候预测">江西省2022年1月份短期气候预测</a><span style="float:right;">2022-01-04</span></li>
+                        
+                            <li><a href="./zwxx/tqdt/202111/t20211130_4279383.html" target="_blank" title="江西省2021年12月气候趋势预测">江西省2021年12月气候趋势预测</a><span style="float:right;">2021-11-30</span></li>
+                        
+                            <li><a href="./zwxx/tqdt/202110/t20211029_4009856.html" target="_blank" title="江西省2021年11月短期气候预测">江西省2021年11月短期气候预测</a><span style="float:right;">2021-10-29</span></li>
+                        
+                            <li><a href="./zwxx/tqdt/202110/t20211011_3867583.html" target="_blank" title="江西省雷电监测公报(2021年9月)">江西省雷电监测公报(2021年9月)</a><span style="float:right;">2021-10-11</span></li>
+                        
+                            <li><a href="./zwxx/tqdt/202109/t20210930_3857387.html" target="_blank" title="江西省2021年10月11-30日气候趋势预测">江西省2021年10月11-30日气候趋势预测</a><span style="float:right;">2021-09-30</span></li>
+                        
+                            <li><a href="./zwxx/tqdt/202109/t20210930_3857291.html" target="_blank" title="江西省2021年10月气候趋势预测">江西省2021年10月气候趋势预测</a><span style="float:right;">2021-09-30</span></li>
+                        
+                            <li><a href="./zwxx/tqdt/202109/t20210918_3828916.html" target="_blank" title="江西省2021年10月1日-10月20日气候趋势预测">江西省2021年10月1日-10月20日气候趋势预测</a><span style="float:right;">2021-09-18</span></li>
+                        
+                    </ul>
+                </div>
+
+                    </div>
+                </div>
+
+                <div class="notice" style="margin-top:20px;">
+                    <div class="soso">
+<span class="hover" id="three1" onmouseover="setTab(&#39;three&#39;,1,4)"><a href="./zwxx/qxkp/">气象科普</a></span>
+<span id="three2" onmouseover="setTab(&#39;three&#39;,2,4)"><a href="./zwxx/djwh/">廉政党建</a></span>
+
+<!--
+<span id="three3" onmouseover="setTab(&#39;three&#39;,3,4)"><a href="./xxgk/zcfg/">政策法规</a></span>
+<span id="three4" onmouseover="setTab(&#39;three&#39;,4,4)"><a href="">科技成果</a></span>
+-->
+
+                    </div>
+
+                    <div style="display: block;" id="con_three_1">
+                        <ul>
+                            
+                                <li style="margin-left:0;"><a href="./zwxx/qxkp/202202/t20220225_4543114.html" target="_blank" title="雨水节气饮食起居要看“天”">雨水节气饮食起居要看“天”</a><span style="float:right; color:#999;">2022-02-25</span></li>
+                            
+                                <li style="margin-left:0;"><a href="./zwxx/qxkp/202202/t20220218_4523059.html" target="_blank" title="二十四节气——雨水">二十四节气——雨水</a><span style="float:right; color:#999;">2022-02-18</span></li>
+                            
+                                <li style="margin-left:0;"><a href="./zwxx/qxkp/202202/t20220216_4512294.html" target="_blank" title="春季养生 这五个误区要避开">春季养生 这五个误区要避开</a><span style="float:right; color:#999;">2022-02-16</span></li>
+                            
+                                <li style="margin-left:0;"><a href="./zwxx/qxkp/202202/t20220209_4498352.html" target="_blank" title="气温低于0℃时 行车一定要先做这件事">气温低于0℃时 行车一定要先做这件事</a><span style="float:right; color:#999;">2022-02-09</span></li>
+                            
+                                <li style="margin-left:0;"><a href="./zwxx/qxkp/202201/t20220130_4486806.html" target="_blank" title="二十四节气——立春">二十四节气——立春</a><span style="float:right; color:#999;">2022-01-30</span></li>
+                            
+                                <li style="margin-left:0;"><a href="./zwxx/qxkp/202201/t20220125_4458305.html" target="_blank" title="怎样科学活动身体？权威指南来了！">怎样科学活动身体？权威指南来了！</a><span style="float:right; color:#999;">2022-01-25</span></li>
+                            
+                                <li style="margin-left:0;"><a href="./zwxx/tpxw/202201/t20220120_4438264.html" target="_blank" title="二十四节气——大寒">二十四节气——大寒</a><span style="float:right; color:#999;">2022-01-20</span></li>
+                            
+                        </ul>
+                    </div>
+                    <div style="display: none;" id="con_three_2">
+                        <ul>
+                            
+                                <li style="margin-left:0;"><a href="./zwxx/djwh/202111/t20211111_4237289.html" target="_blank" title="谢梦莉同志在党支部联席会上要求加强巡察整改日常监督">谢梦莉同志在党支部联席会上要求加强巡察整改日常监督</a><span style="float:right; color:#999;">2021-11-11</span></li>
+                            
+                                <li style="margin-left:0;"><a href="./zwxx/djwh/202104/t20210407_3055780.html" target="_blank" title="省气象局纪检巡察党支部组织开展党史学习教育">省气象局纪检巡察党支部组织开展党史学习教育</a><span style="float:right; color:#999;">2021-04-07</span></li>
+                            
+                                <li style="margin-left:0;"><a href="./zwxx/djwh/202102/t20210207_2702919.html" target="_blank" title="省局纪检组长谢梦莉主持召开党支部联席会传达学习省纪委十四届六次全会精神">省局纪检组长谢梦莉主持召开党支部联席会传达学习省纪委十四届...</a><span style="float:right; color:#999;">2021-02-07</span></li>
+                            
+                                <li style="margin-left:0;"><a href="./zwxx/djwh/202101/t20210126_2649279.html" target="_blank" title="省局纪检组集中学习中央纪委五次全会精神">省局纪检组集中学习中央纪委五次全会精神</a><span style="float:right; color:#999;">2021-01-26</span></li>
+                            
+                                <li style="margin-left:0;"><a href="./zwxx/djwh/202012/t20201211_2480783.html" target="_blank" title="全省气象部门纪检工作研讨会在昌召开">全省气象部门纪检工作研讨会在昌召开</a><span style="float:right; color:#999;">2020-12-11</span></li>
+                            
+                                <li style="margin-left:0;"><a href="./zwxx/djwh/202012/t20201211_2480723.html" target="_blank" title="省局举办全省气象部门纪检（审计）干部培训班">省局举办全省气象部门纪检（审计）干部培训班</a><span style="float:right; color:#999;">2020-12-11</span></li>
+                            
+                                <li style="margin-left:0;"><a href="./zwxx/djwh/202008/t20200821_2007603.html" target="_blank" title="省局组织党员干部接受警示教育">省局组织党员干部接受警示教育</a><span style="float:right; color:#999;">2020-08-21</span></li>
+                            
+                        </ul>
+                    </div>
+
+<!--
+                    <div style="display: none;" id="con_three_3">
+                        <ul>
+                            
+                        </ul>
+                    </div>
+                    <div style="display: none;" id="con_three_4">
+                        <ul>
+                            
+                        </ul>
+                    </div>
+-->
+
+                </div>
+            </div>
+
+            <div class="qx-service fr" style="overflow:hidden;">
+                <div class="qx_list" style="height:550px;">
+                    <div class="qx-cate">
+                        <span class="hover" id="two3" onmouseover="setTab(&#39;two&#39;,3,4)" class="">临近预报</span>
+                        <span id="two1" onmouseover="setTab(&#39;two&#39;,1,4)">天气预报</span>
+                        <span id="two2" onmouseover="setTab(&#39;two&#39;,2,4)" class="">台风动态</span>
+                        <span id="two4" onmouseover="setTab(&#39;two&#39;,4,4)" class="">天气实况</span>
+
+                    </div>
+                    <div style="display: block;" id="con_two_3"><iframe src="http://wx.weather.cn/weather/common/page/ljForecas" width="100%" height="500" frameborder="0" scrolling="no"></iframe></div>
+                    <div style="display: block;" id="con_two_1"><iframe src="http://wx.weather.cn/weather/common/page/textForecas" width="100%" height="500" frameborder="0" scrolling="no"></iframe></div>
+                    <div style="display: block;" id="con_two_2"><iframe id="qxfw4" name="qxfw4" src="http://typhoon.weather.com.cn/gis/typhoon_p.shtml" width="100%" height="500" frameborder="0" scrolling="no"></iframe></div>
+                    <div style="display: block;" id="con_two_4"><iframe src="http://wx.weather.cn/weather/common/page/condition" id="qxfw2" name="qxfw2" width="100%" height="500" frameborder="0" scrolling="no"></iframe></div>
+                </div>
+            </div>
+        </div>
+        <!--第二部分-->
+        <!--第三部分-->
+        <div class="pic_list">
+            <a class="LeftBotton" onmousedown="ISL_GoUp_1()" onmouseup="ISL_StopUp_1()" onmouseout="ISL_StopUp_1()" href="javascript:void(0);"
+
+               target="_self"></a>
+            <div class="pcont" id="ISL_Cont_1">
+                <div class="ScrCont">
+                    <div id="List1_1">
+                        
+                            <!-- piclist begin -->
+                            <!--<a class="pl" href="./zt/" target="_blank" ><img src="" alt="" /></a>-->
+<a href="http://jx.cma.gov.cn/zt/qxxdh/index.html" target="_blank"><img src="./zt/202104/W020210412398203161888.jpg"/></a>
+                            <!-- piclist end -->
+                        
+                            <!-- piclist begin -->
+                            <!--<a class="pl" href="./zt/" target="_blank" ><img src="" alt="" /></a>-->
+<a href="http://jx.cma.gov.cn/zwxx/tpxw/202103/t20210320_2991239.html" target="_blank"><img src="./zt/202103/W020210325531748085526.jpg"/></a>
+                            <!-- piclist end -->
+                        
+                            <!-- piclist begin -->
+                            <!--<a class="pl" href="./zt/" target="_blank" ><img src="" alt="" /></a>-->
+<a href="http://www.cma.gov.cn/2011xzt/2020zt/20201126/" target="_blank"><img src="./zt/202012/W020201201558515451370.png"/></a>
+                            <!-- piclist end -->
+                        
+                            <!-- piclist begin -->
+                            <!--<a class="pl" href="./zt/" target="_blank" ><img src="" alt="" /></a>-->
+<a href="http://fpzg.cpad.gov.cn/" target="_blank"><img src="./zt/202005/W020200521646832238150.png"/></a>
+                            <!-- piclist end -->
+                        
+                            <!-- piclist begin -->
+                            <!--<a class="pl" href="./zt/" target="_blank" ><img src="" alt="" /></a>-->
+
+                            <!-- piclist end -->
+                        
+                            <!-- piclist begin -->
+                            <!--<a class="pl" href="./zt/" target="_blank" ><img src="" alt="" /></a>-->
+
+                            <!-- piclist end -->
+                        
+                            <!-- piclist begin -->
+                            <!--<a class="pl" href="./zt/" target="_blank" ><img src="" alt="" /></a>-->
+<a href="http://jx.cma.gov.cn/zt/sjqxr/index.html" target="_blank"><img src="./zt/202003/W020210323385206279609.jpg"/></a>
+                            <!-- piclist end -->
+                        
+                            <!-- piclist begin -->
+                            <!--<a class="pl" href="./zt/" target="_blank" ><img src="" alt="" /></a>-->
+<a href="http://flcx.tq1210.cn/" target="_blank"><img src="./zt/201912/W020191203607979872760.png"/></a>
+                            <!-- piclist end -->
+                        
+                            <!-- piclist begin -->
+                            <!--<a class="pl" href="./zt/" target="_blank" ><img src="" alt="" /></a>-->
+<a href="http://www.jxzwfww.gov.cn/art/2019/6/20/art_214_700490.html" target="_blank"><img src="./zt/201906/W020190625753550971701.png"/></a>
+                            <!-- piclist end -->
+                        
+                            <!-- piclist begin -->
+                            <!--<a class="pl" href="./zt/" target="_blank" ><img src="" alt="" /></a>-->
+<a href="http://toupiao.www.gov.cn/100dudian/index.htm" target="_blank"><img src="./zt/201906/W020190604432759430835.png"/></a>
+                            <!-- piclist end -->
+                        
+                            <!-- piclist begin -->
+                            <!--<a class="pl" href="./zt/" target="_blank" ><img src="" alt="" /></a>-->
+<a href="http://www.kepuchina.cn/" target="_blank"><img src="./zt/201906/W020190604425083947148.png"/></a>
+                            <!-- piclist end -->
+                        
+                    </div>
+                    <div id="List2_1"></div>
+                </div>
+            </div>
+            <a class="RightBotton" onmousedown="ISL_GoDown_1()" onmouseup="ISL_StopDown_1()" onmouseout="ISL_StopDown_1()" href="javascript:void
+
+(0);" target="_self"></a>
+        </div>
+        <!--第三部分-->
+        <!--第四部分-->
+        <div class="part4">
+            <div class="hdjl fl">
+                <div class="xtit"><span><a href="./gzcy/hdft/">互动交流</a></span></div>
+
+                <div class="hdjl_list" style="height:266px;">
+                    <ul>
+                        <li class="hd1"><a href="./gzcy/jzxx/" target="_blank"><span></span><p>局长信箱</p></a></li>
+                        <li class="hd2" style="border-right:0;"><a href="./gzcy/gzly/" target="_blank"><span></span><p>公众留言</p></a></li>
+                        <li class="hd3" style="border-bottom:0;"><a href="./gzcy/wsdc/"><span></span><p>网上调查</p></a></li>
+                        <li class="hd4" style="border-bottom:0;border-right:0;"><a href="./gzcy/hdft/"><span></span><p>互动访谈</p></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="wsbs fl" style=";margin-left:20px;">
+                <div class="xtit"><span><a href="http://www.jxzwfww.gov.cn/jxzw/ggfw/getGgfwIndex.do?webId=1&orgId=3600000091&type=0"  target="_blank">网上办事</a></span></div>
+                <div class="wsbs_list">
+                    <ul>
+                        <li class="ws1"><a href="./wsbsqd/xzqlqd/" target="_blank"><span></span><p>行政权力清单</p></a></li>
+                        <li class="ws2" style="border-right:0;"><a href="./wsbsqd/bmzrqd/" target="_blank"><span></span><p>部门责任清单</p></a></li>
+                        <li class="ws3" style="border-bottom:0;"><a href="./wsbsqd/zpycsxqd/" target="_blank"><span></span><p>只跑一次事项清单</p></a></li>
+                        <li class="ws4" style="border-bottom:0;border-right:0;"><a href="http://www.jxzwfww.gov.cn/art/2018/8/30/art_4650_40827.html" target="_blank"><span></span><p>气象证明</p></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="hdjl fr" style="margin-left:20px;">
+                <!--<div class="xtit"><span><a>气象全媒体</a></span></div>-->
+                <!--<iframe width="100%" height="195"  frameborder="0" scrolling="no" src="http://widget.weibo.com/livestream/listlive.php?language=zh_cn&width=0&height=195&uid=3223369461&skin=1&refer=0&appkey=&pic=0&titlebar=1&border=1&publish=0&atalk=1&recomm=0&at=0&dpc=1"></iframe>-->
+<iframe name="surf"  width="100%" height="118" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=195&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2730752854&verifier=c2072289&dpc=1" scrolling="no" width="228" height="120"  frameborder="0"></iframe>
+               <div class="ewm-div">
+<a href="http://journal.weather.cn/ch/index.aspx" target="_blank"><img class="ad-img" src="http://jx.cma.gov.cn/material/images/ad1.jpg" /></a>
+<a href="http://zgm.12371.cn/special/" target="_blank"><img class="ad-img" src="http://jx.cma.gov.cn/material/images/ad2.jpg" /></a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <!--第四部分-->
+
+        <!--地市列表 start-->
+        <ul class="ds_content" style="display:none;">
+            <li><a href="#" class="ds_title" title="南昌市">南昌市</a></li>
+            <li><a href="#" class="ds_title" title="九江市">九江市</a></li>
+            <li><a href="#" class="ds_title" title="景德镇市">景德镇市</a></li>
+            <li><a href="#" class="ds_title" title="萍乡市">萍乡市</a></li>
+            <li><a href="#" class="ds_title" title="新余市">新余市</a></li>
+            <li><a href="#" class="ds_title" title="上饶市">上饶市</a></li>
+            <li><a href="#" class="ds_title" title="鹰潭市">鹰潭市</a></li>
+            <li><a href="#" class="ds_title" title="吉安市">吉安市</a></li>
+             <li><a href="#" class="ds_title" title="赣州市">赣州市</a></li>
+            <li><a href="#" class="ds_title" title="抚州市">抚州市</a></li>
+            <li><a href="#" class="ds_title" title="宜春市">宜春市</a></li>
+        </ul>
+        <!--地市列表 end-->
+
+               <!--友情链接-->
+        <div class="clearfix link-box">
+            <select name="select" class="xla_k " style="" onchange="window.open(this.value);">
+                <option>省内常用网站</option>
+                
+
+            </select>
+            <select name="select" class="xla_k" style="" onchange="window.open(this.value);">
+                <option>国内气象网站</option>
+                
+            </select>
+        </div>
+        <!--友情链接-->
+
+    </div>
+    <!--中间-->
+  </div>
+    <!--主体-->
+
+   <!--footer-->
+    <div id="foot" class="footer">
+<div class="foot-box">
+<div class="foot-left fl">
+<ul>
+
+     <li><a href="/bqsm/index.jhtml"  target="_blank">江西省气象局版权所有</a>&nbsp;&nbsp;<a href="http://beian.miit.gov.cn"  target="_blank"> 京ICP备05004897号</a>&nbsp;&nbsp;主办：江西省气象局&nbsp;&nbsp;&nbsp;&nbsp;承办：江西省气象服务中心</li>
+     <li>气象灾情报告:800-8691162 &nbsp;&nbsp;&nbsp;  气象服务热线:400-6000-121</li>
+     <li><span>网站标识码bm54140001  &nbsp;&nbsp;<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36010902000210"  target="_blank">赣公网安备36010902000210号</span>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/wzqt/201909/t20190927_1105149.html">关于我们</a> | <a href="/wzqt/wzdt/"  target="_blank">网站地图</a> | <a href="/wzqt/201906/t20190627_746983.html" target="_blank">使用帮助</a> | <a href="/wzqt/201906/t20190627_746980.html"  target="_blank">隐私声明</a>     
+     </li>
+
+
+  </ul>
+</div>
+<div class="foot-right fr">
+<span id="_ideConac"><a href="//bszs.conac.cn/sitename?method=show&amp;id=25E012582E3524F5E053012819ACB067" target="_blank"><img id="imgConac" vspace="0" hspace="0" border="0" src="//dcs.conac.cn/image/blue.png" data-bd-imgshare-binded="1" /></a>
+
+ <a href="https://zfwzzc.www.gov.cn/check_web/errorInfo/jcInfo/581459fa-ed6e-44d0-b10b-b74ad533c8cb-312328957"  target="_blank">  
+
+         <img src="./images/jiucuo.jpg" width="90px" height="55px" /></a>
+
+ </div>
+</div>
+</div>
+    <!--footer-->
+
+    <script>
+	/*漂浮广告 start*/
+				var x = 50,
+y = 60;
+var xin = true,
+yin = true;
+var step = 1;
+var delay = 10;
+var obj = document.getElementById("img1"); 
+function float() {
+    var L = T = 0
+    var R = document.body.clientWidth - obj.offsetWidth;
+    var B = document.body.clientHeight - obj.offsetHeight;
+	//obj.style.left = x + document.body.scrollLeft;
+	//obj.style.top = y + document.body.scrollTop;
+	$(obj).css('left',x + document.body.scrollLeft);
+	$(obj).css('top',y + document.body.scrollTop);
+	x = x + step * (xin ? 1 : -1);
+	if (x < L) {
+        xin = true;
+        x = L
+    }
+    if (x > R) {
+        xin = false;
+        x = R
+    }
+    y = y + step * (yin ? 1 : -1);
+	if (y < T) {
+        yin = true;
+        y = T
+    }
+    if (y > B) {
+        yin = false;
+        y = B
+    }
+}
+/*var itl = setInterval("float()", delay);
+ obj.onmouseover = function() {
+    clearInterval(itl)
+}
+obj.onmouseout = function() {
+    itl = setInterval("float()", delay)
+}*/
+
+/*漂浮广告 end*/
+        $('#ck-slide').ckSlide({
+            autoPlay: true,//默认为不自动播放，需要时请以此设置
+            dir: 'x',//默认效果淡隐淡出，x为水平移动，y 为垂直滚动
+            interval:3000//默认间隔2000毫秒
+        });
+    </script>
+    <script type="text/javascript">
+        <!--
+        picrun_ini()
+        //-->
+    </script>
+</div>
+</body></html>

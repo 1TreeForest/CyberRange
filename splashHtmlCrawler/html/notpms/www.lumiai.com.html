@@ -1,0 +1,719 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="baidu-site-verification" content="eOY3hOk6dl" />
+<meta name="description" content="卢米埃影院官方网站 高端影院，LD厅影院，卢米埃影院官网为您提供全国30多家卢米埃影院的放映时间、最新影讯、兑换码、在线选座、地址、地图信息、电话，在线购票服务，开场前30分钟无条件退票，卢米埃影院全国统一服务热线：4006-010-618" />
+<meta name="keywords" content="卢米埃影院，lumiai，卢米埃电影，卢米埃院线，卢米埃影城，卢米埃IMAX电影院，卢米埃官网，网上订票，在线订座，预告片，热门影片，影片介绍，电影票，在线购票，低价，电影团购、打折，特价，排期，电影院" />
+<title>卢米埃影城</title>
+<base href="http://www.lumiai.com/"/>
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" href="public/css/base.css"/>
+<link rel="stylesheet" href="public/css/web.css"/>
+<script src="public/js/smart.min.js"></script>
+<script src="public/js/vue.min.js"></script>
+<script src="public/js/vue-resource.min.js"></script>
+<script src="public/js/smooth-scroll.min.js"></script>
+<script>
+        Vue.config.delimiters = ['${', '}'];
+        Vue.config.unsafeDelimiters = ['{!!', '!!}'];
+        Vue.http.options.emulateJSON = true;
+        Vue.http.options.credentials = true;
+        smoothScroll.init();
+    </script>
+</head>
+<body class="bc" style="width: 1024px;">
+<style>
+    .menu_cinema_btn {
+        border: 1px solid #CC5522
+    }
+
+    .menu_cinema_btn:hover {
+        border: 1px solid #333;
+        background: #CC5522;
+        color: #fff;
+    }
+
+    .location_cinema {
+        height: 18px;
+        border: 1px solid #f95c0f;
+        margin-top: 28px;
+        margin-left: 16px;
+        font-size: 10px;
+        padding: 2px 10px 2px 4px;
+        cursor: pointer;
+
+    }
+
+    .location_cinema:hover {
+        border: 1px solid #ff3300;
+        box-shadow: 0 0 1px 2px rgba(249, 92, 15, 0.3);
+    }
+
+    .city_btn:hover{
+        background: #ff7e00;
+        color: #fff;
+    }
+    .city_btn{
+        background: #f0f0f0;
+        color: #000;
+        padding: 4px;
+    }
+    .city_btn.active{
+        background: #c9302c;
+        color: #fff;
+    }
+    .cinema_btn:hover{
+        background: #ff7e00;
+        color: #fff;
+    }
+    .cinema_btn{
+        background: #f0f0f0;
+        color: #000;
+        padding: 4px;
+        border-top: 1px solid #909090;
+    }
+    .cinema_btn.active{
+        background: #666;
+        color: #fff;
+    }
+</style>
+<div class="nav-menu pr" id="menu_div_vue">
+<div class="fl" style="padding: 10px"><img src="/public/media/images/lumiai-logo.png"></div>
+<div class="top_bar">
+<a href="/index/index/1009" class="t200 active"><span>热门影片</span></a>
+<a href="/index/news/1009" class="t200 "><span>消息中心</span></a>
+<a href="/index/cinemas/1009" class="t200 "><span>影城介绍</span></a>
+<a href="/index/about" class="t200 "><span>关于卢米埃</span></a>
+<a href="/web/help" class="t200 "><span>帮助中心</span></a>
+</div>
+<div class="location_cinema fl" @click="display=!display"><img src="/public/media/images/positioning.png" class="fl" style="margin-top:2px;margin-left:0px">
+<div class="fl" style="line-height:20px;margin-left:2px">
+北京<span style="color: #f95c0f;margin: 0px 2px 0px 1px"> | </span>卢米埃北京芳草地影城
+</div>
+</div>
+<div class="pa" style="top:60px;left:0px;z-index: 100;width: 100%;background: #fff" v-if="display">
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(1)"> 北京 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(18)"> 长沙 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(7)"> 成都 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(16)"> 丹阳 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(24)"> 广州 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(23)"> 贵阳 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(5)"> 杭州 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(4)"> 淮安 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(21)"> 昆山 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(13)"> 洛阳 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(2)"> 南京 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(17)"> 上海 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(11)"> 绍兴 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(22)"> 盛泽 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(10)"> 沈阳 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(19)"> 深圳 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(12)"> 顺德 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(8)"> 苏州 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(20)"> 温州 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(15)"> 武汉 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(9)"> 西安 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(26)"> 厦门 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(14)"> 盐城 </div>
+<div class="t300 fl cursor_pointer city_btn" onmouseover="getCinema(25)"> 扬州 </div>
+</div>
+<div id="cinema_list" class="pa" style="top:86px;left:0px;z-index: 100;width: 100%;background: #fff" v-if="display"></div>
+</div>
+<script>
+    var top_cinema = {"1":[{"name":"\u5362\u7c73\u57c3\u5317\u4eac\u82b3\u8349\u5730\u5f71\u57ce","id":"1009"},{"name":"\u5362\u7c73\u57c3\u5317\u4eac\u9f99\u6e56IMAX\u5f71\u57ce","id":"1020"},{"name":"\u5362\u7c73\u57c3\u5317\u4eac\u4f4f\u603b\u4e07\u79d1\u5f71\u57ce","id":"1030"}],"18":[{"name":"\u5362\u7c73\u57c3\u957f\u6c99\u738b\u5e9c\u4e95\u5f71\u57ce","id":"1027"}],"7":[{"name":"\u5362\u7c73\u57c3\u6210\u90fd\u6765\u798f\u58eb\u5f71\u57ce","id":"1008"},{"name":"\u5362\u7c73\u57c3\u6210\u90fd\u9b45\u529b\u57ce\u5f71\u57ce","id":"1014"},{"name":"\u5362\u7c73\u57c3\u6210\u90fd\u9f99\u6e56IMAX\u5f71\u57ce","id":"1015"},{"name":"\u5362\u7c73\u57c3\u6210\u90fd\u897f\u5bb8\u5929\u8857\u5f71\u57ce","id":"1040"}],"16":[{"name":"\u5362\u7c73\u57c3\u4e39\u9633\u91d1\u9e70\u5f71\u57ce","id":"1025"}],"24":[{"name":"\u5362\u7c73\u57c3\u5e7f\u5dde\u5408\u751fIMAX\u5f71\u57ce","id":"1034"}],"23":[{"name":"\u5362\u7c73\u57c3\u8d35\u9633\u4e07\u79d1\u5927\u90fd\u4f1a\u5f71\u57ce","id":"1032"},{"name":"\u5362\u7c73\u57c3\u8d35\u9633\u82b1\u6eaa\u4e07\u79d1IMAX\u5f71\u57ce","id":"1042"}],"5":[{"name":"\u5362\u7c73\u57c3\u676d\u5dde\u94f6\u6cf0\u5f71\u57ce","id":"1001"},{"name":"\u5362\u7c73\u57c3\u676d\u5dde\u897f\u6eaa\u5929\u8857\u5f71\u57ce","id":"1043"}],"4":[{"name":"\u5362\u7c73\u57c3\u6dee\u5b89\u65b0\u4e9a\u5f71\u57ce","id":"1005"}],"21":[{"name":"\u5362\u7c73\u57c3\u6606\u5c71\u91d1\u9e70\u5f71\u57ce","id":"1022"}],"13":[{"name":"\u5362\u7c73\u57c3\u6d1b\u9633\u738b\u5e9c\u4e95\u5f71\u57ce","id":"1019"}],"2":[{"name":"\u5362\u7c73\u57c3\u5357\u4eac\u5f18\u9633\u5e7f\u573aIMAX\u5f71\u57ce","id":"1006"},{"name":"\u5362\u7c73\u57c3\u5357\u4eac\u91d1\u9e70\u65b0\u8857\u53e3\u5f71\u57ce","id":"1016"},{"name":"\u5362\u7c73\u57c3\u5357\u4eac\u91d1\u9e70\u4ed9\u6797\u5f71\u57ce","id":"1036"},{"name":"\u5362\u7c73\u57c3\u5357\u4eac\u91d1\u9e70\u6cb3\u897f\u5f71\u57ce","id":"1037"},{"name":"\u5362\u7c73\u57c3\u5357\u4eac\u9f99\u87e0\u6c47IMAX\u5f71\u57ce","id":"1044"}],"17":[{"name":"\u5362\u7c73\u57c3\u4e0a\u6d77\u7d2b\u8346\u5f71\u57ce","id":"1026"},{"name":"\u5362\u7c73\u57c3\u4e0a\u6d77\u5927\u878d\u57ce\u5f71\u57ce","id":"1031"}],"11":[{"name":"\u5362\u7c73\u57c3\u7ecd\u5174\u94f6\u6cf0\u57ceIMAX\u5f71\u57ce","id":"1017"}],"22":[{"name":"\u5362\u7c73\u57c3\u76db\u6cfd\u8d22\u5bcc\u4e2d\u5fc3\u5f71\u57ce","id":"1010"}],"10":[{"name":"\u5362\u7c73\u57c3\u6c88\u9633\u5929\u5730\u5f71\u57ce","id":"1011"},{"name":"\u5362\u7c73\u57c3\u6c88\u9633\u4e07\u8c61\u6c47\u5f71\u57ce","id":"1024"}],"19":[{"name":"\u5362\u7c73\u57c3\u6df1\u5733\u534e\u5f3a\u5317IMAX\u5f71\u57ce","id":"1028"},{"name":"\u5362\u7c73\u57c3\u6df1\u5733\u6c47\u6e2fIMAX\u5f71\u57ce","id":"1033"}],"12":[{"name":"\u5362\u7c73\u57c3\u987a\u5fb7\u5f71\u57ce","id":"1018"}],"8":[{"name":"\u5362\u7c73\u57c3\u82cf\u5dde\u534e\u6da6\u4e07\u5bb6\u5f71\u57ce","id":"1013"},{"name":"\u5362\u7c73\u57c3\u82cf\u5dde\u91d1\u9e70\u5f71\u57ce","id":"1035"}],"20":[{"name":"\u5362\u7c73\u57c3\u6e29\u5dde\u4e07\u8c61\u57ceIMAX\u5f71\u57ce","id":"1029"}],"15":[{"name":"\u5362\u7c73\u57c3\u6b66\u6c49\u51ef\u5fb71818\u5f71\u57ce","id":"1023"}],"9":[{"name":"\u5362\u7c73\u57c3\u897f\u5b89\u51ef\u5fb7\u5f71\u57ce","id":"1012"},{"name":"\u5362\u7c73\u57c3\u897f\u5b89\u66f2\u6c5fIMAX\u5f71\u57ce","id":"1041"}],"26":[{"name":"\u5362\u7c73\u57c3\u53a6\u95e8IMAX\u5f71\u57ce","id":"1039"}],"14":[{"name":"\u5362\u7c73\u57c3\u76d0\u57ce\u805a\u9f99\u6e56\u91d1\u9e70\u5f71\u57ce","id":"1021"}],"25":[{"name":"\u5362\u7c73\u57c3\u626c\u5dde\u91d1\u9e70\u5f71\u57ce","id":"1038"}]};
+    getCinema = function(city_id){
+        var cinema_html = document.getElementById("cinema_list");
+        var obj = top_cinema[city_id];
+        var in_html = "";
+        for(var i in obj){
+            var url = "'index/index/" + obj[i].id + "'";
+            in_html += '<div class="t300 cursor_pointer cinema_btn" onclick="window.location.href= ' + url + '">' + obj[i].name  +'</div>'
+        }
+        cinema_html.innerHTML = in_html;
+    }
+
+    var citys = [{"id":"1","name":"\u5317\u4eac","longitude":"116.456173","latitude":"39.924897","ver_time":"0","cinemas":[{"id":"1009","short_id":"11055501","name":"\u5362\u7c73\u57c3\u5317\u4eac\u82b3\u8349\u5730\u5f71\u57ce","code":"11","code_num":"2810","voucher_code":"12","long_code":"0","phone_number":"010-56907679","email_address":"","city":"1","address":"\u5317\u4eac\u671d\u9633\u533a\u4e1c\u5927\u6865\u8def9\u53f7\u4fa8\u798f\u82b3\u8349\u5730\u5927\u53a6LG2-26","seats":"459","bus_info":"\u5730\u94c1 \u00b710\u53f7\u7ebf: \u547c\u5bb6\u697c\u7ad9\uff0cA\u51fa\u53e3\uff0c\u4e58126\uff0c440\u4e1c\u5927\u6865\u7ad9\u5373\u5230 \u00b71\u53f7\u7ebf: \u6c38\u5b89\u91cc\u7ad9\uff0cA\u51fa\u53e3\uff0c\u5f80\u5317\u6b65\u884c15\u5206\u949f\u5373\u5230 \u00b76\u53f7\u7ebf: \u4e1c\u5927\u6865\u7ad9\uff082012\u5e74\u5f00\u901a\uff09\u642d\u4e58\u516c\u4ea4 \u00b7\u82b3\u8349\u5730\u7ad9\uff1a\u4e58\u575028\uff0c43\uff0c120\uff0c126\uff0c403\u4e0b\u8f66\u5373\u5230","image":"http:\/\/www.lumiai.com\/uploads\/image\/20160519\/20160519054859_84285.jpg","longitude":"116.456173","latitude":"39.924897","ver_time":"1599548233","features":[{"id":"5","cinema_id":"1009","feature_id":"6","display":"1","content":"","sort":"15","feature":{"id":"6","name":"VIP\u5385"}},{"id":"6","cinema_id":"1009","feature_id":"5","display":"1","content":"","sort":"14","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}}]},{"id":"1020","short_id":"11050741","name":"\u5362\u7c73\u57c3\u5317\u4eac\u9f99\u6e56IMAX\u5f71\u57ce","code":"24","code_num":"2820","voucher_code":"30","long_code":"0","phone_number":"010-85095626","email_address":"","city":"1","address":"\u5317\u4eac\u5e02\u671d\u9633\u533a\u671d\u9633\u5317\u8def\u7ba1\u5e84\u8def\u53e3\u5f80\u4e1c200\u7c73\u9f99\u6e56\u957f\u6979\u5929\u8857\u8d2d\u7269\u4e2d\u5fc3\u4e1c\u533aF5\u5c42\u4e1c\u533a-5F-09\u3001F5.5\u5c42","seats":"2130","bus_info":"\u5730\u94c1\u516d\u53f7\u7ebf\u5e38\u8425\u7ad9\uff0cE\u53e3\u51fa\u3002\u6216\u53ef\u4e58\u5750\u516c\u4ea4306\u3001342\u3001585\u3001586\u3001587\u3001639\u3001675\u3001364\u3001488\u3001499\u5feb\u3001506\u3001566\u3001583\u3001731\u533a\u5e38\u8425\u7ad9\u3002","image":"http:\/\/www.lumiai.com\/uploads\/image\/20160519\/20160519061833_52214.jpg","longitude":"116.606329","latitude":"39.930454","ver_time":"1599548248","features":[{"id":"1","cinema_id":"1020","feature_id":"3","display":"1","content":"","sort":"11","feature":{"id":"3","name":"IMAX\u5385"}},{"id":"7","cinema_id":"1020","feature_id":"5","display":"1","content":"","sort":"12","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"195","cinema_id":"1020","feature_id":"9","display":"1","content":"","sort":"0","feature":{"id":"9","name":"LD\u6fc0\u5149\u5385"}},{"id":"197","cinema_id":"1020","feature_id":"6","display":"1","content":"","sort":"13","feature":{"id":"6","name":"VIP\u5385"}},{"id":"252","cinema_id":"1020","feature_id":"10","display":"1","content":"","sort":"0","feature":{"id":"10","name":"LD PLUS\u675c\u6bd4\u5168\u666f\u58f0"}}]},{"id":"1030","short_id":"11140881","name":"\u5362\u7c73\u57c3\u5317\u4eac\u4f4f\u603b\u4e07\u79d1\u5f71\u57ce","code":"34","code_num":"2830","voucher_code":"39","long_code":"0","phone_number":"010-50927566","email_address":"","city":"1","address":"\u5317\u4eac\u5e02\u5927\u5174\u533a\u65e7\u5bab\u5730\u94c1\u7ad9\u65c1\u5317\u4eac\u4f4f\u603b\u4e07\u79d1\u5e7f\u573a5\u5c42","seats":"857","bus_info":"\u5730\u94c1\u00b7\u4ea6\u5e84\u7ebf\uff1a\u65e7\u5bab\u7ad9\uff0cB\u53e3\u51fa\uff1b\u5730\u94c1\u65e7\u5bab\u7ad9\uff1a\u4e58\u5750324\u3001555\u3001599\u3001997\u3001\u517415\u3001622\u4e0b\u8f66\u5373\u5230","image":"http:\/\/www.lumiai.com\/uploads\/image\/20160701\/20160701082859_45310.jpg","longitude":"116.466202","latitude":"39.811692","ver_time":"1599548315","features":[{"id":"8","cinema_id":"1030","feature_id":"5","display":"1","content":"","sort":"13","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}}]}]},{"id":"18","name":"\u957f\u6c99","longitude":"112.940367","latitude":"28.224541","ver_time":"0","cinemas":[{"id":"1027","short_id":"43016801","name":"\u5362\u7c73\u57c3\u957f\u6c99\u738b\u5e9c\u4e95\u5f71\u57ce","code":"31","code_num":"4310","voucher_code":"38","long_code":"0","phone_number":"0731-82250146","email_address":"","city":"18","address":"\u6e56\u5357\u7701\u957f\u6c99\u5e02\u5cb3\u9e93\u533a\u91d1\u661f\u8def383\u53f7\u6cb3\u897f\u738b\u5e9c\u4e956\u5c42","seats":"1000","bus_info":"\u9014\u7ecf\u8def\u7ebf\uff1a66\u8def; 109\u8def; 118\u8def; 118\u533a\u95f4\u7ebf; 149\u8def; 301\u8def; 308\u8def; 348\u8def; 355\u8def; 405\u8def; 704\u8def; 913\u8def; w106\u8def; w106\u8def\u533a\u95f4\u7ebf; w106\u533a\u95f4\u7ebf; w209; 3\u8def; 168\u8def; 211\u8def; 303\u8def; 306\u8def; 308\u8def; 355\u8def; w105\u8def; w107\u8def; w111\u8def\u533a\u95f4\u7ebf; w116\u8def; \u7a7f\u68ad\u5df4\u58eb3\u53f7\u7ebf","image":"http:\/\/www.lumiai.com\/uploads\/image\/20160704\/20160704055604_66912.jpg","longitude":"112.940367","latitude":"28.224541","ver_time":"1599548453","features":[{"id":"114","cinema_id":"1027","feature_id":"2","display":"1","content":"","sort":"12","feature":{"id":"2","name":"3D"}},{"id":"116","cinema_id":"1027","feature_id":"5","display":"1","content":"","sort":"13","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}}]}]},{"id":"7","name":"\u6210\u90fd","longitude":"104.073616","latitude":"30.638011","ver_time":"0","cinemas":[{"id":"1008","short_id":"51019501","name":"\u5362\u7c73\u57c3\u6210\u90fd\u6765\u798f\u58eb\u5f71\u57ce","code":"9","code_num":"6610","voucher_code":"11","long_code":"0","phone_number":"028-85083141","email_address":"","city":"7","address":"\u6210\u90fd\u5e02\u6b66\u4faf\u533a\u4eba\u6c11\u5357\u8def\u56db\u6bb53\u53f7\u6765\u798f\u58eb\u5e7f\u573a3\u5c42","seats":"874","bus_info":"\u5730\u94c1\u8def\u7ebf\uff1a\u5730\u94c11\u53f7\u7ebf\/3\u53f7\u7ebf\u7701\u4f53\u80b2\u9986\u7ad9C\u51fa\u53e3 \n\u516c\u4ea4\u8def\u7ebf\uff1a10\u8def\u300116\u8def\u300134\u8def\u300134A\u8def\u300145\u8def\u300172\u8def\u300178\u8def\u300199\u8def\u3001118\u8def\u3001300\u8def","image":"http:\/\/www.lumiai.com\/uploads\/image\/20190305\/20190305092840_51517.jpg","longitude":"104.073616","latitude":"30.638011","ver_time":"1614735991","features":[{"id":"28","cinema_id":"1008","feature_id":"5","display":"1","content":"","sort":"13","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"235","cinema_id":"1008","feature_id":"2","display":"1","content":"","sort":"12","feature":{"id":"2","name":"3D"}}]},{"id":"1014","short_id":"51014101","name":"\u5362\u7c73\u57c3\u6210\u90fd\u9b45\u529b\u57ce\u5f71\u57ce","code":"17","code_num":"6620","voucher_code":"17","long_code":"0","phone_number":"028-81445101","email_address":"","city":"7","address":"\u6210\u90fd\u5e02\u6210\u534e\u533a\u4e07\u79d1\u8def9\u53f7\u51ef\u5fb7\u5e7f\u573a\u9b45\u529b\u57ce4\u5c42","seats":"1074","bus_info":"\u4e58\u8f66\u8def\u7ebf\uff1a \u516c\u4ea423\u8def\u300166\u8def\u300197\u8def\u3001137\u8def\u3001223\u8def\u3001336\u8def\u3001854\u8def\u3001855\u8def\u3001856\u8def\uff1b\n\u5730\u94c1\u8def\u7ebf\uff1a\u5730\u94c12\u53f7\u7ebf\u6210\u6e1d\u7acb\u4ea4\u7ad9C\u53e3","image":"http:\/\/www.lumiai.com\/uploads\/image\/20190305\/20190305093520_87558.jpg","longitude":"104.159889","latitude":"30.632506","ver_time":"1599548977","features":[{"id":"43","cinema_id":"1014","feature_id":"2","display":"1","content":"","sort":"11","feature":{"id":"2","name":"3D"}},{"id":"216","cinema_id":"1014","feature_id":"9","display":"1","content":"","sort":"12","feature":{"id":"9","name":"LD\u6fc0\u5149\u5385"}}]},{"id":"1015","short_id":"51014201","name":"\u5362\u7c73\u57c3\u6210\u90fd\u9f99\u6e56IMAX\u5f71\u57ce","code":"18","code_num":"6630","voucher_code":"18","long_code":"0","phone_number":"028-83107826","email_address":"","city":"7","address":"\u6210\u90fd\u5e02\u91d1\u725b\u533a\u4e94\u5757\u77f3\u8def1\u53f7\u9f99\u6e56\u5929\u8857\u8d2d\u7269\u5e7f\u573a\u5317\u99865\u5c42","seats":"1922","bus_info":"\u5730\u94c1\u8def\u7ebf\uff1a\u5730\u94c11\u53f7\u7ebf\u5347\u4ed9\u6e56\u7ad9\n\u516c\u4ea4\u8def\u7ebf\uff1a4\u8def\u300116\u8def\u300159\u8def\u300173\u8def\u300198\u8def\u3001103\u8def\u3001123\u8def\u3001191\u8def\u3001316 \u8def\u3001651\u8def","image":"http:\/\/www.lumiai.com\/uploads\/image\/20190305\/20190305093559_74587.jpg","longitude":"104.071916","latitude":"30.718184","ver_time":"1599548964","features":[{"id":"36","cinema_id":"1015","feature_id":"2","display":"1","content":"","sort":"12","feature":{"id":"2","name":"3D"}},{"id":"37","cinema_id":"1015","feature_id":"3","display":"1","content":"","sort":"13","feature":{"id":"3","name":"IMAX\u5385"}},{"id":"39","cinema_id":"1015","feature_id":"5","display":"1","content":"","sort":"14","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"40","cinema_id":"1015","feature_id":"6","display":"1","content":"","sort":"15","feature":{"id":"6","name":"VIP\u5385"}}]},{"id":"1040","short_id":"51016361","name":"\u5362\u7c73\u57c3\u6210\u90fd\u897f\u5bb8\u5929\u8857\u5f71\u57ce","code":"44","code_num":"6640","voucher_code":"51","long_code":"0","phone_number":"028-63918371","email_address":"","city":"7","address":"\u6210\u90fd\u5e02\u91d1\u725b\u533a\u82b1\u7167\u58c1\u897f\u987a\u8857339\u53f7\u897f\u5bb8\u5929\u8857\u8d2d\u7269\u5e7f\u573a6\u5c42","seats":"1548","bus_info":"\u5730\u94c1\u8def\u7ebf\uff1a\u5730\u94c17\u53f7\u7ebfD1\u51fa\u53e3\uff1b\n\u516c\u4ea4\u8def\u7ebf\uff1a4\u8def\u300117\u8def\u300125\u8def\u300143\u8def\u300162\u8def\u300188\u8def\u3001100\u8def\u3001113\u8def\u3001142\u8def\u3001214\u8def\u3001215\u8def\u3001342\u8def\uff1b","image":"http:\/\/www.lumiai.com\/uploads\/image\/20190117\/20190117045430_83960.jpg","longitude":"104.039389","latitude":"30.704693","ver_time":"1599549273","features":[{"id":"244","cinema_id":"1040","feature_id":"5","display":"1","content":"","sort":"0","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"245","cinema_id":"1040","feature_id":"9","display":"1","content":"","sort":"0","feature":{"id":"9","name":"LD\u6fc0\u5149\u5385"}},{"id":"246","cinema_id":"1040","feature_id":"2","display":"1","content":"","sort":"0","feature":{"id":"2","name":"3D"}},{"id":"253","cinema_id":"1040","feature_id":"11","display":"1","content":"","sort":"0","feature":{"id":"11","name":"HG\u5385"}}]}]},{"id":"16","name":"\u4e39\u9633","longitude":"119.581187","latitude":"31.996828","ver_time":"0","cinemas":[{"id":"1025","short_id":"32053411","name":"\u5362\u7c73\u57c3\u4e39\u9633\u91d1\u9e70\u5f71\u57ce","code":"29","code_num":"3340","voucher_code":"35","long_code":"0","phone_number":"18106109527","email_address":"","city":"16","address":"\u6c5f\u82cf\u7701 \u4e39\u9633\u5e02 \u91d1\u9e70\u56fd\u9645\u8d2d\u7269\u4e2d\u5fc3 \u767e\u8d277\u697c","seats":"1127","bus_info":"","image":"http:\/\/www.lumiai.com\/uploads\/image\/20160628\/20160628064956_31840.jpg","longitude":"119.581187","latitude":"31.996828","ver_time":"1599548758","features":[{"id":"87","cinema_id":"1025","feature_id":"2","display":"1","content":"","sort":"12","feature":{"id":"2","name":"3D"}},{"id":"89","cinema_id":"1025","feature_id":"6","display":"1","content":"","sort":"13","feature":{"id":"6","name":"VIP\u5385"}}]}]},{"id":"24","name":"\u5e7f\u5dde","longitude":"113.320767","latitude":"23.092193","ver_time":"0","cinemas":[{"id":"1034","short_id":"44001621","name":"\u5362\u7c73\u57c3\u5e7f\u5dde\u5408\u751fIMAX\u5f71\u57ce","code":"38","code_num":"5310","voucher_code":"45","long_code":"0","phone_number":"\u8bf7\u5728APP\u4e2a\u4eba\u4e2d\u5fc3 \u2014\u201c\u5ba2\u670d\u4e2d\u5fc3\u201d\u2014 \u70b9","email_address":"","city":"24","address":"\u5e7f\u5dde\u6d77\u73e0\u533a\u5e7f\u5dde\u5927\u9053\u5357249\u53f7\u4e0e\u53e0\u666f\u8def\u4ea4\u6c47\u5904\u5408\u751f\u5e7f\u573a5\u697c","seats":"1118","bus_info":"\u516c\u5171\u6c7d\u8f66\u56ed\u827a\u573a\u7ad9188\u8def\u3001565\u8def\u3001239\u8def\u3001B7\u8def\u30018\u8def\u300188\u8def\u3001488\u8def\u3001182\u8def\u3001\u591c28\u8def\u3001\u591c30\u8def\u3001\u591c34\u8def\u3001\u591c61\u8def\u3001\u591c6\u8def\u3001\u591c88\u8def\u3001\u591c565\u8def\u3001\u591c103\u8def\u3001\u9ad8\u5cf0\u5feb\u7ebf14\u8def\u3001\u9ad8\u5cf0\u5feb\u7ebf19\u8def\u3001\u9ad8\u5cf0\u5feb\u7ebf35\u8def\n\u5730\u94c1\u5ba2\u6751\u7ad9\uff08\u6b65\u884c\u7ea620\u5206\u949f\uff09\u3001\u5730\u94c1\u9e6d\u6c5f\u7ad9\uff08\u6b65\u884c\u7ea620\u5206\u949f\uff09\n\u5f71\u57ce\u7981\u6b62\u5916\u5e26\u98df\u54c1\uff0c\u4f46\u63d0\u4f9b\u5bc4\u5b58\u67dc\u4f9b\u60a8\u5bc4\u5b58","image":"http:\/\/www.lumiai.com\/uploads\/image\/20171227\/20171227075948_89590.jpg","longitude":"113.320767","latitude":"23.092193","ver_time":"1599548790","features":[{"id":"157","cinema_id":"1034","feature_id":"3","display":"1","content":"","sort":"11","feature":{"id":"3","name":"IMAX\u5385"}}]}]},{"id":"23","name":"\u8d35\u9633","longitude":"106.717738","latitude":"26.526838","ver_time":"0","cinemas":[{"id":"1032","short_id":"52013901","name":"\u5362\u7c73\u57c3\u8d35\u9633\u4e07\u79d1\u5927\u90fd\u4f1a\u5f71\u57ce","code":"36","code_num":"6210","voucher_code":"43","long_code":"0","phone_number":"0851-83869995","email_address":"","city":"23","address":"\u8d35\u9633\u5e02\u82b1\u6eaa\u533a\u73e0\u6c5f\u8def368\u53f7\u4e07\u79d1\u5927\u90fd\u4f1a 4\u697c","seats":"8","bus_info":"\u516c\u4ea4\u8f6613\u8def\u300111\u8def\u3001315\u8def\u300181\u8def\u300182\u8def\u3001\u82b1\u6eaa7\u8def\u3002","image":"http:\/\/www.lumiai.com\/uploads\/image\/20190305\/20190305092537_97689.jpg","longitude":"106.717738","latitude":"26.526838","ver_time":"1599548910","features":[{"id":"139","cinema_id":"1032","feature_id":"2","display":"1","content":"","sort":"11","feature":{"id":"2","name":"3D"}},{"id":"140","cinema_id":"1032","feature_id":"5","display":"1","content":"","sort":"12","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}}]},{"id":"1042","short_id":"52016001","name":"\u5362\u7c73\u57c3\u8d35\u9633\u82b1\u6eaa\u4e07\u79d1IMAX\u5f71\u57ce","code":"46","code_num":"6220","voucher_code":"53","long_code":"0","phone_number":"0851-83651018","email_address":"","city":"23","address":"\u8d35\u5dde\u7701\u8d35\u9633\u5e02\u82b1\u6eaa\u533a\u7530\u56ed\u8def666\u53f7\u4e07\u79d1\u751f\u6d3b\u5e7f\u573a2\u697c\u82b1\u6eaa\u533a\u653f\u5e9c\u5bf9\u9762","seats":"0","bus_info":"","image":"","longitude":"106.669805","latitude":"26.408168","ver_time":"1633585197","features":[{"id":"234","cinema_id":"1042","feature_id":"3","display":"1","content":"","sort":"0","feature":{"id":"3","name":"IMAX\u5385"}},{"id":"249","cinema_id":"1042","feature_id":"2","display":"1","content":"","sort":"0","feature":{"id":"2","name":"3D"}}]}]},{"id":"5","name":"\u676d\u5dde","longitude":"120.211671","latitude":"30.265686","ver_time":"0","cinemas":[{"id":"1001","short_id":"33013501","name":"\u5362\u7c73\u57c3\u676d\u5dde\u94f6\u6cf0\u5f71\u57ce","code":"2","code_num":"3110","voucher_code":"2","long_code":"0","phone_number":"0571-86533860","email_address":"","city":"5","address":"\u676d\u5dde\u5e02\u4e0a\u57ce\u533a\u666f\u6619\u8def18-26\u53f7\u94f6\u6cf0\u767e\u8d276\u697c","seats":"1433","bus_info":" \u7ebf\u8def\u4e00\uff1aK323\u3001K100\uff08\u533a\u95f4\uff09\u3001K100\u3001K210\uff08\u591c\u95f4\u7ebf\uff09\u3001K525\u3001K401\u300145\/K45\u3001K186\u81f3\u5e86\u6625\u5e7f\u573a\u4e1c\u4e0b\uff1b \u7ebf\u8def\u4e8c\uff1aK100\uff08\u533a\u95f4\uff09\u3001K100\u3001K202\uff08\u591c\u95f4\u7ebf\uff09\u3001K186\u3001848\u3001K304\u3001K105\u3001K106\u81f3\u5e86\u6625\u4e1c\u8def\u4e0b\uff1b \u7ebf\u8def\u4e09\uff1aK305\u3001K20\u3001K64\u3001K317\u3001K56\u3001K55\u3001K805\u81f3\u7ea2\u83f1\u65b0\u6751\u4e0b\uff1b \u7ebf\u8def\u56db\uff1a864\u81f3\u666f\u6619\u8def\u5e86\u6625\u8def\u53e3\u4e0b\uff1b \u7ebf\u8def\u4e94\uff1a834\u3001862\u300184\u81f3\u666f\u5fa1\u8def\u4e0b\uff1b\u8def\u7ebf\u516d\uff1a\u5730\u94c12\u53f7\u7ebf\u5230\u5e86\u6625\u5e7f\u573a\u5730\u94c1\u7ad9b\u51fa\u53e3\u4e0b\uff1b","image":"http:\/\/www.lumiai.com\/uploads\/image\/20180507\/20180507030415_71437.jpg","longitude":"120.211671","latitude":"30.265686","ver_time":"1638944862","features":[{"id":"129","cinema_id":"1001","feature_id":"5","display":"1","content":"","sort":"13","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"130","cinema_id":"1001","feature_id":"6","display":"1","content":"","sort":"14","feature":{"id":"6","name":"VIP\u5385"}}]},{"id":"1043","short_id":"33018021","name":"\u5362\u7c73\u57c3\u676d\u5dde\u897f\u6eaa\u5929\u8857\u5f71\u57ce","code":"47","code_num":"3120","voucher_code":"54","long_code":"0","phone_number":"0571-87098503","email_address":"","city":"5","address":"\u6d59\u6c5f\u7701\u676d\u5dde\u5e02\u897f\u6e56\u533a\u4f59\u676d\u5858\u8def1001\u53f7\u9f99\u6e56\u897f\u6eaa\u5929\u88576\u697c","seats":"0","bus_info":"","image":"","longitude":"120.073614","latitude":"30.298057","ver_time":"1638944987","features":[{"id":"237","cinema_id":"1043","feature_id":"6","display":"1","content":"","sort":"1","feature":{"id":"6","name":"VIP\u5385"}},{"id":"263","cinema_id":"1043","feature_id":"10","display":"1","content":"","sort":"0","feature":{"id":"10","name":"LD PLUS\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"264","cinema_id":"1043","feature_id":"12","display":"1","content":"","sort":"0","feature":{"id":"12","name":"\u5bb6\u5ead\u5385"}},{"id":"265","cinema_id":"1043","feature_id":"13","display":"1","content":"","sort":"0","feature":{"id":"13","name":"\u60c5\u4fa3\u5385"}}]}]},{"id":"4","name":"\u6dee\u5b89","longitude":"119.033568","latitude":"33.60338","ver_time":"0","cinemas":[{"id":"1005","short_id":"32090601","name":"\u5362\u7c73\u57c3\u6dee\u5b89\u65b0\u4e9a\u5f71\u57ce","code":"7","code_num":"3510","voucher_code":"8","long_code":"0","phone_number":"0517-89861388","email_address":"","city":"4","address":"\u6dee\u5b89\u5e02\u6dee\u6d77\u4e1c\u8def142\u53f7\u4e2d\u592e\u56fd\u9645\u65b0\u4e9a\u5e7f\u573a\u4e03\u5c42","seats":"1171","bus_info":"2\u30013\u30018\u300123\u300126\u300133\u300135\u300153\u8def\u81f3\u65b0\u4e9a\u5e7f\u573a\u7ad9\u4e0b","image":"http:\/\/www.lumiai.com\/uploads\/image\/20160624\/20160624060324_61399.jpg","longitude":"119.033568","latitude":"33.60338","ver_time":"1599549047","features":[{"id":"19","cinema_id":"1005","feature_id":"2","display":"1","content":"","sort":"15","feature":{"id":"2","name":"3D"}},{"id":"24","cinema_id":"1005","feature_id":"1","display":"1","content":"","sort":"14","feature":{"id":"1","name":"\u6fc0\u5149\u5385"}}]}]},{"id":"21","name":"\u6606\u5c71","longitude":"120.980705","latitude":"31.382022","ver_time":"0","cinemas":[{"id":"1022","short_id":"32029071","name":"\u5362\u7c73\u57c3\u6606\u5c71\u91d1\u9e70\u5f71\u57ce","code":"26","code_num":"3620","voucher_code":"32","long_code":"0","phone_number":"0512-50177532","email_address":"","city":"21","address":"\u82cf\u5dde\u5e02\u6606\u5c71\u5e02\u4e1c\u65b0\u8857\u91d1\u9e70\u56fd\u9645\u8d2d\u7269\u4e2d\u5fc38\u697c","seats":"1000","bus_info":"3\u8def\uff1b4\u8def\uff1b16\u8def\uff1b19\u8def","image":"http:\/\/www.lumiai.com\/uploads\/image\/20160519\/20160519062111_67821.jpg","longitude":"120.980705","latitude":"31.382022","ver_time":"1599549769","features":[{"id":"61","cinema_id":"1022","feature_id":"5","display":"1","content":"","sort":"12","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"62","cinema_id":"1022","feature_id":"6","display":"1","content":"","sort":"13","feature":{"id":"6","name":"VIP\u5385"}},{"id":"63","cinema_id":"1022","feature_id":"2","display":"1","content":"","sort":"11","feature":{"id":"2","name":"3D"}}]}]},{"id":"13","name":"\u6d1b\u9633","longitude":"112.414156","latitude":"34.6505","ver_time":"0","cinemas":[{"id":"1019","short_id":"41033101","name":"\u5362\u7c73\u57c3\u6d1b\u9633\u738b\u5e9c\u4e95\u5f71\u57ce","code":"23","code_num":"4110","voucher_code":"29","long_code":"0","phone_number":"0379-69966077","email_address":"","city":"13","address":"\u6cb3\u5357\u7701\u6d1b\u9633\u5e02\u5357\u660c\u8def139\u53f7\u738b\u5e9c\u4e95\u8d2d\u7269\u4e2d\u5fc36\u697c\u5362\u7c73\u57c3\u5f71\u57ce","seats":"1366","bus_info":"2.6.7.10.12.25.30.35.40.54.59.60.63.95\u8def\u5747\u53ef\u5230\u8fbe","image":"http:\/\/www.lumiai.com\/uploads\/image\/20190305\/20190305093646_50604.jpg","longitude":"112.414156","latitude":"34.6505","ver_time":"1599549056","features":[{"id":"15","cinema_id":"1019","feature_id":"5","display":"1","content":"","sort":"11","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}}]}]},{"id":"2","name":"\u5357\u4eac","longitude":"118.789058","latitude":"32.067116","ver_time":"0","cinemas":[{"id":"1006","short_id":"32012901","name":"\u5362\u7c73\u57c3\u5357\u4eac\u5f18\u9633\u5e7f\u573aIMAX\u5f71\u57ce","code":"8","code_num":"3320","voucher_code":"10","long_code":"0","phone_number":"025-58889465","email_address":"","city":"2","address":"\u5357\u4eac\u5e02\u5927\u6865\u5317\u8def48\u53f7\u5f18\u9633\u5e7f\u573a","seats":"1722","bus_info":"131\u8def\u3001136\u533a\u3001159\u8def\u3001174\u8def\u3001636\u8def\u3001D2\u8def\u3001D3\u8def\u3001502\u8def\u3001503\u8def\u81f3\u5f18\u9633\u5e7f\u573a\u5317\u7ad9","image":"http:\/\/www.lumiai.com\/uploads\/image\/20190305\/20190305092931_65987.jpg","longitude":"118.730773","latitude":"32.144024","ver_time":"1612333088","features":[{"id":"72","cinema_id":"1006","feature_id":"1","display":"1","content":"","sort":"12","feature":{"id":"1","name":"\u6fc0\u5149\u5385"}},{"id":"78","cinema_id":"1006","feature_id":"2","display":"1","content":"","sort":"13","feature":{"id":"2","name":"3D"}},{"id":"79","cinema_id":"1006","feature_id":"6","display":"1","content":"","sort":"16","feature":{"id":"6","name":"VIP\u5385"}},{"id":"161","cinema_id":"1006","feature_id":"5","display":"1","content":"","sort":"15","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"194","cinema_id":"1006","feature_id":"3","display":"1","content":"","sort":"14","feature":{"id":"3","name":"IMAX\u5385"}}]},{"id":"1016","short_id":"32016111","name":"\u5362\u7c73\u57c3\u5357\u4eac\u91d1\u9e70\u65b0\u8857\u53e3\u5f71\u57ce","code":"20","code_num":"3330","voucher_code":"26","long_code":"0","phone_number":"025-85791191","email_address":"","city":"2","address":"\u5357\u4eac\u5e02\u6c49\u4e2d\u8def101\u53f7\u91d1\u9e70\u5168\u751f\u6d3b\u4e2d\u5fc3B\u5ea79F","seats":"927","bus_info":"\u5730\u94c1\uff1a\u65b0\u8857\u53e3\u7ad9\uff0c1\u53f7\u7ebf\uff0c2\u53f7\u7ebf\u91d1\u9e70\u51fa\u53e3\uff0c\u516c\u4ea4\u8f66\uff0c\u65b0\u8857\u53e3\u897f\u7ad9\u4e0b\uff0c3\u8def, 4\u8def, 9\u8def, 18\u8def, 302\u8def","image":"http:\/\/www.lumiai.com\/uploads\/image\/20160627\/20160627070618_90736.jpg","longitude":"118.785777","latitude":"32.047992","ver_time":"1621565965","features":[{"id":"73","cinema_id":"1016","feature_id":"5","display":"1","content":"","sort":"14","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"84","cinema_id":"1016","feature_id":"2","display":"1","content":"","sort":"13","feature":{"id":"2","name":"3D"}},{"id":"86","cinema_id":"1016","feature_id":"6","display":"1","content":"","sort":"15","feature":{"id":"6","name":"VIP\u5385"}}]},{"id":"1036","short_id":"32019171","name":"\u5362\u7c73\u57c3\u5357\u4eac\u91d1\u9e70\u4ed9\u6797\u5f71\u57ce","code":"40","code_num":"3350","voucher_code":"47","long_code":"0","phone_number":"025-82224687","email_address":"","city":"2","address":"\u5357\u4eac\u5e02\u6816\u971e\u533a\u4ed9\u6797\u5b66\u6d25\u8def1\u53f7\u91d1\u9e70\u6e56\u6ee8\u5929\u5730B\u533a4\u5c42","seats":"921","bus_info":"97\u8def\u3001146\u8def\u3001310\u8def\u3001331\u8def\u3001D1\u8def\uff0c\u81f3\u5357\u4eac\u8d22\u7ecf\u5927\u5b66\u7ad9\u4e0b\n\u5730\u94c12\u53f7\u7ebf\uff0c\u81f3\u4ed9\u6797\u4e2d\u5fc3\u7ad9\u4e0b1\u53f7\u51fa\u53e3","image":"http:\/\/www.lumiai.com\/uploads\/image\/20171128\/20171128080040_92394.jpg","longitude":"118.929237","latitude":"32.106481","ver_time":"1599549208","features":[{"id":"171","cinema_id":"1036","feature_id":"9","display":"1","content":"","sort":"13","feature":{"id":"9","name":"LD\u6fc0\u5149\u5385"}},{"id":"173","cinema_id":"1036","feature_id":"2","display":"1","content":"","sort":"12","feature":{"id":"2","name":"3D"}},{"id":"174","cinema_id":"1036","feature_id":"5","display":"1","content":"","sort":"14","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"176","cinema_id":"1036","feature_id":"1","display":"1","content":"","sort":"11","feature":{"id":"1","name":"\u6fc0\u5149\u5385"}}]},{"id":"1037","short_id":"32019201","name":"\u5362\u7c73\u57c3\u5357\u4eac\u91d1\u9e70\u6cb3\u897f\u5f71\u57ce","code":"41","code_num":"3360","voucher_code":"48","long_code":"0","phone_number":"025-84416661","email_address":"","city":"2","address":"\u5357\u4eac\u5e02\u5efa\u90ba\u533a\u5e94\u5929\u5927\u8857888\u53f7\u91d1\u9e70\u4e16\u754c9\u5c42","seats":"1538","bus_info":" 7\u8def\u300139\u8def\u300157\u8def\u300114\u8def\u300148\u8def\u300182\u8def\u3001161\u8def\u3001166\u8def\u3001512\u8def\u3001703\u8def\u3001D18\u8def\u3001D4\u8def\u5728\u6c5f\u4e1c\u4e2d\u8def\u00b7\u5e94\u5929\u5927\u8857\u7ad9\u4e0b\u3002\n\u5730\u94c12\u53f7\u7ebf\u5728\u96c6\u5e86\u95e8\u5927\u8857\u7ad9\u4e0b1\u53f7\u51fa\u53e3\n","image":"http:\/\/www.lumiai.com\/uploads\/image\/20171128\/20171128080559_68725.jpg","longitude":"118.747113","latitude":"32.029366","ver_time":"1599549962","features":[{"id":"181","cinema_id":"1037","feature_id":"9","display":"1","content":"","sort":"13","feature":{"id":"9","name":"LD\u6fc0\u5149\u5385"}},{"id":"182","cinema_id":"1037","feature_id":"5","display":"1","content":"","sort":"15","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"185","cinema_id":"1037","feature_id":"1","display":"1","content":"","sort":"12","feature":{"id":"1","name":"\u6fc0\u5149\u5385"}}]},{"id":"1044","short_id":"32019651","name":"\u5362\u7c73\u57c3\u5357\u4eac\u9f99\u87e0\u6c47IMAX\u5f71\u57ce","code":"48","code_num":"3370","voucher_code":"0","long_code":"0","phone_number":"025-57790123","email_address":"","city":"2","address":"\u6c5f\u82cf\u7701\u5357\u4eac\u5e02\u79e6\u6dee\u533a\u8c61\u623f\u6751\u8def\u4e0e\u9f99\u87e0\u4e2d\u8def\u4ea4\u53c9\u53e3\u4e1c\u5357\u89d2","seats":"0","bus_info":"","image":"","longitude":"118.807816","latitude":"32.028302","ver_time":"1640780004","features":[{"id":"255","cinema_id":"1044","feature_id":"3","display":"1","content":"","sort":"1","feature":{"id":"3","name":"IMAX\u5385"}},{"id":"256","cinema_id":"1044","feature_id":"2","display":"1","content":"","sort":"0","feature":{"id":"2","name":"3D"}},{"id":"257","cinema_id":"1044","feature_id":"1","display":"1","content":"","sort":"0","feature":{"id":"1","name":"\u6fc0\u5149\u5385"}},{"id":"258","cinema_id":"1044","feature_id":"12","display":"1","content":"","sort":"0","feature":{"id":"12","name":"\u5bb6\u5ead\u5385"}},{"id":"259","cinema_id":"1044","feature_id":"13","display":"1","content":"","sort":"0","feature":{"id":"13","name":"\u60c5\u4fa3\u5385"}}]}]},{"id":"17","name":"\u4e0a\u6d77","longitude":"121.522887","latitude":"31.280557","ver_time":"0","cinemas":[{"id":"1026","short_id":"31092301","name":"\u5362\u7c73\u57c3\u4e0a\u6d77\u7d2b\u8346\u5f71\u57ce","code":"30","code_num":"3910","voucher_code":"36","long_code":"0","phone_number":"021-55803920","email_address":"","city":"17","address":"\u4e0a\u6d77\u5e02\u6768\u6d66\u533a\u63a7\u6c5f\u8def1628\u53f7\u7d2b\u8346\u5e7f\u573a5\u697c","seats":"1071","bus_info":"\u5730\u94c1\u516b\u53f7\u7ebf\u6c5f\u6d66\u8def\u7ad93\u53f7\u53e3\uff1b6\u8def\u3001220\u8def","image":"http:\/\/www.lumiai.com\/uploads\/image\/20190305\/20190305092347_26364.jpg","longitude":"121.522887","latitude":"31.280557","ver_time":"1599549265","features":[{"id":"135","cinema_id":"1026","feature_id":"5","display":"1","content":"","sort":"12","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"136","cinema_id":"1026","feature_id":"2","display":"1","content":"","sort":"11","feature":{"id":"2","name":"3D"}}]},{"id":"1031","short_id":"31183601","name":"\u5362\u7c73\u57c3\u4e0a\u6d77\u5927\u878d\u57ce\u5f71\u57ce","code":"35","code_num":"3920","voucher_code":"42","long_code":"0","phone_number":" 021-55520668","email_address":"","city":"17","address":"\u4e0a\u6d77\u5e02\u5609\u5b9a\u533a\u5b9d\u5b89\u516c\u8def3386\u53f7\u5927\u878d\u57ce4\u697c\u5362\u7c73\u57c3\u5f71\u57ce","seats":"1637","bus_info":"\u9a6c\u96461\u8def \u9a6c\u96462\u8def \u5609\u5b9a15\u8def 811\u8def","image":"http:\/\/www.lumiai.com\/uploads\/image\/20180830\/20180830153630_61197.jpg","longitude":"121.285571","latitude":"31.335936","ver_time":"1599549262","features":[{"id":"117","cinema_id":"1031","feature_id":"2","display":"1","content":"","sort":"11","feature":{"id":"2","name":"3D"}}]}]},{"id":"11","name":"\u7ecd\u5174","longitude":"120.587179","latitude":"29.993558","ver_time":"0","cinemas":[{"id":"1017","short_id":"33053001","name":"\u5362\u7c73\u57c3\u7ecd\u5174\u94f6\u6cf0\u57ceIMAX\u5f71\u57ce","code":"21","code_num":"3710","voucher_code":"27","long_code":"0","phone_number":"0575-89111462","email_address":"","city":"11","address":"\u7ecd\u5174\u5e02\u8d8a\u57ce\u533a\u89e3\u653e\u5357\u8def777\u53f7F4\u5c424F001","seats":"1980","bus_info":"1\u3001\u4e58\u5750 1 4 5 9 11 32 66 106 603\u8def\u81f3\u8d8a\u57ce\u533a\u5e9c\uff08\u7b2c\u4e8c\u533b\u9662\u4e0b\uff09 2\u3001\u4e58\u5750 35 36\u8def\u548c\u7545\u5802\u4e0b 3\u3001\u4e58\u5750 13\u8def\u6cbb\u6c34\u5e7f\u573a\u4e0b","image":"http:\/\/www.lumiai.com\/uploads\/image\/20160519\/20160519061501_80360.png","longitude":"120.587179","latitude":"29.993558","ver_time":"1599548245","features":[{"id":"104","cinema_id":"1017","feature_id":"3","display":"1","content":"","sort":"14","feature":{"id":"3","name":"IMAX\u5385"}},{"id":"107","cinema_id":"1017","feature_id":"2","display":"1","content":"","sort":"12","feature":{"id":"2","name":"3D"}}]}]},{"id":"22","name":"\u76db\u6cfd","longitude":"120.630579","latitude":"30.908126","ver_time":"0","cinemas":[{"id":"1010","short_id":"32025001","name":"\u5362\u7c73\u57c3\u76db\u6cfd\u8d22\u5bcc\u4e2d\u5fc3\u5f71\u57ce","code":"12","code_num":"3410","voucher_code":"13","long_code":"0","phone_number":"0512-63921810","email_address":"","city":"22","address":"\u6c5f\u82cf\u7701\u82cf\u5dde\u5e02\u5434\u6c5f\u533a\u76db\u6cfd\u9547\u897f\u4e8c\u73af\u8def1999\u53f7\u8d22\u5bcc\u4e2d\u5fc3\u8d2d\u7269\u516c\u56ed27\u5e623F","seats":"908","bus_info":"\u516c\u4ea4161\u3001171\u3001166\u76f4\u8fbe\u8d22\u5bcc\u4e2d\u5fc3\u7ad9\u5373\u53ef","image":"http:\/\/www.lumiai.com\/uploads\/image\/20160519\/20160519055322_97426.png","longitude":"120.630579","latitude":"30.908126","ver_time":"1599548238","features":[{"id":"132","cinema_id":"1010","feature_id":"2","display":"1","content":"","sort":"12","feature":{"id":"2","name":"3D"}}]}]},{"id":"10","name":"\u6c88\u9633","longitude":"123.438061","latitude":"41.830771","ver_time":"0","cinemas":[{"id":"1011","short_id":"21016301","name":"\u5362\u7c73\u57c3\u6c88\u9633\u5929\u5730\u5f71\u57ce","code":"14","code_num":"1110","voucher_code":"15","long_code":"0","phone_number":"024-31658001","email_address":"","city":"10","address":"\u6c88\u9633\u5e02\u7687\u59d1\u533a\u5317\u9675\u5927\u885717\u53f7\u6c88\u9633\u5929\u5730\uff08\u4e2d\u6c47\u5e7f\u573a\uff09F3-05","seats":"762","bus_info":"\u4e58\u5750\u5730\u94c12\u53f7\u7ebf\u5c90\u5c71\u8def\u7ad9B\u51fa\u53e3\uff0c217\u8def\u3001214\u8def\u3001800\u8def","image":"http:\/\/www.lumiai.com\/uploads\/image\/20160519\/20160519055939_51740.jpg","longitude":"123.438061","latitude":"41.830771","ver_time":"1599548236","features":[{"id":"68","cinema_id":"1011","feature_id":"5","display":"1","content":"","sort":"12","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"69","cinema_id":"1011","feature_id":"1","display":"1","content":"","sort":"11","feature":{"id":"1","name":"\u6fc0\u5149\u5385"}}]},{"id":"1024","short_id":"21010841","name":"\u5362\u7c73\u57c3\u6c88\u9633\u4e07\u8c61\u6c47\u5f71\u57ce","code":"28","code_num":"1120","voucher_code":"34","long_code":"0","phone_number":"024-85908661","email_address":"","city":"10","address":"\u6c88\u9633\u5e02\u94c1\u897f\u533a\u5174\u534e\u5317\u8857\u534e\u6da6\u4e07\u8c61\u6c47\u4e94\u5c42501","seats":"1000","bus_info":"","image":"http:\/\/www.lumiai.com\/uploads\/image\/20160627\/20160627060620_96510.jpg","longitude":"123.377599","latitude":"41.800426","ver_time":"0","features":[{"id":"70","cinema_id":"1024","feature_id":"5","display":"1","content":"","sort":"11","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}}]}]},{"id":"19","name":"\u6df1\u5733","longitude":"114.090097","latitude":"22.549063","ver_time":"0","cinemas":[{"id":"1028","short_id":"44011521","name":"\u5362\u7c73\u57c3\u6df1\u5733\u534e\u5f3a\u5317IMAX\u5f71\u57ce","code":"32","code_num":"5210","voucher_code":"37","long_code":"0","phone_number":"0755-23613657","email_address":"","city":"19","address":"\u798f\u7530\u533a\u4e2d\u822a\u8def\u4e2d\u822a\u57ce\u541b\u5c1a\u8d2d\u7269\u4e2d\u5fc34\u697c(\u65e9\u573a\u665a\u573a\u5165\u53e3\u4ece1\u697cCK\u5e97\u94fa\u65c1\u5546\u573a\u5165\u53e3\u5904\u5782\u76f4\u7535\u68af\u52304\u697c)","seats":"1608","bus_info":"\u3010\u516c\u4ea4\u6307\u5357\u3011\u4e2d\u822a\u57ce\u5929\u8679\u8d2d\u7269\u4e2d\u5fc3\u9644\u8fd1\u7684\u516c\u4ea4\u7ad9: \u4e0a\u6d77\u5bbe\u9986\u3001\u534e\u5bcc\u8def\u3001\u4e2d\u822a\u5730\u4ea7\u7b49\u516c\u4ea4\u7ad9\uff1b\u3000\n\u3010\u5730\u94c1\u6307\u5357\u3011\u5730\u94c11\u53f7\u7f57\u5b9d\u7ebf\u534e\u5f3a\u8def\u7ad9A\u3001B\u51fa\u53e3\uff0c\u5730\u94c12\u53f7\u86c7\u53e3\u7ebf\u534e\u5f3a\u5317\u7ad9C\u51fa\u53e3\uff1b\n*\u4e3a\u4e86\u60a8\u548c\u4ed6\u4eba\u8eab\u4f53\u5065\u5eb7\uff0c3D\u773c\u955c\u8bf7\u81ea\u884c\u8d2d\u4e70\u3002\uff08IMAX\u5f71\u7247\u9664\u5916\uff09*","image":"http:\/\/www.lumiai.com\/uploads\/image\/20160705\/20160705054952_29882.jpg","longitude":"114.090097","latitude":"22.549063","ver_time":"1620281051","features":[{"id":"122","cinema_id":"1028","feature_id":"3","display":"1","content":"","sort":"12","feature":{"id":"3","name":"IMAX\u5385"}},{"id":"124","cinema_id":"1028","feature_id":"5","display":"1","content":"","sort":"13","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"169","cinema_id":"1028","feature_id":"1","display":"1","content":"","sort":"11","feature":{"id":"1","name":"\u6fc0\u5149\u5385"}}]},{"id":"1033","short_id":"44012131","name":"\u5362\u7c73\u57c3\u6df1\u5733\u6c47\u6e2fIMAX\u5f71\u57ce","code":"37","code_num":"5220","voucher_code":"44","long_code":"0","phone_number":"0755-21610013","email_address":"","city":"19","address":"\u6df1\u5733\u5357\u5c71\u533a\u86c7\u53e3\u5de5\u4e1a\u4e09\u8def1\u53f7\u6c47\u6e2f\u8d2d\u7269\u4e2d\u5fc33\u697c","seats":"1112","bus_info":"\u3010\u516c\u4ea4\u6307\u5357\u3011\u5357\u5c71\u6d77\u4e0a\u4e16\u754c\u516c\u4ea4\u7ad9\u3001\u6d77\u4e0a\u4e16\u754c\u5730\u94c1\u7ad9\n\u3010\u5730\u94c1\u6307\u5357\u3011\uff1a\u5730\u94c12\u53f7\u7ebf\u5230\u6d77\u4e0a\u4e16\u754c\u7ad9\u4eceC\u51fa\u53e3\u65b9\u5411\u5230\u6c47\u6e2f\u8d2d\u7269\u4e2d\u5fc3\n\u3010\u516c\u4ea4\u7ad9\u7ebf\u8def\u3011\uff1a37\u8def\u3001N8\u8def\u300110\u7ebf\u3001M493\u8def\u3001M519\u7ebf ","image":"http:\/\/www.lumiai.com\/uploads\/image\/20190305\/20190305092626_91974.jpg","longitude":"113.921832","latitude":"22.490952","ver_time":"1640674295","features":[{"id":"149","cinema_id":"1033","feature_id":"3","display":"1","content":"","sort":"12","feature":{"id":"3","name":"IMAX\u5385"}},{"id":"150","cinema_id":"1033","feature_id":"5","display":"1","content":"","sort":"13","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"191","cinema_id":"1033","feature_id":"2","display":"1","content":"","sort":"0","feature":{"id":"2","name":"3D"}}]}]},{"id":"12","name":"\u987a\u5fb7","longitude":"113.277738","latitude":"22.840933","ver_time":"0","cinemas":[{"id":"1018","short_id":"44136201","name":"\u5362\u7c73\u57c3\u987a\u5fb7\u5f71\u57ce","code":"22","code_num":"5110","voucher_code":"28","long_code":"0","phone_number":"\u8bf7\u5728APP\u9996\u9875\u201c\u4e2a\u4eba\u4e2d\u5fc3\u201d-\u201c\u9996\u89c1\u95ee\u9898\u201d","email_address":"","city":"12","address":"\u987a\u5fb7\u987a\u5fb7\u533a\u5927\u826f\u4e1c\u4e50\u8def268\u53f7\u5370\u8c61\u57ce\u8d2d\u7269\u5546\u573a\u4e09\u697c\u5362\u7c73\u57c3","seats":"1028","bus_info":"\u987a\u5fb7\u516c\u4ea4:300\u8def; 316\u8def; 331\u8def; 901\u8def; 919\u8def; 964\u8def","image":"http:\/\/www.lumiai.com\/uploads\/image\/20160519\/20160519061610_43890.jpg","longitude":"113.277738","latitude":"22.840933","ver_time":"1611560704","features":[{"id":"18","cinema_id":"1018","feature_id":"5","display":"1","content":"","sort":"13","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"143","cinema_id":"1018","feature_id":"1","display":"1","content":"","sort":"0","feature":{"id":"1","name":"\u6fc0\u5149\u5385"}},{"id":"212","cinema_id":"1018","feature_id":"2","display":"1","content":"","sort":"11","feature":{"id":"2","name":"3D"}}]}]},{"id":"8","name":"\u82cf\u5dde","longitude":"120.747728","latitude":"31.321707","ver_time":"0","cinemas":[{"id":"1013","short_id":"32026501","name":"\u5362\u7c73\u57c3\u82cf\u5dde\u534e\u6da6\u4e07\u5bb6\u5f71\u57ce","code":"15","code_num":"3610","voucher_code":"16","long_code":"0","phone_number":"0512-62969088","email_address":"","city":"8","address":"\u82cf\u5dde\u5de5\u4e1a\u56ed\u533a\u6d25\u6881\u8857172\u53f7\u534e\u6da6\u4e07\u5bb63-4\u5c42","seats":"1243","bus_info":"\u9014\u7ecf\u8def\u7ebf\uff1a100\u8def 106\u8def 108\u8def 115\u8def 116\u8def 117\u8def 120\u8def 128\u8def 139\u8def 156\u8def 158\u8def 166\u8def 168\u8def 16\u8def 176\u8def 205\u8def 219\u8def 228\u8def 258\u8def 28\u8def 2\u8def 47\u8def 6\u8def 812\u8def \u591c2\u8def \u5feb\u7ebf1\u53f7 \u5feb\u7ebf\u4e8c\u53f7 \u82cf\u5dde\u56ed\u533a\u4e8c\u53f7\u4e13\u7ebf \u8f68\u9053\u4ea4\u901a1\u53f7\u7ebf","image":"http:\/\/www.lumiai.com\/uploads\/image\/20190305\/20190305093429_40052.jpg","longitude":"120.747728","latitude":"31.321707","ver_time":"1599549468","features":[{"id":"108","cinema_id":"1013","feature_id":"5","display":"1","content":"","sort":"13","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"109","cinema_id":"1013","feature_id":"6","display":"1","content":"","sort":"14","feature":{"id":"6","name":"VIP\u5385"}},{"id":"110","cinema_id":"1013","feature_id":"2","display":"1","content":"","sort":"12","feature":{"id":"2","name":"3D"}}]},{"id":"1035","short_id":"32029461","name":"\u5362\u7c73\u57c3\u82cf\u5dde\u91d1\u9e70\u5f71\u57ce","code":"39","code_num":"3630","voucher_code":"46","long_code":"0","phone_number":"0512-67362513","email_address":"","city":"8","address":" \u82cf\u5dde\u9ad8\u65b0\u533a\u72ee\u5c71\u8def298\u53f7\u91d1\u9e70\u8d2d\u7269\u4e2d\u5fc3\u516d\u697c\u5362\u7c73\u57c3\u5f71\u57ce","seats":"1218","bus_info":"\u3010\u5730\u94c1\u3011\u4e58\u57501\u53f7\u7ebf\u6728\u6e0e\u65b9\u5411[\u82cf\u5dde\u4e50\u56ed\u7ad9]4\u53f7\u53e3\u76f4\u8fbe\u3002\n\u3010\u516c\u4ea4\u3011\u4e58\u575051\u8def\u3001303\u8def\u3001304\u8def\u3001333\u8def\u81f3[\u82cf\u5dde\u4e50\u56ed\u7ad9]\u76f4\u8fbe","image":"http:\/\/www.lumiai.com\/uploads\/image\/20170613\/20170613031753_62074.jpg","longitude":"120.556887","latitude":"31.298906","ver_time":"1599549435","features":[{"id":"163","cinema_id":"1035","feature_id":"5","display":"1","content":"","sort":"11","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"164","cinema_id":"1035","feature_id":"6","display":"1","content":"","sort":"12","feature":{"id":"6","name":"VIP\u5385"}}]}]},{"id":"20","name":"\u6e29\u5dde","longitude":"120.692127","latitude":"27.957445","ver_time":"0","cinemas":[{"id":"1029","short_id":"33077701","name":"\u5362\u7c73\u57c3\u6e29\u5dde\u4e07\u8c61\u57ceIMAX\u5f71\u57ce","code":"33","code_num":"3720","voucher_code":"40","long_code":"0","phone_number":"0577-86680680","email_address":"","city":"20","address":"\u6e29\u5dde\u5e02\u74ef\u6d77\u533a\u6e29\u745e\u5927\u9053\u4e0e\u4e09\u579f\u5927\u9053\u4ea4\u53c9\u53e3\u4e07\u8c61\u57ce5\u697c","seats":"1787","bus_info":"","image":"http:\/\/www.lumiai.com\/uploads\/image\/20190305\/20190305092450_63883.jpg","longitude":"120.692127","latitude":"27.957445","ver_time":"1599549506","features":[{"id":"125","cinema_id":"1029","feature_id":"3","display":"1","content":"","sort":"11","feature":{"id":"3","name":"IMAX\u5385"}},{"id":"126","cinema_id":"1029","feature_id":"6","display":"1","content":"","sort":"12","feature":{"id":"6","name":"VIP\u5385"}}]}]},{"id":"15","name":"\u6b66\u6c49","longitude":"114.346711","latitude":"30.558918","ver_time":"0","cinemas":[{"id":"1023","short_id":"42019801","name":"\u5362\u7c73\u57c3\u6b66\u6c49\u51ef\u5fb71818\u5f71\u57ce","code":"27","code_num":"4210","voucher_code":"33","long_code":"0","phone_number":"027-59627108","email_address":"","city":"15","address":"\u6b66\u6c49\u5e02\u6b66\u660c\u533a\u4e2d\u5317109\u53f7\u51ef\u5fb71818\u4e2d\u5fc3\u4e03\u697c","seats":"1380","bus_info":"343\u8def\u3001515\u8def\u3001530\u8def\u3001540\u8def\u3001577\u8def\u3001583\u8def\u3001618\u8def\u3001702\u8def\u3001723\u8def\u3001729\u8def\u3001805\u8def\u3001817\u8def\uff0c\u75351\u8def\u3001\u7535\u8f668\u8def\u8def\u4e2d\u5317\u8def\u59da\u5bb6\u5cad\u8857\u7ad9\u4e0b\u8f66\u5373\u5230\u51ef\u5fb71818\u5e7f\u573a3\u53f7\u7535\u68af\uff0c\u5f71\u57ce\u6240\u57287F\uff1b\u5730\u94c14\u53f7\u7ebf\u695a\u6cb3\u6c49\u8857D\u53f7\u51fa\u53e3\u5373\u5230\u51ef\u5fb71818\u5e7f\u573a\u4e583\u53f7\u7535\u68af\uff0c\u5f71\u57ce\u6240\u57287F\uff1b","image":"http:\/\/www.lumiai.com\/uploads\/image\/20161012\/20161012014427_39110.jpg","longitude":"114.346711","latitude":"30.558918","ver_time":"1640677943","features":[{"id":"76","cinema_id":"1023","feature_id":"5","display":"1","content":"","sort":"11","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}}]}]},{"id":"9","name":"\u897f\u5b89","longitude":"108.942968","latitude":"34.23526","ver_time":"0","cinemas":[{"id":"1012","short_id":"61013101","name":"\u5362\u7c73\u57c3\u897f\u5b89\u51ef\u5fb7\u5f71\u57ce","code":"13","code_num":"7110","voucher_code":"0","long_code":"0","phone_number":"029-88665301","email_address":"","city":"9","address":"\u897f\u5b89\u5e02\u96c1\u5854\u533a\u5357\u4e8c\u73af\u897f\u6bb5\u51ef\u5fb7\u5e7f\u573a\u4e94\u5c42\uff08\u6731\u96c0\u82b1\u5349\u5e02\u573a\u5bf9\u9762\uff09","seats":"1064","bus_info":"216\u3001308\u3001313\u3001321\u3001411\u3001258\u3001\u4e8c\u73af1-2\u53f7\u7ebf\u81f3\u7701\u653f\u52a1\u5927\u5385","image":"http:\/\/www.lumiai.com\/uploads\/image\/20190305\/20190305093216_38567.jpg","longitude":"108.942968","latitude":"34.23526","ver_time":"1599548969","features":[{"id":"95","cinema_id":"1012","feature_id":"5","display":"1","content":"","sort":"11","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"96","cinema_id":"1012","feature_id":"8","display":"1","content":"","sort":"12","feature":{"id":"8","name":"\u4f1a\u5458\u653f\u7b56"}}]},{"id":"1041","short_id":"61011351","name":"\u5362\u7c73\u57c3\u897f\u5b89\u66f2\u6c5fIMAX\u5f71\u57ce","code":"45","code_num":"7120","voucher_code":"0","long_code":"0","phone_number":"\u8bf7\u5728APP\u9996\u9875\u201c\u4e2a\u4eba\u4e2d\u5fc3\u201d-\u201c\u5e38\u89c1\u95ee\u9898\u201d","email_address":"","city":"9","address":"\u897f\u5b89\u5e02\u66f2\u6c5f\u65b0\u533a\u96c1\u7fd4\u8def3369\u53f7G\u5c42G-02\u53f7","seats":"1709","bus_info":"","image":"http:\/\/www.lumiai.com\/uploads\/image\/20190107\/20190107075608_31855.png","longitude":"109.019344","latitude":"34.218243","ver_time":"1599548253","features":[]}]},{"id":"26","name":"\u53a6\u95e8","longitude":"118.1782612549","latitude":"24.4928465229","ver_time":"0","cinemas":[{"id":"1039","short_id":"35023951","name":"\u5362\u7c73\u57c3\u53a6\u95e8IMAX\u5f71\u57ce","code":"43","code_num":"3820","voucher_code":"50","long_code":"0","phone_number":"0592-5513099","email_address":"","city":"26","address":"\u798f\u5efa\u7701\u53a6\u95e8\u5e02\u601d\u660e\u533a\u83b2\u524d\u8857\u9053\u91d1\u5c71\u8def1\u53f72-1\u53f7\u697c\u5b9d\u9f99\u4e00\u57ceL4","seats":"1530","bus_info":"","image":"http:\/\/www.lumiai.com\/uploads\/image\/20171128\/20171128080559_68725.jpg","longitude":"118.1782612549","latitude":"24.4928465229","ver_time":"1616840419","features":[{"id":"251","cinema_id":"1039","feature_id":"3","display":"1","content":"","sort":"0","feature":{"id":"3","name":"IMAX\u5385"}},{"id":"260","cinema_id":"1039","feature_id":"10","display":"1","content":"","sort":"0","feature":{"id":"10","name":"LD PLUS\u675c\u6bd4\u5168\u666f\u58f0"}},{"id":"261","cinema_id":"1039","feature_id":"1","display":"1","content":"","sort":"0","feature":{"id":"1","name":"\u6fc0\u5149\u5385"}}]}]},{"id":"14","name":"\u76d0\u57ce","longitude":"120.169386","latitude":"33.346636","ver_time":"0","cinemas":[{"id":"1021","short_id":"32084011","name":"\u5362\u7c73\u57c3\u76d0\u57ce\u805a\u9f99\u6e56\u91d1\u9e70\u5f71\u57ce","code":"25","code_num":"3810","voucher_code":"31","long_code":"0","phone_number":"0515-88883688","email_address":"","city":"14","address":"\u6c5f\u82cf\u7701\u76d0\u57ce\u5e02\u89e3\u653e\u5357\u8def268\u53f7\u91d1\u9e70\u805a\u9f99\u6e56\u8d2d\u7269\u4e2d\u5fc36\u697c","seats":"1217","bus_info":"BRT1\u53f7\u7ebf\u81f3\u65b0\u90fd\u8def\u7ad9","image":"http:\/\/www.lumiai.com\/uploads\/image\/20190305\/20190305092740_85943.jpg","longitude":"120.169386","latitude":"33.346636","ver_time":"1599549671","features":[{"id":"50","cinema_id":"1021","feature_id":"2","display":"1","content":"","sort":"14","feature":{"id":"2","name":"3D"}}]}]},{"id":"25","name":"\u626c\u5dde","longitude":"119.586841","latitude":"32.411937","ver_time":"0","cinemas":[{"id":"1038","short_id":"32065011","name":"\u5362\u7c73\u57c3\u626c\u5dde\u91d1\u9e70\u5f71\u57ce","code":"42","code_num":"3420","voucher_code":"49","long_code":"0","phone_number":"0514-85318833","email_address":"","city":"25","address":"\u626c\u5dde\u5e02\u6587\u660c\u4e1c\u8def\u4e0e\u9f99\u5ddd\u5357\u8def\u4ea4\u53c9\u53e3\u91d1\u9e70\u65b0\u57ce\u5e02\u4e2d\u5fc3 \u5362\u7c73\u57c3\u5f71\u57ce","seats":"0","bus_info":"","image":"http:\/\/www.lumiai.com\/uploads\/image\/20171128\/20171128080559_68725.jpg","longitude":"119.586841","latitude":"32.411937","ver_time":"0","features":[{"id":"188","cinema_id":"1038","feature_id":"5","display":"1","content":"","sort":"12","feature":{"id":"5","name":"LD\u675c\u6bd4\u5168\u666f\u58f0"}}]}]}];
+    
+    function getCity(id) {
+        var city={}
+        Smart._.each(citys,function (c) {
+            if(c.id==id){
+                city= c;
+            }
+        })
+        return city;
+    }
+
+        var city = getCity(1);
+        var todo = "北京";
+        var menu = new Vue({
+            el: "#menu_div_vue",
+            components: {
+                'todo-item':{
+                    template: todo
+                }
+            },
+            data: {
+                citys:citys,
+                display:false,
+                currentTopic: 0,
+                city:city
+            },
+            methods:{
+                over:function (c) {
+                    if(c){
+                        this.city=c;
+                    }else{
+                        this.city=city;
+                    }
+                    todo = this.city.id;
+                },
+                goCinema:function (cinema) {
+                    Smart.Url.getUrl('index/index/'+cinema.id)
+                }
+            }
+        })
+
+
+</script>
+<style>
+    #home_banner .swiper-pagination .swiper-pagination-bullet.active {
+        border: 2px solid #ff3600;
+        background-color: #ff3600;
+    }
+
+    #home_banner .swiper-pagination .swiper-pagination-bullet {
+        border: 2px solid #ff3600;
+        background-color: #fff;
+        opacity: 1;
+    }
+    .banner_arrow_btn{
+        top:200px;
+        cursor: pointer;
+        opacity: 0.5;
+    }
+    .banner_arrow_btn:hover{
+        top:200px;
+        cursor: pointer;
+        opacity: 1;
+    }
+    .blur_image {
+        width: 100%;
+        height: 100%;
+        filter: blur(16px);
+        -webkit-filter: blur(16px); /* chrome, opera */
+        -ms-filter: blur(16px);
+        -moz-filter: blur(16px);
+        filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius=16, MakeShadow=false); /*  IE6~IE9  */
+        transition: all 0.5s ease;
+        background-size: cover;
+        background-position: center center;
+    }
+    .film_div{
+        border: 1px solid #cd6e00;
+    }
+    .film_info {
+        position: relative;
+        background: #333;
+        color: #fff;
+
+
+    }
+    .roll_films{
+        border-bottom:2px solid #ff3600;
+    }
+    .roll_films:before {
+        bottom: 0px;
+        left:536px;
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        content: ' ';
+        border: 5px solid transparent;
+        color:#333;
+        border-bottom-color: #ff3600;
+        z-index: 10;
+
+    }
+
+    .film_info > .poster {
+        position: relative;
+        top: 10px;
+        left: 10px;
+        width: 180px;
+        height: 280px;
+        background-size: cover;
+        transition: all 0.2s ease;
+        background-position: center center;
+    }
+
+    .film_info .video_poster {
+        position: relative;
+        width: 300px;
+        height: 200px;
+        background-size: cover;
+        transition: all 0.2s ease;
+        background-position: center center;
+    }
+
+    .film_info .gray {
+        color: #ccc;
+    }
+
+    .film_info .film_feature_mark {
+        background: #0086b3;
+        color: #fff;
+        padding: 2px 6px 0px 6px;
+        border-radius: 3px;
+        font-size: 10px;
+
+    }
+    .film_image_node{
+        cursor: pointer;
+        width: 50px;height: 50px;
+        position: relative;
+        margin-right: 2px;
+
+    }
+    .over_div{
+        width: 100%;
+        height: 100%;
+        border: 0px solid transparent;
+        box-sizing: border-box;
+
+    }
+    .over_div:hover{
+       border: 4px solid #0086b3;
+    }
+
+
+    .film_sessions {
+        background: #282828;;
+        border-top: 0px solid #999;
+        color: #aaa;
+        position: relative;
+
+    }
+
+    .film_sessions .dates {
+        height: 36px;
+
+        margin: 0px 10px 0px 10px;
+
+    }
+
+    .film_sessions .dates > li {
+        padding: 8px;
+        float: left;
+        font-size: 14px;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        border-bottom: 5px solid #282828;
+
+    }
+
+    .film_sessions .dates > li:hover {
+        color: #fff;
+        border-bottom: 2px solid #f8f800;
+
+    }
+
+    .film_sessions .dates > li.active {
+        color: #f8f800;
+        border-bottom: 5px solid #f8f800;
+    }
+
+    .session_node > div {
+        float: left;
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .session_node {
+        clear: both;
+        height: 40px;
+        border-bottom: 1px solid #333;
+    }
+
+    .buy_btn {
+        border: 1px solid #f8f800;
+        padding: 4px 10px 4px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        color: #f8f800;
+        cursor: pointer;
+        margin-top: -5px;
+    }
+
+    .buy_btn:hover {
+        color: #f75c11;
+        border: 1px solid #f75c11;
+    }
+
+    .buy_btn.disabled {
+        border: 1px solid #999;
+        color: #999;
+        cursor: auto;
+    }
+
+    .today_no_sessions {
+        clear: both;
+        padding: 40px 20px 40px 20px;
+        font-size: 12px;
+    }
+    .film_arrow_btn{
+        background-color: rgba(0,0,0,0.1);
+        cursor: pointer;
+    }
+    .film_arrow_btn:hover{
+        background-color: rgba(0,0,0,0.5)
+    }
+    .detail_btn{
+        width: 100%;
+
+        color: #fff;
+        background: #CC5522;
+        font-size: 10px;
+        padding: 3px 0px 3px ;
+        text-align: center;
+        margin-top: 176px;
+    }
+    .detail_btn:hover{
+        background: #282828;
+    }
+
+    .sync_blocker_msg{
+        padding: 6px;
+        background: #999;
+        text-align: center;
+        color: #fff;
+    }
+
+</style>
+<script src="public/js/vue-selector.js"></script>
+<script src="public/js/vue-url-content.js"></script>
+<script src="public/js/vue-swiper.js"></script>
+<script src="public/js/vue-pop-up.js"></script>
+<script src="public/js/vue-sync-blocker.js"></script>
+<link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
+<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
+<div class="pr" style="width: 100%;height: 300px">
+<vue-swiper style="width: 100%;height: 300px" :mousewheel-control="false" id="home_banner" :pagination-visible="true" :transition-time="0.3" :autoplay='2000' :loop="false" :autoplay-disable-on-interaction="true" :autoplay-stop-on-last="false" direction="horizontal" :resistance-ratio="0.1" :pagination-clickable="true" :only-external="true">
+<div target="_blank" @click="getUrl('')" style="background: url(http://www.lumiai.com//uploads/image/20220101/20220101023834_54061.jpg)" class="slide-1 banner cp"></div>
+</vue-swiper>
+</div>
+<div class=" pr ovh roll_films" style="background: #000">
+<div class="blur_image pa left-0 top-0 width-100 height-100 background-cover-center" style="background: #000" :style="{backgroundImage:'url('+current_film.thumbnail+')'}"></div>
+<vue-selector :is-draged.sync="isDraged" :only-external="false" :scale="1" :mid-effect="{'z-index':10,y:0,scale: 1.2, distance: 100,rotateX:0,rotateY:50,perspective:1000}" type="x" style="height:300px;overflow:hidden;z-index:10" :active.sync="active" :node-size="{width:100,height:200,spacing:50}">
+<div class="cp film_div" ondragstart="return false;" v-for='film in films' @click="click($index)" :style="{'background-image':'url('+film.thumbnail+')'};" style="background-size: cover;background-position: center;height: 200px;width: 150px">
+<div class="detail_btn t200" v-show="film.id==current_film.id" @click="showDetail=!showDetail">查看详情</div>
+</div>
+</vue-selector>
+</div>
+<div class="film_info pr" v-show="showDetail" style="height: 300px">
+<div class="poster" :style="{backgroundImage:'url('+current_film.thumbnail+')'}"></div>
+<div class="pa" style="left:200px;top:10px;width: 500px;word-break: break-all">
+<div>${current_film.title} <span class="film_feature_mark">${current_film.feature}</span></div>
+<div class="f12">${current_film.title_second}</div>
+<div class="mt10 f12 gray">${current_film.genre}</div>
+<div class=" f12 gray">${current_film.publish_location}</div>
+<div class=" f12 gray">${current_film.launch_time}大陆上映</div>
+<div class="mt10 f12 gray">${'director' | lang}:${current_film.director}</div>
+<div class=" f12 gray">主演:${current_film.actors}</div>
+<div class="mt10 f12 gray ovh" style="height: 133px">剧情简介:<br/>
+${current_film.desc}
+</div>
+</div>
+<div class="pa" style="right:10px;top:10px;width: 300px;height: 100%">
+<div class="video_poster" :style="{backgroundImage:'url('+current_film.thumbnail+')'}">
+<video id="my-video" v-show="current_film.video_url" class="video-js" controls preload="auto" width="300" height="200" data-setup="{}">
+<p class="vjs-no-js">
+To view this video please enable JavaScript, and consider upgrading to a web browser that
+<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+</p>
+</video>
+<script>
+                var myPlayer = videojs('my-video');
+            </script>
+</div>
+<div class="mt5">
+<div class="background-cover-center fl film_image_node " @click="showImage(image.big_url)" v-for="image in current_film.film_images" :style="{backgroundImage:'url('+image.big_url+')'}">
+<div class="over_div t200">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="film_sessions" id="roll_films">
+<sync-blocker class="cb tc" :normal="{opacity:0.2,transition:'all .3s ease'}" :show="session_blocker.show" :msg-normal="{height:30,opacity:1,transition:'all .3s ease'}" :msg-enter="{height:0,opacity:0}" :msg-leave="{height:0,opacity:0}">
+<div class="sync_blocker_msg">${session_blocker.msg}</div>
+</sync-blocker>
+<div>
+<ul class="dates">
+<li v-for="(index,date) in sessions" :class="{active:current_date_index==index}" @click="selectDate(index,date)">
+${date.date}
+</li>
+</ul>
+</div>
+<div class=" pr" style="height: 1px;background: #f8f800;margin-top: -2px"></div>
+<div v-show="current_date.sessions.length==0" class="today_no_sessions">今日无排期</div>
+<div v-for="session in current_date.sessions" class="session_node" transition="session_stagger_transition" enter-stagger="100">
+<div>${session.time}</div>
+<div>${session.end_time} 散场</div>
+<div style="width: 150px">${session.language_type}</div>
+<div style="width: 320px">${session.screen_name}</div>
+<div style="width: 120px" class="tc"><span class="color_yellow">￥${session.price_in_cents/100}</span> ￥<span style="text-decoration: line-through">${session.adult_price_in_cents/100}</span></div>
+<div style="float: right;">
+<div class="buy_btn">
+请下载APP购票
+</div>
+</div>
+</div>
+</div>
+<vue-pop-up :mask-close="true" :title-style="{'color':'#ff0000'}" title="" :size.sync="popup.size" :popup-panel-style="{background:'#fff','border-radius':'0px',width:'200px'}" :close-button="false" :show.sync="popup.show" cancel-button="" confirm-button="" @popup-confirm="popup.show=false" z-index="10000" :confirm-style="{'float':'none','margin':'0px auto 5px auto','border-radius':'0px',width:'77px','text-align':'center',border:'1px solid #feae2d',color:'#feae2d'}" z-index="100">
+<img :src="popup.img" @load="updateImageSize($event)" style="width: 100%"/>
+<div class="pa cp" style="z-index: 10;right: 0px;top:0px;background: #fff" @click="popup.show=false"><img width="24" src="public/media/icon/cancel-128.png"/></div>
+</vue-pop-up>
+<script>
+    new Vue({
+        el: 'body',
+        components: {syncBlocker: VueSyncBlocker,VueSwiper:VueSwiper,VueSwiper:VueSwiper,VuePopUp:VuePopUp, VueSelector: VueSelector},
+        data: {
+//            slides: ['← o →', 'Page 2', 'Page 3'],
+            films:[{"id":"2441","short_code":"001c06592021","film_code":"_u6b$96VX5","thumbnail":"http:\/\/www.lumiai.com\/\/uploads\/image\/20220112\/20220112090604_63656.jpg","video_url":"","title":"\u718a\u51fa\u6ca1\u00b7\u91cd\u8fd4\u5730\u7403","feature":"3D","publish_location":" \u4e2d\u56fd\u5927\u9646","desc":"\u6709\u70b9\u61d2\u53c8\u6709\u70b9\u998b\u7684\u718a\u4e8c\u867d\u7136\u603b\u662f\u5404\u79cd\u5931\u8bef\u72af\u9519\uff0c\u5185\u5fc3\u5374\u4e00\u76f4\u68a6\u60f3\u6210\u4e3a\u4e00\u4f4d\u82f1\u96c4\uff0c\u4ee5\u6b64\u83b7\u5f97\u5927\u5bb6\u7279\u522b\u662f\u54e5\u54e5\u718a\u5927\u7684\u8ba4\u53ef\u3002\n\u3000\u3000\u4e00\u5757\u5916\u661f\u539f\u6838\u7684\u5760\u843d\u6253\u7834\u4e86\u72d7\u718a\u5cad\u7684\u5e73\u9759\uff0c\u718a\u4e8c\u610f\u5916\u7684\u4e0e\u5916\u661f\u539f\u6838\u5408\u4f53\uff0c\u6210\u4e3a\u4e86\u62e5\u6709\u5916\u661f\u667a\u6167\u80fd\u91cf\u7684\u718a\uff01\u968f\u4e4b\u800c\u6765\u7684\u662f\u201c\u5916\u661f\u4eba\u201d\u963f\u5e03\u7684\u62a2\u593a\u3002\u963f\u5e03\u4e3a\u4e86\u593a\u56de\u539f\u6838\uff0c\u6545\u610f\u5236\u9020\u4e8b\u7aef\uff0c\u8ba9\u718a\u4e8c\u4f17\u53db\u4eb2\u79bb\u3002","director":"\u6797\u6c47\u8fbe","actors":" \u5f20\u79c9\u541b \/ \u5f20\u4f1f \/ \u8c2d\u7b11 \/ \u674e\u5a49\u7476 \/ \u7a0b\u5b50\u6d0b ","genre":"\u559c\u5267 \/ \u52a8\u753b \/ \u513f\u7ae5","duration":"99","launch_time":"2022-02-01","score":8,"want":"0","auto_top":"37","top":"0","merge":"1643773632","add_time":"1641963121","title_second":"\u718a\u51fa\u6ca1\u00b7\u91cd\u8fd4\u5730\u7403\uff08\u6570\u5b573D\uff09","film_images":[],"my_want":false,"my_comment":null},{"id":"2445","short_code":"001105512021","film_code":"LZtvRKnDv2","thumbnail":"http:\/\/www.lumiai.com\/uploads\/image\/20220121\/20220121180101_37654.jpg","video_url":"","title":"\u72d9\u51fb\u624b \uff08\u6570\u5b57\uff09","feature":"2D","publish_location":"\u4e2d\u56fd\u5927\u9646","desc":"\u5f71\u7247\u4ee5\u6297\u7f8e\u63f4\u671d\u6218\u4e89\u4e2d\u201c\u51b7\u67aa\u51b7\u70ae\u201d\u8fd0\u52a8\u4e3a\u80cc\u666f\uff0c\u901a\u8fc7\u4e00\u6bb5\u4e2d\u56fd\u5fd7\u613f\u519b\u72d9\u51fb\u5c0f \u961f\u4e0e\u7f8e\u519b\u7cbe\u82f1\u72d9\u51fb\u961f\u4e4b\u95f4\u7684\u6b8a\u6b7b\u5bf9\u51b3\uff0c\u5c55\u73b0\u4e86\u671d\u9c9c\u6218\u573a\u4e0a\u5fd7\u613f\u519b\u6218\u58eb\u8270\u96be\u53d6 \u80dc\u7684\u82f1\u52c7\u6545\u4e8b\u548c\u53ef\u6b4c\u53ef\u6ce3\u7684\u5949\u732e\u7cbe\u795e\u3002","director":"\u5f20\u827a\u8c0b \/ \u5f20\u672b","actors":"\u52c3\u5c0f\u9f99 \/ \u67ef\u5357\u00b7\u4f55\u88f4","genre":"\u5386\u53f2 \/ \u5267\u60c5 \/ \u6218\u4e89","duration":"96","launch_time":"2022-02-01","score":8,"want":"0","auto_top":"386","top":"0","merge":"0","add_time":"1642762322","title_second":"\u72d9\u51fb\u624b \uff08\u6570\u5b57\uff09","film_images":[],"my_want":false,"my_comment":null},{"id":"2446","short_code":"001100072022","film_code":"iFAQNXZoWZ","thumbnail":"http:\/\/www.lumiai.com\/\/uploads\/image\/20220122\/20220122041205_41028.jpeg","video_url":"","title":"\u5947\u8ff9\u25aa\u7b28\u5c0f\u5b69","feature":"2D","publish_location":"\u4e2d\u56fd\u5927\u9646","desc":"\u4e8c\u5341\u5c81\u7684\u666f\u6d69\uff08\u6613\u70ca\u5343\u73ba \u9970\uff09\u72ec\u81ea\u5e26\u7740\u5e74\u5e7c\u7684\u59b9\u59b9\u6765\u5230\u6df1\u5733\u751f\u6d3b\uff0c\u5144\u59b9\u4fe9\u751f\u6d3b\u6e29\u99a8\u5374\u62ee\u636e\u3002\u4e3a\u4e86\u59b9\u59b9\u9ad8\u6602\u7684\u624b\u672f\u8d39\uff0c\u673a\u7f18\u5de7\u5408\u4e4b\u4e0b\uff0c\u666f\u6d69\u5f97\u5230\u4e00\u4e2a\u673a\u4f1a\uff0c\u672c\u4ee5\u4e3a\u7f8e\u597d\u751f\u6d3b\u5373\u5c06\u6765\u4e34\uff0c\u5374\u4e0d\u6599\u906d\u9047\u91cd\u521b\u3002","director":"\u6587\u7267\u91ce","actors":"\u6613\u70ca\u5343\u73ba \/ \u7530\u96e8 \/ \u9648\u54c8\u7433 \/ \u9f50\u6eaa \/ \u516c\u78ca","genre":"\u5267\u60c5","duration":"106","launch_time":"2022-02-01","score":9,"want":"0","auto_top":"471","top":"0","merge":"1642836174","add_time":"1642762322","title_second":"\u5947\u8ff9\u25aa\u7b28\u5c0f\u5b69","film_images":[],"my_want":false,"my_comment":null},{"id":"2447","short_code":"001100122022","film_code":"3bmEasV9g5","thumbnail":"http:\/\/www.lumiai.com\/\/uploads\/image\/20220122\/20220122041249_83747.jpeg","video_url":"","title":"\u56db\u6d77 ","feature":"2D","publish_location":"\u4e2d\u56fd\u5927\u9646","desc":"\u64c5\u957f\u6469\u6258\u8f66\u7279\u6280\u7684\u5c11\u5e74\u5434\u4ec1\u8000\uff08\u5218\u660a\u7136 \u9970\uff09\u4e0e\u4ed6\u591a\u5e74\u672a\u89c1\u7684\u7236\u4eb2\u5434\u4ec1\u817e\uff08\u6c88\u817e \u9970\uff09\u518d\u5ea6\u76f8\u9022\uff0c\u6b64\u65f6\u5973\u5b69\u6b22\u9882\uff08\u5218\u6d69\u5b58 \u9970\uff09\u548c\u5979\u7684\u54e5\u54e5\u7684\u8f66\u961f\u53c8\u610f\u5916\u95ef\u5165\u4ed6\u4eec\u7684\u751f\u6d3b\uff0c\u5c11\u5e74\u963f\u8000\u7a76\u7adf\u6536\u83b7\u7684\u662f\u670b\u53cb\u8fd8\u662f\u654c\u4eba\uff0c\u662f\u5feb\u4e50\u8fd8\u662f\u70e6\u607c\uff1f\u4ed6\u4eec\u7ec8\u5c06\u540d\u626c\u56db\u6d77\u8fd8\u662f\u56db\u6d77\u4e3a\u5bb6\uff1f\u5317\u56de\u5f52\u7ebf\u4e0a\u7684\u5c0f\u6d77\u5c9b\u4e0e\u5357\u65b9\u6700\u7e41\u534e\u5927\u57ce\u5e02\u7684\u516c\u8def\u4e4b\u65c5\uff0c\u71c3\u70e7\u7740\u4ed6\u4eec\u7684\u6210\u957f\u4e0e\u9752\u6625\u3002","director":"\u97e9\u5bd2","actors":"\u5218\u660a\u7136 \/ \u5218\u6d69\u5b58 \/ \u6c88\u817e \/ \u5c39\u6b63 \/ \u5468\u5947 \/ \u5f20\u5ba5\u6d69 \/ \u4e54\u6749 \/ \u51af\u7ecd\u5cf0 \/ \u738b\u5f66\u9716 \/ \u9ec4\u6653\u660e","genre":"\u52a8\u4f5c \/ \u559c\u5267 \/ \u9752\u6625","duration":"128","launch_time":"2022-02-01","score":8,"want":"0","auto_top":"43","top":"0","merge":"1643349352","add_time":"1642762322","title_second":"\u56db\u6d77 ","film_images":[],"my_want":false,"my_comment":null},{"id":"2448","short_code":"001100062022","film_code":"EoSV1ZMyIN","thumbnail":"http:\/\/www.lumiai.com\/uploads\/image\/20220121\/20220121180101_82099.jpg","video_url":"","title":"\u957f\u6d25\u6e56\u4e4b\u6c34\u95e8\u6865 ","feature":"2D","publish_location":"\u4e2d\u56fd\u5927\u9646","desc":"\u7535\u5f71\u300a\u957f\u6d25\u6e56\u4e4b\u6c34\u95e8\u6865\u300b\u4ee5\u6297\u7f8e\u63f4\u671d\u6218\u4e89\u7b2c\u4e8c\u6b21\u6218\u5f79\u4e2d\u7684\u957f\u6d25\u6e56\u6218\u5f79\u4e3a\u80cc\u666f\uff0c\u8bb2\u8ff0\u4e86\u5728\u7ed3\u675f\u4e86\u65b0\u5174\u91cc\u548c\u4e0b\u78a3\u9685\u91cc\u7684\u6218\u6597\u4e4b\u540e\uff0c\u4e03\u8fde\u6218\u58eb\u4eec\u53c8\u63a5\u5230\u4e86\u66f4\u8270\u5de8\u7684\u4efb\u52a1\u2026\u2026","director":"\u9648\u51ef\u6b4c \/ \u5f90\u514b \/ \u6797\u8d85\u8d24","actors":"\u5434\u4eac \/ \u6613\u70ca\u5343\u73ba \/ \u6731\u4e9a\u6587 \/ \u674e\u6668 \/ \u97e9\u4e1c\u541b \/ \u803f\u4e50 \/ \u675c\u6df3 \/ \u6bb5\u5955\u5b8f \/ \u5f20\u6db5\u4e88","genre":"\u5267\u60c5 \/ \u5386\u53f2 \/ \u6218\u4e89","duration":"149","launch_time":"2022-02-01","score":8,"want":"0","auto_top":"512","top":"0","merge":"1642830585","add_time":"1642762322","title_second":"\u957f\u6d25\u6e56\u4e4b\u6c34\u95e8\u6865 ","film_images":[{"id":"6706","short_code":"","film_code":"EoSV1ZMyIN","extend_id":"0","big_url":"http:\/\/www.lumiai.com\/uploads\/image\/20220121\/20220121180101_27588.jpg","small_url":""},{"id":"6707","short_code":"","film_code":"EoSV1ZMyIN","extend_id":"0","big_url":"http:\/\/www.lumiai.com\/uploads\/image\/20220121\/20220121180101_59066.jpg","small_url":""}],"my_want":false,"my_comment":null},{"id":"2448","short_code":"001100062022","film_code":"EoSV1ZMyIN","thumbnail":"http:\/\/www.lumiai.com\/uploads\/image\/20220121\/20220121180101_82099.jpg","video_url":"","title":"\u957f\u6d25\u6e56\u4e4b\u6c34\u95e8\u6865 ","feature":"2D","publish_location":"\u4e2d\u56fd\u5927\u9646","desc":"\u7535\u5f71\u300a\u957f\u6d25\u6e56\u4e4b\u6c34\u95e8\u6865\u300b\u4ee5\u6297\u7f8e\u63f4\u671d\u6218\u4e89\u7b2c\u4e8c\u6b21\u6218\u5f79\u4e2d\u7684\u957f\u6d25\u6e56\u6218\u5f79\u4e3a\u80cc\u666f\uff0c\u8bb2\u8ff0\u4e86\u5728\u7ed3\u675f\u4e86\u65b0\u5174\u91cc\u548c\u4e0b\u78a3\u9685\u91cc\u7684\u6218\u6597\u4e4b\u540e\uff0c\u4e03\u8fde\u6218\u58eb\u4eec\u53c8\u63a5\u5230\u4e86\u66f4\u8270\u5de8\u7684\u4efb\u52a1\u2026\u2026","director":"\u9648\u51ef\u6b4c \/ \u5f90\u514b \/ \u6797\u8d85\u8d24","actors":"\u5434\u4eac \/ \u6613\u70ca\u5343\u73ba \/ \u6731\u4e9a\u6587 \/ \u674e\u6668 \/ \u97e9\u4e1c\u541b \/ \u803f\u4e50 \/ \u675c\u6df3 \/ \u6bb5\u5955\u5b8f \/ \u5f20\u6db5\u4e88","genre":"\u5267\u60c5 \/ \u5386\u53f2 \/ \u6218\u4e89","duration":"149","launch_time":"2022-02-01","score":8,"want":"0","auto_top":"512","top":"0","merge":"1642830585","add_time":"1642762322","title_second":"\u957f\u6d25\u6e56\u4e4b\u6c34\u95e8\u6865 ","film_images":[{"id":"6706","short_code":"","film_code":"EoSV1ZMyIN","extend_id":"0","big_url":"http:\/\/www.lumiai.com\/uploads\/image\/20220121\/20220121180101_27588.jpg","small_url":""},{"id":"6707","short_code":"","film_code":"EoSV1ZMyIN","extend_id":"0","big_url":"http:\/\/www.lumiai.com\/uploads\/image\/20220121\/20220121180101_59066.jpg","small_url":""}],"my_want":false,"my_comment":null},{"id":"2449","short_code":"001106652021","film_code":"nLePYHDncr","thumbnail":"http:\/\/www.lumiai.com\/uploads\/image\/20220121\/20220121180101_74464.jpg","video_url":"","title":"\u8fd9\u4e2a\u6740\u624b\u4e0d\u592a\u51b7\u9759","feature":"2D","publish_location":"\u4e2d\u56fd\u5927\u9646","desc":"\u6bd5\u751f\u8ffd\u6c42\u7537\u4e3b\u68a6\u7684\u9b4f\u6210\u529f\uff08\u9b4f\u7fd4 \u9970\uff09\u7ec8\u4e8e\u5f97\u5230\u4e86\u5973\u660e\u661f\u7c73\u5170\uff08\u9a6c\u4e3d \u9970\uff09\u7684\u201c\u8d4f\u8bc6\u201d\uff0c\u88ab\u9080\u8bf7\u51fa\u6f14\u5979\u7684\u7537\u4e00\u53f7\u201c\u6740\u624b\u5361\u5c14\u201d\uff0c\u4ed6\u5174\u81f4\u52c3\u52c3\u8be0\u91ca\u89d2\u8272\u7684\u540c\u65f6\uff0c\u5374\u6ca1\u60f3\u5230\u5df2\u7ecf\u843d\u5165\u4e86\u4e00\u573a\u5371\u673a\u56db\u4f0f\u7684\u9634\u8c0b\uff0c\u4f46\u4ed6\u4f9d\u7136\u501f\u81ea\u5df1 \u201c\u7cbe\u6e5b\u201d\u7684\u6f14\u6280\u548c\u7edd\u4f73\u7684\u8fd0\u6c14\u5316\u9669\u4e3a\u5937\uff0c\u800c\u6b8b\u9177\u7684\u771f\u76f8\u4e5f\u79bb\u4ed6\u8d8a\u6765\u8d8a\u8fd1\u2026\u2026","director":"\u90a2\u6587\u96c4","actors":"\u9a6c\u4e3d \/ \u9b4f\u7fd4 \/ \u9648\u660e\u660a \/ \u5468\u5927\u52c7 \/ \u9ec4\u624d\u4f26 \/ \u827e\u4f26","genre":"\u559c\u5267","duration":"109","launch_time":"2022-02-01","score":8,"want":"0","auto_top":"597","top":"0","merge":"0","add_time":"1642762322","title_second":"\u8fd9\u4e2a\u6740\u624b\u4e0d\u592a\u51b7\u9759","film_images":[{"id":"6712","short_code":"","film_code":"nLePYHDncr","extend_id":"0","big_url":"http:\/\/www.lumiai.com\/uploads\/image\/20220121\/20220121180101_46280.jpg","small_url":""},{"id":"6713","short_code":"","film_code":"nLePYHDncr","extend_id":"0","big_url":"http:\/\/www.lumiai.com\/uploads\/image\/20220121\/20220121180101_44045.jpg","small_url":""}],"my_want":false,"my_comment":null},{"id":"2451","short_code":"001300062022","film_code":"Cx6G6LJTPx","thumbnail":"http:\/\/www.lumiai.com\/uploads\/image\/20220122\/20220122130101_39670.jpg","video_url":"","title":"\u957f\u6d25\u6e56\u4e4b\u6c34\u95e8\u6865","feature":"IMAX2D","publish_location":"\u4e2d\u56fd\u5927\u9646","desc":"\u7535\u5f71\u300a\u957f\u6d25\u6e56\u4e4b\u6c34\u95e8\u6865\u300b\u4ee5\u6297\u7f8e\u63f4\u671d\u6218\u4e89\u7b2c\u4e8c\u6b21\u6218\u5f79\u4e2d\u7684\u957f\u6d25\u6e56\u6218\u5f79\u4e3a\u80cc\u666f\uff0c\u8bb2\u8ff0\u4e86\u5728\u7ed3\u675f\u4e86\u65b0\u5174\u91cc\u548c\u4e0b\u78a3\u9685\u91cc\u7684\u6218\u6597\u4e4b\u540e\uff0c\u4e03\u8fde\u6218\u58eb\u4eec\u53c8\u63a5\u5230\u4e86\u66f4\u8270\u5de8\u7684\u4efb\u52a1\u2026\u2026","director":"\u9648\u51ef\u6b4c \/ \u5f90\u514b \/ \u6797\u8d85\u8d24","actors":"\u5434\u4eac \/ \u6613\u70ca\u5343\u73ba \/ \u6731\u4e9a\u6587 \/ \u674e\u6668 \/ \u97e9\u4e1c\u541b \/ \u803f\u4e50 \/ \u675c\u6df3 \/ \u6bb5\u5955\u5b8f \/ \u5f20\u6db5\u4e88","genre":"\u5267\u60c5 \/ \u5386\u53f2 \/ \u6218\u4e89","duration":"149","launch_time":"2022-02-01","score":9,"want":"0","auto_top":"51","top":"0","merge":"1642830585","add_time":"1642828322","title_second":"\u957f\u6d25\u6e56\u4e4b\u6c34\u95e8\u6865","film_images":[{"id":"6724","short_code":"","film_code":"Cx6G6LJTPx","extend_id":"0","big_url":"http:\/\/www.lumiai.com\/uploads\/image\/20220122\/20220122130101_31539.jpg","small_url":""},{"id":"6725","short_code":"","film_code":"Cx6G6LJTPx","extend_id":"0","big_url":"http:\/\/www.lumiai.com\/uploads\/image\/20220122\/20220122130101_57656.jpg","small_url":""}],"my_want":false,"my_comment":null},{"id":"2452","short_code":"001300072022","film_code":"rG$Xb1mm8H","thumbnail":"http:\/\/www.lumiai.com\/\/uploads\/image\/20220122\/20220122041205_41028.jpeg","video_url":"","title":"\u5947\u8ff9\u25aa\u7b28\u5c0f\u5b69","feature":"IMAX2D","publish_location":"\u4e2d\u56fd\u5927\u9646","desc":"\u4e8c\u5341\u5c81\u7684\u666f\u6d69\uff08\u6613\u70ca\u5343\u73ba \u9970\uff09\u72ec\u81ea\u5e26\u7740\u5e74\u5e7c\u7684\u59b9\u59b9\u6765\u5230\u6df1\u5733\u751f\u6d3b\uff0c\u5144\u59b9\u4fe9\u751f\u6d3b\u6e29\u99a8\u5374\u62ee\u636e\u3002\u4e3a\u4e86\u59b9\u59b9\u9ad8\u6602\u7684\u624b\u672f\u8d39\uff0c\u673a\u7f18\u5de7\u5408\u4e4b\u4e0b\uff0c\u666f\u6d69\u5f97\u5230\u4e00\u4e2a\u673a\u4f1a\uff0c\u672c\u4ee5\u4e3a\u7f8e\u597d\u751f\u6d3b\u5373\u5c06\u6765\u4e34\uff0c\u5374\u4e0d\u6599\u906d\u9047\u91cd\u521b\u3002","director":"\u6587\u7267\u91ce","actors":"\u6613\u70ca\u5343\u73ba \/ \u7530\u96e8 \/ \u9648\u54c8\u7433 \/ \u9f50\u6eaa \/ \u516c\u78ca","genre":"\u5267\u60c5","duration":"106","launch_time":"2022-02-01","score":8,"want":"0","auto_top":"0","top":"0","merge":"1642836174","add_time":"1642834321","title_second":"\u5947\u8ff9\u25aa\u7b28\u5c0f\u5b69","film_images":[],"my_want":false,"my_comment":null},{"id":"2454","short_code":"001300122022","film_code":"0EnjL1x7mT","thumbnail":"http:\/\/www.lumiai.com\/\/uploads\/image\/20220122\/20220122041249_83747.jpeg","video_url":"","title":"\u56db\u6d77","feature":"IMAX2D","publish_location":"\u4e2d\u56fd\u5927\u9646","desc":"\u64c5\u957f\u6469\u6258\u8f66\u7279\u6280\u7684\u5c11\u5e74\u5434\u4ec1\u8000\uff08\u5218\u660a\u7136 \u9970\uff09\u4e0e\u4ed6\u591a\u5e74\u672a\u89c1\u7684\u7236\u4eb2\u5434\u4ec1\u817e\uff08\u6c88\u817e \u9970\uff09\u518d\u5ea6\u76f8\u9022\uff0c\u6b64\u65f6\u5973\u5b69\u6b22\u9882\uff08\u5218\u6d69\u5b58 \u9970\uff09\u548c\u5979\u7684\u54e5\u54e5\u7684\u8f66\u961f\u53c8\u610f\u5916\u95ef\u5165\u4ed6\u4eec\u7684\u751f\u6d3b\uff0c\u5c11\u5e74\u963f\u8000\u7a76\u7adf\u6536\u83b7\u7684\u662f\u670b\u53cb\u8fd8\u662f\u654c\u4eba\uff0c\u662f\u5feb\u4e50\u8fd8\u662f\u70e6\u607c\uff1f\u4ed6\u4eec\u7ec8\u5c06\u540d\u626c\u56db\u6d77\u8fd8\u662f\u56db\u6d77\u4e3a\u5bb6\uff1f\u5317\u56de\u5f52\u7ebf\u4e0a\u7684\u5c0f\u6d77\u5c9b\u4e0e\u5357\u65b9\u6700\u7e41\u534e\u5927\u57ce\u5e02\u7684\u516c\u8def\u4e4b\u65c5\uff0c\u71c3\u70e7\u7740\u4ed6\u4eec\u7684\u6210\u957f\u4e0e\u9752\u6625\u3002","director":"\u97e9\u5bd2","actors":"\u5218\u660a\u7136 \/ \u5218\u6d69\u5b58 \/ \u6c88\u817e \/ \u5c39\u6b63 \/ \u5468\u5947 \/ \u5f20\u5ba5\u6d69 \/ \u4e54\u6749 \/ \u51af\u7ecd\u5cf0 \/ \u738b\u5f66\u9716 \/ \u9ec4\u6653\u660e","genre":"\u52a8\u4f5c \/ \u559c\u5267 \/ \u9752\u6625","duration":"128","launch_time":"2022-02-01","score":6,"want":"0","auto_top":"0","top":"0","merge":"1643349352","add_time":"1643196902","title_second":"\u56db\u6d77","film_images":[],"my_want":false,"my_comment":null},{"id":"2460","short_code":"074100062022","film_code":"dwg66eZ82a","thumbnail":"http:\/\/www.lumiai.com\/uploads\/image\/20220214\/20220214150201_56200.jpg","video_url":"","title":"\u5c3c\u7f57\u6cb3\u4e0a\u7684\u60e8\u6848","feature":"2D","publish_location":"\u82f1\u56fd","desc":"\u6545\u4e8b\u7ee7\u7eed\u805a\u7126\u5728\u4e0a\u6d41\u793e\u4f1a\u7684\u79d8\u4e8b\uff0c\u5927\u4fa6\u63a2\u6ce2\u6d1b\uff08\u80af\u5c3c\u601d\u00b7\u5e03\u62c9\u7eb3\u9970\uff09\u5728\u57c3\u53ca\u5ea6\u5047\u671f\u95f4\uff0c \u5377\u5165\u5230\u4e86\u4e00\u573a\u5371\u9669\u7684\u4e09\u89d2\u5173\u7cfb\u4e4b\u4e2d\uff0c\u4ed6\u5728\u5bdf\u89c9\u5230\u8fd9\u8d9f\u65c5\u7a0b\u4e2d\u4e0d\u5bfb\u5e38\u7684\u5473\u9053\u4e4b\u540e\uff0c\u767b\u4e0a\u4e86\u90a3\u6761\u9a76\u5f80\u9634\u8c0b\u548c\u6b7b\u4ea1\u7684\u8239\u3002","director":"\u80af\u5c3c\u601d\u00b7\u5e03\u62c9\u7eb3","actors":"\u80af\u5c3c\u601d\u00b7\u5e03\u62c9\u7eb3 \/ \u76d6\u5c14\u00b7\u52a0\u6735 \/ \u827e\u7c73\u00b7\u6c49\u83ab","genre":"\u72af\u7f6a \/ \u5267\u60c5 \/ \u60ac\u7591","duration":"126","launch_time":"2022-02-19","score":8,"want":"0","auto_top":"378","top":"0","merge":"1644983488","add_time":"1644822662","title_second":"\u5c3c\u7f57\u6cb3\u4e0a\u7684\u60e8\u6848","film_images":[{"id":"6765","short_code":"","film_code":"dwg66eZ82a","extend_id":"0","big_url":"http:\/\/www.lumiai.com\/uploads\/image\/20220214\/20220214150201_31416.jpg","small_url":""},{"id":"6766","short_code":"","film_code":"dwg66eZ82a","extend_id":"0","big_url":"http:\/\/www.lumiai.com\/uploads\/image\/20220214\/20220214150201_42167.jpg","small_url":""}],"my_want":false,"my_comment":null},{"id":"2460","short_code":"074100062022","film_code":"dwg66eZ82a","thumbnail":"http:\/\/www.lumiai.com\/uploads\/image\/20220214\/20220214150201_56200.jpg","video_url":"","title":"\u5c3c\u7f57\u6cb3\u4e0a\u7684\u60e8\u6848","feature":"2D","publish_location":"\u82f1\u56fd","desc":"\u6545\u4e8b\u7ee7\u7eed\u805a\u7126\u5728\u4e0a\u6d41\u793e\u4f1a\u7684\u79d8\u4e8b\uff0c\u5927\u4fa6\u63a2\u6ce2\u6d1b\uff08\u80af\u5c3c\u601d\u00b7\u5e03\u62c9\u7eb3\u9970\uff09\u5728\u57c3\u53ca\u5ea6\u5047\u671f\u95f4\uff0c \u5377\u5165\u5230\u4e86\u4e00\u573a\u5371\u9669\u7684\u4e09\u89d2\u5173\u7cfb\u4e4b\u4e2d\uff0c\u4ed6\u5728\u5bdf\u89c9\u5230\u8fd9\u8d9f\u65c5\u7a0b\u4e2d\u4e0d\u5bfb\u5e38\u7684\u5473\u9053\u4e4b\u540e\uff0c\u767b\u4e0a\u4e86\u90a3\u6761\u9a76\u5f80\u9634\u8c0b\u548c\u6b7b\u4ea1\u7684\u8239\u3002","director":"\u80af\u5c3c\u601d\u00b7\u5e03\u62c9\u7eb3","actors":"\u80af\u5c3c\u601d\u00b7\u5e03\u62c9\u7eb3 \/ \u76d6\u5c14\u00b7\u52a0\u6735 \/ \u827e\u7c73\u00b7\u6c49\u83ab","genre":"\u72af\u7f6a \/ \u5267\u60c5 \/ \u60ac\u7591","duration":"126","launch_time":"2022-02-19","score":8,"want":"0","auto_top":"378","top":"0","merge":"1644983488","add_time":"1644822662","title_second":"\u5c3c\u7f57\u6cb3\u4e0a\u7684\u60e8\u6848","film_images":[{"id":"6765","short_code":"","film_code":"dwg66eZ82a","extend_id":"0","big_url":"http:\/\/www.lumiai.com\/uploads\/image\/20220214\/20220214150201_31416.jpg","small_url":""},{"id":"6766","short_code":"","film_code":"dwg66eZ82a","extend_id":"0","big_url":"http:\/\/www.lumiai.com\/uploads\/image\/20220214\/20220214150201_42167.jpg","small_url":""}],"my_want":false,"my_comment":null},{"id":"2461","short_code":"074300062022","film_code":"oYoa97VHLZ","thumbnail":"http:\/\/www.lumiai.com\/uploads\/image\/20220214\/20220214150201_79021.jpg","video_url":"","title":"\u5c3c\u7f57\u6cb3\u4e0a\u7684\u60e8\u6848","feature":"IMAX2D","publish_location":"\u82f1\u56fd","desc":"\u6545\u4e8b\u7ee7\u7eed\u805a\u7126\u5728\u4e0a\u6d41\u793e\u4f1a\u7684\u79d8\u4e8b\uff0c\u5927\u4fa6\u63a2\u6ce2\u6d1b\uff08\u80af\u5c3c\u601d\u00b7\u5e03\u62c9\u7eb3\u9970\uff09\u5728\u57c3\u53ca\u5ea6\u5047\u671f\u95f4\uff0c \u5377\u5165\u5230\u4e86\u4e00\u573a\u5371\u9669\u7684\u4e09\u89d2\u5173\u7cfb\u4e4b\u4e2d\uff0c\u4ed6\u5728\u5bdf\u89c9\u5230\u8fd9\u8d9f\u65c5\u7a0b\u4e2d\u4e0d\u5bfb\u5e38\u7684\u5473\u9053\u4e4b\u540e\uff0c\u767b\u4e0a\u4e86\u90a3\u6761\u9a76\u5f80\u9634\u8c0b\u548c\u6b7b\u4ea1\u7684\u8239\u3002","director":"\u80af\u5c3c\u601d\u00b7\u5e03\u62c9\u7eb3","actors":"\u80af\u5c3c\u601d\u00b7\u5e03\u62c9\u7eb3 \/ \u76d6\u5c14\u00b7\u52a0\u6735 \/ \u827e\u7c73\u00b7\u6c49\u83ab","genre":"\u72af\u7f6a \/ \u5267\u60c5 \/ \u60ac\u7591","duration":"126","launch_time":"2022-02-19","score":8,"want":"0","auto_top":"35","top":"0","merge":"1644983488","add_time":"1644822721","title_second":"\u5c3c\u7f57\u6cb3\u4e0a\u7684\u60e8\u6848","film_images":[{"id":"6771","short_code":"","film_code":"oYoa97VHLZ","extend_id":"0","big_url":"http:\/\/www.lumiai.com\/uploads\/image\/20220214\/20220214150201_49501.jpg","small_url":""},{"id":"6772","short_code":"","film_code":"oYoa97VHLZ","extend_id":"0","big_url":"http:\/\/www.lumiai.com\/uploads\/image\/20220214\/20220214150201_96561.jpg","small_url":""}],"my_want":false,"my_comment":null},{"id":"2463","short_code":"012100092022","film_code":"A$BwIDvmWf","thumbnail":"http:\/\/www.lumiai.com\/\/uploads\/image\/20220221\/20220221081446_72256.jpg","video_url":"","title":"\u82b1\u675f\u822c\u7684\u604b\u7231\uff08\u6570\u5b57\uff09","feature":"2D","publish_location":"\u65e5\u672c","desc":"\u3000\u5c71\u97f3\u9ea6 (\u83c5\u7530\u5c06\u6656 \u9970) \u548c\u516b\u8c37\u7ee2 (\u6709\u6751\u67b6\u7eaf \u9970) \u56e0\u9519\u8fc7\u5c3e\u73ed\u8f66\u800c\u76f8\u9047\uff0c\u5728\u6df1\u591c\u5496\u5561\u9986\u804a\u8d77\u6587\u5b66\u3001\u7535\u5f71\u548c\u97f3\u4e50\uff0c\u559c\u597d\u7adf\u5947\u8e5f\u5730\u76f8\u4f3c\uff0c\u4e8c\u4eba\u77ac\u95f4\u5760\u5165\u7231\u6cb3\u3002\u4ed6\u4eec\u6bd5\u4e1a\u540e\u5f00\u59cb\u4e00\u8fb9\u517c\u804c\u5de5\u4f5c\uff0c\u4e00\u8fb9\u5f00\u59cb\u540c\u5c45\u751f\u6d3b\uff0c\u66f4\u4e00\u8d77\u517b\u62fe\u56de\u6765\u7684\u8857\u732b\uff0c\u6700\u5927\u7684\u76ee\u6807\u5c31\u662f\u7ef4\u6301\u4fe9\u53e3\u5b50\u7684\u65e5\u5e38\u3002 ","director":"\u571f\u4e95\u88d5\u6cf0","actors":"\u83c5\u7530\u5c06\u6656 \/ \u6709\u6751\u67b6\u7eaf \/ \u7ec6\u7530\u4f73\u592e\u592a \/ \u6e05\u539f\u679c\u8036 \/ \u5c0f\u7530\u5207\u8ba9 ","genre":"\u5267\u60c5 \/ \u7231\u60c5","duration":"124","launch_time":"2022-02-22","score":8,"want":"0","auto_top":"272","top":"0","merge":"0","add_time":"1645169582","title_second":"\u82b1\u675f\u822c\u7684\u604b\u7231\uff08\u6570\u5b57\uff09","film_images":[],"my_want":false,"my_comment":null},{"id":"2465","short_code":"051100052022","film_code":"93vvWHSPGD","thumbnail":"http:\/\/www.lumiai.com\/\/uploads\/image\/20220225\/20220225014621_22962.jpg","video_url":"","title":"\u7ebd\u7ea6\u7684\u4e00\u4e2a\u96e8\u5929\uff08\u6570\u5b57\uff09","feature":"2D","publish_location":"\u7f8e\u56fd","desc":"\u76d6\u8328\u6bd4\uff08\u63d0\u83ab\u897f\u00b7\u67e5\u62c9\u6885 Timoth\u00e9e Chalamet \u9970\uff09\u548c\u827e\u4ec0\u8389\uff08\u827e\u4e3d\u00b7\u8303\u5b81 Elle Fanning \u9970\uff09\u662f\u4e00\u5bf9\u5e74\u8f7b\u7684\u60c5\u4fa3\uff0c\u76d6\u8328\u6bd4\u6d51\u8eab\u6563\u53d1\u7740\u6587\u827a\u6c14\u606f\uff0c\u5bf9\u6d6a\u6f2b\u6709\u7740\u65e0\u9650\u7684\u5411\u5f80\u548c\u5e7b\u60f3\uff0c\u827e\u4ec0\u8389\u5219\u91ce\u5fc3\u52c3\u52c3\uff0c\u4e00\u5fc3\u60f3\u8981\u5728\u5f71\u89c6\u754c\u91cc\u6253\u62fc\u51fa\u4e00\u7247\u5c5e\u4e8e\u81ea\u5df1\u7684\u5929\u5730\u3002","director":"\u4f0d\u8fea\u00b7\u827e\u4f26","actors":"\u827e\u4e3d\u00b7\u8303\u5b81 \/ \u63d0\u83ab\u897f\u00b7\u67e5\u62c9\u6885 \/ \u8d5b\u7433\u5a1c\u00b7\u6208\u9ea6\u65af \/ \u88d8\u5fb7\u00b7\u6d1b \/ \u4e3d\u8d1d\u5361\u00b7\u8c6a\u5c14 \/ \u51ef\u8389\u00b7\u7f57\u5c14\u5df4\u8d6b \/ \u82cf\u742a\u00b7\u6c83\u7279\u8c6a\u65af \/ \u5217\u7ef4\u00b7\u65bd\u745e\u535a\u5c14 \/ \u8fed\u6208\u00b7\u9c81\u7eb3 \/ \u5207\u8389\u00b7\u743c\u65af","genre":"\u559c\u5267","duration":"92","launch_time":"2022-02-25","score":8,"want":"0","auto_top":"285","top":"0","merge":"0","add_time":"1645431061","title_second":"\u7ebd\u7ea6\u7684\u4e00\u4e2a\u96e8\u5929\uff08\u6570\u5b57\uff09","film_images":[],"my_want":false,"my_comment":null},{"id":"2466","short_code":"001103612021","film_code":"$Z2NkyYOvP","thumbnail":"http:\/\/www.lumiai.com\/uploads\/image\/20220221\/20220221170201_63098.jpg","video_url":"","title":"\u4f60\u662f\u6211\u7684\u4e00\u675f\u5149 \uff08\u6570\u5b57\uff09","feature":"2D","publish_location":"\u4e2d\u56fd\u5927\u9646","desc":"\u3000\u4e00\u4f4d\u7528\u751f\u547d\u5b88\u62a4\u7fa4\u4f17\u7684\u9006\u884c\u8005\uff0c\u4e00\u6bb5\u4e0d\u5e73\u51e1\u800c\u53c8\u63ea\u5fc3\u7684\u7231\u60c5\u6545\u4e8b\u3002\u804c\u573a\u3001\u60c5\u573a\u90fd\u5931\u610f\u7684\u97f3\u4e50\u4eba\u7a46\u968f\u5fc3\uff08\u8881\u6587\u5eb7 \u9970\uff09\u9a71\u8f66\u524d\u5f80\u4e91\u5357\uff0c\u5076\u9047\u5355\u4eb2\u5988\u5988\u5f6d\u5f6d\uff08\u738b\u897f \u9970\uff09\uff0c\u4e8c\u4eba\u611f\u60c5\u9010\u6e10\u5347\u6e29\uff0c\u53d1\u73b0\u4e86\u5f7c\u6b64\u8eab\u4e0a\u7684\u4eae\u5149\uff0c\u4e5f\u89e6\u6478\u5230\u4e86\u5185\u5fc3\u6700\u6df1\u5904\u7684\u79d8\u5bc6\u4f24\u53e3\uff0c\u5f6d\u5f6d\u5185\u5fc3\u6df1\u5904\u65e0\u6cd5\u8d70\u51fa\u7684\u6709\u5173\u5b59\u96e8\u6850\uff08\u9093\u8d85 \u9970\uff09\u7684\u5fc3\u7ed3\u4e5f\u56e0\u6b64\u6162\u6162\u89e3\u5f00\u00b7\u00b7\u00b7\u00b7\u00b7\u00b7","director":"\u738b\u5f3a","actors":" \u8881\u6587\u5eb7 \/ \u738b\u897f \/ \u9093\u8d85 \/ \u674e\u6d1b\u4f0a \/ \u8499\u4ead\u5b9c","genre":"\u7231\u60c5 \/ \u559c\u5267 \/ \u97f3\u4e50","duration":"106","launch_time":"2022-02-25","score":8,"want":"0","auto_top":"104","top":"0","merge":"0","add_time":"1645437062","title_second":"\u4f60\u662f\u6211\u7684\u4e00\u675f\u5149 \uff08\u6570\u5b57\uff09","film_images":[],"my_want":false,"my_comment":null}],showDetail:false,
+            id: 0,
+            page: 2, prev: true, next: true, active: -1,isDraged:false,current_film:null,popup:{show:false,img:null,size:{width:400,height:300}},
+    sessions: null,
+            current_date_index: null,
+            current_date: null, session_blocker: {show: false, msg: ''},
+        },
+    watch:{
+        active:function (n,o) {
+			this.current_film = this.films[n];
+            myPlayer.pause();
+            if(this.current_film.video_url){
+				myPlayer.src(this.current_film.video_url);
+				myPlayer.poster(this.current_film.detail_img);
+			}
+			this.getSessions();
+		}
+	},
+        methods:{
+            updateImageSize: function (event) {
+                var me=this;
+                var imgsize = Smart.Utils.imageNaturalSize(event.target);
+                var size = new Smart.Size(0,0,imgsize.width, imgsize.height);
+                var newsize = size.fixInRec(new Smart.Physics.Rect(new Smart.Physics.Point(), 600, 400));
+                setTimeout(function(){
+                    me.popup.size.width=Math.ceil(newsize.width)+20;
+                    me.popup.size.height=Math.ceil(newsize.height)+20+1;
+                },10)
+            },
+            showImage:function(url){
+                this.popup.show = true;
+                this.popup.img =url;
+            },
+            getUrl:function (url) {
+                window.open(url);
+            },
+			click: function (id) {
+				var me = this;
+                if (!me.isDraged) {
+                    setTimeout(function () {
+                        me.active = id;
+                        smoothScroll.animateScroll(380);
+                    }, 10);
+                }
+            },
+            selectDate: function (index, date) {
+                this.current_date_index = index;
+                this.current_date = date;
+                this.dateSessions = date;
+
+            },
+            selectSession:function(session){
+                Smart.Url.getUrl('/web/ticket/session/'+session.cinema_id+'/'+session.session_id);
+            },
+            getSessions: function () {
+                if (this.current_film) {
+                    var me = this;
+                    me.session_blocker.show = true;
+                    this.session_blocker.msg = '加载影片中...';
+                    this.$http.post(('/api/imovie/sessions/' + 1009), {film_code: this.current_film.film_code}, 
+					{   
+						/*
+						// use before callback
+                        before(request) {
+
+                            // abort previous request, if exists
+                            if (this.previousRequest) {
+                                this.previousRequest.abort();
+                            }
+
+                            // set previous request on Vue instance
+                            this.previousRequest = request;
+                        }
+						*/
+                    }).then(function (response) {
+                        var data = response.json();
+                        if (data.error_code == 0) {
+                            me.sessions = data.data;
+                            me.selectDate(0, me.sessions[0])
+                        }
+
+                        me.session_blocker.msg = data.msg;
+                        Smart._.delay(function () {
+                            me.session_blocker.show = false;
+                        }, 1000)
+
+                    }, function (response) {
+                        console.log(response.status);
+                        me.session_blocker.show = false;
+
+                    });
+                }
+            }
+        },
+    ready:function(){
+        this.active=0;
+        var transitionObj = {
+            transition: {opacity: 1, height: 35, overflow: 'hidden', transition: 'all .2s ease'},
+            leave: {opacity: 0, transition: 'all 0s ease'},
+            enter: {opacity: 0, scaleY: 0, height: 0}
+        };
+
+        Smart._.each(transitionObj, function (obj, key) {
+            Smart.Css.createSmartCssStyle('.session_stagger_transition' + '-' + key, obj, 'px');
+        });
+    }
+    })
+</script>
+<style>
+    .foot {
+        width: 100%;
+        background-color: #fff;
+        font-size: 12px;
+    }
+
+    .foot-wrapper {
+        width: 1177px;
+        margin: 0 auto;
+    }
+
+    .foot-p1 {
+        width: 880px;
+        margin: 0 auto;
+        padding: 16px 0;
+    }
+
+    .foot-p1 li {
+        float: left;
+        width: 175px;
+        font-weight: normal;
+        line-height: 24px;
+        color: #232323;
+    }
+
+    .foot-p1 span {
+        cursor: pointer;
+    }
+
+    .foot-p1 a:hover {
+        color: #F75B1C;
+    }
+
+    .foot-p1 > ul > li {
+        font-weight: bold;
+        color: black;
+    }
+
+    .foot-p2 {
+        clear: both;
+        text-align: center;
+        padding: 16px 0;
+    }
+
+    .foot-p2 li {
+        display: inline-block;
+    }
+
+    .foot-p2 span {
+        cursor: pointer;
+    }
+
+    .foot-p2 span:hover {
+        color: #F75B1C;
+    }
+
+    .pop_up_html {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+</style>
+<script type='text/javascript' src='https://webchat.7moor.com/javascripts/7moorInit.js?accessId=02d4f9d0-7099-11e9-96c2-b9862917f780&autoShow=true&language=ZHCN' async='async'></script>
+<div class="foot" style="border-top: 1px solid #666">
+<div class="">
+<div class="foot-p1">
+<ul>
+<li>
+<ul>
+<li>
+<div style="border: 4px solid #a69070;padding: 3px;width:120px;height: 120px">
+<img width="120" src="public/media/images/app_qrcode.png" alt="" />
+</div>
+<div style="padding: 4px;margin-top: 5px;border-radius: 6px;width:126px;background-color: #666;color: #fff;text-align: center;font-size: 12px;line-height: 16px">
+即刻扫码 <br/>下载卢米埃影城APP
+</div>
+</li>
+</ul>
+</li>
+<li style="width:155px;">新手上路
+<ul>
+<li>
+<a href="/web/member/login"><span>登陆</span>
+</li>
+</ul>
+</li>
+<li style="width:270px;">购票指南
+<ul>
+<li><a href="/web/page/view/9"><span>会员网络购票条款与隐私政策</span></a></li>
+</ul>
+</li>
+<li>影城介绍
+<ul>
+<li><a href="/web/page/view/13"><span v-link="{path:'/cinemas'}" @click="delayEaseScrollTo(0)">品牌影厅</span></a></li>
+<li><a href="/index/cinemas"><span v-link="{path:'/cinemas'}" @click="delayEaseScrollTo(711)">影城列表</span></a></li>
+</ul>
+</li>
+<li style="width:80px;">在线帮助
+<ul>
+<li><a href="/web/help"><span v-link="{path:'/help'}" @click="delayEaseScrollTo(0)">帮助中心</span></a></li>
+<li><a onclick="qimoChatClick();" href="javascript:void(0);" target="_blank">联系客服</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="foot-p2">
+<ul class="foot-p2-l1">
+<li><a href="/web/page/view/15"><span>联系我们</span></a> |</li>
+<li><a href="/web/page/view/16"><span>创始人介绍</span></a> |</li>
+<li><a href="/web/page/view/17"><span>企业宗旨</span></a> |</li>
+<li><a href="/index/about"><span>关于卢米埃</span></a></li>
+</ul>
+<div class="footer-p2-l3">北京卢米埃时代电影院线有限公司 &copy;2009-2021 版权所有 <a target="_blank" href='https://beian.miit.gov.cn'>京ICP备17014090号-1</a> &nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="http://www.lumiai.com/static/images/20190813180808.jpg">营业执照</a></div>
+<div style="width:300px;margin:0 auto; padding:20px 0;">
+<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502031413" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="/public/media/images/police.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11010502031413号</p></a>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

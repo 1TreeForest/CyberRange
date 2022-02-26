@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>首页</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<link href="/css/default.css" rel="stylesheet">
+	<link href="/css/self.css" rel="stylesheet">
+	<script src="/app_js/lib/jquery.js"></script><script src="/app_js/lib/jquery.cookie.min.js"></script>
+	<script src="/app_js/plugin.js"></script>
+	<script src="/app_js/common.js?v=20190924"></script>
+	<script src="/app_js/jsencrypt.js?v=20191205"></script>
+	<script src="/app_js/cairh-dev-cert.js"></script>
+	<script src="/app_js/pta.js"></script>
+	<script src="/app_js/login.js?v=20191226"></script>
+	<script src="/app_js/thsLogin.js?v=20201010"></script>
+	<script src="/app_js/tdxLogin.js?v=20201010"></script>
+	<!--[if lt IE 9]>
+  	<script type="text/javascript" src="/js/libs/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body id="home">
+	<div class="header"></div>
+	<div class="header_warm_tips"></div>
+	<div class="lunbo_wrap">
+		<ul class="lunbo">
+			<li class="lunbo1"></li>
+		</ul>
+		<div class="head_shadow"></div>
+		<div class="login_wrap">
+			<div class="beforelogin" style="display:none">
+				<div class="login_bg"></div>
+				<div class="login" id="loginDiv1">
+					<input type="hidden" id="mac_address">
+					<input type="hidden" id="client_ip">
+					<div id="selectLoginType" class="select-account-type clearfix" style="display:none">
+						<select id="login_type1">
+							<option value="">客服号登录</option>
+						</select>
+					</div>
+					<label class="fundAccount clearfix">
+						<i class="account_icon"><span></span></i>
+						<input class="txt" type="text" placeholder="请输入资金账号" id="custNo1" maxLength="16">
+					</label>
+					<label class="password clearfix">
+						<span id="pswspan">
+							<i class="password_icon" style="float:left"><span></span></i>
+							<input class="txt placeholder" placeholder="请输入交易密码" type="password" id="userpass1" maxLength="10">
+						</span>
+					</label>
+					<input type="text" class="veri_code_input" placeholder="请输入验证码" id="verifycode1" maxLength="4">
+					<img class="codeImg" alt="" onclick="refreshCode()">
+					<a href="javascript:void(0);" onclick="login(1)" class="loginBtn loginBtn1"></a>
+					<p>
+						<a style="cursor: pointer;float: left;margin-left: 20px ;" class="open 600009" id="forgetPwd"
+							onclick="toForgetPwd(600009, '/pwdReset/pwd-reset.html')" href="javascript:void(0);">忘记密码</a>
+						<a style="cursor: pointer;float: left;margin-left: 20px ;display: none" href="javascript:void(0);"
+							onclick="toForgetPwd(600135, 'findAccount/find-account.html')" class="open 600135 outli"
+							id="forgetFundAccount">找回资金账号</a>
+						<a href="" target="_blank" id="securityKHUrl" class="open" style="float: right;margin-right: 10px;">马上开户</a>
+					</p>
+				</div>
+				<div class="loginerr loginerr1" style="display:none;max-height:100px">
+					<p id="tip1"></p>
+					<a href="javascript:void(0)"></a>
+					<span class="arrow"></span>
+				</div>
+			</div>
+			<div class="afterlogin" style="display:none">
+				<div class="after_login_bg"></div>
+				<div class="after_login">
+					<div class="name clearfix afterloginBody">
+						<h3></h3><a class="mybusiness business outli" style="display: none" href="/business/querie.html">业务办理</a>
+					</div>
+					<ul class="clearfix" id="clearfix_ul">
+						<li class='topnav_info base_info outli' style="display: none"><a href="/userInfo/base-info.html">个人资料</a>
+						</li>
+						<li class='topnav_fund my_fund outli' style="display: none"><a href="/fund/my-fund.html">我的资金</a></li>
+						<li class="600187 outli" style="display: none"><a href="/cert/cert.html">证书管理</a></li>
+						<li class="software_download lastLi"><a href="#" target="">软件下载</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="index_bus clearfix" id="quickBusiness">
+		<ul class="index_bus_inner">
+			<li class="600134 assetprop0">
+				<a href="javascript:void(0);"
+					onclick="jumpTo('/risk/suit-risk.html?businType=600134&paperType=1','600134','0')">
+					<i class="risk"></i>
+					<dl>
+						<dt>风险测评</dt>
+						<dd>正确了解自身的风险承受能力</dd>
+						<dd class="do_it_now"></dd>
+					</dl>
+				</a>
+			</li>
+			<li class="600017 assetprop0">
+				<a href="javascript:void(0);" onclick="jumpTo('/stockAccount/stock-account.html','600017','0')">
+					<i class="account"></i>
+					<dl>
+						<dt>证券账户</dt>
+						<dd>新开/下挂沪深证券账户</dd>
+						<dd class="do_it_now"></dd>
+					</dl>
+				</a>
+			</li>
+			<li class="600193" id="removeLi">
+				<a href="javascript:void(0);" onclick="jumpTo('/clientRightOpen/digital-sign.html','600193','WT-PC')">
+					<i class="sign"></i>
+					<dl>
+						<!-- 电子签名约定书 -->
+						<dt>电子签名约定书</dt>
+						<dd>电子签名约定书</dd>
+						<dd class="do_it_now"></dd>
+					</dl>
+				</a>
+			</li>
+			<li class="600001 assetprop0" id="wt_cyb">
+				<a href="javascript:void(0);" onclick="cybJumpTo()">
+					<i class="transfer"></i>
+					<dl>
+						<!-- 创业板开通 -->
+						<dt>创业板开通</dt>
+						<dd>快速开通</dd>
+						<dd class="do_it_now"></dd>
+					</dl>
+				</a>
+			</li>
+			<li class="600202 assetprop0" id="wt_ggt_cancel">
+				<a href="javascript:void(0);" onclick="ggtCancelJumpTo()">
+					<i class="ggt"></i>
+					<dl>
+						<!-- 港股通 -->
+						<dt>港股通</dt>
+						<dd>支持沪深市场港股通同步开通</dd>
+						<dd class="do_it_now"></dd>
+					</dl>
+				</a>
+			</li>
+			<li class="600020 assetprop0" id="wt_ggt">
+				<a href="javascript:void(0);"
+					onclick="jumpToMult('/stockRightOpen/start.html?businType=600020','wt_ggt,600020','0')">
+					<i class="ggt"></i>
+					<dl>
+						<!-- 港股通 -->
+						<dt>港股通</dt>
+						<dd>支持沪深市场港股通同步开通</dd>
+						<dd class="do_it_now"></dd>
+					</dl>
+				</a>
+			</li>
+			<li class="600421 assetprop0" id="txmmcz" style="display: none;">
+				<a href="javascript:void(0);"
+					onclick="jumpTo('/userInfo/psw-reset-connect.html', '600421')">
+					<i class="txmmcz"></i>
+					<dl>
+						<dt>通讯密码重置</dt>
+						<dd>通讯密码重置</dd>
+						<dd class="do_it_now"></dd>
+					</dl>
+				</a>
+			</li>
+			<li id="removeLis">
+				<a href="javascript:void(0)">
+					<i class="more"></i>
+					<dl>
+						<dt>更多，敬请期待</dt>
+						<dd></dd>
+					</dl>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="footer"></div>
+	<script>
+		var initData;//页面初始化数据
+		var jumpToUrl = null;
+		var _securityControlpkgPath;
+		$(function () {
+			$("#quickBusiness").hide();
+			init();
+			//启用app,记录埋点
+			appSaveEventTrack();
+			getAnnounce();
+			$(".loginerr a").click(function (event) {
+				$(this).parent().hide();
+			});
+		});
+
+		function init() {
+			var servticket_id = getUrlParams('servticket_id');
+			var asset_prop = getUrlParams('asset_prop', '0');
+			var channel_code = getUrlParams('channel_code');
+			var call_back_url = getUrlParams('call_back_url') ? getUrlParams('call_back_url') : getUrlParams('toUrl');
+			var params = {
+				asset_prop: asset_prop,
+				channel_code: channel_code,
+				rnd: new Date().getTime(),
+				servticket_id: servticket_id
+			};
+			$.post("/wt/personal/0005.json", params, function (json) {
+				if (json.error_no != 0) {
+					showDialog(json.error_info);
+					return;
+				}
+				initData = json;
+				// initData.security_alias = "htzq"
+				if (initData.wt_login_pc_hide_reset_pwd == 1) {
+					$("#forgetPwd").hide();
+				}
+				if (initData.wt_login_open_verify_code == 0) {
+					$("#verifycode1").hide();
+					$(".codeImg").hide();
+				}
+
+				if (pwdNoLimit(initData.security_alias)) {
+					$("#userpass1").removeAttr("maxLength")
+				} else {
+					$("#userpass1").attr("maxLength", "10")
+				}
+
+				// 跳转链接功能
+				if (htzqFlag(initData.security_alias) && initData.wt_pc_order_url) {
+					// console.log(666);
+					console.log(initData.wt_pc_order_url, "跳转url");
+					$("#removeLi").remove()
+					$("#removeLis").remove()
+					$("#quickBusiness").css('display', 'flex')
+					$("#quickBusiness").css('width', '975px')
+					$("#quickBusiness").css('margin', '0 auto')
+					$("#quickBusiness").css('box-sizing', 'border-box')
+					$("#quickBusiness").css('padding-right', '12px')
+					$("ul.index_bus_inner").css('flex', '2')
+					$("ul.index_bus_inner").css('width', '0')
+					$("ul.index_bus_inner").css('padding', '0')
+					$("ul.index_bus_inner>li").css('margin-right', '15px')
+					// $('.div').css('padding-top','8.6rem');
+					/**
+					 * 恒泰证券且登录状态不显示开户广告
+					 * 
+					*/
+					if (htzqFlag(initData.security_alias) && initData.login_flag == 1) {
+						$("#quickBusiness").append('<div class="newDiv"></div>')
+					} else {
+						$("#quickBusiness").append('<div class="newDiv"><div class="content"><div class="buttons">' +
+							'<a href=/appoint/index.html>机构/产品预约开户</a></div></div></div>')
+					}
+					$("div.newDiv").css('flex', '1')
+					$("div.newDiv").css('box-sizing', 'border-box')
+					$("div.newDiv>.content").css('box-sizing', 'border-box')
+					$("div.newDiv>.content").css('width', '298px')
+				} else {
+					// console.log(777);
+				}
+
+				if (initData.security_alias == 'nesc' && initData.wt_pc_order_url) {
+					$("#removeLis").remove()
+					var content = '<li class="pdc_order">' +
+										'<a href="'+initData.wt_pc_order_url + '">' +
+											'<i class="account"></i>' +
+											'<dl>' +
+												'<dt>机构/产品预约开户</dt>' +
+												'<dd>支持机构户和产品户预约开户</dd>' +
+												'<dd class="do_it_now"></dd>' +
+											'</dl>' +
+										'</a>' +
+									'</li>';
+					$('.index_bus_inner').append(content);
+				}
+
+				if (initData.security_alias == "hqzq") {
+					$("#forgetPwd").hide();
+					$("#forgetFundAccount").hide();
+					$("#securityKHUrl").css("float", "").css("text-align", "center");
+				} else {
+					$("#quickBusiness").show();
+				}
+				if (initData.security_alias != "hczq") {
+					$("#custNo1").attr("placeholder", "请输入普通资金账号");
+				}
+				if (initData.security_alias == "nesc" || initData.security_alias == "xmzq") {
+					$("#wt_ggt").remove();
+				} else {
+					$("#wt_ggt_cancel").remove();
+				}
+				if (initData.security_alias == 'xmzq') {
+					$('#txmmcz').show();
+				}
+
+				// 财达证券不显示创业板开通
+				if (initData.security_alias == "cdzq") {
+					$("#wt_cyb").remove();
+				}
+
+				// 万联证券登录个性化修改 增加选择客户号
+				if (initData.security_alias == "wlzq") {
+					jumpToUrl = 'business/querie.html';
+					if (initData.wt_login_allow_client_id_flag == '1') {
+						$('#login_type1').html(
+							'<option value="4" >资金账号登录</option>' +
+							'<option value="6" selected>客户号登录</option>' 
+						)
+						$('#login_type1').val('6')
+						$('#custNo1').attr('placeholder', '请输入客户号')
+					} else {
+						$('#login_type1').html(
+							'<option value="4" selected>资金账号登录</option>'
+						)
+						$('#login_type1').val('4')
+						$('#custNo1').attr('placeholder', '请输入资金账号')
+					} 
+					$('#login_type1').diySelect();
+					$('#selectLoginType').show()
+				} else {
+					$('#login_type1').val('4')
+				}
+
+
+				initData.servticket_id = servticket_id;
+				initData.asset_prop = asset_prop;
+				initData.channel_code = channel_code;
+				initData.call_back_url = call_back_url;
+
+				$('.software_download').find('a').attr("href", initData.download_url);
+				// 快捷入口菜单处理
+				var entryClass = ["base_info", "my_fund", "600187", "software_download"];
+				for (var i = 0; i < entryClass.length; i++) {
+					if (initData.wt_menu_show.indexOf(entryClass[i]) < 0 && initData.wt_menu_show != '') {
+						$("#clearfix_ul").find("." + entryClass[i]).remove();
+					}
+				}
+				var quickEntry = $("#clearfix_ul");
+				if (quickEntry) {
+					var quickEntryItemList = quickEntry.find("li");
+					if (quickEntryItemList.length == 2) {
+						$("#clearfix_ul").find("li").css("padding", "0px 45px");
+					} else if (quickEntryItemList.length == 3) {
+						$("#clearfix_ul").find("li").css("padding", "0px 25px");
+					} else if (quickEntryItemList.length == 4) {
+						$("#clearfix_ul").find("li").css("padding", "0px 15px");
+					}
+				}
+				showMenu();
+				$('.header').load('include/header.html');
+				$('.header_warm_tips').load('include/header-warm-tips.html');
+
+
+				$('.footer').load('include/footer.html');
+				$("#securityKHUrl").attr("href", json.security_kh_url)
+				if (json.login_flag == 1) {
+					appUseTimeRecord();//记录用户使用时长
+					if (channel_code == 'TDX' && typeof window.TDXQuery === 'function') {
+						TDXUnifyLogin.tradeLoginCheck(initData.crh_user.fund_account);
+					}
+					if (json.need_confirm_quota == 1) {
+						new Dialog(undefined, {
+							title: '温馨提示',
+							width: 433,
+							content: "尊敬的客户，您的征信已通过审核，您的信用级别为" + json.credit_level_input + "级别，授信额度 " + json.total_quota_input + " 元，请您确认。",
+							hasBtn: true,
+							noClose: true,
+							btnText: ["确定"],
+							btnRole: ["confirm"],
+							confirm: function () {
+								this.hide();
+								$.ajax({
+									url: "/wt/reserve/0005.json",
+									type: "POST",
+									async: false,
+									data: { "serial_no": json.serial_no },
+									success: function (json) {
+										debugger;
+										if (initData.call_back_url != '') {
+											window.location.href = initData.call_back_url;
+										} else {
+											if (loginSmsVerify()) {
+												debugger;
+												if (initData.cancel_close_common_check == "1") {
+													//WTQYB-8359 万联非现场销户业务，无论通用检测如何配置，都无需进行通用检测
+												} else {
+													loginCheck('home');
+												}
+											}
+										}
+									}
+								});
+							}
+						});
+					} else if (initData.security_alias == 'xczq') {
+						$.post("/wt/risk/0009.json", function (json) {
+							if (json.error_no == 0) {
+								if (json.is_questionnaire == '1') {
+									new Dialog(undefined, {
+										title: '湘财温馨提示',
+										width: 433,
+										content: "您两年未做过问卷回访，请先进行问卷回访",
+										hasBtn: true,
+										noClose: true,
+										btnText: ["前往问卷", "取消"],
+										btnRole: ["confirm", "confirmTwo"],
+										afterShow: function () {
+											$(".btn-wrap").find('[data-role=confirm]').attr("style", "width: 90%;");
+											$(".btn-wrap").find('[data-role=confirmTwo]').attr("style", "width: 90%;margin:10px ");
+										},
+										confirm: function () {
+											window.location.href = "/questionnaire/questionnaire.html?access_tpye=1&questionType=1";
+											this.hide();
+										},
+										confirmTwo: function () {
+											$.post("/wt/risk/0009.json", { noRemindFlag: "1" }, function (json) {
+												if (json.error_no == "0") {
+												} else {
+													showDialog(json.error_info);
+												}
+											})
+											this.hide();
+										},
+									});
+								}
+							} else {
+								showDialog(json.error_info);
+							}
+						});
+					} else if (initData.call_back_url != '') {
+						window.location.href = initData.call_back_url;
+					} else {
+						if (loginSmsVerify()) {
+							debugger;
+							if (initData.cancel_close_common_check == "1") {
+								//WTQYB-8359 万联非现场销户业务，无论通用检测如何配置，都无需进行通用检测
+							} else {
+								loginCheck('home');
+							}
+						}
+					}
+				} else {
+					debugger;
+					if (channel_code == 'THS') {
+						var userToken = getUrlParams("user_token");
+						if (!userToken || userToken == " ") {
+							showDialog("统一登录信息缺失，请稍后再试！");
+							return;
+						}
+						THSUnifyLogin.login(userToken);
+					} else if (channel_code == 'TDX' && typeof window.TDXQuery === 'function') {
+						TDXUnifyLogin.applyToken();
+					} else {
+						if (initData.servticket_id != '') {//统一认证登录
+							unifyLogin();
+						}
+						refreshCode();
+					}
+				}
+				document.title = initData.security_name + "网上业务办理首页";
+				changeLoginState();
+				_securityControlpkgPath = json.security_controlpkg_path;
+				$('#custNo1').on('focus', function () {
+					checkInstall();
+				});
+				//获取mac地址
+				var mac = getMac();
+				if (mac.endWith(",")) {
+					mac = mac.substring(0, mac.length - 1);
+					mac = mac.replaceAll(":", ".");
+				}
+				$('#mac_address').val(mac);
+				var ip = getIp();
+				if (ip.indexOf(",") > -1) {
+					ip = ip.substring(0, ip.indexOf(","));
+				}
+				$('#client_ip').val(ip);
+				// loginDiv1 按键盘回车键
+				$('#loginDiv1').on("keydown", function (event) {
+					if (event.keyCode == 13) {
+						event.preventDefault();
+						login(1);
+					}
+				});
+				if(initData.security_alias === 'wlzq') {
+					debugger;
+					$("#forgetFundAccount").text("找回客户号")
+				}
+			}, 'json');
+		}
+
+		function changeLoginState() {
+			if (initData.login_flag == 1) {
+				//如果禁止销户,则只能够跳转到资金账户查询
+				if (initData && initData.is_forbid_biz == "1") {
+					$('.afterlogin .mybusiness').attr("href", "/fundAccount/fund-account.html");
+				}
+				$('.afterloginBody').children('h3').text('欢迎您：' + initData.client_name_hide);
+				$('.beforelogin').hide();
+				$('.afterlogin').show();
+			} else {
+				$('.beforelogin').show();
+				$('.afterlogin').hide();
+			}
+		}
+
+		//统一认证登录
+		function unifyLogin() {
+			var params = {};
+			params.servticket_id = initData.servticket_id;
+			params.asset_prop = initData.asset_prop;
+			params.verifycode = '0000';
+			params.user_type = 1;
+			params.account_type = $('#login_type1').val() ? number($('#login_type1').val()) : 4;
+			params.password_type = 2;
+			params.op_entrust_way = initData.wt_login_entrust_way;
+
+			$.post("/wt/personal/0018.json", params, function (json) {
+				if (json.error_no == 0) {
+					if(initData.security_alias == 'nesc' && json.csdcacodeacct_flag == "1"){
+						new Dialog(undefined, {
+							title: '温馨提示',
+							width: 433,
+							content: "您存在尚需规范的一码通账户，请您办理一码通信息规范，详情请咨询所属营业部",
+							hasBtn: true,
+							noClose: true,
+							btnText: ["确定"],
+							btnRole: ["confirm"],
+							confirm: function () {
+								this.hide();
+								window.location.href = initData.call_back_url;
+							}
+						});
+					}else{
+						window.location.href = initData.call_back_url;
+					}
+				} else {//登录失败
+					showDialog(json.error_info);
+				}
+			}, 'json');
+		}
+
+		function login_error_info(index, content) {
+			$('#tip' + index).text(content);
+			$('.loginerr' + index).show();
+			showDialog(content);
+		}
+
+		function settipcss(index, error) {
+			if (index == 1) {
+				$("#tip1").css("overflow", "hidden");
+				// $("#tip1").css("text-overflow", "ellipsis");
+				// $("#tip1").css("white-space", "nowrap");
+				$("#tip1").attr("title", error);
+			}
+		}
+
+		function toForgetPwd(businflow_no, href) {
+			if (600009 == businflow_no) {
+				checkInstall();
+				if (!isInstall) {
+					showPluginDialog();
+					return;
+				}
+			}
+
+			$.post("/wt/common/0003.json", {
+				busin_type: businflow_no
+			}, function (json) {
+				if (json.error_no == 0) {
+					window.location.href = href;
+				} else {//登录失败
+					showDialog(json.error_info);
+				}
+			}, 'json');
+		}
+
+		function preCheck() {
+			var check_flag = true;
+			if (initData.security_alias == "nesc") {
+				$.ajax({
+					url: "/wt/common/0003.json",
+					type: "post",
+					async: false,
+					dataType: "json",
+					data: { busin_type: "600191" },
+					success: function (json) {
+						if (json.error_no != 0) {
+							showDialog("尊敬的客户，您好！请您于交易日的9：00-16：00内再办理相关业务。");
+							check_flag = false;
+						}
+					}
+				});
+			}
+			if (check_flag) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+
+		/**
+	 * 财达证券个性化修改
+	 * 1、密码不在限制输入位数
+	 * 2、密码可以输入数字和字母
+	 * 3、密码由柜台进行判断
+	 * 4、WTQYB-8878
+	 */
+		function pwdNoLimit(security_alias) {
+			if (security_alias == "cdzq" || initData.wt_base_pwd_valid_check == '0') {
+				return true
+			} else {
+				return false
+			}
+		}
+		function htzqFlag(security_alias) {
+			if (security_alias == "htzq") {
+				return true
+			} else {
+				return false
+			}
+		}
+		function cybJumpTo() {
+			if (initData.wt_menu_show != '') {
+				var menu_array = initData.wt_menu_show.split(",");
+				var isExistSingle = false;
+				var isExistMulti = false;
+				for (var i = 0; i < menu_array.length; i++) {
+					if (menu_array[i] == "600001") {
+						isExistSingle = true;
+					}
+					if (menu_array[i] == "600001_more") {
+						isExistMulti = true;
+					}
+				}
+				if (isExistSingle && isExistMulti) {
+					jumpTo('/stockRightOpen/start.html?businType=600001', '600001', '0');
+				} else if (isExistSingle && !isExistMulti) {
+					jumpTo('/stockRightOpen/start.html?businType=600001', '600001', '0');
+				} else if (!isExistSingle && isExistMulti) {
+					jumpTo('/stockRightOpen/open.html?businType=600001', '600001', '0');
+				} else {
+					showDialog("该业务暂未开放！");
+					return;
+				}
+			} else {
+				showDialog("显示菜单配置项配置值为空！");
+				return;
+			}
+		}
+
+		// 万联改变登录类型
+		$(document).on('change', '#login_type1', function(){
+			if ($('#login_type1').val() == '6') {
+				$('#custNo1').attr('placeholder', '请输入客户号')
+			} else {
+				$('#custNo1').attr('placeholder', '请输入资金账号')
+			}
+		})
+		
+		function ggtCancelJumpTo() {
+			var temp_wt_menu_show = initData.wt_menu_show;
+			if (temp_wt_menu_show == '') {
+				temp_wt_menu_show = "600202";
+			}
+			if (temp_wt_menu_show != '') {
+				var menu_array = temp_wt_menu_show.split(",");
+				var isExistMulti = false;
+				var isExistNew = false;
+				for (var i = 0; i < menu_array.length; i++) {
+					if (menu_array[i] == "600202") {
+						isExistMulti = true;
+					}
+					if (menu_array[i] == "600202new") {
+						isExistNew = true;
+					}
+				}
+				if (isExistMulti) {
+					jumpToMult('/stockRightOpen/stock-account-list.html?businType=600202', 'wt_ggt_cancel,600202', '0');
+				} else if (isExistNew) {
+					jumpToMult('/holderRights/open.html?businType=600202', '600202new', '0');
+				} else {
+					showDialog("该业务暂未开放！");
+					return;
+				}
+			} else {
+				showDialog("显示菜单配置项配置值为空！");
+				return;
+			}
+		}
+	</script>
+</body>
+
+</html>

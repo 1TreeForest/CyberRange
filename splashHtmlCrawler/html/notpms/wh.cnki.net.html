@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self'"/>-->
+    <!--<meta http-equiv="X-XSS-Protection" content="1; mode=block" />-->
+    
+    <script src="/web/js/jQuery-v1.11.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/web/js/divSelect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/web/js/plugin/jquery.methods.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/web/js/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/web/lib/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="/web/lib/layui/css/layui.css"/>
+    <script src="/web/js/jquery.promptToggle.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/web/js/common.js?v=1" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="/web/css/public.css?v=20220207"/>
+    <link rel="stylesheet" type="text/css" href="/web/css/literature/literature-artist.css"/><link rel="stylesheet" type="text/css" href="/web/css/newpublic.css"/><link rel="stylesheet" type="text/css" href="/web/css/literature/literature.css"/><link rel="stylesheet" type="text/css" href="/web/lib/layui/css/layui.css"/><link rel="stylesheet" type="text/css" href="/web/css/bookstore/mylayer.css"/>
+    <!--<title th:text="|${title==''?'':title+'_'}知网文化|"></title>-->
+    <title>家庭影院新军——夏新PRO-300-知网文化</title>
+    
+
+    
+    <script>
+        var ctxPath = "/";
+        ctxPath = ctxPath.substring(0, ctxPath.lastIndexOf('/'));
+    </script>
+
+</head>
+<body bgcolor="#F6F6F6">
+<script src="/web/js/super_slider.js" type="text/javascript" charset="utf-8"></script>
+<script src="/web/js/qrcode.js" type="text/javascript" charset="utf-8"></script>
+<!--header-->
+<div class="aheader">
+    <style>
+        body {
+            font: 14px Helvetica Neue, Helvetica, PingFang SC, Tahoma, Arial, sans-serif;
+        }
+    </style>
+    <div class="ahwrap">
+        <a href="/" class="logoimg"><img src="/web/images/literature/lheaderlogo.png" height="71"></a>
+        <div class="dssb left"
+             style="display:block">
+                <span class="sort sort-v-line">
+                    
+                    <a href="/article/cjfutotal/UN101">文化库</a>
+                    
+                </span>
+            <ul>
+                <li><a href="/article/">文库首页</a></li>
+                <li><a href="/article/cjfvtotal/VN111">精品文艺</a></li>
+                <li><a href="/article/cjfutotal/UN101">精品文化</a></li>
+                <li><a href="/article/cjfttotal/TN201">精品科普</a></li>
+            </ul>
+        </div>
+        <!--下拉列表分类-->
+        <!--文章分类-->
+        <div class="select"
+             style="display:block">
+            <p>文章分类</p>
+            <!--文艺库分类-->
+            <div class="list" id="ArticleCate">
+            </div>
+
+        </div>
+        <!--期刊分类-->
+        <div class="select qk"
+             style="display:block">
+            <p>期刊导航</p>
+            <!--文艺库分类-->
+            <div class="list" id="MagaCate" style="width:604px;">
+            </div>
+
+        </div>
+
+
+        <div class="right">
+            <a id="login" href="/user/login">登录</a>
+            
+            
+            <a class="boundary">|</a>
+            <a href="/user/register">注册</a>
+
+
+        </div>
+        <div class="hrlink clearfix">
+            <a class="app" target="_blank" href="/appdownload">手机版</a>
+            <a class="vip" target="_blank" href="/personal/vip">VIP会员</a>
+        </div>
+        <a class="right" href="/article/librarysearch?album=album" target="_blank"
+           id="advancesearch">高级搜索</a>
+        <div class="search right">
+            <div class="addSelect">
+                <div data-album="U,V,T,Y,Z" class="xs">全部</div>
+                <ul>
+                    <li data-album="U,V,T,Y,Z">全部</li>
+                    <li data-album="V">文艺库</li>
+                    <li data-album="U">文化库</li>
+                    <li data-album="T">科普库</li>
+                    <li data-album="Y">教育库</li>
+                    <li data-album="Z">财经库</li>
+                </ul>
+            </div>
+            <script>
+                $('.addSelect').click(function () {
+                    $(this).find('ul').slideDown(200);
+                    $(this).parents('.search').addClass('no-left-border-radius');
+                })
+                $('.addSelect ul li').click(function (e) {
+                    var e = e || window.event;
+                    e.stopPropagation();
+                    e.cancelBubble = true;
+                    $(this).parents('ul').slideUp(200);
+                    $(this).parents('.search').removeClass('no-left-border-radius');
+                    $('.xs').html($(this).html());
+                    $('.xs').attr('data-album', $(this).attr('data-album'));
+                })
+            </script>
+            <input maxlength="30" type="text" id="search" value="" class="search-input" data-type="article"/>
+            <a data-enter-control="1" id="searchBtn" href="javascript:;" class="btn"></a>
+            <div class="search-recommend" id="searchrecommend">
+                <ul id="suggestword"></ul>
+            </div>
+            <script>
+                (function () {
+                    var album = "u";
+
+                    function InitCategory() {
+                        var magacate = "[{&quot;code&quot;:&quot;U01&quot;,&quot;name&quot;:&quot;男性天地&quot;},{&quot;code&quot;:&quot;U02&quot;,&quot;name&quot;:&quot;女性天地&quot;},{&quot;code&quot;:&quot;U03&quot;,&quot;name&quot;:&quot;青年励志&quot;},{&quot;code&quot;:&quot;U04&quot;,&quot;name&quot;:&quot;老年生活&quot;},{&quot;code&quot;:&quot;U05&quot;,&quot;name&quot;:&quot;军警之声&quot;},{&quot;code&quot;:&quot;U06&quot;,&quot;name&quot;:&quot;工人之窗&quot;},{&quot;code&quot;:&quot;U07&quot;,&quot;name&quot;:&quot;家居装饰&quot;},{&quot;code&quot;:&quot;U08&quot;,&quot;name&quot;:&quot;服饰美容&quot;},{&quot;code&quot;:&quot;U09&quot;,&quot;name&quot;:&quot;饮食文化与厨艺&quot;},{&quot;code&quot;:&quot;U10&quot;,&quot;name&quot;:&quot;生活保健&quot;},{&quot;code&quot;:&quot;U11&quot;,&quot;name&quot;:&quot;资讯生活&quot;},{&quot;code&quot;:&quot;U12&quot;,&quot;name&quot;:&quot;我爱我家&quot;},{&quot;code&quot;:&quot;U13&quot;,&quot;name&quot;:&quot;理财之家&quot;},{&quot;code&quot;:&quot;U14&quot;,&quot;name&quot;:&quot;车行天下&quot;},{&quot;code&quot;:&quot;U15&quot;,&quot;name&quot;:&quot;数字生活&quot;},{&quot;code&quot;:&quot;U16&quot;,&quot;name&quot;:&quot;流行时尚&quot;},{&quot;code&quot;:&quot;U17&quot;,&quot;name&quot;:&quot;文粹欣赏&quot;},{&quot;code&quot;:&quot;U18&quot;,&quot;name&quot;:&quot;演艺圈&quot;},{&quot;code&quot;:&quot;U19&quot;,&quot;name&quot;:&quot;体育星空&quot;},{&quot;code&quot;:&quot;U21&quot;,&quot;name&quot;:&quot;家庭收藏&quot;},{&quot;code&quot;:&quot;U22&quot;,&quot;name&quot;:&quot;地方文化与旅游&quot;},{&quot;code&quot;:&quot;U23&quot;,&quot;name&quot;:&quot;航空读物&quot;},{&quot;code&quot;:&quot;U24&quot;,&quot;name&quot;:&quot;人物巡礼&quot;},{&quot;code&quot;:&quot;U25&quot;,&quot;name&quot;:&quot;时政杂谈&quot;},{&quot;code&quot;:&quot;U26&quot;,&quot;name&quot;:&quot;法制天地&quot;},{&quot;code&quot;:&quot;U27&quot;,&quot;name&quot;:&quot;人文精神&quot;},{&quot;code&quot;:&quot;U28&quot;,&quot;name&quot;:&quot;文化交流&quot;},{&quot;code&quot;:&quot;U29&quot;,&quot;name&quot;:&quot;社交礼仪&quot;}]";
+                        var arrEntities = {'lt': '<', 'gt': '>', 'nbsp': ' ', 'amp': '&', 'quot': '"'};
+                        var jsonmaga = magacate.replace(/&(lt|gt|nbsp|amp|quot);/ig, function (all, t) {
+                            return arrEntities[t];
+                        });
+
+                        var jsonarticle = "[{&quot;ztName&quot;:&quot;修身养性&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;解读诸子百家&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10101&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;八荣八耻&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10102&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;爱国教育&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10103&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;革命传统教育&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10104&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;国防教育&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10105&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;职业道德&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10106&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;家庭婚姻道德&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10107&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;社会公德&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10108&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;网络道德&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10109&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;学术道德&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10110&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;个人修养&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10111&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;社交与礼仪&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10112&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;人生思考&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10113&quot;,&quot;grade&quot;:2}],&quot;ztCode&quot;:&quot;UN101&quot;,&quot;grade&quot;:1},{&quot;ztName&quot;:&quot;民风民俗&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;华夏传统节日和节令&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10201&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;华夏神话故事&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10202&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;华夏民间传说&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10203&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;华夏民间工艺&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10204&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;华夏古代礼制&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10205&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;西洋节&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10206&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;华夏各种风俗&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;生育和寿礼&quot;,&quot;ztCode&quot;:&quot;UN1020701&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;婚姻&quot;,&quot;ztCode&quot;:&quot;UN1020702&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;丧葬&quot;,&quot;ztCode&quot;:&quot;UN1020703&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;服饰&quot;,&quot;ztCode&quot;:&quot;UN1020704&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;饮食&quot;,&quot;ztCode&quot;:&quot;UN1020705&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;居住&quot;,&quot;ztCode&quot;:&quot;UN1020706&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;礼仪礼节&quot;,&quot;ztCode&quot;:&quot;UN1020707&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;五花八门&quot;,&quot;ztCode&quot;:&quot;UN1020708&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10207&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;华夏各地风俗&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;安徽省&quot;,&quot;ztCode&quot;:&quot;UN1020801&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;澳门&quot;,&quot;ztCode&quot;:&quot;UN1020802&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;北京市&quot;,&quot;ztCode&quot;:&quot;UN1020803&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;重庆市&quot;,&quot;ztCode&quot;:&quot;UN1020804&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;福建省&quot;,&quot;ztCode&quot;:&quot;UN1020805&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;甘肃省&quot;,&quot;ztCode&quot;:&quot;UN1020806&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;广东省&quot;,&quot;ztCode&quot;:&quot;UN1020807&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;广西省&quot;,&quot;ztCode&quot;:&quot;UN1020808&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;贵州省&quot;,&quot;ztCode&quot;:&quot;UN1020809&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;海南省&quot;,&quot;ztCode&quot;:&quot;UN1020810&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;河北省&quot;,&quot;ztCode&quot;:&quot;UN1020811&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;河南省&quot;,&quot;ztCode&quot;:&quot;UN1020812&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;黑龙江省&quot;,&quot;ztCode&quot;:&quot;UN1020813&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;湖北省&quot;,&quot;ztCode&quot;:&quot;UN1020814&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;湖南省&quot;,&quot;ztCode&quot;:&quot;UN1020815&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;吉林省&quot;,&quot;ztCode&quot;:&quot;UN1020816&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;江苏省&quot;,&quot;ztCode&quot;:&quot;UN1020817&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;江西省&quot;,&quot;ztCode&quot;:&quot;UN1020818&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;辽宁省&quot;,&quot;ztCode&quot;:&quot;UN1020819&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;内蒙古自治区&quot;,&quot;ztCode&quot;:&quot;UN1020820&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;宁夏省&quot;,&quot;ztCode&quot;:&quot;UN1020821&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;青海省&quot;,&quot;ztCode&quot;:&quot;UN1020822&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;山东省&quot;,&quot;ztCode&quot;:&quot;UN1020823&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;山西省&quot;,&quot;ztCode&quot;:&quot;UN1020824&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;陕西省&quot;,&quot;ztCode&quot;:&quot;UN1020825&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;上海市&quot;,&quot;ztCode&quot;:&quot;UN1020826&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;四川省&quot;,&quot;ztCode&quot;:&quot;UN1020827&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;台湾省&quot;,&quot;ztCode&quot;:&quot;UN1020828&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;天津市&quot;,&quot;ztCode&quot;:&quot;UN1020829&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;西藏&quot;,&quot;ztCode&quot;:&quot;UN1020830&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;香港&quot;,&quot;ztCode&quot;:&quot;UN1020831&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;新疆维吾尔自治区&quot;,&quot;ztCode&quot;:&quot;UN1020832&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;云南省&quot;,&quot;ztCode&quot;:&quot;UN1020833&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;浙江省&quot;,&quot;ztCode&quot;:&quot;UN1020834&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10208&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;华夏各民族风情&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;阿昌族&quot;,&quot;ztCode&quot;:&quot;UN1020901&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;白族&quot;,&quot;ztCode&quot;:&quot;UN1020902&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;保安族&quot;,&quot;ztCode&quot;:&quot;UN1020903&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;布朗族&quot;,&quot;ztCode&quot;:&quot;UN1020904&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;布依族&quot;,&quot;ztCode&quot;:&quot;UN1020905&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;朝鲜族&quot;,&quot;ztCode&quot;:&quot;UN1020906&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;达斡尔族&quot;,&quot;ztCode&quot;:&quot;UN1020907&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;傣族&quot;,&quot;ztCode&quot;:&quot;UN1020908&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;德昂族&quot;,&quot;ztCode&quot;:&quot;UN1020909&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;东乡族&quot;,&quot;ztCode&quot;:&quot;UN1020910&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;侗族&quot;,&quot;ztCode&quot;:&quot;UN1020911&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;独龙族&quot;,&quot;ztCode&quot;:&quot;UN1020912&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;俄罗斯族&quot;,&quot;ztCode&quot;:&quot;UN1020913&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;鄂伦春族&quot;,&quot;ztCode&quot;:&quot;UN1020914&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;鄂温克族&quot;,&quot;ztCode&quot;:&quot;UN1020915&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;高山族&quot;,&quot;ztCode&quot;:&quot;UN1020916&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;哈尼族&quot;,&quot;ztCode&quot;:&quot;UN1020917&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;哈萨克族&quot;,&quot;ztCode&quot;:&quot;UN1020918&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;汉族&quot;,&quot;ztCode&quot;:&quot;UN1020919&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;赫哲族&quot;,&quot;ztCode&quot;:&quot;UN1020920&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;回族&quot;,&quot;ztCode&quot;:&quot;UN1020921&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;基诺族&quot;,&quot;ztCode&quot;:&quot;UN1020922&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;京族&quot;,&quot;ztCode&quot;:&quot;UN1020923&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;景颇族&quot;,&quot;ztCode&quot;:&quot;UN1020924&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;柯尔克孜族&quot;,&quot;ztCode&quot;:&quot;UN1020925&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;拉祜族&quot;,&quot;ztCode&quot;:&quot;UN1020926&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;黎族&quot;,&quot;ztCode&quot;:&quot;UN1020927&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;傈僳族&quot;,&quot;ztCode&quot;:&quot;UN1020928&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;珞巴族&quot;,&quot;ztCode&quot;:&quot;UN1020929&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;满族&quot;,&quot;ztCode&quot;:&quot;UN1020930&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;毛南族&quot;,&quot;ztCode&quot;:&quot;UN1020931&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;门巴族&quot;,&quot;ztCode&quot;:&quot;UN1020932&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;蒙古族&quot;,&quot;ztCode&quot;:&quot;UN1020933&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;苗族&quot;,&quot;ztCode&quot;:&quot;UN1020934&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;仫佬族&quot;,&quot;ztCode&quot;:&quot;UN1020935&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;纳西族&quot;,&quot;ztCode&quot;:&quot;UN1020936&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;怒族&quot;,&quot;ztCode&quot;:&quot;UN1020937&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;普米族&quot;,&quot;ztCode&quot;:&quot;UN1020938&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;羌族&quot;,&quot;ztCode&quot;:&quot;UN1020939&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;撒拉族&quot;,&quot;ztCode&quot;:&quot;UN1020940&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;畲族&quot;,&quot;ztCode&quot;:&quot;UN1020941&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;水族&quot;,&quot;ztCode&quot;:&quot;UN1020942&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;塔吉克族&quot;,&quot;ztCode&quot;:&quot;UN1020943&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;塔塔尔族&quot;,&quot;ztCode&quot;:&quot;UN1020944&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;土家族&quot;,&quot;ztCode&quot;:&quot;UN1020945&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;土族&quot;,&quot;ztCode&quot;:&quot;UN1020946&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;佤族&quot;,&quot;ztCode&quot;:&quot;UN1020947&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;维吾尔族&quot;,&quot;ztCode&quot;:&quot;UN1020948&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;乌孜别克族&quot;,&quot;ztCode&quot;:&quot;UN1020949&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;锡伯族&quot;,&quot;ztCode&quot;:&quot;UN1020950&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;瑶族&quot;,&quot;ztCode&quot;:&quot;UN1020951&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;彝族&quot;,&quot;ztCode&quot;:&quot;UN1020952&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;仡佬族&quot;,&quot;ztCode&quot;:&quot;UN1020953&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;裕固族&quot;,&quot;ztCode&quot;:&quot;UN1020954&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;藏族&quot;,&quot;ztCode&quot;:&quot;UN1020955&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;壮族&quot;,&quot;ztCode&quot;:&quot;UN1020956&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10209&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;异国风俗&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10210&quot;,&quot;grade&quot;:2}],&quot;ztCode&quot;:&quot;UN102&quot;,&quot;grade&quot;:1},{&quot;ztName&quot;:&quot;法制纵横&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;案例大观&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;治安处罚&quot;,&quot;ztCode&quot;:&quot;UN1030101&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;交通事故&quot;,&quot;ztCode&quot;:&quot;UN1030102&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;教育案件&quot;,&quot;ztCode&quot;:&quot;UN1030103&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;医疗纠纷&quot;,&quot;ztCode&quot;:&quot;UN1030104&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;劳动争议&quot;,&quot;ztCode&quot;:&quot;UN1030105&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;社会保障&quot;,&quot;ztCode&quot;:&quot;UN1030106&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;财政税收&quot;,&quot;ztCode&quot;:&quot;UN1030107&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;保险纠纷&quot;,&quot;ztCode&quot;:&quot;UN1030108&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;农业经济管理&quot;,&quot;ztCode&quot;:&quot;UN1030109&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;环境保护&quot;,&quot;ztCode&quot;:&quot;UN1030110&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;婚姻家庭&quot;,&quot;ztCode&quot;:&quot;UN1030111&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;遗嘱继承&quot;,&quot;ztCode&quot;:&quot;UN1030112&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;合同纠纷&quot;,&quot;ztCode&quot;:&quot;UN1030113&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;人身伤害&quot;,&quot;ztCode&quot;:&quot;UN1030114&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;财产所有权&quot;,&quot;ztCode&quot;:&quot;UN1030115&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;房产物业&quot;,&quot;ztCode&quot;:&quot;UN1030116&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;债权事务&quot;,&quot;ztCode&quot;:&quot;UN1030117&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;消费者权益&quot;,&quot;ztCode&quot;:&quot;UN1030118&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;名誉肖像等侵权&quot;,&quot;ztCode&quot;:&quot;UN1030119&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;著作权和版权&quot;,&quot;ztCode&quot;:&quot;UN1030120&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;专利&quot;,&quot;ztCode&quot;:&quot;UN1030121&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;商标&quot;,&quot;ztCode&quot;:&quot;UN1030122&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;公司事务&quot;,&quot;ztCode&quot;:&quot;UN1030123&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;海商海事&quot;,&quot;ztCode&quot;:&quot;UN1030124&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;刑事案件&quot;,&quot;ztCode&quot;:&quot;UN1030125&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10301&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;律师事务所&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10302&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;聘请律师须知&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10303&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;案情揭秘&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10304&quot;,&quot;grade&quot;:2}],&quot;ztCode&quot;:&quot;UN103&quot;,&quot;grade&quot;:1},{&quot;ztName&quot;:&quot;百姓焦点&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;反腐倡廉&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10401&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;食品药品监督&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10402&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;医疗保险改革&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10403&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;关爱弱势群体&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10404&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;收入分配&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10405&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;高考中考&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10406&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;聚焦就业&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10407&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;社会治安&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10408&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;房产物业&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10409&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;物价评议&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10410&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;环境保护&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10411&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;社会和谐&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10412&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;海外时政&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10413&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;社会万象&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10414&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;话说信仰&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10415&quot;,&quot;grade&quot;:2}],&quot;ztCode&quot;:&quot;UN104&quot;,&quot;grade&quot;:1},{&quot;ztName&quot;:&quot;历史人文&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;中华千年&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10501&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;海外历史&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10502&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;文物考古&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10503&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;名人风采&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;时政人物&quot;,&quot;ztCode&quot;:&quot;UN1050401&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;军界名人&quot;,&quot;ztCode&quot;:&quot;UN1050402&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;财经名流&quot;,&quot;ztCode&quot;:&quot;UN1050403&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;科教精英&quot;,&quot;ztCode&quot;:&quot;UN1050404&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;体坛骄子&quot;,&quot;ztCode&quot;:&quot;UN1050405&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;文艺明星&quot;,&quot;ztCode&quot;:&quot;UN1050406&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;芸芸众生&quot;,&quot;ztCode&quot;:&quot;UN1050407&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10504&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;走近宗教&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;佛学文化&quot;,&quot;ztCode&quot;:&quot;UN1050501&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;道学文化&quot;,&quot;ztCode&quot;:&quot;UN1050502&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;伊斯兰教&quot;,&quot;ztCode&quot;:&quot;UN1050503&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;基督教&quot;,&quot;ztCode&quot;:&quot;UN1050504&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;其他宗教&quot;,&quot;ztCode&quot;:&quot;UN1050505&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10505&quot;,&quot;grade&quot;:2}],&quot;ztCode&quot;:&quot;UN105&quot;,&quot;grade&quot;:1},{&quot;ztName&quot;:&quot;人才求职&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;职场资讯&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10601&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;求职指导&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10602&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;职场宝典&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10603&quot;,&quot;grade&quot;:2}],&quot;ztCode&quot;:&quot;UN106&quot;,&quot;grade&quot;:1},{&quot;ztName&quot;:&quot;居家生活&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;情感天地&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;围城内外&quot;,&quot;ztCode&quot;:&quot;UN1070101&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;婆媳之间&quot;,&quot;ztCode&quot;:&quot;UN1070102&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;代际关系&quot;,&quot;ztCode&quot;:&quot;UN1070103&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;女性频道&quot;,&quot;ztCode&quot;:&quot;UN1070104&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;男性频道&quot;,&quot;ztCode&quot;:&quot;UN1070105&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;爱情画廊&quot;,&quot;ztCode&quot;:&quot;UN1070106&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10701&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;两性话题&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10702&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;教子有方&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10703&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;致富之路&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10704&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;理财之道&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10705&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;购物指南&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10706&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;饮食文化与厨艺&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;各国食谱菜谱&quot;,&quot;ztCode&quot;:&quot;UN1070701&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;各种用途食谱菜谱&quot;,&quot;ztCode&quot;:&quot;UN1070702&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;各种原料食谱菜谱&quot;,&quot;ztCode&quot;:&quot;UN1070703&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;主食食谱&quot;,&quot;ztCode&quot;:&quot;UN1070704&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;节日食谱菜谱&quot;,&quot;ztCode&quot;:&quot;UN1070705&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;凉菜&quot;,&quot;ztCode&quot;:&quot;UN1070706&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;火锅菜&quot;,&quot;ztCode&quot;:&quot;UN1070707&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;烤箱菜和烧烤菜&quot;,&quot;ztCode&quot;:&quot;UN1070708&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;微波炉菜&quot;,&quot;ztCode&quot;:&quot;UN1070709&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;地方风味小吃&quot;,&quot;ztCode&quot;:&quot;UN1070710&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;魔幻厨房&quot;,&quot;ztCode&quot;:&quot;UN1070711&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;饮品&quot;,&quot;ztCode&quot;:&quot;UN1070712&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;饮食文化&quot;,&quot;ztCode&quot;:&quot;UN1070713&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10707&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;扮靓手册&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;美容屋&quot;,&quot;ztCode&quot;:&quot;UN1070801&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;瘦身厅&quot;,&quot;ztCode&quot;:&quot;UN1070802&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;珠宝首饰&quot;,&quot;ztCode&quot;:&quot;UN1070803&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;服饰流行风&quot;,&quot;ztCode&quot;:&quot;UN1070804&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;配饰&quot;,&quot;ztCode&quot;:&quot;UN1070805&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10708&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;家居美化&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;家居装饰&quot;,&quot;ztCode&quot;:&quot;UN1070901&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;家庭园艺&quot;,&quot;ztCode&quot;:&quot;UN1070902&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10709&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;家具与厨卫&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10710&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;家庭宠物&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10711&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;生活常识&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10712&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;数字生活&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;数字办公&quot;,&quot;ztCode&quot;:&quot;UN1071301&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;数字时尚&quot;,&quot;ztCode&quot;:&quot;UN1071302&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;数字通讯&quot;,&quot;ztCode&quot;:&quot;UN1071303&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;数字家庭&quot;,&quot;ztCode&quot;:&quot;UN1071304&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10713&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;爱车一族&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;车市导航&quot;,&quot;ztCode&quot;:&quot;UN1071401&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;安全驾驶&quot;,&quot;ztCode&quot;:&quot;UN1071402&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;保养维修&quot;,&quot;ztCode&quot;:&quot;UN1071403&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10714&quot;,&quot;grade&quot;:2}],&quot;ztCode&quot;:&quot;UN107&quot;,&quot;grade&quot;:1},{&quot;ztName&quot;:&quot;休闲广场&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;文林撷英&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10801&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;新书推荐&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10802&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;美术摄影苑&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;艺术家&quot;,&quot;ztCode&quot;:&quot;UN1080301&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;绘画作品赏析&quot;,&quot;ztCode&quot;:&quot;UN1080302&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;书法作品赏析&quot;,&quot;ztCode&quot;:&quot;UN1080303&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;雕塑作品赏析&quot;,&quot;ztCode&quot;:&quot;UN1080304&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;摄影作品赏析&quot;,&quot;ztCode&quot;:&quot;UN1080305&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10803&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;影视圈&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;影视介绍&quot;,&quot;ztCode&quot;:&quot;UN1080401&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;品评影视&quot;,&quot;ztCode&quot;:&quot;UN1080402&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;明星风采&quot;,&quot;ztCode&quot;:&quot;UN1080403&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;影坛纪事&quot;,&quot;ztCode&quot;:&quot;UN1080404&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;电视天地&quot;,&quot;ztCode&quot;:&quot;UN1080405&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10804&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;音乐风景线&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;音乐赏析&quot;,&quot;ztCode&quot;:&quot;UN1080501&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;歌坛纪事&quot;,&quot;ztCode&quot;:&quot;UN1080502&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10805&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;舞蹈戏剧&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10806&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;动漫游戏&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10807&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;四海风光&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;华夏各地风光&quot;,&quot;ztCode&quot;:&quot;UN1080801&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;国外风光&quot;,&quot;ztCode&quot;:&quot;UN1080802&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;各类型风光&quot;,&quot;ztCode&quot;:&quot;UN1080803&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10808&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;家庭收藏&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;集邮博览&quot;,&quot;ztCode&quot;:&quot;UN1080901&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;海报收藏&quot;,&quot;ztCode&quot;:&quot;UN1080902&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;艺术品收藏&quot;,&quot;ztCode&quot;:&quot;UN1080903&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;收藏百科&quot;,&quot;ztCode&quot;:&quot;UN1080904&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10809&quot;,&quot;grade&quot;:2}],&quot;ztCode&quot;:&quot;UN108&quot;,&quot;grade&quot;:1},{&quot;ztName&quot;:&quot;体育健身&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;健身操和瑜伽&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;健身课堂&quot;,&quot;ztCode&quot;:&quot;UN1090101&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;瑜伽健身&quot;,&quot;ztCode&quot;:&quot;UN1090102&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;体坛内外&quot;,&quot;ztCode&quot;:&quot;UN1090103&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;星阵营&quot;,&quot;ztCode&quot;:&quot;UN1090104&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;健身故事&quot;,&quot;ztCode&quot;:&quot;UN1090105&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10901&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;足球村&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;足球教室&quot;,&quot;ztCode&quot;:&quot;UN1090201&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;足球明星&quot;,&quot;ztCode&quot;:&quot;UN1090202&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;赛场回眸&quot;,&quot;ztCode&quot;:&quot;UN1090203&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;闲话足球&quot;,&quot;ztCode&quot;:&quot;UN1090204&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10902&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;篮球场&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;篮球教室&quot;,&quot;ztCode&quot;:&quot;UN1090301&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;篮球明星&quot;,&quot;ztCode&quot;:&quot;UN1090302&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;赛场回眸&quot;,&quot;ztCode&quot;:&quot;UN1090303&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;闲话篮球&quot;,&quot;ztCode&quot;:&quot;UN1090304&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10903&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;乒乓乐园&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;乒乓教室&quot;,&quot;ztCode&quot;:&quot;UN1090401&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;乒乓明星&quot;,&quot;ztCode&quot;:&quot;UN1090402&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;赛事回眸&quot;,&quot;ztCode&quot;:&quot;UN1090403&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;乒乓故事&quot;,&quot;ztCode&quot;:&quot;UN1090404&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10904&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;羽毛球&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10905&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;网球&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;球技宝典&quot;,&quot;ztCode&quot;:&quot;UN1090601&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;网球明星&quot;,&quot;ztCode&quot;:&quot;UN1090602&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;赛事回眸&quot;,&quot;ztCode&quot;:&quot;UN1090603&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;闲话网球&quot;,&quot;ztCode&quot;:&quot;UN1090604&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10906&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;保龄球&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10907&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;垒球&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10908&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;武术搏击和跆拳道&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;太极世界&quot;,&quot;ztCode&quot;:&quot;UN1090901&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;名拳荟萃&quot;,&quot;ztCode&quot;:&quot;UN1090902&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;武魂毓秀&quot;,&quot;ztCode&quot;:&quot;UN1090903&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;武术比赛&quot;,&quot;ztCode&quot;:&quot;UN1090904&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;摔跤&quot;,&quot;ztCode&quot;:&quot;UN1090905&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;格斗散打拳击&quot;,&quot;ztCode&quot;:&quot;UN1090906&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;闲话武林&quot;,&quot;ztCode&quot;:&quot;UN1090907&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10909&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;自行车&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10910&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;游泳和划船&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;游泳健身&quot;,&quot;ztCode&quot;:&quot;UN1091101&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;星阵营&quot;,&quot;ztCode&quot;:&quot;UN1091102&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;赛事回眸&quot;,&quot;ztCode&quot;:&quot;UN1091103&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;游泳故事&quot;,&quot;ztCode&quot;:&quot;UN1091104&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10911&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;滑雪和滑冰&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;健身房&quot;,&quot;ztCode&quot;:&quot;UN1091201&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;星阵营&quot;,&quot;ztCode&quot;:&quot;UN1091202&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;赛事回眸&quot;,&quot;ztCode&quot;:&quot;UN1091203&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;雪上故事&quot;,&quot;ztCode&quot;:&quot;UN1091204&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10912&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;赛车天地&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10913&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;登山&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10914&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;钓鱼&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;钓技交流&quot;,&quot;ztCode&quot;:&quot;UN1091501&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;钓具课堂&quot;,&quot;ztCode&quot;:&quot;UN1091502&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;钓饵探索&quot;,&quot;ztCode&quot;:&quot;UN1091503&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;钓界风云&quot;,&quot;ztCode&quot;:&quot;UN1091504&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;钓界名人&quot;,&quot;ztCode&quot;:&quot;UN1091505&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;钓鱼故事&quot;,&quot;ztCode&quot;:&quot;UN1091506&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10915&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;扑克桥牌和麻将&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10916&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;国际象棋&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10917&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;中国象棋&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;棋艺交流&quot;,&quot;ztCode&quot;:&quot;UN1091801&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;楚汉风云&quot;,&quot;ztCode&quot;:&quot;UN1091802&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;弈林至尊&quot;,&quot;ztCode&quot;:&quot;UN1091803&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;棋人棋事&quot;,&quot;ztCode&quot;:&quot;UN1091804&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10918&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;围棋&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;棋艺道场&quot;,&quot;ztCode&quot;:&quot;UN1091901&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;围棋赛场&quot;,&quot;ztCode&quot;:&quot;UN1091902&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;风云人物&quot;,&quot;ztCode&quot;:&quot;UN1091903&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;棋场故事&quot;,&quot;ztCode&quot;:&quot;UN1091904&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN10919&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;五花八门&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN10920&quot;,&quot;grade&quot;:2}],&quot;ztCode&quot;:&quot;UN109&quot;,&quot;grade&quot;:1},{&quot;ztName&quot;:&quot;家庭保健&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;心灵解码&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;趣味心理测试&quot;,&quot;ztCode&quot;:&quot;UN1100101&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;梦里乾坤&quot;,&quot;ztCode&quot;:&quot;UN1100102&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;儿童心海导航&quot;,&quot;ztCode&quot;:&quot;UN1100103&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;青少年心海导航&quot;,&quot;ztCode&quot;:&quot;UN1100104&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;成年人心海导航&quot;,&quot;ztCode&quot;:&quot;UN1100105&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;老年人心海导航&quot;,&quot;ztCode&quot;:&quot;UN1100106&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;女性心海导航&quot;,&quot;ztCode&quot;:&quot;UN1100107&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;男性心海导航&quot;,&quot;ztCode&quot;:&quot;UN1100108&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;职场心理&quot;,&quot;ztCode&quot;:&quot;UN1100109&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN11001&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;饮食营养&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;食物营养&quot;,&quot;ztCode&quot;:&quot;UN1100201&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;饮食宜忌&quot;,&quot;ztCode&quot;:&quot;UN1100202&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;少年儿童饮食营养&quot;,&quot;ztCode&quot;:&quot;UN1100203&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;老年人饮食营养&quot;,&quot;ztCode&quot;:&quot;UN1100204&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;女性饮食营养&quot;,&quot;ztCode&quot;:&quot;UN1100205&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN11002&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;保健之道&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;名人养生&quot;,&quot;ztCode&quot;:&quot;UN1100301&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;运动健身&quot;,&quot;ztCode&quot;:&quot;UN1100302&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;老年保健&quot;,&quot;ztCode&quot;:&quot;UN1100303&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;妇幼保健&quot;,&quot;ztCode&quot;:&quot;UN1100304&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;生活习惯&quot;,&quot;ztCode&quot;:&quot;UN1100305&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;性卫生&quot;,&quot;ztCode&quot;:&quot;UN1100306&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;计划生育&quot;,&quot;ztCode&quot;:&quot;UN1100307&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN11003&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;家庭护理&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN11004&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;疾病大观&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;感冒&quot;,&quot;ztCode&quot;:&quot;UN1100501&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;乙肝&quot;,&quot;ztCode&quot;:&quot;UN1100502&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;脂肪肝&quot;,&quot;ztCode&quot;:&quot;UN1100503&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;心脑血管疾病&quot;,&quot;ztCode&quot;:&quot;UN1100504&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;糖尿病&quot;,&quot;ztCode&quot;:&quot;UN1100505&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;肿瘤&quot;,&quot;ztCode&quot;:&quot;UN1100506&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;妇科疾病&quot;,&quot;ztCode&quot;:&quot;UN1100507&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;五官疾病&quot;,&quot;ztCode&quot;:&quot;UN1100508&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;职业病&quot;,&quot;ztCode&quot;:&quot;UN1100509&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN11005&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;药品常识&quot;,&quot;childlist&quot;:[],&quot;ztCode&quot;:&quot;UN11006&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;中医知识&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;中医养生&quot;,&quot;ztCode&quot;:&quot;UN1100701&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;中医按摩&quot;,&quot;ztCode&quot;:&quot;UN1100702&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;针灸&quot;,&quot;ztCode&quot;:&quot;UN1100703&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;中医药材&quot;,&quot;ztCode&quot;:&quot;UN1100704&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;经典名方&quot;,&quot;ztCode&quot;:&quot;UN1100705&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN11007&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;药膳食疗&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;各类型人群药膳&quot;,&quot;ztCode&quot;:&quot;UN1100801&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;各种用途药膳&quot;,&quot;ztCode&quot;:&quot;UN1100802&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;各季药膳&quot;,&quot;ztCode&quot;:&quot;UN1100803&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;食物药用&quot;,&quot;ztCode&quot;:&quot;UN1100804&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;实用药酒&quot;,&quot;ztCode&quot;:&quot;UN1100805&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN11008&quot;,&quot;grade&quot;:2}],&quot;ztCode&quot;:&quot;UN110&quot;,&quot;grade&quot;:1},{&quot;ztName&quot;:&quot;寻医问药&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;名医名片&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;内科&quot;,&quot;ztCode&quot;:&quot;UN1110101&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;外科&quot;,&quot;ztCode&quot;:&quot;UN1110102&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;妇产科&quot;,&quot;ztCode&quot;:&quot;UN1110103&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;儿科&quot;,&quot;ztCode&quot;:&quot;UN1110104&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;肿瘤科&quot;,&quot;ztCode&quot;:&quot;UN1110105&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;精神病&quot;,&quot;ztCode&quot;:&quot;UN1110106&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;皮肤病与性病&quot;,&quot;ztCode&quot;:&quot;UN1110107&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;耳鼻喉科&quot;,&quot;ztCode&quot;:&quot;UN1110108&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;眼科&quot;,&quot;ztCode&quot;:&quot;UN1110109&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;口腔科&quot;,&quot;ztCode&quot;:&quot;UN1110110&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;中医&quot;,&quot;ztCode&quot;:&quot;UN1110111&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN11101&quot;,&quot;grade&quot;:2},{&quot;ztName&quot;:&quot;名院风采&quot;,&quot;childlist&quot;:[{&quot;ztName&quot;:&quot;综合医院&quot;,&quot;ztCode&quot;:&quot;UN1110201&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;中医院&quot;,&quot;ztCode&quot;:&quot;UN1110202&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;疗养院休养所和康复医院&quot;,&quot;ztCode&quot;:&quot;UN1110203&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;内科&quot;,&quot;ztCode&quot;:&quot;UN1110204&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;外科&quot;,&quot;ztCode&quot;:&quot;UN1110205&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;妇产科&quot;,&quot;ztCode&quot;:&quot;UN1110206&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;儿科&quot;,&quot;ztCode&quot;:&quot;UN1110207&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;肿瘤科&quot;,&quot;ztCode&quot;:&quot;UN1110208&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;精神病&quot;,&quot;ztCode&quot;:&quot;UN1110209&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;皮肤病与性病&quot;,&quot;ztCode&quot;:&quot;UN1110210&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;耳鼻喉科&quot;,&quot;ztCode&quot;:&quot;UN1110211&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;眼科&quot;,&quot;ztCode&quot;:&quot;UN1110212&quot;,&quot;grade&quot;:3},{&quot;ztName&quot;:&quot;口腔科&quot;,&quot;ztCode&quot;:&quot;UN1110213&quot;,&quot;grade&quot;:3}],&quot;ztCode&quot;:&quot;UN11102&quot;,&quot;grade&quot;:2}],&quot;ztCode&quot;:&quot;UN111&quot;,&quot;grade&quot;:1}]".replace(/&(lt|gt|nbsp|amp|quot);/ig, function (all, t) {
+                            return arrEntities[t];
+                        });
+                        var magaObj = eval(jsonmaga);
+                        var strMaga = "";
+                        for (var i = 0; i < magaObj.length; i++) {
+                            if (i % 7 == 0) {
+                                strMaga += "<div class=\"col left\">";
+                            }
+                            var cateurl = ctxPath + "/article/magacate?album=" + album + "&qkmark=" + magaObj[i].code;
+                            strMaga += '<a href="' + cateurl + '" target="_blank">' + magaObj[i].name + '</a>';
+                            if (i == magaObj.length - 1 || (i + 1) % 7 == 0) {
+                                strMaga += "</div>";
+                            }
+                        }
+                        $("#MagaCate").html(strMaga);
+                        if (magaObj.length < 15) {
+                            document.getElementById("MagaCate").style.width = "310px";
+                        }
+                        var articleObj = eval(jsonarticle);
+                        var strArticle = "";
+                        for (var i = 0; i < articleObj.length; i++) {
+                            if (i % 7 == 0) {
+                                strArticle += "<div class=\"col left\">";
+                            }
+                            var cateurl = ctxPath + "/article/channel?album=" + album + "&zt=" + articleObj[i].ztCode;
+                            strArticle += '<a href="' + cateurl + '" target="_blank">' + articleObj[i].ztName + '</a>';
+                            if (i == articleObj.length - 1 || (i + 1) % 7 == 0) {
+                                strArticle += "</div>";
+                            }
+                        }
+                        $("#ArticleCate").html(strArticle);
+                        if (articleObj.length < 15) {
+                            document.getElementById("ArticleCate").style.width = "310px";
+                        }
+                    }
+
+                    if (album.toUpperCase() == "U" || album.toUpperCase() == "V" || album.toUpperCase() == "T") {
+                        InitCategory();
+                    }
+                    var libraryType = $('.sort a').html();
+                    var album = '';
+                    album = $('.search .addSelect .xs').attr('data-album') || 'U,V,T,Y,Z';
+                    var searchBtn = $('#searchBtn');
+                    var enterControl = searchBtn.attr('data-enter-control');
+                    // 回车 提交 enterControl可以区分其他回车需求
+                    if (enterControl == 1) {
+                        $(document).bind("keydown", function (e) {
+                            if (e.keyCode == 13) {
+                                searchBtn.click();
+                            }
+                        })
+                    }
+                    searchBtn.click(function () {
+                        album = $('.search .addSelect .xs').attr('data-album') || 'U,V,T,Y,Z';
+                        var topic = $('#search').val().trim();
+
+
+                        if (album == "U,V,T,Y,Z") {
+                            if (topic.length > 0) {
+                                location.href = encodeURI(ctxPath + '/article/searchresult?t=0&album=' +
+                                    album + '&topic=' + topic);
+                            }
+                        } else {
+                            if (topic.length > 0) {
+                                location.href = encodeURI(ctxPath + '/article/librarysearchresult?album=' + album +
+                                    '&topic=' + topic);
+                            }
+                        }
+                    })
+
+                })()
+            </script>
+        </div>
+    </div>
+
+</div>
+<script>
+    var dbtype = "CJFU";
+    var album = "u";
+    if (dbtype == "") {
+        dbtype = "CJF" + album;
+    }
+</script>
+<div class="articelWrap clearfix">
+    <div class="al left">
+        <div class="atop">
+            <span class="logo"></span>
+            <h1 class="title">
+                <span>家庭影院新军——夏新PRO-300</span>
+                
+                <!-- 文章出版状态 1 已勘误 2撤回 3未勘误 4撤稿 5全文替换 6关注 7取消关注 8 撤稿不留原文 -->
+            </h1>
+
+            <p class="author">
+                <span>高朋</span>
+            </p>
+            <div class="paragraph">
+                <div> 笔者刚开始发烧就是从国产器材开始的,甚至可以说有一些国产情结,自我感觉不迷信进口器材似乎也符合发烧之道。如果你接触的是认真制作的国产发烧器材,也许扬声器单元不是很高级,但是声音绝对有其特色并且不会有明显缺陷。 <span>（共2页)</span></div>
+            </div>
+
+            <div class="handler clearfix item">
+                <!-- 文章出版状态 1 已勘误 2撤回 3未勘误 4撤稿 5全文替换 6关注 7取消关注 8 撤稿不留原文 -->
+                <!-- 声明 -->
+                
+
+                <!-- PDF全文下载 -->
+
+                <a class="btn orgNoRight articledownload" href="/article/download/DQPJ200309016"
+                   target="_blank" data-filename="DQPJ200309016">
+
+                    <img src="/web/images/literature/licon24.gif"></a>
+
+                <!-- 阅读本刊 -->
+                
+
+
+                <!-- 原版PDF下载 -->
+                
+                <!--  -->
+                <div data-code="DQPJ200309016" class="ewm"><img
+                        src="/web/images/literature/licon28.png">
+                    <div class="pop">
+                        <p>扫描二维码 前往手机版</p>
+                        <img src="/web/images/common/logo.png" alt=""/>
+                        <canvas id="canvas"></canvas>
+
+                        <script>
+
+                            var code = $('.ewm').attr('data-code');
+                            var wr = '';
+                            switch (dbtype.toLowerCase()) {
+                                case 'cjfv':
+                                    wr = 'WX001';
+                                    break; // 文化
+                                case 'cjfu':
+                                    wr = 'WX002';
+                                    break; // 文艺
+                                case 'cjft':
+                                    wr = 'WX003';
+                                    break; // 科普
+                                default:
+                                    wr = 'WX003';
+                                    break;
+                            }
+                            console.log(dbtype, code, wr);
+                            QRCode.toCanvas(document.getElementById('canvas'),
+                                'https://wh.cnki.net/m/download/index?token=' + wr + '&code=' + code,
+                                function (
+                                    error) {
+                                    if (error) console.error(error)
+                                    $('#canvas').width(160).height(160);
+
+                                })
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="operate">
+                <a style="cursor: pointer" class="collect collectA" id="collect"
+                   data-is-collected="0">收藏</a>&nbsp;|&nbsp;<a href="javascript:;" class="share"
+                                                                             data-type="1">分享</a>
+                <div data-type="3" id="sharebox" class="sharebox bdsharebuttonbox" style="">
+                    <a href="javascript:;" class="wx" onclick="ShareToWeixin()" title="分享到微信"></a>
+                    <a href="javascript:;" class="qq" onclick="ShareToqq()" title="分享到QQ"></a>
+                    <a href="javascript:;" onclick="ShareToSinaWb()" class="wb" title="分享到新浪微博"></a>
+                </div>
+                <script>
+                    // 点击下拉分享
+                    $('.share').click(function (e) {
+                        var e = window.event || e;
+                        e.stopPropagation();
+                        e.cancelBubble = true;
+                        var type = $(this).attr('data-type');
+                        if (type == 0) {
+                            $('.bdsharebuttonbox').hide();
+                            $(this).attr('data-type', 1);
+                            $(".share").removeClass("click")
+                        } else {
+                            $('.bdsharebuttonbox').show();
+                            $(this).attr('data-type', 0);
+                            $(".share").addClass("click")
+                        }
+                    });
+                    $('body').click(function () {
+                        $('.bdsharebuttonbox').hide();
+                        $(".share").removeClass("click")
+                        $('.share').attr('data-type', 1);
+                        if ($(".modal-qqshare").is(":visible")) {
+                            $(".modal-qqshare").hide();
+                        }
+                    })
+                    var SetShareUrl = window.location.href;
+                    /*     (function () {
+
+                             text = "家庭影院新军——夏新PRO-300" + "--知网文化";
+                             //插件的配置部分，注意要记得设置onBeforeClick事件，主要用于获取动态的文章ID
+                             window._bd_share_config = {
+                                 common: {
+                                     onBeforeClick: SetShareUrl,
+                                     bdText: text,
+                                     bdDesc: "",
+                                     bdUrl: SetShareUrl,
+                                     bdPic: ""
+                                 },
+                                 share: [{
+                                     "bdSize": 32
+                                 }],
+
+                             };
+                             (document.getElementsByTagName('head')[0] || document.body).appendChild(document.createElement('script')).src = '/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5);
+                         })()*/
+                </script>
+                <style>
+                    .bd_weixin_popup {
+                        box-sizing: content-box;
+                        padding: 20px;
+                        height: 300px !important;
+                    }
+
+                    .bd_weixin_popup .bd_weixin_popup_head {
+                        text-align: center;
+                    }
+
+                    .bd_weixin_popup .bd_weixin_popup_foot {
+                        text-align: center;
+                    }
+
+                    #bdshare_weixin_qrcode_dialog_qr table {
+                        width: auto !important;
+                    }
+                </style>
+
+            </div>
+
+            <div class="vip-guidebar clearfix">
+                <div class="text">开通VIP会员,尊享文章畅读包</div>
+                <a class="btn-open" href="/personal/vip" target="_blank">立即开通</a>
+            </div>
+
+            <div class="similar">
+                <h2>相似文章</h2>
+                <div id="similar">
+                    <p>
+                        <span>1</span>
+                        <span>田晓涛;</span>
+                        <a target="_blank" href="/article/detail/DNCG200018013?album=u">自己拍电影  全新家庭影院的组合与采购</a>
+                        <span>
+                        <a target="_blank" class="cbs"
+                           href="/mall/maga/singlePeriodDetail/DNCG200018">电脑采购周刊 2000年18期</a>;
+                    </span>
+                    </p>
+                    <p>
+                        <span>2</span>
+                        <span>叶菊仙</span>
+                        <a target="_blank" href="/article/detail/JYXF200211021?album=u">家庭影院谁领风骚?</a>
+                        <span>
+                        <a target="_blank" class="cbs"
+                           href="/mall/maga/singlePeriodDetail/JYXF200211">家用电器 2002年11期</a>;
+                    </span>
+                    </p>
+                    <p>
+                        <span>3</span>
+                        <span>乃徵</span>
+                        <a target="_blank" href="/article/detail/JYXF200101011?album=u">什么是家庭影院</a>
+                        <span>
+                        <a target="_blank" class="cbs"
+                           href="/mall/maga/singlePeriodDetail/JYXF200101">家用电器 2001年01期</a>;
+                    </span>
+                    </p>
+                    <p>
+                        <span>4</span>
+                        <span>魏旭林;</span>
+                        <a target="_blank" href="/article/detail/JCZQ200906076?album=u">看规划师如何设计家庭影院</a>
+                        <span>
+                        <a target="_blank" class="cbs"
+                           href="/mall/maga/singlePeriodDetail/JCZQ200906">建材与装修情报 2009年06期</a>;
+                    </span>
+                    </p>
+                    <p>
+                        <span>5</span>
+                        <span>郝孝华;</span>
+                        <a target="_blank" href="/article/detail/YHDL202106032?album=u">X档案——移动的家庭影院</a>
+                        <span>
+                        <a target="_blank" class="cbs"
+                           href="/mall/maga/singlePeriodDetail/YHDL202106">炎黄地理 2021年06期</a>;
+                    </span>
+                    </p>
+                    <p>
+                        <span>6</span>
+                        <span></span>
+                        <a target="_blank" href="/article/detail/GRDN200502040?album=u">惠威HiVi S600HT  家庭影院荣获2005 CES G4TechTV</a>
+                        <span>
+                        <a target="_blank" class="cbs"
+                           href="/mall/maga/singlePeriodDetail/GRDN200502">个人电脑 2005年02期</a>;
+                    </span>
+                    </p>
+                    <p>
+                        <span>7</span>
+                        <span>仝伟</span>
+                        <a target="_blank" href="/article/detail/JYXF200406009?album=u">迷你家庭影院  你选哪一款?</a>
+                        <span>
+                        <a target="_blank" class="cbs"
+                           href="/mall/maga/singlePeriodDetail/JYXF200406">家用电器 2004年06期</a>;
+                    </span>
+                    </p>
+                    <p>
+                        <span>8</span>
+                        <span>谢科;</span>
+                        <a target="_blank" href="/article/detail/JCZQ200710103?album=u">4万元组建你的家庭影院</a>
+                        <span>
+                        <a target="_blank" class="cbs"
+                           href="/mall/maga/singlePeriodDetail/JCZQ200710">建材与装修情报 2007年10期</a>;
+                    </span>
+                    </p>
+                    <p>
+                        <span>9</span>
+                        <span>何友</span>
+                        <a target="_blank" href="/article/detail/JYXF200011002?album=u">用耳机的家庭影院</a>
+                        <span>
+                        <a target="_blank" class="cbs"
+                           href="/mall/maga/singlePeriodDetail/JYXF200011">家用电器 2000年11期</a>;
+                    </span>
+                    </p>
+                    <p>
+                        <span>10</span>
+                        <span>吴志宏</span>
+                        <a target="_blank" href="/article/detail/JYXF200104026?album=u">浅谈家庭影院的各部连接与操作顺序</a>
+                        <span>
+                        <a target="_blank" class="cbs"
+                           href="/mall/maga/singlePeriodDetail/JYXF200104">家用电器 2001年04期</a>;
+                    </span>
+                    </p>
+                </div>
+            </div>
+        </div>`
+        <div class="recommend" style="display: none">
+            <div class="recommend-header clearfix">
+                <span class="recommend-title left">推荐阅读</span>
+                <div class="recommend-tab right">
+                    <span class="active recommendMagaTab">期刊</span>
+                    <span class="recommendBookTab">图书</span>
+                </div>
+            </div>
+            <div class="recommend-body">
+                <div class="recommend-items recommendMaga clearfix active">
+
+
+                </div>
+                <div class="recommend-items recommendBook clearfix">
+
+
+                </div>
+                <div class="recommend-items recommendMicro recommend-micro-items clearfix">
+
+
+                </div>
+
+            </div>
+        </div>
+        <script>
+            // 推荐阅读切换
+            $('.recommend-tab span').click(function () {
+                $(this).addClass('active').siblings().removeClass('active');
+                $('.recommend-items').removeClass('active')
+                $('.recommend-items').eq($(this).index()).addClass('active');
+            });
+        </script>
+    </div>
+    <div class="ar left">
+        <a href="/mall/maga/week" target="_blank" class="side-ad"><img
+                src="/web/images/literature/side-ad.jpg"></a>
+        <div class="box1">
+            <span class="logo">来源期刊</span>
+            <a title="山花" href="/mall/maga/singlePeriodDetail/DQPJ200309" target="_blank"
+               class="img"><img id="journalimg"
+                                src="http://c61.cnki.net/CJFD/big/DQPJ/DQPJ200309.jpg"
+                                onerror="javascript:this.src=&#39;http://c61.cnki.net/CJFD/big/DQPJ.jpg&#39;;this.onerror=null;"/></a>
+            <p class="p1">
+                <a title="电器评介" href="/mall/maga/singlePeriodDetail/DQPJ200309"
+                   target="_blank">电器评介</a>
+            </p>
+            <p class="p2">2003年09期</p>
+        </div>
+        <div class="box2" style="">
+            <h1><span>最新刊期</span><a id="morePastPeriod" href="/mall/maga/DQPJ"
+                                    target="_blank">查看全部往期 &gt;&gt;</a></h1>
+            <ul id="pastPeriods" class="clearfix">
+            </ul>
+        </div>
+    </div>
+</div>
+<a id="downUrl" target="_blank"></a>
+<div class="collectionPopWrap">
+    <div class="collectionPop">
+        <div class="w">
+            <div class="c">收藏作品，请先登录</div>
+            <div class="b">
+                <a style="cursor: pointer;" onclick="onLogin()" class="b1">去登录</a>
+                <a href="javascript:;" class="b2">取消</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    .collectionPopWrap {
+        display: none;
+    }
+
+    .collectionPop {
+    }
+
+    .collectionPop .w {
+        width: 274px;
+        height: 175px;
+        font-family: 微软雅黑;
+        text-align: center;
+    }
+
+    .collectionPop .w .c {
+        font-size: 16px;
+        font-weight: bold;
+        padding: 54px 0 40px 0;
+    }
+
+    .collectionPop .w .b {
+        font-size: 14px;
+        width: 208px;
+        height: 32px;
+        margin: 0 auto;
+    }
+
+    .collectionPop .w .b a {
+        float: left;
+        width: 95px;
+        height: 32px;
+        line-height: 32px;
+        -webkit-border-radius: 16px;
+        -moz-border-radius: 16px;
+        border-radius: 16px;
+    }
+
+    .collectionPop .w .b .b1 {
+        color: #fff;
+        background-color: #fa6e55;
+    }
+
+    .collectionPop .w .b .b2 {
+        color: #666666;
+        background-color: #dcdcdc;
+        float: right;
+    }
+</style>
+<!--footer-->
+<div class="pfooter">
+    <div class="layer-feedback-content">
+        <div class="item clearfix">
+            <label>反馈内容：</label>
+            <div class="textWrap">
+                <textarea id="feedbackInput"></textarea>
+                <span class="count"><i>0</i>/200</span>
+            </div>
+        </div>
+        <div class="item clearfix">
+            <label>联系方式：</label>
+            <div class="inputWrap">
+                <input id="contactInput" type="text" placeholder="请留下您的联系方式（手机号、QQ、邮箱）">
+            </div>
+        </div>
+    </div>
+    <div class="rightToolbar">
+        <div class="item mobile">
+            <div class="icon"></div>
+            <div class="text">手机访问</div>
+            <div class="qrcode"><img src="/web/images/common/toolbar-qrcode.png" alt=""></div>
+        </div>
+        <div class="item cart">
+            <div class="icon"></div>
+            <span class="badge" style="display: none"></span>
+        </div>
+        <div class="item feedback">
+            <div class="icon"></div>
+            <div class="text">意见反馈</div>
+        </div>
+        <div class="item goTop">
+            <div class="icon"></div>
+            <div class="text">返回顶部</div>
+        </div>
+    </div>
+    <script>
+        (function () {
+
+            $(window).scroll(function () {
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop > 150) {
+                    $('.rightToolbar').show();
+                } else {
+                    $('.rightToolbar').hide();
+                }
+            })
+            // 返回顶部
+            $('.rightToolbar .goTop').on('click', function () {
+                $('html,body').animate({scrollTop: 0}, 800);
+                /*$('.header').removeClass('fixed');*/
+            });
+
+            // 反馈文本域输入限制字数
+            $('#feedbackInput').on("keyup", function () {
+                numChange($(this), ".layer-feedback .textWrap i", 200);
+            });
+
+            function numChange(inputSelector, wordCountSelector, maxWord) {
+                $(inputSelector).attr("maxlength", maxWord);
+                var txtval = $.trim($(inputSelector).val());
+                var strLen = txtval.length;
+                if (strLen > maxWord - 10) {
+                    $(wordCountSelector).css("color", "red");
+                    if (strLen > maxWord) {
+                        $(inputSelector).val(txtval.substr(0, maxWord))
+                    }
+                } else {
+                    txtval = txtval.replace(/\n/gi, "")
+                    $(wordCountSelector).css("color", "");
+                }
+                $(wordCountSelector).html(strLen);
+            }
+
+            // 反馈建议提交
+            $('.rightToolbar .feedback').on('click', function () {
+                layer.open({
+                    type: 1,
+                    title: '欢迎提出您的宝贵建议',
+                    skin: 'layer-feedback',
+                    area: ['629px', '425px'],
+                    shadeClose: true,
+                    btn: ['提交', '取消'],
+                    btnAlign: 'c',
+                    content: $('.layer-feedback-content'),
+                    yes: function (index, layero) {
+                        var feedbackText = $('#feedbackInput').val().trim();
+                        var contactText = $('#contactInput').val().trim();
+                        if (feedbackText.length == 0) {
+                            layer.msg("请输入反馈内容!");
+                            return;
+                        }
+                        if (contactText.length == 0) {
+                            layer.msg("请输入联系方式!");
+                            return;
+                        }
+                        $.ajax({
+                            type: "post",
+                            url: ctxPath + "/common/submitFeedback",
+                            data: {
+                                content: feedbackText,
+                                connect: contactText
+                            },
+                            success: function (response) {
+                                if (response.code == 0) {
+                                    layer.msg("提交成功!");
+                                }
+                                layer.close(index);
+                            }
+                        });
+                    }
+                });
+            });
+            //购物车红点标注
+            $.get(ctxPath + "/shoppingcart/getlistcount", function (data, status) {
+                if (data.count > 0) {
+                    $(".cart .badge").show();
+                } else {
+                    $(".cart .badge").hide();
+                }
+            });
+            //购物车跳转
+            $(".rightToolbar .cart").click(function () {
+                if (username == undefined || username == '') {
+                    location.href = '/user/login';
+                } else {
+                    window.open(ctxPath + "/shoppingcart/list", "_blank");
+                }
+            });
+        })()
+    </script>
+    <div class="w1200Auto">
+        <div class="left f1">
+            <div class="cnki_logo">
+                <a href="https://cnki.net/" target="_blank"><img src="/web/images/indexImages/cnki_logo.png"
+                                                                 alt=""></a>
+            </div>
+            <p class="copyright">
+                <a href="https://ss.knet.cn/verifyseal.dll?sn=e13111111010043364isll000000&a=1&pa=0.08881110103584755"
+                   target="_blank"><img src="/web/images/indexImages/copyright2.png" alt=""></a>
+            </p>
+        </div>
+        <div class="left f2">
+            <div class="links">
+                <a href="/aboutus" target="_blank" title="关于我们">关于我们</a> |
+                <a href="/personal/vip" target="_blank" title="VIP会员">VIP会员</a> |
+                <a href="/recharge/home" target="_blank" title="充值中心">充值中心</a> |
+                <a href="https://vipcard.cnki.net/ec/skwd/skwd.htm" target="_blank" title="购买会员卡">购买充值卡</a> |
+                <a href="/readerdownload" target="_blank" title="安装阅读器">安装阅读器</a> |
+                <a href="https://help.cnki.net/" target="_blank" title="在线咨询">在线咨询</a>
+            </div>
+            <p>出版：《中国学术期刊（光盘版）》电子杂志社有限公司&nbsp;&nbsp;|&nbsp;&nbsp;服务咨询：400-819-9993</p>
+            <p>京ICP证040431号 <a href="https://piccache.cnki.net/index/images/gb/271.jpg" target="_blank">互联网出版许可证
+                新出网证(京)字271号</a>&nbsp;京公安备案11010802020460号</p>
+        </div>
+        <div class="left f4">
+            <img src="/web/images/indexImages/KandianQRCode.png" width="103" height="103" alt="">
+            <p>知网文化<br>扫码下载客户端</p>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            function getSuggestWord(val, type) {
+                $.ajax({
+                    url: ctxPath + '/search/getSuggestWord',
+                    data: {keyword: val, offset: 0, limit: 3},
+                    dataType: "json",
+                    type: "POST",
+                    async: false,
+                    success: function (response) {
+                        if (response.code == 0) {
+                            var wordlist = response.data.suggestWords;
+                            var magalist = response.data.maga;
+                            var booklist = response.data.book;
+                            if (wordlist.length <= 0 && magalist.length <= 0 && booklist.length <= 0) {
+                                $('.search-recommend').hide();
+                            } else {
+                                var result = "";
+                                var reg = new RegExp("(" + val + ")", "g");
+                                if (type == "article") {
+                                    for (var i = 0; i < wordlist.length; i++) {
+                                        if (i > 9) {
+                                            break;
+                                        }
+                                        result += '<li data-code="' + wordlist[i] + '">' + cutstr(wordlist[i], 34, '...').replace(reg, "<span>$1</span>") + '</li>';
+                                    }
+                                } else {
+                                    for (var i = 0; i < wordlist.length; i++) {
+                                        if (i > 4) {
+                                            break;
+                                        }
+                                        result += '<li data-code="' + wordlist[i] + '">' + cutstr(wordlist[i], 34, '...').replace(reg, "<span>$1</span>") + '</li>';
+                                    }
+                                    for (var i = 0; i < magalist.length; i++) {
+                                        result += '<li class="recommend-book" data-code="' + magalist[i].title + '">' + cutstr(magalist[i].title, 30, '...').replace(reg, "<span>$1</span>") + '</li>';
+                                    }
+                                    for (var i = 0; i < booklist.length; i++) {
+                                        result += '<li class="recommend-book" data-code="' + booklist[i].title + '">' + cutstr(booklist[i].title, 30, '...').replace(reg, "<span>$1</span>") + '</li>';
+                                    }
+                                }
+
+                                $('#suggestword').html(result);
+                                $('.search-recommend').show();
+                            }
+                        }
+                        $('.search-recommend li').bind('click', function () {
+                            $('.search-recommend').hide();
+                            $('.search-input').val($(this).attr('data-code'));
+                            $("#searchBtn").trigger("click");
+                        });
+                    },
+                    error: function (error) {
+                        //请求出错处理
+                        console.log(error);
+                    }
+                });
+            }
+
+            /*var i = -1;
+            $('.search-input').keyup(function(e) {
+
+
+                var liLength = $('.search-recommend li').length;
+                var target = $('.search-recommend li');
+                if(e.keyCode == 40){
+                    i++;
+                    if(i > liLength-1) {i = 0}
+                    target.eq(i).addClass('selected').siblings().removeClass('selected');
+                    $(this).val(target.eq(i).text());
+                }
+                else if(e.keyCode == 38){
+                    i--;
+                    if(i < 0) {i = liLength-1}
+                    target.eq(i).addClass('selected').siblings().removeClass('selected');
+                    $(this).val(target.eq(i).text());
+                }
+                else{
+                    var val = $(this).val().trim();
+                    if(val.length == 0){
+                        $('.search-recommend').hide();
+                    }else{
+                        getSuggestWord(val,type);
+                    }
+                }
+            });
+            $(document).click(function (e){
+               $(".search-recommend").hide();
+            })
+        */
+
+
+            $('.header .dropdown').hover(function () {
+                $(this).find('.dropdown-menu').css('display', 'block');
+            }, function () {
+                $(this).find('.dropdown-menu').css('display', 'none');
+            });
+            var login = $('#login');
+            login.click(function () {
+                location.href = '/login/index';
+            })
+
+            var searchBtn = $('.search-btn');
+            var enterControl = searchBtn.attr('data-enter-control');
+            // 回车 提交 enterControl可以区分其他回车需求
+            if (enterControl == 1) {
+                $(document).bind("keydown", function (e) {
+                    if (e.keyCode == 13) {
+                        console.log("search")
+                        searchBtn.click();
+                    }
+                })
+            }
+
+            var searchBtnMall = $('#searchBtn');
+            var enterControlMall = searchBtnMall.attr('data-enter-control');
+            // 回车 提交 enterControl可以区分其他回车需求
+            if (enterControlMall == 1) {
+                $(document).bind("keydown", function (e) {
+                    if (e.keyCode == 13) {
+                        searchBtnMall.click();
+                    }
+                })
+            }
+
+
+            var type = "index";
+            // 检索框下拉列表项选中
+            $('.header .search-box .dropdown-menu li').on('click', function () {
+                var text = $(this).text();
+                var dropdownToggle = $(this).parent('.dropdown-menu').siblings('.dropdown-toggle');
+                dropdownToggle.find('span').text(text);
+                type = $(this).attr('data-type');
+                currentType = $(this).attr('data-type');
+            });
+
+            //检索按钮点击
+            searchBtn.on('click', function () {
+                var keyword = $(this).siblings('input').val();
+                if (keyword.trim().length == 0) {
+                    return;
+                }
+
+                if ((typeof currentType) != "undefined") {
+                    type = currentType;
+                }
+
+
+                if (type == "article") {
+                    location.href = encodeURI(ctxPath + '/article/searchresult?st=0&topic=' + keyword);
+                } else {
+                    location.href = encodeURI(ctxPath + '/search/' + type + '?kw=' + keyword);
+                }
+
+            })
+
+            //检索按钮点击
+            searchBtnMall.on('click', function () {
+                var keyword = $(".click").val();
+                if (keyword.trim().length == 0) {
+                    return;
+                }
+                location.href = encodeURI(ctxPath + '/mall/search?kw=' + keyword);
+
+            })
+
+            /* $(window).scroll(function () {
+                 var A = $(window).scrollTop();
+                 if (A > 65) {
+                     $('.header').addClass('fixed');
+                 } else {
+                     $('.header').removeClass('fixed');
+                 }
+             });*/
+        })
+
+    </script>
+
+    <div class="collectionPopWrap">
+        <div class="collectionPop">
+            <div class="w">
+                <div class="c">收藏作品，请先登录</div>
+                <div class="b">
+                    <a href="/user/login" class="b1">去登录</a>
+                    <a href="javascript:;" class="b2">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style type="text/css">
+        .collectionPopWrap {
+            display: none;
+        }
+
+        .collectionPop {
+        }
+
+        .collectionPop .w {
+            width: 274px;
+            height: 175px;
+            font-family: 微软雅黑;
+            text-align: center;
+        }
+
+        .collectionPop .w .c {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 54px 0 40px 0;
+        }
+
+        .collectionPop .w .b {
+            font-size: 14px;
+            width: 208px;
+            height: 32px;
+            margin: 0 auto;
+        }
+
+        .collectionPop .w .b a {
+            float: left;
+            width: 95px;
+            height: 32px;
+            line-height: 32px;
+            -webkit-border-radius: 16px;
+            -moz-border-radius: 16px;
+            border-radius: 16px;
+        }
+
+        .collectionPop .w .b .b1 {
+            color: #fff;
+            background-color: #fa6e55;
+        }
+
+        .collectionPop .w .b .b2 {
+            color: #666666;
+            background-color: #dcdcdc;
+            float: right;
+        }
+    </style>
+
+    <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279297320'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/stat.php%3Fid%3D1279297320%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    <!--    <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279297320'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/stat.php%3Fid%3D1279297320%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>-->
+    <style>
+
+        .modal-qqshare {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 280px;
+            height: 300px;
+            padding: 20px;
+            background-color: #fff;
+            text-align: center;
+            font-family: 'Arial', 'Microsoft Yahei';
+            border: solid 1px #d8d8d8;
+            z-index: 11001;
+            font-size: 12px;
+        }
+
+        .modal-qqshare h2 {
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 16px;
+            margin-bottom: 15px;
+            height: 16px;
+            color: #000;
+        }
+
+        .modal-qqshare p {
+            margin-top: 15px;
+            font-size: 12px;
+            line-height: 22px;
+            color: #666;
+        }
+
+        .qqQrCode {
+            width: 185px;
+            height: 185px;
+            margin: 0 auto;
+        }
+
+        .modal-qqshare-close {
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: #999;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 16px;
+            font-family: "微软雅黑";
+        }
+    </style>
+    <div class="modal-qqshare" style="display: none;">
+        <a href="javascript:;" class="modal-qqshare-close" onclick="$('.modal-qqshare').hide();">×</a>
+        <h2></h2>
+        <div class="qqQrCode">
+            <canvas id="shareCanvas" style="height: 185px;width: 185px;"></canvas>
+        </div>
+        <p></p>
+    </div>
+
+</div>
+<div style="display: none;">
+    <input type="hidden" value="" id="username">
+    <input type="hidden" id="filename" value="SHHZ202009019">
+    <input type="hidden" id="dbType" value="CJFV">
+    <input type="hidden" id="thName" value="SHHZ202009">
+    <input type="hidden" id="title" value="让我们重新观看">
+</div>
+
+<script>
+    var username = "";
+    var filename = "DQPJ200309016";
+    var roll = $('#roll');
+    var sliderBox = $('.sliderBox');
+    var thName = "DQPJ200309";
+    var worksRecommend = $('#worksRecommend');
+    var pastPeriods = $('#pastPeriods');
+    var time = 50;
+    var collecttypeid = 6;
+    var collectsource = "article";
+    var SetShareUrl = window.location.href;
+    var id = filename;
+    var title = "家庭影院新军——夏新PRO-300";
+    var isOrg = "0";
+    var username = "";
+    //getDownloadRight();
+    // 获取文章图片
+    /*  var literaturePicsUrl = '/literature/getLiteraturePics?filename=' + filename;
+      $.ajax({
+          url: literaturePicsUrl,
+          dataType: "json",
+          type: "GET",
+          success: function (response) {
+              // console.log(response)
+              if (response.Code == 1) {
+                  var list = response.ImgUrls;
+                  var str = '';
+                  if (list && list.length > 0) {
+                      for (var i = 0; i < list.length; i++) {
+                          str += '<li>' +
+                              '      <a class=img><span><img src="' + list[i] + '"></span></a>' +
+                              '   </li>';
+                      }
+                      roll.html(str);
+                      sliderBox.slideDown(time);
+                  }
+              } else {
+                  console.log('请检查获取文章图片接口！');
+              }
+              list = null;
+          },
+          error: function (error) {
+              //请求出错处理
+              console.log(error);
+          }
+      });*/
+
+    // 最新刊期
+    var pastPeriodsUrl = ctxPath + '/article/GetMagaPastPeriodList?thname=' + thName;
+    $.ajax({
+        url: pastPeriodsUrl,
+        dataType: "json",
+        type: "GET",
+        success: function (response) {
+            if (response.list && response.list.length > 0) {
+
+                var str = '';
+                for (var i = 0; i < response.list.length; i++) {
+                    var magaurl = ctxPath + '/mall/maga/singlePeriodDetail/' + response.list[i].thname;
+                    str += '<li>' +
+                        '         <a title="' + response.list[i].name +
+                        '" href="' + magaurl +
+                        '" target="_blank" class="img"><img src="' + response.list[i].coverpic + '\" onerror=\"javascript:this.src=&apos;http://c61.cnki.net/CJFD/big/' + response.list[i].code + '.jpg &apos; ;this.onerror=null;\"></a>'
+                    '         <p><a title="' + response.list[i].name +
+                    '" href="' + magaurl +
+                    '" target="_blank" >' + response.list[i].name + '</a></p>' +
+                    '         <p class="pp">' + response.list[i].year + '年' + response
+                        .list[i].period + '期</p>' +
+                    '   </li>';
+                }
+                pastPeriods.html(str);
+                $('#morePastPeriod').attr('href', ctxPath + '/mall/maga/' + response.list[0].code)
+                pastPeriods.parent().slideDown(time);
+            } else {
+                console.log('前端获取往期期刊接口');
+            }
+        },
+        error: function (error) {
+            //请求出错处理
+            console.log(error);
+        }
+    });
+
+
+    // $(".share").click(function () {
+    //     $(this).siblings(".sharebox").fadeToggle()
+    // })
+
+    // 收藏或者取消收藏方法
+    function collectOrNot(id, typeId, isCollected, index, pointer, title) {
+
+        $.ajax({
+            url: ctxPath + '/mall/book/collectOrNot',
+            data: {id: id, typeId: typeId, isCollected: isCollected, title: title},
+            dataType: "json",
+            type: "POST",
+            success: function (response) {
+                layer.close(index);
+                if (response.code == 0) {
+                    pointer.toggleClass('collected');
+                    if (response.data.status == 1) {
+                        pointer.attr('data-is-collected', '1');
+                        layer.msg('收藏成功！');
+                    } else if (response.data.status == 0) {
+                        pointer.attr('data-is-collected', '0');
+                        layer.msg('取消收藏成功！');
+                    }
+                } else if (response.code == -1) {
+                    layer.msg(response.msg)
+                } else {
+                    console.log('请检查收藏或者取消收藏方法接口！')
+                }
+            },
+            error: function (error) {
+                //请求出错处理
+                console.log(error);
+            }
+        });
+    }
+
+    // 获取收藏数据
+    function getCollectedData(pageNum, typeId, foreignkeyId, foreignName, index) {
+        $.ajax({
+            url: ctxPath + '/mall/book/singleCollected',
+            data: {"pageNum": pageNum, "type": -1},
+            dataType: "json",
+            type: "GET",
+            success: function (response) {
+                layer.close(index);
+                if (response.code == 0) {
+                    layer.open({
+                        type: 2,
+                        title: ['添加到收藏夹', 'height: 42px; line-height: 42px; padding-left: 15px; color: #ffffff; font-size: 16px; font-weight: normal;background-color: #E64A3C; color:#fff;'],
+                        shade: 0.8,
+                        area: ['430px', '540px'],
+                        content: ctxPath + '/mall/book/transfer?typeId=' + typeId + '&foreignkeyId=' + foreignkeyId + '&foreignName=' + foreignName + '&isPersonalCenter=0'
+                    });
+                }
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        getRecommend("maga", 7)
+        getRecommend("book", 6)
+        var pathImg = "http://c61.cnki.net/CJFD/big/DQPJ/DQPJ200309.jpg";
+        var defaultcoverpic = "http://c61.cnki.net/CJFD/big/DQPJ.jpg";
+
+        function isHasImg(pathImg) {
+            pathImg = "http://c61.cnki.net/CJFD/big/XYXI/XYXI201706.jpg"
+            var ImgObj = new Image();
+            ImgObj.src = pathImg;
+            if (ImgObj.fileSize <= 0 || (ImgObj.width <= 0 && ImgObj.height <= 0)) {
+                document.getElementById('journalimg').src = defaultcoverpic;
+            }
+        }
+
+        //isHasImg(pathImg);
+    });
+
+    function getRecommend(type, pageSize) {
+        var url = ctxPath + "/recommend/ikRecommendByMaga";
+        var data = {
+            "code": filename.substr(0, 4),
+            "pageIndex": 1,
+            "pageSize": pageSize,
+            "type": type
+        }
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data,
+            dataType: "json",
+            success: function (response) {
+                console.log(response)
+                if (type == "maga") {
+
+                    if (response.data.total > 0) {
+                        $('.recommend').show();
+                        var html = ""
+                        var i = 0;
+                        response.data.rows.forEach(function (item, index) {
+                            if (i > 5) {
+                                return;
+                            }
+                            if (item.code != code) {
+                                html += "<div class=\"recommend-item\">\n" +
+                                    "                            <a href=\"" + ctxPath + "/mall/maga/detail/" + item.thName + "\"  target=\"_blank\">\n" +
+                                    "                                <img src=\"" + item.coverpic + "\" alt=\"\">\n" +
+                                    "                            </a>\n" +
+                                    "                            <a class=\"name\"href=\"" + ctxPath + "/mall/maga/detail/" + item.thName + "\"  target=\"_blank\">" + item.name + "</a>\n" +
+                                    "                            <p class=\"date\">" + item.lastestyear + "年" + item.lastestperiod + "期</p>\n" +
+                                    "                        </div>"
+                                i++;
+                            }
+
+
+                        })
+                        $(".recommendMaga").html(html)
+                        if (response.cate != '') {
+                            $(".recommendMaga").append("   <a class=\"recommend-more\" href=\"/mall/maga/list/addtime/" + response.cate + "\" target=\"_blank\">查看更多&gt;&gt;</a>")
+                        } else {
+                            $(".recommendMaga").append("   <a class=\"recommend-more\" href=\"/mall/maga/list/addtime\" target=\"_blank\">查看更多&gt;&gt;</a>")
+                        }
+                    } else {
+                        $(".recommendMagaTab").hide()
+                        $(".recommendMaga").hide()
+                    }
+
+
+                } else if (type == "book") {
+                    if (response.data.total > 0) {
+                        $('.recommend').show();
+                        var html = ""
+                        response.data.rows.forEach(function (item, index) {
+                            var bookAuthor = "";
+                            if (item.bookauthor.indexOf('#') != -1) {
+                                bookAuthor = item.bookauthor.split('#').join(' ');
+                            } else {
+                                bookAuthor = item.bookauthor;
+                            }
+
+                            html += " <div class=\"recommend-item\">\n" +
+                                "                            <a href=\"" + ctxPath + "/mall/book/detail/" + item.sku + "\" target=\"_blank\">\n" +
+                                "                                <img src=\"" + item.coverpic + "\" alt=\"\">\n" +
+                                "                            </a>\n" +
+                                "                            <a class=\"name\" href=\"" + ctxPath + "/mall/book/detail/" + item.sku + "\" target=\"_blank\">" + item.title + "</a>\n" +
+                                "                            <p class=\"date\">" + bookAuthor + "</p>\n" +
+                                "                        </div>"
+                        })
+                        $(".recommendBook").html(html)
+
+                        if (response.cate != '') {
+                            $(".recommendBook").append("   <a class=\"recommend-more\" href=\"/mall/book/list/addtime/" + response.cate + "\" target=\"_blank\">查看更多&gt;&gt;</a>")
+                        } else {
+                            $(".recommendBook").append("   <a class=\"recommend-more\" href=\"/mall/book/list/ViewCount\" target=\"_blank\">查看更多&gt;&gt;</a>")
+                        }
+
+                    } else {
+                        $(".recommendBookTab").hide()
+                        $(".recommendBook").hide()
+                    }
+
+                } else {
+                    if (response.data.total > 0) {
+                        var html = ""
+                        response.data.rows.forEach(function (item, index) {
+                            html += " <div class=\"recommend-item\">\n" +
+                                "                            <a href=\"" + ctxPath + "/micro/detail/" + item.id + "\" target=\"_blank\">\n" +
+                                "                                <img src=\"" + item.coverpic + "\" alt=\"\">\n" +
+                                "                            </a>\n" +
+                                "                            <a class=\"name\"  href=\"" + ctxPath + "/micro/detail/" + item.id + "\" target=\"_blank\">" + item.title + "</a>\n" +
+                                "                        </div>";
+                        })
+                        $(".recommendMicro").html(html)
+                        if (response.cate != '') {
+                            $(".recommendMicro").append("   <a class=\"recommend-more\" href=\"/micro/list/" + response.cate + "\" target=\"_blank\">查看更多&gt;&gt;</a>")
+                        } else {
+                            $(".recommendMicro").append("   <a class=\"recommend-more\" href=\"/micro/\" target=\"_blank\">查看更多&gt;&gt;</a>")
+                        }
+                    } else {
+                        $(".recommendMicroTab").hide()
+                        $(".recommendMicro").hide()
+                    }
+                }
+            }
+        });
+
+    }
+</script>
+<div class="collectionPopWrap">
+    <div class="collectionPop">
+        <div class="w">
+            <div class="c">收藏作品，请先登录</div>
+            <div class="b">
+                <a href="/temp/userCenter/login" class="b1">去登录</a>
+                <a href="javascript:;" class="b2">取消</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/web/js/article/collect.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>
