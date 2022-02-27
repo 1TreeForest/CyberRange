@@ -1,525 +1,525 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>河南省工程咨询协会</title>
-<meta name="keywords" content="河南省工程咨询协会,河南工程咨询协会,河南工程咨询网" />
-<meta name="description" content="河南省工程咨询协会于 1999 年 8 月 23 日成立，是由从事工程咨询业务的单位组成的具有社会法人资格的社会团体，是工程咨询业的行业组织。协会主管部门为河南省发展和改革委员会，接受中国工程咨询协会的业务指导，受河南省民政厅的监督管理。" />
-<link rel="stylesheet" href="/templets/style/css/common.css" />
-<script src="/templets/style/js/jquery-1.11.1.min.js" type="text/javascript"></script>
-
-<!--头部开始-->
-        <script type="text/javascript">
-    function showtime()//创建函数
-    {
-        //var nowTime = new Date();//创建时间对象实例
-        //var hours = nowTime.getHours();//获取当前小时数
-        //var minutes = nowTime.getMinutes();//获取当前分钟数
-        //var seconds = nowTime.getSeconds();//获取当前秒数
-        //var timer = " " + ((hours > 12) ? hours - 12 : hours);//将小时数质赋予变量timer
-        //timer += ((minutes < 10) ? ":0" : ":") + minutes;//将分钟数值赋予变量timer
-        ////timer += ((seconds < 10) ? ":0" : ":") + seconds;//将秒数值赋予变量timer
-        //timer += " " + ((hours > 12) ? "pm" : "am");//将字符am或pm赋予变量timer
-        //document.getElementById('clock').innerHTML = timer;
-        setTimeout("showtime()", 1000);
-
-        var today = new Date();
-        var d = new Array(
-        "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")
-        //如果为2014年，getYear返回2014-1900=114，getFullYear返回2014
-        var hh = "<font color='#FBAE66' >今天是： " +
-    today.getFullYear() + "年" + (today.getMonth() + 1) + "月" + today.getDate() + "日  " + d[today.getDay()] + "</font>";
-        document.getElementById('todayIs').innerHTML = hh;
-
-    }
-  /*  function Login() {
-        var lname = $("#loginname").val();
-        var lpwd = $("#loginpwd").val();
-        if (lname == "") {
-            alert("请输入账号");
-            return;
-        }
-        else if (lpwd == "") {
-            alert("请输入密码");
-            return;
-        }
-        $.ajax({
-            type: "POST",
-            url: "/Admin/Login/Login1",
-            async: false,
-            data: { userAccount: lname, password: lpwd },
-            success: function (result) {
-                if (result["success"] == false) {
-                    alert("请输入准确的账号及密码！");
-                    $("#LoginUL").empty();
-                    $(" <li> <label>账号：</label><input type=\"text\" style='width:100px;' id=\"loginname\"></li><li> <label>密码：</label><input type=\"password\" style='width:100px;'  id=\"loginpwd\"></li> <li><button class=\"login_submit\" onclick=\"Login();\">登录</button>  </li>").appendTo($("#LoginUL"));
-                }
-                else {
-                    var lname = result["username"];
-                    $("#LoginUL").empty();
-                    $(" <li> <label>欢迎您：" + lname + "</label></li><li></li><li><a href=\"#\" onclick=\"WebLoginOut();\" class=\"reg\">退出</a><a href=\"/Admin/Home/Index\"  class=\"reg\">进入后台</a></li>").appendTo($("#LoginUL"));
-                }
-            },
-            error: function (e) {
-                alert("请输入准确的账号及密码！");
-            }
-        });
-    }
-    function WebLoginOut() {
-        var flag = false;
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            cache: false,
-            async: false,
-            url: "/Admin/Login/SignOut",
-            success: function (result) {
-                if (result) {
-                    $("#LoginUL").empty();
-                    $(" <li> <label>账号：</label><input type=\"text\" style='width:100px;' id=\"loginname\"></li><li> <label>密码：</label><input type=\"password\" style='width:100px;'  id=\"loginpwd\"></li> <li><button class=\"login_submit\" onclick=\"Login();\">登录</button> </li>").appendTo($("#LoginUL"));
-                    flag = true;
-                }
-                else {
-                    flag = false;
-                    alert("退出失败，请通过关闭浏览器来进行退出操作");
-                }
-            },
-            error: function (e) {
-                alert("退出失败，请通过关闭浏览器来进行退出操作");
-            }
-        });
-        if (flag == true)
-        { ChangeImage(); }
-    }*/
-</script>
-<script type="text/javascript">
-  /*  function topsearchclick(pageNum, pageSize) {
-       var searchText = $("#txttopsearch").val();
-       var urlstr = "/Article/Search";
-        if (searchText != "") urlstr = urlstr + "?title=" + searchText;
-  window.location.href = urlstr;
-    }*/	
-</script>
-<script src="/templets/style/js/main.js" type="text/javascript"></script> 
-</head>
-<body>  
-    <div id="topNav" class="clearfix">
-        <div id="topNavContent">
-            <div class="userLogin">
-                <ul id="LoginUL">
-                    <li>
-                        <label>账号：</label>
-                        <input type="text" id="loginname">
-                    </li>
-                    <li>
-                        <label>密码：</label>
-                        <input type="password" id="loginpwd">
-                    </li>
-                    <li>
-                        <button class="login_submit" onClick="Login();">登录</button>
-                    </li>
-                </ul>
-            </div>
-            <div style="float:left;">
-                <div id="todayIs" style="float:left;"></div>
-                
-                <input type="text" placeholder="输入关键字" name="txttopsearch" maxlength="50" autocomplete="off" accesskey="s" id="txttopsearch">
-                <button class="login_submit" onClick="">搜索</button>
-            </div>
-            <script type="text/javascript">
-                showtime();
-            </script>
-        </div>
-    </div>
-
-    <div class="wrap clearfix">
-
-
- 
-<div class="banner">
-<!--<div class="weichuangyi">
-    <div class="weichuangyi_main">
-        <ul class="weichuangyi_ul">
-            <li><a href="#" class="img"><img src="/templets/style/images/banner.jpg"  alt="" /></a></li>
-            <li><a href="#" class="img"><img src="/templets/style/images/banner1.jpg"  alt="" /></a></li>
-            <li><a href="#" class="img"><img src="/templets/style/images/banner2.jpg"  alt="" /></a></li>
-            <li><a href="#" class="img"><img src="/templets/style/images/banner3.jpg"  alt="" /></a></li>
-            <li><a href="#" class="img"><img src="/templets/style/images/banner4.jpg"  alt="" /></a></li>
-            <li><a href="#" class="img"><img src="/templets/style/images/banner5.jpg"  alt="" /></a></li>
-            <li><a href="#" class="img"><img src="/templets/style/images/banner.jpg"  alt="" /></a></li>
-        </ul>
-    </div>
-    
-</div>
--->
-</div>
-
-<div class="nav_box">
-  <div>
-
-       <ul>
-      <li> <a href="/" class="nav_slideUp">首页</a> </li>
-      <li class="nav_worldMenuLi"> <a href="/html/guanyuxiehui/xiehuijianjie/" class="nav_slideUp">关于协会</a>
-      <ul class="nav_worldMenu">
-          
-      <li><a href='/html/guanyuxiehui/xiehuijianjie/'>协会简介</a></li>
-      
-      <li><a href='/html/guanyuxiehui/xiehuizhangcheng/'>协会章程</a></li>
-      
-      <li><a href='/html/guanyuxiehui/huiyuanguanlibanfa/'>会员管理办法</a></li>
-      
-        </ul>
-       </li><li class="nav_worldMenuLi"> <a href="/html/xiehuigongzuo/" class="nav_slideUp">工作动态</a>
-      <ul class="nav_worldMenu">
-          
-        </ul>
-       </li><li class="nav_worldMenuLi"> <a href="/html/tongzhigonggao/" class="nav_slideUp">通知公告</a>
-      <ul class="nav_worldMenu">
-          
-        </ul>
-       </li><li class="nav_worldMenuLi"> <a href="/html/danweizizhi/" class="nav_slideUp">单位资信</a>
-      <ul class="nav_worldMenu">
-          
-        </ul>
-       </li><li class="nav_worldMenuLi"> <a href="/html/huiyuandanwei/" class="nav_slideUp">会员单位</a>
-      <ul class="nav_worldMenu">
-          
-        </ul>
-       </li><li class="nav_worldMenuLi"> <a href="/html/yenadongtai/" class="nav_slideUp">业内动态</a>
-      <ul class="nav_worldMenu">
-          
-        </ul>
-       </li><li class="nav_worldMenuLi"> <a href="/html/zixunchengguo/" class="nav_slideUp">优秀成果</a>
-      <ul class="nav_worldMenu">
-          
-      <li><a href='/html/zixunchengguo/quanguo/'>全国</a></li>
-      
-      <li><a href='/html/zixunchengguo/henan/'>河南</a></li>
-      
-        </ul>
-       </li><li class="nav_worldMenuLi"> <a href="/html/peixunkaoshi/" class="nav_slideUp">培训考试</a>
-      <ul class="nav_worldMenu">
-          
-        </ul>
-       </li><li class="nav_worldMenuLi"> <a href="/html/zhengcefagui/" class="nav_slideUp">政策法规</a>
-      <ul class="nav_worldMenu">
-          
-        </ul>
-       </li><li class="nav_worldMenuLi"> <a href="/html/lianxiwomen/" class="nav_slideUp">联系我们</a>
-      <ul class="nav_worldMenu">
-          
-        </ul>
-       </li>
-    </ul>
-</div>
-</div>
-<div class="grid-c mrg-t-20 clearfix">
-    <script type="text/javascript">
-
-var t = n =0, count;
-
-$(document).ready(function(){ 
-
-count=$("#myslider_list a").length;
-
-$("#myslider_list a:not(:first-child)").hide();
-
-$("#myslider_info").html($("#myslider_list a:first-child").find("img").attr('alt'));
-
-$("#myslider_info").click(function(){window.open($("#myslider_list a:first-child").attr('href'), "_blank")});
-
-$("#myslider li").click(function() {
-
-var i = $(this).text() -1;//获取Li元素内的值，即1，2，3，4
-
-n = i;
-
-if (i >= count) return;
-
-$("#myslider_info").html($("#myslider_list a").eq(i).find("img").attr('alt'));
-
-$("#myslider_info").unbind().click(function(){window.open($("#myslider_list a").eq(i).attr('href'), "_blank")})
-
-$("#myslider_list a").filter(":visible").fadeOut(500).parent().children().eq(i).fadeIn(1000);
-
-document.getElementById("myslider").style.background="";
-
-$(this).toggleClass("on");
-
-$(this).siblings().removeAttr("class");
-
-});
-
-t = setInterval("showAuto()", 4000);
-
-$("#myslider").hover(function(){clearInterval(t)}, function(){t = setInterval("showAuto()", 4000);});
-
-})
-
-
-
-function showAuto()
-
-{
-
-n = n >=(count -1) ?0 : ++n;
-
-$("#myslider li").eq(n).trigger('click');
-
-}
-
-</script>
-<div id="myslider">
-
-  <div id="myslider_bg"></div>
-
-  <!--标题背景-->
-
-  <!--<div id="myslider_info"></div>-->
-
-  <!--标题-->
-
-  <ul>
-
-    <li class="on">1</li>
-
-    <li>2</li>
-
-    <li>3</li>
-
-    <li>4</li>
-
-  </ul>
-
-  <div id="myslider_list"> 
-<a href="/html/yenadongtai/2019/1111/161.html" target="_blank"><img src="/uploads/allimg/191111/1-1911111206460-L.jpg" title="河南省举办重大项目融资对接会" alt="河南省举办重大项目融资对接会"/><div id="myslider_des">为贯彻落实党中央、国务院和省委省政府关于做好地方政府专项债券发行及项目配套融资、保持基础设施领域补短板力度稳定有效投资等部署要求，经省政府同意，11月1日，省发展改革</div></a>
-<a href="/html/yenadongtai/2019/0330/130.html" target="_blank"><img src="/uploads/190330/1-1Z330104521W9.jpg" title="国家大数据（河南）综合试验区 从智能云到智慧岛" alt="国家大数据（河南）综合试验区 从智能云到智慧岛"/><div id="myslider_des">智慧岛对推动河南省数字产业化、产业数字化起到重要的引领示范作用；大大提升河南大数据产业发展能力和水平，确保走在全国前列。</div></a>
-<a href="/html/xiehuigongzuo/2019/0330/128.html" target="_blank"><img src="/uploads/allimg/190330/1_0330110ZAJ4.jpg" title="中国工程咨询协会成功举办宏观经济形势报告会" alt="中国工程咨询协会成功举办宏观经济形势报告会"/><div id="myslider_des">2019年3月23日—25日，中国工程咨询协会在北京举办了宏观经济形势报告会。报告会邀请了国家发展改革委有关司局的领导以及中国宏观经济研究院的专家学者做了专题报告。</div></a>
-<a href="/html/xiehuigongzuo/2019/0330/127.html" target="_blank"><img src="/uploads/allimg/190330/11061MO7-0-lp.jpg" title="菲迪克与世界银行签署使用菲迪克标准合同协议" alt="菲迪克与世界银行签署使用菲迪克标准合同协议"/><div id="myslider_des">近期，菲迪克与世界银行就菲迪克标准合同使用事宜达成协议。</div></a>
-
-  	 </div>
-
-</div>
-
-<div class="grid-side">
-<div class="grid-side-c">
-    <h3>
-         通知公告 
-         <a href="/html/tongzhigonggao/" style="color:#fff"><span style="width:60px;float:right;font-size:12px">更多&gt;&gt;</span></a>                 
-    </h3>
-<div class=" side-list-3">
-        <div class="scroll" id="scro1" style="height:300px;">
-
-            <ul >
-                        <li class="notice">
-<a  title="关于做好2022年度咨询工程师（投资）职业资格考试考务工作的通知" href="/html/tongzhigonggao/2022/0225/207.html" target="_blank">关于做好2022年度咨询工程师（投资）职业资格考试考务工作的通知</a>
-<img src='/templets/style/images/new.gif'><span style="float:right;margin-right:10px;">2022-02-25</span></li>
-<li class="notice">
-<a  title="关于举办2022年度咨询工程师（投资）继续教育培训的通知" href="/html/tongzhigonggao/2022/0218/206.html" target="_blank">关于举办2022年度咨询工程师（投资）继续教育培训的通知</a>
-<span style="float:right;margin-right:10px;">2022-02-18</span></li>
-<li class="notice">
-<a  title="关于协助做好2021年度行业发展情况总结的通知" href="/html/tongzhigonggao/2022/0128/205.html" target="_blank">关于协助做好2021年度行业发展情况总结的通知</a>
-<span style="float:right;margin-right:10px;">2022-01-28</span></li>
-<li class="notice">
-<a  title="关于2021年乙级资信评价评审结果的公告" href="/html/tongzhigonggao/2022/0104/204.html" target="_blank">关于2021年乙级资信评价评审结果的公告</a>
-<span style="float:right;margin-right:10px;">2022-01-04</span></li>
-<li class="notice">
-<a  title="关于告知2021年工程咨询单位乙级资信评价专家评审结果的通知" href="/html/tongzhigonggao/2021/1209/203.html" target="_blank">关于告知2021年工程咨询单位乙级资信评价专家评审结果的通知</a>
-<span style="float:right;margin-right:10px;">2021-12-09</span></li>
-<li class="notice">
-<a  title="关于2021年工程咨询单位乙级资信评价有关事项的公告" href="/html/tongzhigonggao/2021/1021/202.html" target="_blank">关于2021年工程咨询单位乙级资信评价有关事项的公告</a>
-<span style="float:right;margin-right:10px;">2021-10-21</span></li>
-
-            </ul>
-        </div>
-    </div>
-</div>
-    </div>
-
-  <div class="m-news  mrg-t-20">
-
-
-    <div class="slide-tab" id="tabdiv_12">
-        <ul>
-                    <li class="switchOn"><a id="defindid_12" name="tabswith_12" onmousemove="tabctrcom(12,12, this)" href="#">协会工作</a></li>
-                    <li class=""><a id="defindid_23" name="tabswith_12" onmousemove="tabctrcom(12,23, this)" href="#">单位资信管理</a></li>
-                    <li class=""><a id="defindid_24" name="tabswith_12" onmousemove="tabctrcom(12,24, this)" href="#">咨询工程师登记管理</a></li>
-                     <li class=""><a id="defindid_3" name="tabswith_12" onmousemove="tabctrcom(12,3, this)" href="#">政策法规</a></li>
-        </ul>
-    </div>
-    <div class="tabs_c clearfix" id="tabuldiv_12">
-            <ul id="ul_12" name="ul_12" class="side-list side-list-1 h-300" style="display:none">
-            <li><a href="/html/xiehuigongzuo/2020/0423/166.html" title="勘测设计谋转型  全过程咨询花渐红  ——豫北院成功中标首个全过程工程咨询" target="_blank">勘测设计谋转型  全过程咨询花渐红  ——豫北院成功中标首个全过程工程咨询</a><span style="float:right;margin-right:10px;">2020-04-23</span></li>
-<li><a href="/html/xiehuigongzuo/2019/1111/160.html" title="河南省首发投资项目审批中介服务事项清单目录" target="_blank">河南省首发投资项目审批中介服务事项清单目录</a><span style="float:right;margin-right:10px;">2019-11-11</span></li>
-<li><a href="/plus/view.php?aid=159" title="河南省发展和改革委员会印发《关于优化和规范投资审批中介服务的指导意见》" target="_blank">河南省发展和改革委员会印发《关于优化和规范投资审批中介服务的指导意见》</a><span style="float:right;margin-right:10px;">2019-11-11</span></li>
-<li><a href="/html/xiehuigongzuo/2019/0330/128.html" title="中国工程咨询协会成功举办宏观经济形势报告会" target="_blank">中国工程咨询协会成功举办宏观经济形势报告会</a><span style="float:right;margin-right:10px;">2019-03-29</span></li>
-<li><a href="/html/xiehuigongzuo/2019/0330/117.html" title="国务院办公厅印发《关于全面开展工程建设项目审批制度改革的实施意见》" target="_blank">国务院办公厅印发《关于全面开展工程建设项目审批制度改革的实施意见》</a><span style="float:right;margin-right:10px;">2019-03-29</span></li>
-<li><a href="/html/xiehuigongzuo/2019/0330/115.html" title="河南以项目建设推动中原更出彩！" target="_blank">河南以项目建设推动中原更出彩！</a><span style="float:right;margin-right:10px;">2019-03-29</span></li>
-<li><a href="/html/xiehuigongzuo/2019/0330/113.html" title="国家发改委、住建部印发《关于推进全过程工程咨询服务发展的指导意见》" target="_blank">国家发改委、住建部印发《关于推进全过程工程咨询服务发展的指导意见》</a><span style="float:right;margin-right:10px;">2019-03-23</span></li>
-                      
-            </ul>
-            <ul id="ul_23" name="ul_23" class="side-list side-list-1 h-300" style="display:none">
-            <li><a href="/html/danweizizhiguanli/2020/0425/168.html" title="《工程咨询行业管理办法》国家发展改革委2017年第9号令" target="_blank">《工程咨询行业管理办法》国家发展改革委2017年第9号令</a><span style="float:right;margin-right:10px;">2020-04-24</span></li>
-<li><a href="/html/danweizizhiguanli/2020/0425/167.html" title="《工程咨询单位资信评价标准》国家发展改革委发改投资规（2018）623号文" target="_blank">《工程咨询单位资信评价标准》国家发展改革委发改投资规（2018）623号文</a><span style="float:right;margin-right:10px;">2020-04-24</span></li>
-   
-                       
-            </ul>
-            <ul id="ul_24" name="ul_24" class="side-list side-list-1 h-300" style="display:none">
-              <li><a href="/html/zixungongchengshiguanli/2020/0425/171.html" title="《咨询工程师（投资）继续教育规程》中咨协职业（2018）99号" target="_blank">《咨询工程师（投资）继续教育规程》中咨协职业（2018）99号</a><span style="float:right;margin-right:10px;">2020-04-25</span></li>
-<li><a href="/html/zixungongchengshiguanli/2020/0425/170.html" title="《咨询工程师（投资）执业登记规程》中咨协职业（2018）89号" target="_blank">《咨询工程师（投资）执业登记规程》中咨协职业（2018）89号</a><span style="float:right;margin-right:10px;">2020-04-25</span></li>
-<li><a href="/html/zixungongchengshiguanli/2020/0425/169.html" title="《工程咨询（投资）专业技术人员职业资格制度暂行规定》人社部发（2015）6" target="_blank">《工程咨询（投资）专业技术人员职业资格制度暂行规定》人社部发（2015）6</a><span style="float:right;margin-right:10px;">2020-04-25</span></li>
- 
-                       
-            </ul>
-             <ul id="ul_3" name="ul_3" class="side-list side-list-1 h-300" style="display:none">
-             
-            <li><a href="/html/zhengcefagui/2019/1111/163.html" title="《政府投资条例》全文发布 自7月1日起施行 " target="_blank">《政府投资条例》全文发布 自7月1日起施行 </a><span style="float:right;margin-right:10px;">2019-10-18</span></li>
-<li><a href="/html/zhengcefagui/2019/0330/124.html" title="我省投资审批“三个一”改革全面加速" target="_blank">我省投资审批“三个一”改革全面加速</a><span style="float:right;margin-right:10px;">2019-03-30</span></li>
-<li><a href="/html/zhengcefagui/2019/0330/123.html" title="2019年河南能源工作重点抓好7个方面" target="_blank">2019年河南能源工作重点抓好7个方面</a><span style="float:right;margin-right:10px;">2019-03-30</span></li>
-<li><a href="/html/zhengcefagui/2019/0330/122.html" title="河南：开发区内项目免费共享评估成果" target="_blank">河南：开发区内项目免费共享评估成果</a><span style="float:right;margin-right:10px;">2019-03-30</span></li>
-<li><a href="/html/zhengcefagui/2016/1208/39.html" title="农业部农产品质量安全风险评估实验室管理规范" target="_blank">农业部农产品质量安全风险评估实验室管理规范</a><span style="float:right;margin-right:10px;">2016-12-08</span></li>
-<li><a href="/html/zhengcefagui/2016/1208/38.html" title="农业部关于开展农业产业化国家重点龙头企业监" target="_blank">农业部关于开展农业产业化国家重点龙头企业监</a><span style="float:right;margin-right:10px;">2016-12-08</span></li>
-<li><a href="/html/zhengcefagui/2016/1208/37.html" title="智能制造科技发展“十二五”专项规划" target="_blank">智能制造科技发展“十二五”专项规划</a><span style="float:right;margin-right:10px;">2016-12-08</span></li>
-                      
-            </ul>
-    </div>
-    <script type="text/javascript">
-        $(function () {
-            $("#ul_12", "#tabuldiv_12").attr('style', 'display:"block"');
-        });
-
-        function tabctrcom(divid, ulid, item) {
-            $("[name='tabswith_" + divid + "']", "#tabdiv_" + divid).each(function () {
-
-                var val = $(this).parent().hasClass("switchOn");
-                if (val) {
-                    $(this).parent().removeClass("switchOn");
-                }
-            });
-            $(item).parent().addClass("switchOn");
-            $("ul", "#tabuldiv_" + divid).each(function () {
-                if ($(this).attr("name") != ("ul_" + ulid)) {
-                    $(this).attr("style", "display:none");
-                } else {
-                    $(this).attr("style", "display:block");
-                }
-            });
-        }
-    </script>
-
-    </div>
-    
-    
-    
-    <div class="grid-side mrg-t-20">
-      <div class="sys-link">
-        <a href="http://bmshn.cnaec.com.cn/businesslocal" target="_blank"><img src="templets/style/images/1.jpg" /></a>
-      <div class="blank3"></div>
-            <a href="http://203.207.195.69/" target="_blank"><img src="templets/style/images/2.jpg"></a>
-        <div class="blank3"></div>
-            <a href="http://jxjy.cdeledu.com/cdel_jxjy/qgzxgcs.shtml" target="_blank"><img src="templets/style/images/3.jpg"></a>
-        <div class="blank3"></div>
-        <div class="blank3"></div>
-        <div class="blank3"></div>
-            <a href="http://www.cnaec.com.cn/zhushi/index.htm" target="_blank"><img src="templets/style/images/6.jpg"></a>
-      <div class="blank3"></div>
-      </div>
-    </div>
-    
-</div>
-
-<div class="grid-c mrg-t-20 clearfix">
-
-</div>
-
-<div class="grid-c mrg-t-20 clearfix">
-    <div class="memberShow clearfix">
-        <div class="picName">合作支持单位</div>
-        <div class="memberShowBox">
-            <div class="myScroll" id="product">
-                <div class="myBlock">
-<ul>
-    
-<li><a href='http://www.sdpc.gov.cn/' target='_blank'><img src='/uploads/flink/1612082356572764.jpg' width='88' height='31' border='0'></a>    </li>
-   
-<li><a href='http://www.cnaec.com.cn/' target='_blank'><img src='/uploads/flink/1701121929205620.jpg' width='88' height='31' border='0'></a>    </li>
-   
-<li><a href='http://www.hndrc.gov.cn/' target='_blank'><img src='/uploads/flink/1701121932585396.png' width='88' height='31' border='0'></a>    </li>
-   
-</ul>
-                </div>
-            </div>
-        </div>
-        <div class="website">
-            <div class="site">
-                <select name="menu1" onChange="javascript:window.open(this.options[this.selectedIndex].value)" class="" style="width: 170px;">
-                    <option value="#">---政府网站---</option>
-                    <option value="http://www.ndrc.gov.cn/">国家发展改革委</option>
-                    <option value="http://www.hnblr.gov.cn/" selected="selected">河南省人力资源和社会保障厅</option>
-                    <option value="http://www.hnblr.gov.cn/">河南省国土资源厅</option>
-                    <option value="http://www.hnjs.gov.cn/">河南省住房和城乡建设厅</option>
-                    <option value="http://www.hnep.gov.cn/">河南省环境保护厅</option>
-                    <option value="http://www.hncd.gov.cn/">河南省交通运输厅</option>
-                    <option value="http://www.henanmz.gov.cn/">河南省民政厅</option>
-                    <option value="http://www.henan.gov.cn/">河南省人民政府</option>
-                    <option value="http://www.hndrc.gov.cn/">河南省发展和改革委员会</option>
-            </select>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-            <div class="site">
-                <select name="menu2" onChange="javascript:window.open(this.options[this.selectedIndex].value)" class="" style="width: 170px;">
-                    <option value="#">---行业协会---</option>
-                    <option value="http://www.cnaec.com.cn/default.aspx">中国工程咨询协会</option>
-                    <option value="http://www.hnmjzz.org.cn/">河南省社会组织联合会</option>
-              </select>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-            <div class="site">
-                <select name="menu3" onChange="javascript:window.open(this.options[this.selectedIndex].value)" class="" style="width: 170px;">
-                    <option value="#">---国际组织---</option>
-                    <option value="http://fidic.org/">FIDIC</option>
-            <option value="http://www.worldbank.org.cn/">世界银行</option>
-            <option value="http://www.adb.org/zh">亚洲开发银行</option>
-   
-                </select>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-        </div>
-    </div>
-</div>
- <div class="foot">
-    <div class="foot_cont">
-        <p>
-            版权所有 © <a href="http://www.hnaec.com/" target="_blank">河南省工程咨询协会</a>　　　　<a href="https://beian.miit.gov.cn" taget="_blank">豫ICP备20002892号-1</a>  <br>
-            地址：河南省郑州市郑东新区金水东路49号绿地原盛国际3号楼A座1903 <br>
-            管理邮箱：hnaec@126.com　电话：0371-63812818 63862630 63943311<br>
-            
-            
-        </p>
-    </div>
-</div>
-</div>
-<div class="side-bar" style="right:75px;bottom:75px;"> 
-<a href="#" class="icon-chat"><img style="width:138px;height:138px;" src="/templets/style/images/qr.jpg" alt="微信订阅号"></a> 
-	<!--<a href="#" class="icon-qq">QQ在线咨询</a> 
-	<a href="#" class="icon-chat">微信<div class="chat-tips"><i></i><img style="width:138px;height:138px;" src="/templets/style/images/qr.jpg" alt="微信订阅号"></div></a> 
-	<a target="_blank" href="http://www.weibo.com/helloweba" class="icon-blog">微博</a>
-	<a href="mailto:hnaec@126.com" class="icon-mail">mail</a>  -->
-</div>
- <script src="/templets/style/js/nav.js"></script>
-<script src="/templets/style/js/jquery.min.js"></script>
-<script src="/templets/style/js/swiper.min.js"></script>
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?2a4d4f3c0e5bd48fa44eff6f993f51d8";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-
-</body>
-</html>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>河南省工程咨询协会</title>
+<meta name="keywords" content="河南省工程咨询协会,河南工程咨询协会,河南工程咨询网" />
+<meta name="description" content="河南省工程咨询协会于 1999 年 8 月 23 日成立，是由从事工程咨询业务的单位组成的具有社会法人资格的社会团体，是工程咨询业的行业组织。协会主管部门为河南省发展和改革委员会，接受中国工程咨询协会的业务指导，受河南省民政厅的监督管理。" />
+<link rel="stylesheet" href="/templets/style/css/common.css" />
+<script src="/templets/style/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+
+<!--头部开始-->
+        <script type="text/javascript">
+    function showtime()//创建函数
+    {
+        //var nowTime = new Date();//创建时间对象实例
+        //var hours = nowTime.getHours();//获取当前小时数
+        //var minutes = nowTime.getMinutes();//获取当前分钟数
+        //var seconds = nowTime.getSeconds();//获取当前秒数
+        //var timer = " " + ((hours > 12) ? hours - 12 : hours);//将小时数质赋予变量timer
+        //timer += ((minutes < 10) ? ":0" : ":") + minutes;//将分钟数值赋予变量timer
+        ////timer += ((seconds < 10) ? ":0" : ":") + seconds;//将秒数值赋予变量timer
+        //timer += " " + ((hours > 12) ? "pm" : "am");//将字符am或pm赋予变量timer
+        //document.getElementById('clock').innerHTML = timer;
+        setTimeout("showtime()", 1000);
+
+        var today = new Date();
+        var d = new Array(
+        "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")
+        //如果为2014年，getYear返回2014-1900=114，getFullYear返回2014
+        var hh = "<font color='#FBAE66' >今天是： " +
+    today.getFullYear() + "年" + (today.getMonth() + 1) + "月" + today.getDate() + "日  " + d[today.getDay()] + "</font>";
+        document.getElementById('todayIs').innerHTML = hh;
+
+    }
+  /*  function Login() {
+        var lname = $("#loginname").val();
+        var lpwd = $("#loginpwd").val();
+        if (lname == "") {
+            alert("请输入账号");
+            return;
+        }
+        else if (lpwd == "") {
+            alert("请输入密码");
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url: "/Admin/Login/Login1",
+            async: false,
+            data: { userAccount: lname, password: lpwd },
+            success: function (result) {
+                if (result["success"] == false) {
+                    alert("请输入准确的账号及密码！");
+                    $("#LoginUL").empty();
+                    $(" <li> <label>账号：</label><input type=\"text\" style='width:100px;' id=\"loginname\"></li><li> <label>密码：</label><input type=\"password\" style='width:100px;'  id=\"loginpwd\"></li> <li><button class=\"login_submit\" onclick=\"Login();\">登录</button>  </li>").appendTo($("#LoginUL"));
+                }
+                else {
+                    var lname = result["username"];
+                    $("#LoginUL").empty();
+                    $(" <li> <label>欢迎您：" + lname + "</label></li><li></li><li><a href=\"#\" onclick=\"WebLoginOut();\" class=\"reg\">退出</a><a href=\"/Admin/Home/Index\"  class=\"reg\">进入后台</a></li>").appendTo($("#LoginUL"));
+                }
+            },
+            error: function (e) {
+                alert("请输入准确的账号及密码！");
+            }
+        });
+    }
+    function WebLoginOut() {
+        var flag = false;
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            cache: false,
+            async: false,
+            url: "/Admin/Login/SignOut",
+            success: function (result) {
+                if (result) {
+                    $("#LoginUL").empty();
+                    $(" <li> <label>账号：</label><input type=\"text\" style='width:100px;' id=\"loginname\"></li><li> <label>密码：</label><input type=\"password\" style='width:100px;'  id=\"loginpwd\"></li> <li><button class=\"login_submit\" onclick=\"Login();\">登录</button> </li>").appendTo($("#LoginUL"));
+                    flag = true;
+                }
+                else {
+                    flag = false;
+                    alert("退出失败，请通过关闭浏览器来进行退出操作");
+                }
+            },
+            error: function (e) {
+                alert("退出失败，请通过关闭浏览器来进行退出操作");
+            }
+        });
+        if (flag == true)
+        { ChangeImage(); }
+    }*/
+</script>
+<script type="text/javascript">
+  /*  function topsearchclick(pageNum, pageSize) {
+       var searchText = $("#txttopsearch").val();
+       var urlstr = "/Article/Search";
+        if (searchText != "") urlstr = urlstr + "?title=" + searchText;
+  window.location.href = urlstr;
+    }*/	
+</script>
+<script src="/templets/style/js/main.js" type="text/javascript"></script> 
+</head>
+<body>  
+    <div id="topNav" class="clearfix">
+        <div id="topNavContent">
+            <div class="userLogin">
+                <ul id="LoginUL">
+                    <li>
+                        <label>账号：</label>
+                        <input type="text" id="loginname">
+                    </li>
+                    <li>
+                        <label>密码：</label>
+                        <input type="password" id="loginpwd">
+                    </li>
+                    <li>
+                        <button class="login_submit" onClick="Login();">登录</button>
+                    </li>
+                </ul>
+            </div>
+            <div style="float:left;">
+                <div id="todayIs" style="float:left;"></div>
+                
+                <input type="text" placeholder="输入关键字" name="txttopsearch" maxlength="50" autocomplete="off" accesskey="s" id="txttopsearch">
+                <button class="login_submit" onClick="">搜索</button>
+            </div>
+            <script type="text/javascript">
+                showtime();
+            </script>
+        </div>
+    </div>
+
+    <div class="wrap clearfix">
+
+
+ 
+<div class="banner">
+<!--<div class="weichuangyi">
+    <div class="weichuangyi_main">
+        <ul class="weichuangyi_ul">
+            <li><a href="#" class="img"><img src="/templets/style/images/banner.jpg"  alt="" /></a></li>
+            <li><a href="#" class="img"><img src="/templets/style/images/banner1.jpg"  alt="" /></a></li>
+            <li><a href="#" class="img"><img src="/templets/style/images/banner2.jpg"  alt="" /></a></li>
+            <li><a href="#" class="img"><img src="/templets/style/images/banner3.jpg"  alt="" /></a></li>
+            <li><a href="#" class="img"><img src="/templets/style/images/banner4.jpg"  alt="" /></a></li>
+            <li><a href="#" class="img"><img src="/templets/style/images/banner5.jpg"  alt="" /></a></li>
+            <li><a href="#" class="img"><img src="/templets/style/images/banner.jpg"  alt="" /></a></li>
+        </ul>
+    </div>
+    
+</div>
+-->
+</div>
+
+<div class="nav_box">
+  <div>
+
+       <ul>
+      <li> <a href="/" class="nav_slideUp">首页</a> </li>
+      <li class="nav_worldMenuLi"> <a href="/html/guanyuxiehui/xiehuijianjie/" class="nav_slideUp">关于协会</a>
+      <ul class="nav_worldMenu">
+          
+      <li><a href='/html/guanyuxiehui/xiehuijianjie/'>协会简介</a></li>
+      
+      <li><a href='/html/guanyuxiehui/xiehuizhangcheng/'>协会章程</a></li>
+      
+      <li><a href='/html/guanyuxiehui/huiyuanguanlibanfa/'>会员管理办法</a></li>
+      
+        </ul>
+       </li><li class="nav_worldMenuLi"> <a href="/html/xiehuigongzuo/" class="nav_slideUp">工作动态</a>
+      <ul class="nav_worldMenu">
+          
+        </ul>
+       </li><li class="nav_worldMenuLi"> <a href="/html/tongzhigonggao/" class="nav_slideUp">通知公告</a>
+      <ul class="nav_worldMenu">
+          
+        </ul>
+       </li><li class="nav_worldMenuLi"> <a href="/html/danweizizhi/" class="nav_slideUp">单位资信</a>
+      <ul class="nav_worldMenu">
+          
+        </ul>
+       </li><li class="nav_worldMenuLi"> <a href="/html/huiyuandanwei/" class="nav_slideUp">会员单位</a>
+      <ul class="nav_worldMenu">
+          
+        </ul>
+       </li><li class="nav_worldMenuLi"> <a href="/html/yenadongtai/" class="nav_slideUp">业内动态</a>
+      <ul class="nav_worldMenu">
+          
+        </ul>
+       </li><li class="nav_worldMenuLi"> <a href="/html/zixunchengguo/" class="nav_slideUp">优秀成果</a>
+      <ul class="nav_worldMenu">
+          
+      <li><a href='/html/zixunchengguo/quanguo/'>全国</a></li>
+      
+      <li><a href='/html/zixunchengguo/henan/'>河南</a></li>
+      
+        </ul>
+       </li><li class="nav_worldMenuLi"> <a href="/html/peixunkaoshi/" class="nav_slideUp">培训考试</a>
+      <ul class="nav_worldMenu">
+          
+        </ul>
+       </li><li class="nav_worldMenuLi"> <a href="/html/zhengcefagui/" class="nav_slideUp">政策法规</a>
+      <ul class="nav_worldMenu">
+          
+        </ul>
+       </li><li class="nav_worldMenuLi"> <a href="/html/lianxiwomen/" class="nav_slideUp">联系我们</a>
+      <ul class="nav_worldMenu">
+          
+        </ul>
+       </li>
+    </ul>
+</div>
+</div>
+<div class="grid-c mrg-t-20 clearfix">
+    <script type="text/javascript">
+
+var t = n =0, count;
+
+$(document).ready(function(){ 
+
+count=$("#myslider_list a").length;
+
+$("#myslider_list a:not(:first-child)").hide();
+
+$("#myslider_info").html($("#myslider_list a:first-child").find("img").attr('alt'));
+
+$("#myslider_info").click(function(){window.open($("#myslider_list a:first-child").attr('href'), "_blank")});
+
+$("#myslider li").click(function() {
+
+var i = $(this).text() -1;//获取Li元素内的值，即1，2，3，4
+
+n = i;
+
+if (i >= count) return;
+
+$("#myslider_info").html($("#myslider_list a").eq(i).find("img").attr('alt'));
+
+$("#myslider_info").unbind().click(function(){window.open($("#myslider_list a").eq(i).attr('href'), "_blank")})
+
+$("#myslider_list a").filter(":visible").fadeOut(500).parent().children().eq(i).fadeIn(1000);
+
+document.getElementById("myslider").style.background="";
+
+$(this).toggleClass("on");
+
+$(this).siblings().removeAttr("class");
+
+});
+
+t = setInterval("showAuto()", 4000);
+
+$("#myslider").hover(function(){clearInterval(t)}, function(){t = setInterval("showAuto()", 4000);});
+
+})
+
+
+
+function showAuto()
+
+{
+
+n = n >=(count -1) ?0 : ++n;
+
+$("#myslider li").eq(n).trigger('click');
+
+}
+
+</script>
+<div id="myslider">
+
+  <div id="myslider_bg"></div>
+
+  <!--标题背景-->
+
+  <!--<div id="myslider_info"></div>-->
+
+  <!--标题-->
+
+  <ul>
+
+    <li class="on">1</li>
+
+    <li>2</li>
+
+    <li>3</li>
+
+    <li>4</li>
+
+  </ul>
+
+  <div id="myslider_list"> 
+<a href="/html/yenadongtai/2019/1111/161.html" target="_blank"><img src="/uploads/allimg/191111/1-1911111206460-L.jpg" title="河南省举办重大项目融资对接会" alt="河南省举办重大项目融资对接会"/><div id="myslider_des">为贯彻落实党中央、国务院和省委省政府关于做好地方政府专项债券发行及项目配套融资、保持基础设施领域补短板力度稳定有效投资等部署要求，经省政府同意，11月1日，省发展改革</div></a>
+<a href="/html/yenadongtai/2019/0330/130.html" target="_blank"><img src="/uploads/190330/1-1Z330104521W9.jpg" title="国家大数据（河南）综合试验区 从智能云到智慧岛" alt="国家大数据（河南）综合试验区 从智能云到智慧岛"/><div id="myslider_des">智慧岛对推动河南省数字产业化、产业数字化起到重要的引领示范作用；大大提升河南大数据产业发展能力和水平，确保走在全国前列。</div></a>
+<a href="/html/xiehuigongzuo/2019/0330/128.html" target="_blank"><img src="/uploads/allimg/190330/1_0330110ZAJ4.jpg" title="中国工程咨询协会成功举办宏观经济形势报告会" alt="中国工程咨询协会成功举办宏观经济形势报告会"/><div id="myslider_des">2019年3月23日—25日，中国工程咨询协会在北京举办了宏观经济形势报告会。报告会邀请了国家发展改革委有关司局的领导以及中国宏观经济研究院的专家学者做了专题报告。</div></a>
+<a href="/html/xiehuigongzuo/2019/0330/127.html" target="_blank"><img src="/uploads/allimg/190330/11061MO7-0-lp.jpg" title="菲迪克与世界银行签署使用菲迪克标准合同协议" alt="菲迪克与世界银行签署使用菲迪克标准合同协议"/><div id="myslider_des">近期，菲迪克与世界银行就菲迪克标准合同使用事宜达成协议。</div></a>
+
+  	 </div>
+
+</div>
+
+<div class="grid-side">
+<div class="grid-side-c">
+    <h3>
+         通知公告 
+         <a href="/html/tongzhigonggao/" style="color:#fff"><span style="width:60px;float:right;font-size:12px">更多&gt;&gt;</span></a>                 
+    </h3>
+<div class=" side-list-3">
+        <div class="scroll" id="scro1" style="height:300px;">
+
+            <ul >
+                        <li class="notice">
+<a  title="关于做好2022年度咨询工程师（投资）职业资格考试考务工作的通知" href="/html/tongzhigonggao/2022/0225/207.html" target="_blank">关于做好2022年度咨询工程师（投资）职业资格考试考务工作的通知</a>
+<img src='/templets/style/images/new.gif'><span style="float:right;margin-right:10px;">2022-02-25</span></li>
+<li class="notice">
+<a  title="关于举办2022年度咨询工程师（投资）继续教育培训的通知" href="/html/tongzhigonggao/2022/0218/206.html" target="_blank">关于举办2022年度咨询工程师（投资）继续教育培训的通知</a>
+<span style="float:right;margin-right:10px;">2022-02-18</span></li>
+<li class="notice">
+<a  title="关于协助做好2021年度行业发展情况总结的通知" href="/html/tongzhigonggao/2022/0128/205.html" target="_blank">关于协助做好2021年度行业发展情况总结的通知</a>
+<span style="float:right;margin-right:10px;">2022-01-28</span></li>
+<li class="notice">
+<a  title="关于2021年乙级资信评价评审结果的公告" href="/html/tongzhigonggao/2022/0104/204.html" target="_blank">关于2021年乙级资信评价评审结果的公告</a>
+<span style="float:right;margin-right:10px;">2022-01-04</span></li>
+<li class="notice">
+<a  title="关于告知2021年工程咨询单位乙级资信评价专家评审结果的通知" href="/html/tongzhigonggao/2021/1209/203.html" target="_blank">关于告知2021年工程咨询单位乙级资信评价专家评审结果的通知</a>
+<span style="float:right;margin-right:10px;">2021-12-09</span></li>
+<li class="notice">
+<a  title="关于2021年工程咨询单位乙级资信评价有关事项的公告" href="/html/tongzhigonggao/2021/1021/202.html" target="_blank">关于2021年工程咨询单位乙级资信评价有关事项的公告</a>
+<span style="float:right;margin-right:10px;">2021-10-21</span></li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+    </div>
+
+  <div class="m-news  mrg-t-20">
+
+
+    <div class="slide-tab" id="tabdiv_12">
+        <ul>
+                    <li class="switchOn"><a id="defindid_12" name="tabswith_12" onmousemove="tabctrcom(12,12, this)" href="#">协会工作</a></li>
+                    <li class=""><a id="defindid_23" name="tabswith_12" onmousemove="tabctrcom(12,23, this)" href="#">单位资信管理</a></li>
+                    <li class=""><a id="defindid_24" name="tabswith_12" onmousemove="tabctrcom(12,24, this)" href="#">咨询工程师登记管理</a></li>
+                     <li class=""><a id="defindid_3" name="tabswith_12" onmousemove="tabctrcom(12,3, this)" href="#">政策法规</a></li>
+        </ul>
+    </div>
+    <div class="tabs_c clearfix" id="tabuldiv_12">
+            <ul id="ul_12" name="ul_12" class="side-list side-list-1 h-300" style="display:none">
+            <li><a href="/html/xiehuigongzuo/2020/0423/166.html" title="勘测设计谋转型  全过程咨询花渐红  ——豫北院成功中标首个全过程工程咨询" target="_blank">勘测设计谋转型  全过程咨询花渐红  ——豫北院成功中标首个全过程工程咨询</a><span style="float:right;margin-right:10px;">2020-04-23</span></li>
+<li><a href="/html/xiehuigongzuo/2019/1111/160.html" title="河南省首发投资项目审批中介服务事项清单目录" target="_blank">河南省首发投资项目审批中介服务事项清单目录</a><span style="float:right;margin-right:10px;">2019-11-11</span></li>
+<li><a href="/plus/view.php?aid=159" title="河南省发展和改革委员会印发《关于优化和规范投资审批中介服务的指导意见》" target="_blank">河南省发展和改革委员会印发《关于优化和规范投资审批中介服务的指导意见》</a><span style="float:right;margin-right:10px;">2019-11-11</span></li>
+<li><a href="/html/xiehuigongzuo/2019/0330/128.html" title="中国工程咨询协会成功举办宏观经济形势报告会" target="_blank">中国工程咨询协会成功举办宏观经济形势报告会</a><span style="float:right;margin-right:10px;">2019-03-29</span></li>
+<li><a href="/html/xiehuigongzuo/2019/0330/117.html" title="国务院办公厅印发《关于全面开展工程建设项目审批制度改革的实施意见》" target="_blank">国务院办公厅印发《关于全面开展工程建设项目审批制度改革的实施意见》</a><span style="float:right;margin-right:10px;">2019-03-29</span></li>
+<li><a href="/html/xiehuigongzuo/2019/0330/115.html" title="河南以项目建设推动中原更出彩！" target="_blank">河南以项目建设推动中原更出彩！</a><span style="float:right;margin-right:10px;">2019-03-29</span></li>
+<li><a href="/html/xiehuigongzuo/2019/0330/113.html" title="国家发改委、住建部印发《关于推进全过程工程咨询服务发展的指导意见》" target="_blank">国家发改委、住建部印发《关于推进全过程工程咨询服务发展的指导意见》</a><span style="float:right;margin-right:10px;">2019-03-23</span></li>
+                      
+            </ul>
+            <ul id="ul_23" name="ul_23" class="side-list side-list-1 h-300" style="display:none">
+            <li><a href="/html/danweizizhiguanli/2020/0425/168.html" title="《工程咨询行业管理办法》国家发展改革委2017年第9号令" target="_blank">《工程咨询行业管理办法》国家发展改革委2017年第9号令</a><span style="float:right;margin-right:10px;">2020-04-24</span></li>
+<li><a href="/html/danweizizhiguanli/2020/0425/167.html" title="《工程咨询单位资信评价标准》国家发展改革委发改投资规（2018）623号文" target="_blank">《工程咨询单位资信评价标准》国家发展改革委发改投资规（2018）623号文</a><span style="float:right;margin-right:10px;">2020-04-24</span></li>
+   
+                       
+            </ul>
+            <ul id="ul_24" name="ul_24" class="side-list side-list-1 h-300" style="display:none">
+              <li><a href="/html/zixungongchengshiguanli/2020/0425/171.html" title="《咨询工程师（投资）继续教育规程》中咨协职业（2018）99号" target="_blank">《咨询工程师（投资）继续教育规程》中咨协职业（2018）99号</a><span style="float:right;margin-right:10px;">2020-04-25</span></li>
+<li><a href="/html/zixungongchengshiguanli/2020/0425/170.html" title="《咨询工程师（投资）执业登记规程》中咨协职业（2018）89号" target="_blank">《咨询工程师（投资）执业登记规程》中咨协职业（2018）89号</a><span style="float:right;margin-right:10px;">2020-04-25</span></li>
+<li><a href="/html/zixungongchengshiguanli/2020/0425/169.html" title="《工程咨询（投资）专业技术人员职业资格制度暂行规定》人社部发（2015）6" target="_blank">《工程咨询（投资）专业技术人员职业资格制度暂行规定》人社部发（2015）6</a><span style="float:right;margin-right:10px;">2020-04-25</span></li>
+ 
+                       
+            </ul>
+             <ul id="ul_3" name="ul_3" class="side-list side-list-1 h-300" style="display:none">
+             
+            <li><a href="/html/zhengcefagui/2019/1111/163.html" title="《政府投资条例》全文发布 自7月1日起施行 " target="_blank">《政府投资条例》全文发布 自7月1日起施行 </a><span style="float:right;margin-right:10px;">2019-10-18</span></li>
+<li><a href="/html/zhengcefagui/2019/0330/124.html" title="我省投资审批“三个一”改革全面加速" target="_blank">我省投资审批“三个一”改革全面加速</a><span style="float:right;margin-right:10px;">2019-03-30</span></li>
+<li><a href="/html/zhengcefagui/2019/0330/123.html" title="2019年河南能源工作重点抓好7个方面" target="_blank">2019年河南能源工作重点抓好7个方面</a><span style="float:right;margin-right:10px;">2019-03-30</span></li>
+<li><a href="/html/zhengcefagui/2019/0330/122.html" title="河南：开发区内项目免费共享评估成果" target="_blank">河南：开发区内项目免费共享评估成果</a><span style="float:right;margin-right:10px;">2019-03-30</span></li>
+<li><a href="/html/zhengcefagui/2016/1208/39.html" title="农业部农产品质量安全风险评估实验室管理规范" target="_blank">农业部农产品质量安全风险评估实验室管理规范</a><span style="float:right;margin-right:10px;">2016-12-08</span></li>
+<li><a href="/html/zhengcefagui/2016/1208/38.html" title="农业部关于开展农业产业化国家重点龙头企业监" target="_blank">农业部关于开展农业产业化国家重点龙头企业监</a><span style="float:right;margin-right:10px;">2016-12-08</span></li>
+<li><a href="/html/zhengcefagui/2016/1208/37.html" title="智能制造科技发展“十二五”专项规划" target="_blank">智能制造科技发展“十二五”专项规划</a><span style="float:right;margin-right:10px;">2016-12-08</span></li>
+                      
+            </ul>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#ul_12", "#tabuldiv_12").attr('style', 'display:"block"');
+        });
+
+        function tabctrcom(divid, ulid, item) {
+            $("[name='tabswith_" + divid + "']", "#tabdiv_" + divid).each(function () {
+
+                var val = $(this).parent().hasClass("switchOn");
+                if (val) {
+                    $(this).parent().removeClass("switchOn");
+                }
+            });
+            $(item).parent().addClass("switchOn");
+            $("ul", "#tabuldiv_" + divid).each(function () {
+                if ($(this).attr("name") != ("ul_" + ulid)) {
+                    $(this).attr("style", "display:none");
+                } else {
+                    $(this).attr("style", "display:block");
+                }
+            });
+        }
+    </script>
+
+    </div>
+    
+    
+    
+    <div class="grid-side mrg-t-20">
+      <div class="sys-link">
+        <a href="http://bmshn.cnaec.com.cn/businesslocal" target="_blank"><img src="templets/style/images/1.jpg" /></a>
+      <div class="blank3"></div>
+            <a href="http://203.207.195.69/" target="_blank"><img src="templets/style/images/2.jpg"></a>
+        <div class="blank3"></div>
+            <a href="http://jxjy.cdeledu.com/cdel_jxjy/qgzxgcs.shtml" target="_blank"><img src="templets/style/images/3.jpg"></a>
+        <div class="blank3"></div>
+        <div class="blank3"></div>
+        <div class="blank3"></div>
+            <a href="http://www.cnaec.com.cn/zhushi/index.htm" target="_blank"><img src="templets/style/images/6.jpg"></a>
+      <div class="blank3"></div>
+      </div>
+    </div>
+    
+</div>
+
+<div class="grid-c mrg-t-20 clearfix">
+
+</div>
+
+<div class="grid-c mrg-t-20 clearfix">
+    <div class="memberShow clearfix">
+        <div class="picName">合作支持单位</div>
+        <div class="memberShowBox">
+            <div class="myScroll" id="product">
+                <div class="myBlock">
+<ul>
+    
+<li><a href='http://www.sdpc.gov.cn/' target='_blank'><img src='/uploads/flink/1612082356572764.jpg' width='88' height='31' border='0'></a>    </li>
+   
+<li><a href='http://www.cnaec.com.cn/' target='_blank'><img src='/uploads/flink/1701121929205620.jpg' width='88' height='31' border='0'></a>    </li>
+   
+<li><a href='http://www.hndrc.gov.cn/' target='_blank'><img src='/uploads/flink/1701121932585396.png' width='88' height='31' border='0'></a>    </li>
+   
+</ul>
+                </div>
+            </div>
+        </div>
+        <div class="website">
+            <div class="site">
+                <select name="menu1" onChange="javascript:window.open(this.options[this.selectedIndex].value)" class="" style="width: 170px;">
+                    <option value="#">---政府网站---</option>
+                    <option value="http://www.ndrc.gov.cn/">国家发展改革委</option>
+                    <option value="http://www.hnblr.gov.cn/" selected="selected">河南省人力资源和社会保障厅</option>
+                    <option value="http://www.hnblr.gov.cn/">河南省国土资源厅</option>
+                    <option value="http://www.hnjs.gov.cn/">河南省住房和城乡建设厅</option>
+                    <option value="http://www.hnep.gov.cn/">河南省环境保护厅</option>
+                    <option value="http://www.hncd.gov.cn/">河南省交通运输厅</option>
+                    <option value="http://www.henanmz.gov.cn/">河南省民政厅</option>
+                    <option value="http://www.henan.gov.cn/">河南省人民政府</option>
+                    <option value="http://www.hndrc.gov.cn/">河南省发展和改革委员会</option>
+            </select>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="site">
+                <select name="menu2" onChange="javascript:window.open(this.options[this.selectedIndex].value)" class="" style="width: 170px;">
+                    <option value="#">---行业协会---</option>
+                    <option value="http://www.cnaec.com.cn/default.aspx">中国工程咨询协会</option>
+                    <option value="http://www.hnmjzz.org.cn/">河南省社会组织联合会</option>
+              </select>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="site">
+                <select name="menu3" onChange="javascript:window.open(this.options[this.selectedIndex].value)" class="" style="width: 170px;">
+                    <option value="#">---国际组织---</option>
+                    <option value="http://fidic.org/">FIDIC</option>
+            <option value="http://www.worldbank.org.cn/">世界银行</option>
+            <option value="http://www.adb.org/zh">亚洲开发银行</option>
+   
+                </select>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+        </div>
+    </div>
+</div>
+ <div class="foot">
+    <div class="foot_cont">
+        <p>
+            版权所有 © <a href="http://www.hnaec.com/" target="_blank">河南省工程咨询协会</a>　　　　<a href="https://beian.miit.gov.cn" taget="_blank">豫ICP备20002892号-1</a>  <br>
+            地址：河南省郑州市郑东新区金水东路49号绿地原盛国际3号楼A座1903 <br>
+            管理邮箱：hnaec@126.com　电话：0371-63812818 63862630 63943311<br>
+            
+            
+        </p>
+    </div>
+</div>
+</div>
+<div class="side-bar" style="right:75px;bottom:75px;"> 
+<a href="#" class="icon-chat"><img style="width:138px;height:138px;" src="/templets/style/images/qr.jpg" alt="微信订阅号"></a> 
+	<!--<a href="#" class="icon-qq">QQ在线咨询</a> 
+	<a href="#" class="icon-chat">微信<div class="chat-tips"><i></i><img style="width:138px;height:138px;" src="/templets/style/images/qr.jpg" alt="微信订阅号"></div></a> 
+	<a target="_blank" href="http://www.weibo.com/helloweba" class="icon-blog">微博</a>
+	<a href="mailto:hnaec@126.com" class="icon-mail">mail</a>  -->
+</div>
+ <script src="/templets/style/js/nav.js"></script>
+<script src="/templets/style/js/jquery.min.js"></script>
+<script src="/templets/style/js/swiper.min.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2a4d4f3c0e5bd48fa44eff6f993f51d8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</body>
+</html>
+

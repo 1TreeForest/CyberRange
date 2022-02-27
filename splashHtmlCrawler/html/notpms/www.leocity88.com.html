@@ -1,1000 +1,1000 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>www.leocity88.com</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1, user-scalable=no" />
-    <link rel="shortcut icon" href="/media/domain/3/images/favicon.ico" type="image/x-icon" />
-    <!-- meta info !-->
-    <!-- end of meta info !-->
-    <!-- fontawesome !-->
-    <link href="/fontawesome/all.css" rel="stylesheet" />
-    <link href="/css/jquery.bxslider.css" rel="stylesheet" />
-    <link href="/css/styles.css" rel="stylesheet" />
-    <link href="media/template/4/css/styles.css" rel="stylesheet" />
-
-    <script>
-        var lang_playforreal = 'Play for Real';
-        var page_type = 1;
-        var lang_pageNext = "Next";
-        var lang_pagePrevious = "Previous";
-        var lang_loading = "Loading";
-        var currency_code = "CNY";
-        var casino_name = "winforfun88";
-        var dynamic_jackpot = 1;
-        var page_no = 1;
-        var lang_loginFail = "Login Fail";
-    </script>
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/underscore@1.12.0/underscore-min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/simplebar@5.2.1/dist/simplebar.min.js"></script>
-    <script type="text/javascript" src="https://login.ld176988.com/jswrapper/integration.js.php?casino=winforfun88"></script>
-    <script language="JavaScript" type="text/javascript" src="https://tickers.playtech.com/jackpots/new_jackpotjs.js"></script>
-    <script type="text/javascript" src="/fontawesome/all.js"></script>
-    <script type="text/javascript" src="/lib/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="/js/custom.js"></script>
-
-    <script type="text/javascript" src="/lib/whatismybrowser.js"></script>
-    <script>
-
-        var isSupportCookies = false;
-        iapiSetCallout('Login', calloutLogin);
-        iapiSetCallout('GetTemporaryAuthenticationToken', calloutGetTemporaryAuthenticationToken);
-        iapiSetCallout('Logout', calloutLogout);
-
-        function loginPT(paramUsername, paramPassword) {
-            var defaultLanguage = "EN";
-            var realMode = 1;
-
-            iapiSetClientPlatform("mobile&deliveryPlatform=HTML5");
-            iapiLogin(paramUsername, paramPassword, realMode, defaultLanguage);
-        }
-        
-		function calloutLogin(response) {
-                if (response.errorCode) {
-					if(response.errorText !== undefined){
-						alert("[" + response.errorCode + "] " + response.errorText.replace("<br>","\r\n"));
-					}
-					else if(response.playerMessage !== undefined){
-						alert("[" + response.errorCode + "] " + response.playerMessage.replace("<br>","\r\n"));
-					}
-					else {
-						alert("[" + response.errorCode + "] Login Fail." );
-					}
-                    displayDefault();
-                }
-                else {
-				    //LoginPlayer(response.username.username, response.rootSessionToken.sessionToken);
-					sessionStorage.setItem("username", response.username.username);
-					sessionStorage.setItem("token", response.rootSessionToken.sessionToken);
-					displayLogined();
-					GetBalance(response.username.username, response.rootSessionToken.sessionToken);
-                }
-            }
-
-        function displayLogined() {
-            document.getElementsByClassName("mobile-header")[0].innerText  = "Hi" + ", " + sessionStorage.getItem("username");
-            document.getElementsByClassName("menu-logout")[0].style.display = "";
-            document.getElementsByClassName("header-welcome")[0].innerText  = "Welcome to www.leocity88.com, " + sessionStorage.getItem("username");
-            document.getElementsByClassName("loginedInfo")[0].style.display = "";
-            document.getElementsByClassName("desktoplogin")[0].style.display = "none";
-            document.getElementsByClassName("desktoplogin")[1].style.display = "none";
-            document.getElementsByClassName("desktoplogin")[2].style.display = "none";
-            document.getElementsByClassName("desktoplogin")[3].style.display = "none";
-            document.getElementsByClassName("sidebar-login")[0].style.display = "none";
-            document.getElementsByClassName("currency-setting")[0].style.display = "none";
-            document.getElementsByClassName("mobile-login")[0].style.display = "none";
-            document.getElementsByClassName("overlayBackground")[0].style.display = "none";
-            document.getElementsByClassName("balance-menu")[0].style.display = "";
-            document.getElementsByClassName("balance-menu")[1].style.display = "";
-            document.querySelector("body").classList = "";
-
-            document.getElementById("mobile_username").value = "";
-            document.getElementById("mobile_password").value = "";
-            document.getElementById("desktop_username").value = "";
-            document.getElementById("desktop_password").value = "";
-
-        }
-
-        function displayDefault() {
-            document.getElementsByClassName("mobile-header")[0].innerText  = "Account";
-            document.getElementsByClassName("menu-logout")[0].style.display = "none";
-            document.getElementsByClassName("header-welcome")[0].innerText  = "Welcome to www.leocity88.com";
-            document.getElementsByClassName("loginedInfo")[0].style.display = "none";
-            document.getElementsByClassName("desktoplogin")[0].style.display = "";
-            document.getElementsByClassName("desktoplogin")[1].style.display = "";
-            document.getElementsByClassName("desktoplogin")[2].style.display = "";
-            document.getElementsByClassName("desktoplogin")[3].style.display = "";
-            document.getElementsByClassName("sidebar-login")[0].style.display = "";
-            document.getElementsByClassName("currency-setting")[0].style.display = "";
-            document.getElementsByClassName("balance-menu")[0].style.display = "none";
-            document.getElementsByClassName("balance-menu")[1].style.display = "none";
-
-
-            document.getElementById("mobile_username").value = "";
-            document.getElementById("mobile_password").value = "";
-            document.getElementById("desktop_username").value = "";
-            document.getElementById("desktop_password").value = "";
-            document.getElementsByClassName("balance")[0].innerText = "";
-
-
-            sessionStorage.clear();
-            iapiLogout(1, 1);
-        }
-
-        function OpenGame(gamecode) {
-            if (sessionStorage.getItem("username") === null) {
-
-                $(".mobile-login").show()
-
-                $("body").addClass("disabled");
-                var $overlayBackground = $("[data-popUp-Overlay]");
-                $overlayBackground.show();
-            }
-            else {
-                sessionStorage.setItem("gamecode", gamecode);
-                var realMode = 1;
-                iapiRequestTemporaryToken(realMode, '424', 'GamePlay');
-            }
-        }
-
-        function calloutGetTemporaryAuthenticationToken(response) {
-            if (response.errorCode) {
-                alert("Token failed. " + response.playerMessage + " Error code: " + response.errorCode);
-            }
-            else {
-                launchMobileClient(response.sessionToken.sessionToken);
-            }
-        }
-
-        function launchMobileClient(temptoken) {
-            var defaultLanguage = "EN";
-
-            var clientUrl = '//hub.ld176988.com/igaming/' + '?gameId=' + sessionStorage.getItem("gamecode") + '&real=1' + '&username=' + sessionStorage.getItem("username") + '&lang=' + defaultLanguage + '&tempToken=' + temptoken + '&lobby=' + '&support=' + '&logout=' + '&deposit=';
-            window.open(clientUrl, '_blank');
-        }
-
-        function calloutLogout(response) {
-            LogoutPlayer();
-        }
-
-        function desktoplogin() {
-            if (isSupportCookies) {
-				loginPT(document.getElementById("desktop_username").value.toUpperCase(), document.getElementById("desktop_password").value);
-                //ValidatePlayer(document.getElementById("desktop_username").value.toUpperCase(), document.getElementById("desktop_password").value);
-            }
-            else {
-                alert("Your browser does not support 3rd party cookies");
-            }
-        }
-
-        function mobilelogin() {
-            if (isSupportCookies) {
-                loginPT(document.getElementById("mobile_username").value.toUpperCase(), document.getElementById("mobile_password").value);
-            }
-            else {
-                alert("Your browser does not support 3rd party cookies");
-            }
-        }
-
-        function filtergames() {
-            showPaging(1);
-        }
-
-        function sortList(sortoption) {
-                var list, i, switching, b, shouldSwitch;
-                list = document.getElementById("listgames");
-                switching = true;
-                /* Make a loop that will continue until
-                no switching has been done: */
-                while (switching) {
-                    // start by saying: no switching is done:
-                    switching = false;
-                    b = list.getElementsByTagName("li");
-                    // Loop through all list-items:
-                    for (i = 0; i < (b.length - 1); i++) {
-                        // start by saying there should be no switching:
-                        shouldSwitch = false;
-                        /* check if the next item should
-                        switch place with the current item: */
-                        if (sortoption.value == 1) {
-                            if (b[i].getAttribute('data-daterelease') < b[i + 1].getAttribute('data-daterelease')) {
-                                /* if next item is alphabetically
-                                lower than current item, mark as a switch
-                                and break the loop: */
-                                shouldSwitch = true;
-                                break;
-                            }
-                        }
-                        else if (sortoption.value == 2) {
-                            if (b[i].getAttribute('data-name') > b[i + 1].getAttribute('data-name')) {
-                                /* if next item is alphabetically
-                                lower than current item, mark as a switch
-                                and break the loop: */
-                                shouldSwitch = true;
-                                break;
-                            }
-                        }
-                        else {
-                            if (b[i].getAttribute('data-name') < b[i + 1].getAttribute('data-name')) {
-                                /* if next item is alphabetically
-                                lower than current item, mark as a switch
-                                and break the loop: */
-                                shouldSwitch = true;
-                                break;
-                            }
-                        }
-                    }
-                    if (shouldSwitch) {
-                        /* If a switch has been marked, make the switch
-                        and mark the switch as done: */
-                        b[i].parentNode.insertBefore(b[i + 1], b[i]);
-                        switching = true;
-                    }
-                }
-
-        }
-
-        function filtermobilesearch() {
-            filterlist = document.getElementById("mobilefilterlist");
-           // filterlist.innerHTML = "";
-
-            var filtersearch = document.getElementById("textmobilesearch").value;
-            if (filtersearch != "") {
-                list = document.getElementById("listgames");
-                b = list.getElementsByTagName("li");
-                for (i = 0; i < (b.length); i++) {
-                    if (b[i].getAttribute('data-name').toLowerCase().includes(filtersearch.toLowerCase())) {
-                        filterlist.appendChild(b[i]);
-                    }
-                }
-            }
-        }
-
-        function loginwithtoken() {
-
-            var defaultLanguage = "EN";
-            var realMode = 1;
-
-            iapiSetClientPlatform("mobile&deliveryPlatform=HTML5");
-
-            iapiLoginSessionToken(sessionStorage.getItem("token"), realMode, defaultLanguage);
-        }
-
-        function PopulatePaging(currpage, totalpage) {
-            $("#pagingcontainer").html("");
-
-
-            var thispage = 0;
-            if (totalpage > 0) {
-                thispage = currpage;
-            }
-            var paging_description = 'Showing {0} of {1} pages' + ':';
-            $("#pagingdescription").html(paging_description.replace('{0}', thispage).replace('{1}', totalpage));
-
-            if (currpage > 1) {
-                $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage - 1) + ")\">" + lang_pagePrevious + "</a></li >");
-            }
-            else if (totalpage > 0) {
-                $("#pagingcontainer").append("<li class=\"disabled\" ><a href=\"javascript:;\">" + lang_pagePrevious + "</a></li >");
-            }
-
-            if (currpage == 1) {
-                $("#pagingcontainer").append("<li class=\"active\"><a href=\"javascript:;\">" + currpage + "</a></li>");
-            }
-            else {
-                if (totalpage > 0) {
-                    if (currpage == totalpage && totalpage > 2) {
-                        $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage - 2) + ")\">" + (currpage - 2) + "</a></li>");
-
-                    } else {
-                        $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage - 1) + ")\">" + (currpage - 1) + "</a></li>");
-                    }
-                }
-            }
-
-            if (currpage == 1) {
-                if (currpage < totalpage) {
-                    $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage + 1) + ")\">" + (currpage + 1) + "</a></li>");
-                }
-            }
-            else {
-                if (totalpage > 2) {
-                    if (currpage == totalpage) {
-                        $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage - 1) + ")\">" + (currpage - 1) + "</a></li>");
-                    }
-                    else {
-                        $("#pagingcontainer").append("<li class=\"active\"><a href=\"javascript:;\">" + currpage + "</a></li>");
-                    }
-                }
-                else {
-                    $("#pagingcontainer").append("<li class=\"active\"><a href=\"javascript:;\">" + currpage + "</a></li>");
-                }
-            }
-
-            if (currpage == 1) {
-                if (currpage + 1 < totalpage) {
-                    $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage + 2) + ")\">" + (currpage + 2) + "</a></li>");
-                }
-            }
-            else {
-                if (totalpage > 2) {
-                    if (currpage == totalpage) {
-                        $("#pagingcontainer").append("<li class=\"active\"><a href=\"javascript:;\">" + currpage + "</a></li>");
-                    } else {
-                            $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage + 1) + ")\">" + (currpage + 1) + "</a></li>");
-
-                    }
-                }
-            }
-
-            if (currpage  < totalpage) {
-                $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage + 1) + ")\">" + lang_pageNext + "</a></li >");
-            }
-            else {
-                if (totalpage > 0) {
-                    $("#pagingcontainer").append("<li class=\"disabled\" ><a href=\"javascript:;\">" + lang_pageNext + "</a></li >");
-                }
-            }
-        }
-
-        function clock() {
-            var today = new Date();
-            var amOrPm = (today.getHours() < 12) ? "AM" : "PM";
-            document.getElementsByClassName("header-time")[0].innerText = today.getFullYear() + '-' + (today.getMonth() + 1).toString().padStart(2, '0') + '-' + today.getDate().toString().padStart(2, '0') + ' ' + today.getHours().toString().padStart(2, '0') + ":" + today.getMinutes().toString().padStart(2, '0') + ":" + today.getSeconds().toString().padStart(2, '0') + ' ' + amOrPm;
-
-        }
-    </script>
-    <noscript>
-        <style>
-            .simplebar-content-wrapper {
-                overflow: auto;
-            }
-        </style>
-    </noscript>
-    <script>
-        
-    var desktopSlider = '<li><a href=""><img src="/media/4561b581-1e90-436e-971d-99c9e2f13250" /></a></li><li><a href=""><img src="/media/00220d1d-adc8-4d7a-8b05-b7d58bb25c0d" /></a></li><li><a href=""><img src="/media/3fbdd00a-cedc-4572-b537-2664cb480f25" /></a></li><li><a href=""><img src="/media/997a2407-2561-468b-a102-62293567c9f3" /></a></li><li><a href=""><img src="/media/9849998c-04ed-492b-a6ae-363fbb6b6f97" /></a></li>';
-    
-
-
-        
-    </script>
-</head>
-<body style="background-image:url('/media/domain/3/images/bg.jpg')">
-    <div class="wrapperPopUp mobile-login" data-popUp-content="popUp" style="display:none">
-        <div class="popUpContent">
-            <div class="popUpMessage no-gutter">
-                <div class="popUpHeader">
-                    <h2>LOGIN</h2>
-                    <div class="btnPopUpClose"><a href="javascript:;" data-popUp-close="popUp"></a></div>
-                </div>
-                <div class="popUpBody">
-                    <div class="popUpForm">
-                        <ul>
-                            <li>
-                                <div class="wrapperForm labeling">
-                                    <label for="language">Username:</label>
-                                    <div class="form">
-                                        <input type="text" id="mobile_username" name="mobile_username" placeholder="Username">
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="wrapperForm labeling">
-                                    <label for="language">Password:</label>
-                                    <div class="form">
-                                        <input type="password" id="mobile_password" name="mobile_password" placeholder="Password">
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="popUpFooter">
-                    <div class="btnMain"><a href="javascript:;" onclick="mobilelogin()">Login</a></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="overlayBackground" data-popUp-Overlay></div>
-    <div class="wrapperMenuContainer">
-        <div class="menuContainer">
-            <h3 class="mobile-header"></h3>
-            <ul>
-                <li class="sidebar-login" style=""><a href="javascript:;" data-popUp-cta="popUp">Login<span><i class="fas fa-angle-right"></i></span></a></li>
-                <li class="balance-menu" style="display:none">
-                    <small>Current Balance:</small>
-                    <a href="javascript:;" class="balance"></a>
-                </li>
-                <li class="sidebar-setting">
-                    <a href="#" class="accordion-dd">Settings <span><i class="fas fa-angle-right"></i></span></a>
-                    <dl>
-                        <dt class="currency-setting" style="display:none">
-                            <div class="wrapperForm full-labeling">
-                                <label for="currency">Currency:</label>
-                                <div id="currency" class="form transparent">
-                                    <select name="currency" onchange="change_currency(this.value)">
-                                                <option value="4" selected>CNY</option>
-                                                <option value="7">IDR</option>
-                                                <option value="9">KRW</option>
-                                                <option value="3">MYR</option>
-                                                <option value="18">THB</option>
-                                                <option value="20">VND</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </dt>
-                        <dt>
-                            <div class="wrapperForm full-labeling">
-                                <label for="language">Language:</label>
-                                <div class="form transparent">
-                                    <select name="language" onchange="change_language(this.value)">
-                                                <option value="1" selected>English</option>
-                                                <option value="2">中文</option>
-                                                <option value="3">Bahasa</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </dt>
-                    </dl>
-                </li>
-                <li class="menu-logout" style=""><a href="javascript:;" onclick="displayDefault()" style="text-transform:capitalize">Logout <span><i class="fas fa-angle-right"></i></span></a></li>
-            </ul>
-            <h3>Categories</h3>
-            <ul>
-                <li><a href="/All">ALL GAMES <div class="gameNumber">301</div><span><i class="fas fa-angle-right"></i></span></a></li>
-                <li><a href="/NewGames">NEW GAMES <div class="gameNumber">0</div><span><i class="fas fa-angle-right"></i></span></a></li>
-                <li><a href="/LiveDealerGames">Live Dealer GAMES <div class="gameNumber">26</div><span><i class="fas fa-angle-right"></i></span></a></li>
-                <li><a href="/SlotGames">Slot GAMES <div class="gameNumber">202</div><span><i class="fas fa-angle-right"></i></span></a></li>
-                <li><a href="/JackpotGames">Jackpot GAMES <div class="gameNumber">48</div><span><i class="fas fa-angle-right"></i></span></a></li>
-                <li><a href="/OtherGames">Other GAMES <div class="gameNumber">25</div><span><i class="fas fa-angle-right"></i></span></a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="mobMenuOverlay"></div>
-    <div class="wrapper w1024">
-        <div class="wrapperPageInfo">
-            <section>
-                <small class="header-welcome">Welcome to www.leocity88.com</small>
-                <div class="loginedInfo" style="display:none">
-                    <a href="#" class="header-time"></a>
-                    <a href="javascript:;" class="balance-menu" style="display:none">Current Balance: <span class="balance"></span></a>
-                    <a href="javascript:;" onclick="displayDefault()">Logout</a>
-                </div>
-            </section>
-        </div>
-        <header>
-            <section>
-                <div class="wrapperTop">
-                    <div class="wrapperMobMenu">
-                        <div class="mobMenu"><a href="#"><i class="fas fa-bars"></i></a></div>
-                    </div>
-                    <div class="logo"><a href="/"><img src="/media/domain/3/images/logo.png" alt=""></a></div>
-                </div>
-
-                <div class="wrapperMobSearch">
-                    <div class="mobSearch">
-                        <div class="icons-magnify"><i class="fas fa-search"></i></div>
-                        <input type="text" id="textmobilesearch" placeholder="Search Games..."> <!-- please refer to custom.js for example to trigger search result !-->
-                        <div class="icons-clear"><i class="fas fa-times-circle"></i></div>
-                    </div>
-                    <div class="searchResult">
-                        <p id="loader_search" style="display:none">Searching...</p>
-                        <div class="wrapperGameListing">
-                            <div class="gameListing listingView">
-                                <ul id="mobilefilterlist">
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="searchOverlay"></div>
-                </div>
-                <div class="wrapperUserNav">
-                    <div class="wrapperLoginForm">
-                        <div class="loginBar">
-                            <ul>
-                                <li class="desktoplogin" style="">
-                                    <div class="wrapperForm">
-                                        <div class="form custom-select">
-                                            <!-- customize select, remove custom-select for default !-->
-                                            <select data-name="currency" onchange="change_currency(this)">
-                                                <option value="" class="same-as-selected">CNY</option>
-                                                    <option value="4" data-currencycode="CNY" data-currencyrate="7.974670">CNY</option>
-                                                    <option value="7" data-currencycode="IDR" data-currencyrate="17379.500000">IDR</option>
-                                                    <option value="9" data-currencycode="KRW" data-currencyrate="1350.550000">KRW</option>
-                                                    <option value="3" data-currencycode="MYR" data-currencyrate="4.954670">MYR</option>
-                                                    <option value="18" data-currencycode="THB" data-currencyrate="36.870800">THB</option>
-                                                    <option value="20" data-currencycode="VND" data-currencyrate="28244.600000">VND</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="wrapperForm">
-                                        <div class="form custom-select">
-                                            <select data-name="lang" onchange="change_language(this)">
-                                                <option value="1">English</option>
-                                                    <option value="1">English</option>
-                                                    <option value="2">中文</option>
-                                                    <option value="3">Bahasa</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="desktoplogin" style="">
-                                    <div class="wrapperForm specificWidth">
-                                        <div class="form">
-                                            <input type="text" id="desktop_username" name="desktop_username" placeholder="Player Name" style="text-transform: uppercase"> <!-- default uppercase !-->
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="desktoplogin" style="">
-                                    <div class="wrapperForm specificWidth">
-                                        <div class="form">
-                                            <input type="password" id="desktop_password" name="desktop_password" placeholder="Password">
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="desktoplogin" style="">
-                                    <div class="btnMain">
-                                        <button onclick="desktoplogin()"><i class="fa fa-unlock"></i></button>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                       
-                    </div>
-                    <!--<div class="wrapperDownloadButton"><a href="#"><img src="~/media/template/4/images/download_1.png" alt=""></a></div>-->
-                </div>
-            </section>
-        </header>
-        <nav>
-            <section>
-                <ul>
-                    <li><a class="selected" href="/"><i class="fas fa-home"></i></a></li>
-                    <li><a class="" href="/All">ALL GAMES</a></li>
-                    <li><a class="" href="/NewGames">NEW GAMES</a></li>
-                    <li><a class="" href="/LiveDealerGames">Live Dealer GAMES</a></li>
-                    <li><a class="" href="/SlotGames">Slot GAMES</a></li>
-                    <li><a class="" href="/JackpotGames">Jackpot GAMES</a></li>
-                    <li><a class="" href="/OtherGames">Other GAMES</a></li>
-                </ul>
-            </section>
-        </nav>
-        
-
-
-<div class="wrapperFeature">
-    <section>
-        <div class="row wrapperFeatureContent">
-            <div class="col-md-8 col-sm-12 featureBanner">
-                <div class="wrapperFeatureCarousel">
-                    <!-- if have enough time, please integrate carousel and remove ul below !-->
-                    <ul class="bxslider">
-                        <li><a href="#"><img src="/media/template/4/images/carousel-loading.gif" /></a></li>
-                    </ul>
-                    <div class="btnPagiLeft" id="slider-prev">
-                        <div class="arrowLeft"><span></span></div>
-                    </div>
-                    <div class="btnPagiRight" id="slider-next">
-                        <div class="arrowRight"><span></span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-12 featureRoll">
-                <div class="featureTitle">
-                    <h2>New Jackpot Games</h2>
-                    <div class="verSliderPagi">
-                        <div class="btnVerPagiDown" id="slider-v-next">
-                            <i class="fas fa-caret-down"></i>
-                        </div>
-                        <div class="btnVerPagiUp" id="slider-v-prev">
-                            <i class="fas fa-caret-up"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="wrapperAutoScroll">
-                    <ul class="bxSliderVertical">
-<li>
-    <div class="jpScrollContainer">
-        <div class="jpScrollThumbs">
-            <a href="javascript:;" onclick="OpenGame('ljxy')">
-                <img src="/media/provider/Playtech/ljxy.png" />
-            </a>
-        </div>
-        <div class="jpScrollDetails">
-            <a href="javascript:;" onclick="OpenGame('ljxy')">
-                <h5>Long Jia Xiang Yun</h5>
-            </a>
-            <span style="font-weight:bold" id="jp_198"></span>
-            <script>
-                                            var ticker_198 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'ljxyjp-1' });
-                                            ticker_198.attachToTextBox('jp_198');
-                                            ticker_198.tick();
-            </script>
-        </div>
-    </div>
-</li>
-<li>
-    <div class="jpScrollContainer">
-        <div class="jpScrollThumbs">
-            <a href="javascript:;" onclick="OpenGame('ccccny')">
-                <img src="/media/provider/Playtech/ccccny.png" />
-            </a>
-        </div>
-        <div class="jpScrollDetails">
-            <a href="javascript:;" onclick="OpenGame('ccccny')">
-                <h5>Coin&#160;Coin&#160;Coin&#160;CNY</h5>
-            </a>
-            <span style="font-weight:bold" id="jp_199"></span>
-            <script>
-                                            var ticker_199 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'ccccny2-2' });
-                                            ticker_199.attachToTextBox('jp_199');
-                                            ticker_199.tick();
-            </script>
-        </div>
-    </div>
-</li>
-<li>
-    <div class="jpScrollContainer">
-        <div class="jpScrollThumbs">
-            <a href="javascript:;" onclick="OpenGame('aogmm')">
-                <img src="/media/provider/Playtech/aogmm.png" />
-            </a>
-        </div>
-        <div class="jpScrollDetails">
-            <a href="javascript:;" onclick="OpenGame('aogmm')">
-                <h5>Age of the Gods : Medusa &amp; Monsters</h5>
-            </a>
-            <span style="font-weight:bold" id="jp_242"></span>
-            <script>
-                                            var ticker_242 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'mrj-1' });
-                                            ticker_242.attachToTextBox('jp_242');
-                                            ticker_242.tick();
-            </script>
-        </div>
-    </div>
-</li>
-<li>
-    <div class="jpScrollContainer">
-        <div class="jpScrollThumbs">
-            <a href="javascript:;" onclick="OpenGame('aogmt')">
-                <img src="/media/provider/Playtech/aogmt.png" />
-            </a>
-        </div>
-        <div class="jpScrollDetails">
-            <a href="javascript:;" onclick="OpenGame('aogmt')">
-                <h5>Age of the Gods : Mighty Midas</h5>
-            </a>
-            <span style="font-weight:bold" id="jp_243"></span>
-            <script>
-                                            var ticker_243 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'mrj-1' });
-                                            ticker_243.attachToTextBox('jp_243');
-                                            ticker_243.tick();
-            </script>
-        </div>
-    </div>
-</li>
-<li>
-    <div class="jpScrollContainer">
-        <div class="jpScrollThumbs">
-            <a href="javascript:;" onclick="OpenGame('aogrots')">
-                <img src="/media/provider/Playtech/aogrots.png" />
-            </a>
-        </div>
-        <div class="jpScrollDetails">
-            <a href="javascript:;" onclick="OpenGame('aogrots')">
-                <h5>Age of the Gods : Ruler of the Sky</h5>
-            </a>
-            <span style="font-weight:bold" id="jp_244"></span>
-            <script>
-                                            var ticker_244 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'mrj-1' });
-                                            ticker_244.attachToTextBox('jp_244');
-                                            ticker_244.tick();
-            </script>
-        </div>
-    </div>
-</li>
-<li>
-    <div class="jpScrollContainer">
-        <div class="jpScrollThumbs">
-            <a href="javascript:;" onclick="OpenGame('infdrg')">
-                <img src="/media/provider/Playtech/infdrg.png" />
-            </a>
-        </div>
-        <div class="jpScrollDetails">
-            <a href="javascript:;" onclick="OpenGame('infdrg')">
-                <h5>Infinity Dragon</h5>
-            </a>
-            <span style="font-weight:bold" id="jp_291"></span>
-            <script>
-                                            var ticker_291 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'infdrg1-1' });
-                                            ticker_291.attachToTextBox('jp_291');
-                                            ticker_291.tick();
-            </script>
-        </div>
-    </div>
-</li>
-<li>
-    <div class="jpScrollContainer">
-        <div class="jpScrollThumbs">
-            <a href="javascript:;" onclick="OpenGame('aeolus')">
-                <img src="/media/provider/Playtech/aeolus.png" />
-            </a>
-        </div>
-        <div class="jpScrollDetails">
-            <a href="javascript:;" onclick="OpenGame('aeolus')">
-                <h5>Age of the Gods : God of Storms</h5>
-            </a>
-            <span style="font-weight:bold" id="jp_3"></span>
-            <script>
-                                            var ticker_3 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'mrj-1' });
-                                            ticker_3.attachToTextBox('jp_3');
-                                            ticker_3.tick();
-            </script>
-        </div>
-    </div>
-</li>
-<li>
-    <div class="jpScrollContainer">
-        <div class="jpScrollThumbs">
-            <a href="javascript:;" onclick="OpenGame('aogs')">
-                <img src="/media/provider/Playtech/aogs.png" />
-            </a>
-        </div>
-        <div class="jpScrollDetails">
-            <a href="javascript:;" onclick="OpenGame('aogs')">
-                <h5>Age of the Gods</h5>
-            </a>
-            <span style="font-weight:bold" id="jp_5"></span>
-            <script>
-                                            var ticker_5 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'mrj-1' });
-                                            ticker_5.attachToTextBox('jp_5');
-                                            ticker_5.tick();
-            </script>
-        </div>
-    </div>
-</li>
-
-</div>
-            </div>
-        </div>
-    </section>
-</div>
-
-<div class="wrapperGameContent">
-    <section>
-        <div class="row gameContent">
-            <div class="wrapperGameListing">
-                <h2>Most Popular Games</h2>
-                <div class="gameListing">
-                    <ul>
-                                <li>
-                                    <div class="gameContainer">
-                                        <div class="gameThumb">
-                                            <div class="wrapperGameCta">
-                                                <div class="gameCta">
-                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('ljxy')">Play for Real</a></div>
-                                                </div>
-                                            </div>
-                                            <img src="/media/provider/Playtech/ljxy.png" alt="">
-                                        </div>
-                                        <div class="gameDetails">
-                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('ljxy')">Long Jia Xiang Yun</a></div>
-
-
-                                                <div class="gameJp" id="popular_198"></div>
-                                                <script>
-                                                    var popularticker_198 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'ljxyjp-1' });
-
-                                                    popularticker_198.attachToTextBox('popular_198');
-                                                    popularticker_198.tick();
-                                                </script>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="gameContainer">
-                                        <div class="gameThumb">
-                                            <div class="wrapperGameCta">
-                                                <div class="gameCta">
-                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('gpas_jflong_pop')">Play for Real</a></div>
-                                                </div>
-                                            </div>
-                                            <img src="/media/provider/Playtech/gpas_jflong_pop.png" alt="">
-                                        </div>
-                                        <div class="gameDetails">
-                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('gpas_jflong_pop')">Jinfu Long</a></div>
-
-
-                                                <div class="gameJp disabled"></div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="gameContainer">
-                                        <div class="gameThumb">
-                                            <div class="wrapperGameCta">
-                                                <div class="gameCta">
-                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('gpas_scqueen_pop')">Play for Real</a></div>
-                                                </div>
-                                            </div>
-                                            <img src="/media/provider/Playtech/gpas_scqueen_pop.png" alt="">
-                                        </div>
-                                        <div class="gameDetails">
-                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('gpas_scqueen_pop')">Pharaoh’s Daughter</a></div>
-
-
-                                                <div class="gameJp disabled"></div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="gameContainer">
-                                        <div class="gameThumb">
-                                            <div class="wrapperGameCta">
-                                                <div class="gameCta">
-                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('tigc')">Play for Real</a></div>
-                                                </div>
-                                            </div>
-                                            <img src="/media/provider/Playtech/tigc.png" alt="">
-                                        </div>
-                                        <div class="gameDetails">
-                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('tigc')">Tiger Claw</a></div>
-
-
-                                                <div class="gameJp disabled"></div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="gameContainer">
-                                        <div class="gameThumb">
-                                            <div class="wrapperGameCta">
-                                                <div class="gameCta">
-                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('mnkmn')">Play for Real</a></div>
-                                                </div>
-                                            </div>
-                                            <img src="/media/provider/Playtech/mnkmn.png" alt="">
-                                        </div>
-                                        <div class="gameDetails">
-                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('mnkmn')">Monkey Mania</a></div>
-
-
-                                                <div class="gameJp" id="popular_222"></div>
-                                                <script>
-                                                    var popularticker_222 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'mnkmn-1' });
-
-                                                    popularticker_222.attachToTextBox('popular_222');
-                                                    popularticker_222.tick();
-                                                </script>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="gameContainer">
-                                        <div class="gameThumb">
-                                            <div class="wrapperGameCta">
-                                                <div class="gameCta">
-                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('gpas_bwizard_pop')">Play for Real</a></div>
-                                                </div>
-                                            </div>
-                                            <img src="/media/provider/Playtech/gpas_bwizard_pop.png" alt="">
-                                        </div>
-                                        <div class="gameDetails">
-                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('gpas_bwizard_pop')">Blue&#160;Wizard</a></div>
-
-
-                                                <div class="gameJp disabled"></div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="gameContainer">
-                                        <div class="gameThumb">
-                                            <div class="wrapperGameCta">
-                                                <div class="gameCta">
-                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('gpas_tsgift_pop')">Play for Real</a></div>
-                                                </div>
-                                            </div>
-                                            <img src="/media/provider/Playtech/gpas_tsgift_pop.png" alt="">
-                                        </div>
-                                        <div class="gameDetails">
-                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('gpas_tsgift_pop')">Tsai Shen&#39;s Gift</a></div>
-
-
-                                                <div class="gameJp disabled"></div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="gameContainer">
-                                        <div class="gameThumb">
-                                            <div class="wrapperGameCta">
-                                                <div class="gameCta">
-                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('gpas_gmacaque_pop')">Play for Real</a></div>
-                                                </div>
-                                            </div>
-                                            <img src="/media/provider/Playtech/gpas_gmacaque_pop.png" alt="">
-                                        </div>
-                                        <div class="gameDetails">
-                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('gpas_gmacaque_pop')">Golden Macaque</a></div>
-
-
-                                                <div class="gameJp disabled"></div>
-                                        </div>
-                                    </div>
-                                </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-
-        <footer>
-            <section>
-                <h4>Disclaimer</h4>
-                <p><em>If you reside in a location where gambling, sports betting or betting over the internet is illegal, please do not click on anything related to these activities on this site. You must be 21 years of age to click on any betting or gambling related items even if it is legal to do so in your location.</em></p>
-                <p><em>This web site is intended for entertainment purposes only. Online gambling and gaming is illegal in many jurisdictions and users should consult legal counsel regarding the legal status of online gambling and gaming in their jurisdictions. No guarantee is made that the information presented is accurate or up to date. Links to other sites should not be construed to mean that the services provided by advertisers are legal. Users in the U.S. should be aware that the U.S. government has taken the position that it is illegal for online casinos and sportsbooks to accept wagers from persons in the U.S. This portal provides links to other websites. These links have been provided because they have information that may be of interest to visitors of this site. This site does not necessarily endorse the views expressed or facts presented on the webpages linked. Additionally, it does not endorse these websites or the products or services that may be advertised or available on these websites. Use of these linked websites is at the user&#39;s own risk.</em></p>
-                <p><em>While we will always back you up in any legitimate claims you may have, and we spend much time investigating reputations, we cannot guarantee the integrity of any gambling institution. You are playing at your own risk.</em></p>
-            </section>
-            <div class="contentDivider"></div>
-            <section>
-                <small>&#169; Copyright 2022 for www.leocity88.com</small>
-            </section>
-        </footer>
-    </div>
-
-
-    <script>
-        function change_language(lang) {
-            $.post("/ChangeLanguage", { "language": lang })
-                .done(function (result) {
-                    window.location.reload();
-                });
-        }
-
-        function change_currency(curr) {
-            $.post("/ChangeCurrency", { "currency": curr })
-                .done(function (result) {
-                    window.location.reload();
-                });
-        }
-        var third_party_domain = "webbrowsertests.com"; // which server do third-party checks use?
-        function checkcookies() {
-            WIMB.detect.cookies_third_party.trigger_set_cookie("//" + window.third_party_domain + "/");
-            setTimeout(function () {
-                if (WIMB.detect.cookies_third_party.enabled() == false) {
-                    isSupportCookies = true;
-                }
-                else {
-                    isSupportCookies = true;
-                }
-            }, 2000);
-
-        }
-        checkcookies();
-        if (sessionStorage.getItem("username") !== null) {
-            loginwithtoken();
-        }
-        else {
-            displayDefault();
-        }
-    </script>
-    <script type="text/javascript" src="/lib/jquery.bxslider.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.bxslider.js"></script>
-    <script type="text/javascript" src="/js/bxsliderContent.js"></script>
-    <script type="text/javascript" src="/js/customizeSelect.js"></script>
-    <script type="text/javascript" src="/js/overload.js"></script>
-
-    <script>
-        setInterval(function () { clock();}, 1000);
-
-     
-    </script>
-</body>
-</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>www.leocity88.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1, user-scalable=no" />
+    <link rel="shortcut icon" href="/media/domain/3/images/favicon.ico" type="image/x-icon" />
+    <!-- meta info !-->
+    <!-- end of meta info !-->
+    <!-- fontawesome !-->
+    <link href="/fontawesome/all.css" rel="stylesheet" />
+    <link href="/css/jquery.bxslider.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="media/template/4/css/styles.css" rel="stylesheet" />
+
+    <script>
+        var lang_playforreal = 'Play for Real';
+        var page_type = 1;
+        var lang_pageNext = "Next";
+        var lang_pagePrevious = "Previous";
+        var lang_loading = "Loading";
+        var currency_code = "CNY";
+        var casino_name = "winforfun88";
+        var dynamic_jackpot = 1;
+        var page_no = 1;
+        var lang_loginFail = "Login Fail";
+    </script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/underscore@1.12.0/underscore-min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/simplebar@5.2.1/dist/simplebar.min.js"></script>
+    <script type="text/javascript" src="https://login.ld176988.com/jswrapper/integration.js.php?casino=winforfun88"></script>
+    <script language="JavaScript" type="text/javascript" src="https://tickers.playtech.com/jackpots/new_jackpotjs.js"></script>
+    <script type="text/javascript" src="/fontawesome/all.js"></script>
+    <script type="text/javascript" src="/lib/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/custom.js"></script>
+
+    <script type="text/javascript" src="/lib/whatismybrowser.js"></script>
+    <script>
+
+        var isSupportCookies = false;
+        iapiSetCallout('Login', calloutLogin);
+        iapiSetCallout('GetTemporaryAuthenticationToken', calloutGetTemporaryAuthenticationToken);
+        iapiSetCallout('Logout', calloutLogout);
+
+        function loginPT(paramUsername, paramPassword) {
+            var defaultLanguage = "EN";
+            var realMode = 1;
+
+            iapiSetClientPlatform("mobile&deliveryPlatform=HTML5");
+            iapiLogin(paramUsername, paramPassword, realMode, defaultLanguage);
+        }
+        
+		function calloutLogin(response) {
+                if (response.errorCode) {
+					if(response.errorText !== undefined){
+						alert("[" + response.errorCode + "] " + response.errorText.replace("<br>","\r\n"));
+					}
+					else if(response.playerMessage !== undefined){
+						alert("[" + response.errorCode + "] " + response.playerMessage.replace("<br>","\r\n"));
+					}
+					else {
+						alert("[" + response.errorCode + "] Login Fail." );
+					}
+                    displayDefault();
+                }
+                else {
+				    //LoginPlayer(response.username.username, response.rootSessionToken.sessionToken);
+					sessionStorage.setItem("username", response.username.username);
+					sessionStorage.setItem("token", response.rootSessionToken.sessionToken);
+					displayLogined();
+					GetBalance(response.username.username, response.rootSessionToken.sessionToken);
+                }
+            }
+
+        function displayLogined() {
+            document.getElementsByClassName("mobile-header")[0].innerText  = "Hi" + ", " + sessionStorage.getItem("username");
+            document.getElementsByClassName("menu-logout")[0].style.display = "";
+            document.getElementsByClassName("header-welcome")[0].innerText  = "Welcome to www.leocity88.com, " + sessionStorage.getItem("username");
+            document.getElementsByClassName("loginedInfo")[0].style.display = "";
+            document.getElementsByClassName("desktoplogin")[0].style.display = "none";
+            document.getElementsByClassName("desktoplogin")[1].style.display = "none";
+            document.getElementsByClassName("desktoplogin")[2].style.display = "none";
+            document.getElementsByClassName("desktoplogin")[3].style.display = "none";
+            document.getElementsByClassName("sidebar-login")[0].style.display = "none";
+            document.getElementsByClassName("currency-setting")[0].style.display = "none";
+            document.getElementsByClassName("mobile-login")[0].style.display = "none";
+            document.getElementsByClassName("overlayBackground")[0].style.display = "none";
+            document.getElementsByClassName("balance-menu")[0].style.display = "";
+            document.getElementsByClassName("balance-menu")[1].style.display = "";
+            document.querySelector("body").classList = "";
+
+            document.getElementById("mobile_username").value = "";
+            document.getElementById("mobile_password").value = "";
+            document.getElementById("desktop_username").value = "";
+            document.getElementById("desktop_password").value = "";
+
+        }
+
+        function displayDefault() {
+            document.getElementsByClassName("mobile-header")[0].innerText  = "Account";
+            document.getElementsByClassName("menu-logout")[0].style.display = "none";
+            document.getElementsByClassName("header-welcome")[0].innerText  = "Welcome to www.leocity88.com";
+            document.getElementsByClassName("loginedInfo")[0].style.display = "none";
+            document.getElementsByClassName("desktoplogin")[0].style.display = "";
+            document.getElementsByClassName("desktoplogin")[1].style.display = "";
+            document.getElementsByClassName("desktoplogin")[2].style.display = "";
+            document.getElementsByClassName("desktoplogin")[3].style.display = "";
+            document.getElementsByClassName("sidebar-login")[0].style.display = "";
+            document.getElementsByClassName("currency-setting")[0].style.display = "";
+            document.getElementsByClassName("balance-menu")[0].style.display = "none";
+            document.getElementsByClassName("balance-menu")[1].style.display = "none";
+
+
+            document.getElementById("mobile_username").value = "";
+            document.getElementById("mobile_password").value = "";
+            document.getElementById("desktop_username").value = "";
+            document.getElementById("desktop_password").value = "";
+            document.getElementsByClassName("balance")[0].innerText = "";
+
+
+            sessionStorage.clear();
+            iapiLogout(1, 1);
+        }
+
+        function OpenGame(gamecode) {
+            if (sessionStorage.getItem("username") === null) {
+
+                $(".mobile-login").show()
+
+                $("body").addClass("disabled");
+                var $overlayBackground = $("[data-popUp-Overlay]");
+                $overlayBackground.show();
+            }
+            else {
+                sessionStorage.setItem("gamecode", gamecode);
+                var realMode = 1;
+                iapiRequestTemporaryToken(realMode, '424', 'GamePlay');
+            }
+        }
+
+        function calloutGetTemporaryAuthenticationToken(response) {
+            if (response.errorCode) {
+                alert("Token failed. " + response.playerMessage + " Error code: " + response.errorCode);
+            }
+            else {
+                launchMobileClient(response.sessionToken.sessionToken);
+            }
+        }
+
+        function launchMobileClient(temptoken) {
+            var defaultLanguage = "EN";
+
+            var clientUrl = '//hub.ld176988.com/igaming/' + '?gameId=' + sessionStorage.getItem("gamecode") + '&real=1' + '&username=' + sessionStorage.getItem("username") + '&lang=' + defaultLanguage + '&tempToken=' + temptoken + '&lobby=' + '&support=' + '&logout=' + '&deposit=';
+            window.open(clientUrl, '_blank');
+        }
+
+        function calloutLogout(response) {
+            LogoutPlayer();
+        }
+
+        function desktoplogin() {
+            if (isSupportCookies) {
+				loginPT(document.getElementById("desktop_username").value.toUpperCase(), document.getElementById("desktop_password").value);
+                //ValidatePlayer(document.getElementById("desktop_username").value.toUpperCase(), document.getElementById("desktop_password").value);
+            }
+            else {
+                alert("Your browser does not support 3rd party cookies");
+            }
+        }
+
+        function mobilelogin() {
+            if (isSupportCookies) {
+                loginPT(document.getElementById("mobile_username").value.toUpperCase(), document.getElementById("mobile_password").value);
+            }
+            else {
+                alert("Your browser does not support 3rd party cookies");
+            }
+        }
+
+        function filtergames() {
+            showPaging(1);
+        }
+
+        function sortList(sortoption) {
+                var list, i, switching, b, shouldSwitch;
+                list = document.getElementById("listgames");
+                switching = true;
+                /* Make a loop that will continue until
+                no switching has been done: */
+                while (switching) {
+                    // start by saying: no switching is done:
+                    switching = false;
+                    b = list.getElementsByTagName("li");
+                    // Loop through all list-items:
+                    for (i = 0; i < (b.length - 1); i++) {
+                        // start by saying there should be no switching:
+                        shouldSwitch = false;
+                        /* check if the next item should
+                        switch place with the current item: */
+                        if (sortoption.value == 1) {
+                            if (b[i].getAttribute('data-daterelease') < b[i + 1].getAttribute('data-daterelease')) {
+                                /* if next item is alphabetically
+                                lower than current item, mark as a switch
+                                and break the loop: */
+                                shouldSwitch = true;
+                                break;
+                            }
+                        }
+                        else if (sortoption.value == 2) {
+                            if (b[i].getAttribute('data-name') > b[i + 1].getAttribute('data-name')) {
+                                /* if next item is alphabetically
+                                lower than current item, mark as a switch
+                                and break the loop: */
+                                shouldSwitch = true;
+                                break;
+                            }
+                        }
+                        else {
+                            if (b[i].getAttribute('data-name') < b[i + 1].getAttribute('data-name')) {
+                                /* if next item is alphabetically
+                                lower than current item, mark as a switch
+                                and break the loop: */
+                                shouldSwitch = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (shouldSwitch) {
+                        /* If a switch has been marked, make the switch
+                        and mark the switch as done: */
+                        b[i].parentNode.insertBefore(b[i + 1], b[i]);
+                        switching = true;
+                    }
+                }
+
+        }
+
+        function filtermobilesearch() {
+            filterlist = document.getElementById("mobilefilterlist");
+           // filterlist.innerHTML = "";
+
+            var filtersearch = document.getElementById("textmobilesearch").value;
+            if (filtersearch != "") {
+                list = document.getElementById("listgames");
+                b = list.getElementsByTagName("li");
+                for (i = 0; i < (b.length); i++) {
+                    if (b[i].getAttribute('data-name').toLowerCase().includes(filtersearch.toLowerCase())) {
+                        filterlist.appendChild(b[i]);
+                    }
+                }
+            }
+        }
+
+        function loginwithtoken() {
+
+            var defaultLanguage = "EN";
+            var realMode = 1;
+
+            iapiSetClientPlatform("mobile&deliveryPlatform=HTML5");
+
+            iapiLoginSessionToken(sessionStorage.getItem("token"), realMode, defaultLanguage);
+        }
+
+        function PopulatePaging(currpage, totalpage) {
+            $("#pagingcontainer").html("");
+
+
+            var thispage = 0;
+            if (totalpage > 0) {
+                thispage = currpage;
+            }
+            var paging_description = 'Showing {0} of {1} pages' + ':';
+            $("#pagingdescription").html(paging_description.replace('{0}', thispage).replace('{1}', totalpage));
+
+            if (currpage > 1) {
+                $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage - 1) + ")\">" + lang_pagePrevious + "</a></li >");
+            }
+            else if (totalpage > 0) {
+                $("#pagingcontainer").append("<li class=\"disabled\" ><a href=\"javascript:;\">" + lang_pagePrevious + "</a></li >");
+            }
+
+            if (currpage == 1) {
+                $("#pagingcontainer").append("<li class=\"active\"><a href=\"javascript:;\">" + currpage + "</a></li>");
+            }
+            else {
+                if (totalpage > 0) {
+                    if (currpage == totalpage && totalpage > 2) {
+                        $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage - 2) + ")\">" + (currpage - 2) + "</a></li>");
+
+                    } else {
+                        $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage - 1) + ")\">" + (currpage - 1) + "</a></li>");
+                    }
+                }
+            }
+
+            if (currpage == 1) {
+                if (currpage < totalpage) {
+                    $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage + 1) + ")\">" + (currpage + 1) + "</a></li>");
+                }
+            }
+            else {
+                if (totalpage > 2) {
+                    if (currpage == totalpage) {
+                        $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage - 1) + ")\">" + (currpage - 1) + "</a></li>");
+                    }
+                    else {
+                        $("#pagingcontainer").append("<li class=\"active\"><a href=\"javascript:;\">" + currpage + "</a></li>");
+                    }
+                }
+                else {
+                    $("#pagingcontainer").append("<li class=\"active\"><a href=\"javascript:;\">" + currpage + "</a></li>");
+                }
+            }
+
+            if (currpage == 1) {
+                if (currpage + 1 < totalpage) {
+                    $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage + 2) + ")\">" + (currpage + 2) + "</a></li>");
+                }
+            }
+            else {
+                if (totalpage > 2) {
+                    if (currpage == totalpage) {
+                        $("#pagingcontainer").append("<li class=\"active\"><a href=\"javascript:;\">" + currpage + "</a></li>");
+                    } else {
+                            $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage + 1) + ")\">" + (currpage + 1) + "</a></li>");
+
+                    }
+                }
+            }
+
+            if (currpage  < totalpage) {
+                $("#pagingcontainer").append("<li><a href=\"javascript:;\" onclick=\"showPaging(" + (currpage + 1) + ")\">" + lang_pageNext + "</a></li >");
+            }
+            else {
+                if (totalpage > 0) {
+                    $("#pagingcontainer").append("<li class=\"disabled\" ><a href=\"javascript:;\">" + lang_pageNext + "</a></li >");
+                }
+            }
+        }
+
+        function clock() {
+            var today = new Date();
+            var amOrPm = (today.getHours() < 12) ? "AM" : "PM";
+            document.getElementsByClassName("header-time")[0].innerText = today.getFullYear() + '-' + (today.getMonth() + 1).toString().padStart(2, '0') + '-' + today.getDate().toString().padStart(2, '0') + ' ' + today.getHours().toString().padStart(2, '0') + ":" + today.getMinutes().toString().padStart(2, '0') + ":" + today.getSeconds().toString().padStart(2, '0') + ' ' + amOrPm;
+
+        }
+    </script>
+    <noscript>
+        <style>
+            .simplebar-content-wrapper {
+                overflow: auto;
+            }
+        </style>
+    </noscript>
+    <script>
+        
+    var desktopSlider = '<li><a href=""><img src="/media/4561b581-1e90-436e-971d-99c9e2f13250" /></a></li><li><a href=""><img src="/media/00220d1d-adc8-4d7a-8b05-b7d58bb25c0d" /></a></li><li><a href=""><img src="/media/3fbdd00a-cedc-4572-b537-2664cb480f25" /></a></li><li><a href=""><img src="/media/997a2407-2561-468b-a102-62293567c9f3" /></a></li><li><a href=""><img src="/media/9849998c-04ed-492b-a6ae-363fbb6b6f97" /></a></li>';
+    
+
+
+        
+    </script>
+</head>
+<body style="background-image:url('/media/domain/3/images/bg.jpg')">
+    <div class="wrapperPopUp mobile-login" data-popUp-content="popUp" style="display:none">
+        <div class="popUpContent">
+            <div class="popUpMessage no-gutter">
+                <div class="popUpHeader">
+                    <h2>LOGIN</h2>
+                    <div class="btnPopUpClose"><a href="javascript:;" data-popUp-close="popUp"></a></div>
+                </div>
+                <div class="popUpBody">
+                    <div class="popUpForm">
+                        <ul>
+                            <li>
+                                <div class="wrapperForm labeling">
+                                    <label for="language">Username:</label>
+                                    <div class="form">
+                                        <input type="text" id="mobile_username" name="mobile_username" placeholder="Username">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="wrapperForm labeling">
+                                    <label for="language">Password:</label>
+                                    <div class="form">
+                                        <input type="password" id="mobile_password" name="mobile_password" placeholder="Password">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="popUpFooter">
+                    <div class="btnMain"><a href="javascript:;" onclick="mobilelogin()">Login</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="overlayBackground" data-popUp-Overlay></div>
+    <div class="wrapperMenuContainer">
+        <div class="menuContainer">
+            <h3 class="mobile-header"></h3>
+            <ul>
+                <li class="sidebar-login" style=""><a href="javascript:;" data-popUp-cta="popUp">Login<span><i class="fas fa-angle-right"></i></span></a></li>
+                <li class="balance-menu" style="display:none">
+                    <small>Current Balance:</small>
+                    <a href="javascript:;" class="balance"></a>
+                </li>
+                <li class="sidebar-setting">
+                    <a href="#" class="accordion-dd">Settings <span><i class="fas fa-angle-right"></i></span></a>
+                    <dl>
+                        <dt class="currency-setting" style="display:none">
+                            <div class="wrapperForm full-labeling">
+                                <label for="currency">Currency:</label>
+                                <div id="currency" class="form transparent">
+                                    <select name="currency" onchange="change_currency(this.value)">
+                                                <option value="4" selected>CNY</option>
+                                                <option value="7">IDR</option>
+                                                <option value="9">KRW</option>
+                                                <option value="3">MYR</option>
+                                                <option value="18">THB</option>
+                                                <option value="20">VND</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </dt>
+                        <dt>
+                            <div class="wrapperForm full-labeling">
+                                <label for="language">Language:</label>
+                                <div class="form transparent">
+                                    <select name="language" onchange="change_language(this.value)">
+                                                <option value="1" selected>English</option>
+                                                <option value="2">中文</option>
+                                                <option value="3">Bahasa</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </dt>
+                    </dl>
+                </li>
+                <li class="menu-logout" style=""><a href="javascript:;" onclick="displayDefault()" style="text-transform:capitalize">Logout <span><i class="fas fa-angle-right"></i></span></a></li>
+            </ul>
+            <h3>Categories</h3>
+            <ul>
+                <li><a href="/All">ALL GAMES <div class="gameNumber">301</div><span><i class="fas fa-angle-right"></i></span></a></li>
+                <li><a href="/NewGames">NEW GAMES <div class="gameNumber">0</div><span><i class="fas fa-angle-right"></i></span></a></li>
+                <li><a href="/LiveDealerGames">Live Dealer GAMES <div class="gameNumber">26</div><span><i class="fas fa-angle-right"></i></span></a></li>
+                <li><a href="/SlotGames">Slot GAMES <div class="gameNumber">202</div><span><i class="fas fa-angle-right"></i></span></a></li>
+                <li><a href="/JackpotGames">Jackpot GAMES <div class="gameNumber">48</div><span><i class="fas fa-angle-right"></i></span></a></li>
+                <li><a href="/OtherGames">Other GAMES <div class="gameNumber">25</div><span><i class="fas fa-angle-right"></i></span></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="mobMenuOverlay"></div>
+    <div class="wrapper w1024">
+        <div class="wrapperPageInfo">
+            <section>
+                <small class="header-welcome">Welcome to www.leocity88.com</small>
+                <div class="loginedInfo" style="display:none">
+                    <a href="#" class="header-time"></a>
+                    <a href="javascript:;" class="balance-menu" style="display:none">Current Balance: <span class="balance"></span></a>
+                    <a href="javascript:;" onclick="displayDefault()">Logout</a>
+                </div>
+            </section>
+        </div>
+        <header>
+            <section>
+                <div class="wrapperTop">
+                    <div class="wrapperMobMenu">
+                        <div class="mobMenu"><a href="#"><i class="fas fa-bars"></i></a></div>
+                    </div>
+                    <div class="logo"><a href="/"><img src="/media/domain/3/images/logo.png" alt=""></a></div>
+                </div>
+
+                <div class="wrapperMobSearch">
+                    <div class="mobSearch">
+                        <div class="icons-magnify"><i class="fas fa-search"></i></div>
+                        <input type="text" id="textmobilesearch" placeholder="Search Games..."> <!-- please refer to custom.js for example to trigger search result !-->
+                        <div class="icons-clear"><i class="fas fa-times-circle"></i></div>
+                    </div>
+                    <div class="searchResult">
+                        <p id="loader_search" style="display:none">Searching...</p>
+                        <div class="wrapperGameListing">
+                            <div class="gameListing listingView">
+                                <ul id="mobilefilterlist">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="searchOverlay"></div>
+                </div>
+                <div class="wrapperUserNav">
+                    <div class="wrapperLoginForm">
+                        <div class="loginBar">
+                            <ul>
+                                <li class="desktoplogin" style="">
+                                    <div class="wrapperForm">
+                                        <div class="form custom-select">
+                                            <!-- customize select, remove custom-select for default !-->
+                                            <select data-name="currency" onchange="change_currency(this)">
+                                                <option value="" class="same-as-selected">CNY</option>
+                                                    <option value="4" data-currencycode="CNY" data-currencyrate="7.974670">CNY</option>
+                                                    <option value="7" data-currencycode="IDR" data-currencyrate="17379.500000">IDR</option>
+                                                    <option value="9" data-currencycode="KRW" data-currencyrate="1350.550000">KRW</option>
+                                                    <option value="3" data-currencycode="MYR" data-currencyrate="4.954670">MYR</option>
+                                                    <option value="18" data-currencycode="THB" data-currencyrate="36.870800">THB</option>
+                                                    <option value="20" data-currencycode="VND" data-currencyrate="28244.600000">VND</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="wrapperForm">
+                                        <div class="form custom-select">
+                                            <select data-name="lang" onchange="change_language(this)">
+                                                <option value="1">English</option>
+                                                    <option value="1">English</option>
+                                                    <option value="2">中文</option>
+                                                    <option value="3">Bahasa</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="desktoplogin" style="">
+                                    <div class="wrapperForm specificWidth">
+                                        <div class="form">
+                                            <input type="text" id="desktop_username" name="desktop_username" placeholder="Player Name" style="text-transform: uppercase"> <!-- default uppercase !-->
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="desktoplogin" style="">
+                                    <div class="wrapperForm specificWidth">
+                                        <div class="form">
+                                            <input type="password" id="desktop_password" name="desktop_password" placeholder="Password">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="desktoplogin" style="">
+                                    <div class="btnMain">
+                                        <button onclick="desktoplogin()"><i class="fa fa-unlock"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                       
+                    </div>
+                    <!--<div class="wrapperDownloadButton"><a href="#"><img src="~/media/template/4/images/download_1.png" alt=""></a></div>-->
+                </div>
+            </section>
+        </header>
+        <nav>
+            <section>
+                <ul>
+                    <li><a class="selected" href="/"><i class="fas fa-home"></i></a></li>
+                    <li><a class="" href="/All">ALL GAMES</a></li>
+                    <li><a class="" href="/NewGames">NEW GAMES</a></li>
+                    <li><a class="" href="/LiveDealerGames">Live Dealer GAMES</a></li>
+                    <li><a class="" href="/SlotGames">Slot GAMES</a></li>
+                    <li><a class="" href="/JackpotGames">Jackpot GAMES</a></li>
+                    <li><a class="" href="/OtherGames">Other GAMES</a></li>
+                </ul>
+            </section>
+        </nav>
+        
+
+
+<div class="wrapperFeature">
+    <section>
+        <div class="row wrapperFeatureContent">
+            <div class="col-md-8 col-sm-12 featureBanner">
+                <div class="wrapperFeatureCarousel">
+                    <!-- if have enough time, please integrate carousel and remove ul below !-->
+                    <ul class="bxslider">
+                        <li><a href="#"><img src="/media/template/4/images/carousel-loading.gif" /></a></li>
+                    </ul>
+                    <div class="btnPagiLeft" id="slider-prev">
+                        <div class="arrowLeft"><span></span></div>
+                    </div>
+                    <div class="btnPagiRight" id="slider-next">
+                        <div class="arrowRight"><span></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12 featureRoll">
+                <div class="featureTitle">
+                    <h2>New Jackpot Games</h2>
+                    <div class="verSliderPagi">
+                        <div class="btnVerPagiDown" id="slider-v-next">
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div class="btnVerPagiUp" id="slider-v-prev">
+                            <i class="fas fa-caret-up"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wrapperAutoScroll">
+                    <ul class="bxSliderVertical">
+<li>
+    <div class="jpScrollContainer">
+        <div class="jpScrollThumbs">
+            <a href="javascript:;" onclick="OpenGame('ljxy')">
+                <img src="/media/provider/Playtech/ljxy.png" />
+            </a>
+        </div>
+        <div class="jpScrollDetails">
+            <a href="javascript:;" onclick="OpenGame('ljxy')">
+                <h5>Long Jia Xiang Yun</h5>
+            </a>
+            <span style="font-weight:bold" id="jp_198"></span>
+            <script>
+                                            var ticker_198 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'ljxyjp-1' });
+                                            ticker_198.attachToTextBox('jp_198');
+                                            ticker_198.tick();
+            </script>
+        </div>
+    </div>
+</li>
+<li>
+    <div class="jpScrollContainer">
+        <div class="jpScrollThumbs">
+            <a href="javascript:;" onclick="OpenGame('ccccny')">
+                <img src="/media/provider/Playtech/ccccny.png" />
+            </a>
+        </div>
+        <div class="jpScrollDetails">
+            <a href="javascript:;" onclick="OpenGame('ccccny')">
+                <h5>Coin&#160;Coin&#160;Coin&#160;CNY</h5>
+            </a>
+            <span style="font-weight:bold" id="jp_199"></span>
+            <script>
+                                            var ticker_199 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'ccccny2-2' });
+                                            ticker_199.attachToTextBox('jp_199');
+                                            ticker_199.tick();
+            </script>
+        </div>
+    </div>
+</li>
+<li>
+    <div class="jpScrollContainer">
+        <div class="jpScrollThumbs">
+            <a href="javascript:;" onclick="OpenGame('aogmm')">
+                <img src="/media/provider/Playtech/aogmm.png" />
+            </a>
+        </div>
+        <div class="jpScrollDetails">
+            <a href="javascript:;" onclick="OpenGame('aogmm')">
+                <h5>Age of the Gods : Medusa &amp; Monsters</h5>
+            </a>
+            <span style="font-weight:bold" id="jp_242"></span>
+            <script>
+                                            var ticker_242 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'mrj-1' });
+                                            ticker_242.attachToTextBox('jp_242');
+                                            ticker_242.tick();
+            </script>
+        </div>
+    </div>
+</li>
+<li>
+    <div class="jpScrollContainer">
+        <div class="jpScrollThumbs">
+            <a href="javascript:;" onclick="OpenGame('aogmt')">
+                <img src="/media/provider/Playtech/aogmt.png" />
+            </a>
+        </div>
+        <div class="jpScrollDetails">
+            <a href="javascript:;" onclick="OpenGame('aogmt')">
+                <h5>Age of the Gods : Mighty Midas</h5>
+            </a>
+            <span style="font-weight:bold" id="jp_243"></span>
+            <script>
+                                            var ticker_243 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'mrj-1' });
+                                            ticker_243.attachToTextBox('jp_243');
+                                            ticker_243.tick();
+            </script>
+        </div>
+    </div>
+</li>
+<li>
+    <div class="jpScrollContainer">
+        <div class="jpScrollThumbs">
+            <a href="javascript:;" onclick="OpenGame('aogrots')">
+                <img src="/media/provider/Playtech/aogrots.png" />
+            </a>
+        </div>
+        <div class="jpScrollDetails">
+            <a href="javascript:;" onclick="OpenGame('aogrots')">
+                <h5>Age of the Gods : Ruler of the Sky</h5>
+            </a>
+            <span style="font-weight:bold" id="jp_244"></span>
+            <script>
+                                            var ticker_244 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'mrj-1' });
+                                            ticker_244.attachToTextBox('jp_244');
+                                            ticker_244.tick();
+            </script>
+        </div>
+    </div>
+</li>
+<li>
+    <div class="jpScrollContainer">
+        <div class="jpScrollThumbs">
+            <a href="javascript:;" onclick="OpenGame('infdrg')">
+                <img src="/media/provider/Playtech/infdrg.png" />
+            </a>
+        </div>
+        <div class="jpScrollDetails">
+            <a href="javascript:;" onclick="OpenGame('infdrg')">
+                <h5>Infinity Dragon</h5>
+            </a>
+            <span style="font-weight:bold" id="jp_291"></span>
+            <script>
+                                            var ticker_291 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'infdrg1-1' });
+                                            ticker_291.attachToTextBox('jp_291');
+                                            ticker_291.tick();
+            </script>
+        </div>
+    </div>
+</li>
+<li>
+    <div class="jpScrollContainer">
+        <div class="jpScrollThumbs">
+            <a href="javascript:;" onclick="OpenGame('aeolus')">
+                <img src="/media/provider/Playtech/aeolus.png" />
+            </a>
+        </div>
+        <div class="jpScrollDetails">
+            <a href="javascript:;" onclick="OpenGame('aeolus')">
+                <h5>Age of the Gods : God of Storms</h5>
+            </a>
+            <span style="font-weight:bold" id="jp_3"></span>
+            <script>
+                                            var ticker_3 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'mrj-1' });
+                                            ticker_3.attachToTextBox('jp_3');
+                                            ticker_3.tick();
+            </script>
+        </div>
+    </div>
+</li>
+<li>
+    <div class="jpScrollContainer">
+        <div class="jpScrollThumbs">
+            <a href="javascript:;" onclick="OpenGame('aogs')">
+                <img src="/media/provider/Playtech/aogs.png" />
+            </a>
+        </div>
+        <div class="jpScrollDetails">
+            <a href="javascript:;" onclick="OpenGame('aogs')">
+                <h5>Age of the Gods</h5>
+            </a>
+            <span style="font-weight:bold" id="jp_5"></span>
+            <script>
+                                            var ticker_5 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'mrj-1' });
+                                            ticker_5.attachToTextBox('jp_5');
+                                            ticker_5.tick();
+            </script>
+        </div>
+    </div>
+</li>
+
+</div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="wrapperGameContent">
+    <section>
+        <div class="row gameContent">
+            <div class="wrapperGameListing">
+                <h2>Most Popular Games</h2>
+                <div class="gameListing">
+                    <ul>
+                                <li>
+                                    <div class="gameContainer">
+                                        <div class="gameThumb">
+                                            <div class="wrapperGameCta">
+                                                <div class="gameCta">
+                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('ljxy')">Play for Real</a></div>
+                                                </div>
+                                            </div>
+                                            <img src="/media/provider/Playtech/ljxy.png" alt="">
+                                        </div>
+                                        <div class="gameDetails">
+                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('ljxy')">Long Jia Xiang Yun</a></div>
+
+
+                                                <div class="gameJp" id="popular_198"></div>
+                                                <script>
+                                                    var popularticker_198 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'ljxyjp-1' });
+
+                                                    popularticker_198.attachToTextBox('popular_198');
+                                                    popularticker_198.tick();
+                                                </script>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="gameContainer">
+                                        <div class="gameThumb">
+                                            <div class="wrapperGameCta">
+                                                <div class="gameCta">
+                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('gpas_jflong_pop')">Play for Real</a></div>
+                                                </div>
+                                            </div>
+                                            <img src="/media/provider/Playtech/gpas_jflong_pop.png" alt="">
+                                        </div>
+                                        <div class="gameDetails">
+                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('gpas_jflong_pop')">Jinfu Long</a></div>
+
+
+                                                <div class="gameJp disabled"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="gameContainer">
+                                        <div class="gameThumb">
+                                            <div class="wrapperGameCta">
+                                                <div class="gameCta">
+                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('gpas_scqueen_pop')">Play for Real</a></div>
+                                                </div>
+                                            </div>
+                                            <img src="/media/provider/Playtech/gpas_scqueen_pop.png" alt="">
+                                        </div>
+                                        <div class="gameDetails">
+                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('gpas_scqueen_pop')">Pharaoh’s Daughter</a></div>
+
+
+                                                <div class="gameJp disabled"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="gameContainer">
+                                        <div class="gameThumb">
+                                            <div class="wrapperGameCta">
+                                                <div class="gameCta">
+                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('tigc')">Play for Real</a></div>
+                                                </div>
+                                            </div>
+                                            <img src="/media/provider/Playtech/tigc.png" alt="">
+                                        </div>
+                                        <div class="gameDetails">
+                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('tigc')">Tiger Claw</a></div>
+
+
+                                                <div class="gameJp disabled"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="gameContainer">
+                                        <div class="gameThumb">
+                                            <div class="wrapperGameCta">
+                                                <div class="gameCta">
+                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('mnkmn')">Play for Real</a></div>
+                                                </div>
+                                            </div>
+                                            <img src="/media/provider/Playtech/mnkmn.png" alt="">
+                                        </div>
+                                        <div class="gameDetails">
+                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('mnkmn')">Monkey Mania</a></div>
+
+
+                                                <div class="gameJp" id="popular_222"></div>
+                                                <script>
+                                                    var popularticker_222 = new Ticker({ currency: 'CNY', info: 1, casino: 'winforfun88', game: 'mnkmn-1' });
+
+                                                    popularticker_222.attachToTextBox('popular_222');
+                                                    popularticker_222.tick();
+                                                </script>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="gameContainer">
+                                        <div class="gameThumb">
+                                            <div class="wrapperGameCta">
+                                                <div class="gameCta">
+                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('gpas_bwizard_pop')">Play for Real</a></div>
+                                                </div>
+                                            </div>
+                                            <img src="/media/provider/Playtech/gpas_bwizard_pop.png" alt="">
+                                        </div>
+                                        <div class="gameDetails">
+                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('gpas_bwizard_pop')">Blue&#160;Wizard</a></div>
+
+
+                                                <div class="gameJp disabled"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="gameContainer">
+                                        <div class="gameThumb">
+                                            <div class="wrapperGameCta">
+                                                <div class="gameCta">
+                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('gpas_tsgift_pop')">Play for Real</a></div>
+                                                </div>
+                                            </div>
+                                            <img src="/media/provider/Playtech/gpas_tsgift_pop.png" alt="">
+                                        </div>
+                                        <div class="gameDetails">
+                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('gpas_tsgift_pop')">Tsai Shen&#39;s Gift</a></div>
+
+
+                                                <div class="gameJp disabled"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="gameContainer">
+                                        <div class="gameThumb">
+                                            <div class="wrapperGameCta">
+                                                <div class="gameCta">
+                                                    <div class="btnMain"><a href="javascript:;" onclick="OpenGame('gpas_gmacaque_pop')">Play for Real</a></div>
+                                                </div>
+                                            </div>
+                                            <img src="/media/provider/Playtech/gpas_gmacaque_pop.png" alt="">
+                                        </div>
+                                        <div class="gameDetails">
+                                            <div class="gameName"><a href="javascript:;" onclick="OpenGame('gpas_gmacaque_pop')">Golden Macaque</a></div>
+
+
+                                                <div class="gameJp disabled"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+        <footer>
+            <section>
+                <h4>Disclaimer</h4>
+                <p><em>If you reside in a location where gambling, sports betting or betting over the internet is illegal, please do not click on anything related to these activities on this site. You must be 21 years of age to click on any betting or gambling related items even if it is legal to do so in your location.</em></p>
+                <p><em>This web site is intended for entertainment purposes only. Online gambling and gaming is illegal in many jurisdictions and users should consult legal counsel regarding the legal status of online gambling and gaming in their jurisdictions. No guarantee is made that the information presented is accurate or up to date. Links to other sites should not be construed to mean that the services provided by advertisers are legal. Users in the U.S. should be aware that the U.S. government has taken the position that it is illegal for online casinos and sportsbooks to accept wagers from persons in the U.S. This portal provides links to other websites. These links have been provided because they have information that may be of interest to visitors of this site. This site does not necessarily endorse the views expressed or facts presented on the webpages linked. Additionally, it does not endorse these websites or the products or services that may be advertised or available on these websites. Use of these linked websites is at the user&#39;s own risk.</em></p>
+                <p><em>While we will always back you up in any legitimate claims you may have, and we spend much time investigating reputations, we cannot guarantee the integrity of any gambling institution. You are playing at your own risk.</em></p>
+            </section>
+            <div class="contentDivider"></div>
+            <section>
+                <small>&#169; Copyright 2022 for www.leocity88.com</small>
+            </section>
+        </footer>
+    </div>
+
+
+    <script>
+        function change_language(lang) {
+            $.post("/ChangeLanguage", { "language": lang })
+                .done(function (result) {
+                    window.location.reload();
+                });
+        }
+
+        function change_currency(curr) {
+            $.post("/ChangeCurrency", { "currency": curr })
+                .done(function (result) {
+                    window.location.reload();
+                });
+        }
+        var third_party_domain = "webbrowsertests.com"; // which server do third-party checks use?
+        function checkcookies() {
+            WIMB.detect.cookies_third_party.trigger_set_cookie("//" + window.third_party_domain + "/");
+            setTimeout(function () {
+                if (WIMB.detect.cookies_third_party.enabled() == false) {
+                    isSupportCookies = true;
+                }
+                else {
+                    isSupportCookies = true;
+                }
+            }, 2000);
+
+        }
+        checkcookies();
+        if (sessionStorage.getItem("username") !== null) {
+            loginwithtoken();
+        }
+        else {
+            displayDefault();
+        }
+    </script>
+    <script type="text/javascript" src="/lib/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.bxslider.js"></script>
+    <script type="text/javascript" src="/js/bxsliderContent.js"></script>
+    <script type="text/javascript" src="/js/customizeSelect.js"></script>
+    <script type="text/javascript" src="/js/overload.js"></script>
+
+    <script>
+        setInterval(function () { clock();}, 1000);
+
+     
+    </script>
+</body>
+</html>

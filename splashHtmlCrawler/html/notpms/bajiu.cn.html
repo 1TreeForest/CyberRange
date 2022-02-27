@@ -1,260 +1,260 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="applicable-device" content="pc,mobile">
-  <title>昆山地图全图 - 高清版、可放大 - 八九网</title>
-  <meta name="description" content="中国江苏省苏州市昆山市地图全图，高清大图，可用鼠标放大图片；八九网，提供最新的昆山地图全图大图，可缩放，可查看各省市区县分布图、分区图和高清版地图全景全貌。">
-  <link rel="shortcut icon" href="/01img/bajiu.ico">
-  <style>
-/*shared*/
-*{margin:0;padding:0;}
-body{line-height:180%;background:#C0C0C0;}
-header,nav,main,article,section,aside,footer{display: block;}
-header{text-align:left;background:#FFFFFF;}
-nav{background-image:url('/01img/mlbj.gif');}
-main{text-align:left;background:#FFFFFF;padding:0 3px 10px 5px;}
-footer{text-align:center;background:#FFFFFF;border-top:1px solid #C0C0C0;padding-top:20px;font-size:13px;}
-
-  footer ~ *{opacity:0;display:none;}
-img{border:0;vertical-align:middle;}
-textarea{overflow:auto;resize:none;}
-select,input[type="submit"]{cursor:pointer;}
-select,input{padding:1px;height:24px;vertical-align:middle;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
-hr{border:0;border-top:1px dotted #C0C0C0;}
-h1,h2,h4{display:inline;}
-em{font-style:normal;color:red;}
-a:link,.dh a:visited{color:#043396;text-decoration:none;}
-a:visited{color:#808080;text-decoration:none;}
-a:hover,.dh a:hover{color:#FF0000;text-decoration: underline;}
-a:active,.dh a:active{color:#CC0000;text-decoration:none;}
-.a5 a{margin-right:5px;}
-.a8 a{margin-right:8px;}
-.pg{border:1px solid #C0C0C0;margin-right:4px;padding:3px 8px;color:rgb(8,115,192);background-image:url('/01img/mlbj.gif');}.pg0{background:#FFFFFF;color:black;}
-.both{clear:both;height:auto;}
-.left{text-align:left;}
-.center{text-align:center;}
-.right{text-align:right;}
-.stat{display:none;}
-.bhh,.bhha a{white-space:nowrap;}
-.img_xy img{max-width:100%;margin:3px 5px 0 0;border:1px solid #F2F2F2;}
-.Lj{cursor:pointer;color:#043396;}
-/*■■bajiu■■*/
-body{font-family:arial,宋体;}
-nav{border-bottom:1px solid #a8a8a8;}
-main{background:#FFFFFF;}
-p{text-indent:2em;}
-ul{padding-left:18px;}li{list-style-type:circle;}.vote{list-style-type:disc;}
-h1,h2{font-size:20px;}
-.tit{padding:5px;font-weight:700;font-size:22px;background-image:url('/01img/bj.jpg');display:inline-block;cursor:pointer;border-radius:3px;}
-.fd{border-top:1px dotted #C0C0C0;padding-top:8px;}
-main{padding:0}#AL{z-index:9999;position:absolute;}#AL span,.al span{padding:2px;background:#FFFFFF;font-size:13px;color:#043396;cursor:pointer;border:1px solid #D4D4D4;}
-/*pc*/
-@media screen and (min-width:1000px){
-  
- .p_yc{display:none;}
- body{background:#FFFFFF;width:100%;font-size:16px;}header{float:left;}nav{width:175px;padding:5px 0 3px 3px;font-size:14px;line-height:150%;border-top:1px solid #e0e0e0;}#zimu{width:171px;padding:5px 0 0 7px;line-height:180%;height:calc(100% - 150px);overflow-y:auto;}html,body,header{height:100%}/*加滚动条*/main{float:left;width:calc(100% - 339px);text-align:left;}#AL{top:4px;left:178px;}#Qp{margin-top:33px;}
-}
-/*mobile*/
-@media screen and (max-width:999px){
- body{width:100%;font-size:18px;}
- 
-   nav{font-size:13px;padding:2px 0;line-height:100%;border:0;}
-   
- .m_yc{display:none;}
- .id_rt{border-top:1px dotted #C0C0C0;padding-top:5px;margin-top:15px;}
- .img_xy img{display:block;}
- #zimu{margin-left:5px;}#AL span{white-space:nowrap;padding:0;margin-left:-2px;}
-}
-/*print*/
-@media print{aside,footer,.banner{display:none;}}
-</style>
-<script>
-  
-  var url=window.location.href;
-  var LLQw = window.innerWidth || document.documentElement.clientWidth; 
-  var LLQh = window.innerHeight || document.documentElement.clientHeight;
-  if (LLQw<100){
-    LLQw = window.screen.width; 
-    LLQh = window.screen.height - 110; 
-  }
-  
-  function dig(id,a,b){
-    if (document.getElementById("dig" + id)) {
-      var digId = document.getElementById("dig" + id);
-      var digN = digId.innerHTML;
-      if (!isNaN(digN)){
-        digN = Number(digN) + 1
-        digId.innerHTML = "<span style='color:red;'> " + digN + "</span>";
-      }else{
-        digId.innerHTML = "<span style='color:red;'>Thank you!</span>";
-      }
-    }
-    var url = "/02ad/dig-ajax.asp?id=" + id + "&a=" + a + "&b=" + b;
-    Ajax(url);
-  }
-  
-  function load(url,divID){
-    var load = document.getElementById(divID);
-    load.innerHTML = '<div style="padding-left:30px;"><img src="/01img/loading.gif"></div>';
-    var nr = Ajax(url);
-    nr.onreadystatechange = function(){
-      if(nr.readyState == 4){
-        if(nr.status == 200){
-          load.innerHTML = unescape(nr.responseText);
-        }else{load.innerHTML = "Err:" + nr.status;}
-      }
-    }
-  }    
-  
-  function Ajax(url){
-    var XMLHttp = new XMLHttpRequest();
-    XMLHttp.open("GET",url,true);
-    XMLHttp.send(null);
-    return XMLHttp;
-  }
-  
-  var _hmt = _hmt || [];
-  (function() {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?96a249b3cd27c6a66997f41abfe0a2f1";
-    var s = document.getElementsByTagName("script")[0]; 
-    s.parentNode.insertBefore(hm, s);
-  })();
-</script>
-</head>
-<body>
- <header><script src="/03gg/g-dt.js?V2.2"></script>
-<div class="m_yc"><img src="/files/2013/20130430144969486948.png" alt="八九网" onclick="location.href='/'" style="width:100px;height:45px;margin:26px 0 22px 25px;cursor:pointer;"></div>
-<nav class="dh a5 left bhha">
-  <img class="p_yc" src="/files/2013/20130430144969486948.png" alt="八九网" onclick="location.href='/'" style="width:76px;height:34px;margin-left:2px;vertical-align:-8px;border-radius:3px;">
-  <a href="/">首页</a>&gt;
-  <a href="/ditu/">地图</a>&gt; <span class="m_yc"><a href="/ditu/?qt=2">中国</a>&gt; </span><a href="/ditu/?qt=18">江苏省</a>&gt; <a href="/ditu/?qt=260">苏州市</a>&gt; <span class="p_yc" onClick="if (zimu.style.display=='block'){zimu.style.display='none';}else{zimu.style.display='block';AL.style.display='none';}">昆山市 <img src="/ditu/img/menu.png" style="vertical-align:-2px;width:15px;height:13px;"></span>
-</nav>
-<div style="font-size:14px;" id="zimu" class="m_yc dh a5 bhha">
-  <div><b>昆山地图全图</b></div>
-  <div></div>
-  <div></div>
-  <div><b>邻居</b>：<br><span style="padding-right:5px;color:#C0C0C0;background-color: #FFFFFF;" class="bhh">昆山市</span> <a href="/ditu/?qt=2072">吴中区</a> <a href="/ditu/?qt=2073">相城区</a> <a href="/ditu/?qt=2074">常熟市</a> <a href="/ditu/?qt=2075">吴江区</a> <a href="/ditu/?qt=2076">张家港市</a> <a href="/ditu/?qt=2077">太仓市</a> <a href="/ditu/?qt=2078">虎丘区</a> <a href="/ditu/?qt=20505">姑苏区</a> </div>
-</div>
- </header>
- <main>
-<div id="Qp">
-  
-  <div id="zkAL" onClick="ALzk();" style="z-index:9999;position:absolute;color:red;display:none;margin:8px 0 0 3px;background:#FFFFFF;cursor:pointer;padding:1px 6px;line-height:100%;"> > </div>
-  <img id="zxd" src="/ditu/img/zxd.gif" onclick="this.style.display='none';" style="z-index:9999;position:absolute;cursor:pointer;">
-  <div id="Map_canvas" style="width:100%;height:180px;line-height:100%;">
-    <div style="padding:60px 0 50px 10px;background-color:#CCCCCC;font-size:14px;line-height:180%;">
-       <h1>昆山地图全图，高清版、可放大</h1>
-       <div id="JZsm">
-         正在加载，请稍候......<img src="/01img/loading.gif">
-         <br>若长时间不能加载，请点击：<span class="Lj" onclick="Ht.click();">更换卫星图</span>。
-         <br>或者：<a href="javascript:location.reload()">点击刷新</a>，重新加载。
-       </div>
-    </div>
-  </div>
-  <div id="jwd" class="m_yc" style="z-index:9999;position:absolute;bottom:0;right:165px;line-height:140%;font-size:13px;padding:0 2px;background:#FFFFFF;">
-    
-      <span class="dh Lj" onclick="location.href='/ditu/?rid=1011'">大地经纬度</span>：<span id="Jwd">120.95633928，31.38012497</span>
-  </div>
-  
-  <div id="AL">
-    <div style="float:left;">
-      
-  <span onclick="HCxyz();location.href='/ditu/?chaxun';"><img src="/ditu/img/search.gif" style="width:17px;height:15px;vertical-align:-2px;">搜</span>
-  
-  <div style="display:inline;">
-    <span id="T0" onclick="dtch(0);">卫星</span><span id="Ht" style="margin-left:-1px;border-left:1px solid #808080;"
-      
-        onclick="HCxyz();HCrqs('qt=2071');location.href='/ditu/?id=20522'"
-        >换图</span>
-      <span id="T1" onclick="dtch(1);">照片</span>
-  </div>
-  <span id="T2" onclick="dtch(2);" >地图</span>
-  
-    <span id="qhsm" onclick="hx();"></span>
-  <span onclick="HCxyz();HCrqs('qt=2071');location.href='/ditu/?dx=1'">地形</span>
-  <span class="m_yc" onclick="HCxyz();HCrqs('qt=2071');location.href='/ditu/?jj=1'">街景</span>
-  <span id="T6" onclick="cehui();CHbj();">测量</span>
-  
-<span id="q" onclick="dtqp();">全屏</span>
-<span id="T5" onclick="DTyc();" style="padding-left:4px;padding-right:4px;">︽</span>
-<span id="ycAL" class="p_yc" onclick="ALyc();" style="padding-left:6px;padding-right:6px;"><</span>
-    </div>
-    <div id="pG1" class="m_yc" style="float:left;margin-left:40px;padding-top:4px;">
-      <script src="/03gg/g-dt.js?V2.2"></script>
-    </div>
-    <div class="both"></div>
-  </div> 
-  <script src="/03gg/g-dt.js?V2.2"></script>
-  <script src="/ditu/img/function.js?V2.2"></script>
-  
-<div id="Tool" class="al" style="display:none;z-index:9999;position:absolute;"> 
-  <span id="chA">正在加载测绘工具......</span>
-  <span id="chB" style="display:none;background:transparent;border:0;">
-    <span onclick="measureJuli(this);chSm.innerHTML='单击开始，双击结束！';setTimeout('chSm.innerHTML=\'\'',1500);">距离</span>
-    <span onclick="measureArea(this);chSm.innerHTML='单击开始，双击结束！';setTimeout('chSm.innerHTML=\'\'',1500);">面积</span>
-    
-    <span onclick="draw(BMAP_DRAWING_POLYLINE);chSm.innerHTML='单击开始，双击结束！';setTimeout('chSm.innerHTML=\'\'',1500);">画线</span>
-    <span onclick="draw(BMAP_DRAWING_MARKER);chSm.innerHTML='请到目标位上点击！';setTimeout('chSm.innerHTML=\'\'',1500);">&nbsp;点&nbsp;</span>
-    <span onclick="draw(BMAP_DRAWING_CIRCLE);chSm.innerHTML='按下鼠标后，拖动！';setTimeout('chSm.innerHTML=\'\'',1500);" class="m_yc">&nbsp;圆&nbsp;</span>
-    <span onclick="draw(BMAP_DRAWING_POLYGON);chSm.innerHTML='单击开始，双击结束！';setTimeout('chSm.innerHTML=\'\'',1500);" class="m_yc">多边形</span>
-    <span onclick="draw(BMAP_DRAWING_RECTANGLE);chSm.innerHTML='按下鼠标后，拖动！';setTimeout('chSm.innerHTML=\'\'',1500);" class="m_yc">矩形</span>
-    <span onclick="cehui();map.clearOverlays();//清除覆盖物">清除</span>
-    <span onclick="HCxyz();HCch();location.href='/ditu/?id=20716';"><em>换</em>测量工具<em>1</em></span>
-  </span>
-</div> 
-<div id="chSm" style="z-index:9999;position:absolute;color:red;background:#ffffff;font-size:13px;padding-left:3px;display:inline-block;"></div>
-        <script>var xjmuA="昆山市,";</script>
-        <script src="/ditu/baidu-V3/hx.js?V2.2"></script>
-      <script>if (LLQw>999){Xiayi=23;}</script>
-      <script src="/ditu/baidu-V3/BDapi.js?V2.2"></script>
-  <script>
-    DTheight();
-    try{
-      LoadMap(120.95633928,31.38012497,9);
-      if (document.getElementById('JZsm')) {JZsm.innerHTML='';}
-    }catch(err){
-      if (document.documentMode) {
-        JZsm.innerHTML='<em>对不起，<br>此地图已不支持古老的IE浏览器。<br>请使用QQ、搜狗、360或Chrome等现代浏览器，才能打开此地图。</em>';
-      }else {
-        JZsm.innerHTML='<em>地图加载出错。</em><br>请点击：<span class="Lj" onclick="Ht.click();">更换卫星图</span><br>或者：<a href="javascript:location.reload()">点击刷新</a>，重新加载。';
-      }
-    }
-  </script>
-  
-  <script src="/03gg/g-dt.js?V2.2"></script>
-  <p style="margin:10px 0;"><b>使用方法</b>：可用<span class="m_yc">鼠标</span><span class="p_yc">手指</span>拖移地图，用<span class="m_yc">鼠标滚轮</span><span class="p_yc"><em>两个手指拨拉</em></span>放大、缩小地图，点击地图获取经纬度。</p>
-  <p>当前页是：中国江苏省苏州市昆山市地图全图，高清大图，可用鼠标放大图片；八九网，提供最新的昆山地图全图大图，可缩放，可查看各省市区县分布图、分区图和高清版地图全景全貌。</p>
-  <h2 style="margin-left:28px;">昆山市地图全图</h2>
-  <p>八九网的以上地图会定期、自动更新，欢迎您随时回访。个别地方可能会受到云雾遮挡的影响，但不久后会自动更新并消除影响。</p>
-</div>
-<div class="m_yc dh" style="z-index:9999;position:absolute;left:0;bottom:0;font-size:12px;color:#043396;line-height:100%;width:178px;background-image:url('/01img/mlbj.gif');">
-  &nbsp;&nbsp;&nbsp;<span onclick="location.href='/01img/'" class="Lj">报错</span>&nbsp;
-  
-<input id="cp1" onClick="
-   var nr=document.getElementById('cp1');
-   nr.value='昆山地图全图，高清版、可放大 https://bajiu.cn/ditu/?qt=2071';
-   nr.select(); 
-   document.execCommand('copy');
-   nr1=nr.value.replace(/ https/g, '\nhttps');
-   nr.value='复制网址';
-   nr.blur();
-   alert(nr1 +'\n\n复制成功！您可以粘贴使用了...');
-   dig('','','fz');" 
-style="width:58px;height:18px;vertical-align:0px;border:0;color:#043396;font-size:12px;background-image:url('/01img/mlbj.gif');cursor:pointer;" value="复制网址">   <span class="Lj" onclick="window.open('/ditu/?rid=71')">复制地图？</span>
-</div>
-
-  <div class="a5"><p>相关地图：<a href="/ditu/?id=2071">昆山市地图</a> <a href="/ditu/?wx=2071">昆山市卫星地图</a> <a href="/ditu/?dz=2071">昆山市电子地图</a> <a href="/ditu/?sw=2071">昆山市三维地图</a> <a href="/ditu/?dx=2071">昆山市地形图</a> <a href="/ditu/?qh=2071">昆山市行政区划图</a> <a href="/ditu/?jj=2071">昆山街景地图</a> 
-  </p></div>  </main><div class="both"></div>
-  <footer>
-    <div class="dh">
-      八九网　bajiu.cn　<span onclick="location.href='/01img/'" class="Lj">联系我们　报错、提意见、提建议</span><br>
-      Copyright © 2006-2022　重庆大河网络技术有限公司　All Rights Reserved　
-      <span class="Lj" onclick="window.open('https://beian.miit.gov.cn/')" rel="nofollow">渝ICP备09004988号-12</span><br>
-      <span class="Lj" onclick="window.open('http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=50010102000199')" rel="nofollow">渝公网安备50010102000199号</span> 
-    </div>
-  </footer>
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="applicable-device" content="pc,mobile">
+  <title>昆山地图全图 - 高清版、可放大 - 八九网</title>
+  <meta name="description" content="中国江苏省苏州市昆山市地图全图，高清大图，可用鼠标放大图片；八九网，提供最新的昆山地图全图大图，可缩放，可查看各省市区县分布图、分区图和高清版地图全景全貌。">
+  <link rel="shortcut icon" href="/01img/bajiu.ico">
+  <style>
+/*shared*/
+*{margin:0;padding:0;}
+body{line-height:180%;background:#C0C0C0;}
+header,nav,main,article,section,aside,footer{display: block;}
+header{text-align:left;background:#FFFFFF;}
+nav{background-image:url('/01img/mlbj.gif');}
+main{text-align:left;background:#FFFFFF;padding:0 3px 10px 5px;}
+footer{text-align:center;background:#FFFFFF;border-top:1px solid #C0C0C0;padding-top:20px;font-size:13px;}
+
+  footer ~ *{opacity:0;display:none;}
+img{border:0;vertical-align:middle;}
+textarea{overflow:auto;resize:none;}
+select,input[type="submit"]{cursor:pointer;}
+select,input{padding:1px;height:24px;vertical-align:middle;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+hr{border:0;border-top:1px dotted #C0C0C0;}
+h1,h2,h4{display:inline;}
+em{font-style:normal;color:red;}
+a:link,.dh a:visited{color:#043396;text-decoration:none;}
+a:visited{color:#808080;text-decoration:none;}
+a:hover,.dh a:hover{color:#FF0000;text-decoration: underline;}
+a:active,.dh a:active{color:#CC0000;text-decoration:none;}
+.a5 a{margin-right:5px;}
+.a8 a{margin-right:8px;}
+.pg{border:1px solid #C0C0C0;margin-right:4px;padding:3px 8px;color:rgb(8,115,192);background-image:url('/01img/mlbj.gif');}.pg0{background:#FFFFFF;color:black;}
+.both{clear:both;height:auto;}
+.left{text-align:left;}
+.center{text-align:center;}
+.right{text-align:right;}
+.stat{display:none;}
+.bhh,.bhha a{white-space:nowrap;}
+.img_xy img{max-width:100%;margin:3px 5px 0 0;border:1px solid #F2F2F2;}
+.Lj{cursor:pointer;color:#043396;}
+/*■■bajiu■■*/
+body{font-family:arial,宋体;}
+nav{border-bottom:1px solid #a8a8a8;}
+main{background:#FFFFFF;}
+p{text-indent:2em;}
+ul{padding-left:18px;}li{list-style-type:circle;}.vote{list-style-type:disc;}
+h1,h2{font-size:20px;}
+.tit{padding:5px;font-weight:700;font-size:22px;background-image:url('/01img/bj.jpg');display:inline-block;cursor:pointer;border-radius:3px;}
+.fd{border-top:1px dotted #C0C0C0;padding-top:8px;}
+main{padding:0}#AL{z-index:9999;position:absolute;}#AL span,.al span{padding:2px;background:#FFFFFF;font-size:13px;color:#043396;cursor:pointer;border:1px solid #D4D4D4;}
+/*pc*/
+@media screen and (min-width:1000px){
+  
+ .p_yc{display:none;}
+ body{background:#FFFFFF;width:100%;font-size:16px;}header{float:left;}nav{width:175px;padding:5px 0 3px 3px;font-size:14px;line-height:150%;border-top:1px solid #e0e0e0;}#zimu{width:171px;padding:5px 0 0 7px;line-height:180%;height:calc(100% - 150px);overflow-y:auto;}html,body,header{height:100%}/*加滚动条*/main{float:left;width:calc(100% - 339px);text-align:left;}#AL{top:4px;left:178px;}#Qp{margin-top:33px;}
+}
+/*mobile*/
+@media screen and (max-width:999px){
+ body{width:100%;font-size:18px;}
+ 
+   nav{font-size:13px;padding:2px 0;line-height:100%;border:0;}
+   
+ .m_yc{display:none;}
+ .id_rt{border-top:1px dotted #C0C0C0;padding-top:5px;margin-top:15px;}
+ .img_xy img{display:block;}
+ #zimu{margin-left:5px;}#AL span{white-space:nowrap;padding:0;margin-left:-2px;}
+}
+/*print*/
+@media print{aside,footer,.banner{display:none;}}
+</style>
+<script>
+  
+  var url=window.location.href;
+  var LLQw = window.innerWidth || document.documentElement.clientWidth; 
+  var LLQh = window.innerHeight || document.documentElement.clientHeight;
+  if (LLQw<100){
+    LLQw = window.screen.width; 
+    LLQh = window.screen.height - 110; 
+  }
+  
+  function dig(id,a,b){
+    if (document.getElementById("dig" + id)) {
+      var digId = document.getElementById("dig" + id);
+      var digN = digId.innerHTML;
+      if (!isNaN(digN)){
+        digN = Number(digN) + 1
+        digId.innerHTML = "<span style='color:red;'> " + digN + "</span>";
+      }else{
+        digId.innerHTML = "<span style='color:red;'>Thank you!</span>";
+      }
+    }
+    var url = "/02ad/dig-ajax.asp?id=" + id + "&a=" + a + "&b=" + b;
+    Ajax(url);
+  }
+  
+  function load(url,divID){
+    var load = document.getElementById(divID);
+    load.innerHTML = '<div style="padding-left:30px;"><img src="/01img/loading.gif"></div>';
+    var nr = Ajax(url);
+    nr.onreadystatechange = function(){
+      if(nr.readyState == 4){
+        if(nr.status == 200){
+          load.innerHTML = unescape(nr.responseText);
+        }else{load.innerHTML = "Err:" + nr.status;}
+      }
+    }
+  }    
+  
+  function Ajax(url){
+    var XMLHttp = new XMLHttpRequest();
+    XMLHttp.open("GET",url,true);
+    XMLHttp.send(null);
+    return XMLHttp;
+  }
+  
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?96a249b3cd27c6a66997f41abfe0a2f1";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+</head>
+<body>
+ <header><script src="/03gg/g-dt.js?V2.2"></script>
+<div class="m_yc"><img src="/files/2013/20130430144969486948.png" alt="八九网" onclick="location.href='/'" style="width:100px;height:45px;margin:26px 0 22px 25px;cursor:pointer;"></div>
+<nav class="dh a5 left bhha">
+  <img class="p_yc" src="/files/2013/20130430144969486948.png" alt="八九网" onclick="location.href='/'" style="width:76px;height:34px;margin-left:2px;vertical-align:-8px;border-radius:3px;">
+  <a href="/">首页</a>&gt;
+  <a href="/ditu/">地图</a>&gt; <span class="m_yc"><a href="/ditu/?qt=2">中国</a>&gt; </span><a href="/ditu/?qt=18">江苏省</a>&gt; <a href="/ditu/?qt=260">苏州市</a>&gt; <span class="p_yc" onClick="if (zimu.style.display=='block'){zimu.style.display='none';}else{zimu.style.display='block';AL.style.display='none';}">昆山市 <img src="/ditu/img/menu.png" style="vertical-align:-2px;width:15px;height:13px;"></span>
+</nav>
+<div style="font-size:14px;" id="zimu" class="m_yc dh a5 bhha">
+  <div><b>昆山地图全图</b></div>
+  <div></div>
+  <div></div>
+  <div><b>邻居</b>：<br><span style="padding-right:5px;color:#C0C0C0;background-color: #FFFFFF;" class="bhh">昆山市</span> <a href="/ditu/?qt=2072">吴中区</a> <a href="/ditu/?qt=2073">相城区</a> <a href="/ditu/?qt=2074">常熟市</a> <a href="/ditu/?qt=2075">吴江区</a> <a href="/ditu/?qt=2076">张家港市</a> <a href="/ditu/?qt=2077">太仓市</a> <a href="/ditu/?qt=2078">虎丘区</a> <a href="/ditu/?qt=20505">姑苏区</a> </div>
+</div>
+ </header>
+ <main>
+<div id="Qp">
+  
+  <div id="zkAL" onClick="ALzk();" style="z-index:9999;position:absolute;color:red;display:none;margin:8px 0 0 3px;background:#FFFFFF;cursor:pointer;padding:1px 6px;line-height:100%;"> > </div>
+  <img id="zxd" src="/ditu/img/zxd.gif" onclick="this.style.display='none';" style="z-index:9999;position:absolute;cursor:pointer;">
+  <div id="Map_canvas" style="width:100%;height:180px;line-height:100%;">
+    <div style="padding:60px 0 50px 10px;background-color:#CCCCCC;font-size:14px;line-height:180%;">
+       <h1>昆山地图全图，高清版、可放大</h1>
+       <div id="JZsm">
+         正在加载，请稍候......<img src="/01img/loading.gif">
+         <br>若长时间不能加载，请点击：<span class="Lj" onclick="Ht.click();">更换卫星图</span>。
+         <br>或者：<a href="javascript:location.reload()">点击刷新</a>，重新加载。
+       </div>
+    </div>
+  </div>
+  <div id="jwd" class="m_yc" style="z-index:9999;position:absolute;bottom:0;right:165px;line-height:140%;font-size:13px;padding:0 2px;background:#FFFFFF;">
+    
+      <span class="dh Lj" onclick="location.href='/ditu/?rid=1011'">大地经纬度</span>：<span id="Jwd">120.95633928，31.38012497</span>
+  </div>
+  
+  <div id="AL">
+    <div style="float:left;">
+      
+  <span onclick="HCxyz();location.href='/ditu/?chaxun';"><img src="/ditu/img/search.gif" style="width:17px;height:15px;vertical-align:-2px;">搜</span>
+  
+  <div style="display:inline;">
+    <span id="T0" onclick="dtch(0);">卫星</span><span id="Ht" style="margin-left:-1px;border-left:1px solid #808080;"
+      
+        onclick="HCxyz();HCrqs('qt=2071');location.href='/ditu/?id=20522'"
+        >换图</span>
+      <span id="T1" onclick="dtch(1);">照片</span>
+  </div>
+  <span id="T2" onclick="dtch(2);" >地图</span>
+  
+    <span id="qhsm" onclick="hx();"></span>
+  <span onclick="HCxyz();HCrqs('qt=2071');location.href='/ditu/?dx=1'">地形</span>
+  <span class="m_yc" onclick="HCxyz();HCrqs('qt=2071');location.href='/ditu/?jj=1'">街景</span>
+  <span id="T6" onclick="cehui();CHbj();">测量</span>
+  
+<span id="q" onclick="dtqp();">全屏</span>
+<span id="T5" onclick="DTyc();" style="padding-left:4px;padding-right:4px;">︽</span>
+<span id="ycAL" class="p_yc" onclick="ALyc();" style="padding-left:6px;padding-right:6px;"><</span>
+    </div>
+    <div id="pG1" class="m_yc" style="float:left;margin-left:40px;padding-top:4px;">
+      <script src="/03gg/g-dt.js?V2.2"></script>
+    </div>
+    <div class="both"></div>
+  </div> 
+  <script src="/03gg/g-dt.js?V2.2"></script>
+  <script src="/ditu/img/function.js?V2.2"></script>
+  
+<div id="Tool" class="al" style="display:none;z-index:9999;position:absolute;"> 
+  <span id="chA">正在加载测绘工具......</span>
+  <span id="chB" style="display:none;background:transparent;border:0;">
+    <span onclick="measureJuli(this);chSm.innerHTML='单击开始，双击结束！';setTimeout('chSm.innerHTML=\'\'',1500);">距离</span>
+    <span onclick="measureArea(this);chSm.innerHTML='单击开始，双击结束！';setTimeout('chSm.innerHTML=\'\'',1500);">面积</span>
+    
+    <span onclick="draw(BMAP_DRAWING_POLYLINE);chSm.innerHTML='单击开始，双击结束！';setTimeout('chSm.innerHTML=\'\'',1500);">画线</span>
+    <span onclick="draw(BMAP_DRAWING_MARKER);chSm.innerHTML='请到目标位上点击！';setTimeout('chSm.innerHTML=\'\'',1500);">&nbsp;点&nbsp;</span>
+    <span onclick="draw(BMAP_DRAWING_CIRCLE);chSm.innerHTML='按下鼠标后，拖动！';setTimeout('chSm.innerHTML=\'\'',1500);" class="m_yc">&nbsp;圆&nbsp;</span>
+    <span onclick="draw(BMAP_DRAWING_POLYGON);chSm.innerHTML='单击开始，双击结束！';setTimeout('chSm.innerHTML=\'\'',1500);" class="m_yc">多边形</span>
+    <span onclick="draw(BMAP_DRAWING_RECTANGLE);chSm.innerHTML='按下鼠标后，拖动！';setTimeout('chSm.innerHTML=\'\'',1500);" class="m_yc">矩形</span>
+    <span onclick="cehui();map.clearOverlays();//清除覆盖物">清除</span>
+    <span onclick="HCxyz();HCch();location.href='/ditu/?id=20716';"><em>换</em>测量工具<em>1</em></span>
+  </span>
+</div> 
+<div id="chSm" style="z-index:9999;position:absolute;color:red;background:#ffffff;font-size:13px;padding-left:3px;display:inline-block;"></div>
+        <script>var xjmuA="昆山市,";</script>
+        <script src="/ditu/baidu-V3/hx.js?V2.2"></script>
+      <script>if (LLQw>999){Xiayi=23;}</script>
+      <script src="/ditu/baidu-V3/BDapi.js?V2.2"></script>
+  <script>
+    DTheight();
+    try{
+      LoadMap(120.95633928,31.38012497,9);
+      if (document.getElementById('JZsm')) {JZsm.innerHTML='';}
+    }catch(err){
+      if (document.documentMode) {
+        JZsm.innerHTML='<em>对不起，<br>此地图已不支持古老的IE浏览器。<br>请使用QQ、搜狗、360或Chrome等现代浏览器，才能打开此地图。</em>';
+      }else {
+        JZsm.innerHTML='<em>地图加载出错。</em><br>请点击：<span class="Lj" onclick="Ht.click();">更换卫星图</span><br>或者：<a href="javascript:location.reload()">点击刷新</a>，重新加载。';
+      }
+    }
+  </script>
+  
+  <script src="/03gg/g-dt.js?V2.2"></script>
+  <p style="margin:10px 0;"><b>使用方法</b>：可用<span class="m_yc">鼠标</span><span class="p_yc">手指</span>拖移地图，用<span class="m_yc">鼠标滚轮</span><span class="p_yc"><em>两个手指拨拉</em></span>放大、缩小地图，点击地图获取经纬度。</p>
+  <p>当前页是：中国江苏省苏州市昆山市地图全图，高清大图，可用鼠标放大图片；八九网，提供最新的昆山地图全图大图，可缩放，可查看各省市区县分布图、分区图和高清版地图全景全貌。</p>
+  <h2 style="margin-left:28px;">昆山市地图全图</h2>
+  <p>八九网的以上地图会定期、自动更新，欢迎您随时回访。个别地方可能会受到云雾遮挡的影响，但不久后会自动更新并消除影响。</p>
+</div>
+<div class="m_yc dh" style="z-index:9999;position:absolute;left:0;bottom:0;font-size:12px;color:#043396;line-height:100%;width:178px;background-image:url('/01img/mlbj.gif');">
+  &nbsp;&nbsp;&nbsp;<span onclick="location.href='/01img/'" class="Lj">报错</span>&nbsp;
+  
+<input id="cp1" onClick="
+   var nr=document.getElementById('cp1');
+   nr.value='昆山地图全图，高清版、可放大 https://bajiu.cn/ditu/?qt=2071';
+   nr.select(); 
+   document.execCommand('copy');
+   nr1=nr.value.replace(/ https/g, '\nhttps');
+   nr.value='复制网址';
+   nr.blur();
+   alert(nr1 +'\n\n复制成功！您可以粘贴使用了...');
+   dig('','','fz');" 
+style="width:58px;height:18px;vertical-align:0px;border:0;color:#043396;font-size:12px;background-image:url('/01img/mlbj.gif');cursor:pointer;" value="复制网址">   <span class="Lj" onclick="window.open('/ditu/?rid=71')">复制地图？</span>
+</div>
+
+  <div class="a5"><p>相关地图：<a href="/ditu/?id=2071">昆山市地图</a> <a href="/ditu/?wx=2071">昆山市卫星地图</a> <a href="/ditu/?dz=2071">昆山市电子地图</a> <a href="/ditu/?sw=2071">昆山市三维地图</a> <a href="/ditu/?dx=2071">昆山市地形图</a> <a href="/ditu/?qh=2071">昆山市行政区划图</a> <a href="/ditu/?jj=2071">昆山街景地图</a> 
+  </p></div>  </main><div class="both"></div>
+  <footer>
+    <div class="dh">
+      八九网　bajiu.cn　<span onclick="location.href='/01img/'" class="Lj">联系我们　报错、提意见、提建议</span><br>
+      Copyright © 2006-2022　重庆大河网络技术有限公司　All Rights Reserved　
+      <span class="Lj" onclick="window.open('https://beian.miit.gov.cn/')" rel="nofollow">渝ICP备09004988号-12</span><br>
+      <span class="Lj" onclick="window.open('http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=50010102000199')" rel="nofollow">渝公网安备50010102000199号</span> 
+    </div>
+  </footer>
+</body>
+</html>

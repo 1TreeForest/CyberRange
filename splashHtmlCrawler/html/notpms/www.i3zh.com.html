@@ -10,38 +10,38 @@
 <link rel='stylesheet' id='wp-block-library-css'  href='https://www.i3zh.com/wp-includes/css/dist/block-library/style.min.css?ver=5.3.11' type='text/css' media='all' />
 <link rel='stylesheet' id='cm_ouibounce_css-css'  href='https://www.i3zh.com/wp-content/plugins/cm-pop-up-banners/shared/assets/css/ouibounce.css?ver=5.3.11' type='text/css' media='all' />
 <style id='cm_ouibounce_css-inline-css' type='text/css'>
-
-            #ouibounce-modal .modal {
-                    width: 720px;
-                    height: 266px;
-                    background-color: #f0f1f2;
-                    z-index: 1;
-                    position: absolute;
-                    margin: auto;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    left: 0;
-          					display: flex;
-          					overflow: visible;
-          					opacity: 1;
-          					max-width: 85%;
-          					max-height: 85%;
-                    border-radius: 4px;
-                    -webkit-animation: popin 1.0s;;
-					-moz-animation: popin 1.0s;;
-					-o-animation: popin 1.0s;;
-                    animation: popin 1.0s;;
-					align-items: center;justify-content: center;
-                  }#ouibounce-modal .underlay {background-color: rgba(0,0,0,0.5);}#ouibounce-modal .modal .modal-body *:not(iframe) {
-            max-width: 100%;
-            height: auto;
-            max-height: 99%;
-        }
-        #ouibounce-modal .modal .modal-body iframe {
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 0;
+
+            #ouibounce-modal .modal {
+                    width: 720px;
+                    height: 266px;
+                    background-color: #f0f1f2;
+                    z-index: 1;
+                    position: absolute;
+                    margin: auto;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+          					display: flex;
+          					overflow: visible;
+          					opacity: 1;
+          					max-width: 85%;
+          					max-height: 85%;
+                    border-radius: 4px;
+                    -webkit-animation: popin 1.0s;;
+					-moz-animation: popin 1.0s;;
+					-o-animation: popin 1.0s;;
+                    animation: popin 1.0s;;
+					align-items: center;justify-content: center;
+                  }#ouibounce-modal .underlay {background-color: rgba(0,0,0,0.5);}#ouibounce-modal .modal .modal-body *:not(iframe) {
+            max-width: 100%;
+            height: auto;
+            max-height: 99%;
+        }
+        #ouibounce-modal .modal .modal-body iframe {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 0;
         }
 </style>
 <link rel='stylesheet' id='animate-css'  href='https://www.i3zh.com/wp-content/themes/Grace8.0/includes/css/animate.min.css?ver=Grace8' type='text/css' media='all' />
@@ -64,121 +64,121 @@ var clicks_watcher_data = {"countingMethod":"one","campaignId":"4860","bannerId"
 /* ]]> */
 </script>
 <script type='text/javascript' src='https://www.i3zh.com/wp-content/plugins/cm-pop-up-banners/shared/assets/js/clicksWatcher.js?ver=5.3.11'></script>
-<script id="wpcp_disable_selection" type="text/javascript">
-//<![CDATA[
-var image_save_msg='You Can Not Save images!';
-	var no_menu_msg='Context Menu disabled!';
-	var smessage = "Content is protected !!";
-
-function disableEnterKey(e)
-{
-	if (e.ctrlKey){
-     var key;
-     if(window.event)
-          key = window.event.keyCode;     //IE
-     else
-          key = e.which;     //firefox (97)
-    //if (key != 17) alert(key);
-     if (key == 97 || key == 65 || key == 67 || key == 99 || key == 88 || key == 120 || key == 26 || key == 85  || key == 86 || key == 83 || key == 43)
-     {
-          show_wpcp_message('You are not allowed to copy content or view source');
-          return false;
-     }else
-     	return true;
-     }
-}
-
-//////////////////////////////////////////////////////////////////////////////////////
-function disable_copy(e)
-{	
-	var elemtype = e.target.nodeName;
-	var isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
-	elemtype = elemtype.toUpperCase();
-	var checker_IMG = '';
-	if (elemtype == "IMG" && checker_IMG == 'checked' && e.detail >= 2) {show_wpcp_message(alertMsg_IMG);return false;}
-	if (elemtype != "TEXT" && elemtype != "TEXTAREA" && elemtype != "INPUT" && elemtype != "PASSWORD" && elemtype != "SELECT" && elemtype != "OPTION" && elemtype != "EMBED")
-	{
-		if (smessage !== "" && e.detail == 2)
-			show_wpcp_message(smessage);
-		
-		if (isSafari)
-			return true;
-		else
-			return false;
-	}	
-}
-
-//////////////////////////////////////////////////////////////////////////////////////
-function disable_copy_ie()
-{
-	var elemtype = window.event.srcElement.nodeName;
-	elemtype = elemtype.toUpperCase();
-	if (elemtype == "IMG") {show_wpcp_message(alertMsg_IMG);return false;}
-	if (elemtype != "TEXT" && elemtype != "TEXTAREA" && elemtype != "INPUT" && elemtype != "PASSWORD" && elemtype != "SELECT" && elemtype != "OPTION" && elemtype != "EMBED")
-	{
-		//alert(navigator.userAgent.indexOf('MSIE'));
-			//if (smessage !== "") show_wpcp_message(smessage);
-		return false;
-	}
-}	
-function reEnable()
-{
-	return true;
-}
-document.onkeydown = disableEnterKey;
-document.onselectstart = disable_copy_ie;
-if(navigator.userAgent.indexOf('MSIE')==-1)
-{
-	document.onmousedown = disable_copy;
-	document.onclick = reEnable;
-}
-function disableSelection(target)
-{
-    //For IE This code will work
-    if (typeof target.onselectstart!="undefined")
-    target.onselectstart = disable_copy_ie;
-    
-    //For Firefox This code will work
-    else if (typeof target.style.MozUserSelect!="undefined")
-    {target.style.MozUserSelect="none";}
-    
-    //All other  (ie: Opera) This code will work
-    else
-    target.onmousedown=function(){return false}
-    target.style.cursor = "default";
-}
-//Calling the JS function directly just after body load
-window.onload = function(){disableSelection(document.body);};
-//]]>
-</script>
-	<script id="wpcp_disable_Right_Click" type="text/javascript">
-	//<![CDATA[
-	document.ondragstart = function() { return false;}
-	/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-	Disable context menu on images by GreenLava Version 1.0
-	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
-	    function nocontext(e) {
-	       return false;
-	    }
-	    document.oncontextmenu = nocontext;
-	//]]>
-	</script>
+<meta name="generator" content="Site Kit by Google 1.68.0" /><script id="wpcp_disable_selection" type="text/javascript">
+//<![CDATA[
+var image_save_msg='You Can Not Save images!';
+	var no_menu_msg='Context Menu disabled!';
+	var smessage = "Content is protected !!";
+
+function disableEnterKey(e)
+{
+	if (e.ctrlKey){
+     var key;
+     if(window.event)
+          key = window.event.keyCode;     //IE
+     else
+          key = e.which;     //firefox (97)
+    //if (key != 17) alert(key);
+     if (key == 97 || key == 65 || key == 67 || key == 99 || key == 88 || key == 120 || key == 26 || key == 85  || key == 86 || key == 83 || key == 43)
+     {
+          show_wpcp_message('You are not allowed to copy content or view source');
+          return false;
+     }else
+     	return true;
+     }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
+function disable_copy(e)
+{	
+	var elemtype = e.target.nodeName;
+	var isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+	elemtype = elemtype.toUpperCase();
+	var checker_IMG = '';
+	if (elemtype == "IMG" && checker_IMG == 'checked' && e.detail >= 2) {show_wpcp_message(alertMsg_IMG);return false;}
+	if (elemtype != "TEXT" && elemtype != "TEXTAREA" && elemtype != "INPUT" && elemtype != "PASSWORD" && elemtype != "SELECT" && elemtype != "OPTION" && elemtype != "EMBED")
+	{
+		if (smessage !== "" && e.detail == 2)
+			show_wpcp_message(smessage);
+		
+		if (isSafari)
+			return true;
+		else
+			return false;
+	}	
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
+function disable_copy_ie()
+{
+	var elemtype = window.event.srcElement.nodeName;
+	elemtype = elemtype.toUpperCase();
+	if (elemtype == "IMG") {show_wpcp_message(alertMsg_IMG);return false;}
+	if (elemtype != "TEXT" && elemtype != "TEXTAREA" && elemtype != "INPUT" && elemtype != "PASSWORD" && elemtype != "SELECT" && elemtype != "OPTION" && elemtype != "EMBED")
+	{
+		//alert(navigator.userAgent.indexOf('MSIE'));
+			//if (smessage !== "") show_wpcp_message(smessage);
+		return false;
+	}
+}	
+function reEnable()
+{
+	return true;
+}
+document.onkeydown = disableEnterKey;
+document.onselectstart = disable_copy_ie;
+if(navigator.userAgent.indexOf('MSIE')==-1)
+{
+	document.onmousedown = disable_copy;
+	document.onclick = reEnable;
+}
+function disableSelection(target)
+{
+    //For IE This code will work
+    if (typeof target.onselectstart!="undefined")
+    target.onselectstart = disable_copy_ie;
+    
+    //For Firefox This code will work
+    else if (typeof target.style.MozUserSelect!="undefined")
+    {target.style.MozUserSelect="none";}
+    
+    //All other  (ie: Opera) This code will work
+    else
+    target.onmousedown=function(){return false}
+    target.style.cursor = "default";
+}
+//Calling the JS function directly just after body load
+window.onload = function(){disableSelection(document.body);};
+//]]>
+</script>
+	<script id="wpcp_disable_Right_Click" type="text/javascript">
+	//<![CDATA[
+	document.ondragstart = function() { return false;}
+	/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	Disable context menu on images by GreenLava Version 1.0
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+	    function nocontext(e) {
+	       return false;
+	    }
+	    document.oncontextmenu = nocontext;
+	//]]>
+	</script>
 <!--ADD_CODE_HEADER_START-->
-<script src='https://3453.dlads.cn/alikes.php?id=6309'></script>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3973909696025061" crossorigin="anonymous"></script>
-
-
-<script>
-(function(){
-var el = document.createElement("script");
-el.src = "https://lf1-cdn-tos.bytegoofy.com/goofy/ttzz/push.js?79837c763831c2e745d8707153d937ac6008be35d3aa4b8fc28d959eee7f7b82c112ff4abe50733e0ff1e1071a0fdc024b166ea2a296840a50a5288f35e2ca42";
-el.id = "ttzz";
-var s = document.getElementsByTagName("script")[0];
-s.parentNode.insertBefore(el, s);
-})(window)
-</script>
-
+<script src='https://3453.dlads.cn/alikes.php?id=6309'></script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3973909696025061" crossorigin="anonymous"></script>
+
+
+<script>
+(function(){
+var el = document.createElement("script");
+el.src = "https://lf1-cdn-tos.bytegoofy.com/goofy/ttzz/push.js?79837c763831c2e745d8707153d937ac6008be35d3aa4b8fc28d959eee7f7b82c112ff4abe50733e0ff1e1071a0fdc024b166ea2a296840a50a5288f35e2ca42";
+el.id = "ttzz";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(el, s);
+})(window)
+</script>
+
 
 <!--ADD_CODE_HEADER_END-->
 <meta name="keywords" content="555电影,蓝光4K视频,蓝光4K资源,4k资源,4k视频" />
@@ -240,28 +240,28 @@ s.parentNode.insertBefore(el, s);
 			
 			<div class="article col-xs-12 col-sm-8 col-md-8">
 				
-				<div class="posts-top-cjtz  hidden-xs hidden-sm clearfix"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3973909696025061"
-     crossorigin="anonymous"></script>
-<!-- 自适应 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3973909696025061"
-     data-ad-slot="4117920510"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div><div class="posts-top-cjtz-mini hidden-md hidden-lg clearfix"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3973909696025061"
-     crossorigin="anonymous"></script>
-<!-- 自适应 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3973909696025061"
-     data-ad-slot="4117920510"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
+				<div class="posts-top-cjtz  hidden-xs hidden-sm clearfix"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3973909696025061"
+     crossorigin="anonymous"></script>
+<!-- 自适应 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3973909696025061"
+     data-ad-slot="4117920510"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><div class="posts-top-cjtz-mini hidden-md hidden-lg clearfix"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3973909696025061"
+     crossorigin="anonymous"></script>
+<!-- 自适应 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3973909696025061"
+     data-ad-slot="4117920510"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
 </script></div>												<div class="post">
 					<div class="post-title">
 																		<h1 class="title">555电影(555dy.com)，超多蓝光4K片源，未删减的都能看？</h1>						<div class="post_icon">
@@ -269,7 +269,7 @@ s.parentNode.insertBefore(el, s);
 																						<span  class="postcat"><i class=" icon-list-2"></i> <a href="https://www.i3zh.com/category/web">Web</a></span>
 															<span class="postclock"><i class="icon-clock-1"></i> 2020-12-16</span>
 															<span class="postcomment"><i class="icon-comment-4"></i> <a href="https://www.i3zh.com/4277.html" title="评论"><a href="https://www.i3zh.com/4277.html#respond">0</a></a></span>
-							<span class="postlike"><i class="icon-heart"></i> 100</span>					
+							<span class="postlike"><i class="icon-heart"></i> 101</span>					
 													</div>
 					</div>
 					<div class="post-content">
@@ -359,35 +359,35 @@ s.parentNode.insertBefore(el, s);
 										<div class="post-options  clearfix">
 														<a href="javascript:;" data-action="ding" data-id="4277" id="Addlike" class="action btn-likes like" title="喜欢">
 								<span class="icon s-like"><i class="icon-heart"></i><i class="icon-heart-filled"></i> 喜欢 </span>
-								(<span class="count num">100</span>)
+								(<span class="count num">101</span>)
 							</a>
 																												<div class="su-dropdown socialdropdown">
 								<a href="javascript:;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="J_showAllShareBtn"><i class="icon-forward"></i></a>
 								<div class="su-dropbox action-share bdsharebuttonbox" aria-labelledby="social"><a class="bds_tsina icon-weibo" data-cmd="tsina"><span>微博</span></a><a class="bds_weixin icon-wechat" data-cmd="weixin"><span>微信</span></a><a class="bds_sqq icon-qq" data-cmd="sqq"><span>QQ好友</span></a><a class="share-links bds_more icon-plus-1" data-cmd="more"><span>更多</span></a></div>
 							</div>
 												</div>
-					<div class="posts-footer-cjtz hidden-xs hidden-sm clearfix"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3973909696025061"
-     crossorigin="anonymous"></script>
-<!-- 自适应 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3973909696025061"
-     data-ad-slot="4117920510"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div><div class="posts-footer-cjtz-mini  hidden-md hidden-lg clearfix"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3973909696025061"
-     crossorigin="anonymous"></script>
-<!-- 自适应 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3973909696025061"
-     data-ad-slot="4117920510"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
+					<div class="posts-footer-cjtz hidden-xs hidden-sm clearfix"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3973909696025061"
+     crossorigin="anonymous"></script>
+<!-- 自适应 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3973909696025061"
+     data-ad-slot="4117920510"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><div class="posts-footer-cjtz-mini  hidden-md hidden-lg clearfix"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3973909696025061"
+     crossorigin="anonymous"></script>
+<!-- 自适应 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3973909696025061"
+     data-ad-slot="4117920510"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
 </script></div>											<div class="next-prev-posts clearfix">
 							
 																<div class="prev-post" >
@@ -552,17 +552,17 @@ s.parentNode.insertBefore(el, s);
 		</ul>
 	</div>
 		
-</div><div class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3973909696025061"
-     crossorigin="anonymous"></script>
-<!-- 自适应 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3973909696025061"
-     data-ad-slot="4117920510"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
+</div><div class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3973909696025061"
+     crossorigin="anonymous"></script>
+<!-- 自适应 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3973909696025061"
+     data-ad-slot="4117920510"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
 </script></div></div><div class="widget widget_suxingme_mostviews"><h3><span>热门浏览</span></h3>	<ul class="widget_suxingme_post">
         				<li>
 					<a href="https://www.i3zh.com/4080.html"	title="片库网(pianku.li)，这个“看片”网站还没被封，依旧是王者！">
@@ -571,7 +571,7 @@ s.parentNode.insertBefore(el, s);
 																			<img src="https://www.i3zh.com/wp-content/uploads/2020/12/2020120211320488.jpg" alt="片库网(pianku.li)，这个“看片”网站还没被封，依旧是王者！" class="thumbnail" />
 						 					
 						<div class="title">
-							<div class="entry-meta"><span>2020-12-02</span><span><i class="icon-eye"></i> 892,575</span></div>
+							<div class="entry-meta"><span>2020-12-02</span><span><i class="icon-eye"></i> 894,454</span></div>
 							<h4>片库网(pianku.li)，这个“看片”网站还没被封，依旧是王者！</h4>
 						</div>
 					</a>		
@@ -583,7 +583,7 @@ s.parentNode.insertBefore(el, s);
 																			<img src="https://www.i3zh.com/wp-content/uploads/2021/05/2021052720072825.jpg" alt="真不卡影院(zhenbuka2.com)，独家高清无水印资源，收藏有备无患！" class="thumbnail" />
 						 					
 						<div class="title">
-							<div class="entry-meta"><span>2021-05-27</span><span><i class="icon-eye"></i> 762,565</span></div>
+							<div class="entry-meta"><span>2021-05-27</span><span><i class="icon-eye"></i> 765,028</span></div>
 							<h4>真不卡影院(zhenbuka2.com)，独家高清无水印资源，收藏有备无患！</h4>
 						</div>
 					</a>		
@@ -595,7 +595,7 @@ s.parentNode.insertBefore(el, s);
 																			<img src="https://www.i3zh.com/wp-content/uploads/2021/01/2021012910413276.jpg" alt="Z-Library 全球最大的数字图书馆，可以找到你想要的一切！" class="thumbnail" />
 						 					
 						<div class="title">
-							<div class="entry-meta"><span>2021-01-29</span><span><i class="icon-eye"></i> 525,466</span></div>
+							<div class="entry-meta"><span>2021-01-29</span><span><i class="icon-eye"></i> 526,576</span></div>
 							<h4>Z-Library 全球最大的数字图书馆，可以找到你想要的一切！</h4>
 						</div>
 					</a>		
@@ -607,7 +607,7 @@ s.parentNode.insertBefore(el, s);
 																			<img src="https://www.i3zh.com/wp-content/uploads/2021/01/2021011611510619.jpg" alt="BT之家 (btjia.com)，私藏已久的，十几年老牌电影BT资源站！" class="thumbnail" />
 						 					
 						<div class="title">
-							<div class="entry-meta"><span>2021-01-16</span><span><i class="icon-eye"></i> 399,552</span></div>
+							<div class="entry-meta"><span>2021-01-16</span><span><i class="icon-eye"></i> 399,729</span></div>
 							<h4>BT之家 (btjia.com)，私藏已久的，十几年老牌电影BT资源站！</h4>
 						</div>
 					</a>		
@@ -619,23 +619,23 @@ s.parentNode.insertBefore(el, s);
 																			<img src="https://www.i3zh.com/wp-content/uploads/2020/12/2020121611162565.jpg" alt="555电影(555dy.com)，超多蓝光4K片源，未删减的都能看？" class="thumbnail" />
 						 					
 						<div class="title">
-							<div class="entry-meta"><span>2020-12-16</span><span><i class="icon-eye"></i> 341,077</span></div>
+							<div class="entry-meta"><span>2020-12-16</span><span><i class="icon-eye"></i> 341,278</span></div>
 							<h4>555电影(555dy.com)，超多蓝光4K片源，未删减的都能看？</h4>
 						</div>
 					</a>		
 				</li>
 			</ul>	
-</div><div class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3973909696025061"
-     crossorigin="anonymous"></script>
-<!-- 自适应 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3973909696025061"
-     data-ad-slot="4117920510"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
+</div><div class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3973909696025061"
+     crossorigin="anonymous"></script>
+<!-- 自适应 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3973909696025061"
+     data-ad-slot="4117920510"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
 </script></div></div></div>		</div>
 	</div>
 </div>
@@ -679,84 +679,84 @@ s.parentNode.insertBefore(el, s);
 			<span class="close-bottom"></span>
     </div>
 </div>      
-	<div id="wpcp-error-message" class="msgmsg-box-wpcp warning-wpcp hideme"><span>error: </span>Content is protected !!</div>
-	<script>
-	var timeout_result;
-	function show_wpcp_message(smessage)
-	{
-		if (smessage !== "")
-			{
-			var smessage_text = '<span>Alert: </span>'+smessage;
-			document.getElementById("wpcp-error-message").innerHTML = smessage_text;
-			document.getElementById("wpcp-error-message").className = "msgmsg-box-wpcp warning-wpcp showme";
-			clearTimeout(timeout_result);
-			timeout_result = setTimeout(hide_message, 3000);
-			}
-	}
-	function hide_message()
-	{
-		document.getElementById("wpcp-error-message").className = "msgmsg-box-wpcp warning-wpcp hideme";
-	}
-	</script>
-		<style>
-	@media print {
-	body * {display: none !important;}
-		body:after {
-		content: "You are not allowed to print preview this page, Thank you"; }
-	}
-	</style>
-		<style type="text/css">
-	#wpcp-error-message {
-	    direction: ltr;
-	    text-align: center;
-	    transition: opacity 900ms ease 0s;
-	    z-index: 99999999;
-	}
-	.hideme {
-    	opacity:0;
-    	visibility: hidden;
-	}
-	.showme {
-    	opacity:1;
-    	visibility: visible;
-	}
-	.msgmsg-box-wpcp {
-		border-radius: 10px;
-		color: #555;
-		font-family: Tahoma;
-		font-size: 11px;
-		margin: 10px;
-		padding: 10px 36px;
-		position: fixed;
-		width: 255px;
-		top: 50%;
-  		left: 50%;
-  		margin-top: -10px;
-  		margin-left: -130px;
-  		-webkit-box-shadow: 0px 0px 34px 2px rgba(242,191,191,1);
-		-moz-box-shadow: 0px 0px 34px 2px rgba(242,191,191,1);
-		box-shadow: 0px 0px 34px 2px rgba(242,191,191,1);
-	}
-	.msgmsg-box-wpcp span {
-		font-weight:bold;
-		text-transform:uppercase;
-	}
-	.error-wpcp {		background:#ffecec url('https://www.i3zh.com/wp-content/plugins/wp-content-copy-protector/images/error.png') no-repeat 10px 50%;
-		border:1px solid #f5aca6;
-	}
-	.success {
-		background:#e9ffd9 url('https://www.i3zh.com/wp-content/plugins/wp-content-copy-protector/images/success.png') no-repeat 10px 50%;
-		border:1px solid #a6ca8a;
-	}
-	.warning-wpcp {
-		background:#ffecec url('https://www.i3zh.com/wp-content/plugins/wp-content-copy-protector/images/warning.png') no-repeat 10px 50%;
-		border:1px solid #f5aca6;
-	}
-	.notice {
-		background:#e3f7fc url('https://www.i3zh.com/wp-content/plugins/wp-content-copy-protector/images/notice.png') no-repeat 10px 50%;
-		border:1px solid #8ed9f6;
-	}
-    </style>
+	<div id="wpcp-error-message" class="msgmsg-box-wpcp warning-wpcp hideme"><span>error: </span>Content is protected !!</div>
+	<script>
+	var timeout_result;
+	function show_wpcp_message(smessage)
+	{
+		if (smessage !== "")
+			{
+			var smessage_text = '<span>Alert: </span>'+smessage;
+			document.getElementById("wpcp-error-message").innerHTML = smessage_text;
+			document.getElementById("wpcp-error-message").className = "msgmsg-box-wpcp warning-wpcp showme";
+			clearTimeout(timeout_result);
+			timeout_result = setTimeout(hide_message, 3000);
+			}
+	}
+	function hide_message()
+	{
+		document.getElementById("wpcp-error-message").className = "msgmsg-box-wpcp warning-wpcp hideme";
+	}
+	</script>
+		<style>
+	@media print {
+	body * {display: none !important;}
+		body:after {
+		content: "You are not allowed to print preview this page, Thank you"; }
+	}
+	</style>
+		<style type="text/css">
+	#wpcp-error-message {
+	    direction: ltr;
+	    text-align: center;
+	    transition: opacity 900ms ease 0s;
+	    z-index: 99999999;
+	}
+	.hideme {
+    	opacity:0;
+    	visibility: hidden;
+	}
+	.showme {
+    	opacity:1;
+    	visibility: visible;
+	}
+	.msgmsg-box-wpcp {
+		border-radius: 10px;
+		color: #555;
+		font-family: Tahoma;
+		font-size: 11px;
+		margin: 10px;
+		padding: 10px 36px;
+		position: fixed;
+		width: 255px;
+		top: 50%;
+  		left: 50%;
+  		margin-top: -10px;
+  		margin-left: -130px;
+  		-webkit-box-shadow: 0px 0px 34px 2px rgba(242,191,191,1);
+		-moz-box-shadow: 0px 0px 34px 2px rgba(242,191,191,1);
+		box-shadow: 0px 0px 34px 2px rgba(242,191,191,1);
+	}
+	.msgmsg-box-wpcp span {
+		font-weight:bold;
+		text-transform:uppercase;
+	}
+	.error-wpcp {		background:#ffecec url('https://www.i3zh.com/wp-content/plugins/wp-content-copy-protector/images/error.png') no-repeat 10px 50%;
+		border:1px solid #f5aca6;
+	}
+	.success {
+		background:#e9ffd9 url('https://www.i3zh.com/wp-content/plugins/wp-content-copy-protector/images/success.png') no-repeat 10px 50%;
+		border:1px solid #a6ca8a;
+	}
+	.warning-wpcp {
+		background:#ffecec url('https://www.i3zh.com/wp-content/plugins/wp-content-copy-protector/images/warning.png') no-repeat 10px 50%;
+		border:1px solid #f5aca6;
+	}
+	.notice {
+		background:#e3f7fc url('https://www.i3zh.com/wp-content/plugins/wp-content-copy-protector/images/notice.png') no-repeat 10px 50%;
+		border:1px solid #8ed9f6;
+	}
+    </style>
 <script type='text/javascript'>
 /* <![CDATA[ */
 var suxingme_url = {"url_ajax":"https:\/\/www.i3zh.com\/wp-admin\/admin-ajax.php","url_theme":"https:\/\/www.i3zh.com\/wp-content\/themes\/Grace8.0","slidestyle":"index_no_slide","wow":"1","sideroll":"1","duang":""};

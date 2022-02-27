@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>�й�������ӰԺ�����а��а�--����������</title>
-<meta NAME="Keywords" CONTENT="��ӰԺ��,�������г���,��ӰԺ����,���ֵ�ӰԺ,3DӰԺ,3d��ӰԺ">
+<title>中国著名电影院线排行榜中榜--天天排行网</title>
+<meta NAME="Keywords" CONTENT="电影院线,娱乐休闲场所,电影院加盟,数字电影院,3D影院,3d电影院">
 <meta NAME="description" CONTENT="">
 <meta NAME="Identifier-URL" CONTENT="http://www.ttpaihang.com">
-<meta content="����������" name=author>
+<meta content="天天排行网" name=author>
 <link rel="stylesheet" href="/common/maincss.css"/>
 <style type="text/css">
 .title{ background-image: url(images/tou24.jpg); height:200px; background-repeat:no-repeat}
@@ -84,7 +84,7 @@ function getMousePosition(ev){
      }
 	 document.getElementById('moux').value=mx;
 	 document.getElementById('mouy').value =my;
-	 document.getElementById('mouz').value =0*mx+2*my+74;
+	 document.getElementById('mouz').value =1*mx+4*my+65;
 
 }
 //-->
@@ -101,12 +101,12 @@ function CheckMainForm(theForm){
 		 if (e.type == 'checkbox'&&e.checked ==true) checknum=checknum+1;
 	}
  	if((checknum<1)||(checknum>5))	{
-	  showToast('������ѡ1�������ѡ5��ѡ�');
+	  showToast('您最少选1个，最多选5个选项！');
 	  return false;
     }
 	
 	if(submitFlag){
-		showToast('ϵͳ���������ύ������Ҫһ��ʱ�䣬�벻Ҫ˫���ύ��ť������������ύ��');
+		showToast('系统处理您的提交数据需要一点时间，请不要双击提交按钮，或快速连续提交！');
 	  	return false;
 	}else submitFlag = true;
 	return true;
@@ -114,17 +114,17 @@ function CheckMainForm(theForm){
 
 function CheckForm(theForm){
 	if (theForm.choice.value.length<2){
-		showToast("����д��ѡ��Ŀ����!");
+		showToast("请填写候选条目名称!");
 		theForm.choice.focus();
 		return false;
 	}
 	if (theForm.intro.value.length<4){
-		showToast("����д��ѡ��Ŀ��������!");
+		showToast("请填写候选条目介绍文字!");
 		theForm.intro.focus();
 		return false;
 	}
 	if(submitFlag){
-		showToast('ϵͳ���������ύ������Ҫһ��ʱ�䣬�벻Ҫ˫���ύ��ť������������ύ��');
+		showToast('系统处理您的提交数据需要一点时间，请不要双击提交按钮，或快速连续提交！');
 	  	return false;
 	}else submitFlag = true;
 	return true;
@@ -137,7 +137,7 @@ function CheckForm(theForm){
 $(function(){
 		var inpBox=$("#inpBox");
 		var listBox=$("#listBox");
-		var tsTxt="���ٲ���ѡ��λ��";
+		var tsTxt="快速查找选项位置";
 		var txtVal=inpBox.val(tsTxt);
 		var txt="";
 		inpBox.on("focus",function(){
@@ -199,7 +199,7 @@ $(function(){
 						$.each(datVal,function(num){
 
 							   var ssVal=datVal[num]['choice'].slice(datVal[num]['choice'].indexOf(inpBox.val()),inpBox.val().length);
-							   listBox.append("<a href='/vote/rankdetail-"+datVal[num]['id']+".html' target='_blank'><li>"+datVal[num]['choice']+" -- ��<font color='red'>"+datVal[num]['pagepos']+"</font>��,�ڵ�<font color=red>"+datVal[num]['pageno']+"</font>ҳ</li></a>");
+							   listBox.append("<a href='/vote/rankdetail-"+datVal[num]['id']+".html' target='_blank'><li>"+datVal[num]['choice']+" -- 第<font color='red'>"+datVal[num]['pagepos']+"</font>名,在第<font color=red>"+datVal[num]['pageno']+"</font>页</li></a>");
 								var liList=listBox.find("li");
 								liList.each(function(ind){
 									$(this).on("click",function(){
@@ -282,8 +282,8 @@ $(function(){
 						$.each(datVal,function(num){
 
 							   var ssVal=datVal[num]['choice'].slice(datVal[num]['choice'].indexOf(postBox.val()),postBox.val().length);
-							 if(datVal[num]['priv']>0)  plsBox.append("<a href='/vote/rankdetail-"+datVal[num]['id']+".html' target='_blank'><li>"+datVal[num]['choice']+"(<font color=red>����¼</font>)</li></a>");
-							 else  plsBox.append("<li>"+datVal[num]['choice']+"(<font color=blue>�����</font>)</li>");
+							 if(datVal[num]['priv']>0)  plsBox.append("<a href='/vote/rankdetail-"+datVal[num]['id']+".html' target='_blank'><li>"+datVal[num]['choice']+"(<font color=red>已收录</font>)</li></a>");
+							 else  plsBox.append("<li>"+datVal[num]['choice']+"(<font color=blue>待审核</font>)</li>");
 
 								var liList=plsBox.find("li");
 								liList.each(function(ind){
@@ -308,7 +308,7 @@ $(function(){
 <body style="margin:0; padding:0">
 <div style=" text-align:center"><style type="text/css">
 .toolbar-item,.toolbar-layer{background:url(/images/toolbar-2.png) no-repeat;}
-.toolbar{position:fixed;right:0px;bottom:30px;}/*������ҳ����Ϊ1200px�����������Ҳ�����*/
+.toolbar{position:fixed;right:0px;bottom:30px;}/*假设网页宽度为1200px，导航条在右侧悬浮*/
 .toolbar-item{display:block;width:52px;height:52px;margin-top:1px;position:relative;-moz-transition:background-position 1s;-ms-transition:background-position 1s;-o-moz-transition:background-position 1s;-webkit-moz-transition:background-position 1s;transition:background-position 1s;}
 .toolbar-item:hover .toolbar-layer{opacity:1;filter:alpha(opacity=100);transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1);}
 .toolbar-item-weixin{background-position:0 -690px;}
@@ -332,7 +332,7 @@ transform-origin: 95% 95%;-moz-transform-origin: 95% 95%;-ms-transform-origin: 9
    <span class="toolbar-layer"></span>
    </a>
    <a href=""  class="toolbar-item toolbar-item-app" onclick="var link='';if(link.length<1) this.removeAttribute('href');">
-    <span class="toolbar-layer" style="line-height:1.1;"><br>ɨ���ά��<br>���ʱ�ҳ�ֻ���<br><img src="/common/makecode.php?url=http%3A%2F%2Fm.ttpaihang.com%2Fvote%2Frank.php%3Fvoteid%3D899" width="110"></span>
+    <span class="toolbar-layer" style="line-height:1.1;"><br>扫描二维码<br>访问本页手机版<br><img src="/common/makecode.php?url=http%3A%2F%2Fm.ttpaihang.com%2Fvote%2Frank.php%3Fvoteid%3D899" width="110"></span>
    </a>
    <a href="http://www.ttpaihang.com/question/" target="_blank" class="toolbar-item toolbar-item-feedback"></a>
    <a href="tencent://message/?uin=676860426&Menu=yes" class="toolbar-item toolbar-item-top"> <span class="toolbar-layer"></span></a>
@@ -342,15 +342,15 @@ transform-origin: 95% 95%;-moz-transform-origin: 95% 95%;-ms-transform-origin: 9
 <div style="background-color:#FFFFFF; width:960px; margin:0 auto">
 <table width="960" border="0" align="center" cellspacing="0" cellpadding="0" style="height:25px; margin:0px auto 5px auto; border-bottom:#666666 solid 1px;background-color:#f8f8f8">
       <tr>
-        <td width="180" valign="bottom" style=" padding-left:10px; text-align:left; line-height:25px; font-size:12px; color:#a2a2a2"><a href="http://www.ttpaihang.com/" class="shouy">������������ҳ</a> | <a href="http://www.ttpaihang.com/vote/" class="shouy">���а���ҳ</a></td>
+        <td width="180" valign="bottom" style=" padding-left:10px; text-align:left; line-height:25px; font-size:12px; color:#a2a2a2"><a href="http://www.ttpaihang.com/" class="shouy">天天排行网首页</a> | <a href="http://www.ttpaihang.com/vote/" class="shouy">榜中榜首页</a></td>
 		<td width="460" align="left"></td>
-        <td style=" padding-right:10px; text-align:right; line-height:25px; font-size:12px; color: #000000"><div class="bshare-custom"><a title="������΢��" class="bshare-weixin"></a><a title="����������΢��" class="bshare-sinaminiblog"></a><a title="��������Ѷ΢��" class="bshare-qqmb"></a><a title="������i����" class="bshare-itieba"></a><a title="������QQ����" class="bshare-qqim"></a><a title="����������΢��" class="bshare-neteasemb"></a><a title="����ƽ̨" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+        <td style=" padding-right:10px; text-align:right; line-height:25px; font-size:12px; color: #000000"><div class="bshare-custom"><a title="分享到微信" class="bshare-weixin"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到i贴吧" class="bshare-itieba"></a><a title="分享到QQ好友" class="bshare-qqim"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
 </td>
       </tr>
     </table>
 <table width="950" align="center" class="title">
   <tr>
-    <td>�й�������ӰԺ�����а��а�
+    <td>中国著名电影院线排行榜中榜
 	<div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:inline-block;width:728px;height:90px"
@@ -371,12 +371,12 @@ transform-origin: 95% 95%;-moz-transform-origin: 95% 95%;-ms-transform-origin: 9
 <table width="950" align="center" class="xuanze">
    <tr>
 
-    <td width="320" style="padding-left:25px; color:#FFFFFF"><a href="rank.php?voteid=899" class="style">ͶƱ��ҳ</a> &nbsp;  Ʊ��(543)&nbsp; <font class="allgifts">����(0)</font> </td>
+    <td width="320" style="padding-left:25px; color:#FFFFFF"><a href="rank.php?voteid=899" class="style">投票主页</a> &nbsp;  票数(543)&nbsp; <font class="allgifts">人气(0)</font> </td>
     <td width="214" style="padding-left:25px; color:#FFFFFF"><div class="inp-box" id="conBox">
 <input size="15" id="inpBox" style="border: #999999 1px solid; color: #999999; height:20px; line-height:20px; padding-left:5px" name="locator" autocomplete="off" >
 <ul class="list-box" id="listBox">
 </ul></div></td>
-    <td width="400" style="color:#FFFFFF"><a href="?voteid=899&sortby=zh" class="style"></a> &nbsp; <a href="?voteid=899&sortby=ps" class="style">��Ʊ����</a> &nbsp; <a href="?voteid=899&sortby=rq" class="style allgifts">��������</a> &nbsp; <a href="?voteid=899&sortby=rd" class="style">�ȶ�����</a> &nbsp; <a href="rankresult-899.html"  class="style">ͶƱͳ��</a></td>
+    <td width="400" style="color:#FFFFFF"><a href="?voteid=899&sortby=zh" class="style"></a> &nbsp; <a href="?voteid=899&sortby=ps" class="style">得票排行</a> &nbsp; <a href="?voteid=899&sortby=rq" class="style allgifts">人气排行</a> &nbsp; <a href="?voteid=899&sortby=rd" class="style">热度排行</a> &nbsp; <a href="rankresult-899.html"  class="style">投票统计</a></td>
   </tr>
 </table>
 
@@ -390,226 +390,226 @@ transform-origin: 95% 95%;-moz-transform-origin: 95% 95%;-ms-transform-origin: 9
 <td class="main_td"><table width="100%"  cellspacing="0" cellpadding="0" style="margin-bottom:10px ">
 
             <tr>
-              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="���Ժ��" id="20025" >
+              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="万达院线" id="20025" >
                 <tr>
                   <td   rowspan="3"  class="imgtd"><div align="center"><a href="rankdetail-20025.html" target="_blank"><img src="/image/vote/20110602163019506746.jpg"  border="0" ></a></div></td>
                   <td colspan="2"  class="main2_bt_td"><div align="left">
                     <table width="100%"  cellspacing="0" cellpadding="0" height="20">
                       <tr>
                         <td width="25%" class="main2_title_td"> TOP.1 </td>
-                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20025.html" target="_blank" class="clink">���Ժ��</a></span></td>
+                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20025.html" target="_blank" class="clink">万达院线</a></span></td>
                       </tr>
                     </table>
                   </div></td>
                 </tr>
                 <tr>
-                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">��2004����Ｏ�ţ�һ�ٽ�����������Ӱ�ǡ��������Ӱ�ǡ��人���Ӱ�ǡ����������Ӱ�ǡ��������Ӱ�ǣ���41�����Ϲ����Ƚ������ı�׼..[<a href="/vote/rankdetail-20025.html" target="_blank" class="ztxx">����</a>]</span></div></td>
+                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">　2004年万达集团，一举建造了天津万达影城、南宁万达影城、武汉万达影城、哈尔滨万达影城、大连万达影城，共41个符合国际先进技术的标准..[<a href="/vote/rankdetail-20025.html" target="_blank" class="ztxx">详情</a>]</span></div></td>
                 </tr>
                 <tr>
 
-                  <td width="220" class="zthong" align="left">Ʊ��:172&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
+                  <td width="220" class="zthong" align="left">票数:172&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
 <font>0</font></a></td>
-                  <td width="63"><div align="right"><span class="zthei">ͶƱ</span>
+                  <td width="63"><div align="right"><span class="zthei">投票</span>
                                 <input name="choice_id[]" type="checkbox" value="20025"   />
                   </div></td>
                 </tr>
               </table></td>
               
-              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="�㶫���Ժ��" id="27914" >
+              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="广东大地院线" id="27914" >
                 <tr>
                   <td   rowspan="3"  class="imgtd"><div align="center"><a href="rankdetail-27914.html" target="_blank"><img src="/image/vote/u120222113146178397.jpg"  border="0" ></a></div></td>
                   <td colspan="2"  class="main2_bt_td"><div align="left">
                     <table width="100%"  cellspacing="0" cellpadding="0" height="20">
                       <tr>
                         <td width="25%" class="main2_title_td"> TOP.2 </td>
-                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-27914.html" target="_blank" class="clink">�㶫���Ժ��</a></span></td>
+                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-27914.html" target="_blank" class="clink">广东大地院线</a></span></td>
                       </tr>
                     </table>
                   </div></td>
                 </tr>
                 <tr>
-                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">�㶫��ص�ӰԺ�����޹�˾������2005�꣬�����ڹ㶫ʡ������ȫ�����Դ��µĿƼ��ֶΣ�Ϊ�������ṩȫ��Ӱ���������������ܡ����˶�������..[<a href="/vote/rankdetail-27914.html" target="_blank" class="ztxx">����</a>]</span></div></td>
+                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">广东大地电影院线有限公司成立于2005年，立足于广东省，面向全国。以创新的科技手段，为消费者提供全新影音体验与娱乐享受、人人都可消费..[<a href="/vote/rankdetail-27914.html" target="_blank" class="ztxx">详情</a>]</span></div></td>
                 </tr>
                 <tr>
 
-                  <td width="220" class="zthong" align="left">Ʊ��:103&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
+                  <td width="220" class="zthong" align="left">票数:103&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
 <font>0</font></a></td>
-                  <td width="63"><div align="right"><span class="zthei">ͶƱ</span>
+                  <td width="63"><div align="right"><span class="zthei">投票</span>
                                 <input name="choice_id[]" type="checkbox" value="27914"   />
                   </div></td>
                 </tr>
               </table></td>
               </tr><tr>
-              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="��Ӱ����Ժ��" id="20026" >
+              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="中影星美院线" id="20026" >
                 <tr>
                   <td   rowspan="3"  class="imgtd"><div align="center"><a href="rankdetail-20026.html" target="_blank"><img src="/image/vote/20110602163254672349.jpg"  border="0" ></a></div></td>
                   <td colspan="2"  class="main2_bt_td"><div align="left">
                     <table width="100%"  cellspacing="0" cellpadding="0" height="20">
                       <tr>
                         <td width="25%" class="main2_title_td"> TOP.3 </td>
-                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20026.html" target="_blank" class="clink">��Ӱ����Ժ��</a></span></td>
+                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20026.html" target="_blank" class="clink">中影星美院线</a></span></td>
                       </tr>
                     </table>
                   </div></td>
                 </tr>
                 <tr>
-                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">��Ӱ����Ժ���Ǿ��������ܲ�����׼�����й���Ӱ���Ź�˾��������ý���޹�˾ǿǿ���ϡ���ͬͶ�ʳ�����Ժ�߹�����˾����������ķ�չ����Ʊ..[<a href="/vote/rankdetail-20026.html" target="_blank" class="ztxx">����</a>]</span></div></td>
+                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">中影星美院线是经政府主管部门批准，由中国电影集团公司与星美传媒有限公司强强联合、共同投资成立的院线管理公司。经过八年的发展，年票..[<a href="/vote/rankdetail-20026.html" target="_blank" class="ztxx">详情</a>]</span></div></td>
                 </tr>
                 <tr>
 
-                  <td width="220" class="zthong" align="left">Ʊ��:66&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
+                  <td width="220" class="zthong" align="left">票数:66&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
 <font>0</font></a></td>
-                  <td width="63"><div align="right"><span class="zthei">ͶƱ</span>
+                  <td width="63"><div align="right"><span class="zthei">投票</span>
                                 <input name="choice_id[]" type="checkbox" value="20026"   />
                   </div></td>
                 </tr>
               </table></td>
               
-              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="�Ĵ�̫ƽ��Ժ��" id="20030" >
+              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="四川太平洋院线" id="20030" >
                 <tr>
                   <td   rowspan="3"  class="imgtd"><div align="center"><a href="rankdetail-20030.html" target="_blank"><img src="/image/vote/20110602165227215670.jpg"  border="0" ></a></div></td>
                   <td colspan="2"  class="main2_bt_td"><div align="left">
                     <table width="100%"  cellspacing="0" cellpadding="0" height="20">
                       <tr>
                         <td width="25%" class="main2_title_td"> TOP.4 </td>
-                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20030.html" target="_blank" class="clink">�Ĵ�̫ƽ��Ժ��</a></span></td>
+                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20030.html" target="_blank" class="clink">四川太平洋院线</a></span></td>
                       </tr>
                     </table>
                   </div></td>
                 </tr>
                 <tr>
-                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">�����Ĵ�ʡ��Ӱ��˾���й���Ӱ���Ź�˾��ͬ�������Ĵ�ʡ���С��ݵ�Ӱ��˾������ʡ��Ӱ��˾�ȹɶ���ɵĿ�ʡԺ�ߡ��������������ĵ�Ӱ..[<a href="/vote/rankdetail-20030.html" target="_blank" class="ztxx">����</a>]</span></div></td>
+                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">是由四川省电影公司与中国电影集团公司共同发起，与四川省各市、州电影公司、甘肃省电影公司等股东组成的跨省院线。是西部地区最大的电影..[<a href="/vote/rankdetail-20030.html" target="_blank" class="ztxx">详情</a>]</span></div></td>
                 </tr>
                 <tr>
 
-                  <td width="220" class="zthong" align="left">Ʊ��:57&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
+                  <td width="220" class="zthong" align="left">票数:57&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
 <font>0</font></a></td>
-                  <td width="63"><div align="right"><span class="zthei">ͶƱ</span>
+                  <td width="63"><div align="right"><span class="zthei">投票</span>
                                 <input name="choice_id[]" type="checkbox" value="20030"   />
                   </div></td>
                 </tr>
               </table></td>
               </tr><tr>
-              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="�Ϻ�����Ժ��" id="20027" >
+              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="上海联合院线" id="20027" >
                 <tr>
                   <td   rowspan="3"  class="imgtd"><div align="center"><a href="rankdetail-20027.html" target="_blank"><img src="/image/thumb/20110602164139728353.jpg"  border="0" ></a></div></td>
                   <td colspan="2"  class="main2_bt_td"><div align="left">
                     <table width="100%"  cellspacing="0" cellpadding="0" height="20">
                       <tr>
                         <td width="25%" class="main2_title_td"> TOP.5 </td>
-                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20027.html" target="_blank" class="clink">�Ϻ�����Ժ��</a></span></td>
+                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20027.html" target="_blank" class="clink">上海联合院线</a></span></td>
                       </tr>
                     </table>
                   </div></td>
                 </tr>
                 <tr>
-                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">�Ϻ����͵�ӰԺ���������ι�˾�������Ϻ���Ӱ�����ţ����޹�˾��ͳ�Ƶ�2010��1�µף����м���ӰԺ125�ң�����λ��106,740������ӳ��483��..[<a href="/vote/rankdetail-20027.html" target="_blank" class="ztxx">����</a>]</span></div></td>
+                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">上海联和电影院线有限责任公司隶属于上海电影（集团）有限公司，统计到2010年1月底，共有加盟影院125家，总座位数106,740个，放映厅483个..[<a href="/vote/rankdetail-20027.html" target="_blank" class="ztxx">详情</a>]</span></div></td>
                 </tr>
                 <tr>
 
-                  <td width="220" class="zthong" align="left">Ʊ��:40&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
+                  <td width="220" class="zthong" align="left">票数:40&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
 <font>0</font></a></td>
-                  <td width="63"><div align="right"><span class="zthei">ͶƱ</span>
+                  <td width="63"><div align="right"><span class="zthei">投票</span>
                                 <input name="choice_id[]" type="checkbox" value="20027"   />
                   </div></td>
                 </tr>
               </table></td>
               
-              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="�㶫�齭Ժ��" id="20032" >
+              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="广东珠江院线" id="20032" >
                 <tr>
                   <td   rowspan="3"  class="imgtd"><div align="center"><a href="rankdetail-20032.html" target="_blank"><img src="/image/vote/2011060217014290014.jpg"  border="0" ></a></div></td>
                   <td colspan="2"  class="main2_bt_td"><div align="left">
                     <table width="100%"  cellspacing="0" cellpadding="0" height="20">
                       <tr>
                         <td width="25%" class="main2_title_td"> TOP.6 </td>
-                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20032.html" target="_blank" class="clink">�㶫�齭Ժ��</a></span></td>
+                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20032.html" target="_blank" class="clink">广东珠江院线</a></span></td>
                       </tr>
                     </table>
                   </div></td>
                 </tr>
                 <tr>
-                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">�㶫�齭��ӰԺ�����޹�˾���ɹ������ݳ���˾���齭��Ӱ��Ƭ��˾���㽭��꼯��Ӱ���������޹�˾�����齨�Ĺɷ���Ժ�ߣ���ȫ������������..[<a href="/vote/rankdetail-20032.html" target="_blank" class="ztxx">����</a>]</span></div></td>
+                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">广东珠江电影院线有限公司是由广州市演出公司、珠江电影制片公司、浙江横店集团影视娱乐有限公司合资组建的股份制院线，是全国首批、华南..[<a href="/vote/rankdetail-20032.html" target="_blank" class="ztxx">详情</a>]</span></div></td>
                 </tr>
                 <tr>
 
-                  <td width="220" class="zthong" align="left">Ʊ��:27&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
+                  <td width="220" class="zthong" align="left">票数:27&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
 <font>0</font></a></td>
-                  <td width="63"><div align="right"><span class="zthei">ͶƱ</span>
+                  <td width="63"><div align="right"><span class="zthei">投票</span>
                                 <input name="choice_id[]" type="checkbox" value="20032"   />
                   </div></td>
                 </tr>
               </table></td>
               </tr><tr>
-              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="������Ӱ��Ժ��" id="20028" >
+              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="北京新影联院线" id="20028" >
                 <tr>
                   <td   rowspan="3"  class="imgtd"><div align="center"><a href="rankdetail-20028.html" target="_blank"><img src="/image/thumb/20110602164340922124.jpg"  border="0" ></a></div></td>
                   <td colspan="2"  class="main2_bt_td"><div align="left">
                     <table width="100%"  cellspacing="0" cellpadding="0" height="20">
                       <tr>
                         <td width="25%" class="main2_title_td"> TOP.7 </td>
-                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20028.html" target="_blank" class="clink">������Ӱ��Ժ��</a></span></td>
+                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20028.html" target="_blank" class="clink">北京新影联院线</a></span></td>
                       </tr>
                     </table>
                   </div></td>
                 </tr>
                 <tr>
-                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">1996�꣬�ڵ�Ӱ�ڰ������ɶ�����һ����֮�󣬱����ĵ�Ӱ�г�Ҳ������һ������Ƿ��ı���������Ӱ��������������й���Ӱ���Ź�˾����..[<a href="/vote/rankdetail-20028.html" target="_blank" class="ztxx">����</a>]</span></div></td>
+                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">1996年，在电影于巴黎呱呱而生的一百年之后，北京的电影市场也发生了一场意义非凡的变革——北京新影联成立。这家由中国电影集团公司、北..[<a href="/vote/rankdetail-20028.html" target="_blank" class="ztxx">详情</a>]</span></div></td>
                 </tr>
                 <tr>
 
-                  <td width="220" class="zthong" align="left">Ʊ��:26&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
+                  <td width="220" class="zthong" align="left">票数:26&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
 <font>0</font></a></td>
-                  <td width="63"><div align="right"><span class="zthei">ͶƱ</span>
+                  <td width="63"><div align="right"><span class="zthei">投票</span>
                                 <input name="choice_id[]" type="checkbox" value="20028"   />
                   </div></td>
                 </tr>
               </table></td>
               
-              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="��Ӱ�Ϸ��¸���Ժ��" id="20029" >
+              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="中影南方新干线院线" id="20029" >
                 <tr>
                   <td   rowspan="3"  class="imgtd"><div align="center"><a href="rankdetail-20029.html" target="_blank"><img src="/image/thumb/20110602164918957339.jpg"  border="0" ></a></div></td>
                   <td colspan="2"  class="main2_bt_td"><div align="left">
                     <table width="100%"  cellspacing="0" cellpadding="0" height="20">
                       <tr>
                         <td width="25%" class="main2_title_td"> TOP.8 </td>
-                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20029.html" target="_blank" class="clink">��Ӱ�Ϸ��¸���Ժ��</a></span></td>
+                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20029.html" target="_blank" class="clink">中影南方新干线院线</a></span></td>
                       </tr>
                     </table>
                   </div></td>
                 </tr>
                 <tr>
-                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">�㶫ʡ��Ӱ��˾�Ѿ��߹���57������̣������˼ƻ�����������ĸ￪������������г����õ�����ʷ�׶������¶����Լ������ڹ�˾��229����Ա..[<a href="/vote/rankdetail-20029.html" target="_blank" class="ztxx">����</a>]</span></div></td>
+                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">广东省电影公司已经走过了57年的历程，经历了计划经济年代、改革开放年代，正在市场经济的新历史阶段中重新锻造自己。现在公司有229多名员..[<a href="/vote/rankdetail-20029.html" target="_blank" class="ztxx">详情</a>]</span></div></td>
                 </tr>
                 <tr>
 
-                  <td width="220" class="zthong" align="left">Ʊ��:26&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
+                  <td width="220" class="zthong" align="left">票数:26&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
 <font>0</font></a></td>
-                  <td width="63"><div align="right"><span class="zthei">ͶƱ</span>
+                  <td width="63"><div align="right"><span class="zthei">投票</span>
                                 <input name="choice_id[]" type="checkbox" value="20029"   />
                   </div></td>
                 </tr>
               </table></td>
               </tr><tr>
-              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="�人���Ժ��" id="20031" >
+              <td  align="center" height="104"><table width="460" cellspacing="0" cellpadding="0" class="main2_td" name="武汉天河院线" id="20031" >
                 <tr>
                   <td   rowspan="3"  class="imgtd"><div align="center"><a href="rankdetail-20031.html" target="_blank"><img src="/image/thumb/20110602165437882756.jpg"  border="0" ></a></div></td>
                   <td colspan="2"  class="main2_bt_td"><div align="left">
                     <table width="100%"  cellspacing="0" cellpadding="0" height="20">
                       <tr>
                         <td width="25%" class="main2_title_td"> TOP.9 </td>
-                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20031.html" target="_blank" class="clink">�人���Ժ��</a></span></td>
+                        <td width="75%" valign="bottom"><span class="zthei"><a href="rankdetail-20031.html" target="_blank" class="clink">武汉天河院线</a></span></td>
                       </tr>
                     </table>
                   </div></td>
                 </tr>
                 <tr>
-                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">�����人��ӹ���Ӱ�ǵش��人IT��Ӣ��ۣ����²�ҵ�ܼ����ߵ�ѧ�����ƣ��ߵ�סլ������������ҵ���ͣ������������Ƶķ�չ�������������..[<a href="/vote/rankdetail-20031.html" target="_blank" class="ztxx">����</a>]</span></div></td>
+                  <td height="50" colspan="2" valign="top" ><div align="left">&nbsp;&nbsp;&nbsp;<span class="ztxhei">　　武汉天河国际影城地处武汉IT精英汇聚，高新产业密集，高等学府环绕，高档住宅矗立，中外商业荟萃，多种娱乐扎推的发展新区——光谷世..[<a href="/vote/rankdetail-20031.html" target="_blank" class="ztxx">详情</a>]</span></div></td>
                 </tr>
                 <tr>
 
-                  <td width="220" class="zthong" align="left">Ʊ��:26&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
+                  <td width="220" class="zthong" align="left">票数:26&nbsp;&nbsp; <a href="javascript:" class="givePresent"> <img src="/vote/images/rose2.png" border="0">
 <font>0</font></a></td>
-                  <td width="63"><div align="right"><span class="zthei">ͶƱ</span>
+                  <td width="63"><div align="right"><span class="zthei">投票</span>
                                 <input name="choice_id[]" type="checkbox" value="20031"   />
                   </div></td>
                 </tr>
@@ -637,14 +637,14 @@ transform-origin: 95% 95%;-moz-transform-origin: 95% 95%;-ms-transform-origin: 9
 
  </div>
 <div   style="text-align:center; line-height:25px; font-size:12px">
-���񵥺�ѡ���������Ƽ�����������ͶƱ�Զ������������ο���ÿ��ͶƱ����ѡ<span class="ztxhong">1</span>�������ѡ<span class="ztxhong">5</span>����ͬһѡ��ÿ����Ͷ1�Σ���Ͷ��Ч��
+本榜单候选项由网友推荐，依据网友投票自动排名，仅供参考！每次投票最少选<span class="ztxhong">1</span>个，最多选<span class="ztxhong">5</span>个，同一选项每天限投1次，多投无效。
 </div>
 <div align="center" class="ztxhei">
 <br><br>
 
-<input name="post_data" type="submit" id="post_data" value="�ύͶƱ" onClick="getMousePosition(event);"   style=" width:120px; height:45px;font-size:14px">
+<input name="post_data" type="submit" id="post_data" value="提交投票" onClick="getMousePosition(event);"   style=" width:120px; height:45px;font-size:14px">
 &nbsp;
-<input name="reset" type="reset" value="����ѡ��"   style=" width:120px; height:45px; font-size:14px"> <input name="voteid" type="hidden" id="voteid" value="899"> <input type="hidden" name="moux" id="moux" value="0"> <input type="hidden" name="mouy" id="mouy" value="0" ><input type="hidden" name="mouz" id="mouz" value="0" ><input type="hidden" name="moua" id="moua" value="1632291248" ><Input  Name="ipb890b76a40df" type="hidden" id="ipb890b76a40df" valuE="950"><input  Name="nqb890b76a40dfip" id="nqb890b76a40dfip"  valuE="51" Type="hidden" ><inpUt TyPE="hidden" name="uyb890b76a40dfnq" id="uyb890b76a40dfnq" valuE="64"><Inpute type="hidden" name="ipb890b76a40dfuy" id="ipb890b76a40dfuy" valuE="54">
+<input name="reset" type="reset" value="重新选择"   style=" width:120px; height:45px; font-size:14px"> <input name="voteid" type="hidden" id="voteid" value="899"> <input type="hidden" name="moux" id="moux" value="0"> <input type="hidden" name="mouy" id="mouy" value="0" ><input type="hidden" name="mouz" id="mouz" value="0" ><input type="hidden" name="moua" id="moua" value="1632356919" ><Input  Name="xz5414d75a7d73" type="hidden" id="xz5414d75a7d73" VALUE="959"><input  Name="cy5414d75a7d73xz" id="cy5414d75a7d73xz"  VALUE="60" Type="hidden" ><inpUt TyPE="hidden" name="jk5414d75a7d73cy" id="jk5414d75a7d73cy" VALUE="62"><Inpute type="hidden" name="xz5414d75a7d73jk" id="xz5414d75a7d73jk" VALUE="58">
 </div>
 <div style="text-align:center; line-height:25px; font-size:12px;margin:10px;">
 
@@ -668,12 +668,12 @@ transform-origin: 95% 95%;-moz-transform-origin: 95% 95%;-ms-transform-origin: 9
    <form name="userform"  method="post" onSubmit="return CheckForm(this);" action="/vote/choicepost.php" enctype="multipart/form-data" >
 
      <tr>
-         <td colspan="2"  style=" height:25px;line-height:25px; font-size:12px;" >&nbsp;&nbsp;��ѡ���Ƽ���Ŀǰ��<font color="#ff0000">0
+         <td colspan="2"  style=" height:25px;line-height:25px; font-size:12px;" >&nbsp;&nbsp;候选项推荐（目前有<font color="#ff0000">0
 
-</font>���Ƽ���Ŀ�ȴ������....��&nbsp;&nbsp;</td>
+</font>个推荐条目等待审核中....）&nbsp;&nbsp;</td>
 
       <tr>
-       <td width="122" class="tianjianame" >��ѡ������:</td>
+       <td width="122" class="tianjianame" >候选项名称:</td>
        <td width="378" class="tianjianeir" ><label>
          <div class="post-box" id="pstBox">
 <input name="choice" type="text"  id="postBox" size="40"  autocomplete="off">
@@ -683,11 +683,11 @@ transform-origin: 95% 95%;-moz-transform-origin: 95% 95%;-ms-transform-origin: 9
        </label></td>
       </tr>
      <tr>
-       <td class="tianjianame" >��ѡ��ͼƬ:</td>
+       <td class="tianjianame" >候选项图片:</td>
        <td class="tianjianeir"><input name="upfile" type="file" size="30">       </td>
      </tr>
      <tr>
-       <td class="tianjianame">��Ŀ����:</td>
+       <td class="tianjianame">条目介绍:</td>
        <td class="tianjianeir"><label>
          <textarea name="intro" id="intro" cols="50" rows="10"></textarea>
        </label></td>
@@ -695,7 +695,7 @@ transform-origin: 95% 95%;-moz-transform-origin: 95% 95%;-ms-transform-origin: 9
      <tr>
        <td class="tianjianame">&nbsp;</td>
        <td class="tianjianeir" style="padding-bottom:10px; font-size:12px">
-	 <input type="submit" name="submit" id="submit" value="�Ƽ��˺�ѡ��" > ( <font color='#0000ff'>�ο�</font> <a href='/member/loginr.php'><font color='#ff0000'>��¼</font></a> )
+	 <input type="submit" name="submit" id="submit" value="推荐此候选项" > ( <font color='#0000ff'>游客</font> <a href='/member/loginr.php'><font color='#ff0000'>登录</font></a> )
 	 <input type="hidden" name="voteid" id="voteid" value="899">
        </label></td>
      </tr>
@@ -706,18 +706,18 @@ transform-origin: 95% 95%;-moz-transform-origin: 95% 95%;-ms-transform-origin: 9
 	<table cellpadding="0" cellspacing="0" width="100%">
          <tr>
            <td style=" height:25px;line-height:25px; font-size:12px;color:#f00;">
-		   &nbsp;&nbsp;˵����
+		   &nbsp;&nbsp;说明：
 		   </td>
 		   </tr>
 		 <tr>
            <td style=" line-height:20px;  font-size:12px">
 
 	   <ol>
-	         <li>�������е�������ɿ��ٶ�λĳ��ѡ���ڰ��е�λ�á�</li>
-	         <li>������û����ϲ����ѡ�����д���ϱ��������Ƽ���</li>
-	         <li>�ϴ�ͼƬ��С��200K���ߴ�С��1024*1024���أ���Ϊjpeg��ʽ��</li>
-            <li>����ͨ����<a href="/vote/rankuclist.php" target="_blank">��¼�����ѯ</a>���˽������Ƽ���Ŀ����¼�����</li>
-	          <li>�������ʣ�����ġ�<a href="/vote/tthelp.htm" target="_blank">�����������</a>����<a href="/question/" target="_blank">������ѯ����</a>��</li>
+	         <li>导航栏中的搜索框可快速定位某候选项在榜单中的位置。</li>
+	         <li>若榜单中没有您喜欢的选项，可填写以上表格予以推荐。</li>
+	         <li>上传图片须小于200K，尺寸小于1024*1024像素，且为jpeg格式。</li>
+            <li>您可通过【<a href="/vote/rankuclist.php" target="_blank">收录情况查询</a>】了解您所推荐项目的收录情况。</li>
+	          <li>若有疑问，请查阅【<a href="/vote/tthelp.htm" target="_blank">常见问题答疑</a>】或【<a href="/question/" target="_blank">在线咨询我们</a>】</li>
 	          
 	   </ol>
 	       <div></DIV></td>
@@ -729,7 +729,7 @@ transform-origin: 95% 95%;-moz-transform-origin: 95% 95%;-ms-transform-origin: 9
 <table width="950" align="center" cellpadding="0" cellspacing="10" style="margin-top:5px;border-top-color: #CCCCCC; border-top-style:solid; border-top-width:1px; font-size:12px; color: #000000 ">
   <tr>
     <td style="text-align:center;padding-top:5px; ">
-	<a href="/aboutus.htm" target="_blank" rel="nofollow" class="zy_lj">��������</a>��<a href="/contactus.htm" target="_blank" rel="nofollow" class="zy_lj">��ϵ����</a>��<a href="/service.htm" target="_blank" rel="nofollow" class="zy_lj">��������</a>��<a href="/copyright.htm" target="_blank" rel="nofollow" class="zy_lj">��������</a>��<a href="/service/" target="_blank" rel="nofollow" class="zy_lj">������</a>��<a href="/map/" target="_blank" rel="nofollow" class="zy_lj">վ�㵼��</a>��<a href="/links/" target="_blank" rel="nofollow" class="zy_lj">��������</a>��<a href="/comment/feedback.php" target="_blank" rel="nofollow" class="zy_lj">�������</a></td>
+	<a href="/aboutus.htm" target="_blank" rel="nofollow" class="zy_lj">关于我们</a>│<a href="/contactus.htm" target="_blank" rel="nofollow" class="zy_lj">联系我们</a>│<a href="/service.htm" target="_blank" rel="nofollow" class="zy_lj">服务条款</a>│<a href="/copyright.htm" target="_blank" rel="nofollow" class="zy_lj">法律声明</a>│<a href="/service/" target="_blank" rel="nofollow" class="zy_lj">广告服务</a>│<a href="/map/" target="_blank" rel="nofollow" class="zy_lj">站点导航</a>│<a href="/links/" target="_blank" rel="nofollow" class="zy_lj">友情连接</a>│<a href="/comment/feedback.php" target="_blank" rel="nofollow" class="zy_lj">意见反馈</a></td>
   </tr>
   <tr>
     <td style="text-align:center; ">Copyright 2009-2010, LUCKCOM Co.,All rights reserved</td>

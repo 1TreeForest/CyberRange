@@ -702,137 +702,137 @@
       <!-- 一下内容目前隐藏 -->
       <!-- 用户中心头部 -->
       <div class="hide">
-        
-<style>
-.info-wrapper img[src=""],.info-wrapper img:not([src]),.avatar-wrapper img[src=""],.avatar-wrapper img:not([src]){
-opacity:0;
-}
-</style>
-<div class="member-head">
-    <a class="logo-link" href="https://dxs.moe.gov.cn/zx/">
-        <img class="header-logo" src="/zx/images/user-center/header-logo.png"/>
-    </a>
-    <div class="right">
-        <div class="input-wrapper">
-            <input type="text" class="search-input" id="searchInput" autocomplete="off" placeholder="请输入关键词">
-            <a class="search-btn" href="javascript:void(0)" onclick="doSearch()"></a>
-        </div>
-        <div class="info-wrapper">
-            <a href="/member/index.shtml"><img class="user-avatar" src=""/></a>
-            <a href="/member/index.shtml" class="user-name ellipsis"></a>
-            <a href="javascript:void(0)" class="member-logout user-logout-btn">退出</a>
-        </div>
-        <a class="hidden uinfo member-login"></a>
-    </div>
-    <div class="container">
-        <a class="inner-logo-link" href="https://dxs.moe.gov.cn/zx/">
-            <img class="inner-header-logo" src="/zx/images/user-center/header-logo.png"/>
-        </a>
-        <a href="/member/index.shtml" class="header-title">个人中心</a>
-    </div>
-</div>
-<script>
-    $(function () {
-        if(!$(".uinfo").attr("href")){
-            var url = encodeURIComponent(window.location.href);
-            if (url.indexOf('referer') > -1) {
-                url = url.substring(url.indexOf('referer') + 10);
-                url = decodeURIComponent(url);
-            }
-            var str = window.frontAppContext + "front/univsSSO/login?referer=" + url + "&" + new Date().getTime();
-            var strToBase64 =  btoa(encodeURIComponent(str));
-            $(".member-login").attr("href", "http://u.univs.cn/login?targetUrl=" + strToBase64 );
-        }  
-        if (window.location.href.indexOf('/member/') > -1 && window.siteURL.indexOf('/zx') > -1) {
-            // $("body").contents().each(function(index, item) {
-            //     if (item.nodeName == '#comment' || item.nodeName == '#include') {
-            //         console.log(item.textContent)
-            //         item.textContent = item.textContent.replace('virtual="/', 'virtual="/zx')
-            //     }
-            // })
-            $("img").each(function(index, item) {
-                var src = $(this).attr('src')
-                if (src && src.indexOf('/images') === 0) {
-                    $(this).attr('src', '/zx' + src)
-                }
-            })
-            $("a").each(function(index, item) {
-                var href = $(this).attr('href')
-                if (href && href.indexOf('/') === 0) {
-                    $(this).attr('href', '/zx' + href)
-                }
-            })
-        }
-    })    
+        
+<style>
+.info-wrapper img[src=""],.info-wrapper img:not([src]),.avatar-wrapper img[src=""],.avatar-wrapper img:not([src]){
+opacity:0;
+}
+</style>
+<div class="member-head">
+    <a class="logo-link" href="https://dxs.moe.gov.cn/zx/">
+        <img class="header-logo" src="/zx/images/user-center/header-logo.png"/>
+    </a>
+    <div class="right">
+        <div class="input-wrapper">
+            <input type="text" class="search-input" id="searchInput" autocomplete="off" placeholder="请输入关键词">
+            <a class="search-btn" href="javascript:void(0)" onclick="doSearch()"></a>
+        </div>
+        <div class="info-wrapper">
+            <a href="/member/index.shtml"><img class="user-avatar" src=""/></a>
+            <a href="/member/index.shtml" class="user-name ellipsis"></a>
+            <a href="javascript:void(0)" class="member-logout user-logout-btn">退出</a>
+        </div>
+        <a class="hidden uinfo member-login"></a>
+    </div>
+    <div class="container">
+        <a class="inner-logo-link" href="https://dxs.moe.gov.cn/zx/">
+            <img class="inner-header-logo" src="/zx/images/user-center/header-logo.png"/>
+        </a>
+        <a href="/member/index.shtml" class="header-title">个人中心</a>
+    </div>
+</div>
+<script>
+    $(function () {
+        if(!$(".uinfo").attr("href")){
+            var url = encodeURIComponent(window.location.href);
+            if (url.indexOf('referer') > -1) {
+                url = url.substring(url.indexOf('referer') + 10);
+                url = decodeURIComponent(url);
+            }
+            var str = window.frontAppContext + "front/univsSSO/login?referer=" + url + "&" + new Date().getTime();
+            var strToBase64 =  btoa(encodeURIComponent(str));
+            $(".member-login").attr("href", "http://u.univs.cn/login?targetUrl=" + strToBase64 );
+        }  
+        if (window.location.href.indexOf('/member/') > -1 && window.siteURL.indexOf('/zx') > -1) {
+            // $("body").contents().each(function(index, item) {
+            //     if (item.nodeName == '#comment' || item.nodeName == '#include') {
+            //         console.log(item.textContent)
+            //         item.textContent = item.textContent.replace('virtual="/', 'virtual="/zx')
+            //     }
+            // })
+            $("img").each(function(index, item) {
+                var src = $(this).attr('src')
+                if (src && src.indexOf('/images') === 0) {
+                    $(this).attr('src', '/zx' + src)
+                }
+            })
+            $("a").each(function(index, item) {
+                var href = $(this).attr('href')
+                if (href && href.indexOf('/') === 0) {
+                    $(this).attr('href', '/zx' + href)
+                }
+            })
+        }
+    })    
 </script>
       </div>
       <!-- 用户中心左侧菜单 -->
       <div class="hide">
-        
-<div class="col-xs-12 col-md-3">
-    <div class="col-md-12 col-sm-12 col-xs-12 left-menu">
-        <div class="member-avatar" align="center">
-            <a class="front-link member-logo" href="/zx/member/info.shtml"> 
-                <img class="member-logofile" src="/zx/images/usercenter/icon3.png"/>
-            </a>
-            <p class="member-status">
-                <img class="member-icon" src="/zx/images/usercenter/icon1.png">
-            </p>
-            <p class="m-t-md member-user-name"></p>
-            <!-- <p class="member-level-score"></p> -->
-            <p class="login-time">上次登录时间</p>
-            <p class="login-time">2019-02-01 12:22:22</p>
-        </div> 
-        <div class="list-group hidden-sm hidden-xs">
-            <a class='list-group-item front-link member-menu' href='/zx/template/member/info.html?current=PersonalInfo'>个人信息</a>
-            <a class='list-group-item front-link member-menu' href='/zx/template/member/favorites.html?type=Content&amp;current=MemberFavorites'>我的收藏</a>
-            <a class='list-group-item front-link member-menu current' href='javascript:;'>我的消息</a>
-            <a class='list-group-item front-link member-menu' href='javascript:;'>我的关注</a>
-            <a class='list-group-item front-link member-menu' href='/zx/template/member/contribute/loginlist.html?current=Contribute'>我的投稿</a>
-            <a class='list-group-item front-link member-menu' href='javascript:;'>我的活动</a>
-        </div>
-        <div class="hidden-lg hidden-md phone">
-            <div class="dropdown">
-                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="allclass"></span>
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu nav" aria-labelledby="dLabel">
-                    <li>
-                        <a class='list-group-item front-link member-menu' href='/zx/template/member/info.html?current=PersonalInfo'>个人信息</a>
-                    </li>
-                    <li>
-                        <a class='list-group-item front-link member-menu' href='/zx/template/member/favorites.html?type=Content&amp;current=MemberFavorites'>我的收藏</a>
-                    </li>
-                    <li>
-                        <a class='list-group-item front-link member-menu current' href='javascript:;'>我的消息</a>
-                    </li>
-                    <li>
-                        <a class='list-group-item front-link member-menu' href='javascript:;'>我的关注</a>
-                    </li>
-                    <li>
-                        <a class='list-group-item front-link member-menu' href='/zx/template/member/contribute/loginlist.html?current=Contribute'>我的投稿</a>
-                    </li>
-                    <li>
-                        <a class='list-group-item front-link member-menu' href='javascript:;'>我的活动</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
-    
-</div>
-<script>
-    window.onload = function () {
-        var local = window.location.href;
-        $(".nav li a").each(function () {
-            if (this.href.substring(0, local.length) == local) {
-                $(this).parent().addClass("current");
-            }
-        })
-        $('.allclass').text($('.phone .nav>li .current').text())
-    }
+        
+<div class="col-xs-12 col-md-3">
+    <div class="col-md-12 col-sm-12 col-xs-12 left-menu">
+        <div class="member-avatar" align="center">
+            <a class="front-link member-logo" href="/zx/member/info.shtml"> 
+                <img class="member-logofile" src="/zx/images/usercenter/icon3.png"/>
+            </a>
+            <p class="member-status">
+                <img class="member-icon" src="/zx/images/usercenter/icon1.png">
+            </p>
+            <p class="m-t-md member-user-name"></p>
+            <!-- <p class="member-level-score"></p> -->
+            <p class="login-time">上次登录时间</p>
+            <p class="login-time">2019-02-01 12:22:22</p>
+        </div> 
+        <div class="list-group hidden-sm hidden-xs">
+            <a class='list-group-item front-link member-menu' href='/zx/template/member/info.html?current=PersonalInfo'>个人信息</a>
+            <a class='list-group-item front-link member-menu' href='/zx/template/member/favorites.html?type=Content&amp;current=MemberFavorites'>我的收藏</a>
+            <a class='list-group-item front-link member-menu current' href='javascript:;'>我的消息</a>
+            <a class='list-group-item front-link member-menu' href='javascript:;'>我的关注</a>
+            <a class='list-group-item front-link member-menu' href='/zx/template/member/contribute/loginlist.html?current=Contribute'>我的投稿</a>
+            <a class='list-group-item front-link member-menu' href='javascript:;'>我的活动</a>
+        </div>
+        <div class="hidden-lg hidden-md phone">
+            <div class="dropdown">
+                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="allclass"></span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu nav" aria-labelledby="dLabel">
+                    <li>
+                        <a class='list-group-item front-link member-menu' href='/zx/template/member/info.html?current=PersonalInfo'>个人信息</a>
+                    </li>
+                    <li>
+                        <a class='list-group-item front-link member-menu' href='/zx/template/member/favorites.html?type=Content&amp;current=MemberFavorites'>我的收藏</a>
+                    </li>
+                    <li>
+                        <a class='list-group-item front-link member-menu current' href='javascript:;'>我的消息</a>
+                    </li>
+                    <li>
+                        <a class='list-group-item front-link member-menu' href='javascript:;'>我的关注</a>
+                    </li>
+                    <li>
+                        <a class='list-group-item front-link member-menu' href='/zx/template/member/contribute/loginlist.html?current=Contribute'>我的投稿</a>
+                    </li>
+                    <li>
+                        <a class='list-group-item front-link member-menu' href='javascript:;'>我的活动</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+<script>
+    window.onload = function () {
+        var local = window.location.href;
+        $(".nav li a").each(function () {
+            if (this.href.substring(0, local.length) == local) {
+                $(this).parent().addClass("current");
+            }
+        })
+        $('.allclass').text($('.phone .nav>li .current').text())
+    }
 </script>
       </div>
       <!-- 用户中心底部 -->
@@ -895,174 +895,174 @@ opacity:0;
       </div>
       <!-- 页面头部，用户的稿件列表 -->
       <div class="hide">
-        
-<div class="header_c">
-	<div class="head main clearfloat head_c">
-		<div class="col-md-4 logo col-sm-8 col-xs-6">
-			<a class="sitelink" href="https://dxs.moe.gov.cn/zx/" target="_blank"><img src="/zx/images/index/logo.png" alt="中国大学生在线"></a>
-            <a class="hidden uinfo member-login"></a>
-		</div>
-		<div class="visble-lg col-lg-4 info fr">
-			<span class="fr home hidden-xs">
-				<a href="https://dxs.moe.gov.cn/zx/" class="" target="_blank">网站主页</a>
-			</span>
-			<span class="fr member-span-logined hide">
-                <a class="username"><img class="member-logofile1"/></a>                
-				<a href="javascript:void(0)" class="username">我的</a>
-			</span>
-		</div>
-
-		<a href="javascript:;" class="menu-btn"><img src="/zx/images/menu.png" alt=""></a>
-		<div class="menu hidden-lg">
-			<ul>
-				<li><a attr="member/contribute.shtml?siteID=">我的投稿</a></li>
-				<li><a attr="member/cataloglist.shtml?type=article&siteID=">图文投稿</a></li>
-				<li><a attr="member/cataloglist.shtml?type=image&siteID=">组图投稿</a></li>
-				<li><a attr="member/cataloglist.shtml?type=video&siteID=">视频投稿</a></li>
-				<li><a attr="member/contributelist.shtml?siteID=">稿件管理</a></li>
-			</ul>
-		</div>
-	</div>
-</div>
-<script>
-    $(function () {
-        if(!$(".uinfo").attr("href")){
-            var url = encodeURIComponent(window.location.href);
-            if (url.indexOf('referer') > -1) {
-                url = url.substring(url.indexOf('referer') + 10);
-                url = decodeURIComponent(url);
-            }
-            var str = window.frontAppContext + "front/univsSSO/login?referer=" + url + "&" + new Date().getTime();
-            var strToBase64 =  btoa(encodeURIComponent(str));
-            $(".member-login").attr("href", "http://u.univs.cn/login?targetUrl=" + strToBase64 );
-        }        
-    })    
-</script>
-<script>
-    (function(i,s,o,g,r,a,m){
-        i['GoogleAnalyticsObject']=r;
-        i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)
-        },i[r].l=1*new Date();
-        a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;
-        a.src=g;
-        m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-26929541-1', 'auto');
-    ga('send', 'pageview');
+        
+<div class="header_c">
+	<div class="head main clearfloat head_c">
+		<div class="col-md-4 logo col-sm-8 col-xs-6">
+			<a class="sitelink" href="https://dxs.moe.gov.cn/zx/" target="_blank"><img src="/zx/images/index/logo.png" alt="中国大学生在线"></a>
+            <a class="hidden uinfo member-login"></a>
+		</div>
+		<div class="visble-lg col-lg-4 info fr">
+			<span class="fr home hidden-xs">
+				<a href="https://dxs.moe.gov.cn/zx/" class="" target="_blank">网站主页</a>
+			</span>
+			<span class="fr member-span-logined hide">
+                <a class="username"><img class="member-logofile1"/></a>                
+				<a href="javascript:void(0)" class="username">我的</a>
+			</span>
+		</div>
+
+		<a href="javascript:;" class="menu-btn"><img src="/zx/images/menu.png" alt=""></a>
+		<div class="menu hidden-lg">
+			<ul>
+				<li><a attr="member/contribute.shtml?siteID=">我的投稿</a></li>
+				<li><a attr="member/cataloglist.shtml?type=article&siteID=">图文投稿</a></li>
+				<li><a attr="member/cataloglist.shtml?type=image&siteID=">组图投稿</a></li>
+				<li><a attr="member/cataloglist.shtml?type=video&siteID=">视频投稿</a></li>
+				<li><a attr="member/contributelist.shtml?siteID=">稿件管理</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<script>
+    $(function () {
+        if(!$(".uinfo").attr("href")){
+            var url = encodeURIComponent(window.location.href);
+            if (url.indexOf('referer') > -1) {
+                url = url.substring(url.indexOf('referer') + 10);
+                url = decodeURIComponent(url);
+            }
+            var str = window.frontAppContext + "front/univsSSO/login?referer=" + url + "&" + new Date().getTime();
+            var strToBase64 =  btoa(encodeURIComponent(str));
+            $(".member-login").attr("href", "http://u.univs.cn/login?targetUrl=" + strToBase64 );
+        }        
+    })    
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){
+        i['GoogleAnalyticsObject']=r;
+        i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)
+        },i[r].l=1*new Date();
+        a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;
+        a.src=g;
+        m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-26929541-1', 'auto');
+    ga('send', 'pageview');
 </script>
       </div>
       <!-- 通知 -->
       <div class="hide">
-        
-<div class="notify-box">
-    <div class="notify">
-        <div class="title"></div>
-        <div class="art_content contri-thumb">     
-            <div class="thumb">
-                <!-- <div>
-                    中国大学生在线服务条款 
-                </div> -->
-                
-                    <div></div>
-                
-            </div>  
-        </div>
-        <div class="art_content clause-thumb">
-            <div class="thumb">
-                <!-- <div>
-                    栏目投稿
-                </div> -->
-                
-                    <div><p style="text-indent: 0px; text-align: left;"><span style="text-indent: 40px; font-family: 黑体; font-size: 20px;">&nbsp; &nbsp;一、</span><span style="text-indent: 40px; font-family: 黑体; font-size: 20px;">网站</span><span style="text-indent: 40px; font-family: 黑体; font-size: 20px;">投稿</span><br/></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">1．</span><strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">登录</span></span></strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。打开</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">中国大学生在线网站</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">（</span></span><span style="font-family: 仿宋;font-size: 20px">http://dxs.moe.gov.cn/</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">），点</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">击</span>“投稿”进入投稿平台（未注册用户需点击“注册”按页面提示操作，注册账号审核通过后进行投稿）</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">2. </span><strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">选择投稿类型</span></span></strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。图文投稿、组图投稿或视频投稿。</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">3．</span><strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">栏目</span></span></strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">根据稿件内容勾选对应的频道栏目，</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">栏目</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">不对口会严重影响稿件的采用</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">4．</span><strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">标题</span></span></strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span><span style="font-family: 仿宋;font-size: 20px">15</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">字以上，</span>2</span><span style="font-family: 仿宋;font-size: 20px">5</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">字（含）以下，所选标题应与稿件内容相符，有吸引力的、新颖的标题为佳，可适当使用当前流行的网络语言。</span></span><span style=";font-family:仿宋;font-size:20px"><span style="font-family:仿宋">标题只需出现校级名称。</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">5．</span><strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">作者</span></span></strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。作者包括</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">多人的</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">，</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">姓名之间用空格隔开</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">6．</span><strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">来源</span></span></strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">供稿高校</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">全称</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">或稿件原载网站名称</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">在其他网站发布过的稿件请</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">在来源地址处</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">填写相关网址，如无则此项不填</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">7．</span><strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">确认稿件内容</span></span></strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。如</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">稿件有待进一步完善请点击</span>“保存</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">为</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">草稿</span>”将稿件存入草稿箱，检查无误后即可点击“</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">提交</span></span><span style="font-family: 仿宋;font-size: 20px">”进行投稿。</span></p><p style="text-indent:40px"><span style=";font-family:黑体;font-size:20px"><span style="font-family:黑体">二</span></span><span style=";font-family:黑体;font-size:20px"><span style="font-family:黑体">、投稿</span></span><span style=";font-family:黑体;font-size:20px"><span style="font-family:黑体">要求</span></span></p><p style="text-indent:40px"><strong><span style="font-family: 楷体;font-size: 20px"><span style="font-family:楷体">（一）</span></span></strong><strong><span style="font-family: 楷体;font-size: 20px"><span style="font-family:楷体">图文投稿</span></span></strong><strong><span style="font-family: 楷体;font-size: 20px"><span style="font-family:楷体">要求</span></span></strong></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">1．</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">稿件正文字数应在</span></span><span style="font-family: 仿宋;font-size: 20px">800</span><span style="font-family: 仿宋;font-size: 20px">—</span><span style="font-family: 仿宋;font-size: 20px">1500</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">字以内，正文前两段必须出现高校全称；内容表达清晰，主题明确；无错别字，标点符号使用无误。</span></span></p><p style="margin-top:0;text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">2</span><span style="font-family: 仿宋;font-size: 20px">. </span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">必须</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">选配图片（横图）</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">，图片清晰美观，视觉效果良好，且图片数量在</span>3—</span><span style="font-family: 仿宋;font-size: 20px">7</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">张以内，必须在网站本地上传，请勿直接复制粘贴至正文框。</span></span></p><p style="text-indent:40px"><strong><span style="font-family: 楷体;font-size: 20px"><span style="font-family:楷体">（二）视频投稿要求</span></span></strong></p><p style="margin-top:0;text-indent:40px"><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">画面清晰、不变形、无杂音，</span><span style="font-family:仿宋">画面宽高比例</span>4:3或16:9，视频文件小于</span><span style="font-family: 仿宋;font-size: 20px">2G</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">，格式为</span>mp4，视频<span style="font-family:仿宋">不含违法及商业推广信息。</span></span></p><p style="text-indent:40px"><strong><span style="font-family: 楷体;font-size: 20px"><span style="font-family:楷体">（三）组图投稿要求</span></span></strong></p><p style="margin-top:0;text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">1</span><span style="font-family: 仿宋;font-size: 20px">.</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">单张照片不超过</span>1M，画面清晰，6—</span><span style="font-family: 仿宋;font-size: 20px">2</span><span style="font-family: 仿宋;font-size: 20px">0张图片，尺寸小于900×600像素（纵向图片小于400×600像素），格式为JPG、PNG、GIF等常用格式。</span></p><p style="margin-top:0;text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">2</span><span style="font-family: 仿宋;font-size: 20px">.</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">每张图片备注格式为</span>“编号+图片说明+XXXX大学XXX提供”，编号从01开始，01，02，03……依次递增。</span></p><p style="margin-top:0;text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">3</span><span style="font-family: 仿宋;font-size: 20px">.</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">图片说明字数不用过多，既要让受众快速融入情境，又能充分了解图片要说明的信息。</span></span></p><p style="text-indent:40px"><span style=";font-family:黑体;font-size:20px"><span style="font-family:黑体">三</span></span><span style=";font-family:黑体;font-size:20px"><span style="font-family:黑体">、</span></span><span style=";font-family:黑体;font-size:20px"><span style="font-family:黑体">其他需要说明的问题</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">1.</span><span style="font-family: &#39;等线 Light&#39;;font-size: 14px">&nbsp;</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">所有来稿默认授权中国大学生在线进行编辑、加工、发布等操作。</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">2.</span><span style="font-family: 仿宋;font-size: 20px">&nbsp;</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">稿件过</span>7天未发布，则默认退稿。</span></p><p style="text-indent:28px"><span style="font-family: &#39;等线 Light&#39;;font-size: 14px">&nbsp;</span></p></div>
-                
-            </div>
-        </div> 
-        <div class="agree-btn">
-            <!-- <span class="pointer cancel">取消</span> -->
-            <span class="pointer continue">确定</span>
-        </div>
-    </div>
-</div>
-<link href="/zx/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
-<script src="/zx/js/jquery.mCustomScrollbar.min.js"></script>
-<script>
-    $(".thumb").mCustomScrollbar();
-    // 投稿须知
-    $(".notice-btn").click(function () {
-        // var ctype = $(this).attr("ctype");
-        // if(ctype == 'clause'){
-        //     $(".notify .title").text("中国大学生在线服务条款");
-        //     $(".clause-thumb").hide();
-        //     $(".contri-thumb").show();
-        // }else{
-        //     $(".notify .title").text("栏目投稿须知");
-        //     $(".contri-thumb").hide();
-        //     $(".clause-thumb").show();
-        // }
-        // $(".notify-box").show();
-        window.location.href = 'http://dxs.moe.gov.cn/zx/a/tgxz/210302/488583.shtml';
-    })
-    $(".continue").click(function () {
-        $(".notify-box").hide();
-    })
+        
+<div class="notify-box">
+    <div class="notify">
+        <div class="title"></div>
+        <div class="art_content contri-thumb">     
+            <div class="thumb">
+                <!-- <div>
+                    中国大学生在线服务条款 
+                </div> -->
+                
+                    <div></div>
+                
+            </div>  
+        </div>
+        <div class="art_content clause-thumb">
+            <div class="thumb">
+                <!-- <div>
+                    栏目投稿
+                </div> -->
+                
+                    <div><p style="text-indent: 0px; text-align: left;"><span style="text-indent: 40px; font-family: 黑体; font-size: 20px;">&nbsp; &nbsp;一、</span><span style="text-indent: 40px; font-family: 黑体; font-size: 20px;">网站</span><span style="text-indent: 40px; font-family: 黑体; font-size: 20px;">投稿</span><br/></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">1．</span><strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">登录</span></span></strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。打开</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">中国大学生在线网站</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">（</span></span><span style="font-family: 仿宋;font-size: 20px">http://dxs.moe.gov.cn/</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">），点</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">击</span>“投稿”进入投稿平台（未注册用户需点击“注册”按页面提示操作，注册账号审核通过后进行投稿）</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">2. </span><strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">选择投稿类型</span></span></strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。图文投稿、组图投稿或视频投稿。</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">3．</span><strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">栏目</span></span></strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">根据稿件内容勾选对应的频道栏目，</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">栏目</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">不对口会严重影响稿件的采用</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">4．</span><strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">标题</span></span></strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span><span style="font-family: 仿宋;font-size: 20px">15</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">字以上，</span>2</span><span style="font-family: 仿宋;font-size: 20px">5</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">字（含）以下，所选标题应与稿件内容相符，有吸引力的、新颖的标题为佳，可适当使用当前流行的网络语言。</span></span><span style=";font-family:仿宋;font-size:20px"><span style="font-family:仿宋">标题只需出现校级名称。</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">5．</span><strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">作者</span></span></strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。作者包括</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">多人的</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">，</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">姓名之间用空格隔开</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">6．</span><strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">来源</span></span></strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">供稿高校</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">全称</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">或稿件原载网站名称</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">在其他网站发布过的稿件请</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">在来源地址处</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">填写相关网址，如无则此项不填</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">7．</span><strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">确认稿件内容</span></span></strong><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">。如</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">稿件有待进一步完善请点击</span>“保存</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">为</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">草稿</span>”将稿件存入草稿箱，检查无误后即可点击“</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">提交</span></span><span style="font-family: 仿宋;font-size: 20px">”进行投稿。</span></p><p style="text-indent:40px"><span style=";font-family:黑体;font-size:20px"><span style="font-family:黑体">二</span></span><span style=";font-family:黑体;font-size:20px"><span style="font-family:黑体">、投稿</span></span><span style=";font-family:黑体;font-size:20px"><span style="font-family:黑体">要求</span></span></p><p style="text-indent:40px"><strong><span style="font-family: 楷体;font-size: 20px"><span style="font-family:楷体">（一）</span></span></strong><strong><span style="font-family: 楷体;font-size: 20px"><span style="font-family:楷体">图文投稿</span></span></strong><strong><span style="font-family: 楷体;font-size: 20px"><span style="font-family:楷体">要求</span></span></strong></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">1．</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">稿件正文字数应在</span></span><span style="font-family: 仿宋;font-size: 20px">800</span><span style="font-family: 仿宋;font-size: 20px">—</span><span style="font-family: 仿宋;font-size: 20px">1500</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">字以内，正文前两段必须出现高校全称；内容表达清晰，主题明确；无错别字，标点符号使用无误。</span></span></p><p style="margin-top:0;text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">2</span><span style="font-family: 仿宋;font-size: 20px">. </span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">必须</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">选配图片（横图）</span></span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">，图片清晰美观，视觉效果良好，且图片数量在</span>3—</span><span style="font-family: 仿宋;font-size: 20px">7</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">张以内，必须在网站本地上传，请勿直接复制粘贴至正文框。</span></span></p><p style="text-indent:40px"><strong><span style="font-family: 楷体;font-size: 20px"><span style="font-family:楷体">（二）视频投稿要求</span></span></strong></p><p style="margin-top:0;text-indent:40px"><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">画面清晰、不变形、无杂音，</span><span style="font-family:仿宋">画面宽高比例</span>4:3或16:9，视频文件小于</span><span style="font-family: 仿宋;font-size: 20px">2G</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">，格式为</span>mp4，视频<span style="font-family:仿宋">不含违法及商业推广信息。</span></span></p><p style="text-indent:40px"><strong><span style="font-family: 楷体;font-size: 20px"><span style="font-family:楷体">（三）组图投稿要求</span></span></strong></p><p style="margin-top:0;text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">1</span><span style="font-family: 仿宋;font-size: 20px">.</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">单张照片不超过</span>1M，画面清晰，6—</span><span style="font-family: 仿宋;font-size: 20px">2</span><span style="font-family: 仿宋;font-size: 20px">0张图片，尺寸小于900×600像素（纵向图片小于400×600像素），格式为JPG、PNG、GIF等常用格式。</span></p><p style="margin-top:0;text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">2</span><span style="font-family: 仿宋;font-size: 20px">.</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">每张图片备注格式为</span>“编号+图片说明+XXXX大学XXX提供”，编号从01开始，01，02，03……依次递增。</span></p><p style="margin-top:0;text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">3</span><span style="font-family: 仿宋;font-size: 20px">.</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">图片说明字数不用过多，既要让受众快速融入情境，又能充分了解图片要说明的信息。</span></span></p><p style="text-indent:40px"><span style=";font-family:黑体;font-size:20px"><span style="font-family:黑体">三</span></span><span style=";font-family:黑体;font-size:20px"><span style="font-family:黑体">、</span></span><span style=";font-family:黑体;font-size:20px"><span style="font-family:黑体">其他需要说明的问题</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">1.</span><span style="font-family: &#39;等线 Light&#39;;font-size: 14px">&nbsp;</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">所有来稿默认授权中国大学生在线进行编辑、加工、发布等操作。</span></span></p><p style="text-indent:40px"><span style="font-family: 仿宋;font-size: 20px">2.</span><span style="font-family: 仿宋;font-size: 20px">&nbsp;</span><span style="font-family: 仿宋;font-size: 20px"><span style="font-family:仿宋">稿件过</span>7天未发布，则默认退稿。</span></p><p style="text-indent:28px"><span style="font-family: &#39;等线 Light&#39;;font-size: 14px">&nbsp;</span></p></div>
+                
+            </div>
+        </div> 
+        <div class="agree-btn">
+            <!-- <span class="pointer cancel">取消</span> -->
+            <span class="pointer continue">确定</span>
+        </div>
+    </div>
+</div>
+<link href="/zx/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<script src="/zx/js/jquery.mCustomScrollbar.min.js"></script>
+<script>
+    $(".thumb").mCustomScrollbar();
+    // 投稿须知
+    $(".notice-btn").click(function () {
+        // var ctype = $(this).attr("ctype");
+        // if(ctype == 'clause'){
+        //     $(".notify .title").text("中国大学生在线服务条款");
+        //     $(".clause-thumb").hide();
+        //     $(".contri-thumb").show();
+        // }else{
+        //     $(".notify .title").text("栏目投稿须知");
+        //     $(".contri-thumb").hide();
+        //     $(".clause-thumb").show();
+        // }
+        // $(".notify-box").show();
+        window.location.href = 'http://dxs.moe.gov.cn/zx/a/tgxz/210302/488583.shtml';
+    })
+    $(".continue").click(function () {
+        $(".notify-box").hide();
+    })
 </script>
       </div>
       <!-- 栏目页导航栏 -->
       <div class="hide">
         
-
-<div class="top clearfix row">
-    <div class="container">
-        <div class="fl welcome">
-            <span class="hidden-xs">您好，</span>欢迎来到<a href="https://dxs.moe.gov.cn/zx/" class="red" target="_blank">中国大学生在线</a>！
-            <!-- <a class="head-index red fr visible-xs" href="${Site.Link}" target="_blank">首页</a> -->
-        </div>
-        <div class="fr clearfix">
-            <a class="head-index red fl hidden-xs" href="https://dxs.moe.gov.cn/zx/" target="_blank">首页</a>
-            <div class="fl search-block search-blockc">
-                <div class="search-box search clearfix">
-                    <input type="text" class="search-query fl" id="searchInput" placeholder="search" autocomplete="off">
-                    <a href="javascript:void(0)" onclick="doSearch()" class="search-submit fr"></a>
-                    <ul class='searchlist hide'></ul>
-                </div>
-            </div>
-            <div class="fl head-user">
-               
-              	
-                <span class="fr contribute pointer send" id="tougao10" attr="member/contributelist.shtml?siteID=123" onclick="needlogin()" style="margin-left:10px;display:none;">投稿</span>
-                
-                <span class="fr contribute send pointer"><a href="http://u.univs.cn/login?targetUrl=aHR0cCUzQS8vZHhzLm1vZS5nb3YuY24vem10L2Zyb250L3Nlc3Npb25TU08vbG9naW4lM0ZyZWZlcmVyJTNEaHR0cCUzQS8vZHhzLm1vZS5nb3YuY24veHloLw==" target="_blank" style="color:#fff;">校园号</a></span>
-                <span class="member-span-logined hide fr logout">
-                    <a href="javascript:void(0)" class="member-logout">退出</a>
-                </span>
-                <span class="fr login member-span-login hide login-icon">
-                    <a href="javascript:void(0)" class="member-login">登录</a>
-                </span>
-                <span class="fr member-span-logined hide login-icon">
-                    <a class="username"><img class="member-logofile1"/></a>
-                    <a href="javascript:void(0)" class="username1 username">我的</a>
-                </span>
-            </div>
-            <a href="javascript:;" class="search-btn search-btnc fr  hidden-lg hidden-md hidden-sm">
-                <img class="menu_b" src="/zx/images/se.png" alt="">
-                <img class="menu_a" src="/zx/images/menu_a.png" alt="">
-            </a>
-        </div>
-    </div>
-</div>
-<script>
-    $(".search-btnc").click(function () {
-        if($(this).hasClass("search-cancle")){
-            $(".search-blockc").hide();
-            $(".search-btnc").removeClass("search-cancle");
-        }else{
-            $(".search-blockc").show();
-            $(".search-btnc").addClass("search-cancle");
-        }            
-    })
+
+<div class="top clearfix row">
+    <div class="container">
+        <div class="fl welcome">
+            <span class="hidden-xs">您好，</span>欢迎来到<a href="https://dxs.moe.gov.cn/zx/" class="red" target="_blank">中国大学生在线</a>！
+            <!-- <a class="head-index red fr visible-xs" href="${Site.Link}" target="_blank">首页</a> -->
+        </div>
+        <div class="fr clearfix">
+            <a class="head-index red fl hidden-xs" href="https://dxs.moe.gov.cn/zx/" target="_blank">首页</a>
+            <div class="fl search-block search-blockc">
+                <div class="search-box search clearfix">
+                    <input type="text" class="search-query fl" id="searchInput" placeholder="search" autocomplete="off">
+                    <a href="javascript:void(0)" onclick="doSearch()" class="search-submit fr"></a>
+                    <ul class='searchlist hide'></ul>
+                </div>
+            </div>
+            <div class="fl head-user">
+               
+              	
+                <span class="fr contribute pointer send" id="tougao10" attr="member/contributelist.shtml?siteID=123" onclick="needlogin()" style="margin-left:10px;display:none;">投稿</span>
+                
+                <span class="fr contribute send pointer"><a href="http://u.univs.cn/login?targetUrl=aHR0cCUzQS8vZHhzLm1vZS5nb3YuY24vem10L2Zyb250L3Nlc3Npb25TU08vbG9naW4lM0ZyZWZlcmVyJTNEaHR0cCUzQS8vZHhzLm1vZS5nb3YuY24veHloLw==" target="_blank" style="color:#fff;">校园号</a></span>
+                <span class="member-span-logined hide fr logout">
+                    <a href="javascript:void(0)" class="member-logout">退出</a>
+                </span>
+                <span class="fr login member-span-login hide login-icon">
+                    <a href="javascript:void(0)" class="member-login">登录</a>
+                </span>
+                <span class="fr member-span-logined hide login-icon">
+                    <a class="username"><img class="member-logofile1"/></a>
+                    <a href="javascript:void(0)" class="username1 username">我的</a>
+                </span>
+            </div>
+            <a href="javascript:;" class="search-btn search-btnc fr  hidden-lg hidden-md hidden-sm">
+                <img class="menu_b" src="/zx/images/se.png" alt="">
+                <img class="menu_a" src="/zx/images/menu_a.png" alt="">
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    $(".search-btnc").click(function () {
+        if($(this).hasClass("search-cancle")){
+            $(".search-blockc").hide();
+            $(".search-btnc").removeClass("search-cancle");
+        }else{
+            $(".search-blockc").show();
+            $(".search-btnc").addClass("search-cancle");
+        }            
+    })
 </script>
 
 <div class="container nav-box hidden-xs">
@@ -3289,19 +3289,19 @@ opacity:0;
   <!-- 内容-end -->
 
   <!-- 底部 -->
-  
-<!-- <a class="img-block img" href="" target="_blank">
-    <img src="${prefix('images/adv-bg-bottom.png')}">
-</a>
- -->
-<div class="container footer-adv">
-  <div class="hidden-xs">
-    <span id='apjs_391'></span><script language='javascript' src='/zx/advertise/banner.js' data='/zx/upload/adv/ymdbgg/adv_391.json'></script>
-  </div>
-  <div class="visible-xs">
-    <span id='apjs_396'></span><script language='javascript' src='/zx/advertise/banner.js' data='/zx/upload/adv/ymdbgg1/adv_396.json'></script>
-  </div>
-</div>
+  
+<!-- <a class="img-block img" href="" target="_blank">
+    <img src="${prefix('images/adv-bg-bottom.png')}">
+</a>
+ -->
+<div class="container footer-adv">
+  <div class="hidden-xs">
+    <span id='apjs_391'></span><script language='javascript' src='/zx/advertise/banner.js' data='/zx/upload/adv/ymdbgg/adv_391.json'></script>
+  </div>
+  <div class="visible-xs">
+    <span id='apjs_396'></span><script language='javascript' src='/zx/advertise/banner.js' data='/zx/upload/adv/ymdbgg1/adv_396.json'></script>
+  </div>
+</div>
 
 <div class="footer container">
 	<div class="link">
@@ -3536,7 +3536,7 @@ if(window._zcms_stat)_zcms_stat("SiteID=123&Dest=https://dxs.moe.gov.cn/front/fr
   ga('send', 'pageview');
 
 </script>
-<!-- App=ZCMS(ZCMS内容管理系统) 3.2.7,CostTime=391,PublishDate=2022-02-26 17:31:22 -->
+<!-- App=ZCMS(ZCMS内容管理系统) 3.2.7,CostTime=406,PublishDate=2022-02-27 11:31:21 -->
 </body>
 
 </html>

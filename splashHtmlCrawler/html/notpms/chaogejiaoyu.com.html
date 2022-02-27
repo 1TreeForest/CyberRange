@@ -1,151 +1,151 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-        <title>超格教育app下载</title>
-    <meta name="description" content="超格app是一款专注教师考试、公务员、事业单位考试的软件，集成海量题库、直播课程、回放课程，方便小伙伴们备考。" />
-    <meta name="keywords" content="超格app,超格客户端电脑版" />
-        <meta name="shenma-site-verification" content="4c92670d0ba79e3233f357d2f1a02acb_1561363138"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/static/libs/bootstrap/css/bootstrap.min.css?v=306">
-    <link rel="stylesheet" href="/static/css/font/iconfont.css?v=306">
-    <link rel="stylesheet" href="/static/css/common.css?v=306">
-    <!--[if lt IE 9]>
-		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js?v=306"></script>
-	<![endif]-->
-      <script src="/static/libs/jquery-3.3.1.min.js?v=306"></script>
-   
-    <script src="/static/libs/bootstrap/js/bootstrap.min.js?v=306"></script>
-    <script src="/static/css/font/iconfont.js?v=306"></script>
-
-
-
-    <!--<script src="https://cdn.micoworld.net/web/activity/common/assets/js/jquery-1.7.2.min.js"></script>-->
-    <script type="text/javascript" src="/static/js/common.js?v=306"></script>
-    <script type="text/javascript" src="/static/js/func.js?v=306"></script>
-    <script type="text/javascript" src="/static/js/pla.js?v=306"></script>
-    <link rel="shortcut icon" href="/static/img/favicon.ico" />
-    <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?53a19e72d4c14094478abf3d7f96e512";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-    })();
-    </script>
-    <script type="text/javascript">
-    //检查登录状态
-    function checkLoginHeader(){
-        $.ajax({
-            type:'get',
-            url:'/user/index/getLoginUserInfo',
-            dataType:'json',
-            success:function(res){
-                if(res.status == 0){ //已经登录
-                    $(".no-login").addClass("hidden");
-                    $(".usercenter").removeClass("hidden");
-                    var userInfo = res.data;
-                    $("#hide_img").show();
-                    if(userInfo.headimgurl){
-                            $("#hide_img").attr('src',userInfo.headimgurl);
-                    }else{
-                        $("#hide_img").attr('src','/static/img/portrait.jpg?v=306');
-                    }
-                    $("#login_user_nick_name").html(userInfo.nickname);
-                    $(".aside-wrap").removeClass("hidden");
-                    $(".noaside").hide();
-                }else{
-                    $(".no-login").removeClass("hidden");
-                    $(".usercenter").addClass("hidden");
-                    $("#jump_question_a").attr("href","javascript:showLoginPopup('/question/mock')")
-
-                }
-            }
-
-        })
-    }
-    $(function(){
-        checkLoginHeader();    
-    })
-    </script>
-</head>
-
-<body>
-	<header>
-        <nav class="navbar">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <i class="iconfont icon-menu"></i>
-                    </button>
-                    <a href="/" class="navbar-brand logo"><img src="/static/img/logo.png"></a>
-                </div>
-                <div class="collapse navbar-collapse pull-left" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav nav-box">
-                        <li><a href='/'>首页</a></li>
-                        <li><a href='/course/jiaoshizige'>教师资格</a></li>
-                        <li><a href='/course/jiaoshizhaopin'>教师招聘</a></li>
-                        <li><a href='/course/shiyedanwei'>事业单位</a></li>
-                        <li><a href='/course/gongwuyuan'>公务员</a></li>
-                        <li><a href='/question/practice' id="jump_question_a">练习</a></li>
-                    </ul>
-                </div>
-                <ul class="pull-right login-box">
-                    <li><a href="/down"><i class="iconfont icon-phone"></i><span class="app-load">APP下载</span></a></li>
-                                        <li><a href="javascript:;" class="no-login hidden" onclick="showLoginPopup()">登录</a></li>
-                    <li><a href="javascript:;" class="no-login hidden" onclick="showRegisterPopup()">注册</a></li>
-                                        <li class="dropdown usercenter hidden">
-                        <a class="done-login" href='/user/index' id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/static/img/portrait.jpg?v=306" id="hide_img"><span id="login_user_nick_name"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="userMenu">
-                            <li><a href="/user/index">我的课程</a></li>
-                            <li><a href="/user/index/myDirect">今日直播</a></li>
-                            <li><a href="/user/index/playHistory">最近播放</a></li>
-                            <li><a href="/daka/task">视频作业</a></li>
-                            <li><a href="/user/index/userSetting">我的考试类型</a></li>
-                            <li><a href="/user/index/myexpress">物流信息</a></li>
-                            <li><a href="/user/index/userInfo">收货地址</a></li>
-                            <li><a href="/user/index/userDiscount">优惠券</a></li>
-                            <li><a href="/user/index/userInfo">个人资料</a></li>
-                            <li><a href="/user/login/logout" id='out_login'>退出</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-<script>
-    function setMenuActive(){
-        var url_path_name = window.location.pathname;
-        //alert(url_path_name);
-        if(url_path_name == '/' || url_path_name == '/index' || url_path_name == '/index/index'){
-            var index = 0;
-        }else if(url_path_name == '/course/index/jszgz' || url_path_name == '/course/index' || url_path_name == '/course' || url_path_name == '/course/jiaoshizige'){
-            var index = 1;
-        }else if(url_path_name == '/course/jszp' || url_path_name == '/course/jszp/index' || url_path_name == '/course/jiaoshizhaopin'){
-            var index = 2;
-        }else if(url_path_name == '/course/sydw' || url_path_name == '/course/sydw/index' || url_path_name == '/course/shiyedanwei'){
-            var index = 3;
-        }else if(url_path_name == '/course/gwy' || url_path_name == '/course/gwy/index'  || url_path_name == '/course/gongwuyuan'){
-            var index = 4;
-        }else if(url_path_name.indexOf('question') >0){
-            var index = 5;
-        }else if(url_path_name.indexOf('down') >0){
-            var index = 6   ;
-        }
-
-        //设置导航选中
-        $("#bs-example-navbar-collapse-1" ).find("ul li:eq(" + index + ")").addClass('active').siblings().removeClass('active');
-
-    }
-    setMenuActive();
-
-    //alert(window.location.pathname);
-
-
-</script>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+        <title>超格教育app下载</title>
+    <meta name="description" content="超格app是一款专注教师考试、公务员、事业单位考试的软件，集成海量题库、直播课程、回放课程，方便小伙伴们备考。" />
+    <meta name="keywords" content="超格app,超格客户端电脑版" />
+        <meta name="shenma-site-verification" content="4c92670d0ba79e3233f357d2f1a02acb_1561363138"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/static/libs/bootstrap/css/bootstrap.min.css?v=306">
+    <link rel="stylesheet" href="/static/css/font/iconfont.css?v=306">
+    <link rel="stylesheet" href="/static/css/common.css?v=306">
+    <!--[if lt IE 9]>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js?v=306"></script>
+	<![endif]-->
+      <script src="/static/libs/jquery-3.3.1.min.js?v=306"></script>
+   
+    <script src="/static/libs/bootstrap/js/bootstrap.min.js?v=306"></script>
+    <script src="/static/css/font/iconfont.js?v=306"></script>
+
+
+
+    <!--<script src="https://cdn.micoworld.net/web/activity/common/assets/js/jquery-1.7.2.min.js"></script>-->
+    <script type="text/javascript" src="/static/js/common.js?v=306"></script>
+    <script type="text/javascript" src="/static/js/func.js?v=306"></script>
+    <script type="text/javascript" src="/static/js/pla.js?v=306"></script>
+    <link rel="shortcut icon" href="/static/img/favicon.ico" />
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?53a19e72d4c14094478abf3d7f96e512";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    <script type="text/javascript">
+    //检查登录状态
+    function checkLoginHeader(){
+        $.ajax({
+            type:'get',
+            url:'/user/index/getLoginUserInfo',
+            dataType:'json',
+            success:function(res){
+                if(res.status == 0){ //已经登录
+                    $(".no-login").addClass("hidden");
+                    $(".usercenter").removeClass("hidden");
+                    var userInfo = res.data;
+                    $("#hide_img").show();
+                    if(userInfo.headimgurl){
+                            $("#hide_img").attr('src',userInfo.headimgurl);
+                    }else{
+                        $("#hide_img").attr('src','/static/img/portrait.jpg?v=306');
+                    }
+                    $("#login_user_nick_name").html(userInfo.nickname);
+                    $(".aside-wrap").removeClass("hidden");
+                    $(".noaside").hide();
+                }else{
+                    $(".no-login").removeClass("hidden");
+                    $(".usercenter").addClass("hidden");
+                    $("#jump_question_a").attr("href","javascript:showLoginPopup('/question/mock')")
+
+                }
+            }
+
+        })
+    }
+    $(function(){
+        checkLoginHeader();    
+    })
+    </script>
+</head>
+
+<body>
+	<header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <i class="iconfont icon-menu"></i>
+                    </button>
+                    <a href="/" class="navbar-brand logo"><img src="/static/img/logo.png"></a>
+                </div>
+                <div class="collapse navbar-collapse pull-left" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav nav-box">
+                        <li><a href='/'>首页</a></li>
+                        <li><a href='/course/jiaoshizige'>教师资格</a></li>
+                        <li><a href='/course/jiaoshizhaopin'>教师招聘</a></li>
+                        <li><a href='/course/shiyedanwei'>事业单位</a></li>
+                        <li><a href='/course/gongwuyuan'>公务员</a></li>
+                        <li><a href='/question/practice' id="jump_question_a">练习</a></li>
+                    </ul>
+                </div>
+                <ul class="pull-right login-box">
+                    <li><a href="/down"><i class="iconfont icon-phone"></i><span class="app-load">APP下载</span></a></li>
+                                        <li><a href="javascript:;" class="no-login hidden" onclick="showLoginPopup()">登录</a></li>
+                    <li><a href="javascript:;" class="no-login hidden" onclick="showRegisterPopup()">注册</a></li>
+                                        <li class="dropdown usercenter hidden">
+                        <a class="done-login" href='/user/index' id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/static/img/portrait.jpg?v=306" id="hide_img"><span id="login_user_nick_name"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="userMenu">
+                            <li><a href="/user/index">我的课程</a></li>
+                            <li><a href="/user/index/myDirect">今日直播</a></li>
+                            <li><a href="/user/index/playHistory">最近播放</a></li>
+                            <li><a href="/daka/task">视频作业</a></li>
+                            <li><a href="/user/index/userSetting">我的考试类型</a></li>
+                            <li><a href="/user/index/myexpress">物流信息</a></li>
+                            <li><a href="/user/index/userInfo">收货地址</a></li>
+                            <li><a href="/user/index/userDiscount">优惠券</a></li>
+                            <li><a href="/user/index/userInfo">个人资料</a></li>
+                            <li><a href="/user/login/logout" id='out_login'>退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+<script>
+    function setMenuActive(){
+        var url_path_name = window.location.pathname;
+        //alert(url_path_name);
+        if(url_path_name == '/' || url_path_name == '/index' || url_path_name == '/index/index'){
+            var index = 0;
+        }else if(url_path_name == '/course/index/jszgz' || url_path_name == '/course/index' || url_path_name == '/course' || url_path_name == '/course/jiaoshizige'){
+            var index = 1;
+        }else if(url_path_name == '/course/jszp' || url_path_name == '/course/jszp/index' || url_path_name == '/course/jiaoshizhaopin'){
+            var index = 2;
+        }else if(url_path_name == '/course/sydw' || url_path_name == '/course/sydw/index' || url_path_name == '/course/shiyedanwei'){
+            var index = 3;
+        }else if(url_path_name == '/course/gwy' || url_path_name == '/course/gwy/index'  || url_path_name == '/course/gongwuyuan'){
+            var index = 4;
+        }else if(url_path_name.indexOf('question') >0){
+            var index = 5;
+        }else if(url_path_name.indexOf('down') >0){
+            var index = 6   ;
+        }
+
+        //设置导航选中
+        $("#bs-example-navbar-collapse-1" ).find("ul li:eq(" + index + ")").addClass('active').siblings().removeClass('active');
+
+    }
+    setMenuActive();
+
+    //alert(window.location.pathname);
+
+
+</script>
 <link rel="stylesheet" href="/static/css/login.css?v=306">
 <script src="/static/js/qrcode.min.js?v=306"></script>
 <!-- 登录弹框 -->
@@ -1010,393 +1010,393 @@ $('.load_form_body input').on('blur', function(){
     })
 </script>
 
-    <footer>
-        <div class="container">
-            <div class="footer-left">
-                <a href="http://weibo.com/chaogedu" target="_blank"><i class="iconfont icon-weibo"></i>超格教育微博</a>
-                <a href="javascript:;"><i class="iconfont icon-weixin"></i>超格教育公众号<div class="footer-popup"><img src="/static/img/weixin.jpg"></div></a>
-                <a href="javascript:;"><i class="iconfont icon-weixin"></i>超哥讲时政<div class="footer-popup"><img src="/static/img/weixin-chaoge.jpg"></div></a>
-                <a href="javascript:;"><i class="iconfont icon-telephone"></i>400-020-3888</a>
-                
-            </div>
-            <div class="footer-center">
-                <!--<a href="http://oss.chaogejiaoyu.com/app/android/chaoge_v2.1.0_chaoge.apk?v=306" target="_blank"><i class="iconfont icon-android"></i>Android</a>-->
-                <a class="footer-dl" data-id=1 href="javascript:;"><i class="iconfont icon-android"></i>Android</a>
-                <a href="https://itunes.apple.com/cn/app/%E8%B6%85%E6%A0%BC-%E8%80%83%E6%95%99%E5%B8%88%E8%80%83%E5%85%AC%E5%BF%85%E5%A4%87/id1367434722?l=zh&ls=1&mt=8" target="_blank"><i class="iconfont icon-iphone"></i>iPhone</a>
-                <!--<a href="https://atpub.oss-cn-beijing.aliyuncs.com/app/box/%E8%B6%85%E6%A0%BCBOX-v1.2.2-win-ia32.exe" target="_blank" class="footer-pc"><i class="iconfont icon-pc"></i>Win7+</a>-->
-                <!--
-                <a class="footer-dl" data-id=2 href="javascript:;" class="footer-pc"><i class="iconfont icon-pc"></i>Win7+</a>
-                -->
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p><a href="/protocol">服务条款</a></p>
-
-            <p><a href="/certificate" target="_blank">京网文[2018]8631-744号</a></p>
-            <p><a href="https://beian.miit.gov.cn/" target="_blank">京ICP备17045984号-2</a></p>
-            <p><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502038217" target="_blank"><img src="/static/img/gongan.png"> 京公网安备 11010502038217号</a></p>
-            <p><a href="/about">关于我们</a></p>
-        </div>
-    </footer>
-<script>
-    $('.footer-dl').click(function() {
-        var id = $(this).data('id');
-        if (id == 1) { // 下载安卓
-            $.popup.confirm('您要下载Android手机APP吗？', function() {
-                window.location.href = 'https://oss.chaogejiaoyu.com/app/android/chaoge_v3.2.8_chaoge.apk?v=306';
-            })
-        } else if (id == 2) { // 下载win7+
-            $.popup.confirm('您要下载Win7+电脑客户端吗？', function() {
-                window.open('https://atpub.oss-cn-beijing.aliyuncs.com/app/box/%E8%B6%85%E6%A0%BCBOX-v2.2.0-win-ia32.exe');
-            })
-        } 
-    })
-</script>
-    <!-- 右侧学习中心start -->
-    <div class="aside-wrap hidden">
-        <aside class="sidebar">
-            <div class="side-left">
-                <div class="back"><i class="iconfont icon-back"></i></div>
-                <ul class="items">
-                    <li class="item" data-nav="bofang"><i class="iconfont icon-jinrizhibo"></i><span class="tip">今日直播</span></li>
-                    <li class="item" data-nav="kecheng"><i class="iconfont icon-kecheng1"></i><span class="tip">我的课程</span></li>
-                    <li class="item" data-nav="zuoye"><i class="iconfont icon-mokao2"></i><span class="tip">当前模考</span></li>
-                    <li class="item" data-nav="zuijin"><i class="iconfont icon-zuijinbofang"></i><span class="tip">最近播放</span></li>
-                </ul>
-                <ul class="tools">
-                    <li class="tool"><i class="iconfont icon-telephone"></i>
-                        <div class="phone-box">
-                            <p class="title">联系我们</p>
-                            <p class="number"><i class="iconfont icon-telephone"></i>400-020-3888</p>
-                            <p>工作时间： 9:00 - 21:00</p>
-                            <p>公司地址： 北京市朝阳区望京SOHO塔1A座1002</p>
-                        </div>
-                    </li>
-                    <li class="tool"><i class="iconfont icon-weixin"></i>
-                        <div class="weixin-box"><img src="/static/img/weixin.jpg"></div>
-                    </li>
-                    <li class="tool go-top"><i class="iconfont icon-top1"></i></li>
-                </ul>
-            </div>
-            <div class="side-right">
-                <div class="content bofang" id="bofang">
-                    <div class="none-item">
-                        <img src="/static/img/card-none.png">
-                        <p>今天暂无直播哦！</p>
-                    </div>
-                    <div class="item-list">
-                        <div class="item-head">今日直播</div>
-                        <!--
-                        <div class="item">
-                            <p class="title"><a href="course-catalogue.html">2019山东教师招聘【笔试】全程上岸班 一期</a></p>
-                            <p class="time">直播时间： 今天19:00 - 22:15</p>
-                            <p class="button"><a href="course-catalogue.html">进入课堂</a></p>
-                        </div>
-                        <div class="item">
-                            <p class="title"><a href="course-catalogue.html">2019国考全程上岸班</a></p>
-                            <p class="time">直播时间： 今天10:00 - 11:00</p>
-                            <p class="button"><a href="course-catalogue.html">进入课堂</a></p>
-                            <p class="time">直播时间： 今天19:00 - 22:15</p>
-                            <p class="button"><a href="course-catalogue.html">进入课堂</a></p>
-                        </div>
-                        -->
-                        <div class="item-more"><a href="/user/index/myDirect">更多课程>></a></div>
-                    </div>
-                </div>
-                <div class="content kecheng" id="kecheng">
-                    <div class="none-item">
-                        <img src="/static/img/card-none.png">
-                        <p>暂无课程，快去学习吧！</p>
-                    </div>
-                    <div class="item-list">
-                        <div class="item-head">我的课程</div>
-                        <!--
-                        <div class="item">
-                            <p class="title-2"><a href="course-catalogue.html">2019山东教师招聘【笔试】全程上岸班 一期</a></p>
-                            <p class="time">开课时间 : 2018.08.12-2018.08.13</p>
-                        </div>
-                        <div class="item">
-                            <p class="title-2"><a href="course-catalogue.html">2019国考全程上岸班</a></p>
-                            <p class="time">开课时间 : 2018.08.12-2018.08.13</p>
-                        </div>
-                        <div class="item">
-                            <p class="title-2"><a href="course-catalogue.html">2019国考全程上岸班</a></p>
-                            <p class="time">开课时间 : 2018.08.12-2018.08.13</p>
-                        </div>
-                        -->
-                        <div class="item-more"><a href="/user/index">更多课程>></a></div>
-                    </div>
-                </div>
-                <div class="content zuoye" id="zuoye">
-                    <div class="none-item">
-                        <img src="/static/img/card-none.png">
-                        <p>暂无模考!<a href="/question/mock">全部模考</a></p>
-                    </div>
-                    <div class="item-list">
-                        <div class="item-head">当前模考</div>
-                        <!--
-                        <div class="item">
-                            <p class="title-2"><a href="course-catalogue.html">2019山东教师招聘【笔试】全程上岸班 一期</a></p>
-                            <p class="time">模考时间 : 2018.03.03 09:00-11:00</p>
-                        </div>
-                        <div class="item">
-                            <p class="title-2"><a href="course-catalogue.html">2017下半年中学综合素质真题（1）</a></p>
-                            <p class="time">模考时间 : 2018.03.03 09:00-11:00</p>
-                        </div>
-                        <div class="item">
-                            <p class="title-2"><a href="course-catalogue.html">2017下半年中学综合素质真题（2）</a></p>
-                            <p class="time">模考时间 : 2018.03.03 09:00-11:00</p>
-                        </div>
-                        -->
-                        <div class="item-more"><a href="/question/mock">更多模考>></a></div>
-                    </div>
-                </div>
-                <div class="content zuijin" id="zuijin">
-                    <div class="none-item">
-                        <img src="/static/img/card-none.png">
-                        <p>最近没有学习课程哦！</p>
-                    </div>
-                    <div class="item-list">
-                        <div class="item-head">最近播放</div>
-                        <!--
-                        <div class="item">
-                            <p class="title-2"><a href="course-catalogue.html">2019山东教师招聘【笔试】全程上岸班 一期</a></p>
-                            <p class="time">2019山东事业单位【笔试】全程上岸班（一期）</p>
-                        </div>
-                        <div class="item">
-                            <p class="title-2"><a href="course-catalogue.html">2017下半年中学综合素质真题（1）</a></p>
-                            <p class="time">2019山东事业单位【笔试】全程上岸班（二期）</p>
-                        </div>
-                        <div class="item">
-                            <p class="title-2"><a href="course-catalogue.html">2017下半年中学综合素质真题（2）</a></p>
-                            <p class="time">【公共基础知识】模考解析课（第二季）</p>
-                        </div>
-
-                        <div class="item">
-                            <div>
-                                <p class="title-2"><a href="course-catalogue.html">2019山东教师招聘【笔试】全程上岸班 一期</a></p>
-                                <p class="time">13分28秒<i class="iconfont icon-i"></i></p>
-                                <div class="zuijin-detail">
-                                    <p>名称：2019山东教师招聘【笔试】全程上岸班 一期</p>
-                                    <p>所属：山东教师招聘【笔试】</p>
-                                    <p>教师：秘秘 大庆</p>
-                                    <p>总时长：30分00秒</p>
-                                    <p>观看至：13分28秒</p>
-                                </div>
-                            </div>
-                            <div class="zuijin-right">
-                                <p><i class="iconfont icon-zhengchangbofang"></i></p>
-                                <p class="zuijin-rate">15%</p>
-                            </div>
-                        </div>
-                        -->
-                        <div class="item-more"><a href="/user/index/playHistory">更多课程>></a></div>
-                    </div>
-                </div>
-            </div>
-        </aside>
-    </div>
-    <!-- 右侧学习中心end -->
-    <div class="noaside go-top">
-        <i class="iconfont icon-top1"></i>
-    </div>
-</body>
-</html>    
-<script>
-//获取今日直播（右边的侧边栏）
-function getMyDirectRight(){
-    $.ajax({
-        type:"get",
-        url:"/user/index/getMyDirectAjax",
-        dataType:"json",
-        success:function(res){
-            if(res.status != 0){
-                $("#bofang .item-list").hide();
-                $("#bofang .none-item").show();return ;
-            }
-            
-            var course_list = res.data;
-            var course_html = '';
-            var length = 0;
-            for(i in course_list){
-                length++;
-                if(length > 3){
-                   break;
-                }
-                course_html+='<div class="item">';
-                course_html+='    <p class="title"><a href="/course/index/viewMyCourse?id='+course_list[i].course_info.course_id+'">'+course_list[i].course_info.course_name+'</a></p>';
-                for(c in course_list[i].sub_list){
-                if(c==0){
-                    var style="style='margin-top:10px'";
-                }else{
-                    var style="";
-                }
-                course_html+='    <p class="time" '+style+'>直播时间： '+course_list[i].sub_list[c].date_str+'</p>';
-                course_html+='    <p class="button"><a href="/course/index/enterCourse?course_id='+course_list[i].sub_list[c].id+'">进入课堂</a></p>';
-                }
-                course_html+='</div>';
-            }
-            if(!course_html){
-                $("#bofang .item-list").hide();
-                $("#bofang .none-item").show();return ;
-            }else{
-                $("#bofang .none-item").hide();
-                $("#bofang .item-list .item-head").after(course_html);
-            }
-        }
-    })
-}
-getMyDirectRight();
-//获取我的课程(右边的侧边栏)
-function getMyCourseRight(){
-    $.ajax({
-        type:"get",
-        url:"/user/index/getMyCourseListAjax",
-        dataType:"json",
-        success:function(res){
-            if(res.status != 0){
-                $("#kecheng .item-list").hide();
-                $("#kecheng .none-item").show();return ;
-            }
-            
-            var course_list = res.data.course_list;
-            var course_html = '';
-            var length = 0;
-            console.log(course_list);
-            for(i in course_list){
-                length++;
-                if(length > 6){
-                    break;
-                }
-               
-
-                course_html+='<div class="item">';
-                course_html+='    <p class="title-2"><a href="/course/index/viewMyCourse?id='+course_list[i].course_id+'">'+course_list[i].course_name+'</a><i class="iconfont icon-i"></i></p>';
-                course_html+='    <div class="zuijin-detail">';
-                course_html+='        <p>开课时间 :<br> '+course_list[i].course_period_disc+'</p>';
-                course_html+='    </div>';
-                course_html+='</div>';
-            }
-            //alert(course_html);
-            if(!course_html){
-                $("#kecheng .item-list").hide();
-                $("#kecheng .none-item").show();return ;
-            }else{
-                $("#kecheng .none-item").hide();
-                $("#kecheng .item-list .item-head").after(course_html);
-            }
-        }
-    })
-}
-getMyCourseRight();
-//获取我的模考(右边的侧边栏)
-function getMyMockRight(){
-    $.ajax({
-        type:"get",
-        url:"/question/mock/getPaperListAjax",
-        data:"cur_type=1&page=1&auto_shenfen=1",
-        dataType:"json",
-        success:function(res){
-            if(res.status != 0){
-                $("#zuoye .item-list").hide();
-                $("#zuoye .none-item").show();return ;
-            }
-            
-            var paper_list = res.data.paper_list;
-            var paper_html = '';
-            var length = 0;
-            for(i in paper_list){
-                length++;
-                if(length > 7){
-                    break;
-                }
-                paper_html+='<div class="item">';
-                paper_html+='    <p class="title-2"><a href="/question/mock/detail?id='+paper_list[i].id+'">'+paper_list[i].title+'</a></p>';
-                paper_html+='    <p class="time">模考时间 : '+paper_list[i].start_time+'-'+paper_list[i].end_time+'</p>';
-                paper_html+='</div>';
-                
-            }
-            if(!paper_html){
-                $("#zuoye .item-list").hide();
-                $("#zuoye .none-item").show();return ;
-            }else{
-                $("#zuoye .none-item").hide();
-                $("#zuoye .item-list .item-head").after(paper_html);
-            }
-        }
-    })
-}
-getMyMockRight();
-//获取我的播放记录(右边的侧边栏)
-function getMyPlayHistoryRight(){
-    $.ajax({
-        type:"get",
-        url:"/user/index/getPlayHistoryAjax",
-        data:"page=1",
-        dataType:"json",
-        success:function(res){
-            if(res.status != 0){
-                $("#zuijin .item-list").hide();
-                $("#zuijin .none-item").show();return ;
-            }
-            
-            var history_list = res.data.history_list;
-            var history_html = '';
-            var length = 0;
-            for(i in history_list){
-                length++;
-                if(length >6){
-                    break;
-                }
-                /*
-                history_html+='<div class="item">';
-                history_html+='    <p class="title-2"><a href="/course/index/enterCourse?course_id='+history_list[i].course_id+'">'+history_list[i].course_name+'</a></p>';
-                history_html+='    <p class="time">'+history_list[i].parent_course_name+'</p>';
-                history_html+='</div>';
-                */
-                history_html+='<div class="item">';
-                history_html+='    <div class="zuijin-left">';
-                history_html+='        <p class="title-2"><a href="/course/index/enterCourse?course_id='+history_list[i].course_id+'">'+history_list[i].course_name+'</a></p>';
-                history_html+='        <p class="time">'+history_list[i].last_position_time+'<i class="iconfont icon-i"></i></p>';
-                history_html+='        <div class="zuijin-detail">';
-                history_html+='            <p>名称：'+history_list[i].course_name+'</p>';
-                history_html+='            <p>所属：'+history_list[i].parent_course_name+'</p>';
-                if(history_list[i].teacher_name){
-                history_html+='            <p>教师：'+history_list[i].teacher_name+'</p>';
-                }
-                history_html+='            <p>总时长：'+history_list[i].course_total_time+'</p>';
-                history_html+='            <p>观看至：'+history_list[i].last_position_time+'</p>';
-                history_html+='        </div>';
-                history_html+='    </div>';
-                history_html+='    <div class="zuijin-right">';
-                history_html+='        <p><i class="iconfont icon-zhengchangbofang"></i></p>';
-                history_html+='        <p class="zuijin-rate">'+history_list[i].play_ratio+'%</p>';
-                history_html+='    </div>';
-                history_html+='</div>';
-
-               
-            }
-            if(!history_html){
-                $("#zuijin .item-list").hide();
-                $("#zuijin .none-item").show();
-               
-                return ;
-            }else{
-                $("#zuijin .none-item").hide();
-                $("#zuijin .item-list .item-head").after(history_html);
-                $(document).on('mouseenter', '.sidebar .icon-i', function() {
-                    $(this).parent().parent().children('.zuijin-detail').show();
-                });
-                $(document).on('mouseleave', '.sidebar .icon-i', function() {
-                    $(this).parent().parent().children('.zuijin-detail').hide();
-                }); 
-                
-                
-            }
-        }
-    })
-}
-getMyPlayHistoryRight();
-</script>
+    <footer>
+        <div class="container">
+            <div class="footer-left">
+                <a href="http://weibo.com/chaogedu" target="_blank"><i class="iconfont icon-weibo"></i>超格教育微博</a>
+                <a href="javascript:;"><i class="iconfont icon-weixin"></i>超格教育公众号<div class="footer-popup"><img src="/static/img/weixin.jpg"></div></a>
+                <a href="javascript:;"><i class="iconfont icon-weixin"></i>超哥讲时政<div class="footer-popup"><img src="/static/img/weixin-chaoge.jpg"></div></a>
+                <a href="javascript:;"><i class="iconfont icon-telephone"></i>400-020-3888</a>
+                
+            </div>
+            <div class="footer-center">
+                <!--<a href="http://oss.chaogejiaoyu.com/app/android/chaoge_v2.1.0_chaoge.apk?v=306" target="_blank"><i class="iconfont icon-android"></i>Android</a>-->
+                <a class="footer-dl" data-id=1 href="javascript:;"><i class="iconfont icon-android"></i>Android</a>
+                <a href="https://itunes.apple.com/cn/app/%E8%B6%85%E6%A0%BC-%E8%80%83%E6%95%99%E5%B8%88%E8%80%83%E5%85%AC%E5%BF%85%E5%A4%87/id1367434722?l=zh&ls=1&mt=8" target="_blank"><i class="iconfont icon-iphone"></i>iPhone</a>
+                <!--<a href="https://atpub.oss-cn-beijing.aliyuncs.com/app/box/%E8%B6%85%E6%A0%BCBOX-v1.2.2-win-ia32.exe" target="_blank" class="footer-pc"><i class="iconfont icon-pc"></i>Win7+</a>-->
+                <!--
+                <a class="footer-dl" data-id=2 href="javascript:;" class="footer-pc"><i class="iconfont icon-pc"></i>Win7+</a>
+                -->
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p><a href="/protocol">服务条款</a></p>
+
+            <p><a href="/certificate" target="_blank">京网文[2018]8631-744号</a></p>
+            <p><a href="https://beian.miit.gov.cn/" target="_blank">京ICP备17045984号-2</a></p>
+            <p><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502038217" target="_blank"><img src="/static/img/gongan.png"> 京公网安备 11010502038217号</a></p>
+            <p><a href="/about">关于我们</a></p>
+        </div>
+    </footer>
+<script>
+    $('.footer-dl').click(function() {
+        var id = $(this).data('id');
+        if (id == 1) { // 下载安卓
+            $.popup.confirm('您要下载Android手机APP吗？', function() {
+                window.location.href = 'https://oss.chaogejiaoyu.com/app/android/chaoge_v3.2.8_chaoge.apk?v=306';
+            })
+        } else if (id == 2) { // 下载win7+
+            $.popup.confirm('您要下载Win7+电脑客户端吗？', function() {
+                window.open('https://atpub.oss-cn-beijing.aliyuncs.com/app/box/%E8%B6%85%E6%A0%BCBOX-v2.2.0-win-ia32.exe');
+            })
+        } 
+    })
+</script>
+    <!-- 右侧学习中心start -->
+    <div class="aside-wrap hidden">
+        <aside class="sidebar">
+            <div class="side-left">
+                <div class="back"><i class="iconfont icon-back"></i></div>
+                <ul class="items">
+                    <li class="item" data-nav="bofang"><i class="iconfont icon-jinrizhibo"></i><span class="tip">今日直播</span></li>
+                    <li class="item" data-nav="kecheng"><i class="iconfont icon-kecheng1"></i><span class="tip">我的课程</span></li>
+                    <li class="item" data-nav="zuoye"><i class="iconfont icon-mokao2"></i><span class="tip">当前模考</span></li>
+                    <li class="item" data-nav="zuijin"><i class="iconfont icon-zuijinbofang"></i><span class="tip">最近播放</span></li>
+                </ul>
+                <ul class="tools">
+                    <li class="tool"><i class="iconfont icon-telephone"></i>
+                        <div class="phone-box">
+                            <p class="title">联系我们</p>
+                            <p class="number"><i class="iconfont icon-telephone"></i>400-020-3888</p>
+                            <p>工作时间： 9:00 - 21:00</p>
+                            <p>公司地址： 北京市朝阳区望京SOHO塔1A座1002</p>
+                        </div>
+                    </li>
+                    <li class="tool"><i class="iconfont icon-weixin"></i>
+                        <div class="weixin-box"><img src="/static/img/weixin.jpg"></div>
+                    </li>
+                    <li class="tool go-top"><i class="iconfont icon-top1"></i></li>
+                </ul>
+            </div>
+            <div class="side-right">
+                <div class="content bofang" id="bofang">
+                    <div class="none-item">
+                        <img src="/static/img/card-none.png">
+                        <p>今天暂无直播哦！</p>
+                    </div>
+                    <div class="item-list">
+                        <div class="item-head">今日直播</div>
+                        <!--
+                        <div class="item">
+                            <p class="title"><a href="course-catalogue.html">2019山东教师招聘【笔试】全程上岸班 一期</a></p>
+                            <p class="time">直播时间： 今天19:00 - 22:15</p>
+                            <p class="button"><a href="course-catalogue.html">进入课堂</a></p>
+                        </div>
+                        <div class="item">
+                            <p class="title"><a href="course-catalogue.html">2019国考全程上岸班</a></p>
+                            <p class="time">直播时间： 今天10:00 - 11:00</p>
+                            <p class="button"><a href="course-catalogue.html">进入课堂</a></p>
+                            <p class="time">直播时间： 今天19:00 - 22:15</p>
+                            <p class="button"><a href="course-catalogue.html">进入课堂</a></p>
+                        </div>
+                        -->
+                        <div class="item-more"><a href="/user/index/myDirect">更多课程>></a></div>
+                    </div>
+                </div>
+                <div class="content kecheng" id="kecheng">
+                    <div class="none-item">
+                        <img src="/static/img/card-none.png">
+                        <p>暂无课程，快去学习吧！</p>
+                    </div>
+                    <div class="item-list">
+                        <div class="item-head">我的课程</div>
+                        <!--
+                        <div class="item">
+                            <p class="title-2"><a href="course-catalogue.html">2019山东教师招聘【笔试】全程上岸班 一期</a></p>
+                            <p class="time">开课时间 : 2018.08.12-2018.08.13</p>
+                        </div>
+                        <div class="item">
+                            <p class="title-2"><a href="course-catalogue.html">2019国考全程上岸班</a></p>
+                            <p class="time">开课时间 : 2018.08.12-2018.08.13</p>
+                        </div>
+                        <div class="item">
+                            <p class="title-2"><a href="course-catalogue.html">2019国考全程上岸班</a></p>
+                            <p class="time">开课时间 : 2018.08.12-2018.08.13</p>
+                        </div>
+                        -->
+                        <div class="item-more"><a href="/user/index">更多课程>></a></div>
+                    </div>
+                </div>
+                <div class="content zuoye" id="zuoye">
+                    <div class="none-item">
+                        <img src="/static/img/card-none.png">
+                        <p>暂无模考!<a href="/question/mock">全部模考</a></p>
+                    </div>
+                    <div class="item-list">
+                        <div class="item-head">当前模考</div>
+                        <!--
+                        <div class="item">
+                            <p class="title-2"><a href="course-catalogue.html">2019山东教师招聘【笔试】全程上岸班 一期</a></p>
+                            <p class="time">模考时间 : 2018.03.03 09:00-11:00</p>
+                        </div>
+                        <div class="item">
+                            <p class="title-2"><a href="course-catalogue.html">2017下半年中学综合素质真题（1）</a></p>
+                            <p class="time">模考时间 : 2018.03.03 09:00-11:00</p>
+                        </div>
+                        <div class="item">
+                            <p class="title-2"><a href="course-catalogue.html">2017下半年中学综合素质真题（2）</a></p>
+                            <p class="time">模考时间 : 2018.03.03 09:00-11:00</p>
+                        </div>
+                        -->
+                        <div class="item-more"><a href="/question/mock">更多模考>></a></div>
+                    </div>
+                </div>
+                <div class="content zuijin" id="zuijin">
+                    <div class="none-item">
+                        <img src="/static/img/card-none.png">
+                        <p>最近没有学习课程哦！</p>
+                    </div>
+                    <div class="item-list">
+                        <div class="item-head">最近播放</div>
+                        <!--
+                        <div class="item">
+                            <p class="title-2"><a href="course-catalogue.html">2019山东教师招聘【笔试】全程上岸班 一期</a></p>
+                            <p class="time">2019山东事业单位【笔试】全程上岸班（一期）</p>
+                        </div>
+                        <div class="item">
+                            <p class="title-2"><a href="course-catalogue.html">2017下半年中学综合素质真题（1）</a></p>
+                            <p class="time">2019山东事业单位【笔试】全程上岸班（二期）</p>
+                        </div>
+                        <div class="item">
+                            <p class="title-2"><a href="course-catalogue.html">2017下半年中学综合素质真题（2）</a></p>
+                            <p class="time">【公共基础知识】模考解析课（第二季）</p>
+                        </div>
+
+                        <div class="item">
+                            <div>
+                                <p class="title-2"><a href="course-catalogue.html">2019山东教师招聘【笔试】全程上岸班 一期</a></p>
+                                <p class="time">13分28秒<i class="iconfont icon-i"></i></p>
+                                <div class="zuijin-detail">
+                                    <p>名称：2019山东教师招聘【笔试】全程上岸班 一期</p>
+                                    <p>所属：山东教师招聘【笔试】</p>
+                                    <p>教师：秘秘 大庆</p>
+                                    <p>总时长：30分00秒</p>
+                                    <p>观看至：13分28秒</p>
+                                </div>
+                            </div>
+                            <div class="zuijin-right">
+                                <p><i class="iconfont icon-zhengchangbofang"></i></p>
+                                <p class="zuijin-rate">15%</p>
+                            </div>
+                        </div>
+                        -->
+                        <div class="item-more"><a href="/user/index/playHistory">更多课程>></a></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <!-- 右侧学习中心end -->
+    <div class="noaside go-top">
+        <i class="iconfont icon-top1"></i>
+    </div>
+</body>
+</html>    
+<script>
+//获取今日直播（右边的侧边栏）
+function getMyDirectRight(){
+    $.ajax({
+        type:"get",
+        url:"/user/index/getMyDirectAjax",
+        dataType:"json",
+        success:function(res){
+            if(res.status != 0){
+                $("#bofang .item-list").hide();
+                $("#bofang .none-item").show();return ;
+            }
+            
+            var course_list = res.data;
+            var course_html = '';
+            var length = 0;
+            for(i in course_list){
+                length++;
+                if(length > 3){
+                   break;
+                }
+                course_html+='<div class="item">';
+                course_html+='    <p class="title"><a href="/course/index/viewMyCourse?id='+course_list[i].course_info.course_id+'">'+course_list[i].course_info.course_name+'</a></p>';
+                for(c in course_list[i].sub_list){
+                if(c==0){
+                    var style="style='margin-top:10px'";
+                }else{
+                    var style="";
+                }
+                course_html+='    <p class="time" '+style+'>直播时间： '+course_list[i].sub_list[c].date_str+'</p>';
+                course_html+='    <p class="button"><a href="/course/index/enterCourse?course_id='+course_list[i].sub_list[c].id+'">进入课堂</a></p>';
+                }
+                course_html+='</div>';
+            }
+            if(!course_html){
+                $("#bofang .item-list").hide();
+                $("#bofang .none-item").show();return ;
+            }else{
+                $("#bofang .none-item").hide();
+                $("#bofang .item-list .item-head").after(course_html);
+            }
+        }
+    })
+}
+getMyDirectRight();
+//获取我的课程(右边的侧边栏)
+function getMyCourseRight(){
+    $.ajax({
+        type:"get",
+        url:"/user/index/getMyCourseListAjax",
+        dataType:"json",
+        success:function(res){
+            if(res.status != 0){
+                $("#kecheng .item-list").hide();
+                $("#kecheng .none-item").show();return ;
+            }
+            
+            var course_list = res.data.course_list;
+            var course_html = '';
+            var length = 0;
+            console.log(course_list);
+            for(i in course_list){
+                length++;
+                if(length > 6){
+                    break;
+                }
+               
+
+                course_html+='<div class="item">';
+                course_html+='    <p class="title-2"><a href="/course/index/viewMyCourse?id='+course_list[i].course_id+'">'+course_list[i].course_name+'</a><i class="iconfont icon-i"></i></p>';
+                course_html+='    <div class="zuijin-detail">';
+                course_html+='        <p>开课时间 :<br> '+course_list[i].course_period_disc+'</p>';
+                course_html+='    </div>';
+                course_html+='</div>';
+            }
+            //alert(course_html);
+            if(!course_html){
+                $("#kecheng .item-list").hide();
+                $("#kecheng .none-item").show();return ;
+            }else{
+                $("#kecheng .none-item").hide();
+                $("#kecheng .item-list .item-head").after(course_html);
+            }
+        }
+    })
+}
+getMyCourseRight();
+//获取我的模考(右边的侧边栏)
+function getMyMockRight(){
+    $.ajax({
+        type:"get",
+        url:"/question/mock/getPaperListAjax",
+        data:"cur_type=1&page=1&auto_shenfen=1",
+        dataType:"json",
+        success:function(res){
+            if(res.status != 0){
+                $("#zuoye .item-list").hide();
+                $("#zuoye .none-item").show();return ;
+            }
+            
+            var paper_list = res.data.paper_list;
+            var paper_html = '';
+            var length = 0;
+            for(i in paper_list){
+                length++;
+                if(length > 7){
+                    break;
+                }
+                paper_html+='<div class="item">';
+                paper_html+='    <p class="title-2"><a href="/question/mock/detail?id='+paper_list[i].id+'">'+paper_list[i].title+'</a></p>';
+                paper_html+='    <p class="time">模考时间 : '+paper_list[i].start_time+'-'+paper_list[i].end_time+'</p>';
+                paper_html+='</div>';
+                
+            }
+            if(!paper_html){
+                $("#zuoye .item-list").hide();
+                $("#zuoye .none-item").show();return ;
+            }else{
+                $("#zuoye .none-item").hide();
+                $("#zuoye .item-list .item-head").after(paper_html);
+            }
+        }
+    })
+}
+getMyMockRight();
+//获取我的播放记录(右边的侧边栏)
+function getMyPlayHistoryRight(){
+    $.ajax({
+        type:"get",
+        url:"/user/index/getPlayHistoryAjax",
+        data:"page=1",
+        dataType:"json",
+        success:function(res){
+            if(res.status != 0){
+                $("#zuijin .item-list").hide();
+                $("#zuijin .none-item").show();return ;
+            }
+            
+            var history_list = res.data.history_list;
+            var history_html = '';
+            var length = 0;
+            for(i in history_list){
+                length++;
+                if(length >6){
+                    break;
+                }
+                /*
+                history_html+='<div class="item">';
+                history_html+='    <p class="title-2"><a href="/course/index/enterCourse?course_id='+history_list[i].course_id+'">'+history_list[i].course_name+'</a></p>';
+                history_html+='    <p class="time">'+history_list[i].parent_course_name+'</p>';
+                history_html+='</div>';
+                */
+                history_html+='<div class="item">';
+                history_html+='    <div class="zuijin-left">';
+                history_html+='        <p class="title-2"><a href="/course/index/enterCourse?course_id='+history_list[i].course_id+'">'+history_list[i].course_name+'</a></p>';
+                history_html+='        <p class="time">'+history_list[i].last_position_time+'<i class="iconfont icon-i"></i></p>';
+                history_html+='        <div class="zuijin-detail">';
+                history_html+='            <p>名称：'+history_list[i].course_name+'</p>';
+                history_html+='            <p>所属：'+history_list[i].parent_course_name+'</p>';
+                if(history_list[i].teacher_name){
+                history_html+='            <p>教师：'+history_list[i].teacher_name+'</p>';
+                }
+                history_html+='            <p>总时长：'+history_list[i].course_total_time+'</p>';
+                history_html+='            <p>观看至：'+history_list[i].last_position_time+'</p>';
+                history_html+='        </div>';
+                history_html+='    </div>';
+                history_html+='    <div class="zuijin-right">';
+                history_html+='        <p><i class="iconfont icon-zhengchangbofang"></i></p>';
+                history_html+='        <p class="zuijin-rate">'+history_list[i].play_ratio+'%</p>';
+                history_html+='    </div>';
+                history_html+='</div>';
+
+               
+            }
+            if(!history_html){
+                $("#zuijin .item-list").hide();
+                $("#zuijin .none-item").show();
+               
+                return ;
+            }else{
+                $("#zuijin .none-item").hide();
+                $("#zuijin .item-list .item-head").after(history_html);
+                $(document).on('mouseenter', '.sidebar .icon-i', function() {
+                    $(this).parent().parent().children('.zuijin-detail').show();
+                });
+                $(document).on('mouseleave', '.sidebar .icon-i', function() {
+                    $(this).parent().parent().children('.zuijin-detail').hide();
+                }); 
+                
+                
+            }
+        }
+    })
+}
+getMyPlayHistoryRight();
+</script>
     
 

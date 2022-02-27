@@ -9,364 +9,364 @@
 <link rel="stylesheet" href="http://s.leying365.com/pc/css/common/common.css?v=20170825" type="text/css"/>
 <link rel="stylesheet" href="http://s.leying365.com/pc/css/login/login.css?v=20170825" type="text/css"/>
 <script src="http://s.leying365.com/pc/script/headLoad.js?v=20170825"></script>
-
-<link rel="stylesheet" href="http://s.leying365.com/pc/css/cinema/cinema.css?v=20170825"
-	type="text/css" />
+
+<link rel="stylesheet" href="http://s.leying365.com/pc/css/cinema/cinema.css?v=20170825"
+	type="text/css" />
 
 <link rel="shortcut icon" href="http://img.leying365.com/pc/static/image/common/favicon.ico" type="image/x-icon" />
 </head>
 <body>
 <!--top-->
-    <div class="top">
-        <div class="wrapper relative">
-            <span class="top-title"></span>
-            <div class="top-login absolute">
-            	<a class="weibo" href="http://weibo.com/leying365" target="_blank">微博</a>
-                <a class="weixin">公众号<em class="ly-wx"></em></a>
-                <em class="tel-icon">400 815 5556</em>
-                <span id="js-top-login" >
-                    <a>
-                        <i class="relative"></i>登录
-                    </a>
-                    <span>|</span>
-                    <a>注册</a>
-                </span>
-                <div class='colde3 dis-none'>
-                	<a target="_blank" href="/user/myLeying"></a><b class="user-icon"></b>
-	                <p class="top-login-ok" id="js-login-ok">
-	                    <a target="_blank" href="/user/myLeying">我的乐影</a>
-	                    <a target="_blank" href="/user/order/list">我的订单</a>
-	                    <a>退出</a>
-	                </p>
-            	</div>
-                
-            </div>
-        </div>
-    </div>
-    <!--nav-->
-    <div class="nav">
-        <div class="wrapper relative">
-        	<a href="/home/index" target="_blank">
-	            <img class="fl" src="http://img.leying365.com/pc/static/image/common/logo.png"/>
-    		</a>
-            <span class="city-name relative fl">
-                <i class="fl"></i><a class="js-city-name" href="/home/city"><em></em></a>
-            </span>
-            <div class="nav-list absolute" id="js-nav-list">
-                <a href="/home/index">首页<span></span></a>
-                <a href="/movie/online">电影<span></span></a>
-                <a href="/cinema/movie-online">影院<span></span></a>
-                <a href="/mobile">手机乐影<span></span></a>
-            </div>
-        </div>
-    </div>
-<!--banner-->
-<div id="js-cinema-ad1"></div>
-
-<!--main-->
-<div class="wrapper">
-	<div class="cinema-search">
-		<form onsubmit="return false">
-			<input autocomplete="off" type="text" id='js-cinema-search' placeholder="请输入影院" />
-			<button id="js-search-submit" type="submit">搜索</button>
-			<div class="cinema-search-result" id="js-cinema-result"></div>
-		</form>
-	</div>
-	<ul class="movie-factor cinema-factor" id="js-cinema-filter">
-		<li type="countyId"><em class="col81 absolute"><i></i>区域：</em>
-			<p class="movie-factor-list">
-				<a class="active" countyId="0" title="全部"> <span>全部<em></em></span>
-				</a>   <a title="西青区"
-					countyId="71"> <span>西青区<em></em></span>
-				</a>  <a title="河东区"
-					countyId="61"> <span>河东区<em></em></span>
-				</a>  <a title="塘沽区"
-					countyId="67"> <span>塘沽区<em></em></span>
-				</a>  <a title="和平区"
-					countyId="62"> <span>和平区<em></em></span>
-				</a>  <a title="河北区"
-					countyId="65"> <span>河北区<em></em></span>
-				</a>  <a title="南开区"
-					countyId="64"> <span>南开区<em></em></span>
-				</a>  <a title="红桥区"
-					countyId="66"> <span>红桥区<em></em></span>
-				</a>  <a title="武清区"
-					countyId="74"> <span>武清区<em></em></span>
-				</a>  
-			</p></li>
-		<li style="border: 0;" type="featuresId"><em
-			class="col81 absolute"><i
-				style="background-position: -354px -25px;"></i>特色：</em>
-			<p class="movie-factor-list">
-				<a class="active" featuresId="0" title="全部"> <span>全部<em></em></span>
-				</a>   <a title=""
-					featuresId="1"> <span>会员卡支付<em></em></span>
-				</a>  <a title=""
-					featuresId="7"> <span>提供WIFI<em></em></span>
-				</a>  <a title=""
-					featuresId="8"> <span>免费停车<em></em></span>
-				</a>  <a title=""
-					featuresId="4"> <span>优惠券支付<em></em></span>
-				</a>  <a title=""
-					featuresId="6"> <span>中国巨幕<em></em></span>
-				</a>  <a title=""
-					featuresId="3"> <span>IMAX厅<em></em></span>
-				</a>  
-			</p></li>
-	</ul>
-	<p style="margin-top: 30px" class="f16">共<span id="js-cinema-num">12</span>家影院</p>
-	<ul class="cinema-list list js-img-delay" id="js-cinema-list" scroll="0">
-		 
-		<li  countyId="71"
-			featuresId="1,7,8"
-			data="cinemaId=843">
-			<a class="cinema-logo"
-			href="/cinema/cinemaPlay?id=843" target="_blank">
-				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2015/3/27/20150327134741865_k3904.jpg" name="中影国际影城（天津永旺中北店）"
-				address="天津市西青区中北工业园阜盛道1号永旺购物中心301号" />
-		</a>
-			<p class="cinema-msg">
-				<a href="/cinema/cinemaPlay?id=843"
-					target="_blank" class="f18">中影国际影城（天津永旺中北店）
-				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市西青区中北工业园阜盛道1号永旺购物中心301号">地址：天津市西青区中北工业园阜盛道1号永旺购物中心301号</em><a href="/cinema/cinemaMap?id=843" target="_blank"
-					class="colde3">行车路线</a><br /> 排期：<em>125场</em><br /> 最近一场：<a target="_blank" class="colde3" style="padding: 0;"></a>
-				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-87195803</em>
-				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>提供WIFI</i>  <i>免费停车</i> 
-				</em>
-				<em class="colde3 cinema-price"> <i class="f18">￥</i><i
-					class="f24">35</i><i class="col81">起</i><br /> <a
-					href="/cinema/cinemaPlay?id=843"
-					class="ticket-buy120" target="_blank">选座购票</a>
-				</em>
-			</p>
-		</li> 
-		<li  countyId="61"
-			featuresId="1,4,6,7"
-			data="cinemaId=883">
-			<a class="cinema-logo"
-			href="/cinema/cinemaPlay?id=883" target="_blank">
-				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2015/12/14/20151214141035967_yxtsq.png" name="天津百丽宫影城"
-				address="天津市河东区六纬路238号嘉里汇四层" />
-		</a>
-			<p class="cinema-msg">
-				<a href="/cinema/cinemaPlay?id=883"
-					target="_blank" class="f18">天津百丽宫影城
-				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市河东区六纬路238号嘉里汇四层">地址：天津市河东区六纬路238号嘉里汇四层</em><a href="/cinema/cinemaMap?id=883" target="_blank"
-					class="colde3">行车路线</a><br /> 排期：<em>125场</em><br /> 最近一场：<a target="_blank" class="colde3" style="padding: 0;"></a>
-				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-24267866;022-24267877</em>
-				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>优惠券支付</i>  <i>中国巨幕</i>  <i>提供WIFI</i> 
-				</em>
-				<em class="colde3 cinema-price"> <i class="f18">￥</i><i
-					class="f24">67</i><i class="col81">起</i><br /> <a
-					href="/cinema/cinemaPlay?id=883"
-					class="ticket-buy120" target="_blank">选座购票</a>
-				</em>
-			</p>
-		</li> 
-		<li class="js-not-field" countyId="67"
-			featuresId=""
-			data="cinemaId=1728">
-			<a class="cinema-logo"
-			href="/cinema/cinemaPlay?id=1728" target="_blank">
-				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2018/2/22/20180222103913177_glcs8_99.png" name="SFC上影影城（天津滨海文化中心店）"
-				address="天津市滨海新区滨海文化中心市民活动中心2-7层" />
-		</a>
-			<p class="cinema-msg">
-				<a href="/cinema/cinemaPlay?id=1728"
-					target="_blank" class="f18">SFC上影影城（天津滨海文化中心店）
-				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市滨海新区滨海文化中心市民活动中心2-7层">地址：天津市滨海新区滨海文化中心市民活动中心2-7层</em><a href="/cinema/cinemaMap?id=1728" target="_blank"
-					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
-				</span> <em class="col81 f12"><i class="cinema-tell"></i>022- 65778573</em>
-				<b>				</em>
-			</p>
-		</li> 
-		<li class="js-not-field" countyId="62"
-			featuresId=""
-			data="cinemaId=572">
-			<a class="cinema-logo"
-			href="/cinema/cinemaPlay?id=572" target="_blank">
-				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/11/12/logo_640_big.png" name="天津万达金街悦荟广场店"
-				address="天津市和平区和平路万达广场E座168号" />
-		</a>
-			<p class="cinema-msg">
-				<a href="/cinema/cinemaPlay?id=572"
-					target="_blank" class="f18">天津万达金街悦荟广场店
-				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市和平区和平路万达广场E座168号">地址：天津市和平区和平路万达广场E座168号</em><a href="/cinema/cinemaMap?id=572" target="_blank"
-					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
-				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-27226619</em>
-				<b>				</em>
-			</p>
-		</li> 
-		<li class="js-not-field" countyId="65"
-			featuresId="6,7,8"
-			data="cinemaId=1492">
-			<a class="cinema-logo"
-			href="/cinema/cinemaPlay?id=1492" target="_blank">
-				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2017/1/24/20170124150955341_sel60_77.png" name="SFC上影影城（天津北宁湾店）"
-				address="天津市河北区铁东路街宁宇家园9号楼/配3-404" />
-		</a>
-			<p class="cinema-msg">
-				<a href="/cinema/cinemaPlay?id=1492"
-					target="_blank" class="f18">SFC上影影城（天津北宁湾店）
-				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市河北区铁东路街宁宇家园9号楼/配3-404">地址：天津市河北区铁东路街宁宇家园9号楼/配3-404</em><a href="/cinema/cinemaMap?id=1492" target="_blank"
-					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
-				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-59907778转8003</em>
-				<b>|</b> <em class="movie-media">  <i>中国巨幕</i>  <i>提供WIFI</i>  <i>免费停车</i> 
-				</em>
-			</p>
-		</li> 
-		<li class="js-not-field" countyId="64"
-			featuresId=""
-			data="cinemaId=574">
-			<a class="cinema-logo"
-			href="/cinema/cinemaPlay?id=574" target="_blank">
-				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/28/27/logo_642_big.png" name="天津万达南开劝业场店"
-				address="天津市南开区三马路6号劝业场6层" />
-		</a>
-			<p class="cinema-msg">
-				<a href="/cinema/cinemaPlay?id=574"
-					target="_blank" class="f18">天津万达南开劝业场店
-				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市南开区三马路6号劝业场6层">地址：天津市南开区三马路6号劝业场6层</em><a href="/cinema/cinemaMap?id=574" target="_blank"
-					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
-				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-27359191</em>
-				<b>				</em>
-			</p>
-		</li> 
-		<li class="js-not-field" countyId="67"
-			featuresId="7"
-			data="cinemaId=1695">
-			<a class="cinema-logo"
-			href="/cinema/cinemaPlay?id=1695" target="_blank">
-				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2017/12/28/20171228133118678_6hxni_99.png" name="滨海万达影城"
-				address="天津自贸试验区洞庭湖4572号滨海万达广场" />
-		</a>
-			<p class="cinema-msg">
-				<a href="/cinema/cinemaPlay?id=1695"
-					target="_blank" class="f18">滨海万达影城
-				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津自贸试验区洞庭湖4572号滨海万达广场">地址：天津自贸试验区洞庭湖4572号滨海万达广场</em><a href="/cinema/cinemaMap?id=1695" target="_blank"
-					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
-				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-60971796</em>
-				<b>|</b> <em class="movie-media">  <i>提供WIFI</i> 
-				</em>
-			</p>
-		</li> 
-		<li class="js-not-field" countyId="66"
-			featuresId="7"
-			data="cinemaId=14">
-			<a class="cinema-logo"
-			href="/cinema/cinemaPlay?id=14" target="_blank">
-				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/22/25/logo_28_big.png" name="美亚影城水游城店"
-				address="天津市红桥区大丰路水游城B座5层" />
-		</a>
-			<p class="cinema-msg">
-				<a href="/cinema/cinemaPlay?id=14"
-					target="_blank" class="f18">美亚影城水游城店
-				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市红桥区大丰路水游城B座5层">地址：天津市红桥区大丰路水游城B座5层</em><a href="/cinema/cinemaMap?id=14" target="_blank"
-					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
-				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-58301212</em>
-				<b>|</b> <em class="movie-media">  <i>提供WIFI</i> 
-				</em>
-			</p>
-		</li> 
-		<li class="js-not-field" countyId="74"
-			featuresId="6,7,8"
-			data="cinemaId=1043">
-			<a class="cinema-logo"
-			href="/cinema/cinemaPlay?id=1043" target="_blank">
-				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2016/1/7/20160107145934295_dt77b.png" name="天津武清威尼都广场店"
-				address="天津市武清区新城翠通路与前进路交口威尼都三层" />
-		</a>
-			<p class="cinema-msg">
-				<a href="/cinema/cinemaPlay?id=1043"
-					target="_blank" class="f18">天津武清威尼都广场店
-				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市武清区新城翠通路与前进路交口威尼都三层">地址：天津市武清区新城翠通路与前进路交口威尼都三层</em><a href="/cinema/cinemaMap?id=1043" target="_blank"
-					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
-				</span> <em class="col81 f12"><i class="cinema-tell"></i>022- 60973366</em>
-				<b>|</b> <em class="movie-media">  <i>中国巨幕</i>  <i>提供WIFI</i>  <i>免费停车</i> 
-				</em>
-			</p>
-		</li> 
-		<li class="js-not-field" countyId="61"
-			featuresId=""
-			data="cinemaId=573">
-			<a class="cinema-logo"
-			href="/cinema/cinemaPlay?id=573" target="_blank">
-				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/25/14/logo_641_big.png" name="天津河东万达广场店"
-				address="天津市河东区津滨大道53号万达广场C座四层" />
-		</a>
-			<p class="cinema-msg">
-				<a href="/cinema/cinemaPlay?id=573"
-					target="_blank" class="f18">天津河东万达广场店
-				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市河东区津滨大道53号万达广场C座四层">地址：天津市河东区津滨大道53号万达广场C座四层</em><a href="/cinema/cinemaMap?id=573" target="_blank"
-					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
-				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-24189008</em>
-				<b>				</em>
-			</p>
-		</li> 
-		<li class="js-not-field" countyId="62"
-			featuresId="1,3,7,8"
-			data="cinemaId=1571">
-			<a class="cinema-logo"
-			href="/cinema/cinemaPlay?id=1571" target="_blank">
-				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2017/6/26/20170626094434692_obkdt_77.png" name="SFC上影影城（天津天河城店）"
-				address="天津市和平区小白楼街和平路263号天津天河城第八层809商铺" />
-		</a>
-			<p class="cinema-msg">
-				<a href="/cinema/cinemaPlay?id=1571"
-					target="_blank" class="f18">SFC上影影城（天津天河城店）
-				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市和平区小白楼街和平路263号天津天河城第八层809商铺">地址：天津市和平区小白楼街和平路263号天津天河城第八层809商铺</em><a href="/cinema/cinemaMap?id=1571" target="_blank"
-					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
-				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-58866210</em>
-				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>IMAX厅</i>  <i>提供WIFI</i>  <i>免费停车</i> 
-				</em>
-			</p>
-		</li> 
-		<li class="js-not-field" countyId="61"
-			featuresId="1"
-			data="cinemaId=993">
-			<a class="cinema-logo"
-			href="/cinema/cinemaPlay?id=993" target="_blank">
-				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2015/11/12/20151112094309782_tumj5.jpg" name="天津红星太平洋影城"
-				address="天津市河东区琳科东路68号爱琴海购物公园526,625房" />
-		</a>
-			<p class="cinema-msg">
-				<a href="/cinema/cinemaPlay?id=993"
-					target="_blank" class="f18">天津红星太平洋影城
-				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市河东区琳科东路68号爱琴海购物公园526,625房">地址：天津市河东区琳科东路68号爱琴海购物公园526,625房</em><a href="/cinema/cinemaMap?id=993" target="_blank"
-					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
-				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-58506699</em>
-				<b>|</b> <em class="movie-media">  <i>会员卡支付</i> 
-				</em>
-			</p>
-		</li>  
-	</ul>
-	<div class="cinema-search-not dis-none" id="js-cinema-not"></div>
-	
-</div>
+    <div class="top">
+        <div class="wrapper relative">
+            <span class="top-title"></span>
+            <div class="top-login absolute">
+            	<a class="weibo" href="http://weibo.com/leying365" target="_blank">微博</a>
+                <a class="weixin">公众号<em class="ly-wx"></em></a>
+                <em class="tel-icon">400 815 5556</em>
+                <span id="js-top-login" >
+                    <a>
+                        <i class="relative"></i>登录
+                    </a>
+                    <span>|</span>
+                    <a>注册</a>
+                </span>
+                <div class='colde3 dis-none'>
+                	<a target="_blank" href="/user/myLeying"></a><b class="user-icon"></b>
+	                <p class="top-login-ok" id="js-login-ok">
+	                    <a target="_blank" href="/user/myLeying">我的乐影</a>
+	                    <a target="_blank" href="/user/order/list">我的订单</a>
+	                    <a>退出</a>
+	                </p>
+            	</div>
+                
+            </div>
+        </div>
+    </div>
+    <!--nav-->
+    <div class="nav">
+        <div class="wrapper relative">
+        	<a href="/home/index" target="_blank">
+	            <img class="fl" src="http://img.leying365.com/pc/static/image/common/logo.png"/>
+    		</a>
+            <span class="city-name relative fl">
+                <i class="fl"></i><a class="js-city-name" href="/home/city"><em></em></a>
+            </span>
+            <div class="nav-list absolute" id="js-nav-list">
+                <a href="/home/index">首页<span></span></a>
+                <a href="/movie/online">电影<span></span></a>
+                <a href="/cinema/movie-online">影院<span></span></a>
+                <a href="/mobile">手机乐影<span></span></a>
+            </div>
+        </div>
+    </div>
+<!--banner-->
+<div id="js-cinema-ad1"></div>
+
+<!--main-->
+<div class="wrapper">
+	<div class="cinema-search">
+		<form onsubmit="return false">
+			<input autocomplete="off" type="text" id='js-cinema-search' placeholder="请输入影院" />
+			<button id="js-search-submit" type="submit">搜索</button>
+			<div class="cinema-search-result" id="js-cinema-result"></div>
+		</form>
+	</div>
+	<ul class="movie-factor cinema-factor" id="js-cinema-filter">
+		<li type="countyId"><em class="col81 absolute"><i></i>区域：</em>
+			<p class="movie-factor-list">
+				<a class="active" countyId="0" title="全部"> <span>全部<em></em></span>
+				</a>   <a title="河东区"
+					countyId="61"> <span>河东区<em></em></span>
+				</a>  <a title="西青区"
+					countyId="71"> <span>西青区<em></em></span>
+				</a>  <a title="塘沽区"
+					countyId="67"> <span>塘沽区<em></em></span>
+				</a>  <a title="红桥区"
+					countyId="66"> <span>红桥区<em></em></span>
+				</a>  <a title="武清区"
+					countyId="74"> <span>武清区<em></em></span>
+				</a>  <a title="和平区"
+					countyId="62"> <span>和平区<em></em></span>
+				</a>  <a title="河北区"
+					countyId="65"> <span>河北区<em></em></span>
+				</a>  <a title="南开区"
+					countyId="64"> <span>南开区<em></em></span>
+				</a>  
+			</p></li>
+		<li style="border: 0;" type="featuresId"><em
+			class="col81 absolute"><i
+				style="background-position: -354px -25px;"></i>特色：</em>
+			<p class="movie-factor-list">
+				<a class="active" featuresId="0" title="全部"> <span>全部<em></em></span>
+				</a>   <a title=""
+					featuresId="1"> <span>会员卡支付<em></em></span>
+				</a>  <a title=""
+					featuresId="4"> <span>优惠券支付<em></em></span>
+				</a>  <a title=""
+					featuresId="6"> <span>中国巨幕<em></em></span>
+				</a>  <a title=""
+					featuresId="7"> <span>提供WIFI<em></em></span>
+				</a>  <a title=""
+					featuresId="8"> <span>免费停车<em></em></span>
+				</a>  <a title=""
+					featuresId="3"> <span>IMAX厅<em></em></span>
+				</a>  
+			</p></li>
+	</ul>
+	<p style="margin-top: 30px" class="f16">共<span id="js-cinema-num">12</span>家影院</p>
+	<ul class="cinema-list list js-img-delay" id="js-cinema-list" scroll="0">
+		 
+		<li  countyId="61"
+			featuresId="1,4,6,7"
+			data="cinemaId=883">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=883" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2015/12/14/20151214141035967_yxtsq.png" name="天津百丽宫影城"
+				address="天津市河东区六纬路238号嘉里汇四层" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=883"
+					target="_blank" class="f18">天津百丽宫影城
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市河东区六纬路238号嘉里汇四层">地址：天津市河东区六纬路238号嘉里汇四层</em><a href="/cinema/cinemaMap?id=883" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>121场</em><br /> 最近一场：<a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-24267866;022-24267877</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>优惠券支付</i>  <i>中国巨幕</i>  <i>提供WIFI</i> 
+				</em>
+				<em class="colde3 cinema-price"> <i class="f18">￥</i><i
+					class="f24">67</i><i class="col81">起</i><br /> <a
+					href="/cinema/cinemaPlay?id=883"
+					class="ticket-buy120" target="_blank">选座购票</a>
+				</em>
+			</p>
+		</li> 
+		<li  countyId="71"
+			featuresId="1,7,8"
+			data="cinemaId=843">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=843" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2015/3/27/20150327134741865_k3904.jpg" name="中影国际影城（天津永旺中北店）"
+				address="天津市西青区中北工业园阜盛道1号永旺购物中心301号" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=843"
+					target="_blank" class="f18">中影国际影城（天津永旺中北店）
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市西青区中北工业园阜盛道1号永旺购物中心301号">地址：天津市西青区中北工业园阜盛道1号永旺购物中心301号</em><a href="/cinema/cinemaMap?id=843" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>78场</em><br /> 最近一场：<a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-87195803</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>提供WIFI</i>  <i>免费停车</i> 
+				</em>
+				<em class="colde3 cinema-price"> <i class="f18">￥</i><i
+					class="f24">35</i><i class="col81">起</i><br /> <a
+					href="/cinema/cinemaPlay?id=843"
+					class="ticket-buy120" target="_blank">选座购票</a>
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="67"
+			featuresId="7"
+			data="cinemaId=1695">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=1695" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2017/12/28/20171228133118678_6hxni_99.png" name="滨海万达影城"
+				address="天津自贸试验区洞庭湖4572号滨海万达广场" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=1695"
+					target="_blank" class="f18">滨海万达影城
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津自贸试验区洞庭湖4572号滨海万达广场">地址：天津自贸试验区洞庭湖4572号滨海万达广场</em><a href="/cinema/cinemaMap?id=1695" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-60971796</em>
+				<b>|</b> <em class="movie-media">  <i>提供WIFI</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="66"
+			featuresId="7"
+			data="cinemaId=14">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=14" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/22/25/logo_28_big.png" name="美亚影城水游城店"
+				address="天津市红桥区大丰路水游城B座5层" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=14"
+					target="_blank" class="f18">美亚影城水游城店
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市红桥区大丰路水游城B座5层">地址：天津市红桥区大丰路水游城B座5层</em><a href="/cinema/cinemaMap?id=14" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-58301212</em>
+				<b>|</b> <em class="movie-media">  <i>提供WIFI</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="74"
+			featuresId="6,7,8"
+			data="cinemaId=1043">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=1043" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2016/1/7/20160107145934295_dt77b.png" name="天津武清威尼都广场店"
+				address="天津市武清区新城翠通路与前进路交口威尼都三层" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=1043"
+					target="_blank" class="f18">天津武清威尼都广场店
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市武清区新城翠通路与前进路交口威尼都三层">地址：天津市武清区新城翠通路与前进路交口威尼都三层</em><a href="/cinema/cinemaMap?id=1043" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>022- 60973366</em>
+				<b>|</b> <em class="movie-media">  <i>中国巨幕</i>  <i>提供WIFI</i>  <i>免费停车</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="61"
+			featuresId=""
+			data="cinemaId=573">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=573" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/25/14/logo_641_big.png" name="天津河东万达广场店"
+				address="天津市河东区津滨大道53号万达广场C座四层" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=573"
+					target="_blank" class="f18">天津河东万达广场店
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市河东区津滨大道53号万达广场C座四层">地址：天津市河东区津滨大道53号万达广场C座四层</em><a href="/cinema/cinemaMap?id=573" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-24189008</em>
+				<b>				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="62"
+			featuresId="1,3,7,8"
+			data="cinemaId=1571">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=1571" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2017/6/26/20170626094434692_obkdt_77.png" name="SFC上影影城（天津天河城店）"
+				address="天津市和平区小白楼街和平路263号天津天河城第八层809商铺" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=1571"
+					target="_blank" class="f18">SFC上影影城（天津天河城店）
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市和平区小白楼街和平路263号天津天河城第八层809商铺">地址：天津市和平区小白楼街和平路263号天津天河城第八层809商铺</em><a href="/cinema/cinemaMap?id=1571" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-58866210</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>IMAX厅</i>  <i>提供WIFI</i>  <i>免费停车</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="61"
+			featuresId="1"
+			data="cinemaId=993">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=993" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2015/11/12/20151112094309782_tumj5.jpg" name="天津红星太平洋影城"
+				address="天津市河东区琳科东路68号爱琴海购物公园526,625房" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=993"
+					target="_blank" class="f18">天津红星太平洋影城
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市河东区琳科东路68号爱琴海购物公园526,625房">地址：天津市河东区琳科东路68号爱琴海购物公园526,625房</em><a href="/cinema/cinemaMap?id=993" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-58506699</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="67"
+			featuresId=""
+			data="cinemaId=1728">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=1728" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2018/2/22/20180222103913177_glcs8_99.png" name="SFC上影影城（天津滨海文化中心店）"
+				address="天津市滨海新区滨海文化中心市民活动中心2-7层" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=1728"
+					target="_blank" class="f18">SFC上影影城（天津滨海文化中心店）
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市滨海新区滨海文化中心市民活动中心2-7层">地址：天津市滨海新区滨海文化中心市民活动中心2-7层</em><a href="/cinema/cinemaMap?id=1728" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>022- 65778573</em>
+				<b>				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="62"
+			featuresId=""
+			data="cinemaId=572">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=572" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/11/12/logo_640_big.png" name="天津万达金街悦荟广场店"
+				address="天津市和平区和平路万达广场E座168号" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=572"
+					target="_blank" class="f18">天津万达金街悦荟广场店
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市和平区和平路万达广场E座168号">地址：天津市和平区和平路万达广场E座168号</em><a href="/cinema/cinemaMap?id=572" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-27226619</em>
+				<b>				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="65"
+			featuresId="6,7,8"
+			data="cinemaId=1492">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=1492" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2017/1/24/20170124150955341_sel60_77.png" name="SFC上影影城（天津北宁湾店）"
+				address="天津市河北区铁东路街宁宇家园9号楼/配3-404" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=1492"
+					target="_blank" class="f18">SFC上影影城（天津北宁湾店）
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市河北区铁东路街宁宇家园9号楼/配3-404">地址：天津市河北区铁东路街宁宇家园9号楼/配3-404</em><a href="/cinema/cinemaMap?id=1492" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-59907778转8003</em>
+				<b>|</b> <em class="movie-media">  <i>中国巨幕</i>  <i>提供WIFI</i>  <i>免费停车</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="64"
+			featuresId=""
+			data="cinemaId=574">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=574" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/28/27/logo_642_big.png" name="天津万达南开劝业场店"
+				address="天津市南开区三马路6号劝业场6层" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=574"
+					target="_blank" class="f18">天津万达南开劝业场店
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="天津市南开区三马路6号劝业场6层">地址：天津市南开区三马路6号劝业场6层</em><a href="/cinema/cinemaMap?id=574" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>022-27359191</em>
+				<b>				</em>
+			</p>
+		</li>  
+	</ul>
+	<div class="cinema-search-not dis-none" id="js-cinema-not"></div>
+	
+</div>
 <!--footer-->
-    <div class="footer">
-        <p> 
-            <a href="/help/about" target="_blank">关于我们</a>
-            <a href="/help/contact" target="_blank">联系我们</a>
-            <a href="/help/service" target="_blank">服务协议</a>
-            <a href="/help/declare" target="_blank">隐私声明</a>
-        </p>
-        <span>
-            Copyright 2011-2019 leying.com.(乐影网)版权所有&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://img.leying365.com/pc/static/image/common/beian.png"/><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010102001220" target="_blank">京公网安备11010102004724号</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://beian.miit.gov.cn" target="_blank">京ICP备11003845号-1</a>
-        </span>
-    </div>
-	<script>
-    	var require={
-			baseUrl: 'http://s.leying365.com/pc/script',
-			urlArgs: 'bust=20170825'
-			
-    	}
-		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F8a9c763fd11956b29719fc6dcf4a1b0f' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-
-<script src="http://s.leying365.com/pc/script/libs/require.js"
-	data-main="apps/cinema/cinemaList"></script>
+    <div class="footer">
+        <p> 
+            <a href="/help/about" target="_blank">关于我们</a>
+            <a href="/help/contact" target="_blank">联系我们</a>
+            <a href="/help/service" target="_blank">服务协议</a>
+            <a href="/help/declare" target="_blank">隐私声明</a>
+        </p>
+        <span>
+            Copyright 2011-2019 leying.com.(乐影网)版权所有&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://img.leying365.com/pc/static/image/common/beian.png"/><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010102001220" target="_blank">京公网安备11010102004724号</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://beian.miit.gov.cn" target="_blank">京ICP备11003845号-1</a>
+        </span>
+    </div>
+	<script>
+    	var require={
+			baseUrl: 'http://s.leying365.com/pc/script',
+			urlArgs: 'bust=20170825'
+			
+    	}
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F8a9c763fd11956b29719fc6dcf4a1b0f' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+<script src="http://s.leying365.com/pc/script/libs/require.js"
+	data-main="apps/cinema/cinemaList"></script>
 
 
 </body>

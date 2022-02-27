@@ -4,291 +4,291 @@
 <head>
 <script type="text/javascript" src="/js/common/360jquery311.js"></script>
 <script type="text/javascript" src="/js/jQuery.md5.js"></script>
-<script type="text/javascript">
-        var patt1 = new RegExp("[0-9]*_[0-9]*");
-        var url = patt1.exec(location.href);
-
-        //if (navigator.userAgent.toLowerCase().indexOf("baiduboxapp") > -1) {
-        //    window.location.href = "http://www.360doc.cn/mip/" + url.toString().split("_")[1] + ".html";
-
-        //}
-
-        if (navigator.userAgent.toLowerCase().indexOf("micromessenger") > -1) {
-            // window.location.href = "http://www.360doc35.net/wxarticlenew/745291118.html";
-            var n_net = Math.floor(Math.random() * 12);
-            var n_net_arr = [1, 2, 3, 6, 8, 9, 10, 11, 12, 13, 15, 23];
-            window.location.href = "http://www.360doc" + n_net_arr[n_net] + ".net/wxarticlenew/745291118.html";
-
-        }
-
-        //pc 
-        if (navigator.userAgent.toLowerCase().indexOf("mobile") == -1 && navigator.userAgent.toLowerCase().indexOf("android") == -1 && navigator.userAgent.toLowerCase().indexOf("iphone") == -1 ) {
-         
-            window.location.href = "http://www.360doc.com/content/18/0413/12/41361018_745291118.shtml";
-
-        }
-
-        function getCookie(name) //获取cookie值
-        {
-            var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
-            if (arr != null)
-                return unescape(arr[2]);
-            return null;
-        }
-
-        if (window.location.toString().indexOf("shtml?") > 0) {
-            self.location = window.location.toString().replace(window.location.search.toString(), "");
-        }
-        function doccheckart(json) {
-            if (json[0].result == "1") {
-                self.location = "http://www.360doc.cn/noarticle.aspx";
-            }
-        }
-        function doccheckarts(json) {
-            if (json[0].result == "1") {
-                var artidlist = json[0].artid;
-                if (artidlist != "") {
-                    if (artidlist.indexOf(',') > -1) {
-                        artidlist = artidlist.split(',');
-                    } else {
-                        artidlist = [artidlist];
-                    }
-                    $.each(artidlist, function (index, value) {
-                        $('#artid_' + value).remove();
-                    });
-                }
-            }
-            console.log(json[0]);
-        }
-
-
-        var currLoginUserID = "";
-        if ( 745291118 !=  745291118) {
-            if (getCookie("360doc1") != null) {
-                $.ajax({
-                    url: "http://www.360doc.cn/ajax/getuserid.ashx",
-                    async: false,
-                    cache: false,
-                    dataType: "json",
-                    success: function (result) {
-
-                        if (41361018 != result.userid) {
-
-                        self.location = "http://www.360doc.cn/article/41361018_745291118.html";
-                        }
-                        currLoginUserID = result.userid;
-                        if (currLoginUserID != "" && document.getElementById("hiddenuserid")) {
-                            if (currLoginUserID == document.getElementById("hiddenuserid").value) {
-                                if (document.getElementById("wxgzh")) {
-                                    document.getElementById("wxgzh").style.display = "none";
-                                }
-                            }
-                        }
-                }
-            });
-            }
-            else {
-                self.location = "http://www.360doc.cn/article/41361018_745291118.html";
-            }
-        }
-
-
-        if ( 0 !=  745291118&&0!= "" &&0!= "0" &&"" != 1) {
-            $.ajax({
-                url: "http://www.360doc.cn/ajax/getuserid.ashx",
-                cache: false,
-                dataType: "json",
-                success: function (result) {
-                    if (41361018 != result.userid) {
-                        self.location = "http://www.360doc.cn/web.aspx?id=0";
-                    }
-                }
-            });
-        }
+<script type="text/javascript">
+        var patt1 = new RegExp("[0-9]*_[0-9]*");
+        var url = patt1.exec(location.href);
+
+        //if (navigator.userAgent.toLowerCase().indexOf("baiduboxapp") > -1) {
+        //    window.location.href = "http://www.360doc.cn/mip/" + url.toString().split("_")[1] + ".html";
+
+        //}
+
+        if (navigator.userAgent.toLowerCase().indexOf("micromessenger") > -1) {
+            // window.location.href = "http://www.360doc35.net/wxarticlenew/745291118.html";
+            var n_net = Math.floor(Math.random() * 12);
+            var n_net_arr = [1, 2, 3, 6, 8, 9, 10, 11, 12, 13, 15, 23];
+            window.location.href = "http://www.360doc" + n_net_arr[n_net] + ".net/wxarticlenew/745291118.html";
+
+        }
+
+        //pc 
+        if (navigator.userAgent.toLowerCase().indexOf("mobile") == -1 && navigator.userAgent.toLowerCase().indexOf("android") == -1 && navigator.userAgent.toLowerCase().indexOf("iphone") == -1 ) {
+         
+            window.location.href = "http://www.360doc.com/content/18/0413/12/41361018_745291118.shtml";
+
+        }
+
+        function getCookie(name) //获取cookie值
+        {
+            var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+            if (arr != null)
+                return unescape(arr[2]);
+            return null;
+        }
+
+        if (window.location.toString().indexOf("shtml?") > 0) {
+            self.location = window.location.toString().replace(window.location.search.toString(), "");
+        }
+        function doccheckart(json) {
+            if (json[0].result == "1") {
+                self.location = "http://www.360doc.cn/noarticle.aspx";
+            }
+        }
+        function doccheckarts(json) {
+            if (json[0].result == "1") {
+                var artidlist = json[0].artid;
+                if (artidlist != "") {
+                    if (artidlist.indexOf(',') > -1) {
+                        artidlist = artidlist.split(',');
+                    } else {
+                        artidlist = [artidlist];
+                    }
+                    $.each(artidlist, function (index, value) {
+                        $('#artid_' + value).remove();
+                    });
+                }
+            }
+            console.log(json[0]);
+        }
+
+
+        var currLoginUserID = "";
+        if ( 745291118 !=  745291118) {
+            if (getCookie("360doc1") != null) {
+                $.ajax({
+                    url: "http://www.360doc.cn/ajax/getuserid.ashx",
+                    async: false,
+                    cache: false,
+                    dataType: "json",
+                    success: function (result) {
+
+                        if (41361018 != result.userid) {
+
+                        self.location = "http://www.360doc.cn/article/41361018_745291118.html";
+                        }
+                        currLoginUserID = result.userid;
+                        if (currLoginUserID != "" && document.getElementById("hiddenuserid")) {
+                            if (currLoginUserID == document.getElementById("hiddenuserid").value) {
+                                if (document.getElementById("wxgzh")) {
+                                    document.getElementById("wxgzh").style.display = "none";
+                                }
+                            }
+                        }
+                }
+            });
+            }
+            else {
+                self.location = "http://www.360doc.cn/article/41361018_745291118.html";
+            }
+        }
+
+
+        if ( 0 !=  745291118&&0!= "" &&0!= "0" &&"" != 1) {
+            $.ajax({
+                url: "http://www.360doc.cn/ajax/getuserid.ashx",
+                cache: false,
+                dataType: "json",
+                success: function (result) {
+                    if (41361018 != result.userid) {
+                        self.location = "http://www.360doc.cn/web.aspx?id=0";
+                    }
+                }
+            });
+        }
     </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=2.0,user-scalable=no" /><meta http-equiv="Cache-Control" content="no-transform" /><meta http-equiv="Cache-Control" content="no-siteapp" /><meta itemprop="image" content="http://www.360doc.cn/images/logo/120.png" /><meta property="og:image" content="http://www.360doc.cn/images/logo/120.png" /><link rel="apple-touch-icon-precomposed" href="http://www.360doc.cn/images/logo/120.png" /><meta name="twitter:image" content="http://www.360doc.cn/images/logo/120.png" /><link rel="canonical" href="http://www.360doc.com/content/18/0413/12/41361018_745291118.shtml"/><meta content="你有什么高清电影资源网站推荐？" name="description" /><meta content="你有什么高清电影资源网站推荐？" name="keywords" /><style> #artcontentdiv table{width:100% !important;} #artcontentdiv h1{font-size:16px !important;font-weight: 400;}</style><title>
 你有什么高清电影资源网站推荐？
 </title><link href="/css/2new.css?t=2021081001" rel="stylesheet" type="text/css" /><link rel="stylesheet" type="text/css" href="/css/index/swiper5.css" />
 <script type="text/javascript" src="http://www.360doc.cn/js/index/swiper5.min.js"></script>
-<script type="text/javascript">
-
-        function setRem() {
-            var doc = document.documentElement,
-                px = Math.min(doc.clientWidth, doc.clientHeight) / 7.5;
-            window.baseRem = px;
-            doc.style.fontSize = px + 'px';
-            var browserFontsize = parseFloat(getComputedStyle(document.getElementsByTagName('html')[0]).fontSize);
-            if (browserFontsize != baseRem) {
-                var finalFontSize = baseRem * (baseRem / browserFontsize);
-                doc.style.fontSize = finalFontSize + 'px';
-            }
-        };
-        setRem();
-        $(window).resize(setRem);
-
-
-        ////////////////
-        function displayalliamge(versionid, pageidx) {
-        	if(window.imgSwiper) {
-        		//return
-        	};
-        	var imglist = $('#artcontentdiv img[id^=img]'),
-        		wW = $(window).width(),
-        		wH = $(window).height(),
-        		html = '';
-        	for(var i = 0; i < imglist.length; i++) {
-        		var at = imglist[i],
-        			divw = 0,
-        			divh = 0;
-        		if(at.naturalWidth / at.naturalHeight > wW / wH) { //超宽
-        			divw = wW;
-        			divh = wW / at.naturalWidth * at.naturalHeight;
-        		} else { //超高
-        			divh = wH;
-        			divw = wH / at.naturalHeight * at.naturalWidth;
-        		};
-        		html += '<div class="swiper-slide"><div class="swiper-zoom-container"><div class="article_img_copy swiper-zoom-target" style="background-image:url(' + at.src + ');width:' + divw + 'px;height:' + divh + 'px;"></div></div></div>'
-        	};
-        	$('body').append('<div class="article_img_box" id="article_img_box" />');
-        	$('#article_img_box').css('visibility', 'hidden').show().html('<div class="swiper-container"><div class="swiper-wrapper">' + html + '</div></div>');
-        	window.imgSwiper = new Swiper('.swiper-container', {
-        		initialSlide: pageidx - 1,
-        		zoom: true,
-        		loop: true,
-        		on: {
-        			tap: function() {
-        				var swiperObj = this;
-        				clearTimeout(this.closeTimer);
-        				this.closeTimer = setTimeout(function() {
-        					var actSRC=(function(){
-        						if(imgSwiper.activeIndex==0){
-        							return imgSwiper.slides.length-3
-        						}else if(imgSwiper.activeIndex==imgSwiper.slides.length-1){
-        							return 0
-        						}else{
-        							return imgSwiper.activeIndex-1
-        						}
-        					})();
-        					var outImg = document.createElement('img'),
-        						moveToSRC = $('#img' + actSRC);
-        					outImg.onload = function() {
-        						var tleft, ttop, twidth, theight, owidth = this.naturalWidth,
-        							oheight = this.naturalHeight;
-        						if(owidth / oheight > wW / wH) { //超宽
-        							twidth = wW;
-        							theight = wW / owidth * oheight;
-        							ttop = (wH - theight) / 2;
-        							tleft = 0
-        						} else { //超高
-        							theight = wH;
-        							twidth = wH / oheight * owidth;
-        							ttop = 0;
-        							tleft = (wW - twidth) / 2;
-        						};
-//      						$(outImg).css({
-//      							'left': tleft,
-//      							'top': ttop,
-//      							'width': twidth,
-//      							'height': theight,
-//      							'transition': '0.4s',
-//      							'z-index': 10000,
-//      							'position': 'absolute'
-//      						}).appendTo(mengb);
-        						mengb.show();
-        						$('#article_img_box').html('').remove();
-        						window.imgSwiper = null;
-//      						setTimeout(function() {
-//      							mengb.css('background-color', 'rgba(0,0,0,0)');
-//      							$(outImg).css({
-//      								'width': actImg.width(),
-//      								'height': actImg.height(),
-//      								'left': actImg.offset().left,
-//      								'top': actImg.offset().top - $(document.scrollingElement).scrollTop()
-//      							})
-//      						}, 20);
-        						setTimeout(function() {
-        							mengb.remove();
-        							mengb = null
-        						}, 0)
-        					};
-        					outImg.src = moveToSRC.attr('src')
-        				}, 300)
-        			},
-        			doubleTap: function() {
-        				clearTimeout(this.closeTimer);
-        			}
-        		}
-        	});
-
-        	var mengb = $('<div/>').css({
-                'background-color': 'rgba(0,0,0,0)',
-                'width': '100%',
-                'height': '100%',
-                'position': 'fixed',
-                'z-index': 9999,
-                'left': 0,
-                'top': 0,
-                //'transition': 'background-color 0.4s'
-                'transition': 'background-color 0s'
-            }).appendTo('body'),
-                clickImg = $('#img' + (pageidx - 1));
-            var fimg = document.createElement('img');
-            fimg.onload = function () {
-                var tleft, ttop, twidth, theight, owidth = this.naturalWidth, oheight = this.naturalHeight;
-                if (owidth / oheight > wW / wH) {//超宽
-                    twidth = wW;
-                    theight = wW / owidth * oheight;
-                    ttop = (wH - theight) / 2;
-                    tleft = 0
-                } else {//超高
-                    theight = wH;
-                    twidth = wH / oheight * owidth;
-                    ttop = 0;
-                    tleft = (wW - twidth) / 2;
-                }
-                $(this).css({
-                    //'transition': '0.4s',
-                    'left': clickImg.offset().left,
-                    'top': clickImg.offset().top - mengb.offset().top,
-                    'width': clickImg.width(),
-                    'height': clickImg.height(),
-                    'z-index': 10000,
-                    'position': 'absolute'
-                }).appendTo(mengb);
-                mengb.css('background-color', 'rgba(0,0,0,1)');
-                setTimeout(function () {
-                    $(fimg).css({
-                        'left': tleft,
-                        'top': ttop,
-                        'width': twidth,
-                        'height': theight
-                    })
-                }, 0);
-                setTimeout(function () {
-                    $('#article_img_box').css('visibility', 'visible');
-                    mengb.hide();
-                    $(fimg).remove();
-                }, 0)
-
-            }
-            fimg.src = clickImg.attr('src');
-        }
-
+<script type="text/javascript">
+
+        function setRem() {
+            var doc = document.documentElement,
+                px = Math.min(doc.clientWidth, doc.clientHeight) / 7.5;
+            window.baseRem = px;
+            doc.style.fontSize = px + 'px';
+            var browserFontsize = parseFloat(getComputedStyle(document.getElementsByTagName('html')[0]).fontSize);
+            if (browserFontsize != baseRem) {
+                var finalFontSize = baseRem * (baseRem / browserFontsize);
+                doc.style.fontSize = finalFontSize + 'px';
+            }
+        };
+        setRem();
+        $(window).resize(setRem);
+
+
+        ////////////////
+        function displayalliamge(versionid, pageidx) {
+        	if(window.imgSwiper) {
+        		//return
+        	};
+        	var imglist = $('#artcontentdiv img[id^=img]'),
+        		wW = $(window).width(),
+        		wH = $(window).height(),
+        		html = '';
+        	for(var i = 0; i < imglist.length; i++) {
+        		var at = imglist[i],
+        			divw = 0,
+        			divh = 0;
+        		if(at.naturalWidth / at.naturalHeight > wW / wH) { //超宽
+        			divw = wW;
+        			divh = wW / at.naturalWidth * at.naturalHeight;
+        		} else { //超高
+        			divh = wH;
+        			divw = wH / at.naturalHeight * at.naturalWidth;
+        		};
+        		html += '<div class="swiper-slide"><div class="swiper-zoom-container"><div class="article_img_copy swiper-zoom-target" style="background-image:url(' + at.src + ');width:' + divw + 'px;height:' + divh + 'px;"></div></div></div>'
+        	};
+        	$('body').append('<div class="article_img_box" id="article_img_box" />');
+        	$('#article_img_box').css('visibility', 'hidden').show().html('<div class="swiper-container"><div class="swiper-wrapper">' + html + '</div></div>');
+        	window.imgSwiper = new Swiper('.swiper-container', {
+        		initialSlide: pageidx - 1,
+        		zoom: true,
+        		loop: true,
+        		on: {
+        			tap: function() {
+        				var swiperObj = this;
+        				clearTimeout(this.closeTimer);
+        				this.closeTimer = setTimeout(function() {
+        					var actSRC=(function(){
+        						if(imgSwiper.activeIndex==0){
+        							return imgSwiper.slides.length-3
+        						}else if(imgSwiper.activeIndex==imgSwiper.slides.length-1){
+        							return 0
+        						}else{
+        							return imgSwiper.activeIndex-1
+        						}
+        					})();
+        					var outImg = document.createElement('img'),
+        						moveToSRC = $('#img' + actSRC);
+        					outImg.onload = function() {
+        						var tleft, ttop, twidth, theight, owidth = this.naturalWidth,
+        							oheight = this.naturalHeight;
+        						if(owidth / oheight > wW / wH) { //超宽
+        							twidth = wW;
+        							theight = wW / owidth * oheight;
+        							ttop = (wH - theight) / 2;
+        							tleft = 0
+        						} else { //超高
+        							theight = wH;
+        							twidth = wH / oheight * owidth;
+        							ttop = 0;
+        							tleft = (wW - twidth) / 2;
+        						};
+//      						$(outImg).css({
+//      							'left': tleft,
+//      							'top': ttop,
+//      							'width': twidth,
+//      							'height': theight,
+//      							'transition': '0.4s',
+//      							'z-index': 10000,
+//      							'position': 'absolute'
+//      						}).appendTo(mengb);
+        						mengb.show();
+        						$('#article_img_box').html('').remove();
+        						window.imgSwiper = null;
+//      						setTimeout(function() {
+//      							mengb.css('background-color', 'rgba(0,0,0,0)');
+//      							$(outImg).css({
+//      								'width': actImg.width(),
+//      								'height': actImg.height(),
+//      								'left': actImg.offset().left,
+//      								'top': actImg.offset().top - $(document.scrollingElement).scrollTop()
+//      							})
+//      						}, 20);
+        						setTimeout(function() {
+        							mengb.remove();
+        							mengb = null
+        						}, 0)
+        					};
+        					outImg.src = moveToSRC.attr('src')
+        				}, 300)
+        			},
+        			doubleTap: function() {
+        				clearTimeout(this.closeTimer);
+        			}
+        		}
+        	});
+
+        	var mengb = $('<div/>').css({
+                'background-color': 'rgba(0,0,0,0)',
+                'width': '100%',
+                'height': '100%',
+                'position': 'fixed',
+                'z-index': 9999,
+                'left': 0,
+                'top': 0,
+                //'transition': 'background-color 0.4s'
+                'transition': 'background-color 0s'
+            }).appendTo('body'),
+                clickImg = $('#img' + (pageidx - 1));
+            var fimg = document.createElement('img');
+            fimg.onload = function () {
+                var tleft, ttop, twidth, theight, owidth = this.naturalWidth, oheight = this.naturalHeight;
+                if (owidth / oheight > wW / wH) {//超宽
+                    twidth = wW;
+                    theight = wW / owidth * oheight;
+                    ttop = (wH - theight) / 2;
+                    tleft = 0
+                } else {//超高
+                    theight = wH;
+                    twidth = wH / oheight * owidth;
+                    ttop = 0;
+                    tleft = (wW - twidth) / 2;
+                }
+                $(this).css({
+                    //'transition': '0.4s',
+                    'left': clickImg.offset().left,
+                    'top': clickImg.offset().top - mengb.offset().top,
+                    'width': clickImg.width(),
+                    'height': clickImg.height(),
+                    'z-index': 10000,
+                    'position': 'absolute'
+                }).appendTo(mengb);
+                mengb.css('background-color', 'rgba(0,0,0,1)');
+                setTimeout(function () {
+                    $(fimg).css({
+                        'left': tleft,
+                        'top': ttop,
+                        'width': twidth,
+                        'height': theight
+                    })
+                }, 0);
+                setTimeout(function () {
+                    $('#article_img_box').css('visibility', 'visible');
+                    mengb.hide();
+                    $(fimg).remove();
+                }, 0)
+
+            }
+            fimg.src = clickImg.attr('src');
+        }
+
     </script>
-<script>
-
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?d9c1856f9607e4aa5d4419e774bc0c9e";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
+<script>
+
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?d9c1856f9607e4aa5d4419e774bc0c9e";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
 </script>
-<script type="text/javascript">
-        if (navigator.userAgent.toLowerCase().indexOf("windows phone") > -1 || (navigator.userAgent.toLowerCase().indexOf("windows nt") > -1 && navigator.userAgent.toLowerCase().indexOf("msie") > -1)) {
-            document.body.style.fontFamily = "Verdana,Tahoma,Helvetica,Arial,sans-serif";
-        }
+<script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().indexOf("windows phone") > -1 || (navigator.userAgent.toLowerCase().indexOf("windows nt") > -1 && navigator.userAgent.toLowerCase().indexOf("msie") > -1)) {
+            document.body.style.fontFamily = "Verdana,Tahoma,Helvetica,Arial,sans-serif";
+        }
     </script>
 <script src="/js/NativeShare/NativeShare.js"></script>
 <script src="/js/reader/aes.js"></script>
@@ -461,54 +461,54 @@
 <script type="text/javascript" src="/js/articlegb.js?t=2022011301"></script>
 <script src="//blockart.360doc.com/ajax/getstatusv2.ashx?aid=745291118" type="text/javascript" charset="utf-8" async></script>
 <script src="http://blockart.360doc.com/ajax/getartstatus.ashx?aid=741801721,742121609,927255148,835277741,871219236,868801483&callbackparam=doccheckarts" type="text/javascript" charset="utf-8" async></script>
-<script type="text/javascript">
-        function setOuserDataWidth() {
-            var btnw = $('.btn2s').width(), oother = $('#ouser_data').parent().width(), upw = $('#userphotohtml img').outerWidth(true);
-            $('#ouser_data').width(oother - upw - btnw - 10)
-        }
-        $('#arttopfloat').width($(window).width() < 320 ? 320 : $(window).width());
-        setOuserDataWidth();
-        $(window).resize(function () {
-            $('#arttopfloat').width($(window).width() < 320 ? 320 : $(window).width());
-            setOuserDataWidth();
-        });
-        function closecurrentwindow(t) {
-            if (t.href != null && t.href.toString().indexOf("history.go") == -1) {
-                return;
-            }
-            if (history.length <= 1) {
-                try {
-                    window.close();
-                } catch (err) {
-                }
-            }
-        }
-        $(document).ready(function () {
-            $(window).scroll(function () {
-                var str = $(document).scrollTop();
-                if (str > $(window).height()) {
-                    $('.backtop').show()
-                } else {
-                    $('.backtop').hide()
-                }
-            })
-            /*去除文字中编辑属性*/
-            $("section[contenteditable]").removeAttr("contenteditable");
-            $("p[contenteditable]").removeAttr("contenteditable");
-reText()
-        });
-function reText(){var titRE=new RegExp('下载|打印|免费|高清|领取|获取|购买|电子版|源文件|附案例|查看全部|展开全文|附完整|完整(篇|版|课件|合辑|视频|解读)','g');if(titRE.test($('#doctitlediv').html())){$('#doctitlediv').html($('#doctitlediv').html().replace(titRE,'**'))};if(/word(.{0,10})版/gi.test($('#doctitlediv').html())){$('#doctitlediv').html($('#doctitlediv').html().replace(/word(.{0,10})版/gi,'****').replace(/完整(.{0,10})教程/gi,'****'))};var box=document.getElementById('copyall'),b=[],a50=[],alltext='';var mark='______z@z______';var begin50=0,end50=0;if(!box){return};getAllTextNode(box,b);function getAllTextNode(obj,arr){for(var i=0;i<obj.childNodes.length;i++){var curNode=obj.childNodes[i];if(curNode.nodeName==="#text"){arr.push(curNode)}else if(curNode.nodeType=='1'){getAllTextNode(curNode,arr)}}};for(var i=0;i<b.length;i++){if(begin50<=50){if(/word(.{0,10})版/gi.test(b[i].nodeValue)){b[i].nodeValue=b[i].nodeValue.replace(/word(.{0,10})版/gi,'****');b[i].nodeValue=b[i].nodeValue.replace(/完整(.{0,10})教程/gi,'****')};alltext+=b[i].nodeValue+mark;begin50+=b[i].nodeValue.replace(/\s{2,}/g," ").length;a50.push(b[i])}};for(var i=b.length-1;i>=0;i--){if(end50<=50){if(/word(.{0,10})版/gi.test(b[i].nodeValue)){b[i].nodeValue=b[i].nodeValue.replace(/word(.{0,10})版/gi,'****');b[i].nodeValue=b[i].nodeValue.replace(/完整(.{0,10})教程/gi,'****')};alltext+=b[i].nodeValue+mark;end50+=b[i].nodeValue.replace(/\s{2,}/g," ").length;a50.push(b[i])}};alltext=alltext.replace(new RegExp('下载|打印|免费|高清|领取|获取|购买|评论|转发|私信','g'),'**').replace(new RegExp('电子版|源文件|附案例|电子文档|查看全部|展开全文|附完整|完整(篇|版|课件|合辑|视频|解读)','g'),'***');alltext=alltext.replace(new RegExp('下'+mark+'载|打'+mark+'印|免'+mark+'费|高'+mark+'清|领'+mark+'取|获'+mark+'取|完'+mark+'整|购'+mark+'买|评'+mark+'论|转'+mark+'发|私'+mark+'信','g'),'*'+mark+'*').replace(new RegExp('电'+mark+'子版|源'+mark+'文件|附'+mark+'案例','g'),'*'+mark+'**').replace(new RegExp('电子'+mark+'版|源文'+mark+'件|附案'+mark+'例','g'),'**'+mark+'*').replace(new RegExp('电'+mark+'子文档','g'),'*'+mark+'***').replace(new RegExp('电子'+mark+'文档','g'),'**'+mark+'**').replace(new RegExp('电子文'+mark+'档','g'),'***'+mark+'*');var newarr=alltext.split(mark);for(var i=0;i<a50.length;i++){a50[i].nodeValue=newarr[i]}}
+<script type="text/javascript">
+        function setOuserDataWidth() {
+            var btnw = $('.btn2s').width(), oother = $('#ouser_data').parent().width(), upw = $('#userphotohtml img').outerWidth(true);
+            $('#ouser_data').width(oother - upw - btnw - 10)
+        }
+        $('#arttopfloat').width($(window).width() < 320 ? 320 : $(window).width());
+        setOuserDataWidth();
+        $(window).resize(function () {
+            $('#arttopfloat').width($(window).width() < 320 ? 320 : $(window).width());
+            setOuserDataWidth();
+        });
+        function closecurrentwindow(t) {
+            if (t.href != null && t.href.toString().indexOf("history.go") == -1) {
+                return;
+            }
+            if (history.length <= 1) {
+                try {
+                    window.close();
+                } catch (err) {
+                }
+            }
+        }
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                var str = $(document).scrollTop();
+                if (str > $(window).height()) {
+                    $('.backtop').show()
+                } else {
+                    $('.backtop').hide()
+                }
+            })
+            /*去除文字中编辑属性*/
+            $("section[contenteditable]").removeAttr("contenteditable");
+            $("p[contenteditable]").removeAttr("contenteditable");
+reText()
+        });
+function reText(){var titRE=new RegExp('下载|打印|免费|高清|领取|获取|购买|电子版|源文件|附案例|查看全部|展开全文|附完整|完整(篇|版|课件|合辑|视频|解读)','g');if(titRE.test($('#doctitlediv').html())){$('#doctitlediv').html($('#doctitlediv').html().replace(titRE,'**'))};if(/word(.{0,10})版/gi.test($('#doctitlediv').html())){$('#doctitlediv').html($('#doctitlediv').html().replace(/word(.{0,10})版/gi,'****').replace(/完整(.{0,10})教程/gi,'****'))};var box=document.getElementById('copyall'),b=[],a50=[],alltext='';var mark='______z@z______';var begin50=0,end50=0;if(!box){return};getAllTextNode(box,b);function getAllTextNode(obj,arr){for(var i=0;i<obj.childNodes.length;i++){var curNode=obj.childNodes[i];if(curNode.nodeName==="#text"){arr.push(curNode)}else if(curNode.nodeType=='1'){getAllTextNode(curNode,arr)}}};for(var i=0;i<b.length;i++){if(begin50<=50){if(/word(.{0,10})版/gi.test(b[i].nodeValue)){b[i].nodeValue=b[i].nodeValue.replace(/word(.{0,10})版/gi,'****');b[i].nodeValue=b[i].nodeValue.replace(/完整(.{0,10})教程/gi,'****')};alltext+=b[i].nodeValue+mark;begin50+=b[i].nodeValue.replace(/\s{2,}/g," ").length;a50.push(b[i])}};for(var i=b.length-1;i>=0;i--){if(end50<=50){if(/word(.{0,10})版/gi.test(b[i].nodeValue)){b[i].nodeValue=b[i].nodeValue.replace(/word(.{0,10})版/gi,'****');b[i].nodeValue=b[i].nodeValue.replace(/完整(.{0,10})教程/gi,'****')};alltext+=b[i].nodeValue+mark;end50+=b[i].nodeValue.replace(/\s{2,}/g," ").length;a50.push(b[i])}};alltext=alltext.replace(new RegExp('下载|打印|免费|高清|领取|获取|购买|评论|转发|私信','g'),'**').replace(new RegExp('电子版|源文件|附案例|电子文档|查看全部|展开全文|附完整|完整(篇|版|课件|合辑|视频|解读)','g'),'***');alltext=alltext.replace(new RegExp('下'+mark+'载|打'+mark+'印|免'+mark+'费|高'+mark+'清|领'+mark+'取|获'+mark+'取|完'+mark+'整|购'+mark+'买|评'+mark+'论|转'+mark+'发|私'+mark+'信','g'),'*'+mark+'*').replace(new RegExp('电'+mark+'子版|源'+mark+'文件|附'+mark+'案例','g'),'*'+mark+'**').replace(new RegExp('电子'+mark+'版|源文'+mark+'件|附案'+mark+'例','g'),'**'+mark+'*').replace(new RegExp('电'+mark+'子文档','g'),'*'+mark+'***').replace(new RegExp('电子'+mark+'文档','g'),'**'+mark+'**').replace(new RegExp('电子文'+mark+'档','g'),'***'+mark+'*');var newarr=alltext.split(mark);for(var i=0;i<a50.length;i++){a50[i].nodeValue=newarr[i]}}
       </script>
-<script type="application/ld+json">
-        {
-            "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
-            "@id": "http://www.360doc.cn/article/41361018_745291118.html",
-            "appid": "1549328666522086",
-            "title": "你有什么高清电影资源网站推荐？",
-            "images": [
-                ],
-            "pubDate": "2018-04-13T12:52:14"
-        } 
+<script type="application/ld+json">
+        {
+            "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+            "@id": "http://www.360doc.cn/article/41361018_745291118.html",
+            "appid": "1549328666522086",
+            "title": "你有什么高清电影资源网站推荐？",
+            "images": [
+                ],
+            "pubDate": "2018-04-13T12:52:14"
+        } 
     </script>
 <div class="pay__" style="display: none;">
 <div id="pay__prompt" class="pay__prompt pay__p1"></div>
@@ -583,66 +583,66 @@ function reText(){var titRE=new RegExp('下载|打印|免费|高清|领取|获�
 <div class="d1">绑定账号成功<br />后续可登录账号畅享VIP特权！</div>
 <div class="d2">如果VIP功能使用有故障，<br />可点击这里联系客服！<i class="newico"></i><div class="serv newbefore" style="position: fixed;top: 0;right: 0.7rem;"></div></div>
 </div>
-<script type="text/javascript">
-        if (currLoginUserID != "" && document.getElementById("hiddenuserid")) {
-            if (currLoginUserID == document.getElementById("hiddenuserid").value) {
-                if (document.getElementById("wxgzh")) {
-                    document.getElementById("wxgzh").style.display = "none";
-                }
-            }
-        }
-        function clearSelections() {
-            if (window.getSelection) {
-                // 获取选中
-                var selection = window.getSelection();
-                // 清除选中
-                selection.removeAllRanges();
-            }
-        }
-        $(document.body).bind("copy", function () {
-
-            if (CopyMainContentObj.isCopyMainContent || isCopyLink || isCopyQQ_Number) {
-                CopyMainContentObj.isCopyMainContent = false;
-                isCopyLink = false;
-                isCopyQQ_Number = false;
-                return true;
-            }
-            //$(".out_p2019").show();
-            //setTimeout(function () {
-            //    clearSelections();
-            //}, 10);
-            ////imgLogArt(1,'w20-26-3');
-            //addStatisticsNew('30-11-10', true);
-            CopyMainContentObj.checkMouseRight();
-            setTimeout(function () { window.getSelection().removeAllRanges(); }, 1);
-            return true;
-        });
-        $(".out_p2019").on("touchend", function (e) {
-            e.stopPropagation();
-        });
-
-        $(document.body).on("touchend", function (e) {
-            $(".out_p2019").hide();
-        });
-        if ($("#hiddenoriginal").val() == "1") {
-            imgLogArt(1, 'w20-25-8');
-        }
-        $('.head2020 .select').click(function (e) {
-            e.stopPropagation();
-            $('.head2020').toggleClass('open');
-            addStatisticsNew('34-34-1-2', true);
-        });
-        $('body').click(function () {
-            $('.head2020').removeClass('open');
-        });
-        $('#sharediv').click(function (e) { if (e.target == this) { $(this).hide() } });
-        $('#artcontentdiv img[id^=img]').each(function(){
-        	$(this).click(function(){
-        		window.actImg=$(this);
-        		var num=parseInt($(this).attr('id').split('img')[1])+1;
-        		displayalliamge(null,num)
-        	})
-        })
+<script type="text/javascript">
+        if (currLoginUserID != "" && document.getElementById("hiddenuserid")) {
+            if (currLoginUserID == document.getElementById("hiddenuserid").value) {
+                if (document.getElementById("wxgzh")) {
+                    document.getElementById("wxgzh").style.display = "none";
+                }
+            }
+        }
+        function clearSelections() {
+            if (window.getSelection) {
+                // 获取选中
+                var selection = window.getSelection();
+                // 清除选中
+                selection.removeAllRanges();
+            }
+        }
+        $(document.body).bind("copy", function () {
+
+            if (CopyMainContentObj.isCopyMainContent || isCopyLink || isCopyQQ_Number) {
+                CopyMainContentObj.isCopyMainContent = false;
+                isCopyLink = false;
+                isCopyQQ_Number = false;
+                return true;
+            }
+            //$(".out_p2019").show();
+            //setTimeout(function () {
+            //    clearSelections();
+            //}, 10);
+            ////imgLogArt(1,'w20-26-3');
+            //addStatisticsNew('30-11-10', true);
+            CopyMainContentObj.checkMouseRight();
+            setTimeout(function () { window.getSelection().removeAllRanges(); }, 1);
+            return true;
+        });
+        $(".out_p2019").on("touchend", function (e) {
+            e.stopPropagation();
+        });
+
+        $(document.body).on("touchend", function (e) {
+            $(".out_p2019").hide();
+        });
+        if ($("#hiddenoriginal").val() == "1") {
+            imgLogArt(1, 'w20-25-8');
+        }
+        $('.head2020 .select').click(function (e) {
+            e.stopPropagation();
+            $('.head2020').toggleClass('open');
+            addStatisticsNew('34-34-1-2', true);
+        });
+        $('body').click(function () {
+            $('.head2020').removeClass('open');
+        });
+        $('#sharediv').click(function (e) { if (e.target == this) { $(this).hide() } });
+        $('#artcontentdiv img[id^=img]').each(function(){
+        	$(this).click(function(){
+        		window.actImg=$(this);
+        		var num=parseInt($(this).attr('id').split('img')[1])+1;
+        		displayalliamge(null,num)
+        	})
+        })
     </script>
 </body>
 </html>

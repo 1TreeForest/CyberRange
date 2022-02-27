@@ -15,97 +15,97 @@
 <link rel="stylesheet" href="syalert/syalert.min.css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script src="syalert/syalert.min.js"></script>
-<style type="text/css">
-*{ margin:0px; padding:0px; box-sizing:border-box; }
-*:focus{ outline:none;}
-.tsm{ background:#333; font-size:16px; color:#fff; margin:20px; margin-top:0px; padding:1px; line-height:25px; text-align:center;}
-.tsm .p2{ margin-top:12px;}
-.btns{ padding:1px;}
-.btns div{ display:block; text-align:center; cursor:pointer; padding:6px; border-radius:5px; background:#0CC; color:#fff; margin-bottom:12px; width:100%;}
+<style type="text/css">
+*{ margin:0px; padding:0px; box-sizing:border-box; }
+*:focus{ outline:none;}
+.tsm{ background:#333; font-size:16px; color:#fff; margin:20px; margin-top:0px; padding:1px; line-height:25px; text-align:center;}
+.tsm .p2{ margin-top:12px;}
+.btns{ padding:1px;}
+.btns div{ display:block; text-align:center; cursor:pointer; padding:6px; border-radius:5px; background:#0CC; color:#fff; margin-bottom:12px; width:100%;}
 </style>
 
-<style type="text/css">
-    html, body { color:#222; font-family:Microsoft YaHei, Helvitica, Verdana, Tohoma, Arial, san-serif; margin:0; padding: 0; text-decoration: none; }
-    img { border:0; }
-    ul { list-style: none outside none; margin:0; padding: 0; }
-    body {
-        background-color:#eee;
-    }
-    body .mainmenu:after { clear: both; content: " "; display: block; }
-
-    body .mainmenu li{
-        float:left;
-        margin-left: 2.5%;
-        margin-top: 2.5%;
-        width: 30%; 
-        border-radius:3px;
-        overflow:hidden;
-    }
-
-    body .mainmenu li a{ display:block;  color:#FFF;   text-align:center }
-    body .mainmenu li a b{
-        display:block; height:90px;
-    }
-    body .mainmenu li a img{
-        margin: 15px auto 15px;
-        width: 60px;
-        height: 60px;
-    }
-
-    body .mainmenu li a span{ display:block; height:30px; line-height:30px;background-color:#FFF; color: #999; font-size:16px; }
-
-    body .mainmenu li:nth-child(8n+1) {background-color:#14c760}
-    body .mainmenu li:nth-child(8n+2) {background-color:#fc5366}
-    body .mainmenu li:nth-child(8n+3) {background-color:#ff8a4a}
-    body .mainmenu li:nth-child(8n+4) {background-color:#678ce1}
-    body .mainmenu li:nth-child(8n+5) {background-color:#36A1DB}
-    body .mainmenu li:nth-child(8n+6) {background-color:#8c67df}
-    body .mainmenu li:nth-child(8n+7) {background-color:#84d018}
-    body .mainmenu li:nth-child(8n+8) {background-color:#f3b613}
-	body .mainmenu li:nth-child(8n+9) {background-color:#ccff00}
+<style type="text/css">
+    html, body { color:#222; font-family:Microsoft YaHei, Helvitica, Verdana, Tohoma, Arial, san-serif; margin:0; padding: 0; text-decoration: none; }
+    img { border:0; }
+    ul { list-style: none outside none; margin:0; padding: 0; }
+    body {
+        background-color:#eee;
+    }
+    body .mainmenu:after { clear: both; content: " "; display: block; }
+
+    body .mainmenu li{
+        float:left;
+        margin-left: 2.5%;
+        margin-top: 2.5%;
+        width: 30%; 
+        border-radius:3px;
+        overflow:hidden;
+    }
+
+    body .mainmenu li a{ display:block;  color:#FFF;   text-align:center }
+    body .mainmenu li a b{
+        display:block; height:90px;
+    }
+    body .mainmenu li a img{
+        margin: 15px auto 15px;
+        width: 60px;
+        height: 60px;
+    }
+
+    body .mainmenu li a span{ display:block; height:30px; line-height:30px;background-color:#FFF; color: #999; font-size:16px; }
+
+    body .mainmenu li:nth-child(8n+1) {background-color:#14c760}
+    body .mainmenu li:nth-child(8n+2) {background-color:#fc5366}
+    body .mainmenu li:nth-child(8n+3) {background-color:#ff8a4a}
+    body .mainmenu li:nth-child(8n+4) {background-color:#678ce1}
+    body .mainmenu li:nth-child(8n+5) {background-color:#36A1DB}
+    body .mainmenu li:nth-child(8n+6) {background-color:#8c67df}
+    body .mainmenu li:nth-child(8n+7) {background-color:#84d018}
+    body .mainmenu li:nth-child(8n+8) {background-color:#f3b613}
+	body .mainmenu li:nth-child(8n+9) {background-color:#ccff00}
 </style>
 </head>
 <body>
 
-<style type="text/css">
-	*{margin:0; padding:0;}
-	img{max-width: 100%; height: auto;}
+<style type="text/css">
+	*{margin:0; padding:0;}
+	img{max-width: 100%; height: auto;}
 	</style>
-<script type="text/javascript">
-		function is_weixin() {
-		    var ua = navigator.userAgent.toLowerCase();
-		    if (ua.match(/MicroMessenger/i) == "micromessenger") {
-		        return true;
-		    } else {
-		        return false;
-		    }
-		}
-		var isWeixin = is_weixin();
-		var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
-		function loadHtml(){
-			var div = document.createElement('div');
-			div.id = 'weixin-tip';
-			div.innerHTML = '<p><img src="/images/no_weixin.png" alt="浏览器打开"/></p>';
-			document.body.appendChild(div);
-		}
-		
-		function loadStyleText(cssText) {
-	        var style = document.createElement('style');
-	        style.rel = 'stylesheet';
-	        style.type = 'text/css';
-	        try {
-	            style.appendChild(document.createTextNode(cssText));
-	        } catch (e) {
-	            style.styleSheet.cssText = cssText; //ie9以下
-	        }
-            var head=document.getElementsByTagName("head")[0]; //head标签之间加上style样式
-            head.appendChild(style); 
-	    }
-	    var cssText = "#weixin-tip{position: fixed; left:0; top:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80); width: 100%; height:100%; z-index: 100;} #weixin-tip p{text-align: center; margin-top: 1%; padding:0 5%;}";
-		if(isWeixin){
-			loadHtml();
-			loadStyleText(cssText);
-		}
+<script type="text/javascript">
+		function is_weixin() {
+		    var ua = navigator.userAgent.toLowerCase();
+		    if (ua.match(/MicroMessenger/i) == "micromessenger") {
+		        return true;
+		    } else {
+		        return false;
+		    }
+		}
+		var isWeixin = is_weixin();
+		var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
+		function loadHtml(){
+			var div = document.createElement('div');
+			div.id = 'weixin-tip';
+			div.innerHTML = '<p><img src="/images/no_weixin.png" alt="浏览器打开"/></p>';
+			document.body.appendChild(div);
+		}
+		
+		function loadStyleText(cssText) {
+	        var style = document.createElement('style');
+	        style.rel = 'stylesheet';
+	        style.type = 'text/css';
+	        try {
+	            style.appendChild(document.createTextNode(cssText));
+	        } catch (e) {
+	            style.styleSheet.cssText = cssText; //ie9以下
+	        }
+            var head=document.getElementsByTagName("head")[0]; //head标签之间加上style样式
+            head.appendChild(style); 
+	    }
+	    var cssText = "#weixin-tip{position: fixed; left:0; top:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80); width: 100%; height:100%; z-index: 100;} #weixin-tip p{text-align: center; margin-top: 1%; padding:0 5%;}";
+		if(isWeixin){
+			loadHtml();
+			loadStyleText(cssText);
+		}
 	</script>
 
 
@@ -125,10 +125,10 @@
 
 <p>网址经常会更换，请记住上面网址，预防迷路找不到！QQ群：<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=72078508044dd8fbf9d53fda7c4034ec45234e5501fa901de7a3abc68019716c"><font size="" color="#ffffff">200271141</font></a></p>
 </div>
-<script>
-function ok(id){
-	syalert.syhide(id);	
-}
+<script>
+function ok(id){
+	syalert.syhide(id);	
+}
 </script>
 
 <ul class="mainmenu">

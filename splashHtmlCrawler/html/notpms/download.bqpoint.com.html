@@ -1,1188 +1,1188 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>标桥-下载中心详情页</title>
-<meta name="keywords" content="新点标桥,标桥,标桥清标工具,新点建采通,招标,投标,招投标,新点客服,新点课堂,企业基本信息" />
-<meta name="description" content="标桥，专业投标服务平台，每日提供超万条公共资源交易中心标讯，并提供招投标大数据服务、专业清标、700+网络课堂、900+专业软件下载等，一站解决投标问题，让中标更简单。" />
-<!-- 标桥-下载中心网页统计 -->
-<script>
-	if (window.location.hostname == "download.bqpoint.com" || window.location.hostname == "www.bqpoint.com") {
-		var _hmt = _hmt || [];
-		(function() {
-			var hm = document.createElement("script");
-			hm.src = "https://hm.baidu.com/hm.js?01d2c28bd8a1bc020d94db35fc7fb143";
-			var s = document.getElementsByTagName("script")[0];
-			s.parentNode.insertBefore(hm, s);
-		})();
-	}
-</script>
-<link rel="stylesheet" href="../css/download/bqpoint.download.min.css?t=202104251352">
-
-   <link rel="stylesheet" href="/css/webBuilderCommonGray.css"></head>
-<body>
-	<div class="box downlaod-center">
-		<!-- 黑条 -->
-<div class="header-new">
-	<div class="container" style="overflow:visible">
-		<span class="top-l-txt-new l"><a href="javascript:void(0);" class="pos"></a><em>|</em><a href="javascript:void(0);" onclick="goCity();"
-			class="change">切换城市</a></span>
-		<ul class="hd-left-new">
-			<li><a href="https://www.bqpoint.com/usercenter2/usercenter2messagecenter.html">消息<i id="message">0</i></a></li>
-			<li><a href="https://zhidao.bqpoint.com/epointknow2/bqepointknowquestion.html?producttype=9">帮助中心</a></li>
-		</ul>
-		<ul class="hd-right-new">
-			<li><a href="https://www.bqpoint.com/" target="_blank">首页</a></li> 
-			<li><a href="https://www.bqpoint.com/tool/qingbiaotooldownloadindex.html" target="_blank">标书检查</a></li>
-			<li><a href="https://biaoxun.bqpoint.com/" target="_blank">标讯</a></li>
-			<li style="position: relative;"><a href="https://www.bqpoint.com/epbzt/index.html" target="_blank">标证通</a><img src="../images/friendbusinessnew.png"style="position: absolute;top: 5px;"/></li>
-			<li style="position: relative;"><a href="javascript:void(0)" class="jskjump">建采通</a><img src="../images/friendbusinessnew.png"style="position: absolute;top: 5px;"/></li>
-			<li style="position: relative;"><a href="https://zjy.epoint.com.cn" target="_blank">造价云</a><img src="../images/friendbusinessnew2.png"style="position: absolute;top: 5px;"/></li>
-			<!-- <li><span class="tempclose">智库</span></li> -->
-			<li><a href="https://college.bqpoint.com/" target="_blank">课堂</a></li>
-			<li><a href="https://download.bqpoint.com/" target="_blank">下载</a></li>
-			<li><a href="https://zhidao.bqpoint.com/" target="_blank">知道</a></li>
-			<!-- <li><span class="tempclose">新标坊</span></li> -->
-			<li><a href="https://mall.bqpoint.com/" target="_blank">商城</a></li>
-			<!-- <li><a href="http://bbs.epoint.com.cn/Epoint_BBS/index.aspx" target="_blank">论坛</a></li> -->
-		</ul>
-	</div>
-</div>
-<div class="bqgonggao-wrap hidden" style="position:relative;">
-	<div id="bqgonggao-content"><img src="../images/bqgonggao.png" class="bqgonggao-img"/><a href="###" target="_blank"></a></div>
-</div>
-<script type="text/javascript">
-	var date = new Date();
-	var year = date.getFullYear();
-	var month = date.getMonth() + 1;
-	var day = date.getDate();
-	var hour = date.getHours();
-	var _src = "https://pv.sohu.com/cityjson?ie=utf-8&t=" + year + month + day + hour;
-	document.writeln('<script src="' + _src + '"></sc' + 'ript>');
-	
-	//更新公告
-	window.onload = function(){
-		getGonggao();
-	}
-	
-	function getGonggao(){
-		$.ajax({
-			type : "POST",
-			data : JSON.stringify({
-				"ValidateData": ValidateData,
-				"paras":{}
-			}),
-			contentType : "application/json",
-			dataType : "json",
-			url:ServiceUrlPrefix+ "/rest/gonggao/getmaintaininfo",
-			success : function(data) {
-				if (data.ReturnInfo.Code == "1")// 校验成功
-				{
-					if (data.BusinessInfo.Code == "1")// 逻辑成功
-					{
-						var Title = data.UserArea.Title,
-							GongGaoGuid = data.UserArea.GongGaoGuid;
-						if(Title && GongGaoGuid){
-							$(".bqgonggao-wrap").removeClass("hidden");
-							$("#bqgonggao-content a:eq(0)").text(Title).prop("href","/information/gonggaodetail.html?gonggaoguid="+GongGaoGuid);
-							
-							if($(".library-loginbtn").length>0){
-								//判断是否为智库，智库宽度为998px,其余为1200px
-								var $libsearch = $(".lib-search");
-								$libsearch.css("top","91px");
-								$("#bqgonggao-content").css("width","998px");
-							}else if($(".konw-loginbtn").length>0){
-								//知道的定位全为固定定位,出现公告需修改样式
-								$(".top-banner").css("top","72px");
-								//知道样式会遮住部分
-								$(".question-wrap .mt122").css("padding-top","150px");
-							}else if($(".friendbusiness-loginbtn").length>0){
-								$(".shadow").css("box-shadow","0 0 6px #ccc");
-								$("#bqgonggao-content").css("width","1200px");
-							}else if($(".college-login").length>0){
-								//课堂内容的宽度为1200px
-								$("#bqgonggao-content").css("width","1200px");
-							}
-						}
-					}
-				}
-			},
-			error : function(msg) {
-			}
-		});	
-	}
-</script>
-<!-- 头部白条 -->
-<div class="head">
-	<div class="container clearfix">
-		<div class="logo l">
-			<img src="../images/download/logo.png?t=202008311446">
-			<p class="logo-side-title">
-				<span>投标利器</span> <span>轻松下载</span>
-			</p>
-		</div>
-		<div class="logo-right l">
-			<a href="../download/download.html" class="first-page l">首页</a>
-			<div class="choose-type l">
-				<span id="divide">分类</span>
-				<div class="choose-box" id="typechosebox"></div>
-			</div>
-		</div>
-		<div class="search-software l clearfix mr0">
-			<div class="software-box l">
-				<input type="text" placeholder="在这里输入你要找的软件" class="software-input">
-			</div>
-			<a href="javascript:void(0);" class="software-btn"></a>
-		</div>
-		<div class="download-login r downloadrelog-loginbtn">
-			<a href="javascript:void(0);" class="login-btn" onclick="headLogin();" style="position:relative">
-				登录
-				<span id="download_relog_tips"
-								style="position: absolute;z-index:1; width: 168px; position: absolute; line-height: 22px; min-width: 12px; padding: 5px 10px; font-size: 12px; _float: left; border-radius: 3px; box-shadow: 1px 1px 3px rgba(0, 0, 0, .3); background-color: rgb(0, 0, 0); color: #fff; top: 40px; right: 2px; display: none">
-									您的登录已过期，请重新登录！ <i
-									style="position: absolute; position: absolute; width: 0; height: 0; border-width: 8px; border-color: transparent; border-style: dashed; right: 25px; border-right-style: solid; top: -8px; border-right-color: rgb(0, 0, 0);"></i>
-				</span>
-			</a> 
-			<a href="https://www.bqpoint.com/usercenter/usercenterregister.html" class="send-coin">注册免费送10新点币</a>
-		</div>
-		<div class="new-login hidden downloadrelog-login">
-			<span id="showloginname"></span><a href="https://www.bqpoint.com/usercenter2/usercenter2myasset.html">立即充值>></a>
-			<div class="new-loginbg hidden">
-				<div class="new-login-hd">
-					<img src="../images/per.png" class="per"></img>
-					<div class="new-info">
-						<span id="new-loginname"></span> <br /> <span>消息（<a href="https://www.bqpoint.com/usercenter2/usercenter2messagecenter.html"
-							id="loginmessagenum" style="color: #fff;">0</a>）
-						</span>
-					</div>
-				</div>
-				<div class="new-login-bd">
-					<a href="https://www.bqpoint.com/usercenter2/usercenter2.html">用户中心</a> <a href="javascript:void(0);" onclick="logOut();">退出帐号</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="listdetail-wrap">
-			<!-- 体部 -->
-			<div class="bd">
-				<!-- 猜你关心 广告位 -->
-				<!-- <div class="container guesscareadv-wrap">
-					<div class="guesscareadv-con">
-						<ul class="guesscareadv-list clearfix" id="marquee1">
-
-						</ul>
-					</div>
-				</div>-->
-
-				<div class="container">
-					<!-- 左侧导航 -->
-					<div class="left-nav">
-						<h3>分类筛选</h3>
-						<ul id="typelist">
-						</ul>
-					</div>
-					<!-- 右侧内容 -->
-					<div class="right-content l">
-						<div class="bqadv-wrap">
-							<a href="https://www.bqpoint.com/bqadv.html" target="_blank"
-	style="width: 100%; height: 60px; display: block; background: url(https://www.bqpoint.com/share/bqpoint202007021455.png) no-repeat center;background-size:100% 100%"></a>
-<span id="close-btn"> <img alt="" src="https://www.bqpoint.com/share/bqpoint201809281130-close.png" />
-</span>
-</div>
-						<div class="location" style="margin-top: 15px;">
-							<a href="../download/download.html">首页</a> > <a href="../download/downloadlist.html" data-value=''>全部</a> > <span class="all" id="prompt"></span>
-						</div>
-						<div class="list-page">
-							<ul class="download-softwaredetail" id="softdetail">
-
-							</ul>
-							<div class="tabview" id="doc-tabs">
-								<div class="tabview-hd" data-role="head">
-									<ul class="clearfix">
-										<li class="tab-item" data-role="tab" data-target="detail">详情</li>
-										<li class="tab-item" data-role="tab" data-target="option">操作说明</li>
-										<li class="tab-item" data-role="tab" data-target="dialog" id="log">更新日志</li>
-									</ul>
-								</div>
-								<div data-role="body">
-									<div data-role="tab-content" data-id="detail" class="tab-panel" id="tabledetail"></div>
-									<div data-role="tab-content" data-id="try-user" class="tab-panel" id="tabletry-user"></div>
-									<div data-role="tab-content" data-id="option" class="tab-panel" id="tableoption"></div>
-									<div data-role="tab-content" data-id="dialog" class="tab-panel" id="tabledialog"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- footer -->
-		<div class="bottom">
-	<div class="bottom-row01 mt20">
-		<dl>
-			<dt>服务热线</dt>
-			<dd>
-				<a href="javascript:void(0);">电子交易：400-998-0000</a>
-			</dd>
-			<dd>
-				<a href="javascript:void(0);">造价软件：400-850-3300</a>
-			</dd>
-			<dd>
-				<a href="javascript:void(0);" id="roboturl">客服小桥</a>
-			</dd>
-			<!--<dd>
-				<a href="https://mall.bqpoint.com/EpointMall/Product.aspx?ProductGuid=bef6e97c-0da7-4da6-9d18-7896a4974209" target="_blank">增值服务</a>
-			</dd> -->
-		</dl>
-		<dl>
-			<dt>关于我们</dt>
-			<dd>
-				<a href="https://www.bqpoint.com/platform/platformintroduction.html" target="_blank">平台介绍</a>
-			</dd>
-			<dd>
-				<a href="https://www.bqpoint.com/account/account_agreement.html" target="_blank">用户协议</a>
-			</dd>
-			<dd>
-				<a href="https://www.bqpoint.com/account/account_secretagreement.html" target="_blank">隐私条款</a>
-			</dd>
-		</dl>
-		<dl>
-			<dt>账号帮助</dt>
-			<dd>
-				<a href="https://www.bqpoint.com/usercenter/usercenterregister.html" target="_blank">注册用户</a>
-			</dd>
-			<dd>
-				<a href="https://www.bqpoint.com/usercenter/usercenterforgetpwd.html" target="_blank">忘记密码</a>
-			</dd>
-		</dl>
-		<dl>
-			<dt>服务支持</dt>
-			<dd>
-				<a href="https://zhidao.bqpoint.com/" target="_blank">服务中心</a>
-			</dd>
-			<dd>
-				<a href="https://download.bqpoint.com/" target="_blank">相关下载</a>
-			</dd>
-			<dd>
-				<a href="https://www.bqpoint.com/feedback/feedbacksubmit.html" target="_blank">投诉建议</a>
-			</dd>
-		</dl>
-		<dl>
-			<dt>网址工具</dt>
-			<dd>
-				<a href="https://www.bqpoint.com/platform/platformwebsitedaquan.html?Type=trade" target="_blank">电子交易网</a>
-			</dd>
-			<dd>
-				<a href="https://www.bqpoint.com/platform/platformwebsitedaquan.html?Type=cost" target="_blank">造价信息网</a>
-			</dd>
-			<dd>
-				<a href="http://www.epoint.com.cn" target="_blank">新点官网</a>
-			</dd>
-		</dl>
-		<dl class="bottom-weixin">
-			<dt>微信订阅号</dt>
-			<dd>
-				<div class="img-weixin"></div>
-			</dd>
-		</dl>
-		<dl class="bottom-biaoqiao">
-			<dt>建采通App</dt>
-			<dd>
-				<div class="img-biaoqiao"></div>
-			</dd>
-		</dl>
-	</div>
-	<div class="bottom-datasourcerow">
-		<div class="data-content">
-			<span class='data-source'>数据来源：</span> <span class='data-list'> <span class="web">全国建筑市场监管公共服务平台</span> <span class="web">全国公共资源交易平台</span>
-				<span class="web">国家企业信用信息公示系统</span> <span class="web">中国裁判文书网</span> <span class="web">中国执行信息公开网</span>
-			</span>
-		</div>
-	</div>
-	<div class="bottom-row02">
-		<div class="row01">
-			<span>主办单位：<a href="http://www.epoint.com.cn" target="_blank">国泰新点软件股份有限公司</a></span> <span id="xukezheng">许可证：苏B2-20110362</span> <span
-				id="benanhao">版权所有：Copyright © <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">苏ICP备10206980号-8</a></span>
-		</div>
-	</div>
-</div>
-</div>
-	<script src="../js/bqpoint.min.js"></script>
-	<script src="../js/jquery.marquee.min.js" type="text/javascript" charset="utf-8"></script>
-</body>
-<script>
-	var areadetail;
-	$(function() {
-		$(".software-input").placeholder();
-
-		settopcurrent();
-
-		// typebox切换
-		var isHover = false;
-		$(function() {
-			var $parent = $divide.parent();
-			$divide.hover(function() {
-				isHover = true;
-				$(".choose-box").show()
-			}, function() {
-				isHover = false;
-				setTimeout(function() {
-					if (!isHover) {
-						$(".choose-box").hide();
-					}
-				}, 100);
-			});
-			$(".choose-box").hover(function() {
-				isHover = true;
-			}, function() {
-				isHover = false;
-				setTimeout(function() {
-					if (!isHover) {
-						$(".choose-box").hide();
-					}
-				}, 100);
-			});
-		});
-
-		// 初始化地区
-		headInitArea();
-
-		getLoginInfo();
-
-		var areainfo = $.cookie('areainfocookie');
-		if (areainfo != null && areainfo != "") {
-			areadetail = $.parseJSON(areainfo);
-			$(".pos").html(areadetail.areaname);
-		}
-
-		var $divide = $("#divide");
-		$divide.on("click", function(e) {
-			search();
-		});
-
-		$(".software-btn").on("click", function() {
-			search();
-		});
-
-		$(".software-input").keydown(function(e) {
-			e = e || window.event;
-			var keycode = e.which ? e.which : e.keyCode;
-			if (keycode == 13) {
-				search();
-			}
-		});
-
-		$(".new-login").mouseover(function() {
-			$(".new-loginbg").removeClass("hidden");
-		});
-
-		$(".new-login").mouseout(function() {
-			$(".new-loginbg").addClass("hidden");
-		});
-	});
-
-	function settopcurrent() {
-		var pathname = window.location.pathname;
-		var pathnamelist = pathname.split("/");
-		var pagename = pathnamelist[pathnamelist.length - 1];
-		pagename = pagename.toLowerCase().substring(0, pagename.length - 5);
-		if (pagename == "download") {
-			$(".first-page").toggleClass("active");
-		} else if (pagename == "downloadlist" || pagename == "downloaddetail") {
-			$(".choose-type").toggleClass("active");
-		}
-	}
-
-	function getLoginInfo() {
-		var userdata = getUserData();
-		if (userdata) {
-			$(".new-loginbtn").addClass('hidden');
-			$(".new-login").removeClass('hidden');
-			$(".download-login").addClass('hidden');
-			$("#showloginname").empty().text("您好，" + decodeURI(userdata.username) + "！");
-			$("#new-loginname").text(decodeURI(userdata.username));
-			getLoginUserInfo();
-			$("#biaoxunlogin").addClass('hidden');
-		} else {
-			$(".download-login").removeClass('hidden');
-			$(".new-loginbtn").removeClass('hidden');
-			$(".new-login").addClass('hidden');
-		}
-	}
-
-	function getLoginUserInfoSuccess(data) {
-		if (data.PicUrl != "") {
-			$(".new-login-hd img.pre").attr("src", data.PicUrl);
-		}
-		$("#message").text(data.UnreadMessageNum);
-		$("#loginmessagenum").text(data.UnreadMessageNum);
-
-		if (typeof FristLogin === "function") {
-			FristLogin(data.IsLogined);
-		}
-	}
-	
-	function getJctInfoSuccess(data){
-		var userdata = getUserData();
-		//建采通的vip
-		var isvip = data.ISVipUser;
-		//标讯的vip
-		var ismvip = data.ISMVipUser;
-		if (isvip === 'true' || ismvip === 'true') {
-			var bqvippng = "";
-			var loginhdhtml = "";
-			if (isvip === 'true') {
-				var vipexpirestext = getFormatExpires(data.VipExpires);
-				bqvippng = "../images/bqvip.png";
-				loginhdhtml = "<div class='vipremind'>" + vipexpirestext + " VIP到期</div>";
-			} else {
-				var mvipexpirestext = getFormatExpires(data.MVipExpires);
-				bqvippng = "../images/bqmvip.png";
-				loginhdhtml = "<div class='vipremind'>" + mvipexpirestext + " MVIP到期</div>";
-			}
-			var showloginnamehtml = "<span class='alignmiddle'>您好，</span><span class='bgwhitevip'>" + decodeURI(userdata.username) + "</span>";
-			var newloginnamehtml = "<span class='loginnameuser'>" + decodeURI(userdata.username) + "</span>" + "<img src='"+bqvippng+"' class='loginnameimg'/>";
-			$(".new-login-hd").css("padding-bottom", "0");
-			$(".new-login-hd").append(loginhdhtml);
-
-			$(".downloadrelog-login>a").html("<img src='"+bqvippng+"' style='vertical-align:-3px;margin-left:3px;'/>，立即充值>>").addClass("alignmiddle");
-			$("#showloginname").empty().html(showloginnamehtml);
-			$("#new-loginname").html(newloginnamehtml);
-		}
-	}
-
-	function search() {
-		var text = $(".software-input").val();
-		text = encodeURIComponent($.trim(text));
-
-		var url = "../download/downloadlist.html";
-		if (text) {
-			url = url + "?WD=" + text;
-		}
-		if (url) {
-			window.location.href = url;
-		} else {
-			layer.alert("找到不对应网址！", {
-				icon : 2
-			});
-			return;
-		}
-	}
-
-	//退出登录样式切换
-	function logOutPage() {
-		$(".download-login").removeClass('hidden');
-	}
-
-	// 获取页面头部类别列表
-	function getTypeChoseBoxListHeadHtml(softtypelist) {
-		var listhtml = "";
-		for ( var i in softtypelist) {
-			var url = "../download/downloadlist.html?SoftTypeCode=" + softtypelist[i].SoftTypeCode + "&SoftTypeName=" + encodeURIComponent(softtypelist[i].SoftTypeName);
-			listhtml += "<a href='" + url + "' >";
-			listhtml += softtypelist[i].SoftTypeName;
-			listhtml += "</a>";
-		}
-		return listhtml;
-	}
-
-	// 获取页面左侧类别列表
-	function getTypeListLeftHtml(allcount, softtypelist) {
-		var listhtml = "";
-		listhtml += "<li class='software-item all active' data-value='' date-iconname='' onclick='clsclick(this);return false;'>";
-		listhtml += "    <a href=''>全部<span>（" + allcount + "）</span></a>"
-		listhtml += "</li>";
-		for ( var i in softtypelist) {
-			var typeiconname = softtypelist[i].SoftTypeIcon;
-			typeiconname = typeiconname.substring(typeiconname.lastIndexOf("/") + 1, typeiconname.length);
-			listhtml += "<li class='software-item' style='background:url(" + softtypelist[i].SoftTypeIcon + ") left center no-repeat;'";
-			listhtml += " date-iconname='" + typeiconname + "'";
-			listhtml += " data-value='" + softtypelist[i].SoftTypeCode + "'";
-			listhtml += " onclick='clsclick(this);return false;'";
-			listhtml += " onmouseover='lightIcon(this)'";
-			listhtml += " onmouseout='darkIcon(this);' >";
-			listhtml += "    <a href='javascript:void(0);' >" + softtypelist[i].SoftTypeName;
-			listhtml += "        <span>（" + softtypelist[i].BolongSoftTypeCount + "）</span>";
-			listhtml += "    </a>";
-			listhtml += "</li>"
-		}
-		return listhtml;
-	}
-</script>
-<script type="text/javascript">
-	$(function() {
-		if (window.location.href.indexOf('ybpoint') > -1) {
-			$("#xukezheng").text("许可证：苏B2-20060183");
-			//$("#benanhao").html("版权所有：Copyright © <a href='http://www.beian.miit.gov.cn' target='_blank'>苏ICP备10206980号-7</a>");
-		}
-		
-		$("#roboturl").click(
-			function() {
-				//获得窗口的垂直位置 
-				var iTop = (window.screen.availHeight - 60 - 580) / 2;
-				//获得窗口的水平位置 
-				var iLeft = (window.screen.availWidth - 10 - 720) / 2;
-				window.open(BQPointUrl + "/kefu/customerservice.html?skilllist=ff8080815ea36f21015ea78791ce002c;ff8080815ea36f21015ea7881f69002d;ff8080815ea36f21015ea786ff02002b;ff80808169ddde69016a8febb5515772&platformguid=", "_blank", "width=810,height=605,toolbar=no,scrollbars=no,menubar=no,status=no,left=" + iLeft
-						+ ",top=" + iTop);
-		});
-	});
-	
-</script>
-<script type="text/javascript">
-	var softPageIndex = 1;
-	var RegionBelong = "";
-	var SoftTypeCode = "";
-	var SoftDetailPrompt = getUrlParams("SoftDetailloc") ? decodeURIComponent(getUrlParams("SoftDetailloc")) : "";
-	var SourceFrom = getUrlParams("SourceFrom");
-	var SoftPath = "";
-
-	$(function() {
-
-		new TabView({
-			dom : '#doc-tabs',
-			activeCls : 'active',
-			triggerEvent : 'click'
-		});
-
-		if (SourceFrom == "Ztb") {
-			var ztbsofttype = getUrlParams("ZtbSoftType");
-			if (ztbsofttype && ztbsofttype == "tballinclusive") {
-				getGeneralKnowList();
-			} else {
-				getZtbSoftDetail("");
-			}
-			$("#log").addClass("hidden");
-			$("#tabledialog").addClass("hidden");
-		} else if (SourceFrom == "Down") {
-			getSoftDetail();
-		}
-
-		getSoftTypeList();
-		//获取猜你关心公司列表
-		getGuessCareList(0, 5, "download");
-	});
-
-	//获取软件分类 
-	function getSoftTypeList() {
-		var objparas = {};
-		var obj = {};
-		obj.paras = objparas;
-		obj.ValidateData = ValidateData;
-		$.ajax({
-			type : "POST",
-			data : JSON.stringify(obj),
-			contentType : "application/json",
-			dataType : "json",
-			url : ServiceUrlPrefix + "/rest/soft/getztbsofttypelist",
-			success : function(data) {
-				try {
-					if (data.ReturnInfo.Code == "1")//校验成功
-					{
-						if (data.BusinessInfo.Code == "1") //逻辑成功
-						{
-							if (data.UserArea.SoftTypeList.length > 0) {
-								$("#typelist").empty().html(getTypeListLeftHtml(data.UserArea.SoftCount.AllCount, data.UserArea.SoftTypeList));
-								$("#typechosebox").empty().html(getTypeChoseBoxListHeadHtml(data.UserArea.SoftTypeList));
-								if (SoftTypeCode == "") {
-									$("#typelist li[data-value='" + SoftTypeCode + "']").attr("class", "software-item all active");
-								} else {
-									$("#typelist li[data-value='" + SoftTypeCode + "']").attr("class", "software-item  active");
-								}
-							}
-						} else {
-							layer.alert("获取软件分类列表失败！", {
-								icon : 2
-							});
-						}
-					} else {
-						layer.alert("获取软件分类列表校验失败！", {
-							icon : 2
-						});
-					}
-				} catch (e) {
-				}
-			},
-			error : function(msg) {
-			}
-		});
-	}
-
-	function getCode() {
-		$("li").click(function() {
-			var classname = $(this).attr("class");
-			if (classname == "software-item") {
-				SoftTypeCode = $(this).attr("data-value")
-			}
-
-			if (classname == "province-item") {
-				RegionBelong = $(this).attr("data-value")
-			}
-		});
-
-		$("a").click(function() {
-			SoftTypeCode = $(this).attr("data-value")
-		});
-	}
-
-	//获取软件详情
-	function getSoftDetail() {
-		var objparas = {};
-		objparas.SoftGuid = getUrlParams("SoftGuid");
-		var obj = {};
-		obj.paras = objparas;
-		obj.ValidateData = ValidateData;
-		$.ajax({
-			type : "POST",
-			data : JSON.stringify(obj),
-			contentType : "application/json",
-			dataType : "json",
-			url : ServiceUrlPrefix + "/rest/soft/getsoftdetail",
-			success : function(data) {
-				try {
-					if (data.ReturnInfo.Code == "1")//校验成功
-					{
-						if (data.BusinessInfo.Code == "1") //逻辑成功
-						{
-							if (data.UserArea.SoftDetail) {
-								//四川需要展示广告位
-								var softDetailHtmlpart = getSoftDetailHtml(data.UserArea.SoftDetail, "down") + getSiChuanAdvHtml(data.UserArea.SoftDetail.RegionBelong, "51");
-								$("#softdetail").empty().html(softDetailHtmlpart);
-								$("#tabledetail").empty().html(getDetailHtml(data.UserArea.SoftDetail));
-								$("#tabledialog").empty().html(getDialogHtml(data.UserArea.SoftDetail, data.UserArea.SoftDetail.SoftUploadNotes));
-								$("#tableoption").empty().html(getOptionHtml(data.UserArea.SoftDetail));
-								$("#prompt").html(data.UserArea.SoftDetail.SoftName);
-								$('.prevence-wrap').niceScroll({
-									cursorcolor : "#5FAAEB",//#CC0071 光标颜色
-									cursorwidth : "3px", //像素光标的宽度
-									cursorborder : "0", // 游标边框css定义
-								});
-							}
-						} else {
-							layer.alert("获取软件详细信息失败！", {
-								icon : 2
-							});
-						}
-					} else {
-						layer.alert("获取软件详细信息校验失败！", {
-							icon : 2
-						});
-					}
-				} catch (e) {
-				}
-			},
-			error : function(msg) {
-			}
-		});
-	}
-
-	//获取Ztb软件详情
-	function getZtbSoftDetail(optionhtml) {
-		var objparas = {};
-		objparas.ZtbSoftXiaQuCode = getUrlParams("ZtbSoftXiaQuCode");
-		objparas.ZtbSoftType = getUrlParams("ZtbSoftType");
-		var obj = {};
-		obj.paras = objparas;
-		obj.ValidateData = ValidateData;
-		$.ajax({
-			type : "POST",
-			data : JSON.stringify(obj),
-			contentType : "application/json",
-			dataType : "json",
-			url : ServiceUrlPrefix + "/rest/soft/getztbsoftdetail",
-			success : function(data) {
-				try {
-					if (data.ReturnInfo.Code == "1")//校验成功
-					{
-						if (data.BusinessInfo.Code == "1") //逻辑成功
-						{
-							if (data.UserArea.SoftDetail) {
-								var softDetailHtmlpart = getSoftDetailHtml(data.UserArea.SoftDetail, "ztb") + getSiChuanAdvHtml(data.UserArea.SoftDetail.RegionBelong, "51");
-								$("#softdetail").empty().html(softDetailHtmlpart);
-								$("#tabledetail").empty().html(getDetailHtml(data.UserArea.SoftDetail));
-								$("#tabledialog").empty().html(getDialogHtml(data.UserArea.SoftDetail, data.UserArea.SoftDetail.SoftUploadNotes));
-								$("#tableoption").empty().html(getOptionHtml(data.UserArea.SoftDetail));
-								//如果招投标软件类型为招投标制作软件则操作手册显示知道的工具通用问题
-								if (optionhtml == "" || data.UserArea.SoftDetail.SoftName.indexOf("质量管理") != -1) {
-									$("#tableoption").empty().html(getOptionHtml(data.UserArea.SoftDetail));
-								} else {
-									$("#tableoption").empty().html(optionhtml);
-								}
-								$("#prompt").html(data.UserArea.SoftDetail.SoftName);
-								$('.introduction').niceScroll({
-									cursorcolor : "#5FAAEB",//#CC0071 光标颜色
-									cursorwidth : "3px", //像素光标的宽度
-									cursorborder : "0", // 游标边框css定义
-								});
-								$('.prevence-wrap').niceScroll({
-									cursorcolor : "#5FAAEB",//#CC0071 光标颜色
-									cursorwidth : "3px", //像素光标的宽度
-									cursorborder : "0", // 游标边框css定义
-								});
-							}
-						} else {
-							layer.alert(data.BusinessInfo.Description, {
-								icon : 2
-							});
-						}
-					} else {
-						layer.alert("获取软件详细信息校验失败！", {
-							icon : 2
-						});
-					}
-				} catch (e) {
-				}
-			},
-			error : function(msg) {
-			}
-		});
-	}
-
-	// 获取工具通用问题列表
-	function getGeneralKnowList() {
-		var objparas = {};
-		var obj = {};
-		obj.paras = objparas;
-		obj.ValidateData = ValidateData;
-		$.ajax({
-			type : "POST",
-			data : JSON.stringify(obj),
-			contentType : "application/json",
-			dataType : "json",
-			url : ServiceUrlPrefix + "/rest/knowmanage/getgenerallist",
-			success : function(data) {
-				try {
-					if (data.ReturnInfo.Code == "1")//校验成功
-					{
-						if (data.BusinessInfo.Code == "1") //逻辑成功
-						{
-							var toolquestionlist = data.UserArea.ToolQuestionList;
-							if (toolquestionlist.length > 0) {
-								var listhtml = "";
-								listhtml += "<div class='introduction'>";
-								for ( var i in toolquestionlist) {
-									var question = toolquestionlist[i];
-									var producttype = question.ProductType;
-									var CategoryCode = question.CategoryCode;
-									var QuestionGuid = question.QuestionGuid;
-									var url = ZhiDaoUrl + "/epointknow2/bqepointknowquestion.html?producttype=" + producttype + "&CategoryCode=" + CategoryCode + "&QuestionGuid=" + QuestionGuid + "&type=bqdownload";
-									listhtml += "<div class='opt-detail'>";
-									listhtml += "  <h1 class='ellicape opt-title clearfix' onclick=\"window.open('" + url + "');\"><i class='file-icon'></i>" + getString(question.Title) + "</h1>";
-									listhtml += "  <pre class='opt-txt'>" + getString(question.QuestionIntroduction) + "</pre>";
-									listhtml += "</div>";
-								}
-								listhtml += "</div>";
-								getZtbSoftDetail(listhtml);
-
-							} else {
-								getZtbSoftDetail("");
-							}
-
-						} else {
-							layer.alert("获取工具通用问题列表失败！", {
-								icon : 2
-							});
-						}
-					} else {
-						layer.alert("获取工具通用问题列表校验失败！", {
-							icon : 2
-						});
-					}
-				} catch (e) {
-				}
-			},
-			error : function(msg) {
-			}
-		});
-	}
-
-	function getSoftDetailHtml(softdetail, from) {
-		var userdata = getUserData();
-		var userguid = "***";
-		if (userdata != null) {
-			userguid = userdata.userguid;
-		}
-
-		var listhtml = "";
-		var softdowncnt = parseInt(softdetail.SoftDownloadCount == undefined ? "0" : softdetail.SoftDownloadCount) + parseInt(softdetail.SoftInitialCount == undefined ? "0" : softdetail.SoftInitialCount);
-		var date = softdetail.SoftLastUploadDate.split(" ")[0];
-		//var urlPath=softdetail.SoftPath;
-		//var urlChangePath=softdetail.SoftPath.replace('https://share.bqpoint.com','https://download.bqpoint.com');
-
-		var urlPath = softdetail.SoftPath;
-		var softAreaCode = softdetail.RegionBelong == "" ? "00" : softdetail.RegionBelong.toString().substr(0, 2);
-		if (softAreaCode == "51" || softAreaCode == "42" || softAreaCode == "62") {
-			urlPath = urlPath.toString().replace(/http:\/\/download.bqpoint.com/, "https://share2.bqpoint.com");
-			urlPath = urlPath.toString().replace(/http:\/\/share.bqpoint.com/, "https://share2.bqpoint.com");
-			urlPath = urlPath.toString().replace(/https:\/\/download.bqpoint.com/, "https://share2.bqpoint.com");
-			urlPath = urlPath.toString().replace(/https:\/\/share.bqpoint.com/, "https://share2.bqpoint.com");
-		}
-
-		var imgSrc = getString(softdetail.SoftIconUrl) == "" ? BQPointUrl + "/share/0004d1f2-3821-48c3-9201-7f22b91c1f56/quanguo.png?t=202006192045" : getString(softdetail.SoftIconUrl);
-		var btnHtml = "";
-		if (from == "down") {
-			btnHtml += "<a href='javascript:void(0);'  data-sourcefrom='down' data-softguid='" + softdetail.SoftGuid + "' data-url='" + urlPath + "' class='download-btn-detail' onclick='downloadsoft(this)'>";
-			btnHtml += "   <img src='../images/download/btn.png'  style='vertical-align: middle' class='btnimg'> <span>下载</span>";
-			btnHtml += "</a>";
-			//btnHtml +="<p class='changesite' data-sourcefrom='down' data-softguid='" + softdetail.SoftGuid + "' data-url='" + urlChangePath
-			//+ "' onclick='downloadsoft(this)'>下载速度慢，切个站点试试！</p>"
-		} else {
-			var softJxkUrl = getString(softdetail.SoftJkUrl);
-			btnHtml += "<a href='javascript:void(0);'   data-sourcefrom='ztb' data-softguid='" + softdetail.SoftGuid + "' data-url='" + softJxkUrl + "' class='download-btn-detail hidden' onclick='downloadsoft(this)' >";
-			btnHtml += "   <img src='../images/download/btn.png'  style='vertical-align: middle' class='btnimg'> <span>主站</span>";
-			btnHtml += "</a>";
-			btnHtml += "<a href='javascript:void(0);'   data-sourcefrom='ztb' data-softguid='" + softdetail.SoftGuid + "' data-url='" + urlPath + "' class='download-btn-detail' onclick='downloadsoft(this)' data-downclcik=''>";
-			btnHtml += "   <img src='../images/download/btn.png'  style='vertical-align: middle' class='btnimg'> <span>下载</span>";
-			btnHtml += "</a>";
-			//btnHtml +="<p class='changesite' data-sourcefrom='ztb' data-softguid='" + softdetail.SoftGuid + "' data-url='" + urlChangePath
-			//+ "' onclick='downloadsoft(this)'>下载速度慢，切个站点试试！</p>"
-		}
-
-		var version = getString(softdetail.SoftLastVersion);
-		if (from.toLowerCase() !== "down") {
-			var old = version.split('.');
-			var ztbsofttype = getUrlParams("ZtbSoftType").toLowerCase();
-			if (ztbsofttype === "dr" && old.length === 4) {
-				var drold3 = old[3];
-				if (drold3.length == 2 && drold3.substr(0, 1) == "0") {
-					version = old[0] + "." + drold3.substr(drold3.length - 1, 1);
-				} else {
-					version = old[0] + "." + drold3;
-				}
-			}
-		}
-
-		var regionName = getBelongArea(softdetail, date, softdetail.DatetableFrom)
-
-		//新表数据
-		if (softdetail.DatetableFrom === "2") {
-			var type = getUrlParams("ZtbSoftType").toString().toLowerCase();
-			if (type.indexOf("zb") > -1) {
-				imgSrc = "http://download.bqpoint.com/share/949dcf19-44f5-467b-abaf-b34dc238c4f2/zhabiao.png?t=202006192045";
-			} else if (type.indexOf("tb") > -1 || type.indexOf("zlglxt") > -1) {
-				imgSrc = "http://download.bqpoint.com/share/2d50b539-d56c-4539-891b-d7cd3907f238/toubiao.png?t=202006192045";
-			} else if (type.indexOf("dr") > -1) {
-				imgSrc = "http://download.bqpoint.com/share/abc0ac28-14f0-437b-bbe0-7612ce4f0599/driver.png?t=202006192045";
-			}
-			//特殊处理中易联投标文件制作工具（黑龙江省版）需要使用新的图标
-			if ("4222" == getUrlParams("ZtbSoftXiaQuCode") && ("TB" == getUrlParams("ZtbSoftType") || "tballinclusive" == getUrlParams("ZtbSoftType"))) {
-				imgSrc = "https://download.bqpoint.com/share/f27092c3-29ea-49d7-9443-9f9bac9ae931/zyltoubiao.png?t=202006192045";
-			}
-
-			listhtml += "<li class='soft-downlaod clearfix'>";
-			listhtml += "	<div class='left clearfix'>";
-			listhtml += "   	<div class='icon' >";
-			listhtml += "    		<img src='" + imgSrc + "'  >";
-			listhtml += "			<p class='text'>" + getString(softdetail.SoftIconUrlWord) + "</p>";
-			listhtml += "		</div>";
-			listhtml += "		<div class='l'>";
-			listhtml += "			<h3 style='cursor:Auto' class='left-name'>";
-			listhtml += getString(softdetail.SoftName);
-			listhtml += "			</h3>";
-
-			listhtml += "			<p class='more-detail'>";
-			listhtml += "   			<span class='file-size'>大小：" + getString(softdetail.SoftSize) + "</span>";
-			listhtml += "   			<span class='file-update'>更新日期：" + date + "</span>";
-			listhtml += "   			<span class='useful-area' >版本：" + version + "</span>";
-			listhtml += "			</p>"
-			listhtml += "			<div style='height:5px'>";
-			listhtml += "			</div>";
-			listhtml += "			<p class='more-detail'>";
-			listhtml += "			<span class='file-size' id='downcnt'>下载" + softdowncnt + "次</span><span title='"+softdetail.RegionName+"'> 适用地区： " + regionName;
-			listhtml += "			</span>";
-			listhtml += "			</p>";
-			listhtml += "		</div>";
-			listhtml += "	</div>";
-			listhtml += "	<div class='right'>";
-			listhtml += btnHtml;
-			listhtml += "	</div>";
-			listhtml += "</li>";
-		} else {//老表数据
-			listhtml += "<li class='soft-downlaod clearfix'>";
-			listhtml += "	<div class='left clearfix'>";
-			listhtml += "		<img style='cursor:Auto' src='"+imgSrc+"' class='l'>";
-			listhtml += "		<div class='l'>";
-			listhtml += "			<h3 style='cursor:Auto' class='left-name'>";
-			listhtml += getString(softdetail.SoftName);
-			listhtml += "			</h3>";
-
-			listhtml += "			<p class='more-detail'>";
-			listhtml += "   			<span class='file-size'>大小：" + getString(softdetail.SoftSize) + "</span>";
-			listhtml += "   			<span class='file-update'>更新日期：" + date + "</span>";
-			listhtml += "   			<span class='useful-area' >版本：" + version + "</span>";
-			listhtml += "			</p>"
-			listhtml += "			<div style='height:5px'>";
-			listhtml += "			</div>";
-			listhtml += "			<p class='more-detail'>";
-			listhtml += "			<span class='file-size' id='downcnt'>下载" + softdowncnt + "次</span><span> 适用地区： " + regionName;
-			listhtml += "			</span>";
-			listhtml += "			</p>";
-			listhtml += "		</div>";
-			listhtml += "	</div>";
-			listhtml += "	<div class='right'>";
-			listhtml += btnHtml;
-			listhtml += "	</div>";
-			listhtml += "</li>";
-		}
-
-		return listhtml;
-	}
-
-	function getBelongArea(belongArea, date, from) {
-		var areaHtml = "";
-		var RegionName = "";
-		if (from === "2") {
-			var areaData = belongArea.RegionName.split(",");
-
-			for (var i = 0; i < areaData.length; i++) {
-				if (i > 4) {
-					break;
-				}
-				RegionName += areaData[i] + ",";
-			}
-			RegionName = RegionName.substring(0, RegionName.length - 1);
-
-			if (areaData.length > 5 || RegionName.length > 19) {
-				RegionName = areaData[0] + "," + areaData[1] + "," + areaData[2] + "," + areaData[3] + "," + areaData[4] + "...";
-			}
-
-		} else {
-			RegionName = getString(belongArea.RegionName);
-		}
-
-		return RegionName
-	}
-
-	function getDetailHtml(softdetail) {
-		var userdata = getUserData();
-		var userguid = "***";
-		if (userdata != null) {
-			userguid = userdata.userguid;
-		}
-
-		var str = "";
-		if (getString(softdetail.SoftDetail) == "") {
-			str = "软件介绍";
-		}
-		var listhtml = "";
-		var date = softdetail.SoftLastUploadDate.split(" ")[0];
-		//因软件详情样式空格太大，所以将软件简介tab去掉
-		//listhtml += "<h2 class='software-introduce'>" + str + "</h2>";
-		listhtml += "<div class='introduction'>";
-		listhtml += "    <div class='softdetail'>" + getString(softdetail.SoftDetail).replace("\n", "") + "</div>";
-		listhtml += "</div>";
-		return listhtml;
-	}
-
-	function getDialogHtml(softdetail, softdialog) {
-		var listhtml = "";
-		var from = getUrlParams("SourceFrom").toString().toLowerCase();
-
-		listhtml = "<div class='prevence-wrap'>";
-		for ( var i in softdialog) {
-			var version = getString(softdetail.SoftUploadNotes[i].SoftVersion);
-			if (from !== "down") {
-				var ztbsofttype = getUrlParams("ZtbSoftType").toString().toLowerCase();
-				var old = version.split('.');
-				if (ztbsofttype === "dr" && old.length === 4) {
-					var drold3 = old[3];
-					if (drold3.length == 2 && drold3.substr(0, 1) == "0") {
-						version = old[0] + "." + drold3.substr(drold3.length - 1, 1);
-					} else {
-						version = old[0] + "." + drold3;
-					}
-				}
-			}
-
-			var date = softdialog[i].SoftUploadDate.split(" ")[0];
-			listhtml += "<ul class='prevence-list'>";
-			listhtml += "   <li class='prevence-item'>";
-			listhtml += "      <h2>";
-			listhtml += "          <span class='item-title-name'>";
-			listhtml += getString(SourceFrom == "Ztb" ? (softdetail.SoftName + version) : (softdetail.SoftName));
-			listhtml += "          </span>";
-			listhtml += "          <span class='item-date'>" + date + "</span>";
-			listhtml += "      </h2>";
-			listhtml += "      <div class='prevence-content'>";
-			listhtml += "          <div class='softdetail'>" + getString(softdialog[i].SoftUploadNote) + "</div>";
-			listhtml += "      </div>";
-			listhtml += "    </li>";
-			listhtml += "</ul>";
-		}
-		listhtml += "</div>"
-		return listhtml;
-	}
-
-	function getOptionHtml(softoption) {
-		var str = "";
-		if (getString(softoption.SoftOpInstructions) == "") {
-			str = "软件操作说明";
-		}
-		var listhtml = "";
-		listhtml += "<h2 class='software-introduce'>" + str + "</h2>";
-		listhtml += "<div class='introduction'>";
-		listhtml += "    <div class='softdetail'>" + getString(softoption.SoftOpInstructions) + "</div>";
-		listhtml += "</div>";
-		return listhtml;
-	}
-
-	function lightIcon(obj) {
-		var iconName = $(obj).attr("date-iconname").toString().replace(".png", "-active.png");
-		$(obj).attr("style", "background:url(../../images/download/" + iconName + ") left center no-repeat;");
-	}
-
-	function darkIcon(obj) {
-		var iconName = $(obj).attr("date-iconname");
-		$(obj).attr("style", "background:url(../../images/download/" + iconName + ") left center no-repeat;");
-	}
-
-	function clsclick(obj) {
-		SoftTypeCode = $(obj).attr("data-value");
-		$("#typelist li").attr("class", "software-item");
-		$(obj).attr("class", "software-item active");
-
-		window.location.href = "../download/downloadlist.html?SoftTypeCode=" + SoftTypeCode;
-	}
-
-	function downloadsoft(ob) {
-		var isJingXiangDown = "";
-		var targetType = "";
-		var sourceFrom = $(ob).attr("data-sourcefrom");
-		var softguid = $(ob).attr("data-softguid");
-		var softurl = $(ob).attr("data-url");
-		var downClickFrom = $(ob).attr("data-downclcik");
-		var downloadFrom = $(ob).attr("data-from");
-		if (!downloadFrom) {
-			downloadFrom = "";
-		}
-
-		var SourceFrom = sourceFrom.toString().toLowerCase();
-		targetType = getUrlParams("type") === undefined ? "" : getUrlParams("type");
-
-		//当软件类别为ztb，无需登录可直接下载，其它软件类别需要登录后才可下载
-		if (SourceFrom !== "" && SourceFrom === "ztb") {
-			//当值为"jingxiang"时，说明 是主站按钮下载
-			if (downClickFrom === "jingxiang") {
-				isJingXiangDown = "1";
-			}
-
-			downloadOperate(softguid, downloadFrom, sourceFrom, softurl, ob, isJingXiangDown, targetType);
-		} else {
-			if (authorize()) {
-				downloadOperate(softguid, downloadFrom, sourceFrom, softurl, ob, isJingXiangDown, targetType);
-			}
-		}
-	}
-
-	//下载操作方法
-	function downloadOperate(softguid, downloadFrom, sourceFrom, softurl, ob, isJingXiangDown, targetType) {
-		try {
-			var userdata = getUserData();
-
-			var userguid = "";
-			var username = "";
-
-			if (userdata) {
-				userguid = userdata.userguid;
-				username = userdata.username;
-			}
-			var objparas = {};
-			objparas.UserGuid = userguid;
-			objparas.UserName = username;
-			objparas.SoftGuid = softguid;
-			objparas.DownloadFrom = downloadFrom;
-			objparas.SourceFrom = sourceFrom;
-			objparas.IsJingXiangDown = isJingXiangDown;
-			objparas.TargetType = targetType;
-
-			var obj = {};
-			obj.paras = objparas;
-			obj.ValidateData = ValidateData;
-			$.ajax({
-				type : "POST",
-				data : JSON.stringify(obj),
-				contentType : "application/json",
-				dataType : "json",
-				url : ServiceUrlPrefix + "/rest/soft/trackdownload",
-				success : function(data) {
-					getSoftDownloadCount(softguid, sourceFrom, ob);
-				},
-				error : function(msg) {
-				}
-			});
-		} catch (e) {
-		}
-		window.open(softurl);
-	}
-
-	// 获取软件下载次数 
-	function getSoftDownloadCount(softguid, softFrom, ob) {
-		var objparas = {};
-		objparas.SoftGuid = softguid;
-		objparas.SoftFrom = softFrom;
-		var obj = {};
-		obj.paras = objparas;
-		obj.ValidateData = ValidateData;
-		$.ajax({
-			type : "POST",
-			data : JSON.stringify(obj),
-			contentType : "application/json",
-			dataType : "json",
-			url : ServiceUrlPrefix + "/rest/soft/getsoftdownloadcount",
-			success : function(data) {
-				try {
-					if (data.ReturnInfo.Code == "1")// 校验成功
-					{
-						if (data.BusinessInfo.Code == "1") // 逻辑成功
-						{
-							if (data.UserArea.SoftDownloadCount) {
-								$("#downcnt").html("下载" + data.UserArea.SoftDownloadCount + "次");
-							}
-						} else {
-							layer.alert("获取软件分类列表失败！", {
-								icon : 2
-							});
-						}
-					} else {
-						layer.alert("获取软件分类列表校验失败！", {
-							icon : 2
-						});
-					}
-				} catch (e) {
-				}
-			},
-			error : function(msg) {
-			}
-		});
-	}
-
-	//关闭广告
-	$(".bqadv-wrap #close-btn").click(function() {
-		$(".bqadv-wrap").hide();
-	})
-	
-	//获取四川广告html
-	function getSiChuanAdvHtml(areaInfo, code){
-		var isexist = false;
-		if (areaInfo) {
-			var areaArry = areaInfo.split(",");
-			$.each(areaArry, function(i, val) {
-				if (code == val.substr(0, 2)) {
-					isexist = true;
-				}
-			});
-		}
-		var sichuanadvhtml = "";
-		if (isexist) {
-			sichuanadvhtml += "			<div class='sichuanadv-wrap'>";
-			sichuanadvhtml += "			    <a href='https://mp.weixin.qq.com/s/7TZ8xy0Y4e4-3dkMcCbQgg' target='_blank' class='sichuanimg'></a>";
-			sichuanadvhtml += "			</div>";
-		} else {
-			sichuanadvhtml += "<div style='height:10px;'></div>";
-		}
-		return sichuanadvhtml;
-	}
-</script>
-</html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>标桥-下载中心详情页</title>
+<meta name="keywords" content="新点标桥,标桥,标桥清标工具,新点建采通,招标,投标,招投标,新点客服,新点课堂,企业基本信息" />
+<meta name="description" content="标桥，专业投标服务平台，每日提供超万条公共资源交易中心标讯，并提供招投标大数据服务、专业清标、700+网络课堂、900+专业软件下载等，一站解决投标问题，让中标更简单。" />
+<!-- 标桥-下载中心网页统计 -->
+<script>
+	if (window.location.hostname == "download.bqpoint.com" || window.location.hostname == "www.bqpoint.com") {
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?01d2c28bd8a1bc020d94db35fc7fb143";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	}
+</script>
+<link rel="stylesheet" href="../css/download/bqpoint.download.min.css?t=202104251352">
+
+   <link rel="stylesheet" href="/css/webBuilderCommonGray.css"></head>
+<body>
+	<div class="box downlaod-center">
+		<!-- 黑条 -->
+<div class="header-new">
+	<div class="container" style="overflow:visible">
+		<span class="top-l-txt-new l"><a href="javascript:void(0);" class="pos"></a><em>|</em><a href="javascript:void(0);" onclick="goCity();"
+			class="change">切换城市</a></span>
+		<ul class="hd-left-new">
+			<li><a href="https://www.bqpoint.com/usercenter2/usercenter2messagecenter.html">消息<i id="message">0</i></a></li>
+			<li><a href="https://zhidao.bqpoint.com/epointknow2/bqepointknowquestion.html?producttype=9">帮助中心</a></li>
+		</ul>
+		<ul class="hd-right-new">
+			<li><a href="https://www.bqpoint.com/" target="_blank">首页</a></li> 
+			<li><a href="https://www.bqpoint.com/tool/qingbiaotooldownloadindex.html" target="_blank">标书检查</a></li>
+			<li><a href="https://biaoxun.bqpoint.com/" target="_blank">标讯</a></li>
+			<li style="position: relative;"><a href="https://www.bqpoint.com/epbzt/index.html" target="_blank">标证通</a><img src="../images/friendbusinessnew.png"style="position: absolute;top: 5px;"/></li>
+			<li style="position: relative;"><a href="javascript:void(0)" class="jskjump">建采通</a><img src="../images/friendbusinessnew.png"style="position: absolute;top: 5px;"/></li>
+			<li style="position: relative;"><a href="https://zjy.epoint.com.cn" target="_blank">造价云</a><img src="../images/friendbusinessnew2.png"style="position: absolute;top: 5px;"/></li>
+			<!-- <li><span class="tempclose">智库</span></li> -->
+			<li><a href="https://college.bqpoint.com/" target="_blank">课堂</a></li>
+			<li><a href="https://download.bqpoint.com/" target="_blank">下载</a></li>
+			<li><a href="https://zhidao.bqpoint.com/" target="_blank">知道</a></li>
+			<!-- <li><span class="tempclose">新标坊</span></li> -->
+			<li><a href="https://mall.bqpoint.com/" target="_blank">商城</a></li>
+			<!-- <li><a href="http://bbs.epoint.com.cn/Epoint_BBS/index.aspx" target="_blank">论坛</a></li> -->
+		</ul>
+	</div>
+</div>
+<div class="bqgonggao-wrap hidden" style="position:relative;">
+	<div id="bqgonggao-content"><img src="../images/bqgonggao.png" class="bqgonggao-img"/><a href="###" target="_blank"></a></div>
+</div>
+<script type="text/javascript">
+	var date = new Date();
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1;
+	var day = date.getDate();
+	var hour = date.getHours();
+	var _src = "https://pv.sohu.com/cityjson?ie=utf-8&t=" + year + month + day + hour;
+	document.writeln('<script src="' + _src + '"></sc' + 'ript>');
+	
+	//更新公告
+	window.onload = function(){
+		getGonggao();
+	}
+	
+	function getGonggao(){
+		$.ajax({
+			type : "POST",
+			data : JSON.stringify({
+				"ValidateData": ValidateData,
+				"paras":{}
+			}),
+			contentType : "application/json",
+			dataType : "json",
+			url:ServiceUrlPrefix+ "/rest/gonggao/getmaintaininfo",
+			success : function(data) {
+				if (data.ReturnInfo.Code == "1")// 校验成功
+				{
+					if (data.BusinessInfo.Code == "1")// 逻辑成功
+					{
+						var Title = data.UserArea.Title,
+							GongGaoGuid = data.UserArea.GongGaoGuid;
+						if(Title && GongGaoGuid){
+							$(".bqgonggao-wrap").removeClass("hidden");
+							$("#bqgonggao-content a:eq(0)").text(Title).prop("href","/information/gonggaodetail.html?gonggaoguid="+GongGaoGuid);
+							
+							if($(".library-loginbtn").length>0){
+								//判断是否为智库，智库宽度为998px,其余为1200px
+								var $libsearch = $(".lib-search");
+								$libsearch.css("top","91px");
+								$("#bqgonggao-content").css("width","998px");
+							}else if($(".konw-loginbtn").length>0){
+								//知道的定位全为固定定位,出现公告需修改样式
+								$(".top-banner").css("top","72px");
+								//知道样式会遮住部分
+								$(".question-wrap .mt122").css("padding-top","150px");
+							}else if($(".friendbusiness-loginbtn").length>0){
+								$(".shadow").css("box-shadow","0 0 6px #ccc");
+								$("#bqgonggao-content").css("width","1200px");
+							}else if($(".college-login").length>0){
+								//课堂内容的宽度为1200px
+								$("#bqgonggao-content").css("width","1200px");
+							}
+						}
+					}
+				}
+			},
+			error : function(msg) {
+			}
+		});	
+	}
+</script>
+<!-- 头部白条 -->
+<div class="head">
+	<div class="container clearfix">
+		<div class="logo l">
+			<img src="../images/download/logo.png?t=202008311446">
+			<p class="logo-side-title">
+				<span>投标利器</span> <span>轻松下载</span>
+			</p>
+		</div>
+		<div class="logo-right l">
+			<a href="../download/download.html" class="first-page l">首页</a>
+			<div class="choose-type l">
+				<span id="divide">分类</span>
+				<div class="choose-box" id="typechosebox"></div>
+			</div>
+		</div>
+		<div class="search-software l clearfix mr0">
+			<div class="software-box l">
+				<input type="text" placeholder="在这里输入你要找的软件" class="software-input">
+			</div>
+			<a href="javascript:void(0);" class="software-btn"></a>
+		</div>
+		<div class="download-login r downloadrelog-loginbtn">
+			<a href="javascript:void(0);" class="login-btn" onclick="headLogin();" style="position:relative">
+				登录
+				<span id="download_relog_tips"
+								style="position: absolute;z-index:1; width: 168px; position: absolute; line-height: 22px; min-width: 12px; padding: 5px 10px; font-size: 12px; _float: left; border-radius: 3px; box-shadow: 1px 1px 3px rgba(0, 0, 0, .3); background-color: rgb(0, 0, 0); color: #fff; top: 40px; right: 2px; display: none">
+									您的登录已过期，请重新登录！ <i
+									style="position: absolute; position: absolute; width: 0; height: 0; border-width: 8px; border-color: transparent; border-style: dashed; right: 25px; border-right-style: solid; top: -8px; border-right-color: rgb(0, 0, 0);"></i>
+				</span>
+			</a> 
+			<a href="https://www.bqpoint.com/usercenter/usercenterregister.html" class="send-coin">注册免费送10新点币</a>
+		</div>
+		<div class="new-login hidden downloadrelog-login">
+			<span id="showloginname"></span><a href="https://www.bqpoint.com/usercenter2/usercenter2myasset.html">立即充值>></a>
+			<div class="new-loginbg hidden">
+				<div class="new-login-hd">
+					<img src="../images/per.png" class="per"></img>
+					<div class="new-info">
+						<span id="new-loginname"></span> <br /> <span>消息（<a href="https://www.bqpoint.com/usercenter2/usercenter2messagecenter.html"
+							id="loginmessagenum" style="color: #fff;">0</a>）
+						</span>
+					</div>
+				</div>
+				<div class="new-login-bd">
+					<a href="https://www.bqpoint.com/usercenter2/usercenter2.html">用户中心</a> <a href="javascript:void(0);" onclick="logOut();">退出帐号</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="listdetail-wrap">
+			<!-- 体部 -->
+			<div class="bd">
+				<!-- 猜你关心 广告位 -->
+				<!-- <div class="container guesscareadv-wrap">
+					<div class="guesscareadv-con">
+						<ul class="guesscareadv-list clearfix" id="marquee1">
+
+						</ul>
+					</div>
+				</div>-->
+
+				<div class="container">
+					<!-- 左侧导航 -->
+					<div class="left-nav">
+						<h3>分类筛选</h3>
+						<ul id="typelist">
+						</ul>
+					</div>
+					<!-- 右侧内容 -->
+					<div class="right-content l">
+						<div class="bqadv-wrap">
+							<a href="https://www.bqpoint.com/bqadv.html" target="_blank"
+	style="width: 100%; height: 60px; display: block; background: url(https://www.bqpoint.com/share/bqpoint202007021455.png) no-repeat center;background-size:100% 100%"></a>
+<span id="close-btn"> <img alt="" src="https://www.bqpoint.com/share/bqpoint201809281130-close.png" />
+</span>
+</div>
+						<div class="location" style="margin-top: 15px;">
+							<a href="../download/download.html">首页</a> > <a href="../download/downloadlist.html" data-value=''>全部</a> > <span class="all" id="prompt"></span>
+						</div>
+						<div class="list-page">
+							<ul class="download-softwaredetail" id="softdetail">
+
+							</ul>
+							<div class="tabview" id="doc-tabs">
+								<div class="tabview-hd" data-role="head">
+									<ul class="clearfix">
+										<li class="tab-item" data-role="tab" data-target="detail">详情</li>
+										<li class="tab-item" data-role="tab" data-target="option">操作说明</li>
+										<li class="tab-item" data-role="tab" data-target="dialog" id="log">更新日志</li>
+									</ul>
+								</div>
+								<div data-role="body">
+									<div data-role="tab-content" data-id="detail" class="tab-panel" id="tabledetail"></div>
+									<div data-role="tab-content" data-id="try-user" class="tab-panel" id="tabletry-user"></div>
+									<div data-role="tab-content" data-id="option" class="tab-panel" id="tableoption"></div>
+									<div data-role="tab-content" data-id="dialog" class="tab-panel" id="tabledialog"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- footer -->
+		<div class="bottom">
+	<div class="bottom-row01 mt20">
+		<dl>
+			<dt>服务热线</dt>
+			<dd>
+				<a href="javascript:void(0);">电子交易：400-998-0000</a>
+			</dd>
+			<dd>
+				<a href="javascript:void(0);">造价软件：400-850-3300</a>
+			</dd>
+			<dd>
+				<a href="javascript:void(0);" id="roboturl">客服小桥</a>
+			</dd>
+			<!--<dd>
+				<a href="https://mall.bqpoint.com/EpointMall/Product.aspx?ProductGuid=bef6e97c-0da7-4da6-9d18-7896a4974209" target="_blank">增值服务</a>
+			</dd> -->
+		</dl>
+		<dl>
+			<dt>关于我们</dt>
+			<dd>
+				<a href="https://www.bqpoint.com/platform/platformintroduction.html" target="_blank">平台介绍</a>
+			</dd>
+			<dd>
+				<a href="https://www.bqpoint.com/account/account_agreement.html" target="_blank">用户协议</a>
+			</dd>
+			<dd>
+				<a href="https://www.bqpoint.com/account/account_secretagreement.html" target="_blank">隐私条款</a>
+			</dd>
+		</dl>
+		<dl>
+			<dt>账号帮助</dt>
+			<dd>
+				<a href="https://www.bqpoint.com/usercenter/usercenterregister.html" target="_blank">注册用户</a>
+			</dd>
+			<dd>
+				<a href="https://www.bqpoint.com/usercenter/usercenterforgetpwd.html" target="_blank">忘记密码</a>
+			</dd>
+		</dl>
+		<dl>
+			<dt>服务支持</dt>
+			<dd>
+				<a href="https://zhidao.bqpoint.com/" target="_blank">服务中心</a>
+			</dd>
+			<dd>
+				<a href="https://download.bqpoint.com/" target="_blank">相关下载</a>
+			</dd>
+			<dd>
+				<a href="https://www.bqpoint.com/feedback/feedbacksubmit.html" target="_blank">投诉建议</a>
+			</dd>
+		</dl>
+		<dl>
+			<dt>网址工具</dt>
+			<dd>
+				<a href="https://www.bqpoint.com/platform/platformwebsitedaquan.html?Type=trade" target="_blank">电子交易网</a>
+			</dd>
+			<dd>
+				<a href="https://www.bqpoint.com/platform/platformwebsitedaquan.html?Type=cost" target="_blank">造价信息网</a>
+			</dd>
+			<dd>
+				<a href="http://www.epoint.com.cn" target="_blank">新点官网</a>
+			</dd>
+		</dl>
+		<dl class="bottom-weixin">
+			<dt>微信订阅号</dt>
+			<dd>
+				<div class="img-weixin"></div>
+			</dd>
+		</dl>
+		<dl class="bottom-biaoqiao">
+			<dt>建采通App</dt>
+			<dd>
+				<div class="img-biaoqiao"></div>
+			</dd>
+		</dl>
+	</div>
+	<div class="bottom-datasourcerow">
+		<div class="data-content">
+			<span class='data-source'>数据来源：</span> <span class='data-list'> <span class="web">全国建筑市场监管公共服务平台</span> <span class="web">全国公共资源交易平台</span>
+				<span class="web">国家企业信用信息公示系统</span> <span class="web">中国裁判文书网</span> <span class="web">中国执行信息公开网</span>
+			</span>
+		</div>
+	</div>
+	<div class="bottom-row02">
+		<div class="row01">
+			<span>主办单位：<a href="http://www.epoint.com.cn" target="_blank">国泰新点软件股份有限公司</a></span> <span id="xukezheng">许可证：苏B2-20110362</span> <span
+				id="benanhao">版权所有：Copyright © <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">苏ICP备10206980号-8</a></span>
+		</div>
+	</div>
+</div>
+</div>
+	<script src="../js/bqpoint.min.js"></script>
+	<script src="../js/jquery.marquee.min.js" type="text/javascript" charset="utf-8"></script>
+</body>
+<script>
+	var areadetail;
+	$(function() {
+		$(".software-input").placeholder();
+
+		settopcurrent();
+
+		// typebox切换
+		var isHover = false;
+		$(function() {
+			var $parent = $divide.parent();
+			$divide.hover(function() {
+				isHover = true;
+				$(".choose-box").show()
+			}, function() {
+				isHover = false;
+				setTimeout(function() {
+					if (!isHover) {
+						$(".choose-box").hide();
+					}
+				}, 100);
+			});
+			$(".choose-box").hover(function() {
+				isHover = true;
+			}, function() {
+				isHover = false;
+				setTimeout(function() {
+					if (!isHover) {
+						$(".choose-box").hide();
+					}
+				}, 100);
+			});
+		});
+
+		// 初始化地区
+		headInitArea();
+
+		getLoginInfo();
+
+		var areainfo = $.cookie('areainfocookie');
+		if (areainfo != null && areainfo != "") {
+			areadetail = $.parseJSON(areainfo);
+			$(".pos").html(areadetail.areaname);
+		}
+
+		var $divide = $("#divide");
+		$divide.on("click", function(e) {
+			search();
+		});
+
+		$(".software-btn").on("click", function() {
+			search();
+		});
+
+		$(".software-input").keydown(function(e) {
+			e = e || window.event;
+			var keycode = e.which ? e.which : e.keyCode;
+			if (keycode == 13) {
+				search();
+			}
+		});
+
+		$(".new-login").mouseover(function() {
+			$(".new-loginbg").removeClass("hidden");
+		});
+
+		$(".new-login").mouseout(function() {
+			$(".new-loginbg").addClass("hidden");
+		});
+	});
+
+	function settopcurrent() {
+		var pathname = window.location.pathname;
+		var pathnamelist = pathname.split("/");
+		var pagename = pathnamelist[pathnamelist.length - 1];
+		pagename = pagename.toLowerCase().substring(0, pagename.length - 5);
+		if (pagename == "download") {
+			$(".first-page").toggleClass("active");
+		} else if (pagename == "downloadlist" || pagename == "downloaddetail") {
+			$(".choose-type").toggleClass("active");
+		}
+	}
+
+	function getLoginInfo() {
+		var userdata = getUserData();
+		if (userdata) {
+			$(".new-loginbtn").addClass('hidden');
+			$(".new-login").removeClass('hidden');
+			$(".download-login").addClass('hidden');
+			$("#showloginname").empty().text("您好，" + decodeURI(userdata.username) + "！");
+			$("#new-loginname").text(decodeURI(userdata.username));
+			getLoginUserInfo();
+			$("#biaoxunlogin").addClass('hidden');
+		} else {
+			$(".download-login").removeClass('hidden');
+			$(".new-loginbtn").removeClass('hidden');
+			$(".new-login").addClass('hidden');
+		}
+	}
+
+	function getLoginUserInfoSuccess(data) {
+		if (data.PicUrl != "") {
+			$(".new-login-hd img.pre").attr("src", data.PicUrl);
+		}
+		$("#message").text(data.UnreadMessageNum);
+		$("#loginmessagenum").text(data.UnreadMessageNum);
+
+		if (typeof FristLogin === "function") {
+			FristLogin(data.IsLogined);
+		}
+	}
+	
+	function getJctInfoSuccess(data){
+		var userdata = getUserData();
+		//建采通的vip
+		var isvip = data.ISVipUser;
+		//标讯的vip
+		var ismvip = data.ISMVipUser;
+		if (isvip === 'true' || ismvip === 'true') {
+			var bqvippng = "";
+			var loginhdhtml = "";
+			if (isvip === 'true') {
+				var vipexpirestext = getFormatExpires(data.VipExpires);
+				bqvippng = "../images/bqvip.png";
+				loginhdhtml = "<div class='vipremind'>" + vipexpirestext + " VIP到期</div>";
+			} else {
+				var mvipexpirestext = getFormatExpires(data.MVipExpires);
+				bqvippng = "../images/bqmvip.png";
+				loginhdhtml = "<div class='vipremind'>" + mvipexpirestext + " MVIP到期</div>";
+			}
+			var showloginnamehtml = "<span class='alignmiddle'>您好，</span><span class='bgwhitevip'>" + decodeURI(userdata.username) + "</span>";
+			var newloginnamehtml = "<span class='loginnameuser'>" + decodeURI(userdata.username) + "</span>" + "<img src='"+bqvippng+"' class='loginnameimg'/>";
+			$(".new-login-hd").css("padding-bottom", "0");
+			$(".new-login-hd").append(loginhdhtml);
+
+			$(".downloadrelog-login>a").html("<img src='"+bqvippng+"' style='vertical-align:-3px;margin-left:3px;'/>，立即充值>>").addClass("alignmiddle");
+			$("#showloginname").empty().html(showloginnamehtml);
+			$("#new-loginname").html(newloginnamehtml);
+		}
+	}
+
+	function search() {
+		var text = $(".software-input").val();
+		text = encodeURIComponent($.trim(text));
+
+		var url = "../download/downloadlist.html";
+		if (text) {
+			url = url + "?WD=" + text;
+		}
+		if (url) {
+			window.location.href = url;
+		} else {
+			layer.alert("找到不对应网址！", {
+				icon : 2
+			});
+			return;
+		}
+	}
+
+	//退出登录样式切换
+	function logOutPage() {
+		$(".download-login").removeClass('hidden');
+	}
+
+	// 获取页面头部类别列表
+	function getTypeChoseBoxListHeadHtml(softtypelist) {
+		var listhtml = "";
+		for ( var i in softtypelist) {
+			var url = "../download/downloadlist.html?SoftTypeCode=" + softtypelist[i].SoftTypeCode + "&SoftTypeName=" + encodeURIComponent(softtypelist[i].SoftTypeName);
+			listhtml += "<a href='" + url + "' >";
+			listhtml += softtypelist[i].SoftTypeName;
+			listhtml += "</a>";
+		}
+		return listhtml;
+	}
+
+	// 获取页面左侧类别列表
+	function getTypeListLeftHtml(allcount, softtypelist) {
+		var listhtml = "";
+		listhtml += "<li class='software-item all active' data-value='' date-iconname='' onclick='clsclick(this);return false;'>";
+		listhtml += "    <a href=''>全部<span>（" + allcount + "）</span></a>"
+		listhtml += "</li>";
+		for ( var i in softtypelist) {
+			var typeiconname = softtypelist[i].SoftTypeIcon;
+			typeiconname = typeiconname.substring(typeiconname.lastIndexOf("/") + 1, typeiconname.length);
+			listhtml += "<li class='software-item' style='background:url(" + softtypelist[i].SoftTypeIcon + ") left center no-repeat;'";
+			listhtml += " date-iconname='" + typeiconname + "'";
+			listhtml += " data-value='" + softtypelist[i].SoftTypeCode + "'";
+			listhtml += " onclick='clsclick(this);return false;'";
+			listhtml += " onmouseover='lightIcon(this)'";
+			listhtml += " onmouseout='darkIcon(this);' >";
+			listhtml += "    <a href='javascript:void(0);' >" + softtypelist[i].SoftTypeName;
+			listhtml += "        <span>（" + softtypelist[i].BolongSoftTypeCount + "）</span>";
+			listhtml += "    </a>";
+			listhtml += "</li>"
+		}
+		return listhtml;
+	}
+</script>
+<script type="text/javascript">
+	$(function() {
+		if (window.location.href.indexOf('ybpoint') > -1) {
+			$("#xukezheng").text("许可证：苏B2-20060183");
+			//$("#benanhao").html("版权所有：Copyright © <a href='http://www.beian.miit.gov.cn' target='_blank'>苏ICP备10206980号-7</a>");
+		}
+		
+		$("#roboturl").click(
+			function() {
+				//获得窗口的垂直位置 
+				var iTop = (window.screen.availHeight - 60 - 580) / 2;
+				//获得窗口的水平位置 
+				var iLeft = (window.screen.availWidth - 10 - 720) / 2;
+				window.open(BQPointUrl + "/kefu/customerservice.html?skilllist=ff8080815ea36f21015ea78791ce002c;ff8080815ea36f21015ea7881f69002d;ff8080815ea36f21015ea786ff02002b;ff80808169ddde69016a8febb5515772&platformguid=", "_blank", "width=810,height=605,toolbar=no,scrollbars=no,menubar=no,status=no,left=" + iLeft
+						+ ",top=" + iTop);
+		});
+	});
+	
+</script>
+<script type="text/javascript">
+	var softPageIndex = 1;
+	var RegionBelong = "";
+	var SoftTypeCode = "";
+	var SoftDetailPrompt = getUrlParams("SoftDetailloc") ? decodeURIComponent(getUrlParams("SoftDetailloc")) : "";
+	var SourceFrom = getUrlParams("SourceFrom");
+	var SoftPath = "";
+
+	$(function() {
+
+		new TabView({
+			dom : '#doc-tabs',
+			activeCls : 'active',
+			triggerEvent : 'click'
+		});
+
+		if (SourceFrom == "Ztb") {
+			var ztbsofttype = getUrlParams("ZtbSoftType");
+			if (ztbsofttype && ztbsofttype == "tballinclusive") {
+				getGeneralKnowList();
+			} else {
+				getZtbSoftDetail("");
+			}
+			$("#log").addClass("hidden");
+			$("#tabledialog").addClass("hidden");
+		} else if (SourceFrom == "Down") {
+			getSoftDetail();
+		}
+
+		getSoftTypeList();
+		//获取猜你关心公司列表
+		getGuessCareList(0, 5, "download");
+	});
+
+	//获取软件分类 
+	function getSoftTypeList() {
+		var objparas = {};
+		var obj = {};
+		obj.paras = objparas;
+		obj.ValidateData = ValidateData;
+		$.ajax({
+			type : "POST",
+			data : JSON.stringify(obj),
+			contentType : "application/json",
+			dataType : "json",
+			url : ServiceUrlPrefix + "/rest/soft/getztbsofttypelist",
+			success : function(data) {
+				try {
+					if (data.ReturnInfo.Code == "1")//校验成功
+					{
+						if (data.BusinessInfo.Code == "1") //逻辑成功
+						{
+							if (data.UserArea.SoftTypeList.length > 0) {
+								$("#typelist").empty().html(getTypeListLeftHtml(data.UserArea.SoftCount.AllCount, data.UserArea.SoftTypeList));
+								$("#typechosebox").empty().html(getTypeChoseBoxListHeadHtml(data.UserArea.SoftTypeList));
+								if (SoftTypeCode == "") {
+									$("#typelist li[data-value='" + SoftTypeCode + "']").attr("class", "software-item all active");
+								} else {
+									$("#typelist li[data-value='" + SoftTypeCode + "']").attr("class", "software-item  active");
+								}
+							}
+						} else {
+							layer.alert("获取软件分类列表失败！", {
+								icon : 2
+							});
+						}
+					} else {
+						layer.alert("获取软件分类列表校验失败！", {
+							icon : 2
+						});
+					}
+				} catch (e) {
+				}
+			},
+			error : function(msg) {
+			}
+		});
+	}
+
+	function getCode() {
+		$("li").click(function() {
+			var classname = $(this).attr("class");
+			if (classname == "software-item") {
+				SoftTypeCode = $(this).attr("data-value")
+			}
+
+			if (classname == "province-item") {
+				RegionBelong = $(this).attr("data-value")
+			}
+		});
+
+		$("a").click(function() {
+			SoftTypeCode = $(this).attr("data-value")
+		});
+	}
+
+	//获取软件详情
+	function getSoftDetail() {
+		var objparas = {};
+		objparas.SoftGuid = getUrlParams("SoftGuid");
+		var obj = {};
+		obj.paras = objparas;
+		obj.ValidateData = ValidateData;
+		$.ajax({
+			type : "POST",
+			data : JSON.stringify(obj),
+			contentType : "application/json",
+			dataType : "json",
+			url : ServiceUrlPrefix + "/rest/soft/getsoftdetail",
+			success : function(data) {
+				try {
+					if (data.ReturnInfo.Code == "1")//校验成功
+					{
+						if (data.BusinessInfo.Code == "1") //逻辑成功
+						{
+							if (data.UserArea.SoftDetail) {
+								//四川需要展示广告位
+								var softDetailHtmlpart = getSoftDetailHtml(data.UserArea.SoftDetail, "down") + getSiChuanAdvHtml(data.UserArea.SoftDetail.RegionBelong, "51");
+								$("#softdetail").empty().html(softDetailHtmlpart);
+								$("#tabledetail").empty().html(getDetailHtml(data.UserArea.SoftDetail));
+								$("#tabledialog").empty().html(getDialogHtml(data.UserArea.SoftDetail, data.UserArea.SoftDetail.SoftUploadNotes));
+								$("#tableoption").empty().html(getOptionHtml(data.UserArea.SoftDetail));
+								$("#prompt").html(data.UserArea.SoftDetail.SoftName);
+								$('.prevence-wrap').niceScroll({
+									cursorcolor : "#5FAAEB",//#CC0071 光标颜色
+									cursorwidth : "3px", //像素光标的宽度
+									cursorborder : "0", // 游标边框css定义
+								});
+							}
+						} else {
+							layer.alert("获取软件详细信息失败！", {
+								icon : 2
+							});
+						}
+					} else {
+						layer.alert("获取软件详细信息校验失败！", {
+							icon : 2
+						});
+					}
+				} catch (e) {
+				}
+			},
+			error : function(msg) {
+			}
+		});
+	}
+
+	//获取Ztb软件详情
+	function getZtbSoftDetail(optionhtml) {
+		var objparas = {};
+		objparas.ZtbSoftXiaQuCode = getUrlParams("ZtbSoftXiaQuCode");
+		objparas.ZtbSoftType = getUrlParams("ZtbSoftType");
+		var obj = {};
+		obj.paras = objparas;
+		obj.ValidateData = ValidateData;
+		$.ajax({
+			type : "POST",
+			data : JSON.stringify(obj),
+			contentType : "application/json",
+			dataType : "json",
+			url : ServiceUrlPrefix + "/rest/soft/getztbsoftdetail",
+			success : function(data) {
+				try {
+					if (data.ReturnInfo.Code == "1")//校验成功
+					{
+						if (data.BusinessInfo.Code == "1") //逻辑成功
+						{
+							if (data.UserArea.SoftDetail) {
+								var softDetailHtmlpart = getSoftDetailHtml(data.UserArea.SoftDetail, "ztb") + getSiChuanAdvHtml(data.UserArea.SoftDetail.RegionBelong, "51");
+								$("#softdetail").empty().html(softDetailHtmlpart);
+								$("#tabledetail").empty().html(getDetailHtml(data.UserArea.SoftDetail));
+								$("#tabledialog").empty().html(getDialogHtml(data.UserArea.SoftDetail, data.UserArea.SoftDetail.SoftUploadNotes));
+								$("#tableoption").empty().html(getOptionHtml(data.UserArea.SoftDetail));
+								//如果招投标软件类型为招投标制作软件则操作手册显示知道的工具通用问题
+								if (optionhtml == "" || data.UserArea.SoftDetail.SoftName.indexOf("质量管理") != -1) {
+									$("#tableoption").empty().html(getOptionHtml(data.UserArea.SoftDetail));
+								} else {
+									$("#tableoption").empty().html(optionhtml);
+								}
+								$("#prompt").html(data.UserArea.SoftDetail.SoftName);
+								$('.introduction').niceScroll({
+									cursorcolor : "#5FAAEB",//#CC0071 光标颜色
+									cursorwidth : "3px", //像素光标的宽度
+									cursorborder : "0", // 游标边框css定义
+								});
+								$('.prevence-wrap').niceScroll({
+									cursorcolor : "#5FAAEB",//#CC0071 光标颜色
+									cursorwidth : "3px", //像素光标的宽度
+									cursorborder : "0", // 游标边框css定义
+								});
+							}
+						} else {
+							layer.alert(data.BusinessInfo.Description, {
+								icon : 2
+							});
+						}
+					} else {
+						layer.alert("获取软件详细信息校验失败！", {
+							icon : 2
+						});
+					}
+				} catch (e) {
+				}
+			},
+			error : function(msg) {
+			}
+		});
+	}
+
+	// 获取工具通用问题列表
+	function getGeneralKnowList() {
+		var objparas = {};
+		var obj = {};
+		obj.paras = objparas;
+		obj.ValidateData = ValidateData;
+		$.ajax({
+			type : "POST",
+			data : JSON.stringify(obj),
+			contentType : "application/json",
+			dataType : "json",
+			url : ServiceUrlPrefix + "/rest/knowmanage/getgenerallist",
+			success : function(data) {
+				try {
+					if (data.ReturnInfo.Code == "1")//校验成功
+					{
+						if (data.BusinessInfo.Code == "1") //逻辑成功
+						{
+							var toolquestionlist = data.UserArea.ToolQuestionList;
+							if (toolquestionlist.length > 0) {
+								var listhtml = "";
+								listhtml += "<div class='introduction'>";
+								for ( var i in toolquestionlist) {
+									var question = toolquestionlist[i];
+									var producttype = question.ProductType;
+									var CategoryCode = question.CategoryCode;
+									var QuestionGuid = question.QuestionGuid;
+									var url = ZhiDaoUrl + "/epointknow2/bqepointknowquestion.html?producttype=" + producttype + "&CategoryCode=" + CategoryCode + "&QuestionGuid=" + QuestionGuid + "&type=bqdownload";
+									listhtml += "<div class='opt-detail'>";
+									listhtml += "  <h1 class='ellicape opt-title clearfix' onclick=\"window.open('" + url + "');\"><i class='file-icon'></i>" + getString(question.Title) + "</h1>";
+									listhtml += "  <pre class='opt-txt'>" + getString(question.QuestionIntroduction) + "</pre>";
+									listhtml += "</div>";
+								}
+								listhtml += "</div>";
+								getZtbSoftDetail(listhtml);
+
+							} else {
+								getZtbSoftDetail("");
+							}
+
+						} else {
+							layer.alert("获取工具通用问题列表失败！", {
+								icon : 2
+							});
+						}
+					} else {
+						layer.alert("获取工具通用问题列表校验失败！", {
+							icon : 2
+						});
+					}
+				} catch (e) {
+				}
+			},
+			error : function(msg) {
+			}
+		});
+	}
+
+	function getSoftDetailHtml(softdetail, from) {
+		var userdata = getUserData();
+		var userguid = "***";
+		if (userdata != null) {
+			userguid = userdata.userguid;
+		}
+
+		var listhtml = "";
+		var softdowncnt = parseInt(softdetail.SoftDownloadCount == undefined ? "0" : softdetail.SoftDownloadCount) + parseInt(softdetail.SoftInitialCount == undefined ? "0" : softdetail.SoftInitialCount);
+		var date = softdetail.SoftLastUploadDate.split(" ")[0];
+		//var urlPath=softdetail.SoftPath;
+		//var urlChangePath=softdetail.SoftPath.replace('https://share.bqpoint.com','https://download.bqpoint.com');
+
+		var urlPath = softdetail.SoftPath;
+		var softAreaCode = softdetail.RegionBelong == "" ? "00" : softdetail.RegionBelong.toString().substr(0, 2);
+		if (softAreaCode == "51" || softAreaCode == "42" || softAreaCode == "62") {
+			urlPath = urlPath.toString().replace(/http:\/\/download.bqpoint.com/, "https://share2.bqpoint.com");
+			urlPath = urlPath.toString().replace(/http:\/\/share.bqpoint.com/, "https://share2.bqpoint.com");
+			urlPath = urlPath.toString().replace(/https:\/\/download.bqpoint.com/, "https://share2.bqpoint.com");
+			urlPath = urlPath.toString().replace(/https:\/\/share.bqpoint.com/, "https://share2.bqpoint.com");
+		}
+
+		var imgSrc = getString(softdetail.SoftIconUrl) == "" ? BQPointUrl + "/share/0004d1f2-3821-48c3-9201-7f22b91c1f56/quanguo.png?t=202006192045" : getString(softdetail.SoftIconUrl);
+		var btnHtml = "";
+		if (from == "down") {
+			btnHtml += "<a href='javascript:void(0);'  data-sourcefrom='down' data-softguid='" + softdetail.SoftGuid + "' data-url='" + urlPath + "' class='download-btn-detail' onclick='downloadsoft(this)'>";
+			btnHtml += "   <img src='../images/download/btn.png'  style='vertical-align: middle' class='btnimg'> <span>下载</span>";
+			btnHtml += "</a>";
+			//btnHtml +="<p class='changesite' data-sourcefrom='down' data-softguid='" + softdetail.SoftGuid + "' data-url='" + urlChangePath
+			//+ "' onclick='downloadsoft(this)'>下载速度慢，切个站点试试！</p>"
+		} else {
+			var softJxkUrl = getString(softdetail.SoftJkUrl);
+			btnHtml += "<a href='javascript:void(0);'   data-sourcefrom='ztb' data-softguid='" + softdetail.SoftGuid + "' data-url='" + softJxkUrl + "' class='download-btn-detail hidden' onclick='downloadsoft(this)' >";
+			btnHtml += "   <img src='../images/download/btn.png'  style='vertical-align: middle' class='btnimg'> <span>主站</span>";
+			btnHtml += "</a>";
+			btnHtml += "<a href='javascript:void(0);'   data-sourcefrom='ztb' data-softguid='" + softdetail.SoftGuid + "' data-url='" + urlPath + "' class='download-btn-detail' onclick='downloadsoft(this)' data-downclcik=''>";
+			btnHtml += "   <img src='../images/download/btn.png'  style='vertical-align: middle' class='btnimg'> <span>下载</span>";
+			btnHtml += "</a>";
+			//btnHtml +="<p class='changesite' data-sourcefrom='ztb' data-softguid='" + softdetail.SoftGuid + "' data-url='" + urlChangePath
+			//+ "' onclick='downloadsoft(this)'>下载速度慢，切个站点试试！</p>"
+		}
+
+		var version = getString(softdetail.SoftLastVersion);
+		if (from.toLowerCase() !== "down") {
+			var old = version.split('.');
+			var ztbsofttype = getUrlParams("ZtbSoftType").toLowerCase();
+			if (ztbsofttype === "dr" && old.length === 4) {
+				var drold3 = old[3];
+				if (drold3.length == 2 && drold3.substr(0, 1) == "0") {
+					version = old[0] + "." + drold3.substr(drold3.length - 1, 1);
+				} else {
+					version = old[0] + "." + drold3;
+				}
+			}
+		}
+
+		var regionName = getBelongArea(softdetail, date, softdetail.DatetableFrom)
+
+		//新表数据
+		if (softdetail.DatetableFrom === "2") {
+			var type = getUrlParams("ZtbSoftType").toString().toLowerCase();
+			if (type.indexOf("zb") > -1) {
+				imgSrc = "http://download.bqpoint.com/share/949dcf19-44f5-467b-abaf-b34dc238c4f2/zhabiao.png?t=202006192045";
+			} else if (type.indexOf("tb") > -1 || type.indexOf("zlglxt") > -1) {
+				imgSrc = "http://download.bqpoint.com/share/2d50b539-d56c-4539-891b-d7cd3907f238/toubiao.png?t=202006192045";
+			} else if (type.indexOf("dr") > -1) {
+				imgSrc = "http://download.bqpoint.com/share/abc0ac28-14f0-437b-bbe0-7612ce4f0599/driver.png?t=202006192045";
+			}
+			//特殊处理中易联投标文件制作工具（黑龙江省版）需要使用新的图标
+			if ("4222" == getUrlParams("ZtbSoftXiaQuCode") && ("TB" == getUrlParams("ZtbSoftType") || "tballinclusive" == getUrlParams("ZtbSoftType"))) {
+				imgSrc = "https://download.bqpoint.com/share/f27092c3-29ea-49d7-9443-9f9bac9ae931/zyltoubiao.png?t=202006192045";
+			}
+
+			listhtml += "<li class='soft-downlaod clearfix'>";
+			listhtml += "	<div class='left clearfix'>";
+			listhtml += "   	<div class='icon' >";
+			listhtml += "    		<img src='" + imgSrc + "'  >";
+			listhtml += "			<p class='text'>" + getString(softdetail.SoftIconUrlWord) + "</p>";
+			listhtml += "		</div>";
+			listhtml += "		<div class='l'>";
+			listhtml += "			<h3 style='cursor:Auto' class='left-name'>";
+			listhtml += getString(softdetail.SoftName);
+			listhtml += "			</h3>";
+
+			listhtml += "			<p class='more-detail'>";
+			listhtml += "   			<span class='file-size'>大小：" + getString(softdetail.SoftSize) + "</span>";
+			listhtml += "   			<span class='file-update'>更新日期：" + date + "</span>";
+			listhtml += "   			<span class='useful-area' >版本：" + version + "</span>";
+			listhtml += "			</p>"
+			listhtml += "			<div style='height:5px'>";
+			listhtml += "			</div>";
+			listhtml += "			<p class='more-detail'>";
+			listhtml += "			<span class='file-size' id='downcnt'>下载" + softdowncnt + "次</span><span title='"+softdetail.RegionName+"'> 适用地区： " + regionName;
+			listhtml += "			</span>";
+			listhtml += "			</p>";
+			listhtml += "		</div>";
+			listhtml += "	</div>";
+			listhtml += "	<div class='right'>";
+			listhtml += btnHtml;
+			listhtml += "	</div>";
+			listhtml += "</li>";
+		} else {//老表数据
+			listhtml += "<li class='soft-downlaod clearfix'>";
+			listhtml += "	<div class='left clearfix'>";
+			listhtml += "		<img style='cursor:Auto' src='"+imgSrc+"' class='l'>";
+			listhtml += "		<div class='l'>";
+			listhtml += "			<h3 style='cursor:Auto' class='left-name'>";
+			listhtml += getString(softdetail.SoftName);
+			listhtml += "			</h3>";
+
+			listhtml += "			<p class='more-detail'>";
+			listhtml += "   			<span class='file-size'>大小：" + getString(softdetail.SoftSize) + "</span>";
+			listhtml += "   			<span class='file-update'>更新日期：" + date + "</span>";
+			listhtml += "   			<span class='useful-area' >版本：" + version + "</span>";
+			listhtml += "			</p>"
+			listhtml += "			<div style='height:5px'>";
+			listhtml += "			</div>";
+			listhtml += "			<p class='more-detail'>";
+			listhtml += "			<span class='file-size' id='downcnt'>下载" + softdowncnt + "次</span><span> 适用地区： " + regionName;
+			listhtml += "			</span>";
+			listhtml += "			</p>";
+			listhtml += "		</div>";
+			listhtml += "	</div>";
+			listhtml += "	<div class='right'>";
+			listhtml += btnHtml;
+			listhtml += "	</div>";
+			listhtml += "</li>";
+		}
+
+		return listhtml;
+	}
+
+	function getBelongArea(belongArea, date, from) {
+		var areaHtml = "";
+		var RegionName = "";
+		if (from === "2") {
+			var areaData = belongArea.RegionName.split(",");
+
+			for (var i = 0; i < areaData.length; i++) {
+				if (i > 4) {
+					break;
+				}
+				RegionName += areaData[i] + ",";
+			}
+			RegionName = RegionName.substring(0, RegionName.length - 1);
+
+			if (areaData.length > 5 || RegionName.length > 19) {
+				RegionName = areaData[0] + "," + areaData[1] + "," + areaData[2] + "," + areaData[3] + "," + areaData[4] + "...";
+			}
+
+		} else {
+			RegionName = getString(belongArea.RegionName);
+		}
+
+		return RegionName
+	}
+
+	function getDetailHtml(softdetail) {
+		var userdata = getUserData();
+		var userguid = "***";
+		if (userdata != null) {
+			userguid = userdata.userguid;
+		}
+
+		var str = "";
+		if (getString(softdetail.SoftDetail) == "") {
+			str = "软件介绍";
+		}
+		var listhtml = "";
+		var date = softdetail.SoftLastUploadDate.split(" ")[0];
+		//因软件详情样式空格太大，所以将软件简介tab去掉
+		//listhtml += "<h2 class='software-introduce'>" + str + "</h2>";
+		listhtml += "<div class='introduction'>";
+		listhtml += "    <div class='softdetail'>" + getString(softdetail.SoftDetail).replace("\n", "") + "</div>";
+		listhtml += "</div>";
+		return listhtml;
+	}
+
+	function getDialogHtml(softdetail, softdialog) {
+		var listhtml = "";
+		var from = getUrlParams("SourceFrom").toString().toLowerCase();
+
+		listhtml = "<div class='prevence-wrap'>";
+		for ( var i in softdialog) {
+			var version = getString(softdetail.SoftUploadNotes[i].SoftVersion);
+			if (from !== "down") {
+				var ztbsofttype = getUrlParams("ZtbSoftType").toString().toLowerCase();
+				var old = version.split('.');
+				if (ztbsofttype === "dr" && old.length === 4) {
+					var drold3 = old[3];
+					if (drold3.length == 2 && drold3.substr(0, 1) == "0") {
+						version = old[0] + "." + drold3.substr(drold3.length - 1, 1);
+					} else {
+						version = old[0] + "." + drold3;
+					}
+				}
+			}
+
+			var date = softdialog[i].SoftUploadDate.split(" ")[0];
+			listhtml += "<ul class='prevence-list'>";
+			listhtml += "   <li class='prevence-item'>";
+			listhtml += "      <h2>";
+			listhtml += "          <span class='item-title-name'>";
+			listhtml += getString(SourceFrom == "Ztb" ? (softdetail.SoftName + version) : (softdetail.SoftName));
+			listhtml += "          </span>";
+			listhtml += "          <span class='item-date'>" + date + "</span>";
+			listhtml += "      </h2>";
+			listhtml += "      <div class='prevence-content'>";
+			listhtml += "          <div class='softdetail'>" + getString(softdialog[i].SoftUploadNote) + "</div>";
+			listhtml += "      </div>";
+			listhtml += "    </li>";
+			listhtml += "</ul>";
+		}
+		listhtml += "</div>"
+		return listhtml;
+	}
+
+	function getOptionHtml(softoption) {
+		var str = "";
+		if (getString(softoption.SoftOpInstructions) == "") {
+			str = "软件操作说明";
+		}
+		var listhtml = "";
+		listhtml += "<h2 class='software-introduce'>" + str + "</h2>";
+		listhtml += "<div class='introduction'>";
+		listhtml += "    <div class='softdetail'>" + getString(softoption.SoftOpInstructions) + "</div>";
+		listhtml += "</div>";
+		return listhtml;
+	}
+
+	function lightIcon(obj) {
+		var iconName = $(obj).attr("date-iconname").toString().replace(".png", "-active.png");
+		$(obj).attr("style", "background:url(../../images/download/" + iconName + ") left center no-repeat;");
+	}
+
+	function darkIcon(obj) {
+		var iconName = $(obj).attr("date-iconname");
+		$(obj).attr("style", "background:url(../../images/download/" + iconName + ") left center no-repeat;");
+	}
+
+	function clsclick(obj) {
+		SoftTypeCode = $(obj).attr("data-value");
+		$("#typelist li").attr("class", "software-item");
+		$(obj).attr("class", "software-item active");
+
+		window.location.href = "../download/downloadlist.html?SoftTypeCode=" + SoftTypeCode;
+	}
+
+	function downloadsoft(ob) {
+		var isJingXiangDown = "";
+		var targetType = "";
+		var sourceFrom = $(ob).attr("data-sourcefrom");
+		var softguid = $(ob).attr("data-softguid");
+		var softurl = $(ob).attr("data-url");
+		var downClickFrom = $(ob).attr("data-downclcik");
+		var downloadFrom = $(ob).attr("data-from");
+		if (!downloadFrom) {
+			downloadFrom = "";
+		}
+
+		var SourceFrom = sourceFrom.toString().toLowerCase();
+		targetType = getUrlParams("type") === undefined ? "" : getUrlParams("type");
+
+		//当软件类别为ztb，无需登录可直接下载，其它软件类别需要登录后才可下载
+		if (SourceFrom !== "" && SourceFrom === "ztb") {
+			//当值为"jingxiang"时，说明 是主站按钮下载
+			if (downClickFrom === "jingxiang") {
+				isJingXiangDown = "1";
+			}
+
+			downloadOperate(softguid, downloadFrom, sourceFrom, softurl, ob, isJingXiangDown, targetType);
+		} else {
+			if (authorize()) {
+				downloadOperate(softguid, downloadFrom, sourceFrom, softurl, ob, isJingXiangDown, targetType);
+			}
+		}
+	}
+
+	//下载操作方法
+	function downloadOperate(softguid, downloadFrom, sourceFrom, softurl, ob, isJingXiangDown, targetType) {
+		try {
+			var userdata = getUserData();
+
+			var userguid = "";
+			var username = "";
+
+			if (userdata) {
+				userguid = userdata.userguid;
+				username = userdata.username;
+			}
+			var objparas = {};
+			objparas.UserGuid = userguid;
+			objparas.UserName = username;
+			objparas.SoftGuid = softguid;
+			objparas.DownloadFrom = downloadFrom;
+			objparas.SourceFrom = sourceFrom;
+			objparas.IsJingXiangDown = isJingXiangDown;
+			objparas.TargetType = targetType;
+
+			var obj = {};
+			obj.paras = objparas;
+			obj.ValidateData = ValidateData;
+			$.ajax({
+				type : "POST",
+				data : JSON.stringify(obj),
+				contentType : "application/json",
+				dataType : "json",
+				url : ServiceUrlPrefix + "/rest/soft/trackdownload",
+				success : function(data) {
+					getSoftDownloadCount(softguid, sourceFrom, ob);
+				},
+				error : function(msg) {
+				}
+			});
+		} catch (e) {
+		}
+		window.open(softurl);
+	}
+
+	// 获取软件下载次数 
+	function getSoftDownloadCount(softguid, softFrom, ob) {
+		var objparas = {};
+		objparas.SoftGuid = softguid;
+		objparas.SoftFrom = softFrom;
+		var obj = {};
+		obj.paras = objparas;
+		obj.ValidateData = ValidateData;
+		$.ajax({
+			type : "POST",
+			data : JSON.stringify(obj),
+			contentType : "application/json",
+			dataType : "json",
+			url : ServiceUrlPrefix + "/rest/soft/getsoftdownloadcount",
+			success : function(data) {
+				try {
+					if (data.ReturnInfo.Code == "1")// 校验成功
+					{
+						if (data.BusinessInfo.Code == "1") // 逻辑成功
+						{
+							if (data.UserArea.SoftDownloadCount) {
+								$("#downcnt").html("下载" + data.UserArea.SoftDownloadCount + "次");
+							}
+						} else {
+							layer.alert("获取软件分类列表失败！", {
+								icon : 2
+							});
+						}
+					} else {
+						layer.alert("获取软件分类列表校验失败！", {
+							icon : 2
+						});
+					}
+				} catch (e) {
+				}
+			},
+			error : function(msg) {
+			}
+		});
+	}
+
+	//关闭广告
+	$(".bqadv-wrap #close-btn").click(function() {
+		$(".bqadv-wrap").hide();
+	})
+	
+	//获取四川广告html
+	function getSiChuanAdvHtml(areaInfo, code){
+		var isexist = false;
+		if (areaInfo) {
+			var areaArry = areaInfo.split(",");
+			$.each(areaArry, function(i, val) {
+				if (code == val.substr(0, 2)) {
+					isexist = true;
+				}
+			});
+		}
+		var sichuanadvhtml = "";
+		if (isexist) {
+			sichuanadvhtml += "			<div class='sichuanadv-wrap'>";
+			sichuanadvhtml += "			    <a href='https://mp.weixin.qq.com/s/7TZ8xy0Y4e4-3dkMcCbQgg' target='_blank' class='sichuanimg'></a>";
+			sichuanadvhtml += "			</div>";
+		} else {
+			sichuanadvhtml += "<div style='height:10px;'></div>";
+		}
+		return sichuanadvhtml;
+	}
+</script>
+</html>

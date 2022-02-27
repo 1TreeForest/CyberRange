@@ -527,555 +527,555 @@
                 height: 36px;
             }
         }
-    </style></head><body><!-- 微信小程序按钮S --><div class="sharebtn-group" id="sharebtnGroup"><div class="sharebtn-item" onclick="shareToWechatFriend()"><i class="sharebtn-img"></i><button class="sharebtn sharebtn1" >分享</button></div><div class="line-center"></div><div class="sharebtn-item" onclick="navigatorToSharePage()"><i class="sharebtn-img sharebtn-img2"></i><button class="sharebtn" >海报</button></div></div><img class="sharetip" id="shareTip" onclick="hideShareTip()" style="visibility: hidden;" src="http://oeimg2.cache.oeeee.com/Public_v2/Images/channel/mobile/tip_03.png" alt=""/><div class="share-mask" onclick="hideShareTip()"></div><!-- 微信小程序按钮E --><div class="header_PC"><style>
-    .v20201117{}
-	#J_nav_wrp {
-        position: fixed;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
-        width: 100%;
-        z-index: 1000;
-        background-color: white;
-    }
-
-
-    #J_nav_wrp .nav {
-        width: 100%;
-        height: 66px;
-        background: #fff;
-        position: relative;
-        top: 0;
-        z-index: 99
-    }
-
-    .hover_download, .menu-sub .category {
-        box-shadow: 0 1px 2px rgba(26, 53, 71, .1)
-    }
-
-    .menu-sub {
-        z-index: 999;
-        position: absolute;
-        width: 1200px;
-        top: 66px;
-        left: -192px!important;
-    }
-
-    .menu-sub .category {
-        text-align: center;
-        padding: 15px 20px;
-        position: absolute;
-        left: 709px;
-        top: 0;
-        background: #fff;
-        border: 1px solid rgba(26, 53, 71, .12);
-        border-radius: 4px;
-        zoom: 1
-    }
-
-    .menu-sub .category a {
-        display: block;
-        height: 36px;
-        line-height: 36px;
-        font-size: 16px;
-        text-align: center
-    }
-
-    .menu-sub .category a:hover {
-        background: #f5f5f5;
-        text-decoration: none;
-        color: #01a5c2
-    }
-
-    .menu-sub .category::before {
-        content: "";
-        position: absolute;
-        top: -7px;
-        right: calc(50% - 7px);
-        right: -moz-calc(50% - 7px);
-        width: 13px;
-        height: 7px;
-        z-index: 4;
-        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/dropdown-menu-arrow.svg)
-    }
-
-    .fixed .menu-sub {
-        position: fixed !important;
-        top: 70px
-    }
-
-    /*.head_nav li#J_nav_9 a {*/
-    /*	text-decoration: none;*/
-    /*	color: #01a5c2;*/
-    /*}*/
-
-    #J_nav_wrp .logo {
-        float: left;
-        font-size: 24px;
-        margin-top: 6px;
-        border-bottom: 3px solid #01a5c2;
-        height: 60px;
-        margin-right: 20px;
-    }
-
-    #J_nav_wrp .logo a {
-        display: block;
-        width: 140px;
-        height: 50px;
-        overflow: hidden;
-        text-decoration: none;
-        line-height: 150px;
-        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_1x.png) no-repeat;
-        background-image: -webkit-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_1x.png) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_2x.png) 2x);
-        background-image: -moz-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_1x.png) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_2x.png) 2x);
-        background-image: -ms-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_1x.png) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_2x.png) 2x);
-        background-image: -o-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_1x.png) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_2x.png) 2x)
-    }
-
-    .logo a:before {
-        content: " ";
-        display: table
-    }
-
-    .logo a:after {
-        height: 0;
-        line-height: 0;
-        clear: both
-    }
-
-    .head_nav {
-        padding: 0 10px 0 25px;
-        line-height: 66px;
-        font-size: 16px;
-        color: #666;
-        position: relative;
-        width: 892px;
-		float: left;
-		display: inline;
-    }
-
-    .head_nav li a, .head_nav_r {
-        float: right;
-    }
-
-    .head_nav li a, .head_nav_r a {
-        display: inline-block;
-        vertical-align: top;
-		float:left;
-    }
-
-    .head_nav li {
-        height: 66px;
-        float: left;
-    }
-
-    .head_nav li a {
-        padding: 3px 17px 0;
-        height: 66px;
-        line-height: 60px;
-        color: #5C6466;
-        position: relative
-    }
-
-    .head_nav li a:hover {
-        text-decoration: none;
-        color: #01a5c2;
-    }
-
-    /*.head_nav li.nav-more {*/
-    /*    background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/arrow_up_down.png) 57px 30px no-repeat*/
-    /*}*/
-
-    /*.head_nav li.nav-more:hover {*/
-    /*    background-position: 57px -20px*/
-    /*}*/
-
-    .head_nav li.nav-more a:hover {
-        border: none
-    }
-
-
-    .head_nav li.nav-more {
-        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/arrow_up_down.png) 57px 30px no-repeat;
-    }
-
-
-    .mobile_version {
-        width: 20px;
-        height: 28px;
-        margin-top: 18px;
-        margin-right: 40px;
-        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/icon_oe.png) -1px -109px no-repeat
-    }
-
-    .login_area, .search, .user {
-        width: 28px;
-        margin-top: 18px
-    }
-
-    .mobile_version:hover {
-        background-position: -41px -109px
-    }
-
-
-    .login_area {
-        height: 28px;
-        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/icon_oe.png) -1px -227px
-    }
-
-    .login_area:hover {
-        background-position: -41px -227px
-    }
-
-    .user {
-        height: 28px;
-        float: right;
-        position: relative
-    }
-
-    .user .popup {
-        display: none;
-        background: #fff;
-        padding: 0 10px;
-        position: absolute;
-        z-index: 2;
-        top: 43px;
-        right: 0;
-        border: 1px solid #c2c2c2
-    }
-
-    .user .arrow, .user .arrow2 {
-        position: absolute;
-        right: 5px;
-        border-width: 10px
-    }
-
-    .user .popup-list {
-        width: 115px;
-        border-bottom: 1px dashed #ddd;
-        padding: 10px 0;
-        text-align: left;
-        overflow: hidden
-    }
-
-    .user .popup-list .name {
-        overflow: hidden;
-        color: #216baa
-    }
-
-    .user .popup-list a {
-        display: block;
-        padding: 0 10px
-    }
-
-    .user .img {
-        width: 28px;
-        height: 28px;
-        -webkit-border-radius: 40px;
-        -moz-border-radius: 40px;
-        border-radius: 40px
-    }
-
-    .user .popup-list.last {
-        border-bottom: none
-    }
-
-    .user .arrow {
-        top: -10px;
-        border-bottom: 10px solid #919191
-    }
-
-    .user .arrow2 {
-        top: -9px;
-        border-bottom: 10px solid #fff
-    }
-
-    .hover_download, .menu-sub .category {
-        box-shadow: 0 1px 2px rgba(26, 53, 71, .1)
-    }
-
-    .hover_download, .hover_download .inner {
-        padding: 15px 20px;
-        position: absolute;
-        zoom: 1;
-        text-align: center
-    }
-
-
-    .hover_download {
-        width: 295px;
-        height: 115px;
-        left: 51px;
-        top: 50px;
-        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/owm2.png?v=1) center center no-repeat #fff;
-        background-image: -webkit-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/owm2.png?v=1) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/oe_ewn_3x.png?v=1) 2x);
-        background-image: -moz-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/owm2.png?v=1) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/oe_ewn_3x.png?v=1) 2x);
-        background-image: -ms-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/owm2.png?v=1) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/oe_ewn_3x.png?v=1) 2x);
-        background-image: -o-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/owm2.png?v=1) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/oe_ewn_3x.png?v=1) 2x);
-        border: 1px solid rgba(26, 53, 71, .12);
-        border-radius: 4px
-    }
-
-    .hover_download::before {
-        content: "";
-        position: absolute;
-        top: -7px;
-        right: calc(50% - 7px);
-        right: -moz-calc(50% - 7px);
-        width: 13px;
-        height: 7px;
-        z-index: 4;
-        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/dropdown-menu-arrow.svg)
-    }
-
-    .hover_download .inner {
-        width: 100px;
-        left: 638px;
-        top: 0;
-        background: #fff
-    }
-
-
-    #J_nav_wrp .nav {
-        border: none;
-        box-shadow: none;
-        height: 68px;
-    }
-
-    .head_nav {
-        width: auto !important;
-    }
-
-    .wrp .head_nav li.nav-more {
-        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/arrow_up_down.png) 57px 30px no-repeat;
-    }
-
-    .wrp .head_nav li.nav-more:hover{
-        background-position: 57px -20px;
-    }
-
-
-    .fixed .inner .menu-sub {
-        position: absolute !important;
-        top: 66px !important;
-				left: -89px!important;
-    }
-	
-    .wrp .head_nav li a {
-        padding: 3px 17px 0;
-    }
-
-    .wrp .head_nav li a:hover{
-        padding: 3px 17px 0;
-        border: none;
-				cursor: pointer;
-    }
-
-    .wrp .head_nav {
-        padding: 0 0 0 0px;
-    }
-
-    .detail_inner{
-        padding: 68px 50px 44px 50px;
-    }
-
-    .subTagTitle p span{
-        font-size: 14px;
-        color: #DCDCDC;
-    }
-
-
-
-</style>
-<div id="J_nav_wrp">
-	<div class="nav" id="J_nav">
-		<div class="inner wrp wid1200">
-
-			<div class="l">
-				<h1 class="logo">
-					<a href="http://www.oeeee.com" title="奥一网">奥一网</a>
-				</h1>
-
-				<ul class="head_nav" id="J_head_nav">
-					<li id="J_nav_10" data-ename='nosub'><a onclick="gotoHome()">主站</a></li>
-					<li id="J_nav_9" data-ename='nosub'><a onclick="gotoSZ()">深圳站</a></li>
-                    <li id="J_nav_10" data-ename='nosub'><a target="_blank" href="https://www.oeeee.com/api/channel.php?s=/index/index/channel/evaluate">实测研究院</a></li>
-                    <li id="J_nav_11" data-ename='nosub'><a target="_blank" href="https://www.oeeee.com/api/channel.php?s=/index/index/channel/compliance">合规研究院</a></li>
-                    <li id="J_nav_6" data-ename='nosub'><a target="_blank" href="http://www.oeeee.com/api/channel.php?s=/index/index/channel/goodlife">美好生活</a></li>
-					<li id="J_nav_3" data-ename='nosub'><a target="_blank" href="https://baoliao.oeeee.com/">报料</a></li>
-
-					<li id="J_nav_7" class="nav-more" data-ename='more'><a href="javascript:;">更多</a>
-					</li>
-					<div class="menu-sub" id="J_headsubnav">
-						<div class="inner wrp" style="position:relative">
-							<div class="category J_sub_more" style="display:none">
-                                <a target="_blank" href="https://www.oeeee.com/media/interview/index.html#/">霞客</a>
-                                <a target="_blank" href="https://epaper.oeeee.com">数字报</a>
-                                <a target="_blank" href="https://www.oeeee.com/media/oeVideo/index.html#/">短视频</a>
-                                <a target="_blank" href="https://live.oeeee.com/">直播</a>
-								<a href="https://www.oeeee.com/api/channel.php?s=/index/index/channel/index" target="_blank">智库</a>
-								<a href="https://www.oeeee.com/html/201905/31/775885.html" target="_blank">幸福书单</a>
-								<a href="https://www.oeeee.com/api/channel.php?s=/index/index/channel/sznews" target="_blank">深圳24小时</a>
-								<a href="https://www.oeeee.com/api/channel.php?s=/index/index/channel/szjf" target="_blank">深圳街坊</a>
-                                <a href="https://www.oeeee.com/api/channel.php?s=/index/index/channel/lht" target="_blank">罗湖通</a>
-                                <a href="https://www.oeeee.com/api/channel.php?s=/Yili/index" target="_blank">企业风采</a>
-							</div>
-						</div>
-					</div>
-				</ul>
-
-			</div>
-
-			<div class="fr head_nav_r" style="position:relative">
-                <!-- 涉未成年人有害信息举报专区 -->
-				<a href="http://www.oeeee.com/html/202107/23/1115018.html" target="_blank" style="margin-top:18px; margin-right: 0; text-align: center;">
-					<img src="http://oeimg2.cache.oeeee.com/Public2016/Images/home/young.jpg">
-				</a>
-				<!-- 中国互联网举报中心 -->
-				<a href="https://www.12377.cn/" target="_blank" style="margin-top:18px; margin-right: 0px;">
-					<img src="http://oeimg2.cache.oeeee.com/Public2016/Images/home/cn.png">
-				</a>
-				<!-- 深圳互联网举报中心 -->
-				<a href="http://szwljb.sz.gov.cn/" target="_blank" style="margin-top:18px; margin-right: 20px;">
-					<img src="http://oeimg2.cache.oeeee.com/Public2016/Images/home/gz.png">
-				</a>
-				<a href="http://ndapp.oeeee.com/" target="_blank" class="mobile_version" id="J_mobile_icon"></a>
-				<a href="http://user.oeeee.com/passport/index.php" class="login_area J_login_area" id="J_login_area" style=""></a>
-
-				<!--download图标hover-->
-				<div id="J_hover_download" class="hover_download" style="display:none">
-				</div>
-
-				<!-- 登陆后 -->
-				<div id="J_logined" class="user" style="display:none">
-					<a href="javascript:;"><img class="img" src="" /></a>
-					<div class="popup m-popover bottom" style="display:none">
-						<ul>
-							<li class="popup-list">
-								<a class="name" href="javascript:;"></a>
-							</li>
-							<li class="popup-list last">
-								<a id="J_logout" class="logout" href="javascript:;">
-									[退出]
-								</a>
-							</li>
-						</ul>
-						<div class="arrow triangle-up"></div>
-						<div class="arrow2 triangle-up"></div>
-					</div>
-				</div>
-				<!-- 登陆后 end-->
-			</div>
-		</div>
-	</div>
-</div>
-<script type="text/javascript">
-	var cur_city = "{$sitename}";
-	$.each($('.J_u_selsite li'), function(i) {
-		if ($(this).text() == cur_city) {
-			$('.J_u_selsite').prepend($(this))
-		}
-	})
-
-	//todo 图标hover显示
-	var _timer = null;
-	$('#J_mobile_icon').mouseenter(function() {
-		$('#J_hover_download').show();
-		clearTimeout(_timer);
-	});
-	$('#J_mobile_icon').mouseleave(function() {
-		_timer = setTimeout(function() {
-			$('#J_hover_download').hide();
-		}, 1000);
-	});
-	var timer = '';
-	$('#J_head_nav > li').mouseenter(function() {
-		clearTimeout(timer);
-		var _ename = $(this).attr('data-ename');
-		if (_ename == 'nosub') {
-			$('#J_headsubnav').hide();
-			return;
-		}
-		$('#J_headsubnav').fadeIn();
-		$('.category').hide();
-		$('.J_sub_' + _ename).show();
-
-	});
-	$('#J_head_nav').mouseleave(function() {
-		timer = setTimeout(function() {
-			$('#J_headsubnav').hide();
-		}, 400);
-	});
-	$('.category').mouseover(function() {
-		clearTimeout(timer);
-		$('#J_headsubnav').fadeIn();
-	});
-	$('.category').mouseleave(function() {
-		timer = setTimeout(function() {
-			$('#J_headsubnav').hide();
-		}, 400);
-	});
-
-	function gotoHome(e) {
-		setCookie("cityhomeSourceNew", "www", "d1");
-		window.open('https://www.oeeee.com')
-	}
-	
-	function gotoSZ(e){
-		setCookie("cityhomeSourceNew", "sz", "d1");
-		window.open('https://sz.oeeee.com')
-	}
-
-
-	//这是有设定过期时间的使用示例：
-	//s20是代表20秒
-	//h是指小时，如12小时则是：h12
-	//d是天数，30天则：d30
-	//暂时只写了这三种
-
-	function setCookie(name, value, time) {
-		var strsec = getsec(time);
-		var exp = new Date();
-		exp.setTime(exp.getTime() + strsec * 1);
-		document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";domain=.oeeee.com" + ";path=/";
-	}
-
-	function getsec(str) {
-		var str1 = str.substring(1, str.length) * 1;
-		var str2 = str.substring(0, 1);
-		if (str2 == "s") {
-			return str1 * 1000;
-		} else if (str2 == "h") {
-			return str1 * 60 * 60 * 1000;
-		} else if (str2 == "d") {
-			return str1 * 24 * 60 * 60 * 1000;
-		}
-	}
-
-
-
-	function SetCookieValue(_Name, _Value, _Expires, _Type) {
-		var _LargeExpDate = new Date();
-		if (typeof(_Expires) == 'number' && isNaN(_Expires) == false) {
-			if (_Expires != 0) {
-				if (typeof(_Type) == 'number' && isNaN(_Type) == false && _Type == 1) {
-					_LargeExpDate.setTime(_LargeExpDate.getTime() + (_Expires * 1000));
-				} else {
-					console.log(_LargeExpDate.getTime() + (_Expires * 2 * 3600 * 1000))
-
-					_LargeExpDate.setTime(_LargeExpDate.getTime() + (_Expires * 24 * 3600 * 1000));
-				}
-			} else {
-				_LargeExpDate = null;
-			}
-		} else {
-			_LargeExpDate.setTime(_LargeExpDate.getTime() + (36500 * 24 * 3600 * 1000));
-		}
-		document.cookie = _Name + "=" + escape(_Value) + (_LargeExpDate != null ? ";expires=" + _LargeExpDate.toGMTString() :
-			"") + ";domain=.oeeee.com";
-	}
-</script>
+    </style></head><body><!-- 微信小程序按钮S --><div class="sharebtn-group" id="sharebtnGroup"><div class="sharebtn-item" onclick="shareToWechatFriend()"><i class="sharebtn-img"></i><button class="sharebtn sharebtn1" >分享</button></div><div class="line-center"></div><div class="sharebtn-item" onclick="navigatorToSharePage()"><i class="sharebtn-img sharebtn-img2"></i><button class="sharebtn" >海报</button></div></div><img class="sharetip" id="shareTip" onclick="hideShareTip()" style="visibility: hidden;" src="http://oeimg2.cache.oeeee.com/Public_v2/Images/channel/mobile/tip_03.png" alt=""/><div class="share-mask" onclick="hideShareTip()"></div><!-- 微信小程序按钮E --><div class="header_PC"><style>
+    .v20201117{}
+	#J_nav_wrp {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+        width: 100%;
+        z-index: 1000;
+        background-color: white;
+    }
+
+
+    #J_nav_wrp .nav {
+        width: 100%;
+        height: 66px;
+        background: #fff;
+        position: relative;
+        top: 0;
+        z-index: 99
+    }
+
+    .hover_download, .menu-sub .category {
+        box-shadow: 0 1px 2px rgba(26, 53, 71, .1)
+    }
+
+    .menu-sub {
+        z-index: 999;
+        position: absolute;
+        width: 1200px;
+        top: 66px;
+        left: -192px!important;
+    }
+
+    .menu-sub .category {
+        text-align: center;
+        padding: 15px 20px;
+        position: absolute;
+        left: 709px;
+        top: 0;
+        background: #fff;
+        border: 1px solid rgba(26, 53, 71, .12);
+        border-radius: 4px;
+        zoom: 1
+    }
+
+    .menu-sub .category a {
+        display: block;
+        height: 36px;
+        line-height: 36px;
+        font-size: 16px;
+        text-align: center
+    }
+
+    .menu-sub .category a:hover {
+        background: #f5f5f5;
+        text-decoration: none;
+        color: #01a5c2
+    }
+
+    .menu-sub .category::before {
+        content: "";
+        position: absolute;
+        top: -7px;
+        right: calc(50% - 7px);
+        right: -moz-calc(50% - 7px);
+        width: 13px;
+        height: 7px;
+        z-index: 4;
+        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/dropdown-menu-arrow.svg)
+    }
+
+    .fixed .menu-sub {
+        position: fixed !important;
+        top: 70px
+    }
+
+    /*.head_nav li#J_nav_9 a {*/
+    /*	text-decoration: none;*/
+    /*	color: #01a5c2;*/
+    /*}*/
+
+    #J_nav_wrp .logo {
+        float: left;
+        font-size: 24px;
+        margin-top: 6px;
+        border-bottom: 3px solid #01a5c2;
+        height: 60px;
+        margin-right: 20px;
+    }
+
+    #J_nav_wrp .logo a {
+        display: block;
+        width: 140px;
+        height: 50px;
+        overflow: hidden;
+        text-decoration: none;
+        line-height: 150px;
+        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_1x.png) no-repeat;
+        background-image: -webkit-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_1x.png) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_2x.png) 2x);
+        background-image: -moz-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_1x.png) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_2x.png) 2x);
+        background-image: -ms-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_1x.png) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_2x.png) 2x);
+        background-image: -o-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_1x.png) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_2x.png) 2x)
+    }
+
+    .logo a:before {
+        content: " ";
+        display: table
+    }
+
+    .logo a:after {
+        height: 0;
+        line-height: 0;
+        clear: both
+    }
+
+    .head_nav {
+        padding: 0 10px 0 25px;
+        line-height: 66px;
+        font-size: 16px;
+        color: #666;
+        position: relative;
+        width: 892px;
+		float: left;
+		display: inline;
+    }
+
+    .head_nav li a, .head_nav_r {
+        float: right;
+    }
+
+    .head_nav li a, .head_nav_r a {
+        display: inline-block;
+        vertical-align: top;
+		float:left;
+    }
+
+    .head_nav li {
+        height: 66px;
+        float: left;
+    }
+
+    .head_nav li a {
+        padding: 3px 17px 0;
+        height: 66px;
+        line-height: 60px;
+        color: #5C6466;
+        position: relative
+    }
+
+    .head_nav li a:hover {
+        text-decoration: none;
+        color: #01a5c2;
+    }
+
+    /*.head_nav li.nav-more {*/
+    /*    background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/arrow_up_down.png) 57px 30px no-repeat*/
+    /*}*/
+
+    /*.head_nav li.nav-more:hover {*/
+    /*    background-position: 57px -20px*/
+    /*}*/
+
+    .head_nav li.nav-more a:hover {
+        border: none
+    }
+
+
+    .head_nav li.nav-more {
+        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/arrow_up_down.png) 57px 30px no-repeat;
+    }
+
+
+    .mobile_version {
+        width: 20px;
+        height: 28px;
+        margin-top: 18px;
+        margin-right: 40px;
+        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/icon_oe.png) -1px -109px no-repeat
+    }
+
+    .login_area, .search, .user {
+        width: 28px;
+        margin-top: 18px
+    }
+
+    .mobile_version:hover {
+        background-position: -41px -109px
+    }
+
+
+    .login_area {
+        height: 28px;
+        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/home/icon_oe.png) -1px -227px
+    }
+
+    .login_area:hover {
+        background-position: -41px -227px
+    }
+
+    .user {
+        height: 28px;
+        float: right;
+        position: relative
+    }
+
+    .user .popup {
+        display: none;
+        background: #fff;
+        padding: 0 10px;
+        position: absolute;
+        z-index: 2;
+        top: 43px;
+        right: 0;
+        border: 1px solid #c2c2c2
+    }
+
+    .user .arrow, .user .arrow2 {
+        position: absolute;
+        right: 5px;
+        border-width: 10px
+    }
+
+    .user .popup-list {
+        width: 115px;
+        border-bottom: 1px dashed #ddd;
+        padding: 10px 0;
+        text-align: left;
+        overflow: hidden
+    }
+
+    .user .popup-list .name {
+        overflow: hidden;
+        color: #216baa
+    }
+
+    .user .popup-list a {
+        display: block;
+        padding: 0 10px
+    }
+
+    .user .img {
+        width: 28px;
+        height: 28px;
+        -webkit-border-radius: 40px;
+        -moz-border-radius: 40px;
+        border-radius: 40px
+    }
+
+    .user .popup-list.last {
+        border-bottom: none
+    }
+
+    .user .arrow {
+        top: -10px;
+        border-bottom: 10px solid #919191
+    }
+
+    .user .arrow2 {
+        top: -9px;
+        border-bottom: 10px solid #fff
+    }
+
+    .hover_download, .menu-sub .category {
+        box-shadow: 0 1px 2px rgba(26, 53, 71, .1)
+    }
+
+    .hover_download, .hover_download .inner {
+        padding: 15px 20px;
+        position: absolute;
+        zoom: 1;
+        text-align: center
+    }
+
+
+    .hover_download {
+        width: 295px;
+        height: 115px;
+        left: 51px;
+        top: 50px;
+        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/owm2.png?v=1) center center no-repeat #fff;
+        background-image: -webkit-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/owm2.png?v=1) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/oe_ewn_3x.png?v=1) 2x);
+        background-image: -moz-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/owm2.png?v=1) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/oe_ewn_3x.png?v=1) 2x);
+        background-image: -ms-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/owm2.png?v=1) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/oe_ewn_3x.png?v=1) 2x);
+        background-image: -o-image-set(url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/owm2.png?v=1) 1x, url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/oe_ewn_3x.png?v=1) 2x);
+        border: 1px solid rgba(26, 53, 71, .12);
+        border-radius: 4px
+    }
+
+    .hover_download::before {
+        content: "";
+        position: absolute;
+        top: -7px;
+        right: calc(50% - 7px);
+        right: -moz-calc(50% - 7px);
+        width: 13px;
+        height: 7px;
+        z-index: 4;
+        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/dropdown-menu-arrow.svg)
+    }
+
+    .hover_download .inner {
+        width: 100px;
+        left: 638px;
+        top: 0;
+        background: #fff
+    }
+
+
+    #J_nav_wrp .nav {
+        border: none;
+        box-shadow: none;
+        height: 68px;
+    }
+
+    .head_nav {
+        width: auto !important;
+    }
+
+    .wrp .head_nav li.nav-more {
+        background: url(http://oeimg2.cache.oeeee.com/Public2016/Images/common/arrow_up_down.png) 57px 30px no-repeat;
+    }
+
+    .wrp .head_nav li.nav-more:hover{
+        background-position: 57px -20px;
+    }
+
+
+    .fixed .inner .menu-sub {
+        position: absolute !important;
+        top: 66px !important;
+				left: -89px!important;
+    }
+	
+    .wrp .head_nav li a {
+        padding: 3px 17px 0;
+    }
+
+    .wrp .head_nav li a:hover{
+        padding: 3px 17px 0;
+        border: none;
+				cursor: pointer;
+    }
+
+    .wrp .head_nav {
+        padding: 0 0 0 0px;
+    }
+
+    .detail_inner{
+        padding: 68px 50px 44px 50px;
+    }
+
+    .subTagTitle p span{
+        font-size: 14px;
+        color: #DCDCDC;
+    }
+
+
+
+</style>
+<div id="J_nav_wrp">
+	<div class="nav" id="J_nav">
+		<div class="inner wrp wid1200">
+
+			<div class="l">
+				<h1 class="logo">
+					<a href="http://www.oeeee.com" title="奥一网">奥一网</a>
+				</h1>
+
+				<ul class="head_nav" id="J_head_nav">
+					<li id="J_nav_10" data-ename='nosub'><a onclick="gotoHome()">主站</a></li>
+					<li id="J_nav_9" data-ename='nosub'><a onclick="gotoSZ()">深圳站</a></li>
+                    <li id="J_nav_10" data-ename='nosub'><a target="_blank" href="https://www.oeeee.com/api/channel.php?s=/index/index/channel/evaluate">实测研究院</a></li>
+                    <li id="J_nav_11" data-ename='nosub'><a target="_blank" href="https://www.oeeee.com/api/channel.php?s=/index/index/channel/compliance">合规研究院</a></li>
+                    <li id="J_nav_6" data-ename='nosub'><a target="_blank" href="http://www.oeeee.com/api/channel.php?s=/index/index/channel/goodlife">美好生活</a></li>
+					<li id="J_nav_3" data-ename='nosub'><a target="_blank" href="https://baoliao.oeeee.com/">报料</a></li>
+
+					<li id="J_nav_7" class="nav-more" data-ename='more'><a href="javascript:;">更多</a>
+					</li>
+					<div class="menu-sub" id="J_headsubnav">
+						<div class="inner wrp" style="position:relative">
+							<div class="category J_sub_more" style="display:none">
+                                <a target="_blank" href="https://www.oeeee.com/media/interview/index.html#/">霞客</a>
+                                <a target="_blank" href="https://epaper.oeeee.com">数字报</a>
+                                <a target="_blank" href="https://www.oeeee.com/media/oeVideo/index.html#/">短视频</a>
+                                <a target="_blank" href="https://live.oeeee.com/">直播</a>
+								<a href="https://www.oeeee.com/api/channel.php?s=/index/index/channel/index" target="_blank">智库</a>
+								<a href="https://www.oeeee.com/html/201905/31/775885.html" target="_blank">幸福书单</a>
+								<a href="https://www.oeeee.com/api/channel.php?s=/index/index/channel/sznews" target="_blank">深圳24小时</a>
+								<a href="https://www.oeeee.com/api/channel.php?s=/index/index/channel/szjf" target="_blank">深圳街坊</a>
+                                <a href="https://www.oeeee.com/api/channel.php?s=/index/index/channel/lht" target="_blank">罗湖通</a>
+                                <a href="https://www.oeeee.com/api/channel.php?s=/Yili/index" target="_blank">企业风采</a>
+							</div>
+						</div>
+					</div>
+				</ul>
+
+			</div>
+
+			<div class="fr head_nav_r" style="position:relative">
+                <!-- 涉未成年人有害信息举报专区 -->
+				<a href="http://www.oeeee.com/html/202107/23/1115018.html" target="_blank" style="margin-top:18px; margin-right: 0; text-align: center;">
+					<img src="http://oeimg2.cache.oeeee.com/Public2016/Images/home/young.jpg">
+				</a>
+				<!-- 中国互联网举报中心 -->
+				<a href="https://www.12377.cn/" target="_blank" style="margin-top:18px; margin-right: 0px;">
+					<img src="http://oeimg2.cache.oeeee.com/Public2016/Images/home/cn.png">
+				</a>
+				<!-- 深圳互联网举报中心 -->
+				<a href="http://szwljb.sz.gov.cn/" target="_blank" style="margin-top:18px; margin-right: 20px;">
+					<img src="http://oeimg2.cache.oeeee.com/Public2016/Images/home/gz.png">
+				</a>
+				<a href="http://ndapp.oeeee.com/" target="_blank" class="mobile_version" id="J_mobile_icon"></a>
+				<a href="http://user.oeeee.com/passport/index.php" class="login_area J_login_area" id="J_login_area" style=""></a>
+
+				<!--download图标hover-->
+				<div id="J_hover_download" class="hover_download" style="display:none">
+				</div>
+
+				<!-- 登陆后 -->
+				<div id="J_logined" class="user" style="display:none">
+					<a href="javascript:;"><img class="img" src="" /></a>
+					<div class="popup m-popover bottom" style="display:none">
+						<ul>
+							<li class="popup-list">
+								<a class="name" href="javascript:;"></a>
+							</li>
+							<li class="popup-list last">
+								<a id="J_logout" class="logout" href="javascript:;">
+									[退出]
+								</a>
+							</li>
+						</ul>
+						<div class="arrow triangle-up"></div>
+						<div class="arrow2 triangle-up"></div>
+					</div>
+				</div>
+				<!-- 登陆后 end-->
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var cur_city = "{$sitename}";
+	$.each($('.J_u_selsite li'), function(i) {
+		if ($(this).text() == cur_city) {
+			$('.J_u_selsite').prepend($(this))
+		}
+	})
+
+	//todo 图标hover显示
+	var _timer = null;
+	$('#J_mobile_icon').mouseenter(function() {
+		$('#J_hover_download').show();
+		clearTimeout(_timer);
+	});
+	$('#J_mobile_icon').mouseleave(function() {
+		_timer = setTimeout(function() {
+			$('#J_hover_download').hide();
+		}, 1000);
+	});
+	var timer = '';
+	$('#J_head_nav > li').mouseenter(function() {
+		clearTimeout(timer);
+		var _ename = $(this).attr('data-ename');
+		if (_ename == 'nosub') {
+			$('#J_headsubnav').hide();
+			return;
+		}
+		$('#J_headsubnav').fadeIn();
+		$('.category').hide();
+		$('.J_sub_' + _ename).show();
+
+	});
+	$('#J_head_nav').mouseleave(function() {
+		timer = setTimeout(function() {
+			$('#J_headsubnav').hide();
+		}, 400);
+	});
+	$('.category').mouseover(function() {
+		clearTimeout(timer);
+		$('#J_headsubnav').fadeIn();
+	});
+	$('.category').mouseleave(function() {
+		timer = setTimeout(function() {
+			$('#J_headsubnav').hide();
+		}, 400);
+	});
+
+	function gotoHome(e) {
+		setCookie("cityhomeSourceNew", "www", "d1");
+		window.open('https://www.oeeee.com')
+	}
+	
+	function gotoSZ(e){
+		setCookie("cityhomeSourceNew", "sz", "d1");
+		window.open('https://sz.oeeee.com')
+	}
+
+
+	//这是有设定过期时间的使用示例：
+	//s20是代表20秒
+	//h是指小时，如12小时则是：h12
+	//d是天数，30天则：d30
+	//暂时只写了这三种
+
+	function setCookie(name, value, time) {
+		var strsec = getsec(time);
+		var exp = new Date();
+		exp.setTime(exp.getTime() + strsec * 1);
+		document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";domain=.oeeee.com" + ";path=/";
+	}
+
+	function getsec(str) {
+		var str1 = str.substring(1, str.length) * 1;
+		var str2 = str.substring(0, 1);
+		if (str2 == "s") {
+			return str1 * 1000;
+		} else if (str2 == "h") {
+			return str1 * 60 * 60 * 1000;
+		} else if (str2 == "d") {
+			return str1 * 24 * 60 * 60 * 1000;
+		}
+	}
+
+
+
+	function SetCookieValue(_Name, _Value, _Expires, _Type) {
+		var _LargeExpDate = new Date();
+		if (typeof(_Expires) == 'number' && isNaN(_Expires) == false) {
+			if (_Expires != 0) {
+				if (typeof(_Type) == 'number' && isNaN(_Type) == false && _Type == 1) {
+					_LargeExpDate.setTime(_LargeExpDate.getTime() + (_Expires * 1000));
+				} else {
+					console.log(_LargeExpDate.getTime() + (_Expires * 2 * 3600 * 1000))
+
+					_LargeExpDate.setTime(_LargeExpDate.getTime() + (_Expires * 24 * 3600 * 1000));
+				}
+			} else {
+				_LargeExpDate = null;
+			}
+		} else {
+			_LargeExpDate.setTime(_LargeExpDate.getTime() + (36500 * 24 * 3600 * 1000));
+		}
+		document.cookie = _Name + "=" + escape(_Value) + (_LargeExpDate != null ? ";expires=" + _LargeExpDate.toGMTString() :
+			"") + ";domain=.oeeee.com";
+	}
+</script>
 </div><div id="header_moblie" class="header_moblie"><div class="top-bar"><div class="abs-l"><a class="toback" href="javascript:history.go(-1)"></a></div><div class="logo-t"><img src="http://oeimg2.cache.oeeee.com/Public2016/Images/home/logo_1x.png" class="logo-img" /></div></div></div><div class="main inner wrp"><div class="inner1100 wrp clearfix"><div class="detail_inner clearfix"><div class="article_detail fl"><div style="padding-top: 25px" class="ndadv"><!--文章页·顶部横幅 --><script type="text/javascript">
                             document.write('<a style="display:none!important" id="kdafp-ssp-a_10_2_1"></a >');
                             var kdafp_s = document.createElement("script");

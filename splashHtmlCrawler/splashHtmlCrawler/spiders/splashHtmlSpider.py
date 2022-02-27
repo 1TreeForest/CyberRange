@@ -4,6 +4,7 @@ import random
 import pymysql
 import scrapy
 from scrapy_splash import SplashRequest
+from time import sleep
 
 
 class SplashhtmlspiderSpider(scrapy.Spider):
@@ -48,6 +49,36 @@ class SplashhtmlspiderSpider(scrapy.Spider):
 
     def parse(self, response):
         self.count += 1
+        # self.save_as_bin(response)  # 存为二进制格式
+        self.save_as_text(response)  # 存为文本格式
+
+        logging.info('已处理 {0} 个页面'.format(self.count))
+
+    def save_as_text(self, response):
+        if response.meta.get('flag') == 'pms':
+            sql = 'update `pms` set html = 1 where url = "%s"' % response.meta.get('site')
+            self.cursor.execute(sql)
+            self.conn.commit()
+            with open('../html/pms/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'w',
+                      encoding="utf-8") as f:
+                try:
+                    f.write(response.body.decode(encoding='{0}'.format(response.encoding), errors='ignore'))
+                except Exception as e:
+                    print(e)
+                    sleep(3)
+        elif response.meta.get('flag') == 'notpms':
+            sql = 'update `notpms` set html = 1 where url = "%s"' % response.meta.get('site')
+            self.cursor.execute(sql)
+            self.conn.commit()
+            with open('../html/notpms/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'w',
+                      encoding="utf-8") as f:
+                try:
+                    f.write(response.body.decode(encoding='{0}'.format(response.encoding), errors='ignore'))
+                except Exception as e:
+                    print(e)
+                    sleep(3)
+
+    def save_as_bin(self, response):
         if response.meta.get('flag') == 'pms':
             sql = 'update `pms` set html = 1 where url = "%s"' % response.meta.get('site')
             self.cursor.execute(sql)
@@ -60,5 +91,3 @@ class SplashhtmlspiderSpider(scrapy.Spider):
             self.conn.commit()
             with open('../html/notpms/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'wb') as f:
                 f.write(response.body)
-
-        logging.info('已处理 {0} 个页面'.format(self.count))
