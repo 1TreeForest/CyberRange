@@ -65,8 +65,8 @@ DOWNLOADER_MIDDLEWARES = {
     # 'siteCrawler.middlewares.SiteCrawlerDownloaderMiddleware': 543,
     # 'siteCrawler.middlewares.RandomDelayMiddleware': 450,  # 随机延时
     # 'siteCrawler.middlewares.RandomProxyMiddleware': 430  # 随机代理
-    'siteCrawler.middlewares.RandomUserAgentMiddleware': 500,  # 随机UA
-    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+    # 'siteCrawler.middlewares.RandomUserAgentMiddleware': 500,  # 随机UA
+    # 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
 }
 
 # Enable or disable extensions

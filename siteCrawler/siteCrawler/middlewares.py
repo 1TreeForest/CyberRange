@@ -8,12 +8,12 @@ import random
 import time
 import requests
 from scrapy import signals
-from fake_useragent import UserAgent
+# from fake_useragent import UserAgent
 
-class RandomUserAgentMiddleware(object):
-    def process_request(self, request, spider):
-        ua = UserAgent()
-        request.headers['User-Agent'] = ua.random
+# class RandomUserAgentMiddleware(object):
+#     def process_request(self, request, spider):
+#         ua = UserAgent()
+#         request.headers['User-Agent'] = ua.random
 
 class SiteCrawlerSpiderMiddleware:
     # Not all methods need to be defined. If a method is not defined,
