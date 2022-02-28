@@ -53,7 +53,7 @@ class UniversalSpider(scrapy.Spider):
 
     def start_requests(self):
         for url in self.start_urls:
-            yield SplashRequest(url=url, callback=self.parse, args={'wait': '3'}, endpoint='render.html', meta={'original_url': url})  # 最大时长、固定参数
+            yield SplashRequest(url=url, callback=self.parse, args={'wait': '10'}, endpoint='render.html', meta={'original_url': url})  # 最大时长、固定参数
 
     def parse(self, response):
         tag_list = response.selector.xpath('//*[@title]')  # 提取所有含title属性的tag，用以解析其中内容
@@ -66,12 +66,15 @@ class UniversalSpider(scrapy.Spider):
             except:
                 continue
             if not href.startswith('http'):  # 处理本站内数据，即站内数据要加上前缀url
-                if href[0] == '/' and site_url[-1] == '/':
-                    href = site_url + href[1:]
-                elif href[0] == '/' and site_url[-1] != '/' or href[0] != '/' and site_url[-1] == '/':
-                    href = site_url + href
-                elif href[0] != '/' and site_url[-1] != '/':
-                    href = site_url + '/' + href
+                try:
+                    if href[0] == '/' and site_url[-1] == '/':
+                        href = site_url + href[1:]
+                    elif href[0] == '/' and site_url[-1] != '/' or href[0] != '/' and site_url[-1] == '/':
+                        href = site_url + href
+                    elif href[0] != '/' and site_url[-1] != '/':
+                        href = site_url + '/' + href
+                except Exception as e:
+                    continue
             # title_in_brackets = re.search(r'《(.+?)》', title).group(1)  # 去除书名号，慎用
             # if title_in_brackets:
             #     title = title_in_brackets

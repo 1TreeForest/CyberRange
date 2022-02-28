@@ -19,7 +19,7 @@ def predict_url(url):
     False : Request Failed
     """
     model = joblib.load('movie_website.pkl')
-    tfidf = joblib.load('tfi-idf.pkl')
+    tfidf = joblib.load('tf-idf.pkl')
     try:
         response = requests.get(url, timeout=5)
     except:
