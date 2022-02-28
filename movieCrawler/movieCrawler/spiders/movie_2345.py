@@ -7,15 +7,18 @@ class Movie2345Spider(scrapy.Spider):
     name = 'movie_2345'
     allowed_domains = ['dianying.2345.com']
     start_urls = ['http://dianying.2345.com/list/------1.html']
+    # https://www.bdcmkj.com/ty/1.html
 
 
     def parse(self, response):
         # 标题列表
         name = response.xpath('//li//div//span/text()').extract()
+        #//li//div/a//@title
+
         # 详情列表
         link = response.xpath('//div/div/div//li/div//@href').extract()
+        #//div//li/div/a/@href
 
-        print(response)
 
         # 遍历列表，将结果存入items
         for i in range(0, len(name)):
