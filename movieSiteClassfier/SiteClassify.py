@@ -16,18 +16,18 @@ def predict_url(url):
     Returns:
     1 : Movie Site
     0 : Not Movie Site
-    False : Request Failed
+    2 : Request Failed
     """
     model = joblib.load('movie_website.pkl')
-    tfidf = joblib.load('tfi-idf.pkl')
+    tfidf = joblib.load('tf-idf.pkl')
     try:
         response = requests.get(url, timeout=5)
     except:
-        return False
+        return 2
     response.encoding = response.apparent_encoding
     html = etree.HTML(response.text)
     if html is None:
-        return False
+        return 2
 #     html_data = html.xpath('//*[@href]/text()')  # 只选取“带有链接”的文本
     html_data = html.xpath('//*[name(.)!="style" and name(.)!="script"]/text()')
     if len(html_data) >= MAX_HREF_NUM:  # 只选取前多少个带有链接的文本
