@@ -50,7 +50,7 @@ class SplashhtmlspiderSpider(scrapy.Spider):
             print("Other System tasks")
 
     def get_unmarked_pages(self):
-        sql = "select url, domain from `results` where isPMS is null limit 2000"  # 若要整体重爬，注释掉where子句
+        sql = "select url, domain from `unmarked` where html = 0"  # 若要整体重爬，注释掉where子句
         self.cursor.execute(sql)
         item_list = self.cursor.fetchall()
         return item_list
@@ -86,7 +86,7 @@ class SplashhtmlspiderSpider(scrapy.Spider):
     def save_as_text(self, response):
         self.get_platform()
         if response.meta.get('flag') == 'unmarked':
-            sql = 'update `pms` set html = 1 where url = "%s"' % response.meta.get('site')
+            sql = 'update `unmarked` set html = 1 where url = "%s"' % response.meta.get('site')
             self.cursor.execute(sql)
             self.conn.commit()
             with open(self.save_path + 'unmarked/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'w',
