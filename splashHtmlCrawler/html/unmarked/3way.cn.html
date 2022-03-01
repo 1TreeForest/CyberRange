@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<title>域名售卖</title>
+<style>
+</style>
+
+<script type="text/javascript">
+
+//获取域名
+function getUrlDomain() {
+	var thisdomain = location.hostname;
+	ali_domain=[".com.cn",".net.cn",".org.cn",".com",".cn",".net",".org",".tv",".me",".vc",".wang",".top",".cc"];
+	var domain_keyword = location.hostname;
+	var domain_suffix = '';
+		for (i = 0; i < ali_domain.length; i++) {
+			var local = thisdomain.indexOf(ali_domain[i]);
+			if (local != -1 && local == thisdomain.length - ali_domain[i].length) {
+				//域名关键字
+				domain_keyword = thisdomain.substring(0,local);
+				//后缀
+				domain_suffix = thisdomain.substring(local+1);
+				//alert(domain_suffix);
+				var local2 = thisdomain.lastIndexOf(".", local - 1);			
+				var thisdomain = thisdomain.substr(local2 + 1);
+				break;
+			}}
+	return thisdomain;
+}
+</script>
+</head>
+<body>
+<script type="text/javascript">
+	//获取域名
+	var urlDomain = getUrlDomain();
+	var domainShowUrl="https://wanwang.aliyun.com/nametrade/domainshow?domain=" + urlDomain;
+	var buylink = "https://mi.aliyun.com/detail/online.html?domainName=" + urlDomain;
+	//alert(buylink);
+	window.location.replace(buylink);
+</script>
+</body>
+</html>

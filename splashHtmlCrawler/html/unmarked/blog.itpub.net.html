@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <title>ITPUB博客_IT社区</title>
+    <meta name="keywords" content="itpub,it,blog,博客,咨询" />
+    <meta name="description" content="ITPUB博客每天千篇余篇博文新资讯，40多万活跃博主，为IT技术人提供全面的IT资讯和交流互动的IT博客平台-中国专业的IT技术ITPUB博客。" />
+
+    <link rel="stylesheet" href="http://blog.itpub.net/layui/css/layui.css?v234">
+    <link rel="stylesheet" href="http://blog.itpub.net/css/base.css?v1.5">
+    <link rel="stylesheet" href="http://blog.itpub.net/css/zhuanlan.css?v=1.3">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="http://blog.itpub.net/js/jquery.js"></script>
+    <script src="http://blog.itpub.net/js/base.js?v1.2"></script>
+
+    <script src="http://blog.itpub.net/layui/layui.js"></script>
+        <script type="text/javascript" src="http://blog.itpub.net/js/jquery.placeholder.min.js"></script>
+</head>
+<body>
+
+<!--header部分开始-->
+<div class="blog-header">
+    <div class="w1200">
+        <a href="/" class="fl"><h1 class="logo">ITPub博客</h1></a>
+        <div class="nav fl">
+            <a href="http://www.itpub.net/">首页</a>
+            <a href="http://blog.itpub.net/">博客</a>
+            <a href="http://blog.itpub.net/column">专栏</a>
+            <a href="http://edu.itpub.net/">学院</a>
+            <a href="http://www.itpub.net/forum.php">社区</a>
+            <a href="https://z.itpub.net/">技术栈</a>
+        </div>
+        <div class="fr">
+            <form action="/search/blog/" class="layui-form blog-search-wrap fl">
+                <input type="hidden" name="type" value="blog">
+                <input placeholder="搜索" type="text" class="layui-input" name="keyword">
+                <button class="search-btn icon-blog"></button>
+            </form>
+            <a href="/blog/post/" class="layui-btn layui-btn-primary fl mlr30" target="_blank">发博</a>
+            <!--登录前-->
+            <div class="fl head-name" id="u_info">
+            </div>
+        </div>
+    </div>
+</div>
+<!--header部分结束-->
+    <!--2022-03-01 16:54:02-->
+    <script type="text/javascript">
+        // 手机适配
+        if (/AppleWebKit.*mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+            if (window.location.href.indexOf("?mobile") < 0) {
+                if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                    window.location.href = "http://m.blog.itpub.net";
+                }
+            }
+        }
+        var toplist=[];
+    </script>
+    <script src="http://blog.itpub.net/js/template.js"></script>
+    <!--main部分开始-->
+    <div class="blog-main clearfix w1200">
+        <div class="fl w890 blog-list">
+
+            <!--轮播图模块开始-->
+            <div class="banner-slide">
+                <div class="entry-nav">
+                    <h3>全部分类</h3>
+                    <ul class="entry-nav-items">
+                                                    <li class="icon-arrowr">
+                                                                    <a href="http://blog.itpub.net/ai/">人工智能</a>
+                                                                    <a href="http://blog.itpub.net/blockchain/">区块链</a>
+                                                                <ul class="nav-items">
+                                                                            <li class="clearfix">
+                                            <a href="http://blog.itpub.net/ai/"><h3>人工智能</h3></a>
+                                                                                            <a href="http://blog.itpub.net/ai/" class="nav-item">人工智能</a>
+                                                                                            <a href="http://blog.itpub.net/machine/" class="nav-item">机器学习</a>
+                                                                                            <a href="http://blog.itpub.net/deep/" class="nav-item">深度学习</a>
+                                                                                            <a href="http://blog.itpub.net/natural/" class="nav-item">自然语言</a>
+                                                                                            <a href="http://blog.itpub.net/asr/" class="nav-item">语音识别</a>
+                                                                                            <a href="http://blog.itpub.net/machinedev/" class="nav-item">机器人开发</a>
+                                                                                    </li>
+                                                                            <li class="clearfix">
+                                            <a href="http://blog.itpub.net/blockchain/"><h3>区块链</h3></a>
+                                                                                            <a href="http://blog.itpub.net/blockchain/" class="nav-item">区块链</a>
+                                                                                    </li>
+                                                                    </ul>
+                            </li>
+                                                    <li class="icon-arrowr">
+                                                                    <a href="http://blog.itpub.net/structruing/">架构设计</a>
+                                                                    <a href="http://blog.itpub.net/database/">数据库</a>
+                                                                <ul class="nav-items">
+                                                                            <li class="clearfix">
+                                            <a href="http://blog.itpub.net/structruing/"><h3>架构设计</h3></a>
+                                                                                            <a href="http://blog.itpub.net/os/" class="nav-item">操作系统</a>
+                                                                                            <a href="http://blog.itpub.net/infrastructure/" class="nav-item">基础设施</a>
+                                                                                            <a href="http://blog.itpub.net/softwarestruc/" class="nav-item">软件结构</a>
+                                                                                            <a href="http://blog.itpub.net/dataarc/" class="nav-item">数据架构</a>
+                                                                                            <a href="http://blog.itpub.net/designmode/" class="nav-item">设计模式</a>
+                                                                                    </li>
+                                                                            <li class="clearfix">
+                                            <a href="http://blog.itpub.net/database/"><h3>数据库</h3></a>
+                                                                                            <a href="http://blog.itpub.net/oracle/" class="nav-item">Oracle</a>
+                                                                                            <a href="http://blog.itpub.net/sql/" class="nav-item">SQL Server</a>
+                                                                                            <a href="http://blog.itpub.net/mysql/" class="nav-item">MySQL</a>
+                                                                                            <a href="http://blog.itpub.net/chdatabase/" class="nav-item">国内数据库</a>
+                                                                                            <a href="http://blog.itpub.net/nosql/" class="nav-item">NoSQL</a>
+                                                                                            <a href="http://blog.itpub.net/dbdev/" class="nav-item">数据库开发技术</a>
+                                                                                            <a href="http://blog.itpub.net/postgresql/" class="nav-item">PostgreSQL</a>
+                                                                                            <a href="http://blog.itpub.net/newsql/" class="nav-item">NewSQL</a>
+                                                                                            <a href="http://blog.itpub.net/sqlonhadoop/" class="nav-item">SQL on Hadoop</a>
+                                                                                    </li>
+                                                                    </ul>
+                            </li>
+                                                    <li class="icon-arrowr">
+                                                                    <a href="http://blog.itpub.net/linux/">Linux操作系统</a>
+                                                                    <a href="http://blog.itpub.net/bigdata/">大数据</a>
+                                                                <ul class="nav-items">
+                                                                            <li class="clearfix">
+                                            <a href="http://blog.itpub.net/linux/"><h3>Linux操作系统</h3></a>
+                                                                                            <a href="http://blog.itpub.net/linux/" class="nav-item">Linux操作系统</a>
+                                                                                    </li>
+                                                                            <li class="clearfix">
+                                            <a href="http://blog.itpub.net/bigdata/"><h3>大数据</h3></a>
+                                                                                            <a href="http://blog.itpub.net/dw/" class="nav-item">数据挖掘</a>
+                                                                                            <a href="http://blog.itpub.net/da/" class="nav-item">可视化</a>
+                                                                                            <a href="http://blog.itpub.net/bd/" class="nav-item">数据分析</a>
+                                                                                            <a href="http://blog.itpub.net/hadoop/" class="nav-item">Hadoop</a>
+                                                                                            <a href="http://blog.itpub.net/elk/" class="nav-item">ELK</a>
+                                                                                            <a href="http://blog.itpub.net/spark/" class="nav-item">Spark</a>
+                                                                                            <a href="http://blog.itpub.net/storm/" class="nav-item">Storm</a>
+                                                                                    </li>
+                                                                    </ul>
+                            </li>
+                                                    <li class="icon-arrowr">
+                                                                    <a href="http://blog.itpub.net/appdevelop/">应用开发</a>
+                                                                    <a href="http://blog.itpub.net/mobiledev/">移动开发</a>
+                                                                <ul class="nav-items">
+                                                                            <li class="clearfix">
+                                            <a href="http://blog.itpub.net/appdevelop/"><h3>应用开发</h3></a>
+                                                                                            <a href="http://blog.itpub.net/java/" class="nav-item">Java</a>
+                                                                                            <a href="http://blog.itpub.net/itother/" class="nav-item">IT综合</a>
+                                                                                            <a href="http://blog.itpub.net/html/" class="nav-item">Html/css</a>
+                                                                                            <a href="http://blog.itpub.net/javascript/" class="nav-item">Javascript</a>
+                                                                                            <a href="http://blog.itpub.net/node/" class="nav-item">Node.js</a>
+                                                                                            <a href="http://blog.itpub.net/xml/" class="nav-item">XML/XSL</a>
+                                                                                            <a href="http://blog.itpub.net/extjs/" class="nav-item">Ext JS</a>
+                                                                                            <a href="http://blog.itpub.net/angularjs/" class="nav-item">Angular JS</a>
+                                                                                            <a href="http://blog.itpub.net/reactjs/" class="nav-item">ReactJS</a>
+                                                                                            <a href="http://blog.itpub.net/electron/" class="nav-item">Electron</a>
+                                                                                            <a href="http://blog.itpub.net/bootstrap/" class="nav-item">Bootstrap</a>
+                                                                                            <a href="http://blog.itpub.net/python/" class="nav-item">Python</a>
+                                                                                            <a href="http://blog.itpub.net/c/" class="nav-item">C/C++</a>
+                                                                                            <a href="http://blog.itpub.net/net/" class="nav-item">.net</a>
+                                                                                            <a href="http://blog.itpub.net/objective/" class="nav-item">Objective-C</a>
+                                                                                            <a href="http://blog.itpub.net/r/" class="nav-item">R语言</a>
+                                                                                            <a href="http://blog.itpub.net/go/" class="nav-item">Go语言</a>
+                                                                                    </li>
+                                                                            <li class="clearfix">
+                                            <a href="http://blog.itpub.net/mobiledev/"><h3>移动开发</h3></a>
+                                                                                            <a href="http://blog.itpub.net/h5/" class="nav-item">HTML5</a>
+                                                                                            <a href="http://blog.itpub.net/androld/" class="nav-item">ANDROID</a>
+                                                                                            <a href="http://blog.itpub.net/ios/" class="nav-item">IOS</a>
+                                                                                            <a href="http://blog.itpub.net/swift/" class="nav-item">Swift</a>
+                                                                                            <a href="http://blog.itpub.net/mobiletest/" class="nav-item">移动测试</a>
+                                                                                            <a href="http://blog.itpub.net/wxdev/" class="nav-item">微信开发</a>
+                                                                                    </li>
+                                                                    </ul>
+                            </li>
+                                                    <li class="icon-arrowr">
+                                                                    <a href="http://blog.itpub.net/datamanage/">数据治理</a>
+                                                                    <a href="http://blog.itpub.net/autooperation/">自动化运维</a>
+                                                                <ul class="nav-items">
+                                                                            <li class="clearfix">
+                                            <a href="http://blog.itpub.net/datamanage/"><h3>数据治理</h3></a>
+                                                                                            <a href="http://blog.itpub.net/datamanage/" class="nav-item">数据治理</a>
+                                                                                    </li>
+                                                                            <li class="clearfix">
+                                            <a href="http://blog.itpub.net/autooperation/"><h3>自动化运维</h3></a>
+                                                                                            <a href="http://blog.itpub.net/appserver/" class="nav-item">应用服务器</a>
+                                                                                            <a href="http://blog.itpub.net/bignetop/" class="nav-item">大规模网络运维</a>
+                                                                                            <a href="http://blog.itpub.net/devops/" class="nav-item">DevOps</a>
+                                                                                    </li>
+                                                                    </ul>
+                            </li>
+                                                    <li class="icon-arrowr">
+                                                                    <a href="http://blog.itpub.net/digitaltransfor/">数字化转型</a>
+                                                                    <a href="http://blog.itpub.net/cloudcomputing/">云计算</a>
+                                                                <ul class="nav-items">
+                                                                            <li class="clearfix">
+                                            <a href="http://blog.itpub.net/digitaltransfor/"><h3>数字化转型</h3></a>
+                                                                                            <a href="http://blog.itpub.net/erp/" class="nav-item">ERP</a>
+                                                                                            <a href="http://blog.itpub.net/crm/" class="nav-item">CRM</a>
+                                                                                            <a href="http://blog.itpub.net/mobileofficing/" class="nav-item">移动办公</a>
+                                                                                            <a href="http://blog.itpub.net/othe/" class="nav-item">其他</a>
+                                                                                    </li>
+                                                                            <li class="clearfix">
+                                            <a href="http://blog.itpub.net/cloudcomputing/"><h3>云计算</h3></a>
+                                                                                            <a href="http://blog.itpub.net/virt/" class="nav-item">虚拟化</a>
+                                                                                            <a href="http://blog.itpub.net/openstack/" class="nav-item">Openstack</a>
+                                                                                            <a href="http://blog.itpub.net/docker/" class="nav-item">Docker/K8</a>
+                                                                                            <a href="http://blog.itpub.net/privatecp/" class="nav-item">私有云实践</a>
+                                                                                            <a href="http://blog.itpub.net/publiccp/" class="nav-item">公有云实践</a>
+                                                                                            <a href="http://blog.itpub.net/osct/" class="nav-item">开源云工具</a>
+                                                                                            <a href="http://blog.itpub.net/cs/" class="nav-item">容器服务</a>
+                                                                                            <a href="http://blog.itpub.net/virtual/" class="nav-item">虚拟化</a>
+                                                                                    </li>
+                                                                    </ul>
+                            </li>
+                                                    <li class="icon-arrowr">
+                                                                    <a href="http://blog.itpub.net/embedded/">嵌入式/内核开发</a>
+                                                                <ul class="nav-items">
+                                                                            <li class="clearfix">
+                                            <a href="http://blog.itpub.net/embedded/"><h3>嵌入式/内核开发</h3></a>
+                                                                                            <a href="http://blog.itpub.net/embedded/" class="nav-item">嵌入式/内核开发</a>
+                                                                                    </li>
+                                                                    </ul>
+                            </li>
+                                                    <li class="icon-arrowr">
+                                                                    <a href="http://blog.itpub.net/itinfar/">IT基础架构</a>
+                                                                    <a href="http://blog.itpub.net/it/">IT职业</a>
+                                                                <ul class="nav-items">
+                                                                            <li class="clearfix">
+                                            <a href="http://blog.itpub.net/itinfar/"><h3>IT基础架构</h3></a>
+                                                                                            <a href="http://blog.itpub.net/server/" class="nav-item">服务器/存储</a>
+                                                                                            <a href="http://blog.itpub.net/netsecurity/" class="nav-item">网络安全</a>
+                                                                                            <a href="http://blog.itpub.net/appsecurity/" class="nav-item">应用安全</a>
+                                                                                            <a href="http://blog.itpub.net/logicalsecurity/" class="nav-item">端点安全</a>
+                                                                                            <a href="http://blog.itpub.net/networking/" class="nav-item">网络通信/物联网</a>
+                                                                                            <a href="http://blog.itpub.net/coe/" class="nav-item">商用办公设备</a>
+                                                                                            <a href="http://blog.itpub.net/serverstorage/" class="nav-item">服务器存储</a>
+                                                                                            <a href="http://blog.itpub.net/secmg/" class="nav-item">安全管理</a>
+                                                                                            <a href="http://blog.itpub.net/cloudsec/" class="nav-item">云安全</a>
+                                                                                            <a href="http://blog.itpub.net/bdsec/" class="nav-item">大数据安全</a>
+                                                                                            <a href="http://blog.itpub.net/iotsec/" class="nav-item">物联网安全</a>
+                                                                                            <a href="http://blog.itpub.net/mobsec/" class="nav-item">移动安全</a>
+                                                                                            <a href="http://blog.itpub.net/desec/" class="nav-item">数据安全</a>
+                                                                                    </li>
+                                                                            <li class="clearfix">
+                                            <a href="http://blog.itpub.net/it/"><h3>IT职业</h3></a>
+                                                                                            <a href="http://blog.itpub.net/itbook/" class="nav-item">IT图书</a>
+                                                                                            <a href="http://blog.itpub.net/itjob/" class="nav-item">IT职场</a>
+                                                                                            <a href="http://blog.itpub.net/itlife/" class="nav-item">IT生活</a>
+                                                                                    </li>
+                                                                    </ul>
+                            </li>
+                                            </ul>
+
+                </div>
+                <div class="blog-banner" id="banner">
+                    <ul>
+                        <li><a href="http://blog.itpub.net/column/135/"><img src="http://img.blog.itpub.net/blog/positions/c9c56da52a22d55.jpg" alt=""></a></li><li><a href="http://blog.itpub.net/column/117/"><img src="http://img.blog.itpub.net/blog/positions/fc483fab2cf7adf.jpg" alt=""></a></li><li><a href="http://blog.itpub.net/column/120/"><img src="http://img.blog.itpub.net/blog/positions/a10a907169bd98d.jpg" alt=""></a></li><li><a href="http://sacc.it168.com/index.html"><img src="http://img.blog.itpub.net/blog/positions/3c8afff51e2d74a.jpg" alt=""></a></li>
+                    </ul>
+                    <div class="bt-change">
+                        <div class="cover"></div>
+                        <div class="change-btn left"></div>
+                        <div class="change-btn right"></div>
+                        <div class="small-list"></div>
+                    </div>
+
+                    <!--<ol>
+                        <li class="current"></li>
+                        <li></li>
+                        <li></li>
+                    </ol>-->
+                </div>
+            </div>
+            <!--轮播图模块结束-->
+
+                        <div>
+                <h3 class="blog-pub-title mt30 mb30" style="float:left;">大咖专栏</h3>
+                <a href="/column"><span style="float:right;line-height: 76px;">更多专栏>></span></a>
+            </div>
+            <div class="daka_list">
+                <ul>
+                                                                <li data-id="150"><a href="/column/150"><img src="http://img.blog.itpub.net/blog/2020/10/09/9913f028fdaca407.jpeg?x-oss-process=style/bb" alt="" width="280"></a>
+    <div class="bor">
+        <div class="daka_title"><a href="/column/150">分布式数据库mongodb内核源码设计实现、性能优化、最佳运维实践</a></div>
+        <div class="tehui"><i>免费</i>24篇/更新中</div>
+                    <div class="name"><img src="http://account.itpub.net/api/avatar.php?uid=69984922" alt=""><a href="/69984922">y123456yzzyz</a>
+            </div>
+            </div>
+</li>                                                <li data-id="95"><a href="/column/95"><img src="http://img.blog.itpub.net/blog/2019/07/22/5c22e8952af76bb3.jpeg?x-oss-process=style/bb" alt="" width="280"></a>
+    <div class="bor">
+        <div class="daka_title"><a href="/column/95">PostgreSQL</a></div>
+        <div class="tehui"><i>免费</i>9篇/更新中</div>
+                    <div class="name"><img src="http://account.itpub.net/api/avatar.php?uid=29990276" alt=""><a href="/29990276">哎呀我的天呐</a>
+            </div>
+            </div>
+</li>                                                <li data-id="148"><a href="/column/148"><img src="http://img.blog.itpub.net/blog/2020/10/07/5f2c8c5620c2d027.jpeg?x-oss-process=style/bb" alt="" width="280"></a>
+    <div class="bor">
+        <div class="daka_title"><a href="/column/148">Oracle RAC一键部署</a></div>
+        <div class="tehui"><i>￥20</i>5篇/更新中</div>
+                    <div class="name"><img src="http://account.itpub.net/api/avatar.php?uid=29785807" alt=""><a href="/29785807">chenoracle</a>
+            </div>
+            </div>
+</li>                                        </ul>
+            </div>
+            
+            <!--大咖推荐-->
+            <h3 class="blog-pub-title mt30 mb30">大咖推荐</h3>
+            <div class="bigshot-remment">
+            <a href="http://blog.itpub.net/24945919/" class="choice-item clearfix">    <span class="icon-expert"></span>    <img class="headimg" src="http://img.account.itpub.net/head/024/94/59/19.jpg?x-oss-process=style/m">    <span class="name">董旭阳</span>    <p style="height: 15px;overflow: hidden;" title="数据库架构师">数据库架构师</p>    <p>博文<strong>79</strong>阅读<strong>33万</strong></p></a><a href="http://blog.itpub.net/70009402/" class="choice-item clearfix">    <span class="icon-expert"></span>    <img class="headimg" src="http://img.account.itpub.net/head/070/00/94/02.jpg?x-oss-process=style/m">    <span class="name">HarmonyOS</span>    <p style="height: 15px;overflow: hidden;" title="HarmonyOS运营">HarmonyOS运营</p>    <p>博文<strong>6</strong>阅读<strong>526</strong></p></a><a href="http://blog.itpub.net/31098809/" class="choice-item clearfix">    <span class="icon-expert"></span>    <img class="headimg" src="http://img.account.itpub.net/head/031/09/88/09.jpg?x-oss-process=style/m">    <span class="name">阮剑英</span>    <p style="height: 15px;overflow: hidden;" title="DBA主管">DBA主管</p>    <p>博文<strong>50</strong>阅读<strong>10万</strong></p></a>
+            </div>
+            <!--干货推荐-->
+            <h3 class="blog-pub-title mt30">精华博文</h3>
+
+            <ul class="list-items" id="list">
+                
+                                                        <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/31545803/viewspace-2852079/">
+                            <p class="title">科华发布明星产品：S³锂电智能后备解决方案</p>
+                        </a>
+                        <p class="info">​1月12日，在“S³，Li来重构——科华S³智能后备锂电系统发布会”上，科华数据发布了第三代锂电系统解决方案。安全、智能、极简三重加持的科华S³锂电受到业内媒体及专业用户的广泛认可。</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=31545803" alt=""><a href="http://blog.itpub.net/31545803/">服务器频道</a></span>
+                            <span><a href="http://blog.itpub.net/coe/">商用办公设备</a></span>
+                            <span class="icon-browse">1676</span>
+                            <span class="fr colorbb">2022-01-13 14:18</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/28285180/viewspace-2849575/">
+                            <p class="title">汇数据库创新力量，逐梦数字时代星辰大海，openGauss Summit即将召开</p>
+                        </a>
+                        <p class="info">12月28日，openGauss Summit 2021将在北京以线上+线下形式举办。openGauss Summit 2021由中国软件行业协会、中国计算机学会数据库专业委员会指导，是openGauss开源社区主办，联合20家数据库领域相关企业举办的年度开源数据库技术盛会。本次大会旨在与产业界通过技术创新、生态构建、商业推广、开源建设和人才发展等方面的合作，共同驱动数据库无界创新，合力创造行业用户数据新价值。</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=28285180" alt=""><a href="http://blog.itpub.net/28285180/">陶然陶然</a></span>
+                            <span><a href="http://blog.itpub.net/chdatabase/">国内数据库</a></span>
+                            <span class="icon-browse">6986</span>
+                            <span class="fr colorbb">2021-12-27 17:31</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/31545803/viewspace-2849468/">
+                            <p class="title">聚焦产业升级，2021中国数据库产业峰会重塑发展路径</p>
+                        </a>
+                        <p class="info">12月24日，由中国电子科技集团有限公司、中国软件行业协会、中国人民大学主办，北京人大金仓信息技术股份有限公司承办的“2021中国数据库产业峰会暨数据库创新成果发布会”在北京隆重举行。</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=31545803" alt=""><a href="http://blog.itpub.net/31545803/">服务器频道</a></span>
+                            <span><a href="http://blog.itpub.net/dbdev/">数据库开发技术</a></span>
+                            <span class="icon-browse">7666</span>
+                            <span class="fr colorbb">2021-12-27 11:22</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/31545803/viewspace-2792841/">
+                            <p class="title">气象气候应用在Intel最新处理器Icelake上的性能测评</p>
+                        </a>
+                        <p class="info">Intel第三代至强可扩展处理器(Icelake)性能大升级</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=31545803" alt=""><a href="http://blog.itpub.net/31545803/">服务器频道</a></span>
+                            <span><a href="http://blog.itpub.net/server/">服务器/存储</a></span>
+                            <span class="icon-browse">4883</span>
+                            <span class="fr colorbb">2021-09-18 17:21</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/31547898/viewspace-2791833/">
+                            <p class="title">2021云主机选型：比拼技术和服务能力</p>
+                        </a>
+                        <p class="info">简单理解，在数字化发展浪潮下，越来越多的企业都在考虑上云。但是，如何选型，还是一个令人头疼的问题!</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=31547898" alt=""><a href="http://blog.itpub.net/31547898/">danny_2018</a></span>
+                            <span><a href="http://blog.itpub.net/publiccp/">公有云实践</a></span>
+                            <span class="icon-browse">11413</span>
+                            <span class="fr colorbb">2021-09-13 16:00</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/31545812/viewspace-2789941/">
+                            <p class="title">《数据安全法》正式实施 动了谁的奶酪?红了谁的樱桃?</p>
+                        </a>
+                        <p class="info">千呼万唤始出来，《中华人民共和国数据安全法》(下称《数据安全法》)自2018年立法规划公布开始到2020年草案通过并征求意见，再到2021年6月10日签署主席令正式公布并于今日(2021年9月1日)正式实施。《数据安全法》从无到有引起了大家的广泛关注。而这份关注不仅仅来源于数据安全业内人士，而是全民范围的广泛关注。</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=31545812" alt=""><a href="http://blog.itpub.net/31545812/">安全频道</a></span>
+                            <span><a href="http://blog.itpub.net/desec/">数据安全</a></span>
+                            <span class="icon-browse">1815</span>
+                            <span class="fr colorbb">2021-09-01 18:35</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/31545813/viewspace-2789615/">
+                            <p class="title">盘点市面上主流的时序数据库</p>
+                        </a>
+                        <p class="info">万物互联时代，工业物联网产生的数据量比传统的信息化要多数千倍甚至数万倍，并且是实时采集、高频度、高密度，动态数据模型随时可变。传统数据库在对这些数据进行存储、查询、分析等处理操作时捉襟见肘，迫切需要一种专门针对时序数据来做优化的数据库系统，即时间序列数据库。</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=31545813" alt=""><a href="http://blog.itpub.net/31545813/">网络通信频道</a></span>
+                            <span><a href="http://blog.itpub.net/dbdev/">数据库开发技术</a></span>
+                            <span class="icon-browse">4245</span>
+                            <span class="fr colorbb">2021-08-31 11:30</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/29785807/viewspace-2789490/">
+                            <p class="title">Oracle 标准大页和透明大页</p>
+                        </a>
+                        <p class="info">标准大页(HugePages)和透明大页(Transparent HugePages)</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=29785807" alt=""><a href="http://blog.itpub.net/29785807/">chenoracle</a></span>
+                            <span><a href="http://blog.itpub.net/oracle/">Oracle</a></span>
+                            <span class="icon-browse">749</span>
+                            <span class="fr colorbb">2021-08-30 16:33</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/69925873/viewspace-2789404/">
+                            <p class="title">什么时候更多基础软件企业能进入百强名单?</p>
+                        </a>
+                        <p class="info">竞争力指数前百家企业2020年软件和信息技术服务收入合计18516亿元，同比增长16.7%，高于全行业平均增速3.4个百分点。</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=69925873" alt=""><a href="http://blog.itpub.net/69925873/">qing_yun</a></span>
+                            <span><a href="http://blog.itpub.net/chdatabase/">国内数据库</a></span>
+                            <span class="icon-browse">1623</span>
+                            <span class="fr colorbb">2021-08-30 11:34</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/29487349/viewspace-2789392/">
+                            <p class="title">【BLOCK】Oracle 块管理常用SQL</p>
+                        </a>
+                        <p class="info">【BLOCK】Oracle 块管理常用SQL</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=29487349" alt=""><a href="http://blog.itpub.net/29487349/">xysoul_云龙</a></span>
+                            <span><a href="http://blog.itpub.net/oracle/">Oracle</a></span>
+                            <span class="icon-browse">543</span>
+                            <span class="fr colorbb">2021-08-30 10:58</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/69992972/viewspace-2788206/">
+                            <p class="title">【TUNE_ORACLE】Oracle检查点（四）检查点对redo日志的影响和redo日志大小设置建议</p>
+                        </a>
+                        <p class="info">检查点对redo日志的影响和redo日志大小设置建议</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=69992972" alt=""><a href="http://blog.itpub.net/69992972/">Attack_on_Jager</a></span>
+                            <span><a href="http://blog.itpub.net/oracle/">Oracle</a></span>
+                            <span class="icon-browse">3589</span>
+                            <span class="fr colorbb">2021-08-23 10:12</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/29785807/viewspace-2788183/">
+                            <p class="title">Oracle某行系统SQL优化(案例五)</p>
+                        </a>
+                        <p class="info">为什么表很小，查询确很慢？</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=29785807" alt=""><a href="http://blog.itpub.net/29785807/">chenoracle</a></span>
+                            <span><a href="http://blog.itpub.net/oracle/">Oracle</a></span>
+                            <span class="icon-browse">576</span>
+                            <span class="fr colorbb">2021-08-22 14:55</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/29785807/viewspace-2788133/">
+                            <p class="title">Oracle RAC修改网络配置知识点汇总</p>
+                        </a>
+                        <p class="info">Oracle RAC修改网络配置知识点汇总</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=29785807" alt=""><a href="http://blog.itpub.net/29785807/">chenoracle</a></span>
+                            <span><a href="http://blog.itpub.net/oracle/">Oracle</a></span>
+                            <span class="icon-browse">378</span>
+                            <span class="fr colorbb">2021-08-21 14:54</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/30310891/viewspace-2787997/">
+                            <p class="title">影响MySQL性能的硬件因素</p>
+                        </a>
+                        <p class="info">本文主要介绍在MySQL中硬件条件对其性能的影响。</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=30310891" alt=""><a href="http://blog.itpub.net/30310891/">龙山游龙</a></span>
+                            <span><a href="http://blog.itpub.net/mysql/">MySQL</a></span>
+                            <span class="icon-browse">714</span>
+                            <span class="fr colorbb">2021-08-20 14:57</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/29487349/viewspace-2787971/">
+                            <p class="title">【ORACLE21C】Oracle21c产品目录的变化</p>
+                        </a>
+                        <p class="info">【ORACLE12C】Oracle12产品目录的变化</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=29487349" alt=""><a href="http://blog.itpub.net/29487349/">xysoul_云龙</a></span>
+                            <span><a href="http://blog.itpub.net/oracle/">Oracle</a></span>
+                            <span class="icon-browse">547</span>
+                            <span class="fr colorbb">2021-08-20 13:57</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/69992972/viewspace-2787943/">
+                            <p class="title">【TUNE_ORACLE】Oracle检查点（三）增量检查点四个关键参数介绍</p>
+                        </a>
+                        <p class="info">增量检查点四个关键参数介绍</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=69992972" alt=""><a href="http://blog.itpub.net/69992972/">Attack_on_Jager</a></span>
+                            <span><a href="http://blog.itpub.net/oracle/">Oracle</a></span>
+                            <span class="icon-browse">3524</span>
+                            <span class="fr colorbb">2021-08-20 11:33</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/28572479/viewspace-2786529/">
+                            <p class="title">awk小技巧之执行shell命令</p>
+                        </a>
+                        <p class="info">方法一：system函数ip&nbsp;add&nbsp;|&nbsp;grep&nbsp;enp0s8&nbsp;|&nbsp;grep&nbsp;inet&nbsp;|&nbsp;awk&nbsp;&#39;{print&nbsp;$2}&#39;&nbsp;|&nbsp;awk&nbsp;-F&quot;/&quot;&nbsp;&#39;{printf&nbsp;$1&quot;&amp;nbsp</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=28572479" alt=""><a href="http://blog.itpub.net/28572479/">raysuen</a></span>
+                            <span><a href="http://blog.itpub.net/devops/">DevOps</a></span>
+                            <span class="icon-browse">607</span>
+                            <span class="fr colorbb">2021-08-12 09:32</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/267265/viewspace-2786524/">
+                            <p class="title">[20210812]完善vim bccalc_linux插件.txt</p>
+                        </a>
+                        <p class="info">[20210812]完善vim bccalc_linux插件.txt--//抽一点点时间,重新编写了bccalc_linux的插件,实际上与windows的不同之处在与echo的处理方式上.R:\&gt;echo obase=16;254 | bcFE$ echo obase=16;254 | bcobase=16-bash: 254: command not found$ echo &#39;o</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=267265" alt=""><a href="http://blog.itpub.net/267265/">lfree</a></span>
+                            <span><a href="http://blog.itpub.net/linux/">Linux操作系统</a></span>
+                            <span class="icon-browse">530</span>
+                            <span class="fr colorbb">2021-08-12 09:16</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/29487349/viewspace-2786440/">
+                            <p class="title">【INDEX】Oracle分区索引技术详解</p>
+                        </a>
+                        <p class="info">【INDEX】Oracle分区索引技术详解</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=29487349" alt=""><a href="http://blog.itpub.net/29487349/">xysoul_云龙</a></span>
+                            <span><a href="http://blog.itpub.net/oracle/">Oracle</a></span>
+                            <span class="icon-browse">562</span>
+                            <span class="fr colorbb">2021-08-11 15:40</span>
+                        </div>
+                    </li>
+                                                                            <li class="list-item">
+                        <a target=_blank href="http://blog.itpub.net/30310891/viewspace-2786428/">
+                            <p class="title">MySQL数据库InnoDB坏页处理修复</p>
+                        </a>
+                        <p class="info">本文主要介绍了innodb坏页之后的解决方法。</p>
+                        <div class="mess">
+                            
+                            <span><img src="http://account.itpub.net/api/avatar.php?uid=30310891" alt=""><a href="http://blog.itpub.net/30310891/">龙山游龙</a></span>
+                            <span><a href="http://blog.itpub.net/mysql/">MySQL</a></span>
+                            <span class="icon-browse">612</span>
+                            <span class="fr colorbb">2021-08-11 15:04</span>
+                        </div>
+                    </li>
+                                                </ul>
+            <script type="text/template" id='blog_template'>
+                <%
+                for(var i=0;i<items.length;i++){%>
+                <li class="list-item">
+                    <a target=_blank href="http://blog.itpub.net/<%=items[i].uid%>/viewspace-<%=items[i].id%>/"><p><%=items[i].title%></p></a>
+                    <p class="info"><%=items[i].info%></p>
+                <div class="mess" >
+                    <span><img src="<%=items[i].avatar%>" alt=""><a href="http://blog.itpub.net/<%=items[i].uid%>/"><%=items[i].username%></a></span>
+                    <span><a href="<%=items[i].cateUrl%>"><%=items[i].cname%></a></span>
+                    <span class="icon-browse"><%=items[i].viewnum%></span>
+                    <span class="fr colorbb"><%=items[i].publishtime%></span>
+                </div>
+            </li>
+            <%}%>
+        </script>
+        <div class="load-more" onclick=blogObj.listLoadMore($(this),'/blog/getmore/',20) data-page=2 data-flag=true>点击加载更多<a href='/site/index/page/2'>下一页</a></div>
+            <div class="icon-back-top" onclick="$('html,body').animate({scrollTop:0},'slow');"></div>
+    </div>
+
+    <div class="fr w290">
+    <a href="/blog/post/"  target="_blank"><button class="layui-btn layui-btn-fluid icon-writeblog mb20" >写博文</button></a>
+
+    <!--玩转博客-->
+    <div class="blog-choice play-blog">
+        <h3 class="choice-title">玩转博客</h3>
+        <a href="http://blog.itpub.net/31509949/viewspace-2217634/" target = "_blank">ITPUB博客专栏作家招募令</a> <a href="http://blog.itpub.net/31509949/viewspace-2286161/" target = "_blank">心中无尘，码字入神（Markdown 正式上线！）</a> 
+    </div>
+<!--大牛精选开始-->
+    <div class="blog-choice">
+        <h3 class="choice-title">大咖精选</h3>
+        <a target="_blank" href="http://blog.itpub.net/267265/viewspace-2861722/"  class="choice-item clearfix">    <img src="http://img.account.itpub.net/head/000/26/72/65.jpg?x-oss-process=style/m">    <div class="fr item-r">        <p>[20220228]测试Max_idle_blocker_time 参数.txt</p>        <span>lfree</span>    </div></a><a target="_blank" href="http://blog.itpub.net/69906029/viewspace-2861663/"  class="choice-item clearfix">    <img src="http://img.account.itpub.net/head/069/90/60/29.jpg?x-oss-process=style/m">    <div class="fr item-r">        <p>2022年【米哈游】 金三银四 三月社招内推开始啦！加班少福利好，200+个岗位任你挑选</p>        <span>a724888</span>    </div></a><a target="_blank" href="http://blog.itpub.net/31380569/viewspace-2861644/"  class="choice-item clearfix">    <img src="http://img.account.itpub.net/head/031/38/05/69.jpg?x-oss-process=style/m">    <div class="fr item-r">        <p>【北亚数据恢复】服务器由于重装系统导致逻辑卷改变，文件系统破坏的数据恢复</p>        <span>北亚数据恢复</span>    </div></a><a target="_blank" href="http://blog.itpub.net/29487349/viewspace-2861611/"  class="choice-item clearfix">    <img src="http://img.account.itpub.net/head/029/48/73/49.jpg?x-oss-process=style/m">    <div class="fr item-r">        <p>【TRACE】如何通过10046跟踪数据库性能问题</p>        <span>xysoul_云龙</span>    </div></a><a target="_blank" href="http://blog.itpub.net/10009036/viewspace-2860167/"  class="choice-item clearfix">    <img src="http://img.account.itpub.net/head/010/00/90/36.jpg?x-oss-process=style/m">    <div class="fr item-r">        <p>南大通用GBase 8a中标吉林银行MPP数据库采购项目</p>        <span>newknight</span>    </div></a>
+    </div>
+    <!--大牛精选结束-->
+
+    <!--成为大咖-->
+    <div class="blog-choice bigshot right-fixed">
+        <h3 class="choice-title">成为大咖</h3>
+        <div class="clearfix">
+            <a href="/expert/apply/" class="step icon-step1">1.填表</a>
+            <a href="/expert/apply/" class="step icon-step2">2.审核</a>
+            <a href="/expert/apply/" class="step icon-step3">3.成功</a>
+        </div>
+    </div>
+    <div class="blog-choice contactus right-fixed">
+        <dl>
+            <dt><span>联系我们</span></dt>
+            <dd class="info clearfix" style="max-height:80px">
+                <div class="qrcode fl">
+                    <img src="/images/connectussss.png?v=2" alt="itpub">
+                </div>
+                <div class="ways fl">
+                    <div>help@itpub.net</div>
+                    <div>heygirl961</div>
+                </div>
+            </dd>
+            <dd class="tip">扫描二维码联系客服</dd>
+            <dd class="tit">
+                <a href="http://www.it168.com/bottomfile/it168.shtml">关于</a><span>•</span>
+                <a href="http://www.it168.com/bottomfile/ggfw.shtml">广告服务</a><span>•</span>
+                <a href="http://www.it168.com/bottomfile/sytk.shtml">使用条款</a></dd>
+            <dd class="siteinfo">京ICP备16024965号</dd>
+            <dd class="siteinfo">经营性网站备案信息</dd>
+            <dd class="siteinfo">网络110报警服务</dd>
+            <dd class="siteinfo">中国互联网举报中心</dd>
+            <dd class="siteinfo">北京互联网违法和不良信息举报中心</dd>
+        </dl>
+    </div>
+
+</div></div>
+<!--main部分结束-->
+<script>
+    $(function(){
+        blogObj.banner(3500);
+    })
+</script>
+
+<!--footer部分开始-->
+<div class="blog-footer">
+    <div class="w1200 pr">
+        <div class="footer-links">
+            <a class="icon-blog icon-wx mr30">
+                <div class="wx-qrcode">
+                    <img src="http://edu.itpub.net/images/qrcode.jpg" alt="">
+
+                </div>
+            </a>
+            <a href="https://weibo.com/itpub2001?from=myfollow_all" class="icon-blog icon-wb" target="_blank"></a>
+        </div>
+        <p class="footer-nav">
+            <a href="http://www.it168.com/bottomfile/it168.shtml" target="_blank">支持我们</a>
+            <a href="http://www.it168.com/bottomfile/tgzn.shtml" target="_blank">作者招募</a>
+            <a href="http://www.it168.com/bottomfile/sytk.shtml" target="_blank">用户协议</a>
+            <a href="http://blog.itpub.net/31509949/viewspace-2157750/" target="_blank">FAQ</a>
+            <a href="http://edu.itpub.net/contactus.html" target="_blank">Contact Us</a>
+            <script src="https://s22.cnzz.com/z_stat.php?id=1274521965&web_id=1274521965" language="JavaScript"></script>
+        </p>
+        <p>北京盛拓优讯信息技术有限公司. 版权所有&nbsp;&nbsp;<a style="color:#777777;" target="_blank" href="http://beian.miit.gov.cn">京ICP备16024965号-8</a>  北京市公安局海淀分局网监中心备案编号：11010802021510  niuxiaotong@pcpop.com  17352615567 <a style="color:#777777;" target="_blank"  href="http://www.it168.com/jubao.html"> 未成年人举报专区</a></p>
+        <p>广播电视节目制作经营许可证(京) 字第1234号 中国互联网协会会员</p>
+    </div>
+</div>
+<!--footer部分结束-->
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?5016281862f595e78ffa42f085ea0f49";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<!-- END STAT PV -->
+
+</body>
+</html>

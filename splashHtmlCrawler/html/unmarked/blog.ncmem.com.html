@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="profile" href="http://microformats.org/profile/specs" />
+    <link rel="profile" href="http://microformats.org/profile/hatom" />
+        <script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>java+超大文件上传与下载 &#8211; 泽优软件博客</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//blog.ncmem.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="泽优软件博客 &raquo; Feed" href="http://blog.ncmem.com/wordpress/feed/" />
+<link rel="alternate" type="application/rss+xml" title="泽优软件博客 &raquo; 评论Feed" href="http://blog.ncmem.com/wordpress/comments/feed/" />
+<script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/blog.ncmem.com\/wordpress\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.9.1"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([10084,65039,8205,55357,56613],[10084,65039,8203,55357,56613])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='http://blog.ncmem.com/wordpress/wp-includes/css/dist/block-library/style.min.css?ver=5.9.1' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel='stylesheet' id='font-awesome-css'  href='http://blog.ncmem.com/wordpress/wp-content/themes/wordstar/assets/css/font-awesome.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wordstar-style-css'  href='http://blog.ncmem.com/wordpress/wp-content/themes/wordstar/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wordstar-responsive-css'  href='http://blog.ncmem.com/wordpress/wp-content/themes/wordstar/assets/css/responsive.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://blog.ncmem.com/wordpress/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script type='text/javascript' src='http://blog.ncmem.com/wordpress/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='http://blog.ncmem.com/wordpress/wp-content/themes/wordstar/assets/js/html5.js' id='html5shiv-js'></script>
+<![endif]-->
+<link rel="https://api.w.org/" href="http://blog.ncmem.com/wordpress/wp-json/" /><link rel="alternate" type="application/json" href="http://blog.ncmem.com/wordpress/wp-json/wp/v2/posts/195" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.ncmem.com/wordpress/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.ncmem.com/wordpress/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.9.1" />
+<link rel="canonical" href="http://blog.ncmem.com/wordpress/2019/08/07/java%e8%b6%85%e5%a4%a7%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0%e4%b8%8e%e4%b8%8b%e8%bd%bd/" />
+<link rel='shortlink' href='http://blog.ncmem.com/wordpress/?p=195' />
+<link rel="alternate" type="application/json+oembed" href="http://blog.ncmem.com/wordpress/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.ncmem.com%2Fwordpress%2F2019%2F08%2F07%2Fjava%25e8%25b6%2585%25e5%25a4%25a7%25e6%2596%2587%25e4%25bb%25b6%25e4%25b8%258a%25e4%25bc%25a0%25e4%25b8%258e%25e4%25b8%258b%25e8%25bd%25bd%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://blog.ncmem.com/wordpress/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.ncmem.com%2Fwordpress%2F2019%2F08%2F07%2Fjava%25e8%25b6%2585%25e5%25a4%25a7%25e6%2596%2587%25e4%25bb%25b6%25e4%25b8%258a%25e4%25bc%25a0%25e4%25b8%258e%25e4%25b8%258b%25e8%25bd%25bd%2F&#038;format=xml" />
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>    <style>
+     #masthead .site-branding,#masthead .site-branding a {
+color: #1b52a7 !important;
+    }
+
+        </style>
+</head>
+
+<body id="site-body" class="post-template-default single single-post postid-195 single-format-standard multi-column single-author"     itemscope="" itemtype="http://schema.org/BlogPosting">
+    <div id="page" class="site">
+        <a class="skip-link screen-reader-text" href="#content">
+            跳转到内容        </a>
+        <header id="masthead" class="site-header" role="banner">
+            <div class="site-header-main">
+                <div class="wrapper">
+                     <div class="site-branding"><p id="site-title" class="site-title p-name" itemprop="name"><a href="http://blog.ncmem.com/wordpress/" rel="home" itemprop="url" class="u-url url">泽优软件博客</a></p><p  id="site-description" class="site-description p-summary e-content says" itemprop="description">荆门泽优软件有限公司官方博客</p></div>                    
+                    <div id="site-header-menu" class="site-header-menu">
+                        <button id="menu-toggle" class="menu-toggle"><i class="fa fa-bars"></i><span>
+                                菜单                            </span></button>
+                        <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="主菜单">
+                            <ul id="primary-menu" class="primary-menu"><li id="menu-item-290" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-290"><a href="http://blog.ncmem.com/wordpress/"><span>首页</span></a></li>
+<li id="menu-item-288" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-288"><a href="http://www.ncmem.com"><span>官网</span></a></li>
+</ul>                            <div class="clear"></div>
+                        </nav>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </header>
+        <div id="content" class="site-content wrapper"><main id="main" class="site-main  single-post" role="main">
+        <article id="post-195" class="post-content post-195 post type-post status-publish format-standard hentry category-up6 tag-java-struts tag-java-web- tag-java-web tag-javaweb tag-java tag-js tag-php tag-webuploader tag-web tag-200g tag-51 tag-55 tag-63 h-entry h-as-article"         itemref="site-publisher">
+        <header class="entry-header">
+            <h1 class="entry-title p-name" itemprop="name headline"><a href="http://blog.ncmem.com/wordpress/2019/08/07/java%e8%b6%85%e5%a4%a7%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0%e4%b8%8e%e4%b8%8b%e8%bd%bd/" rel="bookmark" class="u-url url" itemprop="url">java+超大文件上传与下载</a></h1>        </header>
+                <div class="entry-meta">
+            <ul><li class="posted-on">
+				<i class="fa fa-calendar"></i>
+				<span class="screen-reader-text">发表于：</span>
+				<a href="http://blog.ncmem.com/wordpress/2019/08/07/java%e8%b6%85%e5%a4%a7%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0%e4%b8%8e%e4%b8%8b%e8%bd%bd/" rel="bookmark">
+					<time class="entry-date published dt-published" itemprop="datePublished" datetime="2019-08-07T15:01:11+08:00">2019年8月7日</time>
+					<time class="entry-date updated dt-updated screen-reader-text" itemprop="dateModified" datetime="2020-03-27T09:23:11+08:00">2020年3月27日</time>
+				</a>
+			</li><li class="cat-links">
+				<i class="fa fa-folder-open"></i>
+				<span class="screen-reader-text">分类：</span>
+				<a href="http://blog.ncmem.com/wordpress/category/up6/" rel="category tag">泽优大文件上传控件(up6)</a>
+			</li><li class="tag-links">
+				<i class="fa fa-tags"></i>
+				<span class="screen-reader-text">标签：</span>
+				<a href="http://blog.ncmem.com/wordpress/tag/java-struts%e4%b8%8a%e4%bc%a0%e6%96%87%e4%bb%b6%e5%a4%b9%e6%96%87%e4%bb%b6/" rel="tag">java struts上传文件夹文件</a>, <a href="http://blog.ncmem.com/wordpress/tag/java-web-%e5%a4%a7%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0%e4%b8%8b%e8%bd%bd/" rel="tag">java web 大文件上传下载</a>, <a href="http://blog.ncmem.com/wordpress/tag/java-web-%e8%b6%85%e5%a4%a7%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0/" rel="tag">java web 超大文件上传</a>, <a href="http://blog.ncmem.com/wordpress/tag/java-web%e5%ae%9e%e7%8e%b0%e6%96%87%e4%bb%b6%e5%a4%b9%e4%b8%8a%e4%bc%a0%ef%bc%88%e4%bf%9d%e7%95%99%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84%ef%bc%89/" rel="tag">java web实现文件夹上传（保留目录结构）</a>, <a href="http://blog.ncmem.com/wordpress/tag/java-web%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0%e5%8a%9f%e8%83%bd%e5%ae%9e%e7%8e%b0/" rel="tag">java web文件上传功能实现</a>, <a href="http://blog.ncmem.com/wordpress/tag/java-web%e8%83%bd%e5%a4%9f%e5%ae%9e%e7%8e%b0%e6%95%b4%e4%b8%aa%e6%96%87%e4%bb%b6%e5%a4%b9%e7%9a%84%e4%b8%8a%e4%bc%a0%e4%b8%8b%e8%bd%bd%e5%90%97%ef%bc%9f/" rel="tag">java web能够实现整个文件夹的上传下载吗？</a>, <a href="http://blog.ncmem.com/wordpress/tag/javaweb%e4%b8%ad%e4%b8%8a%e4%bc%a0%e6%96%87%e4%bb%b6%e5%a4%b9/" rel="tag">java+web中上传文件夹</a>, <a href="http://blog.ncmem.com/wordpress/tag/java%e4%b8%8a%e4%bc%a0%e5%a4%a7%e6%96%87%e4%bb%b6%e4%bb%a5%e5%8f%8a%e6%96%87%e4%bb%b6%e5%a4%b9/" rel="tag">java上传大文件以及文件夹</a>, <a href="http://blog.ncmem.com/wordpress/tag/java%e5%a4%a7%e6%96%87%e4%bb%b6%e6%96%ad%e7%82%b9%e7%bb%ad%e4%bc%a0/" rel="tag">java大文件断点续传</a>, <a href="http://blog.ncmem.com/wordpress/tag/java%e8%b6%85%e5%a4%a7%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0/" rel="tag">java超大文件上传</a>, <a href="http://blog.ncmem.com/wordpress/tag/js%e6%80%8e%e4%b9%88%e4%b8%8a%e4%bc%a0%e6%96%87%e4%bb%b6%e5%a4%b9/" rel="tag">js怎么上传文件夹</a>, <a href="http://blog.ncmem.com/wordpress/tag/php%e4%b8%8a%e4%bc%a0%e5%a4%a7%e6%96%87%e4%bb%b6/" rel="tag">php上传大文件</a>, <a href="http://blog.ncmem.com/wordpress/tag/php%e4%b8%8a%e4%bc%a0%e8%a7%86%e9%a2%91%e5%a4%a7%e6%96%87%e4%bb%b6/" rel="tag">php上传视频大文件</a>, <a href="http://blog.ncmem.com/wordpress/tag/webuploader%e4%b8%8a%e4%bc%a0%e6%96%87%e4%bb%b6%e5%a4%b9/" rel="tag">webuploader上传文件夹</a>, <a href="http://blog.ncmem.com/wordpress/tag/web%e5%a4%a7%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/" rel="tag">web大文件上传解决方案</a>, <a href="http://blog.ncmem.com/wordpress/tag/%e4%b8%8a%e4%bc%a0200g%e6%96%87%e4%bb%b6/" rel="tag">上传200G文件</a>, <a href="http://blog.ncmem.com/wordpress/tag/%e5%a4%a7%e6%96%87%e4%bb%b6%e4%b8%8a%e4%bc%a0%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/" rel="tag">大文件上传解决方案</a>, <a href="http://blog.ncmem.com/wordpress/tag/%e5%a4%a7%e6%96%87%e4%bb%b6%e4%bc%a0%e8%be%93/" rel="tag">大文件传输</a>, <a href="http://blog.ncmem.com/wordpress/tag/%e6%b5%8f%e8%a7%88%e5%99%a8%e4%b8%8a%e4%bc%a0%e5%a4%a7%e6%96%87%e4%bb%b6/" rel="tag">浏览器上传大文件</a>
+			</li><div class="clear"></div></ul>        </div>
+        <div class="entry-content e-content" itemprop="description articleBody">
+            <div class="" style="margin-left:auto;color:#333333;font-family:&quot;font-size:14px;">
+<div class="row">
+<div class="col-md-10" id="content">
+<div id="docView">
+<p style="font-family:Calibri, sans-serif;font-size:10.5pt;text-align:justify;">
+					<span style="color:black;font-family:新宋体;font-size:9pt;">版权所有 2009-2019 荆门泽优软件有限公司</span><span style="color:black;font-family:新宋体;font-size:9pt;"></span>
+				</p>
+<p style="font-family:Calibri, sans-serif;font-size:10.5pt;text-align:justify;">
+					<span style="color:black;font-family:新宋体;font-size:9pt;">保留所有权利</span><span style="color:black;font-family:新宋体;font-size:9pt;"></span>
+				</p>
+<p style="font-family:Calibri, sans-serif;font-size:10.5pt;text-align:justify;">
+					<span style="color:black;font-family:新宋体;font-size:9pt;">官方网站：<a href="http://www.ncmem.com/index.aspx" target="_blank">http://www.ncmem.com/index.aspx</a></span><span style="color:black;font-family:新宋体;font-size:9pt;"></span>
+				</p>
+<p style="font-family:Calibri, sans-serif;font-size:10.5pt;text-align:justify;">
+					<span style="color:black;font-family:新宋体;font-size:9pt;">产品首页：<a href="http://www.ncmem.com/webapp/up6/index.aspx" target="_blank">http://www.ncmem.com/webapp/up6/index.aspx</a></span><span style="color:black;font-family:新宋体;font-size:9pt;"></span>
+				</p>
+<p style="font-family:Calibri, sans-serif;font-size:10.5pt;text-align:justify;">
+					<span style="color:black;font-family:新宋体;font-size:9pt;">开发文档：<a href="http://www.ncmem.com/doc/view.aspx?id=653253c5b16243f4835469e82c2c1146" target="_blank">http://www.ncmem.com/doc/view.aspx?id=653253c5b16243f4835469e82c2c1146</a></span><span style="color:black;font-family:新宋体;font-size:9pt;"></span>
+				</p>
+<p style="font-family:Calibri, sans-serif;font-size:10.5pt;text-align:justify;">
+					<span style="color:black;font-family:新宋体;font-size:9pt;">控件下载：<a href="http://www.ncmem.com/webapp/up6/pack.aspx" target="_blank">http://www.ncmem.com/webapp/up6/pack.aspx</a></span><span style="color:black;font-family:新宋体;font-size:9pt;"></span>
+				</p>
+<p style="font-family:Calibri, sans-serif;font-size:10.5pt;text-align:justify;">
+					<span style="color:black;font-family:新宋体;font-size:9pt;">示例下载：<a href="http://www.ncmem.com/webapp/up6/versions.aspx" target="_blank">http://www.ncmem.com/webapp/up6/versions.aspx</a></span><span style="color:black;font-family:新宋体;font-size:9pt;"></span>
+				</p>
+<p style="font-family:Calibri, sans-serif;font-size:10.5pt;text-align:justify;">
+					<span style="color:black;font-family:新宋体;font-size:9pt;">联系信箱：1085617561@qq.com</span><span style="color:black;font-family:新宋体;font-size:9pt;"></span>
+				</p>
+<p style="font-family:Calibri, sans-serif;font-size:10.5pt;">
+					<span style="color:black;font-family:新宋体;font-size:9pt;">联系QQ：1085617561</span><span style="color:black;font-family:新宋体;font-size:9pt;"></span>
+				</p>
+<p style="font-family:Calibri, sans-serif;font-size:10.5pt;text-align:justify;">
+					<span style="font-family:新宋体;font-size:9pt;"><span style="color:#333333;font-family:新宋体;background-color:#FFFFFF;">产品交流群：</span><a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=9a105f1259eb48ee56eb41a38429de03c6b9c1e365c42ca858e303f6b3336ddc"><img src="http://pub.idqqimg.com/wpa/images/group.png" alt="泽优Word一键粘贴控件" title="泽优Word一键粘贴控件" style="height:auto;width:auto;" /></a><br />
+<span style="color:#333333;font-family:新宋体;background-color:#FFFFFF;">扫码加群：</span><br />
+&nbsp;<img src="http://res2.ncmem.com/res/images/iconfont/128/374992201.png" style="height:auto;width:auto;" /></span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">环境：<br />
+JDK:1.7.0_80<br />
+tomcat:7.0.47</span>
+				</p>
+<p>
+					<br />
+1.<a href="http://www.ncmem.com/doc/view.aspx?id=9da9c7c2b91b40b7b09768eeb282e647" target="_blank">导入项目，将up6导入到Eclipse中。</a>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">1.</span><span style="font-size:9pt;font-family:新宋体;">创建数据表</span>
+				</p>
+<p style="color:#000000;font-family:新宋体, 宋体, &quot;font-size:12px;">
+					<span style="color:#333333;font-family:新宋体;font-size:9pt;">使用mysql文件夹下的脚本创建数据表。</span><br />
+<span style="font-size:9pt;font-family:新宋体;color:#333333;"></span>
+				</p>
+<p>
+					<img loading="lazy" width="197" height="373" src="http://bbsres2.ncmem.com/6da29d42.png" style="height:auto;width:auto;" /><span style="font-size:9pt;font-family:新宋体;"></span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">创建后可以在数据库中看到创建好的数据表</span>
+				</p>
+<p>
+					<img loading="lazy" width="175" height="225" src="http://bbsres2.ncmem.com/0fab08e4.png" alt="http://bbsres2.ncmem.com/0fab08e4.png" style="height:auto;width:auto;" /><span style="font-size:9pt;font-family:新宋体;"></span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">&nbsp;</span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">2.</span><span style="font-size:9pt;font-family:新宋体;">修改数据库连接</span>
+				</p>
+<p>
+					<img loading="lazy" width="997" height="428" src="http://bbsres2.ncmem.com/0324e583.png" style="height:auto;width:auto;" /><span style="font-size:9pt;font-family:新宋体;"></span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">&nbsp;</span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">3.</span><span style="font-size:9pt;font-family:新宋体;">修改上传地址。</span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">说明：将此处地址改为项目在Web服务器中的地址。</span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">注意：</span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">1.</span><span style="font-size:9pt;font-family:新宋体;">端口号必须正确，路径必须正确。</span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">2.</span><span style="font-size:9pt;font-family:新宋体;">在局域网测试时需要将localhost改为服务器的IP地址。</span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">比如测试地址：oa.qq.com</span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">UrlPost</span><span style="font-size:9pt;font-family:新宋体;">：http://oa.qq.com/up6/db/f_post.jsp</span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">3.</span><span style="font-size:9pt;font-family:新宋体;">在外网测试时需要将localhost改为外网地址。</span>
+				</p>
+<p>
+					<img loading="lazy" width="821" height="508" src="http://bbsres2.ncmem.com/cf688152.png" style="height:auto;width:auto;" /><span style="font-size:9pt;font-family:新宋体;"></span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">如果需要测试下载功能，则需要修改down.js中的配置地址</span>
+				</p>
+<p>
+					<img loading="lazy" width="817" height="376" src="http://bbsres2.ncmem.com/926e42b1.png" style="height:auto;width:auto;" /><span style="font-size:9pt;font-family:新宋体;"></span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">&nbsp;</span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">4.</span><span style="font-size:9pt;font-family:新宋体;">在浏览器中访问</span>
+				</p>
+<p>
+					<img loading="lazy" width="517" height="940" src="http://bbsres2.ncmem.com/d2e84119.png" style="height:auto;width:auto;" /><span style="font-size:9pt;font-family:新宋体;"></span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">注意：</span><span style="font-size:9pt;font-family:新宋体;color:black;"></span>
+				</p>
+<p style="text-indent:21pt;">
+					<span style="font-size:9pt;font-family:新宋体;">1.</span><span style="font-size:9pt;font-family:新宋体;">文件和文件夹上传功能由控件实现，使用前需要先<a href="http://www.ncmem.com/v2/doc/view.aspx?id=9bbff9517a9d455abe801d3b207e0dfe" target="_blank">安装控件</a>。</span><span style="font-size:9pt;font-family:新宋体;color:black;"></span>
+				</p>
+<p style="text-indent:21pt;">
+					<span style="font-size:9pt;font-family:新宋体;">2.</span><span style="font-size:9pt;font-family:新宋体;">端口号必须正确。</span><span style="font-size:9pt;font-family:新宋体;color:black;"></span>
+				</p>
+<p style="text-indent:21pt;">
+					<span style="font-size:9pt;font-family:新宋体;">3.</span><span style="font-size:9pt;font-family:新宋体;">路径必须正确。</span><span style="font-size:9pt;font-family:新宋体;color:black;"></span>
+				</p>
+<p style="text-indent:21pt;">
+					<span style="font-size:9pt;font-family:新宋体;">4.demo</span><span style="font-size:9pt;font-family:新宋体;">仅支持在localhost和127.0.0.1中测试，不支持在其它的地址中测试（如局域网IP，外网IP，外网域名），如果需要在正式环境中测试请与我们联系：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1269085759&amp;site=qq&amp;menu=yes" target="_blank">1269085759</a>。</span><span style="font-size:9pt;font-family:新宋体;color:black;"></span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">&nbsp;</span><span style="font-size:9pt;font-family:新宋体;color:black;"></span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">上传一个文件</span>
+				</p>
+<p>
+					<img loading="lazy" width="522" height="638" src="http://bbsres2.ncmem.com/5a68bc0a.png" style="height:auto;width:auto;" /><span style="font-size:9pt;font-family:新宋体;"></span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">文件保存位置，默认保存在upload目录中</span>
+				</p>
+<p>
+					<img loading="lazy" width="467" height="341" src="http://bbsres2.ncmem.com/eabc5fed.png" style="height:auto;width:auto;" /><span style="font-size:9pt;font-family:新宋体;"></span>
+				</p>
+<p>
+					<span style="font-size:9pt;font-family:新宋体;">在数据库中可以看到信息</span>
+				</p>
+<p>
+					<img loading="lazy" width="1135" height="211" src="http://bbsres2.ncmem.com/2efed1a1.png" style="height:auto;width:auto;" />
+				</p>
+<p>
+					<br />
+在最新的DEMO中我们已经提供了文件管理器的示例，您可以在文件管理器中体验文件，文件夹的上传和下载功能，也可以直接将文件管理器复制到自已的项目中使用。<br />
+<img src="http://bbsres2.ncmem.com/202d5f59.png" style="height:auto;width:auto;" />
+				</p>
+<p style="font-family:&quot;font-size:10.5pt;text-align:justify;">
+					<span style="font-size:9pt;font-family:新宋体;">详细介绍：<a href="http://www.ncmem.com/doc/view.aspx?id=5f29dff559a74986a871b0060e82b2b7" target="_blank">http://www.ncmem.com/doc/view.aspx?id=5f29dff559a74986a871b0060e82b2b7</a></p>
+<p>常见问题：</span>
+				</p>
+<p style="font-family:&quot;font-size:10.5pt;text-align:justify;">
+					<span style="font-family:新宋体;font-size:9pt;">1.<a href="http://www.ncmem.com/doc/view.aspx?id=016eb6a0807f4383adc02c9ea477a716" target="_blank">md5计算完毕后卡住</a></span>
+				</p>
+<p style="font-family:&quot;font-size:10.5pt;text-align:justify;">
+					<span style="font-family:新宋体;font-size:9pt;">2.<a href="http://www.ncmem.com/doc/view.aspx?id=20f439e94e2b4c86a7abf58a91317df3" target="_blank">上传过程中容易中断</a></span>
+				</p>
+</p></div>
+</p></div>
+</p></div>
+</div>
+<div class="bk-gray-sm" style="background-color:#EEEEEE;padding:30px 0px 16px;color:#333333;font-family:&quot;font-size:14px;">
+<div class="container" style="margin-left:auto;">
+<div class="row" style="margin-left:-15px;">
+<div class="col-xs-6 col-sm-2">
+			</div>
+</p></div>
+</p></div>
+</div>
+            <div class="clear"></div>
+        </div>
+        
+	<nav class="navigation post-navigation" aria-label="文章">
+		<h2 class="screen-reader-text">文章导航</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="http://blog.ncmem.com/wordpress/2019/08/07/%e4%b8%8a%e4%bc%a0%e6%96%87%e4%bb%b6%e5%a4%b9/" rel="prev"><span class="meta-nav" aria-hidden="true">前一页</span> <span class="screen-reader-text">上一篇：</span> <span class="post-title">上传文件夹</span></a></div><div class="nav-next"><a href="http://blog.ncmem.com/wordpress/2019/08/07/%e5%af%8c%e6%96%87%e6%9c%ac%e7%bc%96%e8%be%91%e5%99%a8%e7%b2%98%e8%b4%b4word%e5%86%85%e5%ae%b9/" rel="next"><span class="meta-nav" aria-hidden="true">后一页</span> <span class="screen-reader-text">下一篇：</span> <span class="post-title">富文本编辑器粘贴word内容</span></a></div></div>
+	</nav>        <div class="clear"></div>
+        <div class="author-info byline author p-author vcard hcard h-card author-1" itemprop="author " itemscope itemtype="http://schema.org/Person">
+            <div class="author-avatar">
+                <img alt='' src='http://1.gravatar.com/avatar/afc6d7ebbec186f05879c777babb39f0?s=70&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/afc6d7ebbec186f05879c777babb39f0?s=140&#038;d=mm&#038;r=g 2x' class='avatar avatar-70 photo u-photo' height='70' width='70' itemprop="image" loading='lazy'/>            </div>
+            <div class="author-description">
+                <h3 class="author-title"><a href="http://blog.ncmem.com/wordpress/author/admin/" title="Posts by admin" rel="author" class="url u-url " itemprop="url"> <span class="fn p-name" itemprop="name">
+                            admin                        </span> </a></h3>
+                                <div class="author-metas"><a href=http://blog.ncmem.com/wordpress/author/admin/ title="4301 Posts" class="posts"><i class="fa fa-thumb-tack"></i><span>4301</span></a><a href="http://blog.ncmem.com/wordpress/author/admin/feed/" rel="noopener"  title="Subscribe RSS Feed" target="_blank" class="social rss"><i class="fa fa-rss"></i><span>RSS订阅</span></a><div class="clear"></div>
+		</div>            </div>
+            <div class="clear"></div>
+        </div>
+    </article>
+        </main>
+<aside id="secondary" class="sidebar widget-area" role="complementary">
+  <section id="search-2" class="widget widget_search"><h4 class="widget-title">搜索</h4><form role="search" method="get" class="search-form" action="http://blog.ncmem.com/wordpress/" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+  <meta itemprop="target" content="http://blog.ncmem.com/wordpress/?s=search%20"/>
+  <span class="screen-reader-text">搜索：</span> <i class="fa fa-search"></i>
+  <input type="search" class="search-field" placeholder="搜索&hellip;" value="" name="s" title="Search" required itemprop="query-input">
+  <button type="submit" class="search-submit"> <span >搜索</span> </button>
+</form><div class="clear"></div></section>
+		<section id="recent-posts-2" class="widget widget_recent_entries">
+		<h4 class="widget-title">近期文章</h4>
+		<ul>
+											<li>
+					<a href="http://blog.ncmem.com/wordpress/2022/03/01/ckeditor%e7%b2%98%e8%b4%b4%e5%9b%be%e7%89%87%e8%87%aa%e5%8a%a8%e4%b8%8a%e4%bc%a0%e5%88%b0%e6%9c%8d%e5%8a%a1%e5%99%a8c-net%e7%89%88-2/">CKEditor粘贴图片自动上传到服务器(C#.NET版)</a>
+									</li>
+											<li>
+					<a href="http://blog.ncmem.com/wordpress/2022/03/01/ckeditor%e7%b2%98%e8%b4%b4%e5%9b%be%e7%89%87%e8%87%aa%e5%8a%a8%e4%b8%8a%e4%bc%a0%e5%88%b0%e6%9c%8d%e5%8a%a1%e5%99%a8c%e7%89%88-2/">CKEditor粘贴图片自动上传到服务器(C#版)</a>
+									</li>
+											<li>
+					<a href="http://blog.ncmem.com/wordpress/2022/03/01/ckeditor%e7%b2%98%e8%b4%b4%e5%9b%be%e7%89%87%e8%87%aa%e5%8a%a8%e4%b8%8a%e4%bc%a0%e5%88%b0%e6%9c%8d%e5%8a%a1%e5%99%a8asp-net%e7%89%88-2/">CKEditor粘贴图片自动上传到服务器(ASP.NET版)</a>
+									</li>
+											<li>
+					<a href="http://blog.ncmem.com/wordpress/2022/03/01/ckeditor%e7%b2%98%e8%b4%b4%e5%9b%be%e7%89%87%e8%87%aa%e5%8a%a8%e4%b8%8a%e4%bc%a0%e5%88%b0%e6%9c%8d%e5%8a%a1%e5%99%a8js%e7%89%88-2/">CKEditor粘贴图片自动上传到服务器(JS版)</a>
+									</li>
+											<li>
+					<a href="http://blog.ncmem.com/wordpress/2022/03/01/ckeditor%e7%b2%98%e8%b4%b4%e5%9b%be%e7%89%87%e8%87%aa%e5%8a%a8%e4%b8%8a%e4%bc%a0%e5%88%b0%e6%9c%8d%e5%8a%a1%e5%99%a8php%e7%89%88-2/">CKEditor粘贴图片自动上传到服务器(PHP版)</a>
+									</li>
+					</ul>
+
+		<div class="clear"></div></section><section id="recent-comments-2" class="widget widget_recent_comments"><h4 class="widget-title">近期评论</h4><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href='http://blog.ncmem.com/wordpress/2019/09/05/%e6%b3%bd%e4%bc%98web%e5%9b%be%e7%89%87%e4%b8%8a%e4%bc%a0%e6%8e%a7%e4%bb%b6img2%e4%ba%a7%e5%93%81%e4%bb%8b%e7%bb%8d/' rel='external nofollow ugc' class='url'>泽优Web图片上传控件(img2)产品介绍 &#8211; 泽优软件博客</a></span>发表在《<a href="http://blog.ncmem.com/wordpress/2019/09/05/%e5%a6%82%e4%bd%95%e5%9c%a8web%e9%a1%b5%e9%9d%a2%e9%87%8c%e4%bd%bf%e7%94%a8%e9%ab%98%e6%8b%8d%e4%bb%aa%e6%89%ab%e6%8f%8f%e4%b8%8a%e4%bc%a0%e5%9b%be%e5%83%8f/#comment-2">如何在Web页面里使用高拍仪扫描上传图像</a>》</li></ul><div class="clear"></div></section><section id="archives-2" class="widget widget_archive"><h4 class="widget-title">归档</h4>
+			<ul>
+					<li><a href='http://blog.ncmem.com/wordpress/2022/03/'>2022年3月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2022/02/'>2022年2月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2022/01/'>2022年1月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2021/12/'>2021年12月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2021/11/'>2021年11月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2021/10/'>2021年10月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2021/09/'>2021年9月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2021/08/'>2021年8月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2021/07/'>2021年7月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2021/06/'>2021年6月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2021/05/'>2021年5月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2021/04/'>2021年4月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2021/03/'>2021年3月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2021/02/'>2021年2月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2021/01/'>2021年1月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2020/12/'>2020年12月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2020/11/'>2020年11月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2020/10/'>2020年10月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2020/09/'>2020年9月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2020/08/'>2020年8月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2020/07/'>2020年7月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2020/06/'>2020年6月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2020/05/'>2020年5月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2020/04/'>2020年4月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2020/03/'>2020年3月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2020/01/'>2020年1月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2019/12/'>2019年12月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2019/11/'>2019年11月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2019/10/'>2019年10月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2019/09/'>2019年9月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2019/08/'>2019年8月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2019/07/'>2019年7月</a></li>
+	<li><a href='http://blog.ncmem.com/wordpress/2019/06/'>2019年6月</a></li>
+			</ul>
+
+			<div class="clear"></div></section><section id="categories-2" class="widget widget_categories"><h4 class="widget-title">分类</h4>
+			<ul>
+					<li class="cat-item cat-item-243"><a href="http://blog.ncmem.com/wordpress/category/%e6%b3%bd%e4%bc%98web%e5%9b%be%e7%89%87%e4%b8%8a%e4%bc%a0%e6%8e%a7%e4%bb%b6img2/">泽优Web图片上传控件(img2)</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://blog.ncmem.com/wordpress/category/wordpaster/">泽优Word图片上传控件(WordPaster)</a>
+</li>
+	<li class="cat-item cat-item-40"><a href="http://blog.ncmem.com/wordpress/category/up6/">泽优大文件上传控件(up6)</a>
+</li>
+	<li class="cat-item cat-item-42"><a href="http://blog.ncmem.com/wordpress/category/down2/">泽优大文件下载控件(down2)</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://blog.ncmem.com/wordpress/category/%e6%b3%bd%e4%bc%98%e4%ba%a7%e5%93%81/">泽优软件产品</a>
+</li>
+			</ul>
+
+			<div class="clear"></div></section><section id="meta-2" class="widget widget_meta"><h4 class="widget-title">功能</h4>
+		<ul>
+						<li><a href="http://blog.ncmem.com/wordpress/wp-login.php">登录</a></li>
+			<li><a href="http://blog.ncmem.com/wordpress/feed/">条目feed</a></li>
+			<li><a href="http://blog.ncmem.com/wordpress/comments/feed/">评论feed</a></li>
+
+			<li><a href="https://cn.wordpress.org/">WordPress.org</a></li>
+		</ul>
+
+		<div class="clear"></div></section></aside>
+<div class="clear"></div>
+</div>
+<footer id="colophon" class="site-footer" role="contentinfo">
+    <div id="site-publisher" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+        <meta itemprop="name" content="泽优软件博客" />
+        <meta itemprop="url" content="http://blog.ncmem.com/wordpress/" />
+            </div>
+    <div class="site-info wrapper">
+                <p id="site-generator" class="site-info centertext footer-copy">
+            <a href="http://blog.ncmem.com/wordpress/" rel="home">&copy;
+                2022&nbsp;
+                泽优软件博客.</a>
+            <a href="https://wordpress.org/" rel="generator">
+                由 WordPress 强力驱动.</a>
+            <a href="https://linesh.com/projects/wordstar/" rel="generator">
+                WordStar</a>,
+            <a href="https://linesh.com/" rel="generator">
+                主题由Linesh Jose提供</a>
+        </p>
+    </div>
+</footer>
+</div>
+<script type='text/javascript' src='http://blog.ncmem.com/wordpress/wp-includes/js/comment-reply.min.js?ver=5.9.1' id='comment-reply-js'></script>
+<script type='text/javascript' src='http://blog.ncmem.com/wordpress/wp-content/themes/wordstar/assets/js/main.js' id='wordstar-script-js'></script>
+<script type='text/javascript' src='http://blog.ncmem.com/wordpress/wp-content/plugins/page-links-to/dist/new-tab.js?ver=3.3.6' id='page-links-to-js'></script>
+</body>
+
+</html>

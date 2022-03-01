@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>欢迎访问本网站！</title>
+<style type="text/css">
+html{margin:0;background-color:#eee;color:#444;font-size:100%;font-family:Lucida Grande,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;line-height:1.5}
+h1{word-wrap:break-word;font-size:2em;line-height:.9}
+h2{font-size:1em;line-height:1}
+.page{margin:30px auto;padding:20px;width:80%;max-width:780pt;background-color:#fff}
+.sep{padding:0 .5em}
+.header{padding:3px 20px;background:rgba(15,165,217,.9) linear-gradient(to top right,rgba(0,0,0,0)30%,rgba(30,10,100,.7)100%) repeat scroll 0 0;color:#fff;text-align:left;line-height:1}
+.content{padding:30px 10px;text-align:center}
+#qrcode{padding-top:20px}
+a.btn{display:inline-block;margin:auto;margin:10px;padding-top:10px;width:188px;height:30px;border-radius:3px;background-color:#0fa5d9;color:#fff;text-decoration:none}
+.pulse{-webkit-animation-iteration-count:infinite;-webkit-animation-name:pulse;-webkit-animation-duration:.8s}
+.footer,a.btn{text-align:center}
+.footer{padding:10px 10%;border-top:1px solid #ccc;color:#444;font-size:.8em}
+@-webkit-keyframes pulse{50%{background-color:#2471b1;-webkit-box-shadow:0 0 2pc #0fa5d9}}
+@media (max-width:640px){.page{margin:0;padding:0;width:100%}}
+</style>
+<script type="text/javascript">
+window.onload = function() {
+	var dn = window.location.hostname;
+	var dn = window.location.hostname + '$';
+	dn = dn.match(/[^.]+\.(com.cn|com|net.cn|net|org.cn|org|ge|lu|cn|asia|ba|biz|cc|et|club|co|design|hk|info|live|mobi|me|my|name|pro|top|tv|vip|xyz)(\$)/g);
+	dn = dn[0].replace('$', '');
+	document.title = '欢迎访问本网站，请记住本站唯一网址 - ' + dn;
+	document.getElementsByClassName("domain")[0].innerHTML = dn;
+	document.getElementById("qrcode").setAttribute("src", "data:image/png;base64,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")
+};</script>
+</head>
+<body>
+<div class="page">
+<div class="header">
+		<h1 class="domain"></h1>
+	<p>
+		网站正在搭建中，这是一个纯私人的网站，与任何品牌和他人无关，并为未来而规划！
+	</p>
+</div>
+<div class="content">
+	<h2>如果您有好点子、意见建议等想法，请联系我。</h2>
+	<img id="qrcode" src>
+	<p>
+		微信（wechat）/ QQ：113111113
+	</p>
+	<p>
+		邮箱（Mail）：domain@nametube.com 
+	</p>
+</div>
+<div class="footer">
+	<p>
+		这是一个通用且非商业性、独立的私人网站(建设中)，善意取得、所有及使用，并未侵损任何人的任何权利，与任何公司、组织、品牌和商标无关。</p>
+</div>
+</div>
+</body>
+</html>
