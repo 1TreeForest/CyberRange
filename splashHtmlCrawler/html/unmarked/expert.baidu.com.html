@@ -1,0 +1,416 @@
+<!DOCTYPE html><html lang=zh-CN><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,user-scalable=0,minimum-scale=1,maximum-scale=1"><meta name=format-detection content="telephone=no"><link rel=icon href=https://www.baidu.com/favicon.ico><title>百度健康</title><meta name=description content=你身边的健康管家 id=shareMetaContent><div style="display: none" id=shareImgWrap><img src=https://expertimg.bj.bcebos.com/expertcms%2Fmed%2Fallhealth%2Fbd_health_logo.png id=shareImg></div><script data-config>/* eslint-disable */
+            (function () {
+                // 解决路径不存在时重定向问题
+                var href = getRealUrl();
+
+                if (href) {
+                    window.location.href = href;
+                }
+
+                function getRealUrl() {
+                    var loc = window.location;
+                    var hash = loc.hash;
+                    var path = hash.replace(/#?\/?(pages[^?]+.*)/, '$1') || '';
+                    /* eslint-disable */
+
+                    var isInPages =
+                        [
+                            'pages/wz/aibot/index',
+                            'pages/wz/wztools/index',
+                            'pages/doctor/home/index',
+                            'pages/wz/springcard/index',
+                            'pages/wz/newuser/index',
+                            'pages/gy/medstorehall/index',
+                            'pages/wz/docVisitInfo/index',
+                            'pages/brand/finder/index',
+                            'pages/brand/jump/index',
+                            'pages/brand/mpage/index',
+                            'pages/vaccine/agency/index',
+                            'pages/act/cps/index',
+                            'pages/wz/medicineclinicguide/index',
+                            'pages/wz/medicineclinic/index',
+                            'pages/wz/hosVisitInfo/index',
+                            'pages/vaccine/picture/index',
+                            'pages/vaccine/video/index',
+                            'pages/vaccine/popular-science/index',
+                            'pages/vaccine/home/index',
+                            'pages/vaccine/live/index',
+                            'pages/vaccine/recruit-volunteer/index',
+                            'pages/vaccine/storeinfo/index',
+                            'pages/physical/intro/index',
+                            'pages/doctor/selected-doctors/index',
+                            'pages/gy/medstoreactlist/index',
+                            'pages/act/double-eleven/index',
+                            'pages/act/pcr-chongyang/index',
+                            'pages/physical/examinebodylist/index',
+                            'pages/act/hot/index',
+                            'pages/vaccine/note/index',
+                            'pages/vaccine/test-truth/index',
+                            'pages/act/hpv-act/index',
+                            'pages/act/hpv-pcr/index',
+                            'pages/act-sub/bx/zhongan12/index',
+                            'pages/act/doctor-take-patient/index',
+                            'pages/physical/skulist/index',
+                            'pages/act/covid19-list/index',
+                            'pages/physical/home/index',
+                            'pages/physical/agency/index',
+                            'pages/physical/package/index',
+                            'pages/physical/examinebodydetail/index',
+                            'pages/physical/healthcertificate/index',
+                            'pages/physical/healthcerttheme/index',
+                            'pages/doctor/robotanalysis/index',
+                            'pages/wz/agreement/index',
+                            'pages/doctor/zicelist/index',
+                            'pages/act/monthly/index',
+                            'pages/act/new-user/index',
+                            'pages/wz/mcard/index',
+                            'pages/brand/jiuyi/index',
+                            'pages/brand/allfunction/index',
+                            'pages/act/covid19-form/index',
+                            'pages/wz/professionalguide/index',
+                            'pages/speTopic/method/summary/index',
+                            'pages/act/covid19-pcr/index',
+                            'pages/act/new-year-2021/index',
+                            'pages/speTopic/project/index',
+                            'pages/speTopic/channel/index',
+                            'pages/speTopic/channel/subscription',
+                            'pages/wz/publicity/index',
+                            'pages/act/epidemicplatform/index',
+                            'pages/act/marketing/index',
+                            'pages/act/insure/index',
+                            'pages/act/daka-center/index',
+                            'pages/act/daka/index',
+                            'pages/act/daka-sleep/index',
+                            'pages/act/specialCenter/index',
+                            'pages/act-sub/dakalist/index',
+                            'pages/act-sub/ydh-post/index',
+                            'pages/speTopic/live/index',
+                            'pages/act/psychic/index',
+                            'pages/doctor/fyrobottriage/index',
+                            'pages/doctor/selftest/index',
+                            'pages/wz/antiepidemicpage/index',
+                            'pages/doctor/finddoc/index',
+                            'pages/find-hospital/home/index',
+                            'pages/brand/entry/index',
+                            'pages/brand/home/index',
+                            'pages/brand/popup/index',
+                            'pages/brand/msg-popup/index',
+                            'pages/brand/search/index',
+                            'pages/brand/person/index',
+                            'pages/brand/msg/index',
+                            'pages/brand/download/index',
+                            'pages/bx/home/index',
+                            'pages/bx/alllist/index',
+                            'pages/bx/myorder/index',
+                            'pages/wz/smartindex/index',
+                            'pages/wz/triage/index',
+                            'pages/wz/list/index',
+                            'pages/wz/oldlist/index',
+                            'pages/wz/newlist/index',
+                            'pages/wz/order/index',
+                            'pages/wz/experthome/index',
+                            'pages/wz/service-info/index',
+                            'pages/wz/phoneclinic/index',
+                            'pages/gh/home/index',
+                            'pages/gh/hospitaldetail/index',
+                            'pages/gh/hospitallist/index',
+                            'pages/gh/expertlist/index',
+                            'pages/gh/diseaselist/index',
+                            'pages/gh/departmentlist/index',
+                            'pages/gh/appointslist/index',
+                            'pages/gh/similarhospitallist/index',
+                            'pages/gh/orderlist/index',
+                            'pages/gh/orderdetail/index',
+                            'pages/gh/kyworderdetail/index',
+                            'pages/guahao/home/index',
+                            'pages/guahao/appointslist/index',
+                            'pages/guahao/hospitaldetail/index',
+                            'pages/guahao/orderlist/index',
+                            'pages/guahao/orderdetail/index',
+                            'pages/guahao/departmentlist/index',
+                            'pages/guahao/diseaselist/index',
+                            'pages/guahao/expertlist/index',
+                            'pages/guahao/hospitallist/index',
+                            'pages/gy/medstorehome/index',
+                            'pages/gy/medstoredruginfo/index',
+                            'pages/gy/medstoredrugstoreinfo/index',
+                            'pages/gy/medstoreorderdetail/index',
+                            'pages/gy/comorderdetail/index',
+                            'pages/gy/medstoredrugstorelist/index',
+                            'pages/gy/medstoreactmonth/index',
+                            'pages/gy/medstoredeliver/index',
+                            'pages/gy/medstoredelivero2o/index',
+                            'pages/gy/medstorecart/index',
+                            'pages/gy/medstorecmt/index',
+                            'pages/gy/make-comment-success/index',
+                            'pages/gy/consult/index',
+                            'pages/gy/im/index',
+                            'pages/gy/medstoreapply/index',
+                            'pages/gy/medstoreupdatedetail/index',
+                            'pages/speTopic/index',
+                            'pages/speTopic/method/index',
+                            'pages/speTopic/sciencePopular/index',
+                            'pages/speTopic/sciencePopular/subpage/index',
+                            'pages/speTopic/sciencePopular/detail/index',
+                            'pages/hospital/hospmain/index',
+                            'pages/hospital/hospmain/popularScience',
+                            'pages/hospital/imglist/index',
+                            'pages/hospital/strategy/index',
+                            'pages/hospital/departmentdetail/index',
+                            'pages/hospital/departmentdesc/index',
+                            'pages/hospital/departmentlist/index',
+                            'pages/hospital/home/index',
+                            'pages/hospital/ask/index',
+                            'pages/hospital/answer/index',
+                            'pages/doctor/article/index',
+                            'pages/wz/chat/index',
+                            'pages/speTopic/activity/index',
+                            'pages/speTopic/activity/im/index',
+                            'pages/speTopic/activity/detail/index',
+                            'pages/speTopic/activity/act/index',
+                            'pages/fy/home/index',
+                            'pages/speTopic/dict/index',
+                            'pages/speTopic/dict/articles/index',
+                            'pages/speTopic/detail/article/index',
+                            'pages/speTopic/detail/audio/index',
+                            'pages/speTopic/detail/video/index',
+                            'pages/speTopic/dict/home/index',
+                            'pages/speTopic/dict/searchdisease/index',
+                            'pages/speTopic/dict/disscreen/index',
+                            'pages/speTopic/dict/square/index',
+                            'pages/speTopic/dict/theme/index',
+                            'pages/speTopic/sciencePopular/refuteRumour/index',
+                            'pages/speTopic/dict/square/current-square/index',
+                            'pages/speTopic/dict/drugs/index',
+                            'pages/speTopic/detail/qa/index',
+                            'pages/speTopic/dict/introduce/index',
+                            'pages/speTopic/dict/introduce/doctor/index',
+                            'pages/speTopic/dict/nearby/index',
+                            'pages/speTopic/dict/insurance/index',
+                            'pages/act/man-health/index',
+                            'pages/speTopic/live/live-home/index',
+                            'pages/speTopic/live/calendar/index',
+                            'pages/speTopic/detail/uer/index',
+                            'pages/speTopic/dict/vaccine/index',
+                            'pages/speTopic/dict/vote/index',
+                            'pages/speTopic/dict/drugcooperation/index',
+                            'pages/speTopic/dict/search/index',
+                            'pages/speTopic/dict/meeting/index',
+                            'pages/speTopic/dict/dailyreport/index',
+                            'pages/physical/searchlist/index',
+                            'pages/physical/newlist/index',
+                            'pages/bbs-services/home',
+                            'pages/bbs-services/detail',
+                            'pages/bbs-services/person',
+                            'pages/bbs-services/editor',
+                            'pages/bbs-services/message',
+                            'pages/plm/home/index',
+                            'pages/plm/result/index',
+                            'pages/plm/search/index',
+                            'pages/plm/land/index',
+                            'pages/specialDisease/andrologyCenter/index',
+                            'pages/specialDisease/topic/index',
+                            'pages/act-sub/covid19-invoice/index',
+                            'pages/wz-sub/jiayibao/index',
+                            'pages/wz-sub/jiayibao/login',
+                            'pages/act/vaccine-pcr/index',
+                            'pages/act-sub/instock/index',
+                            'pages/act-sub/act-618/wzshopping/index',
+                            'pages/act-sub/act-618/crowd/index',
+                            'pages/act-sub/act-618/goods-mall/index',
+                            'pages/act-sub/act-618/tj/index',
+                            'pages/act-sub/act-618/ym/index',
+                            'pages/act-sub/act-618/coupon/index',
+                            'pages/act-sub/act-618/luckycharm/index',
+                            'pages/act-sub/act-618/fission/index',
+                            'pages/hospital-sub/teladdressList/index',
+                            'pages/hospital-sub/flag/flag-list/index',
+                            'pages/doctor-sub/recommend/index',
+                            'pages/find-hospital-sub/new-hospital/index',
+                            'pages/speTopic/dict/newhome/index',
+                            'pages/member/home/index',
+                            'pages/doctor-sub/newcomment/index',
+                            'pages/doctor-sub/plm/list',
+                            'pages/gene-sub/home/index',
+                            'pages/gene-sub/special/index',
+                            'pages/gene-sub/orderlist/index',
+                            'pages/gene-sub/orderdetail/index',
+                            'pages/gene-sub/negotiationhistory/index',
+                            'pages/doctor-sub/intro/index',
+                            'pages/doctor-sub/flag/letter/index',
+                            'pages/doctor-sub/flag/edit-flag/index',
+                            'pages/doctor-sub/flag/flag-list/index',
+                            'pages/doctor-sub/flag/letter-view/index',
+                            'pages/doctor-sub/flag/result/index',
+                            'pages/doctor-sub/flag/flag-voucher/index',
+                            'pages/doctor-sub/flag/flag-voucher/clause-view/index',
+                            'pages/doctor-sub/flag/flag-voucher/choose-disease/index',
+                            'pages/brand-sub/msgview/index',
+                            'pages/brand-sub/app/agreement/index',
+                            'pages/doctor-sub/flag/new-list/index',
+                            'pages/common/complaint-feedback/index',
+                            'pages/common-sub/question-answer/index',
+                            'pages/act/find-drug/index',
+                            'pages/mall/home/index',
+                            'pages/mall/goods-detail/index',
+                            'pages/mall/cart-list/index',
+                            'pages/mall/mall-apply/index',
+                            'pages/mall/order-detail/index',
+                            'pages/mall/vaccine-detail/index',
+                            'pages/mall/vaccine-apply/index',
+                            'pages/mall/vaccine-order/index',
+                            'pages/act-sub/address-select/index'
+                        ].filter(function (o) {
+                            return path.indexOf(o) > -1;
+                        }).length > 0;
+                    /* eslint-enable */
+
+                    if (!isInPages) {
+                        var atn = path.replace(/\/?pages\/([\w-]+)\/.+/, '$1'); // 改写分包路径
+
+                        if (atn.indexOf('-sub') === -1) {
+                            path = path.replace('\/' + atn + '\/', '\/' + atn + '-sub\/');
+                            return loc.origin + loc.pathname + '#' + path;
+                        }
+                    }
+                }
+            })();
+            /* eslint-disable */
+
+            (function () {
+                var loc = window.location;
+                var hash = loc.hash;
+                var path = hash.replace(/#?\/?(pages[^?]+.*)/, '$1') || '';
+                var queryStr = path.split('?')[1];
+                var query = parseQuery(queryStr); // 只有疾病症状需要重定向
+
+                var isRedirect =
+                    query &&
+                    !!query.contentid &&
+                    (query.contentid.indexOf('ydxx') !== -1 || query.contentid.indexOf('ydzz') !== -1) &&
+                    query.template !== 'wise';
+                var redirectMap = {
+                    'pages/speTopic/dict/index': {
+                        redirect: query && !!query.contentid && query.template !== 'wise',
+                        query: Object.assign({}, query, {
+                            from: 'dicta'
+                        }),
+                        target: 'https://www.baidu.com/bh/dict/' + (query && query.contentid)
+                    },
+                    'pages/speTopic/dict/newhome/index': {
+                        redirect: isRedirect,
+                        query: Object.assign({}, query, {
+                            from: 'dicta'
+                        }),
+                        target: 'https://www.baidu.com/bh/dict/' + (query && query.contentid)
+                    },
+                    'pages/speTopic/dict/articles/index': {
+                        redirect: query && !!query.contentid && query.template !== 'wise',
+                        query: Object.assign(
+                            {},
+                            query,
+                            (query && {
+                                from: 'dicta',
+                                ydxxid: query.diseaseId,
+                                curartid: query.contentid
+                            }) ||
+                                {}
+                        ),
+                        target: 'https://www.baidu.com/bh/dict/' + (query && query.contentid)
+                    },
+                    'pages/brand/home/index': {
+                        redirect: query && query.template !== 'wise',
+                        target: 'https://jiankang.baidu.com/widescreen/home'
+                    },
+                    'pages/speTopic/dict/theme/index': {
+                        redirect: query && !!query.channelId && query.template !== 'wise',
+                        iframe: 'https://expert.baidu.com/med/template/#/pages/speTopic/dict/theme/index',
+                        selfLocationFrom: query && query.selfLocationFrom ? query.selfLocationFrom : '',
+                        query: Object.assign(
+                            {},
+                            (query && {
+                                channelId: query.channelId
+                            }) ||
+                                {}
+                        ),
+                        target: 'https://jiankang.baidu.com/widescreen/topic?'
+                    }
+                }; // wise页面PC打开，重定向至PC地址
+
+                function isPC() {
+                    var userAgentInfo = navigator.userAgent;
+                    var Agents = ['Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod'];
+                    var flag = true;
+
+                    for (var v = 0; v < Agents.length; v++) {
+                        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                            flag = false;
+                            break;
+                        }
+                    }
+
+                    return flag;
+                }
+
+                function redirect() {
+                    Object.keys(redirectMap).forEach(function (key) {
+                        if (path.indexOf(key) !== -1) {
+                            var config = redirectMap[key];
+
+                            if (key === 'pages/speTopic/dict/theme/index' && config.query) {
+                                if (config.selfLocationFrom && config.selfLocationFrom === 'topic') return; // 判断是否为iframe嵌入页面，从pc端专题页面的iframe嵌入访问h5页面不重定向
+
+                                window.location.href = config.target + 'iframe=' + config.query.channelId; // pc端会拼接iframe的链接
+
+                                return;
+                            }
+
+                            if (config.redirect && config.target) {
+                                window.location.href = appendQuery(config.target, config.query);
+                            }
+                        }
+                    });
+                }
+
+                function parseQuery(str) {
+                    if (str) {
+                        var query = {};
+                        str.split('&').forEach(function (item) {
+                            query[item.split('=')[0]] = item.split('=')[1];
+                        });
+                        return query;
+                    }
+                }
+
+                function appendQuery(url, query) {
+                    var parasArr = [];
+
+                    for (var key in query) {
+                        if (query.hasOwnProperty(key)) {
+                            parasArr.push(key + '=' + query[key]);
+                        }
+                    }
+
+                    if (parasArr.length) {
+                        if (url.indexOf('?') === -1) {
+                            url += '?';
+                        } else {
+                            url += '&';
+                        }
+                    }
+
+                    url += parasArr.join('&');
+                    return url;
+                }
+                /* eslint-disable */
+
+                isPC() && redirect();
+                /* eslint-disable fecs-eol-last */
+            })();
+
+            (function () {
+                var shareMetaContent = document.getElementById('shareMetaContent');
+                shareMetaContent && shareMetaContent.remove && shareMetaContent.remove();
+                var shareImg = document.getElementById('shareImg');
+                shareImg && shareImg.remove && shareImg.remove();
+            })();</script><link href=https://mstatic.cdn.bcebos.com/med/web/static/css/app.4c8f0c75.css rel=preload as=style><link href=https://mstatic.cdn.bcebos.com/med/web/static/css/chunk-vendors.1b3a44f4.css rel=preload as=style><link href=https://mstatic.cdn.bcebos.com/med/web/static/js/app.baeda9d6.js rel=preload as=script><link href=https://mstatic.cdn.bcebos.com/med/web/static/js/chunk-vendors.1c890902.js rel=preload as=script><link href=https://mstatic.cdn.bcebos.com/med/web/static/css/chunk-vendors.1b3a44f4.css rel=stylesheet><link href=https://mstatic.cdn.bcebos.com/med/web/static/css/app.4c8f0c75.css rel=stylesheet></head><body><noscript><strong>We're sorry but dist-h5 doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=https://mstatic.cdn.bcebos.com/med/web/static/js/chunk-vendors.1c890902.js></script><script src=https://mstatic.cdn.bcebos.com/med/web/static/js/app.baeda9d6.js></script></body></html>

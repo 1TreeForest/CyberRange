@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>成都电影集团</title>
+    <meta name="keywords" content="成都电影集团,电影集团,电影" />
+    <meta name="description" content="成都电影集团" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="/static/home/css/style.css" />
+    <script type="text/javascript" src="/static/home/js/jquery.min.js"></script>
+    <script type="text/javascript" src='/static/home/js/script.js'></script>
+    <style>
+        /*分页*/
+        #pages {
+            text-align: center;
+        }
+
+        #pages li {
+            margin: 0 2px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            background: #e6e6e6;
+            color: #333;
+            display: inline-block;
+        }
+        #pages li a{
+            font-size: 14px;
+            display: block;
+            padding: 0 12px;
+            color: #333;
+        }
+        #pages li span{
+            font-size: 14px;
+            display: block;
+            padding: 0 12px;
+        }
+        #pages li.active {
+            text-align: center;
+            background: #f90712;
+            color: #fff;
+            display: inline-block;
+        }
+
+        #pages li:hover {
+            background: #f90712;
+        }
+
+        #pages li:hover a {
+            color: #fff;
+        }
+
+        /*面包屑导航*/
+        .tab_nav{
+            width: 100%;
+            height: 44px;
+            border-bottom: 1px solid #D9D9D9;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+        }
+        a,a:hover,a:active,a:visited,a:link,a:focus{
+            outline:none;
+
+            background: none;
+
+            text-decoration: none;
+            margin: 0 auto;
+            color: #333333;
+        }
+        .tab_nav a{
+            color : #999;
+        }
+        .tab_nav a:hover{
+            text-decoration: none;
+            outline-style: none;
+            color: #333;
+        }
+        /*变灰*/
+        .gray {
+            -webkit-filter: grayscale(100%);
+            -moz-filter: grayscale(100%);
+            -ms-filter: grayscale(100%);
+            -o-filter: grayscale(100%);
+            filter: grayscale(100%);
+
+            filter: gray;
+        }
+    </style>
+    
+<link rel="stylesheet" type="text/css" href="/static/home/css/index.css" />
+<link rel="stylesheet" href="/static/home/css/swiper.css">
+<script src="/static/home/js/swiper.js"> </script>
+<script type="text/javascript" src="/static/home/js/jquery.SuperSlide.2.1.js"></script>
+<style>
+    a,a:hover,a:active,a:visited,a:link,a:focus{
+
+        -webkit-tap-highlight-color:rgba(0,0,0,0);
+
+        -webkit-tap-highlight-color: transparent;
+
+        outline:none;
+
+        background: none;
+
+        text-decoration: none;
+        margin: 0 auto;
+        color: #333333;
+
+    }
+</style>
+
+</head>
+<body>
+<header>
+    <div class="nav_content">
+        <a href="/" class="logo_box">
+            <img src="/uploads/images/20201009/a2ff4d82fb03c7a0fa3e42b779a2d93e.png" />
+        </a>
+        <div class="nav_box">
+            <div class="head">
+                <div class="navbox">
+                    <!-- 主菜单 -->
+                    <div class="nav headrg">
+                        <ul class="nav_pc">
+                                                        <li>
+                                <a class="f_a" href="/cms/index/index.html">成影首页</a>
+                                <!--判断是否有子栏目-->
+                                                            </li>
+                                                        <li>
+                                <a class="f_a" href="/cms/index/lists/catid/6.html">成影资讯</a>
+                                <!--判断是否有子栏目-->
+                                                                <div class="s_navbox">
+                                    <div class="s_a">
+                                                                                <a href="/cms/index/lists/catid/10.html" title="成影新闻">成影新闻</a>
+                                                                                <a href="/cms/index/lists/catid/14.html" title="行业资讯">行业资讯</a>
+                                                                                <a href="/cms/index/lists/catid/19.html" title="热点新闻">热点新闻</a>
+                                                                                <a href="/cms/index/lists/catid/9.html" title="成影公告">成影公告</a>
+                                                                                
+                                    </div>
+                                </div>
+                                                            </li>
+                                                        <li>
+                                <a class="f_a" href="/cms/index/lists/catid/20.html">成影产业</a>
+                                <!--判断是否有子栏目-->
+                                                                <div class="s_navbox">
+                                    <div class="s_a">
+                                                                                <a href="/cms/index/lists/catid/24.html" title="影院投资与运营">影院投资与运营</a>
+                                                                                <a href="/cms/index/lists/catid/25.html" title="影视制作与投资">影视制作与投资</a>
+                                                                                <a href="/cms/index/lists/catid/26.html" title="影视综合服务">影视综合服务</a>
+                                                                                <a href="/cms/index/lists/catid/27.html" title="活动策划与运营">活动策划与运营</a>
+                                                                                <a href="/cms/index/lists/catid/28.html" title="公益放映活动">公益放映活动</a>
+                                                                                <a href="/cms/index/lists/catid/29.html" title="院线运营与管理">院线运营与管理</a>
+                                                                                <a href="/cms/index/lists/catid/30.html" title="影视培训与经纪">影视培训与经纪</a>
+                                                                                <a href="/cms/index/lists/catid/31.html" title="园区开发与运营">园区开发与运营</a>
+                                                                                <a href="/cms/index/lists/catid/32.html" title="资产管理与运营">资产管理与运营</a>
+                                                                                
+                                    </div>
+                                </div>
+                                                            </li>
+                                                        <li>
+                                <a class="f_a" href="/cms/index/lists/catid/34.html">成影推荐</a>
+                                <!--判断是否有子栏目-->
+                                                                <div class="s_navbox">
+                                    <div class="s_a">
+                                                                                <a href="/cms/index/lists/catid/34.html" title="成影创作">成影创作</a>
+                                                                                <a href="/cms/index/lists/catid/35.html" title="影片推荐">影片推荐</a>
+                                                                                
+                                    </div>
+                                </div>
+                                                            </li>
+                                                        <li>
+                                <a class="f_a" href="/cms/index/lists/catid/37.html">成影活动</a>
+                                <!--判断是否有子栏目-->
+                                                                <div class="s_navbox">
+                                    <div class="s_a">
+                                                                                <a href="/cms/index/lists/catid/37.html" title="影展">影展</a>
+                                                                                <a href="/cms/index/lists/catid/38.html" title="活动">活动</a>
+                                                                                
+                                    </div>
+                                </div>
+                                                            </li>
+                                                        <li>
+                                <a class="f_a" href="/cms/index/lists/catid/40.html">成影建设</a>
+                                <!--判断是否有子栏目-->
+                                                                <div class="s_navbox">
+                                    <div class="s_a">
+                                                                                <a href="/cms/index/lists/catid/40.html" title="党建园地">党建园地</a>
+                                                                                <a href="/cms/index/lists/catid/41.html" title="团队建设">团队建设</a>
+                                                                                <a href="/cms/index/lists/catid/42.html" title="招贤纳士">招贤纳士</a>
+                                                                                
+                                    </div>
+                                </div>
+                                                            </li>
+                                                        <li>
+                                <a class="f_a" href="/cms/index/lists/catid/49.html">关于成影</a>
+                                <!--判断是否有子栏目-->
+                                                                <div class="s_navbox">
+                                    <div class="s_a">
+                                                                                <a href="/cms/index/lists/catid/49.html" title="集团介绍">集团介绍</a>
+                                                                                <a href="/cms/index/lists/catid/50.html" title="企业文化">企业文化</a>
+                                                                                <a href="/cms/index/lists/catid/51.html" title="组织架构">组织架构</a>
+                                                                                <a href="/cms/index/lists/catid/52.html" title="发展战略">发展战略</a>
+                                                                                
+                                    </div>
+                                </div>
+                                                            </li>
+                                                        <li>
+                                <a class="f_a" href="/cms/index/lists/catid/53.html">联系我们</a>
+                                <!--判断是否有子栏目-->
+                                                            </li>
+                                                        
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav_search">
+            <div class="search_box">
+                <form name="formsearch" action="/cms/index/search.html">
+                    <input style="width: 148px;" type="text" name="keyword" value="" placeholder="搜索" onfocus="if(this.value==defaultValue)this.value=''" onblur="if(this.value=='')this.value=defaultValue"/>
+                    <!--<div class="cearch_logo">
+                        <img src="/static/home/img/index_serch.png" />
+                    </div>-->
+                    <input type="submit" value="" class="fl sub-btn ico" style="    width: 36px;
+    height: 26px;
+    background: rgba(214, 214, 214, 1);
+    opacity: 0.63;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(/static/home/img/index_serch.png);
+    background-repeat:no-repeat;
+    background-size: 14px;
+    background-position-x: 11px;
+    background-position-y: 6px;
+">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</header>
+<!-- 手机端导航--开始 -->
+<div class="m_img">
+    <div class="m_img_box">
+        <div class="headrg">
+            <a href="javascript:;" class="a_js"> <img class="m_menuimg" src="/static/home/img/m_img/m_menuimg.png" /></a>
+        </div>
+        <div class="headlf">
+            <a href="index.html"> <img class="m_logo" src="/uploads/images/20200921/58e12425148f64b558178b67ba3fdc65.png" /></a>
+        </div>
+        <div class="headers">
+            <a href="javascript:;"> <img class="a_suosou" src="/static/home/img/m_img/sousuo.png" /></a>
+        </div>
+    </div>
+</div>
+<div class="m_nav">
+    <div class="closecover a_closed"></div>
+    <div class="m_navList">
+        <div class="closeicon">
+            <div class="close_logo">
+                <a href="javascript:;"> <img src="/uploads/images/20200921/58e12425148f64b558178b67ba3fdc65.png" /></a>
+            </div>
+            <div class="close_guan">
+                <a href="javascript:;" class="a_closed"> <img src="/static/home/img/m_img/cloes.png" /></a>
+            </div>
+        </div>
+
+        <ul>
+                        <li>
+                <!--判断是否有子栏目-->
+                                <div class="m_f_a">
+                    <a href="/cms/index/index.html">成影首页</a>
+                </div>
+                            </li>
+                        <li>
+                <!--判断是否有子栏目-->
+                                <div class="m_f_a">
+                    <a href="javascript:;">成影资讯</a>
+                    <i></i>
+                </div>
+                <div class="m_s_nav">
+                                        <a href="/cms/index/lists/catid/10.html">成影新闻</a>
+                                        <a href="/cms/index/lists/catid/14.html">行业资讯</a>
+                                        <a href="/cms/index/lists/catid/19.html">热点新闻</a>
+                                        <a href="/cms/index/lists/catid/9.html">成影公告</a>
+                                        
+                </div>
+                            </li>
+                        <li>
+                <!--判断是否有子栏目-->
+                                <div class="m_f_a">
+                    <a href="javascript:;">成影产业</a>
+                    <i></i>
+                </div>
+                <div class="m_s_nav">
+                                        <a href="/cms/index/lists/catid/24.html">影院投资与运营</a>
+                                        <a href="/cms/index/lists/catid/25.html">影视制作与投资</a>
+                                        <a href="/cms/index/lists/catid/26.html">影视综合服务</a>
+                                        <a href="/cms/index/lists/catid/27.html">活动策划与运营</a>
+                                        <a href="/cms/index/lists/catid/28.html">公益放映活动</a>
+                                        <a href="/cms/index/lists/catid/29.html">院线运营与管理</a>
+                                        <a href="/cms/index/lists/catid/30.html">影视培训与经纪</a>
+                                        <a href="/cms/index/lists/catid/31.html">园区开发与运营</a>
+                                        <a href="/cms/index/lists/catid/32.html">资产管理与运营</a>
+                                        
+                </div>
+                            </li>
+                        <li>
+                <!--判断是否有子栏目-->
+                                <div class="m_f_a">
+                    <a href="javascript:;">成影推荐</a>
+                    <i></i>
+                </div>
+                <div class="m_s_nav">
+                                        <a href="/cms/index/lists/catid/34.html">成影创作</a>
+                                        <a href="/cms/index/lists/catid/35.html">影片推荐</a>
+                                        
+                </div>
+                            </li>
+                        <li>
+                <!--判断是否有子栏目-->
+                                <div class="m_f_a">
+                    <a href="javascript:;">成影活动</a>
+                    <i></i>
+                </div>
+                <div class="m_s_nav">
+                                        <a href="/cms/index/lists/catid/37.html">影展</a>
+                                        <a href="/cms/index/lists/catid/38.html">活动</a>
+                                        
+                </div>
+                            </li>
+                        <li>
+                <!--判断是否有子栏目-->
+                                <div class="m_f_a">
+                    <a href="javascript:;">成影建设</a>
+                    <i></i>
+                </div>
+                <div class="m_s_nav">
+                                        <a href="/cms/index/lists/catid/40.html">党建园地</a>
+                                        <a href="/cms/index/lists/catid/41.html">团队建设</a>
+                                        <a href="/cms/index/lists/catid/42.html">招贤纳士</a>
+                                        
+                </div>
+                            </li>
+                        <li>
+                <!--判断是否有子栏目-->
+                                <div class="m_f_a">
+                    <a href="javascript:;">关于成影</a>
+                    <i></i>
+                </div>
+                <div class="m_s_nav">
+                                        <a href="/cms/index/lists/catid/49.html">集团介绍</a>
+                                        <a href="/cms/index/lists/catid/50.html">企业文化</a>
+                                        <a href="/cms/index/lists/catid/51.html">组织架构</a>
+                                        <a href="/cms/index/lists/catid/52.html">发展战略</a>
+                                        
+                </div>
+                            </li>
+                        <li>
+                <!--判断是否有子栏目-->
+                                <div class="m_f_a">
+                    <a href="/cms/index/lists/catid/53.html">联系我们</a>
+                </div>
+                            </li>
+                        
+        </ul>
+    </div>
+</div>
+<!-- 手机端导航--结束 -->
+
+
+<!--轮播部分-->
+<div class="slider">
+    <div id="slideBox" class="slideBox">
+        <div class="hd">
+            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                
+            </ul>
+        </div>
+        <div class="bd">
+            <ul>
+                                <li><img src="/uploads/images/20210406/237125de6e7ad0ceaa3e1030fbadd1cd.png" /></li>
+                                <li><img src="/uploads/images/20201009/4e5024fafec1b17d99f87a118ea8a3f3.png" /></li>
+                                <li><img src="/uploads/images/20210406/ebb7de6669d6f60b2d68ee755b8182f1.jpg" /></li>
+                                <li><img src="/uploads/images/20210406/2ab7f595b5ea08a906d6794a0f8a3143.jpg" /></li>
+                                <li><img src="/uploads/images/20220222/5e37bd0fd06d2fea540f0e8209eddf4f.png" /></li>
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 成影咨询 -->
+<div class="consult_box">
+    <div class="consult_content" style="background-image: url(/static/home/img/bg/zixunbg.png);background-size: cover;">
+        <div class="consult_header_box">
+            <div class="consult_header_title">
+                <span>成影</span><span class="red">资讯</span>
+            </div>
+            <div class="consult_header_news">
+                <span>NEWS</span>
+            </div>
+        </div>
+
+        <div class="consult_news_box">
+            <div class="consult_news_nav" id="consult_news_nav1">
+                <div class="consult_news_title" data-cid="10">成影新闻</div>
+                <div class="consult_news_title" data-cid="14">行业资讯</div>
+                <div class="consult_news_title" data-cid="19">热点新闻</div>
+                <div class="consult_news_title" data-cid="9">成影公告</div>
+            </div>
+            <div class="consult_news_content_box">
+
+                <div class="cynews_box" >
+                                        <div class="cynews_item_box" onclick="window.location.href='/cms/index/shows/catid/10/id/146.html'" style="cursor: pointer">
+                        <div class="cynews_item_left">
+                            <img src="/uploads/images/20220101/6a6b652bfe55d931e165ced1ead78b09.jpg" />
+                        </div>
+                        <div class="cynews_item_right">
+                            <div class="cynews_item_title"><span>成都电影集团旗下成影国际影城温江店盛大开业</span></div>
+                            <div class="cynews_item_content"><span>2021年12月31日，成都电影集团旗下成影国际影城温江店盛大开业。影城拥有10个超亮激光放映厅，可以容纳1198名观众同时入座，影院座椅全部采用舒适的沙发座椅，给观众带来更佳的观影体验。目前行业放映2D影片的亮度标准是14朗伯，成影国际影城的2D影片亮度可高达30朗伯，更高的亮度有助于展现更丰富的影片细节和更加绚烂的色彩层次。除此以外，成影国际影城还拥有一个20米幕宽的4K120帧杜比全景声巨幕厅。传统的电影，每一秒视频...</span></div>
+                            <div class="cynews_item_timer">
+                                <div>2021-12-31</div>
+                                <div>view more</div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="cynews_item_box" onclick="window.location.href='/cms/index/shows/catid/10/id/147.html'" style="cursor: pointer">
+                        <div class="cynews_item_left">
+                            <img src="/uploads/images/20220130/98899623a01c1b8762e0692e351ab425.png" />
+                        </div>
+                        <div class="cynews_item_right">
+                            <div class="cynews_item_title"><span>成都电影集团2021年终总结大会</span></div>
+                            <div class="cynews_item_content"><span> 回首2021，既有艰难险阻，也有满满收获。2022年1月29日，成都市电影集团有限责任公司2021年年终总结大会在成都温江区成影国际影城1号厅召开。集团董事长及各部门负责人对2021年工作总结及2022年工作规划进行全面汇报。一、成影国际影城花木沐里影院成都电影集团旗下的成影国际影城温江店于2021年12月31日盛大开业。影城拥有10个超亮激光放映厅，和一个电影放映领域最高技术标准的全景声巨幕厅，以及极具创新体验的天幕影厅。为不同...</span></div>
+                            <div class="cynews_item_timer">
+                                <div>2022-01-30</div>
+                                <div>view more</div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="cynews_item_box" onclick="window.location.href='/cms/index/shows/catid/10/id/112.html'" style="cursor: pointer">
+                        <div class="cynews_item_left">
+                            <img src="/uploads/images/20210407/3a3103b2a71d58934d940e0bdb201fae.png" />
+                        </div>
+                        <div class="cynews_item_right">
+                            <div class="cynews_item_title"><span>成都市电影集团有限责任公司召开2021年度工作会</span></div>
+                            <div class="cynews_item_content"><span>3月31日，成都市电影集团有限责任公司召开2021年度工作会，会议听取了各经营部门2021年经营工作计划和措施，对集团2021年度经营工作进行了安排，集团党委书记、董事长邓尚宏在会上作题为《乘风破浪、砥砺前行，奋力突破当前困局，开创高质量发展新局面》的讲话，全面总结集团一年来主要工作，对当前形势、面临的机遇和挑战，对集团党委2021年度工作进行了安排部署，并就落实好2021年度各项工作提出了具体要求。会议认为，2020年是电...</span></div>
+                            <div class="cynews_item_timer">
+                                <div>2021-04-02</div>
+                                <div>view more</div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="cynews_item_box" onclick="window.location.href='/cms/index/shows/catid/10/id/113.html'" style="cursor: pointer">
+                        <div class="cynews_item_left">
+                            <img src="/uploads/images/20210427/36fa878a36aa7afcc918ba22b2518b6c.png" />
+                        </div>
+                        <div class="cynews_item_right">
+                            <div class="cynews_item_title"><span>成都市广播电视台党委书记、台长曾义同志到成都电影集团调研</span></div>
+                            <div class="cynews_item_content"><span>2021年4月21日下午，成都市广播电视台党委书记、台长曾义同志率队来到成都市电影集团有限责任公司（下称&ldquo;集团&rdquo;）调研指导工作。调研组对沙河电影院进行实地考察，详细了解影院建设及经营管理情况，并在集团召开调研座谈会，听取集团近年工作情况暨下一步发展思路的汇报，对集团改革发展提出具体要求。曾义同志充分肯定集团党委带领全体员工多年来迎难而上、负重前行的坚持和努力，集团领导班子在压力大、负担重的情况下依然努力解...</span></div>
+                            <div class="cynews_item_timer">
+                                <div>2021-04-27</div>
+                                <div>view more</div>
+                            </div>
+                        </div>
+                    </div>
+                                        
+                </div>
+
+                <div class="consult_news_content" style="display: none;">
+                    <div class="consult_news left">
+                                                
+                    </div>
+                    <div class="consult_news right">
+                                                <a href="/cms/index/shows/catid/14/id/72.html">
+                            <div class="consult_news_item_box">
+                                <div class="consult_news_item">
+                                    <span class="consult_news_item_title">国家电影局召开应对疫情工作会议：中国电影仍然处在...</span>
+                                    <span class="consult_news_item_time">2020-04-30</span>
+                                </div>
+                                <div class="consult_news_item_content">
+                                    <span>2020年4月29日，国家电影局召开电影系统应对疫情工作视频会议，中宣部常务副部长、国家电影局局长王晓晖主持并讲话。
+
+</span>
+                                </div>
+                            </div>
+                        </a>
+                                                <a href="/cms/index/shows/catid/14/id/94.html">
+                            <div class="consult_news_item_box">
+                                <div class="consult_news_item">
+                                    <span class="consult_news_item_title">献礼党的百年华诞&nbsp;百部优秀国产影片将集中展映</span>
+                                    <span class="consult_news_item_time">2021-03-22</span>
+                                </div>
+                                <div class="consult_news_item_content">
+                                    <span>人民网眉山3月19日电 （记者王明峰）为庆祝中国共产党成立100周年，助推党史学习教育走心、走实、走深，3月19日，中共四川省委宣...</span>
+                                </div>
+                            </div>
+                        </a>
+                                                
+                    </div>
+                </div>
+
+                <div class="cynews_box" style="display: none;">
+                                        <div class="cynews_item_box" onclick="window.location.href='/cms/index/shows/catid/19/id/75.html'" style="cursor: pointer">
+                        <div class="cynews_item_left">
+                            <img src="/uploads/images/20200922/2c60bd1cace174874e7dede79906860c.png" />
+                        </div>
+                        <div class="cynews_item_right">
+                            <div class="consult_news_item_title"><span>金沙院线科教影片 《环保侠之节能低碳从我做起》拍摄制作项目比选文件</span></div>
+                            <div class="cynews_item_content"><span>目录第1章比选邀请函2第2章比选须知42.1.比选须知前附表4第3章项目描述及要求53.1.项目背景53.2.内容53.3.项目完成时间53.4.成果53.5.最高限价5第4章评选办法及评分标准64.1.评选办法64.2.评分标准64.3.中选人产生办法7第5章比选响应文件格式75.1.比选函格式85.2.开选一览表格式105.3.法定代表人身份证明书115.4.法定代表人授权书格式125.5.比选申请人资格及相关证明文件格式135.6.比选申请人情况一览表155.7.拍摄方案及承诺165.8....</span></div>
+                            <div class="cynews_item_timer">
+                                <div>2019-10-22</div>
+                                <div>view more</div>
+                            </div>
+                        </div>
+                    </div>
+                                        
+                </div>
+
+                <div class="consult_news_content" style="display: none;">
+                    <div class="consult_news left">
+                        <div class="consult_news_logo" >
+                            <img src="/static/home/img/chengyinggonggao.png" />
+                        </div>
+                    </div>
+                    <div class="consult_news right">
+                                                <a href="/cms/index/shows/catid/9/id/122.html">
+                            <div class="consult_news_item_box">
+                                <div class="consult_news_item">
+                                    <span class="consult_news_item_title">成都市电影集团有限责任公司承办第二十四届上海国际...</span>
+                                    <span class="consult_news_item_time">2021-05-25</span>
+                                </div>
+                                <div class="consult_news_item_content">
+                                    <span>成都市电影集团有限责任公司对&ldquo;成都市电影集团有限责任公司承办第二十四届上海国际电影节电影市场四川展台设计搭建采购项目&rdquo;进...</span>
+                                </div>
+                            </div>
+                        </a>
+                                                <a href="/cms/index/shows/catid/9/id/135.html">
+                            <div class="consult_news_item_box">
+                                <div class="consult_news_item">
+                                    <span class="consult_news_item_title">成都市电影集团有限责任公司 &ldquo;成都国际电影IP中心...</span>
+                                    <span class="consult_news_item_time">2021-07-05</span>
+                                </div>
+                                <div class="consult_news_item_content">
+                                    <span>一、采购项目名称：成都市电影集团有限责任公司&ldquo;成都国际电影IP中心&rdquo;项目介绍视频制作服务采购项目二、采购人：成都市电影集...</span>
+                                </div>
+                            </div>
+                        </a>
+                                                <a href="/cms/index/shows/catid/9/id/119.html">
+                            <div class="consult_news_item_box">
+                                <div class="consult_news_item">
+                                    <span class="consult_news_item_title">成都市电影集团有限责任公司2021-2022年工程项目造价...</span>
+                                    <span class="consult_news_item_time">2021-05-11</span>
+                                </div>
+                                <div class="consult_news_item_content">
+                                    <span>成都市电影集团有限责任公司对&ldquo;成都市电影集团有限责任公司2021-2022年工程项目造价审计机构采购项目&rdquo;进行询比，兹邀请符合要求...</span>
+                                </div>
+                            </div>
+                        </a>
+                                                <a href="/cms/index/shows/catid/9/id/126.html">
+                            <div class="consult_news_item_box">
+                                <div class="consult_news_item">
+                                    <span class="consult_news_item_title">成都市电影集团有限责任公司承办 第二十四届上海国际...</span>
+                                    <span class="consult_news_item_time">2021-06-02</span>
+                                </div>
+                                <div class="consult_news_item_content">
+                                    <span>成都市电影集团有限责任公司对&ldquo;成都市电影集团有限责任公司承办第二十四届上海国际电影节电影市场四川展台宣传片制作采购项目&rdquo;...</span>
+                                </div>
+                            </div>
+                        </a>
+                                                
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="consult_boot" id="clickViewMore">
+            <div class="consult_boot_end">
+                <span>VIEW MORE</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 影视推荐 -->
+<div class="consult_box">
+    <div class="consult_content" style="background-image: url(/static/home/img/bg/tuijianbg.png);background-size: cover;">
+        <div class="consult_header_box">
+            <div class="consult_header_title">
+                <span class="bai">影片</span><span class="red">推荐</span>
+            </div>
+            <div class="consult_header_news">
+                <span>RECOMMEND</span>
+            </div>
+        </div>
+
+        <!-- 推荐轮播 -->
+
+        <div class="tuilb">
+            <div class="swiper-container tuilb">
+                <div class="swiper-wrapper">
+                                            <div  class="swiper-slide" href="/cms/index/shows/catid/35/id/7.html">
+                            <img src="/uploads/images/20220222/f1d27fc429c905e8f2dcf0faaaa691d3.jpg" />
+                            <div class="move_jian">
+                                <p>奇迹&middot;笨小孩</p>
+                                <p><span>导演：</span><span>文牧野</span></p>
+                                <p><span>上映时间：</span><span>2022-02-01</span></p>
+                            </div>
+                        </div>
+                                            <div  class="swiper-slide" href="/cms/index/shows/catid/35/id/8.html">
+                            <img src="/uploads/images/20220222/e0576adf8e5438a5a887375ac6acc30f.jpg" />
+                            <div class="move_jian">
+                                <p>花束般的恋爱 </p>
+                                <p><span>导演：</span><span>土井裕泰</span></p>
+                                <p><span>上映时间：</span><span>2022-02-22</span></p>
+                            </div>
+                        </div>
+                                            <div  class="swiper-slide" href="/cms/index/shows/catid/35/id/12.html">
+                            <img src="/uploads/images/20210406/461c3c4591e8b89adcf77aa283464563.jpg" />
+                            <div class="move_jian">
+                                <p>第十一回</p>
+                                <p><span>导演：</span><span>陈建斌</span></p>
+                                <p><span>上映时间：</span><span>2021-04-02</span></p>
+                            </div>
+                        </div>
+                                            <div  class="swiper-slide" href="/cms/index/shows/catid/35/id/13.html">
+                            <img src="/uploads/images/20220222/eca7985646174d6f509ecfd6ae060347.jpg" />
+                            <div class="move_jian">
+                                <p>这个杀手不太冷静</p>
+                                <p><span>导演：</span><span>邢文雄</span></p>
+                                <p><span>上映时间：</span><span>2022-02-01</span></p>
+                            </div>
+                        </div>
+                                            <div  class="swiper-slide" href="/cms/index/shows/catid/35/id/14.html">
+                            <img src="/uploads/images/20220222/5a478d10a7613249a588fa274f404ee4.jpg" />
+                            <div class="move_jian">
+                                <p>长津湖之水门桥</p>
+                                <p><span>导演：</span><span>徐克</span></p>
+                                <p><span>上映时间：</span><span>2022-02-01</span></p>
+                            </div>
+                        </div>
+                                        
+                </div>
+            </div>
+
+            <!-- 如果需要导航按钮 -->
+            <div class="swiper-button-prev swiper-button-prev1">
+                <img src="/static/home/img/zou.png" />
+            </div>
+            <div class="swiper-button-next swiper-button-next1">
+                <img src="/static/home/img/you.png" />
+            </div>
+        </div>
+
+        <a href="/cms/index/lists/catid/35.html">
+            <div class="consult_boot">
+                <div class="consult_boot_end">
+                    <span>VIEW MORE</span>
+                </div>
+            </div>
+        </a>
+
+    </div>
+</div>
+
+
+<!-- 影展活动 -->
+<div class="consult_box">
+    <div class="consult_content" style="background-image: url(/static/home/img/huodong.png);background-size: cover;">
+        <div class="consult_header_box">
+            <div class="consult_header_title">
+                <span class="">影展</span><span class="red">活动</span>
+            </div>
+            <div class="consult_header_news">
+                <span>EXHIBITION</span>
+            </div>
+        </div>
+
+        <!-- uihsdf轮播 -->
+        <div class="huodong_box">
+            <div class="swiper-container huodong">
+                <div class="swiper-wrapper">
+                                        <a class="swiper-slide huodong_box_item" href="/cms/index/shows/catid/37/id/24.html">
+                        <img src="/uploads/images/20210407/a482beb1daa228239b4b5c8febfa9c25.jpg" />
+						<div class="huodong_title">联一支部专题学习会</div>
+                    </a>
+                                        <a class="swiper-slide huodong_box_item" href="/cms/index/shows/catid/37/id/23.html">
+                        <img src="/uploads/images/20210929/18b5cda9fded513e9cbeb8fb87e89e26.png" />
+						<div class="huodong_title">联一支部专题学习会</div>
+                    </a>
+                                        
+                </div>
+            </div>
+
+            <!-- 如果需要导航按钮 -->
+            <div class="swiper-button-prev swiper-button-prev2">
+                <img src="/static/home/img/zou.png" />
+            </div>
+            <div class="swiper-button-next swiper-button-next2">
+                <img src="/static/home/img/you.png" />
+            </div>
+        </div>
+        <a href="/cms/index/lists/catid/37.html">
+            <div class="consult_boot">
+                <div class="consult_boot_end">
+                    <span>VIEW MORE</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+<!-- 底部开始 -->
+<div class="footer">
+    <div class="footer_content">
+        <div class="link_box">
+            <div class="link_title">友情链接：</div>
+            <div class="link_adder">
+                                <a class="l_j" href="https://movie.sichuanhgs.com/" target="_blank">成都市影视服务中心</a>
+                                
+            </div>
+        </div>
+        <div class="xian"></div>
+        <div class="erwm">
+            <div class="er_logo">
+                <img src="/uploads/images/20200921/e49feb2e14561b4816dbc5813360b0ac.png" style="width: 120px;height: 120px;"/>
+                <span>微信公众号</span>
+            </div>
+            <div class="er_logo">
+                <img src="/uploads/images/20200921/e49feb2e14561b4816dbc5813360b0ac.png" style="width: 120px;height: 120px;"/>
+                <span>微博</span>
+            </div>
+        </div>
+        <div class="footer_logo">
+            <img src="/uploads/images/20201009/a2ff4d82fb03c7a0fa3e42b779a2d93e.png">
+            <span>COPYRIGHT © 2019 成都电影集团有限公司 ALL RIGHTS RESERVED. <a href="https://beian.miit.gov.cn" target="_blank" style="color:rgba(153,153,153,1)">蜀ICP备15016111号-1</a> 技术支持：<a href="https://www.scwjnet.com/" target="_blank" style="color: rgba(153,153,153,1)">五佳网络</a></span>
+        </div>
+    </div>
+</div>
+<!-- PC-底部结束 -->
+<!-- 手机端底部 -->
+<div class="m-footer">
+    <div class="m_footer_content">
+        <div class="m_footer_top">
+            <div class="d_xian"></div>
+            <div class="m_l_j">友情链接</div>
+            <div class="z_xian"></div>
+        </div>
+        <div class="m_link_adder">
+                        <a class="m_l_j" href="https://movie.sichuanhgs.com/" target="_blank">成都市影视服务中心</a>
+                        
+        </div>
+        <div class="m_footer_log">
+            <img src="/uploads/images/20200921/58e12425148f64b558178b67ba3fdc65.png" />
+        </div>
+        <span class="text">COPYRIGHT © 2019 成都电影集团有限公司 ALL RIGHTS RESERVED. <a href="https://beian.miit.gov.cn" target="_blank" style="color:rgba(153,153,153,1)">蜀ICP备15016111号-1</a> 技术支持：<a href="https://www.scwjnet.com/" target="_blank" style="color: rgba(153,153,153,1)">五佳网络</a></span>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    //加载页面时执行一次
+    changeMargin();
+    function changeMargin() {
+        //获取网页可见区域宽度
+        var docWidth = document.body.clientWidth;
+        if (docWidth >= 1200) {
+            var mySwiper = new Swiper('.tuilb', {
+                slidesPerView: 4,
+                slidesPerGroup: 1,
+                spaceBetween: 20,
+                autoplay:true,
+                loop : true,
+                // 如果需要前进后退按钮
+                navigation: {
+                    nextEl: '.swiper-button-next1',
+                    prevEl: '.swiper-button-prev1',
+                },
+            })
+            var mySwiper2 = new Swiper('.huodong', {
+                slidesPerView: 3,
+                slidesPerGroup: 1,
+                spaceBetween: 20,
+                autoplay:true,
+                loop : true,
+                // 如果需要前进后退按钮
+                navigation: {
+                    nextEl: '.swiper-button-next2',
+                    prevEl: '.swiper-button-prev2',
+                },
+            })
+        }else{
+            var mySwiper = new Swiper('.tuilb', {
+                slidesPerView: 2,
+                slidesPerGroup: 1,
+                spaceBetween: 20,
+                autoplay:true,
+                loop : true,
+                // 如果需要前进后退按钮
+                navigation: {
+                    nextEl: '.swiper-button-next1',
+                    prevEl: '.swiper-button-prev1',
+                },
+            })
+            var mySwiper2 = new Swiper('.huodong', {
+                slidesPerView: 2,
+                slidesPerGroup: 1,
+                spaceBetween: 20,
+                autoplay:true,
+                loop : true,
+                // 如果需要前进后退按钮
+                navigation: {
+                    nextEl: '.swiper-button-next2',
+                    prevEl: '.swiper-button-prev2',
+                },
+            })
+        }
+    };
+
+    $(".slideBox").slide({
+        mainCell: ".bd ul",
+        effect: "leftLoop",
+        vis: "auto",
+        autoPlay: true,
+        trigger: "mouseover"
+    });
+
+    $(function() {
+        $(".consult_news_title").each(function() {
+            var index = $(this).index();
+            // 初始化
+            $(".consult_news_title").eq(0).addClass("active");
+            $(this).click(function() {
+                // 点击某个元素时，给这个元素添加active类，其余兄弟元素的active类都取消
+                $(this).addClass("active").siblings().removeClass("active");
+                $(".consult_news_content_box>div").eq(index).stop(true).show().siblings().stop(true).hide();
+            })
+        })
+    })
+
+	$(".huodong_title").hover(function(){
+		$(this).addClass("huodong_title_active");
+	},function(){
+		$(this).removeClass("huodong_title_active");
+	});
+	
+    $('#clickViewMore').click(function(){
+        var cid = $('#consult_news_nav1').find('.active').data('cid')
+        window.location.href = "/cms/index/lists.html?catid="+cid;
+    })
+</script>
+
+</body>
+</html>
