@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML><HEAD><TITLE>人文艺术学院</TITLE><META Name="keywords" Content="人文艺术学院" />
+
+
+
+
+
+<META content="text/html; charset=UTF-8" http-equiv="Content-Type"><LINK rel="stylesheet" type="text/css" href="dfiles/14273/images/rw_index.jpg.css"><LINK rel="stylesheet" type="text/css" href="dfiles/14273/images/rw_style.jpg.css"><LINK rel="stylesheet" type="text/css" href="dfiles/14273/images/rw_css.jpg.css">
+<STYLE type="text/css">
+
+</STYLE>
+<script type="text/javascript" src="dfiles/14273/images/rw_jquery.js"></script><script type="text/javascript" src="dfiles/14273/images/rw_slide.js"></script><script src="dfiles/14273/images/jquery.min.js" type="text/javascript"></script><script type="text/javascript" src="dfiles/14273/images/jquery.caroufredsel-packed.js"></script><script type="text/javascript">
+			$(function() {
+				$('#slider').carouFredSel({
+					width: '100%',
+					align: false,
+					items: 3,
+					items: {
+						width: $('#banner').width() * 0.15,
+						height: 345,
+						visible: 1,
+						minimum: 1
+					},
+					scroll: {
+						items: 1,
+						timeoutDuration : 5000,
+						onBefore: function(data) {
+			
+							//	find current and next slide
+							var currentSlide = $('.slide.active', this),
+								nextSlide = data.items.visible,
+								_width = $('#banner').width();
+			
+							//	resize currentslide to small version
+							currentSlide.stop().animate({
+								width: _width * 0.15
+							});		
+							currentSlide.removeClass( 'active' );
+			
+							//	hide current block
+							data.items.old.add( data.items.visible ).find( '.slide-block' ).stop().fadeOut();					
+			
+							//	animate clicked slide to large size
+							nextSlide.addClass( 'active' );
+							nextSlide.stop().animate({
+								width: _width * 0.7
+							});						
+						},
+						onAfter: function(data) {
+							//	show active slide block
+							data.items.visible.last().find( '.slide-block' ).stop().fadeIn();
+						}
+					},
+					onCreate: function(data){
+			
+						//	clone images for better sliding and insert them dynamacly in slider
+						var newitems = $('.slide',this).clone( true ),
+							_width = $('#banner').width();
+
+						$(this).trigger( 'insertItem', [newitems, newitems.length, false] );
+			
+						//	show images 
+						$('.slide', this).fadeIn();
+						$('.slide:first-child', this).addClass( 'active' );
+						$('.slide', this).width( _width * 0.15 );
+			
+						//	enlarge first slide
+						$('.slide:first-child', this).animate({
+							width: _width * 0.7
+						});
+			
+						//	show first title block and hide the rest
+						$(this).find( '.slide-block' ).hide();
+						$(this).find( '.slide.active .slide-block' ).stop().fadeIn();
+					}
+				});
+			
+				//	Handle click events
+				$('#slider').children().click(function() {
+					$('#slider').trigger( 'slideTo', [this] );
+				});
+			
+				//	Enable code below if you want to support browser resizing
+				$(window).resize(function(){
+			
+					var slider = $('#slider'),
+						_width = $('#wrapper').width();
+			
+					//	show images
+					slider.find( '.slide' ).width( _width * 0.15 );
+			
+					//	enlarge first slide
+					slider.find( '.slide.active' ).width( _width * 0.7 );
+			
+					//	update item width config
+					slider.trigger( 'configuration', ['items.width', _width * 0.15] );
+				});
+
+			});
+		</script>
+
+
+<!--Announced by Visual SiteBuilder 9-->
+<link rel="stylesheet" type="text/css" href="_sitegray/_sitegray_d.css" />
+<script language="javascript" src="_sitegray/_sitegray.js"></script>
+<!-- CustomerNO:77656262657232307b78475c53575742000000034157 -->
+<link rel="stylesheet" type="text/css" href="index.vsb.css" />
+<script type="text/javascript" src="/system/resource/js/counter.js"></script>
+<script type="text/javascript">_jsq_(1001,'/index.jsp',-1,1527093859)</script>
+</HEAD>
+<BODY>
+<DIV id="warpper">
+<DIV id="warpper">
+<DIV id="header">
+<!-- 网站logo图片地址请在本组件"内容配置-网站logo"处填写 -->
+
+
+<a href="index.htm" title="人文艺术学院"><img id="logo" src="images/rw-logo.jpg" width="195" height="37" alt="logo" /></a></A>
+<DIV id="menu"><ul id="nav">
+
+    <li class="mainlevel" id="mainlevel_01"><a href="xyxw.htm" title="学院新闻">学院新闻</a> 
+</li>
+
+    <li class="mainlevel" id="mainlevel_02"><a href="jxgl.htm" title="教学管理">教学管理</a> 
+</li>
+
+    <li class="mainlevel" id="mainlevel_03"><a href="xsky.htm" title="学术科研">学术科研</a> 
+</li>
+
+    <li class="mainlevel" id="mainlevel_04"><a href="dqgz.htm" title="党群工作">党群工作</a> 
+</li>
+
+    <li class="mainlevel" id="mainlevel_05"><a href="xtgz.htm" title="学团工作">学团工作</a> 
+</li>
+
+    <li class="mainlevel" id="mainlevel_06"><a href="jyzd.htm" title="就业指导">就业指导</a> 
+</li>
+
+    <li class="mainlevel" id="mainlevel_07"><a title="学院概况">学院概况</a> 
+		<ul id="sub_06">
+
+    <li><a href="xygk/szll.htm" title="师资力量">师资力量</a></li>
+
+    <li><a href="xygk/xyjj.htm" title="学院简介">学院简介</a></li>
+    </ul>
+</li>
+
+    <li class="mainlevel" id="mainlevel_08"><a href="xygg.htm" title="学院公告">学院公告</a> 
+</li>
+    <div class="clear"></div>
+
+</ul>
+</DIV></DIV><!--end of header -->
+<DIV id="content">    <script language="javascript" src="/system/resource/js/dynclicks.js"></script>
+<div id="banner_bg">
+        <div id="banner">
+          <div id="slider">
+            <div class="slide" style="background-image: url(images/19/02/12/1ge8lqdb82/rw_banner2.jpg);">
+              <div class="slide-block">
+                <h4>弧形广场</h4>
+              </div>
+            </div>
+            <div class="slide" style="background-image: url(images/19/02/12/1ge8lqdb82/rw_banner1.jpg);">
+              <div class="slide-block">
+                <h4>漂亮的小树林</h4>
+              </div>
+            </div>
+            <div class="slide" style="background-image: url(images/19/02/12/1ge8lqdb82/rw_banner4.jpg);">
+              <div class="slide-block">
+                <h4>人工湖</h4>
+              </div>
+            </div>
+            
+          </div>
+        </div><!--end of banner -->
+     </div><!--end of banner_bg -->
+<DIV id="text"><!--end of text --><script language="javascript" src="/system/resource/js/news/mp4video.js"></script>
+<p>山东工艺美术学院之人文艺术学院创建于1999年，前身为“艺术设计学系”，2003年更名为“艺术学系”，2006年更名为“人文艺术学院”</p> 
+<p>自建院以来，人文艺术学院始终秉承以学生为本的育人理念，坚持以教学为中心，学生为主体，教师为主导的教学环境</p></DIV><!--end of banner_bg -->
+<UL id="summary">
+<LI id="jxgl">
+<DIV>                            <img src="images/19/02/12/1oeawt4b0s/rw_summary.jpg" border="0" width="195" height="112">
+</DIV>
+<H1><A href="jxgl.htm" target="">教学管理</A></H1><script language="javascript" src="/system/resource/js/centerCutImg.js"></script><script language="javascript" src="/system/resource/js/ajax.js"></script>
+
+<ul>
+
+     <li class="indexbt"><a href="info/1003/1916.htm" target="_blank" title="人文艺术学院举办2021级新生见面会">人文艺术学院举办2021级新...</a></li>
+
+     <li class="indexbt"><a href="info/1003/1573.htm" target="_blank" title="人文艺术学院召开全体教职工会议">人文艺术学院召开全体教职...</a></li>
+
+     <li class="indexbt"><a href="info/1003/1159.htm" target="_blank" title="人文艺术学院召开人才培养方案研讨会">人文艺术学院召开人才培养...</a></li>
+
+     <li class="indexbt"><a href="info/1003/1157.htm" target="_blank" title="人文艺术学院2018届毕业论文答辩顺利结束">人文艺术学院2018届毕业论...</a></li>
+    
+       </ul><script>_showDynClickBatch(['dynclicks_u5_1916','dynclicks_u5_1573','dynclicks_u5_1159','dynclicks_u5_1157'],[1916,1573,1159,1157],"wbnews", 1527093859)</script>
+</LI>
+<LI id="xsky">
+<DIV>                            <img src="images/19/02/12/1oeawt4b0s/rw_summary.jpg" border="0" width="195" height="112">
+</DIV>
+<H1><A href="xsky.htm" target="">学术科研</A></H1>
+
+<ul>
+
+     <li class="indexbt"><a href="info/1004/1941.htm" target="_blank" title="文化创意人才培养课程实录片段">文化创意人才培养课程实录片段</a></li>
+
+     <li class="indexbt"><a href="info/1004/1624.htm" target="_blank" title="人文艺术学院携手凤凰网、欧拉汽车举办“艺术与设计共创”主题公开课">人文艺术学院携手凤凰网、...</a></li>
+
+     <li class="indexbt"><a href="info/1004/1623.htm" target="_blank" title="董占军出席大广节学院奖2019创意大讲堂济南站巡讲活动">董占军出席大广节学院奖201...</a></li>
+
+     <li class="indexbt"><a href="info/1004/1155.htm" target="_blank" title="山东工艺美术学院建院45周年系列学术活动 山东工艺美术学院首届艺术学博士论坛邀请函">山东工艺美术学院建院45周...</a></li>
+    
+       </ul><script>_showDynClickBatch(['dynclicks_u7_1941','dynclicks_u7_1624','dynclicks_u7_1623','dynclicks_u7_1155'],[1941,1624,1623,1155],"wbnews", 1527093859)</script>
+</LI>
+<LI id="dqgz">
+<DIV>                            <img src="images/19/02/12/1oeawt4b0s/rw_summary.jpg" border="0" width="195" height="112">
+</DIV>
+<H1><A href="dqgz.htm" target="">党群工作</A></H1>
+
+<ul>
+
+     <li class="indexbt"><a href="info/1005/1953.htm" target="_blank" title="人文艺术学院学生党支部召开预备党员转正大会">人文艺术学院学生党支部召...</a></li>
+
+     <li class="indexbt"><a href="info/1005/1948.htm" target="_blank" title="人文艺术学院学生党支部召开接收预备党员大会">人文艺术学院学生党支部召...</a></li>
+
+     <li class="indexbt"><a href="info/1005/1940.htm" target="_blank" title="人文艺术学院学生党支部召开支部大会推荐党员发展对象">人文艺术学院学生党支部召...</a></li>
+
+     <li class="indexbt"><a href="info/1005/1939.htm" target="_blank" title="人文艺术学院学生党支部召开预备党员转正大会">人文艺术学院学生党支部召...</a></li>
+    
+       </ul><script>_showDynClickBatch(['dynclicks_u9_1953','dynclicks_u9_1948','dynclicks_u9_1940','dynclicks_u9_1939'],[1953,1948,1940,1939],"wbnews", 1527093859)</script>
+</LI>
+<LI id="xtgz">
+<DIV>                            <img src="images/19/02/12/1oeawt4b0s/rw_summary.jpg" border="0" width="195" height="112">
+</DIV>
+<H1><A href="xtgz.htm" target="">学团工作</A></H1>
+
+<ul>
+
+     <li class="indexbt"><a href="info/1006/1942.htm" target="_blank" title="人文艺术学院新媒体运营工作交流会">人文艺术学院新媒体运营工...</a></li>
+
+     <li class="indexbt"><a href="info/1006/1938.htm" target="_blank" title="人文艺术学院召开学生干部例会">人文艺术学院召开学生干部例会</a></li>
+
+     <li class="indexbt"><a href="info/1006/1937.htm" target="_blank" title="人文艺术学院团总支开展主题团课活动（七）——“三下乡”社会实践活动">人文艺术学院团总支开展主...</a></li>
+
+     <li class="indexbt"><a href="info/1006/1936.htm" target="_blank" title="人文艺术学院团总支开展主题团课活动（六）——“爱校如家”">人文艺术学院团总支开展主...</a></li>
+    
+       </ul><script>_showDynClickBatch(['dynclicks_u11_1942','dynclicks_u11_1938','dynclicks_u11_1937','dynclicks_u11_1936'],[1942,1938,1937,1936],"wbnews", 1527093859)</script>
+</LI></UL></DIV><!--end of content -->
+<DIV id="footer"><!-- 版权内容请在本组件"内容配置-版权"处填写 -->
+<p id="copyright">版权所有@山东工艺美术学院人文艺术学院</p>    <ul id="service">
+  <li>
+
+                        <img id="to-top" src="images/19/02/12/1f5bcijb96/rw_footer4.png" border="0" width="15" height="15">
+
+
+</li>
+  <li>
+
+                        <img src="images/19/02/12/1f5bcijb96/rw_footer3.png" border="0" width="15" height="15">
+
+
+</li>
+  <li>
+
+                        <img src="images/19/02/12/1f5bcijb96/rw_footer2.png" border="0" width="15" height="15">
+
+
+</li>
+  <li>
+
+                        <img src="images/19/02/12/1f5bcijb96/rw_footer1.png" border="0" width="15" height="15">
+
+
+</li>
+  
+  </ul>
+
+<script type="text/javascript">
+$("#to-top").click(function(){
+                if ($('html').scrollTop()) {
+                    $('html').animate({ scrollTop: 0 }, 200);//动画效果
+                    return false;
+                }
+                $('body').animate({ scrollTop: 0 }, 200);
+                return false;
+            });
+</script></DIV><!--end of footer --></DIV><!--end of warpper --></DIV>
+
+</BODY></HTML>

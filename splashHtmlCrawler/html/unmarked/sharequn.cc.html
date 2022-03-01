@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="shenma-site-verification" content="381a53da120f8b4190fe9eb74f58e28c_1547320056">
+<title>百度云群组|网盘资源分享|分享群链接--分享群	</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="keywords" content="群组分享,二维码群组,百度云群组分享,群组资源,网盘分享,百度群组链接,百度云福利,群组链接,2020百度云群组,分享群,福利社,福利图片,分享群资源,不分踢" >
+<meta name="description" content="群组资源分享是一个免费资源分享站点，实时更新，可分享二维码群组">
+<link rel="shortcut icon" href="/public/Simple/favicon.ico" type="image/x-icon" />
+<!--<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>-->
+<script src="/public/plugins/jquery/jquery.min.js"></script>
+<script src="/public/layui/layui.js"></script>
+<link rel="stylesheet" href="/public/plugins/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/public/Simple/css/s.css?v=20181123">
+<link rel="stylesheet" href="/public/Simple/css/animate.css">
+<link rel="stylesheet" href="/public/Simple/css/animate.css">
+<link rel="stylesheet" href="/public/Simple/css/global.css?v=20181201">
+<link rel="stylesheet" href="/public/Simple/css/extend.css?v=20180730">
+<script src="/public/Simple/js/socket.io.js"></script>
+
+<link rel="stylesheet" href="/public/plugins/nice-validator/jquery.validator.css"/>
+<script src="/public/plugins/nice-validator/jquery.validator.min.js"></script>
+
+<script src="/public/plugins/nice-validator/local/zh-CN.js"></script>
+
+<!--<script src="/public/plugins/layer/layer.js"></script>-->
+<script src="/public/custom/jquery.submit.js"></script>
+
+
+<script src="https://cdn.dingxiang-inc.com/ctu-group/captcha-ui/index.js"></script>
+<script>
+    $(document).ready(function(){
+        if (navigator.platform.match(/win32|mac/i)) {
+            $('.is_ad').css('display','none');
+            $('.is_show').css('display','none');
+        }else{
+            $('.is_ad').css('display','block');
+            $('.is_show').css('display','block');
+            $('body').css('padding-top','110px');
+            $('body').css('padding-bottom','100px');
+        }
+
+    });
+</script>
+<style>
+    .heading-mi {
+        margin-top:3rem;
+
+    }
+
+    .heading-mi a {
+        float: right;
+        font-size: 14px;
+    }
+    .is_ad{
+        display: none;
+    }
+</style>
+<style>
+    .margingT {
+        margin-bottom: 80px;
+    }
+
+    .bottomAD {
+        -webkit-box-sizing: border-box;
+        height: 110px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        padding: 0 0px;
+        overflow: hidden;
+        /*background: rgba(0, 0, 0, .8);*/
+        margin: 0 auto;
+        right: 0
+    }
+    @media(min-width: 768px) {
+        .bottomAD {
+            -webkit-box-sizing: border-box;
+            height: 130px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 0 0px;
+            overflow: hidden;
+            /*background: rgba(0, 0, 0, .8);*/
+            margin: 0 auto;
+            right: 0
+        }
+    }
+    @media(min-width: 992px) {
+        .bottomAD {
+            -webkit-box-sizing: border-box;
+            height: 140px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 0 0px;
+            overflow: hidden;
+            /*background: rgba(0, 0, 0, .8);*/
+            margin: 0 auto;
+            right: 0
+        }
+    }
+    @media(min-width: 1200px) {
+        .bottomAD {
+            -webkit-box-sizing: border-box;
+            height: 180px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 0 0px;
+            overflow: hidden;
+            /*background: rgba(0, 0, 0, .8);*/
+            margin: 0 auto;
+            right: 0
+        }
+    }
+
+    .bottom-pic {
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        -webkit-border-radius: 10px;
+        border-radius: 0px;
+    }
+
+    .bottom-pic img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bottom-text {
+        margin-left: 70px;
+        line-height: 80px;
+        font-size: 32px;
+        color: #fff;
+    }
+
+    .bottom-btn {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        height: 40px;
+        line-height: 40px;
+        color: #fff;
+        background-color: #60b900;
+        border-radius: 6px;
+        text-align: center;
+        font-size: 24px;
+        padding: 0 5px;
+        font-weight: bold;
+    }
+
+    .bottomAD a {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+
+        <script src="/public/qrcode/reqrcode.js"></script>
+</head>
+<body>
+<div class="s-header" >
+    <div class="layui-container flex space-between">
+        <a class="s-header-a" href="/" >
+            <img src="/public/Simple/img/logo/logo.png" alt="" class="header-logo">
+        </a>
+        <ul class="s-header-menu" >
+            <!--<li><a href="./" class="active">首页</a></li>-->
+            <!--            <li><a href="/login/index">登录</a></li>
+            <li><a href="/login/reg">注册</a></li>
+            -->
+        </ul>
+    </div>
+</div>
+<div class="alert bg-blue show-share">
+    <a href="javascript:;"><p class="text-center"><i class="layui-icon layui-icon-share"></i> <span style="color:#ffffff;">点击分享百度群链接(ps:无需注册)</span><img style="width:25px;" src="/public/Simple/images/huaji.png"></p></a>
+</div>
+<div class="example hide-share" data="1" style="text-align: center;">
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title"  style="text-align: center;">
+            <li  class="layui-this">二维码群</li>
+            <li>普通链接</li>
+            <li>群号</li>
+            <!--<li>资源求助</li>-->
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item  layui-show"><div class="layui-container">
+                <div class="layui-row">
+                    <form class="layui-form layui-form-pane ajax_form" action="/panurl/create" lay-filter="component-form-element">
+                        <div class="layui-form-item layui-col-md6 layui-col-md-offset3">
+                            <label class="layui-form-label">所属类型：</label>
+                            <div class="layui-input-block">
+                                <select name="type" lay-filter="aihao">
+                                    <option value="1" selected="">拒绝伸手党</option>
+                                    <option value="2">学习资料</option>
+                                    <option value="3">资源求助</option>
+                                    <option value="4">内地影片</option>
+                                    <option value="5">国外影片</option>
+                                    <option value="6">动漫资源</option>
+                                    <option value="7">游戏资源</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-col-md6 layui-col-md-offset3" >
+                            <label class="layui-form-label">群二维码</label>
+                            <div class="layui-input-block">
+                                <button type="button" style="height: 38px;" id="upload_qrcode"><i class="layui-icon"></i>点击上传群组二维码</button>
+                                <input type="file" style="display: none;" id="newfile">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-col-md6 layui-col-md-offset3" >
+                            <label class="layui-form-label">二维码链接</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="qrcode_url" class="layui-input qlj tel"  lay-verify="required"  value="" placeholder="https://snsyun.baidu.com/wap/snsdeeplink?page=middle&is_qrcode=1&qrcode_type=2&scheme=bdnetdisk..." autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-col-md6 layui-col-md-offset3">
+                            <label class="layui-form-label">验证码</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="captcha" required="" lay-verify="required"placeholder="输入验证码" autocomplete="off" class="layui-input">
+                                <img style="float: right; margin-top: -37px; width: 90px;height: 36px;" src="/captcha"  class="verify_img" onclick='this.src=this.src+"?"' alt="captcha" />
+                            </div>
+                        </div>
+                        <input type="hidden" name="qun_status"  value="1">
+                        <div class="layui-row layui-col-md6 layui-col-md-offset3">
+                            <button class="layui-btn fbql" lay-submit="" lay-filter="component-form-element">立即提交</button>
+                        </div>
+                        <div class="mgt10" style="color: red;">提示：建议新建群组生成二维码再发布，若识别不了二维码请重新生成二维码再提交！(二维码会有一定概率识别不出来),每天最多只能分享一个二维码,分享过多会被判定成广告群！</div>
+                        <div class="layui-clear"></div>
+                    </form>
+                </div>
+            </div></div>
+            <div class="layui-tab-item ">
+                <div class="layui-container">
+                    <div class="layui-row">
+                        <form class="layui-form layui-form-pane ajax_form" action="/panurl/create" lay-filter="component-form-element">
+                            <div class="layui-form-item layui-col-md6 layui-col-md-offset3">
+                                <label class="layui-form-label">所属类型：</label>
+                                <div class="layui-input-block">
+                                    <select name="type" lay-filter="aihao">
+                                        <option value="1" selected="">拒绝伸手党</option>
+                                        <option value="2">学习资料</option>
+                                        <option value="3">资源求助</option>
+                                        <option value="4">内地影片</option>
+                                        <option value="5">国外影片</option>
+                                        <option value="6">动漫资源</option>
+                                        <option value="7">游戏资源</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-col-md6 layui-col-md-offset3" >
+                                <label class="layui-form-label">群链接</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="url" lay-verify="required"  value="" placeholder="https://pan.baidu.com/mbox/homepage?short=cXrWxyF" autocomplete="off" class="layui-input qlj" >
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-col-md6 layui-col-md-offset3">
+                                <label class="layui-form-label">验证码</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="captcha" required="" lay-verify="required"placeholder="输入验证码" autocomplete="off" class="layui-input">
+                                    <img style="float: right; margin-top: -37px; width: 90px;height: 36px;" src="/captcha"  class="verify_img" onclick='this.src=this.src+"?"' alt="captcha" />
+                                </div>
+                            </div>
+                            <input type="hidden" name="qun_status"  value="0">
+                            <div class="layui-row layui-col-md6 layui-col-md-offset3">
+                                <button class="layui-btn fbql" lay-submit="" lay-filter="component-form-element">立即提交</button>
+                            </div>
+                            <div class="mgt40"></div>
+                            <div class="layui-clear"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <div class="layui-container">
+                <div class="layui-row">
+                    <form class="layui-form layui-form-pane ajax_form" action="/panurl/create" lay-filter="component-form-element">
+                        <div class="layui-form-item layui-col-md6 layui-col-md-offset3">
+                            <label class="layui-form-label">所属类型：</label>
+                            <div class="layui-input-block">
+                                <select name="type" lay-filter="aihao">
+                                    <option value="1" selected="">拒绝伸手党</option>
+                                    <option value="2">学习资料</option>
+                                    <option value="3">资源求助</option>
+                                    <option value="4">内地影片</option>
+                                    <option value="5">国外影片</option>
+                                    <option value="6">动漫资源</option>
+                                    <option value="7">游戏资源</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-col-md6 layui-col-md-offset3" >
+                            <label class="layui-form-label">百度群号</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="gnum" lay-verify="required"  value="" placeholder="群号必须为数字，长度为8~11位" autocomplete="off" class="layui-input qlj" >
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-col-md6 layui-col-md-offset3">
+                            <label class="layui-form-label">验证码</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="captcha" required="" lay-verify="required"placeholder="输入验证码" autocomplete="off" class="layui-input">
+                                <img style="float: right; margin-top: -37px; width: 90px;height: 36px;" src="/captcha"  class="verify_img" onclick='this.src=this.src+"?"' alt="captcha" />
+                            </div>
+                        </div>
+                        <input type="hidden" name="qun_status"  value="2">
+                        <div class="layui-row layui-col-md6 layui-col-md-offset3">
+                            <button class="layui-btn fbql" lay-submit="" lay-filter="component-form-element">立即提交</button>
+                        </div>
+                        <div class="mgt40"></div>
+                        <div class="layui-clear"></div>
+                    </form>
+                </div>
+            </div>
+            </div>
+            <!--<div class="layui-tab-item"><div class="layui-container">
+                <div class="layui-row">
+                    <form class="layui-form layui-form-pane ajax_form" action="/panurl/create" lay-filter="component-form-element">
+                        <div class="layui-form-item layui-col-md6 layui-col-md-offset3">
+                            <label class="layui-form-label">所属类型：</label>
+                            <div class="layui-input-block">
+                                <select name="type" lay-filter="aihao">
+                                    <option value="1">拒绝伸手党</option>
+                                    <option value="2" selected="selected">学习资料</option>
+                                    <option value="3">资源求助</option>
+                                    <option value="4">内地影片</option>
+                                    <option value="5">国外影片</option>
+                                    <option value="6">动漫资源</option>
+                                    <option value="7">游戏资源</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-col-md6 layui-col-md-offset3" >
+                            <label class="layui-form-label">收集二维码</label>
+                            <div class="layui-input-block">
+                                <button type="button" style="height: 38px;" id="upload_qrcode"><i class="layui-icon"></i>点击上传收集二维码</button>
+                                <input type="file" style="display: none;" id="newfile">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-col-md6 layui-col-md-offset3" >
+                            <label class="layui-form-label">收集链接</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="url" class="layui-input qlj tel"  lay-verify="required"  value="" placeholder="https://pan.baidu.com/union/jump?u=XXXXXXXXXXXXX&s=4" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-col-md6 layui-col-md-offset3">
+                            <label class="layui-form-label">验证码</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="captcha" required="" lay-verify="required"placeholder="输入验证码" autocomplete="off" class="layui-input">
+                                <img style="float: right; margin-top: -37px; width: 90px;height: 36px;" src="/captcha"  class="verify_img" onclick='this.src=this.src+"?"' alt="captcha" />
+                            </div>
+                        </div>
+                        <input type="hidden" name="qun_status"  value="3">
+                        <div class="layui-row layui-col-md6 layui-col-md-offset3">
+                            <button class="layui-btn fbql" lay-submit="" lay-filter="component-form-element">立即提交</button>
+                        </div>
+                        <div class="mgt40"></div>
+                        <div class="layui-clear"></div>
+                    </form>
+                </div>
+            </div></div>-->
+        </div>
+    </div>
+
+
+</div>
+
+<div class="blog-container">
+    <div class="blog-main">
+        <!-- 网站公告提示 -->
+        <div class="home-tips shadow fadeInDown">
+            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin:2px 0">
+                <ul class="layui-tab-title">
+                    <li  class="layui-this"><a href="/index/index">二维码<span class="layui-badge">+7</span></a></li>
+                    <li><a href="/index/qunhao">群号<span class="layui-badge">+4</span></a></li>
+                    <li><a href="/index/qunqrcode">群组1</a></li>
+                    <li><a href="/video/index">电影资源<span class="layui-badge">+210</span></a></li>
+                    <li><a href="/index/index2">群组2</a></li>
+                    <li><a href="/index/qunzu">群组3</a></li>
+                    <li><a href="/fuli/index">福利社</a></li>
+                                    </ul>
+                <div class="layui-tab-content">
+
+                </div>
+            </div>
+            <ul class="layui-fixbar">
+                <li class="layui-icon bg-blue click_refresh"><i class="layui-icon layui-icon-refresh" style="font-size: 25px;" title="点击刷新"></i></li>
+            </ul>
+        </div>
+        <!--左边文章列表-->
+        <div class="blog-main-left" id="article_list">
+            <div class="layui-tab-content">
+                                 <div class="article shadow animated zoomIn">
+                    <li><i class="layui-icon layui-icon-speaker" style="font-size: 20px; color: red;"></i>提示:该栏目二维码不保证有效!</li>
+                </div>
+                <div class="animated slideInLeft flow-default contents" id="parentArticleList">
+                    
+                    <div class="article shadow animated zoomIn  is_ad">
+                        <div class="article-left ">
+                            <i class="layui-icon layui-icon-diamond" style="font-size: 30px;"></i>
+                        </div>
+                        <div class="article-right">
+                            <div class="article-title">
+                                <a class="panurl " data-id="" href="https://x1s.in/nzDZ1" target="_blank">
+
+                                    <button class="layui-btn layui-btn-xs layui-btn-normal" title="最新发布的链接">最新</button>
+                                    <span style='color: red;'>(1秒前)</span>
+                                    二维码群组-3                                </a>
+                            </div>
+                            <div class="article-abstract">
+                            </div>
+                        </div>
+
+                        <div class="clear"></div>
+                        <div class="article-footer">
+                            <span class="article-viewinfo">
+                            </span>
+                            <span class="article-viewinfo"><i class="layui-icon layui-icon-fire" title="本站发布"></i>本站发布</span>
+                            <span class="article-viewinfo"><i class="layui-icon layui-icon-fire" title="查看次数"></i>48</span>
+                        </div>
+                    </div>
+                    
+                    <div class="article shadow animated zoomIn  is_ad">
+                        <div class="article-left ">
+                            <i class="layui-icon layui-icon-diamond" style="font-size: 30px;"></i>
+                        </div>
+                        <div class="article-right">
+                            <div class="article-title">
+                                <a class="panurl " data-id="" href="https://x1s.in/nzDZ1" target="_blank">
+
+                                    <button class="layui-btn layui-btn-xs layui-btn-normal" title="最新发布的链接">最新</button>
+                                    <span style='color: red;'>(3秒前)</span>
+                                    二维码群组-1                                </a>
+                            </div>
+                            <div class="article-abstract">
+                            </div>
+                        </div>
+
+                        <div class="clear"></div>
+                        <div class="article-footer">
+                            <span class="article-viewinfo">
+                            </span>
+                            <span class="article-viewinfo"><i class="layui-icon layui-icon-fire" title="本站发布"></i>本站发布</span>
+                            <span class="article-viewinfo"><i class="layui-icon layui-icon-fire" title="查看次数"></i>1</span>
+                        </div>
+                    </div>
+                                    </div>
+            </div>
+        </div>
+        <!--右边小栏目-->
+        <div class="blog-main-right">
+    <div class="blogerinfo shadow animated fadeInRight">
+        <div class="blogerinfo-figure">
+            <img src="http://www.sharequnzu.cc/uploads/image/20210424/6c532342f1811d6f12aa8ece5484c0d9.jpg" alt="分享群组">
+        </div>
+        <p class="blogerinfo-nickname">分享群组</p>
+
+
+        <div class="layui-collapse" lay-accordion="">
+            <div class="layui-colla-item">
+                <h2 class="layui-colla-title"> <p class="blogerinfo-introduce">友情提示</p></h2>
+                <div class="layui-colla-content">
+                    <p class="blogerinfo-location">2021-9-16<br> 请勿相信群组中的广告以免上当受骗！</p>
+                    <p class="blogerinfo-location">2021-9-16<br> 二维码发布群组24小时之内只能发布一个，发布过多会被认定为广告群组！</p>
+                    <p class="blogerinfo-location">2021-9-16<br> 加入群组失败,是你的百度网盘账号加群被限制(是百度网盘对你的的限制,并非本站的限制,也不是群组有问题),请隔十几个小时再使用,避免被限制请每天加群数量控制在10个以内</p>
+                    <p class="blogerinfo-location">2019-5-23<br> PC端进入不了群组,请重新刷新群组页面即可进入(建议使用手机打开)</p>
+                </div>
+            </div>
+            <div class="layui-colla-item">
+                <h2 class="layui-colla-title"><p class="blogerinfo-introduce">更新公告</p></h2>
+                <div class="layui-colla-content">
+                    <p class="blogerinfo-location" style="color:red;">2021-07-29<br>新增电影资源！</p>
+                    <p class="blogerinfo-location" style="color:red;">2021-04-05<br>新增群号,二维码群组！</p>
+                    <p class="blogerinfo-location" style="color:red;">2020-02-03<br>已修复二维码无法识别的问题！</p>
+                    <p class="blogerinfo-location" style="color:red;">2019-10-28<br>新增群组中文验证码,按顺序点击文字即可进入！</p>
+                    <p class="blogerinfo-location">2019-1-10<br> 新增广告群主举报功能，举报累计超过5次，自动认定为广告群主！</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="blogerinfo-contact">
+            <!--<a href="/fuli/index"><i class="layui-icon layui-icon-fire"> 福利社</i></a>-->
+            <a  class="liuyan" id="comments" href="javascript:;"><i class="layui-icon layui-icon-reply-fill"> 留言建议</i></a>
+        </div>
+    </div>
+    <div class="blog-module shadow animated fadeInUp">
+        <div style="text-align: center;">
+            <div style="text-align: left;margin:0 10px;">
+                <span style="color: red;">提示：严禁分享存在违规内容的群组链接，一经发现，一律删除！</span>
+                <br>
+                如你发现或认为某网友分享的群组链接存在违规等内容，请向百度网盘官方网站进行举报。
+                <br>
+                1：百度网盘违规举报：http://tousu.baidu.com/pan/add
+                <br>
+                2：百度网盘侵权举报：http://copyright.baidu.com/index.php/index/complaint
+                <br>
+                3：可联系本站邮箱：sharequnzu@gmail.com 提交举报信息，由本站向百度网盘官方提交举报信息，并删除屏蔽群组链接。
+                <br>
+            </div>
+        </div>
+    </div>
+    <script>
+        function RndNum(n){
+            var rnd="";
+            for(var i=0;i<n;i++)
+                rnd+=Math.floor(Math.random()*10);
+            return rnd;
+        }
+        $(document).ready(function () {
+            // 连接服务端
+            var socket = io('http://202.91.33.119:2120');
+            var uid = "1.15.220.155";
+            console.log(uid);
+            // 连接后登录
+            socket.on('connect', function(){
+                socket.emit('login', uid);
+            });
+            // 后端推送来消息时
+            socket.on('new_msg', function(msg){
+                $('#content').html('收到消息：'+msg);
+                $('.notification.sticky').notify();
+            });
+            // 后端推送来在线数据时
+            socket.on('update_online_count', function(online_stat){
+                $('.update_online_count').html(' '+online_stat+' ');
+            });
+            socket.on('online_page_count_now', function(online_ym){
+                $('.online_page_count_now').html(' '+online_ym+' ');
+            });
+        });
+    </script>
+    <div class="blog-module shadow animated fadeInUp" >
+        <div class="hotusers-header" style="margin:0 10px;">本站统计 <i class="layui-icon layui-icon-chart-screen"></i>  </div>
+        <ul class="blogroll" style="padding-top: 5px;margin:0 10px;">
+            <li style='width: 45%;'>当前在线：<span class="update_online_count" style='color: red;'>  </span>人</li>
+            <li style='width: 45%'>打开页面：<span class="online_page_count_now" style='color:red;'>  </span>个</li>
+            <li style="width: 45%">最新分享：<span title="最新分享" style="color: red;"> 0 </span>条</li>
+            <li style="width: 45%">有效分享：<span title="有效分享" style="color: red;"> 0 </span>条</li>
+            <li style="width: 45%">累计分享：<span title="累计分享" style="color: red;"> 321505 </span>条</li>
+        </ul>
+    </div>
+    <div class="blog-module shadow animated fadeInUp">
+        <div class="hotusers-header" style="margin:0 10px;">友情链接 <i class="layui-icon layui-icon-link"></i></div>
+        <ul class="blogroll"  style="padding-top: 5px;margin:0 10px;">
+            <li><a target="_blank" href="https://www.xixixs.cc" title="https://www.xixixs.cc">免费小说</a></li>
+            <li><a target="_blank" href="/video/index" title="电影资源">电影资源</a></li>
+        </ul>
+    </div>
+</div>
+
+        <div class="clear"></div>
+    </div>
+</div>
+<script>
+        $('.click_refresh').on('click',function () {
+            $('.contents').html('');
+            layui.use('flow', function(){
+                var flow = layui.flow;
+                flow.load({
+                    elem: '#parentArticleList' //流加载容器
+                    ,isAuto: true
+                    ,isLazyimg: true
+                    ,done: function(page, next){ //加载下一页
+                        $.get('/index/qunqrcode_api?page='+page, function(res){
+                            var lis =[];
+                            lis.push(res.content);
+                            next(lis.join(''), page < res.pages);
+                        });
+                    }
+                });
+            });
+        })
+</script>
+<script>
+        layui.use('flow', function(){
+            var flow = layui.flow;
+            flow.load({
+                elem: '#parentArticleList' //流加载容器
+                ,isAuto: false
+                ,isLazyimg: true
+                ,done: function(page, next){ //加载下一页
+                    $.get('/index/qunqrcode_api?page='+page, function(res){
+                        var lis =[];
+                        lis.push(res.content);
+                        next(lis.join(''), page < res.pages);
+                    });
+                }
+            });
+        });
+</script>
+<script>
+    $('.liuyan').on('click',function () {
+        var index = layui.layer.open({
+            title: "留言建议",
+            area: ['100%', '100%'],
+            type: 2,
+            content: "/index/liuyan",
+            success: function (layero, index) {
+                setTimeout(function () {
+                    layui.layer.tips('点击返回群组分享', '.layui-layer-setwin .layui-layer-close', {
+                        tips: 3
+                    });
+                }, 2000);
+
+            }
+        })
+        //改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
+        $(window).resize(function () {
+            layui.layer.full(index);
+        })
+        layui.layer.full(index);
+        setTimeout(function () {
+            var info = $("iframe").contents().html();
+            var info = $(window.frames["layui-layer-iframe1"].document).find(".group-name").html();
+            console.log(info);
+        }, 3000);
+
+    });
+</script>
+<script>
+
+    layui.use(['element','code','form','jquery','upload'], function(){
+
+        var element = layui.element;
+        var form = layui.form;
+        var $ = layui.jquery;
+        var layer = layui.layer;
+
+    });
+</script>
+<script>
+    $(function () {
+        $('.hide-share').css("display","none");
+    })
+    $('.show-share').on('click',function () {
+        var show_num = $('.hide-share').attr('data');
+        if(show_num == 1){
+            $('.hide-share').show();
+            $('.hide-share').attr('data',2);
+        }else{
+            $('.hide-share').hide();
+            $('.hide-share').attr('data',1);
+        }
+    })
+</script>
+<script>
+    $(document).on('click','.ad_ban',function () {
+        var name = $(this).attr('data-name');
+        var panurl_id = $(this).attr('data-id');
+        layer.confirm('你确定要举报该《<span style="color: red;">'+name+'</span>》为广告？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            $.get('/index/qr_ad_ban',{name:name,panurl_id:panurl_id},function (data) {
+                if(data.code==1){
+                    layer.msg(data.msg, {icon: 1});
+                }else{
+                    layer.msg(data.msg, {icon: 2});
+                }
+            })
+        });
+    });
+</script>
+
+
+<div class="example">
+    <div class="layui-container">
+        <footer>
+            <div class="layui-row ">
+                <div class="layui-col-md12">
+                    <p class="footer-simple">百度云群组<br>
+
+                        声明：本站百度云群组链接均由网友自行分享，不存储任何群组资源文件，全部链接均跳转至百度网盘。 Copyright © 2018-2021 云群组分享 版权所有</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RJDXN84T5X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RJDXN84T5X');
+</script>
+
+</body>
+<script>
+    $(document).ready(function(){
+        $('#upload_qrcode').click(function(){
+            $('#newfile').click();
+        });
+    });
+</script>
+<script>
+    var newfile = document.getElementById('newfile');
+    var getObjectURL = function (file) {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+
+    newfile.onchange = function () {
+        console.log(getObjectURL(this.files[0]));// newfile[0]是通过input file上传的二维码图片文件
+        qrcode.decode(getObjectURL(this.files[0]));
+        qrcode.callback = function (imgMsg) {
+            console.log(imgMsg);
+            var changdu = imgMsg.length;
+            if(imgMsg=="error decoding QR Code" || changdu>400){
+                var formData = new FormData();
+                var file = newfile.files[0];
+                formData.append("file", file);
+                $.ajax({
+                    url:"/panurl/readqrcode",
+                    type:"POST",
+                    data:formData,
+                    processData : false,
+                    contentType : false,
+                    dataType : 'json',
+                    async : false,
+                    success : function (result) {
+                        if(result.code==0){
+                            layer.msg("无法识别此二维码,请重新生成群组二维码再提交!", {icon: -1, time: 3000}, function () {
+                            });
+                        }else{
+                            layer.msg("二维码识别成功,请点击提交!");
+                            $('.tel').val(result.text);
+                        }
+                    }
+                })
+            }else{
+                layer.msg("二维码识别成功,请点击提交!");
+                $('.tel').val(imgMsg);
+            }
+        }
+    }
+</script>
+<script>
+    function callBackNotify(obj,data){
+        jump_func = function(url){
+            if (self != top) {
+                if (url) {
+                    window.parent.location.href = data.url;
+                } else {
+                    window.parent.location.reload();
+                }
+                parent.layer.closeAll()();
+            } else {
+                if (url !== false) {
+                    location.href = url;
+                }
+                layer.closeAll();
+            }
+        };
+        if(data.code==0 && data.msg == '验证码错误') {
+            layer.msg(data.msg, {icon: -1, time: 1000}, function () {
+            });
+            $('.verify_img').click();
+        }else if (data.code==0 && data.msg != '验证码错误') {
+            layer.msg(data.msg, {icon: -1, time: 1000}, function () {
+                if(data.url !=""){
+                    jump_func(data.url);
+                }
+                $('.verify_img').click();
+            });
+        }else if(data.code==1) {
+            layer.msg(data.msg, {icon: 1, time: 1000}, function () {
+                window.parent.location.reload();
+            });
+        }
+    }
+</script>
+</html>

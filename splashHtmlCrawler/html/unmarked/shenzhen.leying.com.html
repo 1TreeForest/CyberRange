@@ -1,0 +1,735 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>深圳电影院在线购票_深圳电影院排片_乐影网</title>
+<meta name="keywords" content="深圳电影院哪家便宜，深圳电影院分布，深圳电影院排片，深圳电影院排行，深圳电影院在线购票" />
+<meta name="description" content="乐影网提供深圳电影院实时排片场次以及在线选座购票服务，深圳电影院优惠票价，影讯信息，行车路线…快捷购票，欢乐观影，尽在乐影网深圳站" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="http://s.leying365.com/pc/css/common/common.css?v=20170825" type="text/css"/>
+<link rel="stylesheet" href="http://s.leying365.com/pc/css/login/login.css?v=20170825" type="text/css"/>
+<script src="http://s.leying365.com/pc/script/headLoad.js?v=20170825"></script>
+
+<link rel="stylesheet" href="http://s.leying365.com/pc/css/cinema/cinema.css?v=20170825"
+	type="text/css" />
+
+<link rel="shortcut icon" href="http://img.leying365.com/pc/static/image/common/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+<!--top-->
+    <div class="top">
+        <div class="wrapper relative">
+            <span class="top-title"></span>
+            <div class="top-login absolute">
+            	<a class="weibo" href="http://weibo.com/leying365" target="_blank">微博</a>
+                <a class="weixin">公众号<em class="ly-wx"></em></a>
+                <em class="tel-icon">400 815 5556</em>
+                <span id="js-top-login" >
+                    <a>
+                        <i class="relative"></i>登录
+                    </a>
+                    <span>|</span>
+                    <a>注册</a>
+                </span>
+                <div class='colde3 dis-none'>
+                	<a target="_blank" href="/user/myLeying"></a><b class="user-icon"></b>
+	                <p class="top-login-ok" id="js-login-ok">
+	                    <a target="_blank" href="/user/myLeying">我的乐影</a>
+	                    <a target="_blank" href="/user/order/list">我的订单</a>
+	                    <a>退出</a>
+	                </p>
+            	</div>
+                
+            </div>
+        </div>
+    </div>
+    <!--nav-->
+    <div class="nav">
+        <div class="wrapper relative">
+        	<a href="/home/index" target="_blank">
+	            <img class="fl" src="http://img.leying365.com/pc/static/image/common/logo.png"/>
+    		</a>
+            <span class="city-name relative fl">
+                <i class="fl"></i><a class="js-city-name" href="/home/city"><em></em></a>
+            </span>
+            <div class="nav-list absolute" id="js-nav-list">
+                <a href="/home/index">首页<span></span></a>
+                <a href="/movie/online">电影<span></span></a>
+                <a href="/cinema/movie-online">影院<span></span></a>
+                <a href="/mobile">手机乐影<span></span></a>
+            </div>
+        </div>
+    </div>
+<!--banner-->
+<div id="js-cinema-ad1"></div>
+
+<!--main-->
+<div class="wrapper">
+	<div class="cinema-search">
+		<form onsubmit="return false">
+			<input autocomplete="off" type="text" id='js-cinema-search' placeholder="请输入影院" />
+			<button id="js-search-submit" type="submit">搜索</button>
+			<div class="cinema-search-result" id="js-cinema-result"></div>
+		</form>
+	</div>
+	<ul class="movie-factor cinema-factor" id="js-cinema-filter">
+		<li type="countyId"><em class="col81 absolute"><i></i>区域：</em>
+			<p class="movie-factor-list">
+				<a class="active" countyId="0" title="全部"> <span>全部<em></em></span>
+				</a>   <a title="南山区"
+					countyId="2223"> <span>南山区<em></em></span>
+				</a>  <a title="龙华新区"
+					countyId="3395"> <span>龙华新区<em></em></span>
+				</a>  <a title="龙岗区"
+					countyId="2225"> <span>龙岗区<em></em></span>
+				</a>  <a title="罗湖区"
+					countyId="2221"> <span>罗湖区<em></em></span>
+				</a>  <a title="宝安区"
+					countyId="2224"> <span>宝安区<em></em></span>
+				</a>  <a title="福田区"
+					countyId="2222"> <span>福田区<em></em></span>
+				</a>  
+			</p></li>
+		<li style="border: 0;" type="featuresId"><em
+			class="col81 absolute"><i
+				style="background-position: -354px -25px;"></i>特色：</em>
+			<p class="movie-factor-list">
+				<a class="active" featuresId="0" title="全部"> <span>全部<em></em></span>
+				</a>   <a title=""
+					featuresId="7"> <span>提供WIFI<em></em></span>
+				</a>  <a title=""
+					featuresId="1"> <span>会员卡支付<em></em></span>
+				</a>  <a title=""
+					featuresId="3"> <span>IMAX厅<em></em></span>
+				</a>  <a title=""
+					featuresId="6"> <span>中国巨幕<em></em></span>
+				</a>  <a title=""
+					featuresId="8"> <span>免费停车<em></em></span>
+				</a>  <a title=""
+					featuresId="4"> <span>优惠券支付<em></em></span>
+				</a>  <a title=""
+					featuresId="2"> <span>情侣座<em></em></span>
+				</a>  
+			</p></li>
+	</ul>
+	<p style="margin-top: 30px" class="f16">共<span id="js-cinema-num">30</span>家影院</p>
+	<ul class="cinema-list list js-img-delay" id="js-cinema-list" scroll="0">
+		 
+		<li  countyId="2223"
+			featuresId="7"
+			data="cinemaId=1668">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=1668" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2017/11/17/20171117100348723_byr09_99.jpg" name="深圳百老汇电影中心"
+				address="广东省深州市南山区粤海街道华润万象天地L5层562号店铺" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=1668"
+					target="_blank" class="f18">深圳百老汇电影中心
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="广东省深州市南山区粤海街道华润万象天地L5层562号店铺">地址：广东省深州市南山区粤海街道华润万象天地L5层562号店铺</em><a href="/cinema/cinemaMap?id=1668" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>164场</em><br /> 最近一场：<a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-86160222</em>
+				<b>|</b> <em class="movie-media">  <i>提供WIFI</i> 
+				</em>
+				<em class="colde3 cinema-price"> <i class="f18">￥</i><i
+					class="f24">38</i><i class="col81">起</i><br /> <a
+					href="/cinema/cinemaPlay?id=1668"
+					class="ticket-buy120" target="_blank">选座购票</a>
+				</em>
+			</p>
+		</li> 
+		<li  countyId="3395"
+			featuresId=""
+			data="cinemaId=712">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=712" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/19/18/logo_783_big.png" name="中影国际影城（龙华九方店）"
+				address="广东深圳龙华新区民治街道人民南路与腾龙路交界处九方购物中心三层L333号。" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=712"
+					target="_blank" class="f18">中影国际影城（龙华九方店）
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="广东深圳龙华新区民治街道人民南路与腾龙路交界处九方购物中心三层L333号。">地址：广东深圳龙华新区民治街道人民南路与腾龙路交界处九方购物中心三层L333号。</em><a href="/cinema/cinemaMap?id=712" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>118场</em><br /> 最近一场：<a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-89358077</em>
+				<b>				</em>
+				<em class="colde3 cinema-price"> <i class="f18">￥</i><i
+					class="f24">43</i><i class="col81">起</i><br /> <a
+					href="/cinema/cinemaPlay?id=712"
+					class="ticket-buy120" target="_blank">选座购票</a>
+				</em>
+			</p>
+		</li> 
+		<li  countyId="2225"
+			featuresId="1,3,6,7,8"
+			data="cinemaId=902">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=902" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2015/6/12/20150612142032272_bokb9.jpg" name="万众国际影城（横岗店）"
+				address="深圳市龙岗区龙岗大道麟恒中心广场" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=902"
+					target="_blank" class="f18">万众国际影城（横岗店）
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市龙岗区龙岗大道麟恒中心广场">地址：深圳市龙岗区龙岗大道麟恒中心广场</em><a href="/cinema/cinemaMap?id=902" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>95场</em><br /> 最近一场：<a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-28618808</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>IMAX厅</i>  <i>中国巨幕</i>  <i>提供WIFI</i>  <i>免费停车</i> 
+				</em>
+				<em class="colde3 cinema-price"> <i class="f18">￥</i><i
+					class="f24">67</i><i class="col81">起</i><br /> <a
+					href="/cinema/cinemaPlay?id=902"
+					class="ticket-buy120" target="_blank">选座购票</a>
+				</em>
+			</p>
+		</li> 
+		<li  countyId="2221"
+			featuresId="7"
+			data="cinemaId=1746">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=1746" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/" name="深圳中影晴瑞影城IMAX"
+				address="深圳市坪山新区益田假日世界三楼" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=1746"
+					target="_blank" class="f18">深圳中影晴瑞影城IMAX
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市坪山新区益田假日世界三楼">地址：深圳市坪山新区益田假日世界三楼</em><a href="/cinema/cinemaMap?id=1746" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>86场</em><br /> 最近一场：<a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-89593393</em>
+				<b>|</b> <em class="movie-media">  <i>提供WIFI</i> 
+				</em>
+				<em class="colde3 cinema-price"> <i class="f18">￥</i><i
+					class="f24">71</i><i class="col81">起</i><br /> <a
+					href="/cinema/cinemaPlay?id=1746"
+					class="ticket-buy120" target="_blank">选座购票</a>
+				</em>
+			</p>
+		</li> 
+		<li  countyId="2224"
+			featuresId="6,7"
+			data="cinemaId=283">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=283" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/28/10/logo_317_big.png" name="深圳德金国际影城"
+				address="广东省深圳市宝安区福永桥和路315号德金财富广场F栋2楼" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=283"
+					target="_blank" class="f18">深圳德金国际影城
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="广东省深圳市宝安区福永桥和路315号德金财富广场F栋2楼">地址：广东省深圳市宝安区福永桥和路315号德金财富广场F栋2楼</em><a href="/cinema/cinemaMap?id=283" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>74场</em><br /> 最近一场：<a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-29971666</em>
+				<b>|</b> <em class="movie-media">  <i>中国巨幕</i>  <i>提供WIFI</i> 
+				</em>
+				<em class="colde3 cinema-price"> <i class="f18">￥</i><i
+					class="f24">23</i><i class="col81">起</i><br /> <a
+					href="/cinema/cinemaPlay?id=283"
+					class="ticket-buy120" target="_blank">选座购票</a>
+				</em>
+			</p>
+		</li> 
+		<li  countyId="2224"
+			featuresId="1,4,7"
+			data="cinemaId=120">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=120" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2015/12/11/20151211133012887_plr96.png" name="新华银兴国际影城（深圳店）"
+				address="广东省深圳市宝安区西乡宝安大道与金海路交汇处金港华庭一栋三层" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=120"
+					target="_blank" class="f18">新华银兴国际影城（深圳店）
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="广东省深圳市宝安区西乡宝安大道与金海路交汇处金港华庭一栋三层">地址：广东省深圳市宝安区西乡宝安大道与金海路交汇处金港华庭一栋三层</em><a href="/cinema/cinemaMap?id=120" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>71场</em><br /> 最近一场：<a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-29306291</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>优惠券支付</i>  <i>提供WIFI</i> 
+				</em>
+				<em class="colde3 cinema-price"> <i class="f18">￥</i><i
+					class="f24">38</i><i class="col81">起</i><br /> <a
+					href="/cinema/cinemaPlay?id=120"
+					class="ticket-buy120" target="_blank">选座购票</a>
+				</em>
+			</p>
+		</li> 
+		<li  countyId="2224"
+			featuresId="7"
+			data="cinemaId=197">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=197" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/16/0/logo_230_big.png" name="中影星美国际影城（西乡）"
+				address="深圳市宝安区西乡街道新湖路天虹购物中心三楼" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=197"
+					target="_blank" class="f18">中影星美国际影城（西乡）
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市宝安区西乡街道新湖路天虹购物中心三楼">地址：深圳市宝安区西乡街道新湖路天虹购物中心三楼</em><a href="/cinema/cinemaMap?id=197" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>62场</em><br /> 最近一场：<a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-23314898</em>
+				<b>|</b> <em class="movie-media">  <i>提供WIFI</i> 
+				</em>
+				<em class="colde3 cinema-price"> <i class="f18">￥</i><i
+					class="f24">53</i><i class="col81">起</i><br /> <a
+					href="/cinema/cinemaPlay?id=197"
+					class="ticket-buy120" target="_blank">选座购票</a>
+				</em>
+			</p>
+		</li> 
+		<li  countyId="2225"
+			featuresId=""
+			data="cinemaId=713">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=713" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/6/1/logo_784_big.png" name="聚星国际影城"
+				address="深圳市龙岗区布澜路李朗国际珠宝园C1栋3楼(深圳第三人民医院旁)" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=713"
+					target="_blank" class="f18">聚星国际影城
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市龙岗区布澜路李朗国际珠宝园C1栋3楼(深圳第三人民医院旁)">地址：深圳市龙岗区布澜路李朗国际珠宝园C1栋3楼(深圳第三人民医院旁)</em><a href="/cinema/cinemaMap?id=713" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>61场</em><br /> 最近一场：<a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-28313188</em>
+				<b>				</em>
+				<em class="colde3 cinema-price"> <i class="f18">￥</i><i
+					class="f24">67</i><i class="col81">起</i><br /> <a
+					href="/cinema/cinemaPlay?id=713"
+					class="ticket-buy120" target="_blank">选座购票</a>
+				</em>
+			</p>
+		</li> 
+		<li  countyId="2223"
+			featuresId="1,3,7,8"
+			data="cinemaId=1550">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=1550" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2017/5/18/20170518135547163_vcp4w_77.png" name="深圳百丽宫影城（南山来福士广场店）"
+				address="深圳市南山区南山街道南海大道2163号来福士广场4层L4-9号" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=1550"
+					target="_blank" class="f18">深圳百丽宫影城（南山来福士广场店）
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市南山区南山街道南海大道2163号来福士广场4层L4-9号">地址：深圳市南山区南山街道南海大道2163号来福士广场4层L4-9号</em><a href="/cinema/cinemaMap?id=1550" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>57场</em><br /> 最近一场：<a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-26929851</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>IMAX厅</i>  <i>提供WIFI</i>  <i>免费停车</i> 
+				</em>
+				<em class="colde3 cinema-price"> <i class="f18">￥</i><i
+					class="f24">43</i><i class="col81">起</i><br /> <a
+					href="/cinema/cinemaPlay?id=1550"
+					class="ticket-buy120" target="_blank">选座购票</a>
+				</em>
+			</p>
+		</li> 
+		<li  countyId="2224"
+			featuresId="1,6,7,8"
+			data="cinemaId=1570">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=1570" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2017/6/23/20170623143704523_g3zzi_77.jpg" name="太平洋影城（深圳同泰时代广场店）"
+				address="深圳市宝安区福永街道同泰时代广场4楼" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=1570"
+					target="_blank" class="f18">太平洋影城（深圳同泰时代广场店）
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市宝安区福永街道同泰时代广场4楼">地址：深圳市宝安区福永街道同泰时代广场4楼</em><a href="/cinema/cinemaMap?id=1570" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>39场</em><br /> 最近一场：<a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>400-850-3366</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>中国巨幕</i>  <i>提供WIFI</i>  <i>免费停车</i> 
+				</em>
+				<em class="colde3 cinema-price"> <i class="f18">￥</i><i
+					class="f24">83</i><i class="col81">起</i><br /> <a
+					href="/cinema/cinemaPlay?id=1570"
+					class="ticket-buy120" target="_blank">选座购票</a>
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2222"
+			featuresId="7"
+			data="cinemaId=8">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=8" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/16/21/logo_22_big.png" name="中信新南国影城"
+				address="广东省深圳市福田区深南中路1093号 新南国影城" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=8"
+					target="_blank" class="f18">中信新南国影城
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="广东省深圳市福田区深南中路1093号 新南国影城">地址：广东省深圳市福田区深南中路1093号 新南国影城</em><a href="/cinema/cinemaMap?id=8" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-25945588;0755-25944588</em>
+				<b>|</b> <em class="movie-media">  <i>提供WIFI</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="3395"
+			featuresId="1,3,7,8"
+			data="cinemaId=788">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=788" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2016/5/18/20160518180937138_4w35i.jpg" name="太平洋影城（深圳8号仓店）"
+				address="深圳市龙华新区民康路1号华南物流中心8号仓奥特莱斯3层L313号" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=788"
+					target="_blank" class="f18">太平洋影城（深圳8号仓店）
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市龙华新区民康路1号华南物流中心8号仓奥特莱斯3层L313号">地址：深圳市龙华新区民康路1号华南物流中心8号仓奥特莱斯3层L313号</em><a href="/cinema/cinemaMap?id=788" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>400-850-3366</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>IMAX厅</i>  <i>提供WIFI</i>  <i>免费停车</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="3395"
+			featuresId="7"
+			data="cinemaId=1639">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=1639" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2017/9/20/20170920162456350_7124h_99.png" name="深圳万达影城汇海广场店"
+				address="深圳市龙华新区龙华街道弓村汇海广场B座301电影院" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=1639"
+					target="_blank" class="f18">深圳万达影城汇海广场店
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市龙华新区龙华街道弓村汇海广场B座301电影院">地址：深圳市龙华新区龙华街道弓村汇海广场B座301电影院</em><a href="/cinema/cinemaMap?id=1639" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>13510117958</em>
+				<b>|</b> <em class="movie-media">  <i>提供WIFI</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2222"
+			featuresId="1,4,7"
+			data="cinemaId=144">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=144" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2015/12/11/20151211143210737_e9wa5.jpg" name="百老汇深圳购物公园店"
+				address="广东省深圳市福田区福华三路COCOPARK购物公园2楼" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=144"
+					target="_blank" class="f18">百老汇深圳购物公园店
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="广东省深圳市福田区福华三路COCOPARK购物公园2楼">地址：广东省深圳市福田区福华三路COCOPARK购物公园2楼</em><a href="/cinema/cinemaMap?id=144" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-88811333;0755-25313766</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>优惠券支付</i>  <i>提供WIFI</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2225"
+			featuresId="1,7,8"
+			data="cinemaId=375">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=375" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2016/5/25/20160525165123415_u2lek_77.jpg" name="太平洋影城（深圳新城汇店）"
+				address="深圳市龙岗区横岗街道红棉路与横岗一号路交汇处新城汇五楼" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=375"
+					target="_blank" class="f18">太平洋影城（深圳新城汇店）
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市龙岗区横岗街道红棉路与横岗一号路交汇处新城汇五楼">地址：深圳市龙岗区横岗街道红棉路与横岗一号路交汇处新城汇五楼</em><a href="/cinema/cinemaMap?id=375" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>400-850-3366</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>提供WIFI</i>  <i>免费停车</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2221"
+			featuresId="7"
+			data="cinemaId=10">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=10" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/23/3/logo_24_big.png" name="金光华南国影城"
+				address="广东省深圳市罗湖区金光华广场三楼（地铁国贸站A出口）" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=10"
+					target="_blank" class="f18">金光华南国影城
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="广东省深圳市罗湖区金光华广场三楼（地铁国贸站A出口）">地址：广东省深圳市罗湖区金光华广场三楼（地铁国贸站A出口）</em><a href="/cinema/cinemaMap?id=10" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-82611198</em>
+				<b>|</b> <em class="movie-media">  <i>提供WIFI</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2224"
+			featuresId=""
+			data="cinemaId=616">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=616" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/26/27/logo_685_big.png" name="深圳万达海雅广场店"
+				address="深圳市宝安区宝安5区建安一路与新圳路交汇处的海雅广场四层第406号商铺" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=616"
+					target="_blank" class="f18">深圳万达海雅广场店
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市宝安区宝安5区建安一路与新圳路交汇处的海雅广场四层第406号商铺">地址：深圳市宝安区宝安5区建安一路与新圳路交汇处的海雅广场四层第406号商铺</em><a href="/cinema/cinemaMap?id=616" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-29188886</em>
+				<b>				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2222"
+			featuresId="1,7,8"
+			data="cinemaId=374">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=374" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2016/5/25/20160525170044485_sktw7_77.jpg" name="太平洋影城（深圳东海店）"
+				address="深圳市福田区香蜜湖红荔西路8099号东海购物广场4楼" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=374"
+					target="_blank" class="f18">太平洋影城（深圳东海店）
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市福田区香蜜湖红荔西路8099号东海购物广场4楼">地址：深圳市福田区香蜜湖红荔西路8099号东海购物广场4楼</em><a href="/cinema/cinemaMap?id=374" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>400-850-3366</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>提供WIFI</i>  <i>免费停车</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2222"
+			featuresId="1,2,6,7,8"
+			data="cinemaId=810">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=810" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2015/2/10/20150210114519528_8o3n1.jpg" name="中影世纪星晖影城"
+				address="深圳市福田区裕亨路渔农村福田口岸商业广场" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=810"
+					target="_blank" class="f18">中影世纪星晖影城
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市福田区裕亨路渔农村福田口岸商业广场">地址：深圳市福田区裕亨路渔农村福田口岸商业广场</em><a href="/cinema/cinemaMap?id=810" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-23487886</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>情侣座</i>  <i>中国巨幕</i>  <i>提供WIFI</i>  <i>免费停车</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2223"
+			featuresId=""
+			data="cinemaId=514">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=514" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/7/6/logo_580_big.png" name="华夏君盛影城南山店"
+				address="深圳市南山区南头街道前海路港湾丽都购物广场二楼" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=514"
+					target="_blank" class="f18">华夏君盛影城南山店
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市南山区南头街道前海路港湾丽都购物广场二楼">地址：深圳市南山区南头街道前海路港湾丽都购物广场二楼</em><a href="/cinema/cinemaMap?id=514" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-29902555</em>
+				<b>				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2223"
+			featuresId="1,7,8"
+			data="cinemaId=377">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=377" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2016/5/25/20160525165945820_m57jl_77.jpg" name="太平洋影城（深圳京基百纳店）"
+				address="深圳市南山区白石路京基百纳广场3楼太平洋电影城（中信红树湾旁）" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=377"
+					target="_blank" class="f18">太平洋影城（深圳京基百纳店）
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市南山区白石路京基百纳广场3楼太平洋电影城（中信红树湾旁）">地址：深圳市南山区白石路京基百纳广场3楼太平洋电影城（中信红树湾旁）</em><a href="/cinema/cinemaMap?id=377" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>400-850-3366</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>提供WIFI</i>  <i>免费停车</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2225"
+			featuresId="7"
+			data="cinemaId=1640">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=1640" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2017/9/20/20170920162843121_bxq5l_99.png" name="万达影城龙盛新天地店"
+				address="深圳市龙岗区深汕路与南通道交汇处中信龙盛广场1栋2楼万达影城" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=1640"
+					target="_blank" class="f18">万达影城龙盛新天地店
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市龙岗区深汕路与南通道交汇处中信龙盛广场1栋2楼万达影城">地址：深圳市龙岗区深汕路与南通道交汇处中信龙盛广场1栋2楼万达影城</em><a href="/cinema/cinemaMap?id=1640" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-29137111</em>
+				<b>|</b> <em class="movie-media">  <i>提供WIFI</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2225"
+			featuresId="7"
+			data="cinemaId=1638">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=1638" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2017/9/20/20170920161949985_dbm4f_99.png" name="万达影城布吉万科红店"
+				address="深圳市龙岗区布吉街道锦龙路89号万科红生活广场万达影城" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=1638"
+					target="_blank" class="f18">万达影城布吉万科红店
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市龙岗区布吉街道锦龙路89号万科红生活广场万达影城">地址：深圳市龙岗区布吉街道锦龙路89号万科红生活广场万达影城</em><a href="/cinema/cinemaMap?id=1638" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-89518122</em>
+				<b>|</b> <em class="movie-media">  <i>提供WIFI</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2224"
+			featuresId="1,7,8"
+			data="cinemaId=11">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=11" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/9/0/logo_25_big.png" name="宝安中影南国影城"
+				address="广东省深圳市宝安区80区宝民二路111号港隆城购物中心四楼" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=11"
+					target="_blank" class="f18">宝安中影南国影城
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="广东省深圳市宝安区80区宝民二路111号港隆城购物中心四楼">地址：广东省深圳市宝安区80区宝民二路111号港隆城购物中心四楼</em><a href="/cinema/cinemaMap?id=11" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-29659918</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>提供WIFI</i>  <i>免费停车</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2225"
+			featuresId="1,4,7,8"
+			data="cinemaId=770">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=770" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2015/12/14/20151214110250892_5gzce.png" name="ZCV布吉影城"
+				address="深圳市龙岗区布吉街道科技园路慢城商业街1号楼" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=770"
+					target="_blank" class="f18">ZCV布吉影城
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市龙岗区布吉街道科技园路慢城商业街1号楼">地址：深圳市龙岗区布吉街道科技园路慢城商业街1号楼</em><a href="/cinema/cinemaMap?id=770" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-85234646;0755-85234647</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>优惠券支付</i>  <i>提供WIFI</i>  <i>免费停车</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2225"
+			featuresId="7"
+			data="cinemaId=9">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=9" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/0/3/logo_23_big.png" name="坂田南国艺恒影城"
+				address="广东省深圳市龙岗区吉华路999号 坂田商业广场5楼" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=9"
+					target="_blank" class="f18">坂田南国艺恒影城
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="广东省深圳市龙岗区吉华路999号 坂田商业广场5楼">地址：广东省深圳市龙岗区吉华路999号 坂田商业广场5楼</em><a href="/cinema/cinemaMap?id=9" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-28483188</em>
+				<b>|</b> <em class="movie-media">  <i>提供WIFI</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2222"
+			featuresId="7"
+			data="cinemaId=359">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=359" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/cinema/10/17/logo_410_big.png" name="深圳万众国际影城NEO店"
+				address="广东省深圳市香蜜立交NEO大厦A栋3楼" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=359"
+					target="_blank" class="f18">深圳万众国际影城NEO店
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="广东省深圳市香蜜立交NEO大厦A栋3楼">地址：广东省深圳市香蜜立交NEO大厦A栋3楼</em><a href="/cinema/cinemaMap?id=359" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-88609190</em>
+				<b>|</b> <em class="movie-media">  <i>提供WIFI</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2223"
+			featuresId="1,7"
+			data="cinemaId=378">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=378" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2016/5/25/20160525164957395_6vucu_77.jpg" name="太平洋影城（深圳天利店）"
+				address="深圳市南山中心区天利名城购物中心5楼" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=378"
+					target="_blank" class="f18">太平洋影城（深圳天利店）
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市南山中心区天利名城购物中心5楼">地址：深圳市南山中心区天利名城购物中心5楼</em><a href="/cinema/cinemaMap?id=378" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>400-850-3366</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>提供WIFI</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2225"
+			featuresId="7"
+			data="cinemaId=1635">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=1635" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2017/9/20/20170920160253641_jifdl_99.png" name="深圳万达坂田雅园店"
+				address="深圳市龙岗区坂田街道五和社区新安路1号宝银商业广场二楼" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=1635"
+					target="_blank" class="f18">深圳万达坂田雅园店
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳市龙岗区坂田街道五和社区新安路1号宝银商业广场二楼">地址：深圳市龙岗区坂田街道五和社区新安路1号宝银商业广场二楼</em><a href="/cinema/cinemaMap?id=1635" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-89373351</em>
+				<b>|</b> <em class="movie-media">  <i>提供WIFI</i> 
+				</em>
+			</p>
+		</li> 
+		<li class="js-not-field" countyId="2225"
+			featuresId="1,6,7,8"
+			data="cinemaId=859">
+			<a class="cinema-logo"
+			href="/cinema/cinemaPlay?id=859" target="_blank">
+				<img src="http://img.leying365.com/pc/static/image/cinema/cinema-loading.gif" data-original="http://img.leying365.com/data/resource/file/dynamic/cinema/2015/4/17/20150417160103451_9x6ir.jpg" name="深圳中影百汇影城"
+				address="深圳龙岗区南湾街道南岭社区南岭东路28号四楼（人人购物广场南岭店楼上）" />
+		</a>
+			<p class="cinema-msg">
+				<a href="/cinema/cinemaPlay?id=859"
+					target="_blank" class="f18">深圳中影百汇影城
+				</a> <span> <em class="dis-block text-hidden fl" style="max-width: 480px;" title="深圳龙岗区南湾街道南岭社区南岭东路28号四楼（人人购物广场南岭店楼上）">地址：深圳龙岗区南湾街道南岭社区南岭东路28号四楼（人人购物广场南岭店楼上）</em><a href="/cinema/cinemaMap?id=859" target="_blank"
+					class="colde3">行车路线</a><br /> 排期：<em>0场</em><br /> 最近一场：<em class="js-not-field">暂无</em><a target="_blank" class="colde3" style="padding: 0;"></a>
+				</span> <em class="col81 f12"><i class="cinema-tell"></i>0755-28708255</em>
+				<b>|</b> <em class="movie-media">  <i>会员卡支付</i>  <i>中国巨幕</i>  <i>提供WIFI</i>  <i>免费停车</i> 
+				</em>
+			</p>
+		</li>  
+	</ul>
+	<div class="cinema-search-not dis-none" id="js-cinema-not"></div>
+	
+</div>
+<!--footer-->
+    <div class="footer">
+        <p> 
+            <a href="/help/about" target="_blank">关于我们</a>
+            <a href="/help/contact" target="_blank">联系我们</a>
+            <a href="/help/service" target="_blank">服务协议</a>
+            <a href="/help/declare" target="_blank">隐私声明</a>
+        </p>
+        <span>
+            Copyright 2011-2019 leying.com.(乐影网)版权所有&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://img.leying365.com/pc/static/image/common/beian.png"/><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010102001220" target="_blank">京公网安备11010102004724号</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://beian.miit.gov.cn" target="_blank">京ICP备11003845号-1</a>
+        </span>
+    </div>
+	<script>
+    	var require={
+			baseUrl: 'http://s.leying365.com/pc/script',
+			urlArgs: 'bust=20170825'
+			
+    	}
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F8a9c763fd11956b29719fc6dcf4a1b0f' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+<script src="http://s.leying365.com/pc/script/libs/require.js"
+	data-main="apps/cinema/cinemaList"></script>
+
+
+</body>
+</html>
