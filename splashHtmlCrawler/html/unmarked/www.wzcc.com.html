@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head>    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>    <title>,果果视频-免费区</title>    <meta name="copyright" content=""/>    <meta name="keywords" content="电影,电影海报,DVD电影,免费电影,电影下载,"/>    <link href="http://www.wzcc.com/templates/wzcc/images/reset.css" rel="stylesheet" type="text/css" media="all"/>    <link href="http://www.wzcc.com/templates/wzcc/images/list.css" rel="stylesheet" type="text/css" media="all"/>    <script type="text/javascript" src="/js/jquery.js"></script>    <script type="text/javascript" src="/js/func.js"></script>    <script type="text/javascript" src="/js/swf_noclick.js"></script></head><body><div class="container">    
+<script type="text/javascript">
+
+    function SetTab1(nSel, id) {
+
+        
+        for (var i = 1; i < 7; i++) {
+
+            obj = "smallmenu" + i;
+
+            if (i == nSel) {
+
+                document.getElementById(obj).style.display = 'block';
+
+            } else {
+
+                document.getElementById(obj).style.display = 'none';
+
+            }
+
+        }
+
+        for (var i = 1; i < 7; i++) {
+
+            obj = "menu" + i;
+
+            if (i == nSel) {
+
+                document.getElementById(obj).className = 'current';
+
+            } else {
+
+                document.getElementById(obj).className = '';
+
+            }
+
+        }
+
+        
+
+
+    }
+
+</script>
+
+
+<div class="header">
+
+    <div class="info"><!--充值热线：16880588(仅限温州地区) 客服热线：(0577)88918855(星期一至星期五8:30-17:30)--></div>
+
+    <div class="search">
+
+        <form action="/search.php" method="GET" id="search" name="search"
+              onsubmit="return socheck();">
+
+            <div class="select" id="select_box">
+
+                <span>影视</span>
+
+                <ul class="hidden">
+
+                    <li><a href="javascript:;" target="_self" name="title">影片</a></li>
+
+                    <li><a href="javascript:;" target="_self" name="title">&nbsp;&nbsp;-&nbsp;片名</a></li>
+
+                    <li><a href="javascript:;" target="_self" name="director">&nbsp;&nbsp;-&nbsp;导演</a></li>
+
+                    <li><a href="javascript:;" target="_self" name="actor">&nbsp;&nbsp;-&nbsp;演员</a></li>
+
+                    <li><a href="javascript:;" target="_self" name="area">&nbsp;&nbsp;-&nbsp;地区</a></li>
+
+                </ul>
+
+            </div>
+            <input type="hidden" name="type" id="select_type" value="title"/>
+
+            <script type="text/javascript">
+
+                function initSelect(div, input) {
+
+                    div = document.getElementById(div);
+
+                    var on = false;
+
+                    var t;
+
+                    var ul = div.getElementsByTagName("ul")[0];
+
+                    var text = div.getElementsByTagName("span")[0];
+
+                    div.onclick = function () {
+
+                        clearTimeout(t);
+
+                        on = (on) ? false : true;
+
+                        ul.className = (on) ? "hidden" : "";
+                    };
+
+                    div.onmouseover = function () {
+
+                        clearTimeout(t);
+
+                        on = true;
+                    }
+
+                    div.onmouseout = function () {
+
+                        on = false;
+
+                        t = setTimeout(function () {
+
+                            ul.className = "hidden";
+                        }, 1000);
+                    };
+
+                    var a = ul.getElementsByTagName("a");
+
+                    for (i = 0; i < a.length; i++) {
+
+                        a[i].onclick = function () {
+
+                            on = false;
+
+                            ul.className = "hidden";
+
+                            document.getElementById(input).value = this.name;
+
+                            text.innerHTML = this.innerHTML;
+
+                            return false;
+                        };
+                    }
+                }
+
+                var dwsSearch = {
+
+                    hoverBtn: function (o, s) {
+
+                        dwsElement.addClassName(o, s);
+
+                        o.onmouseout = function () {
+
+                            dwsElement.delClassName(this, s);
+
+                        }
+
+                    },
+
+                    doInput: function (o) {
+
+                        if (o.value == o.defaultValue) {
+
+                            o.value = "";
+
+                        }
+
+                        o.onblur = function () {
+
+                            o.value == "" ? o.value = o.defaultValue : "";
+
+                        }
+
+                    }
+
+                }
+
+
+                function socheck() {
+
+                    if (document.search.keyword.value == '' || document.search.keyword.value == '请在这里输入关键词...') {
+
+                        document.search.keyword.focus();
+
+                        return false;
+
+                    }
+
+                }
+
+                initSelect("select_box", "select_type");
+
+            </script>
+
+            <p><input class="inp" type="text" name="keyword" id="sokeywords"
+                      value="请在这里输入关键词..." size="35"
+                      onClick="if (this.value=='请在这里输入关键词...'){this.value=''}"/><input class="but" type="submit"
+                                                                                       onmouseover="this.className='serach_over'"
+                                                                                       onmouseout="this.className='serach_buton'"
+                                                                                       value="搜索"/></p>
+
+        </form>
+
+    </div>
+
+    <div style="clear:both;"></div>
+
+    <div class="logo">
+
+        <a href="http://www.wzcc.com/">视享院线 好莱坞娱乐网</a>
+
+    </div>
+    <!--<div class="flashlogo">
+    <object width="230" height="76" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
+                    <param value="always" name="allowscriptaccess">
+                    <param value="http://www.wzcc.com/templates/wzcc/yuandan.swf" name="movie">
+                    <param value="application/x-shockwave-flash" name="type">
+                    <param value="transparent" name="wmode">
+                    <embed width="230" height="76" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" quality="high" src="http://www.wzcc.com/templates/wzcc/yuandan.swf">
+                </object></noscript>
+    </div>-->
+
+    <div class="nav">
+
+        <ul>
+
+            
+                <li id="menu1" onMouseOver="SetTab1(1)" onmousedown="SetTab1(1)" class='current'>
+
+                    <a href="http://www.wzcc.com/">首页</a>
+
+                </li>
+
+                <li id="menu2" onMouseOver="SetTab1(4)" onmousedown="SetTab1(4)" class=''>
+
+                    <a href="http://www.wzcc.com/index.php?mod=category&action=view&id=20">电影</a>
+
+                </li>
+
+                <!--<li id="menu3" onMouseOver="SetTab1(3)" onmousedown="SetTab1(3)" class=''>
+
+                    <a href="http://www.wzcc.com/index.php?mod=category&action=view&id=2">剧集</a>
+
+                </li>-->
+
+                <!--<li id="menu4" onMouseOver="SetTab1(4)" onmousedown="SetTab1(4)" class=''>
+
+                    <a href="http://www.wzcc.com/index.php?mod=category&action=view&id=48">新片花絮</a>
+
+                </li>-->
+                <li id="menu5" onMouseOver="SetTab1(5)" onmousedown="SetTab1(5)" class=''>
+
+                    <a href="http://www.wzcc.com/index.php?mod=category&action=view&id=48">古词</a>
+
+                </li>
+
+                <li id="menu6" onMouseOver="SetTab1(6)" onmousedown="SetTab1(6)" class=''>
+
+                    <a href="http://www.wzcc.com/index.php?mod=category&action=view&id=49">党建学习</a>
+
+                </li>
+
+                <li id="menu7" onMouseOver="SetTab1(5)" onmousedown="SetTab1(5)" class=''>
+
+                    <a href="http://hd.wzcc.com/index.php?mod=category&action=view&id=50" >综合宣传</a>
+
+                </li>
+                <li id="menu8" onMouseOver="SetTab1(5)" onmousedown="SetTab1(5)" class=''>
+
+                    <a href="http://hd.wzcc.com/index.php?mod=category&action=view&id=51" >旅游</a>
+
+                </li>
+
+                
+            
+        </ul>
+
+        <div style="clear:both"></div>
+
+    </div>
+
+
+    <div class="sub_nav1" id="smallmenu1" style="display:"></div>
+
+    <div class="sub_nav2" id="smallmenu2" style="display:none">
+
+        
+    </div>
+
+    <div class="sub_nav3" id="smallmenu3" style="display:none">
+
+        
+        <a class="m1" href="/index.php?mod=category&action=view&id=6"
+           title="连载区">连载区</a> |
+
+        
+        <a class="m1" href="/index.php?mod=category&action=view&id=7"
+           title="港台现代">港台现代</a> |
+
+        
+        <a class="m1" href="/index.php?mod=category&action=view&id=8"
+           title="港台古装">港台古装</a> |
+
+        
+        <a class="m1" href="/index.php?mod=category&action=view&id=14"
+           title="大陆现代">大陆现代</a> |
+
+        
+        <a class="m1" href="/index.php?mod=category&action=view&id=16"
+           title="大陆古装">大陆古装</a> |
+
+        
+        <a class="m1" href="/index.php?mod=category&action=view&id=34"
+           title="日韩剧">日韩剧</a> |
+
+        
+        <a class="m1" href="/index.php?mod=category&action=view&id=35"
+           title="欧美剧">欧美剧</a> |
+
+        
+    </div>
+
+    <div class="sub_nav4" id="smallmenu4" style="display:none"></div>
+
+    <div class="sub_nav5" id="smallmenu5" style="display:none"></div>
+
+    <div class="sub_nav6" id="smallmenu6" style="display:none"></div>
+
+    <div class="sub_nav7" id="smallmenu7" style="display:none"></div>
+
+    <div class="sub_nav8" id="smallmenu8" style="display:none"></div>
+
+</div>
+<!--Cache 2020-09-16 10:21:08-->    <div class="main" style="margin-top:0px;">        <!--  广告2-->        <div style="float:left;width:940px;"><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=986"><img src="http://www.wzcc.com/guangg/top.png?time="1646138664 width="940"/></a>        </div>        <div style="float:right;"></div>    </div>    <div style="clear:both;"></div>    <!--<div class="login main">				<script src="/index.php?mod=member&action=login&reurl=aHR0cDovL3d3dy53emNjLmNvbS9pbmRleC5waHA/"></script>			</div>-->    <div class="main">                <div class="li_left">            <!---->            <div class="top">                                    <div class="hd"><h3><img alt="热点" src="http://www.wzcc.com/templates/wzcc/images/movie_top.jpg"/></h3></div>                                <div class="bd">                    <ol>                                                                                                <li class="current">                            <a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=987" mainid=""                               title="侠行天下">1侠行天下</a>                            <div class="intro">                                点击量：143<br/>                                主演：                            </div>                            <div class="pic"><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=987"                                                title="侠行天下"><img                                            src="/./vedio3/accttp/2021/08/18/kxnkfHRGFThhJqUg.png" width="72"                                            height="104" alt="侠行天下" border="0" align="top"/></a>                            </div>                        </li>                                                                                                <li><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=988"                               title="凤归巢">2凤归巢</a>                        </li>                                                                                                <li><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=989"                               title="惜珍怜玉">3惜珍怜玉</a>                        </li>                                                                                                <li><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=990"                               title="清官留史">4清官留史</a>                        </li>                                                                                                <li><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=980"                               title="黄桂香">5黄桂香</a>                        </li>                                                                                                <li><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=984"                               title="宫庭内外">6宫庭内外</a>                        </li>                                                                                                <li><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=986"                               title="《百炼成钢：中国共产党的100年》百集微纪录片">7《百炼成钢：中国共产党的100</a>                        </li>                                                                                                <li><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=983"                               title="中国电信集团企业形象宣传片剪辑">8中国电信集团企业形象宣传片剪辑</a>                        </li>                                                                                                <li><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=982"                               title="5G形象片高清30秒">95G形象片高清30秒</a>                        </li>                                                                                                <li><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=985"                               title="异国恋情">10异国恋情</a>                        </li>                                                                                            </ol>                </div>            </div>            <div class="tool">                <div class="hd"></div>                <div class="bd">                    <ul>                                                <li><a href="http://get.adobe.com/flashplayer/" target="_blank"><img                                        src="/upload/image/2010/06/07/a9a71d6494c98c2e.png" alt="FLASH播放器"/></a>                        </li>                                            </ul>                </div>            </div>            <!--		右边广告			<div class="list_ad"><a href="http://friends.wz16300.com/votelist.aspx" target="_blank"><img src="http://www.wzcc.com/templates/wzcc/images/rx.jpg" width="210" height="379" /></a></div>-->        </div>        <div class="li_list li_right">                            <div style="height:auto;" class="pagination" id="page1"></div>                            <ul>                                                        <li>                        <div class="file-pic"><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=987"><img alt="侠行天下"                                                                                        src="/./vedio3/accttp/2021/08/18/kxnkfHRGFThhJqUg.png"                                                                                        width="115" height="165"                                                                                        border="0"/></a></div>                        <div class="file-intro">                            <h3 class="file-title"><a                                        href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=987">侠行天下</a></h3>                            <div class="file-description">                                主演： <br/>                                                                    导演： <br/>                                                                语言：   <br/>                                国别： <br/>                                更新： 2022-02-15 17:28:38                            </div>                        </div>                    </li>                                        <li>                        <div class="file-pic"><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=988"><img alt="凤归巢"                                                                                        src="/./vedio3/accttp/2021/09/23/vDqUbKKAxAVtjhSn.png"                                                                                        width="115" height="165"                                                                                        border="0"/></a></div>                        <div class="file-intro">                            <h3 class="file-title"><a                                        href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=988">凤归巢</a></h3>                            <div class="file-description">                                主演： <br/>                                                                    导演： <br/>                                                                语言：   <br/>                                国别： <br/>                                更新： 2022-02-15 17:28:37                            </div>                        </div>                    </li>                                        <li>                        <div class="file-pic"><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=989"><img alt="惜珍怜玉"                                                                                        src="/./vedio3/accttp/2021/10/28/vAsNmTSXlszDlZKR.png"                                                                                        width="115" height="165"                                                                                        border="0"/></a></div>                        <div class="file-intro">                            <h3 class="file-title"><a                                        href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=989">惜珍怜玉</a></h3>                            <div class="file-description">                                主演： <br/>                                                                    导演： <br/>                                                                语言：   <br/>                                国别： <br/>                                更新： 2022-02-15 17:28:34                            </div>                        </div>                    </li>                                        <li>                        <div class="file-pic"><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=990"><img alt="清官留史"                                                                                        src="/./vedio3/accttp/2021/11/09/OvqqArWsjJSjtLbD.png"                                                                                        width="115" height="165"                                                                                        border="0"/></a></div>                        <div class="file-intro">                            <h3 class="file-title"><a                                        href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=990">清官留史</a></h3>                            <div class="file-description">                                主演： <br/>                                                                    导演： <br/>                                                                语言：   <br/>                                国别： <br/>                                更新： 2022-02-15 17:28:33                            </div>                        </div>                    </li>                                        <li>                        <div class="file-pic"><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=980"><img alt="黄桂香"                                                                                        src="/./vedio3/accttp/2020/09/02/kxatVEEAwFmRlcrE.png"                                                                                        width="115" height="165"                                                                                        border="0"/></a></div>                        <div class="file-intro">                            <h3 class="file-title"><a                                        href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=980">黄桂香</a></h3>                            <div class="file-description">                                主演： <br/>                                                                    导演： <br/>                                                                语言：   <br/>                                国别： <br/>                                更新： 2021-07-20 18:33:44                            </div>                        </div>                    </li>                                        <li>                        <div class="file-pic"><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=984"><img alt="宫庭内外"                                                                                        src="/./vedio3/accttp/2021/01/14/bUtxSHlbOZwsbfru.png"                                                                                        width="115" height="165"                                                                                        border="0"/></a></div>                        <div class="file-intro">                            <h3 class="file-title"><a                                        href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=984">宫庭内外</a></h3>                            <div class="file-description">                                主演： <br/>                                                                    导演： <br/>                                                                语言： 中文  <br/>                                国别：  大陆<br/>                                更新： 2021-07-20 18:33:35                            </div>                        </div>                    </li>                                        <li>                        <div class="file-pic"><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=986"><img alt="《百炼成钢：中国共产党的100年》百集微纪录片"                                                                                        src="/./vedio3/accttp/2021/06/09/XOKDslcHbUBgdPij.png"                                                                                        width="115" height="165"                                                                                        border="0"/></a></div>                        <div class="file-intro">                            <h3 class="file-title"><a                                        href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=986">《百炼成钢：中国共产党的100</a></h3>                            <div class="file-description">                                主演： <br/>                                                                    导演： <br/>                                                                语言：   <br/>                                国别： <br/>                                更新： 2021-06-24 10:44:19                            </div>                        </div>                    </li>                                        <li>                        <div class="file-pic"><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=983"><img alt="中国电信集团企业形象宣传片剪辑"                                                                                        src="/./vedio3/accttp/2020/10/30/ewKzNxGOMtPkMwri.png"                                                                                        width="115" height="165"                                                                                        border="0"/></a></div>                        <div class="file-intro">                            <h3 class="file-title"><a                                        href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=983">中国电信集团企业形象宣传片剪辑</a></h3>                            <div class="file-description">                                主演： <br/>                                                                    导演： <br/>                                                                语言： 中午  <br/>                                国别：  大陆<br/>                                更新： 2021-05-20 18:27:55                            </div>                        </div>                    </li>                                        <li>                        <div class="file-pic"><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=982"><img alt="5G形象片高清30秒"                                                                                        src="/./vedio3/accttp/2020/10/26/BVkemYyglTHPrYhw.png"                                                                                        width="115" height="165"                                                                                        border="0"/></a></div>                        <div class="file-intro">                            <h3 class="file-title"><a                                        href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=982">5G形象片高清30秒</a></h3>                            <div class="file-description">                                主演： <br/>                                                                    导演： <br/>                                                                语言： 中文  <br/>                                国别：  大陆<br/>                                更新： 2021-05-20 18:27:52                            </div>                        </div>                    </li>                                        <li>                        <div class="file-pic"><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=985"><img alt="异国恋情"                                                                                        src="/./vedio3/accttp/2021/04/06/RvLhhHrNXuWLNlbr.png"                                                                                        width="115" height="165"                                                                                        border="0"/></a></div>                        <div class="file-intro">                            <h3 class="file-title"><a                                        href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=985">异国恋情</a></h3>                            <div class="file-description">                                主演： <br/>                                                                    导演： <br/>                                                                语言： 中文  <br/>                                国别：  大陆<br/>                                更新： 2021-05-20 18:27:48                            </div>                        </div>                    </li>                                        <li>                        <div class="file-pic"><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=981"><img alt="电信三千兆30秒高清"                                                                                        src="/./vedio3/accttp/2020/10/19/cJwJwekRtkygpydI.png"                                                                                        width="115" height="165"                                                                                        border="0"/></a></div>                        <div class="file-intro">                            <h3 class="file-title"><a                                        href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=981">电信三千兆30秒高清</a></h3>                            <div class="file-description">                                主演： <br/>                                                                    导演： <br/>                                                                语言： 中文<br/>                                国别：  大陆<br/>                                更新： 2020-10-26 15:50:29                            </div>                        </div>                    </li>                                        <li>                        <div class="file-pic"><a href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=968"><img alt="麒麟豹"                                                                                        src="/./vedio3/accttp/2019/07/08/aAVAFNiLUxjaaDpl.png"                                                                                        width="115" height="165"                                                                                        border="0"/></a></div>                        <div class="file-intro">                            <h3 class="file-title"><a                                        href="http://www.wzcc.com/index.php?mod=movie&action=view&movid=968">麒麟豹</a></h3>                            <div class="file-description">                                主演： <br/>                                                                    导演： <br/>                                                                语言：  普通话,中文字幕  <br/>                                国别：  大陆<br/>                                更新： 2020-08-13 11:54:06                            </div>                        </div>                    </li>                                                </ul>            <div class="pagination" id="page2">共254部/22页</a>&nbsp;<font color="red">1</font>&nbsp;<a href="/index.php?action=index&mod=index&id=-1&page=2">2</a>&nbsp;<a href="/index.php?action=index&mod=index&id=-1&page=3">3</a>&nbsp;<a href="/index.php?action=index&mod=index&id=-1&page=4">4</a>&nbsp;<a href="/index.php?action=index&mod=index&id=-1&page=5">5</a>&nbsp;<a href="/index.php?action=index&mod=index&id=-1&page=6">6</a>&nbsp;<a href="/index.php?action=index&mod=index&id=-1&page=7">7</a>&nbsp;<a href="/index.php?action=index&mod=index&id=-1&page=2">下一页</a>&nbsp;<a href="/index.php?action=index&mod=index&id=-1&page=11" title="下十页">下十页</a>&nbsp;<a href="/index.php?action=index&mod=index&id=-1&page=22">尾&nbsp;页</a>&nbsp;</div>        </div>        <div style="clear:both;"></div>    </div>    
+<div class="foot main">
+    <!--广告热线：88958896 | 客服电话：88918855 (星期一至星期五8:30-17:30) | 客服QQ：1073305239<br />-->
+    中华人民共和国电信与信息服务业务经营许可证编号：<a href="https://beian.miit.gov.cn/" target="_blank">浙B2-20040274</a> 版权所有：温州数码创业投资有限公司 信息网络传播视听节目许可证号：1109349
+    <br/>
+    公安机关互联网安全管理服务平台备案号33030202001009 <br/>
+    <script src="http://s14.cnzz.com/stat.php?id=2275370&web_id=2275370&show=pic" language="JavaScript"></script>
+</div>
+
+<!--Cache 2020-11-17 17:07:52-->    <script>        $(document).ready(function () {            //alert($('#page2').html());            $('#page1').html($('#page2').html());        })    </script></div></body></html>
+<!--Cache 2021-06-09 17:44:56-->

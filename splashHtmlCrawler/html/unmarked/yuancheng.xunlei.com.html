@@ -1,0 +1,3039 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="overflow-y:hidden;">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!-- <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+		<meta name="keywords" content="远程下载,迅雷远程下载,脱机下载,迅雷盒子,迅雷下载器" />
+		<meta name="description" content="迅雷远程下载是一种跨地域远程控制的下载方式，可以远程遥控异地下载器来下载任务，真正做到随地随地下载任务。" />
+		<title>迅雷远程下载，随时随地，想下就下</title>
+		<link rel="shortcut icon" href="favicon.ico" />
+		<link rel="bookmark" href="favicon.ico" />
+
+		<!--{BUILD:css/yuancheng.css}-->
+		<link rel="stylesheet" href="css/a.css" />
+		<link rel="stylesheet" href="css/i_page.css" />
+		<link rel="stylesheet" href="css/xiazai.css" />
+		<link rel="stylesheet" href="css/custom.css" />
+		<!--{/BUILD}-->
+
+		<!--{BUILD:js/common.js}-->
+		<script type="text/javascript" src="js/common/jquery.js"></script>
+		<script type="text/javascript" src="js/common/json2.js"></script>
+		<script type="text/javascript" src="js/common/store.js"></script>
+		<script type="text/javascript" src="js/common/helper.js"></script>
+		<!--{/BUILD}-->
+
+		<!--{BUILD:js/preload.js}-->
+		<script type="text/javascript" src="js/hub_client.js"></script>
+		<script type="text/javascript" src="js/preload.js"></script>
+		<!--{/BUILD}-->
+		<script>
+		if (location.protocol === 'https:') {
+		 location.replace(location.href.replace('https:', 'http:'))
+		}
+		</script>
+
+	</head>
+	<body style="min-width:1200px; overflow-y:hidden;">
+		<div id="top-layer-box" style="position:absolute; width:100%; height:100%; padding:0px; margin:0px; left:0px; top:0px; display:none; z-index:9999; cursor:move; -moz-user-select:none;-webkit-user-select:none;user-select:none;">&nbsp;</div>
+		<div id="announcement" class="top-notice-pannel" style="z-index:2;">
+			<a id="announcement-close" class="top-notice-close" href="javascript:;" title="关闭">关闭</a>
+			<span id="announcement-text"><!-- PLACEHOLDER --></span>
+		</div>
+		<div id="notice" class="top-notice-pannel" style="z-index:1;">
+			<a id="notice-close" class="top-notice-close" href="javascript:;" title="关闭">关闭</a>
+			<span id="notice-text"><!-- PLACEHOLDER --></span>
+		</div>
+		<!-- BEGIN header -->
+		<div class="header cont" id="header">
+			<div class="logo_box">
+				<h1><a class="logo" href="/" title="迅雷下载器" onClick="javascript:_hmt.push(['_trackEvent', 'logo', 'click']);">迅雷远程下载</a></h1>
+				<h2>开启下载新纪元</h2>
+			</div>
+			<div class="member_op">
+				<p class="member_op_nav">
+					<span class="member_op_name">欢迎您，<strong class="user_name"><a href="http://dynamic.i.xunlei.com/user" target="_blank" id="username">USERNAME</a></strong></span>
+					<span>&nbsp;|&nbsp;</span>
+					<a title="退出" href="javascript:;" data-dispatch="logout">退出</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a title="帮助" href="help.html" target="_blank" onClick="javascript:_hmt.push(['_trackEvent', 'help', 'click']);">帮助</a>
+					<span>&nbsp;|&nbsp;</span>
+					<a title="反馈" href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">反馈</a>
+					<!--<span id="to3-sep" style="display:none;">&nbsp;|&nbsp;</span>
+					<a id="to3" title="体验新版" href="/3/" style="color:#C80000; font-weight:bold; text-decoration:underline; display:none;">体验新版</a>-->
+					<span>&nbsp;</span>
+					<span class="member_op_btn" id="rightop-vip">
+						<a title="续费会员" href="http://pay.vip.xunlei.com/?referfrom=VIP_3494" target="_blank" style="display:;"><em></em>续费会员</a>
+						<a title="开通会员" href="http://pay.vip.xunlei.com/?referfrom=VIP_3494" target="_blank" style="display:none;"><em></em>开通会员</a>
+					</span>
+				</p>
+			</div>
+		</div>
+		<!-- END header -->
+
+		<!-- BEGIN no downloaders -->
+		<div id="no-downloaders" style="background-color:#E7F0FD;padding:18px 0 0 0;display:none;">
+			<div class="yc_firstwrap">
+				<div class="yc_firstmain">
+					<div class="yc_first">
+						<div class="yc_first_top"></div>
+						<div class="yc_first_mid" style="padding:0;">
+							<div class="sourcezone" style="padding:0 30px 0 30px;">
+								<div class="bindingbox">
+					                <h3>开启远程下载，必须先绑定要下载到的设备哦</h3>
+					                <p class="f14">我们提供以下设备绑定方式</p>
+					                <div class="binding-type" style="padding:0; width:680px;">
+					                	<ol class="tutorlist clearfix" style="padding:10px 0 0 30px; height:290px;">
+					                		<!--<li class="li-one" style="padding:0;">
+					                			<h4>方式一：</h4>-->
+					                			<p>点击你所拥有的设备类型，进入绑定引导</p>
+					                			<span class="tl-imgbox" style="margin:5px 0;">
+					                				<a href="help.html#module=sbzc&table=box" target="_blank" title="智能盒子/电视"></a>
+					                				<a href="help.html#module=sbzc&table=router" target="_blank" title="路由器"></a>
+					                				<a href="help.html#module=sbzc&table=nas" target="_blank" title="网络存储设备"></a>
+					                				<a href="help.html#module=sbzc&table=pc" target="_blank" title="计算机"></a>
+					                			</span>
+					                			<p>找到并输入设备绑定激活码，完成绑定</p>
+					                			<div class="tl-inp clearfix">
+					                				<input id="page-bind-code" type="text" placeholder="输入激活码" />
+					                				<a data-dispatch="pageBindDownloader" class="btn-pop-bind fl" href="javascript:;" title="绑定">绑定</a>
+					                			</div>
+					                			<div class="tl-inp-ect">
+					                				<p style="display:none; font-size:12px;" id="fb_bind_fail_msg" class="fl col-red"> <i class="i-sad"></i>
+					                					绑定失败！
+					                				</p>
+					                				<p style="display:none; font-size:12px;" id="fb_bind_success_msg" class="fl col-green"> <i class="i-good"></i>
+					                					绑定成功！
+					                				</p>
+					                				<a class="fr" href="http://yuancheng.xunlei.com/help.html#module=cjwt" target="_blank" title="绑定遇到问题">绑定遇到问题</a>
+					                			</div>
+					                			<div class="tl-inp-ect" style="position:absolute; margin-top:20px;">
+									            	<span style="line-height:25px;">如果还是找不到激活码？</span>
+								                	<a class="fr" href="https://bbs.xunlei.com/circles/16/posts/33823?entrypage=community_homepage&entry=newest" target="_blank" title="获取激活码通用法">请点击查看</a>
+								                </div>
+					                		</li>
+					                		<!--<li class="li-two">
+					                			<h4>方式二：</h4>
+					                			<p>安装迅雷电视助手，一键自动绑定同WiFi下智能设备</p>
+					                			<div class="tl-code" style="margin-top: 10px;">
+					                				<img src="img/tutor/tv_asis.png" alt="" />
+					                				<i class="apple-android" style="margin: 10px 0;"></i>
+					                				<p>扫一扫安装迅雷电视助手</p>
+					                			</div>
+					                		</li>-->
+					                	</ol>
+					                	<p class="tl-p clearfix" style="padding-bottom:10px;">
+					                		<em class="fl">绑定后即可在PC、网页上远程操控你的智能设备并创建下载任务&nbsp;&nbsp;</em>
+					                		<a class="fl" href="help.html" target="_blank">了解更多</a>
+					                	</p>
+					                </div>
+								</div>
+							</div>
+						</div>
+						<div class="yc_first_bot"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END no downloaders -->
+
+		<!-- BEGIN page body -->
+		<div class="wrap cont" id="body" style="display:;">
+			<!-- BEGIN side panel -->
+			<div class="sidepan" id="sidebar" style="overflow:hidden; overflow-y:auto;">
+				<p class="nobox" style="display:none;">您当前没有绑定盒子，<br />点击“新建”可以预设任务。</p>
+				<div class="nobox">
+					<div class="myTitle">
+						<a class="lk_adddload" href="javascript:;" title="添加" data-dispatch="popAddDownloader"><i class="i_add"></i>添加</a>
+						<span>我的下载器</span>
+					</div>
+				</div>
+				<div class="subnav_con" id="sidebar-downloader-list" style="display:none;">
+					<!-- PLACEHOLDER -->
+				</div>
+				<div id="sidebar-addon-list" style="display:none;">
+					<div class="nobox bd_top">
+					    <!-- <div class="myTitle">
+					        配套支持
+						</div> -->
+					</div>
+					<ul class="subnav sec_nav" data-type="list-items">
+						<li><a href="http://yc.xzb.xunlei.com"><span><font color="red">下载宝用户点这里!</font></span></a></li>
+					    <li><a href="#module=ycxzApp" data-dispatch="open" data-data="ycxzApp"><span class="yc_app">远程下载客户端</span></a></li>
+					    <li><a href="#module=sbzc" data-dispatch="open" data-data="sbzc"><span class="sb_zc">设备支持列表</span></a></li>
+					    <!-- <li><a href="#module=bbgx" data-dispatch="open" data-data="bbgx"><span class="yc_app">版本更新<label style="line-height:26px; height:28px; display:inline-block; color:red; font-size:12px;">new!</label></span></a></li> -->
+					</ul>
+					<div class="nobox bd_top" style="padding-top:0px;">
+						<div class="myTitle">快速下载</div>
+					</div>
+					<ul class="subnav sec_nav" data-type="list-items">
+						<li id="source-site-open-button"><a href="#module=sourceSite" data-dispatch="open" data-data="sourceSite"><span class="xl_zyzd">影视搜索</span></a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- END side panel -->
+
+			<!-- BEGIN main panel -->
+			<div id="main">
+				<!-- BEGIN source site -->
+				<div class="primary taskpan whitebg" id="source-site">
+					<div class="source-site" id="source-site-zone">
+						<div class="source-top clearfix">
+							<div class="sc-search-bar">
+								<label></label>
+								<input type="text" id="source-site-searchbox" placeholder="远程下载" /><a class="search-btn" id="source-site-searchbtn" href="###">搜 索</a>
+							</div>
+							<div class="sc-keywords" id="source-site-hot-keyword">
+							</div>
+						</div>
+						<div class="source-main">
+							<div class="sc-pan">
+								<div class="sc-pan-hd">
+									<h3 class="titl"><i class="ico-net"></i>让你流连忘返的站点</h3>
+									<p class="des">添加个性化站点，以后找资源更方便</p>
+								</div>
+								<div class="sc-pan-bd">
+									<ul class="sc-list clearfix" id="source-site-personal-list">
+									</ul>
+								</div>
+							</div>
+							<div class="sc-pan hot-sc-pan">
+								<div class="sc-pan-hd">
+									<h3 class="titl"><i class="ico-hot"></i>热门资源站</h3>
+								</div>
+								<div class="sc-pan-bd">
+									<ul class="hots-list clearfix" id="source-site-hot-list"></ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- END source site -->
+
+				<!-- BEGIN ycxz app -->
+				<div id="ycxz-app" class="primary taskpan whitebg" style="display:none;">
+					<div id="ycxz-app-box" class="sourcezone">
+						<div class="u-qabox" style="width:auto; max-width:800px;">
+			                <div style="padding:0 0 10px 0;">
+			                    <p>除了迅雷远程下载web页，现在您也可以在电脑（迅雷极速版）和手机（手机迅雷、迅雷看看、迅雷影音）上方便的控制远程下载设备，其功能和操作界面各有不同。</p>
+			                    <p>同时，部分路由器厂商提供的软件也可以控制您的远程设备进行下载，如小米路由器、如意云智能路由等。</p>
+			                    <p>为了方便大家的使用，下面我们对远程下载的各种控制端的特点进行说明：</p>
+			                </div>
+
+			                <table class="faq_table" cellspacing="0" cellpadding="0">
+			                    <colgroup>
+			                        <col width="300" />
+			                        <col width="200" />
+			                        <col width="300" />
+			                        <col width="300" />
+			                    </colgroup>
+			                    <thead>
+			                        <tr>
+			                            <th style="font-weight:bold; padding:10px 0;">远程下载客户端</th>
+			                            <th style="font-weight:bold; padding:10px 0;">平台</th>
+			                            <th style="font-weight:bold; padding:10px 0;">特点</th>
+			                            <th style="font-weight:bold; padding:10px 0;">相关资源</th>
+			                        </tr>
+			                    </thead>
+			                    <tbody>
+			                        <tr>
+			                            <td>迅雷极速版</td>
+			                            <td><a href="http://vip.xunlei.com/fast_xl/" target="_blank">电脑</a></td>
+			                            <td style="padding:10px 0;">支持直接管理远程下载（不能管理电脑）</td>
+			                            <td>产品讨论吐槽QQ群：296159992、86062907</td>
+			                        </tr>
+			                        <!-- <tr>
+			                            <td>迅雷电视助手</td>
+			                            <td>
+			                                <a href="http://bbs.xunlei.com/thread-371104-1-1.html" target="_blank">Android</a>&amp;
+			                                <a href="http://bbs.xunlei.com/thread-370605-1-1.html" target="_blank">IOS</a>
+			                            </td>
+			                            <td style="padding:10px 0;">支持从链接和离线空间添加任务到远程下载</td>
+			                            <td>迅雷电视助手官方交流群：234334767</td>
+			                        </tr> -->
+			                        <tr>
+			                            <td>手机迅雷</td>
+			                            <td>
+			                                <a href="http://mobile.xunlei.com/" target="_blank">Android</a>&amp;
+			                                <a href="http://mobile.xunlei.com/iphone.html" target="_blank">IOS</a>
+			                            </td>
+			                            <td style="padding:10px 0;">目前只支持从朋友圈和群组添加资源到远程下载</td>
+			                            <td>反馈地址：<a href="http://bbs.xunlei.com/forum-95-1.html" target="_blank">http://bbs.xunlei.com/forum-95-1.html</a></td>
+			                        </tr>
+									<tr>
+			                            <td>迅雷下载宝</td>
+			                            <td>
+			                                <a href="http://xiazaibao.xunlei.com/" target="_blank">多平台</a>
+			                            </td>
+			                            <td style="padding:10px 0;">钻石会员专属全天候下载神器</td>
+			                            <td>反馈地址：<a href="http://xiazaibao.xunlei.com/bbs/forum.php" target="_blank">http://xiazaibao.xunlei.com/bbs/forum.php</a></td>
+									</tr>
+
+									<tr>
+			                            <td style="color:grey;">迅雷影音</td>
+			                            <td style="color:grey;">
+			                                Android&amp;IOS
+			                            </td>
+			                            <td style="padding:10px 0; color:grey;">已经停止更新，和手机迅雷功能相同</td>
+			                            <td></td>
+			                        </tr>
+			                        <tr>
+			                            <td style="color:grey;">迅雷远程下载</td>
+			                            <td style="color:grey;">
+			                                Android
+			                            </td>
+			                            <td style="padding:10px 0; color:grey;">已经停止更新，请换用以上几款软件</td>
+			                            <td></td>
+			                        </tr>
+			                    </tbody>
+			                </table>
+			            </div>
+			            <!-- <div class="u-qabox" style="width:auto;">
+			                <div>
+			                    <p>除了迅雷远程下载web页，现在您也可以在电脑（迅雷极速版）和手机（迅雷电视助手、手机迅雷、迅雷看看、迅雷影音）上方便的控制远程下载设备，其功能和操作界面各有不同。</p>
+			                    <p>同时，部分路由器厂商提供的软件也可以控制您的远程设备进行下载，如小米路由器、如意云智能路由等。</p>
+			                    <p>为了方便大家的使用，下面我们对远程下载的各种控制端的特点进行说明：</p>
+			                </div>
+
+			                <div style="padding-top:20px;">
+			                    <h3>1、迅雷极速版</h3>
+			                    <p>下载地址：<a href="http://vip.xunlei.com/fast_xl/" target="_blank" style="color:blue;">http://vip.xunlei.com/fast_xl/</a></p>
+			                    <p>特性：无插件、下载快，可以直接用电脑添加远程下载设备、管理远程任务。</p>
+			                    <p>产品讨论吐槽QQ群：296159992、86062907</p>
+			                </div>
+
+			                <div style="padding-top:20px;">
+			                    <h3>2、迅雷电视助手</h3>
+			                    <p>下载地址：<a href="http://bbs.xunlei.com/thread-371104-1-1.html" target="_blank" style="color:blue;">Android</a>、<a href="http://bbs.xunlei.com/thread-370605-1-1.html" target="_blank" style="color:blue;">iOS</a></p>
+			                    <p>特性：可以在手机端通过链接新建任务，也可以从全网资源库新建下载任务，可以一键把远程下载的内容推送到智能电视、盒子等设备。</p>
+			                    <p>迅雷电视助手官方交流群：281010266</p>
+			                </div>
+
+			                <div style="padding-top:20px;">
+			                    <h3>3、手机迅雷</h3>
+			                    <p>下载地址：<a href="http://mobile.xunlei.com/" target="_blank" style="color:blue;">http://mobile.xunlei.com/</a></p>
+			                    <p>特性：清爽的管理界面，支持一键转存下载海量资源。</p>
+			                    <p>反馈地址：<a href="http://bbs.xunlei.com/forum-95-1.html" target="_blank" style="color:blue;">http://bbs.xunlei.com/forum-95-1.html</a></p>
+			                </div>
+
+			                <div style="padding-top:20px;">
+			                    <h3>4、迅雷看看</h3>
+			                    <p>下载地址：<a href="http://www.kankan.com/app/android.html" target="_blank" style="color:blue;">http://www.kankan.com/app/android.html</a></p>
+			                    <p>特性：清爽的管理界面，支持一键下载迅雷看看正版高清资源。</p>
+			                </div>
+
+			                <div style="padding-top:20px; padding-bottom:30px;">
+			                    <h3>5、迅雷影音、迅雷远程下载</h3>
+			                    <p>目前已经停止更新，请各位同学从以上几个APP中挑选适合自己的体验远程下载~~</p>
+			                </div>
+			            </div> -->
+			        </div>
+			    </div>
+		        <!-- END ycxz app -->
+
+		        <!-- BEGIN sbzc -->
+		        <div id="sbzc" class="primary taskpan whitebg" style="display:none;">
+			        <div id="binding-box-list" class="sourcezone" style="padding-right:0px;">
+						<div class="bindingbox">
+			                <div class="bdbox-nav">
+			                    <ul id="bdbox-nav-ul" class="bdbox-nav-ul">
+			                        <li id="bdbox-nav-ul-box" data-pannel-id="bdbox-list-ul-box"><a hidefocus="true" class="on" href="javascript:;">智能盒子/电视</a></li>
+			                        <li id="bdbox-nav-ul-router" data-pannel-id="bdbox-list-ul-router"><a hidefocus="true" href="javascript:;">路由器</a></li>
+			                        <li id="bdbox-nav-ul-nas" data-pannel-id="bdbox-list-ul-nas"><a hidefocus="true" href="javascript:;">网络存储服务器</a></li>
+			                        <li id="bdbox-nav-ul-pc" data-pannel-id="bdbox-list-ul-pc"><a hidefocus="true" href="javascript:;">电脑(PC)</a></li>
+									<li id="bdbox-nav-ul-xiazaibao" data-pannel-id="bdbox-list-ul-xiazaibao"><a hidefocus="true" href="javascript:;">下载宝</a></li>
+			                        <!-- <li id="bdbox-nav-ul-phone" data-pannel-id="bdbox-list-ul-phone"><a hidefocus="true" href="javascript:;">手机</a></li> -->
+			                    </ul>
+			                    <p class="bdbox-abs" style="right:30px;">
+			                        <a href="help.html#type=wtfk" target="_blank">我的设备没在这里</a>
+			                    </p>
+			                </div>
+							<div id="bdbox-list" class="bdbox-list" style="padding-right:30px;">
+								<ul id="bdbox-list-ul-box" class="bdbox-list-ul" style="display:;">
+									<li>
+										<div id="mi-box" data-item-type="bdbox-list-title" data-device-type="mi-box" style="cursor:pointer;">
+											<span class="bdb-img"><img src="img/tutor/mi.png" /></span>
+											<h3>小米电视/盒子</h3>
+											<p>简单易用的 MIUI TV 系统</p>
+											<a class="abs-unfold" href="#">点击展开<i class="i-arr-down"></i></a>
+										</div>
+										<div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+											<div class="bdbox-sub-fluent">
+												<h4>绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													打开小米电视/盒子，找到“高清播放器”-“下载目录”
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/mi-guide-1.jpg" alt="" />
+												</div>
+												<!-- <img src="img/bind/mi-guide-1.jpg" /> -->
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													按遥控器上的“菜单键”，弹出“绑定设置”菜单，遥控器“确定”键
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/mi-guide-2.jpg" alt="" />
+												</div>
+												<!-- <img src="img/bind/mi-guide-2.jpg" /> -->
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">3</em>
+													记录激活码或扫描二维码绑定
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/mi-guide-3.jpg" alt="" />
+												</div>
+												<!-- <img src="img/bind/mi-guide-3.jpg" />
+												 <div class="tl-code">
+													<i class="apple-android"></i>
+													<img src="img/bind/mi-guide-2.jpg" alt="" />
+													<p>扫一扫安装迅雷电视助手</p>
+												</div> -->
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=dziQ1R">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-小米专群
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载交流群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+
+									<li>
+										<div id="haimeidi-box" data-item-type="bdbox-list-title" data-device-type="haimeidi-box" style="cursor:pointer;">
+											<span class="bdb-img"><img src="img/tutor/xlly.png" /></span>
+											<h3>海美迪电视/盒子</h3>
+											<p>高清网络机顶盒</p>
+											<a class="abs-unfold" href="#">点击展开<i class="i-arr-down"></i></a>
+										</div>
+										<div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+											<div class="bdbox-sub-fluent">
+												<h4>绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													首页-海美迪专区-迅雷远程下载，打开迅雷远程下载应用，默认进入新手引导
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/hmd-guide-1.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													有三种方式绑定迅雷账号，可以按左右键进行切换
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/hmd-guide-2.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">3</em>
+													记录激活码，完成绑定
+												</p>
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cF8DOL">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-海美迪群
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载交流群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+
+									<li>
+										<div id="chuangwei-box" data-item-type="bdbox-list-title" data-device-type="chuangwei-box" style="cursor:pointer;">
+											<span class="bdb-img"><img src="img/tutor/xlly.png" /></span>
+											<h3>创维电视/盒子</h3>
+											<p>最“色”最强大的娱乐机顶盒</p>
+											<a class="abs-unfold" href="#">点击展开<i class="i-arr-down"></i></a>
+										</div>
+										<div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+											<div class="bdbox-sub-fluent">
+												<h4>绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													打开“应用”，找到“迅雷下载”
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/cw-guide-1.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													稍等待一会，点击“我的下载”
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/cw-guide-2.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">3</em>
+													点击“立即绑定”，选择“浏览器绑定”
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/cw-guide-3.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">4</em>
+													找到激活码
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/cw-guide-4.png" alt="" />
+												</div>
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cF8DOL">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-创维群
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载交流群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+
+									<li>
+										<div id="tcl-box" data-item-type="bdbox-list-title" data-device-type="tcl-box" style="cursor:pointer;">
+											<span class="bdb-img"><img src="img/tutor/tcl.png" /></span>
+											<h3>TCL电视/盒子</h3>
+											<p>你的一周娱乐伙伴</p>
+											<a class="abs-unfold" href="#">点击展开<i class="i-arr-down"></i></a>
+										</div>
+										<div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+											<div class="bdbox-sub-fluent">
+												<h4>绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													打开“应用”，找到“迅雷播放器”
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/tcl-box-guide-1.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													稍等待一会，点击“我的下载”
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/tcl-box-guide-2.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">3</em>
+													点击“立即绑定”，选择“浏览器绑定”
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/tcl-box-guide-3.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">4</em>
+													找到激活码
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/tcl-box-guide-4.png" alt="" />
+												</div>
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cF8DOL">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-TCL群
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载交流群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+
+									<li>
+										<div id="tcl-box" data-item-type="bdbox-list-title" data-device-type="tcl-box" style="cursor:pointer;">
+											<span class="bdb-img"><img src="img/tutor/xlly.png" /></span>
+											<h3>海尔电视/盒子</h3>
+											<p>开启个性家电新生活</p>
+											<a class="abs-unfold" href="#">点击展开<i class="i-arr-down"></i></a>
+										</div>
+										<div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+											<div class="bdbox-sub-fluent">
+												<h4>绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													打开“应用”，找到“迅雷播放器”
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/haier-guide-1.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													稍等待一会，点击“我的下载”
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/haier-guide-2.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">3</em>
+													点击“立即绑定”，选择“浏览器绑定”
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/tcl-box-guide-3.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">4</em>
+													找到激活码
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/tcl-box-guide-4.png" alt="" />
+												</div>
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cF8DOL">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-海尔群
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载交流群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+
+									<li style="font-size:14px;">
+										<h6>其他支持的盒子/电视</h6>
+										康佳&nbsp;&nbsp;长虹&nbsp;&nbsp;NEC&nbsp;&nbsp;海信&nbsp;&nbsp;联想&nbsp;&nbsp;开博尔&nbsp;&nbsp;杰科&nbsp;&nbsp;乐视TV&nbsp;&nbsp;华为秘盒&nbsp;&nbsp;极米&nbsp;&nbsp;朝歌&nbsp;&nbsp;百事通
+									</li>
+								</ul>
+
+								<ul id="bdbox-list-ul-router" class="bdbox-list-ul" style="display:none;">
+									<li>
+										<div id="netcore-router" data-item-type="bdbox-list-title" data-device-type="netcore-router" style="cursor:pointer;">
+											<span class="bdb-img"><img src="img/tutor/lk.png" /></span>
+											<h3>磊科路由器</h3>
+											<p>最早集成远程下载的路由器，现支持NW762/NM765绑定远程下载</p>
+											<a class="abs-unfold" href="#">点击展开<i class="i-arr-down"></i></a>
+										</div>
+										<div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+											<div class="bdbox-sub-fluent">
+												<h4>磊科NW765 绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													登陆磊科路由器管理后台<a href="http://192.168.1.1" style="color:blue;" target="_blank">http://192.168.1.1</a>
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/lknw-guide-1.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													左侧侧边栏选择“迅雷下载器”-“迅雷下载”，开启远程下载服务，获取激活码
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/lknw-guide-2.png" alt="" />
+												</div>
+											</div>
+											<div class="bdbox-sub-fluent">
+												<h4>磊科智能路由NO1 绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													打开路由器管理页面<a href="http://192.168.1.1" style="color:blue;" target="_blank">http://192.168.1.1</a>
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/lkno1-guide-1.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													点击左侧导航栏中的“应用”，打开“迅雷下载”
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/lkno1-guide-2.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">3</em>
+													找到激活码，一键绑定
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/lkno1-guide-3.png" alt="" />
+												</div>
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cF8DOL">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-磊科群
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载交流群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div id="mi-router" data-item-type="bdbox-list-title" data-device-type="mi-router" style="cursor:pointer;">
+											<span class="bdb-img"><img src="img/tutor/mi.png" /></span>
+											<h3>小米路由器</h3>
+											<p>和远程下载、影音资源高度集成，支持小米路由和小米mini路由</p>
+											<a class="abs-unfold" href="#">点击展开<i class="i-arr-down"></i></a>
+										</div>
+										<div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+											<div class="bdbox-sub-fluent">
+												<h4>绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													安装最新版小米路由器(mini)手机客户端
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/mi-router-guide-1.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													点击左下角【扩展插件】，点击【安装插件】，选择【迅雷云加速】并安装
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/mi-router-guide-2.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">3</em>
+													绑定你的迅雷账号，开启远程下载
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/mi-router-guide-3.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">4</em>
+													小米路由器客户端右上角【搜索资源】，体验远程下载畅快的感觉吧
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/mi-router-guide-4.png" alt="" />
+												</div>
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=dziQ1R">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-小米专群
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载交流群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div id="huaweirylf-router" data-item-type="bdbox-list-title" data-device-type="huaweirylf-router" style="cursor:pointer;">
+											<span class="bdb-img"><img src="img/tutor/hw.png" /></span>
+											<h3>华为荣耀立方</h3>
+											<p>智能路由+NAS+高清盒子，一部大片的艺术之旅</p>
+											<a class="abs-unfold" href="#">点击展开<i class="i-arr-down"></i></a>
+										</div>
+										<div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+											<div class="bdbox-sub-fluent">
+												<h4>绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													打开“路由伴侣”主页，选择“远程下载
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/hw-guide-1.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													授权荣耀立方绑定你的迅雷账号
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/hw-guide-2.png" alt="" />
+												</div>
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=UNctV8">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-华为专群
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载交流群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div id="xunlei-router" data-item-type="bdbox-list-title" data-device-type="xunlei-router" style="cursor:pointer;">
+											<span class="bdb-img"><img src="img/tutor/xlly.png" /></span>
+											<h3>迅雷路由</h3>
+											<p>一台帮你挖矿赚钱的路由，也是一台能帮你远程下载的路由</p>
+											<a class="abs-unfold" href="#">点击展开<i class="i-arr-down"></i></a>
+										</div>
+										<div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+											<div class="bdbox-sub-fluent">
+												<h4>绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													登录迅雷路由后台管理页面
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/xlly-guide-1.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													绑定迅雷账号，开始远程下载
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/xlly-guide-2.png" alt="" />
+												</div>
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cF8DOL">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-迅雷路由
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载交流群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div id="ji-router" data-item-type="bdbox-list-title" data-device-type="ji-router" style="cursor:pointer;">
+											<span class="bdb-img"><img src="img/tutor/jly.png" /></span>
+											<h3>极路由</h3>
+											<p>最大的xWare客户，需要用户一定的动手能力</p>
+											<a class="abs-unfold" href="#">点击展开<i class="i-arr-down"></i></a>
+										</div>
+										<div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+											<div class="bdbox-sub-fluent">
+												<h4>绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													极1不支持迅雷远程下载，极1s只支持SD卡，极2支持USB设备
+												</p>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													打开<a href="http://192.168.199.1" style="color:blue;" target="_blank">http://192.168.199.1</a>，登录极路由后台管理界面
+												</p>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">3</em>
+													点击“插件管理”，安装“迅雷离线采集”和“局域网文件中转站”（版本为1.3.4及以上，已经安装的请更新此插件）插件
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/jly-guide-1.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">4</em>
+													猛击<a href="http://hiwifi.com/xunlei" style="color:blue;" target="_blank">http://hiwifi.com/xunlei</a>获取激活码并拷贝
+												</p>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">5</em>
+													用 \\hiwifi.com\xunlei\ 查看下载的文件
+												</p>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">6</em>
+													更多玩法请查看：<a href="http://bbs.hiwifi.com/thread-38104-1-1.html" style="color:blue;" target="_blank">http://bbs.hiwifi.com/thread-38104-1-1.html</a>
+												</p>
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=eCafXH">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-极路由群
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载交流群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div id="ruyi-router" data-item-type="bdbox-list-title" data-device-type="ruyi-router" style="cursor:pointer;">
+											<span class="bdb-img"><img src="img/tutor/ry.png" /></span>
+											<h3>如意云路由器</h3>
+											<p>远程下载助力云OS</p>
+											<a class="abs-unfold" href="#">点击展开<i class="i-arr-down"></i></a>
+										</div>
+										<div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+											<div class="bdbox-sub-fluent">
+												<h4>绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													登录如意云管理后台<a href="http://192.168.99.1" style="color:blue;" target="_blank">http://192.168.99.1</a>
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/ryly-guide-1.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													启动远程下载服务
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/ryly-guide-2.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">3</em>
+													记录激活码，输入进行绑定
+												</p>
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=bfbTY0">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-如意云群
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载交流群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div data-item-type="bdbox-list-title" data-device-type="newifi-router" style="cursor:pointer;">
+											<span class="bdb-img"><img src="img/tutor/newifi.png" /></span>
+											<h3>newifi路由器</h3>
+											<p>远程下载助力云OS</p>
+											<a class="abs-unfold" href="#">点击展开<i class="i-arr-down"></i></a>
+										</div>
+										<div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+											<div class="bdbox-sub-fluent">
+												<h4>绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													登录newifi管理后台<a href="http://192.168.99.1" style="color:blue;" target="_blank">http://192.168.99.1</a>，进入扩展应用-迅雷远程下载
+												</p>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													启动远程下载服务, 记录激活码，输入进行绑定
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/newifi-guide-1.png" alt="" />
+												</div>
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=bfbTY0">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-newifi群
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载交流群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div id="dlink-router" data-item-type="bdbox-list-title" data-device-type="dlink-router" style="cursor:pointer;">
+											<span class="bdb-img"><img src="img/tutor/dlink.png" /></span>
+											<h3>D-Link路由</h3>
+											<p>大厂商品质值得信赖，现支持DIR-852绑定远程下载</p>
+											<a class="abs-unfold" href="#">点击展开<i class="i-arr-down"></i></a>
+										</div>
+
+										<div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+											<div class="bdbox-sub-fluent">
+												<h4>D-link DIR 852 绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													打开路由器管理页面，左侧侧边栏找到“迅雷远程下载”
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/dlly-guide-1.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													找到激活码，激活并绑定
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/dlly-guide-2.png" alt="" />
+												</div>
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=WjyAn5">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-友讯nas群
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载交流群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+
+									<li>
+										<div id="dlink-router" data-item-type="bdbox-list-title" data-device-type="Modou-router" style="cursor:pointer;">
+											<span class="bdb-img"><img src="img/tutor/Modou.png" /></span>
+											<h3>魔豆路由</h3>
+											<p>全球首款触屏智能路由，网络世界，触手可及</p>
+											<a class="abs-unfold" href="#">点击展开<i class="i-arr-down"></i></a>
+										</div>
+
+										<div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+											<div class="bdbox-sub-fluent">
+												<h4>绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													点击“系统更新”图标，将路由器系统升级到最新版本，然后再到“应用商店”下载“迅雷远程下载”APP并安装
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/modou_1.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													确认路由器USB接口上已接入U盘或移动硬盘，进入迅雷远程下载，配置硬盘，选择下载文件存放的分区位置（注：若只有一个分区请跳过这一步）
+
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/modou_2.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">3</em>
+													点击“绑定设备”按钮，获取激活码
+
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/modou_3.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">4</em>
+													电脑登录远程页面yuancheng.xunlei.com,点击“添加”按钮，输入APP上获取到的激活码，点击绑定
+
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/modou_4.png" alt="" />
+												</div>
+												<div class="tl-code">
+													<img src="img/bind/modou_5.png" alt="" />
+												</div>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">5</em>
+													设备绑定操作成功后，点击路由器屏幕上“开启服务”按钮，赶紧体验远程下载的畅快感觉吧！
+
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/modou_6.png" alt="" />
+												</div>
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cF8DOL">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-魔豆群
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载交流群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+			                        <!-- 2016.05.06 新增360路由器 -->
+									<li>
+			                            <div id="360-router" data-item-type="bdbox-list-title" data-device-type="360-router" style="cursor:pointer;">
+			                                <span class="bdb-img"><img src="img/tutor/360.png" /></span>
+			                                <h3>360安全路由器</h3>
+			                                <p>集和360搜索和迅雷远程下载技术，丰富资源，随意下载，支持360安全路由器5G</p>
+			                                <a class="abs-unfold" href="#">点击展开<i class="i-arr-down"></i></a>
+			                            </div>
+			                            <div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+			                                <div class="bdbox-sub-fluent">
+			                                    <h4>360安全路由器 绑定流程说明</h4>
+			                                    <p class="bdbox-sub-fp">
+			                                        <em class="dot-blue">1</em>
+			                                        安装最新360路由卫士app（需要先确定外接USB已经接上U盘或移动硬盘）
+			                                    </p>
+			                                    <div class="tl-code">
+			                                        <img src="img/bind/360-guide-1.png" alt="" />
+			                                    </div>
+			                                    <p class="bdbox-sub-fp">
+			                                        <em class="dot-blue">2</em>
+			                                        点开扩展工具，找到远程下载并点击，进行插件检测
+			                                    </p>
+			                                    <div class="tl-code">
+			                                        <img src="img/bind/360-guide-2.png" alt="" />
+			                                    </div>
+			                                    <p class="bdbox-sub-fp">
+			                                        <em class="dot-blue">3</em>
+			                                        根据提示页面完成360账号和迅雷账号的授权绑定
+			                                    </p>
+			                                    <div class="tl-code">
+			                                        <img src="img/bind/360-guide-3.png" alt="" />
+			                                    </div>
+			                                    <p class="bdbox-sub-fp">
+			                                        <em class="dot-blue">4</em>
+			                                        搜索资源随心下载
+			                                    </p>
+			                                    <div class="tl-code">
+			                                        <img src="img/bind/360-guide-4.png" alt="" />
+			                                    </div>
+			                                </div>
+			                            </div>
+			                        </li>
+
+									<li style="font-size:14px;">
+										<h6>其他支持的路由</h6>
+										普联&nbsp;&nbsp;海尔&nbsp;&nbsp;腾达&nbsp;&nbsp;共进&nbsp;&nbsp;烽火&nbsp;&nbsp;华为&nbsp;&nbsp;JCG
+									</li>
+								</ul>
+
+								<ul id="bdbox-list-ul-nas" class="bdbox-list-ul" style="display:none;">
+									<li>
+										<div class="bdbox-sub" style="display:;">
+											<div class="bdbox-sub-fluent">
+												<h4>绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													在NAS的设置界面可以找到迅雷下载标签，进入标签可找到激活码
+												</p>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													找不到激活码或自行刷Xware的用户可以在我们的论坛获取进一步的帮助
+												</p>
+												<!-- <img src="img/bind/mi-guide-3.jpg" /> -->
+												<!-- <div class="tl-code">
+													<i class="apple-android"></i>
+													<img src="img/bind/mi-guide-2.jpg" alt="" />
+													<p>扫一扫安装迅雷电视助手</p>
+												</div> -->
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=foyDCh">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-NAS专群
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=W4rw7n">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-Xware群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+
+								<ul id="bdbox-list-ul-pc" class="bdbox-list-ul" style="display:none;">
+									<li>
+										<div id="xunleijisu-pc" data-item-type="bdbox-list-title" data-device-type="xunleijisu-pc" style="cursor:pointer;">
+											<span class="bdb-img"><img src="img/tutor/xlly.png" /></span>
+											<h3>迅雷极速版</h3>
+											<p>无广告,无插件,让下载一气呵成</p>
+											<a class="abs-unfold" href="#">点击收起<i class="i-arr-up"></i></a>
+										</div>
+										<div data-item-type="bdbox-list-content" class="bdbox-sub" style="display:none;">
+											<div class="bdbox-sub-fluent">
+												<h4>绑定流程说明</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													由于服务器压力原因，我们暂时关闭了【迅雷7.9、迅雷尊享版】的远程下载绑定功能，造成的现象就是在通过这两个版本绑定电脑的用户在远程下载列表中看不到自己的设备。大家可以暂时换用【迅雷极速版】最新版本来体验更加流畅的远程下载功能。
+												</p>
+												<div class="tl-code">
+													<img src="img/bind/xljs-guide-1.png" alt="" />
+												</div>
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=eLAxUR">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载-极速版群
+														</span>
+													</a>
+													<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+														<span class="u-bdbox-ss">
+															<i class="i-source-qq"></i>
+															远程下载交流群
+														</span>
+													</a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://yuancheng.xunlei.com" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															远程下载官网
+														</span>
+																</a>
+															</div>
+														</div>
+													</div>
+									</li>
+								</ul>
+
+								<ul id="bdbox-list-ul-xiazaibao" class="bdbox-list-ul" style="display:none;">
+									<li>
+										<div class="bdbox-sub" style="display:;">
+											<div class="bdbox-sub-fluent">
+												<h4>下载宝使用帮助</h4>
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">1</em>
+													产品概览
+												</p>
+												<div class="tl-code">
+													<img src="img/tutor/xiazaibao01.png" alt="" />
+												</div>
+
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">2</em>
+													安装指示
+												</p>
+												<div class="tl-code">
+													<img src="img/tutor/xiazaibao02.png" alt="" />
+												</div>
+
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">3</em>
+													SD卡使用
+												</p>
+												<div class="tl-code">
+													<img src="img/tutor/xiazaibao03.png" alt="" />
+												</div>
+
+												<p class="bdbox-sub-fp">
+													<em class="dot-blue">4</em>
+													使用图示
+												</p>
+												<div class="tl-code">
+													<img src="img/tutor/xiazaibao04.png" alt="" />
+												</div>
+
+												<h4>使用步骤</h4>
+												<p class="bdbox-sub-fp"><em class="dot-blue">一</em>连接路由器:通过网线连接路由器LAN口。</p>
+												<p class="bdbox-sub-fp"><em class="dot-blue">二</em>连接移动硬盘:通过USB线连接移动硬盘。</p>
+												<p class="bdbox-sub-fp"><em class="dot-blue">三</em>开机:接通电源，橙色指示灯闪烁，待指示灯变为白色并长亮后，开机成功。</p>
+												<p class="bdbox-sub-fp"><em class="dot-blue">四</em>安装APP:访问xzb.xunlei.com，下载并安装APP。</p>
+												<p class="bdbox-sub-fp"><em class="dot-blue">五</em>关联:扫描下载宝底部二维码，关联下载宝。</p>
+
+											</div>
+											<div class="bdbox-sub-support">
+												<h4>支持资源</h4>
+												<div class="bdbox-sub-support-box">
+												 <a target="_blank" href="http://jq.qq.com/?_wv=1027&k=h4cAWD">
+                                                   <span class="u-bdbox-ss">
+                                                   <i class="i-source-qq"></i>
+                                                    下载宝官方交流群
+                                                     </span>
+                                                 </a>
+                                                  <a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+                                                      <span class="u-bdbox-ss">
+                                                         <i class="i-source-qq"></i>
+                                                          远程下载交流群
+                                                       </span>
+                                                   </a>
+													<a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-bbs"></i>
+															远程下载论坛
+														</span>
+													</a>
+													<a href="http://time.xunlei.com/" target="_blank">
+														<span class="u-bdbox-ss">
+															<i class="i-source-web"></i>
+															下载宝官网
+														</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+
+			                    <!-- <ul id="bdbox-list-ul-phone" class="bdbox-list-ul" style="display:none;">
+				                    <li>
+				                        <div class="bdbox-sub" style="display:;">
+				                            <div class="bdbox-sub-fluent">
+				                                <p class="bdbox-sub-fp">
+				                                    您可以使用手机控制电脑和其他设备进行远程下载，但不能由其他设备远程控制手机下载。
+				                                </p>
+				                                <h4>Android/iOS控制电脑下载</h4>
+				                                <p class="bdbox-sub-fp">
+				                                    <em class="dot-blue">1</em>
+				                                    您需要下载迅雷极速版，登陆您的迅雷账号，并绑定您的电脑。
+				                                </p>
+				                                <p class="bdbox-sub-fp">
+				                                    <em class="dot-blue">2</em>
+				                                    您的手机上需要安装<a href="javascript:;" id="bdbox-list-ul-phone-link1" style="color:blue;">迅雷电视助手</a>，选择【大屏看片】，登陆您的迅雷账号，即可看到刚才绑定的电脑，即可远程控制您的电脑开始下载任务！
+				                                </p>
+				                                <h4>Android/iOS控制路由器、盒子等设备下载</h4>
+				                                <p class="bdbox-sub-fp">
+				                                    <em class="dot-blue">1</em>
+				                                    请绑定您的相应设备到远程下载（流程请参考教程）。
+				                                </p>
+				                                <p class="bdbox-sub-fp">
+				                                    <em class="dot-blue">2</em>
+				                                    您的手机上需要安装<a href="javascript:;" id="bdbox-list-ul-phone-link2" style="color:blue;">迅雷电视助手</a>，选择【大屏看片】，登陆您的迅雷账号，即可看到刚才绑定的设备，即可远程控制您的设备开始下载任务！
+				                                </p>
+				                                <p class="bdbox-sub-fp">
+				                                    <em class="dot-blue">3</em>
+				                                    如果您的远程设备是盒子或电视，您可以略过第一步，直接下载迅雷电视助手，在和盒子（或电视）同一WiFi环境下自动扫描，一键绑定您的设备到远程下载！
+				                                </p>
+				                            </div>
+				                            <div class="bdbox-sub-support">
+				                                <h4>支持资源</h4>
+				                                <div class="bdbox-sub-support-box">
+				                                    <a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cuNvz6">
+				                                        <span class="u-bdbox-ss">
+				                                            <i class="i-source-qq"></i>
+				                                            远程下载QQ群1
+				                                        </span>
+				                                    </a>
+				                                    <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=e54cffec4313f14b8851fc163bdac136ff777d6c783da105b6169d3d3e8a4567">
+				                                        <span class="u-bdbox-ss">
+				                                            <i class="i-source-qq"></i>
+				                                            远程下载QQ群2
+				                                        </span>
+				                                    </a>
+				                                    <a href="http://bbs.xunlei.com/forum-196-1.html" target="_blank">
+				                                        <span class="u-bdbox-ss">
+				                                            <i class="i-source-bbs"></i>
+				                                            远程下载论坛
+				                                        </span>
+				                                    </a>
+				                                    <a href="http://yuancheng.xunlei.com" target="_blank">
+				                                        <span class="u-bdbox-ss">
+				                                            <i class="i-source-web"></i>
+				                                            远程下载官网
+				                                        </span>
+				                                    </a>
+				                                </div>
+				                            </div>
+				                        </div>
+				                    </li>
+				                </ul> -->
+
+			                    <p class="bdbox-list-bp"><a href="help.html#type=wtfk" target="_blank">绑定时遇到问题了</a></p>
+			                </div>
+						</div>
+					</div>
+				</div>
+				<!-- END sbzc -->
+
+				<!-- BEGIN ycxz app -->
+				<div id="bbgx" class="primary taskpan whitebg" style="display:none;">
+					<div id="bbgx-box" class="sourcezone">
+						<h3 class="source-h">设备版本更新记录：</h3>
+						<div class="u-qabox" style="width:auto;">
+			                <div style="padding:0 0 10px 0;">
+			                    <p>
+			                    以下内容记录了各厂商设备更新远程下载版本的历史记录，您可以参照此内容来决定是否更新，查看更新方式等：
+			                    </p>
+			                </div>
+
+			                <table class="faq_table" cellspacing="0" cellpadding="0">
+			                    <colgroup>
+			                        <col width="100" />
+			                        <col width="100" />
+			                        <col width="100" />
+			                        <col width="100" />
+			                        <col width="300" />
+			                        <col width="200" />
+			                    </colgroup>
+			                    <thead>
+			                        <tr>
+			                            <th style="font-weight:bold; padding:10px 0;">厂商</th>
+			                            <th style="font-weight:bold; padding:10px 0;">设备</th>
+			                            <th style="font-weight:bold; padding:10px 0;">远程下载版本</th>
+			                            <th style="font-weight:bold; padding:10px 0;">更新时间</th>
+			                            <th style="font-weight:bold; padding:10px 0;">跟新说明</th>
+			                            <th style="font-weight:bold; padding:10px 0;">相关备注</th>
+			                        </tr>
+			                    </thead>
+			                    <tbody>
+			                        <tr>
+			                            <td>迅雷</td>
+			                            <td>xWare设备</td>
+			                            <td></td>
+			                            <td>2014.9.17</td>
+			                            <td>
+			                            	<p>下载稳定性极大提升，解决任务开始阶段因为文件创建长时间无速度问题</p>
+			                            	<p>下载速度提升，起速时间缩短</p>
+			                            	<p>优化远程任务管理，优化远程控制交互</p>
+			                            	<p>解决数据上报瓶颈引起的掉线，长时间0速</p>
+			                            	<p>在IO方面的优化，并更好支持非商业nfs驱动硬盘</p>
+			                            	<p>更好的支持U盘下载，U盘设备上同时进行的任务数将自动变为一个</p>
+			                            </td>
+			                            <td>
+			                            	<p>xWare用户可点击这里查看</p>
+			                            </td>
+			                        </tr>
+			                        <tr>
+			                            <td>磊科</td>
+			                            <td>
+			                               磊科762
+			                               <br />
+			                               磊科765
+			                            </td>
+			                            <td>2.770.2.279</td>
+			                            <td>2014.9.16</td>
+			                            <td>
+			                            	<p>下载稳定性极大提升，解决任务开始阶段因为文件创建长时间无速度问题</p>
+			                            	<p>下载速度提升，起速时间缩短</p>
+			                            	<p>优化远程任务管理，优化远程控制交互</p>
+			                            	<p>解决数据上报瓶颈引起的掉线，长时间0速</p>
+			                            	<p>在IO方面的优化，并更好支持非商业nfs驱动硬盘</p>
+			                            	<p>更好的支持U盘下载，U盘设备上同时进行的任务数将自动变为一个</p>
+			                            </td>
+			                            <td>
+			                            	<p>用户可进入路由器管理页面，通过更新路由固件的方式更新远程下载库</p>
+			                            </td>
+			                        </tr>
+			                    </tbody>
+			                </table>
+			            </div>
+			        </div>
+			    </div>
+		        <!-- END ycxz app -->
+
+				<!-- BEGIN tasklist -->
+				<div class="primary taskpan" id="tasklist" style="display:none;">
+					<div class="task_head_con">
+						<div class="task_head" id="tasklist-toolbox">
+							<ul class="task_nav">
+								<li>
+									<a class="site_new" href="javascript:;" data-dispatch="popCreateTask"><span>新建</span></a>
+									<a class="site_fresh" href="javascript:;" data-dispatch="rRestoreSelectedTasks" style="display:none;"><span>还原</span></a>
+								</li>
+
+							</ul>
+							<div class="add_cartbox">
+								<a class="add_card_btn" href="http://xzb.xunlei.com/?referfrom=v_web_ycxz" target="_blank" title="你没有看错"><em></em> 抢下载神器</a>
+							</div>
+						</div>
+					</div>
+					<div class="task_cont" id="tasklist-list">
+						<div class="subrwinfo">
+							<div class="sub_info_inter" id="tasklist-header">
+								<span class="subw01"><input type="checkbox" class="in_sel" id="tasklist-select-all"></span>
+								<span class="subw02" style="width:350px;"><span class="zt_type">状态</span><em class="tn_mag">类型</em><em style="padding:0 120px 0 120px;">名称</em></span>
+								<span class="subw03" style="padding-right: 0px; padding-left: 62px;">进度/</span>
+								<span class="subw04" style="padding-right: 62px;">剩余时间</span>
+								<span class="subw05" style="padding-right: 90px; padding-left: 30px;">速度</span>
+								<span class="subw06">操作</span>
+							</div>
+						</div>
+						<div class="rwbox" id="tasklist-body">
+							<!-- PLACEHOLDER -->
+						</div>
+					</div>
+					<div class="task_ft" id="tasklist-footer">
+						<div class="btm_bt"></div>
+						<div class="pagebox">
+							<div class="sellection" id="tasklist-page-size">
+								<!-- <p>选择：<a href="javascript:;" data-dispatch="rSelectAll">全选</a>&nbsp;|&nbsp;<a href="javascript:;" data-dispatch="rSelectInverse">反选</a></p> -->
+							</div>
+							<div class="pginfo" id="tasklist-pager">
+								<!-- PLACEHOLDER -->
+							</div>
+						</div>
+						<div class="btm_btr"></div>
+					</div>
+				</div>
+				<!-- END tasklist -->
+
+				<!-- BEGIN no downloader -->
+				<p class="white_nolist" id="no-downloader" style="position:absolute;top:50%;left:50%;display:none;">您还没有添加下载器，可以点击<a title="添加" href="javascript:;" class="btn_addinfo" data-dispatch="popAddDownloader">添加</a>进行添加</p>
+				<!-- END no downloader -->
+
+				<!-- BEGIN lixian -->
+				<div class="primary taskpan" id="lixian" style="display:none;">
+					<p class="tip_task" style="display:none"><strong></strong></p>
+					<div class="task_head_con">
+						<div class="task_head">
+							<ul class="task_nav">
+								<li class="add_link"><a class="site_adddl site_adddl_no" href="javascript:;" id="lixian-add-to-box-button" data-dispatch="lixianAddToBox"><span>添加到下载器</span></a></li>
+								<li class="manage_link"><a class="site_manage" href="http://lixian.xunlei.com/" target="_blank"><span>管理离线空间</span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="task_cont" id="lixian-task-list-main">
+						<div class="subrwinfo">
+			               <div class="sub_info_inter">
+			                   <span class="subw01"><input type="checkbox" class="in_sel task-checkbox-all" value="1" name="ckbutton" /></span>
+			                   <span class="subw02"><span class="zt_type">状态</span><em class="tn_mag">类型</em><em style="padding:0 106px;">名称</em></span>
+			                   <span class="subw03 subw07" style="text-align:center;">进度</span>
+							   <span class="subw08">保存天数</span>
+			               </div>
+			            </div>
+						<div class="rwbox" id="lixian-task-list">
+							<div class="rw_list">
+								<div style="text-align:left;margin-left:2em;font-weight:bold;">列表刷新中……</div>
+							</div>
+						</div>
+					</div><!-- task_cont -->
+
+					<div class="task_ft" id="lixian-task-page-list">
+						<div class="btm_bt"></div>
+			               <div class="pagebox" id="pagebox">
+			                   <div class="sellection">
+								  <p>选择：<a href="javascript:;" class="" title="" data-dispatch="lixianSelectAll">全选</a>&nbsp;|&nbsp;<a href="javascript:;" class="" data-dispatch="lixianSelectInvert" title="">反选</a></p>
+							  </div>
+			                   <div class="pginfo" id="pginfo">
+			                   	<span class="pre" id="lixian-go-previous-page-button">
+			                   		<a href="javascript:;" data-dispatch="lixianGoPreviousPage" title="上一页">上一页</a>
+			                   	</span>
+								<ul id="lixian-pagebar"></ul>
+								<span class="next" id="lixian-go-next-page-button">
+									<a href="javascript:;" data-dispatch="lixianGoNextPage" title="下一页">下一页</a>
+								</span>
+			                   </div>
+			               </div>
+						   <div class="btm_btr"></div>
+					</div>
+				</div>
+				<!-- END lixian -->
+
+				<!-- BEGIN daquan-->
+				<div class="primary taskpan bg_w daquan" id="daquan" style="display:none;"></div>
+
+				<!-- BEGIN 大全有结果******************************************************* -->
+				<div id="daquan-has-result" style="display:none;">
+				    <div class="task_head_con">
+						<div class="task_head bg_none" style="height:0; overflow:hidden;"></div>
+					</div>
+					<div class="task_cont pt0">
+						<div class="rwbox" id="daquan-has-result-container">
+							<div class="z_dq_v">
+								<ul class="z_dq_ul clearfix" id="daquan-mainboard"></ul>
+								<p class="page_p" id="daquan-mainboard-page">
+									<a class="z_next_page" href="javascript:;" title="上一页">&lt; 上一页</a>
+									<span>…</span>
+						            <b title="1">1</b>
+							        <a href="javascript:;" title="2">2</a>
+							        <span>…</span>
+							        <a class="z_next_page" href="javascript:;" title="下一页">下一页 &gt;</a>
+						        </p>
+							</div>
+						</div>
+					</div><!-- task_cont -->
+					<!-- <div style=" height:105px;"></div> -->
+				</div>
+				<!-- END 大全有结果******************************************************* -->
+
+				<!--大全无结果******************************************************** -->
+				<div id="daquan-no-result" style="display:none;">
+				    <div class="task_head_con">
+						<div class="task_head bg_none" style="height:98px;">
+						    <div class="z_t_wrap">
+							    <p class="z_sel_p" id="daquan-screen-condition"></p>
+							    <p class="z_info_sorry">非常抱歉！没找到相关资源！</p>
+							</div>
+						</div>
+					</div>
+					<div class="task_cont pt0">
+						<div class="rwbox" id="daquan-no-result-container">
+							<div class="z_hot_v">
+							    <h3>热点视频</h3>
+								<ul class="z_hot_ul clearfix" id="daquan-hot-list"></ul>
+							</div>
+						</div>
+					</div><!-- task_cont -->
+					<div style=" height:7px;"></div>
+				</div>
+				<!-- 大全无结果 结束************************************************** -->
+
+				<div style="position:absolute; right:0; top:0; width:241px; height:26px; z-index:2; display:none;" id="daquan-index-rollup">
+				    <a class="z_rollup" title="大全索引" data-dispatch="daquanIndexShow" href="javascript:;">大全索引</a>
+				</div>
+
+				<!--大全索引主面板-->
+				<div style=" position:absolute; right:0; top:0; width:238px; border:1px solid #c4d9f8; background-color:#dbeafd; z-index:2; display:none;" id="daquan-index-mainboard">
+				    <form onSubmit="return false;">
+					    <div class="z_sear_wrap">
+						    <input class="z_sear_txt" type="text" value="输入搜索条件..." id="daquan-search-input" />
+							<a class="z_sear_btn" title="搜索" href="javascript:;" data-dispatch="daquanChangeOption" data-data="search" id="daquan-search-button">搜索</a>
+						</div>
+						<p class="z_sear_result clearfix">
+						    <a href="javascript:;" title="电影" data-dispatch="daquanChangeOption" data-data="classify-movie" id="daquan-index-classify-movie">电影</a>
+							<a href="javascript:;" title="电视剧" data-dispatch="daquanChangeOption" data-data="classify-tv" id="daquan-index-classify-tv">电视剧</a>
+							<a href="javascript:;" title="动漫" data-dispatch="daquanChangeOption" data-data="classify-anime" id="daquan-index-classify-anime">动漫</a>
+						</p>
+						<div class="z_dl_wrap" id="daquan-index-mainboard-options">
+							<dl class="index_dl clearfix" id="daquan-index-resolution"></dl>
+							<dl class="index_dl clearfix" id="daquan-index-type"></dl>
+							<dl class="index_dl clearfix" id="daquan-index-area"></dl>
+							<dl class="index_dl clearfix" id="daquan-index-year"></dl>
+						</div>
+						<div class="z_roll">
+						    <i class="z_roll_sj"></i>
+							<p class="z_roll_p"><a href="javascript:;" title="收起索引" data-dispatch="daquanIndexHide">收起索引</a></p>
+						</div>
+					</form>
+				</div>
+				<!--大全索引主面板，结束-->
+
+				<!-- END daquan-->
+
+			</div>
+			<!-- END main panel -->
+		</div>
+		<!-- END page body -->
+
+		<!-- BEGIN context menu: tasklist -->
+		<div class="flo_wrap" id="tasklist-contextmenu-selection" style="display:none;">
+			<ul class="flo_ul">
+				<li style="display:none;"><a href="javascript:;" data-field="item" data-dispatch="rRestoreSelectedTasks" data-data="">还原</a></li>
+				<li><a href="javascript:;" data-field="item" data-dispatch="rPlaySelectedTasks" data-data="">播放</a></li>
+				<li><a href="javascript:;" data-field="item" data-dispatch="rStartSelectedTasks" data-data="">开始下载</a></li>
+				<li><a href="javascript:;" data-field="item" data-dispatch="rPauseSelectedTasks" data-data="">暂停</a></li>
+				<li><a href="javascript:;" data-field="item" data-dispatch="rRemoveSelectedTasks" data-data="">删除任务</a></li>
+				<li><a href="javascript:;" data-field="item" data-dispatch="rSelectAll" data-data="">全选</a></li>
+				<li><a href="javascript:;" data-field="item" data-dispatch="rSelectInverse" data-data="">反选</a></li>
+				<li><a href="javascript:;" data-field="item" data-dispatch="popExportUrl" data-data="">提取URL</a></li>
+				<li><a href="javascript:;" data-field="item" data-dispatch="popPropertyOpen" data-data="">属性</a></li>
+			</ul>
+		</div>
+		<div class="flo_wrap" id="tasklist-contextmenu-blank" style="display:none;">
+			<ul class="flo_ul">
+				<li><a href="javascript:;" data-dispatch="rSelectAll" data-data="">全选</a></li>
+				<li><a href="javascript:;" data-dispatch="rSelectInverse" data-data="">反选</a></li>
+				<!-- <li><span class="line_sp"></span></li> -->
+			</ul>
+		</div>
+		<!-- END context menu: tasklist -->
+
+		<!-- BEGIN background mask -->
+		<div class="bg_layer" id="bg-mask" style="display:none;"></div>
+		<!-- END background mask -->
+
+		<!-- BEGIN pop: hint -->
+		<div class="layer_box" id="pop-hint" style="display:none;">
+			<div class="layer_main layer_widthsmall w400">
+				<div class="layer_head">
+					<h3>温馨提示</h3>
+					<a title="关闭" class="toclose" href="javascript:;" data-dispatch="popHintClose">关闭</a>
+				</div>
+				<div class="layer_cont pop_padding">
+					<div class="layer_setbox">
+						<div class="pop_tipsbox">
+							<p class="alerm_rel">
+								<em class="ico_alerm"></em>
+								<span id="pop-hint-message1"><!-- MESSAGE --></span>
+							</p>
+							<p class="alerm_p" id="pop-hint-message2"><!-- MESSAGE --></p>
+						</div>
+					</div>
+				</div>
+				<div class="pop_btnbox">
+					<a title="确定" href="javascript:;" class="pop_btn" data-dispatch="popHintClose">确定</a>
+				</div>
+			</div>
+		</div>
+		<!-- END pop: hint -->
+
+		<!-- BEGIN pop: bind downloader -->
+		<div class="t-pop"  id="pop-bind" style="display:none; width:375px; margin-top:0px;">
+		    <div class="t-pop-tit">
+		        <h3>使用以下方式开启智能设备远程下载</h3>
+		    </div>
+		    <ol class="tutorlist clearfix">
+		        <!--<li class="li-one">
+		            <h4>方式一：</h4>-->
+		            <p>点击你所拥有的设备类型，进入绑定引导</p>
+		           <span class="tl-imgbox">
+		                <a href="help.html#type=box" target="_blank" title="智能盒子/电视"></a>
+		                <a href="help.html#type=router" target="_blank" title="路由器"></a>
+		                <a href="help.html#type=nas" target="_blank" title="网络存储设备"></a>
+		                <a href="help.html#type=pc" target="_blank" title="计算机"></a>
+		            </span>
+		            <p>找到并输入设备绑定激活码，完成绑定</p>
+		            <div class="tl-inp clearfix">
+		                <input id="pop-bind-code" type="text" placeholder="输入激活码" />
+		                <a class="btn-pop-bind fl" href="javascript:;" title="绑定" data-dispatch="popBindOkay">绑定</a>
+		            </div>
+		            <div class="tl-inp-ect">
+		                <p id="pop-bind-msg-failed" class="fl col-red" style="display:none; font-size:12px;"><i class="i-sad"></i>绑定失败！</p>
+		                <p id="pop-bind-msg-success" class="fl col-green" style="display:none; font-size:12px;"><i class="i-good"></i>绑定成功！</p>
+		                <a class="fr" href="http://yuancheng.xunlei.com/help.html#module=cjwt" target="_blank" title="绑定遇到问题">绑定遇到问题</a>
+		            </div>
+		            <div class="tl-inp-ect" style="position:absolute; margin-top:30px;">
+		            	<span style="line-height:25px;">如果还是找不到激活码？</span>
+	                	<a class="fr" href="https://bbs.xunlei.com/circles/16/posts/33823?entrypage=community_homepage&entry=newest" target="_blank" title="获取激活码通用法">请点击查看</a>
+	                </div>
+		        </li>
+		       <!-- <li class="li-two">
+		            <h4>方式二：</h4>
+		            <p>安装迅雷电视助手，一键自动绑定同WiFi下智能设备</p>
+		            <div class="tl-code">
+		                <img src="img/tutor/tv_asis.png" alt="" />
+		                <i class="apple-android"></i>
+		                <p>扫一扫安装迅雷电视助手</p>
+		            </div>
+		        </li>-->
+		    </ol>
+		    <p class="tl-p clearfix">
+		        <em class="fl">绑定后即可远程操控你的智能设备并创建下载任务&nbsp;&nbsp;</em>
+		        <a class="fl" href="help.html" title="了解更多" target="_blank">了解更多</a>
+		    </p>
+		    <p class="tl-p clearfix" style="padding-bottom:10px;"><em class="fl"><b>我是下载宝用户，我已绑定下载宝，</b></em><a class="fl" href="http://yuancheng.xiazaibao.xunlei.com" id="binding-box-goto-xzbweb"><font color="red"><b>点击此处!</b></font></a></p>
+		    <a class="btn-t-close" href="javascript:;" data-dispatch="popBindClose" title="关闭">关闭</a>
+		</div>
+		<!-- END pop: bind downloader -->
+
+		<!-- BEGIN pop: downloader instructor -->
+		<div class="layer_box" id="pop-instructor" style="display:none;">
+			<div class="layer_main layer_width">
+				<div class="layer_head">
+					<a href="javascript:;" class="toclose" title="关闭" data-dispatch="popInstructorClose">关闭</a>
+				</div>
+				<div class="layer_cont pop_padding">
+					<div class="teachbox">
+						<h2 class="z_teach_h">请选择您想使用的下载器</h2>
+						<div class="steptabcon z_auto">
+							<div class="z_sel_form">
+							<p id="pop-instructor-tab-content">
+								<a href="http://shop.xunlei.com/?controller=item&action=details&id=56" target="_blank" data-dispatch="popInstructorOkay"><img src="images/img/instructor01.png" alt="" title="" width="400" height="220" /></a>
+								<a href="http://shop.xunlei.com/?controller=item&action=details&id=66" target="_blank" data-dispatch="popInstructorOkay" style="display:none;"><img src="images/img/instructor02.png" alt="" title="" width="400" height="220" /></a>
+								<a href="javascript:;" data-dispatch="popInstructorOkay" style="display:none;"><img src="images/img/instructor03.jpg" alt="" title="" width="400" height="220" /></a>
+							</p>
+							<ul class="z_sel_ul clearfix" id="pop-instructor-tab-title">
+								<li>
+									<a class="on" href="javascript:;" title="高清播放器"><img src="images/img/sel01.jpg" alt="高清播放器" title="高清播放器" width="78" height="48" /></a>
+									<p>高清播放器</p>
+								</li>
+								<li>
+									<a href="javascript:;" title="路由器"><img src="images/img/sel02.jpg" alt="路由器" title="路由器" width="78" height="48" /></a>
+									<p>路由器</p>
+								</li>
+								<li>
+									<a href="javascript:;" title="虚拟下载器"><img src="images/img/sel03.jpg" alt="虚拟下载器" title="虚拟下载器" width="78" height="48" /></a>
+									<p>虚拟下载器</p>
+								</li>
+							</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="btn_con z_mb20">
+					<button class="btn" type="button" data-dispatch="popInstructorOkay">确定</button>&nbsp;
+					<button class="btn" type="button" data-dispatch="popInstructorClose">取消</button>
+				</div>
+			</div>
+		</div>
+		<!-- END pop: downloader instructor -->
+
+		<!-- BEGIN pop: virtual-downloader page -->
+		<div class="layer_box" id="pop-vdpage" style="display:none;">
+			<div class="layer_main layer_width">
+				<div class="layer_head">
+					<a href="javascript:;" class="toclose" title="关闭" data-dispatch="popVDPageClose">关闭</a>
+				</div>
+				<div class="layer_cont pop_padding">
+					<div class="teachbox">
+						<h2 class="z_teach_h">您也可以安装迅雷7插件，使用远程下载</h2>
+						<div class="steptabcon z_auto">
+							<div class="jihuo_form">
+								<p><img src="images/img/xuni.jpg" alt="" title="" width="400" height="220" /></p>
+								<ul class="z_jihuo_ul">
+									<li>1、请在您家里的电脑上安装迅雷7；</li>
+									<li>2、请在迅雷7中添加“远程下载”应用；</li>
+									<li>3、按提示输入激活码后，即可完成激活，您可以开始享受远程下载。</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="btn_con z_mb20">
+					<button class="btn" type="button" data-dispatch="popVDPageClose">确定</button>
+				</div>
+			</div>
+		</div>
+		<!-- END pop: virtual-downloader page -->
+
+		<!-- BEGIN pop: config downloader -->
+		<div class="layer_box" id="pop-config" style="display:none; filter:none;">
+			<div class="layer_main layer_widthsmall w400">
+				<div class="layer_head">
+					<h3><span id="pop-config-downloader-name">下载器</span>设置</h3>
+					<a href="javascript:;" class="toclose" title="关闭" data-dispatch="popConfigClose">关闭</a>
+				</div>
+				<div class="layer_cont pop_padding">
+					<div class="layer_setbox" style="padding-top:10px; padding-bottom:0px;">
+						<!--<strong class="z_str_h">设备信息</strong>-->
+						<ul class="z_pl30" style="padding-bottom:10px; margin-bottom:15px;">
+							<li>
+								<span>设备类型 &nbsp;&nbsp;：<span id="downloader-type"></span></span>
+							</li>
+							<li>
+								<span>设备版本号 ：<span id="downloader-version"></span></span>
+							</li>
+							<li>
+								<span id="limit-speed-label">设备限速 &nbsp;&nbsp;：<span id="limit-speed"></span>
+								<label id="limit-speed-units">KB/s</label> </span>
+							</li>
+							<li>
+								<span id="limit-speed-note">注：该设备会在网络繁忙时自动开启限速功能 </span>
+							</li>
+						</ul>
+						<strong class="z_str_h">基本功能设置</strong>
+						<ul class="z_pl30" style="padding-bottom:5px; margin-bottom:10px;">
+							<li>
+								<span class="setrw_subtit">同时进行的最大任务数：</span>
+								<select id = "task_num_select" class="z_sel_rwnum" data-field="maxRunTaskNumber">
+									<option>3</option>
+									<option>2</option>
+									<option>1</option>
+								</select>
+								<a class="tasks_tip" id="tasks-tip-btn" href="javascript:;"><i class="tasks_tip_i"></i></a>
+								<div id="tip-tasks" class="tips_tutor" style="left:200px; top:160px; width:340px; display:none;">
+									<p style="padding:10px; line-heght:1.2;">
+										如果您的设备已经更新到远程3.x版本，为了提供更好的下载性能和体验，
+										外挂单个U盘/SD卡为下载磁盘，同时下载的<b>任务数将自动变为1个</b>。
+									</p>
+									<div id="tip-tasks-close-btn" class="tips_tutor_btnbox tips_tutor_btnbox_r">
+										<a class="btn_mid" href="javascript:;" title="知道了"> <em>知道了</em>
+										</a>
+									</div>
+									<a id="tip-tasks-close" class="tips_tutor_close" href="javascript:;" title="关闭">关闭</a>
+									<span class="sj_tutor_bg">◆</span>
+									<span class="sj_tutor">◆</span>
+								</div>
+							</li>
+							<li id="pop-config-old-scheduled-limit">
+								<span class="setrw_subtit">
+									<input type="checkbox" id="pop-config-download-limit-switch"> <label for="pop-config-download-limit-switch">开启限速</label>
+								</span>
+								<div id="pop-config-old-limit" style="display:none;">
+									<p>最大下载速度：
+										<input class="z_sel_rwtxt" type="text" value="0" data-field="downloadSpeedLimit" /> <label>KB/s</label>
+									</p>
+									<p>最大上传速度：
+										<input class="z_sel_rwtxt" type="text" value="10" data-field="uploadSpeedLimit" /> <label>KB/s</label>
+									</p>
+									<p class="pop_set_p" style="padding:0 0 2px 0;">(上传过低可能会影响下载速度，最小10KB/s)</p>
+								</div>
+								<span class="z_col_num"><!-- MESSAGE --></span>
+							</li>
+							<li id="pop-config-scheduled-limit">
+								<select class="z_sel_rwnum" data-field="slStartTime"></select> <label>点 -</label>
+								<select class="z_sel_rwnum" data-field="slEndTime"></select> <label>点&nbsp;</label>
+								<span class="z_col_num"><!-- MESSAGE --></span>
+								<p class="pop_set_p" style="padding:1px 0px;">(输入0-24点为全天限速)</p>
+								<p>最大下载速度：
+									<input class="z_sel_rwtxt" type="text" value="0" data-field="downloadSpeedLimit" /> <label>KB/s</label>
+								</p>
+								<p>最大上传速度：
+									<input class="z_sel_rwtxt" type="text" value="10" data-field="uploadSpeedLimit" /> <label>KB/s</label>
+								</p>
+								<p class="pop_set_p" style="padding:0 0 2px 0;">(上传过低可能会影响下载速度，最小10KB/s)</p>
+							</li>
+							<li id="pop-config-download-default-path">
+								<span class="setrw_subtit">
+									<label for="pop-config-download-default-path-checkbox">使用指定存储目录</label>
+								</span>
+								<div id="pop-config-download-path">
+									<select class="z_sel_rwnum" data-field="downloadDisk" id="pop-config-download-disks"></select>
+									<input type="text" data-field="downloadPath" class="z_sel_rwtxt" value="TDDOWNLOAD" style="width:120px;" id="pop-config-download-dir"/>
+									<span>剩余<span id="pop-config-download-space">0</span></span>
+								</div>
+							</li>
+							<li id="pop-config-auto-dl-subtitle">
+								<input type="checkbox" data-field="autoDlSubtitle" id="pop-config-auto-dl-checkbox"/> <label for="pop-config-auto-dl-checkbox">自动为视频文件匹配字幕</label>
+							</li>
+						</ul>
+						<strong class="z_str_h">会员功能设置</strong>
+						<p class="z_pl30">
+							<label><input type="checkbox" value="1" data-field="autoOpenLixian" /> 自动开始离线采集</label>
+						</p>
+						<p class="z_pl30">
+							<label><input type="checkbox" value="1" data-field="autoOpenVip" /> 自动进入高速通道</label>
+						</p>
+					</div>
+					<p class="lay_errtips" id="pop-config-message"><!-- MESSAGE --></p>
+				</div>
+				<div class="btn_con">
+					<a class="z_qm_link" href="http://pay.vip.xunlei.com/?referfrom=VIP_3494" target="_blank" title="快速充值">快速充值</a>
+					<button class="btn" type="button" id="pop-config-submit" data-dispatch="popConfigOkay">应用</button>&nbsp;
+					<button class="btn" type="button" data-dispatch="popConfigClose">取消</button>
+				</div>
+			</div>
+		</div>
+		<!-- END pop: config downloader -->
+
+		<!-- BEGIN pop: rename downloader -->
+		<div class="layer_box" id="pop-rename" style="display:none;">
+			<div class="layer_main layer_widthsmall">
+				<div class="layer_head">
+					<h3>修改下载器名称</h3>
+					<a href="javascript:;" class="toclose" title="关闭" data-dispatch="popRenameClose">关闭</a></div>
+				<div class="layer_cont edit_rwpadding">
+					<div class="fm_li">
+						<label for="code">设备名称：</label>
+						<input type="text" class="t_ipt" value="" id="pop-rename-name" />
+					</div>
+				</div>
+				<div class="btn_con btn_rwcon">
+					<input type="hidden" value="" id="pop-rename-pid" />
+					<button class="btn" type="button" data-dispatch="popRenameOkay">确定</button>&nbsp;
+					<button class="btn" type="button" data-dispatch="popRenameClose">取 消</button>
+				</div>
+			</div>
+		</div>
+		<!-- END pop: rename downloader -->
+
+		<!-- BEGIN pop: remove prompt -->
+		<div class="layer_box" id="pop-remove" style="display:none;">
+			<div class="layer_main layer_widthsmall">
+				<div class="layer_head">
+					<h3>删除确认</h3>
+					<a href="javascript:;" class="toclose" title="关闭" data-dispatch="popRemoveClose">关闭</a>
+				</div>
+				<div class="layer_cont pop_padding">
+					<div class="layer_delsurebox" style="height:100px;">
+						<p><i class="icondel"></i><span id="pop-remove-message"><!-- PLACEHOLDER --></span></p>
+					</div>
+				</div>
+				<div class="btn_con">
+					<p class="btn_subinfo" id="pop-remove-subinfo"><!-- PLACEHOLDER --></p>
+					<button class="btn" type="button" data-dispatch="popRemoveOkay">确 认</button>&nbsp;
+					<button class="btn" type="button" data-dispatch="popRemoveClose">取 消</button>
+				</div>
+			</div>
+		</div>
+		<!-- END pop: remove prompt -->
+
+		<!-- BEGIN pop: accesscode prompt -->
+		<div class="layer_box" id="pop-accesscode" style="display:none;">
+			<div class="layer_main layer_widthsmall w400">
+				<div class="layer_head">
+					<h3>访问虚拟下载器</h3>
+					<a href="javascript:;" class="toclose" title="关闭" data-dispatch="popAccessCodeClose">关闭</a>
+				</div>
+				<div class="layer_cont pop_padding">
+					<div class="layer_setbox">
+						<div class="pop_centerbox">
+							<p class="pop_ctr_p">请输入<em class="z_co_bl" id="pop-accesscode-name">虚拟下载器</em>的远程访问密码<a class="ico_what" href="/help.html#dt_10" target="_blank" title="什么是远程访问密码"></a></p>
+							<input class="t_ipt_m" value="" type="text" id="pop-accesscode-key" />
+							<p class="pop_error" id="pop-accesscode-message"><!-- MESSAGE --></p>
+						</div>
+					</div>
+				</div>
+				<div class="pop_btnbox pop_btnbox_ctr">
+					<input type="hidden" value="" id="pop-accesscode-pid" />
+					<a class="pop_btn" href="javascript:;" title="确定" data-dispatch="popAccessCodeOkay">确定</a>&nbsp;
+					<a class="pop_btn" type="button" data-dispatch="popAccessCodeClose">取 消</a>
+				</div>
+			</div>
+		</div>
+		<!-- END pop: accesscode prompt -->
+
+		<!-- BEGIN pop: new task -->
+		<!-- <div class="layer_box" id="pop-newtask" style="display:none;">
+			<div class="layer_main layer_width">
+				<div class="layer_head">
+					<h3 class="tit_noline">新建远程下载任务</h3>
+					<a class="toclose" title="关闭" data-dispatch="popNewTaskClose">关闭</a>
+				</div>
+				<div class="layer_cont">
+					<div class="newtabbox">
+						<ul id="pop-newtask-tab-title">
+							<li class="on">新建普通任务</li>
+							<li>打开本地BT文件</li>
+							<li>新建批量任务</li>
+						</ul>
+					</div>
+					<div id="pop-newtask-tab-content">
+						<div class="newtabcon">
+							<h3 class="tit_rw">添加下载URL：<em class="sub_tit">（支持普通任务、BT任务、eMule和磁力链）</em></h3>
+							<div class="fm_li">
+								<label for="code">下载链接：</label>
+								<input type="text" class="t_ipt t_ipt_long" id="pop-newtask-url" />
+							</div>
+							<div class="fm_li">
+								<label for="code">任务名称：</label>
+								<input type="text" class="t_ipt t_ipt_long" id="pop-newtask-name" />
+							</div>
+							<div class="fm_li_subcon">
+								<p></p>
+							</div>
+						</div>
+						<div class="newtabcon" style="display:none;">
+							<h3 class="tit_rw">打开本地BT文件：</h3>
+							<div class="fm_li">
+								<form name="btform" encType="multipart/form-data" method="post" target="btiframe" action="" id="pop-newtask-bt-form"></form>
+								<iframe name="btiframe" src="" id="pop-newtask-bt-iframe" style="display:none;"></iframe>
+							</div>
+							<div class="fm_li">
+								<label for="code">任务名称：</label>
+								<input type="text" class="t_ipt_long" id="pop-newtask-bt-name">
+							</div>
+							<div class="rw_listbox" id="pop-newtask-bt-details">
+								<div class="rw_title">
+									<span class="tname t01"><span class="sel_form">
+										<input type="checkbox" id="pop-newtask-bt-select-all-checkbox" checked />
+									</span></span>
+									<span class="tname bt_name">文件名称</span>
+									<span class="tname bt_size">文件大小</span>
+									<span class="tname bt_type">类型</span>
+								</div>
+								<div class="rw_con" id="pop-newtask-bt-list">
+								</div>
+							</div>
+							<div class="rw_links" id="pop-newtask-bt-controls">
+								<p>选择：
+									<a href="javascript:;" id="pop-newtask-bt-select-all">全选</a>&nbsp;
+									<em style="margin: 0 7px;color:#BBBCBE" class="line">|</em>
+									<a href="javascript:;" id="pop-newtask-bt-select-inverse">反选</a>&nbsp;
+									<em style="margin: 0 7px;color:#BBBCBE" class="line">|</em>
+									<a href="javascript:;" id="pop-newtask-bt-select-auto" data-dispatch="popBtAutoSelect">自动</a>
+								</p>
+							</div>
+						</div>
+						<div class="newtabcon" style="display:none;">
+							<h3 class="tit_rw">添加批量任务：<em class="sub_tit">（多个url请选择回车换行）</em></h3>
+							<div class="fm_li">
+								<label for="code">下载链接：</label>
+								<textarea class="t_ipt" cols="60" rows="6" id="pop-newtask-multi-url" style="margin: 0px; height: 88px; width: 364px;"></textarea>
+							</div>
+							<div class="rw_listbox" id="pop-newtask-multi-details">
+								<div class="rw_title">
+									<span class="tname t01">
+										<span class="sel_form">
+											<input type="checkbox" id="pop-newtask-multi-select-all-checkbox" checked />
+										</span>
+									</span>
+									<span class="tname bt_name">文件名称</span>
+									<span class="tname bt_size">文件大小</span>
+									<span class="tname bt_type">类型</span>
+								</div>
+								<div class="rw_con" id="pop-newtask-multi-list">
+								</div>
+							</div>
+							<div class="rw_links" id="pop-newtask-multi-controls">
+								<p>
+									选择：
+									<a href="javascript:;" id="pop-newtask-multi-select-all">全选</a>
+									<em class="line" style="margin: 0 7px;color:#BBBCBE">|</em>
+									<a href="javascript:;" id="pop-newtask-multi-select-inverse">反选</a>
+									<em class="line" style="margin: 0 7px;color:#BBBCBE">|</em>
+									<span>已选择 <strong id="pop-newtask-multi-count">-</strong> 个任务</span>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="newtask_op">
+						<div class="fm_li set_wid">
+							<label for="code">存储目录：</label>
+							<select id="pop-newtask-downloaders" style="margin:0;width:90px;"></select>
+							<select id="pop-newtask-disklist" style="margin:0;width:90px;"></select>
+							<input type="text" class="t_ipt_m" id="pop-newtask-savepath" style="width:172px;" />
+						</div>
+						<div class="barmagbox">
+							<div class="savebar">
+								<div class="need" id="pop-newtask-required-space"></div>
+								<div class="mayuse" id="pop-newtask-available-space"></div>
+								<span class="bg" id="pop-newtask-progress" style="width:0%;"></span>
+								<div class="mayuse z_co_red" id="pop-newtask-status"></div>
+							</div>
+						</div>
+						<p class="lay_errtips" id="pop-newtask-message"></p>
+					</div>
+					<div class="btn_con z_bdt">
+						<button class="btn btn_gary" type="button" id="pop-newtask-submit" data-disabled="1">确定下载</button>&nbsp;
+						<button class="btn" type="button" data-dispatch="popNewTaskClose">取 消</button>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+		<div class="t-pop" id="pop-newtask" style="display:none; width:476px; margin:0 0 0 -258px; top:100px;">
+		    <div class="t-pop-tit mb25">
+		        <h3>新建远程下载任务</h3>
+		    </div>
+		    <div class="t-pop-tab">
+				<ul id="pop-newtask-tab-title" class="clearfix">
+				  <li class="on">新建普通任务</li>
+				  <li class="">打开本地BT文件</li>
+				</ul>
+		    </div>
+		    <div id="pop-newtask-tab-content">
+			    <div class="t-pop_listbox" style="display:none;">
+					<p class="t-pop_listbox_tit"><strong>下载链接：</strong>(支持普通任务、BT任务、eMule和磁力链接，可以批量添加)</p>
+					<textarea id="pop-newtask-multi-url" class="t-pop_list_link" style="height:80px; color:#333;"></textarea>
+				</div>
+				<div class="t-pop_listbox" style="display:none;">
+					<p class="t-pop_listbox_tit"><strong>打开BT文件：</strong></p>
+					<div id="pop-newtask-bt-control-pannel" class="t-pop_filsel clearfix">
+						<span id="pop-newtask-bt-name" class="btname"></span>
+						<a id="pop-newtask-bt-btn" class="t-pop_btnsel" style="display:block;" href="javascript:;">
+							<span>选择BT文件</span>
+						</a>
+						<div style="position:absolute; width:103px; height:38px; margin:0; padding:0; z-index:999; right:20px; overflow:hidden; cursor:pointer;">
+							<form  name="btform" encType="multipart/form-data" method="post" target="pop-newtask-bt-iframe" action="" id="pop-newtask-bt-form">
+							</form>
+							<iframe name="pop-newtask-bt-iframe" src="" id="pop-newtask-bt-iframe" style="display:none;"></iframe>
+						</div>
+					</div>
+					<!-- <div style="width:476px; height:38px; position:absolute; margin-top:-38px; z-index:999;">
+						<form  style="display:block; width:100%; height:100%;" name="btform" encType="multipart/form-data" method="post" target="pop-newtask-bt-iframe" action="" id="pop-newtask-bt-form">
+						</form>
+
+					</div> -->
+				</div>
+			</div>
+
+			<div id="pop-newtask-multi-details" style="display:none;">
+				<div class="t-pop_listbox">
+					<div class="t-pop_lists" style="color:#333;">
+						<div class="t-pop_list_tit">
+							<span class="t-pop_sp_ipt"><input id="pop-newtask-multi-select-all-checkbox" type="checkbox" name="file" /></span>
+							<span class="t-pop_sp_name">文件名称</span>
+							<span class="t-pop_sp_size">文件大小</span>
+							<span class="t-pop_sp_type">文件类型</span>
+						</div>
+						<div id="pop-newtask-multi-list" class="t-pop_list_wrap" style="height:auto; max-height:90px; padding:0;">
+							<div class="t-pop_list_unit">
+								<span class="t-pop_sp_ipt"><input type="checkbox" name="file" /></span>
+								<span class="t-pop_sp_name">黑衣黑衣人黑衣人黑衣人黑衣人黑衣人人3.rmvb</span>
+								<span class="t-pop_sp_size">1.88G</span>
+								<span class="t-pop_sp_type"><a href="javascript:;" class="btn_filetype">BT文件</a></span>
+							</div>
+						</div>
+					</div>
+					<div class="rw_links" style="display:;">
+						<p>
+							<a id="pop-newtask-multi-select-all" href="javascript:;">全选</a> | <a href="javascript:;" id="pop-newtask-multi-select-inverse">反选</a> <span class="clr_blue" title="" href="javascript:;">已选择<em id="pop-newtask-multi-count">6</em>个任务</span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div id="pop-newtask-bt-details" style="display:none;">
+				<div class="t-pop_listbox">
+					<div class="t-pop_lists" style="color:#333;">
+						<div class="t-pop_list_tit">
+							<span class="t-pop_sp_ipt"><input id="pop-newtask-bt-select-all-checkbox" type="checkbox" /></span>
+							<span class="t-pop_sp_name">文件名称</span>
+							<span class="t-pop_sp_size">文件大小</span>
+							<span class="t-pop_sp_type">文件类型</span>
+						</div>
+						<div id="pop-newtask-bt-list" class="t-pop_list_wrap" style="height:auto; max-height:90px; padding:0;">
+							<div class="t-pop_list_unit">
+								<span class="t-pop_sp_ipt"><input type="checkbox" name="file" /></span>
+								<span class="t-pop_sp_name">黑衣黑衣人黑衣人黑衣人黑衣人黑衣人人3.rmvb</span>
+								<span class="t-pop_sp_size">1.88G</span>
+								<span class="t-pop_sp_type"><a href="javascript:;" class="btn_filetype">BT文件</a></span>
+							</div>
+						</div>
+					</div>
+					<div class="rw_links" style="display:;">
+						<p>
+							<a id="pop-newtask-bt-select-all" href="javascript:;">全选</a> | <a id="pop-newtask-bt-select-inverse" href="javascript:;">反选</a> <span class="clr_blue" title="" href="javascript:;">已选择<em id="pop-newtask-bt-count">6</em>个子任务</span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="fm_li t-pop_sel">
+				<label>存储路径：</label>
+				<div class="select_box">
+					<div class="selected w113" id="pop-newtask-downloaders-select"><span id="pop-newtask-downloaders-selected" style="width:113px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap; display:inline-block;">小米路由器_A3E1小米路由器_A3E1小米路由器_A3E1</span><span class="line"></span><a href="javascript:;" class="arrow_top"></a></div>
+					<div id="pop-newtask-downloaders-pannel" class="option_list w142" style="display:none;">
+						<ul id="pop-newtask-downloaders">
+							<li><a href="javascript:;">小米路由器_A3E1</a></li>
+							<li><a href="javascript:;">小米路由器_A3E1</a></li>
+							<li><a href="javascript:;">小米路由器_A3E1</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="select_box">
+					<div class="selected w23" id="pop-newtask-disk-select"><span id="pop-newtask-disk-selected">C: </span><span class="line"></span><a href="javascript:;" class="arrow_top"></a></div>
+					<div id="pop-newtask-disklist-pannel" class="option_list w52" style="display:none;">
+						<ul id="pop-newtask-disklist">
+							<li><a href="javascript:;">C:</a></li>
+							<li><a href="javascript:;">D:</a></li>
+							<li><a href="javascript:;">E:</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="select_box last_select_box">
+					<div class="selected w170"><input type="text" style="height:26px;line-height:26px; width:190px; font-family: 'microsoft yahei';" id="pop-newtask-savepath" /></div>
+				</div>
+			</div>
+			<div class="t-pop_bar">
+			   <div class="need" id="pop-newtask-required-space">所需空间：11110B</div>
+			   <div class="mayuse" id="pop-newtask-available-space">剩余空间：7.5GB</div>
+				<div class="savebar">
+				   <span id="pop-newtask-progress" style="width: 10%;" class="bg"></span>
+				</div>
+			</div>
+			<div style="position:absolute; color:red;"><span id="pop-newtask-message"></span></div>
+		    <div class="t-pop-btnbox txt_right">
+		        <a class="btn-t-pop" href="javascript:;" id="pop-newtask-submit" title="添加到远程下载">添加到远程下载</a>
+		    </div>
+		    <a class="btn-t-close" href="javascript:;" data-dispatch="popNewTaskClose" title="关闭">关闭</a>
+		</div>
+
+		<div id="pop-bt-detail" class="t-pop" style="display:none; width:476px; margin:0 0 0 5px; top:220px;">
+		    <div class="t-pop-tit mb25">
+		        <h3 id="pop-bt-detail-title" style="height:24px; width:465px; overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"></h3>
+		    </div>
+			<div class="t-pop_listbox">
+				<div class="t-pop_lists" style="color:#333;">
+					<div class="t-pop_list_tit" style="display:;">
+						<span class="t-pop_sp_ipt"><input id="pop-bt-detail-select-all-checkbox" type="checkbox" /></span>
+						<span class="t-pop_sp_name">文件名称</span>
+						<span class="t-pop_sp_size">文件大小</span>
+						<span class="t-pop_sp_type">文件类型</span>
+					</div>
+					<div class="t-pop_list_wrap" id="pop-bt-detail-list">
+						<div class="t-pop_list_unit">
+							<span class="t-pop_sp_ipt"><input type="checkbox" name="file" /></span>
+							<span class="t-pop_sp_name">黑衣黑衣人黑衣人黑衣人黑衣人黑衣人人3.rmvb</span>
+							<span class="t-pop_sp_size">1.88G</span>
+							<span class="t-pop_sp_type">rmvb</span>
+						</div>
+					</div>
+				</div>
+				<div class="rw_links">
+					<p>
+						<a id="pop-bt-detail-select-all" href="javascript:;">全选</a> | <a id="pop-bt-detail-select-inverse" href="javascript:;">反选</a> | <a id="pop-bt-detail-select-auto" href="javascript:;">智能</a> <span class="clr_blue" title="" href="javascript:;">已选择<em id="pop-bt-detail-select-count">0</em>个子任务</span>
+					</p>
+				</div>
+			</div>
+			<div style="position:absolute; color:red;"><span id="pop-bt-detail-message"></span></div>
+		    <div class="t-pop-btnbox txt_right">
+		        <a class="btn-t-pop" data-dispatch="popBtDetailClose" href="javascript:;" title="添加到远程下载">确定</a>
+		    </div>
+		    <a class="btn-t-close" data-dispatch="popBtDetailClose" href="javascript:;" title="关闭">关闭</a>
+		</div>
+		<!-- END pop: new task -->
+
+		<!-- BEGIN pop: export url -->
+		<div class="layer_box" id="pop-export" style="display:none;">
+			<div class="layer_main layer_widthsmall w480">
+				<div class="layer_head">
+					<h3 class="tit_noline">提取URL</h3>
+					<a href="javascript:;" class="toclose" title="关闭" data-dispatch="popExportClose">关闭</a>
+				</div>
+				<div class="layer_cont pop_padding">
+					<div class="layer_setbox">
+						<div class="z_url_wrap">
+							<span class="z_url_l l01"></span>
+							<span class="z_url_l l02"></span>
+							<textarea id="pop-export-urls" readonly="readonly"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="btn_con z_mb20" id="pop-export-copy-container">
+					<p class="btn_subinfo" id="pop-export-subinfo"><!-- MESSAGE --></p>
+					<button class="btn btn_long" type="button" id="pop-export-copy" data-dispatch="popExportOkay">复制到剪贴板</button>&nbsp;
+					<button class="btn" type="button" data-dispatch="popExportClose">关 闭</button>
+				</div>
+			</div>
+		</div>
+		<!-- END pop: export url -->
+
+		<!-- BEGIN pop: active virtual downloader -->
+		<div class="layer_box" id="pop-vdactive" style="display:none;">
+			<div class="layer_main layer_width">
+				<div class="layer_head">
+					<h3 class="z_h3">添加虚拟下载器</h3>
+					<a href="javascript:;" class="toclose" title="关闭" data-dispatch="popVDActiveClose">关闭</a>
+				</div>
+				<div class="layer_cont">
+					<div class="newinfobox">
+						<h3>在这里，您可以将通过迅雷账号激活当前电脑，让这台电脑虚拟成为一个下载器。</h3>
+					</div>
+					<div class="newtabcon z_pb50">
+						<h3 class="z_addh">激活后，您可以</h3>
+						<p>1.在本机上远程控制其他下载器的下载；</p>
+						<p>2.在其他电脑上通过迅雷7或登录yuancheng.xunlei.com控制本机的下载；</p>
+					</div>
+					<div class="btn_con">
+						<button class="btn" type="button" data-dispatch="popVDActiveOkay">激活</button>&nbsp;
+						<button class="btn" type="button" data-dispatch="popVDActiveClose">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END pop: active virtual downloader -->
+
+		<!-- BEGIN pop: vip -->
+		<div class="layer_box" id="pop-vip" style="display:none;">
+			<div class="layer_main layer_widthsmall w400">
+				<div class="layer_head">
+					<h3>亲爱的用户您好</h3>
+					<a title="关闭" class="toclose" href="javascript:;" data-dispatch="popVipClose">关闭</a>
+				</div>
+				<div class="layer_cont pop_padding">
+					<div class="layer_setbox">
+						<div class="pop_tipsbox">
+							<p class="alerm_rel">
+								<em class="ico_alerm"></em> 高速通道和离线采集是会员专属功能，您尚未开通会员。请点击下方的按钮立即开通。
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="pop_btnbox">
+					<a class="btn_pop_open" title="开通迅雷会员" href="http://pay.vip.xunlei.com/?referfrom=VIP_3494" target="_blank">
+						<em class="ico_xl_big"></em>开通迅雷会员
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- END pop: vip -->
+
+		<!--BEGIN 离线，添加到下载器的浮层-->
+		<!-- <div class="layer_box" style="top:100px;left:50%; margin-left:-240px;display:none;" id="lixian-select-box-layer">
+			<div class="layer_main layer_width">
+		        <div class="layer_head"><h3 class="tit_noline">添加到下载器</h3> <a href="javascript:;" class="toclose" title="关闭" data-dispatch="lixianCloseLayer">关闭</a></div>
+		        <div class="layer_cont">
+					<div class="newtabcon z_pt10" id="lixian-movie-download-main">
+						<p class="z_pb10">请选择您想下载的文件</p>
+						<div class="rw_listbox" id="lixian-download-file-list"></div>
+						<p class="z_pb6">存储目录：</p>
+						<div class="fm_li z_fm_li">
+							<select id="lixian-box-select">
+								<option value="">-</option>
+							</select>
+							<select id="lixian-box-partition">
+								<option value="">获取中</option>
+							</select>
+							<input type="text" class="t_ipt_m w248" value="/TDDOWNLOAD/" id="lixian-download-path">
+						</div>
+						<div class="barmagbox">
+		                    <div class="savebar">
+		                       <div class="need">所需空间：<span id="lixian-box-need-space" data-space="0">-</span></div>
+		                       <div class="mayuse"><span id="lixian-box-remain-space" data-space="0">剩余空间：获取中</span></div>
+		                       <span id="lixian-box-space-percent" style="width: 0%;" class="bg"></span>
+		                    </div>
+			          </div>
+			          <p class="lay_errtips" id="lixian-newtask-message"></p>
+					</div>
+					<div class="btn_con z_mb20 z_bdt">
+				        <a class="z_nop_link" href="help.html#qa8" title="下载完成后无法播放？" target="_blank">下载完成后无法播放？</a>
+						<button class="btn btn_gary" type="button" id="lixian-box-begin-download" data-dispatch="lixianBeginDownload">开始下载</button>&nbsp;
+						<button class="btn" type="button" data-dispatch="lixianCloseLayer">取 消</button>
+					</div>
+		        </div>
+			</div>
+		</div> -->
+
+		<div id="lixian-select-box-layer" class="t-pop" style="display:none; width:476px; margin:0 0 0 -258px; top:100px;">
+		    <div class="t-pop-tit mb0">
+		        <h3>从离线空间转存远程任务</h3>
+		    </div>
+			<div class="t-pop_listbox">
+				<p class="t-pop_listbox_tit"><strong>请选择您想下载的文件</strong></p>
+				<div class="t-pop_lists" style="color:#333;">
+					<div class="t-pop_list_tit" style="display:;">
+						<span class="t-pop_sp_ipt"><input id="lixian-layer-checkbox-select-all" type="checkbox" /></span>
+						<span class="t-pop_sp_name">文件名称</span>
+						<span class="t-pop_sp_size">文件大小</span>
+						<span class="t-pop_sp_type">文件类型</span>
+					</div>
+					<div class="t-pop_list_wrap" id="lixian-layer-task-list">
+						<div class="t-pop_list_unit">
+							<span class="t-pop_sp_ipt"><input type="checkbox" name="file" /></span>
+							<span class="t-pop_sp_name">黑衣黑衣人黑衣人黑衣人黑衣人黑衣人人3.rmvb</span>
+							<span class="t-pop_sp_size">1.88G</span>
+							<span class="t-pop_sp_type">rmvb</span>
+						</div>
+						<div class="t-pop_list_unit">
+							<span class="t-pop_sp_ipt"><input type="checkbox" name="file" /></span>
+							<span class="t-pop_sp_name">黑衣黑衣人黑衣人黑衣人黑衣人黑衣人人3.rmvb</span>
+							<span class="t-pop_sp_size">1.88G</span>
+							<span class="t-pop_sp_type"><a href="javascript:;" class="btn_filetype">BT文件</a></span>
+						</div>
+					</div>
+					<div class="rw_links">
+						<p>
+							<a title="" id="lixian-layer-select-all" href="javascript:;">全选</a> | <a id="lixian-layer-select-inverse" href="javascript:;">反选</a> <span class="clr_blue" title="" href="javascript:;">已选择<em id="lixian-layer-select-count">0</em>个任务</span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="fm_li t-pop_sel">
+				<label>存储路径：</label>
+				<div class="select_box">
+					<div class="selected w113" id="lixian-layer-downloaders-select"><span id="lixian-layer-downloaders-selected" style="width:113px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap; display:inline-block;">小米路由器_A3E1</span><span class="line"></span><a href="javascript:;" class="arrow_top"></a></div>
+					<div id="lixian-layer-downloaders-pannel" class="option_list w142" style="display:none;">
+						<ul id="lixian-layer-downloaders">
+							<li><a href="javascript:;">小米路由器_A3E1</a></li>
+							<li><a href="javascript:;">小米路由器_A3E1</a></li>
+							<li><a href="javascript:;">小米路由器_A3E1</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="select_box">
+					<div id="lixian-layer-disklist-select" class="selected w23"><span id="lixian-layer-disklist-selected"></span><span class="line"></span><a href="javascript:;" class="arrow_top"></a></div>
+					<div id="lixian-layer-disklist-pannel" class="option_list w52" style="display:none;">
+						<ul id="lixian-layer-disklist">
+						</ul>
+					</div>
+				</div>
+				<div class="select_box last_select_box">
+					<div class="selected w170"><input type="text" style="height:26px;line-height:26px; width:190px; font-family: 'microsoft yahei';" id="lixian-layer-download-path" /></div>
+				</div>
+			</div>
+			<div class="t-pop_bar">
+			   <div id="lixian-layer-need-space" class="need">所需空间：11110B</div>
+			   <div id="lixian-layer-total-space" class="mayuse">剩余空间：7.5GB</div>
+				<div class="savebar">
+				   <span id="lixian-layer-progress" style="width: 10%;" class="bg"></span>
+				</div>
+			</div>
+			<div style="position:absolute; color:red;"><span id="lixian-layer-message"></span></div>
+		    <div class="t-pop-btnbox txt_right">
+		        <a class="btn-t-pop" id="lixian-layer-begin-download" data-dispatch="lixianBeginDownload" href="javascript:;" title="添加到远程下载">添加到远程下载</a>
+		    </div>
+		    <a class="btn-t-close" data-dispatch="lixianCloseLayer" href="javascript:;" title="关闭">关闭</a>
+		</div>
+
+		<div id="lixian-layer-bt-detail" class="t-pop" style="display:none; width:476px; margin:0 0 0 5px; top:150px;">
+		    <div class="t-pop-tit mb25">
+		        <h3 id="lixian-layer-bt-detail-title" style="height:24px; width:465px; overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"></h3>
+		    </div>
+			<div class="t-pop_listbox">
+				<div class="t-pop_lists" style="color:#333;">
+					<div class="t-pop_list_tit" style="display:;">
+						<span class="t-pop_sp_ipt"><input id="lixian-layer-bt-detail-select-all-checkbox" type="checkbox" /></span>
+						<span class="t-pop_sp_name">文件名称</span>
+						<span class="t-pop_sp_size">文件大小</span>
+						<span class="t-pop_sp_type">文件类型</span>
+					</div>
+					<div class="t-pop_list_wrap" id="lixian-layer-bt-detail-list">
+						<div class="t-pop_list_unit">
+							<span class="t-pop_sp_ipt"><input type="checkbox" name="file" /></span>
+							<span class="t-pop_sp_name">黑衣黑衣人黑衣人黑衣人黑衣人黑衣人人3.rmvb</span>
+							<span class="t-pop_sp_size">1.88G</span>
+							<span class="t-pop_sp_type">rmvb</span>
+						</div>
+					</div>
+				</div>
+				<div class="rw_links">
+					<p>
+						<a id="lixian-layer-bt-detail-select-all" href="javascript:;">全选</a> | <a id="lixian-layer-bt-detail-select-inverse" href="javascript:;">反选</a> | <a id="lixian-layer-bt-detail-select-auto" href="javascript:;">智能</a> <span class="clr_blue" title="" href="javascript:;">已选择<em id="lixian-layer-bt-detail-select-count">0</em>个子任务</span>
+					</p>
+				</div>
+			</div>
+			<div style="position:absolute; color:red;"><span id="lixian-layer-bt-detail-message"></span></div>
+		    <div class="t-pop-btnbox txt_right">
+		        <a class="btn-t-pop" data-dispatch="lixianLayerBtDetailClose" href="javascript:;" title="确定">确定</a>
+		    </div>
+		    <a class="btn-t-close" data-dispatch="lixianLayerBtDetailClose" href="javascript:;" title="关闭">关闭</a>
+		</div>
+		<!--END 离线，添加到下载器的浮层-->
+
+		<!--大全的浮层-->
+		<!--大全的任务详情浮层-->
+		<div class="layer_box daquan-layer" style="top:200px;left:50%; margin-left:-240px;display:none;" id="daquan-movie-detail">
+			<div class="layer_main layer_widthsmall w520 nobg">
+			       <div class="layer_head"><a href="javascript:;" class="toclose" title="关闭" data-dispatch="daquanCloseLayer">关闭</a></div>
+		        <div class="layer_cont pop_padding" id="daquan-movie-detail-main"></div>
+			</div>
+		</div>
+		<!--大全 下载任务浮层-->
+		<div class="layer_box daquan-layer" style="top:100px;left:50%; margin-left:-240px;display:none;" id="daquan-movie-download">
+			<div class="layer_main layer_width">
+		        <div class="layer_head"><h3 class="tit_noline">免费高清下载</h3> <a href="javascript:;" class="toclose" title="关闭" data-dispatch="daquanCloseLayer">关闭</a></div>
+		        <div class="layer_cont">
+					<div class="newtabcon z_pt10" id="daquan-movie-download-main"></div>
+					<div class="btn_con z_mb20 z_bdt">
+				        <!--<a class="z_nop_link" href="help.html#qa8" title="下载完成后无法播放？" target="_blank">下载完成后无法播放？</a>-->
+						<a class="z_nop_link" href="javascript:;" title="下载完成后请使用迅雷看看播放器播放！">下载完成后请使用迅雷看看播放器播放！</a>
+						<button class="btn btn_gary" type="button" id="daquan-box-begin-download" data-dispatch="daquanBeginDownload" data-daquan-download-disabled="1">开始下载</button>&nbsp;
+						<button class="btn" type="button" data-dispatch="daquanCloseLayer">取 消</button>
+					</div>
+		        </div>
+			</div>
+		</div>
+		<!--END 大全的浮层-->
+
+		<!--下面的浮层是2.1新增的*********************************************************************************-->
+
+		<!--任务属性浮层开始-->
+		<div class="layer_box" style="top:100px;left:540px;display:none;" id="pop-property">
+			<div class="layer_main layer_widthsmall" id="pop-property-width">
+		        <div class="layer_head">
+				    <h3 class="tit_noline">任务属性</h3>
+					<a href="javascript:;" class="toclose" title="关闭" data-dispatch="popPropertyClose">关闭</a>
+				</div>
+		        <div class="layer_cont">
+					<div class="newtabcon">
+						<div class="pop_naturebox">
+							<div class="pop_nature_tit">
+							    <div class="pop_na">
+								    <img src="images/1.png" alt="" width="32" height="32" id="taskPropertyIcon" />
+									<p class="pop_na_name" id="taskPropertyName" title=""></p>
+									<p id="taskPropertySize">0B</p>
+								</div>
+								<div class="pop_url">
+								    <div class="pop_url_unit">
+									    <label class="pop_url_name">下载设备：</label>
+										<span class="pop_url_rel">
+										    <em class="pop_url_size" id="taskPropertyDownloaderRemainSpace">-</em>
+											<input class="pop_url_txt" type="text" value="龙套丁" readonly="readonly" id="taskPropertyDownloader" />
+											<a class="pop_url_sj" href="javascript:;" title="选择其他" style="display:none;"></a>
+										</span>
+									</div>
+									<div class="pop_url_unit">
+									    <label class="pop_url_name">存储路径：</label>
+										<span class="pop_url_rel">
+										    <em class="pop_url_size" id="taskPropertyPartitionRemainSpace">-</em>
+											<input class="pop_url_txt" type="text" value="-" readonly="readonly" id="taskPropertyPath" />
+											<a class="pop_url_sj" href="javascript:;" title="选择其他" style="display:none;"></a>
+										</span>
+									</div>
+									<div class="pop_url_abs" style=" position:absolute; left:66px; top:29px; display:none;">
+										<ul>
+											<li><a href="javascript:;" title="龙套丁">龙套丁</a></li>
+											<li><a href="javascript:;" title="龙套丁">龙套丁</a></li>
+											<li><a href="javascript:;" title="龙套丁">龙套丁</a></li>
+										</ul>
+									</div>
+									<div class="pop_url_abs" style=" position:absolute; left:66px; top:67px; display:none;">
+										<ul>
+											<li><a href="javascript:;" title="D:/TDDOWNLOAD/">D:/TDDOWNLOAD/</a></li>
+											<li><a href="javascript:;" title="D:/TDDOWNLOAD/">D:/TDDOWNLOAD/</a></li>
+											<li><a href="javascript:;" title="D:/TDDOWNLOAD/">D:/TDDOWNLOAD/</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="pop_listbox" id="pop-property-bt-sublist" style="display:none;">
+							    <p class="pop_listbox_tit">文件设置：</p>
+								<div class="pop_lists">
+								    <div class="pop_list_tit">
+									    <span class="pop_sp_name">文件名</span>
+										<span class="pop_sp_size">大小</span>
+										<span class="pop_sp_type">进度</span>
+									</div>
+									<div class="pop_lists_wrap" id="property-bt-sublist"></div>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="rw_links" id="pop-property-bt-selector" style="display:none;">
+						   <label class="pop_lblorder"><input type="checkbox" /> 按顺序下载</label>
+						   <p>
+						       选择：<a title="" href="javascript:;" data-dispatch="popPropertySelectAll">全选</a>
+						       |
+						       <a href="javascript:;" data-dispatch="popPropertySelectAll">反选</a>
+						       |
+						       <a title="" href="javascript:;" data-dispatch="popPropertySelectAll">自动</a>
+						   </p>
+						</div>
+
+					</div>
+					<div class="pop_btnbox">
+		                <a class="pop_btn" href="javascript:;" title="确定" data-dispatch="popPropertyClose">确定</a>
+		                <a class="pop_btn" href="javascript:;" title="取消" data-dispatch="popPropertyClose">取消</a>
+		            </div>
+		        </div>
+			</div>
+		</div>
+		<!--任务属性浮层结束-->
+
+		<!--播放BT任务，选择浮层开始-->
+		<div class="layer_box" style="top:100px;left:540px;display:none;" id="pop-playlist">
+			<div class="layer_main layer_widthsmall" id="pop-playlist-width">
+		        <div class="layer_head">
+				    <h3 class="tit_noline">任务列表</h3>
+					<a href="javascript:;" class="toclose" title="关闭" data-dispatch="popPlaylistClose">关闭</a>
+				</div>
+		        <div class="layer_cont">
+					<div class="newtabcon">
+						<div class="pop_naturebox">
+							<div class="pop_nature_tit">
+							    <div class="pop_na">
+								    <img src="images/2.png" alt="" width="32" height="32" id="taskPlaylistIcon" />
+									<p class="pop_na_name" id="taskPlaylistName" title=""></p>
+									<p id="taskPlaylistSize">0B</p>
+								</div>
+							</div>
+
+							<div class="pop_listbox">
+							    <p class="pop_listbox_tit">播放列表：</p>
+								<div class="pop_lists">
+								    <div class="pop_list_tit">
+									    <span class="pop_sp_name">文件名</span>
+										<span class="pop_sp_size">大小</span>
+										<span class="pop_sp_type">进度</span>
+									</div>
+									<div class="pop_lists_wrap" id="pop-playlist-bt-sublist"></div>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="rw_links" id="pop-playlist-bt-selector">
+						   <p>
+						       选择：<a title="" href="javascript:;" id="pop-paylist-select-all">全选</a>
+						       |
+						       <a href="javascript:;" id="pop-paylist-select-inverse">反选</a>
+						   </p>
+						</div>
+
+					</div>
+					<div class="pop_btnbox">
+		                <a class="pop_btn" href="javascript:;" title="确定" data-dispatch="popPlaylistPlay">确定</a>
+		                <a class="pop_btn" href="javascript:;" title="取消" data-dispatch="popPlaylistClose">取消</a>
+		            </div>
+		        </div>
+			</div>
+		</div>
+		<!--播放BT任务，选择浮层结束-->
+
+		<!-- BEGIN pop: bind vip -->
+		<div class="layer_box" id="pop-bind-vip" style="display:none;">
+			<div class="layer_main layer_widthsmall w400">
+				<div class="layer_head">
+					<h3>绑定成功</h3>
+					<a title="关闭" class="toclose" href="javascript:;" data-dispatch="popBindVipClose">关闭</a>
+				</div>
+				<div class="layer_cont pop_padding">
+					<div class="layer_setbox">
+						<div class="pop_tipsbox">
+							<p class="alerm_rel" style="padding-left:10px;">
+								<!-- <em class="ico_alerm"></em> -->
+								<span id="pop-bind-vip-message1"><!-- MESSAGE --></span>
+							</p>
+							<p class="alerm_p" id="pop-bind-vip-message2"><!-- MESSAGE --></p>
+						</div>
+					</div>
+				</div>
+				<div class="pop_btnbox">
+					<a title="确定" href="javascript:;" class="pop_btn" data-dispatch="popBindVipClose">确定</a>
+				</div>
+			</div>
+		</div>
+		<!-- END pop: bind vip -->
+
+		<!-- BEGIN pop: add source site -->
+		<div id="pop-add-source-site" class="t-pop t-pop-mid" style="display:none;">
+		    <div class="t-pop-tit">
+		        <h3>添加自定义下载站</h3>
+		    </div>
+		    <div class="t-pop-addinp">
+		        <input id="pop-add-source-site-url" type="text" placeholder="请输入影视站点网址" />
+		        <div id="pop-add-source-site-msg" style="position:absolute; margin-top:10px; color:red;"></div>
+		    </div>
+		    <div class="t-pop-btnbox">
+		        <a class="btn-t-pop" href="javascript:;" title="确定" data-dispatch="popAddSourceSiteOkey">确定</a>
+		    </div>
+		    <a class="btn-t-close" href="javascript:;" title="关闭" data-dispatch="popAddSourceSiteClose">关闭</a>
+		</div>
+		<!-- END pop: add source site -->
+
+		<div class="layer_box" id="pop-subscribe" style='display:none; filter:none;'>
+			<div class="layer_main" style="width:580px; font:12px/1.5 \5FAE\8F6F\96C5\9ED1,Arial,Tahoma,Helvetica,sans-serif; color:#333333;  line-height: 168%; padding:5px;">
+				<div class="layer_head">
+					<h3 class="tit_noline">开启订阅下载功能！</h3>
+					<a class="toclose" title="关闭" data-dispatch="popSubscribeClose">关闭</a>
+				</div>
+				<div class="layer_cont">
+					<div style="padding:10px 20px 0px; font-size:13px;">
+						<span>
+							还为找不到资源犯愁吗？还是平时太忙没时间找资源？迅雷远程下载“订阅下载”内测开启，让雷友帮你一起找大片——哪个下的多，我就下哪个!
+						</span>
+					</div>
+
+					<div style="padding:10px 20px 0px;">
+						<div style="display:inline; font-size:13px;"><span>上次推送内容：</span></div>
+						<div style="float:right; display:inline-bolck; font-size:13px;"><span>预计下次推送时间：</span><span id="pop-subscribe-next-push-time" style="color:red;">未定</span></div>
+
+						<div style="padding:5px 0; height:78px;">
+							<div style="float:left; padding:5px; display:inline-block; width:160px; height:66px; border:solid 1px #D6D6D6;">
+								<table style=" height:100%; width:100%; background:#F5F5F5;">
+									<tr>
+										<td style="text-align: center; height:100%; width:100%;" id="pop-subscribe-last-push-1"></td>
+									</tr>
+								</table>
+							</div>
+
+							<div style="float:left; padding:5px; display:inline-block; width:160px; height:66px;  border:solid 1px #D6D6D6; margin-left:10px;">
+								<table style=" height:100%; width:100%; background:#F5F5F5;">
+									<tr>
+										<td style="text-align: center; height:100%; width:100%;" id="pop-subscribe-last-push-2"></td>
+									</tr>
+								</table>
+							</div>
+
+							<div style="float:left; padding:5px; display:inline-block; width:160px; height:66px;  border:solid 1px #D6D6D6; margin-left:10px;">
+								<table style=" height:100%; width:100%; background:#F5F5F5;">
+									<tr>
+										<td style="text-align: center; height:100%; width:100%;" id="pop-subscribe-last-push-3"></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="layer_setbox" style="padding:10px 20px 5px;">
+						<span style="display:block; font-size:13px;">功能说明:</span>
+						<ul style="padding-left:10px; border-bottom: none; padding-bottom: 0px; margin-bottom: 0px;">
+							<li>
+								<span>· 订阅后，每天凌晨02:30自动根据近期远程下载热门下载资源创建下载任务</span>
+							</li>
+							<li>
+								<span>· 推送内容会下载到用户默认路径下，若空间不足，则在空间相对较大的外接设备或分区创建下载</span>
+							</li>
+							<li>
+								<span>· 已下载或下载中已存在的任务不会重复创建下载</span>
+							</li>
+							<li>
+								<span>· <b> 目前每天最多推送3个资源</b></span>
+							</li>
+							<li>
+								<span>· 推送任务时，会同时为其匹配字幕文件</span>
+							</li>
+						</ul>
+						<span style="display:block;">“订阅下载”尚在试用阶段，高级功能后期会根据大家的反馈陆续开放，<a href="javascript:;" target="_blank" style="color:blue;">欢迎吐槽！</a></span>
+					</div>
+
+					<div class="btn_con">
+						<div style="text-align: left; color:#333333; position:absolute; line-height:28px;">
+							马上为您的
+							<select id="pop-subscribe-downloaders" style="height:22px; width:120px; line-height:18px; padding:2px 0; vertical-align:middle;">
+							</select>
+							开启订阅下载资格吧！名额有限，先订先下!
+						</div>
+						<button class="btn btn_gary" type="button" data-dispatch="popSubscribeOkey" id="pop-subscribe-okey" data-disabled="1">立即订阅</button>&nbsp;
+						<button class="btn btn_gary" type="button" data-dispatch="popSubscribeCancel" id="pop-subscribe-cancel" data-disabled="1" style="display:none;">取消订阅</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--2.1新浮层结束*****************************************************************************************-->
+
+		<!--异步提交的IFRAME**************************************************************************************-->
+
+		<iframe src="about:blank" frameborder="0" id="ajax-iframe" class="ajax-iframe" name="ajax-iframe"></iframe>
+		<div id="ajax-form-div" class="ajax-form-div"></div>
+
+		<!--END异步提交的IFRAME***********************************************************************************-->
+
+		<!--{BUILD:js/yuancheng.js}-->
+		<script type="text/javascript" src="js/jquery.jgrowl.js"></script>
+		<script type="text/javascript" src="js/ZeroClipboard.js"></script>
+
+		<script type="text/javascript" src="js/protocol.js"></script>
+		<script type="text/javascript" src="js/xrd.js"></script>
+
+		<script type="text/javascript" src="js/modules/page.js"></script>
+		<script type="text/javascript" src="js/modules/side_bar.js"></script>
+		<script type="text/javascript" src="js/modules/task_list.js"></script>
+
+		<script type="text/javascript" src="js/addons/lixian.js"></script>
+		<script type="text/javascript" src="js/addons/daquan_protocol.js"></script>
+		<script type="text/javascript" src="js/addons/daquan.js"></script>
+		<script type="text/javascript" src="js/addons/source_site.js"></script>
+		<script type="text/javascript" src="js/addons/source_site_protocol.js"></script>
+		<script type="text/javascript" src="js/addons/ycxz_app.js"></script>
+		<script type="text/javascript" src="js/addons/sbzc.js"></script>
+		<script type="text/javascript" src="js/addons/bbgx.js"></script>
+
+		<script type="text/javascript" src="js/pops/pop_hint.js"></script>
+		<script type="text/javascript" src="js/pops/pop_bind.js"></script>
+		<script type="text/javascript" src="js/pops/pop_instructor.js"></script>
+		<script type="text/javascript" src="js/pops/pop_config.js"></script>
+		<script type="text/javascript" src="js/pops/pop_remove.js"></script>
+		<script type="text/javascript" src="js/pops/pop_rename.js"></script>
+		<script type="text/javascript" src="js/pops/pop_newtask.js"></script>
+		<script type="text/javascript" src="js/pops/pop_vdpage.js"></script>
+		<script type="text/javascript" src="js/pops/pop_vdactive.js"></script>
+		<script type="text/javascript" src="js/pops/pop_export.js"></script>
+		<script type="text/javascript" src="js/pops/pop_property.js"></script>
+		<script type="text/javascript" src="js/pops/pop_vip.js"></script>
+		<script type="text/javascript" src="js/pops/pop_accesscode.js"></script>
+		<script type="text/javascript" src="js/pops/pop_bindvip.js"></script>
+		<script type="text/javascript" src="js/pops/pop_subscribe.js"></script>
+
+		<script type="text/javascript" src="js/modules/terminal.js"></script>
+		<script type="text/javascript" src="js/modules/listener.js"></script>
+		<!--{/BUILD}-->
+
+		<!--{BUILD:js/index.js}-->
+		<script type="text/javascript" src="js/index.js"></script>
+		<!--{/BUILD}-->
+		<script src="http://hm.baidu.com/h.js?cfc5870ca861ef8a8ac3fb74bf1f5049" type="text/javascript" defer="defer" async="async"></script>
+	</body>
+</html>

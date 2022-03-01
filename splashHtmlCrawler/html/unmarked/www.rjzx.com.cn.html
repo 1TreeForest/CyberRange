@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" contenct="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="renderer" content="webkit">
+<title>rjzx.com.cn</title>
+<meta name="Keywords" content="rjzx.com.cn" />
+<meta name="Description" content="rjzx.com.cn" />
+<style type="text/css">
+* {margin:0;}
+html {height: 100%; overflow: hidden;}
+body {height: 100%; padding:0;}
+iframe {width: 100%; height: 100%; float: left;}
+.top-message {width: 100%; height: 28px; line-height: 28px; text-align: center; font-size: 14px; color: #fff; background-color: rgba(0, 0, 0, 0.25); position: fixed; top: 0; left: 0;}
+.top-message a {color: #fff;}
+.hide {display: none;}
+.apply-box {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.75);}
+.apply-box .apply-form {position: absolute; top: 50%; left: 50%; background-color: #fff; width: 410px; height: 600px; margin: -300px 0 0 -205px;}
+.apply-box .apply-form .title {width: 100%; height: 44px; font-weight: bold; font-size: 16px; background-color: #999999; text-align: center; line-height: 44px;}
+.apply-box .apply-form .title .close-btn {width: 36px; height: 36px; border-radius: 18px; background-color: #333; color: #fff; position: absolute; right: 4px; top: 4px; line-height: 36px; cursor: pointer;}
+.apply-box .apply-form .tip {color: #999999; font-size: 16px; width: 100%; height: 80px; line-height: 80px; text-align: center;}
+.apply-box .apply-form .line {width: 100%; padding: 0 8px 0 8px; height: 36px; margin-bottom: 12px; font-size: 14px; color: #999999;}
+.apply-box .apply-form .line .label {width: 106px; display: inline-block; text-align: right; line-height: 36px;}
+.apply-box .apply-form .line .text {width: 254px; border: 1px solid #dadada; padding-left: 10px; height: 30px;}
+.apply-box .apply-form .multi-line {width: 100%; padding: 0 8px 0 8px; height: 150px; margin-bottom: 12px; font-size: 14px; color: #999999;}
+.apply-box .apply-form .multi-line .label {width: 106px; display: inline-block; text-align: right; vertical-align: top; padding-top: 8px;}
+.apply-box .apply-form .multi-line .text {width: 244px; height: 140px; padding: 10px; resize: none; border: 1px solid #dadada;}
+.apply-box .apply-form .agree {margin-top: 30px; margin-left: 103px; color: #999999; font-size: 14px;}
+.apply-box .apply-form .submit {margin-top: 20px; width: 100%; text-align: center;}
+.apply-box .apply-form .submit button {background-color: #4dc1e6; color: #fff; width: 200px; height: 42px; border-radius: 3px; border: none; cursor: pointer;}
+.apply-box .apply-result {position: absolute; top: 50%; left: 50%; background-color: #fff; width: 400px; height: 600px; margin: -300px 0 0 -200px; text-align: center;}
+.apply-box .apply-result .title {width: 100%; height: 44px; font-weight: bold; font-size: 16px; background-color: #999999; text-align: center; line-height: 44px;}
+.apply-box .apply-result .title .close-btn {width: 36px; height: 36px; border-radius: 18px; background-color: #333; color: #fff; position: absolute; right: 4px; top: 4px; line-height: 36px; cursor: pointer;}
+.apply-box .apply-result p {color: #999999; font-size: 14px; text-align: center;}
+.apply-box .apply-result p.tip {margin-top: 30px;}
+.apply-box .apply-result .wechat-qrcode {margin-top: 30px;}
+.swith-lang {float: right; padding-right: 20px;}
+.lang-cn {  }
+.lang-en { display: none; }
+</style>
+<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+function myload() {
+    var domain = 'rjzx.com.cn';
+    var script = document.createElement("script");
+    script.src = "http://traffic.dnparking.com:88/analysis.js?d=" + domain + "&_t"+new Date().getTime();
+    document.getElementsByTagName("body")[0].appendChild(script);
+
+    if (!/^(bai|baoyu)\.com$/i.test(domain)) {
+        document.getElementById('contact').style.display = 'block';
+    }
+}
+function showform() {
+    $('#apply-box').show();
+}
+function hideform() {
+    $('#apply-box').hide();
+}
+var islangcn = true;
+function togglelang() {
+    $('.lang-cn').toggle();
+    $('.lang-en').toggle();
+    islangcn = !islangcn;
+}
+function mysubmit() {
+    var e = $(this);
+    if (e.data('lock')) return;
+    if (!$('input[name="agree"]').is(':checked')) {
+        alert(islangcn ? '请先阅读并同意隐私政策' : 'Please read and agree to the privacy policy.');
+        return;
+    }
+    e.data('lock', true);
+    var data = {};
+    data.name = $('input[name="name"]').val();
+    data.phone_number = $('input[name="phone_number"]').val();
+    data.email = $('input[name="email"]').val();
+    data.type = $('input[name="type"]').val();
+    data.wechat_id = $('input[name="wechat_id"]').val();
+    data.remark = $('textarea[name="remark"]').val();
+    data.domain = 'rjzx.com.cn';
+
+    $.post("http://my.ad.parking.taoming.com:81/order.php", data, function(r) {
+        if (r.flag) {
+            $('.apply-form').hide();
+            $('.apply-result').show();
+        } else {
+            alert(islangcn ? r.info : r.info_en);
+        }
+        e.data('lock', false);
+    }, "json");
+
+}
+function iframeload() {
+    var doc = window.frames["show"].document;
+    var list = doc.getElementsByTagName('h1');
+    for (var i in list) {
+        var e = list[i];
+        var p = e.parentNode;
+        if (p) p.removeChild(e);
+    }
+}
+</script>
+</head>
+<body style="margin:0;padding:0;" onload="myload()">
+<div id="contact" class="top-message hide">
+    <span class="lang-cn">域名相关事宜，<a href="javascript:void(0);" onclick="showform();">点击联系</a></span>
+    <span class="lang-en">For the domain issues, <a href="javascript:void(0);" onclick="showform();">Click here to contact us</a>.</span>
+    <div class="swith-lang">
+        <span class="lang-cn"><a href="javascript:void(0);" onclick="togglelang();">English</a></span>
+        <span class="lang-en"><a href="javascript:void(0);" onclick="togglelang();">中文</a></span>
+    </div>
+</div>
+<iframe name="show" frameborder="0" src="http://www.rjzx.com.cn/404.html" onload="iframeload();"></iframe>
+<div id="apply-box" class="hide apply-box">
+    <div class="apply-form">
+        <div class="title"><span class="lang-cn">联系我们</span><span class="lang-en">Contact Us</span><div class="close-btn" onclick="hideform();">X</div></div>
+        <div class="tip"><span class="lang-cn">请填写并提交您的相关信息</span><span class="lang-en">Please fill in your information</span></div>
+        <div class="line"><span class="label"><span class="lang-cn">姓名：</span><span class="lang-en">Name:&nbsp;</span></span><input name="name" type="text" class="text" /></div>
+        <div class="line"><span class="label"><span class="lang-cn">联系电话：</span><span class="lang-en">Phone NO.:&nbsp;</span></span><input name="phone_number" type="text" class="text" /></div>
+        <div class="line"><span class="label"><span class="lang-cn">电子邮件：</span><span class="lang-en">Email:&nbsp;</span></span><input name="email" type="text" class="text" /></div>
+        <div class="line"><span class="label"><span class="lang-cn">微信号：</span><span class="lang-en">WhatsApp ID:&nbsp;</span></span><input name="wechat_id" type="text" class="text" /></div>
+        <div class="multi-line"><span class="label"><span class="lang-cn">主题：</span><span class="lang-en">Subject:&nbsp;</span></span><textarea name="remark" class="text"></textarea></div>
+        <div class="agree">
+            <input type="checkbox" name="agree"  />
+            <span class="lang-cn">我已阅读并同意<a href="/privacy" target="_blank">隐私政策</a></span>
+            <span class="lang-en">I agree to the terms of <a href="/privacy" target="_blank">Private Policy</a></span>
+        </div>
+        <div class="submit"><button type="button" onclick="mysubmit();"><span class="lang-cn">提交信息</span><span class="lang-en">Submit</span></button></div>
+    </div>
+    <div class="apply-result hide">
+        <div class="title"><span class="lang-cn">联系我们</span><span class="lang-en">Contact Us</span><div class="close-btn" onclick="hideform();">X</div></div>
+        <p class="tip"><span class="lang-cn">提交成功，感谢您的申请！</span><span class="lang-en">Successfully submitted. Thanks for your application.</span></p>
+        <p><span class="lang-cn">请添加以下微信与我们联系</span><span class="lang-en">Please add the following wechat work for further contact.</span></p>
+        <div class="wechat-qrcode">
+            <img src="http://parking.taoming.com/images/qrcode_qiyehupo.jpg" />
+        </div>
+        <p><span class="lang-cn">扫描以上二维码</span><span class="lang-en">Scan the qrcode</span></p>
+        <p><span class="lang-cn">或添加微信号</span><span class="lang-en">Or add wechat work by number:</span> 18126870759 </p>
+    </div>
+</div>
+</body>
+</html>
