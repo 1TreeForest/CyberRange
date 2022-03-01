@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>后台管理登录</title>
+<meta name="robots" content="noindex,nofollow,nosnippet,noarchive">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<link rel="shortcut icon" href="img/ico.ico" >
+<meta name="renderer" content="webkit">
+<script type="text/javascript">cmsversion='1.0';</script>
+<link href="static/layui/css/layui.css" rel="stylesheet" type="text/css" />
+<script src="static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script language="javascript" type="text/javascript"> 
+function checkuser(){
+	if (document.getElementById("uuu_username").value==''){alert('请填写您的用户名');document.getElementById("uuu_username").focus();return false;}
+	if (document.getElementById("uuu_password").value=='') { alert('请填写密码'); document.getElementById("uuu_password").focus(); return false; } 
+	return true;
+}
+</script>
+<script src="img/jquery.min.js"></script>
+</head>
+<body>
+	<style type="text/css">
+		.adming_login{ 
+			margin: 200px auto; 
+			width: 280px; 
+			padding: 80px 50px; 
+			box-shadow: 0 2px 5px rgba(0,0,0,.1);
+		}
+		.adming_login h3{
+			margin-bottom: 30px;
+			text-align: center;
+		}
+		.adming_login .copy{
+			text-align: center;
+			margin-top: 30px;
+			color: #999;
+		}
+	</style>
+	<div class="layui-main">
+		<div class="adming_login">
+			<h3>
+	      		<p><img src="static/img/logo.png" alt="layui" width="204"></p>
+	      		<p>主题管理系统</p>
+	    	</h3>
+			<form name="form1" method="post" action="" onSubmit="return checkuser();" class="layui-form layui-form-pane">
+				<div class="layui-form-item">
+					<label class="layui-form-label">用户名</label>
+					<div class="layui-input-block">
+						<input type="text" tabindex="1" name="uuu_username" value="" id="uuu_username" value="" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+					<div class="layui-input-block">
+						<input type="password" tabindex="2" name="uuu_password" value="" id="uuu_password" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<input type="submit" tabindex="4" value="登录" class="layui-btn layui-btn-fluid" />
+				</div>
+			</form>
+			<div class="copy">
+				&copy; 2022 Powered by MyTheme.cn
+			</div>
+		</div>
+	</div>
+</body>
+</html>

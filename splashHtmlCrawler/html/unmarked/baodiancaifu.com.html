@@ -1,0 +1,1690 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> <meta name="keywords" content="&#32769;&#21496;&#26426;&#20840;&#37096;&#21320;&#22812;&#35270;&#39057;&#44;&#22269;&#20135;&#21320;&#22812;&#31119;&#21033;&#22312;&#32447;&#25773;&#25918;&#44;&#21320;&#22812;&#26080;&#30721;&#29255;&#22312;&#32447;&#35266;&#30475;" />
+<meta name="description" content="&#32769;&#21496;&#26426;&#20840;&#37096;&#21320;&#22812;&#35270;&#39057;&#44;&#22269;&#20135;&#21320;&#22812;&#31119;&#21033;&#22312;&#32447;&#25773;&#25918;&#44;&#21320;&#22812;&#26080;&#30721;&#29255;&#22312;&#32447;&#35266;&#30475;&#25105;&#36824;&#19981;&#26102;&#39128;&#19968;&#20004;&#30524;&#44;&#21487;&#26159;&#8230;&#8230;&#33;&#24471;&#22810;&#8230;&#8230;&#21568;&#8230;&#8230;&#37027;&#37324;&#26089;&#23601;&#27700;&#27867;&#28389;&#20102;&#12290;&#20182;&#38382;&#58;&#25105;&#27604;&#25105;&#20799;&#23376;&#8230;&#8230;&#25105;&#24320;&#22987;&#28010;&#30340;&#21483;&#36215;&#26469;&#12290;&#20182;&#26356;&#29305;&#24847;&#30340;&#29992;&#21147;&#28145;&#28145;&#39030;&#20837;&#44;">
+
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>&#32769;&#21496;&#26426;&#20840;&#37096;&#21320;&#22812;&#35270;&#39057;&#95;&#22269;&#20135;&#21320;&#22812;&#31119;&#21033;&#22312;&#32447;&#25773;&#25918;&#95;&#21320;&#22812;&#26080;&#30721;&#29255;&#22312;&#32447;&#35266;&#30475;</title>
+<script src="/d3-composite-chord.js"></script>
+		<link href="/css/style.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="/Scripts/jquery-1.9.1.min.js"></script>
+		
+		<script src="/scripts/slide.js"></script>
+		<style type="text/css">
+			.xuanxiangk_b_h {
+				color: #7f7f7f;
+				font-size: 20px;
+			}
+
+			-->.allmingyibox {
+				width: 725px;
+				overflow: hidden;
+				height: 150px;
+				margin-left: 2px;
+				margin-top: 10px;
+				border-top-style: none;
+				border-right-style: none;
+				border-bottom-style: none;
+				border-left-style: none;
+				padding-top: 10px;
+				padding-right: 0;
+				padding-bottom: 2px;
+				padding-left: 0;
+			}
+
+			.xuanxiangk_a_h {
+				color: #7f7f7f;
+				font-size: 20px;
+			}
+
+			.mm {
+				font-size: 10px;
+				line-height: 0.8cm;
+			}
+
+			ul,
+			li {
+				list-style: none;
+				padding: 0px;
+				margin: 0px;
+			}
+
+			.mybox {
+				width: 100%;
+				overflow: hidden;
+			}
+
+			.mybox li {
+				width: 48%;
+				float: left;
+				padding: 2px 5px;
+				line-height: 40px;
+				border-bottom: dashed 1px #efefef;
+			}
+
+			.mybox img {
+				padding: 0 4px;
+			}
+
+			.mybox1 {
+				width: 100%;
+				overflow: hidden;
+				padding-left: 15px;
+			}
+
+			.mybox1 li {
+				width: 48%;
+				float: left;
+				line-height: 30px;
+				border-bottom: dashed 1px #efefef;
+			}
+
+			.mybox2 {
+				width: 300px;
+				overflow: hidden;
+			}
+
+			.mybox2 li {
+				width: 140px;
+				float: left;
+				margin-left: 2px;
+				padding: 2px;
+				line-height: 25px;
+				border-bottom: dashed 1px #efefef;
+			}
+
+			.hg {
+				line-height: 1cm;
+			}
+
+			.mingyibox {
+				height: 128px;
+			}
+
+			.mingyibox li {
+				float: left;
+				list-style: none;
+				border-top-style: none;
+				border-right-style: none;
+				border-bottom-style: none;
+				border-left-style: none;
+			}
+
+			ul {
+				list-style: none;
+			}
+
+			img {
+				border: 0;
+			}
+
+			.scroll {
+				width: 1024px;
+				height: 102px;
+			}
+
+			.pic {
+				width: 1024px;
+				height: 102px;
+				float: left;
+			}
+
+			.pic ul {
+				display: block;
+			}
+
+			.pic li {
+				float: left;
+				display: inline;
+				text-align: center;
+			}
+
+			.allmingyibox {
+				width: 725px;
+				overflow: hidden;
+				height: 150px;
+				margin-left: 2px;
+				margin-top: 10px;
+				border-top-style: none;
+				border-right-style: none;
+				border-bottom-style: none;
+				border-left-style: none;
+				padding-top: 10px;
+				padding-right: 0;
+				padding-bottom: 2px;
+				padding-left: 0;
+			}
+
+			.hg {
+				line-height: 1cm;
+			}
+
+			.mingyibox {
+				height: 128px;
+			}
+
+			.mingyibox li {
+				float: left;
+				list-style: none;
+				border-top-style: none;
+				border-right-style: none;
+				border-bottom-style: none;
+				border-left-style: none;
+			}
+
+			/*幻灯片*/
+			#myhdp img,
+			#myhdp1 img {
+				border: 0px;
+			}
+
+			#myhdp ul,
+			#myhdp1 ul {
+				position: absolute;
+				list-style-type: none;
+				height: 20px;
+				filter: Alpha(Opacity=80);
+				opacity: 0.8;
+				border: 0;
+				z-index: 1002;
+				margin: 0;
+				padding: 0;
+				bottom: 0px;
+				right: 5px;
+				overflow: hidden;
+			}
+
+			#myhdp ul li,
+			#myhdp1 ul li {
+				line-height: 0px;
+				border-radius: 50%;
+				margin-bottom: 2px;
+				margin-left: 1px;
+				padding: 7px;
+				vertical-align: middle;
+				float: left;
+				display: block;
+				color: #666666;
+				border: #e5eaff 2px solid;
+				background: #900;
+				cursor: pointer;
+			}
+
+			#myhdp ul li.on,
+			#myhdp1 ul li.on {
+				background: #FFFF00;
+			}
+
+			#myhdp_list a,
+			#myhdp1_list a {
+				position: absolute;
+				display: block;
+				left: 8px;
+				top: 6px;
+			}
+
+			.xuanxiangk_h_hover {
+				color: #114d4e;
+				font-weight: bold;
+				font-size: 18px;
+			}
+
+
+
+
+			/*右侧悬浮菜单*/
+			.slide {
+				width: 50px;
+				height: 250px;
+				position: fixed;
+				top: 50%;
+				margin-top: -126px;
+				background: #636363;
+				right: 0;
+				border-radius: 5px 0 0 5px;
+				z-index: 999;
+			}
+
+			.slide ul {
+				list-style: none;
+			}
+
+			.slide .icon li {
+				width: 49px;
+				height: 50px;
+				background: url(/img/icon.png) no-repeat;
+			}
+
+			.slide .icon .up {
+				background-position: -330px -120px;
+			}
+
+			.slide .icon li.qq {
+				background-position: -385px -73px;
+			}
+
+			.slide .icon li.tel {
+				background-position: -385px -160px;
+			}
+
+			.slide .icon li.wx {
+				background-position: -385px -120px;
+			}
+
+			.slide .icon li.down {
+				background-position: -330px -160px;
+			}
+
+			.slide .info {
+				top: 50%;
+				position: absolute;
+				right: 100%;
+				background: #003094;
+				width: 0px;
+				overflow: hidden;
+				margin-top: -73.5px;
+				transition: 0.5s;
+				border-radius: 4px 0 0 4px;
+			}
+
+			.slide .info.hover {
+				width: 149px;
+			}
+
+			.slide .info li {
+				width: 145px;
+				color: #CCCCCC;
+				text-align: center;
+			}
+
+			.slide .info li p {
+				font-size: 1.1em;
+				line-height: 2em;
+				padding: 15px;
+				text-align: left;
+			}
+
+			.slide .info li.qq p a {
+				display: block;
+				margin-top: 12px;
+				width: 100px;
+				height: 32px;
+				line-height: 32px;
+				color: #00DFB9;
+				font-size: 16px;
+				text-align: center;
+				text-decoration: none;
+				border: 1px solid #00DFB9;
+				border-radius: 5px;
+			}
+
+			.slide .info li.qq p a:hover {
+				color: #FFFFFF;
+				border: none;
+				background: #00E0DB;
+			}
+
+			.slide .info li div.img {
+				height: 100%;
+				background: #DEFFF9;
+				margin: 15px;
+			}
+
+			.slide .info li div.img img {
+				width: 100%;
+				height: 100%;
+			}
+
+			/*控制菜单的按钮*/
+			.index_cy {
+				width: 30px;
+				height: 30px;
+				background: url(/img/index_cy.png);
+				position: fixed;
+				right: 0;
+				top: 50%;
+				margin-top: 140px;
+				background-position: 62px 0;
+				cursor: pointer;
+				z-index: 999;
+			}
+
+			.index_cy2 {
+				width: 30px;
+				height: 30px;
+				background: url(/img/index_cy.png);
+				position: fixed;
+				right: 0;
+				top: 50%;
+				margin-top: 140px;
+				background-position: 30px 0;
+				cursor: pointer;
+				z-index: 999;
+			}
+
+			/*自适应 当屏小于1050时隐藏*/
+			@media screen and (max-width: 1050px) {
+				.slide {
+					display: none;
+				}
+
+				#btn {
+					display: none;
+				}
+
+			}
+
+			.ta:link {
+				color: #990000;
+			}
+
+			.ta:visited {
+				color: #990000;
+			}
+
+			.ta:hover {
+				color: #990000;
+			}
+
+			.ta:active {
+				color: #990000;
+			}
+			.tc:link {
+	color: #114d4e;
+	font-size: 20px;
+			}
+
+			.tc:visited {
+	color: #114d4e;
+	font-size: 20px;
+			}
+
+			/*热点专题*/
+			#ifocus {
+				width: 1148px;
+				height: 346px;
+				margin: 20px auto;
+				overflow: hidden;
+			}
+
+			#ifocus_pic {
+				display: inline;
+				position: relative;
+				float: left;
+				width: 870px;
+				height: 326px;
+				overflow: hidden;
+				margin: 10px 0 0 10px;
+			}
+
+			#ifocus_piclist {
+				position: absolute;
+			}
+
+			#ifocus_piclist li {
+				width: 870px;
+				height: 326px;
+				overflow: hidden;
+			}
+
+			#ifocus_piclist img {
+				width: 870px;
+				height: 326px;
+			}
+
+			#ifocus_btn {
+				display: inline;
+				float: right;
+				width: 241px;
+				margin: 0px 12px 0 0;
+			}
+
+			#ifocus_btn li {
+				margin-top: 11px;
+				width: 241px;
+				height: 100px;
+				cursor: pointer;
+				opacity: 0.5;
+				-moz-opacity: 0.5;
+				filter: alpha(opacity=50);
+			}
+
+			#ifocus_btn img {
+				display: block;
+				width: 241px;
+				height: 100px;
+			}
+
+			#ifocus_btn .current {
+				opacity: 1;
+				-moz-opacity: 1;
+				filter: alpha(opacity=100);
+			}
+
+
+
+
+
+			#ifocus_opdiv {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 870px;
+				height: 35px;
+				background: #000;
+				opacity: 0.5;
+				-moz-opacity: 0.5;
+				filter: alpha(opacity=50);
+			}
+
+			#ifocus_tx {
+				position: absolute;
+				left: 8px;
+				bottom: 0px;
+				color: #FFF;
+
+
+			}
+
+			#ifocus_tx .normal {
+
+				display: none;
+			}
+
+			#Layer1 {
+				position: absolute;
+				left: 323px;
+				top: 2091px;
+				width: 246px;
+				height: 73px;
+				z-index: 1;
+			}
+
+			.xuanxiangk_h_hover1 {
+				color: #003094;
+				font-weight: bold;
+				font-size: 18px;
+			}
+
+			.xuanxiangk_h_hover2 {
+				color: #114d4e;
+				font-weight: bold;
+				font-size: 18px;
+			}
+
+			< !--专家样式-->a {
+				text-decoration: none;
+			}
+
+			ul {
+				list-style: none;
+			}
+
+			img {
+				border: 0;
+			}
+
+
+			.scroll {
+				width: 1090px;
+				height: 180px;
+			}
+
+			.pic {
+				width: 1242px;
+				height: 180px;
+				float: left;
+			}
+
+			.pic ul {
+				display: block;
+			}
+
+			.pic li {
+				float: left;
+				display: inline;
+				text-align: left;
+			}
+
+			< !-- .xuanxiangk_h_hover3 {
+				color: #23737d;
+				font-weight: bold;
+				font-size: 20px;
+			}
+
+			-->
+		</style>
+<meta http-equiv="Cache-Control" content="no-transform" />
+<script>var V_PATH="/";window.onerror=function(){ return true; };</script>
+</head>
+
+<body>
+		<style type="text/css">
+	/*下拉菜单*/
+	.wwlist ul,
+	.wwlist li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		z-index: 10000;
+		color: #f1efe3;
+		font-size: 20px;
+	}
+
+	.wwlist {
+		width: 90%;
+		height: 20px;
+		cursor: pointer;
+		color: #f1efe3;
+	}
+
+
+	.wwlist td {
+		width: 9%;
+		height: 45px;
+		text-align: center;
+	}
+
+	.ullist {
+		position: absolute;
+		margin: 1px;
+		padding: 1px;
+		display: none;
+		border: 1px solid #999999;
+		overflow: hidden;
+		color: #f1efe3;
+	}
+
+	.ullist li {
+		background-color: #134f50;
+		margin: 0;
+		list-style: none;
+		line-height: 30px;
+		padding: 4px 0;
+		cursor: pointer;
+		text-decoration: none;
+		font-size: 14px;
+		text-align: center;
+		border-top-width: 0px;
+		border-right-width: 0px;
+		border-bottom-width: 1px;
+		border-left-width: 0px;
+		border-top-style: none;
+		border-right-style: none;
+		border-bottom-style: solid;
+		border-left-style: none;
+		border-bottom-color: #efefef;
+		color: #f1efe3;
+	}
+
+	.ullist li.wwselected {
+		color: #f1efe3;
+	}
+
+	.wwlist a:link {
+		color: #f1efe3;
+		text-decoration: none;
+		font-weight: normal;
+		font-size: 20px;
+	}
+
+	.wwlist a:visited {
+		text-decoration: none;
+		font-weight: normal;
+		color: #f1efe3;
+		font-size: 20px;
+	}
+
+	.wwlist a:hover {
+		color: #f1efe3;
+		font-weight: normal;
+		font-size: 20px;
+	}
+
+	.c a:link {
+		color: #f1efe3;
+		text-decoration: none;
+		font-weight: normal;
+		font-size: 14px;
+	}
+
+	.c a:visited {
+		text-decoration: none;
+		font-weight: normal;
+		color: #f1efe3;
+		font-size: 14px;
+	}
+
+	.c a:hover {
+		color: #f1efe3;
+		font-weight: normal;
+		font-size: 14px;
+	}
+
+	.soInput {
+		height: 24px;
+		line-height: 24px;
+		border-color: #ccc;
+		border-style: solid;
+		outline: none;
+		text-indent: 5px;
+	}
+
+	.STYLE5 {
+		font-size: 18px;
+		color: #333333;
+	}
+
+	/*幻灯片*/
+	#myhdp img,
+	#myhdp1 img {
+		border: 0px;
+	}
+
+	#myhdp ul,
+	#myhdp1 ul {
+		position: absolute;
+		list-style-type: none;
+		height: 20px;
+		filter: Alpha(Opacity=80);
+		opacity: 0.8;
+		border: 0;
+		z-index: 1002;
+		margin: 0;
+		padding: 0;
+		bottom: 0px;
+		right: 5px;
+		overflow: hidden;
+	}
+
+	#myhdp ul li,
+	#myhdp1 ul li {
+		line-height: 0px;
+		border-radius: 50%;
+		margin-bottom: 2px;
+		margin-left: 1px;
+		padding: 7px;
+		vertical-align: middle;
+		float: left;
+		display: block;
+		color: #333333;
+		border: #e5eaff 2px solid;
+		background: #900;
+		cursor: pointer;
+	}
+
+	#myhdp ul li.on,
+	#myhdp1 ul li.on {
+		background: #FFFF00;
+	}
+
+	#myhdp_list a,
+	#myhdp1_list a {
+		position: absolute;
+		display: block;
+		left: 2px;
+		top: -14px;
+	}
+
+	.xuanxiangk_h_hover {
+		color: #0f4b4c;
+		font-weight: bold;
+		font-size: 20px;
+	}
+</style>
+<table width="1349" height="204" border="0" align="center" cellpadding="0" cellspacing="0" background="/images/1_01.jpg">
+	
+	<tr>
+	  <td height="111" align="left" valign="top">&nbsp;</td>
+	</tr>
+	<tr>
+		<td height="81" align="center" valign="middle" background="/images/1_11.jpg">
+			<table width="100%" height="45" border="0" cellpadding="0" cellspacing="0" class="wwlist">
+				<tr>
+
+					<td width="8%" height="45" align="center"><a href="/index.html">首 页</a></td>
+					<td width="9%" align="center"><a href="/yyjj.html">&#32769;&#21496;&#26426;&#20840;&#37096;&#21320;&#22812;&#35270;&#39057;&#10;</a>
+						<ul class="ullist">
+						<li class="c"> <a href='/yyjj.html' target="_top">医院简介</a></li>
+							<li class="c"> <a href='/zzry.html' target="_top">资质荣誉</a></li>
+							<li class="c"> <a href='/yyhj.html' target="_top">医院环境</a></li>
+						</ul>					</td>
+					<td width="9%" align="center"><a href="/list/8.html">医疗信息</a>
+						<ul class="ullist">
+							<li class="c"> <a href='/list/8.html' target="_top">科室介绍</a></li>
+							<li class="c"> <a href='/list/10.html' target="_top">专家介绍</a></li>
+						</ul>					</td>
+					<td width="10%" align="center"><a href="/paiban.html">就医服务</a>
+						<ul class="ullist">
+
+							<li class="c"> <a href='/paiban.html' target="_top">门诊排班</a></li>
+							<li class="c"> <a href='/yygh.html' target="_top">预约挂号</a></li>
+							<li class="c"> <a href='/list/49.html' target="_top">医保农合</a></li>
+							<li class="c"> <a href='/zxzx.html' target="_top">在线咨询</a></li>
+							<li class="c"> <a href='/list/15.html' target="_top">就医须知</a></li>
+							<li class="c"> <a href='/yqfb.html' target="_top">院区分布</a></li>
+							<li class="c"> <a href='/ksdh.html' target="_top">科室电话</a></li>
+							<li class="c"> <a href='/lylx.html' target="_top">来院路线</a></li>
+						</ul>					</td>
+					<td width="9%" align="center"><a href="/list/29.html">&#22269;&#20135;&#21320;&#22812;&#31119;&#21033;&#22312;&#32447;&#25773;&#25918;&#10;</a>
+						<ul class="ullist">
+							<li class="c"> <a href='/list/29.html' target="_top">通知公告</a></li>
+							<li class="c"> <a href='/list/30.html' target="_top">人才招聘</a></li>
+						</ul>					</td>
+					<td width="10%" align="center"><a href="/yh.html">医院文化</a>
+						<ul class="ullist">
+							<li class="c"> <a href='/yh.html' target="_top">院徽释义</a></li>
+							<li class="c"> <a href='/yyln.html' target="_top">医院理念</a></li>
+							<li class="c"> <a href='/list/34.html' target="_top">文化活动</a></li>
+							<li class="c"> <a href='/list/61.html' target="_top">医院院报</a></li>
+						</ul>					</td>
+					<td width="10%" align="center"><a href="/list/37.html">党建园地</a>
+						<ul class="ullist">
+							<li class="c"> <a href='/list/37.html' target="_top">基层党建</a></li>
+							<li class="c"> <a href='/list/73.html' target="_top">党务公开</a></li>
+							<li class="c"> <a href='/list/74.html' target="_top">支部动态</a></li>
+							<li class="c"> <a href='/list/75.html' target="_top">先锋故事</a></li>
+							<li class="c"> <a href='/list/38.html' target="_top">健康扶贫</a></li>
+						</ul>					</td>
+					<td width="10%" align="center"><a href="/list/53.html">&#21320;&#22812;&#26080;&#30721;&#29255;&#22312;&#32447;&#35266;&#30475;&#10;</a>
+					<ul class="ullist">
+					<li class="c"> <a href='/list/53.html' target="_top">护理管理</a></li>
+					<li class="c"> <a href='/list/54.html' target="_top">天使风采</a></li>
+					<li class="c"> <a href='/list/55.html' target="_top">品牌团队</a></li>
+					</ul>
+					</td>
+					<td width="10%" align="center"><a href="/list/40.html">科研教学</a>
+						<ul class="ullist">
+							<li class="c"> <a href='/list/40.html' target="_top">科研成果</a></li>
+							<li class="c"> <a href='/list/41.html' target="_top">教学动态</a></li>
+							<li class="c"> <a href='/list/56.html' target="_top">新技术新业务</a></li>
+							<li class="c"> <a href='/list/57.html' target="_top">医院制剂</a></li>
+							<li class="c"> <a href='/list/58.html' target="_top">合作交流</a></li>
+						</ul>					</td>
+				    <td width="10%" align="center"><a href="/list/43.html">&#22269;&#20135;&#21320;&#22812;&#31119;&#21033;&#22312;&#32447;&#25773;&#25918;&#10;</a>
+					<ul class="ullist">
+							<li class="c"> <a href='/list/43.html' target="_top">健康知识</a></li>
+							<li class="c"> <a href='/list/44.html' target="_top">健康视频</a></li>
+						</ul>					</td>
+				</tr>
+			</table>
+			<script type="text/javascript" language="javascript">
+				//下拉菜单
+				(function($) {
+					var A_top = 0,
+						A_left = 0,
+						_self = null,
+						left = "",
+						top = "",
+						width = "";
+					$(".wwlist td").hover(function() {
+						_self = $(this);
+						A_top = _self.offset().top + _self.outerHeight(true);
+						A_left = _self.offset().left;
+						left = A_left + "px";
+						top = A_top + "px";
+						width = _self.width() + "px";
+						$(this).find(".ullist").css({
+							"left": left,
+							"top": top,
+							"display": "block",
+							"width": width
+						});
+					}, function() {
+						$(this).find(".ullist").hide();
+					});
+					$(".ullist li").hover(function() {
+						$(this).addClass("wwselected");
+					}, function() {
+						$(this).removeClass("wwselected");
+					});
+				})(jQuery);
+			</script>	  </td>
+	</tr>
+</table>
+		<table width="1349" height="550" border="0" align="center" cellpadding="0" cellspacing="0" background="/images/bj.jpg">
+			<tr>
+				<td height="502" align="left" valign="top">
+					<p>&nbsp;</p>
+					<table width="1276" height="436" border="0" align="center" cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="842" height="436" align="left" valign="top">
+								<table width="861" height="88" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td height="60">
+											<table width="100%" height="35" border="0" cellpadding="0" cellspacing="0" id="sh_1_c">
+												<tr>
+													<td width="2%" align="right" valign="top"><img src="/images/d.jpg" width="9" height="25" /></td>
+													<td width="88%" height="35" align="left" valign="top"><span class="xuanxiangk_a_h xuanxiangk_h_hover"
+														 data-id="gengduo1" data-href="/list/45.html">　医院新闻</span>　&nbsp;&nbsp;<span class="xuanxiangk_a_h"
+														 data-id="gengduo1" data-href="/list/36.html">党建园地</span></td>
+													<td width="10%" align="left" valign="top"><a href="/list/45.html" target="_blank" class="ztzz" id="gengduo1">More
+														</a></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td valign="top">
+											<div   id="n362at6znj"    class="xuanxiangk_a_c">
+												<table width="100%" height="350" border="0" cellpadding="0" cellspacing="0" id="sh_1_c">
+													<tr>
+														<td height="261" align="center" valign="top"> 
+															<div   id="n362at6znj"    style="width:50%; height:350px; float:left; text-align:center;">
+																<p><a href="/doc/45/2009/913.html"><img src="/Upload/newsimg/month_2009/2020-09-07-15-15-174347.jpg" width="369" height="200" border="0" /></a></p>
+																<table width="376" height="150" border="0" align="center" cellpadding="0" cellspacing="0">
+																	<tr>
+																		<td width="25" height="20" align="left"><img src="/images/2.jpg" width="18" height="17" /></td>
+																		<td width="351" align="left"><a href="/doc/45/2009/913.html"><strong>&#21320;&#22812;&#26080;&#30721;&#29255;&#22312;&#32447;&#35266;&#30475;&#10;2020年中医住院医师规范化培...</strong></a></td>
+																	</tr>
+																	<tr>
+																		<td height="20" align="center">&nbsp;</td>
+																		<td align="left" class="hg"><a href="/doc/45/2009/913.html" target="_blank" >　　9月5日，&#21320;&#22812;&#26080;&#30721;&#29255;&#22312;&#32447;&#35266;&#30475;&#10;2020年中医住院医师规范化培训师资培训班在涧西院区住院部...</a></td>
+																	</tr>
+																	<tr>
+																		<td height="20" align="center">&nbsp;</td>
+																		<td align="right" valign="middle">[20-09-07] </td>
+																	</tr>
+																</table>
+															</div>
+															
+															<div   id="n362at6znj"    style="width:50%; height:350px; float:left; text-align:center;">
+																<p><a href="/doc/45/2008/898.html"><img src="/Upload/newsimg/month_2008/2020-08-20-16-01-056116.jpg" width="369" height="200" border="0" /></a></p>
+																<table width="376" height="150" border="0" align="center" cellpadding="0" cellspacing="0">
+																	<tr>
+																		<td width="25" height="20" align="left"><img src="/images/2.jpg" width="18" height="17" /></td>
+																		<td width="351" align="left"><a href="/doc/45/2008/898.html"><strong>&#21320;&#22812;&#26080;&#30721;&#29255;&#22312;&#32447;&#35266;&#30475;&#10;举办2020年度第三届“中国医...</strong></a></td>
+																	</tr>
+																	<tr>
+																		<td height="20" align="center">&nbsp;</td>
+																		<td align="left" class="hg"><a href="/doc/45/2008/898.html" target="_blank" >　　2020年注定要被历史铭记
+这一年，我们见证了新冠肆虐
+也见证了不畏艰险的白衣勇...</a></td>
+																	</tr>
+																	<tr>
+																		<td height="20" align="center">&nbsp;</td>
+																		<td align="right" valign="middle">[20-08-20] </td>
+																	</tr>
+																</table>
+															</div>
+															 </td>
+													</tr>
+												</table>
+											</div>
+											<div   id="n362at6znj"    class="xuanxiangk_a_c" style="display: none;">
+												<table width="100%" height="350" border="0" cellpadding="0" cellspacing="0" id="sh_1_c">
+													<tr>
+														<td height="261" align="center" valign="top"> 
+															<div   id="n362at6znj"    style="width:50%; height:350px; float:left; text-align:center;">
+																<p><a href="/doc/38/2008/895.html"><img src="" width="369" height="200" border="0" /></a></p>
+																<table width="376" height="150" border="0" align="center" cellpadding="0" cellspacing="0">
+																	<tr>
+																		<td width="25" height="20" align="left"><img src="/images/2.jpg" width="18" height="17" /></td>
+																		<td width="319" align="left"><a href="/doc/38/2008/895.html"><strong>“健康洛阳行，大医献爱心”&#21320;&#22812;&#26080;&#30721;&#29255;&#22312;&#32447;&#35266;&#30475;&#10;在行...</strong></a></td>
+																	</tr>
+																	<tr>
+																		<td height="20" align="left">&nbsp;</td>
+																		<td align="left" class="hg"><a href="/doc/38/2008/895.html" target="_blank" >　　</a></td>
+																	</tr>
+																	<tr>
+																		<td height="20" align="center">&nbsp;</td>
+																		<td align="right">[20-08-18] </td>
+																	</tr>
+																</table>
+															</div>
+															
+															<div   id="n362at6znj"    style="width:50%; height:350px; float:left; text-align:center;">
+																<p><a href="/doc/38/2008/876.html"><img src="" width="369" height="200" border="0" /></a></p>
+																<table width="376" height="150" border="0" align="center" cellpadding="0" cellspacing="0">
+																	<tr>
+																		<td width="25" height="20" align="left"><img src="/images/2.jpg" width="18" height="17" /></td>
+																		<td width="319" align="left"><a href="/doc/38/2008/876.html"><strong>“健康洛阳行   大医献爱心”——洛阳市中...</strong></a></td>
+																	</tr>
+																	<tr>
+																		<td height="20" align="left">&nbsp;</td>
+																		<td align="left" class="hg"><a href="/doc/38/2008/876.html" target="_blank" >　　</a></td>
+																	</tr>
+																	<tr>
+																		<td height="20" align="center">&nbsp;</td>
+																		<td align="right">[20-08-03] </td>
+																	</tr>
+																</table>
+															</div>
+															 </td>
+													</tr>
+												</table>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td width="408" align="right" valign="top">
+								<table width="400" height="429" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td height="71">
+											<table width="392" height="34" border="0" cellpadding="0" cellspacing="0">
+												<tr>
+													<td width="45" align="center"><img src="/images/d.jpg" width="9" height="25" /></td>
+													<td width="280" class="l"><a href="/list/29.html">通知公告</a></td>
+													<td width="67"><a href="/list/29.html">More</a></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="358" align="left" valign="top" class="bk">
+											<table width="100%" height="58" border="0" cellpadding="0" cellspacing="0" id="sh_1_c">
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/29/2009/915.html" target="_blank" srcf=/Upload/newsimg/month_2009/2020-09-08-10-27-55942.docx>&#21320;&#22812;&#26080;&#30721;&#29255;&#22312;&#32447;&#35266;&#30475;&#10;（西工院区）部分医...</a> </td>
+													<td width="28%" align="center"> [20-09-08] </td>
+												</tr>
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/29/2009/914.html" target="_blank" >&#21320;&#22812;&#26080;&#30721;&#29255;&#22312;&#32447;&#35266;&#30475;&#10;2020年度招标采...</a> </td>
+													<td width="28%" align="center"> [20-09-07] </td>
+												</tr>
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/29/2009/912.html" target="_blank" >洛阳市第一中医院新区医院建筑物...</a> </td>
+													<td width="28%" align="center"> [20-09-01] </td>
+												</tr>
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/29/2008/911.html" target="_blank" >玻璃厂路修路，到我院就医请这样...</a> </td>
+													<td width="28%" align="center"> [20-08-31] </td>
+												</tr>
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/29/2008/903.html" target="_blank" >&#21320;&#22812;&#26080;&#30721;&#29255;&#22312;&#32447;&#35266;&#30475;&#10;涧西院区2020年...</a> </td>
+													<td width="28%" align="center"> [20-08-29] </td>
+												</tr>
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/29/2008/902.html" target="_blank" >&#21320;&#22812;&#26080;&#30721;&#29255;&#22312;&#32447;&#35266;&#30475;&#10;西工院区2020年...</a> </td>
+													<td width="28%" align="center"> [20-08-28] </td>
+												</tr>
+												
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<table width="1349" height="80" border="0" align="center" cellpadding="0" cellspacing="0" background="/images/bj.jpg">
+			<tr>
+				<td align="center">
+					<table width="1257" height="51" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="532" height="51" background="/images/znss.jpg">
+								<table width="507" height="32" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td width="165" height="32">&nbsp;</td>
+										<td width="342">
+											<table width="300" border="0" cellspacing="0" cellpadding="0">
+												<tr>
+													<td width="61" height="22" align="center">
+														<select name="select" id="ss_f" size="1" class="sosoSelect">
+															<option value="1">专家</option>
+															<option value="2">科室</option>
+															<option value="3">资讯</option>
+														</select>
+													</td>
+													<td width="176"><input type="text" id="ss_gjc" name="textfield" class="sosoInput" /></td>
+													<td width="63" align="left"><input type="submit" name="Submit" value="搜索" onclick="checkssdssd()" class="sosoBtn" /></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td width="725" background="/images/tjcx.jpg">
+								<table width="696" height="32" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td width="165" height="32">&nbsp;</td>
+										<td width="531">
+											<table width="512" border="0" cellspacing="0" cellpadding="0">
+												<tr>
+													<td width="82" height="22">姓名：</td>
+													<td width="116"><input name="textfield2" type="text" size="15" class="sosoInput" style="width:130px;" /></td>
+													<td width="68" align="center">体检号：</td>
+													<td width="149" align="center"><input name="textfield22" type="text" size="20" class="sosoInput" style="width:130px;" /></td>
+													<td width="70" align="center"><input type="submit" name="Submit2" value="查询" class="sosoBtn" /></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					
+					<style>
+						.sosoSelect{
+							line-height: 30px;
+							height: 30px;
+							border-radius: 3px;
+							padding: 0 5px;
+							margin: 0 10px;
+						}
+						.sosoInput{
+							height: 25px;
+							line-height: 25px;
+							border-radius: 3px;
+							border: 1px solid #aaa;
+							width: 160px;
+						}
+						.sosoBtn{
+							height: 29px;
+							line-height: 29px;
+							border-radius: 3px;
+							border: none;
+							background-color: #ccc;
+						}
+					</style>
+					<script>
+						function checkssdssd() {
+							var ssf = $("#ss_f option:selected").val();
+							var ssgjc = $("#ss_gjc").val();
+							if (ssgjc == "") {
+								alert("请输入搜素信息!");
+								return false;
+							} else {
+								window.location.href = "/soso.html?lb=" + ssf + "&gjc=" + escape(ssgjc);
+							}
+						}
+					</script>
+				</td>
+			</tr>
+</table>
+		<table width="1349" height="295" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td height="276" align="center" background="/images/lbj.jpg">
+					<table width="1116" height="187" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="279"><a href="/paiban.html"><img src="/images/t1.jpg" width="194" height="75" border="0" /></a></td>
+							<td width="14">&nbsp;</td>
+							<td width="286"><a href="/yygh.html"><img src="/images/t2.jpg" width="199" height="75" border="0" /></a></td>
+							<td width="14">&nbsp;</td>
+							<td width="277"><a href="/list/49.html"><img src="/images/t3.jpg" width="193" height="75" border="0" /></a></td>
+							<td width="14">&nbsp;</td>
+							<td width="232"><a href="/zxzx.html"><img src="/images/t4.jpg" width="195" height="75" border="0" /></a></td>
+						</tr>
+						<tr>
+							<td height="42">&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td><a href="/yqfb.html"><img src="/images/t5.jpg" width="194" height="70" border="0" /></a></td>
+							<td>&nbsp;</td>
+							<td><a href="/ksdh.html"><img src="/images/t6.jpg" width="199" height="70" border="0" /></a></td>
+							<td>&nbsp;</td>
+							<td><a href="/list/15.html"><img src="/images/t7.jpg" width="193" height="70" border="0" /></a></td>
+							<td>&nbsp;</td>
+							<td><a href="/lylx.html"><img src="/images/t8.jpg" width="195" height="70" border="0" /></a></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<table width="1349" height="1719" border="0" align="center" cellpadding="0" cellspacing="0" background="/images/bj.jpg">
+			<tr>
+				<td height="1719" align="center" valign="top">
+					<table width="1200" height="407" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td height="63"><img src="/images/s1.jpg" width="1283" height="63" /></td>
+						</tr>
+						<tr>
+							<td height="277" align="center" background="/images/s2.jpg">
+								<table width="1215" height="370" border="0" align="center" cellpadding="0" cellspacing="0">
+									<tr>
+										<td width="1215" height="55" align="right" valign="top">
+											<table width="831" height="55" border="0" cellpadding="0" cellspacing="0" background="/images/1_06.jpg" id="sh_1_c">
+												<tr>
+													<td width="81%" height="28" align="center" valign="top">
+														<span class="xuanxiangk_b_h xuanxiangk_h_hover" data-id="gengduo2" data-href="/list/8.html"><a href="/list/8.html" class="tc">西工院区科室介绍</a></span>　　<span class="xuanxiangk_b_h " data-id="gengduo2" data-href="/list/9.html"><a href="/list/9.html" class="tc">涧西院区科室介绍</a></span>
+														<span class="xuanxiangk_b_h " data-id="gengduo2" data-href="/list/70.html">　　<a href="/list/70.html" class="tc">洛硅医院科室介绍</a></span>													</td>
+													<td width="15%" align="right" valign="middle"><a href="/list/8.html" class="ztzz" id="gengduo2">更多&gt;&gt;
+														</a></td>
+													<td width="4%" align="left" valign="middle">&nbsp;</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td align="left" valign="top">
+											<div   id="n362at6znj"    class="xuanxiangk_b_c" style="height: 150px; width: 1200px; margin-top: 0px;">
+												<table width="1200" height="300" border="0" cellpadding="0" cellspacing="0">
+													<tr>
+														<td width="421" height="300" align="center"><img src="/images/xg.jpg" width="364" height="291" alt="" /></td>
+														<td width="824" align="center">
+															<table width="300" border="0" cellspacing="0" cellpadding="0">
+																<tr>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+															<table width="100%" border="0" cellpadding="0" cellspacing="0">
+																<tr>
+																	<td width="12%" align="center" valign="top" class="lx"><a href="/list/8.html">内科科室</a></td>
+																	<td width="88%" align="left" valign="top">
+																		<div   id="n362at6znj"    style="height:150px;width:700px; margin-top:0px;">
+																			<ul style="padding-left:0px; width:700px; padding-top:0px;">
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/19.html">心血管病科一病区 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/20.html">心血管病科二病区 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/45.html">心血管病科三病区 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/21.html">脑病科一病区 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/48.html">脑病科二病区 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/30.html">老年病科 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/24.html">肿瘤血液科 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/22.html">肺病.脾胃病科 </a></li>
+																				
+																			</ul>
+																		</div>
+																	</td>
+																</tr>
+																<tr>
+																	<td align="center" valign="top" class="lx"><a href="/list/8.html">外科科室</a></td>
+																	<td align="left" valign="top">
+																		<div   id="n362at6znj"    style="height:150px;width:700px; margin-top:0px;">
+																			<ul style="padding-left:0px; width:700px; padding-top:0px;">
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:149px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/16.html">周围血管病一病区 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:149px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/17.html">周围血管病二病区 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:149px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/18.html">周围血管病三病区 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:149px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/2.html">妇产科一病区 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:149px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/53.html">妇产科二病区 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:149px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/5.html">骨伤科一病区 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:149px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/44.html">骨伤科二病区 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:149px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/8/2002/34.html">骨三病区（骨伤、... </a></li>
+																				
+																			</ul>
+																		</div>
+																	</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</div>
+											<div   id="n362at6znj"    class="xuanxiangk_b_c" style="height: 150px; width: 1200px; margin-top: 0px; display: none; ">
+												<table width="1200" height="300" border="0" cellpadding="0" cellspacing="0">
+													<tr>
+														<td width="421" height="300" align="center"><img src="/images/jx.jpg" width="364" height="291" alt="" /></td>
+														<td width="824" align="center">
+															<table width="300" border="0" cellspacing="0" cellpadding="0">
+																<tr>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+															<table width="100%" border="0" cellpadding="0" cellspacing="0">
+																<tr>
+																	<td width="12%" align="center" valign="top" class="lx"><a href="/list/9.html">内科科室</a></td>
+																	<td width="88%" align="left" valign="top">
+																		<div   id="n362at6znj"    style="height:150px;width:700px; margin-top:0px;">
+																			<ul style="padding-left:0px; width:700px; padding-top:0px;">
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/9/2006/70.html">脑病科一病区 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/9/2006/71.html">脑病科二病区 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/9/2006/72.html">肾病糖尿病科 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/9/2006/76.html">肿瘤血液科 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/9/2006/68.html">肺病科 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/9/2006/73.html">心血管病科 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/9/2006/75.html">血液净化中心 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:150px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/9/2006/69.html">康复科 </a></li>
+																				
+																			</ul>
+																		</div>
+																	</td>
+																</tr>
+																<tr>
+																	<td align="center" valign="top" class="lx"><a href="/list/9.html">外科科室</a></td>
+																	<td align="left" valign="top">
+																		<div   id="n362at6znj"    style="height:150px;width:700px; margin-top:0px;">
+																			<ul style="padding-left:0px; width:700px; padding-top:0px;">
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:149px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/9/2006/64.html">肛肠科 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:149px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/9/2006/65.html">骨伤科 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:149px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/9/2006/66.html">外科 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:149px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/9/2006/62.html">妇产科 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:149px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/9/2006/63.html">麻醉科 </a></li>
+																				
+																			</ul>
+																		</div>
+																	</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</div>
+											<div   id="n362at6znj"    class="xuanxiangk_b_c" style="height: 150px; width: 1200px; margin-top: 0px; display: none; ">
+												<table width="1200" height="300" border="0" cellpadding="0" cellspacing="0">
+													<tr>
+														<td width="406" height="300" align="center"><img src="/images/lg.jpg" width="364" height="291" /></td>
+														<td width="794" align="center" valign="top">
+															<table width="300" border="0" cellspacing="0" cellpadding="0">
+																<tr>
+																	<td>&nbsp;</td>
+																</tr>
+															</table>
+															<table width="100%" border="0" cellpadding="0" cellspacing="0">
+																<tr>
+																	<td width="2%" height="261" align="center" valign="top" class="lx"><a href="#"></a></td>
+																	<td width="98%" align="left" valign="top">
+																		<div   id="n362at6znj"    style="height:150px;width:770px; margin-top:0px;">
+																			<ul style="padding-left:0px; width:630px; padding-top:0px;">
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:100px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/70/2005/60.html">洛硅医院 </a></li>
+																				
+																				<li style="margin-left:20px;margin-bottom: 20px; height:35px; width:100px; list-style:none; float:left; white-space:nowrap;"><img
+																					 src="/images/x.jpg" width="9" height="8" /> <a href="/doc/70/2005/61.html">西工区王城路第二社区卫生服务中心 </a></li>
+																				
+																			</ul>
+																		</div>
+																	</td>
+																</tr>
+																<tr>
+																	<td align="center" valign="top" class="lx"><a href="#"></a></td>
+																	<td align="left" valign="top">&nbsp;</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td height="42"><img src="/images/s3.jpg" width="1283" height="42" /></td>
+						</tr>
+					</table>
+					<p>&nbsp;</p>
+					<table width="500" height="45" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td align="center"><a href="/list/10.html"><img src="/images/1_100.jpg" alt="" width="495" height="68" border="0" /></a></td>
+						</tr>
+					</table>
+					<p>&nbsp;</p>
+					<table width="1319" height="200" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td height="200" background="/images/bj.jpg"></td>
+						</tr>
+					</table>
+					<p>&nbsp;</p>
+					<table width="1229" height="273" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="381" height="232" align="left" valign="middle">
+								<table width="300" height="231" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td align="left" valign="top"><a href="/list/61.html"><img src="/images/yb.jpg" width="357" height="61"
+												 border="0" /></a></td>
+									</tr>
+									<tr>
+										<td height="170" align="left" valign="top">
+											<table width="100%" height="58" border="0" cellpadding="0" cellspacing="0" id="sh_1_c">
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/61/2008/888.html" target="_blank" srcf=/Upload/newsimg/month_2008/2020-08-10-15-15-346074.pdf>洛阳中医112期下</a> </td>
+													<td width="28%" align="center"> [20-08-10] </td>
+												</tr>
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/61/2008/887.html" target="_blank" srcf=/Upload/newsimg/month_2008/2020-08-10-15-15-014721.pdf>洛阳中医112期上</a> </td>
+													<td width="28%" align="center"> [20-08-10] </td>
+												</tr>
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/61/2007/869.html" target="_blank" srcf=/Upload/newsimg/month_2007/2020-07-09-10-58-361348.pdf>洛阳中医111期下</a> </td>
+													<td width="28%" align="center"> [20-07-09] </td>
+												</tr>
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/61/2007/868.html" target="_blank" srcf=/Upload/newsimg/month_2007/2020-07-09-10-57-57128.pdf>洛阳中医111期上</a> </td>
+													<td width="28%" align="center"> [20-07-09] </td>
+												</tr>
+												
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td width="10">&nbsp;</td>
+							<td width="364" align="left" valign="middle">
+								<table width="300" height="232" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td align="left" valign="top"><a href="/list/56.html"><img src="/images/xjs.jpg" width="430" height="61"
+												 border="0" /></a></td>
+									</tr>
+									<tr>
+										<td height="171" align="left" valign="top">
+											<table width="100%" height="58" border="0" cellpadding="0" cellspacing="0" id="sh_1_c">
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/56/2007/866.html" target="_blank" >椎间孔镜治疗——椎间盘突出症的...</a> </td>
+													<td width="28%" align="center"> [20-07-09] </td>
+												</tr>
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/56/2007/865.html" target="_blank" >当乳腺包块遇上了旋切刀</a> </td>
+													<td width="28%" align="center"> [20-07-09] </td>
+												</tr>
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/56/2007/864.html" target="_blank" >髋关节置换术——让步履蹒跚的年...</a> </td>
+													<td width="28%" align="center"> [20-07-09] </td>
+												</tr>
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/56/2003/775.html" target="_blank" http://mp.weixin.qq.com/s/zhDQNwzlwtuf_V5YE3NEcw>【告别终身“金属心”】洛阳市中...</a> </td>
+													<td width="28%" align="center"> [20-03-11] </td>
+												</tr>
+												
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td width="33">&nbsp;</td>
+							<td width="375"><a href="/list/57.html"><img src="/images/yyzj.jpg" width="369" height="232" border="0" /></a></td>
+						</tr>
+					</table>
+					<p>&nbsp;</p>
+					<table width="1250" height="461" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+						<tr>
+							<td height="461" align="center" valign="top">
+								<table width="96%" height="413" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td width="55%" height="77" align="center" valign="bottom"><a href="/list/44.html"><img src="/images/1_14.jpg"
+												 alt="" width="646" height="51" border="0" /></a></td>
+										<td width="45%" align="center" valign="bottom"><a href="/list/43.html"><img src="/images/1_16.jpg" alt=""
+												 width="470" height="51" border="0" /></a></td>
+									</tr>
+									<tr>
+										<td height="336" align="center" valign="middle">
+											<table width="637" height="295" border="0" cellpadding="0" cellspacing="0">
+												<tr>
+													<td width="404" height="295" valign="top">
+															<table width="98%" border="0" cellpadding="0" cellspacing="0">
+																<tr>
+																	<td height="107" align="center" valign="middle" class="t"><a href="/doc/44/2008/906.html" target=" _blank "
+																		 > <img src="/Upload/newsimg/month_2008/2020-08-31-17-36-38252.jpg" width="413" height="258" border="0" /> </a> <a href="/doc/44/2008/906.html"
+																		 target="_blank" ></a> </td>
+																</tr>
+																<tr>
+																	<td height="42" align="center" valign="middle"><a href="/doc/44/2008/906.html" target="_blank" >他们是和时间赛跑的一群人</a></td>
+																</tr>
+															</table>
+															<a href="/doc/44/2008/906.html"></a></td>
+													<td width="233" align="left" valign="top">
+														<table width="98%" border="0" cellpadding="0" cellspacing="0">
+															<tr>
+																<td height="107" align="center" valign="middle" class="t"><a href="/doc/44/2004/804.html" target=" _blank "
+																	 > <img src="/Upload/newsimg/month_2004/2020-04-01-20-35-485676.jpg" width="190" height="110" border="0" /> </a> <a href="/doc/44/2004/804.html"
+																	 target="_blank" ></a> </td>
+															</tr>
+															<tr>
+																<td height="39" align="center" valign="middle"><a href="/doc/44/2004/804.html" target="_blank" >英雄回家</a></td>
+															</tr>
+														</table>
+														
+														<table width="98%" border="0" cellpadding="0" cellspacing="0">
+															<tr>
+																<td height="107" align="center" valign="middle" class="t"><a href="/doc/44/2008/905.html" target=" _blank "
+																	 > <img src="/Upload/newsimg/month_2008/2020-08-31-17-36-527329.jpg" width="190" height="110" border="0" /> </a> <a href="/doc/44/2008/905.html"
+																	 target="_blank" ></a> </td>
+															</tr>
+															<tr>
+																<td height="39" align="center" valign="middle"><a href="/doc/44/2008/905.html" target="_blank" >生命的诞生</a></td>
+															</tr>
+														</table>
+														</td>
+												</tr>
+											</table>
+										</td>
+										<td align="center" valign="middle">
+											<table width="92%" height="58" border="0" cellpadding="0" cellspacing="0" id="sh_1_c">
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/43/2008/910.html" target="_blank" >玻璃厂路修路，到我院就医请这样...</a> </td>
+													<td width="28%" align="center"> [20-08-31] </td>
+												</tr>
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/43/2008/909.html" target="_blank" >便血莫恐慌，分清真假很重要</a> </td>
+													<td width="28%" align="center"> [20-08-31] </td>
+												</tr>
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/43/2008/908.html" target="_blank" >30℃ 高温霸屏！“秋老虎”来...</a> </td>
+													<td width="28%" align="center"> [20-08-31] </td>
+												</tr>
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/43/2008/907.html" target="_blank" >小小“弹簧圈”，解决大问题</a> </td>
+													<td width="28%" align="center"> [20-08-31] </td>
+												</tr>
+												
+												<tr>
+													<td width="6%" height="58" align="center" valign="middle">
+														<img src="/images/x.jpg" width="9" height="8" /> </td>
+													<td width="66%" align="left">
+														<a href="/doc/43/2008/885.html" target="_blank" >中西结合疗效好，截肢患者保住足</a> </td>
+													<td width="28%" align="center"> [20-08-06] </td>
+												</tr>
+												
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					<p>&nbsp;</p>
+			  </td>
+			</tr>
+</table>
+		<table width="1349" height="306" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="306" align="left" valign="top" background="/images/1_20.jpg"><table width="1350" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="88" align="center" class="c"><a href="#">版权所有：&#21320;&#22812;&#26080;&#30721;&#29255;&#22312;&#32447;&#35266;&#30475;&#10;(baodiancaifu.com)</a></td>
+      </tr>
+      <tr>
+        <td height="184" align="center"><table width="1200" height="165" border="0" cellpadding="0" cellspacing="0" class="c">
+          <tr>
+            <td width="247" align="right"><img src="/images/ewm.jpg" width="100" height="99" /></td>
+            <td width="98" align="center"><img src="/images/xt.jpg" width="1" height="72" /></td>
+            <td width="855" class="tt"><p><a href="#">西工院区北院地址：洛阳市玻璃厂南路36号（三十九中对面）西工院区南院地址：洛阳市九都路7号（定鼎立交桥西）<br>
+              涧西院区地址：洛阳市涧西区九都西路169号<br>
+              服务热线：62212671（西工院区北院导医台）62212928（西工院区南院导医台）64600449（涧西院区导医台）<br>
+                急诊电话：62212120（西工院区）64314999（涧西院区）<br>
+                总值班电话：62212600（西工院区北院）62212900（西工院区南院）13837922120（涧西院区）</a></p>
+              <a href="#"></a></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+		<script type="text/javascript">
+	if($("a[srcf]").size()>0)
+	{
+		$("a[srcf]").each(function(){$(this).attr("href",$(this).attr("srcf"));});
+	}
+</script>
+		<script type="text/javascript">
+			/*选项卡*/
+			function initXxk(argh, argc, addc) {
+
+				$("." + argh).hover(function() {
+					var i = $(this).index("." + argh);
+					$("." + argh).removeClass(addc);
+					$(this).addClass(addc);
+					$("." + argc).hide();
+					$("." + argc).eq(i).show();
+
+					//更多链接更改，
+					if ($(this).attr("data-id") && $(this).attr("data-href"))
+						$("#" + $(this).attr("data-id")).attr("href", $(this).attr("data-href"));
+				});
+			}
+			initXxk("xuanxiangk_a_h", "xuanxiangk_a_c", "xuanxiangk_h_hover");
+			initXxk("xuanxiangk_b_h", "xuanxiangk_b_c", "xuanxiangk_h_hover");
+		</script>
+		<script type="text/javascript">
+		</script>
+<script>
+	(function(){
+		var canonicalURL, curProtocol;
+		//Get the <link> tag
+		var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+		//Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+	    //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+    	!function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+</script><script type="text/javascript" src="/siguatj.js"></script>
+<marquee onmouseover="this.scrollAmount=0" onmouseout="this.scrollAmount=1" scrollAmount="1" scrollDelay="1" direction="up" width="100%" height="3">
+
+
+
+
+
+</marquee></body>
+</html>

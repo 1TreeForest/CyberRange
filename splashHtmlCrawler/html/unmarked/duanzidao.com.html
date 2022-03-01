@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<script type="text/javascript" src="./libgif.js"></script>
+		<script type="text/javascript" src="./rubbable.js"></script>
+        		<script type="text/javascript" src="./main.js"></script>
+        <script type="text/javascript" src="https://www.w3school.com.cn/jquery/jquery-1.11.1.min.js"></script>
+        <script data-ad-client="ca-pub-2002376612511538" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?f5f9b2d6bb3a848fd3066ce09879e08e";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+		</script>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title>在线GIF暂停、GIF逐帧播放、GIF动态图片分解工具、GIF转成帧</title>
+        <meta name="keywords" content="GIF在线拆解,GIF转成帧,GIF帧截图,GIF慢放,动态图在线播放,暂停、逐帧播放,动态图片分解,动态图拆解,在线GIF分解工具">
+        <meta name="description" content="GIF在线拆解,GIF转成帧,GIF帧截图,GIF慢放,动态图在线播放,暂停、逐帧播放,动态图片分解,动态图拆解,在线GIF分解工具">
+        <style type="text/css">
+			.center{
+				font-size:16px;
+				max-width:500px;
+				min-width:100px;
+			}
+			.center a{
+				color:#000;
+				text-decoration:none;
+			}
+			
+			.discript{
+				font-size:12px;
+				margin: 0 auto;
+				max-width:500px;
+				min-width:100px;
+				border: 1px solid #ffd39b;
+				background: none repeat scroll 0 0 #fff5ee;
+				padding-left:10px;
+				padding-right:10px;
+			}
+			
+			.banner{
+				height:20px;
+				margin: 0 auto;
+			}
+			.ad{
+				margin: 0 auto;
+				text-align:center;
+			}
+			
+			.copyright{
+				font-size:12px;
+				margin: 0 auto;
+				max-width:500px;
+				min-width:100px;
+				padding-left:10px;
+				padding-right:10px;
+				text-align:center;
+			}
+			
+			.copyright a{
+				color:#000;
+				text-decoration:none;
+			}
+			
+			.select {
+				padding-top: 4px;
+				padding-bottom: 8px;
+				padding-left: 8px;
+				height: 20px;
+				line-height: 20px;
+				position: relative;
+				cursor: pointer;
+				color: #888;
+				background: #fafafa;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				overflow: hidden;
+				display: inline-block;
+				*display: inline;
+				*zoom: 1
+			}
+			
+			.select input {
+				position: absolute;
+				font-size: 100px;
+				right: 0;
+				top: 0;
+				opacity: 0;
+				filter: alpha(opacity=0);
+				cursor: pointer
+			}
+			
+			.select:hover {
+				color: #444;
+				background: #eee;
+				border-color: #ccc;
+				text-decoration: none
+			}
+			.imageDiv{
+				max-width:500px;
+				min-width:100px;
+			}
+			.example1{
+				width:100px;
+				height:100px;
+			}
+			.title{
+				border-bottom: 0px solid rgba(142,142,142,1.00);
+				padding-top:10px;
+				padding-bottom:10px;
+				margin-bottom:10px;
+				font-size: 24px;
+				color: rgba(73,73,73,1.00);
+				width:80%;
+			}
+			body{
+			  width:100%;
+			  background:white; 
+			}
+        </style>
+	</head>
+
+	<body class="body">
+		<center>
+			<div class="title">分解GIF动态图</div>
+             <div class="imageDiv" id="imageDiv">
+			<img id="example1" class="example1" src="./example_gifs/preview.jpg
+" rel:animated_src="./example_gifs/520.gif" rel:auto_play="0" width="467" height="375" alt="在线拆解逐帧播放GIF图" />
+            </div>
+			<br>
+			<script type="text/javascript">
+				//$('.example1').attr('rel:animated_src', './gifs/'+ Math.round(Math.random() * 10) +'.gif');
+				var sup1 = new SuperGif({ gif: document.getElementById('example1') } );
+				sup1.load();
+				var isPlay = true;
+				
+				play = function(){
+					if(isPlay){
+						isPlay = false;
+						sup1.play();
+						$('#play').text("暂停");
+					} else {
+						isPlay = true;
+						sup1.pause();
+						$('#play').text("播放");
+					}
+				}
+				
+			</script>
+        	<div class="center">
+                <a id="play" href="javascript:;" onmousedown="play(); return false;">播放</a> |
+                <a href="javascript:;" onmousedown="sup1.move_to(0); return false;">重置</a> |
+                <a href="javascript:;" onmousedown="sup1.move_relative(-1); return false;">逐帧后退</a> |
+                <a href="javascript:;" onmousedown="sup1.move_relative(1); return false;">逐帧前进</a>
+            </div>
+            <!--选择文件-->
+            <p>
+    			<img class="img" src="./example_gifs/preview.jpg" onerror="this.src='./example_gifs/preview.jpg'" width="0" height="0">
+			</p>
+            <form id="uploadForm" enctype="multipart/form-data">
+				<input class="select" type="file" id="file" name="file">
+            </form> 
+		</center>
+
+		<div class="banner">
+        </div>
+        <div class="ad">
+        	<!--
+            	<div class="_8xbz401pfkm"></div>
+                <script type="text/javascript">
+                    (window.slotbydup = window.slotbydup || []).push({
+                        id: "u6080824",
+                        container: "_8xbz401pfkm",
+                        async: true
+                    });
+                </script>
+                <script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/cm.js" async="async" defer="defer" >
+                </script>
+            -->
+			<!--
+            <a href="https://s.click.taobao.com/ySZuWtu" target="_blank">
+            	<img src="1111.jpg" />
+            </a>
+			-->
+        </div>
+        <div class="discript">
+            <p>
+                一、工具介绍：将GIF的各帧分解，剥离出一张张静态的图片，点击播放就能实现逐帧查看。</p>
+            <p>
+                二、选择一张本地的GIF动态图。</p>
+            <p>
+            	三、点击“播放”或者“逐帧播放”按钮，一帧帧查看或右键保存。
+            </p>
+         </div>
+		<script>
+            $('.select').change(function(e) {
+                var _URL = window.URL || window.webkitURL;
+                var file, img;
+                if ((file = this.files[0])) {
+                    img = new Image();
+                    img.onload = function() {
+                        $('.img').attr('src', this.src);
+                        $("#imageDiv").empty();
+                        $("#imageDiv").append('<img id="example1" class="example1" src="https://wx2.sinaimg.cn/mw690/6f599460gy1gfhlgf8ru1j20tc0o777m.jpg" rel:animated_src="./example_gifs/rub_test.gif" rel:auto_play="0" width="467" height="375" alt="在线拆解逐帧播放GIF图" />');
+                        $('.example1').attr('src', this.src);
+                        $('.example1').attr('rel:animated_src', this.src);
+                        //console.info(this.src);
+                        sup1 = null;
+                        sup1 = new SuperGif({ gif: document.getElementById('example1') } );
+                        sup1.load();
+                    	};
+                    	img.src = _URL.createObjectURL(file);
+                    	//console.info(img.src);
+						gif(file);
+						}
+					})
+        </script>
+        
+        <div class="copyright">
+            <p>
+            Copyright © 2020 - 2021
+            <br>
+            All Rights Reserved www.duanzidao.com 
+            <br>
+            <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备15001555号-1</a>
+            </p>
+            <p>
+            Powered by <a href='http://www.duanzidao.com' target="_blank">在线拆解逐帧播放GIF图</a>
+        	</p>
+        </div>
+
+	</body>
+
+</html>

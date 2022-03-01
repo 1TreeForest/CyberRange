@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="text/html" charset="utf-8" http-equiv="Content-Type">
+    <title>濠滨APP下载页面</title>
+    <link rel="stylesheet" href="/material/theme/201509/css/index.css">
+    <meta name="description" content="濠滨聚焦南通身边的事" />
+    <meta name="keywords" content="濠滨论坛,濠滨网,南通论坛,南通热线,南通网,濠滨,濠滨在线,南通在线" />
+    <script src="/material/theme/201509/js/jquery-1.8.2.min.js"></script>
+
+</head>
+<body>
+<div class="headerWrap">
+    <div class="header">
+        <div class="logoWrap">
+            <img src="/material/theme/201509/img/logo-w.png" alt="濠滨APP">
+            <div>
+                <span class="appname">濠滨</span>
+                <span class="version">V3.0.0</span>
+            </div>
+        </div>
+        <div class="nav">
+            <a href="javascript:;" class="weixinLink"></a>
+            <a href="javascript:;" class="emailLink"></a>
+        </div>
+    </div>
+</div>
+<div class="clr"></div>
+<div class="hero">
+    <div class="hero_contain">
+        <div class="desc" contenteditable="true">
+            <p id="line1"></p>
+            <p id="line2"></p>
+        </div>
+
+        <a href="https://apps.apple.com/cn/app/%E6%BF%A0%E5%8F%8B/id1467173368" class="appstore"></a>
+        <a href="https://www.0513.org/upload/app/product-5.1.0.apk" class="android"></a>
+
+        <div id="navDot"><a href="#" class="dot"></a><a href="#" class="dot"></a><a href="#" class="dot"></a><a href="#" class="dot"></a><a href="#" class="doted"></a></div>
+        <div class="clr"></div>
+        <div class="iphone">
+        </div>
+        <img class="ios" id="iosImg" src="/material/theme/201509/img/none.gif" style="z-index: 5;">
+        <img class="ios" id="iosOldImg" src="/material/theme/201509/img/none.gif" style="z-index: 3;">
+    </div>
+    <a href="#" class="previous" id="previousBtn" style="display: inline;"></a>
+    <a href="#" class="next" id="nextBtn" style="display: none;"></a>
+    <div class="imgWrap">
+        <img class="bg" id="bgImg" src="/material/theme/201509/img/none.gif">
+        <!-- <img class='bg' id='bgOldImg' src="images/bg01.jpg"> -->
+    </div>
+</div>
+
+<div class="float">
+	<div class="showbg"></div>
+	<img id="showdown" src="/material/theme/201509/img/wx-down.png">
+	<img id="showwx" src="/material/theme/201509/img/wx-person.jpg">
+</div>
+<div class="clr"></div>
+<div class="footerIndex">
+    <p class="copyright">
+        南通橙果广告有限公司 版权所有 · <a href="http://bbs.0513.org/">濠滨</a>
+    </p>
+    <p class="records">
+        信息产业部备案：<a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">苏ICP备05014191号-1</a>
+    </p>
+</div>
+<script>
+    var previousBtn = $('#previousBtn');
+    var nextBtn = $('#nextBtn');
+    var iosImg = $('#iosImg');
+    var iosOldImg = $('#iosOldImg');
+    var bgImg = $('#bgImg');
+    //var bgOldImg = $('#bgOldImg');
+    iosOldImg.css('z-index','1000');
+    iosImg.css('z-index','1002');
+    //bgOldImg.css('z-index','5');
+    var line1 = $('#line1');
+    var line2 = $('#line2');
+    var navDot = $('#navDot');
+    var btnShow = true;
+    var duration = 1000;
+
+    var banners = [{
+        bg : '/upload/img/20150930/1443606384644709.jpg',
+        ios : '/material/theme/201509/img/index/page1.jpg',
+        line1:'爱上濠滨 分享南通',
+        line2:''
+    },{
+        bg : '/upload/img/20150930/1443606385102441.jpg',
+        ios : '/material/theme/201509/img/index/page2.jpg',
+        line1:'南通大小事<br>就在濠滨APP',
+        line2:''
+    },{
+        bg : '/upload/img/20150930/1443606385567146.jpg',
+        ios : '/material/theme/201509/img/index/page3.jpg',
+        line1:'更好的阅读体验',
+        line2:''
+    },{
+        bg : '/upload/img/20150930/144360638636293.jpg',
+        ios : '/material/theme/201509/img/index/page4.jpg',
+        line1:'分享内容<br>给你的朋友们',
+        line2:''
+    }
+    ];
+
+    var index = 0;
+
+    function checkBtn(){
+
+        navDot.html('');
+
+        for(var i=0;i<banners.length;i++){
+            var html;
+            if(index == i){
+                html = '<a href="#" class="doted"></a>';
+            }else{
+                html = '<a href="#" class="dot"></a>';
+            }
+            var dot = $(html);
+            dot.click((function(num){
+                return function(){
+                    index = num;
+                    showNewBanner();
+                }
+            })(i));
+            navDot.append(dot);
+        }
+        html = null;
+
+        if(!btnShow){
+            previousBtn.fadeOut();
+            nextBtn.fadeOut();
+            return;
+        }
+        if(index>0){
+            previousBtn.fadeIn();
+        }else{
+            previousBtn.fadeOut();
+        }
+        if(index<banners.length-1){
+            nextBtn.fadeIn();
+        }else{
+            nextBtn.fadeOut();
+        }
+    }
+
+    function showNewBanner(){
+        if(index >= banners.length || index<0){
+            index = 0;
+        }
+
+        iosOldImg[0].src = iosImg[0].src;
+        iosImg.css('display','none');
+        iosImg.fadeIn(duration);
+        iosImg[0].src = banners[index].ios;
+        bgImg[0].src = banners[index].bg;
+
+        //文字渐变出现
+        line1.css('display','none').fadeIn(duration);
+        line2.css('display','none').fadeIn(duration);
+        //--文字渐变出现
+        line1.html(banners[index].line1);
+        line2.html(banners[index].line2);
+        checkBtn();
+    }
+
+    previousBtn.click(function(){
+        index--;
+        showNewBanner();
+    });
+
+    nextBtn.click(function(){
+        index++;
+        showNewBanner();
+    });
+
+
+    function checkWindowSize(){
+        if(document.body.clientWidth<1280){
+            if(btnShow){
+                btnShow = false;
+                checkBtn();
+            }
+        }else{
+            if(!btnShow){
+                btnShow = true;
+                checkBtn();
+            }
+        }
+    }
+
+
+    showNewBanner();
+    index++;
+    setInterval(function(){showNewBanner();index++;},7000);
+
+    window.onresize = checkWindowSize;
+	$(".weixinLink").click(function(){
+		$(".float, #showdown").show();
+	});
+	$(".emailLink").click(function(){
+		$(".float, #showwx").show();
+	});
+	$(".showbg").click(function(){
+		$(".float,.float img").hide();
+	});
+</script>
+</body>
+<script type="text/javascript" src="//tajs.qq.com/stats?sId=51088541" charset="UTF-8"></script>
+</html>

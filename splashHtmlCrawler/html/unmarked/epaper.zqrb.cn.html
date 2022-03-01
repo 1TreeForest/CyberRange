@@ -1,0 +1,955 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>证券日报网-数字人民币APP上架掀体验潮 多家平台下载量日均增超10倍
+</title>
+<meta name="keywords" content="数字人民币APP上架掀体验潮 多家平台下载量日均增超10倍<br/>">
+ 
+<meta name="description" content="数字人民币APP上架掀体验潮 多家平台下载量日均增超10倍<br/>">
+
+
+<link href="../../../tplimg/csscontent.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="../../../tplimg/clndr.css" type="text/css" />
+	
+<!--<script type="text/javascript" src="../../../tplimg/jquery-1.4.2.min.js"></script>-->
+
+
+<script type="text/javascript" src="../../../tplimg/jquery.js"></script>
+<script type="text/javascript" src="../../../tplimg/jquery.openCarousel.js"></script>
+<script type="text/javascript" src="../../../tplimg/jquery.xdomainrequest.min.js"></script>
+<!--<link href="../../../tplimg/node_v20180823.css" rel="stylesheet" type="text/css" />-->
+<link href="../../../tplimg/calendar.css"  rel="stylesheet" type="text/css">
+
+<!--<script type="text/javascript" src="../../../tplimg/calendarp.js"></script>
+<script type="text/javascript" src="../../../tplimg/mpcore.js"></script>
+<script type="text/javascript" src="../../../tplimg/public.js"></script>
+<script type="text/javascript" src="../../../tplimg/rangenew.js"></script>-->
+<script type="text/javascript" src="http://passport.zqrb.cn/loginMsg.php"></script>
+<SCRIPT>
+//画线--写title
+$(document).ready(function(){
+	var state = getcookie();
+	ajaxget(state);
+	});
+
+function drawredline() {
+
+	$.getScript('/tplimg/calendarp.js');
+	$.getScript('/tplimg/mpcore.js');
+	$.getScript('/tplimg/public.js');
+	$.getScript('/tplimg/rangenew.js');
+	
+	var obj = document.getElementsByName('PagePicMap');	
+	if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)){
+	    //alert('你是使用IE')
+		obj[0].onmouseover=function(){drawLine(event.srcElement, event);};
+	    obj[0].onmouseout=function(){MouseOutMap();};
+	}else if (navigator.userAgent.indexOf('Firefox') >= 0){
+	    //alert('你是使用Firefox')
+		obj[0].onmouseover=function(){drawLine(arguments[0].target, arguments[0]);};
+		document.getElementById("leveldiv").onmouseout=function(){MouseOutMap();};
+	}else if (navigator.userAgent.indexOf('Opera') >= 0){
+	    //alert('你是使用Opera')
+		obj[0].onmouseover=function(){drawLine(event.srcElement, event);};
+	    obj[0].onmouseout=function(){MouseOutMap();};
+	}else{
+	    //alert('你是使用其他的浏览器浏览网页！')
+		obj[0].onmouseover=function(){drawLine(event.srcElement, event);};
+	    obj[0].onmouseout=function(){MouseOutMap();};
+	}
+	//replacePageTitle();
+}
+
+function getcookie() {
+	var path = geturl();
+	//读取cookie内是否点赞、是否打分记录
+	//读取cookie数据
+	//cookie	=>	name:path,value:(1=isthumb,2=isscore,3=both)
+	var arr,reg=new RegExp("(^| )"+path+"=([^;]*)(;|$)");
+	if(arr=document.cookie.match(reg)) {
+		var state = unescape(arr[2]);
+	} else {
+		var state = 0;
+	}
+	return state;
+}
+
+function changepng(obj,pngname) {
+	obj.src = "../../../tplimg/"+pngname+".png";
+}
+
+function gettitle() {
+	var title = document.title;
+	return title.replace(/证券日报网-/,'');
+}
+
+function ajaxget(state) {
+	//ajax 获取文章相关数据
+	var url = geturl();
+	var source = 2;	//1=www,2=epaper,3=blog
+	//var title = gettitle();
+	var title = gettitle();
+	//var page = 2;	//来源为2=epaper时，版面信息
+	jQuery.support.cors = true;
+	$.ajax({
+		type: 'GET',
+		url : "http://score.zqrb.cn/ajax/ajaxget?url="+url+"&title="+encodeURI(title)+"&source="+source,
+		dataType: "json",
+		data: {},
+		async: false,
+		error: function() {
+			//alert('网络繁忙！');	//不影响用户体验 不再提示
+			drawredline();
+		},
+		success: function(data) {
+		
+			/**
+			*先画框，再填充内容
+			*只有请求成功才画框
+			*/
+			/*$("#df").html("<div class='df'><div class='xhwz'><p class='at'>喜欢文章</p><div class='dmz' id='dmz'></div><div class='dzs' id='dzs'></div></div><div class='xbtj'><div class='dfline'></div><div class='xxdf' id='xxdf'></div></div><div class='ly'><div style='float:left;'><textarea name='tablemsg' id='comment' cols='' rows='' border='0' style='margin:10px;width:670px;height:60px;border:solid 1px #bfc2c5;resize:none;' class='extarea' placeholder='说点什么...最多输入500个字符' onKeyUp='Huitextarealength(this);'></textarea><p style='float:left;width:670px;height:16px;position:absolute;'><em class='textarea-length'>0</em>/<am>500</am></p></div><div class='lyright' id='upcomment'><img src='../../../tplimg/tj-01.png' onmouseover='this.src=../../../tplimg/tj-02.png' onmouseout='this.src='../../../tplimg/tj-01.png' style='margin:10px;float:right;' onclick='ajaxComment();'></div></div></div>");*/
+		
+			if(state == 1 || state == 3) {
+				$("#dmz").html("<img src='../../../tplimg/zan2.png'>");
+			} else {
+				$("#dmz").html("<img src='../../../tplimg/zan1.png' onmouseover=\"changepng(this,'zan2');\" onmouseout=\"changepng(this,'zan1');\" onclick='ajaxThumb();'>");
+			}
+			$("#dzs").html(data.thumb_num);
+			if(state == 2 || state == 3) {
+				$("#xxdf").html("<p class='aat'>得分情况：</p><div class='tj' style='height:41px;margin:20px 0px;'><div class='sztj'><span class='onedf' style='font-size:20px;'>本文得分 :</span><span class='onesz' style='font-size:20px;'>"+data.score+"</span></div><div class='cyrs'><span class='onedf' style='font-size:20px;'>参与人数 :</span><span class='onesz2' style='font-size:20px;'>"+data.score_num+"</span></div></div><div class='dfline2'></div>");
+			} else {
+				$("#xxdf").html("<p class='aat'>给文章打分</p><div class='star'><span onmouseover='rate(this,event)'><img src=../../../tplimg/star.png title='很差' style='width:30px;height=30px;margin-right:10px;' /><img src=../../../tplimg/star.png title='一般' style='width:30px;height=30px;margin-right:10px;' /><img src=../../../tplimg/star.png title='还行' style='width:30px;height=30px;margin-right:10px;' /><img src=../../../tplimg/star.png title='推荐' style='width:30px;height=30px;margin-right:10px;'/><img src=../../../tplimg/star.png title='力荐' style='width:30px;height=30px;margin-right:10px;'/></span><span class='pl' id='dxxx'></span></div><div class='tj'><div class='sztj'><span class='onedf'>本文得分 :</span><span class='onesz'>"+data.score+"</span></div><div class='cyrs'><span class='onedf'>参与人数 :</span><span class='onesz2'>"+data.score_num+"</span></div></div><div class='dfline2'></div>");
+			}
+			drawredline();
+		}
+	});
+}
+
+function geturl() {
+	//var url = "http://www.zqrb.cn/stock/abc_2.html";
+	//var href = window.location.href;	//http://www.zqrb.cn/stock/abc_2.html
+	var protocol = window.location.protocol;	//http:
+	var host = window.location.host;	//www.zqrb.cn
+	var pathname = window.location.pathname;	//stock/abc_2.html
+	var path_arr = pathname.split('?');	//_
+	if(path_arr.length>1 && host != "epaper.zqrb.cn") {
+		//path = path_arr[1].split('.');
+		//path = path[1];
+		pathname = path_arr[0];	//+'.'+path[1]
+	}
+	return encodeURI(protocol+'//'+host+pathname);
+}
+
+function setCookie(value)
+{
+	var url = geturl();
+	var Days = 30;
+	var exp = new Date();
+	exp.setTime(exp.getTime() + Days*24*60*60*1000);
+	document.cookie = url + "="+ escape (value) + ";expires=" + exp.toGMTString();
+}
+
+function ajaxThumb() {
+	//ajax 点赞操作
+	var url = geturl();
+	var source = 2;	//1=www,2=epaper,3=blog
+	var title = gettitle();
+	var state = getcookie();
+	if(u.userName!=""){
+		var islogin = 1;
+		var username = u.userName;
+		var userid = u.reId;
+	} else {
+		var islogin = 0;
+		var username = "";
+		var userid = "";
+	}
+	jQuery.support.cors = true;
+	$.ajax({
+		type: 'GET',
+		url : "http://score.zqrb.cn/ajax/ajaxthumb?url="+url+"&title="+encodeURI(title)+"&source="+source+"&islogin="+islogin+"&userid="+userid+"&username="+encodeURI(username),
+		dataType: "json",
+		data: {},
+		async: true,
+		error: function() {
+			alert('网络繁忙！');
+		},
+		success: function(data) {
+			$("#dmz").html("<img src='../../../tplimg/zan2.png'>");
+			$("#dzs").html(data.thumb_num);
+			if(state == 0) {
+				setCookie(1);
+			} else {
+				setCookie(3);
+			}
+		}
+	});
+}
+
+function ajaxComment() {
+	//ajax 评论操作
+	var url = geturl();
+	var source = 2;	//1=www,2=epaper,3=blog
+	var title = gettitle();
+	var comment = $("#comment").val();
+	if(u.userName!=""){
+		var islogin = 1;
+		var username = u.userName;
+		var userid = u.reId;
+	} else {
+		var islogin = 0;
+		var username = "";
+		var userid = "";
+	}
+	jQuery.support.cors = true;
+	$.ajax({
+		type: 'GET',
+		url : "http://score.zqrb.cn/ajax/ajaxcomment?url="+url+"&title="+encodeURI(title)+"&source="+source+"&comment="+encodeURI(comment)+"&islogin="+islogin+"&userid="+userid+"&username="+encodeURI(username),
+		dataType: "text",
+		data: {},
+		async: true,
+		error: function() {
+			alert('网络繁忙！');
+		},
+		success: function(data) {
+			alert(data);
+			$("#comment").html('');
+		}
+	});
+}
+
+
+function ajaxScore(score) {
+	//ajax 打分操作
+	var url = geturl();
+	var source = 2;	//1=www,2=epaper,3=blog
+	var title = gettitle();
+	var state = getcookie();
+	if(u.userName!=""){
+		var islogin = 1;
+		var username = u.userName;
+		var userid = u.reId;
+	} else {
+		var islogin = 0;
+		var username = "";
+		var userid = "";
+	}
+	jQuery.support.cors = true;
+	$.ajax({
+		type: 'GET',
+		url : "http://score.zqrb.cn/ajax/ajaxscore?url="+url+"&title="+encodeURI(title)+"&source="+source+"&islogin="+islogin+"&userid="+userid+"&username="+encodeURI(username)+"&score="+score,
+		dataType: "json",
+		data: {},
+		async: true,
+		error: function() {
+			alert('网络繁忙！');
+		},
+		success: function(data) {
+			$("#xxdf").html("<p class='aat'>得分情况：</p><div class='tj' style='height:41px;margin:20px 0px;'><div class='sztj'><span class='onedf' style='font-size:20px;'>本文得分 :</span><span class='onesz' style='font-size:20px;'>"+data.score+"</span></div><div class='cyrs'><span class='onedf' style='font-size:20px;'>参与人数 :</span><span class='onesz2' style='font-size:20px;'>"+data.score_num+"</span></div></div><div class='dfline2'></div>");
+			if(state == 0) {
+				setCookie(2);
+			} else {
+				setCookie(3);
+			}
+		}
+	});
+}
+
+//页面热区点击跳转
+function goPage(){
+var hrefTemp = $("#leveldiv").attr("class");
+document.location.href = hrefTemp;
+}
+</SCRIPT>
+<script type="text/javascript">
+	function lbtnover(obj) {
+		obj.src = "../../../tplimg/HONG-LEFT.png";
+	}
+	function lbtnout(obj) {
+		obj.src = "../../../tplimg/lan.png";
+	}
+	function rbtnover(obj) {
+		obj.src = "../../../tplimg/HONG-RIGHT.png";
+	}
+	function rbtnout(obj) {
+		obj.src = "../../../tplimg/LAN-RIGHT.png";
+	}
+</script>
+</head>
+<SPAN id=leveldiv title=点击查看内容  onclick="goPage()"; 
+style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; Z-INDEX: 100; LEFT: 233px; BORDER-BOTTOM-WIDTH: 0px; WIDTH: 210px; CURSOR: hand; POSITION: absolute; TOP: 123px; HEIGHT: 34px; BORDER-RIGHT-WIDTH: 0px"></SPAN>
+<body>
+<div class="top">
+  <div class="m">
+    <div class="lf logo"><a href="http://www.zqrb.cn" target="_blank"><img src="../../../tplimg/logo.jpg" width="159" height="43" border="0"></a></div>
+    <div class="rt">
+      <ul>
+        <li><a href="http://www.zqrb.cn" target="_blank">证券日报官网</a></li>
+        <li>|</li>
+        <div id="loginstate" style="float: left;height: 20px;padding: 1px 10px 0 10px;font-size: 18px;color: #3368AE;">
+          <a href="http://passport.zqrb.cn/login.php" target="_blank">登录/注册</a>
+        </div>
+        <li>|</li>
+        <li><a href="http://m.epaper.zqrb.cn" target="_blank">证券日报电子报手机版</a></li>
+      </ul>
+    </div>
+    <script type="text/javascript">
+      if(u.userName!=""){
+        var pageHtml = '<a style="color:red;" href="http://passport.zqrb.cn/center.php">'+u.userName + '</a>  <a href="http://passport.zqrb.cn/logout.php?ComeUrl=http:/www.zqrb.cn">退出</a>';
+        $('#loginstate').html(pageHtml);
+      }
+    </script>
+
+    <div class="clear"></div>
+  </div>
+  
+</div>
+<div class="mian">
+    <div class="m">
+        <div class="left"><!--效果html开始-->
+            <div class="mkeFocus">
+                <div class="mkeUl">
+
+                    <!--span标签加onclick="goPage()"--改动3-->
+                    <SPAN id=leveldiv title=点击查看内容  onclick="goPage()";
+                          style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; Z-INDEX: 100; LEFT: 233px; BORDER-BOTTOM-WIDTH: 0px; WIDTH: 210px; CURSOR: hand; POSITION: absolute; TOP: 123px; HEIGHT: 34px; BORDER-RIGHT-WIDTH: 0px">						  </SPAN>
+                    <!--body标签去掉 onLoad="initialize();initMPPage();"--改动4-->
+					<table style="border-spacing:0px;" width="484" height="700">
+<tr>
+    <td width=100% height=100% align="center" valign="middle"  id="graphics-js">
+        <map name=PagePicMap><Area coords="376,54,466,54,466,663,376,663" shape="polygon" href="content_800006.htm?div=-1"><Area coords="162,111,359,111,359,242,162,242" shape="polygon" href="./content_800007.htm?div=0"><Area coords="25,60,359,60,359,338,25,338" shape="polygon" href="./content_800007.htm?div=-1"><Area coords="19,357,359,357,359,499,19,499" shape="polygon" href="content_800008.htm?div=-1"><Area coords="19,510,359,510,359,681,19,681" shape="polygon" href="content_800009.htm?div=-1"></map><img src=../../../images/2022-01/10/B1/zqrb20220110B1_b.jpg width=484 height=700 border=0 USEMAP=#PagePicMap>
+    </td>
+</tr>
+</table>
+                    <!--<div class="mkeNum">
+                        <span class="mke_ns1">1</span>
+                        <span class="mke_ns2">1</span>
+                    </div>-->
+                    <div class="mkeLbtn"><a class=preart href="node_1.htm"><b><img src='../../../tplimg/lan.png' onmouseover='lbtnover(this);' onmouseout='lbtnout(this);' width='46' height='46' border='0'></b></a></div>
+          <div class="mkeRbtn"><a class=preart href="node_6.htm"><strong><img src='../../../tplimg/LAN-RIGHT.png' onmouseover='rbtnover(this);' onmouseout='rbtnout(this);' width='46' height='46' border='0'></strong></a></div>
+        </div>
+      </div>
+
+      <!--效果html结束--></div>
+    <div class="right">
+      <div class="menu">
+                <ul>
+                    <li><a href="http://epaper.zqrb.cn">电子报主页</a></li>
+                    <li onMouseOver="getElementById('pgn').style.display='block';getElementById('pgt').style.display='none';"><a href="#">版面目录</a>
+                        <!--<ul>
+                      <li><a href="#">机构简介</a></li>
+                    </ul>-->
+                    </li>
+                    <li onMouseOver="getElementById('pgt').style.display='block';getElementById('pgn').style.display='none';"><a href="#">标题导航</a>
+                        <!--<ul>
+                      <li><a href="#">机构简介</a></li>
+                    </ul>-->
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+	    <script type="text/javascript">
+					$( function(){	
+							$("#search_p").focus(function() {
+								if($("#search_p").val()=='请输入文字'){
+									$("#search_p").val('');
+								}
+							});
+
+							$("#search_p").click(function() {
+								if($("#search_p").val()=='请输入文字'){
+									$("#search_p").val('');
+								}
+							});
+
+							$("#search_p").blur(function() {
+								if($("#search_p").val()=='' || $("#search_p").val().length==0){
+									$("#search_p").val('请输入文字');
+								}
+								
+							});
+						}
+					);
+					
+					function checksearch() {
+						var search_p = $("#search_p").val();
+						if(search_p == "" || search_p == "请输入文字") {
+							alert("请先输入查询文字");
+							$("#search_p").focus();
+							return false;
+						} else {
+							var s_url = "http://search.zqrb.cn/search.php?src=epaper&q="+encodeURI(search_p)+"&f=title&s=newsdate_DESC";
+							$("#search_p").val("请输入文字");
+							window.open(s_url);
+						}
+					}
+				</script>
+            <div class="sou">稿件搜索</div>
+            <div class="biaodan"><input type="text" value="请输入关键词" class="dan" onClick="this.value=''" id="search_p"><span><img src="../../../tplimg/ss.png" width="26" height="26" id="search_btn" onClick="checksearch();"></span></div>
+            <div class="clear"></div>
+
+            <DIV id=pgt onMouseOver="getElementById('pgt').style.display='block';" onMouseOut="getElementById('pgt').style.display='none';" style="margin: 0 auto;width: 430px;position: absolute;overflow-y: scroll;background-color: #fff;display: none;">
+                <TABLE width="100%" border=0 cellPadding=2 cellSpacing=0 bgcolor="#FDFAF3">
+ <TBODY style="background-color: #e6ebf2">
+
+<tr>
+<td class=default valign="top">
+<img src="../../../tplimg/dian.png">
+</TD>
+<td class=default valign="top">
+<a href=content_800006.htm?div=-1><div style="display:inline" id=mp800006>外资开年“扫货”保险股 增仓中国人保与新华保险</div></a>
+</td>
+</TR>
+<tr>
+<td class=default valign="top">
+<img src="../../../tplimg/dian.png">
+</TD>
+<td class=default valign="top">
+<a href=./content_800007.htm?div=-1><div style="display:inline" id=mp800007>数字人民币APP上架掀体验潮 多家平台下载量日均增超10倍</div></a>
+</td>
+</TR>
+<tr>
+<td class=default valign="top">
+<img src="../../../tplimg/dian.png">
+</TD>
+<td class=default valign="top">
+<a href=content_800008.htm?div=-1><div style="display:inline" id=mp800008>生猪期货运行满周岁 超10家上市公司参与套保</div></a>
+</td>
+</TR>
+<tr>
+<td class=default valign="top">
+<img src="../../../tplimg/dian.png">
+</TD>
+<td class=default valign="top">
+<a href=content_800009.htm?div=-1><div style="display:inline" id=mp800009>数字藏品热潮再起 B站、安踏等多位重磅玩家入场</div></a>
+</td>
+</TR>
+
+
+</TBODY>
+</TABLE>
+
+            </DIV>
+            <DIV id="pgn" onMouseOver="getElementById('pgn').style.display='block';" onMouseOut="getElementById('pgn').style.display='none';" style="margin: 0 auto;width: 235px;height: 693px;position: absolute;overflow-y: scroll;margin-left:130px;display: none;">
+                <TABLE width="100%" border=0 cellPadding=2 cellSpacing=0 bgcolor="#FDFAF3">
+    <TBODY style="background-color: #FDFAF3">
+ <TR>
+               <TD width="7" align=left height=37>&nbsp;</TD>
+               <TD align=left>&nbsp;<a href=node_2.htm class="blue" id=pageLink>第A1版：头版</a>
+			   <div style="float: right;"><a href=../../../images/2022-01/10/A1/zqrb20220110A1.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+			   </TD>
+        
+        </TR>
+<TR bgColor=#e6ebf2  >
+         <TD align=left  height=37>&nbsp;</TD>
+           <TD align=left>&nbsp;<a href=node_3.htm class="blue" id=pageLink>第A2版：财经要闻</a>
+		   <div style="float: right;"><a href=../../../images/2022-01/10/A2/zqrb20220110A2.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+		   </TD>
+         
+        </TR>
+ <TR>
+               <TD width="7" align=left height=37>&nbsp;</TD>
+               <TD align=left>&nbsp;<a href=node_4.htm class="blue" id=pageLink>第A3版：热点聚焦</a>
+			   <div style="float: right;"><a href=../../../images/2022-01/10/A3/zqrb20220110A3.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+			   </TD>
+        
+        </TR>
+<TR bgColor=#e6ebf2  >
+         <TD align=left  height=37>&nbsp;</TD>
+           <TD align=left>&nbsp;<a href=node_1.htm class="blue" id=pageLink>第A4版：信息披露</a>
+		   <div style="float: right;"><a href=../../../images/2022-01/10/A4/zqrb20220110A4.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+		   </TD>
+         
+        </TR>
+ <TR>
+               <TD width="7" align=left height=37>&nbsp;</TD>
+               <TD align=left>&nbsp;<a href=node_5.htm class="blue" id=pageLink>第B1版：金融机构</a>
+			   <div style="float: right;"><a href=../../../images/2022-01/10/B1/zqrb20220110B1.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+			   </TD>
+        
+        </TR>
+<TR bgColor=#e6ebf2  >
+         <TD align=left  height=37>&nbsp;</TD>
+           <TD align=left>&nbsp;<a href=node_6.htm class="blue" id=pageLink>第B2版：公司新闻</a>
+		   <div style="float: right;"><a href=../../../images/2022-01/10/B2/zqrb20220110B2.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+		   </TD>
+         
+        </TR>
+ <TR>
+               <TD width="7" align=left height=37>&nbsp;</TD>
+               <TD align=left>&nbsp;<a href=node_7.htm class="blue" id=pageLink>第B3版：信息披露</a>
+			   <div style="float: right;"><a href=../../../images/2022-01/10/B3/zqrb20220110B3.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+			   </TD>
+        
+        </TR>
+<TR bgColor=#e6ebf2  >
+         <TD align=left  height=37>&nbsp;</TD>
+           <TD align=left>&nbsp;<a href=node_8.htm class="blue" id=pageLink>第B4版：信息披露</a>
+		   <div style="float: right;"><a href=../../../images/2022-01/10/B4/zqrb20220110B4.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+		   </TD>
+         
+        </TR>
+ <TR>
+               <TD width="7" align=left height=37>&nbsp;</TD>
+               <TD align=left>&nbsp;<a href=node_9.htm class="blue" id=pageLink>第C1版：信息披露</a>
+			   <div style="float: right;"><a href=../../../images/2022-01/10/C1/zqrb20220110C1.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+			   </TD>
+        
+        </TR>
+<TR bgColor=#e6ebf2  >
+         <TD align=left  height=37>&nbsp;</TD>
+           <TD align=left>&nbsp;<a href=node_10.htm class="blue" id=pageLink>第C2版：信息披露</a>
+		   <div style="float: right;"><a href=../../../images/2022-01/10/C2/zqrb20220110C2.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+		   </TD>
+         
+        </TR>
+ <TR>
+               <TD width="7" align=left height=37>&nbsp;</TD>
+               <TD align=left>&nbsp;<a href=node_11.htm class="blue" id=pageLink>第C3版：信息披露</a>
+			   <div style="float: right;"><a href=../../../images/2022-01/10/C3/zqrb20220110C3.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+			   </TD>
+        
+        </TR>
+<TR bgColor=#e6ebf2  >
+         <TD align=left  height=37>&nbsp;</TD>
+           <TD align=left>&nbsp;<a href=node_12.htm class="blue" id=pageLink>第C4版：信息披露</a>
+		   <div style="float: right;"><a href=../../../images/2022-01/10/C4/zqrb20220110C4.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+		   </TD>
+         
+        </TR>
+ <TR>
+               <TD width="7" align=left height=37>&nbsp;</TD>
+               <TD align=left>&nbsp;<a href=node_709.htm class="blue" id=pageLink>第C5版：信息披露</a>
+			   <div style="float: right;"><a href=../../../images/2022-01/10/C5/zqrb20220110C5.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+			   </TD>
+        
+        </TR>
+<TR bgColor=#e6ebf2  >
+         <TD align=left  height=37>&nbsp;</TD>
+           <TD align=left>&nbsp;<a href=node_710.htm class="blue" id=pageLink>第C6版：信息披露</a>
+		   <div style="float: right;"><a href=../../../images/2022-01/10/C6/zqrb20220110C6.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+		   </TD>
+         
+        </TR>
+ <TR>
+               <TD width="7" align=left height=37>&nbsp;</TD>
+               <TD align=left>&nbsp;<a href=node_711.htm class="blue" id=pageLink>第C7版：信息披露</a>
+			   <div style="float: right;"><a href=../../../images/2022-01/10/C7/zqrb20220110C7.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+			   </TD>
+        
+        </TR>
+<TR bgColor=#e6ebf2  >
+         <TD align=left  height=37>&nbsp;</TD>
+           <TD align=left>&nbsp;<a href=node_712.htm class="blue" id=pageLink>第C8版：信息披露</a>
+		   <div style="float: right;"><a href=../../../images/2022-01/10/C8/zqrb20220110C8.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+		   </TD>
+         
+        </TR>
+ <TR>
+               <TD width="7" align=left height=37>&nbsp;</TD>
+               <TD align=left>&nbsp;<a href=node_713.htm class="blue" id=pageLink>第C9版：信息披露</a>
+			   <div style="float: right;"><a href=../../../images/2022-01/10/C9/zqrb20220110C9.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+			   </TD>
+        
+        </TR>
+<TR bgColor=#e6ebf2  >
+         <TD align=left  height=37>&nbsp;</TD>
+           <TD align=left>&nbsp;<a href=node_714.htm class="blue" id=pageLink>第C10版：信息披露</a>
+		   <div style="float: right;"><a href=../../../images/2022-01/10/C10/zqrb20220110C10.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+		   </TD>
+         
+        </TR>
+ <TR>
+               <TD width="7" align=left height=37>&nbsp;</TD>
+               <TD align=left>&nbsp;<a href=node_715.htm class="blue" id=pageLink>第C11版：信息披露</a>
+			   <div style="float: right;"><a href=../../../images/2022-01/10/C11/zqrb20220110C11.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+			   </TD>
+        
+        </TR>
+<TR bgColor=#e6ebf2  >
+         <TD align=left  height=37>&nbsp;</TD>
+           <TD align=left>&nbsp;<a href=node_716.htm class="blue" id=pageLink>第C12版：广 告</a>
+		   <div style="float: right;"><a href=../../../images/2022-01/10/C12/zqrb20220110C12.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+		   </TD>
+         
+        </TR>
+ <TR>
+               <TD width="7" align=left height=37>&nbsp;</TD>
+               <TD align=left>&nbsp;<a href=node_13.htm class="blue" id=pageLink>第D1版：信息披露</a>
+			   <div style="float: right;"><a href=../../../images/2022-01/10/D1/zqrb20220110D1.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+			   </TD>
+        
+        </TR>
+<TR bgColor=#e6ebf2  >
+         <TD align=left  height=37>&nbsp;</TD>
+           <TD align=left>&nbsp;<a href=node_14.htm class="blue" id=pageLink>第D2版：信息披露</a>
+		   <div style="float: right;"><a href=../../../images/2022-01/10/D2/zqrb20220110D2.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+		   </TD>
+         
+        </TR>
+ <TR>
+               <TD width="7" align=left height=37>&nbsp;</TD>
+               <TD align=left>&nbsp;<a href=node_15.htm class="blue" id=pageLink>第D3版：信息披露</a>
+			   <div style="float: right;"><a href=../../../images/2022-01/10/D3/zqrb20220110D3.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+			   </TD>
+        
+        </TR>
+<TR bgColor=#e6ebf2  >
+         <TD align=left  height=37>&nbsp;</TD>
+           <TD align=left>&nbsp;<a href=node_16.htm class="blue" id=pageLink>第D4版：信息披露</a>
+		   <div style="float: right;"><a href=../../../images/2022-01/10/D4/zqrb20220110D4.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+		   </TD>
+         
+        </TR>
+ <TR>
+               <TD width="7" align=left height=37>&nbsp;</TD>
+               <TD align=left>&nbsp;<a href=node_1205.htm class="blue" id=pageLink>第D5版：信息披露</a>
+			   <div style="float: right;"><a href=../../../images/2022-01/10/D5/zqrb20220110D5.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+			   </TD>
+        
+        </TR>
+<TR bgColor=#e6ebf2  >
+         <TD align=left  height=37>&nbsp;</TD>
+           <TD align=left>&nbsp;<a href=node_1206.htm class="blue" id=pageLink>第D6版：信息披露</a>
+		   <div style="float: right;"><a href=../../../images/2022-01/10/D6/zqrb20220110D6.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+		   </TD>
+         
+        </TR>
+ <TR>
+               <TD width="7" align=left height=37>&nbsp;</TD>
+               <TD align=left>&nbsp;<a href=node_1207.htm class="blue" id=pageLink>第D7版：信息披露</a>
+			   <div style="float: right;"><a href=../../../images/2022-01/10/D7/zqrb20220110D7.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+			   </TD>
+        
+        </TR>
+<TR bgColor=#e6ebf2  >
+         <TD align=left  height=37>&nbsp;</TD>
+           <TD align=left>&nbsp;<a href=node_1208.htm class="blue" id=pageLink>第D8版：信息披露</a>
+		   <div style="float: right;"><a href=../../../images/2022-01/10/D8/zqrb20220110D8.pdf><img style="vertical-align: middle;padding-right:10px;" src="../../../tplimg/l3.png"  onmouseover="this.src='../../../tplimg/l2.png'" onmouseout="this.src='../../../tplimg/l3.png'" width="22" height="20"></a></div>
+		   </TD>
+         
+        </TR>
+</TBODY></TABLE>
+            </DIV>
+      <div class="neiye">
+        <div class="neiyee">
+          <h3>
+
+
+      </h3>
+        <h1>
+数字人民币APP上架掀体验潮 多家平台下载量日均增超10倍
+
+      </h1>
+          <h2>
+
+
+          </h2>
+		  <h4></h4>
+							<p id="contenthm">
+							<table width="315" border="0" cellspacing="0" cellpadding="0" align="left"><tr><td><TABLE><TBODY><TR><TD><IMG src="../../../images/2022-01/10/B1/B1_b.jpg"></TD></TR>
+    <TR><TD></TD></TR></TBODY></TABLE></td></tr></table>
+                                <!--enpcontent--><P>　　本报记者&nbsp;李&nbsp;冰</P><P>　　数字人民币（试点版）APP自1月4日上架后，掀起一波体验热潮。</P><P>　　截至1月9日，华为应用市场的数字人民币（试点版）APP下载量已从上线首日的“不足万次”猛增至“超580万次”。另有多家平台表示，数字人民币（试点版）APP上架后，日均新增推送数字人民币钱包用户数增超10倍。</P><P>　　美团提供的数据显示，截至1月7日，美团平台推送数字人民币钱包的用户数日均新增近20倍，数字人民币交易订单和交易金额日均增长约25%。京东方面提供的数据显示，数字人民币（试点版）APP上线后，推送数字人民币钱包的用户数日均增长超10倍。</P><P>　　多数用户</P><P>　　期待在全国推广</P><P>　　2022年1月4日，数字人民币（试点版）APP在苹果、安卓等各大应用商店开放下载，“10+1”试点地区的用户不再需要邀请码即可体验数字人民币，由此引发了一波用户体验热潮。以华为应用商店为例，在1月4日上线首日，用户下载量不足1万次；但截至1月9日21点44分，用户下载量已增至581万次。</P><P>　　《证券日报》记者在下载注册后发现，在新用户注册页面，数字人民币（试点版）应用提示，数字人民币面向深圳、苏州、雄安、成都、上海、海南、长沙、西安、青岛、大连以及冬奥会场景（北京、张家口）开展试点，用户需根据自己所在地判断是否符合注册条件。新用户注册仅通过输入手机号、设置用户名及支付密码，就可自行选择运营机构快速开通钱包，无需输入姓名、身份证号、银行卡号等个人信息。</P><P>　　目前，用户可开通工商银行、农业银行、中国银行、建设银行、交通银行、邮储银行、招商银行、网商银行（支付宝）、微众银行（微信支付）等9个运营机构的钱包，开通后可按需要升级为实名钱包。</P><P>　　记者还注意到，数字人民币（试点版）APP上线以来，在各大应用商店的软件下载评价中，多数用户在体验后表示“非常满意”，期待在全国推广。其中，在华为应用商店中，有用户评价称，“与此前版本相比，新版本体验感更好”。也有用户表示，“已等待很久，期待全国普及”。还有很多用户表示，希望自己所在的城市可以成为试点城市。</P><P>　　北京市的张先生谈及初次体验数字人民币（试点版）APP的感受时，对《证券日报》记者表示，自己开通了微众银行（微信支付）的钱包，可根据个人喜好设置钱包名称，觉得很有意思。“喜欢数字人民币APP界面的简洁，而且，上拉收钱、下滑付钱的体验感也非常好。”张先生称。</P><P>　　博通分析资深分析师王蓬博对《证券日报》记者分析称，“此次APP全面上线，为数字人民币的全面推广打下了基础，预计未来用户将呈现倍数增长。”</P><P>　　多家平台新增</P><P>　　“数字人民币”入口</P><P>　　数字人民币（试点版）APP在各大应用市场上架后，多家平台企业纷纷官宣与数字人民币的对接情况。</P><P>　　1月5日，美团宣布外卖场景开通数字人民币支付通道，这也是数字人民币在“衣食住行”民生场景上的再度拓展。</P><P>　　1月6日，腾讯方面宣布，经前期多阶段可控试点后，正式为用户提供数字人民币服务，用户可开通微众银行（微信支付）数字人民币钱包，在实名信息和手机号保持一致情况下，微信相关页面新增“数字人民币”入口。</P><P>　　1月7日，京东宣布已实现第三方商家接入数字人民币系统，成为全国首批支持“自营+第三方商家”使用数字人民币的企业，进一步丰富了京东生态的数字人民币试点应用场景。同一天，小米商城也对外表示，正式上线数字人民币支付服务。至此，由天星数科提供技术支持的数字人民币场景，已经完成小米集团新零售线上线下全场景布局，所有试点城市用户均可以在小米商城App使用数字人民币购买商品。</P><P>　　自数字人民币（试点版）APP上线以来，美团外卖是首个宣布全面打通数币支付的重要应用场景。京东方面则是将京东APP、京东金融APP、京喜APP、七鲜超市等线上、线下场景全部接入数字人民币受理功能，京东聚合支付的数万家线下商户已具备数字人民币的受理能力，京东收银硬件产品（自助收银机、柜台收银设备、智能POS机等）均支持数字人民币支付。</P><P>　　《证券日报》记者从美团官方拿到的数据显示，截至1月7日，美团平台新增推送数字人民币钱包用户数日均增长近20倍，数字人民币交易订单和交易金额日均增长约25%。</P><P>　　王蓬博对《证券日报》记者表示，数字人民币APP正式上线，标志着数字人民币探索已进入全量测试阶段。随着测试深度的逐渐增强，试点城市的数量也将不断增加。</P><P>　　易观高级分析师苏筱芮对《证券日报》记者表示，数字人民币（试点版）APP在各大应用市场上架，有助于试点范围继续扩容，所覆盖的用户以及开立钱包数量将迎来新一轮增长。随着冬奥会场景的试点落地，数字人民币有望得到更大规模的推广。</P><!--/enpcontent-->
+<INPUT type=checkbox value=0 name=titlecheckbox sourceid="<Source>SourcePh</Source>" style="display:none">
+								</p>
+                              
+        </div>
+      </div>
+      <div class="neiye1">
+        <div class="lf"><a class=preart href="content_800006.htm?div=-1"><p class='pre_01'>&nbsp;上一篇&nbsp;</p></a></div>
+        <div class="rt"><a class=preart href="content_800008.htm?div=-1"><p' class='pre_02'>&nbsp;下一篇&nbsp;&nbsp;</p></a></div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="floating_ck">
+	    <dl>
+			<dd class="mobile">
+				<div class="floating_left floating_ewm">
+					<div class="juzhong" style="text-align: center;">证券日报APP</div>
+					<i><img src="../../../tplimg/app-erweima.png" width="110" height="110" /></i>
+					<p class="qrcord_p01">扫一扫，即可下载</p>
+				</div>
+			</dd>
+		<!--<dd class="words">
+		    <div class="floating_left floating_ewm">
+			<div class="juzhong">客户端下载</div>
+			<i><img src="../../../tplimg/wx.jpg" width="110" height="110" /></i>
+			<p class="qrcord_p01">iPhone版</p>
+			<i><img src="../../../tplimg/wx2.jpg" width="110" height="110" /></i>
+			<p class="qrcord_p01">iPad版</p>
+			<i><img src="../../../tplimg/wx3.jpg" width="110" height="110" /></i>
+			<p class="qrcord_p012">Android版</p>
+		    </div>
+		</dd>-->
+		<dd class="quote">
+		    <div class="floating_left floating_ewm" style="padding-bottom:10px;">
+			<div class="juzhong">官方微信</div>
+			<i><img src="../../../tplimg/zqrbzs-wechat.png" width="110" height="110" /></i>
+			<p class="qrcord_p01">扫一扫 加关注</p>
+		</div>
+		</dd>
+		<dd class="qrcord">
+		    <div class="floating_left floating_ewm">
+			<div class="juzhong">官方微博</div>
+			<i><img src="../../../tplimg/sina-weibo.png" width="110" height="110" /></i>
+			<p class="qrcord_p01">扫一扫 加关注</p>
+			<!--<i><img src="../../../tplimg/wx2.jpg" width="110" height="110" /></i>
+			<p class="qrcord_p01">Iphone版</p>-->
+		    </div>
+		</dd>
+	    </dl>
+	</div>
+	
+	<!--thumb/score/comment start-->
+        <div class="clear"></div>
+        <!--<div class="df">
+            <div class="xhwz">
+                <p class="at">喜欢文章</p>
+                <div class="dmz" id="dmz"></div>
+                <div class="dzs" id="dzs"></div>
+            </div>
+            <div class="xbtj">
+                <div class="dfline"></div>
+                <div class="xxdf" id="xxdf">
+                </div>
+            </div>
+		<div class="ly">
+			<div style="float:left;">
+			<textarea name="tablemsg" id="comment" cols="" rows="" border="0" style="margin:10px;width:670px;height:60px;border:solid 1px #bfc2c5;resize:none;"" class="textarea"  placeholder="说点什么...最多输入500个字符" onKeyUp="Huitextarealength(this);"></textarea>
+			<p style="float:left;width:670px;height:16px;position:absolute;"><em class="textarea-length">0</em>/<am>500</am></p>
+				<!--<input type="text" value="留言" class="lyleft" id="lyl"style="margin-right:40px;width:680px;height:80px;margin-top: 10px;">-->
+			<!--</div>
+		    <div class="lyright" id="upcomment">
+			<img src="../../../tplimg/tj-01.png" onmouseover="this.src='../../../tplimg/tj-02.png'" onmouseout="this.src='../../../tplimg/tj-01.png'" style="margin:10px;float:right;" onclick="ajaxComment();">
+			</div>
+		</div>
+
+        </div>-->
+	<div id="df" class="df">
+            <div class="xhwz">
+                <p class="at">喜欢文章</p>
+                <div class="dmz" id="dmz">
+			<img src='../../../tplimg/zan1.png' onmouseover=\"changepng(this,'zan2');\" onmouseout=\"changepng(this,'zan1');\" onclick='ajaxThumb();'>
+		</div>
+                <div class="dzs" id="dzs">0</div>
+            </div>
+            <div class="xbtj">
+                <div class="dfline"></div>
+                <div class="xxdf" id="xxdf">
+			<p class='aat'>给文章打分</p><div class='star'><span onmouseover='rate(this,event)'><img src=../../../tplimg/star.png title='很差' style='width:30px;height=30px;margin-right:10px;' /><img src=../../../tplimg/star.png title='一般' style='width:30px;height=30px;margin-right:10px;' /><img src=../../../tplimg/star.png title='还行' style='width:30px;height=30px;margin-right:10px;' /><img src=../../../tplimg/star.png title='推荐' style='width:30px;height=30px;margin-right:10px;'/><img src=../../../tplimg/star.png title='力荐' style='width:30px;height=30px;margin-right:10px;'/></span><span class='pl' id='dxxx'></span></div><div class='tj'><div class='sztj'><span class='onedf'>本文得分 :</span><span class='onesz'>0</span></div><div class='cyrs'><span class='onedf'>参与人数 :</span><span class='onesz2'>0</span></div></div><div class='dfline2'></div>
+                </div>
+            </div>
+		<div class="ly">
+			<div style="float:left;">
+			<textarea name="tablemsg" id="comment" cols="" rows="" border="0" style="margin:10px;width:670px;height:60px;border:solid 1px #bfc2c5;resize:none;"" class="textarea"  placeholder="说点什么...最多输入500个字符" onKeyUp="Huitextarealength(this);"></textarea>
+			<p style="float:left;width:670px;height:16px;position:absolute;"><em class="textarea-length">0</em>/<am>500</am></p>
+				<!--<input type="text" value="留言" class="lyleft" id="lyl"style="margin-right:40px;width:680px;height:80px;margin-top: 10px;">-->
+			</div>
+		    <div class="lyright" id="upcomment">
+			<img src="../../../tplimg/tj-01.png" onmouseover="this.src='../../../tplimg/tj-02.png'" onmouseout="this.src='../../../tplimg/tj-01.png'" style="margin:10px;float:right;" onclick="ajaxComment();">
+			</div>
+		</div>
+
+        </div>
+<script type="text/javascript">
+var Huitextarealength = function (obj){
+    var html = $(obj).parent();
+    var tatal = html.find('am').html();
+    var sets = $(obj).val().length;
+
+    if(sets*1>tatal*1){
+        var str = '<div style="width: auto;position: absolute; left: 50%;color: red;">内容超出限制</div>';
+        $(obj).after(str);
+	$("#upcomment").html("<img src='../../../tplimg/tj-01.png' style='margin:10px;float:right;'>");
+        html.find('em').css({color:'red'});
+    }else {
+        $(obj).parent().find('div').remove();
+	$("#upcomment").html("<img src='../../../tplimg/tj-01.png' onmouseover=\"changepng(this,'tj-02');\" onmouseout=\"changepng(this,'tj-01');\" style='margin:10px;float:right;' onclick='ajaxComment();'>");
+        html.find('em').css({color:'black'});
+    }
+    //设置已输入数量
+    html.find('em').html(sets);
+}
+</script>
+	<!--thumb/score/comment end-->
+
+    
+	
+	
+</div>
+<!-- comment\score\thumb js start -->
+<script type="text/javascript">
+    function rate(obj,oEvent){
+// 图片地址设置
+        var imgSrc = "../../../tplimg/star.png"; //没有填色的星星
+        var imgSrc_2 = "../../../tplimg/bluestar.png"; //打分后有颜色的星星
+        if(obj.rateFlag) return;
+        var e = oEvent || window.event;
+        var target = e.target || e.srcElement;
+        var imgArray = obj.getElementsByTagName("img");
+        for(var i=0;i<imgArray.length;i++){
+            imgArray[i]._num = i;
+            imgArray[i].onclick=function(){
+                if(obj.rateFlag) return;
+                obj.rateFlag=true;
+                //alert(this._num+1); //this._num+1这个数字写入到数据库中,作为评分的依据
+		ajaxScore(this._num+1);
+            };
+        }
+        if(target.tagName=="IMG"){
+            var s=0;
+            for(var j=0;j<imgArray.length;j++){
+                if(j<=target._num){
+                    imgArray[j].src=imgSrc_2;
+                    s++;
+                } else {
+                    imgArray[j].src=imgSrc;
+                }
+            }
+            //alert(s);
+            if(s==0){
+                document.getElementById("dxxx").innerHTML="";
+            } else if(s==1){
+                document.getElementById("dxxx").innerHTML="很差";
+            } else if(s==2){
+                document.getElementById("dxxx").innerHTML="一般";
+            } else if(s==3){
+                document.getElementById("dxxx").innerHTML="还行";
+            } else if(s==4){
+                document.getElementById("dxxx").innerHTML="推荐";
+            } else if(j==5){
+                document.getElementById("dxxx").innerHTML="力荐";
+            }
+        } else {
+            for(var k=0;k<imgArray.length;k++){
+                imgArray[k].src=imgSrc;
+            }
+            document.getElementById("dxxx").innerHTML="";
+        }
+    }
+</script>
+<script type="text/javascript">
+    $( function(){
+                $("#lyl").focus(function() {
+                    if($("#lyl").val()=='留言'){
+                        $("#lyl").val('');
+                    }
+                });
+
+                $("#lyl").click(function() {
+                    if($("#lyl").val()=='留言'){
+                        $("#lyl").val('');
+                    }
+                });
+
+                $("#lyl").blur(function() {
+                    if($("#lyl").val()=='' || $("#lyl").val().length==0){
+                        $("#lyl").val('留言');
+                    }
+
+                });
+            }
+    );
+
+</script>
+<!-- comment\score\thumb js end -->
+<div class="foot">
+  <p style="font-size:16px; line-height:30px;">版权所有<font>证券日报网</font></p>
+  <p><img src="../../../tplimg/jh.png"> 京公网安备 11010202007567号<font>京ICP备17054264号</font></p>
+  <p>证券日报网所载文章、数据仅供参考，使用前务请仔细阅读法律申明，风险自负。</p>
+  <p>证券日报社电话：010-83251700<font>网站电话：010-83251800<font>网站传真：010-83251801<font>电子邮件：xmtzx@zqrb.net</font>
+</div>
+<script type="text/javascript">
+window.onload=function(){
+	var contenthtml=$(".neiyee").html();
+	//var str=contenthtml.match(/<!--enpcontent-->(.*?)<!--\/enpcontent-->/);
+	var val=contenthtml.toString().replace(/<p>\s+<\/p>/g,"");
+	$(".neiyee").html(val);
+}
+</script>
+<map name="Map" id="Map"> <area shape="rect" coords="502,4,606,35" href="http://www.zqrb.cn/" target="_blank" />
+<area shape="rect" coords="622,3,725,26" href="http://i.zqrb.cn" target="_blank" />
+</map>
+<div style="display:none;"><script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F63dcca6ee91813e5f435c35c310757f8' type='text/javascript'%3E%3C/script%3E"));
+</script></div>
+<div style="display:none;"> <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9d18b05458bf388fcb38b0778469e76d' type='text/javascript'%3E%3C/script%3E"));
+</script></div>
+<div style="display:none;"><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? " https://ssl." : " http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-16011594-1");
+pageTracker._trackPageview();
+} catch(err) {}</script></div>
+</div>
+<script type="text/javascript">
+//百度推广
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script type="text/javascript">
+//百度统计  上官
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9ad5291ccdbd67ec8d39a921b7b5a320";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+var shareData={
+	imgUrl:"http://m.epaper.zqrb.cn/tplimg/logo_300.png"
+};
+</script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<script src="../../../tplimg/weixinShareUtil-1.4.0-epaper.js"></script>
+<script>
+	initWeixin();
+</script>
+</body>
+</html>
+
+<!--mpproperty <founder-date>
+2022-01-10
+</founder-date>
+<founder-author>
+
+</founder-author>
+<founder-title>数字人民币APP上架掀体验潮 多家平台下载量日均增超10倍
+</founder-title>
+<founder-nodename></founder-nodename>
+<founder-keyword>
+
+</founder-keyword><founder-ChannelID>
+1
+</founder-ChannelID><founder-imp>0</founder-imp>
+<founder-subtitle></founder-subtitle>
+<founder-type>1</founder-type>
+<founder-description>　　本报记者 李 冰　　数字人民币（试点版）APP自1月4日上架后，掀起一波体验热潮。　　截至1月9日，华为应用市场的数字人民币（试点版）APP下载量已从上线首日的“不足万次”猛增至“超580万次”。...</founder-description>
+<founder-introtitle></founder-introtitle>
+<founder-pagepicurl>http://site1/zqrb/images/2022-01/10/B1/zqrb20220110B1_b.jpg</founder-pagepicurl>
+<founder-pagenum>B1</founder-pagenum>
+<founder-papername>证券日报</founder-papername>
+<founder-nodeid>5</founder-nodeid> /mpproperty-->
+
+

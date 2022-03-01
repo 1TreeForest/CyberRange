@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>21财经客户端</title>
+    <meta name="keywords" content="21,21cbh,21世纪,21世纪经济报道,21世纪经济,21世纪财经,21电台,冬吴,冬吴相对论,商业,财经,管理,评论,经济,股票,行情,市场">
+    <meta name="description" content="21财经客户端以中国商业报纸领导品牌《21世纪经济报道》为主要依托，融合TVS1经济科教频道、股市广播频率和《投资快报》的优质财经内容，实现平面、视频、音频的全媒体覆盖，打造全媒体移动资讯客户端。">
+    <!-- 强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <!-- 禁止百度转码 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="apple-touch-icon" href="http://app.21jingji.com/images/sfcapplogo_144.jpg" />
+
+    <link rel="stylesheet" href="https://static.21jingji.com/css/m/swiper.min.css">
+    <link rel="stylesheet" href="https://static.21jingji.com/css/m/animate.min.css">
+    <!-- <link rel="stylesheet" href="https://static.21jingji.com/css/m/app3g.min.css?v1" /> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        body,
+        html {
+            height: 100%
+        }
+
+        .absolute,
+        .swiper-next {
+            position: absolute
+        }
+
+        body {
+            position: relative;
+            background: #fff url("https://static.21jingji.com/images/m/3g/main_bg.png?v2") no-repeat center center;
+            background-size: 100% 100%;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-wrapper {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 640px;
+            overflow: visible;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center
+        }
+
+        .swiper-next {
+            left: 50%;
+            bottom: 20px;
+            margin-left: -20px;
+            width: 30px;
+            height: 20px;
+            background: url("https://static.21jingji.com/images/m/3g/next.png") center center no-repeat;
+            background-size: 25px 13px;
+            z-index: 11
+        }
+
+        .absolute img,
+        .slide,
+        .top-bar {
+            width: 100%
+        }
+
+        .swiper-button-disabled {
+            display: none
+        }
+
+        img {
+            display: block;
+            outline: 0;
+            border: none
+        }
+
+        .slide {
+            height: 100%
+        }
+
+        .top-bar {
+            top: 20px;
+            left: 0;
+            z-index: 999;
+        }
+
+        .top-bar .logo {
+            width: 80px;
+            float: left;
+            margin-left: 20px
+        }
+
+        .download-box {
+            float: right;
+            margin-right: 20px;
+            width: 100px;
+            text-align: right;
+        }
+
+        .download {
+            display: inline-block;
+            /* float: right; */
+            margin-left: 15px;
+            width: 86px;
+            height: 30px;
+            text-decoration: none;
+        }
+
+        .download span {
+            display: block;
+            width: 100%;
+            height: 100%;
+            font-size: 14px;
+            color: #36c;
+            line-height: 30px;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #36c;
+            background-color: #fff;
+            border-radius: 16px;
+        }
+
+        /* .download span:hover {
+            background-color: #f5f5f5;
+        } */
+
+        .slide .title {
+            width: 210px;
+            top: 80px;
+            left: 50%;
+            margin-left: -105px;
+            z-index: 2
+        }
+
+        .slide .img {
+            width: 700px;
+            top: auto;
+            bottom: -160px;
+            left: -280px;
+            right: auto;
+            z-index: 1
+        }
+
+        .slide .right {
+            left: auto;
+            right: -280px;
+        }
+
+        .slide .nav {
+            width: 20px;
+            bottom: -20px;
+            left: 20px
+        }
+
+        .slide .nav.right {
+            left: auto;
+            right: 20px
+        }
+
+        .slide .logo_b {
+            top: 100px;
+            left: 50%;
+            margin-left: -48px;
+            width: 96px
+        }
+
+        .slide .logo_t {
+            top: 270px;
+            left: 50%;
+            margin-left: -100px;
+            width: 200px
+        }
+
+        .slide .download_btn {
+            bottom: 90px;
+            left: 50%;
+            margin-left: -100px;
+            width: 200px;
+        }
+
+        .hidden-xs {
+            display: none;
+        }
+
+        .hidden-pc {
+            display: block;
+        }
+
+        @media(min-width: 640px) {
+            .hidden-xs {
+                display: inline-block;
+            }
+
+            .hidden-pc {
+                display: none;
+            }
+
+            .top-bar .logo {
+                width: 116px;
+            }
+
+            .download-box {
+                width: 300px;
+            }
+
+            .download {
+                width: 116px;
+                height: 44px;
+                vertical-align: top;
+            }
+
+            .download span {
+                font-size: 16px;
+                line-height: 44px;
+                border-radius: 23px;
+            }
+
+            .download:hover span {
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+                border-bottom: none;
+            }
+
+            .top-qrcode {
+                display: none;
+                width: 106px;
+                margin-top: -1px;
+                padding: 0 5px 5px 5px;
+                border: 1px solid #36c;
+                border-top: none;
+                border-radius: 0 0 4px 4px;
+            }
+
+            .download:hover .top-qrcode {
+                display: block;
+            }
+
+            .top-qrcode p {
+                font-size: 14px;
+                color: #333;
+                text-align: center;
+            }
+
+            .slide .title {
+                width: 300px;
+                top: 150px;
+                margin-left: -150px;
+            }
+
+            .slide .img {
+                width: 1000px;
+                top: auto;
+                bottom: -280px;
+                left: -300px;
+                right: auto;
+                z-index: 1
+            }
+
+            .slide .right {
+                left: auto;
+                right: -300px;
+            }
+
+            .slide .logo_b {
+                top: 150px;
+                left: 50%;
+                margin-left: -60px;
+                width: 120px
+            }
+
+            .slide .logo_t {
+                top: 330px;
+            }
+
+            .slide .download_btn {
+                bottom: 150px;
+            }
+
+            .slide .download_btn .qrcode {
+                font-size: 14px;
+                color: #333;
+                line-height: 24px;
+                text-decoration: none;
+            }
+        }
+
+        @media(min-width: 1024px) {
+            .top-bar {
+                left: 50%;
+                margin-left: -500px;
+                width: 1000px;
+            }
+
+            .slide .img {
+                width: 1200px;
+                top: auto;
+                bottom: -280px;
+                left: -320px;
+                right: auto;
+                z-index: 1
+            }
+
+            .slide .right {
+                left: auto;
+                right: -320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="absolute top-bar clearfix ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.4s" swiper-animate-delay=".2s">
+            <div class="logo"><img src="https://static.21jingji.com/images/m/3g/logo.png?v2" alt=""></div>
+            <div class="download-box">
+                <a class="download hidden-pc" href="http://a.app.qq.com/o/simple.jsp?pkgname=com.twentyfirstcbh.epaper&ios_scheme=epaper%3a%2f%2fcom.twentyfirstcbh.epaper%2fcontent&android_schema=epaper%3a%2f%2fcom.twentyfirstcbh.epaper%2fcontent"><span>下载APP</span></a>
+                <a class="download apple hidden-xs" href="https://itunes.apple.com/cn/app/id1001058738?mt=8"><span>iOS版下载</span>
+                    <div class="top-qrcode"><img src="https://static.21jingji.com/images/m/3g/qrcode.png" alt="">
+                        <p>扫码下载</p>
+                    </div>
+                </a>
+                <a class="download hidden-xs" href="http://app.21jingji.com/epaper/download/Epaper.apk"><span>安卓版下载</span>
+                    <div class="top-qrcode"><img src="https://static.21jingji.com/images/m/3g/qrcode.png" alt="">
+                        <p>扫码下载</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <div class="slide">
+                    <div class="absolute ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.4s" swiper-animate-delay=".1s"></div>
+
+                    <div class="absolute title ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.8s" swiper-animate-delay=".4s"><img src="https://static.21jingji.com/images/m/3g/t1.png?v2"></div>
+                    <div class="absolute img right ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.8s" swiper-animate-delay=".5s"><img src="https://static.21jingji.com/images/m/3g/pc_p1.png?v2"></div>
+                    <!-- <div class="absolute nav ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.8s" swiper-animate-delay=".5s"><img src="https://static.21jingji.com/images/m/3g/n1.png?v2"></div> -->
+                    <div class="swiper-next ani infinite" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.8s" swiper-animate-delay=".6s"></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="slide">
+                    <div class="absolute ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.4s" swiper-animate-delay=".1s"></div>
+
+                    <div class="absolute title ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.8s" swiper-animate-delay=".4s"><img src="https://static.21jingji.com/images/m/3g/t2.png?v2"></div>
+                    <div class="absolute img ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.8s" swiper-animate-delay=".5s"><img src="https://static.21jingji.com/images/m/3g/pc_p2.png?v2"></div>
+                    <!-- <div class="absolute nav right ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.8s" swiper-animate-delay=".5s"><img src="https://static.21jingji.com/images/m/3g/n2.png?v2"></div> -->
+                    <div class="swiper-next ani infinite" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.8s" swiper-animate-delay=".6s"></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="slide">
+                    <div class="absolute ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.4s" swiper-animate-delay=".1s"></div>
+
+                    <div class="absolute title ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.8s" swiper-animate-delay=".4s"><img src="https://static.21jingji.com/images/m/3g/t3.png?v2"></div>
+                    <div class="absolute img right ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.8s" swiper-animate-delay=".5s"><img src="https://static.21jingji.com/images/m/3g/pc_p3.png?v2"></div>
+                    <!-- <div class="absolute nav ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.8s" swiper-animate-delay=".5s"><img src="https://static.21jingji.com/images/m/3g/n3.png?v2"></div> -->
+                    <div class="swiper-next ani infinite" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.8s" swiper-animate-delay=".6s"></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="slide">
+                    <div class="absolute ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.4s" swiper-animate-delay=".1s"></div>
+
+                    <div class="absolute title ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.8s" swiper-animate-delay=".4s"><img src="https://static.21jingji.com/images/m/3g/t4.png?v2"></div>
+                    <div class="absolute img ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.8s" swiper-animate-delay=".5s"><img src="https://static.21jingji.com/images/m/3g/pc_p4.png?v2"></div>
+                    <!-- <div class="absolute nav right ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.8s" swiper-animate-delay=".5s"><img src="https://static.21jingji.com/images/m/3g/n4.png?v2"></div> -->
+                    <div class="swiper-next ani infinite" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.8s" swiper-animate-delay=".6s"></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="slide">
+                    <div class="absolute ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.4s" swiper-animate-delay=".1s"></div>
+
+                    <div class="absolute title ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.8s" swiper-animate-delay=".4s"><img src="https://static.21jingji.com/images/m/3g/t5.png?v2"></div>
+                    <div class="absolute img right ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.8s" swiper-animate-delay=".5s"><img src="https://static.21jingji.com/images/m/3g/pc_p5.png?v2"></div>
+                    <!-- <div class="absolute nav ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.8s" swiper-animate-delay=".5s"><img src="https://static.21jingji.com/images/m/3g/n5.png?v2"></div> -->
+                    <div class="swiper-next ani infinite" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.8s" swiper-animate-delay=".6s"></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class='slide'>
+                    <div class='absolute bg6 ani' swiper-animate-effect="fadeIn" swiper-animate-duration="0.4s" swiper-animate-delay=".1s"></div>
+                    <div class='absolute logo_b ani' swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.8s" swiper-animate-delay=".4s"><img src="https://static.21jingji.com/images/m/3g/logo_big.png?v2"></div>
+                    <div class='absolute logo_t ani' swiper-animate-effect="fadeInRight" swiper-animate-duration="0.8s" swiper-animate-delay=".5s"><img src="https://static.21jingji.com/images/m/3g/logo2.png?v2"></div>
+                    <div class='absolute download_btn ani' swiper-animate-effect="fadeInUp" swiper-animate-duration="0.8s" swiper-animate-delay=".5s">
+
+                        <div class="qrcode hidden-xs"><img src="https://static.21jingji.com/images/m/3g/qrcode.png" alt="">
+                            <p>扫码下载客户端<br />(安卓 iOS通用)</p>
+                        </div>
+
+                        <a class="hidden-pc" href="http://a.app.qq.com/o/simple.jsp?pkgname=com.twentyfirstcbh.epaper&ios_scheme=epaper%3a%2f%2fcom.twentyfirstcbh.epaper%2fcontent&android_schema=epaper%3a%2f%2fcom.twentyfirstcbh.epaper%2fcontent"><img src="https://static.21jingji.com/images/m/3g/download_full.png?v2"></a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <!-- Swiper JS -->
+    <script src="https://static.21jingji.com/js/m/swiper.min.js"></script>
+    <script src="https://static.21jingji.com/js/m/swiper.animate.min.js"></script>
+    <!-- <script src="https://static.21jingji.com/js/m/app3g.min.js"></script> -->
+
+    <script>
+
+
+        // H5页面切换
+        var mySwiper = new Swiper('.swiper-container', {
+            direction: 'vertical',
+            followFinger: false,
+            speed: 800,
+            mousewheel: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-next',
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true,
+            },
+            on: {
+                init: function () {
+                    swiperAnimateCache(this); //隐藏动画元素 
+                    this.emit('slideChangeTransitionEnd'); //在初始化时触发一次slideChangeTransitionEnd事件
+                },
+                slideChangeTransitionStart: function () {
+                    // console.log(this.activeIndex);
+                },
+                slideChangeTransitionEnd: function () {
+                    swiperAnimate(this); //每个slide切换结束时运行当前slide动画
+
+                    // this.slides.eq(this.activeIndex).find('.ani').addClass('fadeOut'); //动画只展示一次
+                }
+            }
+        });
+
+        // var appVersion = navigator.appVersion;
+        // var weixin = (/micromessenger/gi).test(appVersion); //微信
+        // var epaper = (/21epaper/gi).test(appVersion);
+        // var android = (/android/gi).test(appVersion); //android
+        // var iphone = (/iphone|ipod/gi).test(appVersion); //iphone|ipod
+        // var ipad = (/ipad/gi).test(appVersion); //ipad
+
+    </script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+        var jssdk_url = "https://m.21jingji.com/wechat/jssdk/?url=" + encodeURIComponent(window.location.href);
+        document.write("<script src='" + jssdk_url + "'><\/script>");
+        wx.ready(function () {
+            var share_title = "21财经客户端";
+            var share_desc = "掌握全球财经脉搏";
+            var share_link = "https://app.21jingji.com/";
+            var share_imgUrl = 'https://static.21jingji.com/images/app/sfcAppShareIcon_300.jpg';
+            wx.onMenuShareAppMessage({
+                title: share_title,
+                link: share_link,
+                desc: share_desc,
+                imgUrl: share_imgUrl,
+                success: function () {
+                    // shareLog('wechatSession');
+                }
+            });
+            wx.onMenuShareTimeline({
+                title: share_title,
+                link: share_link,
+                desc: share_desc,
+                imgUrl: share_imgUrl,
+                success: function () {
+                    // shareLog('wechatTimeline');
+                }
+            });
+            wx.onMenuShareQQ({
+                title: share_title,
+                link: share_link,
+                desc: share_desc,
+                imgUrl: share_imgUrl,
+                success: function () {
+                    // shareLog('QQ');
+                }
+            });
+            wx.onMenuShareWeibo({
+                title: share_title,
+                link: share_link,
+                desc: share_desc,
+                imgUrl: share_imgUrl,
+                success: function () {
+                    // shareLog('Weibo');
+                }
+            });
+        });
+        // 百度统计
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9db62e4a83d463a33a4a3dbaffd80ba4";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</body>
+
+</html>
