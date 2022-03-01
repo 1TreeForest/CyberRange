@@ -28,6 +28,23 @@ class SplashhtmlspiderSpider(scrapy.Spider):
         )
         self.cursor = self.conn.cursor()
         # 从数据库中读取需要爬取html的url
+
+        #  以下获取方法二选一
+        # item_list = self.get_marked_pages()
+        item_list = self.get_unmarked_pages()
+
+        self.item_dict = dict(item_list)  # 将查询结果转为字典，方便存储
+        for item in item_list:
+            self.start_urls.append(item[0])
+        print(self.start_urls)
+
+    def get_unmarked_pages(self):
+        sql = "select url, domain from `results` where isPMS is null limit 2000"  # 若要整体重爬，注释掉where子句
+        self.cursor.execute(sql)
+        item_list = self.cursor.fetchall()
+        return item_list
+
+    def get_marked_pages(self):
         sql = "select url, domain from `pms` where html = 0"  # 若要整体重爬，注释掉where子句
         self.cursor.execute(sql)
         item_list = self.cursor.fetchall()
@@ -36,16 +53,17 @@ class SplashhtmlspiderSpider(scrapy.Spider):
         self.cursor.execute(sql)
         item_list += self.cursor.fetchall()
         print("读取完成,共需爬取%d个网页" % len(item_list))
-        self.item_dict = dict(item_list)  # 将查询结果转为字典，方便存储
-        for item in item_list:
-            self.start_urls.append(item[0])
-        print(self.start_urls)
+        return item_list
 
     def start_requests(self):
-        for url in self.start_urls[:self.pms_count]:  # 处理pms
-            yield SplashRequest(url=url, callback=self.parse, args={'wait': '100'}, endpoint='render.html', meta={'site': url, 'flag': 'pms'})  # 最大时长、固定参数
-        for url in self.start_urls[self.pms_count:]:  # 处理notpms
-            yield SplashRequest(url=url, callback=self.parse, args={'wait': '100'}, endpoint='render.html', meta={'site': url, 'flag': 'notpms'})  # 最大时长、固定参数
+        if self.pms_count == 0:
+            for url in self.start_urls[:]:  # 处理unmarked
+                yield SplashRequest(url=url, callback=self.parse, args={'wait': '100'}, endpoint='render.html', meta={'site': url, 'flag': 'unmarked'})  # 最大时长、固定参数
+        else:
+            for url in self.start_urls[:self.pms_count]:  # 处理pms
+                yield SplashRequest(url=url, callback=self.parse, args={'wait': '100'}, endpoint='render.html', meta={'site': url, 'flag': 'pms'})  # 最大时长、固定参数
+            for url in self.start_urls[self.pms_count:]:  # 处理notpms
+                yield SplashRequest(url=url, callback=self.parse, args={'wait': '100'}, endpoint='render.html', meta={'site': url, 'flag': 'notpms'})  # 最大时长、固定参数
 
     def parse(self, response):
         self.count += 1
@@ -55,7 +73,18 @@ class SplashhtmlspiderSpider(scrapy.Spider):
         logging.info('已处理 {0} 个页面'.format(self.count))
 
     def save_as_text(self, response):
-        if response.meta.get('flag') == 'pms':
+        if response.meta.get('flag') == 'unmarked':
+            sql = 'update `pms` set html = 1 where url = "%s"' % response.meta.get('site')
+            self.cursor.execute(sql)
+            self.conn.commit()
+            with open('../html/unmarked/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'w',
+                      encoding="utf-8") as f:
+                try:
+                    f.write(response.body.decode(encoding='{0}'.format(response.encoding), errors='ignore'))
+                except Exception as e:
+                    print(e)
+                    sleep(3)
+        elif response.meta.get('flag') == 'pms':
             sql = 'update `pms` set html = 1 where url = "%s"' % response.meta.get('site')
             self.cursor.execute(sql)
             self.conn.commit()
