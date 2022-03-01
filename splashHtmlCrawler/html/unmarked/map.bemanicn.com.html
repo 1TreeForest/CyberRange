@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--.site-header-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="新全国音游地图">
+    <meta name="keywords" content="音游地图,全国音游地图,BEMANICN,街机,出勤,云打机,maimai,舞萌DX,理网,理科,Ric">
+    <meta name="author" content="© BEMANICN">
+    <meta name="theme-color" content="#212529">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="https://map.bemanicn.com/favicon.png">
+    <link rel="shortcut icon" sizes="196x196" href="https://map.bemanicn.com/favicon.png">
+    <link rel="apple-touch-icon" href="https://map.bemanicn.com/favicon.png">
+    <title>山东省 - 全国音游地图</title>
+    <!-- css page custom -->
+        <!-- css vendor -->
+    <link href="https://map.bemanicn.com/libs/dialog-polyfill/dialog-polyfill.css" rel="stylesheet">
+    <!-- css custom -->
+    <link href="https://map.bemanicn.com/css/app.css?575" rel="stylesheet">
+    <!-- font load -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="新全国音游地图">
+    <meta property="og:url" content="https://map.bemanicn.com">
+    <meta property="og:description" content="新全国音游地图">
+    <meta property="og:image" content="https://p.bemanicn.com/asset/img/icons/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@BEMANIChina">
+    <meta name="twitter:creator" content="@BEMANIChina">
+    <meta name="twitter:image" content="https://p.bemanicn.com/asset/img/icons/og.png">
+    <!-- analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162510921-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-162510921-1');
+            </script>
+    <meta name="google-site-verification" content="XgesfB1tTvxP-3wusT221M6Bp7bN7TOrNyRk6Q7N9Lc" />
+    <meta name="baidu-site-verification" content="t4IOREuoJk" />
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="A8i2ZtFkSKReq5b1VY4o0CnZpTxR2hnJB8IMIkxh">
+
+</head>
+<!-- body -->
+<body>
+<!-- navibar -->
+<header class="navibar" id="navi1">
+    <div class="nav-content">
+        <div class="nav-brand">
+            <a href="https://map.bemanicn.com">
+                <h1 class="text-4xl font-bold">全国音游地图</h1>
+            </a>
+            <p id="memes"></p>
+        </div>
+        <div id="sidebar-btn" class="nav-btn nes-btn showUntil-M" data-toggle="collapse">
+            <span class="fa fa-bars" aria-hidden="true"></span>
+        </div>
+    </div>
+</header>
+<!-- sidebar -->
+<div id="map-sidebar" class="sidebar sidebar-container is-rounded">
+    <div class="sidebar-logo">
+        <i class="snes-jp-logo brand-logo"></i>
+    </div>
+    <div class="side-nav-group">
+        <a href="https://map.bemanicn.com">
+            <p class="side-nav">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <span class="nav-title">网站首页</span>
+            </p>
+            <a href="https://map.bemanicn.com/recent_changes">
+                <p class="side-nav">
+                    <span class="fa fa-clock" aria-hidden="true"></span>
+                    <span class="nav-title">最近更改</span>
+                </p>
+            </a>
+            <a href="https://map.bemanicn.com/contributions">
+                <p class="side-nav">
+                    <span class="fa fa-trophy" aria-hidden="true"></span>
+                    <span class="nav-title">贡献榜</span>
+                </p>
+            </a>
+        </a>
+    </div>
+    <div class="side-nav-group">
+                    <div>
+                <a href="#" id="log-in-btn" data-target="#modalLogin"
+                   onclick="openModel(this);">
+                    <p class="side-nav">
+                        <span class="fa fa-sign-in" aria-hidden="true"></span>
+                        <span class="nav-title">登&nbsp&nbsp&nbsp&nbsp录</span>
+                    </p>
+                </a>
+            </div>
+                <div>
+            <div class="side-nav" data-target="#slide-other" onclick="openHidden(this);">
+                <span class="fa fa-caret-down" aria-hidden="true"></span>
+                <span class="nav-title">其&nbsp&nbsp&nbsp&nbsp他</span>
+            </div>
+            <div id="slide-other" style="display: none;">
+                <a href="https://map.bemanicn.com/group" target="_blank">
+                    <p class="side-nav sub">
+                        <span class="fas fa-sign-in-alt" aria-hidden="true"></span>
+                        <span class="nav-title">加群链接</span>
+                    </p>
+                </a>
+                <a href="https://wj.qq.com/s2/5773365/5a29" target="_blank">
+                    <p class="side-nav sub">
+                        <span class="far fa-envelope-open" aria-hidden="true"></span>
+                        <span>反馈问卷</span>
+                    </p>
+                </a>
+                <a href="https://github.com/littlecxm/arcademap-issue/issues" target="_blank">
+                    <p class="side-nav sub">
+                        <span class="fab fa-github-alt" aria-hidden="true"></span>
+                        <span class="nav-title">Issue</span>
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-nav-group">
+        <a class="href href-nounderline href-text-nomal display-block" href="https://map.bemanicn.com/shop/create">
+            <p class="side-nav">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                <span class="nav-title">添加游戏厅</span>
+            </p>
+        </a>
+    </div>
+
+    
+    <div class="side-nav-group">
+        <a class="href href-nounderline href-text-nomal display-block" href="https://map.bemanicn.com/partner">
+            <p class="side-nav">
+                <span class="fa fa-heart" style="color: #e03c8a;"></span>
+                <span class="nav-title">赞助</span>
+            </p>
+        </a>
+        <a class="href href-nounderline href-text-nomal display-block" href="https://map.bemanicn.com/about">
+            <p class="side-nav">
+                <span class="fa fa-info-circle"></span>
+                <span class="nav-title">关于</span>
+            </p>
+        </a>
+    </div>
+
+    <!-- <div class="side-nav-group-footer"> -->
+</div>
+
+<!-- log-in dialog -->
+<dialog class="nes-dialog is-rounded" id="modalLogin">
+    <div class="dialog-menu" style="margin-left: 15px">
+        <a href="https://map.bemanicn.com/oauth/redirect" class="nes-btn is-success" id="register-btn" data-target="#registry">
+            <span>使用BCN账户登录</span>
+        </a>
+    </div>
+    <div style="margin-top: 15px">
+        <p>未注册的账户会自动注册</p>
+    </div>
+</dialog>
+<!-- page-content -->
+    <!-- content -->
+    <div class="page-content">
+        <section class="showcase">
+            <ul class="nes-list is-disc">
+                <li>
+                    <a href="https://map.bemanicn.com/region">按地区查找</a>
+                    &gt; <span>山东省</span>
+            </ul>
+        </section>
+        <section class="showcase">
+            <section class="showcase">
+                <section class="nes-input">
+                    <button id="click-more-btn" type="button" class="nes-btn showcode" data-target="#more-section"
+                            onclick="openHidden(this);"><i class="fa fa-caret-down"></i></button>
+                    <span id="click-more">点击展开全部区域</span>
+                    <section id="more-section" class="showcode" style="display: none">
+                        <div class="row">
+                                                    <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/370100000000">
+                                        <div class="pixel-btn primary">
+                                            <p>济南市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/370100000000" class="nes-badge">
+                                        <span class="is-primary">济南市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/370200000000">
+                                        <div class="pixel-btn primary">
+                                            <p>青岛市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/370200000000" class="nes-badge">
+                                        <span class="is-primary">青岛市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/370300000000">
+                                        <div class="pixel-btn primary">
+                                            <p>淄博市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/370300000000" class="nes-badge">
+                                        <span class="is-primary">淄博市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/370400000000">
+                                        <div class="pixel-btn primary">
+                                            <p>枣庄市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/370400000000" class="nes-badge">
+                                        <span class="is-primary">枣庄市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/370500000000">
+                                        <div class="pixel-btn primary">
+                                            <p>东营市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/370500000000" class="nes-badge">
+                                        <span class="is-primary">东营市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/370600000000">
+                                        <div class="pixel-btn primary">
+                                            <p>烟台市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/370600000000" class="nes-badge">
+                                        <span class="is-primary">烟台市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/370700000000">
+                                        <div class="pixel-btn primary">
+                                            <p>潍坊市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/370700000000" class="nes-badge">
+                                        <span class="is-primary">潍坊市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/370800000000">
+                                        <div class="pixel-btn primary">
+                                            <p>济宁市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/370800000000" class="nes-badge">
+                                        <span class="is-primary">济宁市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/370900000000">
+                                        <div class="pixel-btn primary">
+                                            <p>泰安市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/370900000000" class="nes-badge">
+                                        <span class="is-primary">泰安市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/371000000000">
+                                        <div class="pixel-btn primary">
+                                            <p>威海市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/371000000000" class="nes-badge">
+                                        <span class="is-primary">威海市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/371100000000">
+                                        <div class="pixel-btn primary">
+                                            <p>日照市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/371100000000" class="nes-badge">
+                                        <span class="is-primary">日照市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/371200000000">
+                                        <div class="pixel-btn primary">
+                                            <p>莱芜市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/371200000000" class="nes-badge">
+                                        <span class="is-primary">莱芜市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/371300000000">
+                                        <div class="pixel-btn primary">
+                                            <p>临沂市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/371300000000" class="nes-badge">
+                                        <span class="is-primary">临沂市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/371400000000">
+                                        <div class="pixel-btn primary">
+                                            <p>德州市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/371400000000" class="nes-badge">
+                                        <span class="is-primary">德州市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/371500000000">
+                                        <div class="pixel-btn primary">
+                                            <p>聊城市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/371500000000" class="nes-badge">
+                                        <span class="is-primary">聊城市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/371600000000">
+                                        <div class="pixel-btn primary">
+                                            <p>滨州市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/371600000000" class="nes-badge">
+                                        <span class="is-primary">滨州市</span>
+                                    </a>
+                                </div>
+                                                        <!-- single shop-->
+                                <div class="hideUntil-M col-xs-6 col-sm-4 col-lg-3">
+                                    <a href="https://map.bemanicn.com/region/city/371700000000">
+                                        <div class="pixel-btn primary">
+                                            <p>菏泽市</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="showUntil-M" style="margin:0 auto;">
+                                    <a href="https://map.bemanicn.com/region/city/371700000000" class="nes-badge">
+                                        <span class="is-primary">菏泽市</span>
+                                    </a>
+                                </div>
+                                                    </div>
+                    </section>
+                </section>
+            </section>
+
+            <section class="showcase">
+                <section class="nes-container with-title">
+                    <h3 class="text-xl font-bold title">山东省的全部机厅</h3>
+                    <!-- single shop-->
+                                    <!-- PC -->
+                        <div class="nes-table-responsive hideUntil-L" style="word-break: keep-all;white-space:nowrap;">
+                            <table class="nes-table is-bordered is-centered">
+                                <thead>
+                                <tr>
+                                    <th>店铺名称</th>
+                                    <th>位置</th>
+                                    <th>地址</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/543">Play1家庭娱乐中心（大玩家济南高新万达广场店）</a></td>
+                                        <td>济南市历下区</td>
+                                        <td>工业南路与颖秀路交叉口（工业南路57号）济南高新万达广场3层3F-B1区域</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1347">燕窝</a></td>
+                                        <td>济南市历下区</td>
+                                        <td>趵北路龙泉商城二楼靠东</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/584">威龙传奇</a></td>
+                                        <td>济南市历下区</td>
+                                        <td>泉城路26号世茂国际广场西座3层</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/766">潮玩社济南奥体天街</a></td>
+                                        <td>济南市历下区</td>
+                                        <td>奥体西路3699号（奥体西路与礼耕路交叉口）龙湖济南奥体天街A馆（西塔）5楼（CGV影院旁）</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/539">汤姆熊欢乐世界环宇城店</a></td>
+                                        <td>济南市市中区</td>
+                                        <td>二环南路环宇城/中海广场3层</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/231">汤姆熊和谐广场店</a></td>
+                                        <td>济南市槐荫区</td>
+                                        <td>经十路22799号和谐广场3层322室（与纬十二路交叉），和谐广场南门侧3楼</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/531">汤姆熊缤纷五洲店</a></td>
+                                        <td>济南市天桥区</td>
+                                        <td>济泺路96-1号缤纷五洲F3层</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1005">小勇士家庭娱乐中心缤纷五洲店</a></td>
+                                        <td>济南市天桥区</td>
+                                        <td>济泺路96-1号缤纷五洲商业广场F1</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1542">哈皮熊欢乐世界（荣盛时代国际广场店）</a></td>
+                                        <td>济南市历城区</td>
+                                        <td>荣盛时代国际广场3楼南首</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1048">星际传奇（济南融创茂店）</a></td>
+                                        <td>济南市历城区</td>
+                                        <td>经十路与凤鸣路交叉口（凤鸣路4646号）融创文旅城融创茂L1层L1-B号商铺（星际传奇）</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1514">51区超级乐园（济南印象城店）</a></td>
+                                        <td>济南市历城区</td>
+                                        <td>花园路136号济南印象城5楼L519-L522</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/532">城市猎人</a></td>
+                                        <td>济南市章丘区</td>
+                                        <td>明水大街维华商业广场3楼西侧</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/238">青岛万象城世嘉JOYPOLIS主题乐园</a></td>
+                                        <td>青岛市市南区</td>
+                                        <td>山东路6号甲青岛万象城4-5层（5号门进入直行30米右手边直梯即到，4层5层均可进入，总服务台在5层入口，CGV影院旁）</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1149">51区家庭娱乐中心(悦荟店)</a></td>
+                                        <td>青岛市市北区</td>
+                                        <td>人民路269号悦荟广场5F</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/703">爱尚玩 Love play（2022年元旦重新营业）</a></td>
+                                        <td>青岛市市北区</td>
+                                        <td>哈尔滨路88号保利广场5层5001（暹罗街新加坡融合美食旁）</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/460">大玩家凯德mall店</a></td>
+                                        <td>青岛市市北区</td>
+                                        <td>黑龙江南路16-18号 凯德mall 内四楼东南角</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/233">万达大玩家CBD店</a></td>
+                                        <td>青岛市市北区</td>
+                                        <td>延吉路11号万达广场内3楼</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1308">乐游悦动电玩城青岛店</a></td>
+                                        <td>青岛市黄岛区</td>
+                                        <td>灵山卫街道滨海大道2888号吾悦广场2楼C区2018号</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1199">51区家庭娱乐中心黄岛店</a></td>
+                                        <td>青岛市黄岛区</td>
+                                        <td>漓江西路1669号东馆1F</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/241">风云再起青岛金狮广场店</a></td>
+                                        <td>青岛市崂山区</td>
+                                        <td>香港东路195号乙金狮广场L2-01B</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/236">万达大玩家李沧店</a></td>
+                                        <td>青岛市李沧区</td>
+                                        <td>巨峰路178号万达广场1-2层（也可能是负一，那个破商场 一楼和负一都能到地面……）</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/240">神采飞扬李村乐客城店</a></td>
+                                        <td>青岛市李沧区</td>
+                                        <td>夏庄路1号伟东·乐客城购物中心3层</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/808">大玩家青岛城阳万达店</a></td>
+                                        <td>青岛市城阳区</td>
+                                        <td>正阳中路117号青特万达广场2层</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1027">偶予电玩即墨宝龙广场店</a></td>
+                                        <td>青岛市即墨区</td>
+                                        <td>振华街88号</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/954">宾果无限即墨宝龙广场店</a></td>
+                                        <td>青岛市即墨区</td>
+                                        <td>振华街88号(近新兴路)</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/242">哈雷慧6号星球</a></td>
+                                        <td>淄博市张店区</td>
+                                        <td>银泰城3楼西区</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1324">哈雷慧6号星球电玩城</a></td>
+                                        <td>淄博市临淄区</td>
+                                        <td>大顺路63号时代广场F3</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1242">万达广场大玩家</a></td>
+                                        <td>枣庄市薛城区</td>
+                                        <td>永兴路126号万达广场3层</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/802">益家攻略东营王府井店</a></td>
+                                        <td>东营市东营区</td>
+                                        <td>黄河路与天目山路交汇处西北角东营王府井店4楼益家攻略</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/936">东营区东城万达广场大玩家</a></td>
+                                        <td>东营市东营区</td>
+                                        <td>万达广场（东城店）3F大玩家</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/968">快乐联盟悦动先锋</a></td>
+                                        <td>烟台市芝罘区</td>
+                                        <td>北马路150号大悦城4层（幸福蓝海国际影城附近）</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/246">大玩家芝罘区万达广场店</a></td>
+                                        <td>烟台市芝罘区</td>
+                                        <td>西关南街6号万达广场2F层</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1378">AREA-51区烟台福山永旺店</a></td>
+                                        <td>烟台市福山区</td>
+                                        <td>（开发区）长江路120号烟台金沙滩永旺梦乐城3楼302b</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/247">大玩家开发区万达广场店</a></td>
+                                        <td>烟台市福山区</td>
+                                        <td>衡山路17-1号万达广场3层</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1461">一起玩家年华</a></td>
+                                        <td>烟台市龙口市</td>
+                                        <td>龙口市保利广场</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/840">乖乖鼠儿童乐园</a></td>
+                                        <td>烟台市蓬莱市</td>
+                                        <td>北关路277号宝龙广场2F</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1640">偶予电玩古德锦店（4F）</a></td>
+                                        <td>潍坊市潍城区</td>
+                                        <td>北宫西街3678号</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1276">潮玩社潍坊坊子泰华城店</a></td>
+                                        <td>潍坊市坊子区</td>
+                                        <td>泰华城</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/529">青春飞扬动漫城</a></td>
+                                        <td>潍坊市奎文区</td>
+                                        <td>谷德广场负一楼,美食城南侧</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/811">威龙传奇潍坊奎文店</a></td>
+                                        <td>潍坊市奎文区</td>
+                                        <td>东风东街360号泰华新天地1F层</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1522">潮玩社青州泰华城店</a></td>
+                                        <td>潍坊市青州市</td>
+                                        <td>昭德路与范公亭东路交叉口东20米路南1f南门</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1528">潮玩社（潍坊青州店）</a></td>
+                                        <td>潍坊市青州市</td>
+                                        <td>青州泰华城1楼南门</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/812">娱人港湾（金查理小镇店）</a></td>
+                                        <td>潍坊市诸城市</td>
+                                        <td>旅游路与常山大道交叉口金查理小镇3-1</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/535">大玩家（WF02万达店）</a></td>
+                                        <td>潍坊市寿光市</td>
+                                        <td>圣城街道学院路1111号</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/537">大玩家JN11太白路万达店</a></td>
+                                        <td>济宁市任城区</td>
+                                        <td>太白东路55号万达广场2F层</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1381">济宁任城区万达大玩家游乐场</a></td>
+                                        <td>济宁市任城区</td>
+                                        <td>济宁汽车北站南侧万达广场三楼大玩家超乐场</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1444">嘻哈传奇电玩城</a></td>
+                                        <td>济宁市任城区</td>
+                                        <td>太白楼中路运河城负一层东区</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1250">星际传奇济宁贵和店</a></td>
+                                        <td>济宁市任城区</td>
+                                        <td>金宇路贵和购物广场3层</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1032">慢车道游乐场</a></td>
+                                        <td>泰安市泰山区</td>
+                                        <td>东岳大街和天烛峰路口东北角</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1601">大玩家(泰安万达店)</a></td>
+                                        <td>泰安市泰山区</td>
+                                        <td>泰山大街万达广场东门3层</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1120">VR梦幻光影</a></td>
+                                        <td>泰安市岱岳区</td>
+                                        <td>天平湖路与堰西街交叉口东南100米</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/616">一起玩家年华泰安爱琴海店</a></td>
+                                        <td>泰安市岱岳区</td>
+                                        <td>天平湖路与梅山西路交汇处</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1581">嘉禾天地威龙传奇</a></td>
+                                        <td>威海市环翠区</td>
+                                        <td>新威路17-5号</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/647">潮玩俱乐部CLUB</a></td>
+                                        <td>威海市环翠区</td>
+                                        <td>新威路17-5号 威高广场 四楼 电影院旁</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1011">大风车威海嘉禾天地店</a></td>
+                                        <td>威海市环翠区</td>
+                                        <td>新威路17-5号威高广场嘉禾天地负一楼</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1127">韩多多梦幻城威海店</a></td>
+                                        <td>威海市威海经济技术开发区</td>
+                                        <td>乐天世纪城南区1层</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1487">大风车游乐场长峰居然悦购店</a></td>
+                                        <td>威海市威海经济技术开发区</td>
+                                        <td>青岛中路78号居然悦购广场三楼</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/526">菲利斯星球乐园临沂首联旺角店</a></td>
+                                        <td>临沂市兰山区</td>
+                                        <td>通达路与陶然路交汇处东北角首联旺角购物广场一楼</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1333">大玩家（临沂上海路）</a></td>
+                                        <td>临沂市兰山区</td>
+                                        <td>上海路与孝河路交叉口万达广场二楼</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1334">乐游悦动临沂齐鲁吾悦店</a></td>
+                                        <td>临沂市兰山区</td>
+                                        <td>山东省临沂市兰山区汶河路与济南路交汇齐鲁吾悦广场4楼东侧观光电梯旁</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/590">临沂壹家庭游乐园泰盛广场店</a></td>
+                                        <td>临沂市兰山区</td>
+                                        <td>解放路88号泰盛广场三层(通达路与解放路交汇处东北角)</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1379">一本鲨-推理社</a></td>
+                                        <td>临沂市兰山区</td>
+                                        <td>开阳路8号(开阳路与八一路交叉口东100米)</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1505">环游嘉年华(解放路)</a></td>
+                                        <td>临沂市兰山区</td>
+                                        <td>八腊庙街101号北京秀坊女人街A109号环游嘉年华</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/541">酷动乐园</a></td>
+                                        <td>德州市德城区</td>
+                                        <td>德州市德城区东风东路1899号澳德乐时代广场F3</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1174">聚汇玩超乐场</a></td>
+                                        <td>德州市德城区</td>
+                                        <td>德州市德城区大学西路1566号银座商城F3</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1278">淘气狗乐园</a></td>
+                                        <td>德州市德城区</td>
+                                        <td>东风东路1899号</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1279">大玩家超乐场（山东德州万达店）</a></td>
+                                        <td>德州市德城区</td>
+                                        <td>湖滨南大道669号万达广场3F层</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1625">大玩家（滨州万达店）</a></td>
+                                        <td>滨州市滨城区</td>
+                                        <td>黄河十二路890号</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/1090">迪卡丘嘉年华(佳和店)</a></td>
+                                        <td>菏泽市牡丹区</td>
+                                        <td>中华路与牡丹路交汇处西南角佳和广场二楼</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td><a href="https://map.bemanicn.com/shop/874">威龙嘉年华</a></td>
+                                        <td>菏泽市牡丹区</td>
+                                        <td>牡丹街道人民北路以东长城路以北鲁商·凤凰城</td>
+                                    </tr>
+                                                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Mobile -->
+                        <div class="showUntil-L row">
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/543">
+                                                <p><b>Play1家庭娱乐中心（大玩家济南高新万达广场店）</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济南市历下区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 工业南路与颖秀路交叉口（工业南路57号）济南高新万达广场3层3F-B1区域</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1347">
+                                                <p><b>燕窝</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济南市历下区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 趵北路龙泉商城二楼靠东</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/584">
+                                                <p><b>威龙传奇</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济南市历下区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 泉城路26号世茂国际广场西座3层</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/766">
+                                                <p><b>潮玩社济南奥体天街</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济南市历下区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 奥体西路3699号（奥体西路与礼耕路交叉口）龙湖济南奥体天街A馆（西塔）5楼（CGV影院旁）</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/539">
+                                                <p><b>汤姆熊欢乐世界环宇城店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济南市市中区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 二环南路环宇城/中海广场3层</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/231">
+                                                <p><b>汤姆熊和谐广场店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济南市槐荫区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 经十路22799号和谐广场3层322室（与纬十二路交叉），和谐广场南门侧3楼</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/531">
+                                                <p><b>汤姆熊缤纷五洲店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济南市天桥区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 济泺路96-1号缤纷五洲F3层</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1005">
+                                                <p><b>小勇士家庭娱乐中心缤纷五洲店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济南市天桥区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 济泺路96-1号缤纷五洲商业广场F1</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1542">
+                                                <p><b>哈皮熊欢乐世界（荣盛时代国际广场店）</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济南市历城区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 荣盛时代国际广场3楼南首</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1048">
+                                                <p><b>星际传奇（济南融创茂店）</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济南市历城区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 经十路与凤鸣路交叉口（凤鸣路4646号）融创文旅城融创茂L1层L1-B号商铺（星际传奇）</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1514">
+                                                <p><b>51区超级乐园（济南印象城店）</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济南市历城区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 花园路136号济南印象城5楼L519-L522</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/532">
+                                                <p><b>城市猎人</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济南市章丘区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 明水大街维华商业广场3楼西侧</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/238">
+                                                <p><b>青岛万象城世嘉JOYPOLIS主题乐园</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 青岛市市南区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 山东路6号甲青岛万象城4-5层（5号门进入直行30米右手边直梯即到，4层5层均可进入，总服务台在5层入口，CGV影院旁）</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1149">
+                                                <p><b>51区家庭娱乐中心(悦荟店)</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 青岛市市北区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 人民路269号悦荟广场5F</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/703">
+                                                <p><b>爱尚玩 Love play（2022年元旦重新营业）</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 青岛市市北区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 哈尔滨路88号保利广场5层5001（暹罗街新加坡融合美食旁）</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/460">
+                                                <p><b>大玩家凯德mall店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 青岛市市北区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 黑龙江南路16-18号 凯德mall 内四楼东南角</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/233">
+                                                <p><b>万达大玩家CBD店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 青岛市市北区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 延吉路11号万达广场内3楼</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1308">
+                                                <p><b>乐游悦动电玩城青岛店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 青岛市黄岛区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 灵山卫街道滨海大道2888号吾悦广场2楼C区2018号</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1199">
+                                                <p><b>51区家庭娱乐中心黄岛店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 青岛市黄岛区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 漓江西路1669号东馆1F</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/241">
+                                                <p><b>风云再起青岛金狮广场店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 青岛市崂山区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 香港东路195号乙金狮广场L2-01B</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/236">
+                                                <p><b>万达大玩家李沧店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 青岛市李沧区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 巨峰路178号万达广场1-2层（也可能是负一，那个破商场 一楼和负一都能到地面……）</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/240">
+                                                <p><b>神采飞扬李村乐客城店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 青岛市李沧区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 夏庄路1号伟东·乐客城购物中心3层</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/808">
+                                                <p><b>大玩家青岛城阳万达店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 青岛市城阳区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 正阳中路117号青特万达广场2层</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1027">
+                                                <p><b>偶予电玩即墨宝龙广场店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 青岛市即墨区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 振华街88号</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/954">
+                                                <p><b>宾果无限即墨宝龙广场店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 青岛市即墨区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 振华街88号(近新兴路)</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/242">
+                                                <p><b>哈雷慧6号星球</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 淄博市张店区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 银泰城3楼西区</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1324">
+                                                <p><b>哈雷慧6号星球电玩城</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 淄博市临淄区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 大顺路63号时代广场F3</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1242">
+                                                <p><b>万达广场大玩家</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 枣庄市薛城区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 永兴路126号万达广场3层</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/802">
+                                                <p><b>益家攻略东营王府井店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 东营市东营区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 黄河路与天目山路交汇处西北角东营王府井店4楼益家攻略</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/936">
+                                                <p><b>东营区东城万达广场大玩家</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 东营市东营区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 万达广场（东城店）3F大玩家</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/968">
+                                                <p><b>快乐联盟悦动先锋</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 烟台市芝罘区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 北马路150号大悦城4层（幸福蓝海国际影城附近）</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/246">
+                                                <p><b>大玩家芝罘区万达广场店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 烟台市芝罘区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 西关南街6号万达广场2F层</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1378">
+                                                <p><b>AREA-51区烟台福山永旺店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 烟台市福山区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> （开发区）长江路120号烟台金沙滩永旺梦乐城3楼302b</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/247">
+                                                <p><b>大玩家开发区万达广场店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 烟台市福山区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 衡山路17-1号万达广场3层</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1461">
+                                                <p><b>一起玩家年华</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 烟台市龙口市
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 龙口市保利广场</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/840">
+                                                <p><b>乖乖鼠儿童乐园</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 烟台市蓬莱市
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 北关路277号宝龙广场2F</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1640">
+                                                <p><b>偶予电玩古德锦店（4F）</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 潍坊市潍城区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 北宫西街3678号</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1276">
+                                                <p><b>潮玩社潍坊坊子泰华城店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 潍坊市坊子区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 泰华城</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/529">
+                                                <p><b>青春飞扬动漫城</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 潍坊市奎文区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 谷德广场负一楼,美食城南侧</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/811">
+                                                <p><b>威龙传奇潍坊奎文店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 潍坊市奎文区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 东风东街360号泰华新天地1F层</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1522">
+                                                <p><b>潮玩社青州泰华城店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 潍坊市青州市
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 昭德路与范公亭东路交叉口东20米路南1f南门</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1528">
+                                                <p><b>潮玩社（潍坊青州店）</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 潍坊市青州市
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 青州泰华城1楼南门</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/812">
+                                                <p><b>娱人港湾（金查理小镇店）</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 潍坊市诸城市
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 旅游路与常山大道交叉口金查理小镇3-1</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/535">
+                                                <p><b>大玩家（WF02万达店）</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 潍坊市寿光市
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 圣城街道学院路1111号</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/537">
+                                                <p><b>大玩家JN11太白路万达店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济宁市任城区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 太白东路55号万达广场2F层</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1381">
+                                                <p><b>济宁任城区万达大玩家游乐场</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济宁市任城区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 济宁汽车北站南侧万达广场三楼大玩家超乐场</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1444">
+                                                <p><b>嘻哈传奇电玩城</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济宁市任城区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 太白楼中路运河城负一层东区</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1250">
+                                                <p><b>星际传奇济宁贵和店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 济宁市任城区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 金宇路贵和购物广场3层</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1032">
+                                                <p><b>慢车道游乐场</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 泰安市泰山区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 东岳大街和天烛峰路口东北角</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1601">
+                                                <p><b>大玩家(泰安万达店)</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 泰安市泰山区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 泰山大街万达广场东门3层</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1120">
+                                                <p><b>VR梦幻光影</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 泰安市岱岳区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 天平湖路与堰西街交叉口东南100米</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/616">
+                                                <p><b>一起玩家年华泰安爱琴海店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 泰安市岱岳区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 天平湖路与梅山西路交汇处</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1581">
+                                                <p><b>嘉禾天地威龙传奇</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 威海市环翠区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 新威路17-5号</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/647">
+                                                <p><b>潮玩俱乐部CLUB</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 威海市环翠区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 新威路17-5号 威高广场 四楼 电影院旁</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1011">
+                                                <p><b>大风车威海嘉禾天地店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 威海市环翠区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 新威路17-5号威高广场嘉禾天地负一楼</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1127">
+                                                <p><b>韩多多梦幻城威海店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 威海市威海经济技术开发区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 乐天世纪城南区1层</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1487">
+                                                <p><b>大风车游乐场长峰居然悦购店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 威海市威海经济技术开发区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 青岛中路78号居然悦购广场三楼</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/526">
+                                                <p><b>菲利斯星球乐园临沂首联旺角店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 临沂市兰山区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 通达路与陶然路交汇处东北角首联旺角购物广场一楼</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1333">
+                                                <p><b>大玩家（临沂上海路）</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 临沂市兰山区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 上海路与孝河路交叉口万达广场二楼</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1334">
+                                                <p><b>乐游悦动临沂齐鲁吾悦店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 临沂市兰山区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 山东省临沂市兰山区汶河路与济南路交汇齐鲁吾悦广场4楼东侧观光电梯旁</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/590">
+                                                <p><b>临沂壹家庭游乐园泰盛广场店</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 临沂市兰山区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 解放路88号泰盛广场三层(通达路与解放路交汇处东北角)</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1379">
+                                                <p><b>一本鲨-推理社</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 临沂市兰山区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 开阳路8号(开阳路与八一路交叉口东100米)</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1505">
+                                                <p><b>环游嘉年华(解放路)</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 临沂市兰山区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 八腊庙街101号北京秀坊女人街A109号环游嘉年华</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/541">
+                                                <p><b>酷动乐园</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 德州市德城区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 德州市德城区东风东路1899号澳德乐时代广场F3</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1174">
+                                                <p><b>聚汇玩超乐场</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 德州市德城区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 德州市德城区大学西路1566号银座商城F3</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1278">
+                                                <p><b>淘气狗乐园</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 德州市德城区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 东风东路1899号</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1279">
+                                                <p><b>大玩家超乐场（山东德州万达店）</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 德州市德城区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 湖滨南大道669号万达广场3F层</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1625">
+                                                <p><b>大玩家（滨州万达店）</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 滨州市滨城区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 黄河十二路890号</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/1090">
+                                                <p><b>迪卡丘嘉年华(佳和店)</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 菏泽市牡丹区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 中华路与牡丹路交汇处西南角佳和广场二楼</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="shop-button-border">
+                                        <div class="shop-button vari">
+                                            <a href="https://map.bemanicn.com/shop/874">
+                                                <p><b>威龙嘉年华</b></p>
+                                                <p><i class="fa fa-map-marker"
+                                                      aria-hidden="true"></i> 菏泽市牡丹区
+                                                </p>
+                                                <p style="font-size: 0.8rem"><i
+                                                        class="fa fa-home"></i> 牡丹街道人民北路以东长城路以北鲁商·凤凰城</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                                    </div>
+                                    </section>
+            </section>
+
+        </section>
+    </div>
+<!-- footer -->
+<!-- footer blade -->
+<div id="footer" style="margin-top: 30px"></div>
+<span style="display: none">
+    <script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1278727545&web_id=1278727545"></script>
+</span>
+<!-- script -->
+<!-- js vendor -->
+
+
+
+
+<!-- js custom -->
+<script src="https://map.bemanicn.com/js/app.js"></script>
+</body>
+</html>

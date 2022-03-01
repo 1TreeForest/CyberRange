@@ -1,0 +1,226 @@
+
+
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>阿里云Aliplayer播放器</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="h5 video播放器，Aliplayer播放器，阿里云播放器，支持hls,m3u8播放，点播直播播放器" />
+  <link rel="shortcut icon" href="/aliplayer/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="aliplayer" href="http://localhost:4000/aliplayer/feed.xml">
+  <link rel="stylesheet" href="https://player.alicdn.com/resource/base/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://player.alicdn.com/resource/base/css/bootstrap-responsive.min.css"/>
+  <link rel='stylesheet' href='https://player.alicdn.com/resource/base/css/bootstrap-admin-theme.css'/>
+ <!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" /> -->
+  <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.9.19/skins/default/aliplayer-min.css" />
+  <link rel="stylesheet" href="/aliplayer/css/prismplayer.css">
+  <link rel="stylesheet" href="/aliplayer/css/syntax.css">
+  <script src="https://player.alicdn.com/resource/base/lib/jquery-1.8.3.min.js"></script>
+  <script src="https://player.alicdn.com/resource/base/lib/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.9.19/aliplayer-min.js"></script>
+  <script type="text/template" id="endPreviewTemplate">
+    <div class="vip_limit_content">
+      <div class="vip_limit_wrap">
+        <p class="title">Purchase Full Version</p>
+        <div class="vip_limit_button_box">
+          <a class="vip_limit_btn">Become VIP</a>
+        </div>
+        <div class="vip_limit_close"><span class="vip_limit_close_btn">x</span></div>
+      </div>
+    </div>
+  </script>
+  <!--[if lte IE 8]>
+  <script src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://unpkg.com/es5-shim@4.5.9/es5-shim.min.js"></script>
+  <script src="https://unpkg.com/es5-shim@4.5.9/es5-sham.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+  <div class="prism-container">
+
+    <div class="nav-main">
+  <div class="wrap">
+    <a class="nav-home logo-cell y-left" href="http://player.alicdn.com/aliplayer/index.html" target="_blank" style="margin-left: 20px;">
+         <!--  <img style="z-index: 2;" src="http://gtms02.alicdn.com/tps/i2/TB1riKkHpXXXXXYXVXXvgomOXXX-156-162.png"> -->
+          <span>Aliplayer</span>
+        </a>
+    <div class="nav-lists">
+      <ul class="nav-site nav-site-internal nav-menus" style="float: left;">
+        <li><a href="/aliplayer/index.html">
+          首页
+        </a></li>
+       <!--  <li><a href="/aliplayer/tutorial/tutorial.html">快速入门</a></li> -->
+       <!--  <li><a href="/aliplayer/demo/demo.html">功能展示</a></li> -->
+        <li><a href="https://help.aliyun.com/document_detail/125570.html" target="_blank">
+          帮助文档
+        </a></li>
+        <li><a href="/aliplayer/setting/setting.html"  class="active">
+          在线配置
+        </a></li>
+        <li><a href="/aliplayer/presentation/index.html">
+          功能展示
+        </a></li>
+        <li><a href="http://player.alicdn.com/detection.html" target="_blank">
+          诊断工具
+        </a></li>
+        <li><a href="http://player.alicdn.com/olympic/index.html" target="_blank">
+          奥运演示
+        </a></li>
+       <!--  <li class="nav-site-search">
+          <input id="algolia-doc-search" type="text" placeholder="Search docs..." />
+        </li> -->
+      </ul>
+      <div class="nav-site-mb-menu">
+        <div class="nav-site-mb-menu-icon">
+          <div class="split-wrap">
+            <div class="split"></div>
+            <div class="split"></div>
+            <div class="split"></div>
+          </div>
+        </div>
+        <ul class="nav-site nav-site-external additional-menu">
+          <!-- <li><a href="https://github.com/alilmq/aliplayer" target="_blank">GitHub</a></li>
+          <li>
+            <iframe src="https://ghbtns.com/github-btn.html?user=alilmq&repo=aliplayer&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px" style="margin-top: 15px;"></iframe>
+          </li> -->
+
+          <li style="" class="language-current">
+            <a href="javascript:;">
+              <img src="/aliplayer/img/international.png" width="20" />
+              中文
+              <img src="/aliplayer/img/arrow-down.png" width="20" />
+            </a>
+            <ul class="language-select">
+              <li><a href="javascript:;" onclick="selectLang('zh-cn')" data-lang="zh-cn">中文</a></li>
+              <li><a href="javascript:;" onclick="selectLang('en-us')" data-lang="en-us">English</a></li>
+            </ul>
+          </li>
+          <li><a href="https://help.aliyun.com/document_detail/94429.html" target="_blank">2.9.19</a></li>
+  <!--         <li><a href="/aliplayer/index.html" style="padding: 0">中文</a></li>
+          <li><a href="/aliplayer/en/index.html" style="padding: 0">English</a></li>
+   -->
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  if (navigator.userAgent.toLowerCase().indexOf('android') > -1 && document.querySelector('.is-home')) {
+    document.querySelector('.nav-lists').classList.add('android')
+  }
+  document.querySelector('.language-current > a').addEventListener('click', function() {
+    document.querySelector('.language-current').classList.toggle('active')
+    if (navigator.userAgent.toLowerCase().indexOf('android') > -1 && document.querySelector('.is-home')) {
+      document.querySelector('.nav-lists').classList.toggle('active')
+    }
+  })
+  function goCorrectPage () {
+    if (!/aliplayer/.test(location.href)) {
+      return
+    }
+    var lang = localStorage.getItem('lang')
+    if (!lang) {
+      lang = (navigator.language || navigator.browserLanguage).toLowerCase()
+      lang = lang && lang.indexOf('zh') > -1 ? 'zh-cn' : 'en-us';
+    }
+    var isEnglish = location.pathname.indexOf('/en/') > -1
+    if (isEnglish && localStorage.getItem('lang') === 'zh-cn') {
+      location.href = location.href.replace('/en', '')
+    }
+    if (!isEnglish && lang === 'en-us') {
+      location.href = location.href.replace('aliplayer', 'aliplayer/en')
+    }
+    if (isEnglish) {
+      document.querySelector('a[data-lang=en-us]').classList.add('active-lang')
+    } else {
+      document.querySelector('a[data-lang=zh-cn]').classList.add('active-lang')
+    }
+  }
+  goCorrectPage()
+
+  function selectLang (l) {
+    if (localStorage.getItem('lang') === 'l') {
+      return 
+    }
+    localStorage.setItem('lang', l)
+    goCorrectPage()
+  }
+
+  document.querySelector('.split-wrap').addEventListener('click', function() {
+    document.querySelector('.nav-lists').classList.toggle('active')
+    if (navigator.userAgent.toLowerCase().indexOf('android') > -1 && document.querySelector('.is-home')) {
+      document.querySelector('.language-current').classList.toggle('active')
+    }
+  })
+
+</script>
+
+    <link rel="stylesheet" type="text/css" href="/aliplayer/online-setting/dist/css/style.css">
+<div id="settingPage" class="wrap tab  demo-setting-content">
+  <div id="online-setting"></div>
+ </div>
+
+<script src="/aliplayer/online-setting/dist/js/onlinesetting.js"></script>
+
+ 
+
+
+    <style type="text/css">
+  @media (max-width: 768px) {
+    .prism-container {
+      overflow-x: hidden !important;
+      overflow-y: auto !important;      
+    }
+  }
+</style>
+<script type="text/javascript">
+  var u = navigator.userAgent;
+  if ((u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) && /micromessenger/.test(u.toLowerCase())) {
+    var clientHeight = window.innerHeight || document.body.clientHeight;
+    $('.prism-container').css('height', clientHeight + 'px')
+  }
+</script>
+<footer class="nav-footer">
+  <section class="sitemap">
+    <div>
+      <h5><a href="https://help.aliyun.com/document_detail/62941.html" target="_blank">帮助文档</a></h5>
+
+      <a href="https://help.aliyun.com/document_detail/125570.html" target="_blank">快速入门</a>
+
+      <a href="https://help.aliyun.com/document_detail/94429.html" target="_blank">发布历史</a>
+
+      <a href="/aliplayer/setting/setting.html">在线配置</a>
+    </div>
+    <div>
+
+      <h5><a href="https://aliyun.com" target="_blank">阿里云</a></h5>
+
+      <a href="https://www.aliyun.com/product/live" target="_blank">视频直播</a>
+
+      <a href="https://www.aliyun.com/product/vod" target="_blank">视频点播</a>
+
+      <a href="https://www.aliyun.com/product/mts" target="_blank">媒体转码</a>
+    </div>
+  </section>
+  <section class="copyright">Copyright © 2022 Aliyun Inc.</section>
+</footer>
+
+  </div>
+
+  <div id="fb-root"></div>
+  <script src="/aliplayer/js/log.js"></script>
+  <script>
+
+    $('table').addClass('table table-bordered table-striped')
+    reportLog();
+
+  </script>
+<span style='display:none;'>
+  <script src="https://s13.cnzz.com/z_stat.php?id=1264610453&web_id=1264610453" language="JavaScript"></script>
+</span>
+</body>
+</html>

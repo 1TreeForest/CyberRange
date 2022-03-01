@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script type="text/javascript">
+
+        window.lang = {
+            'locale': "en",
+            'locale_date_string': "dddd MMMM DD",
+            'locale_time_format': "h:mm A",
+            'now_playing': "NOW PLAYING",
+            'coming_soon': "COMING SOON",
+            'coming_soon_to': "Coming Soon to",
+            'more': "MORE",
+            'book': "Reserve",
+            'trailer': "TRAILER",
+            'directed_by': "Directed by",
+            'starring': "Starring",
+            'language': "Language",
+            'menu': "MENU",
+            'find_us': "FIND US",
+            'welcome_to': "Welcome to",
+            'closest_cinema': "Your closest cinema is",
+            'select_location': "Please select your location.",
+            'continue': "CONTINUE",
+            'cinema_selector_text': "If this isn’t the location you want, no drama, please select from the below.",
+            'see_all': "SEE ALL",
+            'at': "at",
+            'undated': "Undated",
+            'no_release_date': "No Release Date",
+            'minutes': "mins",
+            'rated': "Rated",
+            'tbc': "TBC",
+            'read_more': "Read more...",
+            'tweet': "Tweet",
+            'share': "Share",
+            'times_and_tickets': "Times &amp; Tickets",
+            'movie_times_and_tickets': "movie times &amp; tickets",
+            'by_day': "BY DAY",
+            'by_movie': "BY TITLE",
+            'newest_first': "Newest first",
+            'order_alphabetically': "A-Z",
+            'order_by_session': "By showtimes",
+            'print': "PRINT",
+            'movie_times': "Movie Times",
+            'advance_tickets': "ADVANCE TICKETS",
+            '404_communicate': "<h1>404 - Page not found.</h1><p>Looks like the page you’re looking for is unavailable.</p><p>Please head back to our <a href="/">homepage</a>.</p>",
+            'today': "Today",
+            'no_sessions': "No Session Times Available",
+            'no_movies_today': "No movies left today, try tomorrow.",
+            'sessions_key': "SESSIONS KEY. ",
+            'timezone': "America/New_York",
+        }
+
+
+    </script>
+
+    <title>NextAct Cinema - movie times &amp; tickets</title>
+
+            <meta name="description" content="A Dine-In movie theater like no other. Relax and eat while you get immersed in the action of your movie!">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.standalone.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- add custom font files -->
+        <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Graduate|Open+Sans' rel='stylesheet' type='text/css'>
+
+    <!-- add styles here -->
+    <!-- add suffix to fix bug with multi sites.  The problem was multi sites have different styles, and browser uses incorrect cache styles when user clicks the browser's back' button-->
+    <link rel="stylesheet" type="text/css" href="/style.css?id=5b44128f151d3267c84c71bc" />
+
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/8.6.0/lazyload.min.js"></script>
+
+
+
+
+    <script type="text/javascript" src="https://yc.cldmlk.com/template_1/js/sly.min.js?c=v2.15.8"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="https://yc.cldmlk.com/template_1/js/moment-timezone-with-data.min.js?c=v2.15.8"></script>
+    
+    <script type="text/javascript" src="https://yc.cldmlk.com/template_1/js/jquery.mobile.custom.min.js?c=v2.15.8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <!-- need to add other locale files from CDN library when adding new language to our system -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.en-NZ.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.fi.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.fr.min.js"></script>
+
+    <template id="templateMovieTimesByDay">
+        <div class="movie">
+            <div class="movie-details">
+                <a href="" class="poster-portrait-link"><img data-src="" class="poster-portrait mobile-hide"></a>
+                <a href="" class="poster-landscape-link"><img data-src="" class="poster-landscape mobile-show"></a>
+                <a href="" class="poster-landscape-link-ie hidden"><div class="poster-landscape mobile-show"></div></a>
+
+                <div class="movie-info">
+                    <a href="" class="movie-link"><h2></h2></a>
+                    <p class="duration-rating"></p>
+
+                    <div class="director mobile-hide"><b>Directed by </b></div>
+                    <div class="actors mobile-hide"><b>Starring </b></div>
+                </div>
+            </div>
+            <div class="movie-times"></div>
+        </div>
+    </template>
+
+    <template id="templateMovieTimesByMovie">
+        <div class="movie layout-by-movie">
+            <div class="posters">
+                <a href="" class="poster-portrait-link"><img src="" class="poster-portrait mobile-hide"></a>
+                <a href="" class="poster-landscape-link"><img src="" class="poster-landscape mobile-show"></a>
+                <a href="" class="poster-landscape-link-ie hidden"><div class="poster-landscape mobile-show"></div></a>
+
+                <div class="movie-info">
+                    <a href="" class="movie-link"><h2></h2></a>
+                    <p class="duration-rating"></p>
+                </div>
+            </div>
+            <div class="movie-details">
+                <div class="movie-info">
+                    <a href="" class="movie-link"><h2></h2></a>
+                    <p class="duration-rating"></p>
+
+                    <a href="" class="details-page-link">MORE / TRAILER</a>
+                </div>
+
+                <div class="movie-times"></div>
+            </div>
+        </div>
+    </template>
+
+    <template id="templateMovieWithSynopsis">
+        <div class="movie layout-by-movie with-synopsis">
+            <div class="posters">
+                <a href="" class="poster-portrait-link"><img src="" class="poster-portrait mobile-hide"></a>
+                <a href="" class="poster-landscape-link"><img src="" class="poster-landscape mobile-show"></a>
+                <a href="" class="poster-landscape-link-ie hidden"><div class="poster-landscape mobile-show"></div></a>
+
+                <div class="movie-info">
+                    <a href="" class="movie-link"><h2></h2></a>
+                    <div class="synopsis"></div>
+                </div>
+            </div>
+            <div class="movie-details">
+                <div class="movie-info">
+                    <a href="" class="movie-link"><h2></h2></a>
+                    <div class="synopsis"></div>
+
+                    <a href="" class="details-page-link">MORE / TRAILER</a>
+                </div>
+            </div>
+        </div>
+    </template>
+</head>
+<body>
+    <header>
+        <div class="main-menu " >
+            <a href="#" class="menu-icon"></a>
+            <div class="menu-mobile">
+                <a href="#" class="close-menu">&times;</a>
+
+                <h2>MENU</h2>
+
+                <nav>
+                    <ul>
+                        <li  class="active" ><a href="/">NOW PLAYING</a></li>
+                        <li ><a href="/coming-soon">COMING SOON</a></li>
+
+                            <li  ><a href="/mailing-list" >MAILING LIST</a></li>
+                            <li  ><a href="/find-us--contact" >FIND US / CONTACT</a></li>
+                            <li  ><a href="/about" >ABOUT</a></li>
+
+                            <li ><a href="/short-short-film-contest" >Short Short Film Contest</a></li>
+                            <li ><a href="https://fundblackfounders.com/projects/next-act-cinema/"  target="_blank" >SUPPORT NEXT ACT CINEMA FUND</a></li>
+                            <li ><a href="/theater-space-rentals" >THEATER SPACE RENTALS</a></li>
+                            <li ><a href="https://ticketing.us.veezi.com/LoyaltySignup/SignUp?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm"  target="_blank" >SIGN-UP MEDALLION REWARDS (NEW/NO CARD)</a></li>
+                            <li ><a href="https://ticketing.us.veezi.com/LoyaltyLogin/ActivateMembership?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm"  target="_blank" >ACTIVATE IN-THEATER REWARDS CARD (EMAIL)</a></li>
+                            <li ><a href="/menu" >Menu</a></li>
+                            <li ><a href="/prices" >PRICES</a></li>
+                            <li ><a href="/admission-policy" >ADMISSION POLICY</a></li>
+                            <li ><a href="/careers" >CAREERS</a></li>
+                    </ul>
+                </nav>
+
+                <div class="social-media-header">
+                    <p class="find-us">FIND US</p>
+
+                    
+                    
+                    <a href="http://www.instagram.com/nextactcinema/" target="_blank" class="instagram-header"></a> 
+                    <a href="https://www.facebook.com/Next-Act-Entertainment-796187837440609/" target="_blank" class="facebook-header"></a> 
+                </div>
+            </div>
+
+            <div class="logo"><a href="/"><img src="https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1635703517482_PIC2.jpg"></a><br />
+          </div>
+
+
+            <div class="menu-desktop">
+                <div class="social-media-header">
+                    
+                    
+                    <a href="http://www.instagram.com/nextactcinema/" target="_blank" class="instagram-header"></a> 
+                    <a href="https://www.facebook.com/Next-Act-Entertainment-796187837440609/" target="_blank" class="facebook-header"></a> 
+                </div>
+
+                <nav>
+                    <ul>
+                        <li  class="active" ><a href="/">NOW PLAYING</a></li>
+                        <li ><a href="/coming-soon">COMING SOON</a></li>
+
+                            <li  ><a href="/mailing-list" >MAILING LIST</a></li>
+                            <li  ><a href="/find-us--contact" >FIND US / CONTACT</a></li>
+                            <li  ><a href="/about" >ABOUT</a></li>
+
+                        <li>
+                            <a href="#" class="more">MORE</a>
+
+                            <nav class="sub-menu">
+                                <ul>
+                                       <li><a  
+                                       href="/short-short-film-contest">Short Short Film Contest </a></li>
+                                       <li><a  target="_blank"  
+                                       href="https://fundblackfounders.com/projects/next-act-cinema/">SUPPORT NEXT ACT CINEMA FUND </a></li>
+                                       <li><a  
+                                       href="/theater-space-rentals">THEATER SPACE RENTALS </a></li>
+                                       <li><a  target="_blank"  
+                                       href="https://ticketing.us.veezi.com/LoyaltySignup/SignUp?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm">SIGN-UP MEDALLION REWARDS (NEW/NO CARD) </a></li>
+                                       <li><a  target="_blank"  
+                                       href="https://ticketing.us.veezi.com/LoyaltyLogin/ActivateMembership?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm">ACTIVATE IN-THEATER REWARDS CARD (EMAIL) </a></li>
+                                       <li><a  
+                                       href="/menu">Menu </a></li>
+                                       <li><a  
+                                       href="/prices">PRICES </a></li>
+                                       <li><a  
+                                       href="/admission-policy">ADMISSION POLICY </a></li>
+                                       <li><a  
+                                       href="/careers">CAREERS </a></li>
+                                </ul>
+                            </nav>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+            <div class="previews mobile-hide">
+            <!-- carousel goes here -->
+            <div id="moviePreviews" class="carousel slide" data-ride="carousel" data-interval="5000">
+                <div class="carousel-inner" role="listbox">
+                        <div class="preview item  active  ">
+                            <img src="https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643841036952_UNCHARTED2.jpg" alt="">
+                            <div class="carousel-image hidden"></div>
+
+                            <div class="info carousel-caption">
+                                <div class="caption-container">
+                                    <div class="caption-details">
+                                        <h2>UNCHARTED</h2>
+                                        <p>COMING FEBRUARY 18 2022</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview item  ">
+                            <img src="https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643840806613_THEBATMAN.jpg" alt="">
+                            <div class="carousel-image hidden"></div>
+
+                            <div class="info carousel-caption">
+                                <div class="caption-container">
+                                    <div class="caption-details">
+                                        <h2>THE BATMAN</h2>
+                                        <p>OPENING 3.2022 THE BATMAN</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview item  ">
+                            <img src="https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643841244814_AMBULANCE2.jpg" alt="">
+                            <div class="carousel-image hidden"></div>
+
+                            <div class="info carousel-caption">
+                                <div class="caption-container">
+                                    <div class="caption-details">
+                                        <h2>AMBULANCE</h2>
+                                        <p>COMING APRIL 2022AMBULANCE</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <a class="left carousel-control" href="#moviePreviews" role="button" data-slide="prev">
+                    <img src="https://yc.cldmlk.com/template_1/img/CarouselArrowLeft@2x.png">
+                </a>
+                <a class="right carousel-control" href="#moviePreviews" role="button" data-slide="next">
+                    <img src="https://yc.cldmlk.com/template_1/img/CarouselArrowRight@2x.png">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="homepage">
+        <div class="main-content">
+            <div class="date-picker">
+                <div class="date-picker-header">
+                    <p>
+                        <a href="#" class="theme-selector active" data-theme="by-day"><i class="fa fa-calendar fa-inverse"></i><span>BY DAY</span></a>
+                        <a href="#" class="theme-selector " data-theme="by-movie"><i class="fa fa-film fa-inverse"></i><span>BY TITLE</span></a>
+                    </p>
+
+                    <div class="order-by-container">
+                        <select id="order-by" name="order-by" class="order-by">
+                            <option value="release-date" selected>Newest first</option>
+                            <option value="alpha" >A-Z</option>
+                            <option value="session-times" >By showtimes</option>
+                        </select>
+                    </div>
+
+                    <a href="#" class="print-button"><i class="fa fa-print fa-inverse"></i><span>PRINT</span></a>
+                </div>
+
+                <!-- sly here displaying date list -->
+                <div class="dates" id="datePicker">
+                    <a id="prev" class="disabled" disabled><img src="https://yc.cldmlk.com/template_1/img/CarouselArrowLeft@2x.png"></a>
+
+                    <div id="date-scroller" class="frame ">
+                        <ul class="slidee">
+                            <!-- adding dates -->
+                        </ul>
+                    </div>
+
+                    <a id="next"><img src="https://yc.cldmlk.com/template_1/img/CarouselArrowRight@2x.png"></a>
+
+
+                </div>
+            </div>
+
+            <div id="movie-list">
+                <!-- display list of movies here -->
+            </div>
+
+            <div id="session-keys"></div>
+
+
+            <ul class="options flex-container flex-container-nowrap flex-centre promotion-footer-ul-">
+            </ul>
+
+        </div>
+
+        <aside class="mobile-hide tablet-hide">
+                            <div class="fb-page" data-href="https://www.facebook.com/Next-Act-Cinema-796187837440609/" data-tabs="timeline" data-width="262" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Next-Act-Cinema-796187837440609/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Next-Act-Cinema-796187837440609/">Next Act Cinema</a></blockquote></div>
+                    <a href="https://ticketing.us.veezi.com/LoyaltySignup/SignUp?siteToken=wk5hgtxjrbkhp6262jyzzvv0xm&sessionCode=1936"  onclick="ga('dTracker.send', 'event', 'promo', 'vertical', 'https://ticketing.us.veezi.com/LoyaltySignup/SignUp?siteToken=wk5hgtxjrbkhp6262jyzzvv0xm&sessionCode=1936');" ><img data-src="https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1563598421762_Medallionseal.jpg" class="vertical-advertisement" alt=""></a>
+                    <a href="https://www.instagram.com/nextactcinema/"  onclick="ga('dTracker.send', 'event', 'promo', 'vertical', 'https://www.instagram.com/nextactcinema/');" ><img data-src="/no-image" class="vertical-advertisement" alt=""></a>
+
+            <div class="coming-soon">
+                <h2>COMING SOON</h2>
+
+                <ul class="coming-soon">
+                        <li><a href="/movie/the-batman">The Batman</a></li>
+
+                    <li><a href="/coming-soon" class="see-all">SEE ALL</a></li>
+                </ul>
+            </div>
+        </aside>
+    </section>
+
+    <section id="printArea">
+        <h1>NextAct Cinema - Movie Times</h1>
+    </section>
+    <div id="session-keys-print"></div>
+
+    <!-- Get movie data -->
+    <script type="text/javascript">
+        var theme = 'by-day',
+            movieData = {
+            '2022-03-17': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'ray-redditt-experience',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1645148583975_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1583243295054_Poster.jpg',
+                    'title': 'Lorenzo Live Music Event',
+                    'releaseDate': '2020-03-02',
+                    'endpoint': 'ST00000138',
+                    'duration': '120 mins',
+                    'rating': 'Rated ',
+                    'director': '',
+                    'actors': '',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '6:00pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5623?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                    ]
+                },
+            ],
+            '2022-03-01': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'uncharted',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643613693305_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643765550962_Poster.jpg',
+                    'title': 'Uncharted',
+                    'releaseDate': '2022-02-18',
+                    'endpoint': 'ST00000256',
+                    'duration': '116 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Ruben Fleischer, Dan  Trachtenberg',
+                    'actors': 'Tom  Holland, Sophia Ali, Tati Gabrielle, Antonio Banderas, Mark Wahlberg',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '3:00pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5642?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621dac9dd4fe55752aeb18a3","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '4:00pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5644?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '5:50pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5643?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621dac9dd4fe55752aeb18a0","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '6:50pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5645?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                    ]
+                },
+            ],
+            '2022-03-03': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '3:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5621?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18c8","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '6:00pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5620?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '7:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5622?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18c5","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                    ]
+                },
+            ],
+            '2022-03-04': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '12:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5526?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18c3","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '1:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5529?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '4:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5527?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18c0","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '7:10pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5530?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '8:10pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5528?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18bd","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                    ]
+                },
+            ],
+            '2022-03-05': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '1:10pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5532?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '3:00pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5651?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18ba","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '9:10pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5534?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                    ]
+                },
+            ],
+            '2022-03-06': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '12:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5648?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18b7","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '1:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5649?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '4:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5646?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18b4","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '5:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5650?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '8:10pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5647?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18b1","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                    ]
+                },
+            ],
+            '2022-03-08': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '2:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5653?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18af","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '3:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5655?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '6:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5654?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18ac","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '7:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5656?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                    ]
+                },
+            ],
+            '2022-03-10': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '2:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5657?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18a9","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '3:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5659?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '6:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5658?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18a6","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '7:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5660?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                    ]
+                },
+            ],
+        }, movieDataByReleaseDate = {
+            '2022-03-17': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'ray-redditt-experience',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1645148583975_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1583243295054_Poster.jpg',
+                    'title': 'Lorenzo Live Music Event',
+                    'releaseDate': '2020-03-02',
+                    'endpoint': 'ST00000138',
+                    'duration': '120 mins',
+                    'rating': 'Rated ',
+                    'director': '',
+                    'actors': '',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '6:00pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5623?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                    ]
+                },
+            ],
+            '2022-03-01': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'uncharted',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643613693305_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643765550962_Poster.jpg',
+                    'title': 'Uncharted',
+                    'releaseDate': '2022-02-18',
+                    'endpoint': 'ST00000256',
+                    'duration': '116 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Ruben Fleischer, Dan  Trachtenberg',
+                    'actors': 'Tom  Holland, Sophia Ali, Tati Gabrielle, Antonio Banderas, Mark Wahlberg',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '3:00pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5642?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621dac9dd4fe55752aeb18a3","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '4:00pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5644?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '5:50pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5643?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621dac9dd4fe55752aeb18a0","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '6:50pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5645?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                    ]
+                },
+            ],
+            '2022-03-03': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '3:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5621?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18c8","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '6:00pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5620?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '7:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5622?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18c5","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                    ]
+                },
+            ],
+            '2022-03-04': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '12:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5526?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18c3","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '1:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5529?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '4:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5527?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18c0","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '7:10pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5530?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '8:10pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5528?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18bd","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                    ]
+                },
+            ],
+            '2022-03-05': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '1:10pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5532?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '3:00pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5651?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18ba","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '9:10pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5534?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                    ]
+                },
+            ],
+            '2022-03-06': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '12:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5648?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18b7","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '1:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5649?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '4:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5646?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18b4","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '5:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5650?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '8:10pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5647?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18b1","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                    ]
+                },
+            ],
+            '2022-03-08': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '2:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5653?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18af","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '3:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5655?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '6:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5654?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18ac","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '7:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5656?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                    ]
+                },
+            ],
+            '2022-03-10': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '2:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5657?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18a9","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '3:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5659?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '6:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5658?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18a6","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '7:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5660?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                    ]
+                },
+            ],
+        }, movieDataBySessionTimes = {
+            '2022-03-17': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'ray-redditt-experience',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1645148583975_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1583243295054_Poster.jpg',
+                    'title': 'Lorenzo Live Music Event',
+                    'releaseDate': '2020-03-02',
+                    'endpoint': 'ST00000138',
+                    'duration': '120 mins',
+                    'rating': 'Rated ',
+                    'director': '',
+                    'actors': '',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '6:00pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5623?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                    ]
+                },
+            ],
+            '2022-03-01': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'uncharted',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643613693305_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643765550962_Poster.jpg',
+                    'title': 'Uncharted',
+                    'releaseDate': '2022-02-18',
+                    'endpoint': 'ST00000256',
+                    'duration': '116 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Ruben Fleischer, Dan  Trachtenberg',
+                    'actors': 'Tom  Holland, Sophia Ali, Tati Gabrielle, Antonio Banderas, Mark Wahlberg',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '3:00pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5642?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621dac9dd4fe55752aeb18a3","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '4:00pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5644?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '5:50pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5643?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621dac9dd4fe55752aeb18a0","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '6:50pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5645?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                    ]
+                },
+            ],
+            '2022-03-03': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '3:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5621?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18c8","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '6:00pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5620?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '7:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5622?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18c5","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                    ]
+                },
+            ],
+            '2022-03-04': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '12:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5526?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18c3","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '1:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5529?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '4:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5527?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18c0","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '7:10pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5530?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '8:10pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5528?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18bd","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                    ]
+                },
+            ],
+            '2022-03-05': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '1:10pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5532?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '3:00pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5651?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18ba","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '9:10pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5534?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                    ]
+                },
+            ],
+            '2022-03-06': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '12:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5648?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18b7","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '1:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5649?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '4:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5646?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18b4","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '5:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5650?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '8:10pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5647?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18b1","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                    ]
+                },
+            ],
+            '2022-03-08': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '2:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5653?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18af","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '3:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5655?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '6:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5654?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18ac","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '7:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5656?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                    ]
+                },
+            ],
+            '2022-03-10': [
+                /*will have to change nowPlaying to have separate dates everywhere */
+                {
+                    'url': 'the-batman',
+                    'image-portrait': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950867643_Poster.jpg',
+                    'image-landscape': 'https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1643950869376_Poster.jpg',
+                    'title': 'The Batman',
+                    'releaseDate': '2022-03-04',
+                    'endpoint': 'ST00000260',
+                    'duration': '175 mins',
+                    'rating': 'Rated PG-13',
+                    'director': 'Matt Reeves',
+                    'actors': 'Andy Serkis, Robert Pattinson, Jayme Lawson, Jeffrey Wright, Zoe Kravitz, Paul Dano, Peter  Sarsgaard, John Turturro, Colin Farrell',
+                    'times': [
+                            { 'isSoldOut': false,'type': '','time': '2:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5657?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18a9","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '3:30pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5659?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                            { 'isSoldOut': false,'type': '','time': '6:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5658?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [{"_id":"621daca3d4fe55752aeb18a6","shortName":"Immersive","description":"State of the art immersive sound experience"}] },
+                            { 'isSoldOut': false,'type': '','time': '7:20pm', 'bookingLink': 'https://ticketing.useast.veezi.com/purchase/5660?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm', 'attributes': [] },
+                    ]
+                },
+            ],
+        };
+    </script>
+
+    <link rel="stylesheet" type="text/css" media="print" href="https://yc.cldmlk.com/template_1/css/print-times.css">
+
+
+    <footer>
+        <section>
+            <nav>
+                <ul>
+                    <li><a    href="/about">ABOUT</a></li>
+                    <li><a    href="/find-us--contact">FIND US / CONTACT</a></li>
+                    <li><a    href="/prices">PRICES</a></li>
+                    <li><a    href="/admission-policy">ADMISSION POLICY</a></li>
+                    <li><a    href="/mailing-list">MAILING LIST</a></li>
+                    <li><a    href="/careers">CAREERS</a></li>
+                    <li><a    href="/menu">Menu</a></li>
+                    <li><a  target="_blank"    href="https://ticketing.us.veezi.com/LoyaltySignup/SignUp?siteToken&#x3D;wk5hgtxjrbkhp6262jyzzvv0xm&amp;sessionCode&#x3D;1936">MEDALLION REWARDS</a></li>
+                    <li><a    href="/theater-space-rentals">THEATER SPACE RENTALS</a></li>
+                    <li><a    href="/short-short-film-contest">Short Short Film Contest</a></li>
+                    <li><a  target="_blank"    href="https://fundblackfounders.com/projects/next-act-cinema/">SUPPORT NEXT ACT CINEMA FUND</a></li>
+                </ul>
+            </nav>
+
+            <hr />
+
+            <div class="custom-footer-info">NEXT ACT CINEMA | 921 Reisterstown Rd, Pikesville, MD 21208 | Phone 443-548-3783</div>
+
+            <div class="social-media">
+                
+                
+                <a href="http://www.instagram.com/nextactcinema/" target="_blank" class="instagram-footer"></a> 
+                <a href="https://www.facebook.com/Next-Act-Entertainment-796187837440609/" target="_blank" class="facebook-footer"></a> 
+
+                <p class="copyright">Website &copy; 2019 <a href="https://www.flicks.co.uk" target="_blank">Flicks Ltd</a></p>
+            </div>
+        </section>
+    </footer>
+
+    <!-- include main script file -->
+    <script type="text/javascript" src="https://yc.cldmlk.com/template_1/js/main.js?c=v2.15.8"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://yc.cldmlk.com/vs1cbn7hsfmq4kyacn1717jzwg/1551993380381_nextact.css">
+
+    <link rel="stylesheet" type="text/css" media="print" href="https://yc.cldmlk.com/template_1/css/print.css?c=v2.15.8">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-128894583-5', 'auto');
+        ga('create', 'UA-104063286-5', 'auto', 'dTracker');
+        ga('dTracker.send', 'pageview');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+
+
+            <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2"></script>
+
+
+
+
+
+
+     <script type="text/javascript">
+        var myLazyLoad,
+            userLocation = null,
+            distance = 0,
+            closestCinema = {};
+
+        $('#cinemaSelector2').hide();
+        /**
+         * find out user's current location and/or do something when successfully get the location
+         * @param  boolean dosomethingOnSuccess indicate whether we want to do something when we have the user's location
+         * @param  object  e                    event object
+         * @return
+         */
+        function geoFindMe() {
+            var options = {
+                            enableHighAccuracy: true,
+                            timeout: 10000,
+                            maximumAge: 0
+                    };
+
+            if (!navigator.geolocation){
+                //Geolocation is not supported by your browser;
+                return;
+            }
+
+            function success(position) {
+                var minDistance = null,
+                    requestUrl = "/",
+                    distance = 0;
+
+                userLocation = {
+                    'lat': position.coords.latitude,
+                    'lon': position.coords.longitude
+                };
+                $('#cinemaSelector').hide();
+                $('#cinemaSelector2').show();
+
+                //calculate the distance
+
+                /// now we update the info of popup 2 (indicates closest cinema)
+                //console.log(closestCinema);
+                $('#cinemaSelector2 a.active-cinema').attr('data-cinemaId', closestCinema._id);
+                $('#cinemaSelector2 a.active-cinema').attr('href', '/' + closestCinema.cinemaUrl + requestUrl);
+                $('#cinemaSelector2 a.active-cinema').html('<i class="fa fa-map-marker" aria-hidden="true"></i> ' + closestCinema.name);
+                $('#cinemaSelector2 a.cinema[data-cinemaId="' + closestCinema._id +'"]').hide();
+
+            };
+
+            function error(err) {
+                if (err.message.startsWith("Only secure origins are allowed")) {
+                    console.log("Only secure origins are allowed to get user location.");
+                } else {
+                    console.log("Exception: Unable to retrieve your location.");
+                }
+            };
+
+            navigator.geolocation.getCurrentPosition(success, error, options);
+
+            return false;
+        }
+        $(document).ready(function () {
+            var showCinemaSelector = "",
+                forceHideGeoRequest = "";
+            //hide the pop up if cookies are not enabled on client's browser, we don't
+            //normally get here
+            if (!navigator.cookieEnabled) {
+                $('#cinemaSelector').hide();
+                $('#cinemaSelector2').hide();
+            } else {
+                try {
+                    if (showCinemaSelector && !forceHideGeoRequest) {
+                        geoFindMe();
+                    }
+                } catch (e) {
+                    console.log('exception');
+                }
+            }
+
+             myLazyLoad = new LazyLoad();
+        });
+    </script>
+
+</body>
+</html>

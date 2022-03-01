@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>电影资源</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="http://p3.ifengimg.com/a/2017/0222/video2017.css" />
+    <script src="http://y0.ifengimg.com/commonpage/1130/F-RequireJS.min.js"></script>
+    <script type="text/javascript">
+        requirejs.config({
+            paths: {
+                //  基础模块
+                'base': 'http://y0.ifengimg.com/base/jQuery/jquery-1.9.1.min',
+
+                //  客户端拉起组件
+                'PullClient':'http://p0.ifengimg.com/a/2017/0413/pullClient_h5',                
+                //行为统计基础脚本
+                'statistic':'http://p1.ifengimg.com/a/2017/0420/statistic',
+                //  各通栏拉起事件
+                'blockEvent': 'http://p3.ifengimg.com/a/2017/0328/pullEvent',                
+                //页面构造
+                'buildWemedia':'http://p3.ifengimg.com/a/2017/0328/buildWemedia'
+
+            },
+            waitSeconds: 20,
+            shim: {
+                'blockEvent':{
+                    deps:['base','PullClient','statistic']
+                },
+                'buildWemedia':{
+                    deps:['base','blockEvent']
+                }
+            }
+        });
+        tasker.runAfterDomReady();
+    </script>
+    <script>
+    var videoinfo = {
+        "id":"552972",
+        "name": "电影资源",
+        "url": "http://v.ifeng.com/dyn/m/wemedia/552972/index.shtml",
+        "keywords":"",
+        "img": "http://d.ifengimg.com/q100/img1.ugc.ifeng.com/newugc/20170326/23/wemedia/b6e58ced317b5425480031af308a2d0cd035b7c4_size31_w200_h200.png",
+        "desc": "",
+        "shareUrl":"http://v.ifeng.com/dyn/m/wemedia/552972/index.shtml"    //焦点、联播台url字段用于获取评论，值为pc地址，shareUrl为分享地址，其他页也添加该字段保持一致
+    };
+    </script>
+    <script>
+        var pageType = 'wemedia';
+    </script>
+</head>
+<body>
+
+<!--头部 begin-->
+<div class="header">
+    <a href="JavaScript:;" class="subscribe js_pull" down_tag="subscribe">
+        <span>
+            + 订阅
+        </span>
+    </a>
+    <div class="banners">
+        <img src="http://d.ifengimg.com/q100/img1.ugc.ifeng.com/newugc/20170326/23/wemedia/b6e58ced317b5425480031af308a2d0cd035b7c4_size31_w200_h200.png" alt="">
+    </div>
+    <img class="avata" src="http://d.ifengimg.com/q100/img1.ugc.ifeng.com/newugc/20170326/23/wemedia/b6e58ced317b5425480031af308a2d0cd035b7c4_size31_w200_h200.png" alt=""/>
+    <div class="media_info">
+        <div class="name">电影资源</div>
+        <div class="num">
+            <i>874</i>&nbsp订阅
+        </div>
+    </div>
+</div>
+<!--头部 end-->
+
+<!--导语 begin-->
+<dl class="introduction2">
+    <dd></dd>
+</dl>
+<!--导语 end-->
+
+<!--相关内容 begin-->
+<div class="vf_list media">
+    <h3>发布视频 <span>177</span></h3>
+    <div class="vPushList">
+        <ul></ul>
+    </div>
+</div>
+<!--相关内容 end-->
+
+<!--拉起APP begin-->
+<!--拉起APP end-->
+
+<!-- 红包 begin -->
+<!-- 红包 end -->
+
+<!--底部悬浮 begin-->
+<!--底部悬浮 end-->
+
+<!--分享成功弹层 begin-->
+<!--分享成功弹层 end-->
+
+<script type="text/javascript">
+    creatTasker(1, ['buildWemedia'], function() {}, 'next', '动态构造视频列表');
+</script>
+</body>
+</html>

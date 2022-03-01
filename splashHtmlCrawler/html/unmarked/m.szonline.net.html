@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh" class="hairlines">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta content="always" name="referrer">
+<meta http-equiv="Cache-Control" content="no-transform ">
+<title>杭州已有1.47万隔离人员转移至浙江省内其他城市_最新_娱乐_手机深圳热线</title>
+<meta name="keywords" content="明星 、电影、最新影讯/影评、电影院在线购票订座、电视剧、音乐、戏剧、演出">
+<meta name="description" content="浙江全省现有高风险区域1个(杭州市富阳区富春街道咕甜全球进口母婴生活馆)；中风险区域12个(杭州市滨江区9个、富阳区3个)。”杭州市政府副秘书长毛根洪介绍，其中，滨江区长江小区隔离转运的人数就有9000人。">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+
+<link href="https://res1.szonline.net/assets/theme/mfeng/css/show.css" data-prefetch="true" rel="stylesheet">
+<script>
+    window.__SZONLINE_ENV__ = window.__SZONLINE_ENV__ || {}
+    window.__SZONLINE_ENV__.maxDocWidth = parseInt(510) || 812
+</script>
+<script>
+    var isGrounds = function () {
+        return typeof grounds !== 'undefined' && typeof grounds.getDeviceInfo === 'function';
+    }
+    var getGroundsWidth = function () {
+        var deviceInfo = grounds.getDeviceInfo();
+        var screen = deviceInfo.getScreen();
+        return screen.split('x')[0] / window.devicePixelRatio;
+    }
+    var getWidth = function () {
+        if (isGrounds()) {
+            return getGroundsWidth();
+        } else {
+            return window.innerWidth;
+        }
+    }
+    var isWeixin = function () {
+        //判断是否是微信
+        var ua = navigator.userAgent.toLowerCase();
+        return ua.match(/MicroMessenger/i) == 'micromessenger';
+    };
+
+    function getBigFont() {
+        var docEl = document.documentElement;
+        // var docWidth = window.innerWidth;
+        var docWidth = getWidth();
+        var fakeBody = document.createElement('body');
+
+        var rem = docWidth / 10;
+        docEl.style.fontSize = rem + 'px';
+        var d = document.createElement('div');
+        d.style.cssText =
+            'width:1rem;height:0;overflow: hidden;position:absolute;z-index:-1;visibility: hidden;';
+        fakeBody.appendChild(d);
+        docEl.appendChild(fakeBody);
+        // var realRem = (window.getComputedStyle(d, null).width.split('px')[0]/1).toFixed(1)/1;
+        var realRem = isGrounds() ? getGroundsWidth() / 10 : d.getBoundingClientRect().width.toFixed(1) / 1;
+        // var realRem = d.offsetWidth;
+        docEl.removeChild(fakeBody);
+        docEl.style.cssText = '';
+        console.log(realRem, rem);
+        // alert(realRem + ':' + rem + ':' + realRem/rem);
+        return {
+            realRem: realRem,
+            rem: rem
+        };
+        // alert(realRem + ':' + rem);
+    }
+
+    var __fontDiff = getBigFont();
+</script>
+<script>
+    (function (win, doc) {
+        var docEl = doc.documentElement;
+
+        function setRemUnit() {
+            console.log('runSetRemUnit');
+            console.log('docEl.clientWidth=======>', docEl.clientWidth);
+            // var docWidth = docEl.clientWidth;
+            var docWidth = getWidth();
+            var rem = docWidth / 10;
+            // 按照iphone X的高度定制最大宽度
+            if (docWidth >= window.__SZONLINE_ENV__.maxDocWidth) {
+                rem = window.__SZONLINE_ENV__.maxDocWidth / 10;
+            }
+            if (typeof __articleEditMode__ !== 'undefined' && __articleEditMode__) {
+                docEl.classList.add('article-edit-mode');
+            } else {
+                if (__fontDiff.realRem !== __fontDiff.rem) {
+                    // docEl.style.cssText = 'font-size: ' + rem + 'px !important';
+                    // docEl.style.cssText = 'font-size: 37.6px !important';
+                    docEl.style.cssText =
+                        'font-size: ' + rem / (__fontDiff.realRem / __fontDiff.rem) + 'px !important';
+                } else {
+                    docEl.style.cssText = 'font-size: ' + rem + 'px';
+                }
+            }
+        }
+
+        var resetRemUnit = null;
+
+        win.addEventListener(
+            'resize',
+            function () {
+                clearTimeout(resetRemUnit);
+                resetRemUnit = setTimeout(setRemUnit, 200);
+            },
+            false
+        );
+        win.addEventListener(
+            'pageshow',
+            function (e) {
+                if (e.persisted) {
+                    clearTimeout(resetRemUnit);
+                    resetRemUnit = setTimeout(setRemUnit, 200);
+                }
+            },
+            false
+        );
+
+        setRemUnit();
+
+        if (win.devicePixelRatio && win.devicePixelRatio >= 2) {
+            var testEl = doc.createElement('div');
+            var fakeBody = doc.createElement('body');
+
+            testEl.style.border = '0.5px solid transparent';
+            fakeBody.appendChild(testEl);
+            docEl.appendChild(fakeBody);
+
+            if (testEl.offsetHeight === 1) {
+                docEl.classList.add('hairlines');
+            }
+
+            docEl.removeChild(fakeBody);
+        }
+
+        if (doc.readyState === 'complete') {
+            if (__fontDiff.realRem !== __fontDiff.rem) {
+                doc.body.style.fontSize = 12 / (__fontDiff.realRem / __fontDiff.rem) + 'px';
+            } else {
+                doc.body.style.fontSize = 12 + 'px';
+            }
+        } else {
+            doc.addEventListener(
+                'DOMContentLoaded',
+                function (e) {
+                    if (__fontDiff.realRem !== __fontDiff.rem) {
+                        doc.body.style.fontSize = 12 / (__fontDiff.realRem / __fontDiff.rem) + 'px';
+                    } else {
+                        doc.body.style.fontSize = 12 + 'px';
+                    }
+                },
+                false
+            );
+        }
+    })(window, document);
+</script>
+</head>
+<body style="font-size: 12px;" cz-shortcut-listen="true">
+<div id="root">
+    <div class="header-nmwxLKXV">
+        <div class="box-2_3_J5SY">
+            <div class="title_box-30WgBUwV">
+                <a href="https://m.szonline.net" class="logo-3zc7O696"></a>
+                <h2 class="channelName-FeeROssY">
+                    <a href="https://m.szonline.net/ent/">娱乐频道</a>
+                </h2>
+            </div>
+            <div class="shareIcon-17ZpqlJH"></div>
+        </div>
+    </div>
+    <div class="main-Uvr4HiPD">
+        <div class="content-1IKUSJ0G">
+            <div class="content-TvxNBzQA">
+                <div class="caption-1xXNJGfg">
+                    <h1>杭州已有1.47万隔离人员转移至浙江省内其他城市</h1>
+                    <div class="box-2uC6KE9x">
+                        <div class="source_box-2HaHjDNP">
+                            <div class="info_box-26_wLhQR"><span class="source-2kJDRw_L"><span
+                                    class="source-2kJDRw_L"><a
+                                    href="#">深圳热线</a></span></span>
+                                <div class="info-3yWwaleP"><span>2022-01-31 16:08:20</span></div>
+                            </div>
+                        </div>
+                        <div class="btn-1BHudkxy big-d4e8Gp-i"></div>
+                    </div>
+                </div>
+                <div class="main_content-3kd7Vb02">
+                    <div>
+                        <div class="smallFont-Z_OfA44W text-20BABGxP">
+                                                        <script type="text/javascript" src="//gold.szonline.net/site/ql_k/source/it/u/nam.js"></script>
+                            &nbsp;&nbsp;&nbsp;&nbsp;发布会现场。　张煜欢　摄
+
+      
+      
+       
+<p>中新网杭州1月31日电(张煜欢 黄龄亿)31日，记者从当日召开的浙江省新冠肺炎疫情防控工作新闻发布会上获悉，目前杭州市隔离点达到217个，隔离点趋于饱和状态，目前已有1.47万人转移到宁波、湖州、嘉兴、绍兴、金华、衢州等地集中隔离。
+</p>
+
+<p>1月30日0-24时，浙江省报告新增本土确诊病例24例，目前该省累计报告本土确诊病例83例，均在杭州市。浙江全省现有高风险区域1个(杭州市富阳区富春街道咕甜全球进口母婴生活馆)；中风险区域12个(杭州市滨江区9个、富阳区3个)。</p>
+
+<p>“杭州本轮疫情发生以来，我们排查管控密接、次密接和重点风险人员数量比较大，分布范围比较广。”杭州市政府副秘书长毛根洪介绍，其中，滨江区长江小区隔离转运的人数就有9000人。目前杭州市隔离点达到217个，其中100个是备用隔离点和新增隔离酒店。</p>
+
+<p>春节将至，隔离区的市民如何过节备受关注，对此毛根洪回应称，杭州市已提前谋划部署，对在外地隔离的市民，组织工作专班，到当地帮助解决隔离中的问题和困难，尽力满足需求；对在隔离酒店和明确管控区居家隔离的人员，准备了除夕大礼包和年夜饭，考虑到特殊隔离人员的需求，提供了安排药品等物资服务，杭州的“手语姐姐”也通过专业手段服务听障人士，24小时在线，让听障人员和外界人员及时取得联系。</p>
+
+<p>在杭州整体安排的同时，接受转运隔离人员的地区也各自结合本地实际，提供暖心服务，尽力落实好各项措施，尽力让隔离人员过一个别样、温馨的春节。</p>
+
+<p>以绍兴诸暨为例，本轮诸暨市接收1470名杭州转移隔离人员。发布会上，现场连线的诸暨市副市长俞越称，该市将为隔离人员发放爱心礼包，每隔三天提供爱心礼包，包括当地特色产品，暖宝宝、热水袋等御寒物资，以及新年贺卡、中国结等小礼物；同时提供健康服务，在每个隔离点配备2名驻点医生、1名心理医生和多名护士，每天对患有基础疾病的市民提供服务；定制个性化服务，定制无糖餐食、纯素餐等特殊餐。(完)                        </div>
+                    </div>
+                </div>
+                <div></div>
+                <div class="editor_box-3CGaVHeU"><span class="editor-3Q31EWGH">责任编辑：</span><span
+                        class="jubao-2a47Drme"><a href="#">举报</a></span>
+                </div>
+                <div class="br-1juE5CGc"></div>
+                <div class="ad_box-1NV9RSRd">
+                    <!--u6591816-->
+                    <script type="text/javascript" src="//gold.szonline.net/production/oji/resource/g-r/source/sls-i.js"></script>
+                </div>
+                <div class="ad_box-1NV9RSRd">
+                    <!--u6591817-->
+                    <script type="text/javascript" src="//gold.szonline.net/source/pk/static/jhs/resource/tm-t/l.js"></script>
+                </div>
+                <div class="ad_box-1NV9RSRd">
+                    <!--u6591820-->
+                    <script type="text/javascript" src="//gold.szonline.net/site/j/openjs/ed-bmn-gtk.js"></script>
+                </div>
+                <div class="comment_box-KNikPxN8">
+                    <div class="ad_box1-JPPNQDlR" c="19165">
+                        </div>
+                    <div class="comment-3-TKuNEp">
+                        <div class="comment_box--nEXfdRk">
+                            <div class="title-llcrjH9g"><span>热门评论</span></div>
+                            <div class="bg_box-3Ij2wp9K"></div>
+                            <div class="ipt-1UhKJDch"><textarea placeholder="写评论"></textarea>
+                                <div class="bar-2TkMunjF"><span></span><a>发表评论</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript" src="//gold.szonline.net/common/q/source/l-kkn-k/static/adm.js"></script>
+                </div>
+            </div>
+            <div class="hot_box-2ZIfyGvm">
+                <div class="hot_title-12IipdgA">热点新闻</div>
+                <div class="list-2Owf8PdJ">
+                                                            <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_357537.html">尚品怡园装修案例【河北廊坊•潮白河孔雀城】极简有度，优雅永存</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_357537.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="/d/file/question/2022-02-25/f6277c3e671791528325e8f3436bf325.jpg"></a></div>
+                        </div>
+                    </div>
+                                        <!-- u6687185 -->
+                     <script type="text/javascript" src="//gold.szonline.net/site/tonnq/p/production/x/resource/q/openjs/l.js"></script>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_357536.html">省呗：一起来盘点那些#年后社畜收心难度排行#</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_357536.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img5.szonline.net/2022/0228/20220228085005372.jpeg"></a></div>
+                        </div>
+                    </div>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_357535.html">谁才是最佳的活力唤醒神器？原来是第三代MG6 PRO！</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_357535.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img3.szonline.net/2022/0228/20220228084938550.png"></a></div>
+                        </div>
+                    </div>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_357534.html">助力航空枢纽品质提升，碧家机场服务再获肯定</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_357534.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img5.szonline.net/2022/0228/1646052230138937.jpg"></a></div>
+                        </div>
+                    </div>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_357362.html">长康提醒你，抓准春季养生好时机，整年的健康都不愁</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_357362.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img4.szonline.net/2022/0228/20220228082301853.jpeg"></a></div>
+                        </div>
+                    </div>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_356965.html">欧亚达集团副总裁徐紫燕等高管一行莅临久盛参观交流</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_356965.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img5.szonline.net/2022/0228/20220228060714220.jpeg"></a></div>
+                        </div>
+                    </div>
+                                        <!-- u6687185 -->
+                     <script type="text/javascript" src="//gold.szonline.net/site/tonnq/p/production/x/resource/q/openjs/l.js"></script>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_356964.html">居然之家集团执行总裁王宁携高管团队莅临久盛参观考察</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_356964.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img3.szonline.net/2022/0228/20220228060501977.jpeg"></a></div>
+                        </div>
+                    </div>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_356961.html">“茶饮山寨何时能休？茶茶巫该何去何从</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_356961.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img1.szonline.net/2022/0228/20220228055651566.png"></a></div>
+                        </div>
+                    </div>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_356943.html">养好头皮发丝才能强韧，贝妮芙小黑瓶帮你养护头皮</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_356943.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img3.szonline.net/2022/0228/20220228055418347.jpg"></a></div>
+                        </div>
+                    </div>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_356900.html">接力中国刘青松：营造开放健康安全的数字生态</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_356900.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img2.szonline.net/2022/0228/1646040938185824.png"></a></div>
+                        </div>
+                    </div>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_356864.html">华钜美科：美业千亿蓝海，机遇与挑战并存</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_356864.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img4.szonline.net/2022/0228/20220228052445845.jpeg"></a></div>
+                        </div>
+                    </div>
+                                        <!-- u6687185 -->
+                     <script type="text/javascript" src="//gold.szonline.net/site/tonnq/p/production/x/resource/q/openjs/l.js"></script>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_356797.html">首家艺术元宇宙“Meta彼岸”公测，共建艺术新生态</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_356797.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img2.szonline.net/2022/0228/20220228051534190.jpg"></a></div>
+                        </div>
+                    </div>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_356790.html">励普教育：“十四五”国家应急体系规划发布，消防工程师“榜”上有名！</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_356790.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img4.szonline.net/2022/0228/20220228051335681.png"></a></div>
+                        </div>
+                    </div>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_356777.html">雅阁酒店集团未来10周10家酒店开业</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_356777.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img2.szonline.net/2022/0228/20220228045817169.png"></a></div>
+                        </div>
+                    </div>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_356738.html">和光同“晨”，共鉴麦卡伦81年经典杰作</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_356738.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img5.szonline.net/2022/0228/20220228045154334.jpg"></a></div>
+                        </div>
+                    </div>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_356737.html">接力中国刘青松：营造良好数字生态，互联网企业应该怎么做</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_356737.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img5.szonline.net/2022/0228/20220228044954689.png"></a></div>
+                        </div>
+                    </div>
+                                        <!-- u6687185 -->
+                     <script type="text/javascript" src="//gold.szonline.net/site/tonnq/p/production/x/resource/q/openjs/l.js"></script>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_356724.html">如新践行可持续发展承诺，确保如新产品安全绿色</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_356724.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img3.szonline.net/2022/0228/1646037360398273.png"></a></div>
+                        </div>
+                    </div>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_356723.html">干邑是什么？人头马优质香槟区干邑带给你答案</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_356723.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img4.szonline.net/2022/0228/1646037345484054.jpeg"></a></div>
+                        </div>
+                    </div>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_356678.html">标配采埃孚8AT变速箱 长城炮带你肆意撒野</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_356678.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img5.szonline.net/2022/0228/20220228042723691.jpeg"></a></div>
+                        </div>
+                    </div>
+                                                           <div>
+                        <div class="titleImg-1BvN-wPz">
+                            <div class="link-2v_yRA5U"><a class="title-2AqTFONa" href="https://m.szonline.net/think/roll/20220228/022022_356677.html">天誉置业（00059.HK）荣获“2021年上市公司年度大奖”，集团坚持行稳致远发展</a>
+                                <div class="info-Swm5dFKH">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="imgBox-e9ZMJC6N"><a class="img-19MkpPFp" href="https://m.szonline.net/think/roll/20220228/022022_356677.html">
+                                <img class="lazyload"
+                                    src="data:image/svg+xml;utf8,<svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;113&quot; height=&quot;75&quot;><text x=&quot;29&quot; y=&quot;43&quot; fill=&quot;%23dcdcdc&quot; style=&quot;font-size: 14px;&quot;>深圳热线</text></svg>"
+                                    data-src="https://img1.szonline.net/2022/0228/1646036806399620.png"></a></div>
+                        </div>
+                    </div>
+                                                                              <div class="listItem-2xryoOft">
+                        <script type="text/javascript" src="//gold.szonline.net/production/qlkk/static/tr/common/n_r/resource/t.js"></script>
+                        
+                        <!-- u6707405 -->  
+                        <script type="text/javascript" src="//gold.szonline.net/source/hc_b_d/production/idyi_z.js"></script></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- u3171659 -->
+    <script type="text/javascript" src="//gold.szonline.net/common/kfx/production/o-goe-c/common/n.js"></script>
+    <script src="https://api.szonline.net/view.js?op=count&id=413438&modelid=4"></script>
+    <footer class="footer-2g4_FUTi">
+    <ul class="footerBox-2LqjESm1">
+        <li class="footerItem-1qbyHL3U">
+            <a class="footerLink-YuqGph4H">客户端</a>
+        </li>
+        <li class="footerItem-1qbyHL3U">
+            <a class="footerLink-YuqGph4H">反馈</a>
+        </li>
+        <li class="footerItem-1qbyHL3U">
+            <a class="footerLink-YuqGph4H">电脑版</a>
+        </li>
+        <li class="footerItem-1qbyHL3U">
+            <a class="footerLink-YuqGph4H">无图版</a>
+        </li>
+        <li class="footerItem-1qbyHL3U">
+            <a class="footerLink-YuqGph4H">滚动</a>
+        </li>
+    </ul>
+</footer>
+
+<div class="box-4XHupypo">
+    <span>Copyright © 2021 SZONLINE.NET 深圳热线 All Rights Reserved.</span>
+</div>
+
+<div class="widget" style="display:none;">
+    <div class="toTop-1ZID7R9v"><a></a></div>
+    <div class="toHome-ke_-XMRo">
+        <a href="//m.szonline.net/?srctag=zbs_article_home2" target="_blank" rel="nofollow me noopener noreferrer"></a>
+    </div>
+</div>
+
+
+<link rel="stylesheet" href="https://res1.szonline.net/assets/js/lib/swiper/swiper.min.css" />
+<script src="https://res1.szonline.net/assets/js/lib/jquery/jquery.min.js"></script>
+<script src="https://res1.szonline.net/assets/js/lib/swiper/swiper.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
+<script>
+    function goTop()
+    {
+        $(window).scrollTop(0);
+    }
+    new Swiper ('.swiper-container', {
+        direction: 'horizontal',
+        loop: true,
+        slidesPerView:1.085,
+        slidesOffsetBefore: 10,
+        autoplay: {
+        delay: 5000,
+        stopOnLastSlide: false,
+        disableOnInteraction: true,
+        },
+    })
+
+    let images = document.querySelectorAll(".lazyload");
+    new LazyLoad(images, {
+        root: null,
+        rootMargin: '50px 0px',
+        threshold: 0.01
+    });
+
+    // 首页
+    $(function(){
+        $(".more-2cYESJWQ").on("click", function(){
+            if($(this).hasClass("turn-1cztvxsr"))
+            {
+                $(this).removeClass("turn-1cztvxsr");
+                $(".navbox-VpshfeGJ .more_menu").hide();
+            }
+            else
+            {
+                $(this).addClass("turn-1cztvxsr");
+                $(".navbox-VpshfeGJ .more_menu").show();
+            }
+        });
+
+        $(".fixTopIcon-3zIJnHjg").on("click", function (){
+            goTop();
+        })
+
+        $(".fixBottomIcon-2UisADy0").on("click", function (){
+            var h = $(document).height()-$(window).height();
+            $(document).scrollTop(h);
+        })
+
+
+    });
+
+    // channel
+    $(function () {
+        $(".menu-1eKowXpr").on("click", function () {
+            if ($(this).hasClass("down-2F72MrV5")) {
+                $(this).removeClass("down-2F72MrV5");
+                $(".menu_box-3A1PbQWN").hide();
+            } else {
+                $(this).addClass("down-2F72MrV5");
+                $(".menu_box-3A1PbQWN").show();
+            }
+        })
+    });
+    // list
+
+    // show
+    $(function () {
+        $(".btn-1BHudkxy").on("click", function () {
+            if ($(this).hasClass("big-d4e8Gp-i"))
+            {
+                $(this).removeClass("big-d4e8Gp-i");
+                $(this).addClass("small-2BJ2JVZR");
+                $(".text-20BABGxP").removeClass("smallFont-Z_OfA44W").addClass("bigFont-2ZjaSc0m");
+            }
+            else
+            {
+                $(this).removeClass("small-2BJ2JVZR");
+                $(this).addClass("big-d4e8Gp-i");
+                $(".text-20BABGxP").removeClass("bigFont-2ZjaSc0m").addClass("smallFont-Z_OfA44W");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.addEventListener('scroll',function(){
+        var targetHeight = document.querySelector('.editor_box-3CGaVHeU').offsetTop;
+        var currentHeight = document.documentElement.scrollTop;
+        if (currentHeight > targetHeight - 400) {
+            $(".widget").show();
+        }
+    }, false);
+    $(function() {
+        $(".toTop-1ZID7R9v").on("click", function () {
+            goTop();
+        })
+    });
+</script>
+<script src="https://script.szonline.net/hm.js?type=tongji"></script>
+</div>
+</body>
+</html>

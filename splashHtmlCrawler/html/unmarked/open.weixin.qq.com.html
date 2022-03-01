@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+<title>WeChat Open Platform</title>
+<script type="text/javascript">
+	var Report={
+		start:+new Date(),
+		point:{}
+	}
+
+  window.wx={
+    fake_id: '',
+    data:{
+      lang:'en_US'||'zh_CN'
+    }
+  };
+</script>
+<link rel="shortcut icon" type="image/x-icon" href="https://res.wx.qq.com/a/wx_fed/assets/res/NTI4MWU5.ico">
+<link rel="mask-icon" href="https://res.wx.qq.com/a/wx_fed/assets/res/MjliNWVm.svg" color="#4C4C4C">
+<link rel="apple-touch-icon-precomposed" href="https://res.wx.qq.com/a/wx_fed/assets/res/OTE0YTAw.png">
+<script type="text/javascript" src="https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/jserr3b8805.js"></script>
+<link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/en_US/htmledition/res/css/base/lib54c1d9.css">
+<link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/en_US/htmledition/res/css/base/base54c1d9.css">
+<link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/en_US/htmledition/res/css/base/base54c1d9.css">
+<link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/en_US/htmledition/res/css/base/base.en_US54c1d9.css">
+
+        
+<link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/en_US/htmledition/res/css/page/index/page_index5a40c0.css"/>
+<link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/en_US/htmledition/res/css/page/index/page_index5a40c0.css"/>
+<link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/en_US/htmledition/res/css/page/index/page_index.en_US5a40c0.css"/>
+<link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/en_US/htmledition/res/css/page/index/slider5a40c0.css"/>
+
+    </head>
+    <script type="text/javascript">Report.point[20]=+new Date();</script>
+    <body class="page_introduction  en_US">
+        <div class="head">
+            <div class="global_bar" id="loginBar">
+	<div class="inner wrp">
+	    &nbsp;
+	    <div class="account" id="loginAccount">
+	    				<a href="javascript:void(0);" class="account_meta no_extra" id="loginBarBt">Log In</a>
+            <a href="javascript:void(0);" id="loginBarRegisterBt">Sign Up</a>
+            <a href="javascript:void(0);" id="biz_qrcode_a" class="account_meta extra_info dev_code">
+                <img src="https://res.wx.qq.com/open/en_US/htmledition/res/img/pic/mp-dev-guide/icon_dev_code3b8805.png" class="icon_devcode">
+                <div id="biz_qrcode_div" style="display:none;" class="bubble_tips bubble_top code_pop">
+                    <div class="bubble_tips_inner">
+                     <p><img src="https://res.wx.qq.com/open/en_US/htmledition/res/img/pic/mp-dev-guide/dev_code3b8805.jpg" class="pic_devcode"></p>
+                     <p class="txt_enhanced">Please scan QR code to follow us<br>and receive important notifications</p>
+                    </div>
+                    <i class="bubble_tips_arrow out"></i>
+                    <i class="bubble_tips_arrow in"></i>
+                 </div>
+            </a>
+            
+            <a href="javascript:;" class="menu_wrps lang_switch"  >
+                <div class="menu_container">
+                    <div class="menu_placeholder">
+                        <i class="pic_lang_switch"></i>
+                    </div>
+                    
+                    <div class="menu_list_wrps" id="jsLangMenu">
+                        <div class="menu_list_container">
+                            <ul class="menu_list">
+                                <li class="menu_list_ele">
+                                    <label class="frm_radio_label jsLangLabel">
+                                        <i class="icon_radio"></i>
+                                        <span class="lbl_content">English</span>
+                                        <input type="radio" value="en_US" class="frm_radio jsLangSelect" >
+                                    </label>
+                                </li>
+                                <li class="menu_list_ele">
+                                    <label class="frm_radio_label jsLangLabel">
+                                        <i class="icon_radio"></i>
+                                        <span class="lbl_content">中文（简体）</span>
+                                        <input type="radio" value="zh_CN" class="frm_radio jsLangSelect">
+                                    </label>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            </a>
+            
+	        	    </div>
+	</div>
+</div>
+
+<script type="text/html" charset="utf-8" id="loginPop">
+<div class="login_panel label_input prepend open" id="{id}" style="margin-top:-300px;">
+    <div id="{id}_wx">
+        <div class="login_inner wx">
+            <form class="form login_form"  id="{id}_form">
+                <fieldset class="login_fieldset">
+                    <legend class="login_legend">Log In</legend>
+
+                    <div class="login_input_area">
+                        <span class="login_input_box first">
+                            <label class="login_label">Email</label>
+                            <input type="text" placeholder="Please enter the login email" class="frm_input" name="account"></span>
+                        <span class="login_input_box last">
+                            <label class="login_label">Password</label>
+                            <input type="password"  placeholder="Please fill in the password" class="frm_input" name="passwd"></span>
+                    </div>
+                    <div class="login_code_area" style="display:none" id="{id}_verifyContainer">
+                        <div class="verifycode" id="{id}_verify"></div>
+                    </div>
+
+                    <div class="login_function_area">
+                        <input type="checkbox" class="frm_checkbox" data-label="Remember account" id="{id}_check">
+                        <a href="javascript:void(0);" id="{id}_forget" class="jsUrlLink" data-url="regist/forget">Forget password</a>
+                    </div>
+
+                    <div class="login_valid_area"  id="{id}_fail">
+
+                    </div>
+
+                    <div class="login_tool_area">
+                        <a href="javascript:void(0);" class="btn btn_primary btn_login" id="{id}_login">Log In</a>
+                        <a href="javascript:void(0);" class="btn btn_default btn_regist" id="{id}_regist">Sign Up</a>
+                    </div>
+                </fieldset>
+            </form>
+
+        </div>
+        <div class="login_tips wx">
+                <p>
+                    <i class="icon_login qq"></i>For old users registered via QQ, <a href="javascript:;" id="{id}_goQQ"> click here to log in </a>                 </p>
+        </div>
+    </div>
+
+    <div class="login_inner qq" style="display:none;" align="center" id="{id}_qq">
+             <legend class="login_legend">Log In</legend>
+            <iframe src="" frameborder="0" id="{id}_frame"></iframe> 
+
+            <div class="login_tips qq">
+                <p>
+                    Only available for old registered users. For new users, please use <a href="javascript:;" id="{id}_goWX"> Log in by email </a>                 </p>
+            </div>
+    </div>
+        <a href="javascript:void(0);" class="login_close icon16_common close " id="{id}_close">Close</a>
+</div>
+</script>
+
+            <div class="head_box">
+                <div class="inner wrp">
+                    <h1 class="logo">
+                        <a href="/" class="jsUrlLink"  data-url="home/index" target="self" title="WeChat Open Platform">WeChat Open Platform</a>
+                    </h1>
+                    <span>
+    <ul class="nav">
+        <li class="nav_item jsNavItem" data-id="index"><a href="javascript:" class="jsUrlLink" data-url="home/index" target="self">首页</a></li>
+        <li class="nav_item jsNavItem" data-id="res"><a href="javascript:" class="jsUrlLink" data-url="home/resource" target="self">资源中心</a></li>
+        <li class="nav_item jsNavItem" data-id="manage"><a href="javascript:" class="jsUrlLink" data-login="true" data-url="manage/list" target="self">管理中心</a></li>
+
+        <li class="nav_item jsNavItem" data-id="account"><a href="javascript:" class="jsUrlLink" data-login="true" data-url="setting/dev" target="self">帐号中心</a></li>
+            
+    </ul>
+     <div class="encounter_problem" id="online_service">
+            <div class="encounter_problem_simple">
+                <img src="https://res.wx.qq.com/open/en_US/htmledition/res/img/pic/slider/icon_help5a40bf.svg" class="encounter_problem_simple_icon" />
+                <p class="encounter_problem_simple_word">遇</p>
+                <p class="encounter_problem_simple_word">到</p>
+                <p class="encounter_problem_simple_word">问</p>
+                <p class="encounter_problem_simple_word">题</p>
+            </div>
+            <div class="encounter_problem_detail">
+                <a target="view_window" href="https://developers.weixin.qq.com/community/develop/mixflow">
+                    <div class="encounter_problem_detail_item">
+                        <div class="encounter_problem_detail_item_top">
+                            <p class="encounter_problem_detail_item_top_title">问题反馈</p>
+                            <img src="https://res.wx.qq.com/open/en_US/htmledition/res/img/pic/slider/icon_arrow5a40bf.svg" class="encounter_problem_detail_item_top_icon" />
+                        </div>
+                        <p class="encounter_problem_detail_item_tip">向微信公众平台反馈意见</p>
+                    </div>
+                </a>
+                <div class="encounter_problem_detail_line"></div>
+                <a target="view_window" href="https://mp.weixin.qq.com/webpoc/customerService?type=16&c1=&c2=&c3=">
+                    <div class="encounter_problem_detail_item">
+                        <div class="encounter_problem_detail_item_top">
+                            <p class="encounter_problem_detail_item_top_title">在线客服</p>
+                            <img src="https://res.wx.qq.com/open/en_US/htmledition/res/img/pic/slider/icon_arrow5a40bf.svg" class="encounter_problem_detail_item_top_icon" />
+                        </div>
+                        <p class="encounter_problem_detail_item_tip">向在线客服咨询问题</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+</span>
+
+                </div>
+            </div>
+        </div>
+        
+<script type="text/javascript">
+Report.point[20]=+new Date();
+</script>
+
+<!--[if IE]>
+<style type="text/css">
+
+.slider_list .slide_item.wx_pay .slide_con{background:url(/open/zh_CN/htmledition/res/img/bg/wx_pay_text_ie.png) no-repeat 124px 180px;}
+.slider_list .slide_item.wx_smart .slide_con{background:url(/open/zh_CN/htmledition/res/img/bg/wx_smart_text_ie.png) no-repeat 45px 180px;}
+.slider_list .slide_item.wx_login .slide_con{background:url(/open/zh_CN/htmledition/res/img/bg/wx_login_text_ie.png) no-repeat center 110px;}
+</style>
+<![endif]-->
+<div class="body">
+    <div class="banner">
+        <div class="slider_container">
+            <div class="slider_list">
+                <ol id="slider_container">
+                    <li class="slide_item wx_wdc">
+                        
+                            <div class="inner_slide_item">
+                                <div class="slide_con slide_con_left_top0"></div>
+                                <div class="slide_con slide_con_left_top"></div>
+                                <div class="slide_con slide_con_left_bottom"></div>
+                                <div class="slide_img relative">
+                                    <h1 class="slide_img_first_title">微信开放社区</h1>
+                                    <div class="slide_img_first_subtitle">开放 · 交流 · 共进 · 创造</div>
+                                    <a class="slide_img_first_link_zh btn btn_banner" href="https://developers.weixin.qq.com/community/minihome/mixflow/1366094922130079745" target="_blank" >前往社区</a>
+                                    
+                                </div>
+                                <div class="slide_con slide_con_right_top"></div>
+                                <div class="slide_con slide_con_right_bottom"></div>
+                                <div class="slide_con slide_con_right_bottom2"></div>
+                            </div>
+                        
+                    </li>
+                    <li class="slide_item wx_cloud">
+                        <div class="inner_slide_item">
+                            <div class="slide_con">
+                                <div style="display: flex;">
+                                    <img style="width: 60px; height: 42px; margin-right: 7px; padding-top: 182px;" src="" back_src="https://res.wx.qq.com/open/en_US/htmledition/res/img/pic/slider/wx-cloud-logo5a40bf.png" alt="">
+                                    <h2>微信云托管</h2>
+                                </div>
+                                <p class="desc">后端上云开发新模式 · 官方全链路云原生解决方案 · 免鉴权调用微信开放接口</p>
+                                <p><a href="https://cloud.weixin.qq.com/cloudrun?utm_source=open" target="_blank" class="btn btn_banner">前往官网</a> </p>
+                            </div>
+                            <div class="slide_img">
+                                <img class="slide_image_item" src="" back_src="https://res.wx.qq.com/open/en_US/htmledition/res/img/pic/slider/wx-cloud5a40bf.png" alt="">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="slide_item wx_services">
+                        <div class="inner_slide_item">
+                            <div class="slide_con">
+                                <h2>Mini Programs Providers</h2>
+                                <p class="desc">Partner with WeChat and millions of developers to enable the Mini Programs ecosystem</p>
+                                <p><a href="javascript:void(0);" data-url="home/service_provider" class="jsUrlLink btn btn_banner">Become a Provider</a> </p>
+                            </div>
+                            <div class="slide_img">
+                                <span class="slide_image_item"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="slide_item wx_plugin">
+                        <div class="inner_slide_item">
+                            <div class="slide_con">
+                                <h2>Third-party PlatformStart open beta test</h2>
+                                <p class="desc">Newly opened types allow developers to help Official Accounts by offering additional vertical solutions</p>
+                                <p><a href="javascript:void(0);" data-url="home/wx_plugin" class="jsUrlLink btn btn_banner">Learn more</a> </p>
+                            </div>
+                            <div class="slide_img">
+                                <img src="" back_src="https://res.wx.qq.com/open/en_US/htmledition/res/img/pic/slider/banner_index_plugin5a40bf.png" />
+                            </div>
+                        </div>
+                    </li>
+                    <li class="slide_item wx_login">
+                        <div class="inner_slide_item">
+                            <div class="slide_con">
+                                <h2>WeChat Login&nbsp;Start open beta test</h2>
+                                <p class="desc">Offering WeChat Login offers rapid login via WeChat account, unified accounts across different products, and connection to hundreds of millions of WeChat users with a single touch</p>
+                                <p><a href="javascript:void(0);" data-url="home/wx_login" class="jsUrlLink btn btn_banner">Learn more</a> </p>
+                            </div>
+                            <div class="slide_img">
+                                <img src="" back_src="https://res.wx.qq.com/open/en_US/htmledition/res/img/pic/slider/banner_index_login5a40bf.png"  class="index_login" />
+                            </div>
+                        </div>
+                    </li>
+                    <li class="slide_item wx_resource">
+                        <div class="inner_slide_item">
+                            <div class="slide_con">
+                                <h2>Download Materials</h2>
+                                <p class="desc">Selected branding, IP, functional and basic materials for offline businesses</p>
+                                <p><a href="javascript:void(0);" data-url="home/res_download" class="jsUrlLink btn btn_banner">Download</a> </p>
+                            </div>
+                            <div class="slide_img">
+                                <span class="slide_image_item"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="slide_item wx_smart">
+                        <div class="inner_slide_item">
+                            <div class="slide_img">
+                                <img src="" back_src="https://res.wx.qq.com/open/en_US/htmledition/res/img/pic/slider/banner_index_smart25a40bf.png" class="index_smart"/>
+                            </div>
+                            <div class="slide_con">
+                                <h2>Smart API&nbsp;Start open beta test</h2>
+                                <p class="desc">Access to the Smart API integrating WeChat image and speech recognition capabilities into your own applications, providing users with richer mobile Internet services</p>
+                                <p><a href="javascript:void(0);" data-url="home/smart_recognise" class="jsUrlLink btn btn_banner">Learn more</a> </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="slide_item wx_pay">
+                        <div class="inner_slide_item">
+                            <div class="slide_con">
+                                <h2>WeChat Pay&nbsp;Start open beta test</h2>
+                               <p class="desc">Access WeChat Pay to create more payment use cases for mobile consumers. WeChat Pay is safe and reliable, worry-free, convenient and quick, and can be used anytime, anywhere.</p>
+                                <p><a href="javascript:void(0);" data-url="home/pay" class="jsUrlLink btn btn_banner btn_banner_pay">Learn more</a> </p>
+                            </div>
+                            <div class="slide_img">
+                                <img src="" back_src="https://res.wx.qq.com/open/en_US/htmledition/res/img/pic/slider/banner_index_pay5a40bf.png" class="index_pay"/>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="slider_nav">
+                <ul id="slider_title">
+                    <li class="current">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                </ul>
+            </div>
+        </div>
+        <div class="wrp_notice_box">
+                <div class="inner wrp">
+                    <div id="newsDiv" class="notices_box">
+                        <i class="icon_speaker"></i>
+                    </div>
+                </div>
+                <div class="bg"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="inner wrp">
+            <div class="site_desc_box">
+                <ul class="inner">
+                    <li class="site_desc_item app_dev grid_item size1of4">
+                    <div class="site_desc_inner">
+                        <dl>
+                            <dt>Mobile App Development</dt>
+                            <dd class="content">Use the WeChat Open Platform to let your mobile apps support Share to WeChat, Add to Favorites in WeChat, and WeChat Pay.</dd>
+                            <dd class="readmore"><a href="javascript:;" class="jsUrlLink btn" data-url="home/app">Learn more</a></dd>
+                            <dd class="icon_site_desc app_dev"></dd>
+                        </dl>
+                    </div>
+                    </li>
+
+                    <li class="site_desc_item web_dev grid_item size1of4">
+                    <div class="site_desc_inner">
+                        <dl>
+                            <dt>Website Application Development</dt>
+                            <dd class="content">Use the WeChat Open Platform to let your website support login via WeChat.</dd>
+                            <dd class="readmore"><a href="javascript:;" class="jsUrlLink btn" data-url="home/web">Learn more</a></dd>
+                            <dd class="icon_site_desc web_dev"></dd>
+                        </dl>
+                    </div>
+                    </li>
+
+                    <li class="site_desc_item wx_dev grid_item size1of4 ">
+                    <div class="site_desc_inner">
+                        <dl>
+                            <dt>Official Account Development</dt>
+                            <dd class="content">Use the WeChat Open Platform Official Accounts development to provide easy and convenient services to hundreds of millions WeChat users.</dd>
+                            <dd class="readmore"><a href="javascript:;" class="jsUrlLink btn" data-url="home/mp">Learn more</a></dd>
+                            <dd class="icon_site_desc wx_account"></dd>
+                        </dl>
+                    </div>
+                    </li>
+                     <li class="site_desc_item wx_dev grid_item size1of4  no_extra_flex">
+                    <div class="site_desc_inner">
+                        <dl>
+                            <dt>Third-party Platform Development</dt>
+                            <dd class="content">成为第三方平台，为广大公众号和小程序提供运营服务和行业解决方案</dd>
+                            <dd class="readmore">
+                                <a href="javascript:;" class="jsUrlLink btn" data-url="home/wx_plugin">第三方平台注册指引</a>
+                                <a href="/wxaopen/assignDevelopGuide" target="_blank">代创建小程序指引</a>
+                            </dd>
+                            <dd class="icon_site_desc wx_plugin"></dd>
+                        </dl>
+                    </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div class="foot">
+    <div class="inner wrp">
+        <p class="copyright">&copy; 1998 - 2022 Tencent All Right Reserved.</p>
+        <ul class="ft links">
+        	          
+        	<li class="links_item no_extra"><a href="/cgi-bin/frame?t=news/protocol_developer_tmpl" target="_blank">Developer Agreement</a></li>
+          <li class="links_item no_extra"><a href="https://mp.weixin.qq.com/cgi-bin/announce?action=getannouncement&announce_id=1512986091&version=1&lang=zh_CN&platform=2" target="_blank">Operating Specifications</a></li>
+            <li class="links_item no_extra"><a href="http://www.tencent.com/zh-cn/index.shtml" target="_blank">Contact Tencent</a></li>
+            <li class="links_item last_child"><a href="https://developers.weixin.qq.com/community/develop/mixflow" target="_blank">问题反馈</a></li>
+        </ul>
+    </div>
+</div>
+
+    </body>
+     <script type="text/javascript">var MODULES = {'tpl/news/home.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/news/home.html3b8805.js','tpl/home/admin_popup.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/home/admin_popup.html3b8805.js','tpl/biz_web/ui/dateRange.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/biz_web/ui/dateRange.html3b8805.js','tpl/biz_web/ui/checkbox.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/biz_web/ui/checkbox.html3b8805.js','tpl/biz_web/ui/timeRange.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/biz_web/ui/timeRange.html3b8805.js','tpl/biz_web/ui/dropdown.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/biz_web/ui/dropdown.html3b8805.js','tpl/biz_web/ui/multiupload.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/biz_web/ui/multiupload.html3b8805.js','tpl/tooltips.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/tooltips.html3b8805.js','tpl/checkbox.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/checkbox.html3b8805.js','tpl/qrcheck/qrcode.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/qrcheck/qrcode.html3b8805.js','tpl/qrcheck/popup.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/qrcheck/popup.html3b8805.js','tpl/nav.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/nav.html3b8805.js','tpl/tort/complaint_notice.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/tort/complaint_notice.html3b8805.js','tpl/tort/appCard.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/tort/appCard.html3b8805.js','tpl/tort/appPopup.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/tort/appPopup.html3b8805.js','tpl/tort/step1.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/tort/step1.html3b8805.js','tpl/tort/view/contact_view_tpl.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/tort/view/contact_view_tpl.html3b8805.js','tpl/tort/view/content_view_tpl.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/tort/view/content_view_tpl.html3b8805.js','tpl/tort/step4.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/tort/step4.html3b8805.js','tpl/tort/appeal_notice.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/tort/appeal_notice.html3b8805.js','tpl/tort/step3.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/tort/step3.html3b8805.js','tpl/tort/step2.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/tort/step2.html55dabd.js','tpl/pagebar.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/pagebar.html3b8805.js','tpl/uploader.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/uploader.html3b8805.js','tpl/cardticket/apply_logo.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/cardticket/apply_logo.html3b8805.js','tpl/cardticket/apply_card_deal.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/cardticket/apply_card_deal.html3b8805.js','tpl/linktip.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/linktip.html3b8805.js','tpl/verifycode.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/verifycode.html3b8805.js','tpl/qrcheck.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/qrcheck.html3b8805.js','tpl/step.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/step.html3b8805.js','tpl/public/wxverify/entreg.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/entreg.html3b8805.js','tpl/public/wxverify/invoice_edit.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/invoice_edit.html3b8805.js','tpl/public/wxverify/common_preview.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/common_preview.html3b8805.js','tpl/public/wxverify/gov_preview.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/gov_preview.html3b8805.js','tpl/public/wxverify/mediaent_preview.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/mediaent_preview.html3b8805.js','tpl/public/wxverify/step1.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/step1.html3b8805.js','tpl/public/wxverify/social_preview.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/social_preview.html3b8805.js','tpl/public/wxverify/step5.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/step5.html422689.js','tpl/public/wxverify/publicservice_preview.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/publicservice_preview.html3b8805.js','tpl/public/wxverify/nonprofitreg.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/nonprofitreg.html3b8805.js','tpl/public/wxverify/mediareg.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/mediareg.html3b8805.js','tpl/public/wxverify/confirmname.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/confirmname.html3b8805.js','tpl/public/wxverify/media_preview.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/media_preview.html3b8805.js','tpl/public/wxverify/profitable_preview.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/profitable_preview.html3b8805.js','tpl/public/wxverify/shopreg.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/shopreg.html3b8805.js','tpl/public/wxverify/govreg.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/govreg.html3b8805.js','tpl/public/wxverify/artist_preview.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/artist_preview.html3b8805.js','tpl/public/wxverify/commonreg.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/commonreg.html3b8805.js','tpl/public/wxverify/step4.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/step4.html3b8805.js','tpl/public/wxverify/artistreg.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/artistreg.html3b8805.js','tpl/public/wxverify/nonprofit_preview.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/nonprofit_preview.html3b8805.js','tpl/public/wxverify/profitablereg.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/profitablereg.html3b8805.js','tpl/public/wxverify/step3.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/step3.html3b8805.js','tpl/public/wxverify/increment_tax_form.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/increment_tax_form.html3b8805.js','tpl/public/wxverify/civilian_preview.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/civilian_preview.html3b8805.js','tpl/public/wxverify/mediaentreg.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/mediaentreg.html3b8805.js','tpl/public/wxverify/publicservice.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/publicservice.html3b8805.js','tpl/public/wxverify/invoice_field.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/invoice_field.html3b8805.js','tpl/public/wxverify/civilianreg.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/civilianreg.html3b8805.js','tpl/public/wxverify/ent_preview.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/ent_preview.html3b8805.js','tpl/public/wxverify/step2.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/step2.html3b8805.js','tpl/public/wxverify/socialreg.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/socialreg.html3b8805.js','tpl/public/wxverify/shop_preview.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/public/wxverify/shop_preview.html3b8805.js','tpl/dropdown.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/dropdown.html3b8805.js','tpl/dialog.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/dialog.html3b8805.js','tpl/popup.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/popup.html3b8805.js','tpl/process.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tpl/process.html3b8805.js','news/news.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/news/news3b8805.js','common/wx/Cgi.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/Cgi5866ea.js','.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/.js','news/list.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/news/list3b8805.js','common/wx/pagebar.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/pagebar3b8805.js','home/admin_popup.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/home/admin_popup3b8805.js','common/wx/popup.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/popup3b8805.js','common/wx/Tips.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/Tips3b8805.js','home/appeal.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/home/appeal4a2bc9.js','biz_web/utils/upload.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/utils/upload3b8805.js','biz_common/moment.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/moment3b8805.js','home/index.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/home/index54c1d9.js','common/lib/json.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/lib/json3b8805.js','common/wx/slider.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/slider3b8805.js','home/notice.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/home/notice5b1aec.js','common/lib/moment.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/lib/moment3b8805.js','common/wx/checkbox.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/checkbox3b8805.js','jweixin-1.2.0.src.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/jweixin-1.2.0.src3b8805.js','jweixin-1.2.1.src.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/jweixin-1.2.1.src3b8805.js','jweixin-1.3.1.src.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/jweixin-1.3.1.src3b8805.js','biz_web/ui/dateRange.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/ui/dateRange3b8805.js','biz_web/widget/date_range.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/biz_web/widget/date_range3b8805.css','biz_web/widget/date_range.en_US.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/biz_web/widget/date_range.en_US3b8805.css','biz_web/ui/map.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/ui/map3b8805.js','biz_web/ui/checkbox.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/ui/checkbox3b8805.js','biz_web/ui/jquery.scrollbar.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/ui/jquery.scrollbar3b8805.js','biz_web/widget/jquery.scrollbar.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/biz_web/widget/jquery.scrollbar3b8805.css','biz_web/ui/dropdown.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/ui/dropdown3b8805.js','biz_web/widget/dropdown.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/biz_web/widget/dropdown3b8805.css','biz_web/ui/input/lentips.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/ui/input/lentips3b8805.js','biz_web/ui/input/targetips.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/ui/input/targetips3b8805.js','biz_web/lib/soundmanager2.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/soundmanager23b8805.js','biz_web/lib/audiojs.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/audiojs3b8805.js','biz_web/lib/highcharts-v4.2.1.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/highcharts-v4.2.13b8805.js','biz_web/lib/webuploader.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader3b8805.js','biz_web/lib/webuploader/base.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/base3b8805.js','biz_web/lib/webuploader/widgets/filepicker.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/widgets/filepicker3b8805.js','biz_web/lib/webuploader/widgets/queue.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/widgets/queue3b8805.js','biz_web/lib/webuploader/widgets/runtime.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/widgets/runtime3b8805.js','biz_web/lib/webuploader/widgets/upload.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/widgets/upload3b8805.js','biz_web/lib/webuploader/widgets/validator.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/widgets/validator3b8805.js','biz_web/lib/webuploader/widgets/image.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/widgets/image3b8805.js','biz_web/lib/webuploader/runtime/html5/blob.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/html5/blob3b8805.js','biz_web/lib/webuploader/runtime/html5/filepicker.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/html5/filepicker3b8805.js','biz_web/lib/webuploader/runtime/html5/imagemeta/exif.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/html5/imagemeta/exif3b8805.js','biz_web/lib/webuploader/runtime/html5/transport.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/html5/transport3b8805.js','biz_web/lib/webuploader/runtime/html5/image.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/html5/image3b8805.js','biz_web/lib/webuploader/runtime/flash/filepicker.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/flash/filepicker3b8805.js','biz_web/lib/webuploader/runtime/flash/transport.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/flash/transport3b8805.js','biz_web/lib/webuploader/runtime/flash/blob.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/flash/blob3b8805.js','biz_web/lib/webuploader/runtime/flash/image.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/flash/image3b8805.js','biz_web/lib/highcharts.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/highcharts3b8805.js','biz_web/lib/video.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/video3b8805.js','biz_web/lib/spin.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/spin3b8805.js','biz_web/lib/raphael-min.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/raphael-min3b8805.js','eve.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/eve.js','biz_web/lib/swfobject.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/swfobject3b8805.js','biz_web/lib/store.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/store3b8805.js','biz_web/lib/json.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/json3b8805.js','biz_web/lib/uploadify.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/uploadify3b8805.js','biz_web/lib/highcharts-more-v4.2.4.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/highcharts-more-v4.2.43b8805.js','biz_web/lib/webuploader/lib/filepicker.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/lib/filepicker3b8805.js','biz_web/lib/webuploader/runtime/client.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/client3b8805.js','biz_web/lib/webuploader/lib/file.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/lib/file3b8805.js','biz_web/lib/webuploader/lib/image.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/lib/image3b8805.js','biz_web/lib/webuploader/lib/blob.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/lib/blob3b8805.js','biz_web/lib/webuploader/lib/transport.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/lib/transport3b8805.js','biz_web/lib/webuploader/mediator.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/mediator3b8805.js','biz_web/lib/webuploader/uploader.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/uploader3b8805.js','biz_web/lib/webuploader/file.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/file3b8805.js','biz_web/lib/webuploader/widgets/widget.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/widgets/widget3b8805.js','biz_web/lib/webuploader/runtime/runtime.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/runtime3b8805.js','biz_web/lib/webuploader/queue.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/queue3b8805.js','biz_web/lib/webuploader/dollar-third.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/dollar-third3b8805.js','biz_web/lib/webuploader/promise.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/promise3b8805.js','biz_web/lib/webuploader/runtime/html5/runtime.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/html5/runtime3b8805.js','biz_web/lib/webuploader/runtime/html5/util.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/html5/util3b8805.js','biz_web/lib/webuploader/runtime/compbase.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/compbase3b8805.js','biz_web/lib/webuploader/runtime/html5/jpegencoder.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/html5/jpegencoder3b8805.js','biz_web/lib/webuploader/runtime/html5/imagemeta.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/html5/imagemeta3b8805.js','biz_web/lib/webuploader/runtime/flash/runtime.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/runtime/flash/runtime3b8805.js','biz_web/lib/webuploader/dollar-builtin.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/lib/webuploader/dollar-builtin3b8805.js','biz_web/utils/Piper.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/utils/Piper3b8805.js','widget/upload.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/widget/upload54c1d9.css','common/wx/dialog.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/dialog5250bc.js','biz_web/utils/multiupload.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_web/utils/multiupload3b8805.js','common/wx/preview.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/preview.js','manage/card_business_manage.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/card_business_manage3b8805.js','common/wx/linktip.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/linktip3b8805.js','manage/createBizpluginStep2.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/createBizpluginStep24fa42c.js','manage/formatData.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/formatData4872ae.js','common/wx/route.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/route58de7f.js','manage/resetAppsecret.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/resetAppsecret3b8805.js','manage/plugin_detail.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/plugin_detail5856cf.js','common/qq/jquery.plugin/zclip.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/qq/jquery.plugin/zclip3b8805.js','common/wx/time.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/time3b8805.js','common/wx/tooltips.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/tooltips3b8805.js','manage/appSecretDialog.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/appSecretDialog3b8805.js','plugin/submit_pay.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/plugin/submit_pay3b8805.js','manage/card_business_detail.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/card_business_detail3b8805.js','common/wx/Step.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/Step3b8805.js','common/wx/qrcheck.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/qrcheck3b8805.js','manage/create_card_business.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/create_card_business3b8805.js','common/lib/jquery.validate.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/lib/jquery.validate3b8805.js','common/lib/jquery.md5.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/lib/jquery.md53b8805.js','common/wx/dropdown.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/dropdown3b8805.js','manage/createMobileStep2.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/createMobileStep24cc1f0.js','manage/step2Submit.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/step2Submit3b8805.js','common/wx/verifycode.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/verifycode3b8805.js','manage/createWebStep2.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/createWebStep24cc1f0.js','manage/create.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/create438826.js','common/wx/process.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/process3b8805.js','manage/createStep1.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/createStep156414a.js','manage/createBizpluginStep3.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/createBizpluginStep34badbd.js','manage/apply_advanced.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/apply_advanced3b8805.js','widget/dropdown.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/widget/dropdown54c1d9.css','widget/dropdown.en_US.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/widget/dropdown.en_US54c1d9.css','common/wx/clientCode.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/clientCode58e994.js','manage/list.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/list5856cf.js','manage/detail.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/detail575ecb.js','manage/wxOpenIndex.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/wxOpenIndex3b8805.js','manage/card_powered_apply.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/card_powered_apply3b8805.js','manage/modify.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/modify558c31.js','manage/plugin_modify.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/plugin_modify56414a.js','manage/wxOpenDetail.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/manage/wxOpenDetail3b8805.js','biz_common/dom/attr.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/dom/attr3b8805.js','biz_common/dom/event.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/dom/event3b8805.js','biz_common/dom/class.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/dom/class3b8805.js','biz_common/ui/imgonepx.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/ui/imgonepx3b8805.js','biz_common/virtual-template.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/virtual-template3b8805.js','biz_common/aes.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/aes3b8805.js','biz_common/utils/emoji_panel_data.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/emoji_panel_data3b8805.js','biz_common/utils/monitor.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/monitor3b8805.js','biz_common/utils/huatuo.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/huatuo3b8805.js','biz_common/utils/respTypes.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/respTypes3b8805.js','biz_common/utils/string/html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/string/html3b8805.js','biz_common/utils/string/emoji.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/string/emoji3b8805.js','biz_common/utils/string/jsonDeepHtmldecode.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/string/jsonDeepHtmldecode3b8805.js','biz_common/utils/url/parse.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/url/parse3b8805.js','biz_common/utils/spin.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/spin3b8805.js','biz_common/utils/norefererimg.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/norefererimg3b8805.js','biz_common/utils/sha1.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/sha13b8805.js','biz_common/utils/asyncJs.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/asyncJs3b8805.js','biz_common/utils/format_ori_check_result.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/format_ori_check_result3b8805.js','biz_common/utils/wxgspeedsdk.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/wxgspeedsdk3b8805.js','biz_common/utils/cookie.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/cookie3b8805.js','biz_common/utils/http.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/http3b8805.js','biz_common/utils/geolocation.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/geolocation3b8805.js','biz_common/utils/report.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/report3b8805.js','biz_common/utils/emoji_data.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/utils/emoji_data3b8805.js','biz_common/xss.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/xss3b8805.js','biz_common/jquery.validate.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/jquery.validate3b8805.js','biz_common/jquery-1.9.1.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/jquery-1.9.13b8805.js','biz_common/tmpl.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/tmpl3b8805.js','biz_common/base64.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/base643b8805.js','biz_common/underscore.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/underscore3b8805.js','biz_common/jquery.ui/jquery.ui.sortable.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/jquery.ui/jquery.ui.sortable3b8805.js','biz_common/jquery.ui/jquery.ui.draggable.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/jquery.ui/jquery.ui.draggable3b8805.js','biz_common/log/jserr.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/log/jserr3b8805.js','biz_common/cookie.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/cookie3b8805.js','biz_common/test/respTypesTest/index.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/test/respTypesTest/index.html3b8805.js','biz_common/template-2.0.1-cmd.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/template-2.0.1-cmd3b8805.js','biz_common/jquery-2.1.4.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/jquery-2.1.43b8805.js','biz_common/framework/localforage.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/framework/localforage3b8805.js','promise.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/promise.js','biz_common/framework/drivers/indexeddb.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/framework/drivers/indexeddb.js','biz_common/framework/drivers/localstorage.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/framework/drivers/localstorage.js','biz_common/framework/drivers/websql.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/biz_common/framework/drivers/websql.js','wxlogin/index.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/wxlogin/index3b8805.js','wxverify/bind_test_account.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/wxverify/bind_test_account3b8805.js','wxverify/wx2dcode.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/wxverify/wx2dcode3b8805.js','wxverify/index.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/wxverify/index3b8805.js','wxverify/bindAccount.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/wxverify/bindAccount3b8805.js','wxverify/annual_warning.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/wxverify/annual_warning3e3100.js','wxverify/biz_detail.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/wxverify/biz_detail3df831.js','setting/verify.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/setting/verify3d8e8e.js','setting/pwd.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/setting/pwd3b8805.js','regist/pwd.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/regist/pwd3b8805.js','setting/dev.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/setting/dev5a7926.js','common/wx/region.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/region46a040.js','jweixin-1.3.0.src.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/jweixin-1.3.0.src3b8805.js','tort/appeal_detail.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tort/appeal_detail3b8805.js','tort/view/OperView.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tort/view/OperView3b8805.js','tort/view/step_1_view.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tort/view/step_1_view3b8805.js','tort/view/step_2_view.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tort/view/step_2_view55dabd.js','tort/view/step_3_view.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tort/view/step_3_view3b8805.js','tort/view/step_4_view.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tort/view/step_4_view3b8805.js','tort/appPopup.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tort/appPopup3b8805.js','tort/view/StepView.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tort/view/StepView3b8805.js','tort/list.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tort/list3b8805.js','tort/process.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tort/process3b8805.js','tort/presenter/StepPresenter.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tort/presenter/StepPresenter3b8805.js','tort/presenter/OperPresenter.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tort/presenter/OperPresenter3b8805.js','tort/Model.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tort/Model3b8805.js','tort/print.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/tort/print3b8805.js','common/wx/qrcheck_msg.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/qrcheck_msg3b8805.js','widget/popover.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/widget/popover54c1d9.css','common/qq/Class.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/qq/Class3b8805.js','widget/processor_bar.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/widget/processor_bar54c1d9.css','common/qq/queryString.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/qq/queryString3b8805.js','widget/qrcode_check.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/widget/qrcode_check54c1d9.css','widget/qrcode_check.en_US.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/widget/qrcode_check.en_US54c1d9.css','common/qq/hotkey.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/qq/hotkey3b8805.js','widget/pagination.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/widget/pagination54c1d9.css','common/wx/qrcheck2.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/qrcheck23b8805.js','widget/qrcheck.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/widget/qrcheck54c1d9.css','widget/processor.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/widget/processor54c1d9.css','common/wx/overseasList.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/overseasList46a040.js','common/wx/messenger.method.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/messenger.method3b8805.js','common/wx/messenger.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/messenger3b8805.js','common/wx/stopMultiRequest.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/stopMultiRequest3b8805.js','widget/verifycode.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/widget/verifycode54c1d9.css','common/qq/mask.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/qq/mask3b8805.js','common/lib/MockJax.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/lib/MockJax3b8805.js','common/lib/jquery.ui.draggable.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/lib/jquery.ui.draggable3b8805.js','common/wx/openLogin.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/openLogin5a8f78.js','common/qq/jquery.plugin/Cookie.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/qq/jquery.plugin/Cookie3b8805.js','common/lib/datepicker.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/lib/datepicker3b8805.js','widget/datepicker.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/widget/datepicker54c1d9.css','common/lib/spin.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/lib/spin3b8805.js','common/lib/swfobject.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/lib/swfobject3b8805.js','common/lib/template.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/lib/template3b8805.js','common/lib/jquery.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/lib/jquery3b8805.js','common/lib/uploadify.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/lib/uploadify3b8805.js','common/qq/pwd.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/qq/pwd3b8805.js','common/qq/events.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/qq/events3b8805.js','common/qq/jquery.plugin/ZeroClipboard.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/qq/jquery.plugin/ZeroClipboard3b8805.js','common/qq/jquery.plugin/serializeObject.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/qq/jquery.plugin/serializeObject3b8805.js','plugin/tpl/submit_pay_list.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/plugin/tpl/submit_pay_list.html3b8805.js','plugin/tpl/submit_pay.html.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/plugin/tpl/submit_pay.html3b8805.js','cardticket/apply_logo.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/cardticket/apply_logo3b8805.js','page/cardticket/apply_widget_form.css': 'https://res.wx.qq.com/open/en_US/htmledition/res/css/page/cardticket/apply_widget_form3b8805.css','cardticket/common_template_helper.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/cardticket/common_template_helper3b8805.js','cardticket/common_validate.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/cardticket/common_validate3b8805.js','cardticket/apply_index.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/cardticket/apply_index3b8805.js','cardticket/apply_card.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/cardticket/apply_card3b8805.js','cardticket/apply_jsapi.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/cardticket/apply_jsapi3b8805.js','jweixin-1.3.2.src.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/jweixin-1.3.2.src3b8805.js','web/create.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/web/create3b8805.js','web/detail.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/web/detail3b8805.js','web/modify.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/web/modify3b8805.js','wxjump/index.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/wxjump/index3b8805.js','public/wxverify/step2.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/step23b8805.js','public/wxverify/entreg.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/entreg3b8805.js','public/wxverify/mediaentreg.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/mediaentreg3b8805.js','public/wxverify/govreg.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/govreg3b8805.js','public/wxverify/nonprofitreg.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/nonprofitreg3b8805.js','public/wxverify/civilianreg.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/civilianreg3b8805.js','public/wxverify/profitablereg.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/profitablereg3b8805.js','public/wxverify/shopreg.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/shopreg3b8805.js','public/wxverify/socialreg.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/socialreg3b8805.js','public/wxverify/mediareg.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/mediareg3b8805.js','public/wxverify/artistreg.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/artistreg3b8805.js','public/wxverify/publicservice.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/publicservice3b8805.js','public/wxverify/init.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/init3b8805.js','public/wxverify/Step.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/Step3b8805.js','public/wxverify/validateExtend.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/validateExtend3b8805.js','common/qq/prototype.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/common/qq/prototype3b8805.js','public/wxverify/step3.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/step33b8805.js','public/wxverify/commonreg.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/commonreg3b8805.js','public/wxverify/supplement_verify_info.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/supplement_verify_info3e3100.js','public/wxverify/index.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/index3b8805.js','public/wxverify/step1.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/step13b8805.js','public/wxverify/step4.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/step43b8805.js','public/wxverify/step5.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/step5422689.js','public/wxverify/invoice_edit.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/invoice_edit3b8805.js','public/wxverify/detail.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/detail3b8805.js','public/wxverify/refill.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/refill3b8805.js','public/wxverify/confirmName.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/wxverify/confirmName3b8805.js','public/service/pay.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/service/pay3b8805.js','public/service/order.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/service/order3b8805.js','public/service/detail.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/public/service/detail3b8805.js','jweixin-1.0.0.src.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/jweixin-1.0.0.src3b8805.js','jweixin-1.1.0.src.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/jweixin-1.1.0.src3b8805.js','payApply/businessMenu.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/payApply/businessMenu3b8805.js','payApply/index.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/payApply/index3b8805.js','payApply/businessInfo.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/payApply/businessInfo3b8805.js','payApply/fiance.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/payApply/fiance3b8805.js','payApply/baseInfo.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/payApply/baseInfo3b8805.js','statistics/analysis.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/statistics/analysis3b8805.js','regist/reset.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/regist/reset3b8805.js','regist/regist2.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/regist/regist258e994.js','regist/regist.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/regist/regist3b8805.js','regist/forget.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/regist/forget3b8805.js','regist/upgrade.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/regist/upgrade3b8805.js','resource/resMenu.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/resource/resMenu3b8805.js','resource/resList.js': 'https://res.wx.qq.com/open/en_US/htmledition/js/resource/resList3b8805.js'};</script>
+    <script type="text/javascript">
+    Report.point[21]=+new Date();
+</script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/en_US/htmledition/js/sea3b8805.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/en_US/htmledition/js/common/lib3b8805.js"></script>
+<script type="text/javascript" charset="utf-8">
+    
+    window.wx={
+        T:function (str, data){
+           return template.compile(str)(data);
+        },
+        url:function(url){
+            if(url.indexOf("?")>-1){
+                url+="&token=&lang=en_US"
+            }else{
+                url+="?token=&lang=en_US"
+            }
+            return url;
+        },
+        data:{
+            t:"",
+            ticket:jQuery.cookie("ticket"),
+            lang:'en_US'||getCookie('mm_lang')||"zh_CN",
+            param:["&token=",'&lang=en_US'].join(""),
+            user_name:jQuery.cookie("ticket_id"),
+            nick_name:""
+        },
+        getUrl:function(name){
+            var match=(window.location+"&").match(new RegExp("(?:\\?|\\&)"+name+"=(.*?)\\&"));
+            if(match&&match[1]){
+                return String(match[1]).html(true);
+            }
+        },
+        fakeId:'', 
+        fake_id: '',
+        token:"",
+        path:{
+            webuploader : "https://res.wx.qq.com/open/en_US/htmledition/res/swf/biz_web/webuploader3b8805.swf",
+            zeroClipboard_new : "https://res.wx.qq.com/open/en_US/htmledition/res/swf/biz_web/ZeroClipboard_new3b8805.swf" 
+        },
+        wxverify : {
+            annual_review : "",
+            expired_time : ""
+        },
+        jslog : function(){}
+    };
+
+
+    
+    seajs.use("common/wx/route");
+
+    
+    jQuery("#loginBar").on('click', '#loginBarBt', function(event) {
+        var module=seajs.cache[seajs.resolve("common/wx/openLogin")];
+        if(!module){
+            seajs.use("common/wx/openLogin",function(m){
+                m.main();
+            });
+        }else{
+            module.exports.main();
+        }
+    });
+
+    
+    jQuery("#loginBar").on('click', '#loginBarRegisterBt', function(event) {
+        jQuery.ajax({
+            url : "https://open.weixin.qq.com/cgi-bin/logout",
+            type: 'get',
+            mask : true,
+            success : function(json){
+                var localHit = localStorage.getItem('localHit')
+                if (localHit === '1') {
+                    location.href = '/wxaopen/regist/index';
+                } else {
+                    location.href = '/cgi-bin/readtemplate?t=regist/regist_tmpl';
+                }
+            }
+        });
+    });
+
+    const showOnlineService = Number(localStorage.getItem('showOnlineService'))
+    if (showOnlineService) {
+      if (showOnlineService === 2) {
+        $('#online_service').css('display', 'none')
+      }
+    } else {
+      jQuery.ajax({
+        url : "https://mp.weixin.qq.com/webpoc/cgi/chat/checkChatPermission?type=16&grayType=random",
+        type: 'get',
+        mask : true,
+        success : function(json){
+          window.showOnlineService = json
+          if (json.can) {
+            localStorage.setItem('showOnlineService', 1)
+          } else {
+            localStorage.setItem('showOnlineService', 2)
+            $('#online_service').css('display', 'none')
+          }
+        }
+      });
+    }
+    
+    if (window.location.href.includes('cgi-bin/applist?t=manage/header')) {
+      $('#online_service').css('display', 'none')
+    }
+
+
+    $(".jsLangSelect[value='"+wx.data.lang+"']").parent().addClass('selected');
+    jQuery(".jsLangSelect").click(function(event) {
+        var lang=$(this).val();
+        $(".jsLangLabel").removeClass('selected');
+        $(this).parent(".jsLangLabel").addClass('selected');
+        if(lang==wx.data.lang){
+            return;
+        }
+        
+        if(wx.data.t){
+            jQuery.ajax({
+                url: '/cgi-bin/modifyprofile?action=setlang',
+                type: 'post',
+                data: {
+                    lang: lang,
+                    token: wx.data.t
+                },
+            })
+            .done(function() {
+                location.reload();
+            })
+        
+        }else{
+            _cookie("mm_lang",lang);
+            
+            if(!new RegExp("mm_lang="+lang).test(document.cookie)){
+                BJ_REPORT&&BJ_REPORT.monitor(118,147,document.cookie)
+            }
+            location.href=location.href.replace(/lang=[^\&]*/,"lang="+lang);
+        }
+
+    });
+
+    function _cookie(key, value, days){
+        days = days || 30;
+        var exp  = new Date();
+
+        exp.setTime(exp.getTime() + days*24*60*60*1000);
+
+        document.cookie = key + "="+ escape(value) + ";path=/;expires=" + exp.toGMTString() ;
+    }
+
+    function getCookie(name) {
+        var value = '; ' + document.cookie;
+        var parts = value.split('; ' + name + '=');
+        if (parts.length == 2) return parts.pop().split(';').shift();
+        else return '';
+    }
+
+         jQuery("#biz_qrcode_a").hover(function(e){
+        jQuery("#biz_qrcode_div").show();
+    },function(e){
+        jQuery("#biz_qrcode_div").hide();
+    });
+
+    
+        
+    window.nav={
+        selected:function(id){
+            jQuery(".jsNavItem[data-id='"+id+"']").addClass('selected').siblings().removeClass('selected');
+        }
+    };
+
+    
+    if (!window.location.origin) {
+        window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
+    };
+    if(window.location.href.startsWith("http://open.weixin.qq.com")){
+        window.location=window.location.href.replace("http","https");
+    } ;
+    Report.point[22]=+new Date();
+
+    Report.init=function(flag1,flag2,flag3){
+        this.url="http://isdspeed.qq.com/cgi-bin/r.cgi?"+Object.param({
+            flag1:flag1,
+            flag2:flag2,
+            flag3:flag3
+        });
+        this.isReport=true;
+    }
+
+    
+    try {
+        _cookie('__CURRENT_TOKEN__', wx.token);
+    } catch(err) {
+        
+    }
+</script>
+<script type="text/javascript" async src="https://res.wx.qq.com/open/en_US/htmledition/js/common/wx/http2_time451848.js"></script>
+
+    
+
+<script type="text/javascript" src="https://res.wx.qq.com/c/=/open/en_US/htmledition/js/tpl/news/home.html3b8805.js,/open/en_US/htmledition/js/common/wx/slider3b8805.js,/open/en_US/htmledition/js/common/lib/json3b8805.js,/open/en_US/htmledition/js/home/index54c1d9.js" ></script>
+<script type="text/javascript">
+window.cgiData = {
+        announcementlist : '[{"title":"微信公众平台用户信息相关接口调整公告","key":"11632660190BzIea","version":""},{"title":"微信升级 targetSdkVersion 30，请开发者及时适配","key":"11631688078r3SsD","version":""},{"title":"微信开放平台数据中心优化通知","key":"11625578551QtFy0","version":""},{"title":"微信 Android SDK 迁移至 Maven Central","key":"116196836364Bchn","version":""},]'.replace(",]","]"),
+            hit: '1',
+    proportion: '100',
+    update_time: '1639981350',
+    };
+nav.selected("index");
+seajs.use("home/index");
+Report.init(169,2086,1);
+
+var localHit = localStorage.getItem('localHit')
+var localUpdateTime = localStorage.getItem('localUpdateTime')
+if (localUpdateTime < window.cgiData.update_time) {
+    localStorage.setItem('localHit', window.cgiData.hit)
+    localStorage.setItem('localUpdateTime', window.cgiData.update_time)
+}
+var a= '&quot;&lt;/script&gt;&lt;script&nbsp;type=&#39;text/javascript&#39;&gt;var&nbsp;b=1&lt;/script&gt;&quot;';
+</script>
+
+
+    
+    <script type="text/javascript" charset="utf-8"> 
+    !$(".selected").hasClass("jsNavItem")&&nav.selected("manage");
+</script>
+</html>
+

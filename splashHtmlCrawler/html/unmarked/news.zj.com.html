@@ -1,0 +1,904 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Description" content="浙江都市网" />
+<meta name="Keywords" content="浙江都市网" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>浙江都市网 news.zj.com</title>
+<link href="/css/index.css?v=1.009920" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/js/index_top.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+			var url = window.location.href;
+			var host = window.location.host;
+			var wapurl = url.replace(host, host+'/m');
+			window.location.href = wapurl;
+		}
+		$("#top_title").html('<a href="'+index_top.pic_http+'" target="_blank"><img src="'+index_top.pic_url+'" border="0"></a>')
+		$("#tab_bgt").mouseover(function(){
+		 	 $(this).removeClass("bgt_2").addClass("bgt_1");
+			 $("#tab_dcxs").removeClass("bgt_1").addClass("bgt_2");
+			 $("#tab_bgt_content").show();
+			 $("#tab_dcxs_content").hide();
+		});
+		$("#tab_dcxs").mouseover(function(){
+			 $(this).removeClass("bgt_2").addClass("bgt_1");
+			 $("#tab_bgt").removeClass("bgt_1").addClass("bgt_2");
+			 $("#tab_bgt_content").hide();
+			 $("#tab_dcxs_content").show();
+		});
+		$(".zhxw_s02 li").each(function(i){
+		    $(this).hover(function(){
+			 		$(this).removeClass("zhxw_s02_di2").addClass("zhxw_s02_di1").siblings().removeClass("zhxw_s02_di1").addClass("zhxw_s02_di2");
+			 		$(".auto_fc").hide().eq(i).show();
+		    });	
+		});
+		
+		$(".tptj_x02 li").hide().slice(0, 6).show();
+		var i=0;
+		var flag = false;
+		 $(".qiehuan02").find("img").each(function(index){
+		 	  $(this).click(function(){
+		 	  	
+		 	  	if(index == 1){ //右边按钮
+		 	  		//alert(i);
+		 	  		//if(!flag && i==1) i=0;
+		 	  		i++;
+		 	  		if(i > 2 || i < 0) i=0;
+		 	  		$(".tptj_x02 li").hide().slice(i*6, i*6+6).fadeIn("slow");
+		 	  		$(".qiehuan02 li").addClass("qy02").removeClass("sy02").eq(i).removeClass("qy02").addClass("sy02");
+		 	      //i++;
+		 	  	}
+		 	  	else if(index == 0){ //左边按钮
+		 	  		i--;
+		 	  		if(i < 0 || i > 2) i=2;
+		 	  		$(".qiehuan02 li").addClass("qy02").removeClass("sy02").eq(i).removeClass("qy02").addClass("sy02");
+		 	  		$(".tptj_x02 li").hide().slice(i*6, i*6+6).fadeIn("slow");
+		 	  		//i--;
+		 	  	}
+		 	    flag = true;
+		    });
+		 	});	
+	});	
+
+	
+</script>
+<script>
+function setTab(name,cursel,n){
+for(i=1;i<=n;i++){
+  var menu=document.getElementById(name+i);
+  var con=document.getElementById("con_"+name+"_"+i);
+  menu.className=i==cursel?"zhxw_s_di1":"zhxw_s_di2";
+  con.style.display=i==cursel?"block":"none";
+}
+}
+</script>
+<script type="text/javascript">
+function NoRightClick(pid){//pid:flash's parentNode id
+ var el = document.getElementById(pid);
+ if(el.addEventListener){
+  el.addEventListener("mousedown",function(event){
+   if(event.button == 2){
+    event.stopPropagation(); //for firefox
+    event.preventDefault();  //for chrome
+   }
+  },true);
+ }else{
+  el.attachEvent("onmousedown",function(){
+   if(event.button == 2){
+    el.setCapture();
+   }
+  });
+  el.attachEvent("onmouseup",function(){
+   el.releaseCapture();
+  });
+  el.oncontextmenu = function(){
+   return false;
+  };
+ }
+};
+</script>
+</head>
+
+<body>
+
+<!--头部开始-->
+<div id="bod">
+	<div class="head buttons">
+		<div class="tl"><a href="http://www.zj.com" target="_blank">浙江都市网 - 老百姓的网</a></div>
+		<div class="tr"><a href="http://www.hongniang.com/" target="_blank">中国红娘</a> | <a href="http://yuesao.zj.com/" target="_blank">都市月嫂</a> | <a href="http://news.zj.com/">资讯中心</a> | <a href="http://mail.zj.com" target="_blank">邮箱</a></div>
+	</div>
+	<div class="top_gg"></div>
+	<div class="daohang">
+		<div class="tl2"><img src="images/logo.gif" alt="浙江都市网"/></div>
+		<div class="tr2 hei buttons">
+<br/>
+<font color="#505050" style="font-weight:bold;">资讯</font> |
+<a href="/list/1/1.html" target="_blank">浙江</a> | 
+<a href="/list/2/1.html" target="_blank">国内</a> | 
+<a href="/list/3/1.html" target="_blank">国际</a> | 
+<a href="/list/4/1.html" target="_blank">社会</a> | 
+<a href="/list/6/1.html" target="_blank">财经</a> | 
+<a href="/list/7/1.html" target="_blank">科技</a> |  
+<a href="/list/49/1.html" target="_blank">教育</a>		</div>
+		<div style="float:right;padding-top: 30px;"><script type="text/javascript" src="/js/date2013.js"></script>
+	</div>
+	
+	<!--
+	<div id="wather" class="buttons">
+		<form name="form1_search" action="/reach.php" method="get">
+			<table width="960" border="0" cellspacing="0" cellpadding="0">
+			  <tr>
+			    <td width="520" align="right" valign="top">
+			   	  <div style="float:left;"><script type="text/javascript" src="/js/date2013.js"></script> <img src="images/lssdjt.gif" alt="历史上的今天"/> <a href="javascript:;"><u>历史上的今天</u></a></div>
+				</td>
+				
+				<td width="260"></td>
+				<td width="63" align="right">
+					<img src="images/ss.gif" alt="搜索"/>
+				</td>
+			    <td width="195" align="right">
+			    	<input type="text" name="q" style="width:170px; border:1px #ccc solid;"/>
+			    </td>
+				<td width="40" align="center">
+					<a href="javascript:form1_search.submit();"><img src="images/sousuo.gif" width="40" height="19" border="0" alt="搜索" /></a>
+				</td>
+				
+			  </tr>
+			</table>
+		</form>
+	</div>
+	-->
+	<div style="margin:5px auto;padding:0px;width:960px;overflow:hidden;"></div>
+	<div class="nav">
+<a href="/" target="_self">首页</a>
+<a href="/list/1/1.html" target="_self">浙江</a>
+<a href="/list/2/1.html" target="_self">国内</a>
+<a href="/list/3/1.html" target="_self">国际</a>
+<a href="/list/4/1.html" target="_self">社会</a>
+<a href="/list/6/1.html" target="_self">财经</a>
+<a href="/list/7/1.html" target="_self">科技</a>
+<a href="/list/8/1.html" target="_self">体育</a>
+<a href="/list/49/1.html" target="_self">教育</a>
+<a href="http://mba.zj.com/" target="_blank">浙商</a>	</div>
+
+	<div class="ttxw">
+		<div class="ttxw_s" id="top_title"><!--<a href="/detail/1704830.shtml" target="_blank"><img src="/pic_title/default_1704830.png" border="0"></a>--></div>
+		<div class="ttxw_x"><a href="https://news.zj.com/detail/2022/02/24/1730827.html" target="_blank">未来五年杭州目标建成创新之窗、人文之窗、美丽之窗、开放之窗、善治之窗、幸福之窗。</a>│<a href="https://news.zj.com/detail/2022/02/24/1730829.html" target="_blank">杭州：发展实体经济不动摇 注入现代产业体系硬核力量</a></div>
+	</div>
+</div>
+<!--头部结束-->
+
+<!--大新闻结束-->
+<div id="Main">
+	<div class="main1_l">
+<div class="space">
+<h2 class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730987.html" target="_blank" title="宁海老渔民捕到7.1斤野生大黄鱼 4.2万元售出">宁海老渔民捕到7.1斤野生大黄鱼 4.2万元售出</a></h2>
+<!--功能代码开始-->
+<div class="Function"><span class="sys_time">08:12</span></div>
+<!--功能代码结束-->
+<h3><a href="https://news.zj.com/detail/2022/03/01/1730987.html" target="_blank">据悉，王明明公布捕获7.1斤野生大黄鱼后，该条大黄鱼立即以4.2万元的价格售出。 ...</a></h3>
+</div>
+<div class="space">
+<h2 class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730948.html" target="_blank" title="西湖推春季限定款游线“探梅观光游览专线”">西湖推春季限定款游线“探梅观光游览专线”</a></h2>
+<!--功能代码开始-->
+<div class="Function"><span class="sys_time">08:30</span></div>
+<!--功能代码结束-->
+<h3><a href="https://news.zj.com/detail/2022/02/28/1730948.html" target="_blank">为方便广大游客赏梅，杭州西湖景区推出了季节限定款——植物园“探梅观光游览专线”，时间持续将至3月中旬......</a></h3>
+</div>
+<div class="space">
+<h2 class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730947.html" target="_blank" title="杭州将打造杭州-苏州、杭州-无锡等内河游线">杭州将打造杭州-苏州、杭州-无锡等内河游线</a></h2>
+<!--功能代码开始-->
+<div class="Function"><span class="sys_time">08:27</span></div>
+<!--功能代码结束-->
+<h3><a href="https://news.zj.com/detail/2022/02/28/1730947.html" target="_blank">杭州印发建设方案，对杭州如何高质量统筹大运河文化保护传承利用进行规划，其中包括打造杭州-苏州、杭州-......</a></h3>
+</div>
+<div class="space">
+<h2 class="lz"><a href="https://news.zj.com/detail/2022/02/25/1730887.html" target="_blank" title="浙江邀百名科学家进中小学课堂 施一公第一讲">浙江邀百名科学家进中小学课堂 施一公第一讲</a></h2>
+<!--功能代码开始-->
+<div class="Function"><span class="sys_time">08:40</span></div>
+<!--功能代码结束-->
+<h3><a href="https://news.zj.com/detail/2022/02/25/1730887.html" target="_blank">2月24日，作为“百名科学家进中小学课堂”的首位讲师，中国科学院院士、西湖大学校长施一公在杭州开启第......</a></h3>
+</div>
+<div class="space">
+<h2 class="lz"><a href="https://news.zj.com/detail/2022/02/25/1730886.html" target="_blank" title="浙江平湖、海宁两地通报5例密接活动轨迹">浙江平湖、海宁两地通报5例密接活动轨迹</a></h2>
+<!--功能代码开始-->
+<div class="Function"><span class="sys_time">08:36</span></div>
+<!--功能代码结束-->
+<h3><a href="https://news.zj.com/detail/2022/02/25/1730886.html" target="_blank">据“平湖发布”“海宁发布”微信公众号，浙江两地24日公布了关于新冠病毒无症状感染者的5名密切接触者活......</a></h3>
+</div>
+		<div class="space">
+			<ul>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730992.html" target="_blank" title="冷空气将影响我国中东部地区">冷空气将影响我国中东部地区</a><span class="hui" style="margin-left:10px;">09:10</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730990.html" target="_blank" title="2021年度个税汇算今起开始 你是退税还是补税？">2021年度个税汇算今起开始 你是退税还是补税？</a><span class="hui" style="margin-left:10px;">09:06</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730988.html" target="_blank" title="杭州于3月1日开启积分入学受理 4月8日截止">杭州于3月1日开启积分入学受理 4月8日截止</a><span class="hui" style="margin-left:10px;">08:13</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730987.html" target="_blank" title="宁海老渔民捕到7.1斤野生大黄鱼 4.2万元售出">宁海老渔民捕到7.1斤野生大黄鱼 4.2万元售出</a><span class="hui" style="margin-left:10px;">08:12</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730963.html" target="_blank" title="拜登提名杰克逊出任美最高法院大法官">拜登提名杰克逊出任美最高法院大法官</a><span class="hui" style="margin-left:10px;">09:44</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730962.html" target="_blank" title="美疾控中心：70%美国民众在室内无需佩戴口罩">美疾控中心：70%美国民众在室内无需佩戴口罩</a><span class="hui" style="margin-left:10px;">09:43</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730961.html" target="_blank" title="31省份新增本土确诊病例87例">31省份新增本土确诊病例87例</a><span class="hui" style="margin-left:10px;">09:15</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730959.html" target="_blank" title="美国警方在得州一户家庭发现四人死亡">美国警方在得州一户家庭发现四人死亡</a><span class="hui" style="margin-left:10px;">09:37</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730958.html" target="_blank" title="菲律宾逾6300万人已完全接种疫苗">菲律宾逾6300万人已完全接种疫苗</a><span class="hui" style="margin-left:10px;">09:35</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730957.html" target="_blank" title="乌克兰基辅枪击事件致1名儿童死亡 数人受伤">乌克兰基辅枪击事件致1名儿童死亡 数人受伤</a><span class="hui" style="margin-left:10px;">09:34</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/18/1730617.html" target="_blank">冬奥花絮：谷爱凌妈妈没接电话 韭菜合子敞开吃</a><span class="hui" style="margin-left:10px;">08:02</span></li>
+
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/17/1730558.html" target="_blank">两起税案公布 中国继续打击涉税违法行为</a><span class="hui" style="margin-left:10px;">08:00</span></li>
+
+			</ul>
+		</div>
+	</div>
+	<div class="main2_l">
+		<div class="main2_ggg">
+<script type="text/javascript" src="/js/jquery.hzfocusimg.js"></script>
+      <div id="KinSlideshow" style="visibility:hidden;">
+
+<a href="https://news.zj.com/detail/2021/12/06/1727983.html"target="_blank"><img src="https://news.zj.com/images/2021/12/06/20211206091508154809.jpg" alt="杭州西溪大型“摸鱼”现场:68斤鱼王惊喜亮相"  width="551" height="338" /></a>
+<a href="https://news.zj.com/detail/2021/11/04/1726486.html"target="_blank"><img src="https://news.zj.com/images/2021/11/04/20211104085317578084.jpg" alt="杭州西湖边步行街成“网红直播街”"  width="551" height="338" /></a>
+
+<a href="https://news.zj.com/detail/2021/10/29/1726144.html"target="_blank"><img src="https://news.zj.com/images/2021/10/29/20211029084932930371.jpg" alt="丽水松阳明清老街:传统手艺遍布 照片定格时代" width="551" height="338" /></a>
+
+
+
+
+</div>
+<script type="text/javascript">
+$(function(){
+	
+	$("#KinSlideshow").KinSlideshow({
+			moveStyle:"down",
+			intervalTime:5,
+			mouseEvent:"mouseover",
+			titleFont:{TitleFont_size:14,TitleFont_color:"#ffffff"}
+	});
+
+
+})
+</script> 														             
+		</div>
+		<div class="main2_gj">
+			<div class="main2_gj_witer">新闻热词</div>
+ <div class="main2_gj_b lz2"> 
+<a href="https://news.zj.com/detail/2021/12/10/1728233.html" target="_blank">宗馥莉任娃哈哈副董事长兼总经理</a>
+ <a href="https://news.zj.com/detail/2022/01/05/1729179.html" target="_blank">知名学者全职加入西湖大学</a> 
+<a href="https://news.zj.com/detail/2021/11/18/1727277.html" target="_blank">浙江再添5位院士</a>
+
+ <a href="https://news.zj.com/detail/2021/12/21/1728673.html" target="_blank">网络主播薇娅偷逃税款被查</a> 
+ <a href="https://news.zj.com/detail/2021/11/30/1727754.html" target="_blank">杭州学霸情侣</a> <a href="https://news.zj.com/detail/2021/12/16/1728554.html" target="_blank">温州一民警因公牺牲</a> <a href="https://news.zj.com/detail/2021/11/04/1726483.html" target="_blank">杭州破获15年前命案</a> 
+
+</div>		</div>
+		<div class="main2_x">
+			<div class="main2_x_zt0">
+				<div class="main2_x_zt">
+					<div class="main2_x_zt_s">专题推荐</div>
+					<span class="tjzt">
+<div class="main2_x_zt_xx" style="margin-top:10px;">
+<table width="175" border="0" cellpadding="0" cellspacing="0" align="left">
+<tr><td><h5 class="lz"><a href="http://f2.zj.chinanews.com/zhuanti/20181128zhongde/20181123zhongde.html" target="_blank">2018中德高端制造峰会</a></h5></td></tr>
+<tr><td style="padding-bottom:10px;"><img src="https://news.zj.com/images/news/2019/zj/03/155376057657445100.jpg" /></td></tr>
+<tr>
+  <td>中德高端制造峰会是一场关于中国与德国高端制造业发展的战略对话和深层次研讨会，是一次关于中德高端制造业发展的思路与智慧的碰撞。<span class="red">[<a href="http://www.zt.zj.com/c/shoushaojie/" target="_blank">详细</a>]</span></td>
+</tr>
+</table>
+</div>
+
+<div class="main2_x_zt_xx" style="margin-top:5px;">
+<ul>
+<li class="lz"><a href="http://f2.zj.chinanews.com/zhuanti/2019zhuanti/20191204zuimeijianshe/20191206zmjiansheren.html" target="_blank">2019年度浙江省“最美建设人”</a></li>
+<li class="lz"> <a href="http://f2.zj.chinanews.com/zhuanti/2019zhuanti/20190126lianghui/2019126lianghui.html" target="_blank">2019年浙江两会 </a>
+</li>
+
+<li class="lz"><a href="http://f2.zj.chinanews.com/zhuanti/2019zhuanti/20191207dyh/sy.html" target="_blank">中国大运河文化带京杭对话</a></li>
+
+<li class="lz"><a href="http://f2.zj.chinanews.com/zhuanti/2019zhuanti/20191010spaq/spaq.html" target="_blank">整治食品安全问题联合行动</a></li>
+
+<li class="lz"> <a href="http://f2.zj.chinanews.com/zhuanti/2019zhuanti/20191021qtjlt/2019qtjlt.html" target="_blank">第三届（2019）钱塘江论坛</a>
+</li>
+
+
+
+
+
+
+
+</ul>
+</div>					</span>
+					<span class="tjzt" style="display:none;">
+<div class="main2_x_zt_xx" style="margin-top:10px;">
+<table width="175" border="0" cellpadding="0" cellspacing="0" align="left">
+<tr><td><h5 class="lz"><a href="http://www.zt.zj.com/w/2010worldcup/" target="_blank">2010南非世界杯享受足球盛宴</a></h5></td></tr>
+<tr><td style="padding-bottom:10px;"><a href="http://www.zt.zj.com/w/2010worldcup/" target="_blank"><img src="http://images.zj.com/upimg/news/2010/zt/test/127641294750712000.jpg"  alt="2010南非世界杯享受足球盛宴"/></a></td></tr>
+<tr>
+  <td>第十九届世界杯足球赛决赛圈比赛于2010年6月11日—7月11日(北京时间12日)举行。<span class="red">[<a href="http://www.zt.zj.com/w/2010worldcup/" target="_blank">详细</a>]</span></td>
+</tr>
+</table>
+</div>
+
+<div class="main2_x_zt_xx" style="margin-top:4px;">
+<ul>
+
+<li class="lz">
+<a href="http://news.zj.com/detail/1281946.shtml" target="_blank">西班牙队凯旋归国 万人空巷</a></li>
+
+<li class="lz">
+<a href="http://news.zj.com/detail/1282032.shtml" target="_blank">世界杯十大趣闻:最超值红牌</a></li>
+
+
+<li class="lz">
+<a href="http://news.zj.com/detail/1281957.shtml" target="_blank">章鱼保罗功成名就光荣引退</a></li>
+
+<li class="lz">
+<a href="http://news.zj.com/detail/1281999.shtml" target="_blank">范马尔维克反击对球风指责</a></li>
+
+
+</ul>
+</div>					</span>
+					<span class="tjzt" style="display:none;">
+<div class="main2_x_zt_xx" style="margin-top:10px;">
+<table width="175" border="0" cellpadding="0" cellspacing="0" align="left">
+<tr><td><h5 class="lz"><a href="http://www.zt.zj.com/f/2010cfzj/" target="_blank">楼市触冰 浙江民资路在何方</a></h5></td></tr>
+<tr><td style="padding-bottom:10px;"><a href="http://www.zt.zj.com/f/2010cfzj/" target="_blank"><img src="http://images.zj.com/upimg/news/2010/zt/test/127648447845400500.jpg"  alt="楼市触冰 浙江民资路在何方"/></a></td></tr>
+<tr>
+  <td>温商在政策严控楼市的情况下，他们开始为资金寻找另一条出路<span class="red">[<a href="http://www.zt.zj.com/c/expo2010/" target="_blank">详细</a>]</span></td>
+</tr>
+</table>
+</div>
+
+<div class="main2_x_zt_xx" style="margin-top:5px;">
+<ul>
+<li class="lz"><a href="http://mba.zj.com/news/2010-06-03/140242.html" target="_blank">政策之下的浙资“金字塔”</a></li>
+<li class="lz"><a href="http://mba.zj.com/news/2010-05-12/139866.html" target="_blank">转型炒金客 买黄金如买菜 </a></li>
+<li class="lz"><a href="http://mba.zj.com/news/2010-04-29/139698.html" target="_blank">炒房客转战商铺、写字楼</a></li>
+<li class="lz"><a href="http://mba.zj.com/news/2010-03-08/139025.html" target="_blank">浙江资本移情网游产业</a></li>
+</ul>
+</div>					</span>
+				</div>
+			</div>
+			<div class="main2_x_bg">
+				<div class="main2_x_bg_s hei2">
+					<div class="bgt_1" id="tab_bgt"><a href="javascript:;">看浙江</a></div>
+					<div class="bgt_2" id="tab_dcxs"><a href="javascript:;">各地荟萃</a></div>
+				</div>
+				<div class="main2_x_bg_x" id="tab_bgt_content">
+					<div class="bgt_xx">
+<table width="296" border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td rowspan="2" valign="top" width="113" style="padding-right:10px;"><img src="https://news.zj.com/images/2021/01/13/20210113160605618359.JPG" width="113" height="94"/></td>
+<td width="173" valign="top" class="bgt_xx_bt_bt lz"><a href="https://news.zj.com/detail/2021/01/13/1713518.html" target="_blank">浙江，一片山水的绿色崛起</a></td>
+</tr>
+<tr>
+<td valign="top">浙江大地，一幅“青山常在、绿水长流、空气常新”的美丽画卷徐徐打开…[<a href="https://news.zj.com/detail/2021/01/13/1713518.html" target="_blank"><span class="red">详细</span></a>]</td>
+</tr>
+</table>					</div>
+					<div class="bgt_xx">
+<ul>
+
+<li>
+<table width="296" border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td class="bgt_xx_bt_bt3 lz"><img src="images/sj.gif" alt="sj"/>  <a href="https://news.zj.com/detail/2021/01/04/1712752.html" target="_blank">绍兴：千年越地“桥”见运河传悠韵 </a></td>
+</tr>
+<tr>
+<td>运河水潺潺而过，岸边煤炉上升起一缕缕水汽，头发花白的阿婆在一旁翻着手里的杂活儿 
+
+<span class="red">[<a href="https://news.zj.com/detail/2021/01/04/1712752.html" target="_blank">详细</a>]</span></td>
+</tr>
+</table>
+</li>
+
+
+
+<li>
+<table width="296" border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td class="bgt_xx_bt_bt3 lz"><img src="images/sj.gif" alt="sj"/>  <a href="https://news.zj.com/detail/2021/01/04/1712742.html" target="_blank">有点“老”的台州府城，如今越来越“出新”</a></td>
+</tr>
+<tr>
+<td>中国不缺古城，但台州府城有点与众不同。“烟火味十足”，这是到访此城的人的普遍评价<span class="red">[<a href="https://news.zj.com/detail/2021/01/04/1712742.html" target="_blank">详细</a>]</span></td>
+</tr>
+</table>
+</li>
+
+<li>
+<table width="296" border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td class="bgt_xx_bt_bt3 lz"><img src="images/sj.gif" alt="sj"/>  <a href="https://news.zj.com/detail/2021/01/08/1713195.html" target="_blank">宁波：大河文明奔腾千载再“出海” </a></td>
+</tr>
+<tr>
+<td>天一阁的两处碑文足以看出古时浙东运河的繁盛之景<span class="red">[<a href="https://news.zj.com/detail/2021/01/08/1713195.html" target="_blank">详细</a>]</span></td>
+</tr>
+</table>
+</li>
+
+
+<li>
+<table width="296" border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td class="bgt_xx_bt_bt3 lz"><img src="images/sj.gif" alt="sj"/>  <a href="https://news.zj.com/detail/2021/01/11/1713285.html"target="_blank">城市学院罗卫东：城市会思考 人民更幸福</a></td>
+</tr>
+<tr>
+<td>提及如何成就一座幸福之城时，浙大城市学院校长罗卫东说，城市必须会思考。<span class="red">[<a href="https://news.zj.com/detail/2021/01/11/1713285.html" target="_blank">详细</a>]</span></td>
+</tr>
+</table>
+</li>
+
+
+
+
+</ul>
+					</div>
+				</div>
+				<div class="main2_x_bg_x2" style="display:none;" id="tab_dcxs_content">
+					<div class="bgt_xx3">
+<table width="296" border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td rowspan="2" valign="top" width="113" style="padding-right:10px;"><img src="https://news.zj.com/images/news/2019/01/22/1548116677_147_small.jpg" width="113" height="94" alt="浙江丽水：6000多斤红鲤鱼洒满百米高速"/></td> 
+<td width="173" valign="top" class="bgt_xx_bt_bt lz"><a href="/detail/1678552.shtml" target="_blank">浙江丽水：6000多斤红鲤鱼洒满百米高速 教官道歉</a></td>
+</tr>
+<tr>
+<td valign="top">20日晚10点多，高速交警丽水支队接到金丽温高速丽水处监控员...[<a href="/detail/1678552.shtml" target="_blank"><span class="red">详细</span></a>]</td>
+</tr>
+</table>					</div>
+					<div class="bgt_xx4">
+<table width="296" border="0" cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td class="bgt_xx_bt_bt2 lz"><img src="images/sj.gif" alt="sj"/>&nbsp;&nbsp;<a href="http://bbs.zj.com/thread-2973899-1-1.html" target="_blank">公务员月薪应在5千左右 最好能到1万</a></td>
+</tr>
+<tr>
+<td>有认为公务员工资应当基本等同于社会平均工资的，有认为应该略高于的<span class="red">[<a href="http://bbs.zj.com/thread-2973899-1-1.html" target="_blank">详细</a>]</span></td>
+</tr>
+
+
+
+<tr>
+<td class="bgt_xx_bt_bt2 lz"><img src="images/sj.gif" alt="sj"/>&nbsp;&nbsp;<a href="http://bbs.zj.com/thread-2973897-1-1.html" target="_blank">大学生晒打工经历叹赚钱不易 引发热议</a></td>
+</tr>
+<tr>
+<td>暑假本想打工攒钱买个‘iPhone 6’，谁知<span class="red">[<a href="http://bbs.zj.com/thread-2973897-1-1.html" target="_blank">详细</a>]</span></td>
+</tr>
+
+
+
+
+<tr>
+<td class="bgt_xx_bt_bt2 lz"><img src="images/sj.gif" alt="sj"/>&nbsp;&nbsp;<a href="http://bbs.zj.com/thread-2973891-1-1.html" target="_blank">中央禁止干部参加高收费培训 EMBA院校现退学潮</a></td>
+</tr>
+<tr>
+<td>与收入相比，这些培训收费高昂，参与官员需要<span class="red">[<a href="http://bbs.zj.com/thread-2973891-1-1.html" target="_blank">详细</a>]</span></td>
+</tr>
+
+
+
+
+<tr>
+<td class="bgt_xx_bt_bt2 lz"><img src="images/sj.gif" alt="sj"/>&nbsp;&nbsp;<a href="http://bbs.zj.com/thread-2973888-1-1.html" target="_blank">老太吃了一碗霉苋菜梗差点丢命 </a></td>
+</tr>
+<tr>
+<td>最近，东阳接连发生了两起吃腌制品<span class="red">[<a href="http://bbs.zj.com/thread-2973888-1-1.html" target="_blank">详细</a>]</span></td>
+</tr>
+
+
+
+
+</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<div style="margin:0px auto;padding:0px;width:960px;overflow:hidden;">
+<a href="http://news.zj.com/detail/1685073.shtml" target="_blank"><img src="/images/ws.gif?t=2333" width="960"></a>
+</div></div>
+<!--大新闻结束-->
+
+<!--内容 开始-->
+<div id="Naver">
+	<div class="bod_k">
+		<div class="naver_l_k hslice" id="hsliceTest">
+			<div class="naver_l_k_s entry-title"><span class="bai" style="float:left;">浙江新闻</span><span class="bai2" style="float:right;"><a href="/zhejiang/" target="_blank"><font color="#FFFFFF">更多</font></a></span></div>
+			<!--
+			<div class="naver_l_k_z hui">城市新闻：<a href="http://hangzhou.zj.com">杭州</a> | <a href="http://ningbo.zj.com">宁波</a> | <a href="http://wenzhou.zj.com">温州</a> | <a href="http://jinhua.zj.com">金华</a> | <a href="http://taizhou.zj.com">台州</a> | <a href="http://quzhou.zj.com">衢州</a> | <a href="http://huzhou.zj.com">湖州</a> | <a href="http://jiaxing.zj.com">嘉兴</a> | <a href="http://shaoxing.zj.com">绍兴</a> | <a href="http://lishui.zj.com">丽水</a> | <a href="http://zhoushan.zj.com">舟山</a></div>
+			-->
+			<div class="naver_l_k_l entry-content">
+				<div class="space02">
+<h2 class="lz"><a href="https://news.zj.com/detail/2022/02/23/1730811.html" target="_blank" title="宁波人均GDP达15.4万 着力构建“橄榄形”社会">宁波人均GDP达15.4万 着力构建“橄榄形”社会</a></h2>
+<h4>过去五年，宁波地区生产总值从2016年的8973亿元增加到2021年的14595亿元，按常住人口计算的人均生产总值从10.4万元增加到15.4万元。<span class="red">[<a href="https://news.zj.com/detail/2022/02/23/1730811.html" target="_blank">详细</a>]</span></h4>
+				</div>
+				<div class="space02">
+<ul>
+
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/21/1730664.html" target="_blank">浙江嘉兴桐乡市公布3名密接者轨迹</a><span class="hui" style="margin-left:10px;">13:00</span></li>
+
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730988.html" target="_blank" title="杭州于3月1日开启积分入学受理 4月8日截止">杭州于3月1日开启积分入学受理 4月8日截止</a><span class="hui" style="margin-left:10px;">08:13</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730987.html" target="_blank" title="宁海老渔民捕到7.1斤野生大黄鱼 4.2万元售出">宁海老渔民捕到7.1斤野生大黄鱼 4.2万元售出</a><span class="hui" style="margin-left:10px;">08:12</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730948.html" target="_blank" title="西湖推春季限定款游线“探梅观光游览专线”">西湖推春季限定款游线“探梅观光游览专线”</a><span class="hui" style="margin-left:10px;">08:30</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730947.html" target="_blank" title="杭州将打造杭州-苏州、杭州-无锡等内河游线">杭州将打造杭州-苏州、杭州-无锡等内河游线</a><span class="hui" style="margin-left:10px;">08:27</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730946.html" target="_blank" title="长三角三省人口去年增110万 浙江“添人”最多">长三角三省人口去年增110万 浙江“添人”最多</a><span class="hui" style="margin-left:10px;">08:24</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/25/1730887.html" target="_blank" title="浙江邀百名科学家进中小学课堂 施一公第一讲">浙江邀百名科学家进中小学课堂 施一公第一讲</a><span class="hui" style="margin-left:10px;">08:40</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/25/1730886.html" target="_blank" title="浙江平湖、海宁两地通报5例密接活动轨迹">浙江平湖、海宁两地通报5例密接活动轨迹</a><span class="hui" style="margin-left:10px;">08:36</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/25/1730885.html" target="_blank" title="新昌警方破获特大网络赌博案 涉案金额超千万">新昌警方破获特大网络赌博案 涉案金额超千万</a><span class="hui" style="margin-left:10px;">08:30</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/25/1730884.html" target="_blank" title="浙江：3月起外卖食品若无封签 消费者有权拒收">浙江：3月起外卖食品若无封签 消费者有权拒收</a><span class="hui" style="margin-left:10px;">08:28</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/25/1730883.html" target="_blank" title="宁波：行政村集体经济收入全部达到30万元以上">宁波：行政村集体经济收入全部达到30万元以上</a><span class="hui" style="margin-left:10px;">08:22</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/24/1730828.html" target="_blank" title="气温探底回升 预计周末杭州最高温或突破20℃">气温探底回升 预计周末杭州最高温或突破20℃</a><span class="hui" style="margin-left:10px;">08:43</span></li>
+</ul>				</div>
+			</div>
+			<div class="naver_l_k_r" style="padding-bottom:21px;">
+				<div class="main2_x_zt_s hei2"><a href="/list/14/1.html" target="_blank">看浙江</a></div>
+				<div class="main2_x_zt_xx3">
+<ul>
+<li><a href="https://news.zj.com/detail/2022/02/28/1730948.html" target="_blank" title="西湖推春季限定款游线“探梅观光游览专线”">西湖推春季限定款游线“探...</a></li>
+<li><a href="https://news.zj.com/detail/2022/02/28/1730947.html" target="_blank" title="杭州将打造杭州-苏州、杭州-无锡等内河游线">杭州将打造杭州-苏州、杭...</a></li>
+<li><a href="https://news.zj.com/detail/2022/02/25/1730886.html" target="_blank" title="浙江平湖、海宁两地通报5例密接活动轨迹">浙江平湖、海宁两地通报5...</a></li>
+<li><a href="https://news.zj.com/detail/2022/02/25/1730885.html" target="_blank" title="新昌警方破获特大网络赌博案 涉案金额超千万">新昌警方破获特大网络赌博...</a></li>
+<li><a href="https://news.zj.com/detail/2022/02/24/1730828.html" target="_blank" title="气温探底回升 预计周末杭州最高温或突破20℃">气温探底回升 预计周末杭...</a></li>
+<li><a href="https://news.zj.com/detail/2022/02/24/1730827.html" target="_blank" title="杭州为未来五年定向：打造七方面“新天堂”">杭州为未来五年定向：打造...</a></li>
+<li><a href="https://news.zj.com/detail/2022/02/23/1730776.html" target="_blank" title="西湖迎来“大扫除” 涉及四百余亩湖面景观">西湖迎来“大扫除” 涉及...</a></li>
+<li><a href="https://news.zj.com/detail/2022/02/23/1730775.html" target="_blank" title="义乌冰雪运动产品畅销海内外 订单量迎来增长">义乌冰雪运动产品畅销海内...</a></li>
+<li><a href="https://news.zj.com/detail/2022/02/23/1730774.html" target="_blank" title="衢州将举办世界顶级围棋赛事 冠军奖180万元">衢州将举办世界顶级围棋赛...</a></li>
+<li><a href="https://news.zj.com/detail/2022/02/22/1730766.html" target="_blank" title="县域观察：千年古城何以跃变“千亿新城”？">县域观察：千年古城何以跃...</a></li>
+<li><a href="https://news.zj.com/detail/2022/02/22/1730722.html" target="_blank" title="杭州捣毁跨境裸聊敲诈团伙 抓获23名嫌疑人">杭州捣毁跨境裸聊敲诈团伙...</a></li>
+<li><a href="https://news.zj.com/detail/2022/02/22/1730721.html" target="_blank" title="杭州亚运会倒计时200天：生根期待 静待花开">杭州亚运会倒计时200天...</a></li>
+<li><a href="https://news.zj.com/detail/2022/02/21/1730664.html" target="_blank" title="浙江嘉兴桐乡市公布3名密接者轨迹">浙江嘉兴桐乡市公布3名密...</a></li>
+<li><a href="https://news.zj.com/detail/2022/02/21/1730663.html" target="_blank" title="舟山市新开辟一条至黄冈的江海直达运输航线">舟山市新开辟一条至黄冈的...</a></li>
+<li><a href="https://news.zj.com/detail/2022/02/18/1730615.html" target="_blank" title="杭州举办残疾人专场招聘会 推出近500个岗位">杭州举办残疾人专场招聘会...</a></li>
+</ul>				</div>
+			</div>
+		</div>
+		<div class="naver_r hslice" id="hsliceTest2">
+			<h5 class="entry-title" style="display:none;">IT生意场</h5>
+			<div class="naver_r_jzkzj_tu"><a href="http://itchang.cn" target="_blank"><img src="/images/itchang.gif" alt="IT生意场" /></a></div>
+			<div class="naver_r_jzkzj entry-content">
+<ul class="hui">
+<li><a href="https://news.zj.com/detail/2019/04/23/1681662.html" target="_blank">聚焦制造业升级：工业互联网 数字科技成关键词</a></li>
+<li><a href="https://news.zj.com/detail/2019/01/22/1678586.html" target="_blank">杭州最老牌的商场转型升级 ADM x工联CC玩转文化创意</a></li>
+<li><a href="https://news.zj.com/detail/2019/01/08/1678244.html" target="_blank">买手特工携手行业大咖共聚 海外买手秘笈重磅来袭</a></li>
+<li><a href="https://news.zj.com/detail/2018/12/25/1677931.html" target="_blank">庆祝改革开放40周年 向这100位电商行业功勋人物致敬！</a></li>
+<li><a href="https://news.zj.com/detail/2018/12/13/1677651.html" target="_blank">探意机器人ASR算法工程师论文入选AAAI 2019</a></li>
+<li><a href="https://news.zj.com/detail/2018/08/20/1674340.html" target="_blank">P2P暴雷引发生死劫微贷网上市能否涅槃？</a></li>
+<li><a href="https://news.zj.com/detail/2018/08/14/1674110.html" target="_blank">2017年天津市跨境电商发展现状、问题及建议</a></li>
+<li><a href="https://news.zj.com/detail/2018/08/08/1673939.html" target="_blank">IDC：预计2022年全球区块链支出达117亿美元</a></li>
+<li><a href="https://news.zj.com/detail/2018/08/08/1673938.html" target="_blank">爱奇艺体育A轮融资暂未结束 华人文化还将投3亿</a></li>
+<li><a href="https://news.zj.com/detail/2018/08/03/1673782.html" target="_blank">2017年宁波跨境电商发展现状、优势及建议</a></li>
+<li><a href="https://news.zj.com/detail/2018/08/01/1673721.html" target="_blank">2018年第二季度苹果卖出350万只Apple Watch</a></li>
+<li><a href="https://news.zj.com/detail/2018/08/01/1673720.html" target="_blank">IDC：华为超过苹果 Q2智能手机出货量居全球第二</a></li>
+ 
+</ul>			</div>
+		</div>
+	</div>
+	<div class="bod_k">
+		<div class="naver_l_k hslice" id="hsliceTest3">
+			<div class="naver_l_k_s entry-title"><span class="bai" style="float:left;">国内新闻</span><span class="bai2" style="float:right;"><a href="/national" target="_blank"><font color="#FFFFFF">更多</font></a> </span></div>
+			<div class="naver_l_k_l entry-content">
+				<div class="space02">
+<h2 class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730990.html" target="_blank" title="2021年度个税汇算今起开始 你是退税还是补税？">2021年度个税汇算今起开始 你是退税还是补税？</a></h2>
+<h4>3月1日起，2021年度个税汇算正式开始。个税再度迎来多退少补，快来看看你是退税还是补税？<span class="red">[<a href="https://news.zj.com/detail/2022/03/01/1730990.html" target="_blank">详细</a>]</span></h4>
+				</div>
+				<div class="space02">
+<ul>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730992.html" target="_blank" title="冷空气将影响我国中东部地区">冷空气将影响我国中东部地区</a><span class="hui" style="margin-left:10px;">09:10</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730990.html" target="_blank" title="2021年度个税汇算今起开始 你是退税还是补税？">2021年度个税汇算今起开始 你是退税还是补税？</a><span class="hui" style="margin-left:10px;">09:06</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730961.html" target="_blank" title="31省份新增本土确诊病例87例">31省份新增本土确诊病例87例</a><span class="hui" style="margin-left:10px;">09:15</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730949.html" target="_blank" title="事关医疗、养老、未成年人权益……3月新规速览！">事关医疗、养老、未成年人权益……3月新规速览！</a><span class="hui" style="margin-left:10px;">08:57</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/25/1730892.html" target="_blank" title="31省份新增确诊病例224例 其中本土病例82例">31省份新增确诊病例224例 其中本土病例82例</a><span class="hui" style="margin-left:10px;">09:25</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/25/1730891.html" target="_blank" title="全国大部天气晴好 气温逐步回升">全国大部天气晴好 气温逐步回升</a><span class="hui" style="margin-left:10px;">09:10</span></li>
+ 
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/25/1730888.html" target="_blank" title="北京冬奥会的结束，是“中国冰雪元年”的开始">北京冬奥会的结束，是“中国冰雪元年”的开始</a><span class="hui" style="margin-left:10px;">09:06</span></li>
+</ul>				</div>
+			</div>
+			<div class="naver_l_k_r2" style="padding-bottom:7px;">
+				<div class="main2_x_zt_s hei2"><a href="/list/21/1.html" target="_blank">港澳台</a></div>
+<div class="main2_x_zt_xx2">
+  
+</div>				<div class="main2_x_zt_xx3">
+<ul>
+<li><a href="https://news.zj.com/detail/2022/02/09/1730291.html" target="_blank" title="中国台北女子足球队亚洲杯赛后返台 多人染疫">中国台北女子足球队亚洲杯...</a></li>
+<li><a href="https://news.zj.com/detail/2022/02/09/1730289.html" target="_blank" title="国台办回应美对台军售计划：一步步把台湾推向灾难">国台办回应美对台军售计划...</a></li>
+<li><a href="https://news.zj.com/detail/2021/08/16/1723019.html" target="_blank" title="香港九龙西举办嘉年华推广香港基本法">香港九龙西举办嘉年华推广...</a></li>
+<li><a href="https://news.zj.com/detail/2021/07/02/1721242.html" target="_blank" title="台当局调整防疫政策：7月2日起实施入境“普筛”">台当局调整防疫政策：7月...</a></li>
+<li><a href="https://news.zj.com/detail/2021/07/02/1721241.html" target="_blank" title="香港增4人确诊 连续24天无新增本地病例">香港增4人确诊 连续24...</a></li>
+<li><a href="https://news.zj.com/detail/2021/07/02/1721240.html" target="_blank" title="香港回归24周年：喜庆弥漫香江 多了一种祝福">香港回归24周年：喜庆弥...</a></li>
+<li><a href="https://news.zj.com/detail/2021/07/02/1721239.html" target="_blank" title="澳门卫生局：港澳通关便利措施暂没确定实施日期">澳门卫生局：港澳通关便利...</a></li>
+<li><a href="https://news.zj.com/detail/2021/06/29/1721018.html" target="_blank" title="香港宣布7月1日起再禁英国民航客机着陆">香港宣布7月1日起再禁英...</a></li>
+<li><a href="https://news.zj.com/detail/2021/06/29/1721017.html" target="_blank" title="台湾新增60例本地确诊病例及3例死亡病例">台湾新增60例本地确诊病...</a></li>
+<li><a href="https://news.zj.com/detail/2021/06/29/1721016.html" target="_blank" title="大陆赠台大熊猫“二女儿”满周岁 园方线上“抓周”">大陆赠台大熊猫“二女儿”...</a></li>
+</ul>				</div>
+			</div>
+		</div>
+		<div class="naver_r hslice" id="hsliceTest7">
+			<div class="yk_di hei2 entry-title" style=" font-size:14px;"><a href="/csj/" target="_blank">浙商</a></div>
+			<div class="yk_x entry-content">
+<ul class="hui">
+<li><a href="https://news.zj.com/detail/2021/02/03/1714662.html" target="_blank">保持物价平稳运行 上海强化蔬菜价格监管</a></li>
+<li><a href="https://news.zj.com/detail/2021/02/03/1714658.html" target="_blank">苏州工业园区46家企业上市 生物医药板块崛起</a></li>
+<li><a href="https://news.zj.com/detail/2021/02/02/1714624.html" target="_blank">上海：男子“裤裆里藏白酒” 连偷多家超市被刑拘</a></li>
+<li><a href="https://news.zj.com/detail/2021/02/02/1714622.html" target="_blank">上海约谈部分房企、中介和销售代理机构</a></li>
+<li><a href="https://news.zj.com/detail/2021/02/02/1714616.html" target="_blank">江苏全面降低新型冠状病毒检测项目价格</a></li>
+<li><a href="https://news.zj.com/detail/2021/02/02/1714615.html" target="_blank">上海警方赴贵州捣毁两处窝点 缴获2万余瓶假茅台</a></li>
+<li><a href="https://news.zj.com/detail/2021/01/28/1714372.html" target="_blank">上海市级党政机关实现100%无烟</a></li>
+<li><a href="https://news.zj.com/detail/2021/01/25/1714133.html" target="_blank">楼市新政落“沪”，听听购房者们怎么说</a></li>
+<li><a href="https://news.zj.com/detail/2021/01/22/1714063.html" target="_blank">上海为“过热”楼市降温 打击投机炒房维护刚需</a></li>
+<li><a href="https://news.zj.com/detail/2021/01/20/1713936.html" target="_blank">南医大女生被杀案二审维持原判 麻继钢获死刑</a></li>
+</ul>			</div>
+		</div>
+	</div>
+	<div style=" width:960px; height:80px; float:left; margin-top:10px;">
+		<div style="float:left;">
+<!--新新闻频道 - 通栏广告二--左开始-->
+<a href="http://www.itchang.cn" target="_blank"><img src="/images/2020/09/01/20200901145459287842.jpg"></a>
+<!--新新闻频道 - 通栏广告二--左结束-->		</div>
+		<div style="float:right; margin-left:10px;">
+<!--新新闻频道 - 通栏广告二右开始-->
+<a href="http://www.zt.zj.com/cns/2013zxszjfsjj/" target="_blank"><img src="/images/2020/09/01/20200901145447676725.jpg" width="465" height="80"></a>
+<!--新新闻频道 - 通栏广告二右结束-->		</div>
+	</div>
+	<div class="bod_k">
+		<div class="naver_l_k hslice" id="hsliceTest4">
+			<div class="naver_l_k_s entry-title"><span class="bai" style="float:left;">国际新闻</span><span class="bai2" style="float:right;"><a href="/international" target="_blank"><font color="#FFFFFF">更多</font></a> </span></div>
+			<div class="naver_l_k_l entry-conten">
+				<div class="space02">
+<h2 class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730951.html" target="_blank" title="又一夜过去，俄乌谈判一波三折尚未开始">又一夜过去，俄乌谈判一波三折尚未开始</a></h2>
+<h4>综合报道，俄罗斯发起特别军事行动已进入第五天，俄乌双方计划在普里皮亚特河举行的和平谈判一波三折，截至目前尚未开始。<span class="red">[<a href="https://news.zj.com/detail/2022/02/28/1730951.html" target="_blank">详细</a>]</span></h4>
+				</div>
+				<div class="space02">
+<ul>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730963.html" target="_blank" title="拜登提名杰克逊出任美最高法院大法官">拜登提名杰克逊出任美最高法院大法官</a><span class="hui" style="margin-left:10px;">09:44</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730962.html" target="_blank" title="美疾控中心：70%美国民众在室内无需佩戴口罩">美疾控中心：70%美国民众在室内无需佩戴口罩</a><span class="hui" style="margin-left:10px;">09:43</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730959.html" target="_blank" title="美国警方在得州一户家庭发现四人死亡">美国警方在得州一户家庭发现四人死亡</a><span class="hui" style="margin-left:10px;">09:37</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730958.html" target="_blank" title="菲律宾逾6300万人已完全接种疫苗">菲律宾逾6300万人已完全接种疫苗</a><span class="hui" style="margin-left:10px;">09:35</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730957.html" target="_blank" title="乌克兰基辅枪击事件致1名儿童死亡 数人受伤">乌克兰基辅枪击事件致1名儿童死亡 数人受伤</a><span class="hui" style="margin-left:10px;">09:34</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730955.html" target="_blank" title="菲律宾马尼拉3月起防疫警戒降至一级">菲律宾马尼拉3月起防疫警戒降至一级</a><span class="hui" style="margin-left:10px;">09:28</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730953.html" target="_blank" title="俄罗斯与乌克兰将在乌白边境展开谈判">俄罗斯与乌克兰将在乌白边境展开谈判</a><span class="hui" style="margin-left:10px;">09:24</span></li>
+</ul>				</div>
+			</div>
+			<div class="naver_l_k_r2" style="padding-bottom:14px;">
+				<div class="main2_x_zt_s">24小时排行</div>
+				<div class="paihang hui">
+<ul>
+<li><img src="/images/ph_1.gif" alt="1.gif"/> <a href="https://news.zj.com/detail/2022/02/28/1730963.html" target="_blank" title="拜登提名杰克逊出任美最高法院大法官">拜登提名杰克逊出任美最...</a></li>
+<li><img src="/images/ph_2.gif" alt="2.gif"/> <a href="https://news.zj.com/detail/2022/02/28/1730962.html" target="_blank" title="美疾控中心：70%美国民众在室内无需佩戴口罩">美疾控中心：70%美国...</a></li>
+<li><img src="/images/ph_3.gif" alt="3.gif"/> <a href="https://news.zj.com/detail/2022/02/28/1730959.html" target="_blank" title="美国警方在得州一户家庭发现四人死亡">美国警方在得州一户家庭...</a></li>
+<li><img src="/images/ph_4.gif" alt="4.gif"/> <a href="https://news.zj.com/detail/2022/02/28/1730958.html" target="_blank" title="菲律宾逾6300万人已完全接种疫苗">菲律宾逾6300万人已...</a></li>
+<li><img src="/images/ph_5.gif" alt="5.gif"/> <a href="https://news.zj.com/detail/2022/02/28/1730957.html" target="_blank" title="乌克兰基辅枪击事件致1名儿童死亡 数人受伤">乌克兰基辅枪击事件致1...</a></li>
+<li><img src="/images/ph_6.gif" alt="6.gif"/> <a href="https://news.zj.com/detail/2022/02/28/1730955.html" target="_blank" title="菲律宾马尼拉3月起防疫警戒降至一级">菲律宾马尼拉3月起防疫...</a></li>
+<li><img src="/images/ph_7.gif" alt="7.gif"/> <a href="https://news.zj.com/detail/2022/02/28/1730953.html" target="_blank" title="俄罗斯与乌克兰将在乌白边境展开谈判">俄罗斯与乌克兰将在乌白...</a></li>
+<li><img src="/images/ph_8.gif" alt="8.gif"/> <a href="https://news.zj.com/detail/2022/02/28/1730952.html" target="_blank" title="韩军方称朝鲜向东部海域发射疑似弹道导弹发射体">韩军方称朝鲜向东部海域...</a></li>
+</ul>				</div>
+			</div>
+		</div>
+		<div class="naver_r2">
+			<div class="yk_di hei2" style=" font-size:14px;"><a href="/list/26/1.html" target="_blank">环球趣闻</a></div>
+			<div class="yk_x" style="margin-top:8px;">
+<ul class="hui">
+<li><a href="https://news.zj.com/detail/2022/01/18/1729724.html" target="_blank" title="俄国家杜马宣布撤回健康二维码法案草案">俄国家杜马宣布撤回健康二维码法案草案</a></li>
+<li><a href="https://news.zj.com/detail/2021/07/21/1721979.html" target="_blank" title="重达100磅！美俄勒冈州海滩发现罕见“月亮鱼”">重达100磅！美俄勒冈州海滩发现罕见“月亮鱼”</a></li>
+<li><a href="https://news.zj.com/detail/2021/07/02/1721232.html" target="_blank" title="希腊81岁老太太因偷疫苗被捕 称想当作“纪念品”">希腊81岁老太太因偷疫苗被捕 称想当作“纪念品”</a></li>
+<li><a href="https://news.zj.com/detail/2021/01/13/1713515.html" target="_blank" title="美国对一名女性囚犯执行联邦死刑 系近70年来首次">美国对一名女性囚犯执行联邦死刑 系近70年来首次</a></li>
+<li><a href="https://news.zj.com/detail/2021/01/08/1713224.html" target="_blank" title="笨贼！英国2小偷作案时意外拨通了报警电话">笨贼！英国2小偷作案时意外拨通了报警电话</a></li>
+<li><a href="https://news.zj.com/detail/2020/11/24/1710144.html" target="_blank" title="哥伦比亚超20%监狱人满为患 拟为扩建投2440亿比索">哥伦比亚超20%监狱人满为患 拟为扩建投2440亿比索</a></li>
+<li><a href="https://news.zj.com/detail/2020/11/05/1708987.html" target="_blank" title="扬言要炸掉两所大学 日本大阪大学一名研究生被捕">扬言要炸掉两所大学 日本大阪大学一名研究生被捕</a></li>
+<li><a href="https://news.zj.com/detail/2020/03/02/1695635.html" target="_blank" title="创意满满！日本女大学生用橡皮筋制作精致服装">创意满满！日本女大学生用橡皮筋制作精致服装</a></li>
+<li><a href="https://news.zj.com/detail/2020/02/04/1694249.html" target="_blank" title="最萌“气象专家”：美明星土拨鼠预测春天不远了">最萌“气象专家”：美明星土拨鼠预测春天不远了</a></li>
+<li><a href="https://news.zj.com/detail/2019/11/22/1691554.html" target="_blank" title="英夫妇发现新房插座不能用 撬开竟是个保险箱">英夫妇发现新房插座不能用 撬开竟是个保险箱</a></li>
+<li><a href="https://news.zj.com/detail/2019/11/15/1691204.html" target="_blank" title="越南同奈省发现500只“怪鸟” 原是濒临灭绝的蛇鸟">越南同奈省发现500只“怪鸟” 原是濒临灭绝的蛇鸟</a></li>
+</ul>			</div>
+		</div>
+	</div>
+	<div class="bod_k">
+		<div class="naver_l_k hslice" id="hsliceTest5">
+			<div class="naver_l_k_s entry-title"><span class="bai" style="float:left;">社会新闻</span><span class="bai2" style="float:right;"><a href="/social" target="_blank"><font color="#FFFFFF">更多</font></a> </span></div>
+			<div class="naver_l_k_l entry-content">
+				<div class="space02">
+<h2 class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730950.html" target="_blank" title="云南玉溪一辆严重超限超载货车肇事致6人死亡 ">云南玉溪一辆严重超限超载货车肇事致6人死亡 </a></h2>
+<h4>据公安部交通管理局微博消息，2022年2月26日，云南玉溪市发生一起重型自卸货车侧翻倾轧面包车致6人死亡的交通事故。<span class="red">[<a href="https://news.zj.com/detail/2022/02/28/1730950.html" target="_blank">详细</a>]</span></h4>
+				</div>
+				<div class="space02">
+<ul>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/28/1730950.html" target="_blank" title="云南玉溪一辆严重超限超载货车肇事致6人死亡 ">云南玉溪一辆严重超限超载货车肇事致6人死亡 </a><span class="hui" style="margin-left:10px;">09:02</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/25/1730894.html" target="_blank" title="春检“桥隧医生”：30米高空“听音辨伤”">春检“桥隧医生”：30米高空“听音辨伤”</a><span class="hui" style="margin-left:10px;">09:30</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/24/1730834.html" target="_blank" title="贵州一对新人婚房内炭火取暖不幸中毒身亡">贵州一对新人婚房内炭火取暖不幸中毒身亡</a><span class="hui" style="margin-left:10px;">09:13</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/23/1730778.html" target="_blank" title="为卖“废品”男子竟将29栋楼道信箱“洗劫一空”">为卖“废品”男子竟将29栋楼道信箱“洗劫一空”</a><span class="hui" style="margin-left:10px;">09:03</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/22/1730726.html" target="_blank" title="疫情之下的苏州：细节深处最动人">疫情之下的苏州：细节深处最动人</a><span class="hui" style="margin-left:10px;">09:18</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/21/1730679.html" target="_blank" title="吉祥航空回应客机风挡玻璃出现裂纹：安全备降武汉">吉祥航空回应客机风挡玻璃出现裂纹：安全备降武汉</a><span class="hui" style="margin-left:10px;">09:22</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/21/1730676.html" target="_blank" title="“Z世代”催热“它”经济：猫狗双全 舍得花钱">“Z世代”催热“它”经济：猫狗双全 舍得花钱</a><span class="hui" style="margin-left:10px;">09:18</span></li>
+</ul>				</div>
+			</div>
+			<div class="naver_l_k_r">
+				<div class="main2_x_zt_s">热点事件</div>
+				<div class="rdsj_k" style="margin-top:10px;">
+<ul>
+<li class="hui"><a href="https://news.zj.com/detail/2022/02/18/1730598.html" target="_blank" title="湖北警方敦促非法滞留缅北地区人员回国投案自首">湖北警方敦促非法滞留缅北地区人员回国投案自首</a></li>
+<li class="hui"><a href="https://news.zj.com/detail/2022/02/18/1730596.html" target="_blank" title="河南平顶山暴力袭警致命案二审维持死刑判决">河南平顶山暴力袭警致命案二审维持死刑判决</a></li>
+<li class="hui"><a href="https://news.zj.com/detail/2022/02/18/1730595.html" target="_blank" title="河南去年有31657名残疾儿童得到康复救助">河南去年有31657名残疾儿童得到康复救助</a></li>
+<li class="hui"><a href="https://news.zj.com/detail/2022/02/18/1730593.html" target="_blank" title="愿早日康复！中国女篮出访队伍新增7名阳性">愿早日康复！中国女篮出访队伍新增7名阳性</a></li>
+<li class="hui"><a href="https://news.zj.com/detail/2022/02/17/1730557.html" target="_blank" title="4A？1620？1800？挑战冰雪运动，小心你的腰！">4A？1620？1800？挑战冰雪运动，小心你的腰！</a></li>
+</ul>					<div class="rdsj"><a href="http://news.zj.com/social/" target="_blank">更多</a>》<a href="http://news.zj.com/zj/news/news.xml" target="_blank"></a></div>
+				</div>
+			</div>
+		</div>
+		<div class="shbt">
+			<div class="zhxw">
+				<div class="zhxw_s">
+					<ul>
+						<li class="zhxw_s_di1"  id="one1" onmouseover="setTab('one',1,4)"><a href="/finance/" target="_blank">财经</a></li>
+						<li class="zhxw_s_di2"  id="one2" onmouseover="setTab('one',2,4)"><a href="/tech/" target="_blank">科技</a></li>
+						<li class="zhxw_s_di2"  id="one3" onmouseover="setTab('one',3,4)"><a href="/sports/" target="_blank">体育</a></li>
+						<li class="zhxw_s_di2"  id="one4" onmouseover="setTab('one',4,4)"><a href="/edu/" target="_blank">教育</a></li>
+					</ul>
+				</div>
+				<div id="con_one_1">
+					<div class="zhxw_x">
+						<div class="space03">
+<ul>
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1731006.html" target="_blank"  title="11轮点球大战！利物浦击败切尔西获联赛杯冠军">11轮点球大战！利物浦击败切尔西获联...</a><span class="hui" style="margin-left:10px;">10:00</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1731002.html" target="_blank"  title="中国累计推广新能源汽车超过900万辆">中国累计推广新能源汽车超过900万辆</a><span class="hui" style="margin-left:10px;">09:42</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1731001.html" target="_blank"  title="广船国际海洋科技研究院在广州南沙揭牌成立">广船国际海洋科技研究院在广州南沙揭牌...</a><span class="hui" style="margin-left:10px;">09:40</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1731000.html" target="_blank"  title="总投资450亿元 中车新能源产业项目吉林松原开工">总投资450亿元 中车新能源产业项目...</a><span class="hui" style="margin-left:10px;">09:40</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730999.html" target="_blank"  title="青海查处首例“冰墩墩”侵权盗版案 罚款15000元">青海查处首例“冰墩墩”侵权盗版案 罚...</a><span class="hui" style="margin-left:10px;">09:35</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730998.html" target="_blank"  title="农业农村部：查早查小，防止非法转基因种子下地">农业农村部：查早查小，防止非法转基因...</a><span class="hui" style="margin-left:10px;">09:31</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730997.html" target="_blank"  title="河北清河：打造网络“名主播”助力产业发展">河北清河：打造网络“名主播”助力产业...</a><span class="hui" style="margin-left:10px;">09:28</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730996.html" target="_blank"  title="沈阳推动营商环境整体建设水平进入全国一流行列">沈阳推动营商环境整体建设水平进入全国...</a><span class="hui" style="margin-left:10px;">09:26</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730995.html" target="_blank"  title="辽宁大连：1-2月份港口出入境船舶数量大幅增长">辽宁大连：1-2月份港口出入境船舶数...</a><span class="hui" style="margin-left:10px;">09:23</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1730994.html" target="_blank"  title="中国三大运营商董事长线上参加世界移动通信大会">中国三大运营商董事长线上参加世界移动...</a><span class="hui" style="margin-left:10px;">09:17</span></li>
+</ul>						</div>
+					</div>
+				</div>
+				<div id="con_one_2" style="display:none;">
+					<div class="zhxw_x">
+						<div class="space03">
+<ul>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/10/1730342.html" target="_blank" title="工信部：2022年春节期间移动数据流量创新高">工信部：2022年春节期间移动数据流...</a><span class="hui" style="margin-left:10px;">10:14</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/12/28/1728910.html" target="_blank" title="2021百度AI开发者大会在元宇宙举办">2021百度AI开发者大会在元宇宙举...</a><span class="hui" style="margin-left:10px;">10:38</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/12/07/1728051.html" target="_blank" title="2021年IMT-2020(5G)大会在深圳举行">2021年IMT-2020(5G)大...</a><span class="hui" style="margin-left:10px;">09:36</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/12/07/1728046.html" target="_blank" title="中国累计建成5G基站超129万个">中国累计建成5G基站超129万个</a><span class="hui" style="margin-left:10px;">09:11</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/11/29/1727675.html" target="_blank" title="百度自动驾驶巴士在重庆开启商业化运营">百度自动驾驶巴士在重庆开启商业化运营</a><span class="hui" style="margin-left:10px;">09:07</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/11/10/1726805.html" target="_blank" title="华为向开放原子开源基金会捐赠欧拉操作系统">华为向开放原子开源基金会捐赠欧拉操作...</a><span class="hui" style="margin-left:10px;">09:23</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/11/04/1726500.html" target="_blank" title="工信部第三次“回头看”检查通报38款违规APP">工信部第三次“回头看”检查通报38款...</a><span class="hui" style="margin-left:10px;">09:12</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/11/03/1726434.html" target="_blank" title="中国移动5G基站超56万个 规模全球最大">中国移动5G基站超56万个 规模全球...</a><span class="hui" style="margin-left:10px;">09:33</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/10/22/1725779.html" target="_blank" title="2021全球IPv6下一代互联网峰会在广州开幕">2021全球IPv6下一代互联网峰会...</a><span class="hui" style="margin-left:10px;">08:47</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/10/21/1725728.html" target="_blank" title="前三季度中国市场5G手机出货量达1.83亿部">前三季度中国市场5G手机出货量达1....</a><span class="hui" style="margin-left:10px;">09:26</span></li>
+</ul>						</div>
+					</div>
+				</div>
+				<div id="con_one_3" style="display:none;">
+					<div class="zhxw_x">
+						<div class="space03">
+<ul>
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1731005.html" target="_blank" title="第三届亚洲青年运动会开闭幕式主创团队亮相">第三届亚洲青年运动会开闭幕式主创团队...</a><span class="hui" style="margin-left:10px;">09:54</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/03/01/1731003.html" target="_blank" title=" 冬残奥会主媒体中心28日起正式运行"> 冬残奥会主媒体中心28日起正式运行</a><span class="hui" style="margin-left:10px;">09:46</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/25/1730890.html" target="_blank" title="北京冬奥会国际传播学术沙龙在北京举行">北京冬奥会国际传播学术沙龙在北京举行</a><span class="hui" style="margin-left:10px;">09:18</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/25/1730889.html" target="_blank" title="北京冬奥会的结束，是“中国冰雪元年”的开始">北京冬奥会的结束，是“中国冰雪元年”...</a><span class="hui" style="margin-left:10px;">09:10</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/24/1730848.html" target="_blank" title="北京冬奥会所有竞赛场馆面向公众开放 四季运营">北京冬奥会所有竞赛场馆面向公众开放 ...</a><span class="hui" style="margin-left:10px;">10:16</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/24/1730847.html" target="_blank" title="中国新国标保障残疾人参与冰雪运动">中国新国标保障残疾人参与冰雪运动</a><span class="hui" style="margin-left:10px;">10:12</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/23/1730801.html" target="_blank" title="海南再迎冬训热 体育旅游氛围渐浓">海南再迎冬训热 体育旅游氛围渐浓</a><span class="hui" style="margin-left:10px;">10:47</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/23/1730800.html" target="_blank" title="广州石牌村民与他们亮相北京冬奥会开幕式的龙头">广州石牌村民与他们亮相北京冬奥会开幕...</a><span class="hui" style="margin-left:10px;">10:41</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/23/1730799.html" target="_blank" title="北京冬奥会赛时河北累计运送逾57万人次">北京冬奥会赛时河北累计运送逾57万人...</a><span class="hui" style="margin-left:10px;">10:39</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2022/02/22/1730741.html" target="_blank" title="英国女王祝贺英女子冰壶队在北京冬奥会上摘金">英国女王祝贺英女子冰壶队在北京冬奥会...</a><span class="hui" style="margin-left:10px;">10:02</span></li>
+</ul>						</div>
+					</div>
+				</div>
+				<div id="con_one_4" style="display:none;">
+					<div class="zhxw_x">
+						<div class="space03">
+<ul>
+<li class="lz"><a href="https://news.zj.com/detail/2021/08/30/1723619.html" target="_blank" title="教育部部署秋季学期工作：不得以任何名义设置重点班">教育部部署秋季学期工作：不得以任何名...</a><span class="hui" style="margin-left:10px;">15:06</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/06/09/1720099.html" target="_blank" title="教育部通报湖北省某高考考生考中作弊事件">教育部通报湖北省某高考考生考中作弊事...</a><span class="hui" style="margin-left:10px;">08:46</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/06/02/1719886.html" target="_blank" title="教育部颁布《未成年人学校保护规定》 9月1日起实施">教育部颁布《未成年人学校保护规定》 ...</a><span class="hui" style="margin-left:10px;">09:27</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/05/26/1719545.html" target="_blank" title="福州：大学课堂搬到乡村“接地气”">福州：大学课堂搬到乡村“接地气”</a><span class="hui" style="margin-left:10px;">09:14</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/05/20/1719321.html" target="_blank" title="广西中小学幼儿园将100%实现校园封闭化管理">广西中小学幼儿园将100%实现校园封...</a><span class="hui" style="margin-left:10px;">15:23</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/05/19/1719248.html" target="_blank" title="教育专家学者齐聚南京共探传媒艺术新发展">教育专家学者齐聚南京共探传媒艺术新发...</a><span class="hui" style="margin-left:10px;">13:46</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/05/08/1718723.html" target="_blank" title="探访大学生艺术实践工坊：科技与艺术交相辉映">探访大学生艺术实践工坊：科技与艺术交...</a><span class="hui" style="margin-left:10px;">08:53</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/04/09/1717486.html" target="_blank" title="教育部:小学严格执行免试就近入学 按课标零起点教学">教育部:小学严格执行免试就近入学 按...</a><span class="hui" style="margin-left:10px;">13:34</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/04/07/1717321.html" target="_blank" title="教育部拟出新规：中小学校应预防并制止师生恋">教育部拟出新规：中小学校应预防并制止...</a><span class="hui" style="margin-left:10px;">08:38</span></li>
+<li class="lz"><a href="https://news.zj.com/detail/2021/03/16/1716380.html" target="_blank" title="内蒙古：学校必须保障学生在校期间1小时体育锻炼">内蒙古：学校必须保障学生在校期间1小...</a><span class="hui" style="margin-left:10px;">09:06</span></li>
+</ul>						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bod_k">
+		<div class="naver_l_k hslice" id="hsliceTest6">
+			<div class="entry-content">
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript"> 
+	var tag_span=document.getElementsByTagName("span"); 
+	for( i in tag_span){ 
+	  var offset=6; 
+	  var num=7; //对应tag7
+	  if(tag_span[i].className=="tag"){ 
+	    var rnd=Math.ceil((num+offset)*Math.random()); 
+	    if(rnd>offset){ 
+	      tag_span[i].className="tag"+(rnd-offset); 
+	    } 
+	  } 
+	} 
+	</script> 
+</div>
+<!--内容 结束-->
+
+<!--底部 开始-->
+<div class="foot">
+	<!--精彩图片推荐开始-->
+	<!--
+	<div class="tptj">
+		<div class="tptj_s">
+			<div style=" font-size:14px; color:#4C4C4C; float:left;">精彩图片推荐</div>
+			<div class="qiehuan02">
+				<span><img src="images/tuxw_l.gif" alt="left"/></span>
+				<ul style="padding-left:6px;">
+					<li class="sy02"></li>
+					<li class="qy02"></li>
+					<li class="qy02"></li>
+				</ul>
+				<span><img src="images/tuxw_r.gif" alt="right"/></span>
+			</div>
+		</div>
+		<div class="tptj_x02">
+<ul>
+<li>
+<table width="136" border="0" cellpadding="0" cellspacing="0" align="center">
+<tr height="105"><td><a href="https://news.zj.com/zt/party/detail/1720217.html" target="_blank"><img src="https://news.zj.com/images/2021/06/10/20210610160315704002.jpg" width="133" height="99" border="0" alt="百名冠军庆建党百年by羽毛球世界冠军龚睿那" title="百名冠军庆建党百年by羽毛球世界冠军龚睿那"/></a></td>
+</tr>
+<tr><td><a href="https://news.zj.com/zt/party/detail/1720217.html" target="_blank" title="百名冠军庆建党百年by羽毛球世界冠军龚睿那">百名冠军庆建党百年by羽毛球世界冠军龚睿那</a></td></tr>
+</table>
+</li>
+<li>
+<table width="136" border="0" cellpadding="0" cellspacing="0" align="center">
+<tr height="105"><td><a href="https://news.zj.com/zt/party/detail/1720216.html" target="_blank"><img src="https://news.zj.com/images/2021/06/10/20210610160054095702.jpg" width="133" height="99" border="0" alt="百名冠军庆建党百年by武术世界冠军吴杰龙" title="百名冠军庆建党百年by武术世界冠军吴杰龙"/></a></td>
+</tr>
+<tr><td><a href="https://news.zj.com/zt/party/detail/1720216.html" target="_blank" title="百名冠军庆建党百年by武术世界冠军吴杰龙">百名冠军庆建党百年by武术世界冠军吴杰龙</a></td></tr>
+</table>
+</li>
+</ul>		</div>
+	</div>
+	-->
+	<!--精彩图片推荐结束-->
+	<!--浙江媒体开始-->
+	<div class="zjmt">
+		<div class="hzmt">合作媒体</div>
+		<div class="zjmt1">
+<a href="http://zj.xinhuanet.com" target="_blank">新华社浙江分社</a> | <a href="http://news.zj.com" target="_blank">中新社浙江分社</a> | <a href="http://www.zj.com" target="_blank">浙江都市网</a> | <a href="http://www.hongniang.com" target="_blank">中国红娘</a> | <a href="http://www.xinhuanet.com/" target="_blank">新华网</a> | <a href="http://www.chinanews.com.cn/" target="_blank">中国新闻网</a> | <a href="http://epaper.chinanews.com/html/2012-10/16/node_2.htm" target="_blank">中国新闻报</a>| <a href="http://www.chinadaily.com.cn/" target="_blank">中国日报网站</a> | <a href="http://www.cyol.net/" target="_blank">中国青年报</a> | <a href="http://www.china.com.cn/" target="_blank">中国网</a> | <a href="http://www.nddaily.com/" target="_blank">南方都市报</a> | <a href="http://www.infzm.com/" target="_blank">南方周末</a> | <a href="http://news.sdchina.com/" target="_blank">中国山东新闻网</a> | <a href="http://www.jinghua.cn/" target="_blank">京华网</a> | <a href="http://www.jfdaily.com/" target="_blank">解放网</a> | <a href="http://www.eastday.com/" target="_blank">东方网</a> | <a href="http://www.cnhan.com/" target="_blank">汉网</a> | <A class=newsblue3 href="http://www.dzwww.com/" target=_blank>大众网</A> | <a href="http://www.huash.com/" target="_blank">华商网</a> | <a href="http://bjrb.bjd.com.cn/" target="_blank">北京日报</a> | <a href="http://bjwb.bjd.com.cn" target="_blank">北京晚报</a> | <a href="http://www.dayoo.com/" target="_blank">大洋网</a> | <a href="http://www.fawan.com/" target="_blank">法制晚报</a> | <a href="http://www.morningpost.com.cn/" target="_blank">北京晨报</a> | <a href="http://www.dsqq.cn/" target="_blank">现代快报</a> | <a href="http://www.rednet.cn/" target="_blank">红网</a> | <a href="http://www.ce.cn/" target="_blank">中国经济网</a> | <a href="http://www.changjiangtimes.com/" target="_blank">长江商报 </a> | <a href="http://www.gansudaily.com.cn/" target="_blank"> 兰州晨报</a> | <a href="http://www.xwh.cn/" target="_blank">新文化网</a>  | <a href="http://www.thefirst.cn/" target="_blank">竞报</a>| <a href="http://www.66wz.com/" target="_blank">温州网</a> | <a href="http://www.bbtnews.com.cn/" target="_blank">北京商报</a> | <a href="http://www.ts.cn/" target="_blank">天山网</a> | <a href="http://www.jfdaily.com.cn/" target="_blank">解放日报</a> | <a href="http://www.huanqiu.com/" target="_blank">环球网</a> | <a href="http://www.xkb.com.cn/" target="_blank">新快网</a> | <a href="http://www.ent.zj.com/" target="_blank">中国娱乐社</a> | <a href="http://b2b.toocle.com/" target="_blank">B2B研究中心</a> | <a href="http://www.tianjinwe.com/hotnews/" target="_blank">天津网天下频道</a> | <a href="http://www.zjfeiyi.cn/" target="_blank">浙江省非物质文化遗产网</a> 		</div>
+	</div>
+<div class="zjmt2"><a href=" http://www.zj.com/info/webintro/">网站简介</a>　|　<a href=" http://www.zj.com/info/contact/">联系我们</a>　|　<a href="https://beian.miit.gov.cn/">浙B2-20080243-1</a><br/>商务合作：0571-87756569   不良信息举报电话：0571-87756597<br/>浙江新中化网络有限公司 ◎版权所有</div>
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9fee1f84162c409c49a75e539132a5d8' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript" src="/js/index20160822.js"></script>	<!--浙江媒体结束-->
+</div>
+<!--底部 结束-->
+
+</body>
+</html>

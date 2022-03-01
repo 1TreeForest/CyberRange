@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>展映影院</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+	<meta name="viewport" content="width=1400">
+
+<meta name="sitename" content="北京国际电影节官方网站">
+	<meta name="keywords" content='北京国际电影节,国际电影节,北京电影节,北影节,展映影院'>
+	<meta name="serve" content="http://www.bjiff.com,电影节,北京">
+	<meta name="description" content='北京国际电影节展映影院'>
+
+	<link rel="stylesheet" type="text/css" href="../../../../images/style_public.css" />
+	<link rel="stylesheet" type="text/css" href="../../../../images/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../../../../images/base.css" />
+	<link rel="stylesheet" type="text/css" href="../../../../images/nav.css" />
+	<link rel="shortcut icon" href="../../../../images/favicon.ico" type="image/x-icon" />
+<style>
+.listtab.nava ul li.active a{
+		color:#1D111F;
+		background: #e5e5e5;
+}
+.listtab.nava ul li a{
+   padding:6px 0;
+   color:#666;
+}</style>
+
+	<script type="text/javascript" src="../../../../images/jquery.js"></script>
+	<script type="text/javascript" src="../../../../images/nav.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+	<meta name="viewport" content="width=1400">
+<style>
+.pageboxa {
+	margin: 0 auto;
+	border-left: none;
+	overflow: hidden;
+	width: 100%;
+	text-align: center;
+	max-width:100%;
+}
+
+.pageboxa ul {
+	overflow: hidden;
+	display: inline-block;
+}
+
+.pageboxa ul li {
+	text-align: center;
+	color: #525252;
+	line-height: 40px;
+	font-size: 14px;
+	float: left;
+	width: auto;
+	padding:0 4px;
+	cursor: pointer;
+	margin: 4px;
+	border-radius: 6px;
+	overflow: hidden;
+}
+.pageboxa ul li a{
+	display: block;
+	height: 40px;
+	width: auto;
+}
+
+
+</style>
+<script>					
+function createPageNumNav(){
+	var _nCurrPage = 4+1;
+	var _sFileName = "index";
+	var _sFileExt = "html";
+	var _nPageCount = 5;
+	
+    var titleDiv = [];
+    titleDiv.push("<ul>");
+	if(_nPageCount<=1 || _nCurrPage< 1)return;
+	if(_nCurrPage == 1){
+        titleDiv.push("<li class=\"active\"><a >首页</a></li>");
+	}else{
+		var joinedFileName = (_nCurrPage== 2) ? (_sFileName+ "." + _sFileExt) : (_sFileName+ "_" + (_nCurrPage-2) + "." + _sFileExt);
+		titleDiv.push("<li ><a href=\"" + joinedFileName +"\">上一页</a></li>");
+	}
+	if(_nPageCount<=7){
+		for (var i = 1;i <= _nPageCount;i++ ){
+			if(i == _nCurrPage){
+				titleDiv.push("<li class=\"active\"><a  >"+_nCurrPage + "</a></li>");
+				continue;
+			}			
+			var joinedFileName1 = (i == 1) ? (_sFileName + "." + _sFileExt) : (_sFileName + "_" + (i-1) + "." + _sFileExt);
+			titleDiv.push("<li><a href=\"" + joinedFileName1 + "\">" + i+ "</a></li>");
+			
+		}	
+	}else{
+		if(_nCurrPage > 4 && _nCurrPage < (_nPageCount-3) ){
+		    var joinedFileName1 = _sFileName + "_" + 1 + "." + _sFileExt;
+			titleDiv.push("<li><a href=\"" + _sFileName + "." +	_sFileExt + "\">" + 1 + "</a></li>");
+			titleDiv.push("<li><a href=\"" + joinedFileName1 + "\">" + 2 + "</a></li>");
+			titleDiv.push("<li><a >...</a></li>");
+			titleDiv.push("<li><a  href=\"" + _sFileName + "_" + (_nCurrPage -2 ) + "." + _sFileExt + "\">" +  (_nCurrPage -1)+ "</a></li>");
+			titleDiv.push("<li class=\"active\"><a  >"+_nCurrPage + "</a></li>");
+			titleDiv.push("<li><a href=\"" + _sFileName + "_" +  _nCurrPage  + "." + _sFileExt + "\">" +  (_nCurrPage + 1)+ "</a></li>");
+			titleDiv.push("<li><a >...</a></li>");
+			titleDiv.push("<li><a href=\"" + _sFileName + "_" + (_nPageCount - 2) + "." + _sFileExt + "\">" + (_nPageCount - 1) + "</a></li>");
+			titleDiv.push("<li><a href=\"" + _sFileName + "_" + (_nPageCount-1) + "." + _sFileExt + "\">" + _nPageCount + "</a></li>");
+		}else if(_nCurrPage <= 4){
+			for (var i = 1;i <= 5 ;i++ ){
+				if(i == _nCurrPage){
+					titleDiv.push("<li class=\"active\"><a >"+_nCurrPage + "</a></li>");
+					continue;
+				}
+				var joinedFileName1 = (i == 1) ? (_sFileName + "." +_sFileExt) : (_sFileName + "_" + (i-1) + "." + _sFileExt);
+				titleDiv.push("<li><a href=\"" + joinedFileName1 + "\">" + i + "</a></li>");
+			}
+			titleDiv.push("<li><a >...</a></li>");
+			titleDiv.push("<li><a href=\"" + _sFileName + "_" + (_nPageCount - 2) + "." + _sFileExt + "\">" + (_nPageCount - 1) + "</a></li>");
+			titleDiv.push("<li><a href=\"" + _sFileName + "_" + (_nPageCount-1) + "." + _sFileExt + "\">" + _nPageCount + "</a></li>");
+		}else{
+
+			titleDiv.push("<li><a href=\"" + _sFileName + "." +	_sFileExt + "\">" + 1 + "</a></li>");
+			titleDiv.push("<li><a href=\"" + _sFileName + "_" + 1 + "." + _sFileExt + "\">" + 2 + "</a></li>");
+			titleDiv.push("<li><a >...</a></li>");
+			for (var i = (_nPageCount - 4 );i <= _nPageCount ;i++ ){
+				if(i == _nCurrPage){
+					titleDiv.push("<li class=\"active\"><a >"+_nCurrPage + "</a></li>");
+					continue;
+				}
+				titleDiv.push("<li><a href=\"" + _sFileName + "_" + (i-1) + "." + _sFileExt + "\">" + i+ "</a></li>");
+			}
+		}
+	}
+	
+	
+	if(_nCurrPage == _nPageCount){
+        titleDiv.push("<li class=\"active\"><a >尾页</a></li>");
+	}else{
+		titleDiv.push("<li><a href=\""+_sFileName+"_" + _nCurrPage + "."+_sFileExt+"\">下一页</a></li>");
+	}
+	titleDiv.push("</ul>");
+
+	document.getElementById("listpage").innerHTML = titleDiv.join("");
+
+}
+</script>
+	<script>
+	$(function(){
+		var current_channel = "li_2781";
+		var parent_channel = "pli_3103";
+		$("#"+parent_channel).addClass("nav-show");
+		$("#"+current_channel).addClass("active");
+	});
+	</script>
+</head>
+
+<body class="bg-f5">
+		<a class="back-top"><i class="iconfont icon-fanhuidingbu3"></i></a>
+	
+	<div class="header header_background" style="box-shadow: none;">
+				<div class="box" style="overflow: visible;">
+
+			<div class="logo fl">
+				<a href="">
+					<img src="../../../../images/logo_hq.png" />
+				</a>
+			</div>
+				<script>
+if($('.jj').children().length==0){
+$(".jj").hide()
+}
+</script>
+<style>
+.listtab.nava ul li a{
+   padding:6px 0;
+   color:#666;
+}
+.logo {
+    margin-right: 10px;
+    height: 84px;
+    overflow: hidden;
+}
+</style>
+	<script type="text/javascript">
+$(document).ready(function (){
+  					$(".nav li").hover(function () {
+						$(this).find("dl").stop().slideDown("slow");
+						$(this).addClass("on");
+					}, function () {
+						$(this).find("dl").stop().slideUp();
+						$(this).removeClass("on");
+					});
+})
+              
+		
+	</script>
+
+<div class="fr">
+				<div class="language" style="position:relative;z-index:100">
+					<div class="language_btn">
+						<a href="../../../../" class="a_active">中文</a>丨
+						<a href="../../../../enHome">EN</a>
+					</div>
+				</div>
+				<div class="nav fl">
+					<ul>
+						<li>
+							<a href="../../../../">首页</a>
+						</li>
+
+						<li>
+							<a href="../../../../ttj/">天坛奖</a>
+							<dl>
+								<i class="iconfont icon-sanjiaotop nav_sj"></i>
+								
+									<dd>
+										<a href="../../../../ttj/ttjjj/">"天坛奖"简介</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../ttj/ttjgjpwwyh/">"天坛奖"国际评奖委员会成员</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../ttj/zjsdyrwyp/">"天坛奖"入围影片简介</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../ttj/rwypphspzs/">"天坛奖"入围影片片花</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../ttj/hjmd/">获奖名单</a>
+									</dd>
+								
+
+							</dl>
+						</li>
+
+						<li>
+							<a href="../../../../bjzy/">北京展映</a>
+							<dl>
+								<i class="iconfont icon-sanjiaotop nav_sj"></i>
+								
+									<dd>
+										<a href="../../../../bjzy/bjzyjj/">北京展映介绍</a>
+									</dd>
+								
+
+									<dd>
+										<a href="http://www.iqiyi.com/kszt/2021ysbyj.html" target="_blank">
+                                                                               <!-- <a href="#">-->
+                                                                                  爱奇艺线上影展
+                                                                                 </a>
+									</dd>
+								
+
+									<dd>
+										<a href="../../../../bjzy/zyypjs/">展映影片介绍</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../bjzy/ygpspzs/">展映影片片花</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../bjzy/zyyy/">展映合作影院</a>
+									</dd>
+								
+<!--
+									<dd>
+                                                                         <a href="https://www.iqiyi.com/playlist553548202.html" target="_blank">爱奇艺线上展映</a>-->
+
+										<!--<a href="http://www.iqiyi.com/dianying/biff2018.html" target="_blank">在线展映</a>-->
+                                                                              <!-- <a href="http://www.iqiyi.com/kszt_phone/BEIJINGINTERNATIONALFILMFESTIVALxIQIYI.html" target="_blank">在线展映</a>
+									</dd>-->
+							</dl>
+						</li>
+						<li>
+							<a href="../../../../kbms/">开闭幕</a>
+							<dl>
+								<i class="iconfont icon-sanjiaotop nav_sj"></i>
+								
+									<dd>
+										<a href="../../../../kbms/kms/">开幕式</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../kbms/tbjmmyfj/">闭幕式暨颁奖典礼</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../kbms/bms/">开幕红毯仪式</a>
+									</dd>
+								
+<!-- 20200728注释修改
+                                                                        <dd>
+								
+                                                                               <a href="http://system.bjiff.com/redCarpet/" target="_blank">红毯</a>
+									</dd>
+-->
+							</dl>
+						</li>
+						<li>
+							<a href="../../../../ztlt/">主题论坛</a>
+							<dl>
+								<i class="iconfont icon-sanjiaotop nav_sj"></i>
+								
+									<dd>
+										<a href="../../../../ztlt/xzgdyztlt/">中国电影发展高峰论坛</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../ztlt/ysdylt/">青年电影人论坛</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../ztlt/dykjgjlt/">艺术电影论坛</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../ztlt/gjyyjtgflt/">首届中国影都发展论坛</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../ztlt/hlwdyztlt/">中国动画电影论坛</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../ztlt/zydyhzdhlt/">发布：中国电影投融资峰会</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../ztlt/gjdyxslt/">发布：中国电影营销高峰论坛</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../ztlt/wlyxfzgflt/">电影大师班：巩俐</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../ztlt/wlyxfzgflt_11119/">电影大师班：比利·奥古斯特</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../ztlt/dsb/">电影大师班：陈可辛</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../ztlt/dsb_11131/">电影大师班：阿斯哈·法哈蒂</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../ztlt/dsb_11132/">电影大师班：叶锦添</a>
+									</dd>
+								
+							</dl>
+						</li>
+						<li>
+							<a href="../../../../dysc/">北京市场</a>
+							<dl>
+								<i class="iconfont icon-sanjiaotop nav_sj"></i>
+								
+									<dd>
+										<a href="../../../../dysc/dysc/">北京市场介绍</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../dysc/hdrc/">招商展会</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../dysc/ljcgbg/">项目创投</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../dysc/hydh/">行业对话</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../dysc/tyhd/">特约活动</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../dysc/shicangfangyin/">市场放映</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../dysc/qhys/">签约仪式</a>
+									</dd>
+								
+							</dl>
+						</li>
+                                                
+
+
+						<li>
+							<a href="../../../../dyjnh/">嘉年华</a>
+							<dl>
+								<i class="iconfont icon-sanjiaotop nav_sj"></i>
+								
+									<dd>
+										<a href="../../../../dyjnh/dyjnh/">嘉年华简介</a>
+									</dd>
+								
+							</dl>
+						</li>
+                                                 <li>
+							<a href="../../../../bjdxsdyj/">大影节</a>
+							<dl>
+								<i class="iconfont icon-sanjiaotop nav_sj"></i>
+								
+									<dd>
+										<a href="../../../../bjdxsdyj/dxshdjj/">活动简介</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../bjdxsdyj/sdhd/">盛典活动</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../bjdxsdyj/dyjxshd/">学术活动</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../bjdxsdyj/dyjypzy/">影片展映</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../bjdxsdyj/dyjxsycdy/">学生原创单元</a>
+									</dd>
+								
+							</dl>
+						</li>
+						<li>
+<!-- 20200728注释修改讲相关活动修改为“电影+”-->
+							<a href="../../../../xghd/">电影+</a>
+							<dl>
+								<i class="iconfont icon-sanjiaotop nav_sj"></i>
+<!--<dd>
+<a href="http://www.iqiyi.com/kszt_phone/BEIJINGINTERNATIONALFILMFESTIVALxIQIYI.html" target="_blank">春季在线影展</a>
+</dd>-->
+
+								
+									<dd>
+										<a href="../../../../xghd/zmwl/">“注目未来”单元</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../xghd/xqdy/">游戏动漫电影单元</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../xghd/AniOne/">影人欢乐接力跑</a>
+									</dd>
+								
+									<dd>
+										<a href="../../../../xghd/zhetdyjlczhd_3594/">三星手机电影短片单元</a>
+									</dd>
+								
+							</dl>
+						</li>
+						<li>
+							<a href="../../../">档案馆</a>
+						</li>
+						<div class="clear"></div>
+					</ul>
+
+				</div>
+				<div class="search fl">
+					<button>
+						<i class="iconfont icon-sousuo"></i>
+					</button>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="search_box">
+			<form class="boxa" method="post" id="searchFormOne" name="searchFormOne" action="../../../../ss/index.jsp"  onSubmit="return zh();">
+				<span class="search_text">
+					全站检索
+				</span>
+				<input type="text" name="title" id="title" value="" placeholder="请输入关键字..." />
+                                <input type="hidden" name="s" id="s" value="" />
+				<button type="submit" name="button" id="button" class="search_btn">
+					<i class="iconfont icon-sousuo"></i>
+				</button>
+				<div class="clear"></div>
+			</form>
+			<div class="closed_search">
+				<i class="iconfont icon-roundclose"></i>
+			</div>
+		</div>
+	</div>
+
+	<div class="main">
+
+		<div class="box">
+			<div class="listtab nava">
+				<div class="fl_titlie">
+					第七届北京国际电影节
+				</div>
+				<ul>
+					
+						<li id="pli_3102" class="nav-item">
+							<a href="javascript:;">天坛奖
+								<img src="../../../../images/right_icon.png" alt="" class="nav_icon" />
+							</a>
+							<ul>
+								
+									<li id="li_2777" >
+										<a href="../../ttj/ttjjj/">“天坛奖”简介</a>
+									</li>
+								
+									<li id="li_2778" >
+										<a href="../../ttj/ttjgjpjwyhcy/">“天坛奖"国际评奖委员会成员</a>
+									</li>
+								
+									<li id="li_2779" >
+										<a href="../../ttj/ttjrwypjj_1/">"天坛奖"入围影片简介</a>
+									</li>
+								
+									<li id="li_2774" >
+										<a href="../../ttj/ttjrwyp/">天坛奖入围影片</a>
+									</li>
+								
+									<li id="li_2766" >
+										<a href="../../ttj/hjmd_1/">获奖名单</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						<li id="pli_3104" class="nav-item">
+							<a href="javascript:;">开闭幕式
+								<img src="../../../../images/right_icon.png" alt="" class="nav_icon" />
+							</a>
+							<ul>
+								
+									<li id="li_2787" >
+										<a href="../../kbms07/kms/">开幕式</a>
+									</li>
+								
+									<li id="li_2788" >
+										<a href="../../kbms07/bmsjbjdl/">闭幕式暨颁奖典礼</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						<li id="pli_3103" class="nav-item">
+							<a href="javascript:;">北京展映
+								<img src="../../../../images/right_icon.png" alt="" class="nav_icon" />
+							</a>
+							<ul>
+								
+									<li id="li_2780" >
+										<a href="../zyypjs_1/">展映影片介绍</a>
+									</li>
+								
+									<li id="li_2775" >
+										<a href="../zyypph/">展映影片片花</a>
+									</li>
+								
+									<li id="li_2781" >
+										<a href="./">展映影院</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						<li id="pli_3106" class="nav-item">
+							<a href="javascript:;">主题论坛
+								<img src="../../../../images/right_icon.png" alt="" class="nav_icon" />
+							</a>
+							<ul>
+								
+									<li id="li_2782" >
+										<a href="../../ztll07/zwdyhzlt/">中外电影合作论坛</a>
+									</li>
+								
+									<li id="li_2783" >
+										<a href="../../ztll07/zgdyfxgflt/">中国电影发行高峰论坛</a>
+									</li>
+								
+									<li id="li_2784" >
+										<a href="../../ztll07/dykjlt/">电影科技国际论坛</a>
+									</li>
+								
+									<li id="li_2785" >
+										<a href="../../ztll07/txdyzmgflt/">探寻电影之美高峰论坛</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						<li id="pli_3107" class="nav-item">
+							<a href="javascript:;">电影市场
+								<img src="../../../../images/right_icon.png" alt="" class="nav_icon" />
+							</a>
+							<ul>
+								
+									<li id="li_2838" >
+										<a href="../../dysc07/dysc/">电影市场</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						<li id="pli_3108" class="nav-item">
+							<a href="javascript:;">电影嘉年华
+								<img src="../../../../images/right_icon.png" alt="" class="nav_icon" />
+							</a>
+							<ul>
+								
+									<li id="li_2786" >
+										<a href="../../dyjnh07/dyjnh/">电影嘉年华</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+						<li id="pli_3109" class="nav-item">
+							<a href="javascript:;">相关活动
+								<img src="../../../../images/right_icon.png" alt="" class="nav_icon" />
+							</a>
+							<ul>
+								
+									<li id="li_2789" >
+										<a href="../../xghd07/zmwldy/">“注目未来”单元</a>
+									</li>
+								
+									<li id="li_2790" >
+										<a href="../../xghd07/jldy/">纪录单元</a>
+									</li>
+								
+									<li id="li_2791" >
+										<a href="../../xghd07/jdjjdydy/">"经典京剧电影"单元</a>
+									</li>
+								
+									<li id="li_2792" >
+										<a href="../../xghd07/wldydy/">网络电影单元</a>
+									</li>
+								
+									<li id="li_2793" >
+										<a href="../../xghd07/dyyyh/">电影音乐会</a>
+									</li>
+								
+									<li id="li_2794" >
+										<a href="../../xghd07/dysljhydh/">电影沙龙及行业对话</a>
+									</li>
+								
+									<li id="li_2795" >
+										<a href="../../xghd07/xpfb/">新片发布</a>
+									</li>
+								
+									<li id="li_2796" >
+										<a href="../../xghd07/iwcwgbdyrzy/">IWC万国表电影人之夜</a>
+									</li>
+								
+							</ul>
+						</li>
+					
+
+				</ul>
+			</div>
+			<div class="listcontent">
+				<div class="detaillist_bread">
+
+					<div class="bread_txta">
+						<i class="iconfont icon-homefill"></i>
+						<a href="../../../../" title="首页" class="CurrChnlCls">首页</a>&nbsp;>&nbsp;<a href="../../../" title="档案馆" class="CurrChnlCls">档案馆</a>&nbsp;>&nbsp;<a href="../../" title="第七届北京国际电影节" class="CurrChnlCls">第七届北京国际电影节</a>&nbsp;>&nbsp;<a href="../" title="北京展映" class="CurrChnlCls">北京展映</a>&nbsp;>&nbsp;<a href="./" title="展映影院" class="CurrChnlCls">展映影院</a>
+					</div>
+				</div>
+				<div class="detail_concent">
+					<div class="listbox_img">
+						 
+						<div class="zyyy_item">
+							<div class="zyyy_img">
+								<img src="./201710/W020171012386244029303.jpg" alt="20160219112022_6厅 儿童厅.jpg"/>
+							</div>
+							<div class="zyyy_text">
+								<div class="zyyy_information">
+									<span class="yy_title">合作影院</span>
+									<span class="zyyy_name">新彩云影城</span>
+								</div>
+								<div class="address">
+										北京市海淀区北三环中路67号
+									<br>010-58092171
+								</div>
+
+								<a class="addmap" href="./201710/t20171012_39151.html">
+									<i class="iconfont icon-ditu2"></i>
+								</a>
+							</div>
+						</div>
+						 
+						<div class="zyyy_item">
+							<div class="zyyy_img">
+								<img src="./201710/W020171012386242771270.jpg" alt="W020160329605054495961.jpg"/>
+							</div>
+							<div class="zyyy_text">
+								<div class="zyyy_information">
+									<span class="yy_title">合作影院</span>
+									<span class="zyyy_name">中国电影资料馆艺术影院</span>
+								</div>
+								<div class="address">
+										北京市海淀区小西天文慧园路3号
+									<br>
+								</div>
+
+								<a class="addmap" href="./201710/t20171012_39150.html">
+									<i class="iconfont icon-ditu2"></i>
+								</a>
+							</div>
+						</div>
+						 
+						<div class="zyyy_item">
+							<div class="zyyy_img">
+								<img src="./201710/W020171012386273716587.jpg" alt="影院宣传照-首都师范大学1.jpg"/>
+							</div>
+							<div class="zyyy_text">
+								<div class="zyyy_information">
+									<span class="yy_title">高校</span>
+									<span class="zyyy_name">首都师范大学学生活动中心音乐厅</span>
+								</div>
+								<div class="address">
+										北京市海淀区西三环北路105号
+									<br>010-64646020
+								</div>
+
+								<a class="addmap" href="./201710/t20171012_39174.html">
+									<i class="iconfont icon-ditu2"></i>
+								</a>
+							</div>
+						</div>
+						 
+						<div class="zyyy_item">
+							<div class="zyyy_img">
+								<img src="./201710/W020171012386272468996.jpg" alt="IMG_1153.JPG"/>
+							</div>
+							<div class="zyyy_text">
+								<div class="zyyy_information">
+									<span class="yy_title">高校</span>
+									<span class="zyyy_name">北京语言大学-大礼堂</span>
+								</div>
+								<div class="address">
+										北京海淀区中关村东路8号东升大厦B座903A
+									<br>010-63377608
+								</div>
+
+								<a class="addmap" href="./201710/t20171012_39173.html">
+									<i class="iconfont icon-ditu2"></i>
+								</a>
+							</div>
+						</div>
+						 
+						<div class="zyyy_item">
+							<div class="zyyy_img">
+								<img src="./201710/W020171012386271065458.jpg" alt="舞台全景.JPG"/>
+							</div>
+							<div class="zyyy_text">
+								<div class="zyyy_information">
+									<span class="yy_title">高校</span>
+									<span class="zyyy_name">中国人民大学-八百人大教室</span>
+								</div>
+								<div class="address">
+										北京海淀区中关村东路8号东升大厦B座903A
+									<br>010-63377608
+								</div>
+
+								<a class="addmap" href="./201710/t20171012_39172.html">
+									<i class="iconfont icon-ditu2"></i>
+								</a>
+							</div>
+						</div>
+						 
+						<div class="zyyy_item">
+							<div class="zyyy_img">
+								<img src="./201710/W020171012386269962219.jpg" alt="大礼堂3.jpg"/>
+							</div>
+							<div class="zyyy_text">
+								<div class="zyyy_information">
+									<span class="yy_title">高校</span>
+									<span class="zyyy_name">清华大学大礼堂</span>
+								</div>
+								<div class="address">
+										北京海淀区中关村东路8号东升大厦B座903A
+									<br>010-63377608
+								</div>
+
+								<a class="addmap" href="./201710/t20171012_39171.html">
+									<i class="iconfont icon-ditu2"></i>
+								</a>
+							</div>
+						</div>
+						 
+					</div>
+					<div class="clear"></div>
+					<div class="pageboxa" id="listpage"></div>
+					<script>createPageNumNav();</script>
+				</div>
+
+			</div>
+			<div class="clear"></div>
+		</div>
+
+
+	</div>
+	<div class="footer">
+	<div class="img_foot" style="height: auto;">
+			<img src="../../../../images/outline.png" usemap="#Map" />
+			<map name="Map" id="Map">
+                            <area shape="rect" hidefocus="true" onfocus="this.blur();" coords="10,25,120,65"
+					href="http://www.iqiyi.com"
+					target="_blank">
+
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="398,36,504,54"
+					href="https://www.samsung.com/cn"
+					target="_blank">
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="740,28,820,62"
+					href="https://www.douyin.com"
+					target="_blank">
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="144,26,242,64"
+					href="http://m.xibei.com.cn" target="_blank">
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="850,28,924,64"
+					href="https://mfsj1908.tmall.com" target="_blank">
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="270,30,382,58"
+					href="http://www.bankofbeijing.com.cn" target="_blank">
+
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="956,32,1012,64"
+				 href="https://aephzp.tmall.com/?spm=a220o.1000855.1997427721.d4918089.32205afdjoi5vA"
+					target="_blank">
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="612,30,720,62" href="https://maoyan.com"
+					target="_blank">
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="1050,32,1122,62" href="https://weibo.com/dolbychina"
+					target="_blank">
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="1146,22,1194,72" href="https://www.pizzahut.com.cn"
+					target="_blank">
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="518,24,598,62" href="http://www.ganten.com.cn"
+					target="_blank">
+				<!--<area shape="rect"  hidefocus="true" onfocus="this.blur();" coords="3,40,131,130" href="https://www.iqiyi.com/kszt/10thBeijingInternationalFilmFestival.html?src=focustext_1_20130410_10" target="_blank" />
+				
+<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="153,40,281,130" href="https://m.taopiaopiao.com/tickets/siff/pages/bjiff/home.html?sqm=a1z2r.8050132.1.1&spm=a2115o.13835003.0.0&from=def" target="_blank" />
+				<area shape="rect"hidefocus="true" onfocus="this.blur();" coords="306,40,431,130" href="https://equity.tmall.com/tm?agentId=691294&_bind=true&bc_fl_src=tmall_market_llb_1_855918&llbPlatform=_pube&llbOsd=1" target="_blank" />
+
+
+                                <area shape="rect" hidefocus="true" onfocus="this.blur();" coords="461,40,541,130" href="https://zhuimidq.tmall.com" target="_blank" />
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="555,40,661,130" href="https://m.pizzahut.com.cn/phdiwap" target="_blank" />
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="663,40,741,130" href="https://www.fenjiu.com.cn" target="_blank" />
+
+                                <area shape="rect" hidefocus="true" onfocus="this.blur();" coords="767,38,816,93" href="" target="_blank" />
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="824,38,851,93" href="" target="_blank" />
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="860,38,894,93" href="" target="_blank" />
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="901,38,941,93" href="" target="_blank" />
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="950,38,977,93" href="" target="_blank" />
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="984,38,1038,93" href="" target="_blank" />
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="1040,38,1102,93" href="" target="_blank" />
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="1120,39,1192,94" href="" target="_blank" />
+
+				<area shape="rect" hidefocus="true" onfocus="this.blur();" coords="2,186,614,249" href="" target="_blank" />
+-->
+
+
+<!--
+<area shape="rect" coords="164,40,294,130" href="https://m.taopiaopiao.com/tickets/siff/pages/bjiff/home.html?sqm=a1z2r.8050132.1.1&spm=a2115o.13835003.0.0&from=def" target="_blank" />
+				<area shape="rect" coords="325,40,450,130" href="https://equity.tmall.com/tm?agentId=691294&_bind=true&bc_fl_src=tmall_market_llb_1_855918&llbPlatform=_pube&llbOsd=1" target="_blank" />
+				<area shape="rect" coords="490,40,580,130" href="https://zhuimidq.tmall.com" target="_blank" />
+				<area shape="rect" coords="600,40,710,130" href="https://m.pizzahut.com.cn/phdiwap" target="_blank" />
+                                <area shape="rect" coords="750,40,800,100" href="https://www.fenjiu.com.cn" target="_blank" />
+				<area shape="rect" coords="805,40,835,100" href="" target="_blank" />
+				<area shape="rect" coords="840,40,880,100" href="" target="_blank" />
+				<area shape="rect" coords="885,40,920,100" href="" target="_blank" />
+				<area shape="rect" coords="930,40,960,100" href="" target="_blank" />
+				<area shape="rect" coords="970,40,1020,100" href="" target="_blank" />
+				<area shape="rect" coords="1020,40,1085,100" href="" target="_blank" />
+				<area shape="rect" coords="1120,40,1190,100" href="" target="_blank" />
+
+				<area shape="rect" coords="3,180,614,250" href="" target="_blank" />
+-->
+
+			</map>
+		</div>
+
+
+	<p>
+		<a href="../../../../gydyj/gywm/">关于我们</a> 丨
+		<a href="../../../../gydyj/llwm/">联络我们</a>
+<!-- 20200728屏蔽在线商城
+丨
+		<a href="../../../../zxsc/">在线商城</a>
+-->
+<!-- 版权所有 Bjiff.com. -->
+<br />Copyright © 2010-2022  北京国际电影节  All Rights Reserved&nbsp; 
+<br />京ICP备20022618  京公网安备11010102001721号
+
+	</p>
+</div>
+
+<script src="../../../../images/index.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$(".nav li").hover(function () {
+				$(this).find("dl").slideDown("slow");
+				$(this).addClass("on");
+			}, function () {
+				$(this).find("dl").hide();
+				$(this).removeClass("on");
+			});
+		});
+	</script>
+
+</body>
+
+</html>

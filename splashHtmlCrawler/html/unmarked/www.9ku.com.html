@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="charset=utf-8" />
+<title>随便听听 - 九酷音乐</title> 
+<link rel="alternate" media="only screen and(max-width:640px)" href="https://m.9ku.com/play.htm" />
+<meta http-equiv="mobile-agent" content="format=xhtml; url=https://m.9ku.com/play.htm" />
+<meta http-equiv="mobile-agent" content="format=html5; url=https://m.9ku.com/play.htm" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<script src="/js/script/jquery.js" type="text/javascript"></script>
+<script src="/js/script/topcommon.js" type="text/javascript"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a5de315acb973b8e6da83458c9e456d3";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body>
+<script>
+if (document.URL.toLowerCase().indexOf(".9ku.com") != -1) document.domain = "9ku.com";
+var addrlocation = document.URL.toLowerCase();
+if (addrlocation.indexOf("?qq-pf-to") != -1) addrlocation = addrlocation.split("?qq-pf-to")[0];
+function isNumber(s) { //数字判断函数
+	if (s == "") return false;
+	var digits = "0123456789";
+	var i = 0;
+	var sLength = s.length;
+
+	while ((i < sLength)) {
+		var c = s.charAt(i);
+		if (digits.indexOf(c) == -1) return false;
+		i++;
+	}
+
+	return true;
+}
+//play.htm加载成功跳转用
+var _loadok=0;
+function loadokgo(data){
+	var datab = data.split("/");
+	var datad = [];
+	for(i=0; i<datab.length; i++) {
+		if(datab[i]!=""&&isNumber(datab[i])&&datab[i]>0){
+			datad.push(datab[i]);
+		}
+	}
+	var datae = datad.join('/');
+	if(datae.length > 0){
+		_loadok=1;
+		Addplay2(datae + '/');
+	}
+}
+if(addrlocation.indexOf("#gedan-")>0){
+	var stztid=(/#gedan-(\d+)/g).exec(addrlocation)[1];
+	if(isNumber(stztid)){
+		if(stztid>0){
+			$.get("/html/playjs/gedan/"+(Math.floor(stztid/1000)+1)+"/"+stztid+".js",function(data){
+				loadokgo(data);
+			});
+		}
+	}
+}else if(addrlocation.indexOf("#zhuanti")>0){
+	var stztid=(/#zhuanti-(\d+)/g).exec(addrlocation)[1];
+	if(isNumber(stztid)){
+		if(stztid>0){
+			$.get("/html/playjs/zhuanti/"+(Math.floor(stztid/1000)+1)+"/"+stztid+".js",function(data){
+				loadokgo(data);
+			});
+		}
+	}
+}else if(addrlocation.indexOf("#zhuanji")>0){
+	var stztid=(/#zhuanji-(\d+)/g).exec(addrlocation)[1];
+	if(isNumber(stztid)){
+		if(stztid>0){
+			$.get("/html/playjs/zhuanti/"+(Math.floor(stztid/1000)+1)+"/"+stztid+".js",function(data){
+				loadokgo(data);
+			});
+		}
+	}
+}else if(addrlocation.indexOf("#taste")>0){
+	var stztid=(/#taste-(\d+)/g).exec(addrlocation)[1];
+	if(isNumber(stztid)){
+		if(stztid>0){
+			$.get("/html/playjs/taste/"+(Math.floor(stztid/1000)+1)+"/"+stztid+".js",function(data){
+				loadokgo(data);
+			});
+		}
+	}
+}else if(addrlocation.indexOf("#geshou")>0){
+	var stztid=(/#geshou-(\d+)/g).exec(addrlocation)[1];
+	if(isNumber(stztid)){
+		if(stztid>0){
+			$.get("/html/playjs/geshou/"+(Math.floor(stztid/1000)+1)+"/"+stztid+".js",function(data){
+				loadokgo(data);
+			});
+		}
+	}
+}else if(addrlocation.indexOf("#zjzj")>0){
+	var stztid=(/#zjzj-(\d+)/g).exec(addrlocation)[1];	
+	if(isNumber(stztid)){
+		if(stztid>0){
+			$.get("/html/playjs/zjzj/"+(Math.floor(stztid/1000)+1)+"/"+stztid+".js",function(data){
+				loadokgo(data);
+			});
+		}
+	}
+//联播
+}else if(addrlocation.indexOf("#ll")>0){
+	var dwids=addrlocation.split("#ll")[1];
+	loadokgo(dwids);
+	
+}else if(addrlocation.indexOf("#pp")>0){
+	var dwids=addrlocation.split("#pp")[1];
+	loadokgo(dwids); 
+	
+}else{
+	if(addrlocation.indexOf(".htm?")>0){
+		var dwids=addrlocation.split(".htm?")[0].split("/");
+		dwid=dwids[dwids.length-1];
+	}else if(addrlocation.indexOf("=")>0){
+		dwid=addrlocation.split("=")[1];
+		if(dwid.indexOf("#")>0)dwid=dwid.split("#")[0];
+	}else{
+		var dwids=addrlocation.split(".htm")[0].split("/");
+		dwid=dwids[dwids.length-1];
+	}
+	if(dwid=="play"){//没有加载成功读取默认值
+		loaddef();
+	}
+}
+if(_loadok==0){
+	setTimeout(function(){loaddef();},1500);
+}
+function loaddef(){
+	//$.get("/html/playjs/default.js",function(data){
+	$.get("/play_api.php",function(data){
+		var datab = data.split("/");
+		var datad = [];
+		for(i=0; i<datab.length; i++) {
+			if(datab[i]!=""&&isNumber(datab[i])&&datab[i]>0){
+				if(datad.length<30){
+					datad.push(datab[i]);
+				}
+			}
+		}
+		var datae = datad.join('/');
+		loadokgo(datae);
+	});
+}
+</script>
+</body>
+</html>

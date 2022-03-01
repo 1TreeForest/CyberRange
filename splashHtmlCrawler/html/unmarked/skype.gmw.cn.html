@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Skype简体中文版官方网站-清晰的免费网络电话</title>
+<meta name="baidu-site-verification" content="sRahCPRoAZ" />
+<meta name="description" content="Skype是超清晰网络电话工具，电脑间通话永远免费，打国内国际固定/移动电话只需市话费" />
+<meta name="keywords" content="Skype,Skype中文官网,免费电话,网络电话,免费通话,国际长途,国内长途,清晰语音,聊天,网络聊天,交友" />
+<meta name="baidu-site-verification" content="code-j1apDb2OCi" />
+<link rel="shortcut icon" href="/resource/assets/favicon/favicon.ico" />
+
+<meta name="robots" content="noodp" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<!-- Stylesheets -->
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/reset.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/base.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/fonts.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/grid.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/spacing.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/backgrounds.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/hero.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/components.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/buttons.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/mediaqueries.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/form.css" />
+
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/china-navigation.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/china-footer.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/china-tables.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/china-overlay.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/china-tabs.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/owl-carousel.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/owl-theme.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="resource/css/china-carousel.css" />
+
+<!-- Scripts -->
+<!--
+     NOTICE:  Third party scripts and code linked to or referenced here are not licensed to you by
+     the third parties that own such code, not by Microsoft, see ASP.NET Ajax CDN Terms of Use -
+     http://www.asp.net/ajaxlibrary/CDN.ashx
+    -->
+<script type="text/javascript" src="resource/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="resource/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="resource/js/modernizr.js"></script>
+<script type="text/javascript" src="resource/js/matchMedia.js"></script>
+<script type="text/javascript" src="resource/js/hideaddrbar.js"></script>
+<script type="text/javascript" src="resource/js/skype-common.js"></script>
+<!-- <script type="text/javascript" src="resource/js/fonts-init.js"></script> -->
+<script type="text/javascript" src="resource/js/form.js"></script>
+<script type="text/javascript" src="resource/js/form-init.js"></script>
+<script type="text/javascript" src="resource/js/form-hover.js"></script>
+<script type="text/javascript" src="resource/js/animation.js"></script>
+<script type="text/javascript" src="resource/js/china-common.js"></script>
+<script type="text/javascript" src="resource/js/china-overlay.js"></script>
+<script type="text/javascript" src="resource/js/china-hash.js"></script>
+<script type="text/javascript" src="resource/js/china-accessibility.js"></script>
+<script type="text/javascript" src="resource/js/china-accordian.js"></script>
+<script type="text/javascript" src="resource/js/owl-carousel.js"></script>
+
+<script type="text/javascript">
+	if (typeof SKYPE === 'undefined') {
+		var SKYPE = {};
+	}
+	SKYPE.settings = {};
+	SKYPE.settings.api = {
+		sessionApiUrl : ""
+	}
+
+	SKYPE.settings.l10s = {};
+	SKYPE.settings.l10s.overlay = {
+		closeButton : "关闭",
+		instructions : "Overlay now in focus: explore or press escape to close"
+	}
+
+	$(document).ready(function() {
+		initCarousel();
+	});
+
+	function initCarousel() {
+		setCarousel();
+		setCarouselHeight();
+	}
+
+	function setCarousel() {
+
+		var owl = $("#carousel");
+
+		owl.owlCarousel({
+
+			items : 2,
+			slideSpeed : 200,
+			paginationSpeed : 1400,
+			rewindSpeed : 1400,
+			itemsDesktop : [ 1000, 2 ], //2 items between 1000px and 901px
+			itemsDesktopSmall : [ 900, 2 ], //2 items betweem 900px and 601px
+			itemsTablet : [ 600, 1 ], //1 items between 600 and 0;
+			itemsMobile : false, //itemsMobile disabled - inherit from itemsTablet option
+			autoHeight : false,
+			autoPlay : true,
+			startDragging : stopCarousel,
+			afterUpdate : setCarouselHeight
+
+		});
+
+		owl.click(function() {
+			stopCarousel();
+		})
+	}
+
+	function playCarousel() {
+		var owl = $("#carousel");
+		owl.trigger('owl.play');
+	}
+
+	function stopCarousel() {
+		var owl = $("#carousel");
+		owl.trigger('owl.stop');
+	}
+
+	function setCarouselHeight() {
+
+		var owl = $("#carousel"), maxHeight = 0;
+
+		if (window.matchMedia('only screen and (max-width: 600px)').matches) {
+			owl.data('owlCarousel').reinit({
+				autoHeight : true
+			});
+			$("#carousel .slide").css('min-height', '180px')
+			$("#carousel .owl-wrapper-outer").css('height', '180px');
+		} else {
+			owl.data('owlCarousel').reinit({
+				autoHeight : true
+			});
+			$("#carousel .slide").css('min-height', '');
+			var thisHeight = $("#carousel .owl-wrapper").height();
+			$("#carousel .slide").css('min-height', (thisHeight) + 'px');
+			$("#carousel .owl-wrapper-outer")
+					.css('height', (thisHeight) + 'px');
+
+			var isiPad = navigator.userAgent.toLowerCase().indexOf("ipad");
+			if (isiPad > -1) {
+				$("#carousel .background img").css('height', 'auto');
+				setTimeout(function() {
+					$("#carousel .background img").css('height', '');
+				}, 1);
+			}
+
+		}
+	}
+</script>
+<script type="text/javascript" src="resource/js/common/admaster.js"></script>
+<script type="text/javascript" src="resource/js/common/google.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?bfde3a9e48a64ccf417913895fbe8818";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body>
+	<script type="text/javascript" src="/resource/js/common/header_back.js"></script>
+<nav id="top-nav">
+	<input type="hidden" id="lang" name="lang" value="zh_CN" />
+	<input type="hidden" id="ctx0" name="ctx0" value="" />
+	<div class='navWrapper' role='navigation'>
+		<ul class='navMain' role='menubar'>
+			<li role='presentation' class='skypeLogo'>
+				<a aria-selected='true' title='Skype中文官方网站' href='https://skype.gmw.cn'>
+					<span class='menuSprite'></span>
+				</a>
+			</li>
+   
+			<li role='presentation' class='skipNavigation'>
+				<a aria-selected='false' title='Skip Navigation' href='#navEnd'>跳过导航</a>
+			</li>
+
+			<li class='noDesktop openMenu' role="presentation">
+				<a aria-selected='false' title='Open Menu' href='#'> 
+					<span class='menuText'>菜单</span><span class='menuSprite'></span>
+				</a>
+			</li>
+
+			<li class='noDesktop closeMenu' role="presentation">
+				<a aria-selected='false' title='Close Menu' href='#'>
+					<span class='menuText'>关闭</span><span class='menuSprite'></span>
+				</a>
+			</li>
+
+			<li role='presentation' class='menuLeft menuItem'>
+				<a class="noDesktop" aria-selected='true' href='https://skype.gmw.cn'>首页</a>
+			</li>
+
+			<li id="features" role='presentation' class='menuLeft menuItem'>
+				<a aria-selected='false' href='/function/'>产品功能</a>
+			</li>
+
+			<li id="down" role='presentation' class='menuLeft menuItem '>
+				<a class="noMobile" aria-selected='false' href='/down/'>下载</a>
+				<a class="noDesktop" aria-selected='false' href='/down/'>下载</a>
+			</li>
+
+			<li id="product0" role='presentation' class='menuLeft menuItem'>
+				<a aria-selected='false' href='/product/'>充值</a>
+			</li>
+<!-- 
+			<li id="news" role='presentation' class='menuLeft menuItem'>
+				<a aria-selected='false' href='/news/'>新闻</a>
+			</li>
+			
+ -->
+			<li id="support"  role='presentation' class='menuLeft menuItem'>
+				<a aria-selected='false' href='/help/'>帮助</a>
+			</li>
+			
+			<li role='presentation' class='menuLeft menuItem'>
+				<a aria-selected='false' href='/sfbproduct/sfb2017.html' target="_blank">
+					企业服务</a>
+			</li>
+ 
+			
+			<!-- 非登陆状态  -->
+			<li role='presentation' class='menuRight menuItem accountLink'>
+				<a aria-selected='false' onclick='login_btn_click("/user/login.html")'>
+					登录</a>
+			</li>
+			<li role='presentation' class='menuRight menuItem accountLink marginRight'>
+				<a aria-selected='false' onclick='regist_btn_click("/user/regist.html")'>
+					注册</a>
+			</li>
+			<!-- 登陆状态  -->
+			</ul>
+		<div class='navBottom noMobile'>
+			<span class='innerBorder'></span>
+		</div>
+		<div id="navEnd"></div>
+	</div>
+</nav>
+<header>
+
+		<div class="heroCenter generic homepage">
+
+			<div class="heroImageContainer noMobile">
+				<div class="heroIllustration"
+					style="background-image: url('/resource/assets/content/china/homepage/headers/header-desktop.jpg');">
+				</div>
+			</div>
+
+			<div class="noDesktop">
+				<img
+					src="/resource/assets/content/china/homepage/headers/header-mobile.jpg"
+					alt="Header Image" class="heroIllustration" />
+			</div>
+
+			<div class="heroContainer">
+
+				<div class="sectionWrapper">
+
+					<div class="headline fogBackgroundMobile">
+                    <div class="content_text">
+                        <h1 class="noMobile">无论您身在何处，无论他们身在何处 － Skype让天涯变咫尺。</h1>
+                        <h1 class="noDesktop title-h3">无论您身在何处，无论他们身在何处 － Skype让天涯变咫尺。</h1>
+                    </div>
+                    <div class="btnContainer">
+                        <a href="/resource/uploadimg/android/chinaGmf-8.15.0.388.apk" class="btn primaryCta" onclick="javascript:_smq.push(['custom', '首页', 'Banner', '下载Button'])"> <span
+                                    class="arrowNext" style="padding-right:25px;">  下载Skype安卓版</span>
+                            </a>
+                            <a href="https://web.skype.com/" target="_blank" style="display:block; width:148px; height:20px; padding-right:35px; color:#000; margin-top:11px; text-align:right; ">登录Skype网页版</a>
+                        </div>
+
+					</div>
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</header>
+
+
+	<section class="carousel flushTopMobile">
+
+		<div class="backgroundWrapper backgroundGradient_300"></div>
+
+		<div class="contentWrapper">
+
+			<div class='contentBlock fullWidthMobile'>
+
+				<div class='row'>
+
+					<div class='grid unit_12'>
+
+						<div class='column'>
+							<!-- new added -->
+							<div class="carouselLoader" style="background-image: url('/resource/assets/content/china/common/dummy.png');"></div>
+							<!-- new added end-->
+							<div id="carousel" class="owl-carousel">
+							
+							
+							<div class="item textRight">
+										<div class="slide white noMobile">
+											<div class="background">
+												<div class="image center" style="background-image: url(/resource/uploadimg/upload/png/20210420/25648831-d96d-4dfc-ab59-cd307f277a91.png)"></div>
+											</div>
+											<div class="content">
+												<div class="text">
+													<h4>
+														光速连国际网络加速器
+															——连你所愿
+													</h4>
+													<p>
+														K12院校无国界<br/>
+														跨境比价海淘任意购<br/>
+														体育竞技不限时观看<br/>
+														定制你的专属访问链接
+													</p>
+													<p>
+														<a href="https://58lian.net/" target="_blank">下载</a>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide white noDesktop">
+											<div class="background">
+												<img src="/resource/assets/content/china/common/dummy.png"
+													style="background-image: url(/resource/uploadimg/upload/png/20210420/b66d12a3-5f44-4f6f-9c49-753890678474.png)"
+													alt="Header Image" class="">
+											</div>
+											<div class="content">
+												<div class="text">
+													<h4 id="test">
+														光速连国际网络加速器<br/>
+															——连你所愿
+													</h4>
+													<p>
+														<a id="june-mobile" href="https://58lian.net/" target="_blank">下载</a>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								<div class="item textRight">
+										<div class="slide white noMobile">
+											<div class="background">
+												<div class="image center" style="background-image: url(/resource/uploadimg/upload/png/20210315/7e19c44b-962d-47ab-b539-2283519ecef0.png)"></div>
+											</div>
+											<div class="content">
+												<div class="text">
+													<h4>
+														Skype安卓版全球更新
+													</h4>
+													<p>
+														安卓版Skype将于2021年6月1日进行全球统一更新，为了提升使用效果，请从官网下载新版本使用。
+													</p>
+													<p>
+														<a onclick="analysisclick('index_page_productlist','/resource/uploadimg/android/chinaGmf-8.15.0.388.apk')">下载</a>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide white noDesktop">
+											<div class="background">
+												<img src="/resource/assets/content/china/common/dummy.png"
+													style="background-image: url(/resource/uploadimg/upload/png/20210315/7e19c44b-962d-47ab-b539-2283519ecef0.png)"
+													alt="Header Image" class="">
+											</div>
+											<div class="content">
+												<div class="text">
+													<h4 id="test">
+														Skype安卓版全球更新
+													</h4>
+												</div>
+											</div>
+										</div>
+									</div>
+								<div class="item textLeft" onclick="window.open('/help/content_24_925.html')" style="cursor: pointer">
+										<div class="slide black noMobile">
+											<div class="background">
+												<div class="image center" style="background-image: url(/resource/uploadimg/upload/jpg/20200408/ac2f4a0a-7d2d-8c76-a30f-fbd4d845e22a.jpg)"></div>
+											</div>
+											<div class="content">
+												<div class="text">
+													<h4>免费轻松创建视频会议</h4>
+													<p>为了使人们能够更快地建立联系，近期Skype推出了 Meet Now 新功能。通过 Meet Now，您只需三次点击，即可免费轻松创建视频会议，且无需注册或下载。</p>
+													<p>
+														<a id="june-desktop" href="/help/content_24_925.html" target="_blank">了解更多</a>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide black noDesktop">
+											<div class="background">
+												<img src="/resource/assets/content/china/common/dummy.png" style="background-image: url(/resource/uploadimg/upload/jpg/20200408/110f7828-19b5-10fe-92ac-cab236df2a34.png)" alt="Header Image" class="">
+											</div>
+											<div class="content">
+												<div class="text">
+													<h4 id="test">免费轻松创建视频会议</h4>
+													<p>
+														<a id="june-mobile" href="/help/content_24_925.html" target="_blank">了解更多</a>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								<div class="item textLeft" style="cursor: pointer">
+											<div class="slide black noMobile">
+												<div class="background">
+													<div class="image center" style="background-image: url(/resource/uploadimg/upload/jpg/20190506/1323025c-6fcf-11e9-a923-1681be663d3e.jpg)"></div>
+												</div>
+												<div class="content">
+													<div class="text">
+														<h4>自动提供5分钟通话时长</h4>
+														<p>用户正在创建新账户或现有客户，且从未购买过Skype付费产品，自动提供5分钟通话时长(仅可拨打一个电话)。</p>
+													</div>
+												</div>
+											</div>
+											<div class="slide black noDesktop">
+												<div class="background">
+													<img src="/resource/assets/content/china/common/dummy.png" style="background-image: url(/resource/uploadimg/upload/jpg/20190506/22af9000-6fcf-11e9-a923-1681be663d3e.png)" alt="Header Image" class="">
+												</div>
+												<div class="content">
+													<div class="text">
+														<h4 id="test">自动提供5分钟通话时长</h4>
+													</div>
+												</div>
+											</div>
+										</div>
+									<div class="item textLeft" onclick="window.open('/sfbproduct/sfb2017.html')" style="cursor: pointer">
+										<div class="slide black noMobile">
+											<div class="background">
+												<div class="image center" style="background-image: url(/resource/uploadimg/upload/business/sfb-desktop.jpg)"></div>
+											</div>
+											<div class="content">
+												<div class="text">
+													<h4>高效办公会议软件来啦</h4>
+													<p>全新上线的商务会议软件Skype for business，支持多达250人同时在线视频，共享PPT和桌面，全程录制在线会议等功能。</p>
+													<p>
+														<a href="/sfbproduct/sfb2017.html" target="_blank">立即购买</a>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide black noDesktop">
+											<div class="background">
+												<img
+													src="/resource/assets/content/china/common/dummy.png"
+													style="background-image: url(/resource/uploadimg/upload/business/sfb-mobile.jpg)"
+													alt="Header Image" class="">
+											</div>
+											<div class="content">
+												<div class="text">
+													<h4 id="test">高效办公会议软件来啦</h4>
+													<p>
+														<a href="/sfbproduct/sfb2017.html" target="_blank">立即购买</a>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								<!-- 						
+							<div class="item textLeft" onclick="window.open('/skypetopic/skypehans.html')" style="cursor: pointer">
+										<div class="slide black noMobile">
+											<div class="background">
+												<div class="image center" style="background-image: url(/images/skypeTopic/20170531topicpage-pc.jpg)"></div>
+											</div>
+											<div class="content">
+												<div class="text">
+													<h4>Skype全新改版上线</h4>
+													<p>焕然一新的设计，时尚丰富的功能，让你感受不一样的Skype</p>
+													<p>
+														<a id="june-desktop" href="/skypetopic/skypehans.html" target="_blank">了解更多</a>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide black noDesktop">
+											<div class="background">
+												<img src="/resource/assets/content/china/common/dummy.png" style="background-image: url(/images/skypeTopic/20170531topicpage-mobile.jpg)" alt="Header Image" class="">
+											</div>
+											<div class="content">
+												<div class="text">
+													<h4 id="test">Skype全新改版上线</h4>
+													<p>
+														<a id="june-mobile" href="/skypetopic/skypehans.html" target="_blank">了解更多</a>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								
+ -->	
+								<!-- 
+								<div class="item textLeft" onclick="window.open('http://jt.10010.com/group-oa-zswd/o2m/auth?groupId=8817051800159221&developerId=8717051800012583&goodsId=111705182510&branchId=8917051800164360&direct=&title=&utype=1')" style="cursor: pointer">
+										<div class="slide black noMobile">
+											<div class="background">
+												<div class="image center" style="background-image: url(/resource/activity/2017/unicom/140BE8AE-C9D2-41CD-9FB9-E982D4965792.jpg)"></div>
+											</div>
+											<div class="content">
+												<div class="text">
+													<h4>流量不限量，包月享五折！</h4>
+													<p>专为北京联通客户打造的不限量套餐，原价398元/月，现价199元/月！ </p>
+													<p>
+														<a id="unicom-desktop" href="http://jt.10010.com/group-oa-zswd/o2m/auth?groupId=8817051800159221&developerId=8717051800012583&goodsId=111705182510&branchId=8917051800164360&direct=&title=&utype=1" target="_blank">了解更多</a>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide black noDesktop">
+											<div class="background">
+												<img src="/resource/assets/content/china/common/dummy.png" style="background-image: url(/resource/activity/2017/unicom/21D7D824-E4F6-4FCE-9C4F-2230F4BFE126.jpg)" alt="Header Image" class="">
+											</div>
+											<div class="content">
+												<div class="text">
+													<h4 id="test">流量不限量，包月享五折！</h4>
+													<p>
+														<a id="unicom-mobile" href="http://jt.10010.com/group-oa-zswd/o2m/auth?groupId=8817051800159221&developerId=8717051800012583&goodsId=111705182510&branchId=8917051800164360&direct=&title=&utype=1" target="_blank">了解更多</a>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								
+								 -->
+							
+							
+								<div class="item textLeft"
+										onclick="window.open('/business/video-launch.html')"
+										style="cursor: pointer">
+										<div class="slide blue noMobile">
+											<div class="background">
+												<div class="image center"
+													style="background-image: url(/resource/assets/content/china/activity/v-carousel-desktop.jpg)"></div>
+											</div>
+											<div class="content">
+												<div class="text">
+													<h4>与朋友们分享你的生活点滴</h4>
+													<p>无论工作还是娱乐，Skype可以让你和好友随时随地通话和交流</p>
+													<p>
+														<a href="/business/video-launch.html">了解更多</a>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide blue noDesktop">
+											<div class="background">
+												<img
+													src="/resource/assets/content/china/common/dummy.png"
+													style="background-image: url(/resource/assets/content/china/activity/v-carousel-mobile.jpg)"
+													alt="Header Image" class="">
+											</div>
+											<div class="content">
+												<div class="text">
+													<h4 id="test">与朋友们分享你的生活点滴</h4>
+													<p>
+														<a href="/business/video-launch.html">了解更多</a>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								<!-- 公告-首轮-开始 -->
+								<div class="item textRight">
+									<div class="slide blue noMobile">
+										<div class="background">
+											<div class="image center"
+												style="background-image: url(/resource/assets/content/china/homepage/carousel/gonggao_da.jpg)"></div>
+										</div>
+										<div class="content">
+											<div class="text">
+												<h4>
+													公告</h4>
+												<p>
+													
+													我司于8月1日起停止提供纸质发票，全面推行增值税电子普通发票。
+													<!-- 												</p> -->
+<!-- 												<p> -->
+</p>
+												<p>
+													<a
+														onclick="analysisclick('index_page_notice','/notice/index.html')">
+														了解详情</a>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide blue noDesktop">
+										<div class="background">
+											<img
+												src="/resource/assets/content/china/common/dummy.png"
+												style="background-image: url(/resource/assets/content/china/homepage/carousel/gonggao_xiao.jpg)"
+												alt="Header Image" class="">
+										</div>
+										<div class="content">
+											<div class="text">
+												<h4 id="test">
+													Skype拨打费率调整通知</h4>
+												<br>
+												<p>
+													<a
+														onclick="analysisclick('index_page_notice','/notice/index.html')">
+														了解详情</a>
+													</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- 公告-首轮-结束 -->
+
+								<div class="item textRight">
+									<div class="slide white noMobile">
+										<div class="background">
+											<div class="image center"
+												style="background-image: url(/resource/assets/content/china/homepage/carousel/carousel-1.jpg)"></div>
+										</div>
+										<div class="content">
+											<div class="text">
+												<h4>
+													用更少的费用保持联络</h4>
+												<p>
+													以低廉的通话费率拨打全球各地的手机和座机 </p>
+												<p>
+													<a
+														onclick="analysisclick('index_page_productlist','/product/productlist.html')">立即购买Skype点卡</a>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide white noDesktop">
+										<div class="background">
+											<img
+												src="/resource/assets/content/china/common/dummy.png"
+												style="background-image: url(/resource/assets/content/china/homepage/carousel/carousel-mobile-1.jpg)"
+												alt="Header Image" class="">
+										</div>
+										<div class="content">
+											<div class="text">
+												<h4 id="test">
+													以低廉的通话费率拨打全球各地的手机和座机 </h4>
+												<p>
+													<a
+														onclick="analysisclick('index_page_productlist','/product/productlist.html')">立即购买Skype点卡</a>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="item textRight">
+									<div class="slide white noMobile">
+										<div class="background">
+											<div class="image center"
+												style="background-image: url(/resource/assets/content/china/homepage/carousel/carousel-3.jpg)"></div>
+										</div>
+										<div class="content">
+											<div class="text">
+												<h4>
+													分享美好时刻</h4>
+												<p>
+													视频消息可以跟您的家人和朋友分享快乐</p>
+												<p>
+													<a
+														onclick="analysisclick('index_page_function_video_calls','/function/detail_video-messaging.html')">了解更多</a>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide white noDesktop">
+										<div class="background">
+											<img
+												src="/resource/assets/content/china/common/dummy.png"
+												style="background-image: url(/resource/assets/content/china/homepage/carousel/carousel-mobile-3.jpg)"
+												alt="Header Image" class="">
+										</div>
+										<div class="content">
+											<div class="text">
+												<h4 id="test">
+													视频消息可以跟您的家人和朋友分享快乐</h4>
+												<p>
+													<a
+														onclick="analysisclick('index_page_function_video_calls','/function/detail_video-messaging.html')">了解更多</a>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="item textLeft">
+									<div class="slide blue noMobile">
+										<div class="background">
+											<div class="image center"
+												style="background-image: url(/resource/assets/content/china/homepage/carousel/carousel-2.jpg)"></div>
+										</div>
+										<div class="content">
+											<div class="text">
+												<h4>
+													相同的Skype，更多的屏幕</h4>
+												<p>
+													即使离开电脑也不会错过一句聊天对话</p>
+												<p>
+													<a
+														onclick="analysisclick('index_page_multiplatforms','/link_multiplatforms.html')">了解更多</a>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="slide blue noDesktop">
+										<div class="background">
+											<img
+												src="/resource/assets/content/china/common/dummy.png"
+												style="background-image: url(/resource/assets/content/china/homepage/carousel/carousel-mobile-2.jpg)"
+												alt="Header Image" class="">
+										</div>
+										<div class="content">
+											<div class="text">
+												<h4 id="test">
+													即使离开电脑也不会错过一句聊天对话</h4>
+												<p>
+													<a
+														onclick="analysisclick('index_page_multiplatforms','/activity/multiplatforms.html')">了解更多</a>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="overlay flushTopMobile" id="deviceSection">
+
+		<div class="backgroundWrapper backgroundWhite"></div>
+
+		<div class="contentWrapper noMobile spacer_24">
+
+			<div class="contentBlock">
+
+				<div class="row">
+
+					<div class="grid unit_12">
+						<div class="column">
+							<div class="content_text">
+								<p class="title-h2 noMobile">
+									快速入门<!-- Begin -->
+									<!-- End -->
+								</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="contentWrapper noMobile spacer_12">
+
+			<div class="contentBlock container backgroundFog spacingLineWhite">
+
+				<div class="row">
+
+					<div class="grid unit_4">
+						<div class="column">
+							<div class="deviceTileComponent component">
+								<img width="48" height="48" class="mediumIcon"
+									alt="下载Skype"
+									src="/resource/assets/content/china/homepage/quick-links/desktop/icon-download.png">
+								<div class="additionalInfoContainer">
+									<p class="title-h3">
+										下载Skype</p>
+									<p>
+										下载Skype到您的电脑/手机或者平板电脑，可以使用免费的Skype通话，即时聊天和视频聊天。</p>
+									<p>
+										<a href='/down/down.html'
+											onclick="javascript:_smq.push(['custom', '首页', '快速入门', '下载Button'])">下载Skype</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="grid unit_4">
+						<div class="column">
+							<div class="deviceTileComponent component">
+								<img width="48" height="48" class="mediumIcon"
+									alt="Skype至Skype通话"
+									src="/resource/assets/content/china/homepage/quick-links/desktop/icon-skype-calls.png">
+								<div class="additionalInfoContainer">
+									<p class="title-h3">
+										Skype至Skype通话</p>
+									<p>
+										无论您身在何处，都可以与Skype用户进行免费畅聊。</p>
+									<p>
+										<a class="showOverlay learnMore"
+											href='/function/detail_skype-to-skype-calls.html'>了解更多Skype至Skype通话</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="grid unit_4">
+						<div class="column">
+							<div class="deviceTileComponent component">
+								<img width="48" height="48" class="mediumIcon"
+									alt='拨打座机和手机'
+									src="/resource/assets/content/china/homepage/quick-links/desktop/icon-landlines-mobiles.png">
+								<div class="additionalInfoContainer">
+									<p class="title-h3">
+										拨打座机和手机</p>
+									<p>
+										低廉的费率拨打全球的手机和座机。</p>
+									<p>
+										<a class="showOverlay learnMore"
+											href='/function/detail_call-phones-and-mobiles.html'>
+											了解更多拨打座机和手机</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<center>
+				<div class="row" style="margin-top: 20px;"'>
+					<a href="javascript:void(0);" onclick="window.location.href='/function/group-video.html'"><img src='/resource/assets/content/china/common/tonglanbanner.jpg' /></a>
+				</div>
+			</center>
+		</div>
+
+		<div class="contentWrapper noDesktop">
+
+			<div class="contentBlock" id="deviceTitle">
+
+				<div class="row">
+
+					<div class="grid unit_12">
+
+						<div class="column">
+
+							<h2 class="semibold">
+								快速入门</h2>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="contentBlock spacingGutter fullWidthMobile"
+				id="deviceContent">
+
+				<div class="row">
+
+					<div class="grid unit_12">
+
+						<div class="column">
+
+							<div class="deviceComponent">
+								<a href="/down/down.html"
+									onclick="_smq.push(['custom', '首页', '快速入门', '下载Button'])">
+									<img width="38" height="48" class="noTablet noDesktop"
+									alt="Download Skype" aria-hidden="true"
+									style="background-image: url(/resource/assets/content/china/homepage/quick-links/mobile/icon-download.png);"
+									src="/resource/assets/content/china/common/dummy.png">
+									<span class="deviceTitle">下载Skype</span> <span class="arrow"> <span
+										class="arrowIcon"></span>
+								</span>
+								</a>
+							</div>
+							<div class="deviceComponent">
+								<a href="/function/detail_skype-to-skype-calls.html">
+									<img width="38" height="48" class="noTablet noDesktop"
+									alt="Skype至Skype通话" aria-hidden="true"
+									style="background-image: url(/resource/assets/content/china/homepage/quick-links/mobile/icon-skype-calls.png);"
+									src="/resource/assets/content/china/common/dummy.png">
+									<span class="deviceTitle">Skype至Skype通话</span>
+									<span class="arrow"> <span class="arrowIcon"></span>
+								</span>
+								</a>
+							</div>
+							<div class="deviceComponent">
+								<a href="/function/detail_call-phones-and-mobiles.html">
+									<img width="38" height="48" class="noTablet noDesktop"
+									alt="了解更多Skype至Skype通话" aria-hidden="true"
+									style="background-image: url(/resource/assets/content/china/homepage/quick-links/mobile/icon-landlines-mobiles.png);"
+									src="/resource/assets/content/china/common/dummy.png">
+									<span class="deviceTitle">了解更多Skype至Skype通话</span>
+									<span class="arrow"> <span class="arrowIcon"></span>
+								</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript" src="/resource/js/common/footer.js"></script>
+<!-- <script type="text/javascript" src="http://tajs.qq.com/stats?sId=29616262" charset="UTF-8"></script> -->
+<footer role="">
+	<div class="centered">
+		<div class="top">
+			<div class="footerContent">
+				<div role="navigation" class="footerLinks">
+					 <div class="microsoftLinks">
+						 <div class="footerLanguageSelector">
+							<h2 class="title semibold toggler noMobile"
+								style="margin-bottom: 21px;">
+								语言选择<span class="icon arrow"></span>
+							</h2>
+							<a id="a_nowlang"  aria-label="Select language" onclick="changelang('zh_CN','')" data-ajax="false"><span
+								class="icon world"></span>English</a>
+						</div>
+					</div> 
+					<div class="siteLinks">
+						<div class="row">
+							<div class="linkGroup collapsed" aria-expanded="false">
+								<h2 class="title semibold toggler">
+									关于我们<span class="icon arrow"></span>
+								</h2>
+								<ul class="togglerContent">
+									<li><a title="" href="/help/about.html">关于我们</a></li>
+									<li><a title="" href="/help/job.html">工作机会</a></li>
+									<li><a title="" href="/help/sitemap.html">网站地图</a></li>
+								</ul>
+							</div>
+							<div class="linkGroup collapsed" aria-expanded="false">
+								<h2 class="title semibold toggler">
+									获取Skype<span class="icon arrow"></span>
+								</h2>
+								<ul class="togglerContent">
+									<li><a title="" href="/down/skype-for-computers.html">电脑</a></li>
+									<li><a title="" href="/down/skype-for-mobiles.html">移动设备</a></li>
+									<li><a title="" href="/down/skype-for-tablets.html">平板</a></li>
+									<li><a title="" href="/down/skype-for-more-devices.html">其他设备</a></li>
+								</ul>
+							</div>
+							<div class="linkGroup collapsed" aria-expanded="false">
+								<h2 class="title semibold toggler">
+									帮助 <span class="icon arrow"></span>
+								</h2>
+								<ul class="togglerContent">
+									<!-- <li><a title="" href="/help/quickin.html">快速入门</a></li> -->
+									<!-- <li><a title="" href="/help/payway.html">付款方式</a></li> -->
+									<li><a onclick='home_mailto_gmf()'>邮件咨询</a></li>
+									<li><a href="/help/connection.html">联系我们</a></li>
+</ul>
+							</div>
+							<div class="linkGroup collapsed" aria-expanded="false">
+								<h2 class="title semibold toggler">
+									互动<span class="icon arrow"></span>
+								</h2>
+								<ul class="togglerContent">
+									<li><a title="" href="https://weibo.com/skypev5" target="_blank">微博</a></li>
+									<li><a id='link' href="javaScript:void(0)"  onmouseout="myonmouseout()" onmouseover="myonmouseover()">微信</a></li>
+								</ul>
+							</div>
+							<div id='QR' style="display:none; z-index:9999" aria-expanded="false">
+								<img src="/resource/assets/content/china/qr/weixin.jpg" width="200px" height="200px"/>
+								</div>
+							<script type="text/javascript">
+								var isie6 = window.XMLHttpRequest?false:true;
+								
+								var targ = document.getElementById("QR");
+								if(isie6){
+									targ.style.position='absolute'; 
+								}else{
+									targ.style.position = 'fixed';	
+								}
+								targ.style.right = '40'+'px';
+								targ.style.bottom = '30'+'px'; 
+								
+								function myonmouseover(){
+									$(targ).show();
+								}
+	
+								function myonmouseout(){
+									$(targ).hide();
+								}
+							</script>
+						</div>
+						<div class="footerWarning">
+							<div class="noMobile">
+								<p>
+									<span class="icon noCalls"></span><b>Skype不提供紧急电话服务</b><br>
+									 <span class="warningText">Skype不能取代您的电话，也不能用来拨打紧急电话</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		    <!-- 英文是折行的 -->
+			<div class="bottom">
+			<div class="footerTerms">
+				<div class="noMobile">
+					<p><br>Skype名称、相关商标和LOGO以及"S" LOGO为Skype以及关联公司的注册商标。使用本网站说明您接受本网站的<a href="/help/lawinter.html">使用条款</a> 和<a href="/help/privacypolicy.html">
+							隐私政策</a>.
+					</p>
+				</div>
+				<div class="noTablet noDesktop">
+					<p>
+					     使用本网站说明您接受本网站的<a href="/help/lawinter.html"> 法律说明</a>和<a
+							href="/help/privacypolicy.html"> 隐私条款</a>.
+					</p>
+				</div>
+			</div>
+			<div class="footerLegal">
+				<div class="footerWarning">
+					<div class="noDesktop noTablet">
+						<div class="icon noCalls"></div>
+						<p>Skype不提供紧急电话服务</p>
+					</div>
+				</div>
+				<div class="footerCopyright">
+					<div class="icon ms-logo"></div>
+					<p class="noMobile">
+						&copy; 2013 Skype and SGP.
+					<br><a href="https://beian.miit.gov.cn">京ICP备09109312号</a>
+					</p>
+					<p class="noDesktop noTablet">&copy; 2013 Skype and SGP.
+					<br><a href="https://beian.miit.gov.cn">京ICP备09109312号</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+_atrk_opts = { atrk_acct:"4+gli1aUCm00OA", domain:"gmw.cn",dynamic: true};
+(function() {
+        var as = document.createElement("script");
+        as.type = "text/javascript";
+        as.async = true;
+        as.src = "https://img.gmw.cn/js/atrk.js
+";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(as, s);
+})();
+</script>
+<noscript><img src="https://certify.alexametrics.com/atrk.gif?account=4+gli1aUCm00OA" style="display:none" height="1" width="1" alt="" /></noscript>
+</footer>
+<script type="text/javascript">
+		$("#june-desktop,#june-mobile,#mothers-pc,#mothers-mobile,#college1,#college2,#cj-desktop,#cj-mobile").bind("click", function(event) {
+
+					//event为事件对象  
+
+					//.........  
+
+					event.stopPropagation(); //停止事件冒泡  
+
+				});
+	</script>
+</body>
+</html>

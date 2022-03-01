@@ -1,0 +1,475 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>中国人民大学新闻网 | NEWS of RUC</title>
+<link rel="shortcut icon" href="/wp-content/themes/rucnews/images/ruc.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="/wp-content/themes/rucnews/style.css?v=1.2" />
+<link rel="stylesheet" type="text/css" href="/wp-content/themes/rucnews/css/slide-2.css" />
+
+
+<script type="text/javascript" src="/wp-content/themes/rucnews/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/wp-content/themes/rucnews/js/backgroundposition.js"></script>
+<script type="text/javascript" src="/wp-content/themes/rucnews/js/slide.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#s').focusin(function(){
+			var val = $(this).val();
+			if(val == '请输入搜索内容...'){
+				$(this).val('');
+			}
+		});
+		
+		$('#s').focusout(function(){
+			var val = $(this).val();
+			if(val == ''){
+				$(this).val('请输入搜索内容...');
+			}
+		});
+		
+		$('#weeknews_triger').click(function(){
+			$('#weeknews').animate({
+				height: '293'
+			});
+			$('#medianews').animate({
+				height: '40'
+			});
+		});
+		
+		$('#medianews_triger').click(function(){
+			$('#weeknews').animate({
+				height: '40'
+			});
+			$('#medianews').animate({
+				height: '293'
+			});
+		});
+		
+		$('.link2home').hover(function(){
+			$(this).css('background-position','0 -30px');
+			$('body').animate({backgroundPosition: '0 0'});
+                        $('#header_top_nav a').hide();
+                        $('#header_top_nav a.more').show();
+			$('#header_top_nav').animate({height: 20});
+		});
+                
+                $('.imp_news').hover(function(){
+			$('body').animate({backgroundPosition: '0 0'});
+                        $('#header_top_nav a').hide();
+                        $('#header_top_nav a.inews').show();
+			$('#header_top_nav').animate({height: 20});
+		});
+                
+                 $('.camp_news').hover(function(){
+			$('body').animate({backgroundPosition: '0 0'});
+                        $('#header_top_nav a').hide();
+                        $('#header_top_nav a.cnews').show();
+			$('#header_top_nav').animate({height: 20});
+		});
+	
+		$('#slides').slides({
+			preload: true,
+			preloadImage: '/wp-content/themes/rucnews/images/ajax-loader.gif',
+			effect: 'slide',
+			play: 5000,
+			pause: 2500,
+			hoverPause: true,
+			animationStart: function(current){
+				$('.caption').animate({
+					bottom:0,
+					right: 40,
+					opacity: 0
+				},200);
+			},
+			animationComplete: function(current){
+				$('.caption').animate({
+					bottom:20,
+					right: 40,
+					opacity: 1
+				},200);
+			},
+			slidesLoaded: function() {
+				$('.caption').animate({
+					bottom:20,
+					right: 40,
+					opacity: 1
+				},200);
+			}
+		});
+                
+                 $('#wrapper').bind("mouseleave",function(){
+                      $('#header_top_nav').animate({height: 0});
+                     $('body').animate({backgroundPosition: '0 -20px'});
+              });
+	});
+	
+</script>
+
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header_top_nav">
+						<a href="/" class="homepage more">新闻网首页</a>
+						<a href="http://www.ruc.edu.cn" target="_blank" class="more">人大主页</a>
+						<a href="http://portal.ruc.edu.cn" target="_blank" class="more">数字人大</a>
+						<a href="mailto:leader@ruc.edu.cn" class="more">校长信箱</a>
+                        <a href="/archives/category/camp_news/view" class="cnews dist2">广角</a>
+                        <a href="/archives/category/camp_news/department_news" class="cnews">部处</a>
+                        <a href="/archives/category/camp_news/institute_news" class="cnews">院系</a>
+                        <a href="/archives/category/important_news/campus" class="inews dist">校园</a>
+                        <a href="/archives/category/important_news/affairs" class="inews">校务</a>
+                        <a href="/archives/category/important_news/exchange" class="inews">交流</a>
+                        <a href="/archives/category/important_news/scholars" class="inews">学者</a>
+                        <a href="/archives/category/important_news/students" class="inews">学生</a>
+                        <a href="/archives/category/important_news/academic" class="inews">学术</a>
+		</div>
+		<div id="header">
+			<div class="header_left">
+				<div class="logo"><a href="/"><img src="/wp-content/themes/rucnews/images/rucnews-logo.png" /></a></div>
+				<div class="logo_bg">
+					<div class="search">
+						<div id="searchbox" class="searchbox">
+							<form action="/" method="get">
+								<input type="text" id="s" class="inputtext" name="s" value="请输入搜索内容..." />
+								<input type="image" id="search_btn" name="commit" class="submit" value=""  src="/wp-content/themes/rucnews/images/trans-bg.png" />
+							</form>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="header_mid">
+				<div class="imp_news header_top_nav_item"><a href="/archives/category/important_news">人大要闻</a></div>
+				<div class="spec_news header_top_nav_item"><a href="/archives/category/special_news">专题新闻</a></div>
+				<div class="camp_news header_top_nav_item"><a href="/archives/category/camp_news">校园时讯</a></div>
+				<div class="header_bottom_nav_item"><a href="/archives/category/important_news">Latest<br>News</a></div>
+				<div class="header_bottom_nav_item"><a href="/archives/category/special_news">Top<br>Features</a></div>
+				<div class="header_bottom_nav_item"><a href="/archives/category/camp_news">Campus<br>News</a></div>
+			</div>
+			<div class="header_right">
+				<div class="links">
+					<ul>
+						<li><a class="link2home" href="/">主页</a></li>
+						<li><a href="/archives/category/media">人大影像</a></li>
+						<li class="sprite">|</li>
+						<li><a href="/archives/category/people">人大之子</a></li>
+						
+						<li class="sprite">|</li>
+						<li><a href="/archives/category/media_news">媒体人大</a></li>
+					</ul>
+				</div>
+				<div class="rss-contribution">
+					<a href="mailto:news@ruc.edu.cn" class="contribution"></a>
+                                        <!-- <a href="http://news.ruc.edu.cn/?feed=rss" class="rss"></a> -->
+                                  	
+				</div>
+			</div>
+		</div>
+		
+		<div id="content">
+			<div class="content_area_1">
+				<div class="ca1_hot">
+					<div id="weeknews" class="ca1_hot_item">
+                        <span id="weeknews_triger" class="title title_media">媒体人大</span>
+						<ul class="ca1_hot_item_t3_newspaper">
+							                          	<li><div class="newspaper newspaper-img"><img src="/wp-content/themes/rucnews/images/media_logo/media_人民日报.gif" /></div><a href="https://news.ruc.edu.cn/archives/356900">[人民日报]张东刚、刘伟：深刻理解“两个确立”的决定性意义 (2021-12-03)</a></li>
+							                          	<li><div class="newspaper newspaper-img"><img src="/wp-content/themes/rucnews/images/media_logo/media_中国青年报.gif" /></div><a href="https://news.ruc.edu.cn/archives/368122">[中国青年报]刘伟：牢牢树立马克思主义在高校学科建设中的指导地位 (2022-03-01)</a></li>
+							                          	<li><div class="newspaper newspaper-img"><img src="/wp-content/themes/rucnews/images/media_logo/media_新华网.gif" /></div><a href="https://news.ruc.edu.cn/archives/368177">[新华网]打造“数字社会科学”集群：中国人民大学交叉科学研究院揭牌 (2022-03-01)</a></li>
+													</ul>
+						<ul class="ca1_hot_item_s3">
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/368479" title="[凤凰卫视]2022两会前瞻丨刘元春：经济面临三重压力，稳增长是重中之重 (2022-03-01)">[凤凰卫视]2022两会前瞻丨刘元春：经济面临三重压力，稳增长是重中之重</a></li>
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/368406" title="[中国纪检监察报]以坚定历史自信走向未来 (2022-03-01)">[中国纪检监察报]以坚定历史自信走向未来</a></li>
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/368359" title="[中国网]中国人民大学举办首届交叉科学国际学术研讨会 (2022-03-01)">[中国网]中国人民大学举办首届交叉科学国际学术研讨会</a></li>
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/368411" title="[人民日报]绿色办奥 低碳环保 (2022-03-01)">[人民日报]绿色办奥 低碳环保</a></li>
+													</ul>
+						
+					</div>
+					<div id="medianews" class="ca1_hot_item">
+						<span id="medianews_triger" class="title">一周热点</span>
+						<ul class="ca1_hot_item_t3">
+														<li><span>01</span><a href="https://news.ruc.edu.cn/archives/368366"  title="2021年度学院级单位党组织书记抓基层党建工作述职评议考核会议召开(2022-02-28)">2021年度学院级单位党组织书记抓基层党建工作述职评议考核会议召开</a></li>
+														<li><span>02</span><a href="https://news.ruc.edu.cn/archives/368369"  title="2021年度学校党委干部选拔任用工作“一报告两评议”暨学校领导班子和领导干部考核会议召开(2022-02-28)">2021年度学校党委干部选拔任用工作“一报告两评议”暨学校领导班子和领导干部考核会议召开</a></li>
+														<li><span>03</span><a href="https://news.ruc.edu.cn/archives/367761" class="last" title="中国特色社会主义政治经济学教师团队入选“全国高校黄大年式教师团队”(2022-02-25)">中国特色社会主义政治经济学教师团队入选“全国高校黄大年式教师团队”</a></li>
+													</ul>
+						<ul class="ca1_hot_item_s3">
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/367493" title="新疆生产建设兵团党委常委、副司令员鲁旭平一行访问中国人民大学 (2022-02-24)">新疆生产建设兵团党委常委、副司令员鲁旭平一行访问中国人民大学</a></li>
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/367566" title="中国人民大学4个编写团队入选“马克思、恩格斯、列宁关于哲学社会科学及各学科重要论述摘编”名单 (2022-02-24)">中国人民大学4个编写团队入选“马克思、恩格斯、列宁关于哲学社会科学及各学科重要论述摘编”名单</a></li>
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/367500" title="学校领导新学期首日走访课堂 (2022-02-23)">学校领导新学期首日走访课堂</a></li>
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/367241" title="中国人民大学成立服务保障北京2022年冬奥会师生宣讲团 (2022-02-22)">中国人民大学成立服务保障北京2022年冬奥会师生宣讲团</a></li>
+													</ul>
+					</div>
+				</div>
+				
+				<div class="ca1_slide">
+					<div id="slider-wrapper">
+						<div id="slider-bg">				
+							<div id="slider-photos">
+								<div id="slides">
+									<div class="slides_container">
+									
+										                                                                                    <div class="slide">
+                                                                                            <img src="http://news.ruc.edu.cn/wp-content/uploads/2022/02/022302-大图.jpg" width="700" height="300" alt="加快建设在人文社会科学领域“独树一帜”的世界一流大学"/>
+                                                                                            <div class="caption" style="bottom:0">
+                                                                                                    <h1><a href="https://news.ruc.edu.cn/archives/367253">加快建设在人文社会科学领域“独树一帜”的世界一流大学</a></h1>
+                                                                                            </div>
+                                                                                    </div>
+                                                                                                                                                                        <div class="slide">
+                                                                                            <img src="http://news.ruc.edu.cn/wp-content/uploads/2022/01/011402-1.jpg" width="700" height="300" alt="中国人民大学党委召开领导班子党史学习教育专题民主生活会"/>
+                                                                                            <div class="caption" style="bottom:0">
+                                                                                                    <h1><a href="https://news.ruc.edu.cn/archives/364277">中国人民大学党委召开领导班子党史学习教育专题民主生活会</a></h1>
+                                                                                            </div>
+                                                                                    </div>
+                                                                                                                                                                        <div class="slide">
+                                                                                            <img src="http://news.ruc.edu.cn/wp-content/uploads/2021/12/新闻网.jpg" width="700" height="300" alt="中国人民大学2022年新年贺词"/>
+                                                                                            <div class="caption" style="bottom:0">
+                                                                                                    <h1><a href="https://news.ruc.edu.cn/archives/362172">中国人民大学2022年新年贺词</a></h1>
+                                                                                            </div>
+                                                                                    </div>
+                                                                                                                                                                        <div class="slide">
+                                                                                            <img src="http://news.ruc.edu.cn/wp-content/uploads/2021/12/微信图片_20211229153716.jpg" width="700" height="300" alt="人大人，携手抗疫这一年！"/>
+                                                                                            <div class="caption" style="bottom:0">
+                                                                                                    <h1><a href="https://news.ruc.edu.cn/archives/361621">人大人，携手抗疫这一年！</a></h1>
+                                                                                            </div>
+                                                                                    </div>
+                                                                                                                                                                        <div class="slide">
+                                                                                            <img src="http://news.ruc.edu.cn/wp-content/uploads/2021/12/datu.png" width="700" height="300" alt="中国人民大学第三十五届“一二·九”合唱音乐节决赛举办"/>
+                                                                                            <div class="caption" style="bottom:0">
+                                                                                                    <h1><a href="https://news.ruc.edu.cn/archives/357812">中国人民大学第三十五届“一二·九”合唱音乐节决赛举办</a></h1>
+                                                                                            </div>
+                                                                                    </div>
+                                                                                                                                                                        <div class="slide">
+                                                                                            <img src="http://news.ruc.edu.cn/wp-content/uploads/2021/11/XxDSC01976.jpg" width="700" height="300" alt="中国共产党创办的第一所大学与中学共同学习十九届六中全会精神"/>
+                                                                                            <div class="caption" style="bottom:0">
+                                                                                                    <h1><a href="https://news.ruc.edu.cn/archives/353741">中国共产党创办的第一所大学与中学共同学习十九届六中全会精神</a></h1>
+                                                                                            </div>
+                                                                                    </div>
+                                                                                    										
+										
+									</div>	
+									<a href="#" class="prev"><img src="/wp-content/themes/rucnews/images/arrow-prev.png" width="30" height="70" alt="Arrow Prev"></a>
+									<a href="#" class="next"><img src="/wp-content/themes/rucnews/images/arrow-next.png" width="30" height="70" alt="Arrow Next"></a>								
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			</div>
+			
+			<div class="content_area_2">
+				<div class="ca2_hot">
+					<div class="appstore">
+                                                <h4>中国人民大学</h4>
+                                                <div class="newmedia_logo">
+                                                        <img src="/wp-content/themes/rucnews/images/rucnews-weibo.png" />
+                                                        <img src="/wp-content/themes/rucnews/images/rucnews-wechat.png" />
+                                                </div>
+                                                <!-- <h4>移动客户端下载</h4>
+                                                <a href="https://itunes.apple.com/cn/app/ren-da-xin-wen-for-iphone/id874734571?mt=8" class="appstore_logo"><img src="/wp-content/themes/rucnews/images/ios.png"></a>
+                                                <a href="#" class="appstore_logo"><img src="/wp-content/themes/rucnews/images/android.png"></a> -->
+					</div>
+				</div>
+				
+				<div class="ca2_impnewslist">
+					<div class="ca2_impnewslist_top">
+					
+												<div class="ca2_impnewslist_top_title">
+							<a href="https://news.ruc.edu.cn/archives/367930">努力建设让党放心、人民满意、世界一流的中国人民大学</a><span class="date">2022-02-25</span>
+						</div>		
+												
+					</div>
+					<div class="ca2_impnewslist_ul">
+						<ul>
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/368451">中国人民大学召开第二轮“双一流”建设政策宣讲及工作推进专题会</a><span class="date">2022-03-01</span></li>
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/368366">2021年度学院级单位党组织书记抓基层党建工作述职评议考核会议召开</a><span class="date">2022-02-28</span></li>
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/368369">2021年度学校党委干部选拔任用工作“一报告两评议”暨学校领导班子和领导干部考核会议召开</a><span class="date">2022-02-28</span></li>
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/368073">中国人民大学参与建设的尼雷尔领导力学院竣工启用</a><span class="date">2022-02-27</span></li>
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/367677">刘伟校长到国家发展与战略研究院调研</a><span class="date">2022-02-25</span></li>
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/367761">中国特色社会主义政治经济学教师团队入选“全国高校黄大年式教师团队”</a><span class="date">2022-02-25</span></li>
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/367493">新疆生产建设兵团党委常委、副司令员鲁旭平一行访问中国人民大学</a><span class="date">2022-02-24</span></li>
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/367566">中国人民大学4个编写团队入选“马克思、恩格斯、列宁关于哲学社会科学及各学科重要论述摘编”名单</a><span class="date">2022-02-24</span></li>
+														<li><img src="/wp-content/themes/rucnews/images/dotted.png" /><a href="https://news.ruc.edu.cn/archives/367650">中国人民大学举办2022年度学生工作研讨会</a><span class="date">2022-02-24</span></li>
+													</ul>
+					</div>
+				</div>
+				
+				<div class="ca2_title">
+					<h2>人大要闻</h2>
+					<a href="/archives/category/important_news" class="more">更多»</a>
+				</div>
+			</div>
+			
+			<div class="content_area_3">
+				<div class="ca3_campnews">
+					<div class="ca_title ca3_campnews_title">校园时讯</div>
+					<div class="ca3_campnews_featured">
+												<a href="https://news.ruc.edu.cn/archives/368250"><img src="http://news.ruc.edu.cn/wp-content/uploads/2022/02/0228-时讯封皮.jpg" /></a>
+						<h3>人大人在冬奥丨投入冬残奥会服务保障 确保“两个奥运同样精彩”</h3>
+						<a href="https://news.ruc.edu.cn/archives/368250">冬奥会传达的中国文化深情里点缀着人大人的浪漫时刻，他们背对赛场、笑语相迎，他们背靠白墙、传递温暖，他们心向未来、绘就希望，还有近200名人大师生，将投入到冬残奥会的服务保障中，确保“两个奥运同样精彩”。<span class="more">查看全部»</span></a>
+						<span class="date">2022-02-28</span>
+											</div>
+					<div class="ca3_campnews_list">
+						<ul>
+														<li><a href="https://news.ruc.edu.cn/archives/368397" title="实验室管理与教学条件保障处党支部举办专题学习研讨会 (2022-03-01)">实验室管理与教学条件保障处党支部举办专题学习...</a></li>
+														<li><a href="https://news.ruc.edu.cn/archives/368239" title="驻地辅导员的24小时丨他们，给了冬奥志愿者一个温暖的家！ (2022-02-27)">驻地辅导员的24小时丨他们，给了冬奥志愿者一...</a></li>
+														<li><a href="https://news.ruc.edu.cn/archives/368352" title="财政金融学院召开2021年度基层党支部书记抓党建工作述职评议考核会 (2022-02-26)">财政金融学院召开2021年度基层党支部书记抓...</a></li>
+														<li><a href="https://news.ruc.edu.cn/archives/367854" title="哲学院召开2021年度基层党支部书记抓党建工作述职评议考核会议 (2022-02-26)">哲学院召开2021年度基层党支部书记抓党建工...</a></li>
+														<li><a href="https://news.ruc.edu.cn/archives/367079" title="出版社15名编辑获评“2021年全国大中专教材金牌编辑” (2022-02-25)">出版社15名编辑获评“2021年全国大中专教...</a></li>
+														<li><a href="https://news.ruc.edu.cn/archives/367697" title="马克思主义学院博士生宣讲团为西什库小学带来“开学第一课” (2022-02-24)">马克思主义学院博士生宣讲团为西什库小学带来“...</a></li>
+													</ul>
+						<a href="/archives/category/camp_news" class="more">更多»</a>
+					</div>
+				</div>
+				
+				<div class="ca3_specnews">
+					<div class="ca_title ca3_specnews_title">专题新闻</div>
+					<div class="ca3_specnews_featured">
+						                        <a href="https://news.ruc.edu.cn/jiandangbainian"><img src="http://news.ruc.edu.cn/wp-content/uploads/2021/03/新闻网banner副本.jpg" /></a>
+						<h3>党史学习教育专题</h3>
+						<a href="https://news.ruc.edu.cn/jiandangbainian">今年是中国共产党成立100周年，习近平总书记强调，全党同志要做到学史明理、学史增信、学史崇德、学史力行，学党史、悟思想、办实事、开新局，以昂扬姿态奋力开启全面建设社会主义现代化国家新征程，以优异成绩迎接建党一百周年。<span class="more">查看全部»</span></a>
+						<span class="date">2021-03-16</span>
+                        
+
+					</div>
+					<div class="ca3_specnews_list">
+						<!--<ul>
+								<li class="cat-item cat-item-11701"><a href="https://news.ruc.edu.cn/archives/category/special_news/2022%e4%b8%a4%e4%bc%9a%e4%b8%93%e9%a2%98" >2022两会专题</a> (4)
+</li>
+	<li class="cat-item cat-item-11694"><a href="https://news.ruc.edu.cn/archives/category/special_news/%e5%8d%81%e4%b9%9d%e5%b1%8a%e5%85%ad%e4%b8%ad%e5%85%a8%e4%bc%9a%e4%b8%93%e9%a2%98" >十九届六中全会专题</a> (121)
+</li>
+	<li class="cat-item cat-item-11684"><a href="https://news.ruc.edu.cn/archives/category/special_news/%e7%ac%ac%e5%8d%81%e4%b8%83%e5%b1%8a%e6%b5%b7%e6%b7%80%e5%8c%ba%e4%ba%ba%e5%a4%a7%e4%bb%a3%e8%a1%a8%e6%8d%a2%e5%b1%8a%e9%80%89%e4%b8%be" >第十七届海淀区人大代表换届选举</a> (22)
+</li>
+						</ul>-->
+						<ul>
+							<li class="cat-item cat-item-8011"><a href="/19thsix">十九届六中全会专题</a></li>
+							<li class="cat-item cat-item-8011"><a href="/17hjxj">第十七届海淀区人大代表换届选举专题</a></li>
+							<li class="cat-item cat-item-8011"><a href="/2021lh">2021两会专题</a></li>
+							<li class="cat-item cat-item-8011"><a href="/shisiwu">聚焦十四五专题</a></li>
+							<li class="cat-item cat-item-8011"><a href="/2020lh">2020两会专题</a></li>
+							<li class="cat-item cat-item-8011"><a href="/2020fy">防疫专题</a></li>
+							<!-- <li class="cat-item cat-item-8011"><a href="/bwcxljsm">“不忘初心,牢记使命”主题教育专题</a></li> -->
+							<!-- <li class="cat-item cat-item-8011"><a href="/2019szk">2019思政课专题</a></li> -->
+							<!-- <li class="cat-item cat-item-8011"><a href="/2019lh">2019两会专题</a></li> -->
+							<!-- <li class="cat-item cat-item-8011"><a href="/bkjxpg">迎接本科教学工作审核评估专题</a></li> -->
+							<!-- <li class="cat-item cat-item-8011"><a href="/19th">学习贯彻党的十九大精神专题</a></li> -->
+							<!-- <li class="cat-item cat-item-8011"><a href="/80th">80周年校庆专题</a> </li>		 -->	
+						</ul>
+						<a href="/%E4%B8%93%E9%A2%98%E6%B1%87%E6%80%BB%E9%A1%B5%E9%9D%A2" class="more">更多»</a>
+					</div>
+				</div>
+				
+				<div class="ca3_rucpeople">
+					<div class="ca_title ca3_rucpeople_title">人大之子</div>
+					<div class="ca3_rucpeople_list">
+						<ul>
+														<li>
+								<img src="http://news.ruc.edu.cn/wp-content/uploads/2021/11/dy.jpg" />
+								<a href="https://news.ruc.edu.cn/archives/355261">戴逸与清史纂修<span class="more">查看全部»</span></a>
+							</li>
+														<li>
+								<img src="http://news.ruc.edu.cn/wp-content/uploads/2021/09/091401.png" />
+								<a href="https://news.ruc.edu.cn/archives/342524">送别老书记马绍孟同志<span class="more">查看全部»</span></a>
+							</li>
+														<li>
+								<img src="http://news.ruc.edu.cn/wp-content/uploads/2021/09/2109070101-1.jpg" />
+								<a href="https://news.ruc.edu.cn/archives/341510">陈共：育才大先生 财政弘道人<span class="more">查看全部»</span></a>
+							</li>
+														<li>
+								<img src="http://news.ruc.edu.cn/wp-content/uploads/2020/11/未标题-2-3.png" />
+								<a href="https://news.ruc.edu.cn/archives/297985">吴玉章与华北大学<span class="more">查看全部»</span></a>
+							</li>
+														<li>
+								<img src="http://news.ruc.edu.cn/wp-content/uploads/2020/06/陈先达-062902-1.jpg" />
+								<a href="https://news.ruc.edu.cn/archives/281815">陈先达：行走在思想与时代之间<span class="more">查看全部»</span></a>
+							</li>
+													</ul>
+						<a href="/archives/category/people" class="more">更多»</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="content_area_4">
+                        	
+                               <div class="ca4_pix">
+                                    <div class="ca_title ca4_pix_title">图片</div>
+                                    <ul>
+                                                             <li><a href="https://news.ruc.edu.cn/archives/358906" title="健美操大赛：燃情冬日 跃动人大"><img src="http://news.ruc.edu.cn/trim/trim.php?src=http://news.ruc.edu.cn/wp-content/uploads/2021/12/retouch_2021121123450298.png&w=56&h=56" /></a></li>
+                                                            <li><a href="https://news.ruc.edu.cn/archives/357705" title="歌以咏志，共赴未来！——“一二·九”合唱音乐节唱响明德堂"><img src="http://news.ruc.edu.cn/trim/trim.php?src=http://news.ruc.edu.cn/wp-content/uploads/2021/12/结尾.jpg&w=56&h=56" /></a></li>
+                                                            <li><a href="https://news.ruc.edu.cn/archives/352441" title="立冬人大：与你共享初雪颜色"><img src="http://news.ruc.edu.cn/trim/trim.php?src=http://news.ruc.edu.cn/wp-content/uploads/2021/11/IMG_4685-1.png&w=56&h=56" /></a></li>
+                                                            <li><a href="https://news.ruc.edu.cn/archives/346734" title="共赴人大秋之约"><img src="http://news.ruc.edu.cn/trim/trim.php?src=http://news.ruc.edu.cn/wp-content/uploads/2021/10/1012-缩略.jpg&w=56&h=56" /></a></li>
+                                                            <li><a href="https://news.ruc.edu.cn/archives/342718" title="2021级人大人，共上一堂“温暖而明亮”的开学第一课！"><img src="http://news.ruc.edu.cn/trim/trim.php?src=http://news.ruc.edu.cn/wp-content/uploads/2021/09/封面图-1.png&w=56&h=56" /></a></li>
+                                                            <li><a href="https://news.ruc.edu.cn/archives/341563" title="新学期你好！开启人大新生活"><img src="http://news.ruc.edu.cn/trim/trim.php?src=http://news.ruc.edu.cn/wp-content/uploads/2021/09/3-4.jpg&w=56&h=56" /></a></li>
+                                                            <li><a href="https://news.ruc.edu.cn/archives/339235" title="热血青春，军训加油！"><img src="http://news.ruc.edu.cn/trim/trim.php?src=http://news.ruc.edu.cn/wp-content/uploads/2021/07/附加配图.jpg&w=56&h=56" /></a></li>
+                                                                    <li><a href="/archives/category/albumlist" class="ca4_pix_more">更多»</a></li>
+                                    </ul>
+                              </div>
+
+				<div class="ca4_vedios">
+					<div class="ca_title ca4_vedios_title">视频</div>
+					<div class="ca4_vedios_item">
+												<div class="ca4_vedios_item_pix"><a href="https://news.ruc.edu.cn/archives/297819"><img src="http://news.ruc.edu.cn/trim/trim.php?src=http://news.ruc.edu.cn/wp-content/uploads/2020/11/1111120201124163441.jpg&w=180&h=100" /></a></div>
+						<div class="ca4_vedios_item_desc">
+							<a href="https://news.ruc.edu.cn/archives/297819"><h3>脱贫奔小康！在兰坪，人大人点亮阻断贫困代际传递的星火</h3></a>
+							<span>作者：党委宣传部</span>
+                                                        <span>分类：                                                  	</span>
+						</div>
+						<div class="ca4_vedios_item_more"><a href="archives/category/media/videos">更多»</a></div>
+											</div>
+				</div>
+				
+				<div class="ca4_links">
+					<div class="ca_title ca4_links_title">链接</div>
+					<ul>
+                                          	<li><a href="http://www.xinhuanet.com" target="_blank">新华网</a></li>
+                                         	<li><a href="http://www.ruc.edu.cn/" target="_blank">人大主页</a></li>
+						<li><a href="http://www.people.com.cn/" target="_blank">人民网</a></li>
+						<li><a href="http://alumni.ruc.edu.cn/" target="_blank">人大校友</a></li>
+						<li><a href="http://www.gmw.cn/" target="_blank">光明网</a></li>
+						<li><a href="http://www.univs.cn/" target="_blank">中国大学生在线</a></li>
+						<li><a href="http://www.moe.gov.cn/" target="_blank">教育部</a></li>
+                        <li><a href="http://ruc.cuepa.cn/" target="_blank">中国人民大学报</a></li>
+						
+                        <li><a href="http://www.jyb.cn/" target="_blank">中国教育新闻网</a></li>                        
+						<li><a href="http://www.pku.edu.cn/" target="_blank">北京大学</a></li>
+						<li><a href="http://www.cssn.cn/zt/zt_xkzt/mkszyzt/zggcddsjcqgdbdhbdzt/" target="_blank">中国社科网十九大专题</a></li>
+						<li><a href="http://www.tsinghua.edu.cn/" target="_blank">清华大学</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div id="footer">
+			<div class="footer_left">
+                          <div class="ruc_logo"><a href="#"><img src="/wp-content/themes/rucnews/images/ruc-logo.png" /></a></div>
+				<div class="auth_links">
+                                	<span><a href="#">主办单位：中国人民大学新闻中心</a></span>
+					<span><a href="#">技术支持：信息技术中心</a></span>
+				</div>
+			</div>
+			<div class="footer_right">
+				<ul>
+					<li class="copyright">Copyright &copy; 2001-2022</li>
+					<li><a href="#">关于我们</a></li>
+					<li class="sprite">|</li>
+					<li><a href="#">版权声明</a></li>
+					<li class="sprite">|</li>
+					<li><a href="#">网站地图</a></li>
+				</ul>
+                                <ul>
+					<li>Site designed by <span>MONO</span>KEROS & powered by Sina App Engine</li>
+				</ul>
+			</div>
+			<div class="footer_mobile">
+				<img src="/wp-content/themes/rucnews/images/ruc-logo.png" />
+			</div>
+		</div>
+	</div>
+<div style="display:none;"><script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F425a64adbce31c8ac15a54c129898849' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</div>
+</body>
+</html>

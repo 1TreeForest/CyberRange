@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        (function(c) {
+            setTimeout(function() {
+                var s = 'https://blank-page-monitor.cn-hangzhou.log.aliyuncs.com/logstores/blank-page-monitor/track.gif?APIVersion=0.6.0';
+                var e = document.querySelector(c.selector);
+                c.is_blank = !e || !!c.checkpoint && !e[c.checkpoint];
+                c.ua = navigator.userAgent || '';
+                c.spm = window.goldlog && goldlog.spm_ab || '';
+                c.uid = (/(emplid|work_no|workno|SSO_EMPID_HASH|SSO_EMPID_HASH_V2)=([^;]+)/i.exec(document.cookie) || [])[2] || '';
+                c.url = (location.href || '').substr(0, 1500);
+                c.client_ts = new Date().valueOf();
+                for (var k in c) s += '&' + k + '=' + encodeURIComponent(c[k]);
+                new Image().src = s;
+            }, c.timeout || 0);
+        })({
+            selector: '.next-menu-header',
+            checkpoint: 'innerHTML',
+            app_name: 'recruit-careers',
+            timeout: 8000,
+        });
+    </script>
+    <!-- <title>Index of Template Application</title> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width"/>
+            <title>Alibaba Careers</title>
+        <link rel="shortcut icon" type="image/x-icon" href="//g.alicdn.com/platform/alixiaoyouhui/2.1.6/img/icon.ico?v=20150801" />
+    <meta charset="utf-8">
+    <!-- TODO 需要配置dimond -->
+    <link rel="stylesheet" href="https://g.alicdn.com/platform/new-careers-portal/1.0.35/app.min.css">
+    <script charset="utf-8" type="text/javascript">
+      window.AES_CONFIG = window.AES_CONFIG || {};
+      AES_CONFIG.pid = 'xux-a1z9iw';
+      AES_CONFIG.plugin_pv = {
+        autoPV: false
+      };
+    </script>
+    <script src="https://g.alicdn.com/code/lib/babel-polyfill/7.4.4/polyfill.min.js"></script>
+    <!--强烈建议使用 combo 方式加载 Baxia.js-->
+    <script src="//g.alicdn.com/sd/baxia/1.1.1/baxiaCommon.js"></script>
+
+    <script src="https://g.alicdn.com/code/lib/??react/16.14.0/umd/react.production.min.js,react-dom/16.14.0/umd/react-dom.production.min.js,prop-types/15.7.2/prop-types.js"></script>
+    <script> React.PropTypes = PropTypes; </script>
+    <script src="https://g.alicdn.com/mylib/@ali/recore/1.7.3/umd/recore.min.js"></script>
+    <script src="https://g.alicdn.com/vip/havana-login/0.3.2/js/mini-login-embedder-min.js"></script>
+    <script src="https://lang.alicdn.com/mcms/recruit-careers-center/0.0.24/recruit-careers-center.json"></script>
+    <script src="https://lang.alicdn.com/mcms/recruit-careers-portal/0.0.18/recruit-careers-portal.json"></script>
+    <!-- TODO 需要配置dimond -->
+    <script src="https://g.alicdn.com/platform/new-careers-portal/1.0.35/vendors.min.js"></script>
+
+    <script crossorigin="anonymous" charset="utf-8" type="text/javascript">
+        window.__userconfig = {
+            alipayLoginUrl  : "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm?app_id=2021001135617862&scope=auth_user&redirect_uri=https%3A%2F%2Ftalent.alibaba.com&state=init",
+            locale          : "en",
+        };
+
+        window.__sysconfig = {
+            environment     : "online",
+            __token__       : "dbcd42a2-da14-4432-a1fd-2e8276829aac",
+            campusApplyEntry: "internship",
+            domain          :  ["talent.alibaba.com"],
+            // TODO
+            channelCodeMap  : {
+                offCampus: "group_official_site",
+                campus: "campus_group_official_site",
+            },
+            campusEntryStatus   : {
+                freshmanEntry   : true
+                ,intershipEntry : true
+                ,projectEntry   : true
+                ,freshmanText   : "2021.11-2022.10"
+                ,internshipText : "2022.11-2023.10"
+                ,projectText    : ""
+                ,aliStarLabText    : "2021.11-2023.10"
+                ,aliStarLabEntry    : true
+            }
+        }
+    </script>
+</head>
+<body><script async src="//g.alicdn.com/platform/common/s/1.1/monitor/index.js" id="tb-beacon-aplus" exparams=""></script>
+    <div id="app"></div>
+    <!-- TODO 需要配置dimond -->
+    <script src="https://g.alicdn.com/platform/new-careers-portal/1.0.35/app.min.js"></script>
+</body>
+</html>

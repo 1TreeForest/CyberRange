@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>影视-爱拍</title>
+  <link rel="shortcut icon" href="https://res9.weplay.cn/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://res9.weplay.cn/app/www/templates/lastest_aipai/css/swiper4.0.2.min.css" />
+  <link rel="stylesheet" href="https://res9.weplay.cn/app/www/templates/lastest_aipai/css/common.css"/>
+  <link rel="stylesheet" href="https://res9.weplay.cn/app/www/templates/video/css/index.css"/>
+  <!-- <link rel="stylesheet" href="./css/index.css"/> -->
+  <link rel="stylesheet" href="https://res9.weplay.cn/app/www/templates/common/img/global/global.css"/>
+  <script src="https://res9.weplay.cn/app/www/templates/common/js/jquery-1.7.2.min.js"></script>
+	<script src="https://res9.weplay.cn/app/www/templates/lastest_aipai/js/swiper4.0.2.min.js"></script>
+</head>
+<body>
+  <div class="content page_video">
+     <!-- S header -->
+     <link href="https://res9.weplay.cn/app/www/templates/lastest_aipai/css/header.css" rel="stylesheet"  type="text/css"/>
+    <div class="top_head_wrapper fadeIn_head_wrapper">
+        <div class="g_top_header" id="gTopHeader">
+            <div class="g_top_con">
+                <a class="logo" href="https://www.aipai.com/">
+                    <img class="logo_black" src="https://res9.weplay.cn/app/www/templates/lastest_aipai/images/header/logo.png" width="100" height="36" alt="爱拍" />
+                    <img class="logo_white" src="https://res9.weplay.cn/app/www/templates/lastest_aipai/images/header/logo.png" width="100" height="36" alt="爱拍" />
+                </a>
+                <div class="info info_v2 right_nav_info info_summer">
+                    <div class="nav_list">
+                        <div class="nav_list_item home">
+                            <a href="https://www.aipai.com" class="header_item_text dynamic_icon" >首页</a>
+                        </div>
+                        <div class="nav_list_item vip">
+                            <a href="https://www.aipai.com/lastest_aipai/vip.php" class="header_item_text message_icon" >VIP会员</a>
+                        </div>
+                        <div class="nav_list_item tutorial">
+                            <a href="https://www.aipai.com/lastest_aipai/course.php" class="header_item_text upload_icon" >软件教程</a>
+                        </div>
+                        <div class="nav_list_item moliVideoList">
+                            <a href="https://video.aipai.com" class="header_item_text upload_icon" >爱拍影视</a>
+                        </div>
+                    </div>
+                    <div class="user">
+                        <div class="login" id="loginDiv1">
+                            <p>
+                                <a href="javascript:;" class="header_item_text login_btn">登录</a>
+                                <span></span>
+                                <a href="https://www.aipai.com/lastest_aipai/register.php" class="header_item_text register_btn">注册</a>
+                            </p>
+                        </div>
+                        <div class="logined" id="loginDiv2">
+                            <a href="https://www.aipai.com/lastest_aipai/info.php" class="avatar hh_home" >
+                                <img src="https://www.aipai.com/app/www/templates/common/img/userdefault60.gif" alt="48" width="48" height="" />
+                            </a>
+                            <div class="user_info_wrapper">
+                                <div class="user_info_bx">
+                                    <div class="user_bid">
+                                        <a href="https://www.aipai.com/lastest_aipai/info.php" class="bid_txt"></a>
+                                        <span class="logout_btn">退出</span>
+                                    </div>
+                                    <div class="user_vip_info">
+                                        <span class="vip_tip">开通爱拍超级VIP后享特权</span>
+                                        <span class="vip_btn">开通</span>
+                                    </div>
+                                    <div class="user_vip_intro">
+                                        <div class="intro_list">
+                                            <span class="icon"></span>
+                                            <p class="txt">4K无损录制</p>
+                                        </div>
+                                        <div class="intro_list">
+                                            <span class="icon"></span>
+                                            <p class="txt">VIP专属素材</p>
+                                        </div>
+                                        <div class="intro_list">
+                                            <span class="icon"></span>
+                                            <p class="txt">VIP高级功能</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://res9.weplay.cn/app/www/templates/lastest_aipai/js/header.js?t=202112101800"></script>
+     <!-- banner -->
+    <div class="banner">
+			<div class="banner_wrapper">
+				<div class="swiper-container" id="videoBannerWrapper">
+					<div class="swiper-wrapper"></div>
+					<div class="swiper-pagination"></div>
+				</div>
+			</div>
+    </div>
+		<div class="banner_tit">
+			<h2>爱拍影视</h2>
+		</div>
+    <div class="bx_container video_tab">
+        <p class="head_tit">热剧导航</p>
+        <div class="tab_items"></div>
+    </div>
+
+    <div class="bx_container update_video_bx">
+        <div class="video_head">
+            <span class="head_tit" class="on" data-type="1">热剧更新</span>
+            <div class="update_pager">
+                <span class="page_prev"></span>
+                <span class="page_info">1/10</span>
+                <span class="page_next"></span>
+            </div>
+        </div>
+        <ul class="video_ul" id="update_video_list">
+        </ul>
+        <div class="no_data"></div>
+    </div>
+
+    <div class="video_area_wrap"></div>
+
+    <!-- course list -->
+    <div class="bx_container recommend_video_bx">
+        <div class="video_head">
+            <span class="head_tit">更多推荐</span>
+            <a href="https://video.aipai.com/channel.html?attr=2" class="more">更多</a>
+        </div>
+        <ul class="video_ul" id="video_list">
+        </ul>
+    </div>
+    <!-- S footer -->
+    <link rel="stylesheet" href="https://res9.weplay.cn/app/www/templates/lastest_aipai/css/footer.css?t=202105251220" />
+	<!-- <link rel="stylesheet" href="css/footer.css" /> -->
+	<div class="footer_wrapper">
+		<div class="footer_wrapper_box">
+			<div class="footer_mod footer_mod_code">
+				<div class="footer_mod_code_bx">
+					<div class="footer_mod_left">
+						<div class="footer_mod_left_bx">
+							<a href="https://www.aipai.com" class="footer_logo"  rel="noopener noreferrer">
+								<img src="https://res9.weplay.cn/app/www/templates/lastest_aipai/images/footer/logo.png" alt="爱拍" />
+							</a>
+							<div class="footer_mod_left_links">
+								<div class="footer_links">
+									<div class="links_tit">用户支持</div>
+									<div class="links_wrap">
+										<a href="https://www.aipai.com/lastest_aipai/course.php?type=8">文字教程</a>
+										<a href="https://www.aipai.com/lastest_aipai/course.php?type=9">视频教程</a>
+										<a href="https://download.aipai.com/aipai_files/aipai.exe" class="footer_download_pc">产品下载</a>
+										<a href="https://www.aipai.com/lastest_aipai/vip.php">产品购买</a>
+									</div>
+								</div>
+								<div class="footer_links">
+									<div class="links_tit">联系我们</div>
+									<div class="links_wrap">
+										<span>客服电话：020-85558299</span>
+										<span>QQ群：656677780</span>
+										<span>意见反馈邮箱：wanzichao@aipai.com</span>
+										<span>渠道合作邮箱：wanggengtai@aipai.com</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="footer_mod_right">
+							<div class="mod_right_list mod_wx_code">
+									<div class="pic_box">
+											<img src="https://res9.weplay.cn/app/www/templates/lastest_aipai/images/footer/wx_code.jpg" alt="" />
+									</div>
+									<p>爱拍官方公众号</p>
+							</div>
+							<div class="mod_right_list mod_wb_code">
+									<div class="pic_box">
+											<img src="https://res9.weplay.cn/app/www/templates/lastest_aipai/images/footer/wb_code.png" alt="" />
+									</div>
+									<p>爱拍官方微博</p>
+							</div>
+							<a class="mod_right_list mod_daijianji" href="https://daijianji.aipai.com" target="_blank">
+									<div class="pic_box">
+											<img src="https://res9.weplay.cn/app/www/templates/lastest_aipai/images/footer/daijianji_logo.png" alt="" />
+									</div>
+									<p>你的创意，我来实现</p>
+							</a>
+					</div>
+				</div>
+			</div>
+			<div class="footer_mod_friend">
+				<div class="friend_lists">
+					<span>友情链接：</span>
+					<a href="https://record.aipai.com/" target="_blank">爱拍录屏</a>
+					<a href="https://www.xiaogouh5.com/" target="_blank">小狗手游网</a>
+					<a href="http://www.frontop.cn/" target="_blank">企业宣传片制作</a>
+					<a href="http://www.flvcd.com" target="_blank">硕鼠视频下载</a>
+					<a href="http://www.yy.com/" target="_blank">yy直播</a>
+					<a href="http://www.xbiquge.la/" target="_blank">笔趣阁</a>
+					<a href="http://www.pc6.com/" target="_blank">pc6软件下载</a>
+					<a href="http://www.morewis.com/" target="_blank">mes系统</a>
+					<a href="http://aimeike.tv" target="_blank">在线视频制作</a>                 
+					<a href="http://www.replays.net" target="_blank">锐派游戏</a>                    
+					<a href="https://www.bluestacks.cn" target="_blank">Android模拟器</a>                    
+					<a href="http://www.weplay.cn" target="_blank">猎游</a>                    
+					<a href="https://www.zhanqi.tv" target="_blank">战旗直播</a>
+				</div>
+			</div>
+			<div class="footer_mod footer_mod_link">
+				<p class="link_wrap">
+					<a href="https://www.aipai.com/lastest_aipai/register.php" class="black" >免费注册</a>
+					<span class="line">|</span>
+					<a href="https://www.aipai.com/lastest_aipai/course.php">爱拍帮助</a>
+					<span class="line">|</span>
+					<a href="https://www.aipai.com/lastest_aipai/help/copyright.html" >版权指引</a>
+					<span class="line">|</span>
+					<a href="https://www.aipai.com/lastest_aipai/help/friend.html" >友情链接</a>
+					<span class="line">|</span>
+					<a href="https://www.aipai.com/lastest_aipai/help/contact.html" >联系我们</a>
+					<span class="line">|</span>
+					<a href="https://www.aipai.com/lastest_aipai/help/service.html">广告服务</a>
+					<span class="line">|</span>
+					<a href="https://www.aipai.com/lastest_aipai/help/tutelage.html">家长监控</a>
+                    <span class="line">|</span>
+                    <a href="https://www.aipai.com/lastest_aipai/help/tutelageRefund.html">未成年人退款条例</a>
+					<span class="line">|</span>
+					<a href="https://www.12377.cn/" target="_blank">不良信息举报中心</a>
+					<span class="line">|</span>
+					<a href="https://www.aipai.com/lastest_aipai/help/srv.html" target="_blank">用户协议</a>
+					<span class="line">|</span>
+					<a href="https://www.aipai.com/lastest_aipai/help/privacy.html" target="_blank">隐私协议</a>
+					<span class="line">|</span>
+					<a href="https://www.aipai.com/lastest_aipai/support/term.html" target="_blank" rel="noopener noreferrer">产品购买协议</a>
+				</p>
+				<p class="link_wrap"><span class="c_tx">违法和不良信息举报和网络内容从业人员违法违规行为专项举报电话：020-85558299</span>    <span class="c_tx">举报邮箱：wanggengtai@aipai.com</span><span class="c_tx">未成年举报邮箱：wanggengtai@aipai.com</span></p>
+				<p class="link_wrap">
+					<span class="shitingzheng">@2021广州爱拍网络科技有限公司 版权所有</span>
+					<a href="https://beian.miit.gov.cn" class="c_tx shitingzheng" rel="nofollow" target="_blank">粤ICP备09189028号</a>
+                    <a class="shitingzheng" href="https://res9.weplay.cn/app/www/templates/lastest_aipai/images/footer/shitingzheng_back.pdf" rel="nofollow" target="_blank">视听证：1910412号</a>
+                    <a class="shitingzheng" href="https://res9.weplay.cn/app/www/templates/lastest_aipai/images/footer/wangwenzheng_back.pdf" rel="nofollow" target="_blank">粤网文[2019]5107-1113号</a>
+				</p>
+			</div>
+		</div>
+	</div>
+    <!-- E footer -->
+  </div>
+</body>
+
+<script src="https://res9.weplay.cn/app/www/templates/aipai_platform/pc/common/dist/apm/sea.js" id="seajsnode"></script>
+
+<!--[if lte IE 8]>
+<script src="https://res9.weplay.cn/app/www/templates/aipai_platform/pc/common/dist/apm/sea_ie.js" id="seajsnode"></script>
+<![endif]-->
+
+<script type='text/javascript'>
+    var ap_mlog_page='newAipaiRegister';
+    seajs.config({
+        //Sea.js 的基础路径
+        base: seajs.deploy ? 'https://www.aipai.com/aipai_platform/pc/common/dist/' : ( seajs.isZt ? '../aipai_platform/pc/common/dist/' : '../aipai_platform/pc/common/dist/')
+    });
+    //外网
+    seajs.use('https://res9.weplay.cn/app/www/templates/video/js/index.js');
+    // seajs.use('./js/index.js');
+    //本地测试地址
+</script>
+</html>

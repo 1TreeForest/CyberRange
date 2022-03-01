@@ -1,0 +1,801 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="JShare 是一个在线代码测试、托管、分享的工具，方便与别人一起调试、分享代码，具有代码高亮、一键代码格式化、贴心的快捷键等功能。">
+    <meta name="keywords" content="JS,JavaScript,JS测试,在线测试,代码分享,HTML,css,在线代码测试,JS在线代码调试,jsfiddle">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="staticBase" content="/static/">
+    <title>Highcharts Demo</title>
+    <link rel="icon" href="https://s1.jscdn.com.cn/hcode/images/favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="https://s1.jscdn.com.cn/hcode/styles/1-304aa23a50.css">
+    <script src="https://s1.jscdn.com.cn/hcode/scripts/1-272916a077.js"></script>
+</head>
+
+<body id="app"  class="fullpage">
+    <!--[if lt IE 10]>
+    <div class="browserupgrade">
+    HCODE 目前只支持 IE10 以上的浏览器，为了更好的体验，建议使用谷歌、火狐、IE10+ 等主流浏览器访问本站！
+    </div>
+    <![endif]-->
+
+<my-header :login-obj.sync="loginObj" :type.sync="type" :code.sync="code" :base="base" :layouts="layouts"  v-ref:login></my-header>
+	<div id="loading">
+        <div class="loading">
+            <svg viewBox="25 25 50 50" class="circular"><circle cx="50" cy="50" r="20" fill="none" class="path"></circle><path d="M 50 35 L 50 60 M 50 63 L 50 65" style="stroke: red;stroke-width: 2px;"></path></svg>
+            <p>系统初始化中，请稍后...</p>
+        </div>
+    </div>
+
+    <section>
+        <div id="menu">
+            <ul>
+                <li class="menu">
+                    <h3 class="menu-title"><i class="fa fa-code" aria-hidden="true"></i>代码信息 </h3>
+                    <div class="menu-content">
+                        <p>
+                            <input type="text" title="命名你的代码" placeholder="名字，必填" v-model="code.name">
+                        </p>
+                        <p>
+                            <textarea v-model="code.description" placeholder="描述" title="描述你的代码"></textarea>
+                        </p>
+                       
+                        <p class="menu-line"></p>
+                        <p>
+                            <h5>保存到分组</h5>
+                            <template v-if="myGroups===null">
+                                您暂无分组，<a href="javascript:void(0)" v-on:click="createGroup">马上创建一个</a>？
+                            </template>
+                            <template v-else>
+                                <select v-model="code.newGroup" class="my-groups">
+                                    <optgroup v-for="(index,groups) in myGroups" label="$[index]分组">
+                                        <option v-for="g in groups" value="$[g.id]" >$[g.name]</option>
+                                    </optgroup>
+                                </select>
+                                
+                                <a href="javascript:void(0)" v-on:click="createGroup">创建新的分组？</a>
+                                <a href="/my#group" target="_blank">分组管理</a>  
+
+                            </template>
+                        </p>
+                    </div>
+                </li>
+                <li class="menu active">
+                    <h3 class="menu-title"><i class="fa fa-file-code-o" aria-hidden="true"></i>外部资源 <div v-show="libs.length>0" class="icon icon-num" data-toggle="tooltip" data-placement="right"  data-container="body" title="依赖 $[libs.length] 个外部资源">$[libs.length]</div></h3>
+                    <div class="menu-content"  style="display:block">
+                        <div class="libs">
+                            <p v-show="libs.length===0">暂无</p>
+                            <ul>
+                                <li v-for="lib in libs | orderBy 'sort'">
+                                    <a href="$[lib.url]" target="_blank">$[lib.showName]</a>
+                                    <div class="libs-icon">
+                                        <span>
+                                            <i class="fa fa-chevron-up" aria-hidden="true" v-show="lib.sort!==0" v-on:click="sortLib(lib, true)" data-toggle="tooltip" data-placement="top" title="上移"></i>
+                                        </span>
+                                        <span>
+                                            <i class="fa fa-chevron-down" aria-hidden="true" v-show="lib.sort !== libSort-1" v-on:click="sortLib(lib, false)" data-toggle="tooltip" data-placement="top" title="下移"></i>
+                                        </span>
+                                        <span>
+                                            <i class="fa fa-times" aria-hidden="true" v-on:click="delLib(lib)" data-toggle="tooltip" data-placement="top" title="移除"></i>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menu-line"></div>
+                        <button class="btn btn-success btn-sm" v-on:click="showCdns" title="快捷键：Ctrl + O">添加常用资源 （已选 $[code.selectedCdns.length]）</button>
+                        <h5>添加新的资源</h5>
+                        <div class="new-lib">
+                            <input type="text" class="new-lib-input" v-model="newLib" placeholder="输入 JS / CSS 文件地址" v-on:keyup.enter="addLib">
+                            <i class="fa fa-plus-circle new-lib-icon" aria-hidden="true" v-on:click="addLib" title="点击或回车添加"></i>
+                            <p class="new-lib-message">$[newLibMessage]</p>
+                        </div>
+                        <p>更多文件见 <a href="http://img.hcharts.cn/index.html" target="_blank">开放CDN服务</a></p>
+                    </div>
+                </li>
+                <li class="menu">
+                    <h3 class="menu-title"><i class="fa fa-keyboard-o" aria-hidden="true"></i>快捷键</h3>
+                    <div class="menu-content">
+                        <p>快捷键风格同 Sublime，同时支持 Emmet 特性，常用快捷键：</p>
+                        <h5>全局快捷键</h5>
+                        <ul class="shortkey">
+                            <li>
+                                <code>
+                                    Ctrl + Enter：运行
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    Ctrl + ←/→：折叠左侧菜单
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    Ctrl + O：打开添加常用资源
+                                </code>
+                            </li>
+                            
+                            <li>
+                                <code>
+                                    Ctrl + Z：撤销所有编辑器
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    Ctrl + U：恢复所有编辑器
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    F11：最大化运行结果
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    ESC：关闭添加常用资源
+                                </code>
+                            </li>
+                        </ul>
+                        <h5>编辑器快捷键</h5>
+                        <ul class="shortkey">
+                            <li>
+                                <code>
+                                    Ctrl + Enter：运行
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    Ctrl + /：注释代码
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    Ctrl + H：格式化代码
+                                </code>
+                            </li>
+                             <li>
+                                <code>
+                                    Ctrl + Z：撤销
+                                </code>
+                            </li>
+                             <li>
+                                <code>
+                                    Ctrl + Y：恢复
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    Tab：快捷生成代码
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    Ctrl + L：选中当前行
+                                </code>
+                            </li>
+                              <li>
+                                <code>
+                                    Ctrl + Q：折叠当前代码
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    F11：最大化当前编辑器
+                                </code>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="menu">
+                    <h3 class="menu-title"><i class="fa fa-info-circle" aria-hidden="true"></i>关于</h3>
+                    <div class="menu-content" style="display: block;"> 
+                        <p>
+                            JShare 是一个在线代码测试、托管、分享的工具；
+                        </p>
+                        <p>
+                            当前版本 $[base.version]，这里有 <a href="/about#changelog" target="_blank">更新日志</a>；
+                        </p>
+                        <p>
+                            使用前请查阅 <a href="/docs" target="_blank">帮助文档</a> 及 <a href="/about" target="_blank">说明</a>；
+                        </p>
+                        <p>
+                            Copyright &copy; 2020 <a href="https://jshare.com.cn/new" target="_blank">JShare</a>，由 <a href="https://jianshukeji.com?spm=hcode2.0" target="_blank">简数科技</a> 提供服务，<a href="http://www.beian.miit.gov.cn/" target="_blank">浙ICP备16004892号-3</a>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+            <div class="menu-notice"> </div>
+            <div class="menu-switch">
+                <i class="fa fa-caret-square-o-left" aria-hidden="true" title="折叠菜单"></i>
+            </div>
+
+        </div>
+        <div id="editor">
+        </div>
+    </section>
+
+
+    <div id="jshare">
+        <h1>Highcharts Demo</h1>
+        <h2></h2>
+        <textarea class="code" data-type="javascript">// Set up a simple chart
+var chart = Highcharts.chart('container', {
+    title: {
+        text: 'Chart sonified in sequence'
+    },
+    legend: {
+        enabled: false
+    },
+    sonification: {
+        events: {
+            onPointStart: function (e, point) {
+                point.onMouseOver();
+            },
+            onEnd: function () {
+                document.getElementById('sonify').style.visibility = 'visible';
+                document.getElementById('overlay').style.visibility = 'visible';
+                document.getElementById('stop').style.visibility = 'hidden';
+            }
+        }
+    },
+    accessibility: {
+        landmarkVerbosity: 'one'
+    },
+    series: [{
+        data: [1, 2, 4, 5, 7, 9, 11, 13]
+    }, {
+        data: [4, 5, 7, 9]
+    }]
+});
+
+// Click button to call chart.sonify()
+document.getElementById('sonify').onclick = function () {
+    document.getElementById('sonify').style.visibility = 'hidden';
+    document.getElementById('overlay').style.visibility = 'hidden';
+    document.getElementById('stop').style.visibility = 'visible';
+    chart.sonify({
+        duration: 3000,
+        order: 'sequential',
+        afterSeriesWait: 1000,
+        instruments: [{
+            instrument: 'triangleMajor',
+            instrumentMapping: {
+                volume: 0.8,
+                duration: 250,
+                pan: 'x',
+                frequency: 'y'
+            },
+            // Start at C5 note, end at C6
+            instrumentOptions: {
+                minFrequency: 520,
+                maxFrequency: 1050
+            }
+        }]
+    });
+    document.getElementById('stop').focus();
+};
+
+document.getElementById('stop').onclick = function () {
+    chart.cancelSonify();
+    document.getElementById('sonify').style.visibility = 'visible';
+    document.getElementById('overlay').style.visibility = 'visible';
+    document.getElementById('stop').style.visibility = 'hidden';
+};
+</textarea>
+        <textarea class="code" data-type="html"><script src="https://code.highcharts.com.cn/highcharts/9.3.2/highcharts.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/9.3.2/modules/accessibility.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/9.3.2/modules/sonification.js"></script>
+
+<div id="outer">
+    <div id="overlay">
+      <button class="btn btn-play" id="sonify">Click to play chart</button>
+    </div>
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+        <p class="highcharts-description">This chart is sonified in sequence.</p>
+    </figure>
+    <div class="text-center">
+      <button class="btn btn-stop" id="stop">Stop playing</button>
+    </div>
+</div></textarea>
+        <textarea class="code" data-type="css">.btn.btn-stop {
+    background-color: #fff;
+    border: 1px solid #25386f;
+    color: #25386f;
+    width: 20%;
+    font-size: 0.9rem;
+    min-height: 30px;
+    font-weight: 500;
+}
+
+.btn {
+    background-color: #25386f;
+    border: 1 px solid #25386f;
+    color: #fff;
+    min-height: 40px;
+    width: 30%;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.highcharts-figure {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#outer {
+    min-width: 360px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    background-color: rgb(255 255 255 / 75%);
+}
+
+#stop {
+    visibility: hidden;
+}
+
+@media (max-width: 575px) {
+    .btn.btn-play {
+        width: 50%;
+    }
+
+    .btn.btn-stop {
+        width: 30%;
+    }
+}
+</textarea>
+        <textarea class="code" data-type="options">{&#34;code&#34;:{&#34;name&#34;:&#34;Highcharts Demo&#34;,&#34;description&#34;:&#34;Created by Øystein Moseng&#34;}}</textarea>
+    </div>
+
+
+    <!-- 创建分组 modal -->
+    <div class="modal fade" id="group-modal">
+        <div class="modal-dialog modal-middle">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title">创建分组</span>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <label>分组名</label>
+                        <input type="text" v-model="newGroup.name" placeholder="请输入分组名称，最大长度为 20 个字符">
+                    </p>
+                    <p>
+                        <label>个性域名</label>
+                        <input type="text" v-model="newGroup.url" placeholder="请输入 5 ~ 20 位英文字符、数字，_、-、." @keyup.enter="saveGroup">
+                        <p>
+                            <code class="url">https://code.hcharts.cn/$[newGroup.url]</code>
+                        </p>
+                    </p>
+                    <p class="red">
+                        $[newGroup.info]
+                    </p>
+                    <p>
+                        <button class="btn btn-sm btn-info" v-on:click="saveGroup">确定</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fork 代码 modal -->
+    <div class="modal fade" id="fork-modal">
+        <div class="modal-dialog modal-middle">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title">请补充代码信息</span>
+                </div>
+                <div class="modal-body">
+                    <p> 
+                        <label>名字</label>
+                        <input type="text" v-model="code.name" placeholder="请用简短的文字命名您的代码（20个字符以内）">
+                    </p>
+                    <p>
+                        <label>简介</label>
+                        <textarea v-model="code.description" placeholder="请用简短的文字描述你的代码" @keyup.enter="updateWithName"></textarea>
+                    </p>
+                    <p class="red">$[code.info]</p>
+                  
+                        <button class="btn btn-sm btn-info" v-on:click="updateWithName">确定</button>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- CDN 文件选择 modal -->
+    <div class="modal fade" id="cdn-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title">添加常用资源</span>
+                </div>
+                <div class="modal-body">
+                    <dl v-for="(index, cdn) in cdns">
+                        <dt>$[cdn.name] <small>$[cdn.description] $[cdn.radio ? '（单选）' : '']</small></dt>
+                        <dd v-for="f in cdn.files">
+                            <label  title="$[f.description]">
+                                <input type="checkbox" value="$[f.id]" v-model="code.selectedCdns" data-name="$[f.name]" @click="cdnCheck(cdn, index, f.id)">$[f.name]
+                            </label>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" v-on:click="finishedSelectCdns">确定</button>
+                    <span class="modal-footer-text"><a href="javascript:void(0)"  v-on:click="code.selectedCdns = []">清除选择</a> / <a href="/docs#cdns" target="_blank">说明文档</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <my-footer :login-obj.sync="loginObj" :show=false></my-footer> 
+
+        <template id="template-base">
+<footer v-show="show">
+    <div class="container">
+        <p>&copy; 2020 <a href="https://jshare.com.cn/new" target="_blank">JShare</a>，由 <a href="https://jianshukeji.com?spm=hcode2.0" target="_blank">简数科技</a> 提供服务 <span class="footer-social">关注我们 <a href="http://weibo.com/highcharts" target="_blank" title="微博" alt="微博"><i class="fa fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0)"  title="微信公众号" alt="微信公众号" class="footer-weixin"><i class="fa fa-weixin" aria-hidden="true"></i><span></span></a><a href="http://github.com/hcharts" target="_blank" title="Github" alt="Github"><i class="fa fa-github" aria-hidden="true"></i></a><a href="https://www.hcharts.cn/support#qun" target="_blank" title="QQ群" alt="QQ群"><i class="fa fa-qq" aria-hidden="true"></i></a></span>
+        </p>
+    </div>
+</footer>
+<div class="modal fade" id="login-modal" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <p>
+                    <label>用户名</label>
+                    <input type="text" v-model="loginObj.username" placeholder="用户名">
+                </p>
+                <p>
+                    <label>密码</label>
+                    <input type="password" v-model="loginObj.password" placeholder="密码" v-on:keyup.enter="login">
+                </p>
+                <p v-show="loginObj.showCode">
+                    <label>验证码</label>
+                    <input type="text" v-model="loginObj.code" placeholder="验证码" v-on:keyup.enter="login">
+                </p>
+                <div class="login-btns">
+                    <p v-show="loginObj.showCode">
+                        <label>验证码</label>
+                        <input type="text" v-model="loginObj.code" placeholder="验证码" v-on:keyup.enter="login">
+                    </p>
+                    <button class="btn btn-sm btn-info login-button" v-on:click="login">登录</button>
+                    <p class="login-text">
+                        <span class="login-message">$[loginObj.info]</span>
+                        <span class="register"><a href="${register_link}" target="_blank">注册新用户</a> / <a href="${forget_link}" target="_blank">找回密码</a></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</template>
+<template id="template-header">
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <div class="logo">
+                    <a href="/"><svg width="100%" height="100%" viewBox="0 0 500 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill:#fff">
+                     <rect x="0" y="0" width="72" height="72" style="fill:white;"/>
+                     <g transform="matrix(0.997255,0,0,1.00483,-9.69157,38.7607)" fill="#006cee">
+                         <path d="M27.814,14.558L27.814,15.384C27.878,18.154 28.182,20.101 28.725,21.227C29.267,22.353 30.43,22.916 32.211,22.916C33.977,22.916 35.143,22.3 35.71,21.069C36.05,20.34 36.22,19.109 36.22,17.376L36.22,-7.674L43.704,-7.674L43.704,17.255C43.704,20.3 43.177,22.713 42.124,24.495C40.343,27.508 37.127,29.014 32.479,29.014C27.83,29.014 24.712,27.795 23.124,25.358C21.537,22.92 20.743,19.595 20.743,15.384L20.743,14.558L27.814,14.558Z"/>
+                         <path d="M56.532,17.085C56.759,18.721 57.205,19.943 57.869,20.753C59.083,22.227 61.165,22.964 64.113,22.964C65.878,22.964 67.312,22.77 68.413,22.381C70.503,21.636 71.548,20.251 71.548,18.227C71.548,17.044 71.029,16.129 69.993,15.481C68.956,14.849 67.328,14.29 65.109,13.804L61.319,12.954C57.593,12.112 55.018,11.197 53.592,10.209C51.179,8.556 49.972,5.973 49.972,2.458C49.972,-0.749 51.138,-3.414 53.471,-5.536C55.803,-7.658 59.229,-8.719 63.748,-8.719C67.523,-8.719 70.742,-7.718 73.406,-5.718C76.071,-3.717 77.468,-0.814 77.598,2.992L70.406,2.992C70.276,0.838 69.337,-0.693 67.587,-1.6C66.421,-2.199 64.971,-2.499 63.238,-2.499C61.311,-2.499 59.772,-2.11 58.622,-1.332C57.472,-0.555 56.897,0.53 56.897,1.923C56.897,3.203 57.464,4.159 58.598,4.79C59.326,5.212 60.881,5.706 63.263,6.273L69.434,7.755C72.139,8.403 74.18,9.269 75.557,10.354C77.695,12.039 78.764,14.477 78.764,17.668C78.764,20.94 77.513,23.657 75.01,25.819C72.507,27.982 68.972,29.063 64.404,29.063C59.739,29.063 56.071,27.998 53.398,25.868C50.725,23.738 49.389,20.81 49.389,17.085L56.532,17.085Z"/>
+                     </g>
+                     <g transform="matrix(1.01197,0,0,1.07472,-0.940534,-2.81226)">
+                         <path d="M88.709,60.57C90.035,61.474 91.738,62.258 93.817,62.921C95.896,63.584 98.232,63.915 100.824,63.915C104.079,63.915 106.685,63.328 108.644,62.152C110.603,60.977 112.095,59.244 113.12,56.954C114.144,54.663 114.807,51.845 115.109,48.5C115.41,45.155 115.561,41.343 115.561,37.063L115.561,4.515L121.89,4.515L121.89,37.063C121.89,41.945 121.663,46.391 121.211,50.399C120.759,54.407 119.81,57.828 118.363,60.66C116.917,63.493 114.807,65.693 112.035,67.26C109.262,68.828 105.525,69.611 100.824,69.611C95.399,69.611 90.758,68.285 86.901,65.633L88.709,60.57Z"/>
+                         <path d="M175.051,16.45C173.243,14.4 170.817,12.743 167.773,11.477C164.729,10.211 161.309,9.578 157.511,9.578C151.785,9.578 147.626,10.648 145.035,12.788C142.443,14.928 141.147,17.836 141.147,21.513C141.147,23.441 141.494,25.024 142.187,26.259C142.88,27.495 143.965,28.565 145.442,29.469C146.918,30.373 148.787,31.156 151.047,31.819C153.307,32.482 155.974,33.145 159.048,33.808C162.484,34.532 165.558,35.33 168.27,36.204C170.983,37.078 173.303,38.193 175.232,39.55C177.161,40.906 178.637,42.563 179.662,44.522C180.687,46.481 181.199,48.907 181.199,51.8C181.199,54.754 180.626,57.315 179.481,59.485C178.336,61.655 176.739,63.463 174.689,64.91C172.64,66.356 170.199,67.426 167.366,68.119C164.533,68.813 161.459,69.159 158.144,69.159C148.079,69.159 139.489,66.055 132.377,59.847L135.451,54.693C137.802,57.165 140.966,59.259 144.944,60.977C148.922,62.695 153.352,63.554 158.235,63.554C163.358,63.554 167.366,62.634 170.259,60.796C173.152,58.958 174.599,56.17 174.599,52.433C174.599,50.444 174.192,48.771 173.378,47.415C172.565,46.059 171.344,44.884 169.717,43.889C168.089,42.895 166.055,42.036 163.614,41.313C161.173,40.589 158.355,39.866 155.161,39.143C151.785,38.359 148.832,37.545 146.3,36.702C143.769,35.858 141.644,34.803 139.926,33.537C138.209,32.271 136.913,30.75 136.039,28.971C135.165,27.193 134.728,25.008 134.728,22.417C134.728,19.463 135.285,16.826 136.4,14.506C137.516,12.185 139.083,10.256 141.102,8.719C143.121,7.182 145.532,6.007 148.335,5.193C151.137,4.38 154.226,3.973 157.602,3.973C161.821,3.973 165.603,4.621 168.948,5.917C172.294,7.213 175.322,9.036 178.035,11.387L175.051,16.45Z"/>
+                         <path d="M230.654,68.617L224.506,68.617L224.506,42.307C224.506,36.943 223.587,32.934 221.748,30.282C219.91,27.63 217.213,26.304 213.656,26.304C211.909,26.304 210.176,26.651 208.458,27.344C206.74,28.037 205.128,28.987 203.621,30.192C202.114,31.398 200.803,32.814 199.688,34.441C198.573,36.069 197.744,37.847 197.202,39.776L197.202,68.617L191.054,68.617L191.054,2.617L197.202,2.617L197.202,32.181C199.13,28.625 201.752,25.822 205.067,23.773C208.382,21.724 211.939,20.699 215.736,20.699C218.448,20.699 220.754,21.196 222.652,22.191C224.551,23.185 226.088,24.571 227.263,26.35C228.439,28.128 229.298,30.267 229.84,32.769C230.382,35.27 230.654,38.028 230.654,41.041L230.654,68.617Z"/>
+                         <path d="M255.878,69.521C253.467,69.521 251.267,69.144 249.278,68.391C247.289,67.637 245.587,66.597 244.17,65.271C242.754,63.945 241.654,62.408 240.87,60.66C240.087,58.913 239.695,57.074 239.695,55.145C239.695,52.976 240.177,51.002 241.141,49.223C242.106,47.445 243.462,45.924 245.21,44.658C246.958,43.392 249.052,42.413 251.493,41.719C253.934,41.026 256.632,40.68 259.585,40.68C261.936,40.68 264.347,40.891 266.818,41.313C269.289,41.734 271.489,42.337 273.418,43.121L273.418,38.871C273.418,34.713 272.228,31.413 269.847,28.971C267.466,26.53 264.256,25.31 260.218,25.31C257.687,25.31 255.17,25.792 252.669,26.756C250.167,27.721 247.621,29.107 245.029,30.915L242.859,26.847C245.933,24.798 248.917,23.261 251.81,22.236C254.703,21.211 257.717,20.699 260.851,20.699C266.577,20.699 271.128,22.356 274.503,25.671C277.878,28.987 279.566,33.567 279.566,39.414L279.566,60.66C279.566,62.348 280.289,63.192 281.736,63.192L281.736,68.617C281.254,68.677 280.802,68.722 280.38,68.752C279.958,68.782 279.596,68.797 279.295,68.797C278.089,68.797 276.989,68.436 275.995,67.713C275,66.989 274.443,65.904 274.322,64.458L274.141,60.751C272.092,63.523 269.395,65.678 266.049,67.215C262.704,68.752 259.314,69.521 255.878,69.521ZM257.415,64.819C260.128,64.819 262.825,64.232 265.507,63.056C268.189,61.881 270.314,60.269 271.881,58.219C272.303,57.677 272.665,57.089 272.966,56.456C273.267,55.823 273.418,55.236 273.418,54.693L273.418,47.008C271.369,46.225 269.229,45.622 266.999,45.2C264.769,44.778 262.599,44.567 260.489,44.567C256.089,44.567 252.518,45.456 249.776,47.234C247.033,49.013 245.662,51.469 245.662,54.603C245.662,55.869 245.903,57.104 246.385,58.31C246.867,59.515 247.606,60.6 248.6,61.565C249.595,62.529 250.815,63.313 252.262,63.915C253.708,64.518 255.426,64.819 257.415,64.819Z"/>
+                         <path d="M316.454,26.937C312.295,27.058 308.678,28.203 305.604,30.373C302.53,32.543 300.36,35.526 299.095,39.324L299.095,68.617L292.947,68.617L292.947,21.513L298.733,21.513L298.733,32.814C300.36,29.499 302.5,26.741 305.152,24.541C307.804,22.341 310.667,21.241 313.741,21.241C314.284,21.241 314.796,21.241 315.278,21.241C315.76,21.241 316.152,21.272 316.454,21.332L316.454,26.937Z"/>
+                         <path d="M345.295,69.521C341.859,69.521 338.695,68.873 335.801,67.577C332.908,66.281 330.407,64.503 328.297,62.243C326.188,59.982 324.545,57.376 323.37,54.422C322.195,51.469 321.607,48.304 321.607,44.929C321.607,41.614 322.195,38.495 323.37,35.571C324.545,32.648 326.188,30.087 328.297,27.887C330.407,25.687 332.893,23.939 335.756,22.643C338.619,21.347 341.769,20.699 345.204,20.699C348.64,20.699 351.789,21.347 354.652,22.643C357.515,23.939 359.971,25.702 362.021,27.932C364.07,30.162 365.667,32.724 366.812,35.617C367.958,38.51 368.53,41.584 368.53,44.839C368.53,45.321 368.515,45.803 368.485,46.285C368.455,46.767 368.41,47.099 368.349,47.28L328.116,47.28C328.297,49.811 328.885,52.147 329.88,54.287C330.874,56.426 332.14,58.28 333.677,59.847C335.214,61.414 336.992,62.634 339.011,63.508C341.03,64.382 343.185,64.819 345.475,64.819C347.042,64.819 348.579,64.608 350.086,64.186C351.593,63.765 352.979,63.192 354.245,62.469C355.511,61.745 356.641,60.856 357.636,59.802C358.63,58.747 359.399,57.586 359.941,56.321L365.275,57.767C364.552,59.515 363.527,61.097 362.201,62.514C360.875,63.93 359.338,65.166 357.59,66.221C355.842,67.276 353.914,68.089 351.804,68.662C349.695,69.234 347.525,69.521 345.295,69.521ZM362.653,42.578C362.473,40.047 361.885,37.741 360.89,35.662C359.896,33.582 358.63,31.789 357.093,30.282C355.556,28.776 353.763,27.6 351.714,26.756C349.664,25.913 347.495,25.491 345.204,25.491C342.914,25.491 340.744,25.913 338.695,26.756C336.645,27.6 334.852,28.776 333.315,30.282C331.778,31.789 330.543,33.598 329.608,35.707C328.674,37.817 328.116,40.107 327.936,42.578L362.653,42.578Z"/>
+                     </g>
+                     <g transform="matrix(1.00642,0,0,1,-53.3535,12.8259)">
+                         <rect x="428.258" y="51.293" width="3.402" height="3.548"/>
+                         <path d="M443.541,36.905C445.505,36.905 447.102,37.382 448.334,38.337C449.566,39.292 450.306,40.936 450.556,43.269L447.707,43.269C447.534,42.194 447.138,41.302 446.519,40.591C445.901,39.88 444.908,39.525 443.541,39.525C441.674,39.525 440.34,40.436 439.537,42.259C439.016,43.442 438.756,44.902 438.756,46.638C438.756,48.385 439.124,49.855 439.862,51.048C440.6,52.242 441.761,52.839 443.345,52.839C444.561,52.839 445.524,52.467 446.234,51.724C446.945,50.981 447.436,49.963 447.707,48.672L450.556,48.672C450.23,50.983 449.416,52.673 448.114,53.742C446.812,54.811 445.147,55.345 443.118,55.345C440.839,55.345 439.021,54.513 437.665,52.847C436.309,51.181 435.631,49.101 435.631,46.605C435.631,43.545 436.374,41.163 437.86,39.46C439.347,37.756 441.24,36.905 443.541,36.905Z"/>
+                         <path d="M460.403,52.953C462.345,52.953 463.677,52.218 464.398,50.747C465.12,49.277 465.481,47.641 465.481,45.84C465.481,44.213 465.22,42.889 464.7,41.869C463.875,40.263 462.453,39.46 460.435,39.46C458.645,39.46 457.343,40.144 456.529,41.511C455.715,42.878 455.308,44.527 455.308,46.459C455.308,48.314 455.715,49.86 456.529,51.097C457.343,52.334 458.634,52.953 460.403,52.953ZM460.517,36.905C462.763,36.905 464.662,37.653 466.213,39.151C467.765,40.648 468.541,42.851 468.541,45.759C468.541,48.569 467.857,50.891 466.49,52.725C465.123,54.559 463.001,55.476 460.126,55.476C457.728,55.476 455.824,54.664 454.413,53.042C453.003,51.42 452.297,49.242 452.297,46.507C452.297,43.578 453.04,41.245 454.527,39.509C456.014,37.773 458.01,36.905 460.517,36.905Z"/>
+                         <path d="M472.024,37.409L474.921,37.409L474.921,39.883C475.615,39.026 476.245,38.402 476.809,38.011C477.775,37.349 478.871,37.019 480.097,37.019C481.486,37.019 482.603,37.36 483.45,38.044C483.927,38.435 484.361,39.01 484.752,39.769C485.403,38.836 486.168,38.144 487.047,37.694C487.925,37.244 488.913,37.019 490.009,37.019C492.353,37.019 493.948,37.865 494.794,39.558C495.25,40.469 495.478,41.695 495.478,43.236L495.478,54.841L492.434,54.841L492.434,42.731C492.434,41.57 492.144,40.773 491.563,40.339C490.983,39.905 490.275,39.688 489.439,39.688C488.289,39.688 487.299,40.073 486.469,40.843C485.639,41.614 485.224,42.9 485.224,44.701L485.224,54.841L482.245,54.841L482.245,43.464C482.245,42.281 482.104,41.418 481.822,40.876C481.377,40.062 480.547,39.655 479.332,39.655C478.225,39.655 477.219,40.084 476.313,40.941C475.406,41.798 474.953,43.35 474.953,45.596L474.953,54.841L472.024,54.841L472.024,37.409Z"/>
+                         <rect x="500.491" y="51.293" width="3.402" height="3.548"/>
+                         <path d="M515.774,36.905C517.738,36.905 519.336,37.382 520.567,38.337C521.799,39.292 522.539,40.936 522.789,43.269L519.94,43.269C519.767,42.194 519.371,41.302 518.752,40.591C518.134,39.88 517.141,39.525 515.774,39.525C513.907,39.525 512.573,40.436 511.77,42.259C511.249,43.442 510.989,44.902 510.989,46.638C510.989,48.385 511.358,49.855 512.095,51.048C512.833,52.242 513.994,52.839 515.578,52.839C516.794,52.839 517.757,52.467 518.467,51.724C519.178,50.981 519.669,49.963 519.94,48.672L522.789,48.672C522.463,50.983 521.649,52.673 520.347,53.742C519.045,54.811 517.38,55.345 515.351,55.345C513.072,55.345 511.254,54.513 509.898,52.847C508.542,51.181 507.864,49.101 507.864,46.605C507.864,43.545 508.607,41.163 510.093,39.46C511.58,37.756 513.473,36.905 515.774,36.905Z"/>
+                         <path d="M525.718,37.409L528.502,37.409L528.502,39.883C529.326,38.863 530.2,38.131 531.122,37.686C532.044,37.241 533.07,37.019 534.198,37.019C536.672,37.019 538.343,37.881 539.211,39.606C539.689,40.55 539.927,41.901 539.927,43.659L539.927,54.841L536.949,54.841L536.949,43.854C536.949,42.791 536.792,41.934 536.477,41.283C535.956,40.198 535.012,39.655 533.645,39.655C532.95,39.655 532.381,39.726 531.936,39.867C531.133,40.106 530.428,40.583 529.82,41.299C529.332,41.874 529.014,42.468 528.868,43.081C528.721,43.694 528.648,44.571 528.648,45.71L528.648,54.841L525.718,54.841L525.718,37.409Z"/>
+                     </g>
+                 </svg>
+                  </a>
+                        <a href="/about" target="_blank"><span class="version">$[base.version]</span></a>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav" v-show="base.type<=1">
+                    <li><a href="javascript:void(0)" v-on:click="run" title="快捷键：Ctrl + Enter"><i class="fa fa-play"></i>运行 </a></li>
+                    <li><a href="javascript:void(0)" v-on:click="update"><i class="fa fa-floppy-o"></i>保存</a></li>
+                </ul>
+                <ul class="nav navbar-nav nav-new" v-if="base.type===1">
+                    <li><a href="javascript:void(0)" v-on:click="fork"><i class="fa fa-code-fork"></i>创建分支</a></li>
+                    <li>
+                        <a href="javascript:void(0)" @click="qrcode" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-download"></i>分享下载<b class="caret"></b></a>
+                        <ul class="dropdown-menu tip share-tip">
+                            <div class="tip-closer">x</div>
+                            <div class="tip-content">
+                                <p>
+                                    <label>分享链接</label>
+                                    <input type="text" value="https://jshare.com.cn/$[code.group.code]/$[code.code]$[codeVersion]" readonly>
+                                </p>
+                                <p>
+                                    <label>分享全屏结果</label>
+                                    <input type="text" value="https://jshare.com.cn/$[code.group.code]/$[code.code]$[codeVersion]/share" readonly>
+                                </p>
+                                 <p>
+                                    <label>纯净代码（无 iframe）</label>
+                                    <input type="text" value="https://jshare.com.cn/$[code.group.code]/$[code.code]$[codeVersion]/share/pure" readonly>
+                                </p>
+                                <p>
+                                    <label>嵌入您的页面</label>
+                                    <textarea style="height:84px;line-height:1.4;font-size:12px;" readonly v-model="share"></textarea>
+                                </p>
+                                <div class="share-conf-wrapper">
+                                    <div class="share-conf">
+                                        <p>
+                                            <label class="checkbox">
+                                                <input type="checkbox" v-model="shareTabs.result" />
+                                                <span class="checkbox-box"></span>
+                                                <span>运行结果</span>
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" v-model="shareTabs.js" />
+                                                <span class="checkbox-box"></span>
+                                                <span>JavaScript</span>
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" v-model="shareTabs.html" />
+                                                <span class="checkbox-box"></span>
+                                                <span>HTML</span>
+                                            </label>
+                                            <label class="checkbox">
+                                                <input type="checkbox" v-model="shareTabs.css" />
+                                                <span class="checkbox-box"></span>
+                                                <span>CSS</span>
+                                            </label>    
+                                            <label class="checkbox">
+                                                <input type="checkbox" v-model="shareTabs.https" />
+                                                <span class="checkbox-box"></span>
+                                                <span>HTTPS</span>
+                                            </label>            
+                                        </p>
+                                        <button class="btn btn-success btn-sm" @click="download"><i class="fa fa-download"></i>  下载</button>
+                                    </div>
+                                    <div class="share-qrcode">
+                                        <span>手机扫码预览</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li v-show="base.type===2"><a href="javascript:void(0)" @click="update"><i class="fa fa-floppy-o"></i>保存</a></li>
+                    <li v-show="base.type<=2"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-cog"></i>设置<b class="caret"></b></a>
+                        <ul class="dropdown-menu tip cog-tip">
+                            <div class="tip-closer">x</div>
+                            <div class="tip-content">
+                                <p> HTML 文档模式：（<a href="/docs#doctype" target="_blank">文档说明</a>）</p>
+                                <select v-model="code.doctype">
+                                    <option value="0">HTML5</option>
+                                    <option value="1">HTML 4.01 Strict</option>
+                                    <option value="2">HTML 4.01 Transitional</option>
+                                    <option value="3">HTML 4.01 Frameset</option>
+                                    <option value="4">XHTML 1.0 Strict</option>
+                                    <option value="5">XHTML 1.0 Transitional</option>
+                                    <option value="6">XHTML 1.1</option>
+                                </select>
+                                <p>Meta 信息（会添加到 head 标签中）</p>
+                                <textarea v-model="code.meta" placeholder="e.g. &lt;meta&gt;, &lt;link&gt;, &lt;script&gt;" class="meta-textarea"></textarea>
+                                <br>
+                                <p class="hr"></p>
+                                <p>编辑器设置</p>
+                                <p>
+                                    <div class="half">
+                                    <label class="checkbox">
+                                    <input type="checkbox" v-model="base.editor.lineNumbers">
+                                    <span class="checkbox-box"></span><span>显示行号</span></label>
+                                    </div>
+                                    <div class="half text-right">
+                                        <label for="">缩进&nbsp;&nbsp;</label>
+                                        <select v-model.number="base.editor.indentUnit">
+                                            <option value="2">2 spaces</option>
+                                            <option value="3">3 spaces</option>
+                                            <option value="4">4 spaces (default)</option>
+                                        </select>
+                                    </div>
+                                </p>
+                                <p>
+                                    <div class="half">
+                                        <label class="checkbox">
+                                        <input type="checkbox" v-model="base.editor.lineWrapping">
+                                        <span class="checkbox-box"></span><span>自动换行</span></label>
+                                    </div>
+                                    <div class="half text-right">
+                                        <label for="">字号&nbsp;&nbsp;</label>
+                                        <select v-model="base.editor.fontSize">
+                                            <option value="12">12px (default)</option>
+                                            <option value="13">13px</option>
+                                            <option value="14">14px</option>
+                                            <option value="16">16px</option>
+                                        </select>
+                                    </div>
+                                </p>
+                                <p class="hr"></p>
+                                <p>编辑器布局（自动保存）</p>
+                                <svg  width="30" height="30" viewBox="0 0 100 100" fill="rgba(255, 255, 255, 0.09)" style="display:none;">
+                                    <defs>
+                                        <g id="layout-icon-base">
+                                          <rect x="0" y="0" width="28" height="47" />
+                                          <rect x="36" y="0" width="28" height="47"/>
+                                          <rect x="72" y="0" width="28" height="47"/>
+                                          <rect x="0" y="53" width="100" height="47"/>
+                                        </g>
+                                        <g id="layout-icon-defult">
+                                          <rect x="0" y="0" width="46" height="100" />
+                                          <rect x="54" y="0" width="46" height="54" />
+                                          <rect x="54" y="62" width="46" height="36" />
+                                        </g>
+                                        <g id="layout-icon-full">
+                                          <rect x="0" y="0" width="100" height="100"/>
+                                        </g>
+                                        <g id="layout-icon-split">
+                                          <rect x="0" y="0" width="46" height="100" />
+                                          <rect x="54" y="0" width="46" height="100" />
+                                        </g>
+                                        <g id="layout-icon-equ">
+                                          <rect x="0" y="0" width="46" height="28" />
+                                          <rect x="54" y="0" width="46" height="28" />
+                                          <rect x="0" y="36" width="46" height="64" />
+                                          <rect x="54" y="36" width="46" height="64" />
+                                        </g>
+                                        <g id="layout-icon-equ-revert">
+                                          <rect x="0" y="0" width="46" height="64" />
+                                          <rect x="54" y="0" width="46" height="64" />
+                                          <rect x="0" y="72" width="46" height="28" />
+                                          <rect x="54" y="72" width="46" height="28" />
+                                        </g>
+
+                                    </defs>
+                                </svg>
+                                <ul class="layouts">
+                                    <li v-for="layout in layouts.options" @click="switchLayout(layout.id)" :class="layout.id == layouts.current ? 'active' : ''">
+                                        <svg viewBox="0 0 100 100"  style="transform:rotate($[layout.deg]deg)">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#layout-icon-$[layout.icon]"></use>
+                                        </svg>
+                                    </li>
+                                </ul>
+                                <br>
+                                <p>
+                                <label class="checkbox">
+                                    <input type="checkbox" v-model="code.saveLayout">
+                                    <span class="checkbox-box"></span><span>保存自定义布局</span></label>
+                                </p>
+                                <p>
+                                    <label class="checkbox">
+                                        <input type="checkbox" v-model="code.saveFold">
+                                        <span class="checkbox-box"></span><span>保存代码折叠信息</span></label>
+                                </p>
+                                <p>
+                                    <label class="checkbox">
+                                        <input type="checkbox" v-model="code.autoFormat">
+                                        <span class="checkbox-box"></span><span>运行时自动格式化代码</span></label>
+                                </p>
+
+                                <p>
+                                 <label class="checkbox">
+                                     <input type="checkbox" v-model="base.editor.drakMode">
+                                     <span class="checkbox-box"></span><span>深色模式</span><span class="new">new</span></label>
+                             </p>
+                                <template v-if="base.type === 0 && (code.publicTemplates.length>0 || code.myTemplates.length>0)">
+                                    <p class="hr"></p>
+                                    <h5>模板（<a href="/template" target="_blank">查看所有模板</a>）</h5>
+                                    <ul class="code-template">
+                                        <li v-for="t in code.publicTemplates" @click="loadTemplate(t)">$[t.name]</li>
+                                    </ul>
+                                    <ul class="code-template">
+                                        <li v-for="t in code.myTemplates" @click="loadTemplate(t)">$[t.name]</li>
+                                    </ul>
+                                </template>
+                            </div>
+                        </ul>
+                    </li>
+                    <li v-show="base.type>2"><a href="/new" target="_blank"><i class="fa fa-plus-circle" aria-hidden="true"></i>创建新代码</a></li>
+                    <li v-show="base.type!==1"><a href="https://forum.jianshukeji.com/c/uncategorized" target="_blank"><i class="fa fa-lightbulb-o"></i>意见建议</a></li>
+                    <li v-show="base.type!==1"><a href="/about"><i class="fa fa-info-circle" aria-hidden="true"></i>关于</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <template v-if="loginObj.user==null"><a href="javascript:void(0)" v-on:click="login"><i class="fa fa-user"></i>登录 / 注册<b class="caret"></b></a></template>
+                        <template v-else>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><img class="my-icon" :src="'https://bbs.hcharts.cn/uc_server/avatar.php?uid='+loginObj.user.uid+'&type=virtual&size=small'">$[loginObj.user.username]<b class="caret"></b></a>
+                            <ul class="dropdown-menu tip login-tip">
+                                <div class="tip-closer">x</div>
+                                <div class="tip-content">
+                                    <p><a href="/my" target="_blank"><i aria-hidden="true" class="fa fa-home"></i>管理中心</a></p>
+                                    <p><a href="https://bbs.hcharts.cn/home.php?mod=spacecp&ac=profile" target="_blank"><i aria-hidden="true" class="fa fa-cog"></i>个人设置</a></p>
+                                    <p class="line"></p>
+                                    <p><a href="javascript:void(0)" v-on:click="logout()" class="logout"><i class="fa fa-sign-out" aria-hidden="true"></i>注销登录</a></p>
+                                    <p class="login-message" v-show="loginObj.info!==null">$[loginObj.info]</p>
+                                </div>
+                        </template>
+                    </li>
+                 </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+</template>
+
+    <script src="https://s1.jscdn.com.cn/hcode/scripts/0-1eed5f2c9c.js"></script>
+    <script>
+      function post(url, params, callback, showLoading) {
+  $.ajax({
+    type: 'post',
+    url: url,
+    data: params,
+    success: function(data) {
+      if(typeof data === 'string') {
+         data = JSON.parse(data);
+      }
+      if (data.code === 4) {
+        // 管理中心
+        if (app.$refs.login.type === 4) {
+          window.location.href = "/login";
+        }
+        toastr.warning('请先登录再进行操作！');
+        app.$refs.login.checkLogin();
+        app.$refs.login.login();
+        return false;
+      }
+      callback.call(this, data);
+    },
+    error: function() {
+      toastr.error('系统错误，请稍后重试或联系管理员');
+    }
+  });
+}
+    </script>
+    <script src="https://s1.jscdn.com.cn/hcode/scripts/2-11176854e6.js"></script>
+
+    <script src="https://s1.jscdn.com.cn/hcode/scripts/3-53dfa0b922.js"></script>
+
+    <script src="https://s1.jscdn.com.cn/hcode/scripts/4-296dda101b.js"></script>
+
+    <script src="https://s1.jscdn.com.cn/hcode/scripts/5-5d8642611c.js"></script>
+
+    <script src="https://s1.jscdn.com.cn/hcode/scripts/6-d7d41c2dca.js"></script>
+</body>
+
+</html>

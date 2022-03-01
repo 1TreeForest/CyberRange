@@ -1,0 +1,520 @@
+
+
+
+<html>
+<HEAD>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="cache-control" CONTENT="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- 
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+-->
+<TITLE>正在播放：2022.1.18卫健委</TITLE>
+<script type="text/javascript"  src="/powercms/web/player/powerplayer6/swfobject.js"></script>
+<script type="text/javascript" src="/powercms/web/player/powerplayer6/jquery.js"></script>
+<script type="text/javascript" src="/powercms/web/player/powerplayer6/jquery_cookie.js"></script>
+<script type='text/javascript' src='/powercms/web/player/powerplayer6/powerplayer.min.js'></script>
+
+<script type="text/javascript">
+var STREAM_ID = NewGuid();
+var MEMBER_NAME = "";
+var PROG_ID = "ff8080817d7ba39a017e6c560b4d0050";
+var PROG_NAME = "2022.1.18卫健委";
+var CLIENT_IP = "172.18.90.211";
+var START_TIME = "";
+var END_TIME = "";
+/*
+* 智能机浏览器版本信息:
+*
+*/
+var browser = {
+      versions: function() {
+          var u = navigator.userAgent,
+              app = navigator.appVersion;
+          return { //移动终端浏览器版本信息 
+              trident: u.indexOf('Trident') > -1, //IE内核
+              presto: u.indexOf('Presto') > -1, //opera内核
+              webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+              gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+              mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+              ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+              android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+              iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+              iPad: u.indexOf('iPad') > -1, //是否iPad
+              webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+          };
+      }(),
+      language: (navigator.browserLanguage || navigator.language).toLowerCase()
+}
+  //document.writeln("语言版本: "+browser.language+"<br>");
+  //document.writeln(" 是否为移动终端: "+browser.versions.mobile+"<br>");
+  //document.writeln(" ios终端: "+browser.versions.ios+"<br>");
+  //document.writeln(" android终端: "+browser.versions.android+"<br>");
+  //document.writeln(" 是否为iPhone: "+browser.versions.iPhone+"<br>");
+  //document.writeln(" 是否iPad: "+browser.versions.iPad+"<br>");
+  //document.writeln(navigator.userAgent);
+  
+function NewGuid() {
+    var guid = "";
+    for (var i = 1; i <= 32; i++){
+      var n = Math.floor(Math.random()*16.0).toString(16);
+      guid += n;
+    }
+    return guid;    
+}
+
+function CurrentTime() {
+    var today = new Date();
+    var years = today.getFullYear();
+    var months = today.getMonth()+1;
+    var d = today.getDate();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    return "" + years + "-" + months + "-" + d + " " + h + ":" + m + ":" + s;
+}
+
+function updateStat(starttime, endtime){
+    //不执行，暂时保留
+    return;
+    if(MEMBER_NAME != "") {
+        postdata = "flowRate=0&streamId="+STREAM_ID+"&entityId="+PROG_ID+"&progName="+PROG_NAME+"&loginIP="+CLIENT_IP+"&userName="+MEMBER_NAME+"&startTime="+starttime+"&endTime="+endtime;
+        $.post("/powercms/service/vodService.action", postdata, function(data){
+        },"text");
+    }else {
+        postdata = "flowRate=0&streamId="+STREAM_ID+"&entityId="+PROG_ID+"&progName="+PROG_NAME+"&loginIP="+CLIENT_IP+"&userName=anonymous&startTime="+starttime+"&endTime="+endtime;
+        $.post("/powercms/service/vodService.action", postdata, function(data){
+        },"text");      
+    }
+}
+    
+function CheckFlash() {
+    var isIE = (navigator.appVersion.indexOf("MSIE") >= 0);
+    var hasFlash = true;
+
+    if(isIE) {
+        try{
+            var objFlash = new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
+        } catch(e) {
+            hasFlash = false;
+            switchDisplay();
+        }
+    } else {
+        if(!navigator.plugins["Shockwave Flash"]) {
+            hasFlash = false;
+            switchDisplay();
+        }
+    }
+    
+    return hasFlash;
+}
+
+function CheckFlash2() {
+    try {
+        var fls = flashChecker();
+       
+        if(fls.f == 0) {
+            //switchDisplay();
+            return false;
+        }
+        //alert(fls.v);
+        if(fls.v < 10) {
+            //switchDisplay();
+            return false;
+        }else if(fls.v==10&&fls.v2<1){
+            //switchDisplay();
+            return false;
+        }
+    } catch(e) {
+        //switchDisplay();
+        return false;
+    }
+    
+    return true;
+}
+
+function flashChecker() {
+    var hasFlash = 0; //是否安装了flash
+    var flashVersion = 0; //flash版本
+    var v2 = 0;
+    
+    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串  
+    var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器  
+    var isEdge = userAgent.indexOf("Edge") > -1 && !isIE; //判断是否IE的Edge浏览器  
+    var isIE11 = userAgent.indexOf("Trident") > -1 && userAgent.indexOf("rv:11.0") > -1;
+
+   // var isIE = (navigator.appVersion.indexOf("Trident") >= 0); //是否IE浏览器
+   
+    if (isIE||isEdge||isIE11) {
+        var swf = new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+       
+        if (swf) {
+            hasFlash = 1;
+            VSwf = swf.GetVariable("$version");
+            flashVersion = parseInt(VSwf.split(" ")[1].split(",")[0]);
+            v2 = parseInt(VSwf.split(" ")[1].split(",")[1]);
+        }
+    } else {
+        
+        if (navigator.plugins && navigator.plugins.length > 0) {
+            var swf = navigator.plugins["Shockwave Flash"];
+            if (swf) {
+                hasFlash = 1;
+                var words = swf.description.split(" ")[2];
+
+                flashVersion = words.split(".")[0];
+                v2 = words.split(".")[1];
+            }
+        }
+    }
+    return {
+        f: hasFlash,
+        v: flashVersion,
+        v2: v2
+    };
+}
+
+function switchDisplay() {
+    if (document.getElementById("preview")) document.getElementById("preview").style.display = 'none';
+    if (document.getElementById("playerNoInstall")) document.getElementById("playerNoInstall").style.display = 'block';
+}   
+
+//弹幕
+function DisableBullet() {
+    powerplayer('preview').setBulletscreen(false);
+}
+
+function EnableBullet() {
+    powerplayer('preview').setBulletscreen(true);
+}
+
+function SendBullet() {
+    powerplayer('preview').sendBullet({
+        text: window.parent.document.getElementById("bullet").value,
+        color: 0xffffff,
+        size: 25
+    });
+    window.parent.document.getElementById("bullet").value=""; 
+}
+                
+function setupHTML5Player() {
+         powerplayer('preview').setup({
+                modes: [{ type: "html5" }],
+                skin: '/powercms/web/player/powerplayer/skin/skin.xml',
+                memberName:'',
+                height: '100%',
+                width: '100%',
+                fileid:'ff8080817d7ba39a017e6c58f26e0052',
+                contentid:'ff8080817d7ba39a017e6c560b4d0050',
+                siteid:'ff8080816266c039016266c5392b000b',
+                streamid:STREAM_ID,
+                entityid:'ff8080817d7ba39a017e6c560b4d0050',
+                duration:'1996',
+                image:'/powercms/vod/powercms_image/jpg/1642495276092.jpg',
+                filesize:'320587776',
+                weburlparam:'',
+        
+        
+                 autostart: false,
+        
+                title:'2022.1',
+                provider: 'http',
+                'http.startparam': 'start',
+            
+            
+                file: 'https://sczxft.sc.gov.cn:3880/%2Fsmedia%2Fmedia%2F9f9a99a514bb4cb3a881d8c2000318b3.mp41.mp4',
+            
+        
+                backupservers:'',
+                statisticsserver:'',
+                thumbsbif:'',
+                video360: 0     //0就是不是全景   1代表全景
+         });
+}
+
+function setupFlashPlayer() {
+         powerplayer('preview').setup({
+                modes: [
+				{type: "html5"},
+				{type: "flash", src: "/powercms/web/player/powerplayer6/powerplayer.swf"}
+				
+                ],
+                fileid:'ff8080817d7ba39a017e6c58f26e0052',
+                contentid:'ff8080817d7ba39a017e6c560b4d0050',
+                siteid:'ff8080816266c039016266c5392b000b',
+                skin: '/powercms/web/player/powerplayer6/skin.zip',
+                plugins: '/powercms/web/player/powerplayer6/shortcuts.swf,/powercms/web/player/powerplayer6/captions.swf',
+            
+            
+                file: 'https://sczxft.sc.gov.cn:3880/%2Fsmedia%2Fmedia%2F9f9a99a514bb4cb3a881d8c2000318b3.mp41.mp4',
+                
+                backupservers:'',//H5播放时，可以以backupservers里的IP替代多清晰度里的serverIp
+
+                height: '100%',
+                width: '100%',
+                streamid:STREAM_ID,
+                code:'123456789qweasd',
+                'logo.file':'https://sczxft.sc.gov.cn:8480/powercms/',
+                'logo.margin':'',
+                'logo.hide':'',
+                'logo.position':'',
+                'logo.timeout':'',
+                image:'/powercms/vod/powercms_image/jpg/1642495276092.jpg',
+                username:MEMBER_NAME,
+                headtime:'0',
+                bottomtime:'0',
+                starttime:'',
+                endtime:'',
+                title:'2022.1',
+                rid:'38c055a2ee9040b3bd79d884ece97f0a',
+                duration:'1996',
+                filesize:'320587776',
+                headlength:'1024',
+                tracker:'',
+                rtmfpserver:'',
+               // wstrackers:['ws://115.28.215.145:3680'],html5 p2p
+               // iceservers:[{ urls: 'stun:115.28.215.145:3478?transport=udp' }],  html5 p2p
+                statisticsserver:'',
+                weburlparam:'',
+                //controls: true,
+                //stretching: 'exactfit',
+                backcolor: '161616',
+                showrighttoolbar:true,
+                'controlbar.position': 'over',//'bottom',
+        
+        
+        
+                 autostart: false,
+        
+                 provider: 'http',
+                 //debug:'console',
+                'http.startparam': 'start',
+                'shortcuts.step':10,
+                skipad:true,//是否允许跳过广告
+                lastplayposition: $.cookie('ff8080817d7ba39a017e6c58f26e0052'),//用户播放记录
+                noactiontime:0,//播放响应时间
+                preview:false,//启用预览
+                prviewTime:300,//预览前300秒
+                useflashsock: false,//
+                bulletscreen: false, //弹幕
+                thumbsbif:'',
+                video360: 0     //0就是不是全景   1代表全景
+             }); 
+}
+
+function setText(text) {   
+    //alert(text);  
+}    
+
+
+function myBrowser() {
+    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+  
+    var isOpera = userAgent.indexOf("Opera") > -1; //判断是否Opera浏览器
+    var isIE = userAgent.indexOf("compatible") > -1
+            && userAgent.indexOf("MSIE") > -1 && !isOpera; //判断是否IE浏览器
+    var isEdge = userAgent.indexOf("Edge") > -1; //判断是否IE的Edge浏览器
+    var isFF = userAgent.indexOf("Firefox") > -1; //判断是否Firefox浏览器
+    var isSafari = userAgent.indexOf("Safari") > -1
+            && userAgent.indexOf("Chrome") == -1; //判断是否Safari浏览器
+    var isChrome = userAgent.indexOf("Chrome") > -1
+            && userAgent.indexOf("Safari") > -1; //判断Chrome浏览器
+
+    if (isIE) {
+     
+        return "IE";
+    }
+  
+    if (isEdge) {
+        return "Edge";
+    }
+    if (isFF) {
+        return "FF";
+    }
+    if (isSafari) {
+        return "Safari";
+    }
+    if (isChrome) {
+        return "Chrome";
+    }
+    
+}
+
+
+function flash_d(){
+	
+	var brow=myBrowser();
+	if(brow=="Chrome"){
+		
+		window.open('/powercms/softwares/install_flash_player_ppapi.exe');
+		
+	}
+
+	if(brow=="FF"||brow=="Safari"){
+		window.open('/powercms/softwares/install_flash_player_npapi.exe');
+		
+	}
+	if(brow=="IE"||brow=="Edge"){
+		window.open('/powercms/softwares/install_flash_player_ax.exe');
+		
+	}
+
+	
+	
+}
+
+    
+$(document).ready(function() {
+	
+	var brow=myBrowser();
+	
+	if(brow=="Chrome"){
+		var s="/powercms/softwares/install_flash_player_ppapi.exe";
+		$("#flash_v").attr("href",s);
+		
+	}
+
+	if(brow=="FF"||brow=="Safari"){
+		var s="/powercms/softwares/install_flash_player_npapi.exe";
+		$("#flash_v").attr("href",s);
+	}
+	
+	
+    var flashFound = CheckFlash2();
+
+    if (flashFound) {
+        setupFlashPlayer();
+    } else if (browser.versions.mobile) {
+        //alert("mobile");
+        //setupHTML5Player();
+        setupFlashPlayer();
+        //alert("html5");
+    } else {
+        var isIE = (navigator.appVersion.indexOf("Trident") >= 0);
+        var appVersion=navigator.appVersion;
+        if ((window.applicationCache && !isIE)||appVersion.indexOf("Chrome")>-1) { //如果支持html5,用html5播放//ie浏览器不支持  
+            //setupHTML5Player();
+            setupFlashPlayer();
+        } else {
+            switchDisplay();
+            return;
+        } //else end
+    }
+    
+    first_loaded = true;
+    powerplayer().onBeforePlay(
+        function(){
+        //powerplayer('preview').lockSeek();
+    });
+    
+    powerplayer().onPlay(
+        function() 
+        { 
+            //pos = $.cookie('ff8080817d7ba39a017e6c58f26e0052');
+            //if(pos != null && pos > 0 )
+            //{
+                //powerplayer('preview').seek(pos);
+                //first_loaded = false;
+            //}   
+        });  
+    
+    powerplayer().onPause(
+        function() { 
+            //setText("Why did you pause?"); 
+        });  
+        
+    powerplayer().onBuffer(
+        function() { 
+            //setText("Video is buffering..."); 
+    });  
+    
+    powerplayer().onIdle(
+        function() { 
+            //发送结束事件
+            //if(START_TIME != "")
+            //{
+            //    END_TIME = CurrentTime();
+            //    updateStat(START_TIME, END_TIME);   
+            //}           
+    });
+    
+    powerplayer().onComplete(
+        function() { 
+            $.cookie('ff8080817d7ba39a017e6c58f26e0052', null);
+            
+    });
+    
+    //SetCookie
+    powerplayer().onTime(
+        function(event) { 
+            $.cookie('ff8080817d7ba39a017e6c58f26e0052', event.position);
+            var playLink="/powercms/web/Content.action?siteId=ff8080816266c039016266c5392b000b&cateId=&id=ff8080817d7ba39a017e6c560b4d0050&fileIdByWeb=ff8080817d7ba39a017e6c58f26e0052";
+           // var playLink='/powercms/web/Play.action?siteId=ff8080816266c039016266c5392b000b&progid=ff8080817d7ba39a017e6c560b4d0050&playerType=&autostart=0&uimode=1&id=ff8080817d7ba39a017e6c58f26e0052';
+            var playCookie='{"id":"ff8080817d7ba39a017e6c58f26e0052","title":"2022.1","playTime":"1996","playLink":\"'+playLink+'\","position": \"'+event.position+'\"}';
+            $.cookie('ff8080817d7ba39a017e6c58f26e0052_playCookie',playCookie);
+    });
+    
+    powerplayer().onReady(
+        function(){
+            //发送开始事件
+            //if(START_TIME == "")
+            //{
+            //    START_TIME = CurrentTime();
+            //    updateStat(START_TIME, "");
+            //}       
+        }
+    );  
+    powerplayer().onSkipAD(
+        function() { 
+        if(MEMBER_NAME == "") {
+            //document.location.href = '/powercms/web/Register-reg.action?siteId=ff8080816266c039016266c5392b000b';
+            top.window.open('/powercms/web/Register-reg.action?siteId=ff8080816266c039016266c5392b000b');
+        }
+    });
+    powerplayer().onPreviewComplete(
+        function() { 
+        //if(MEMBER_NAME == "") {
+            //document.location.href = '/powercms/web/Register-reg.action?siteId=ff8080816266c039016266c5392b000b';
+            top.window.open('/powercms/web/Register-reg.action?siteId=ff8080816266c039016266c5392b000b');
+        //}
+    });
+});
+
+$(window).unload(function() {
+    //if (START_TIME != "") {
+    //    END_TIME = CurrentTime();
+    //    updateStat(START_TIME, END_TIME);
+    //}
+});
+
+</script>
+</HEAD>
+<BODY scroll="no" Leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" >
+    <div id="preview" style="width: 100%; height: 100%; margin:0 auto; background-color: #000000"></div>
+    <div id="playerNoInstall" style="display:none; width: 100%;height:100%; margin-bottom:19px; margin-top:-19px; background-color: black;">
+        <div style="width: 100%;height:40%;"></div>
+        <table width="100%" border="0" bgcolor="black">
+          <tr> 
+            <td width="45%" rowspan="3" align="right" bgcolor="black">
+            <table width="173" border="0" onclick="flash_d();" background="/powercms/web/images/down_btn.jpg" style="cursor:pointer;">
+                <tr>
+                  <td height="29">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td style="font-size:12px;color:#99B6D6;line-height:17px;" align="left">&nbsp;&nbsp;&nbsp;Adobe FLASH播放器</td>
+                </tr>
+              </table>
+            </td>
+            <td width="55%" align="left" style="font-size:12px;color:#99B6D6;line-height:17px;">本影片的播放需要安装FLASH播放器</td>
+          </tr>
+          <tr> 
+            <td align="left" style="font-size:12px;color:#99B6D6;line-height:17px;">请先安装 <a id="flash_v" href="/powercms/softwares/install_flash_player_ax.exe" style="color:#CBDEF0">Adobe FLASH播放器</a> </td>
+          </tr>
+          <tr>
+            <td align="left" style="font-size:12px;color:#99B6D6;line-height:17px;">安装完成后请刷新页面或按F5</td>
+          </tr>
+        </table>
+    </div>
+</BODY>
+</html>

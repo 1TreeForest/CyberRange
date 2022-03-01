@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
+<title>服务器繁忙</title>
+<link rel="shortcut icon" href="https://i.alipayobjects.com/common/favicon/favicon.ico" type="image/x-icon" />
+
+
+<link rel="stylesheet" href="https://gw.alipayobjects.com/os/s/prod/alipay_site/wait-7ab31.css" /></head>
+<body>
+    <div id="hd">
+        <div class="hd-con clx">
+            <div class="hd-tit">
+                <span class="logo">支付宝<s></s></span>
+                
+            </div>
+        </div>
+    </div>
+    <div class="wait clx">
+        <div class="wait-img">
+            <img src="https://zos.alipayobjects.com/rmsportal/WraxfbjCWCAADKw.jpg" width="420" height="426" />
+        </div>
+        <div class="wait-text">
+            <div class="wait-tit">顾客太多，客官请稍候</div>
+
+            
+
+            <div class="hide f14" id="J_timer" style="margin-bottom:12px;">
+                <img src="https://t.alipayobjects.com/images/rmsweb/T1_rRiXixkXXXXXXXX.gif" width="35" height="35" class="wait-loading">
+                <span id="J_timer_num"></span>秒后尝试插队
+            </div>
+
+            
+            
+            <p class="hide willshow links">
+                <a href="#" id="J_retry_link" class="ui-button ui-button-lwhite">再试一次</a>
+            </p>
+            
+
+            
+            <p class="willhide links"><a href="https://www.alipay.com/">&gt;&gt; 返回支付宝首页</a></p>
+            
+        </div>
+    </div>
+    
+    
+    <div id="ft">
+        <p class="ft">支付宝版权所有 2004-<span id="J_CYear"></span> &nbsp; ICP证：沪B2-20150087</p>
+        <p id="J_spanner"></p>
+    </div>
+    <script>
+    (function(doc) {
+        var getQuery = function getQuery(k){
+            var reg = new RegExp("(^|&)"+ k +"=([^&]*)(&|$)");
+            var r = location.search.substr(1).match(reg);
+            return r!=null ? decodeURIComponent(r[2]) : '';
+        }
+        var gid = function(id){
+            return doc.getElementById(id);
+        };
+        
+        var parseQuery = function() {
+            var ret = {};
+            var qs = location.search.replace(/\?/g, '').split("goto=")[0].split("&");
+            for (var i=0; i<qs.length; i++) {
+                var item = qs[i].split("=");
+                ret[item[0]] = item[1];
+            }
+            return ret;
+        };
+        
+        var getGoto = function(url) {
+            var urls = url.split("goto=");
+            return urls.length > 1 ? decodeURIComponent(urls[1]) : '';
+        };
+        var queryObj = parseQuery();
+        var gotoUrl = getGoto(location.href);
+        var reloadUrl = getQuery('reloadUrl');
+        var alreadyRetryTimes = parseInt(queryObj["alreadyRetryTimes"], 10) || 1;
+        var HIDE_CLS = 'hide';
+        var showXboxWait = function() {
+            doc.getElementsByTagName('body')[0].className = 'showing';
+            var el = gid('J_retry_link');
+            var url = location.href.replace(/alreadyRetryTimes=\d+?/, "alreadyRetryTimes=1");
+            el.setAttribute('href', url);
+
+            gid('J_retry_close').addEventListener('click', function(e){
+                e.preventDefault();
+                doc.getElementsByTagName('body')[0].className = '';
+            }, false);
+        };
+        var showTextWait = function() {
+            doc.getElementsByTagName('body')[0].className = 'showing';
+            var el = gid('J_retry_link');
+            var url = location.href.replace(/alreadyRetryTimes=\d+?/, "alreadyRetryTimes=1");
+            el.setAttribute('href', url);
+        };
+        var rediretor = function(){
+            gid('J_timer').style.display = 'block';
+            var waitMax = parseInt(queryObj['maxtime'], 10);
+            var waitMin = parseInt(queryObj['mintime'], 10);
+            var waitSec = parseInt(Math.abs(waitMin + (waitMax - waitMin) * Math.random()), 10);
+            var rediretUrl = gotoUrl + (gotoUrl.indexOf('?') > -1 ? '&' : '?') + 'alreadyRetryTimes=' + alreadyRetryTimes;
+            var timerNumEl = gid('J_timer_num');
+            var setTimerNode = function(m){
+                timerNumEl.innerHTML = m;
+            }
+            waitSec = isNaN(waitSec) ? parseInt(queryObj['wait'] || 10, 10) : waitSec;
+            setTimerNode(waitSec);
+
+            var timer = setInterval(function() {
+                waitSec--;
+                setTimerNode(waitSec);
+                if(waitSec === 0){
+                    clearInterval(timer);
+                    location.href = rediretUrl;
+                }
+            }, 1000);
+        };
+
+        gid("J_CYear").innerHTML = (new Date()).getFullYear();
+        gid('J_spanner').innerHTML = getQuery('fromspanner').replace(/[><\/%()'" =]/g, '');
+
+        if(reloadUrl &&
+            navigator.userAgent.match(/AlipayClient/i) &&
+            /^http(s)?:\/\/([a-z0-9_\-]+\.)*alipay\.com(:\d+)?(\/.*)*$/.test(reloadUrl)
+        ){
+            location.href = 'https://os.alipayobjects.com/others/rpcLimit.html?reloadUrl=' + reloadUrl;
+            return;
+        }
+        if (!location.search ||
+            location.search.indexOf("fromspanner=") > -1 ||
+            !/^http(s)?:\/\/([a-z0-9_\-]+\.)*alipay\.com(:\d+)?(\/.*)*$/.test(gotoUrl)
+        ) {
+            return;
+        }
+        if(alreadyRetryTimes < 4) {
+            rediretor();
+        }else{
+            
+            showTextWait();
+            
+        }
+    })(document);
+    </script>
+</body>
+</html>
