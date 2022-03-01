@@ -28,7 +28,7 @@ class KeywordSpider(Spider):
     cursor = None
     urls_before = []
 
-    def __init__(self, keyword='all', se='bing', pages=50, *args, **kwargs):
+    def __init__(self, keyword='all', se='bing', pages=500, *args, **kwargs):
         super(KeywordSpider, self).__init__(*args, **kwargs)
         if keyword == 'all':  # 用户选择根据数据库中的词库进行搜索
             self.conn = pymysql.Connect(
