@@ -43,6 +43,12 @@ class SiteCrawlerPipeline(object):
                 self.cursor.execute(sql)
                 # 提交事务
                 self.conn.commit()
+                sql = 'INSERT IGNORE INTO unmarked(domain, name, url)VALUES("%s","%s","%s")' % (
+                    item['domain'], item['name'], item['url'])
+                # 执行
+                self.cursor.execute(sql)
+                # 提交事务
+                self.conn.commit()
                 logging.info('已进行 {} 次数据采集\t\t获取到新对象: {}'.format(self.count, item['domain']))
             except Exception as e:
                 sql = 'UPDATE results SET name="%s", url="%s", aliveDate="%s" WHERE domain="%s" AND keyword="%s"' \
