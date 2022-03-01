@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="zh-CN" prefix="og: https://ogp.me/ns#">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let r;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",r=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(r){e["rocket"+t]=n=r}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,r=document.createRange(),i=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const a=document.createDocumentFragment();r.setStart(a,0),a.appendChild(r.createContextualFragment(t)),i.insertBefore(a,o)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	
+<!-- Search Engine Optimization by Rank Math PRO - https://s.rankmath.com/home -->
+<title>美国实用资讯 - 每日筛选网上赚钱和美国生活攻略等最新资讯</title><link rel="stylesheet" href="https://www.chineselikela.com/wp-content/cache/min/1/ef441f4f277bf854b9ccdda45628f876.css" media="all" data-minify="1" />
+<meta name="description" content="Amazon,Youtube等美国兼职赚钱途径分享，华人爆款厨房用具和家用电器推荐，美国购物指南和居家攻略，以及各类美国免费福利信息汇总，并为您介绍网上赚钱，美国法律，买房资讯，家具装饰等美国攻略。"/>
+<meta name="robots" content="follow, index"/>
+<link rel="canonical" href="https://www.chineselikela.com/" />
+<link rel="next" href="https://www.chineselikela.com/page/2/" />
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="美国实用资讯 - 每日筛选网上赚钱和美国生活攻略等最新资讯" />
+<meta property="og:description" content="Amazon,Youtube等美国兼职赚钱途径分享，华人爆款厨房用具和家用电器推荐，美国购物指南和居家攻略，以及各类美国免费福利信息汇总，并为您介绍网上赚钱，美国法律，买房资讯，家具装饰等美国攻略。" />
+<meta property="og:url" content="https://www.chineselikela.com/" />
+<meta property="og:site_name" content="美国实用资讯" />
+<meta property="og:image" content="https://www.chineselikela.com/wp-content/uploads/2022/01/logotouming.png" />
+<meta property="og:image:secure_url" content="https://www.chineselikela.com/wp-content/uploads/2022/01/logotouming.png" />
+<meta property="og:image:width" content="280" />
+<meta property="og:image:height" content="280" />
+<meta property="og:image:type" content="image/png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="美国实用资讯 - 每日筛选网上赚钱和美国生活攻略等最新资讯" />
+<meta name="twitter:description" content="Amazon,Youtube等美国兼职赚钱途径分享，华人爆款厨房用具和家用电器推荐，美国购物指南和居家攻略，以及各类美国免费福利信息汇总，并为您介绍网上赚钱，美国法律，买房资讯，家具装饰等美国攻略。" />
+<meta name="twitter:image" content="https://www.chineselikela.com/wp-content/uploads/2022/01/logotouming.png" />
+<script type="application/ld+json" class="rank-math-schema-pro">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://www.chineselikela.com/#person","name":"\u7f8e\u56fd\u653b\u7565","image":{"@type":"ImageObject","@id":"https://www.chineselikela.com/#logo","url":"https://www.chineselikela.com/wp-content/uploads/2020/11/cropped-logo2020touming-1.png","caption":"\u7f8e\u56fd\u653b\u7565","inLanguage":"zh-CN","width":"380","height":"126"}},{"@type":"WebSite","@id":"https://www.chineselikela.com/#website","url":"https://www.chineselikela.com","name":"\u7f8e\u56fd\u653b\u7565","publisher":{"@id":"https://www.chineselikela.com/#person"},"inLanguage":"zh-CN","potentialAction":{"@type":"SearchAction","target":"https://www.chineselikela.com/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"CollectionPage","@id":"https://www.chineselikela.com/#webpage","url":"https://www.chineselikela.com/","name":"\u7f8e\u56fd\u5b9e\u7528\u8d44\u8baf - \u6bcf\u65e5\u7b5b\u9009\u7f51\u4e0a\u8d5a\u94b1\u548c\u7f8e\u56fd\u751f\u6d3b\u653b\u7565\u7b49\u6700\u65b0\u8d44\u8baf","about":{"@id":"https://www.chineselikela.com/#person"},"isPartOf":{"@id":"https://www.chineselikela.com/#website"},"inLanguage":"zh-CN"}]}</script>
+<meta name="google-site-verification" content="Vtfa1Ub8wIZGaPJzCeh-a_u0wHJ9hAwSBbDxl2Okb8M" />
+<!-- /Rank Math WordPress SEO plugin -->
+
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//pagead2.googlesyndication.com' />
+
+<link rel="alternate" type="application/rss+xml" title="美国实用资讯 &raquo; Feed" href="https://www.chineselikela.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="美国实用资讯 &raquo; 评论Feed" href="https://www.chineselikela.com/comments/feed/" />
+
+
+<style id='global-styles-inline-css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--palette-color-1: var(--paletteColor1, #1c7e1a);--wp--preset--color--palette-color-2: var(--paletteColor2, #ff9807);--wp--preset--color--palette-color-3: var(--paletteColor3, #3A4F66);--wp--preset--color--palette-color-4: var(--paletteColor4, #192a3d);--wp--preset--color--palette-color-5: var(--paletteColor5, #e1e8ed);--wp--preset--color--palette-color-6: var(--paletteColor6, #f2f5f7);--wp--preset--color--palette-color-7: var(--paletteColor7, #FAFBFC);--wp--preset--color--palette-color-8: var(--paletteColor8, #ffffff);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--gradient--juicy-peach: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);--wp--preset--gradient--young-passion: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);--wp--preset--gradient--true-sunset: linear-gradient(to right, #fa709a 0%, #fee140 100%);--wp--preset--gradient--morpheus-den: linear-gradient(to top, #30cfd0 0%, #330867 100%);--wp--preset--gradient--plum-plate: linear-gradient(135deg, #667eea 0%, #764ba2 100%);--wp--preset--gradient--aqua-splash: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);--wp--preset--gradient--love-kiss: linear-gradient(to top, #ff0844 0%, #ffb199 100%);--wp--preset--gradient--new-retrowave: linear-gradient(to top, #3b41c5 0%, #a981bb 49%, #ffc8a9 100%);--wp--preset--gradient--plum-bath: linear-gradient(to top, #cc208e 0%, #6713d2 100%);--wp--preset--gradient--high-flight: linear-gradient(to right, #0acffe 0%, #495aff 100%);--wp--preset--gradient--teen-party: linear-gradient(-225deg, #FF057C 0%, #8D0B93 50%, #321575 100%);--wp--preset--gradient--fabled-sunset: linear-gradient(-225deg, #231557 0%, #44107A 29%, #FF1361 67%, #FFF800 100%);--wp--preset--gradient--arielle-smile: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);--wp--preset--gradient--itmeo-branding: linear-gradient(180deg, #2af598 0%, #009efd 100%);--wp--preset--gradient--deep-blue: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);--wp--preset--gradient--strong-bliss: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);--wp--preset--gradient--sweet-period: linear-gradient(to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);--wp--preset--gradient--purple-division: linear-gradient(to top, #7028e4 0%, #e5b2ca 100%);--wp--preset--gradient--cold-evening: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);--wp--preset--gradient--mountain-rock: linear-gradient(to right, #868f96 0%, #596164 100%);--wp--preset--gradient--desert-hump: linear-gradient(to top, #c79081 0%, #dfa579 100%);--wp--preset--gradient--ethernal-constance: linear-gradient(to top, #09203f 0%, #537895 100%);--wp--preset--gradient--happy-memories: linear-gradient(-60deg, #ff5858 0%, #f09819 100%);--wp--preset--gradient--grown-early: linear-gradient(to top, #0ba360 0%, #3cba92 100%);--wp--preset--gradient--morning-salad: linear-gradient(-225deg, #B7F8DB 0%, #50A7C2 100%);--wp--preset--gradient--night-call: linear-gradient(-225deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%);--wp--preset--gradient--mind-crawl: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);--wp--preset--gradient--angel-care: linear-gradient(-225deg, #FFE29F 0%, #FFA99F 48%, #FF719A 100%);--wp--preset--gradient--juicy-cake: linear-gradient(to top, #e14fad 0%, #f9d423 100%);--wp--preset--gradient--rich-metal: linear-gradient(to right, #d7d2cc 0%, #304352 100%);--wp--preset--gradient--mole-hall: linear-gradient(-20deg, #616161 0%, #9bc5c3 100%);--wp--preset--gradient--cloudy-knoxville: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);--wp--preset--gradient--soft-grass: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);--wp--preset--gradient--saint-petersburg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);--wp--preset--gradient--everlasting-sky: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);--wp--preset--gradient--kind-steel: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);--wp--preset--gradient--over-sun: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);--wp--preset--gradient--premium-white: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);--wp--preset--gradient--clean-mirror: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);--wp--preset--gradient--wild-apple: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);--wp--preset--gradient--snow-again: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);--wp--preset--gradient--confident-cloud: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);--wp--preset--gradient--glass-water: linear-gradient(to top, #dfe9f3 0%, white 100%);--wp--preset--gradient--perfect-white: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+
+
+
+
+<style id='ez-toc-inline-css'>
+div#ez-toc-container p.ez-toc-title {font-size: 100%;}div#ez-toc-container p.ez-toc-title {font-weight: 500;}div#ez-toc-container ul li {font-size: 90%;}div#ez-toc-container {background: #eafceb;border: 1px solid #e5e5e5;}div#ez-toc-container p.ez-toc-title {color: #2c8e3e;}div#ez-toc-container ul.ez-toc-list a {color: #4c4c4c;}div#ez-toc-container ul.ez-toc-list a:hover {color: #3ce055;}div#ez-toc-container ul.ez-toc-list a:visited {color: #3bb58a;}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+			<!-- Google Analytics -->
+			<script type="rocketlazyloadscript">
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-59126427-1', 'auto');
+			ga('send', 'pageview');
+						</script>
+			<!-- End Google Analytics -->
+
+			
+			<!-- Global site tag (gtag.js) - Google Analytics v4 -->
+			<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=chineselikela.com301684115 - GA4"></script>
+			<script type="rocketlazyloadscript">
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'chineselikela.com301684115 - GA4');
+			</script>
+			<!-- End Google Analytics v4 -->
+
+			<script type="rocketlazyloadscript" src='https://www.chineselikela.com/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js' defer></script>
+<script type="rocketlazyloadscript" src='https://www.chineselikela.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js' defer></script>
+
+<!-- Google Analytics snippet added by Site Kit -->
+<script type="rocketlazyloadscript" src='https://www.googletagmanager.com/gtag/js?id=G-0D7FK8EK3B' id='google_gtagjs-js' async></script>
+<script type="rocketlazyloadscript" id='google_gtagjs-js-after'>
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "G-0D7FK8EK3B", {"optimize_id":"OPT-KD25DVP"});
+</script>
+
+<!-- End Google Analytics snippet added by Site Kit -->
+<link rel="https://api.w.org/" href="https://www.chineselikela.com/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.chineselikela.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.chineselikela.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.9.1" />
+<style type="text/css">.aawp .aawp-tb__row--highlight{background-color:#1f9627;}.aawp .aawp-tb__row--highlight{color:#ffffff;}.aawp .aawp-tb__row--highlight a{color:#ffffff;}</style><meta name="generator" content="Site Kit by Google 1.69.0" /><link rel="alternate" hreflang="zh-CN" href="https://www.chineselikela.com/"/>
+<link rel="alternate" hreflang="en-US" href="https://www.chineselikela.com/en"/>
+<link rel="alternate" hreflang="zh" href="https://www.chineselikela.com/"/>
+<link rel="alternate" hreflang="en" href="https://www.chineselikela.com/en"/>
+<noscript></noscript>
+
+<!-- Google AdSense snippet added by Site Kit -->
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">
+<!-- End Google AdSense snippet added by Site Kit -->
+
+<!-- Google AdSense snippet added by Site Kit -->
+<script type="rocketlazyloadscript" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4818737830370749" crossorigin="anonymous"></script>
+
+<!-- End Google AdSense snippet added by Site Kit -->
+<link rel="icon" href="https://www.chineselikela.com/wp-content/uploads/2019/02/cropped-logo444-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.chineselikela.com/wp-content/uploads/2019/02/cropped-logo444-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.chineselikela.com/wp-content/uploads/2019/02/cropped-logo444-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.chineselikela.com/wp-content/uploads/2019/02/cropped-logo444-270x270.png" />
+<style>
+.ai-viewports                 {--ai: 1;}
+.ai-viewport-3                { display: none !important;}
+.ai-viewport-2                { display: none !important;}
+.ai-viewport-1                { display: inherit !important;}
+.ai-viewport-0                { display: none !important;}
+@media (min-width: 768px) and (max-width: 979px) {
+.ai-viewport-1                { display: none !important;}
+.ai-viewport-2                { display: inherit !important;}
+}
+@media (max-width: 767px) {
+.ai-viewport-1                { display: none !important;}
+.ai-viewport-3                { display: inherit !important;}
+}
+</style>
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>	</head>
+
+<body data-rsssl=1 class="home blog wp-embed-responsive aawp-custom translatepress-zh_CN ct-loading" data-link="type-3" data-prefix="blog" data-header="type-1:sticky:auto" data-footer="type-1:reveal" >
+
+<a class="skip-link show-on-focus" href="#main">
+	跳过内容</a>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-dark-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0.49803921568627" /><feFuncG type="table" tableValues="0 0.49803921568627" /><feFuncB type="table" tableValues="0 0.49803921568627" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-red"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 0.27843137254902" /><feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-midnight"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0" /><feFuncG type="table" tableValues="0 0.64705882352941" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-magenta-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.78039215686275 1" /><feFuncG type="table" tableValues="0 0.94901960784314" /><feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-green"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.44705882352941 0.4" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-orange"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.098039215686275 1" /><feFuncG type="table" tableValues="0 0.66274509803922" /><feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>
+<div id="main-container">
+	<header id="header" class="ct-header" data-id="type-1" itemscope="" itemtype="https://schema.org/WPHeader" ><div data-device="desktop" ><div class="ct-sticky-container"><div data-sticky="auto-hide"><div data-row="middle" data-column-set="2" ><div class="ct-container" ><div data-column="start" data-placements="1" ><div data-items="primary" >
+<div	class="site-branding"
+	data-id="logo" 		itemscope="itemscope" itemtype="https://schema.org/Organization" >
+
+			<a href="https://www.chineselikela.com/" class="site-logo-container" rel="home"><img width="380" height="126" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20380%20126'%3E%3C/svg%3E" class="default-logo" alt="美国实用资讯" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2022/01/chineselikelalogo.png" /><noscript><img width="380" height="126" src="https://www.chineselikela.com/wp-content/uploads/2022/01/chineselikelalogo.png" class="default-logo" alt="美国实用资讯" /></noscript></a>	
+	</div>
+
+
+<nav
+	id="header-menu-1"
+	class="header-menu-1"
+	data-id="menu" data-interaction="hover" 	data-menu="type-4"
+	data-dropdown="type-1:simple"		data-responsive="no"	itemscope="" itemtype="https://schema.org/SiteNavigationElement" 	aria-label="标题菜单">
+
+	<ul id="menu-caidan" class="menu"><li id="menu-item-24995" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-24995 animated-submenu"><a href="https://www.chineselikela.com/cash/" class="ct-menu-link"><i class="fa fa-money" aria-hidden="true"></i>  赚钱<span class="ct-toggle-dropdown-desktop"><svg class="ct-icon" width="8" height="8" viewBox="0 0 15 15"><path d="M2.1,3.2l5.4,5.4l5.4-5.4L15,4.3l-7.5,7.5L0,4.3L2.1,3.2z"/></svg></span></a><button class="ct-toggle-dropdown-desktop-ghost" aria-label="展开下拉菜单" aria-expanded="false" ></button>
+<ul class="sub-menu">
+	<li id="menu-item-24996" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-24996 animated-submenu"><a href="https://www.chineselikela.com/work/" class="ct-menu-link"><i class="fa fa-briefcase" aria-hidden="true"></i> 工作<span class="ct-toggle-dropdown-desktop"><svg class="ct-icon" width="8" height="8" viewBox="0 0 15 15"><path d="M2.1,3.2l5.4,5.4l5.4-5.4L15,4.3l-7.5,7.5L0,4.3L2.1,3.2z"/></svg></span></a><button class="ct-toggle-dropdown-desktop-ghost" aria-label="展开下拉菜单" aria-expanded="false" ></button>
+	<ul class="sub-menu">
+		<li id="menu-item-11579" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11579"><a href="https://www.chineselikela.com/work/study/" class="ct-menu-link">创业点子</a></li>
+		<li id="menu-item-11580" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11580"><a href="https://www.chineselikela.com/work/story/" class="ct-menu-link">华企故事</a></li>
+		<li id="menu-item-10607" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10607"><a href="https://chineselikela.com/?s=%E5%BD%93%E5%85%B5" class="ct-menu-link">美国当兵</a></li>
+		<li id="menu-item-10608" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10608"><a href="https://chineselikela.com/?s=%E9%A4%90%E9%A6%86" class="ct-menu-link">开中餐馆</a></li>
+		<li id="menu-item-20750" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20750"><a href="https://www.chineselikela.com/career-listings/" class="ct-menu-link">美国工作索引表</a></li>
+		<li id="menu-item-6514" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6514"><a href="https://www.chineselikela.com/%e7%be%8e%e5%9b%bd%e5%8a%a0%e5%b7%9e%e5%90%84%e7%b1%bb%e5%b7%a5%e4%bd%9c%e6%89%a7%e7%85%a7%e7%b4%a2%e5%bc%95%e8%a1%a8/" class="ct-menu-link">美国加州各类工作执照索引表</a></li>
+	</ul>
+</li>
+	<li id="menu-item-25006" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25006"><a href="https://www.chineselikela.com/cash/make-money-online/" class="ct-menu-link">网上赚钱</a></li>
+	<li id="menu-item-25005" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25005"><a href="https://www.chineselikela.com/cash/make-money-with-mobile-phones/" class="ct-menu-link">手机赚钱</a></li>
+	<li id="menu-item-25004" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25004"><a href="https://www.chineselikela.com/cash/make-money-on-youtube/" class="ct-menu-link">YouTube赚钱</a></li>
+	<li id="menu-item-25003" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25003"><a href="https://www.chineselikela.com/cash/make-money-on-amazon/" class="ct-menu-link">Amazon赚钱</a></li>
+</ul>
+</li>
+<li id="menu-item-25067" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-25067 animated-submenu"><a href="https://www.chineselikela.com/deals/" class="ct-menu-link"><i class="fa fa-cart-plus" aria-hidden="true"></i> 好物<span class="ct-toggle-dropdown-desktop"><svg class="ct-icon" width="8" height="8" viewBox="0 0 15 15"><path d="M2.1,3.2l5.4,5.4l5.4-5.4L15,4.3l-7.5,7.5L0,4.3L2.1,3.2z"/></svg></span></a><button class="ct-toggle-dropdown-desktop-ghost" aria-label="展开下拉菜单" aria-expanded="false" ></button>
+<ul class="sub-menu">
+	<li id="menu-item-20713" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20713"><a href="https://www.chineselikela.com/deals/appliance/" class="ct-menu-link">家用电器</a></li>
+	<li id="menu-item-20715" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20715"><a href="https://www.chineselikela.com/deals/health/" class="ct-menu-link">药品健康</a></li>
+	<li id="menu-item-20714" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20714"><a href="https://www.chineselikela.com/deals/electronics/" class="ct-menu-link">电子产品</a></li>
+	<li id="menu-item-20712" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20712"><a href="https://www.chineselikela.com/deals/kitchen/" class="ct-menu-link">厨房用具</a></li>
+	<li id="menu-item-22376" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22376"><a href="https://www.chineselikela.com/deals/fitness/" class="ct-menu-link">健身美体</a></li>
+	<li id="menu-item-22377" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22377"><a href="https://www.chineselikela.com/deals/entertainment-deals/" class="ct-menu-link">娱乐设备</a></li>
+	<li id="menu-item-22378" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22378"><a href="https://www.chineselikela.com/deals/furniture/" class="ct-menu-link">家具装饰</a></li>
+	<li id="menu-item-22379" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22379"><a href="https://www.chineselikela.com/deals/courtyard/" class="ct-menu-link">庭院花园</a></li>
+	<li id="menu-item-22380" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22380"><a href="https://www.chineselikela.com/deals/outdoor/" class="ct-menu-link">户外生活</a></li>
+	<li id="menu-item-22381" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22381"><a href="https://www.chineselikela.com/deals/auto-deals/" class="ct-menu-link">汽车相关</a></li>
+	<li id="menu-item-22382" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22382"><a href="https://www.chineselikela.com/deals/cleaning/" class="ct-menu-link">清洁卫生</a></li>
+</ul>
+</li>
+<li id="menu-item-20720" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-20720 animated-submenu"><a href="https://www.chineselikela.com/huaren/free-offer/" class="ct-menu-link"><i class="fa fa-gift" aria-hidden="true"></i> 福利<span class="ct-toggle-dropdown-desktop"><svg class="ct-icon" width="8" height="8" viewBox="0 0 15 15"><path d="M2.1,3.2l5.4,5.4l5.4-5.4L15,4.3l-7.5,7.5L0,4.3L2.1,3.2z"/></svg></span></a><button class="ct-toggle-dropdown-desktop-ghost" aria-label="展开下拉菜单" aria-expanded="false" ></button>
+<ul class="sub-menu">
+	<li id="menu-item-6511" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6511"><a href="https://www.chineselikela.com/300%e7%bd%91%e7%bb%9c%e5%85%8d%e8%b4%b9%e8%b5%84%e6%ba%90%e5%88%86%e4%ba%ab%e5%a4%a7%e9%9b%86%e5%90%88/" class="ct-menu-link">300+网络免费资源分享大集合</a></li>
+	<li id="menu-item-20751" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-20751"><a href="https://www.chineselikela.com/huaren/free-offer/17270/" class="ct-menu-link">23个免费无版权图片网站</a></li>
+	<li id="menu-item-31353" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-31353"><a href="https://www.chineselikela.com/tag/%e5%85%8d%e8%b4%b9/" class="ct-menu-link">免费集合</a></li>
+</ul>
+</li>
+<li id="menu-item-20678" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-20678 animated-submenu"><a href="https://www.chineselikela.com/huaren/" class="ct-menu-link"><i class="fa fa-coffee" aria-hidden="true"></i> 资讯<span class="ct-toggle-dropdown-desktop"><svg class="ct-icon" width="8" height="8" viewBox="0 0 15 15"><path d="M2.1,3.2l5.4,5.4l5.4-5.4L15,4.3l-7.5,7.5L0,4.3L2.1,3.2z"/></svg></span></a><button class="ct-toggle-dropdown-desktop-ghost" aria-label="展开下拉菜单" aria-expanded="false" ></button>
+<ul class="sub-menu">
+	<li id="menu-item-12311" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12311"><a href="https://www.chineselikela.com/guide-la/" class="ct-menu-link">北美生活导航</a></li>
+	<li id="menu-item-11582" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-11582 animated-submenu"><a href="https://www.chineselikela.com/huaren/immigrant/" class="ct-menu-link"><i class="fa fa-child" aria-hidden="true"></i> 移民<span class="ct-toggle-dropdown-desktop"><svg class="ct-icon" width="8" height="8" viewBox="0 0 15 15"><path d="M2.1,3.2l5.4,5.4l5.4-5.4L15,4.3l-7.5,7.5L0,4.3L2.1,3.2z"/></svg></span></a><button class="ct-toggle-dropdown-desktop-ghost" aria-label="展开下拉菜单" aria-expanded="false" ></button>
+	<ul class="sub-menu">
+		<li id="menu-item-11584" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11584"><a href="https://chineselikela.com/?s=%E6%B3%95%E5%BE%8B" class="ct-menu-link">美国法律</a></li>
+		<li id="menu-item-11583" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11583"><a href="https://chineselikela.com/immigrant-map" class="ct-menu-link">移民路径图</a></li>
+	</ul>
+</li>
+	<li id="menu-item-6516" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-6516 animated-submenu"><a href="https://www.chineselikela.com/huaren/house/" class="ct-menu-link"><i class="fa fa-hospital-o" aria-hidden="true"></i> 住房<span class="ct-toggle-dropdown-desktop"><svg class="ct-icon" width="8" height="8" viewBox="0 0 15 15"><path d="M2.1,3.2l5.4,5.4l5.4-5.4L15,4.3l-7.5,7.5L0,4.3L2.1,3.2z"/></svg></span></a><button class="ct-toggle-dropdown-desktop-ghost" aria-label="展开下拉菜单" aria-expanded="false" ></button>
+	<ul class="sub-menu">
+		<li id="menu-item-10612" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10612"><a href="https://chineselikela.com/?s=%E4%B9%B0%E6%88%BF" class="ct-menu-link">买房资讯</a></li>
+		<li id="menu-item-10611" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10611"><a href="https://chineselikela.com/?s=%E7%A7%9F%E6%88%BF" class="ct-menu-link">租房须知</a></li>
+		<li id="menu-item-10613" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10613"><a href="https://chineselikela.com/?s=%E6%88%BF%E5%B1%8B" class="ct-menu-link">房屋维护</a></li>
+	</ul>
+</li>
+	<li id="menu-item-2305" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-2305 animated-submenu"><a href="https://www.chineselikela.com/huaren/auto/" class="ct-menu-link"><i class="fa fa-car" aria-hidden="true"></i> 汽车<span class="ct-toggle-dropdown-desktop"><svg class="ct-icon" width="8" height="8" viewBox="0 0 15 15"><path d="M2.1,3.2l5.4,5.4l5.4-5.4L15,4.3l-7.5,7.5L0,4.3L2.1,3.2z"/></svg></span></a><button class="ct-toggle-dropdown-desktop-ghost" aria-label="展开下拉菜单" aria-expanded="false" ></button>
+	<ul class="sub-menu">
+		<li id="menu-item-10615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10615"><a href="https://chineselikela.com/?s=%E7%BD%9A%E5%8D%95" class="ct-menu-link">驾照罚单</a></li>
+		<li id="menu-item-10614" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10614"><a href="https://chineselikela.com/?s=%E4%B9%B0%E8%BD%A6" class="ct-menu-link">买车经验</a></li>
+	</ul>
+</li>
+	<li id="menu-item-2301" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-2301 animated-submenu"><a href="https://www.chineselikela.com/huaren/live/" class="ct-menu-link"><i class="fa fa-camera-retro" aria-hidden="true"></i> 玩乐<span class="ct-toggle-dropdown-desktop"><svg class="ct-icon" width="8" height="8" viewBox="0 0 15 15"><path d="M2.1,3.2l5.4,5.4l5.4-5.4L15,4.3l-7.5,7.5L0,4.3L2.1,3.2z"/></svg></span></a><button class="ct-toggle-dropdown-desktop-ghost" aria-label="展开下拉菜单" aria-expanded="false" ></button>
+	<ul class="sub-menu">
+		<li id="menu-item-11577" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11577"><a href="https://www.chineselikela.com/huaren/entertainment/" class="ct-menu-link">情趣图文</a></li>
+		<li id="menu-item-10619" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10619"><a href="https://chineselikela.com/tag/%E6%97%85%E6%B8%B8/" class="ct-menu-link">私家景点</a></li>
+		<li id="menu-item-10618" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10618"><a href="https://chineselikela.com/?s=%E6%94%BB%E7%95%A5" class="ct-menu-link">旅游攻略</a></li>
+	</ul>
+</li>
+	<li id="menu-item-21004" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-21004"><a href="https://www.chineselikela.com/huaren/local/" class="ct-menu-link">城市资讯</a></li>
+	<li id="menu-item-30272" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-30272"><a href="https://www.chineselikela.com/quiz/" class="ct-menu-link">知识问答</a></li>
+</ul>
+</li>
+<li id="menu-item-26981" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26981"><a href="https://www.chineselikela.com/quiz/" class="ct-menu-link"><i class="fa fa-question-circle" aria-hidden="true"></i> 问答</a></li>
+<li id="menu-item-24997" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24997"><a href="https://www.chineselikela.com/top10/" class="ct-menu-link"><i class="fa fa-fire" aria-hidden="true"></i> 热帖</a></li>
+<li id="menu-item-33117" class="trp-language-switcher-container menu-item menu-item-type-post_type menu-item-object-language_switcher menu-item-33117"><a href="https://www.chineselikela.com/en" class="ct-menu-link"><span data-no-translation><img class="trp-flag-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2018%2012'%3E%3C/svg%3E" width="18" height="12" alt="en_US" title="English" data-lazy-src="https://www.chineselikela.com/wp-content/plugins/translatepress-multilingual/assets/images/flags/en_US.png"><noscript><img class="trp-flag-image" src="https://www.chineselikela.com/wp-content/plugins/translatepress-multilingual/assets/images/flags/en_US.png" width="18" height="12" alt="en_US" title="English"></noscript><span class="trp-ls-language-name">English</span></span></a></li>
+</ul></nav>
+
+</div></div><div data-column="end" data-placements="1" ><div data-items="primary" >
+<div
+	class="ct-search-box "
+	data-id="search-input" >
+	
+
+<form
+	role="search" method="get"
+	class="search-form"
+	action="https://www.chineselikela.com"
+	data-live-results="thumbs">
+
+	<input type="search"  placeholder="热搜：赚钱app" value="" name="s" autocomplete="off" title="搜索输入" />
+
+	<button type="submit" class="search-submit" aria-label="搜索按钮">
+		<svg class="ct-icon" aria-hidden="true" width="15" height="15" viewBox="0 0 15 15"><path d="M14.8,13.7L12,11c0.9-1.2,1.5-2.6,1.5-4.2c0-3.7-3-6.8-6.8-6.8S0,3,0,6.8s3,6.8,6.8,6.8c1.6,0,3.1-0.6,4.2-1.5l2.8,2.8c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2C15.1,14.5,15.1,14,14.8,13.7z M1.5,6.8c0-2.9,2.4-5.2,5.2-5.2S12,3.9,12,6.8S9.6,12,6.8,12S1.5,9.6,1.5,6.8z"/></svg>
+		<span data-loader="circles"><span></span><span></span><span></span></span>
+	</button>
+
+	
+			<input type="hidden" name="ct_post_type" value="post:page">
+	
+</form>
+
+
+</div>
+</div></div></div></div></div></div></div><div data-device="mobile" ><div data-row="top" data-column-set="3" ><div class="ct-container" ><div data-column="start" data-placements="1" ><div data-items="primary" >
+<button
+	data-toggle-panel="#offcanvas"
+	class="ct-header-trigger ct-toggle "
+	data-design="simple"
+	data-label="right"
+	aria-label="在画布外打开"
+	data-id="trigger" >
+
+	<span class="ct-label ct-hidden-sm ct-hidden-md ct-hidden-lg">本站导航</span>
+
+	<svg
+		class="ct-icon"
+		width="18" height="14" viewBox="0 0 18 14"
+		aria-hidden="true"
+		data-type="type-1">
+
+		<rect y="0.00" width="18" height="1.7" rx="1"/>
+		<rect y="6.15" width="18" height="1.7" rx="1"/>
+		<rect y="12.3" width="18" height="1.7" rx="1"/>
+	</svg>
+</button>
+
+<button 
+	data-toggle-panel="#search-modal"
+	class="ct-header-search ct-toggle "
+	aria-label="打开搜索表格"
+	data-label="left"
+	data-id="search" >
+
+	<span class="ct-label ct-hidden-sm ct-hidden-md ct-hidden-lg">搜索</span>
+
+	<svg class="ct-icon" aria-hidden="true" width="15" height="15" viewBox="0 0 15 15"><path d="M14.8,13.7L12,11c0.9-1.2,1.5-2.6,1.5-4.2c0-3.7-3-6.8-6.8-6.8S0,3,0,6.8s3,6.8,6.8,6.8c1.6,0,3.1-0.6,4.2-1.5l2.8,2.8c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2C15.1,14.5,15.1,14,14.8,13.7z M1.5,6.8c0-2.9,2.4-5.2,5.2-5.2S12,3.9,12,6.8S9.6,12,6.8,12S1.5,9.6,1.5,6.8z"/></svg></button>
+</div></div><div data-column="middle" ><div data-items="" >
+<div	class="site-branding"
+	data-id="logo" 		itemscope="itemscope" itemtype="https://schema.org/Organization" >
+
+			<a href="https://www.chineselikela.com/" class="site-logo-container" rel="home"><img width="380" height="126" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20380%20126'%3E%3C/svg%3E" class="default-logo" alt="美国实用资讯" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2022/01/chineselikelalogo.png" /><noscript><img width="380" height="126" src="https://www.chineselikela.com/wp-content/uploads/2022/01/chineselikelalogo.png" class="default-logo" alt="美国实用资讯" /></noscript></a>	
+	</div>
+
+</div></div><div data-column="end" data-placements="1" ><div data-items="primary" >
+<div
+	class="ct-language-switcher "
+	data-type="inline"
+	data-id="language-switcher" >
+
+	<ul class="ct-language"><li><a href="https://www.chineselikela.com/en" aria-label="English"><img class="trp-flag-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2018%2012'%3E%3C/svg%3E" width="18" height="12" alt="en_US" title="English" data-lazy-src="https://www.chineselikela.com/wp-content/plugins/translatepress-multilingual/assets/images/flags/en_US.png"><noscript><img class="trp-flag-image" src="https://www.chineselikela.com/wp-content/plugins/translatepress-multilingual/assets/images/flags/en_US.png" width="18" height="12" alt="en_US" title="English"></noscript><span>English</span></a></li></ul>
+</div>
+</div></div></div></div></div></header>
+	<main id="main" class="site-main hfeed" itemscope="itemscope" itemtype="https://schema.org/CreativeWork" >
+
+		
+<div class="ct-container" data-sidebar="right" data-vertical-spacing="top:bottom">
+
+	<section >
+		<div data-block="hook:33206" ><article ><div class="entry-content" >
+<div class="wp-container-621dd2ed834c0 wp-block-group has-palette-color-6-background-color has-background"><div class="wp-block-group__inner-container">
+<h1 class="has-text-align-center has-normal-font-size" id="工作求职-网上赚钱-生活攻略">工作求职·网上赚钱·生活攻略</h1>
+
+
+<form role="search" method="get" action="https://www.chineselikela.com/" class="wp-block-search__button-outside wp-block-search__text-button aligncenter wp-block-search"><label for="wp-block-search__input-1" class="wp-block-search__label screen-reader-text">搜索</label><div class="wp-block-search__inside-wrapper "  style="width: 100%"><input type="search" id="wp-block-search__input-1" class="wp-block-search__input " name="s" value="" placeholder="输入您想查找的内容…"  required /><button type="submit" class="wp-block-search__button has-text-color has-palette-color-8-color has-background has-palette-color-1-background-color " >搜索</button></div></form>
+
+
+<div class="wp-container-621dd2ed82bed wp-block-buttons">
+<div class="wp-block-button has-custom-font-size is-style-fill" style="font-size:10px"><a class="wp-block-button__link has-palette-color-3-color has-palette-color-5-background-color has-text-color has-background" href="https://www.chineselikela.com/cash/make-money-online/11915/" style="border-radius:10px" target="_blank" rel="noreferrer noopener">🔥 赚钱APP</a></div>
+
+
+
+<div class="wp-block-button has-custom-font-size is-style-fill" style="font-size:10px"><a class="wp-block-button__link has-palette-color-3-color has-palette-color-5-background-color has-text-color has-background" href="https://www.chineselikela.com/huaren/auto/12591/" style="border-radius:10px" target="_blank" rel="noreferrer noopener">考驾照</a></div>
+
+
+
+<div class="wp-block-button has-custom-font-size is-style-fill" style="font-size:10px"><a class="wp-block-button__link has-palette-color-3-color has-palette-color-5-background-color has-text-color has-background" href="https://www.chineselikela.com/huaren/auto/15437/" style="border-radius:10px" target="_blank" rel="noreferrer noopener">超速罚单</a></div>
+
+
+
+<div class="wp-block-button has-custom-font-size is-style-fill" style="font-size:10px"><a class="wp-block-button__link has-palette-color-3-color has-palette-color-5-background-color has-text-color has-background" href="https://www.chineselikela.com/deals/18027/" style="border-radius:10px" target="_blank" rel="noreferrer noopener">🔥 史低价</a></div>
+
+
+
+<div class="wp-block-button has-custom-font-size is-style-fill" style="font-size:10px"><a class="wp-block-button__link has-palette-color-3-color has-palette-color-5-background-color has-text-color has-background" href="https://www.chineselikela.com/deals/kitchen/31051/" style="border-radius:10px" target="_blank" rel="noreferrer noopener">华人神器</a></div>
+
+
+
+<div class="wp-block-button has-custom-font-size is-style-fill" style="font-size:10px"><a class="wp-block-button__link has-palette-color-3-color has-palette-color-5-background-color has-text-color has-background" href="https://www.chineselikela.com/deals/health/20666/" style="border-radius:10px" target="_blank" rel="noreferrer noopener">配眼镜</a></div>
+</div>
+</div></div>
+
+
+
+<script type="rocketlazyloadscript" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4818737830370749"
+     crossorigin="anonymous"></script>
+<!-- 首页 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4818737830370749"
+     data-ad-slot="7248740310"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script type="rocketlazyloadscript">
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></article></div><div class="entries" data-layout="enhanced-grid" data-cards="boxed"   ><article id="post-11915" class="entry-card post-11915 post type-post status-publish format-standard has-post-thumbnail sticky hentry category-make-money-online tag-29 tag-1119 tag-1171 tag-368" data-reveal="bottom:no"><ul class="entry-meta" data-type="icons:none"  ><li class="meta-updated-date" itemprop="dateModified" ><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M8.2,4v3.5C8.2,7.8,8,8,7.8,8.1L5.1,9.5C5,9.5,4.9,9.5,4.8,9.5c-0.3,0-0.5-0.1-0.6-0.4C4,8.8,4.1,8.4,4.5,8.3l2.4-1.2V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4z"/> </svg><time class="ct-meta-element-date" datetime="2022-02-28T15:09:24-05:00" >更新于：2022/02/28</time></li><li class="meta-comments"><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M13.7,14.8L10.9,12H2.2C1,12,0,11,0,9.8l0-7.5C0,1,1,0,2.2,0l10.5,0C14,0,15,1,15,2.2v12c0,0.3-0.2,0.6-0.5,0.7c-0.1,0-0.2,0.1-0.3,0.1C14.1,15,13.9,14.9,13.7,14.8zM2.2,1.5c-0.4,0-0.8,0.3-0.8,0.8v7.5c0,0.4,0.3,0.8,0.8,0.8h9c0.2,0,0.4,0.1,0.5,0.2l1.7,1.7V2.2c0-0.4-0.3-0.8-0.8-0.8H2.2z"/> </svg><a href="https://www.chineselikela.com/cash/make-money-online/11915/#comments">7</a></li></ul>
+	<h2 class="entry-title">
+		<a href="https://www.chineselikela.com/cash/make-money-online/11915/">
+			2022年网上赚钱80个途径（上）有华人月入$10万+		</a>
+	</h2>
+
+	<a class="ct-image-container" href="https://www.chineselikela.com/cash/make-money-online/11915/" aria-label="2022年网上赚钱80个途径（上）有华人月入$10万+" tabindex="-1"><img width="650" height="365" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20650%20365'%3E%3C/svg%3E" class="attachment-medium_large size-medium_large wp-post-image" alt="2021年美国网上赚钱80个途径（上）有华人月入$10万+" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2021/10/image.psd.webp" /><noscript><img width="650" height="365" src="https://www.chineselikela.com/wp-content/uploads/2021/10/image.psd.webp" class="attachment-medium_large size-medium_large wp-post-image" alt="2021年美国网上赚钱80个途径（上）有华人月入$10万+" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></a><div class="entry-excerpt" >美国网上赚钱的途径很多，在Fiverr上接零活，在ThredUp卖二手衣物，在Swagbucks做调查，在Youtube发原创视频，甚至去Core Games制作元宇宙游戏……这些都是不错的在美国网上赚钱途径，本文就给您做个总结，并告诉你具体的步骤。</div><div class="ct-ghost"></div><ul class="entry-meta" data-type="icons:none"  ><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/cash/make-money-online/" rel="tag" class="ct-term-1460" >网上赚钱</a></li><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/tag/%e5%b7%a5%e4%bd%9c/" rel="tag" class="ct-term-29" >工作</a>, <a href="https://www.chineselikela.com/tag/%e5%85%bc%e8%81%8c/" rel="tag" class="ct-term-1119" >兼职</a>, <a href="https://www.chineselikela.com/tag/%e7%bd%91%e8%b5%9a/" rel="tag" class="ct-term-1171" >网赚</a>, <a href="https://www.chineselikela.com/tag/%e8%b5%9a%e9%92%b1/" rel="tag" class="ct-term-368" >赚钱</a></li></ul></article><article id="post-33748" class="entry-card post-33748 post type-post status-publish format-standard has-post-thumbnail hentry category-huaren" data-reveal="bottom:no"><ul class="entry-meta" data-type="icons:none"  ><li class="meta-updated-date" itemprop="dateModified" ><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M8.2,4v3.5C8.2,7.8,8,8,7.8,8.1L5.1,9.5C5,9.5,4.9,9.5,4.8,9.5c-0.3,0-0.5-0.1-0.6-0.4C4,8.8,4.1,8.4,4.5,8.3l2.4-1.2V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4z"/> </svg><time class="ct-meta-element-date" datetime="2022-02-25T12:54:36-05:00" >更新于：2022/02/25</time></li></ul>
+	<h2 class="entry-title">
+		<a href="https://www.chineselikela.com/huaren/33748/">
+			2022美国退税进度查询方法		</a>
+	</h2>
+
+	<a class="ct-image-container" href="https://www.chineselikela.com/huaren/33748/" aria-label="2022美国退税进度查询方法" tabindex="-1"><img width="646" height="424" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20646%20424'%3E%3C/svg%3E" class="attachment-medium_large size-medium_large wp-post-image" alt="" data-lazy-srcset="https://www.chineselikela.com/wp-content/uploads/2022/02/tuishui.webp 646w, https://www.chineselikela.com/wp-content/uploads/2022/02/tuishui-18x12.webp 18w" data-lazy-sizes="(max-width: 646px) 100vw, 646px" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2022/02/tuishui.webp" /><noscript><img width="646" height="424" src="https://www.chineselikela.com/wp-content/uploads/2022/02/tuishui.webp" class="attachment-medium_large size-medium_large wp-post-image" alt="" srcset="https://www.chineselikela.com/wp-content/uploads/2022/02/tuishui.webp 646w, https://www.chineselikela.com/wp-content/uploads/2022/02/tuishui-18x12.webp 18w" sizes="(max-width: 646px) 100vw, 646px" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></a><div class="entry-excerpt" >2022美国报税季已开始，除了去年推出的Where's My Refund（我的退税在哪里？）网路查询工具，国税局今年还推出了IRS2Go手机APP，方便大家随时查询2022美国退税进度。</div><div class="ct-ghost"></div><ul class="entry-meta" data-type="icons:none"  ><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/huaren/" rel="tag" class="ct-term-1333" >华人生活资讯</a></li></ul></article><article id="post-1379" class="entry-card post-1379 post type-post status-publish format-standard has-post-thumbnail hentry category-immigrant category-los-angeles category-free-offer tag-15 tag-65 tag-1924 tag-5" data-reveal="bottom:no"><ul class="entry-meta" data-type="icons:none"  ><li class="meta-updated-date" itemprop="dateModified" ><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M8.2,4v3.5C8.2,7.8,8,8,7.8,8.1L5.1,9.5C5,9.5,4.9,9.5,4.8,9.5c-0.3,0-0.5-0.1-0.6-0.4C4,8.8,4.1,8.4,4.5,8.3l2.4-1.2V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4z"/> </svg><time class="ct-meta-element-date" datetime="2022-02-25T12:33:04-05:00" >更新于：2022/02/25</time></li></ul>
+	<h2 class="entry-title">
+		<a href="https://www.chineselikela.com/huaren/immigrant/1379/">
+			2022洛杉矶免费报税地点		</a>
+	</h2>
+
+	<a class="ct-image-container" href="https://www.chineselikela.com/huaren/immigrant/1379/" aria-label="2022洛杉矶免费报税地点" tabindex="-1"><img width="360" height="239" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20360%20239'%3E%3C/svg%3E" class="attachment-medium_large size-medium_large wp-post-image" alt="" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2015/04/29.jpg" /><noscript><img width="360" height="239" src="https://www.chineselikela.com/wp-content/uploads/2015/04/29.jpg" class="attachment-medium_large size-medium_large wp-post-image" alt="" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></a><div class="entry-excerpt" >美国个人报税Tax Returns季截止日是4月15日，还没有报税的个人和家庭，必须要在截止日前完成报税的工作，否则将面临处罚。在洛杉矶，如果年收入不超过5万5000美元的中丶低收入家庭，还可以享受政府的免费报税服务。</div><div class="ct-ghost"></div><ul class="entry-meta" data-type="icons:none"  ><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/huaren/immigrant/" rel="tag" class="ct-term-3" >法律移民</a>, <a href="https://www.chineselikela.com/huaren/local/los-angeles/" rel="tag" class="ct-term-1621" >洛杉矶</a>, <a href="https://www.chineselikela.com/huaren/free-offer/" rel="tag" class="ct-term-1228" >福利&amp;免费</a></li><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/tag/%e5%85%8d%e8%b4%b9/" rel="tag" class="ct-term-15" >免费</a>, <a href="https://www.chineselikela.com/tag/%e6%8a%a5%e7%a8%8e/" rel="tag" class="ct-term-65" >报税</a>, <a href="https://www.chineselikela.com/tag/%e6%94%bf%e5%ba%9c%e7%a6%8f%e5%88%a9/" rel="tag" class="ct-term-1924" >政府福利</a>, <a href="https://www.chineselikela.com/tag/%e6%b4%9b%e6%9d%89%e7%9f%b6/" rel="tag" class="ct-term-5" >洛杉矶</a></li></ul></article><article id="post-23961" class="entry-card post-23961 post type-post status-publish format-standard has-post-thumbnail hentry category-trends-news category-immigrant tag-35 tag-399 tag-2089 tag-17" data-reveal="bottom:no"><ul class="entry-meta" data-type="icons:none"  ><li class="meta-updated-date" itemprop="dateModified" ><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M8.2,4v3.5C8.2,7.8,8,8,7.8,8.1L5.1,9.5C5,9.5,4.9,9.5,4.8,9.5c-0.3,0-0.5-0.1-0.6-0.4C4,8.8,4.1,8.4,4.5,8.3l2.4-1.2V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4z"/> </svg><time class="ct-meta-element-date" datetime="2022-02-16T11:22:18-05:00" >更新于：2022/02/16</time></li></ul>
+	<h2 class="entry-title">
+		<a href="https://www.chineselikela.com/huaren/trends-news/23961/">
+			美国移民资讯滚动更新：2022年3月最新移民排期		</a>
+	</h2>
+
+	<a class="ct-image-container" href="https://www.chineselikela.com/huaren/trends-news/23961/" aria-label="美国移民资讯滚动更新：2022年3月最新移民排期" tabindex="-1"><img width="500" height="375" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20500%20375'%3E%3C/svg%3E" class="attachment-medium_large size-medium_large wp-post-image" alt="" data-lazy-srcset="https://www.chineselikela.com/wp-content/uploads/2021/08/yimin.webp 500w, https://www.chineselikela.com/wp-content/uploads/2021/08/yimin-240x180.webp 240w" data-lazy-sizes="(max-width: 500px) 100vw, 500px" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2021/08/yimin.webp" /><noscript><img width="500" height="375" src="https://www.chineselikela.com/wp-content/uploads/2021/08/yimin.webp" class="attachment-medium_large size-medium_large wp-post-image" alt="" srcset="https://www.chineselikela.com/wp-content/uploads/2021/08/yimin.webp 500w, https://www.chineselikela.com/wp-content/uploads/2021/08/yimin-240x180.webp 240w" sizes="(max-width: 500px) 100vw, 500px" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></a><div class="entry-excerpt" >美国移民最新资讯：国务院本周公布了2022年3月的绿卡移民排期。亲属移民除F2A类递件有所推进外，其他类别与上月相比均无变化。职业移民除“非技术移民”小幅推进外，EB2、EB3审批递件均停滞。投资移民的情况也与上月相似。</div><div class="ct-ghost"></div><ul class="entry-meta" data-type="icons:none"  ><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/huaren/trends-news/" rel="tag" class="ct-term-1334" >热点话题</a>, <a href="https://www.chineselikela.com/huaren/immigrant/" rel="tag" class="ct-term-3" >法律移民</a></li><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/tag/%e7%a7%bb%e6%b0%91/" rel="tag" class="ct-term-35" >移民</a>, <a href="https://www.chineselikela.com/tag/%e4%ba%b2%e5%b1%9e%e7%a7%bb%e6%b0%91/" rel="tag" class="ct-term-399" >亲属移民</a>, <a href="https://www.chineselikela.com/tag/%e6%96%b0%e7%a7%bb%e6%b0%91/" rel="tag" class="ct-term-2089" >新移民</a>, <a href="https://www.chineselikela.com/tag/%e6%b3%95%e5%be%8b/" rel="tag" class="ct-term-17" >法律</a></li></ul></article><article id="post-22196" class="entry-card post-22196 post type-post status-publish format-standard has-post-thumbnail hentry category-huaren tag-22 tag-app tag-117" data-reveal="bottom:no"><ul class="entry-meta" data-type="icons:none"  ><li class="meta-updated-date" itemprop="dateModified" ><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M8.2,4v3.5C8.2,7.8,8,8,7.8,8.1L5.1,9.5C5,9.5,4.9,9.5,4.8,9.5c-0.3,0-0.5-0.1-0.6-0.4C4,8.8,4.1,8.4,4.5,8.3l2.4-1.2V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4z"/> </svg><time class="ct-meta-element-date" datetime="2022-02-11T10:42:58-05:00" >更新于：2022/02/11</time></li></ul>
+	<h2 class="entry-title">
+		<a href="https://www.chineselikela.com/huaren/22196/">
+			5大最佳美国外卖APP测评！附真实点餐费用明细		</a>
+	</h2>
+
+	<a class="ct-image-container" href="https://www.chineselikela.com/huaren/22196/" aria-label="5大最佳美国外卖APP测评！附真实点餐费用明细" tabindex="-1"><img width="768" height="432" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20432'%3E%3C/svg%3E" class="attachment-medium_large size-medium_large wp-post-image" alt="" data-lazy-srcset="https://www.chineselikela.com/wp-content/uploads/2020/08/黑白现代建筑商务科技演示文稿-768x432.jpg 768w, https://www.chineselikela.com/wp-content/uploads/2020/08/黑白现代建筑商务科技演示文稿-700x394.jpg 700w, https://www.chineselikela.com/wp-content/uploads/2020/08/黑白现代建筑商务科技演示文稿-1000x563.jpg 1000w, https://www.chineselikela.com/wp-content/uploads/2020/08/黑白现代建筑商务科技演示文稿-1536x864.jpg 1536w, https://www.chineselikela.com/wp-content/uploads/2020/08/黑白现代建筑商务科技演示文稿-e1619110093499.jpg 920w" data-lazy-sizes="(max-width: 768px) 100vw, 768px" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2020/08/黑白现代建筑商务科技演示文稿-768x432.jpg" /><noscript><img width="768" height="432" src="https://www.chineselikela.com/wp-content/uploads/2020/08/黑白现代建筑商务科技演示文稿-768x432.jpg" class="attachment-medium_large size-medium_large wp-post-image" alt="" srcset="https://www.chineselikela.com/wp-content/uploads/2020/08/黑白现代建筑商务科技演示文稿-768x432.jpg 768w, https://www.chineselikela.com/wp-content/uploads/2020/08/黑白现代建筑商务科技演示文稿-700x394.jpg 700w, https://www.chineselikela.com/wp-content/uploads/2020/08/黑白现代建筑商务科技演示文稿-1000x563.jpg 1000w, https://www.chineselikela.com/wp-content/uploads/2020/08/黑白现代建筑商务科技演示文稿-1536x864.jpg 1536w, https://www.chineselikela.com/wp-content/uploads/2020/08/黑白现代建筑商务科技演示文稿-e1619110093499.jpg 920w" sizes="(max-width: 768px) 100vw, 768px" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></a><div class="entry-excerpt" >美国这么多外卖APP到底哪家最好？实际使用后，对具体花费，使用感受，折扣力度等信息做了对比测评，为您推荐以下5大美国最佳外卖APP，供您选择。</div><div class="ct-ghost"></div><ul class="entry-meta" data-type="icons:none"  ><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/huaren/" rel="tag" class="ct-term-1333" >华人生活资讯</a></li><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/tag/%e7%be%8e%e9%a3%9f/" rel="tag" class="ct-term-22" >美食</a>, <a href="https://www.chineselikela.com/tag/app/" rel="tag" class="ct-term-1369" >APP</a>, <a href="https://www.chineselikela.com/tag/%e9%a4%90%e5%8e%85/" rel="tag" class="ct-term-117" >餐厅</a></li></ul></article><article id="post-28213" class="entry-card post-28213 post type-post status-publish format-standard has-post-thumbnail hentry category-house tag-92 tag-1198 tag-14" data-reveal="bottom:no"><ul class="entry-meta" data-type="icons:none"  ><li class="meta-updated-date" itemprop="dateModified" ><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M8.2,4v3.5C8.2,7.8,8,8,7.8,8.1L5.1,9.5C5,9.5,4.9,9.5,4.8,9.5c-0.3,0-0.5-0.1-0.6-0.4C4,8.8,4.1,8.4,4.5,8.3l2.4-1.2V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4z"/> </svg><time class="ct-meta-element-date" datetime="2022-02-09T11:36:08-05:00" >更新于：2022/02/09</time></li></ul>
+	<h2 class="entry-title">
+		<a href="https://www.chineselikela.com/huaren/house/28213/">
+			20个实用的美国买房网站！查房源/安全/教育/邻里信息		</a>
+	</h2>
+
+	<a class="ct-image-container" href="https://www.chineselikela.com/huaren/house/28213/" aria-label="20个实用的美国买房网站！查房源/安全/教育/邻里信息" tabindex="-1"><img width="400" height="225" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20400%20225'%3E%3C/svg%3E" class="attachment-medium_large size-medium_large wp-post-image" alt="美国买房实用网站" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2020/06/house.jpeg" /><noscript><img width="400" height="225" src="https://www.chineselikela.com/wp-content/uploads/2020/06/house.jpeg" class="attachment-medium_large size-medium_large wp-post-image" alt="美国买房实用网站" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></a><div class="entry-excerpt" >在美国买房之前一定要做足功课，想买的房子周边安全吗？城市的人口素质怎么样？学区如何？买的房子做投资能赚钱吗？……网上有很多实用网站，可以帮助我们快速且免费的查询到这些重要信息。</div><div class="ct-ghost"></div><ul class="entry-meta" data-type="icons:none"  ><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/huaren/house/" rel="tag" class="ct-term-125" >房产居家</a></li><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/tag/%e4%b9%b0%e6%88%bf/" rel="tag" class="ct-term-92" >买房</a>, <a href="https://www.chineselikela.com/tag/%e5%9c%a8%e7%be%8e%e5%9b%bd%e4%b9%b0%e6%88%bf/" rel="tag" class="ct-term-1198" >在美国买房</a>, <a href="https://www.chineselikela.com/tag/%e6%94%bb%e7%95%a5/" rel="tag" class="ct-term-14" >攻略</a></li></ul></article><article id="post-33686" class="entry-card post-33686 post type-post status-publish format-standard has-post-thumbnail hentry category-huaren category-new-york" data-reveal="bottom:no"><ul class="entry-meta" data-type="icons:none"  ><li class="meta-updated-date" itemprop="dateModified" ><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M8.2,4v3.5C8.2,7.8,8,8,7.8,8.1L5.1,9.5C5,9.5,4.9,9.5,4.8,9.5c-0.3,0-0.5-0.1-0.6-0.4C4,8.8,4.1,8.4,4.5,8.3l2.4-1.2V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4z"/> </svg><time class="ct-meta-element-date" datetime="2022-02-07T14:51:46-05:00" >更新于：2022/02/07</time></li></ul>
+	<h2 class="entry-title">
+		<a href="https://www.chineselikela.com/huaren/33686/">
+			2022纽约情人节攻略 餐厅/鲜花/约会地推荐		</a>
+	</h2>
+
+	<a class="ct-image-container" href="https://www.chineselikela.com/huaren/33686/" aria-label="2022纽约情人节攻略 餐厅/鲜花/约会地推荐" tabindex="-1"><img width="370" height="234" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20370%20234'%3E%3C/svg%3E" class="attachment-medium_large size-medium_large wp-post-image" alt="2022纽约情人节攻略 餐厅/鲜花/约会地推荐" data-lazy-srcset="https://www.chineselikela.com/wp-content/uploads/2022/02/image-18.jpg 370w, https://www.chineselikela.com/wp-content/uploads/2022/02/image-18-18x12.jpg 18w" data-lazy-sizes="(max-width: 370px) 100vw, 370px" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2022/02/image-18.jpg" /><noscript><img width="370" height="234" src="https://www.chineselikela.com/wp-content/uploads/2022/02/image-18.jpg" class="attachment-medium_large size-medium_large wp-post-image" alt="2022纽约情人节攻略 餐厅/鲜花/约会地推荐" srcset="https://www.chineselikela.com/wp-content/uploads/2022/02/image-18.jpg 370w, https://www.chineselikela.com/wp-content/uploads/2022/02/image-18-18x12.jpg 18w" sizes="(max-width: 370px) 100vw, 370px" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></a><div class="entry-excerpt" >眼看着2022情人节将至，过好这个节，将使你们未来一年的生活都沉浸在浪漫的余波中。那么在纽约情人节在哪里过最浪漫？送什么鲜花或礼物最贴心？本文就为您列出一些建议，这些都是网友们的真实体验。</div><div class="ct-ghost"></div><ul class="entry-meta" data-type="icons:none"  ><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/huaren/" rel="tag" class="ct-term-1333" >华人生活资讯</a>, <a href="https://www.chineselikela.com/huaren/local/new-york/" rel="tag" class="ct-term-1622" >纽约</a></li></ul></article><article id="post-33655" class="entry-card post-33655 post type-post status-publish format-standard has-post-thumbnail hentry category-huaren tag-1444 tag-2694 tag-2695 tag-1274" data-reveal="bottom:no"><ul class="entry-meta" data-type="icons:none"  ><li class="meta-updated-date" itemprop="dateModified" ><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M8.2,4v3.5C8.2,7.8,8,8,7.8,8.1L5.1,9.5C5,9.5,4.9,9.5,4.8,9.5c-0.3,0-0.5-0.1-0.6-0.4C4,8.8,4.1,8.4,4.5,8.3l2.4-1.2V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4z"/> </svg><time class="ct-meta-element-date" datetime="2022-02-07T13:15:51-05:00" >更新于：2022/02/07</time></li></ul>
+	<h2 class="entry-title">
+		<a href="https://www.chineselikela.com/huaren/33655/">
+			2022情人节礼物：美国买鲜花网站推荐		</a>
+	</h2>
+
+	<a class="ct-image-container" href="https://www.chineselikela.com/huaren/33655/" aria-label="2022情人节礼物：美国买鲜花网站推荐" tabindex="-1"><img width="640" height="412" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20640%20412'%3E%3C/svg%3E" class="attachment-medium_large size-medium_large wp-post-image" alt="2022情人节礼物：5个买鲜花网站推荐" data-lazy-srcset="https://www.chineselikela.com/wp-content/uploads/2022/02/qingrenjie-1.webp 640w, https://www.chineselikela.com/wp-content/uploads/2022/02/qingrenjie-1-18x12.webp 18w" data-lazy-sizes="(max-width: 640px) 100vw, 640px" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2022/02/qingrenjie-1.webp" /><noscript><img width="640" height="412" src="https://www.chineselikela.com/wp-content/uploads/2022/02/qingrenjie-1.webp" class="attachment-medium_large size-medium_large wp-post-image" alt="2022情人节礼物：5个买鲜花网站推荐" srcset="https://www.chineselikela.com/wp-content/uploads/2022/02/qingrenjie-1.webp 640w, https://www.chineselikela.com/wp-content/uploads/2022/02/qingrenjie-1-18x12.webp 18w" sizes="(max-width: 640px) 100vw, 640px" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></a><div class="entry-excerpt" >2月14日是情人节，这天的情人节礼物是不可少的，伴随着礼物的是一束漂亮的鲜花，可以让你的情人节更加浪漫和难忘。本文为您推荐几个美国买鲜花的网站，及其促销活动，帮你买到最称心如意的那束鲜花。</div><div class="ct-ghost"></div><ul class="entry-meta" data-type="icons:none"  ><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/huaren/" rel="tag" class="ct-term-1333" >华人生活资讯</a></li><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/tag/%e7%be%8e%e5%9b%bd%e7%94%9f%e6%b4%bb/" rel="tag" class="ct-term-1444" >美国生活</a>, <a href="https://www.chineselikela.com/tag/%e6%83%85%e4%ba%ba%e8%8a%82/" rel="tag" class="ct-term-2694" >情人节</a>, <a href="https://www.chineselikela.com/tag/%e7%a4%bc%e7%89%a9/" rel="tag" class="ct-term-2695" >礼物</a>, <a href="https://www.chineselikela.com/tag/%e8%b4%ad%e7%89%a9%e6%8c%87%e5%8d%97/" rel="tag" class="ct-term-1274" >购物指南</a></li></ul></article><article id="post-30152" class="entry-card post-30152 post type-post status-publish format-standard has-post-thumbnail hentry category-health tag-1274 tag-1748 tag-1749" data-reveal="bottom:no"><ul class="entry-meta" data-type="icons:none"  ><li class="meta-updated-date" itemprop="dateModified" ><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M8.2,4v3.5C8.2,7.8,8,8,7.8,8.1L5.1,9.5C5,9.5,4.9,9.5,4.8,9.5c-0.3,0-0.5-0.1-0.6-0.4C4,8.8,4.1,8.4,4.5,8.3l2.4-1.2V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4z"/> </svg><time class="ct-meta-element-date" datetime="2022-02-04T17:48:35-05:00" >更新于：2022/02/04</time></li></ul>
+	<h2 class="entry-title">
+		<a href="https://www.chineselikela.com/deals/health/30152/">
+			2022情人节礼品推荐：資生堂顶级护肤品牌CPB		</a>
+	</h2>
+
+	<a class="ct-image-container" href="https://www.chineselikela.com/deals/health/30152/" aria-label="2022情人节礼品推荐：資生堂顶级护肤品牌CPB" tabindex="-1"><img width="768" height="713" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20713'%3E%3C/svg%3E" class="attachment-medium_large size-medium_large wp-post-image" alt="" data-lazy-srcset="https://www.chineselikela.com/wp-content/uploads/2021/07/61crfLCwLvL._AC_SL1500_-768x713.jpg 768w, https://www.chineselikela.com/wp-content/uploads/2021/07/61crfLCwLvL._AC_SL1500_-e1626471233389.jpg 700w, https://www.chineselikela.com/wp-content/uploads/2021/07/61crfLCwLvL._AC_SL1500_-1000x929.jpg 1000w" data-lazy-sizes="(max-width: 768px) 100vw, 768px" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2021/07/61crfLCwLvL._AC_SL1500_-768x713.jpg" /><noscript><img width="768" height="713" src="https://www.chineselikela.com/wp-content/uploads/2021/07/61crfLCwLvL._AC_SL1500_-768x713.jpg" class="attachment-medium_large size-medium_large wp-post-image" alt="" srcset="https://www.chineselikela.com/wp-content/uploads/2021/07/61crfLCwLvL._AC_SL1500_-768x713.jpg 768w, https://www.chineselikela.com/wp-content/uploads/2021/07/61crfLCwLvL._AC_SL1500_-e1626471233389.jpg 700w, https://www.chineselikela.com/wp-content/uploads/2021/07/61crfLCwLvL._AC_SL1500_-1000x929.jpg 1000w" sizes="(max-width: 768px) 100vw, 768px" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></a><div class="entry-excerpt" >Amazon推出的Luxury Store就是专卖奢侈品的平台。本文就为您介绍Amazon奢侈品店里最著名的资生堂顶级护肤品牌 Clé de Peau Beauté。不管是自用还是送人，都非常值得推荐。</div><div class="ct-ghost"></div><ul class="entry-meta" data-type="icons:none"  ><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/deals/health/" rel="tag" class="ct-term-1270" >药品健康</a></li><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/tag/%e8%b4%ad%e7%89%a9%e6%8c%87%e5%8d%97/" rel="tag" class="ct-term-1274" >购物指南</a>, <a href="https://www.chineselikela.com/tag/%e5%8c%96%e5%a6%86%e5%93%81/" rel="tag" class="ct-term-1748" >化妆品</a>, <a href="https://www.chineselikela.com/tag/%e6%8a%a4%e8%82%a4%e5%93%81/" rel="tag" class="ct-term-1749" >护肤品</a></li></ul></article><article id="post-33611" class="entry-card post-33611 post type-post status-publish format-standard has-post-thumbnail hentry category-usa-study category-free-offer tag-15 tag-1435 tag-69 tag-354" data-reveal="bottom:no"><ul class="entry-meta" data-type="icons:none"  ><li class="meta-updated-date" itemprop="dateModified" ><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M8.2,4v3.5C8.2,7.8,8,8,7.8,8.1L5.1,9.5C5,9.5,4.9,9.5,4.8,9.5c-0.3,0-0.5-0.1-0.6-0.4C4,8.8,4.1,8.4,4.5,8.3l2.4-1.2V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4z"/> </svg><time class="ct-meta-element-date" datetime="2022-02-04T16:08:47-05:00" >更新于：2022/02/04</time></li></ul>
+	<h2 class="entry-title">
+		<a href="https://www.chineselikela.com/huaren/usa-study/33611/">
+			8个免费证书白嫖攻略！哈佛耶鲁证书不香吗		</a>
+	</h2>
+
+	<a class="ct-image-container" href="https://www.chineselikela.com/huaren/usa-study/33611/" aria-label="8个免费证书白嫖攻略！哈佛耶鲁证书不香吗" tabindex="-1"><img width="768" height="537" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20537'%3E%3C/svg%3E" class="attachment-medium_large size-medium_large wp-post-image" alt="8个免费证书白嫖攻略！哈佛耶鲁证书不香吗" data-lazy-srcset="https://www.chineselikela.com/wp-content/uploads/2022/02/hafo-768x537.jpg 768w, https://www.chineselikela.com/wp-content/uploads/2022/02/hafo-700x489.jpg 700w, https://www.chineselikela.com/wp-content/uploads/2022/02/hafo-1000x699.jpg 1000w, https://www.chineselikela.com/wp-content/uploads/2022/02/hafo-18x12.jpg 18w, https://www.chineselikela.com/wp-content/uploads/2022/02/hafo-e1643994879974.jpg 650w" data-lazy-sizes="(max-width: 768px) 100vw, 768px" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2022/02/hafo-768x537.jpg" /><noscript><img width="768" height="537" src="https://www.chineselikela.com/wp-content/uploads/2022/02/hafo-768x537.jpg" class="attachment-medium_large size-medium_large wp-post-image" alt="8个免费证书白嫖攻略！哈佛耶鲁证书不香吗" srcset="https://www.chineselikela.com/wp-content/uploads/2022/02/hafo-768x537.jpg 768w, https://www.chineselikela.com/wp-content/uploads/2022/02/hafo-700x489.jpg 700w, https://www.chineselikela.com/wp-content/uploads/2022/02/hafo-1000x699.jpg 1000w, https://www.chineselikela.com/wp-content/uploads/2022/02/hafo-18x12.jpg 18w, https://www.chineselikela.com/wp-content/uploads/2022/02/hafo-e1643994879974.jpg 650w" sizes="(max-width: 768px) 100vw, 768px" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></a><div class="entry-excerpt" >哈佛，耶鲁，斯坦福……这些名校的结业证书，在家上网课就能拿到？是的，这些名校的很多课程，都是可以在线免费学习，并拿到结业证书的。这些证书写在简历，挂在Linkin上，是不是超级给力？本文就为您介绍一些北美地区可以白嫖的免费证书，希望对您有所帮助。</div><div class="ct-ghost"></div><ul class="entry-meta" data-type="icons:none"  ><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/huaren/usa-study/" rel="tag" class="ct-term-304" >留学教育</a>, <a href="https://www.chineselikela.com/huaren/free-offer/" rel="tag" class="ct-term-1228" >福利&amp;免费</a></li><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/tag/%e5%85%8d%e8%b4%b9/" rel="tag" class="ct-term-15" >免费</a>, <a href="https://www.chineselikela.com/tag/%e5%ad%a6%e4%b9%a0/" rel="tag" class="ct-term-1435" >学习</a>, <a href="https://www.chineselikela.com/tag/%e7%95%99%e5%ad%a6%e7%94%9f/" rel="tag" class="ct-term-69" >留学生</a>, <a href="https://www.chineselikela.com/tag/%e7%a6%8f%e5%88%a9/" rel="tag" class="ct-term-354" >福利</a></li></ul></article><article id="post-33576" class="entry-card post-33576 post type-post status-publish format-standard has-post-thumbnail hentry category-huaren tag-1273 tag-2632 tag-1571" data-reveal="bottom:no"><ul class="entry-meta" data-type="icons:none"  ><li class="meta-updated-date" itemprop="dateModified" ><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M8.2,4v3.5C8.2,7.8,8,8,7.8,8.1L5.1,9.5C5,9.5,4.9,9.5,4.8,9.5c-0.3,0-0.5-0.1-0.6-0.4C4,8.8,4.1,8.4,4.5,8.3l2.4-1.2V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4z"/> </svg><time class="ct-meta-element-date" datetime="2022-02-02T12:49:21-05:00" >更新于：2022/02/02</time></li></ul>
+	<h2 class="entry-title">
+		<a href="https://www.chineselikela.com/huaren/33576/">
+			手机或邮箱信息泄漏？3个查询途径推荐		</a>
+	</h2>
+
+	<a class="ct-image-container" href="https://www.chineselikela.com/huaren/33576/" aria-label="手机或邮箱信息泄漏？3个查询途径推荐" tabindex="-1"><img width="600" height="381" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%20381'%3E%3C/svg%3E" class="attachment-medium_large size-medium_large wp-post-image" alt="手机或邮箱信息泄漏？3个查询途径推荐" data-lazy-srcset="https://www.chineselikela.com/wp-content/uploads/2022/02/xinxi.webp 600w, https://www.chineselikela.com/wp-content/uploads/2022/02/xinxi-18x12.webp 18w" data-lazy-sizes="(max-width: 600px) 100vw, 600px" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2022/02/xinxi.webp" /><noscript><img width="600" height="381" src="https://www.chineselikela.com/wp-content/uploads/2022/02/xinxi.webp" class="attachment-medium_large size-medium_large wp-post-image" alt="手机或邮箱信息泄漏？3个查询途径推荐" srcset="https://www.chineselikela.com/wp-content/uploads/2022/02/xinxi.webp 600w, https://www.chineselikela.com/wp-content/uploads/2022/02/xinxi-18x12.webp 18w" sizes="(max-width: 600px) 100vw, 600px" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></a><div class="entry-excerpt" >大家在美国生活，很多人都有信息泄漏的经历，例如手机号码或者电子邮箱，一旦信息被盗，就会被不法之徒利用，给你带来不可估量的损失。本文为您推荐几个在美国查询个人信息是否泄漏的途径，希望对您有所帮助。</div><div class="ct-ghost"></div><ul class="entry-meta" data-type="icons:none"  ><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/huaren/" rel="tag" class="ct-term-1333" >华人生活资讯</a></li><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/tag/%e5%b1%85%e5%ae%b6%e6%94%bb%e7%95%a5/" rel="tag" class="ct-term-1273" >居家攻略</a>, <a href="https://www.chineselikela.com/tag/%e7%be%8e%e5%9b%bd%e5%ae%89%e5%85%a8/" rel="tag" class="ct-term-2632" >美国安全</a>, <a href="https://www.chineselikela.com/tag/%e7%be%8e%e5%9b%bd%e6%b3%95%e5%be%8b/" rel="tag" class="ct-term-1571" >美国法律</a></li></ul></article><article id="post-33513" class="entry-card post-33513 post type-post status-publish format-standard has-post-thumbnail hentry category-free-offer category-new-york tag-15 tag-1924 tag-1928" data-reveal="bottom:no"><ul class="entry-meta" data-type="icons:none"  ><li class="meta-updated-date" itemprop="dateModified" ><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M8.2,4v3.5C8.2,7.8,8,8,7.8,8.1L5.1,9.5C5,9.5,4.9,9.5,4.8,9.5c-0.3,0-0.5-0.1-0.6-0.4C4,8.8,4.1,8.4,4.5,8.3l2.4-1.2V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4z"/> </svg><time class="ct-meta-element-date" datetime="2022-01-31T13:14:38-05:00" >更新于：2022/01/31</time></li></ul>
+	<h2 class="entry-title">
+		<a href="https://www.chineselikela.com/huaren/free-offer/33513/">
+			纽约免费新冠药开始发放[2022]不限身份送货上门		</a>
+	</h2>
+
+	<a class="ct-image-container" href="https://www.chineselikela.com/huaren/free-offer/33513/" aria-label="纽约免费新冠药开始发放[2022]不限身份送货上门" tabindex="-1"><img width="600" height="386" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%20386'%3E%3C/svg%3E" class="attachment-medium_large size-medium_large wp-post-image" alt="纽约免费新冠药开始发放！" data-lazy-srcset="https://www.chineselikela.com/wp-content/uploads/2022/01/newyork.webp 600w, https://www.chineselikela.com/wp-content/uploads/2022/01/newyork-18x12.webp 18w" data-lazy-sizes="(max-width: 600px) 100vw, 600px" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2022/01/newyork.webp" /><noscript><img width="600" height="386" src="https://www.chineselikela.com/wp-content/uploads/2022/01/newyork.webp" class="attachment-medium_large size-medium_large wp-post-image" alt="纽约免费新冠药开始发放！" srcset="https://www.chineselikela.com/wp-content/uploads/2022/01/newyork.webp 600w, https://www.chineselikela.com/wp-content/uploads/2022/01/newyork-18x12.webp 18w" sizes="(max-width: 600px) 100vw, 600px" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></a><div class="entry-excerpt" >纽约市长Eric Adams1月30日宣布，他们正在启动一个项目，让一些符合条件的居民获得免费新冠药。这些药物可免费寄送、当日送到，不问身分。不过这些药物数量有限，先到先得。</div><div class="ct-ghost"></div><ul class="entry-meta" data-type="icons:none"  ><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/huaren/free-offer/" rel="tag" class="ct-term-1228" >福利&amp;免费</a>, <a href="https://www.chineselikela.com/huaren/local/new-york/" rel="tag" class="ct-term-1622" >纽约</a></li><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/tag/%e5%85%8d%e8%b4%b9/" rel="tag" class="ct-term-15" >免费</a>, <a href="https://www.chineselikela.com/tag/%e6%94%bf%e5%ba%9c%e7%a6%8f%e5%88%a9/" rel="tag" class="ct-term-1924" >政府福利</a>, <a href="https://www.chineselikela.com/tag/%e6%96%b0%e5%86%a0%e7%96%ab%e6%83%85/" rel="tag" class="ct-term-1928" >新冠疫情</a></li></ul></article><article id="post-33504" class="entry-card post-33504 post type-post status-publish format-standard has-post-thumbnail hentry category-free-offer tag-1928 tag-15 tag-1924" data-reveal="bottom:no"><ul class="entry-meta" data-type="icons:none"  ><li class="meta-updated-date" itemprop="dateModified" ><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M8.2,4v3.5C8.2,7.8,8,8,7.8,8.1L5.1,9.5C5,9.5,4.9,9.5,4.8,9.5c-0.3,0-0.5-0.1-0.6-0.4C4,8.8,4.1,8.4,4.5,8.3l2.4-1.2V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4z"/> </svg><time class="ct-meta-element-date" datetime="2022-01-31T12:46:32-05:00" >更新于：2022/01/31</time></li></ul>
+	<h2 class="entry-title">
+		<a href="https://www.chineselikela.com/huaren/free-offer/33504/">
+			4个免费新冠检测试剂盒获取途径 [2022]		</a>
+	</h2>
+
+	<a class="ct-image-container" href="https://www.chineselikela.com/huaren/free-offer/33504/" aria-label="4个免费新冠检测试剂盒获取途径 [2022]" tabindex="-1"><img width="768" height="504" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20504'%3E%3C/svg%3E" class="attachment-medium_large size-medium_large wp-post-image" alt="4个免费新冠检测试剂盒获取途径 [2022]" data-lazy-srcset="https://www.chineselikela.com/wp-content/uploads/2022/01/image-17-768x504.jpg 768w, https://www.chineselikela.com/wp-content/uploads/2022/01/image-17-700x459.jpg 700w, https://www.chineselikela.com/wp-content/uploads/2022/01/image-17-1000x656.jpg 1000w, https://www.chineselikela.com/wp-content/uploads/2022/01/image-17-18x12.jpg 18w, https://www.chineselikela.com/wp-content/uploads/2022/01/image-17-e1643650391412.jpg 650w" data-lazy-sizes="(max-width: 768px) 100vw, 768px" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2022/01/image-17-768x504.jpg" /><noscript><img width="768" height="504" src="https://www.chineselikela.com/wp-content/uploads/2022/01/image-17-768x504.jpg" class="attachment-medium_large size-medium_large wp-post-image" alt="4个免费新冠检测试剂盒获取途径 [2022]" srcset="https://www.chineselikela.com/wp-content/uploads/2022/01/image-17-768x504.jpg 768w, https://www.chineselikela.com/wp-content/uploads/2022/01/image-17-700x459.jpg 700w, https://www.chineselikela.com/wp-content/uploads/2022/01/image-17-1000x656.jpg 1000w, https://www.chineselikela.com/wp-content/uploads/2022/01/image-17-18x12.jpg 18w, https://www.chineselikela.com/wp-content/uploads/2022/01/image-17-e1643650391412.jpg 650w" sizes="(max-width: 768px) 100vw, 768px" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></a><div class="entry-excerpt" >从1月开始，美国政府免费发放新冠检测试剂盒，允许美国境内居民领取PCR检测试剂盒，在家中或车内检测，再将样本送到指定地点，24至48小时内可获结果。</div><div class="ct-ghost"></div><ul class="entry-meta" data-type="icons:none"  ><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/huaren/free-offer/" rel="tag" class="ct-term-1228" >福利&amp;免费</a></li><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/tag/%e6%96%b0%e5%86%a0%e7%96%ab%e6%83%85/" rel="tag" class="ct-term-1928" >新冠疫情</a>, <a href="https://www.chineselikela.com/tag/%e5%85%8d%e8%b4%b9/" rel="tag" class="ct-term-15" >免费</a>, <a href="https://www.chineselikela.com/tag/%e6%94%bf%e5%ba%9c%e7%a6%8f%e5%88%a9/" rel="tag" class="ct-term-1924" >政府福利</a></li></ul></article><article id="post-26463" class="entry-card post-26463 post type-post status-publish format-standard has-post-thumbnail hentry category-huaren tag-amazon tag-1348" data-reveal="bottom:no"><ul class="entry-meta" data-type="icons:none"  ><li class="meta-updated-date" itemprop="dateModified" ><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M8.2,4v3.5C8.2,7.8,8,8,7.8,8.1L5.1,9.5C5,9.5,4.9,9.5,4.8,9.5c-0.3,0-0.5-0.1-0.6-0.4C4,8.8,4.1,8.4,4.5,8.3l2.4-1.2V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4z"/> </svg><time class="ct-meta-element-date" datetime="2022-01-28T17:22:39-05:00" >更新于：2022/01/28</time></li></ul>
+	<h2 class="entry-title">
+		<a href="https://www.chineselikela.com/huaren/26463/">
+			Amazon药房开网店！4步完成下单送货上门超方便		</a>
+	</h2>
+
+	<a class="ct-image-container" href="https://www.chineselikela.com/huaren/26463/" aria-label="Amazon药房开网店！4步完成下单送货上门超方便" tabindex="-1"><img width="647" height="414" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20647%20414'%3E%3C/svg%3E" class="attachment-medium_large size-medium_large wp-post-image" alt="" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2021/06/20210609092520.jpg" /><noscript><img width="647" height="414" src="https://www.chineselikela.com/wp-content/uploads/2021/06/20210609092520.jpg" class="attachment-medium_large size-medium_large wp-post-image" alt="" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></a><div class="entry-excerpt" >亚马逊出了个狠招，<a href="https://amzn.to/2ILrYQj" target="_blank" rel="noopener noreferrer" data-schema-attribute="">Amazon药房</a>（Amazon Pharmacy）开网店，不用出门送药上门！Prime会员最低只需花6月美元，便能买到的六个月处方药。</div><div class="ct-ghost"></div><ul class="entry-meta" data-type="icons:none"  ><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/huaren/" rel="tag" class="ct-term-1333" >华人生活资讯</a></li><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/tag/amazon/" rel="tag" class="ct-term-1337" >amazon</a>, <a href="https://www.chineselikela.com/tag/%e4%b8%aa%e4%ba%ba%e5%81%a5%e5%ba%b7/" rel="tag" class="ct-term-1348" >个人健康</a></li></ul></article><article id="post-12591" class="entry-card post-12591 post type-post status-publish format-standard has-post-thumbnail hentry category-auto tag-14 tag-1215 tag-391" data-reveal="bottom:no"><ul class="entry-meta" data-type="icons:none"  ><li class="meta-updated-date" itemprop="dateModified" ><svg width="13" height="13" viewBox="0 0 15 15"> <path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M8.2,4v3.5C8.2,7.8,8,8,7.8,8.1L5.1,9.5C5,9.5,4.9,9.5,4.8,9.5c-0.3,0-0.5-0.1-0.6-0.4C4,8.8,4.1,8.4,4.5,8.3l2.4-1.2V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4z"/> </svg><time class="ct-meta-element-date" datetime="2022-01-28T17:09:07-05:00" >更新于：2022/01/28</time></li></ul>
+	<h2 class="entry-title">
+		<a href="https://www.chineselikela.com/huaren/auto/12591/">
+			2022最新加州驾照模拟题（中英文笔试）5分钟出成绩		</a>
+	</h2>
+
+	<a class="ct-image-container" href="https://www.chineselikela.com/huaren/auto/12591/" aria-label="2022最新加州驾照模拟题（中英文笔试）5分钟出成绩" tabindex="-1"><img width="491" height="346" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20491%20346'%3E%3C/svg%3E" class="attachment-medium_large size-medium_large wp-post-image" alt="2022最新加州驾照模拟题（中英文笔试模拟题）" data-lazy-srcset="https://www.chineselikela.com/wp-content/uploads/2021/12/dmv.webp 491w, https://www.chineselikela.com/wp-content/uploads/2021/12/dmv-18x12.webp 18w" data-lazy-sizes="(max-width: 491px) 100vw, 491px" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2021/12/dmv.webp" /><noscript><img width="491" height="346" src="https://www.chineselikela.com/wp-content/uploads/2021/12/dmv.webp" class="attachment-medium_large size-medium_large wp-post-image" alt="2022最新加州驾照模拟题（中英文笔试模拟题）" srcset="https://www.chineselikela.com/wp-content/uploads/2021/12/dmv.webp 491w, https://www.chineselikela.com/wp-content/uploads/2021/12/dmv-18x12.webp 18w" sizes="(max-width: 491px) 100vw, 491px" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></a><div class="entry-excerpt" >美国驾照考试分为「笔试」与「路考」两大部分，必须先通过笔试测验，才能进行路考。网上有非常多的驾照笔试仿真题库与资源可供参考，本文是2020最新加州驾照模拟题中文版。</div><div class="ct-ghost"></div><ul class="entry-meta" data-type="icons:none"  ><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/huaren/auto/" rel="tag" class="ct-term-8" >汽车频道</a></li><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://www.chineselikela.com/tag/%e6%94%bb%e7%95%a5/" rel="tag" class="ct-term-14" >攻略</a>, <a href="https://www.chineselikela.com/tag/%e8%80%83%e8%af%95/" rel="tag" class="ct-term-1215" >考试</a>, <a href="https://www.chineselikela.com/tag/%e9%a9%be%e7%85%a7/" rel="tag" class="ct-term-391" >驾照</a></li></ul></article></div>
+		<nav class="ct-pagination" data-pagination="simple" >
+			<div class="ct-hidden-sm"><span aria-current="page" class="page-numbers current">1</span>
+<a class="page-numbers" href="https://www.chineselikela.com/page/2/">2</a>
+<a class="page-numbers" href="https://www.chineselikela.com/page/3/">3</a>
+<a class="page-numbers" href="https://www.chineselikela.com/page/4/">4</a>
+<span class="page-numbers dots">&hellip;</span>
+<a class="page-numbers" href="https://www.chineselikela.com/page/171/">171</a></div><a class="next page-numbers" href="https://www.chineselikela.com/page/2/">下一个 <svg width="9px" height="9px" viewBox="0 0 15 15"><path class="st0" d="M4.1,15c0.2,0,0.4-0.1,0.6-0.2L11.4,8c0.3-0.3,0.3-0.8,0-1.1L4.8,0.2C4.5-0.1,4-0.1,3.7,0.2C3.4,0.5,3.4,1,3.7,1.3l6.1,6.1l-6.2,6.2c-0.3,0.3-0.3,0.8,0,1.1C3.7,14.9,3.9,15,4.1,15z"/></svg></a>
+			
+		</nav>	</section>
+
+	
+	<aside
+				data-type="type-2"
+		id="sidebar"
+				itemtype="https://schema.org/WPSideBar" itemscope="itemscope" >
+
+		<div data-block="hook:33602" ><article ><div class="entry-content" >
+<div class="wp-block-columns">
+<div class="wp-block-column">
+<div class="wp-container-621dd2edb8efd wp-block-buttons">
+<div class="wp-block-button has-custom-width wp-block-button__width-100 has-custom-font-size has-small-font-size"><a class="wp-block-button__link has-palette-color-8-color has-palette-color-2-background-color has-text-color has-background" href="https://www.rakuten.com/r/CHINES769?eeid=28187" target="_blank" rel="noreferrer noopener">🔥 羊毛：花$30送$30！买花25%返现</a></div>
+
+
+
+<div class="wp-block-button has-custom-width wp-block-button__width-100 has-custom-font-size has-small-font-size"><a class="wp-block-button__link has-palette-color-3-color has-text-color has-background" href="https://www.sayweee.com/invite_friends/landing?referral_id=167227&amp;lang=zh" style="background-color:#d3eb9a" target="_blank" rel="noreferrer noopener">🔥 白嫖：网上中超买$35送$20</a></div>
+
+
+
+<div class="wp-block-button has-custom-width wp-block-button__width-100 has-custom-font-size has-small-font-size"><a class="wp-block-button__link has-palette-color-3-color has-text-color has-background" href="https://www.trunkclub.com/referral/PAME6N?c=referral_link" style="background-color:#e3f7f2" target="_blank" rel="noreferrer noopener">🔥 速抢！Nordstrom白送$50</a></div>
+
+
+
+<div class="wp-block-button has-custom-width wp-block-button__width-100 has-custom-font-size has-small-font-size"><a class="wp-block-button__link has-palette-color-3-color has-palette-color-5-background-color has-text-color has-background" href="https://www.chineselikela.com/huaren/free-offer/23737/" target="_blank" rel="noreferrer noopener">看免费电影电视剧23个网站</a></div>
+
+
+
+<div class="wp-block-button has-custom-width wp-block-button__width-100 has-custom-font-size has-small-font-size"><a class="wp-block-button__link has-palette-color-3-color has-palette-color-5-background-color has-text-color has-background" href="https://www.chineselikela.com/quiz/30267/" target="_blank" rel="noreferrer noopener">加州驾照笔试模拟题</a></div>
+
+
+
+<div class="wp-block-button has-custom-width wp-block-button__width-100 has-custom-font-size has-small-font-size"><a class="wp-block-button__link has-palette-color-3-color has-palette-color-5-background-color has-text-color has-background" href="https://www.chineselikela.com/quiz/30511/">最新美国入籍考试100题</a></div>
+
+
+
+<div class="wp-block-button has-custom-width wp-block-button__width-100 has-custom-font-size has-small-font-size"><a class="wp-block-button__link has-palette-color-3-color has-palette-color-5-background-color has-text-color has-background" href="https://www.chineselikela.com/huaren/free-offer/16723/" target="_blank" rel="noreferrer noopener">3种免费报税软件推荐</a></div>
+</div>
+</div>
+</div>
+
+
+
+<p></p>
+</div></article></div>
+		<div
+			class="ct-sidebar" data-sticky="widgets"			data-widgets="separated">
+			
+			<div class="ct-widget widget_block" id="block-18">
+<div class="wp-block-cover alignwide is-light has-custom-content-position is-position-bottom-center" style="min-height:20vh"><span aria-hidden="true" class="has-background-dim-0 wp-block-cover__gradient-background has-background-dim"></span><img width="500" height="192" class="wp-block-cover__image-background wp-image-33134" alt="" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20500%20192'%3E%3C/svg%3E" data-object-fit="cover" data-lazy-srcset="https://www.chineselikela.com/wp-content/uploads/2022/01/ezgif-2-5fa2777c89.webp 500w, https://www.chineselikela.com/wp-content/uploads/2022/01/ezgif-2-5fa2777c89-18x7.webp 18w" data-lazy-sizes="(max-width: 500px) 100vw, 500px" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2022/01/ezgif-2-5fa2777c89.webp" /><noscript><img width="500" height="192" class="wp-block-cover__image-background wp-image-33134" alt="" src="https://www.chineselikela.com/wp-content/uploads/2022/01/ezgif-2-5fa2777c89.webp" data-object-fit="cover" srcset="https://www.chineselikela.com/wp-content/uploads/2022/01/ezgif-2-5fa2777c89.webp 500w, https://www.chineselikela.com/wp-content/uploads/2022/01/ezgif-2-5fa2777c89-18x7.webp 18w" sizes="(max-width: 500px) 100vw, 500px" /></noscript><div class="wp-block-cover__inner-container">
+<div class="wp-container-621dd2edbb59c wp-block-buttons alignfull">
+<div class="wp-block-button has-custom-width wp-block-button__width-100 has-custom-font-size is-style-fill has-small-font-size"><a class="wp-block-button__link has-luminous-vivid-orange-to-vivid-red-gradient-background has-background" href="https://www.huarenstore.com/?utm_source=Media&amp;utm_medium=MMP&amp;utm_term=right&amp;utm_campaign=dec-pro" style="border-radius:1px" target="_blank" rel="noreferrer noopener">点击查看详情&gt;&gt;&gt;</a></div>
+</div>
+</div></div>
+</div><div class="ct-widget ct-posts-widget" id="blocksy_ct_posts-6"><h3 class="widget-title">猜你喜欢</h3>
+	<ul data-type="large-small">
+					
+			<li>
+				<a href="https://www.chineselikela.com/huaren/27917/">
+					<div class="ct-image-container"><img width="640" height="427" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20640%20427'%3E%3C/svg%3E" class="attachment-medium size-medium wp-post-image" alt="最新中美航班汇总" data-object-fit="~" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2021/01/pexels-josh-sorenson-59519.jpg" /><noscript><img width="640" height="427" src="https://www.chineselikela.com/wp-content/uploads/2021/01/pexels-josh-sorenson-59519.jpg" class="attachment-medium size-medium wp-post-image" alt="最新中美航班汇总" data-object-fit="~" /></noscript><span class="ct-ratio" style="padding-bottom: 75%"></span></div>
+					<div class="ct-entry-content">
+						<div class="ct-post-title">
+							最新中美航班汇总！南航赴华航班熔断 17日、24日洛杉矶直飞班次取消						</div>
+
+						
+											</div>
+				</a>
+			</li>
+					
+			<li>
+				<a href="https://www.chineselikela.com/cash/make-money-online/22066/">
+					<div class="ct-image-container"><img width="450" height="366" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20450%20366'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" data-object-fit="~" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2021/07/shopify-450x366.webp" /><noscript><img width="450" height="366" src="https://www.chineselikela.com/wp-content/uploads/2021/07/shopify-450x366.webp" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" data-object-fit="~" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></div>
+					<div class="ct-entry-content">
+						<div class="ct-post-title">
+							美国开网店攻略：Shopify开店11个步骤 教你0库存赚钱						</div>
+
+						
+											</div>
+				</a>
+			</li>
+					
+			<li>
+				<a href="https://www.chineselikela.com/deals/kitchen/19224/">
+					<div class="ct-image-container"><img width="417" height="295" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20417%20295'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" data-object-fit="~" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2020/10/cd2.jpg" /><noscript><img width="417" height="295" src="https://www.chineselikela.com/wp-content/uploads/2020/10/cd2.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" data-object-fit="~" /></noscript><span class="ct-ratio" style="padding-bottom: 70.7%"></span></div>
+					<div class="ct-entry-content">
+						<div class="ct-post-title">
+							美国7大华人爆款中式菜刀推荐【2022】						</div>
+
+						
+											</div>
+				</a>
+			</li>
+					
+			<li>
+				<a href="https://www.chineselikela.com/work/21831/">
+					<div class="ct-image-container"><img width="450" height="333" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20450%20333'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" data-object-fit="~" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2020/04/startup-photos-450x333.jpg" /><noscript><img width="450" height="333" src="https://www.chineselikela.com/wp-content/uploads/2020/04/startup-photos-450x333.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" data-object-fit="~" /></noscript><span class="ct-ratio" style="padding-bottom: 66.5%"></span></div>
+					<div class="ct-entry-content">
+						<div class="ct-post-title">
+							29个美国在家工作的正规职位 附工资待遇福利信息						</div>
+
+						
+											</div>
+				</a>
+			</li>
+					
+			<li>
+				<a href="https://www.chineselikela.com/deals/outdoor/20426/">
+					<div class="ct-image-container"><img width="450" height="366" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20450%20366'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" data-object-fit="~" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2021/10/yurongfu-450x366.webp" /><noscript><img width="450" height="366" src="https://www.chineselikela.com/wp-content/uploads/2021/10/yurongfu-450x366.webp" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" data-object-fit="~" /></noscript><span class="ct-ratio" style="padding-bottom: 56.3%"></span></div>
+					<div class="ct-entry-content">
+						<div class="ct-post-title">
+							美国10个最佳羽绒服推荐品牌！小剪刀羽绒服太火了						</div>
+
+						
+											</div>
+				</a>
+			</li>
+			</ul>
+
+
+</div><div class="ct-sticky-widgets"><div class="ct-widget widget_aawp_widget_box" id="aawp_widget_box-3"><h3 class="widget-title">精选好物</h3>
+<div class="aawp aawp-widget">
+
+            
+            
+<div class="aawp-product aawp-product--widget-small aawp-product--ribbon aawp-product--sale"  data-aawp-product-id="B084Z5JD5Q" data-aawp-product-title="Roborock S6 MaxV Robot Vacuum Cleaner with ReactiveAI and Intelligent Mopping No-mop Zones Lidar Navigation 2500Pa Strong Suction Multi-Level Mapping Robotic Vacuum and Mop" data-aawp-click-tracking="title">
+
+    <span class="aawp-product__ribbon aawp-product__ribbon--sale">DEAL</span>
+    <span class="aawp-product__inner">
+        <a class="aawp-product__image-link" href="https://www.amazon.com/dp/B084Z5JD5Q?tag=chineselikela-20&linkCode=ogi&th=1&psc=1" title="Roborock S6 MaxV Robot Vacuum Cleaner with ReactiveAI and Intelligent Mopping, No-mop..." rel="nofollow noopener sponsored" target="_blank">
+            <img class="aawp-product__image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Roborock S6 MaxV Robot Vacuum Cleaner with ReactiveAI and Intelligent Mopping, No-mop..."  data-lazy-src="https://m.media-amazon.com/images/I/31ixpg6YgpS._SL160_.jpg" /><noscript><img class="aawp-product__image" src="https://m.media-amazon.com/images/I/31ixpg6YgpS._SL160_.jpg" alt="Roborock S6 MaxV Robot Vacuum Cleaner with ReactiveAI and Intelligent Mopping, No-mop..."  /></noscript>
+        </a>
+        <span class="aawp-product__content">
+            <a class="aawp-product__title" href="https://www.amazon.com/dp/B084Z5JD5Q?tag=chineselikela-20&linkCode=ogi&th=1&psc=1" title="Roborock S6 MaxV Robot Vacuum Cleaner with ReactiveAI and Intelligent Mopping, No-mop..." rel="nofollow noopener sponsored" target="_blank">Roborock S6 MaxV Robot Vacuum Cleaner with...</a>
+            <span class="aawp-product__meta">
+                                    <a class="aawp-star-rating aawp-star-rating--small aawp-star-rating--v1" href="https://www.amazon.com/product-reviews/B084Z5JD5Q?tag=chineselikela-20" title="亚马逊的评论" rel="nofollow noopener sponsored" target="_blank"><span style="width: 90%;"></span></a>                
+                                    <span class="aawp-product__price aawp-product__price--current">&#36;699.99</span>
+                            </span>
+        </span>
+    </span>
+
+</div>
+
+            
+            
+<div class="aawp-product aawp-product--widget-small aawp-product--ribbon aawp-product--sale"  data-aawp-product-id="B07TPM4GCY" data-aawp-product-title="Fila Women s Fanny Pack Pink One Size" data-aawp-click-tracking="title">
+
+    <span class="aawp-product__ribbon aawp-product__ribbon--sale">DEAL</span>
+    <span class="aawp-product__inner">
+        <a class="aawp-product__image-link" href="https://www.amazon.com/dp/B07TPM4GCY?tag=chineselikela-20&linkCode=ogi&th=1&psc=1" title="Fila Women's Fanny Pack, Pink, One Size" rel="nofollow noopener sponsored" target="_blank">
+            <img class="aawp-product__image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Fila Women's Fanny Pack, Pink, One Size"  data-lazy-src="https://m.media-amazon.com/images/I/21Iu47X4tWL._SL160_.jpg" /><noscript><img class="aawp-product__image" src="https://m.media-amazon.com/images/I/21Iu47X4tWL._SL160_.jpg" alt="Fila Women's Fanny Pack, Pink, One Size"  /></noscript>
+        </a>
+        <span class="aawp-product__content">
+            <a class="aawp-product__title" href="https://www.amazon.com/dp/B07TPM4GCY?tag=chineselikela-20&linkCode=ogi&th=1&psc=1" title="Fila Women's Fanny Pack, Pink, One Size" rel="nofollow noopener sponsored" target="_blank">Fila Women's Fanny Pack, Pink, One Size</a>
+            <span class="aawp-product__meta">
+                                    <a class="aawp-star-rating aawp-star-rating--small aawp-star-rating--v1" href="https://www.amazon.com/product-reviews/B07TPM4GCY?tag=chineselikela-20" title="亚马逊的评论" rel="nofollow noopener sponsored" target="_blank"><span style="width: 90%;"></span></a>                
+                                    <span class="aawp-product__price aawp-product__price--current">&#36;21.05</span>
+                            </span>
+        </span>
+    </span>
+
+</div>
+
+            
+            
+<div class="aawp-product aawp-product--widget-small aawp-product--ribbon aawp-product--sale"  data-aawp-product-id="B09HF1DC1J" data-aawp-product-title="Apple Watch Series 7 GPS 41mm Green Aluminum Case with Clover Sport Band - Regular" data-aawp-click-tracking="title">
+
+    <span class="aawp-product__ribbon aawp-product__ribbon--sale">DEAL</span>
+    <span class="aawp-product__inner">
+        <a class="aawp-product__image-link" href="https://www.amazon.com/dp/B09HF1DC1J?tag=chineselikela-20&linkCode=ogi&th=1&psc=1" title="Apple Watch Series 7 GPS, 41mm Green Aluminum Case with Clover Sport Band - Regular" rel="nofollow noopener sponsored" target="_blank">
+            <img class="aawp-product__image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Apple Watch Series 7 GPS, 41mm Green Aluminum Case with Clover Sport Band - Regular"  data-lazy-src="https://m.media-amazon.com/images/I/41j+XyN9+YL._SL160_.jpg" /><noscript><img class="aawp-product__image" src="https://m.media-amazon.com/images/I/41j+XyN9+YL._SL160_.jpg" alt="Apple Watch Series 7 GPS, 41mm Green Aluminum Case with Clover Sport Band - Regular"  /></noscript>
+        </a>
+        <span class="aawp-product__content">
+            <a class="aawp-product__title" href="https://www.amazon.com/dp/B09HF1DC1J?tag=chineselikela-20&linkCode=ogi&th=1&psc=1" title="Apple Watch Series 7 GPS, 41mm Green Aluminum Case with Clover Sport Band - Regular" rel="nofollow noopener sponsored" target="_blank">Apple Watch Series 7 GPS, 41mm Green Aluminum...</a>
+            <span class="aawp-product__meta">
+                                    <a class="aawp-star-rating aawp-star-rating--small aawp-star-rating--v1" href="https://www.amazon.com/product-reviews/B09HF1DC1J?tag=chineselikela-20" title="亚马逊的评论" rel="nofollow noopener sponsored" target="_blank"><span style="width: 100%;"></span></a>                
+                                    <span class="aawp-product__price aawp-product__price--current">&#36;349.00</span>
+                            </span>
+        </span>
+    </span>
+
+</div>
+
+            
+            
+<div class="aawp-product aawp-product--widget-small aawp-product--ribbon aawp-product--sale"  data-aawp-product-id="B07MMQ4BZH" data-aawp-product-title="Hair Straightener Comb Matte Black" data-aawp-click-tracking="title">
+
+    <span class="aawp-product__ribbon aawp-product__ribbon--sale">DEAL</span>
+    <span class="aawp-product__inner">
+        <a class="aawp-product__image-link" href="https://www.amazon.com/dp/B07MMQ4BZH?tag=chineselikela-20&linkCode=ogi&th=1&psc=1" title="Hair Straightener Comb Matte Black" rel="nofollow noopener sponsored" target="_blank">
+            <img class="aawp-product__image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Hair Straightener Comb Matte Black"  data-lazy-src="https://m.media-amazon.com/images/I/41+ZiCHssZL._SL160_.jpg" /><noscript><img class="aawp-product__image" src="https://m.media-amazon.com/images/I/41+ZiCHssZL._SL160_.jpg" alt="Hair Straightener Comb Matte Black"  /></noscript>
+        </a>
+        <span class="aawp-product__content">
+            <a class="aawp-product__title" href="https://www.amazon.com/dp/B07MMQ4BZH?tag=chineselikela-20&linkCode=ogi&th=1&psc=1" title="Hair Straightener Comb Matte Black" rel="nofollow noopener sponsored" target="_blank">Hair Straightener Comb Matte Black</a>
+            <span class="aawp-product__meta">
+                                    <a class="aawp-star-rating aawp-star-rating--small aawp-star-rating--v1" href="https://www.amazon.com/product-reviews/B07MMQ4BZH?tag=chineselikela-20" title="亚马逊的评论" rel="nofollow noopener sponsored" target="_blank"><span style="width: 90%;"></span></a>                
+                                    <span class="aawp-product__price aawp-product__price--current">&#36;49.99</span>
+                            </span>
+        </span>
+    </span>
+
+</div>
+
+            
+            
+<div class="aawp-product aawp-product--widget-small"  data-aawp-product-id="B09CH3SFGQ" data-aawp-product-title="ELEPHAS Mini WiFi Projector for iPhone 2021 Upgraded HD Movie Projector with Synchronize Smartphone Screen Portable Projector Supports 1080P Compatible with iOS/Android/TV Stick and HDMI/USB/VGA" data-aawp-click-tracking="title">
+
+    
+    <span class="aawp-product__inner">
+        <a class="aawp-product__image-link" href="https://www.amazon.com/dp/B09CH3SFGQ?tag=chineselikela-20&linkCode=ogi&th=1&psc=1" title="ELEPHAS Mini WiFi Projector for iPhone, 2021 Upgraded HD Movie Projector with Synchronize..." rel="nofollow noopener sponsored" target="_blank">
+            <img class="aawp-product__image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="ELEPHAS Mini WiFi Projector for iPhone, 2021 Upgraded HD Movie Projector with Synchronize..."  data-lazy-src="https://m.media-amazon.com/images/I/41avsnF3yyL._SL160_.jpg" /><noscript><img class="aawp-product__image" src="https://m.media-amazon.com/images/I/41avsnF3yyL._SL160_.jpg" alt="ELEPHAS Mini WiFi Projector for iPhone, 2021 Upgraded HD Movie Projector with Synchronize..."  /></noscript>
+        </a>
+        <span class="aawp-product__content">
+            <a class="aawp-product__title" href="https://www.amazon.com/dp/B09CH3SFGQ?tag=chineselikela-20&linkCode=ogi&th=1&psc=1" title="ELEPHAS Mini WiFi Projector for iPhone, 2021 Upgraded HD Movie Projector with Synchronize..." rel="nofollow noopener sponsored" target="_blank">ELEPHAS Mini WiFi Projector for iPhone, 2021...</a>
+            <span class="aawp-product__meta">
+                                    <a class="aawp-star-rating aawp-star-rating--small aawp-star-rating--v1" href="https://www.amazon.com/product-reviews/B09CH3SFGQ?tag=chineselikela-20" title="亚马逊的评论" rel="nofollow noopener sponsored" target="_blank"><span style="width: 90%;"></span></a>                
+                                    <span class="aawp-product__price aawp-product__price--current">&#36;104.98</span>
+                            </span>
+        </span>
+    </span>
+
+</div>
+
+            
+            
+<div class="aawp-product aawp-product--widget-small aawp-product--ribbon aawp-product--sale"  data-aawp-product-id="B09FW199HB" data-aawp-product-title="TurboTax Deluxe 2021 Tax Software Federal and State Tax Return with Federal E-file [Amazon Exclusive] [PC Download]" data-aawp-click-tracking="title">
+
+    <span class="aawp-product__ribbon aawp-product__ribbon--sale">DEAL</span>
+    <span class="aawp-product__inner">
+        <a class="aawp-product__image-link" href="https://www.amazon.com/dp/B09FW199HB?tag=chineselikela-20&linkCode=ogi&th=1&psc=1" title="TurboTax Deluxe 2021 Tax Software, Federal and State Tax Return with Federal E-file..." rel="nofollow noopener sponsored" target="_blank">
+            <img class="aawp-product__image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="TurboTax Deluxe 2021 Tax Software, Federal and State Tax Return with Federal E-file..."  data-lazy-src="https://m.media-amazon.com/images/I/41GmB1t9MwL._SL160_.jpg" /><noscript><img class="aawp-product__image" src="https://m.media-amazon.com/images/I/41GmB1t9MwL._SL160_.jpg" alt="TurboTax Deluxe 2021 Tax Software, Federal and State Tax Return with Federal E-file..."  /></noscript>
+        </a>
+        <span class="aawp-product__content">
+            <a class="aawp-product__title" href="https://www.amazon.com/dp/B09FW199HB?tag=chineselikela-20&linkCode=ogi&th=1&psc=1" title="TurboTax Deluxe 2021 Tax Software, Federal and State Tax Return with Federal E-file..." rel="nofollow noopener sponsored" target="_blank">TurboTax Deluxe 2021 Tax Software, Federal and...</a>
+            <span class="aawp-product__meta">
+                                    <a class="aawp-star-rating aawp-star-rating--small aawp-star-rating--v1" href="https://www.amazon.com/product-reviews/B09FW199HB?tag=chineselikela-20" title="亚马逊的评论" rel="nofollow noopener sponsored" target="_blank"><span style="width: 90%;"></span></a>                
+                                    <span class="aawp-product__price aawp-product__price--current">&#36;49.90</span>
+                            </span>
+        </span>
+    </span>
+
+</div>
+
+            
+            
+<div class="aawp-product aawp-product--widget-small"  data-aawp-product-id="B00852ZN2U" data-aawp-product-title="Nishiki Medium Grain Rice 80 Ounce" data-aawp-click-tracking="title">
+
+    
+    <span class="aawp-product__inner">
+        <a class="aawp-product__image-link" href="https://www.amazon.com/dp/B00852ZN2U?tag=chineselikela-20&linkCode=ogi&th=1&psc=1" title="Nishiki Medium Grain Rice, 80 Ounce" rel="nofollow noopener sponsored" target="_blank">
+            <img class="aawp-product__image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Nishiki Medium Grain Rice, 80 Ounce"  data-lazy-src="https://m.media-amazon.com/images/I/51RhswLQfzL._SL160_.jpg" /><noscript><img class="aawp-product__image" src="https://m.media-amazon.com/images/I/51RhswLQfzL._SL160_.jpg" alt="Nishiki Medium Grain Rice, 80 Ounce"  /></noscript>
+        </a>
+        <span class="aawp-product__content">
+            <a class="aawp-product__title" href="https://www.amazon.com/dp/B00852ZN2U?tag=chineselikela-20&linkCode=ogi&th=1&psc=1" title="Nishiki Medium Grain Rice, 80 Ounce" rel="nofollow noopener sponsored" target="_blank">Nishiki Medium Grain Rice, 80 Ounce</a>
+            <span class="aawp-product__meta">
+                                    <a class="aawp-star-rating aawp-star-rating--small aawp-star-rating--v1" href="https://www.amazon.com/product-reviews/B00852ZN2U?tag=chineselikela-20" title="亚马逊的评论" rel="nofollow noopener sponsored" target="_blank"><span style="width: 90%;"></span></a>                
+                                    <span class="aawp-product__price aawp-product__price--current">&#36;6.73</span>
+                            </span>
+        </span>
+    </span>
+
+</div>
+
+            
+            
+<div class="aawp-product aawp-product--widget-small aawp-product--ribbon aawp-product--sale"  data-aawp-product-id="B09JQMJHXY" data-aawp-product-title="Apple AirPods Pro" data-aawp-click-tracking="title">
+
+    <span class="aawp-product__ribbon aawp-product__ribbon--sale">DEAL</span>
+    <span class="aawp-product__inner">
+        <a class="aawp-product__image-link" href="https://www.amazon.com/dp/B09JQMJHXY?tag=chineselikela-20&linkCode=osi&th=1&psc=1" title="Apple AirPods Pro" rel="nofollow noopener sponsored" target="_blank">
+            <img class="aawp-product__image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Apple AirPods Pro"  data-lazy-src="https://m.media-amazon.com/images/I/31G4DtYkP+L._SL160_.jpg" /><noscript><img class="aawp-product__image" src="https://m.media-amazon.com/images/I/31G4DtYkP+L._SL160_.jpg" alt="Apple AirPods Pro"  /></noscript>
+        </a>
+        <span class="aawp-product__content">
+            <a class="aawp-product__title" href="https://www.amazon.com/dp/B09JQMJHXY?tag=chineselikela-20&linkCode=osi&th=1&psc=1" title="Apple AirPods Pro" rel="nofollow noopener sponsored" target="_blank">Apple AirPods Pro</a>
+            <span class="aawp-product__meta">
+                                    <a class="aawp-star-rating aawp-star-rating--small aawp-star-rating--v1" href="https://www.amazon.com/product-reviews/B09JQMJHXY?tag=chineselikela-20" title="亚马逊的评论" rel="nofollow noopener sponsored" target="_blank"><span style="width: 100%;"></span></a>                
+                                    <span class="aawp-product__price aawp-product__price--current">&#36;197.00</span>
+                            </span>
+        </span>
+    </span>
+
+</div>
+
+    
+</div>
+<p class="aawp-disclaimer"><p style="text-align: right;">⌛  更新时间： 2022-02-28</p></p></div></div>
+					</div>
+
+			</aside>
+
+	</div>
+
+
+	<section class="ct-trending-block " >
+		<div class="ct-container" data-page="1">
+			<h3 class="ct-block-title">
+				本站精华
+				<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+
+									<span class="ct-arrow-left">
+					</span>
+
+					<span class="ct-arrow-right">
+					</span>
+							</h3>
+
+			<a href="https://www.chineselikela.com/cash/make-money-with-mobile-phones/22265/" ><div class="ct-image-container"><img width="450" height="425" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20450%20425'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2021/09/app-450x425.webp" /><noscript><img width="450" height="425" src="https://www.chineselikela.com/wp-content/uploads/2021/09/app-450x425.webp" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 100%"></span></div><span class="ct-item-title" >59个赚钱app汇总 刷刷手机每天赚$200</span></a><a href="https://www.chineselikela.com/cash/make-money-online/11915/" ><div class="ct-image-container"><img width="450" height="365" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20450%20365'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail wp-post-image" alt="2021年美国网上赚钱80个途径（上）有华人月入$10万+" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2021/10/image.psd-450x365.webp" /><noscript><img width="450" height="365" src="https://www.chineselikela.com/wp-content/uploads/2021/10/image.psd-450x365.webp" class="attachment-thumbnail size-thumbnail wp-post-image" alt="2021年美国网上赚钱80个途径（上）有华人月入$10万+" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 100%"></span></div><span class="ct-item-title" >2022年网上赚钱80个途径（上）有华人月入$10万+</span></a><a href="https://www.chineselikela.com/cash/make-money-with-mobile-phones/19036/" ><div class="ct-image-container"><img width="450" height="280" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20450%20280'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2019/07/sweatco-450x280.jpg" /><noscript><img width="450" height="280" src="https://www.chineselikela.com/wp-content/uploads/2019/07/sweatco-450x280.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 100%"></span></div><span class="ct-item-title" >走路赚钱APP推荐！Sweatcoin赚钱3个方式</span></a><a href="https://www.chineselikela.com/cash/make-money-with-mobile-phones/22803/" ><div class="ct-image-container"><img width="400" height="255" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20400%20255'%3E%3C/svg%3E" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" data-object-fit="~" itemprop="image" data-lazy-src="https://www.chineselikela.com/wp-content/uploads/2020/06/ceshi.webp" /><noscript><img width="400" height="255" src="https://www.chineselikela.com/wp-content/uploads/2020/06/ceshi.webp" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" data-object-fit="~" itemprop="image" /></noscript><span class="ct-ratio" style="padding-bottom: 100%"></span></div><span class="ct-item-title" >4个帮人做测试赚钱网站推荐！每小时最高赚$90</span></a>
+		</div>
+	</section>
+
+		</main>
+
+	<footer class="ct-footer" data-id="type-1" itemscope="" itemtype="https://schema.org/WPFooter" ><div data-row="top" ><div class="ct-container" data-columns-divider="md:sm" ><div data-column="menu" >
+<nav
+	id="footer-menu"
+	class="footer-menu-inline ct-hidden-sm"
+	data-id="menu" 		itemscope="" itemtype="https://schema.org/SiteNavigationElement" 	aria-label="页脚菜单">
+
+	<ul id="menu-%e5%8f%8b%e6%83%85%e9%93%be%e6%8e%a5" class="menu"><li id="menu-item-18516" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18516"><a title="美国论坛休斯顿" href="http://www.usabbs.org/" class="ct-menu-link">美国论坛</a></li>
+<li id="menu-item-23608" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23608"><a href="https://www.chineselikedeal.com/" class="ct-menu-link">华人爆款</a></li>
+<li id="menu-item-18484" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18484"><a href="https://www.rakuten.com/r/CHINES769?eeid=28187" class="ct-menu-link">网购返现</a></li>
+<li id="menu-item-18481" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18481"><a href="http://www.swagbucks.com/p/register?rb=16841087" class="ct-menu-link">有偿调查</a></li>
+<li id="menu-item-18483" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18483"><a href="https://www.gototrafficschool.com/AffiliateLink.aspx?AFLID=WWC0007A7" class="ct-menu-link">网上驾校</a></li>
+<li id="menu-item-18494" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18494"><a href="https://click.linksynergy.com/fs-bin/click?id=14/pLHQsiHk&#038;offerid=367009.90&#038;subid=0&#038;type=4&#038;LSNSUBSITE=LSNSUBSITE" class="ct-menu-link">接单赚钱</a></li>
+<li id="menu-item-18482" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18482"><a href="https://www.amazon.com/gp/goldbox?ref_=nav_cs_gb_azl&#038;_encoding=UTF8&#038;tag=chineselikela-20&#038;linkCode=ur2&#038;linkId=8853427b105b70a7d2fb25a2dbbb4a40&#038;camp=1789&#038;creative=9325" class="ct-menu-link">Amazon</a></li>
+<li id="menu-item-18480" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18480"><a href="https://www.dynobooks.us/" class="ct-menu-link">DyNobooks</a></li>
+<li id="menu-item-18485" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18485"><a href="http://cash.me/app/MLNTRCD" class="ct-menu-link">Cash</a></li>
+</ul></nav>
+</div></div></div><div data-row="middle" ><div class="ct-container" data-columns-divider="md:sm" ><div data-column="copyright" >
+<div
+	class="ct-footer-copyright"
+	data-id="copyright" >
+
+	<p>Copyright © 2022 美国实用资讯 丨<a title="网站地图" href="https://www.chineselikela.com/sitemap.xml">地图</a>丨<a title="联系我们" href="https://www.chineselikela.com/contact-us/">联系</a>丨<a title="免责生命" href="https://www.chineselikela.com/%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E/">免责</a></p></div>
+</div></div></div></footer></div>
+
+<div class="ct-drawer-canvas">
+		<div id="search-modal" class="ct-panel" data-behaviour="modal">
+			<div class="ct-panel-actions">
+				<button class="ct-toggle-close" data-type="type-1" aria-label="Close search modal">
+					<svg class="ct-icon" width="12" height="12" viewBox="0 0 15 15">
+						<path d="M1 15a1 1 0 01-.71-.29 1 1 0 010-1.41l5.8-5.8-5.8-5.8A1 1 0 011.7.29l5.8 5.8 5.8-5.8a1 1 0 011.41 1.41l-5.8 5.8 5.8 5.8a1 1 0 01-1.41 1.41l-5.8-5.8-5.8 5.8A1 1 0 011 15z"/>
+					</svg>
+				</button>
+			</div>
+
+			<div class="ct-panel-content">
+				
+
+<form
+	role="search" method="get"
+	class="search-form"
+	action="https://www.chineselikela.com"
+	data-live-results="thumbs">
+
+	<input type="search" class="modal-field" placeholder="输入关键词" value="" name="s" autocomplete="off" title="搜索输入" />
+
+	<button type="submit" class="search-submit" aria-label="搜索按钮">
+		<svg class="ct-icon" aria-hidden="true" width="15" height="15" viewBox="0 0 15 15"><path d="M14.8,13.7L12,11c0.9-1.2,1.5-2.6,1.5-4.2c0-3.7-3-6.8-6.8-6.8S0,3,0,6.8s3,6.8,6.8,6.8c1.6,0,3.1-0.6,4.2-1.5l2.8,2.8c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2C15.1,14.5,15.1,14,14.8,13.7z M1.5,6.8c0-2.9,2.4-5.2,5.2-5.2S12,3.9,12,6.8S9.6,12,6.8,12S1.5,9.6,1.5,6.8z"/></svg>
+		<span data-loader="circles"><span></span><span></span><span></span></span>
+	</button>
+
+	
+			<input type="hidden" name="ct_post_type" value="post:page">
+	
+</form>
+
+
+			</div>
+		</div>
+
+		<div id="offcanvas" class="ct-panel ct-header" data-behaviour="right-side" ><div class="ct-panel-inner">
+		<div class="ct-panel-actions">
+			<button class="ct-toggle-close" data-type="type-1" aria-label="关闭抽屉">
+				<svg class="ct-icon" width="12" height="12" viewBox="0 0 15 15">
+					<path d="M1 15a1 1 0 01-.71-.29 1 1 0 010-1.41l5.8-5.8-5.8-5.8A1 1 0 011.7.29l5.8 5.8 5.8-5.8a1 1 0 011.41 1.41l-5.8 5.8 5.8 5.8a1 1 0 01-1.41 1.41l-5.8-5.8-5.8 5.8A1 1 0 011 15z"/>
+				</svg>
+			</button>
+		</div>
+		<div class="ct-panel-content" data-device="desktop" ></div><div class="ct-panel-content" data-device="mobile" >
+<nav 
+	class="mobile-menu has-submenu" 
+	data-id="mobile-menu-secondary" data-interaction="click" data-toggle-type="type-1" 	aria-label="帆布以外的菜单">
+	<ul id="menu-caidan-1" class=""><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-24995"><span class="ct-sub-menu-parent"><a href="https://www.chineselikela.com/cash/" class="ct-menu-link"><i class="fa fa-money" aria-hidden="true"></i>  赚钱</a><button class="ct-toggle-dropdown-mobile" aria-label="展开下拉菜单" aria-expanded="false" ><svg class="ct-icon toggle-icon-1" width="15" height="15" viewBox="0 0 15 15"><path d="M3.9,5.1l3.6,3.6l3.6-3.6l1.4,0.7l-5,5l-5-5L3.9,5.1z"/></svg></button></span>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-24996"><span class="ct-sub-menu-parent"><a href="https://www.chineselikela.com/work/" class="ct-menu-link"><i class="fa fa-briefcase" aria-hidden="true"></i> 工作</a><button class="ct-toggle-dropdown-mobile" aria-label="展开下拉菜单" aria-expanded="false" ><svg class="ct-icon toggle-icon-1" width="15" height="15" viewBox="0 0 15 15"><path d="M3.9,5.1l3.6,3.6l3.6-3.6l1.4,0.7l-5,5l-5-5L3.9,5.1z"/></svg></button></span>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11579"><a href="https://www.chineselikela.com/work/study/" class="ct-menu-link">创业点子</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11580"><a href="https://www.chineselikela.com/work/story/" class="ct-menu-link">华企故事</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10607"><a href="https://chineselikela.com/?s=%E5%BD%93%E5%85%B5" class="ct-menu-link">美国当兵</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10608"><a href="https://chineselikela.com/?s=%E9%A4%90%E9%A6%86" class="ct-menu-link">开中餐馆</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20750"><a href="https://www.chineselikela.com/career-listings/" class="ct-menu-link">美国工作索引表</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6514"><a href="https://www.chineselikela.com/%e7%be%8e%e5%9b%bd%e5%8a%a0%e5%b7%9e%e5%90%84%e7%b1%bb%e5%b7%a5%e4%bd%9c%e6%89%a7%e7%85%a7%e7%b4%a2%e5%bc%95%e8%a1%a8/" class="ct-menu-link">美国加州各类工作执照索引表</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25006"><a href="https://www.chineselikela.com/cash/make-money-online/" class="ct-menu-link">网上赚钱</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25005"><a href="https://www.chineselikela.com/cash/make-money-with-mobile-phones/" class="ct-menu-link">手机赚钱</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25004"><a href="https://www.chineselikela.com/cash/make-money-on-youtube/" class="ct-menu-link">YouTube赚钱</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25003"><a href="https://www.chineselikela.com/cash/make-money-on-amazon/" class="ct-menu-link">Amazon赚钱</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-25067"><span class="ct-sub-menu-parent"><a href="https://www.chineselikela.com/deals/" class="ct-menu-link"><i class="fa fa-cart-plus" aria-hidden="true"></i> 好物</a><button class="ct-toggle-dropdown-mobile" aria-label="展开下拉菜单" aria-expanded="false" ><svg class="ct-icon toggle-icon-1" width="15" height="15" viewBox="0 0 15 15"><path d="M3.9,5.1l3.6,3.6l3.6-3.6l1.4,0.7l-5,5l-5-5L3.9,5.1z"/></svg></button></span>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20713"><a href="https://www.chineselikela.com/deals/appliance/" class="ct-menu-link">家用电器</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20715"><a href="https://www.chineselikela.com/deals/health/" class="ct-menu-link">药品健康</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20714"><a href="https://www.chineselikela.com/deals/electronics/" class="ct-menu-link">电子产品</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20712"><a href="https://www.chineselikela.com/deals/kitchen/" class="ct-menu-link">厨房用具</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22376"><a href="https://www.chineselikela.com/deals/fitness/" class="ct-menu-link">健身美体</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22377"><a href="https://www.chineselikela.com/deals/entertainment-deals/" class="ct-menu-link">娱乐设备</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22378"><a href="https://www.chineselikela.com/deals/furniture/" class="ct-menu-link">家具装饰</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22379"><a href="https://www.chineselikela.com/deals/courtyard/" class="ct-menu-link">庭院花园</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22380"><a href="https://www.chineselikela.com/deals/outdoor/" class="ct-menu-link">户外生活</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22381"><a href="https://www.chineselikela.com/deals/auto-deals/" class="ct-menu-link">汽车相关</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22382"><a href="https://www.chineselikela.com/deals/cleaning/" class="ct-menu-link">清洁卫生</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-20720"><span class="ct-sub-menu-parent"><a href="https://www.chineselikela.com/huaren/free-offer/" class="ct-menu-link"><i class="fa fa-gift" aria-hidden="true"></i> 福利</a><button class="ct-toggle-dropdown-mobile" aria-label="展开下拉菜单" aria-expanded="false" ><svg class="ct-icon toggle-icon-1" width="15" height="15" viewBox="0 0 15 15"><path d="M3.9,5.1l3.6,3.6l3.6-3.6l1.4,0.7l-5,5l-5-5L3.9,5.1z"/></svg></button></span>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6511"><a href="https://www.chineselikela.com/300%e7%bd%91%e7%bb%9c%e5%85%8d%e8%b4%b9%e8%b5%84%e6%ba%90%e5%88%86%e4%ba%ab%e5%a4%a7%e9%9b%86%e5%90%88/" class="ct-menu-link">300+网络免费资源分享大集合</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-20751"><a href="https://www.chineselikela.com/huaren/free-offer/17270/" class="ct-menu-link">23个免费无版权图片网站</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-31353"><a href="https://www.chineselikela.com/tag/%e5%85%8d%e8%b4%b9/" class="ct-menu-link">免费集合</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-20678"><span class="ct-sub-menu-parent"><a href="https://www.chineselikela.com/huaren/" class="ct-menu-link"><i class="fa fa-coffee" aria-hidden="true"></i> 资讯</a><button class="ct-toggle-dropdown-mobile" aria-label="展开下拉菜单" aria-expanded="false" ><svg class="ct-icon toggle-icon-1" width="15" height="15" viewBox="0 0 15 15"><path d="M3.9,5.1l3.6,3.6l3.6-3.6l1.4,0.7l-5,5l-5-5L3.9,5.1z"/></svg></button></span>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12311"><a href="https://www.chineselikela.com/guide-la/" class="ct-menu-link">北美生活导航</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-11582"><span class="ct-sub-menu-parent"><a href="https://www.chineselikela.com/huaren/immigrant/" class="ct-menu-link"><i class="fa fa-child" aria-hidden="true"></i> 移民</a><button class="ct-toggle-dropdown-mobile" aria-label="展开下拉菜单" aria-expanded="false" ><svg class="ct-icon toggle-icon-1" width="15" height="15" viewBox="0 0 15 15"><path d="M3.9,5.1l3.6,3.6l3.6-3.6l1.4,0.7l-5,5l-5-5L3.9,5.1z"/></svg></button></span>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11584"><a href="https://chineselikela.com/?s=%E6%B3%95%E5%BE%8B" class="ct-menu-link">美国法律</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11583"><a href="https://chineselikela.com/immigrant-map" class="ct-menu-link">移民路径图</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-6516"><span class="ct-sub-menu-parent"><a href="https://www.chineselikela.com/huaren/house/" class="ct-menu-link"><i class="fa fa-hospital-o" aria-hidden="true"></i> 住房</a><button class="ct-toggle-dropdown-mobile" aria-label="展开下拉菜单" aria-expanded="false" ><svg class="ct-icon toggle-icon-1" width="15" height="15" viewBox="0 0 15 15"><path d="M3.9,5.1l3.6,3.6l3.6-3.6l1.4,0.7l-5,5l-5-5L3.9,5.1z"/></svg></button></span>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10612"><a href="https://chineselikela.com/?s=%E4%B9%B0%E6%88%BF" class="ct-menu-link">买房资讯</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10611"><a href="https://chineselikela.com/?s=%E7%A7%9F%E6%88%BF" class="ct-menu-link">租房须知</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10613"><a href="https://chineselikela.com/?s=%E6%88%BF%E5%B1%8B" class="ct-menu-link">房屋维护</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-2305"><span class="ct-sub-menu-parent"><a href="https://www.chineselikela.com/huaren/auto/" class="ct-menu-link"><i class="fa fa-car" aria-hidden="true"></i> 汽车</a><button class="ct-toggle-dropdown-mobile" aria-label="展开下拉菜单" aria-expanded="false" ><svg class="ct-icon toggle-icon-1" width="15" height="15" viewBox="0 0 15 15"><path d="M3.9,5.1l3.6,3.6l3.6-3.6l1.4,0.7l-5,5l-5-5L3.9,5.1z"/></svg></button></span>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10615"><a href="https://chineselikela.com/?s=%E7%BD%9A%E5%8D%95" class="ct-menu-link">驾照罚单</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10614"><a href="https://chineselikela.com/?s=%E4%B9%B0%E8%BD%A6" class="ct-menu-link">买车经验</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-2301"><span class="ct-sub-menu-parent"><a href="https://www.chineselikela.com/huaren/live/" class="ct-menu-link"><i class="fa fa-camera-retro" aria-hidden="true"></i> 玩乐</a><button class="ct-toggle-dropdown-mobile" aria-label="展开下拉菜单" aria-expanded="false" ><svg class="ct-icon toggle-icon-1" width="15" height="15" viewBox="0 0 15 15"><path d="M3.9,5.1l3.6,3.6l3.6-3.6l1.4,0.7l-5,5l-5-5L3.9,5.1z"/></svg></button></span>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11577"><a href="https://www.chineselikela.com/huaren/entertainment/" class="ct-menu-link">情趣图文</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10619"><a href="https://chineselikela.com/tag/%E6%97%85%E6%B8%B8/" class="ct-menu-link">私家景点</a></li>
+		<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10618"><a href="https://chineselikela.com/?s=%E6%94%BB%E7%95%A5" class="ct-menu-link">旅游攻略</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-21004"><a href="https://www.chineselikela.com/huaren/local/" class="ct-menu-link">城市资讯</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-30272"><a href="https://www.chineselikela.com/quiz/" class="ct-menu-link">知识问答</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26981"><a href="https://www.chineselikela.com/quiz/" class="ct-menu-link"><i class="fa fa-question-circle" aria-hidden="true"></i> 问答</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24997"><a href="https://www.chineselikela.com/top10/" class="ct-menu-link"><i class="fa fa-fire" aria-hidden="true"></i> 热帖</a></li>
+<li class="trp-language-switcher-container menu-item menu-item-type-post_type menu-item-object-language_switcher menu-item-33117"><a href="https://www.chineselikela.com/en" class="ct-menu-link"><span data-no-translation><img class="trp-flag-image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2018%2012'%3E%3C/svg%3E" width="18" height="12" alt="en_US" title="English" data-lazy-src="https://www.chineselikela.com/wp-content/plugins/translatepress-multilingual/assets/images/flags/en_US.png"><noscript><img class="trp-flag-image" src="https://www.chineselikela.com/wp-content/plugins/translatepress-multilingual/assets/images/flags/en_US.png" width="18" height="12" alt="en_US" title="English"></noscript><span class="trp-ls-language-name">English</span></span></a></li>
+</ul></nav>
+
+</div></div></div>
+	<a href="#main-container" class="ct-back-to-top "
+		data-shape="circle"
+		data-alignment="right"
+		title="转到顶部" aria-label="转到顶部">
+
+		<svg class="ct-icon" width="15" height="15" viewBox="0 0 20 20"><path d="M2.3 15.2L10 7.5l7.7 7.6c.6.7 1.2.7 1.8 0 .6-.6.6-1.3 0-1.9l-8.6-8.6c-.2-.3-.5-.4-.9-.4s-.7.1-.9.4L.5 13.2c-.6.6-.6 1.2 0 1.9.6.8 1.2.7 1.8.1z"/></svg>
+		
+	</a>
+
+	
+<div
+	class="ct-shortcuts-container ct-hidden-md ct-hidden-lg"
+	data-type="type-2"
+	data-behaviour="scroll">
+	<a href="https://www.chineselikela.com" data-shortcut="home" data-label="bottom" aria-label="首页" class="ct-hidden-md ct-hidden-lg" ><span class="ct-label ct-hidden-md ct-hidden-lg">首页</span><span class="ct-icon-container"><svg width='15' height='15' viewBox='0 0 15 15'><path d='M13.5 4.1L8.8.4C8.4.1 8 0 7.5 0s-.9.1-1.3.4L1.5 4.1C.8 4.7.4 5.6.4 6.5v7.1c0 .8.6 1.4 1.4 1.4H13.2c.8 0 1.4-.6 1.4-1.4V6.5c0-.9-.4-1.8-1.1-2.4zM9 13.5H6V7.7c0-.4.3-.7.6-.7h1.7c.4 0 .7.3.7.7v5.8zm4.1-.2c0 .1-.1.2-.2.2h-2.4V7.7c0-1.2-1-2.1-2.1-2.1H6.6c-1.2 0-2.1 1-2.1 2.1v5.8H2.1c-.1 0-.2-.1-.2-.2V6.5c0-.5.2-1 .6-1.3L7 1.7c.2-.1.3-.2.5-.2s.4.1.5.2l4.4 3.5c.4.3.6.8.6 1.3v6.8z'/></svg></span></a> <a href="https://www.chineselikela.com/cash/make-money-online/" data-shortcut="custom_link" data-label="bottom" aria-label="网赚" class="ct-hidden-md ct-hidden-lg" ><span class="ct-label ct-hidden-md ct-hidden-lg">网赚</span><span class="ct-icon-container"><svg width="20" height="20" viewBox="0,0,512,512"><path d="M505.04 442.66l-99.71-99.69c-4.5-4.5-10.6-7-17-7h-16.3c27.6-35.3 44-79.69 44-127.99C416.03 93.09 322.92 0 208.02 0S0 93.09 0 207.98s93.11 207.98 208.02 207.98c48.3 0 92.71-16.4 128.01-44v16.3c0 6.4 2.5 12.5 7 17l99.71 99.69c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.59.1-33.99zm-297.02-90.7c-79.54 0-144-64.34-144-143.98 0-79.53 64.35-143.98 144-143.98 79.54 0 144 64.34 144 143.98 0 79.53-64.35 143.98-144 143.98zm27.11-152.54l-45.01-13.5c-5.16-1.55-8.77-6.78-8.77-12.73 0-7.27 5.3-13.19 11.8-13.19h28.11c4.56 0 8.96 1.29 12.82 3.72 3.24 2.03 7.36 1.91 10.13-.73l11.75-11.21c3.53-3.37 3.33-9.21-.57-12.14-9.1-6.83-20.08-10.77-31.37-11.35V112c0-4.42-3.58-8-8-8h-16c-4.42 0-8 3.58-8 8v16.12c-23.63.63-42.68 20.55-42.68 45.07 0 19.97 12.99 37.81 31.58 43.39l45.01 13.5c5.16 1.55 8.77 6.78 8.77 12.73 0 7.27-5.3 13.19-11.8 13.19h-28.1c-4.56 0-8.96-1.29-12.82-3.72-3.24-2.03-7.36-1.91-10.13.73l-11.75 11.21c-3.53 3.37-3.33 9.21.57 12.14 9.1 6.83 20.08 10.77 31.37 11.35V304c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-16.12c23.63-.63 42.68-20.54 42.68-45.07 0-19.97-12.99-37.81-31.59-43.39z" /></svg></span></a> <a href="https://www.chineselikela.com/free-offer/" data-shortcut="custom_link" data-label="bottom" aria-label="福利" class="ct-hidden-md ct-hidden-lg" ><span class="ct-label ct-hidden-md ct-hidden-lg">福利</span><span class="ct-icon-container"><svg width="20" height="20" viewBox="0,0,496,512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm141.4 389.4c-37.8 37.8-88 58.6-141.4 58.6s-103.6-20.8-141.4-58.6S48 309.4 48 256s20.8-103.6 58.6-141.4S194.6 56 248 56s103.6 20.8 141.4 58.6S448 202.6 448 256s-20.8 103.6-58.6 141.4zM328 224c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm-160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm194.4 64H133.6c-8.2 0-14.5 7-13.5 15 7.5 59.2 58.9 105 121.1 105h13.6c62.2 0 113.6-45.8 121.1-105 1-8-5.3-15-13.5-15z" /></svg></span></a> <a href="https://www.chineselikela.com/deals/" data-shortcut="custom_link" data-label="bottom" aria-label="好物" class="ct-hidden-md ct-hidden-lg" ><span class="ct-label ct-hidden-md ct-hidden-lg">好物</span><span class="ct-icon-container"><svg width="20" height="20" viewBox="0,0,576,512"><path d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z" /></svg></span></a></div>
+</div><style>.aawp .aawp-product--horizontal .aawp-product__description { display: block; }</style>
+        <style>.wp-container-621dd2ed82bed {display: flex;gap: 0.5em;flex-wrap: wrap;align-items: center;align-items: center;justify-content: center;}.wp-container-621dd2ed82bed > * { margin: 0; }</style>
+<style>.wp-container-621dd2ed834c0 .alignleft { float: left; margin-right: 2em; }.wp-container-621dd2ed834c0 .alignright { float: right; margin-left: 2em; }</style>
+<style>.wp-container-621dd2edb8efd {display: flex;gap: 0.5em;flex-wrap: wrap;align-items: center;align-items: center;}.wp-container-621dd2edb8efd > * { margin: 0; }</style>
+<style>.wp-container-621dd2edbb59c {display: flex;gap: 0.5em;flex-wrap: wrap;align-items: center;align-items: center;justify-content: flex-end;}.wp-container-621dd2edbb59c > * { margin: 0; }</style>
+<script type="rocketlazyloadscript" id='rocket-browser-checker-js-after'>
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script id='rocket-preload-links-js-extra'>
+var RocketPreloadLinksConfig = {"excludeUris":"\/ct_content_block\/hook-blocksysinglecontentbottom-2\/|\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/clla120811\/|\/wp-admin\/|\/logout\/|\/clla120811\/|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/www.chineselikela.com","onHoverDelay":"100","rateThrottle":"3"};
+</script>
+<script type="rocketlazyloadscript" id='rocket-preload-links-js-after'>
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-minify="1" src='https://www.chineselikela.com/wp-content/cache/min/1/wp-content/plugins/aawp/assets/dist/js/main.js?ver=1644594090' id='aawp-js' defer></script>
+<script id='ct-scripts-js-extra'>
+var ct_localizations = {"ajax_url":"https:\/\/www.chineselikela.com\/wp-admin\/admin-ajax.php","nonce":"430f3506d3","public_url":"https:\/\/www.chineselikela.com\/wp-content\/themes\/blocksy\/static\/bundle\/","rest_url":"https:\/\/www.chineselikela.com\/wp-json\/","search_url":"https:\/\/www.chineselikela.com\/search\/QUERY_STRING\/","show_more_text":"\u663e\u793a\u66f4\u591a","more_text":"\u66f4\u591a","expand_submenu":"Expand dropdown menu","collapse_submenu":"Collapse dropdown menu","dynamic_js_chunks":[{"id":"blocksy_pro_micro_popups","selector":".ct-popup","url":"https:\/\/www.chineselikela.com\/wp-content\/plugins\/blocksy-companion-pro\/framework\/premium\/static\/bundle\/micro-popups.js"},{"id":"blocksy_ext_trending","selector":".ct-trending-block [class*=\"ct-arrow\"]","url":"https:\/\/www.chineselikela.com\/wp-content\/plugins\/blocksy-companion-pro\/framework\/extensions\/trending\/static\/bundle\/main.js","trigger":"click"},{"id":"blocksy_shortcuts_auto_hide","selector":".ct-shortcuts-container[data-behaviour=\"scroll\"]","trigger":"scroll","url":"https:\/\/www.chineselikela.com\/wp-content\/plugins\/blocksy-companion-pro\/framework\/premium\/extensions\/shortcuts\/static\/bundle\/auto-hide.js"},{"id":"blocksy_dark_mode","selector":"[data-id=\"dark-mode-switcher\"]","url":"https:\/\/www.chineselikela.com\/wp-content\/plugins\/blocksy-companion-pro\/static\/bundle\/dark-mode.js","trigger":"click"},{"id":"blocksy_sticky_header","selector":"header [data-sticky]","url":"https:\/\/www.chineselikela.com\/wp-content\/plugins\/blocksy-companion-pro\/static\/bundle\/sticky.js"}],"dynamic_styles":{"lazy_load":"https:\/\/www.chineselikela.com\/wp-content\/themes\/blocksy\/static\/bundle\/non-critical-styles.min.css","search_lazy":"https:\/\/www.chineselikela.com\/wp-content\/themes\/blocksy\/static\/bundle\/non-critical-search-styles.min.css"},"dynamic_styles_selectors":[{"selector":"#account-modal","url":"https:\/\/www.chineselikela.com\/wp-content\/plugins\/blocksy-companion-pro\/static\/bundle\/account-lazy.min.css"}]};
+</script>
+<script type="rocketlazyloadscript" data-minify="1" src='https://www.chineselikela.com/wp-content/cache/min/1/wp-content/themes/blocksy/static/bundle/main.js?ver=1644594090' id='ct-scripts-js' defer></script>
+<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://www.chineselikela.com/wp-content/plugins/wp-rocket/assets/js/lazyload/17.5/lazyload.min.js"></script>
+</body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1646121709 -->

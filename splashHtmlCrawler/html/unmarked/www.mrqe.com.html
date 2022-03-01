@@ -1,0 +1,70 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.ico?v=2">
+    <script src="https://widget.justwatch.com/justwatch_widget.js" async type="text/javascript"></script>
+    <script src="//cdn.intergient.com/pageos/pageos.js" async type="text/javascript" id="tyche"></script>
+    <script type="text/javascript">
+      // 1. set up account specific config code
+      // 2. configure ad units
+      // 3. initialize and show units
+      // 1.
+      var tyche = {
+          mode: 'tyche',
+          config: 'https://config.playwire.com/1024337/v2/websites/72803/banner.json',
+          passiveMode: true
+      }
+      // 2. Configure ad units
+      var pwUnits = [
+          {
+              type: 'trendi_video'
+          },
+          {
+              type: 'bottom_rail'
+          },
+          {
+              selectorId: 'top-leaderboard',
+              type: 'leaderboard_atf'
+          },
+          {
+              selectorId: 'bottom-leaderboard',
+              type: 'leaderboard_btf'
+          }
+      ]
+      // function that is called when tyche is ready
+      var init = function () {
+          tyche
+              .addUnits(pwUnits)
+              .then(() => {
+                  tyche.displayUnits();
+              }).catch((e) => {
+              // catch errors
+              tyche.displayUnits();
+              console.log(e);
+          });
+      }
+      // 3.
+      tyche.onReady = function () { // attach function to tyche onReady
+          init();
+      }
+    </script>
+    <title>MRQE</title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but mrqe doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app">
+      <app></app>
+    </div>
+
+    <link type="text/css" href="https://mrqe.com/static/css/app.4358981e.css" rel="stylesheet" />
+<script type="text/javascript" src="https://mrqe.com/static/js/app.dd69c889.js" ></script>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

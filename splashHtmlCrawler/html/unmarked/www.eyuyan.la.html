@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="keywords" content=",易语言源码,易语言模块,易语言支持库" />
+    <meta name="description" content="易语言资源网为你提供易语言源码下载，易语言模块下载，易语言支持库下载，同时提供丰富的功能，在线预览模块命令，高级搜索易语言相关资源。" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <link href="/source/plugin/ziyuan/template/css/xezyw.css" rel="stylesheet">
+    <link rel="stylesheet" href="/source/plugin/ziyuan/template/css/font-awesome.min.css" type="text/css">
+    <script src="/source/plugin/ziyuan/template/js/jquery.min.js" type="text/javascript"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <style>
+        .mini_header {
+            display: none;
+        }
+    
+        @media screen and (max-device-width: 860px) {
+            
+            .header-main{
+                min-height: 80px;
+            }
+
+            #menu{
+                display: none!important;
+            }
+
+            .hotkw,.header-main .search {
+                display: none !important;
+                opacity: 0;
+            }
+    
+            .header-logo {
+                width: 100% !important;
+            }
+    
+            .mini_header {
+                display: block;
+                margin-top: 10px!important;
+                height: 35px!important;
+                width: 90%;
+                margin-left: 4%;
+            }
+
+            .header-logo{
+                overflow: visible!important;
+            }
+
+            .header-logo img{
+                position: relative;
+                top: 5px;
+            }
+            .mini_header  .search{
+                display: flex;
+            }
+
+            .mini_header  .search button{
+                margin-left:0;
+            }
+
+            .header-right .search input{
+                width: 245px!important;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="top">
+            <div class="top_content">
+                <div class="top_left">
+                    <span>易语言资源网 - 做最全的易语言资源下载社区</span>
+                </div>
+
+                <!-- 广告 -->
+                                <a style="position:absolute; left:330px; color: #ff0f00" href="https://bbs.125.la/thread-14716817-1-1.html" target="_blank">
+                    <易语言软件开发工程师>特训 第13期（预报名）                </a>
+                                                                    <a style="position:absolute; right:160px" href="/logging_auth.html">精易论坛授权登录</a>
+                                   
+                
+                <div id="vlogif" style="display:none;position:absolute;left:0;top:0;width:100%;height:30px;color:red;background:white;font-size:20px;text-align:right;font-weight:bold;">
+                    <span id="vlogin"></span> <a href="javascript:vlogout()" style="color: gray; font-size: 14px; margin-left: 10px">退出登录</a>
+                </div>
+
+                <script>
+
+                function setCookie(name,value,days) {
+                    var expires = "";
+                    if (days) {
+                        var date = new Date();
+                        date.setTime(date.getTime() + (days*24*60*60*1000));
+                        expires = "; expires=" + date.toUTCString();
+                    }
+                    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+                }
+
+                function getCookie(name) {
+                    var nameEQ = name + "=";
+                    var ca = document.cookie.split(';');
+                    for(var i=0;i < ca.length;i++) {
+                        var c = ca[i];
+                        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                    }
+                    return null;
+                }
+                function eraseCookie(name) {
+                    document.cookie = name+'=; Max-Age=-99999999;';
+                }
+                if (getCookie('v_islogin')) {
+                    document.getElementById('vlogin').innerText = '尊敬的贵宾，欢迎您：' + getCookie('v_islogin')
+                    document.getElementById('vlogif').style.display = 'block'
+                }
+
+                function vlogout() {
+                  	$.post('/?a=logout',{'submit':1,'formhash':'e42c17fc'},function(res){});
+                    //setCookie('xtusername','');
+                    eraseCookie('v_islogin')
+                    eraseCookie('xtusername')
+                    alert('您已成功退出！')
+                    location.reload(true)
+                }
+                </script>
+
+                <div class="top_right">
+                    <span>
+                        <i class="tougao"></i>
+                        <a href="https://bbs.125.la/forum-98-1.html" target="_blank">我要分享内容</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="header-main wrap">
+            <div id="menu">
+                <div class="dh">
+                    <span onclick="dakai()"><i class="fa fa-bars fa-lg"></i></span>
+                </div>
+                <div id="dakaimenu" style="display: none;">
+                    <div class="navmenu_header">
+                        <div class="navmenu_header_left">
+                            <div class="dh">
+                                <span onclick="guanbi()"><i class="fa fa-times fa-lg"></i></span>
+                            </div>
+                        </div>
+                        <div class="navmenu_header_center">
+                            <div class="logo">
+                                <a href="/index.php"><img src="/source/plugin/ziyuan/template/images/logo.png" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="navmenu_header_right">
+                            <div class="navmenu_search">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-logo left">
+                <a href="/"><img src="/source/plugin/ziyuan/template/images/logo.png" alt="易语言资源网"></a>
+            </div>
+            <div class="header-right right">
+                <div class="search">
+                    <div class="category">
+                        <select id="search-category">
+                            <option value="0">全部</option>
+                                                        <option value="13">易语言源码</option>
+                                                        <option value="14">易语言模块</option>
+                                                        <option value="15">易语言支持库</option>
+                                                        <option value="16">易相关资源</option>
+                                                        <option value="17">易相关资料</option>
+                                                        <option value="29">开源大赛</option>
+                                                        <option value="34">火山相关资源</option>
+                                                        <option value="38">其他资源</option>
+                                                    </select>
+                    </div>
+                    <input id="keyword" type="text" placeholder="多个关键词使用空格隔开" value="">
+                    <script>
+                        $('#search-category').val('0')
+                    </script>
+                    <button name="button"><i class="fa fa-search"></i> 搜索</button>
+                </div>
+                <div class="hotkw">
+                                        <a href="/?a=search&amp;kw=精易模块" target="_blank">精易模块</a>
+                                        <a href="/?a=search&amp;kw=自绘" target="_blank">自绘</a>
+                                        <a href="/?a=search&amp;kw=界面美化" target="_blank">界面美化</a>
+                                        <a href="/?a=search&amp;kw=汇编" target="_blank">汇编</a>
+                                        <a href="/?a=search&amp;kw=POST" target="_blank">POST</a>
+                                        <a href="/?a=search&amp;kw=API" target="_blank">API</a>
+                                        <a href="/?a=search&amp;kw=易语言助手" target="_blank">易语言助手</a>
+                                        <a href="/search.html" target="_blank" style="color:blue; float:right; margin-right: 5px">高级搜索</a>
+                </div>
+                <script src='/source/plugin/ziyuan/template/js/ad_js.php' language='javascript'></script>
+            </div>
+        </div>
+        <div class="header-nav">
+            <div id="nav">
+                <div class="nav_content">
+                    <ul class="nav_list">
+                        <li>
+                            <a href="/" class="nav-item nav-item-2 current">首页</a>
+                        </li>
+                        <!-- <li>
+                            <a href="https://bbs.125.la" class="nav-item nav-item-2 current" target="_blank">精易论坛</a>
+                        </li> -->
+                        <!-- <li class="tb-item">
+                                <a href="/cate/.html" class="item-link item-link-2"></a>
+                            </li> -->
+                                                <div class="tb-item dm">
+                            <a href="/cate/13.html" class="item-link item-link-2">易语言源码</a>
+
+                            <div id="dy" class="menu feed">
+                                <ul class="mn_con">
+                                                                        <li><a href="/cate/1.html">入门教程源码</a></li>
+                                                                        <li><a href="/cate/2.html">初级教程源码</a></li>
+                                                                        <li><a href="/cate/3.html">进阶教程源码</a></li>
+                                                                        <li><a href="/cate/4.html">高级教程源码</a></li>
+                                                                        <li><a href="/cate/5.html">系统工具源码</a></li>
+                                                                        <li><a href="/cate/6.html">图形图像源码</a></li>
+                                                                        <li><a href="/cate/7.html">多媒体类源码</a></li>
+                                                                        <li><a href="/cate/8.html">游戏娱乐源码</a></li>
+                                                                        <li><a href="/cate/9.html">数据库类源码</a></li>
+                                                                        <li><a href="/cate/10.html">模块控件源码</a></li>
+                                                                        <li><a href="/cate/11.html">行业软件源码</a></li>
+                                                                        <li><a href="/cate/12.html">网络相关源码</a></li>
+                                                                        <li><a href="/cate/18.html">界面美化源码</a></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                                                <div class="tb-item dm">
+                            <a href="/cate/14.html" class="item-link item-link-2">易语言模块</a>
+
+                            <div id="dy" class="menu feed">
+                                <ul class="mn_con">
+                                                                    </ul>
+                            </div>
+                        </div>
+                                                <div class="tb-item dm">
+                            <a href="/cate/15.html" class="item-link item-link-2">易语言支持库</a>
+
+                            <div id="dy" class="menu feed">
+                                <ul class="mn_con">
+                                                                        <li><a href="/cate/19.html">易官方支持库</a></li>
+                                                                        <li><a href="/cate/20.html">第三方支持库</a></li>
+                                                                        <li><a href="/cate/21.html">OCX控件库</a></li>
+                                                                        <li><a href="/cate/22.html">辅助类支持库</a></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                                                <div class="tb-item dm">
+                            <a href="/cate/16.html" class="item-link item-link-2">易相关资源</a>
+
+                            <div id="dy" class="menu feed">
+                                <ul class="mn_con">
+                                                                        <li><a href="/cate/25.html">易语言版本下载</a></li>
+                                                                        <li><a href="/cate/26.html">易语言配色方案</a></li>
+                                                                        <li><a href="/cate/27.html">编程辅助工具</a></li>
+                                                                        <li><a href="/cate/28.html">编译链接器</a></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                                                <div class="tb-item dm">
+                            <a href="/cate/17.html" class="item-link item-link-2">易相关资料</a>
+
+                            <div id="dy" class="menu feed">
+                                <ul class="mn_con">
+                                                                        <li><a href="/cate/23.html">电子书类</a></li>
+                                                                        <li><a href="/cate/24.html">图文资料</a></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                                                <div class="tb-item dm">
+                            <a href="/cate/29.html" class="item-link item-link-2">开源大赛</a>
+
+                            <div id="dy" class="menu feed">
+                                <ul class="mn_con">
+                                                                        <li><a href="/cate/30.html">2016开源大赛(第一届)</a></li>
+                                                                        <li><a href="/cate/31.html">2017开源大赛(第二届)</a></li>
+                                                                        <li><a href="/cate/32.html">2018开源大赛(第三届)</a></li>
+                                                                        <li><a href="/cate/33.html">2019开源大赛(第四届)</a></li>
+                                                                        <li><a href="/cate/41.html">2020开源大赛(第五届)</a></li>
+                                                                        <li><a href="/cate/48.html">2021开源大赛(第六届)</a></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                                                <div class="tb-item dm">
+                            <a href="/cate/34.html" class="item-link item-link-2">火山相关资源</a>
+
+                            <div id="dy" class="menu feed">
+                                <ul class="mn_con">
+                                                                        <li><a href="/cate/35.html">火山版本下载</a></li>
+                                                                        <li><a href="/cate/36.html">火山安卓源码</a></li>
+                                                                        <li><a href="/cate/37.html">火山PC源码</a></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                                                <div class="tb-item dm">
+                            <a href="/cate/38.html" class="item-link item-link-2">其他资源</a>
+
+                            <div id="dy" class="menu feed">
+                                <ul class="mn_con">
+                                                                        <li><a href="/cate/42.html">JavaScript</a></li>
+                                                                        <li><a href="/cate/43.html">PHP</a></li>
+                                                                        <li><a href="/cate/44.html">C++</a></li>
+                                                                        <li><a href="/cate/45.html">HTML</a></li>
+                                                                        <li><a href="/cate/46.html">uni-app</a></li>
+                                                                        <li><a href="/cate/47.html">Java</a></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                                            </ul>
+                    <!-- <div class="search-btn">
+                        <i class="fa fa-search"></i>
+                    </div> -->
+                </div>
+            </div>
+            <!-- <div class="search-layer">
+                <input type="text" id="keyword" placeholder="输入关键字并回车，搜索你感兴趣的内容">
+            </div> -->
+        </div>
+    </div>
+
+
+    <div class="mini_header header-right">
+        <div class="search">
+            <div class="category">
+                <select id="search-category">
+                    <option value="0">全部</option>
+                                        <option value="13">易语言源码</option>
+                                        <option value="14">易语言模块</option>
+                                        <option value="15">易语言支持库</option>
+                                        <option value="16">易相关资源</option>
+                                        <option value="17">易相关资料</option>
+                                        <option value="29">开源大赛</option>
+                                        <option value="34">火山相关资源</option>
+                                        <option value="38">其他资源</option>
+                                    </select>
+            </div>
+            <input id="mini_keyword" type="text" placeholder="多个关键词使用空格隔开" value="">
+            <script>
+                $('#search-category').val('0')
+            </script>
+            <button name="mini_button"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        if (!String.prototype.trim) {
+            String.prototype.trim = function () {
+                return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+            }
+        }
+
+        $('.search-btn').click(function () {
+            $('.search-layer').show();
+            $('#keyword').focus();
+
+            $('<div id="overlay"></div>').appendTo(document.body).click(function () {
+                $('.search-layer').hide();
+                $(this).remove();
+            })
+        })
+
+        function ohMySearch() {
+            if (!$('#keyword').val().trim()) {
+                alert('搜索内容不能为空');
+                return;
+            }
+
+            location.href = '/?a=search&kw=' + encodeURIComponent($('#keyword').val().trim()) +
+                "&scate=" + $('#search-category').val() +
+                "&noec=0&onlycore=0&onlylic=0";
+        }
+
+        $('.search button[name=button]').click(ohMySearch);
+        $('.search button[name=mini_button]').click(function () {
+            if (!$('#mini_keyword').val().trim()) {
+                alert('搜索内容不能为空');
+                return;
+            }
+            $('#keyword').val($('#mini_keyword').val());
+            $('.search button[name=button]').click();
+        });
+        $('.search input').keypress(function (e) {
+            if (e.which == 13) {
+                ohMySearch();
+            }
+        })
+    </script><title>易语言资源网 - 专注易语言资源分享</title>
+<link href="/source/plugin/ziyuan/template/css/swiper.min.css" rel="stylesheet">
+
+<div class="wrap">
+    <br>
+    <div class="index_news">
+        <div class="index_news_left">
+            <div class="tabs">
+                <div class="tab-button-outer">
+                    <ul id="tab-button">
+                        <li><a href="#tab01">资源图片</a></li>
+                        <li><a href="#tab02">公告</a></li>
+                        <li><a href="#tab03">最新 TV</a></li>
+                        <li><a href="#tab04">随机精华</a></li>
+                    </ul>
+                </div>
+
+                <div id="tab01" class="tab-contents">
+                    <!-- Swiper -->
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                                                        <div class="swiper-slide">
+                                <a href="/post/19613.html" target="_blank" title="易语言-PHP中间件-保存图片添加数据库">
+                                    <img width="100%" height="100%" src="https://att.125.la/data/attachment/forum/202202/21/081256mycnrlzlaxy7racr.png" alt="易语言-PHP中间件-保存图片添加数据库">
+                                </a>
+                            </div>
+                                                        <div class="swiper-slide">
+                                <a href="/post/19612.html" target="_blank" title="监控wx余额">
+                                    <img width="100%" height="100%" src="data/attachment/forum/202203/01/174849xdo7p69p02rd102l.png" alt="监控wx余额">
+                                </a>
+                            </div>
+                                                        <div class="swiper-slide">
+                                <a href="/post/19611.html" target="_blank" title="Bezier贝塞尔三阶计算模块纯源码">
+                                    <img width="100%" height="100%" src="https://att.125.la/data/attachment/forum/202202/20/222449yxyyy5ennnzymlx2.png" alt="Bezier贝塞尔三阶计算模块纯源码">
+                                </a>
+                            </div>
+                                                        <div class="swiper-slide">
+                                <a href="/post/19610.html" target="_blank" title="超级列表框设置任意行列颜色（不闪烁版）">
+                                    <img width="100%" height="100%" src="https://att.125.la/data/attachment/forum/202202/20/013301yjsjr9jej9e69yxw.png" alt="超级列表框设置任意行列颜色（不闪烁版）">
+                                </a>
+                            </div>
+                                                        <div class="swiper-slide">
+                                <a href="/post/19609.html" target="_blank" title="精易模块 for 火山PC【2021.3.1】">
+                                    <img width="100%" height="100%" src="https://att.125.la/data/attachment/forum/202010/19/113014h3c9ieczjifdw9jc.png" alt="精易模块 for 火山PC【2021.3.1】">
+                                </a>
+                            </div>
+                                                    </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <div id="tab02" class="tab-contents">
+                    <ul class="indul notic">
+                                                                        <li>
+                                                        <a href="/post/19608.html" target="_blank" style="max-width: 385px; color: #ec1282; overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+                                class="anotic">精易模块V10.1.0 发布【2022.03.01】</a>
+                                                                                    <div class="summary">一、新增1、新增“数组_排序1”，通过对字符串逻辑比较后的排序；感谢【@一一一2 】提供建议；2、新增“目录_获取完整路径名称”，检索指定文件的完整路径和文件名...</div>
+                                                        <time style="float:right">03-01</time>
+                        </li>
+                                                <li>
+                                                        <a href="/post/19609.html" target="_blank" style="max-width: 385px; color: #ee1b2e; overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+                                class="anotic">精易模块 for 火山PC【2021.3.1】</a>
+                                                                                    <time style="float:right">03-01</time>
+                        </li>
+                                                <li>
+                                                        <a href="/post/17451.html" target="_blank" style="max-width: 385px; color: #ee1b2e; overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+                                class="anotic">精易组件库_属性框1.2#1125版(JYControl.fne)</a>
+                                                                                    <time style="float:right">10-30</time>
+                        </li>
+                                                <li>
+                                                        <a href="/post/19162.html" target="_blank" style="max-width: 385px; color: #000000; overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+                                class="anotic">易IDE视觉库1.1#1111版(iDraw.fne)</a>
+                                                                                    <time style="float:right">11-12</time>
+                        </li>
+                                                <li>
+                                                        <a href="/post/18975.html" target="_blank" style="max-width: 385px; color: #0000ff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+                                class="anotic">【零基础学会uniapp】第一课：一个新的vue文件</a>
+                                                                                    <time style="float:right">10-16</time>
+                        </li>
+                                                <li>
+                                                        <a href="/notice/13.html" target="_blank" style="max-width: 385px; color: #152ae6; overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+                                class="anotic">关于资源网下载添加验证的说明</a>
+                                                                                    <time style="float:right">10-20</time>
+                        </li>
+                                                <li>
+                                                        <a href="/post/18363.html" target="_blank" style="max-width: 385px; color: #600090; overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+                                class="anotic">易语言5.93下载（2021.5.29）</a>
+                                                                                    <time style="float:right">05-31</time>
+                        </li>
+                                                <li>
+                                                        <a href="/post/14508.html" target="_blank" style="max-width: 385px; color: #ff0000; overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+                                class="anotic">易语言助手v3.3.0101 发布（2021-01-05）</a>
+                                                                                    <time style="float:right">12-29</time>
+                        </li>
+                                                <li>
+                                                        <a href="/post/17415.html" target="_blank" style="max-width: 385px; color: #ec1582; overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+                                class="anotic">精易模块 for 火山PC【2021.11.1】</a>
+                                                                                    <time style="float:right">10-21</time>
+                        </li>
+                                                <li>
+                                                        <a href="/notice/21.html" target="_blank" style="max-width: 385px; color: #ff0000; overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+                                class="anotic">【有奖征集】火山PC视频教程有奖征集，下一个名人就是你！</a>
+                                                                                    <time style="float:right">10-21</time>
+                        </li>
+                                                                    </ul>
+                </div>
+                <div id="tab03" class="tab-contents">
+                    <ul class="indul">
+                                                <li>
+                            <a href="https://www.eyuyan.tv/p3320" target="_blank" style="max-width: 385px">
+                                《uniapp之云开发uniCloud入门》75. uniapp与易语言交互                            </a>
+                            <time style="float:right">01-06</time>
+                        </li>
+                                                <li>
+                            <a href="https://www.eyuyan.tv/p3319" target="_blank" style="max-width: 385px">
+                                《uniapp之云开发uniCloud入门》74. 上传图片                            </a>
+                            <time style="float:right">01-06</time>
+                        </li>
+                                                <li>
+                            <a href="https://www.eyuyan.tv/p3318" target="_blank" style="max-width: 385px">
+                                《uniapp之云开发uniCloud入门》73. 反馈图片选择                            </a>
+                            <time style="float:right">01-05</time>
+                        </li>
+                                                <li>
+                            <a href="https://www.eyuyan.tv/p3317" target="_blank" style="max-width: 385px">
+                                《uniapp之云开发uniCloud入门》72. 问题反馈页面实现                            </a>
+                            <time style="float:right">01-05</time>
+                        </li>
+                                                <li>
+                            <a href="https://www.eyuyan.tv/p3316" target="_blank" style="max-width: 385px">
+                                《uniapp之云开发uniCloud入门》71. 我的文章实现                            </a>
+                            <time style="float:right">12-30</time>
+                        </li>
+                                                <li>
+                            <a href="https://www.eyuyan.tv/p3315" target="_blank" style="max-width: 385px">
+                                《uniapp之云开发uniCloud入门》70. 个人中心数据处理                            </a>
+                            <time style="float:right">12-30</time>
+                        </li>
+                                                <div style="width:100%; height:1px; background:#e2e2e2; margin-top: 5px; margin-bottom: 15px"></div>
+                                                <li>
+                            <a href="https://www.eyuyan.tv/l49" target="_blank">《烧饼多线程教程》</a>
+                            <p style="float:right">共计 4 课</p>
+                        </li>
+                                                <li>
+                            <a href="https://www.eyuyan.tv/l37" target="_blank">《ERP管理系统开发教程SqlServer版》</a>
+                            <p style="float:right">共计 6 课</p>
+                        </li>
+                                                <li>
+                            <a href="https://www.eyuyan.tv/l56" target="_blank">《画板自绘控件教程》</a>
+                            <p style="float:right">共计 9 课</p>
+                        </li>
+                                                <li>
+                            <a href="https://www.eyuyan.tv/l181" target="_blank">《单课专集总汇》</a>
+                            <p style="float:right">共计 6 课</p>
+                        </li>
+                                                <li>
+                            <a href="https://www.eyuyan.tv/l95" target="_blank">《易与FTP综合应用系列教程》</a>
+                            <p style="float:right">共计 16 课</p>
+                        </li>
+                                                <li>
+                            <a href="https://www.eyuyan.tv/l55" target="_blank">《软件防破解教程》</a>
+                            <p style="float:right">共计 5 课</p>
+                        </li>
+                                            </ul>
+                </div>
+                <div id="tab04" class="tab-contents">
+                    <ul class="indul">
+                                                <li>
+                            <a href="https://bbs.125.la/thread-14704555-1-1.html" target="_blank">
+                                [<font color=red>2021开源大赛(第六届)</font>] 高仿大漠 找图 找色 找字 OCR 完整版源码                            </a>
+                            <time style="float:right">2021-10-31</time>
+                        </li>
+                                                <li>
+                            <a href="https://bbs.125.la/thread-14705350-1-1.html" target="_blank">
+                                [<font color=red>2021开源大赛(第六届)</font>] 手机远程投屏+多设备同步操作+文件传送和一键安装                            </a>
+                            <time style="float:right">2021-11-05</time>
+                        </li>
+                                                <li>
+                            <a href="https://bbs.125.la/thread-14704869-1-1.html" target="_blank">
+                                [<font color=red>2021开源大赛(第六届)</font>] 自己用了很多年的易语言编程助手                            </a>
+                            <time style="float:right">2021-11-02</time>
+                        </li>
+                                                <li>
+                            <a href="https://bbs.125.la/thread-14705077-1-1.html" target="_blank">
+                                [<font color=red>2021开源大赛(第六届)</font>] 窗口组件自适应-自动调节大小-增强版                            </a>
+                            <time style="float:right">2021-11-03</time>
+                        </li>
+                                                <li>
+                            <a href="https://bbs.125.la/thread-14707643-1-1.html" target="_blank">
+                                [<font color=red>2021开源大赛(第六届)</font>] 【CCHTTP】重磅来袭，可视化前端+易语言后端                            </a>
+                            <time style="float:right">2021-11-23</time>
+                        </li>
+                                                <li>
+                            <a href="https://bbs.125.la/thread-14685337-1-1.html" target="_blank">
+                                [<font color=green>易语言纯源码</font>] 真正的远程桌面连接MsRdpClientNotSafeForScripting                            </a>
+                            <time style="float:right">2021-06-12</time>
+                        </li>
+                                                <li>
+                            <a href="https://bbs.125.la/thread-14679241-1-1.html" target="_blank">
+                                [<font color=#005E00>易源码分享</font>] 【开源】纯源码，易版everything，编译后效率极高，大工程                            </a>
+                            <time style="float:right">2021-05-03</time>
+                        </li>
+                                                <li>
+                            <a href="https://bbs.125.la/thread-14705796-1-1.html" target="_blank">
+                                [<font color=red>2021开源大赛(第六届)</font>] VM虚拟机硬件修改源码                            </a>
+                            <time style="float:right">2021-11-08</time>
+                        </li>
+                                                <li>
+                            <a href="https://bbs.125.la/thread-14704414-1-1.html" target="_blank">
+                                [<font color=red>2021开源大赛(第六届)</font>] CCHTTP 仿E2EE网站开发模块 开发网站新选择                            </a>
+                            <time style="float:right">2021-10-30</time>
+                        </li>
+                                                <li>
+                            <a href="https://bbs.125.la/thread-14708667-1-1.html" target="_blank">
+                                [<font color=red>2021开源大赛(第六届)</font>] 天机(MES)百万级企业创业项目8年稳定运营大数据实例(Access版)                            </a>
+                            <time style="float:right">2021-11-30</time>
+                        </li>
+                                                <li>
+                            <a href="https://bbs.125.la/thread-14671545-1-1.html" target="_blank">
+                                [<font color=green>易语言纯源码</font>] yyJSON动态支持库(每秒最快可达3GB+解析性能)                            </a>
+                            <time style="float:right">2021-03-17</time>
+                        </li>
+                                                <li>
+                            <a href="https://bbs.125.la/thread-14707570-1-1.html" target="_blank">
+                                [<font color=red>2021开源大赛(第六届)</font>] 判断图片相似度-近似找图                            </a>
+                            <time style="float:right">2021-11-22</time>
+                        </li>
+                                                <li>
+                            <a href="https://bbs.125.la/thread-14679811-1-1.html" target="_blank">
+                                [<font color=green>易语言纯源码</font>] 自动画画-完整开源-人人都能成为你画我猜大神                            </a>
+                            <time style="float:right">2021-05-07</time>
+                        </li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+        <div class="index_news_right">
+            <div class="news_right_title">
+                <span class="right_title_lf">
+                    今天已更新<strong style="color: #F00; font-weight: bold;">6</strong>个资源
+                    <a href="/more.html" style="color: red; font-size: 14px;margin-left: 20px">更多&gt;&gt;</a>
+                </span>
+                <span class="right_title_rt">
+                    本站一共收录了<strong style="color: #F00; font-weight: bold;">19017</strong>个资源
+                </span>
+            </div>
+            <br>
+            <div class="news_right_list">
+                <div class="right_list new-list-1 block" id="newslist">
+                    <ul style="display:block;">
+                                                 
+                        <li>
+                            <i class=""></i>
+                            <a href="/post/19613.html" target="_blank">易语言-PHP中间件-保存图片添加数据库</a>
+                            <span class="new">03-01</span>
+                        </li>
+                                                   
+                        <li>
+                            <i class="hot"></i>
+                            <a href="/post/19600.html" target="_blank">两天写的播放器,实时歌词显示,专辑图片,频谱</a>
+                            <span class="new">02-24</span>
+                        </li>
+                                                 
+                        <li>
+                            <i class=""></i>
+                            <a href="/post/19612.html" target="_blank">监控wx余额</a>
+                            <span class="new">03-01</span>
+                        </li>
+                                                   
+                        <li>
+                            <i class="hot"></i>
+                            <a href="/post/19599.html" target="_blank">[简洁、轻盈] 基于HP的http服务器</a>
+                            <span class="new">02-24</span>
+                        </li>
+                                                 
+                        <li>
+                            <i class=""></i>
+                            <a href="/post/19611.html" target="_blank">Bezier贝塞尔三阶计算模块纯源码</a>
+                            <span class="new">03-01</span>
+                        </li>
+                                                   
+                        <li>
+                            <i class="hot"></i>
+                            <a href="/post/19604.html" target="_blank">WIFI密码查看器</a>
+                            <span class="new">02-26</span>
+                        </li>
+                                                 
+                        <li>
+                            <i class=""></i>
+                            <a href="/post/19610.html" target="_blank">超级列表框设置任意行列颜色（不闪烁版）</a>
+                            <span class="new">03-01</span>
+                        </li>
+                                                   
+                        <li>
+                            <i class="hot"></i>
+                            <a href="/post/19603.html" target="_blank">【开源第三弹】物理内存驱动读写(zc表通讯)</a>
+                            <span class="new">02-25</span>
+                        </li>
+                                                 
+                        <li>
+                            <i class=""></i>
+                            <a href="/post/19609.html" target="_blank">精易模块 for 火山PC【2021.3.1】</a>
+                            <span class="new">03-01</span>
+                        </li>
+                                                   
+                        <li>
+                            <i class="hot"></i>
+                            <a href="/post/19596.html" target="_blank">火山版halcon快递单识别拍照源码</a>
+                            <span class="new">02-22</span>
+                        </li>
+                                                 
+                        <li>
+                            <i class=""></i>
+                            <a href="/post/19608.html" target="_blank">精易模块V10.1.0 发布【2022.03.01】</a>
+                            <span class="new">03-01</span>
+                        </li>
+                                                   
+                        <li>
+                            <i class="hot"></i>
+                            <a href="/post/19597.html" target="_blank">快速打开文件(网页)0.2</a>
+                            <span class="new">02-24</span>
+                        </li>
+                                                 
+                        <li>
+                            <i class=""></i>
+                            <a href="/post/19607.html" target="_blank">yaodaxia窗口组件自适应模块1.1+demo源码</a>
+                            <span class="new">02-26</span>
+                        </li>
+                                                   
+                        <li>
+                            <i class="hot"></i>
+                            <a href="/post/19607.html" target="_blank">yaodaxia窗口组件自适应模块1.1+demo源码</a>
+                            <span class="new">02-26</span>
+                        </li>
+                                                 
+                        <li>
+                            <i class=""></i>
+                            <a href="/post/19606.html" target="_blank">AMENcron定时任务模块</a>
+                            <span class="new">02-26</span>
+                        </li>
+                                                   
+                        <li>
+                            <i class="hot"></i>
+                            <a href="/post/19605.html" target="_blank">简单自制滚动条,无hk滚动条,但是效果不错，代码少</a>
+                            <span class="new">02-26</span>
+                        </li>
+                                                 
+                        <li>
+                            <i class=""></i>
+                            <a href="/post/19605.html" target="_blank">简单自制滚动条,无hk滚动条,但是效果不错，代码少</a>
+                            <span class="new">02-26</span>
+                        </li>
+                                                   
+                        <li>
+                            <i class="hot"></i>
+                            <a href="/post/19598.html" target="_blank">让超级列表框的动态提示支持换行显示</a>
+                            <span class="new">02-24</span>
+                        </li>
+                                                 
+                        <li>
+                            <i class=""></i>
+                            <a href="/post/19604.html" target="_blank">WIFI密码查看器</a>
+                            <span class="new">02-26</span>
+                        </li>
+                                                   
+                        <li>
+                            <i class="hot"></i>
+                            <a href="/post/19606.html" target="_blank">AMENcron定时任务模块</a>
+                            <span class="new">02-26</span>
+                        </li>
+                                                 
+                        <li>
+                            <i class=""></i>
+                            <a href="/post/19603.html" target="_blank">【开源第三弹】物理内存驱动读写(zc表通讯)</a>
+                            <span class="new">02-25</span>
+                        </li>
+                                                   
+                        <li>
+                            <i class="hot"></i>
+                            <a href="/post/19602.html" target="_blank">检索屏幕截图差异，带误差</a>
+                            <span class="new">02-25</span>
+                        </li>
+                                                 
+                        <li>
+                            <i class=""></i>
+                            <a href="/post/19602.html" target="_blank">检索屏幕截图差异，带误差</a>
+                            <span class="new">02-25</span>
+                        </li>
+                                                   
+                        <li>
+                            <i class="hot"></i>
+                            <a href="/post/19601.html" target="_blank">Advanced Registry Tracer V2.1</a>
+                            <span class="new">02-25</span>
+                        </li>
+                                                 
+                        <li>
+                            <i class=""></i>
+                            <a href="/post/19601.html" target="_blank">Advanced Registry Tracer V2.1</a>
+                            <span class="new">02-25</span>
+                        </li>
+                                                   
+                        <li>
+                            <i class="hot"></i>
+                            <a href="/post/19595.html" target="_blank">分享一个文本到文本无序哈希表</a>
+                            <span class="new">02-22</span>
+                        </li>
+                                                 
+                        <li>
+                            <i class=""></i>
+                            <a href="/post/19600.html" target="_blank">两天写的播放器,实时歌词显示,专辑图片,频谱</a>
+                            <span class="new">02-24</span>
+                        </li>
+                                                   
+                        <li>
+                            <i class="hot"></i>
+                            <a href="/post/19608.html" target="_blank">精易模块V10.1.0 发布【2022.03.01】</a>
+                            <span class="new">03-01</span>
+                        </li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="index_list">
+        <div class="list-left">
+                        
+            
+                        <div class="listbox" kind="general">
+                <h2>
+                    <span class="block_cate">
+                        <a href="/cate/13.html" target="_blank">易语言源码</a>
+                    </span>
+                    <span class="more">
+                        <a href="/cate/13.html" target="_blank">更多</a>
+                    </span>
+                </h2>
+                <ul>
+                                        <li>
+                        <span class="date">03-01</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19612.html">监控wx余额</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">03-01</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19611.html">Bezier贝塞尔三阶计算模块纯源码</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">03-01</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19610.html">超级列表框设置任意行列颜色（不闪烁版）</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-26</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19606.html">AMENcron定时任务模块</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-26</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19605.html">简单自制滚动条,无hk滚动条,但是效果不错，代码少</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-26</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19604.html">WIFI密码查看器</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-25</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19603.html">【开源第三弹】物理内存驱动读写(zc表通讯)</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-25</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19602.html">检索屏幕截图差异，带误差</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-24</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19600.html">两天写的播放器,实时歌词显示,专辑图片,频谱</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-24</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19599.html">[简洁、轻盈] 基于HP的http服务器</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-24</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19598.html">让超级列表框的动态提示支持换行显示</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-24</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19597.html">快速打开文件(网页)0.2</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-22</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19592.html">窗口抖动-组件抖动=源码</a>
+                        </span>
+                    </li>
+                                    </ul>
+            </div>
+            
+                        
+            
+                        <div class="listbox" kind="general">
+                <h2>
+                    <span class="block_cate">
+                        <a href="/cate/34.html" target="_blank">火山相关资源</a>
+                    </span>
+                    <span class="more">
+                        <a href="/cate/34.html" target="_blank">更多</a>
+                    </span>
+                </h2>
+                <ul>
+                                        <li>
+                        <span class="date">03-01</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19609.html">精易模块 for 火山PC【2021.3.1】</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-22</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19596.html">火山版halcon快递单识别拍照源码</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-22</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19595.html">分享一个文本到文本无序哈希表</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-22</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19594.html">鼠标 移入/移出 类</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-22</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19593.html">水淼JSON类v1.1 - 高性能读写JSON，强大兼容解析能力</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-19</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19588.html">简易的MYSQL源码</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-19</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19587.html">表格与超级列表框导出到Excel</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-19</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19586.html">火山JSON精简化</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-19</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19585.html">火山自定义数据类型数组创建方式</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-27</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19042.html">蜗牛WEB网站框架</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-21</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19003.html">【辅助类】大漠，火山PC，流放之路自动喝药的实现</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-21</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19002.html">火山PC，大漠封装调用，例程</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-15</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18972.html">简单日志记录 ( 带调用位置信息 )</a>
+                        </span>
+                    </li>
+                                    </ul>
+            </div>
+            
+                        
+            
+                        <div class="listbox" kind="general">
+                <h2>
+                    <span class="block_cate">
+                        <a href="/cate/29.html" target="_blank">开源大赛</a>
+                    </span>
+                    <span class="more">
+                        <a href="/cate/29.html" target="_blank">更多</a>
+                    </span>
+                </h2>
+                <ul>
+                                        <li>
+                        <span class="date">12-22</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19431.html">仿火山视窗例程的win10通知</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-22</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19430.html">自定义UA浏览器 用于模拟访问</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-22</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19429.html">通信层解耦的 双向 jsonRPC 协yi封装</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-20</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19428.html">E版Figlet和EConfig3</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-20</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19426.html">图片重命名</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-20</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19424.html">来一个很奇葩的 猴子排序 源代码</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-20</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19423.html">噜阿噜Imgui菜单例子，无功能</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-20</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19422.html">[思考者模块]思考者第三弹，新增批量读写配置文本命令</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-20</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19421.html">纯算法简易3d引擎</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-18</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19420.html">百d PaddleOCR2.2 本地OCR文字识别 识别度很高</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-18</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19419.html">[思考者模块]零门槛保姆级源码，四行代码实现内存修改</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-18</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19416.html">OcrLiteOnnx 文字识别命令行版 直接运行无需服务器</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-18</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19415.html">纯API+内存取执行文件名W</a>
+                        </span>
+                    </li>
+                                    </ul>
+            </div>
+            
+                        
+            
+                        <div class="listbox" kind="general">
+                <h2>
+                    <span class="block_cate">
+                        <a href="/cate/16.html" target="_blank">易相关资源</a>
+                    </span>
+                    <span class="more">
+                        <a href="/cate/16.html" target="_blank">更多</a>
+                    </span>
+                </h2>
+                <ul>
+                                        <li>
+                        <span class="date">02-25</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19601.html">Advanced Registry Tracer V2.1</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">11-19</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19221.html">Snipaste最好用的截图软件</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-27</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18897.html">[困兽斗]最新Fiddler Web Debugger v5.0 20202.18177中文版</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-26</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18894.html">VMware Workstation 16.1.2 专业版</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-26</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18890.html">Sublime Text - 文本编辑</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-26</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18889.html">Typora - 标记编辑器、标记阅读器。</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-24</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18888.html">易语言深主题【橙灰】配色</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-24</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18887.html">字符串动态加密解密插件 更新版支持定义快捷键</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-24</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18886.html">蚂蚁配色</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-24</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18883.html">[易语言助手插件] 【新】易语言项目扩展/拖动排序/可使用非法字符命名...</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-18</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18862.html">[易语言配色] 梦幻王国2020</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-16</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18839.html">e2txt 1.2 - 易语言代码文本互转神器</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-15</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18833.html">黑暗系配色 自改适配视觉库</a>
+                        </span>
+                    </li>
+                                    </ul>
+            </div>
+            
+                        
+            
+                        <div class="listbox" kind="general">
+                <h2>
+                    <span class="block_cate">
+                        <a href="/cate/15.html" target="_blank">易语言支持库</a>
+                    </span>
+                    <span class="more">
+                        <a href="/cate/15.html" target="_blank">更多</a>
+                    </span>
+                </h2>
+                <ul>
+                                        <li>
+                        <span class="date">11-12</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19162.html">易IDE视觉库1.1#1111版(iDraw.fne)</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-18</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18863.html">@格式化输出辅助库1.0#1版(格式化输出辅助库.fne)</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-17</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18848.html">.注释美化1.0#0版(notes.fne)</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-11</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18803.html">W版控件库1.2#3版(controls_w.fne)</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">03-15</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18174.html">云的OLE驱动支持库1.0#0(YunOleDriver.fne)</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">03-15</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18173.html">云的丰富文本框支持库2.2#0(YunRichText.fne)</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">03-15</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18172.html">丰富文本框支持库1.0#0版(RichTextBox.fne)</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-09</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/17818.html">精易Python支持库_P27 1.1#1205(JYEPython_P27.fne)</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-30</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/17451.html">精易组件库_属性框1.2#1125版(JYControl.fne)</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">08-26</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/17284.html">Python支持库1.0#1版(hmy.fne)</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">07-29</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/17192.html">#RAPIDJSON_LIB1.1#20200314版(rapidjson.fne)</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">04-01</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/16796.html">精易模块支持库1.0#2版(JyModule.fne)</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">01-10</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/16588.html">精易VIP填表6.0#821版(ietb.fne)</a>
+                        </span>
+                    </li>
+                                    </ul>
+            </div>
+            
+                        
+            
+                        <div class="listbox" kind="general">
+                <h2>
+                    <span class="block_cate">
+                        <a href="/cate/38.html" target="_blank">其他资源</a>
+                    </span>
+                    <span class="more">
+                        <a href="/cate/38.html" target="_blank">更多</a>
+                    </span>
+                </h2>
+                <ul>
+                                        <li>
+                        <span class="date">03-01</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19613.html">易语言-PHP中间件-保存图片添加数据库</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-11</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19555.html">彗星HTTP支持库1.7（修复句柄泄露BUG）（更新于2022-01-26）</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-28</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19454.html">htmlcss编写的向日葵界面UI</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-27</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19443.html">htmlcss编写的VXPC界面UI</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">11-06</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19112.html">【uniapp实战直播课】03. 使用Unicloud</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">11-06</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19111.html">【uniapp实战直播课】02. 使用vuex改进</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-28</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19046.html">[夏墨Design] UI_登录界面_01_黑色透明磨砂</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-27</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19043.html">某抑云音乐一次解析 JavaWeb版</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-27</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19039.html">【零基础学会uniapp】第8课：静态资源的引用</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-26</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19031.html">【零基础学会uniapp】第7.3课：组件的编写规范</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-25</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19024.html">【零基础学会uniapp】第7.2课：组件库的引用方式</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-22</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19006.html">【零基础学会uniapp】第六课：底部tabbar的使用</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-21</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/18998.html">【零基础学会uniapp】第五课：添加新的页面</a>
+                        </span>
+                    </li>
+                                    </ul>
+            </div>
+            
+                        
+            
+                        <div class="listbox" kind="general">
+                <h2>
+                    <span class="block_cate">
+                        <a href="/cate/17.html" target="_blank">易相关资料</a>
+                    </span>
+                    <span class="more">
+                        <a href="/cate/17.html" target="_blank">更多</a>
+                    </span>
+                </h2>
+                <ul>
+                                        <li>
+                        <span class="date">11-22</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/13850.html">《机器70年》</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">11-22</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/13847.html">探索人工智能系列（套装共4册）</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-10</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/12790.html">ServerXMLHTTP中文手册</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-10</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/12789.html">GDI参考手册_自由飞翔整理版</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-10</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/12788.html">GDIPlus_SDK参考手册</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-10</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/12787.html">Windows Shell 编程手册</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-10</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/12786.html">网页操作DHTML手册</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-10</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/12785.html">VBAPI函数参考手册（全中文）</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-07</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/11982.html">验证码识别相关学习资料</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-07</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/11980.html">Android软件安全与逆向分析（完整版）</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-07</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/11968.html">[JavaScript权威指南(第六版)+源码例子]</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-05</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/11867.html">一步一步学网页操作电子书</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">09-05</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/11866.html">一步一步学自绘_肥田版电子书下载</a>
+                        </span>
+                    </li>
+                                    </ul>
+            </div>
+            
+                        
+            
+                        <div class="listbox" kind="general">
+                <h2>
+                    <span class="block_cate">
+                        <a href="/cate/14.html" target="_blank">易语言模块</a>
+                    </span>
+                    <span class="more">
+                        <a href="/cate/14.html" target="_blank">更多</a>
+                    </span>
+                </h2>
+                <ul>
+                                        <li>
+                        <span class="date">03-01</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19608.html">精易模块V10.1.0 发布【2022.03.01】</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-26</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19607.html">yaodaxia窗口组件自适应模块1.1+demo源码</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">02-02</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19542.html">精易模块V10.0.5 发布【2022.02.01】</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">01-12</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19504.html">sk多元素模块</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">01-12</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19503.html">黑红皮肤模块修改版</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">01-08</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19490.html">手动屏幕截图,限制范围截图,仿QQ,带局部放大</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">01-01</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19465.html">精易模块V10.0.0 发布【2022.01.01】</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">12-01</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19322.html">精易模块V9.5.5 发布【2021.12.01】</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">11-02</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19067.html">大恩TaskDialog_等待框_进度条可控_信息框</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">11-02</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19066.html">大恩环形进度条模块_原生组件</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">11-01</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19055.html">精易模块V9.5.0 发布【2021.11.01】</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-29</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19049.html">易语言 造的轮子 列表型 字典型</a>
+                        </span>
+                    </li>
+                                        <li>
+                        <span class="date">10-23</span>
+                        <span class="title">
+                            <a target="_blank" href="/post/19018.html">【开源】存取表</a>
+                        </span>
+                    </li>
+                                    </ul>
+            </div>
+            
+                        
+                             <div class="listbox" kind="random">
+                    <h2>
+                        <span class="block_cate">
+                            <a href="/cate/.html" target="_blank">随机推荐</a>
+                        </span>
+                    </h2>
+                    <ul>
+                                                <li>
+                            <span class="date">03-09</span>
+                            <span class="title">
+                                <a target="_blank" href="/post/14892.html">易语言调用百度语音合成例子</a>
+                            </span>
+                        </li>
+                                                <li>
+                            <span class="date">03-08</span>
+                            <span class="title">
+                                <a target="_blank" href="/post/14804.html">易语言矩形图片转圆形抗锯齿例题</a>
+                            </span>
+                        </li>
+                                                <li>
+                            <span class="date">03-08</span>
+                            <span class="title">
+                                <a target="_blank" href="/post/14832.html">易语言汇编版ByteBuffer</a>
+                            </span>
+                        </li>
+                                                <li>
+                            <span class="date">03-08</span>
+                            <span class="title">
+                                <a target="_blank" href="/post/14878.html">华旭二代身份证读取器开源</a>
+                            </span>
+                        </li>
+                                                <li>
+                            <span class="date">03-09</span>
+                            <span class="title">
+                                <a target="_blank" href="/post/14891.html">PHP PDO数据中间件</a>
+                            </span>
+                        </li>
+                                                <li>
+                            <span class="date">03-08</span>
+                            <span class="title">
+                                <a target="_blank" href="/post/14842.html">PHP和易语言通讯RSA和RC4加密</a>
+                            </span>
+                        </li>
+                                                <li>
+                            <span class="date">03-09</span>
+                            <span class="title">
+                                <a target="_blank" href="/post/14902.html">利用鼠标滚轮控制图片放大放小</a>
+                            </span>
+                        </li>
+                                            </ul>
+                </div>
+            
+            
+                                        <div class="listbox" kind="tags">
+                    <h2>
+                        <span class="block_cate">
+                            <a href="javascript:;" target="_blank">热门标签</a>
+                        </span>
+                    </h2>
+                    <div class="hot-tags">
+                                                <a href="/tag/25.html" class="c0">易语言历史版本</a>
+                                                <a href="/tag/41.html" class="c1">皮肤模块</a>
+                                                <a href="/tag/46.html" class="c2">网页访问</a>
+                                                <a href="/tag/54.html" class="c0">黑月</a>
+                                                <a href="/tag/87.html" class="c1">wke</a>
+                                                <a href="/tag/126.html" class="c2">Chrome</a>
+                                                <a href="/tag/144.html" class="c0">数据库</a>
+                                                <a href="/tag/179.html" class="c1">API伴侣</a>
+                                                <a href="/tag/225.html" class="c2">管理</a>
+                                                <a href="/tag/329.html" class="c0">3D</a>
+                                                <a href="/tag/341.html" class="c1">系统</a>
+                                                <a href="/tag/548.html" class="c2">效果</a>
+                                                <a href="/tag/1011.html" class="c0">CEF</a>
+                                            </div>
+                </div>
+            
+            
+            
+                    </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var currentHover = null,
+            tabButtonItem = $('#tab-button li'),
+            tabSelect = $('#tab-select'),
+            tabContents = $('.tab-contents'),
+            activeClass = 'is-active';
+
+        tabContents.hide();
+
+        tabButtonItem.find('a').on('click mouseenter', function (e) {
+            var target = $(this).attr('href');
+
+            tabButtonItem.removeClass(activeClass);
+            $(this).parent().addClass(activeClass);
+            tabSelect.val(target);
+            tabContents.hide();
+            $(target).show();
+            e.preventDefault();
+        });
+
+        tabContents.mouseenter(function () { currentHover = $(this) });
+        tabContents.mouseleave(function () { currentHover = null });
+        tabButtonItem.find('a').mouseenter(function () { currentHover = $(this) });
+        tabButtonItem.find('a').mouseleave(function () { currentHover = null });
+
+        tabSelect.on('change', function () {
+            var target = $(this).val(),
+                targetSelectNum = $(this).prop('selectedIndex');
+
+            tabButtonItem.removeClass(activeClass);
+            tabButtonItem.eq(targetSelectNum).addClass(activeClass);
+            tabContents.hide();
+            $(target).show();
+        });
+
+        var randomTab = function () {
+            if (!currentHover) {
+                tabButtonItem.find('a')
+                    .get(parseInt(Math.random() * tabButtonItem.length)).click()
+            }
+
+            setTimeout(randomTab, 3000);
+        }
+        randomTab()
+    });
+</script>
+<script src="/source/plugin/ziyuan/template/js/swiper.min.js" type="text/javascript"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+</script><div class="footer">
+    <div class="footer_wrap">
+
+        <div class="intro clearfix">
+            <div class="fl">
+                <p>
+                    本站部分内容收集于互联网，如果有侵权内容、不妥之处，请联系我们删除。敬请谅解!
+                    <br>
+                    <a target="_blank" href="">公网安备 粤ICP备12094385号-14</a>
+                    <br>&copy; 2022 易语言资源网                </p>
+            </div>
+            <div class="fr">
+                <a target="_blank" rel="external nofollow" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=800073686"
+                    class="qq">800073686</a>
+                <a href="javascript:;" class="email">800073686#b.qq.com</a>
+            </div>
+        </div>
+        <div class="link">
+            <b class="tit">友情链接</b>
+            <ul class="list">
+                                <li><a href="https://bbs.125.la" target="_blank">精易论坛</a> </li>
+                                <li><a href="https://www.eyuyan.tv" target="_blank">易语言TV</a> </li>
+                                <li><a href="http://e.125.la" target="_blank">易语言辅助神器</a> </li>
+                                <li><a href="https://bbs.266.la/" target="_blank">派生社区</a> </li>
+                                <li><a href="http://bbs.eyuyan.com" target="_blank">易语言官方论坛</a> </li>
+                                <li><a href="http://esdn.125.la" target="_blank">易语言知识库</a> </li>
+                                <li><a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=800073686" target="_blank">联系我们</a> </li>
+                                <li><a href="http://www.eyuyan.la/sitemap-index.xml" target="_blank">Sitemap</a> </li>
+                            </ul>
+        </div>
+    </div>
+</div>
+<script src="/source/plugin/ziyuan/template/js/xezyw.js" type="text/javascript"></script>
+
+<script src="/source/plugin/ziyuan/template/js/ad_js.php" type="text/javascript" language="javascript"></script>
+<script src="/source/plugin/ziyuan/template/js/ad_js.php" type="text/javascript" language="javascript"></script>
+<script src="/source/plugin/ziyuan/template/js/ajax-sign-script.min.js" type="text/javascript" language="javascript"></script>
+<script src="/source/plugin/ziyuan/template/js/layer/layer.js" type="text/javascript"></script>
+
+<script>
+    $('.link ul.list li>a').each(function () {
+        if (/sitemap.*?\.xml/.test($(this).attr('href'))) {
+            $(this).hide();
+        }
+    })
+
+    function openLayer() {
+        var index = layer.open({
+            type: 2,
+            title: '用户中心',
+            shadeClose: true,
+            shade: 0.3,
+            maxmin: true,
+            area: ['400px', '400px'],
+            content: ['/?a=user', 'yes']
+        });
+    }
+
+    
+</script><script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0b828ea81dacd6ebdc42a2a37fc91951";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script></body>
+
+</html>

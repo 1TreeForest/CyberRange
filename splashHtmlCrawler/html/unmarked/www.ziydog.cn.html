@@ -1,0 +1,391 @@
+<!DOCTYPE HTML>
+<html>
+<head><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let r;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",r=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(r){e["rocket"+t]=n=r}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,r=document.createRange(),i=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const a=document.createDocumentFragment();r.setStart(a,0),a.appendChild(r.createContextualFragment(t)),i.insertBefore(a,o)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();
+</script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-title" content="资源狗">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  
+  <meta name="keywords" content="影视/音乐/直播">
+<meta name="description" content="影视源码">
+  <link rel="shortcut icon" href="https://ziydog.cn/wp-content/uploads/2021/08/06070550450-e1628233561424.png">
+  <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v16.5 (Yoast SEO v16.5) - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>影视/音乐/直播 Archives | 资源狗</title>
+	<meta name="description" content="资源狗建站" />
+	<link rel="canonical" href="https://www.ziydog.cn/archives/category/源码/影视源码" />
+	<link rel="next" href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%bd%b1%e8%a7%86%e6%ba%90%e7%a0%81/page/2" />
+	<meta property="og:locale" content="zh_CN" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="影视/音乐/直播 Archives" />
+	<meta property="og:description" content="资源狗建站" />
+	<meta property="og:url" content="https://www.ziydog.cn/archives/category/源码/影视源码" />
+	<meta property="og:site_name" content="资源狗" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.ziydog.cn/#organization","name":"\u8d44\u6e90\u72d7","url":"https://www.ziydog.cn/","sameAs":[],"logo":{"@type":"ImageObject","@id":"https://www.ziydog.cn/#logo","inLanguage":"zh-CN","url":"https://ziydog.cn/wp-content/uploads/2021/08/01023755130.svg","contentUrl":"https://ziydog.cn/wp-content/uploads/2021/08/01023755130.svg","caption":"\u8d44\u6e90\u72d7"},"image":{"@id":"https://www.ziydog.cn/#logo"}},{"@type":"WebSite","@id":"https://www.ziydog.cn/#website","url":"https://www.ziydog.cn/","name":"\u8d44\u6e90\u72d7","description":"\u4eba\u7c7b\u9ad8\u8d28\u91cf\u6e90\u7ad9","publisher":{"@id":"https://www.ziydog.cn/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://www.ziydog.cn/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"zh-CN"},{"@type":"CollectionPage","@id":"https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%bd%b1%e8%a7%86%e6%ba%90%e7%a0%81#webpage","url":"https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%bd%b1%e8%a7%86%e6%ba%90%e7%a0%81","name":"\u5f71\u89c6/\u97f3\u4e50/\u76f4\u64ad Archives | \u8d44\u6e90\u72d7","isPartOf":{"@id":"https://www.ziydog.cn/#website"},"description":"\u8d44\u6e90\u72d7\u5efa\u7ad9","breadcrumb":{"@id":"https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%bd%b1%e8%a7%86%e6%ba%90%e7%a0%81#breadcrumb"},"inLanguage":"zh-CN","potentialAction":[{"@type":"ReadAction","target":["https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%bd%b1%e8%a7%86%e6%ba%90%e7%a0%81"]}]},{"@type":"BreadcrumbList","@id":"https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%bd%b1%e8%a7%86%e6%ba%90%e7%a0%81#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.ziydog.cn/"},{"@type":"ListItem","position":2,"name":"\u7f51\u7ad9\u6e90\u7801","item":"https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81"},{"@type":"ListItem","position":3,"name":"\u5f71\u89c6/\u97f3\u4e50/\u76f4\u64ad"}]}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel='dns-prefetch' href='//ziydog.cn' />
+
+<link href='//ziydog.cn' rel='preconnect' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link data-minify="1" rel='stylesheet' id='mobantu-libs-css'  href='https://ziydog.cn/wp-content/cache/min/1/wp-content/themes/modown/static/css/libs.css?ver=1631623318' type='text/css' media='screen' />
+<link data-minify="1" rel='stylesheet' id='mobantu-base-css'  href='https://ziydog.cn/wp-content/cache/min/1/wp-content/themes/modown/static/css/base.css?ver=1631623318' type='text/css' media='screen' />
+<link rel='stylesheet' id='modown-style-css'  href='https://ziydog.cn/wp-content/themes/modown/style.css?ver=6.2' type='text/css' media='screen' />
+<link data-minify="1" rel='stylesheet' id='erphp-task-css'  href='https://ziydog.cn/wp-content/cache/min/1/wp-content/plugins/erphp-task/static/css/task.css?ver=1631623318' type='text/css' media='all' />
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://ziydog.cn/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://ziydog.cn/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js' defer></script>
+<link rel="https://api.w.org/" href="https://www.ziydog.cn/wp-json/" /><link rel="alternate" type="application/json" href="https://www.ziydog.cn/wp-json/wp/v2/categories/20" />    <script type="rocketlazyloadscript">window._ERPHP_TASK = {"ajax": "https://www.ziydog.cn/wp-admin/admin-ajax.php", "author": "mobantu"}</script>
+	<style id="erphpdown-custom"></style>
+	<script type="rocketlazyloadscript">window._ERPHPDOWN = {"uri":"https://ziydog.cn/wp-content/plugins/erphpdown", "payment": "1", "author": "mobantu"}</script>
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>  <script type="rocketlazyloadscript">window._MBT = {uri: 'https://ziydog.cn/wp-content/themes/modown', url:'https://www.ziydog.cn',usr: 'https://www.ziydog.cn/user', roll: [], admin_ajax: 'https://www.ziydog.cn/wp-admin/admin-ajax.php', erphpdown: 'https://ziydog.cn/wp-content/plugins/erphpdown/', image: '0.6316', hanimated: '0'}</script>
+  <style>
+      body.home .banner{margin-top: -70px;}
+    body.home .banner-slider{padding-top: 90px;background: #fff;background-image: none;}
+        body.home .banner-slider:after{content: none;}
+    body.home .header{background: transparent;box-shadow: none;webkit-box-shadow:none;}
+    body.home .header.scrolled{background: #fff;webkit-box-shadow: 0px 5px 10px 0px rgba(17, 58, 93, 0.1);-ms-box-shadow: 0px 5px 10px 0px rgba(17, 58, 93, 0.1);box-shadow: 0px 5px 10px 0px rgba(17, 58, 93, 0.1);}
+
+    body.home .header:not(.scrolled) .nav-main > li, body.home .header:not(.scrolled) .nav-main > li > a, body.home .header:not(.scrolled) .nav-right > li > a{color:#ffffff;}
+
+    @media (max-width: 925px){
+      body.home .banner{padding-top: 85px;}
+      body.home .banner-slider{padding-top: 85px;}
+          }
+
+    @media (max-width: 768px){
+      body.home .banner{margin-top: -60px;padding-top: 70px;}
+      body.home .banner-slider{padding-top: 70px;}
+          }
+      body.home .banner:after, .banner-archive:after, body.home .swiper-container-fullwidth .swiper-slide:after, .mocats .moli .moli-header:after{content:"";position:absolute;top:0;bottom:0;left:0;right:0;background:linear-gradient(180deg,rgba(0,0,0,.38) 0,rgba(0,0,0,.38) 3.5%,rgba(0,0,0,.379) 7%,rgba(0,0,0,.377) 10.35%,rgba(0,0,0,.375) 13.85%,rgba(0,0,0,.372) 17.35%,rgba(0,0,0,.369) 20.85%,rgba(0,0,0,.366) 24.35%,rgba(0,0,0,.364) 27.85%,rgba(0,0,0,.361) 31.35%,rgba(0,0,0,.358) 34.85%,rgba(0,0,0,.355) 38.35%,rgba(0,0,0,.353) 41.85%,rgba(0,0,0,.351) 45.35%,rgba(0,0,0,.35) 48.85%,rgba(0,0,0,.353) 52.35%,rgba(0,0,0,.36) 55.85%,rgba(0,0,0,.371) 59.35%,rgba(0,0,0,.385) 62.85%,rgba(0,0,0,.402) 66.35%,rgba(0,0,0,.42) 69.85%,rgba(0,0,0,.44) 73.35%,rgba(0,0,0,.46) 76.85%,rgba(0,0,0,.48) 80.35%,rgba(0,0,0,.498) 83.85%,rgba(0,0,0,.515) 87.35%,rgba(0,0,0,.529) 90.85%,rgba(0,0,0,.54) 94.35%,rgba(0,0,0,.547) 97.85%,rgba(0,0,0,.55));z-index:9}
+      .grids .grid h3 a{height: 40px;-webkit-line-clamp:2;}
+  .header .container{max-width:none !important;padding:0 15px;}.logo{width:70px;}@media (max-width: 1024px){.logo, .logo a {width: 60px;height: 60px;}}.footer-widget{width:calc(25% - 20px);}@media (max-width: 768px){.footer-widget{width:calc(50% - 20px);}}</style></head>
+<body class="archive category category-20">
+<header class="header">
+  <div class="container clearfix">
+  	    <div class="logo"><a data-bg="https://ziydog.cn/wp-content/uploads/2021/08/06070550450-e1628233561424.png" class="rocket-lazyload" style="" href="https://www.ziydog.cn/" title="资源狗">资源狗</a></div>    <ul class="nav-main">
+      <li id="menu-item-93" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-93"><a href="https://ziydog.cn">首页</a></li>
+<li id="menu-item-94" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-94"><a href="https://www.ziydog.cn/archives/category/wordpress">WordPress</a>
+<ul class="sub-menu">
+	<li id="menu-item-95" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-95"><a href="https://www.ziydog.cn/archives/category/wordpress/wordpress%e6%8f%92%e4%bb%b6">WordPress插件</a></li>
+	<li id="menu-item-96" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-96"><a href="https://www.ziydog.cn/archives/category/wordpress/wordpress%e4%b8%bb%e9%a2%98">WordPress主题</a></li>
+</ul>
+</li>
+<li id="menu-item-97" class="menu-item menu-item-type-taxonomy menu-item-object-category current-category-ancestor current-menu-ancestor current-menu-parent current-category-parent menu-item-has-children menu-item-97"><a href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81">网站源码</a>
+<ul class="sub-menu">
+	<li id="menu-item-100" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-100"><a href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e6%b8%b8%e6%88%8f%e6%ba%90%e7%a0%81">游戏/娱乐/交友</a></li>
+	<li id="menu-item-183" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-183"><a href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%95%86%e5%9f%8e-%e6%b7%98%e5%ae%a2-%e7%bd%91%e5%ba%97">商城/淘客/网店</a></li>
+	<li id="menu-item-184" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-184"><a href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%b0%8f%e8%af%b4%e6%ba%90%e7%a0%81">小说/漫画/博客</a></li>
+	<li id="menu-item-185" class="menu-item menu-item-type-taxonomy menu-item-object-category current-menu-item menu-item-185"><a href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%bd%b1%e8%a7%86%e6%ba%90%e7%a0%81" aria-current="page">影视/音乐/直播</a></li>
+	<li id="menu-item-186" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-186"><a href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e6%94%af%e4%bb%98%e6%ba%90%e7%a0%81">支付/金融/货币</a></li>
+	<li id="menu-item-382" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-382"><a href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e8%b5%84%e6%ba%90%e6%ba%90%e7%a0%81">资源/下载/工具</a></li>
+</ul>
+</li>
+<li id="menu-item-99" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-99"><a href="https://www.ziydog.cn/archives/category/%e5%b0%8f%e7%a8%8b%e5%ba%8f%e6%ba%90%e7%a0%81">小程序源码</a></li>
+<li id="menu-item-182" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-182"><a href="https://www.ziydog.cn/archives/category/%e5%85%8d%e8%b4%b9%e8%b5%84%e6%ba%90">免费资源<svg t="1627749238682" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="55172" width="16" height="16"><path d="M447.146667 365.226667c6.826667-10.24 20.48-17.066667 34.133333-20.48v112.64c-13.653333-6.826667-27.306667-13.653333-34.133333-20.48-10.24-6.826667-13.653333-20.48-13.653334-34.133334s3.413333-27.306667 13.653334-37.546666z m518.826666 378.88l-269.653333-157.013334c-3.413333-17.066667-10.24-34.133333-20.48-44.373333-13.653333-17.066667-30.72-30.72-51.2-40.96-20.48-6.826667-44.373333-17.066667-71.68-23.893333v-133.12c34.133333 6.826667 64.853333 20.48 95.573333 44.373333l6.826667 6.826667 34.133333-75.093334-3.413333-3.413333c-17.066667-13.653333-37.546667-27.306667-61.44-37.546667-20.48-10.24-44.373333-13.653333-68.266667-17.066666V187.733333H477.866667v75.093334c-27.306667 3.413333-51.2 13.653333-71.68 23.893333-23.893333 13.653333-40.96 30.72-54.613334 51.2-6.826667 13.653333-13.653333 27.306667-17.066666 40.96L81.92 235.52C174.08 92.16 331.093333 0 512 0c283.306667 0 512 228.693333 512 512 0 85.333333-20.48 163.84-58.026667 232.106667z m-378.88-85.333334c-6.826667 6.826667-17.066667 13.653333-30.72 17.066667v-102.4c13.653333 3.413333 23.893333 10.24 30.72 17.066667 6.826667 6.826667 13.653333 17.066667 13.653334 27.306666 0 17.066667-6.826667 30.72-13.653334 40.96z m-232.106666-174.08c13.653333 20.48 34.133333 34.133333 54.613333 44.373334 20.48 10.24 44.373333 17.066667 71.68 23.893333v126.293333c-40.96-3.413333-78.506667-20.48-116.053333-47.786666l-6.826667-6.826667-34.133333 75.093333 3.413333 3.413334c20.48 17.066667 44.373333 30.72 68.266667 40.96 23.893333 10.24 51.2 13.653333 78.506666 17.066666v75.093334h81.92v-75.093334c40.96-6.826667 75.093333-23.893333 98.986667-47.786666 23.893333-23.893333 37.546667-51.2 37.546667-81.92l252.586666 146.773333C860.16 925.013333 699.733333 1024 512 1024 228.693333 1024 0 795.306667 0 512c0-88.746667 23.893333-174.08 64.853333-249.173333l269.653334 153.6c0 27.306667 6.826667 51.2 20.48 68.266666z" p-id="55173" fill="#d81e06"></path></svg></a></li>
+<li id="menu-item-181" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-181"><a href="https://www.ziydog.cn/archives/category/vip%e8%b5%84%e6%ba%90">会员专享<svg t="1627735694864" class="icon" viewBox="0 0 1036 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17183" width="16" height="16"><path d="M688.538489 405.64056L366.450187 211.426001l7.191636 376.025567-286.008917-12.56516 303.826396 310.735214a15.150917 15.150917 0 0 0 18.423515 2.545354l520.625922-300.5942a15.150917 15.150917 0 0 0 7.030026-17.211442L820.331268 151.913198z" fill="#d81e06" p-id="17184"></path><path d="M443.820872 940.084119l514.727165-297.200394a13.37321 13.37321 0 0 1 20.686053 5.575537l29.008956 50.179838a13.37321 13.37321 0 0 1-5.535135 20.726455l-514.727165 297.159992a13.37321 13.37321 0 0 1-20.726455-5.535135l-28.928152-50.099033a13.37321 13.37321 0 0 1 5.494733-20.80726z" fill="#d81e06" p-id="17185"></path><path d="M33.251213 606.319511a62.825804 62.825804 0 1 0 23.029395-85.814796 62.825804 62.825804 0 0 0-23.029395 85.814796z" fill="#d81e06" p-id="17186"></path><path d="M765.989978 183.305899a62.825804 62.825804 0 1 0 22.988992-85.855199 62.825804 62.825804 0 0 0-23.029394 85.855199z" fill="#d81e06" p-id="17187"></path><path d="M310.371592 243.828763a64.643914 64.643914 0 1 0 23.675834-88.319747 64.643914 64.643914 0 0 0-23.756639 88.36015z" fill="#d81e06" p-id="17188"></path></svg></a></li>
+<li id="menu-item-248" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-248"><a href="https://www.ziydog.cn/archives/category/%e4%b8%a5%e9%80%89%e8%b5%84%e6%ba%90">严选推荐<svg t="1627749065900" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="50113" width="16" height="16"><path d="M655.35510254 389.71392823c57.43103028 0 113.4942627-0.3213501 169.53277588 0.25543212 12.43377685-0.0164795 24.79339599 1.96929932 36.60095215 5.87493897 41.42944336 18.11920166 64.73144531 62.57263184 56.06323242 106.96014404-20.65704346 105.8972168-42.76428223 211.49780273-63.36364746 317.43621826-2.46368408 28.83911133-15.62255859 55.69244385-36.88110352 75.31951904a69.69177247 69.69177247 0 0 1-43.39050293 18.30871582c-148.99932862-0.13183594-297.99865723-0.13183594-447.01446533 0-2.10113526 0-4.21051026-0.29663086-7.86071778-0.60974121-0.28015137-5.06744385-0.78277588-9.83825684-0.78277587-14.72442626 0.14831543-155.50048828 0.28015137-310.95153809 0.37902832-466.36138917 0-10.14312744 2.33184815-13.97460938 12.31842041-15.74615478 82.83416748-14.56787109 151.72668458-97.16308594 158.13720703-188.17932129a230.60577393 230.60577393 0 0 1 11.7086792-73.69628906c14.8727417-40.98449708 60.15014648-62.14416504 101.11816406-47.25494385a78.87579346 78.87579346 0 0 1 30.21514893 19.75067138 114.61157227 114.61157227 0 0 1 30.84136963 64.29473878 461.37634278 461.37634278 0 0 1-6.99554444 190.65124511c-0.41198731 2.57080078-0.67565918 5.17456055-0.78277587 7.77832031l0.15655516-0.05767821z m-380.84106446 73.16894531c0-26.39190674-13.03527833-41.67663575-36.66687011-42.17926026-31.2286377-0.68389893-62.49847412-0.75805664-93.77655029 0-19.58587646-0.3213501-35.74401856 15.30944825-36.06536866 34.90356445-0.03295898 1.74682617 0.07415771 3.49365234 0.29663086 5.23223878-0.2142334 137.69439697-0.2142334 275.40527344 0 413.1161499-2.40600586 19.45404052 11.40380859 37.17773438 30.85784913 39.59197997 2.06817627 0.25543213 4.16107177 0.32958984 6.25396727 0.22247315 29.09454346 0.23071289 58.29620362 0 87.30834962 0s41.76727295-13.76861573 41.79199219-46.21673584V666.57763672c0.04943848-67.82958984 0.25543213-135.77453614 0-203.69476318z" p-id="50114" fill="#d81e06"></path></svg></a></li>
+<li id="menu-item-101" class="menu-item menu-item-type-post_type_archive menu-item-object-blog menu-item-101"><a href="https://www.ziydog.cn/blog">搭建教程</a></li>
+<li id="menu-item-102" class="menu-item menu-item-type-taxonomy menu-item-object-tasks menu-item-102"><a href="https://www.ziydog.cn/archives/tasks/%e8%b5%84%e6%ba%90%e6%b1%82%e5%8a%a9">资源求助</a></li>
+<li id="menu-item-250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-250"><a href="https://www.ziydog.cn/tougao">投稿赚钱</a></li>
+<li id="menu-item-734" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-734"><a href="https://www.ziydog.cn/archives/176">一元体验VIP</a></li>
+<li id="menu-item-837" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-837"><a href="https://www.ziydog.cn/archives/835">整站打包</a></li>
+    </ul>
+        <ul class="nav-right">
+            <li class="nav-vip">
+        <a href="https://www.ziydog.cn/vip"><i class="icon icon-vip-s"></i></a>
+      </li>
+                  <li class="nav-tougao">
+        <a href="https://www.ziydog.cn/tougao" title="投稿"><i class="icon icon-edit"></i></a>
+      </li>
+                  <li class="nav-search">
+        <a href="javascript:;" class="search-loader" title="搜索"><i class="icon icon-search"></i></a>
+      </li>
+            <li class="nav-login no"><a href="https://www.ziydog.cn/login" class="signin-loader"><i class="icon icon-user"></i><span>登录</span></a><b class="nav-line"></b><a href="https://www.ziydog.cn/login?action=register" class="signup-loader"><span>注册</span></a></li>
+            <li class="nav-button"><a href="javascript:;" class="nav-loader"><i class="icon icon-menu"></i></a></li>
+    </ul>
+  </div>
+</header>
+<div class="search-wrap">
+  <div class="container">
+    <form action="https://www.ziydog.cn/" class="search-form" method="get">
+      <input autocomplete="off" class="search-input" name="s" placeholder="输入关键字回车" type="text">
+      <i class="icon icon-close"></i>
+    </form>
+  </div>
+</div><div data-bg="https://freetool-plus.online/wp-content/uploads/2021/07/30033311865-e1627659222331.png" class="banner-archive rocket-lazyload"  style="" >
+	<div class="container">
+		<h1 class="archive-title">影视/音乐/直播</h1>
+		<p class="archive-desc">影视源码</p>
+	</div>
+</div>
+<div class="main">
+    	<div class="container clearfix">
+        						<div class="filters">
+			                                                <div class="filter-item">
+                <span>标签</span>
+                <div class="filter">
+                    <a href="https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81?paged=1&t" rel="nofollow" class="active">全部</a>                </div>
+            </div>
+                                    <div class="filter-item">
+                <span>价格</span>
+                <div class="filter">
+                    <a href="https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81?paged=1&v" rel="nofollow" class="active">全部</a><a href="https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81?v=free&paged=1" rel="nofollow" class="">免费</a><a href="https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81?v=fee&paged=1" rel="nofollow" class="">收费</a><a href="https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81?v=vip&paged=1" rel="nofollow" class="">VIP免费</a><a href="https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81?v=vipf&paged=1" rel="nofollow" class="">VIP优惠</a><a href="https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81?v=nvip&paged=1" rel="nofollow" class="">年费VIP免费</a><a href="https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81?v=svip&paged=1" rel="nofollow" class="">终身VIP免费</a>                </div>
+            </div>
+                                    <div class="filter-item filter-item-order">
+                <span>排序</span>
+                <div class="filter">
+                    <a href="https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81?paged=1&o" rel="nofollow" class="active">最新</a><a href="https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81?o=recommend&paged=1" rel="nofollow" class="">推荐</a><a href="https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81?o=download&paged=1" rel="nofollow" class="">下载</a><a href="https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81?o=view&paged=1" rel="nofollow" class="">浏览</a><a href="https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81?o=comment&paged=1" rel="nofollow" class="">评论</a><a href="https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81?o=update&paged=1" rel="nofollow" class="">更新</a>                </div>
+            </div>
+                    </div>
+				<div id="posts" class="posts grids  clearfix">
+			<div class="post grid"  data-id="347">
+  <div class="img"><a href="https://www.ziydog.cn/archives/347" title="影视源码-最新二开影视APP+VIP解析+在线视频聚合+APP双端源码-免费下载" target="_blank" rel="bookmark">
+    <img width="285" height="180" src="https://ziydog.cn/wp-content/themes/modown/static/img/thumbnail.png" data-src="https://www.sucaihu.com/wp-content/uploads/2019/12/1576141131-c4ca4238a0b9238.png" class="thumb" alt="影视源码-最新二开影视APP+VIP解析+在线视频聚合+APP双端源码-免费下载">
+      </a></div>
+  <a href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%bd%b1%e8%a7%86%e6%ba%90%e7%a0%81" class="cat">影视/音乐/直播</a>  <h3 itemprop="name headline"><a itemprop="url" rel="bookmark" href="https://www.ziydog.cn/archives/347" title="影视源码-最新二开影视APP+VIP解析+在线视频聚合+APP双端源码-免费下载" target="_blank">影视源码-最新二开影视APP+VIP解析+在线视频聚合+APP双端源码-免费下载</a></h3>
+    <div class="grid-meta">
+    <span class="time"><i class="icon icon-time"></i> 1周前</span><span class="views"><i class="icon icon-eye"></i> 405</span><span class="comments"><i class="icon icon-comment"></i> 0</span><span class="downs"><i class="icon icon-download"></i> 3</span><span class="price"><span class="fee"><i class="icon icon-ticket"></i> 6</span></span>  </div>
+    </div><div class="post grid grid-tj"  data-id="343">
+  <div class="img"><a href="https://www.ziydog.cn/archives/343" title="高仿抖音源码-最新高仿抖音短视频APP应用原生双端源码(java源生源码)-严选推荐" target="_blank" rel="bookmark">
+    <img width="285" height="180" src="https://ziydog.cn/wp-content/themes/modown/static/img/thumbnail.png" data-src="https://www.sucaihu.com/wp-content/uploads/2019/11/1573804200-c4ca4238a0b9238.jpg" class="thumb" alt="高仿抖音源码-最新高仿抖音短视频APP应用原生双端源码(java源生源码)-严选推荐">
+      </a></div>
+  <a href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%bd%b1%e8%a7%86%e6%ba%90%e7%a0%81" class="cat">影视/音乐/直播</a>  <h3 itemprop="name headline"><a itemprop="url" rel="bookmark" href="https://www.ziydog.cn/archives/343" title="高仿抖音源码-最新高仿抖音短视频APP应用原生双端源码(java源生源码)-严选推荐" target="_blank">高仿抖音源码-最新高仿抖音短视频APP应用原生双端源码(java源生源码)-严选推荐</a></h3>
+    <div class="grid-meta">
+    <span class="time"><i class="icon icon-time"></i> 2周前</span><span class="views"><i class="icon icon-eye"></i> 1.26k</span><span class="comments"><i class="icon icon-comment"></i> 0</span><span class="downs"><i class="icon icon-download"></i> 25</span><span class="price"><span class="fee"><i class="icon icon-ticket"></i> 18</span></span>  </div>
+    </div><div class="post grid"  data-id="341">
+  <div class="img"><a href="https://www.ziydog.cn/archives/341" title="影视源码-电影视频在线播放网站源码(自适应手机端)-帝国CMS-免费下载" target="_blank" rel="bookmark">
+    <img width="285" height="180" src="https://ziydog.cn/wp-content/themes/modown/static/img/thumbnail.png" data-src="https://www.sucaihu.com/wp-content/uploads/2019/12/1575527123-c4ca4238a0b9238.png" class="thumb" alt="影视源码-电影视频在线播放网站源码(自适应手机端)-帝国CMS-免费下载">
+      </a></div>
+  <a href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%bd%b1%e8%a7%86%e6%ba%90%e7%a0%81" class="cat">影视/音乐/直播</a>  <h3 itemprop="name headline"><a itemprop="url" rel="bookmark" href="https://www.ziydog.cn/archives/341" title="影视源码-电影视频在线播放网站源码(自适应手机端)-帝国CMS-免费下载" target="_blank">影视源码-电影视频在线播放网站源码(自适应手机端)-帝国CMS-免费下载</a></h3>
+    <div class="grid-meta">
+    <span class="time"><i class="icon icon-time"></i> 2周前</span><span class="views"><i class="icon icon-eye"></i> 397</span><span class="comments"><i class="icon icon-comment"></i> 0</span><span class="downs"><i class="icon icon-download"></i> 3</span><span class="price"><span class="fee"><i class="icon icon-ticket"></i> 6</span></span>  </div>
+    </div><div class="post grid"  data-id="339">
+  <div class="img"><a href="https://www.ziydog.cn/archives/339" title="影视源码-精美视频网站源码带视频安装教程-PHP源码-免费下载" target="_blank" rel="bookmark">
+    <img width="285" height="180" src="https://ziydog.cn/wp-content/themes/modown/static/img/thumbnail.png" data-src="https://www.sucaihu.com/wp-content/uploads/2019/11/1572942490-c4ca4238a0b9238.png" class="thumb" alt="影视源码-精美视频网站源码带视频安装教程-PHP源码-免费下载">
+      </a></div>
+  <a href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%bd%b1%e8%a7%86%e6%ba%90%e7%a0%81" class="cat">影视/音乐/直播</a>  <h3 itemprop="name headline"><a itemprop="url" rel="bookmark" href="https://www.ziydog.cn/archives/339" title="影视源码-精美视频网站源码带视频安装教程-PHP源码-免费下载" target="_blank">影视源码-精美视频网站源码带视频安装教程-PHP源码-免费下载</a></h3>
+    <div class="grid-meta">
+    <span class="time"><i class="icon icon-time"></i> 2周前</span><span class="views"><i class="icon icon-eye"></i> 386</span><span class="comments"><i class="icon icon-comment"></i> 0</span><span class="downs"><i class="icon icon-download"></i> 65</span><span class="price"><span class="vip-tag free-tag"><i>免费</i></span></span>  </div>
+    </div><div class="post grid"  data-id="337">
+  <div class="img"><a href="https://www.ziydog.cn/archives/337" title="影视APP源码-可打包成安卓苹果客户端(内附详细安装教程)-免费下载" target="_blank" rel="bookmark">
+    <img width="285" height="180" src="https://ziydog.cn/wp-content/themes/modown/static/img/thumbnail.png" data-src="https://www.sucaihu.com/wp-content/uploads/2019/12/1576563066-c4ca4238a0b9238.png" class="thumb" alt="影视APP源码-可打包成安卓苹果客户端(内附详细安装教程)-免费下载">
+      </a></div>
+  <a href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%bd%b1%e8%a7%86%e6%ba%90%e7%a0%81" class="cat">影视/音乐/直播</a>  <h3 itemprop="name headline"><a itemprop="url" rel="bookmark" href="https://www.ziydog.cn/archives/337" title="影视APP源码-可打包成安卓苹果客户端(内附详细安装教程)-免费下载" target="_blank">影视APP源码-可打包成安卓苹果客户端(内附详细安装教程)-免费下载</a></h3>
+    <div class="grid-meta">
+    <span class="time"><i class="icon icon-time"></i> 2周前</span><span class="views"><i class="icon icon-eye"></i> 598</span><span class="comments"><i class="icon icon-comment"></i> 0</span><span class="downs"><i class="icon icon-download"></i> 7</span><span class="price"><span class="fee"><i class="icon icon-ticket"></i> 6</span></span>  </div>
+    </div><div class="post grid"  data-id="335">
+  <div class="img"><a href="https://www.ziydog.cn/archives/335" title="影视源码-白菜cms双端影视APP源码（全开源 无授权 无后门）-免费下载" target="_blank" rel="bookmark">
+    <img width="285" height="180" src="https://ziydog.cn/wp-content/themes/modown/static/img/thumbnail.png" data-src="https://www.sucaihu.com/wp-content/uploads/2020/02/1580815023-c4ca4238a0b9238.jpg" class="thumb" alt="影视源码-白菜cms双端影视APP源码（全开源 无授权 无后门）-免费下载">
+      </a></div>
+  <a href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%bd%b1%e8%a7%86%e6%ba%90%e7%a0%81" class="cat">影视/音乐/直播</a>  <h3 itemprop="name headline"><a itemprop="url" rel="bookmark" href="https://www.ziydog.cn/archives/335" title="影视源码-白菜cms双端影视APP源码（全开源 无授权 无后门）-免费下载" target="_blank">影视源码-白菜cms双端影视APP源码（全开源 无授权 无后门）-免费下载</a></h3>
+    <div class="grid-meta">
+    <span class="time"><i class="icon icon-time"></i> 2周前</span><span class="views"><i class="icon icon-eye"></i> 473</span><span class="comments"><i class="icon icon-comment"></i> 0</span><span class="downs"><i class="icon icon-download"></i> 6</span><span class="price"><span class="fee"><i class="icon icon-ticket"></i> 6</span></span>  </div>
+    </div><div class="post grid"  data-id="333">
+  <div class="img"><a href="https://www.ziydog.cn/archives/333" title="影视源码-全新改版美化小小影视app双端源码开源-免费下载" target="_blank" rel="bookmark">
+    <img width="285" height="180" src="https://ziydog.cn/wp-content/themes/modown/static/img/thumbnail.png" data-src="https://www.sucaihu.com/wp-content/uploads/2020/04/1586860145-c4ca4238a0b9238.jpg" class="thumb" alt="影视源码-全新改版美化小小影视app双端源码开源-免费下载">
+      </a></div>
+  <a href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%bd%b1%e8%a7%86%e6%ba%90%e7%a0%81" class="cat">影视/音乐/直播</a>  <h3 itemprop="name headline"><a itemprop="url" rel="bookmark" href="https://www.ziydog.cn/archives/333" title="影视源码-全新改版美化小小影视app双端源码开源-免费下载" target="_blank">影视源码-全新改版美化小小影视app双端源码开源-免费下载</a></h3>
+    <div class="grid-meta">
+    <span class="time"><i class="icon icon-time"></i> 2周前</span><span class="views"><i class="icon icon-eye"></i> 372</span><span class="comments"><i class="icon icon-comment"></i> 0</span><span class="downs"><i class="icon icon-download"></i> 62</span><span class="price"><span class="vip-tag free-tag"><i>免费</i></span></span>  </div>
+    </div><div class="post grid"  data-id="331">
+  <div class="img"><a href="https://www.ziydog.cn/archives/331" title="千月苍穹影视源码-Thinkphp全新千月苍穹影视双端APP源码（内附安装教程+最新美化后台）-免费下载" target="_blank" rel="bookmark">
+    <img width="285" height="180" src="https://ziydog.cn/wp-content/themes/modown/static/img/thumbnail.png" data-src="https://www.sucaihu.com/wp-content/uploads/2020/04/1587373796-c4ca4238a0b9238.jpg" class="thumb" alt="千月苍穹影视源码-Thinkphp全新千月苍穹影视双端APP源码（内附安装教程+最新美化后台）-免费下载">
+      </a></div>
+  <a href="https://www.ziydog.cn/archives/category/%e6%ba%90%e7%a0%81/%e5%bd%b1%e8%a7%86%e6%ba%90%e7%a0%81" class="cat">影视/音乐/直播</a>  <h3 itemprop="name headline"><a itemprop="url" rel="bookmark" href="https://www.ziydog.cn/archives/331" title="千月苍穹影视源码-Thinkphp全新千月苍穹影视双端APP源码（内附安装教程+最新美化后台）-免费下载" target="_blank">千月苍穹影视源码-Thinkphp全新千月苍穹影视双端APP源码（内附安装教程+最新美化后台）-免费下载</a></h3>
+    <div class="grid-meta">
+    <span class="time"><i class="icon icon-time"></i> 2周前</span><span class="views"><i class="icon icon-eye"></i> 380</span><span class="comments"><i class="icon icon-comment"></i> 0</span><span class="downs"><i class="icon icon-download"></i> 4</span><span class="price"><span class="fee"><i class="icon icon-ticket"></i> 6</span></span>  </div>
+    </div>		</div>
+		<div class="pagination"><ul><li class="prev-page"></li><li class="active"><span>1</span></li><li><a href='https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81/page/2'>2</a></li><li class="next-page"><a href="https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81/page/2" >下一页</a></li></ul></div>		        	</div>
+</div>
+<footer class="footer">
+	<div class="container">
+	    		<div class="footer-widgets">
+	    	<div class="footer-widget widget-bottom widget-bottom-logo"><a href="https://www.ziydog.cn" class="footer-logo"><img width="100" height="100" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3C/svg%3E" alt="资源狗" data-lazy-src="https://ziydog.cn/wp-content/uploads/2021/08/06070550450-e1628233561424.png"><noscript><img width="100" height="100" src="https://ziydog.cn/wp-content/uploads/2021/08/06070550450-e1628233561424.png" alt="资源狗"></noscript></a><div class="footer-widget-content">资源狗是一家做精品素材的人类高质量资源站，网站以网站源码、网站模板、WordPress建站仿站为主要内容。</div></div><div class="footer-widget widget_block">
+<div class="wp-container-621e33db223b9 wp-block-group"><div class="wp-block-group__inner-container"><ul>
+<li><a href="https://www.ziydog.cn/">关于我们</a></li>
+<li><a href="https://www.ziydog.cn/privacy-policy">免责申明</a></li>
+<li><a href="https://www.ziydog.cn/%e9%9a%90%e7%a7%81%e6%94%bf%e7%ad%96">关于隐私</a></li>
+<li><a href="https://www.ziydog.cn/%e5%b9%bf%e5%91%8a%e5%90%88%e4%bd%9c">广告合作</a></li>
+<li><a href="https://www.ziydog.cn/%e5%8f%8b%e9%93%be%e7%94%b3%e8%af%b7">友链申请</a></li>
+</ul>
+</div></div>
+</div><div class="footer-widget widget_block"><ul>
+<li><a href="https://www.ziydog.cn/">我要赚钱</a></li>
+<li><a href="https://freetool-plus.online/user/?action=aff">推广赚钱</a></li>
+<li><a href="https://freetool-plus.online/tougao/">投稿赚钱</a></li>
+</ul>
+</div><div class="footer-widget widget-bottom widget-bottom-search"><h3>这是一个人类高质量资源站！</h3><div class="footer-widget-content"><form role="search" method="get" class="searchform clearfix" action="https://www.ziydog.cn">
+				<div>
+					<input type="text" value="" name="s" id="s">
+					<button type="submit"><i class="icon icon-search"></i></button>
+				</div>
+			</form></div></div>	    </div>
+	    	    	    <p class="copyright"><p style="text-align: center;">本站部分文章、资源来自互联网，版权归原作者及网站所有，如果侵犯了您的权利，请及时联系我删除！</p>
+<p style="text-align: center;">@Copyright 2017-2021 <a title="人类高质量源站欢迎您的来访，希望您再次光临！">人类高质量源站</a></p>
+
+</p>
+	</div>
+</footer>
+<div class="rollbar">
+	<ul>
+		<li><a href="https://www.ziydog.cn/vip"><i class="icon icon-crown"></i></a><h6>升级VIP<i></i></h6></li>							<li><a href="javascript:;" class="signin-loader"><i class="icon icon-calendar"></i></a><h6>每日签到<i></i></h6></li>
+						<li><a href="http://wpa.qq.com/msgrd?v=3&uin=710997095&site=qq&menu=yes" target="_blank" rel="nofollow"><i class="icon icon-qq"></i></a><h6>联系QQ<i></i></h6></li>		<li><a href="javascript:;" class="kefu_weixin"><i class="icon icon-weixin"></i><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://freetool-plus.online/wp-content/uploads/2021/07/29140757640.jpg"><noscript><img src="https://freetool-plus.online/wp-content/uploads/2021/07/29140757640.jpg"></noscript></a></li>		<li><a href="javascript:;" class="fullscreen"><i class="icon icon-fullscreen"></i></a><h6>全屏浏览<i></i></h6></li>						<li class="totop-li"><a href="javascript:;" class="totop"><i class="icon icon-arrow-up"></i></a><h6>返回顶部<i></i></h6></li>    
+	</ul>
+</div>
+<div class="sitetips"><i class="icon icon-horn"></i> 折上折优惠活动：即日起在原折扣基础上开通VIP即返10元、30元、40元，各位高质量油物抓紧上！<a href="javascript:;" class="close"><i class="icon icon-close"></i></a></div><div class="sign">			
+	<div class="sign-mask"></div>			
+	<div class="sign-box">			
+		<div class="sign-tips"></div>			
+		<form id="sign-in">  
+		    <div class="form-item" style="text-align:center"><a href="https://www.ziydog.cn"><img width="100" height="100" class="logo-login" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3C/svg%3E" alt="资源狗" data-lazy-src="https://ziydog.cn/wp-content/uploads/2021/08/06070550450-e1628233561424.png"><noscript><img width="100" height="100" class="logo-login" src="https://ziydog.cn/wp-content/uploads/2021/08/06070550450-e1628233561424.png" alt="资源狗"></noscript></a></div>
+			<div class="form-item"><input type="text" name="user_login" class="form-control" id="user_login" placeholder="用户名/邮箱"><i class="icon icon-user"></i></div>			
+			<div class="form-item"><input type="password" name="password" class="form-control" id="user_pass" placeholder="密码"><i class="icon icon-lock"></i></div>		
+				
+			<div class="sign-submit">			
+				<input type="button" class="btn signinsubmit-loader" name="submit" value="登录">  			
+				<input type="hidden" name="action" value="signin">			
+			</div>			
+			<div class="sign-trans">没有账号？ <a href="javascript:;" class="erphp-reg-must">注册</a>&nbsp;&nbsp;<a href="https://www.ziydog.cn/login?action=password" rel="nofollow" target="_blank">忘记密码？</a></div>	
+						
+			<div class="sign-social">
+				<h2>社交账号快速登录</h2>
+				<a class="login-qq" href="https://www.ziydog.cn/oauth/qq?rurl=https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81"><i class="icon icon-qq"></i></a>				<a class="login-weibo" href="https://www.ziydog.cn/oauth/weibo?rurl=https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81"><i class="icon icon-weibo"></i></a>					
+						
+			</div>	
+				
+				
+		</form>	
+				
+		<form id="sign-up" style="display: none;"> 	
+		    <div class="form-item" style="text-align:center"><a href="https://www.ziydog.cn"><img width="100" height="100" class="logo-login" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3C/svg%3E" alt="资源狗" data-lazy-src="https://ziydog.cn/wp-content/uploads/2021/08/06070550450-e1628233561424.png"><noscript><img width="100" height="100" class="logo-login" src="https://ziydog.cn/wp-content/uploads/2021/08/06070550450-e1628233561424.png" alt="资源狗"></noscript></a></div>				
+			<div class="form-item"><input type="text" name="name" class="form-control" id="user_register" placeholder="用户名"><i class="icon icon-user"></i></div>			
+			<div class="form-item"><input type="email" name="email" class="form-control" id="user_email" placeholder="邮箱"><i class="icon icon-mail"></i></div>		
+			<div class="form-item"><input type="password" name="password2" class="form-control" id="user_pass2" placeholder="密码"><i class="icon icon-lock"></i></div>
+				
+			<div class="form-item">
+				<input type="text" class="form-control" id="captcha" name="captcha" placeholder="验证码"><span class="captcha-clk">获取邮箱验证码</span>
+				<i class="icon icon-safe"></i>
+			</div>	
+				
+			<div class="sign-submit">			
+				<input type="button" class="btn signupsubmit-loader" name="submit" value="注册">  			
+				<input type="hidden" name="action" value="signup">  	
+							
+			</div>			
+			<div class="sign-trans">已有账号？ <a href="javascript:;" class="erphp-login-must">登录</a></div>		
+						
+			<div class="sign-social">
+				<h2>社交账号快速注册</h2>
+				<a class="login-qq" href="https://www.ziydog.cn/oauth/qq?rurl=https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81"><i class="icon icon-qq"></i></a>				<a class="login-weibo" href="https://www.ziydog.cn/oauth/weibo?rurl=https://www.ziydog.cn/archives/category/%E6%BA%90%E7%A0%81/%E5%BD%B1%E8%A7%86%E6%BA%90%E7%A0%81"><i class="icon icon-weibo"></i></a>	
+					
+					
+			</div>	
+							
+		</form>	
+			
+					
+	</div>			
+</div><style>.wp-container-621e33db223b9 .alignleft { float: left; margin-right: 2em; }.wp-container-621e33db223b9 .alignright { float: right; margin-left: 2em; }</style>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-browser-checker-js-after'>
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type='text/javascript' id='rocket-preload-links-js-extra'>
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/2021\/07\/30\/vip%e5%85%91%e6%8d%a2\/|\/login\/|\/|\/user\/|\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/wp-admin|\/logout|\/wp-login.php","usesTrailingSlash":"","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/www.ziydog.cn","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-preload-links-js-after'>
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://ziydog.cn/wp-content/cache/min/1/wp-content/themes/modown/static/js/lib.js?ver=1631623319' id='modown-lib-js' defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://ziydog.cn/wp-content/cache/min/1/wp-content/themes/modown/static/js/base.js?ver=1631623319' id='modown-base-js' defer></script>
+<script type='text/javascript' id='erphpdown-js-extra'>
+/* <![CDATA[ */
+var erphpdown_ajax_url = "https:\/\/www.ziydog.cn\/wp-admin\/admin-ajax.php";
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://ziydog.cn/wp-content/cache/min/1/wp-content/plugins/erphpdown/static/erphpdown.js?ver=1631623318' id='erphpdown-js' defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://ziydog.cn/wp-content/cache/min/1/wp-content/plugins/erphp-task/static/js/task.js?ver=1631623319' id='erphp-task-js' defer></script>
+<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://ziydog.cn/wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script><script type="rocketlazyloadscript">MOBANTU.init({ias: 1, lazy: 1, water: 0, mbf: 0, mpf: 0, mpfp: 0});document.oncontextmenu = new Function("return false;");</script>
+<div class="analysis"><footer id="colophon" class="site-footer bgt" role="contentinfo">
+		<div class="site-info">
+			&gt;&gt;&gt;网站已平稳运行:
+<span id="momk"> <span id="htmer_time">3年325天16时17分15秒</span></span>&lt;&lt;&lt;
+
+<script type="rocketlazyloadscript">
+function secondToDate(second) {
+if (!second) {
+return 0;
+}
+var time = new Array(0, 0, 0, 0, 0);
+if (second >= 365 * 24 * 3600) {
+time[0] = parseInt(second / (365 * 24 * 3600));
+second %= 365 * 24 * 3600;
+}
+if (second >= 24 * 3600) {
+time[1] = parseInt(second / (24 * 3600));
+second %= 24 * 3600;
+}
+if (second >= 3600) {
+time[2] = parseInt(second / 3600);
+second %= 3600;
+}
+if (second >= 60) {
+time[3] = parseInt(second / 60);
+second %= 60;
+}
+if (second > 0) {
+time[4] = second;
+}
+return time;
+}
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" language="javascript">
+function setTime() {
+var create_time = Math.round(new Date(Date.UTC(2017, 08, 09, 0, 0, 1)).getTime() / 1000);
+var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
+currentTime = secondToDate((timestamp - create_time));
+currentTimeHtml = currentTime[0] + '年' + currentTime[1] + '天'
++ currentTime[2] + '时' + currentTime[3] + '分' + currentTime[4]
++ '秒';
+document.getElementById("htmer_time").innerHTML = currentTimeHtml;
+}
+setInterval(setTime, 1000);
+</script>
+<!--结束-->
+
+
+
+</span>
+<span class="yb-info">
+
+</span>								<div class="clear"></div>
+											</div>
+
+				</div><!-- .site-info -->
+			</footer></div>
+<script type="rocketlazyloadscript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?bf49f4f01ac73b833581728852c01a74";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body>
+</html>
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->

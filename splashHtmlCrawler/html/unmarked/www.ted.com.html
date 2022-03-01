@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<!--[if lt IE 8]> <html class="no-js loggedout oldie ie7" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js loggedout oldie ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--><html class='no-js loggedout' lang='en'><!--<![endif]-->
+<head>
+<script>
+  (function (H){
+  H.className=H.className.replace(/\bno-js\b/,'js');
+  if (('; '+document.cookie).match(/; _ted_user_id=/)) H.className=H.className.replace(/\bloggedout\b/,'loggedin');
+  })(document.documentElement)
+</script><meta charset='utf-8'>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"c745aa170b","applicationID":"1190410212","transactionName":"el0PFxEKDlpWS0xGAlVZEkwKCwZTSw==","queueTime":0,"applicationTime":168,"agent":""}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:true},ajax:{deny_list:["bam.nr-data.net"]},distributed_tracing:{enabled:true}};(window.NREUM||(NREUM={})).loader_config={agentID:"1385868413",accountID:"1877911",trustKey:"1877911",xpid:"VQ4AVl9SCRABVVhSAwAHVFUD",licenseKey:"c745aa170b",applicationID:"1190410212"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(32),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(33),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError";if(!c.disabled){var l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(14),t(13),"addEventListener"in window&&t(7),c.xhrWrappable&&t(15),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})}},{}],3:[function(t,e,n){var r=t("loader");r.disabled||(r.features.ins=!0)},{}],4:[function(t,e,n){function r(){U++,L=g.hash,this[u]=y.now()}function o(){U--,g.hash!==L&&i(0,!0);var t=y.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+g,e])}function a(t,e){t.on(e,function(){this[e]=y.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,g=w.location,y=t("loader");if(w[v]&&y.xhrWrappable&&!y.disabled){var x=t(11),b=t(12),E=t(9),R=t(7),O=t(14),T=t(8),S=t(15),P=t(10),M=t("ee"),C=M.get("tracer"),N=t(23);t(17),y.features.spa=!0;var L,U=0;M.on(u,r),b.on(p,r),P.on(p,r),M.on(d,o),b.on(l,o),P.on(l,o),M.buffer([u,d,"xhr-resolved"]),R.buffer([u]),O.buffer(["setTimeout"+c,"clearTimeout"+s,u]),S.buffer([u,"new-xhr","send-xhr"+s]),T.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),x.buffer([u]),b.buffer(["propagate",p,l,"executor-err","resolve"+s]),C.buffer([u,"no-"+u]),P.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,m+s),a(T,m+"-done"),a(P,"new-jsonp"),a(P,"jsonp-end"),a(P,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,N(!0)),w[v]("load",i,N(!0)),w[v]("popstate",function(){i(0,U>1)},N(!0))}},{}],5:[function(t,e,n){function r(){var t=new PerformanceObserver(function(t,e){var n=t.getEntries();s(v,[n])});try{t.observe({entryTypes:["resource"]})}catch(e){}}function o(t){if(s(v,[window.performance.getEntriesByType(w)]),window.performance["c"+p])try{window.performance[h](m,o,!1)}catch(t){}else try{window.performance[h]("webkit"+m,o,!1)}catch(t){}}function i(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var a=t("ee"),s=t("handle"),c=t(14),f=t(13),u=t(6),d=t(23),p="learResourceTimings",l="addEventListener",h="removeEventListener",m="resourcetimingbufferfull",v="bstResource",w="resource",g="-start",y="-end",x="fn"+g,b="fn"+y,E="bstTimer",R="pushState",O=t("loader");if(!O.disabled){O.features.stn=!0,t(9),"addEventListener"in window&&t(7);var T=NREUM.o.EV;a.on(x,function(t,e){var n=t[0];n instanceof T&&(this.bstStart=O.now())}),a.on(b,function(t,e){var n=t[0];n instanceof T&&s("bst",[n,e,this.bstStart,O.now()])}),c.on(x,function(t,e,n){this.bstStart=O.now(),this.bstType=n}),c.on(b,function(t,e){s(E,[e,this.bstStart,O.now(),this.bstType])}),f.on(x,function(){this.bstStart=O.now()}),f.on(b,function(t,e){s(E,[e,this.bstStart,O.now(),"requestAnimationFrame"])}),a.on(R+g,function(t){this.time=O.now(),this.startPath=location.pathname+location.hash}),a.on(R+y,function(t){s("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),u()?(s(v,[window.performance.getEntriesByType("resource")]),r()):l in window.performance&&(window.performance["c"+p]?window.performance[l](m,o,d(!1)):window.performance[l]("webkit"+m,o,d(!1))),document[l]("scroll",i,d(!1)),document[l]("keypress",i,d(!1)),document[l]("click",i,d(!1))}}},{}],6:[function(t,e,n){e.exports=function(){return"PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver}},{}],7:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1];if(null!==n&&("function"==typeof n||"object"==typeof n)){var r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],8:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=i(arguments),e={};o.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return o.emit(n+"start",[t,a],s),s.then(function(t){return o.emit(n+"end",[null,t],s),t},function(t){throw o.emit(n+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(33),a=t(32);e.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,p=s.Response,l=s.fetch,h="prototype",m="nr@context";d&&p&&l&&(a(u,function(t,e){r(d[h],e,f),r(p[h],e,f)}),r(s,"fetch",c),o.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(c+"done",[null,e],n)}else o.emit(c+"done",[t],n)}))},{}],9:[function(t,e,n){var r=t("ee").get("history"),o=t("wrap-function")(r);e.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],10:[function(t,e,n){function r(t){function e(){f.emit("jsonp-end",[],l),t.removeEventListener("load",e,c(!1)),t.removeEventListener("error",n,c(!1))}function n(){f.emit("jsonp-error",[],l),f.emit("jsonp-end",[],l),t.removeEventListener("load",e,c(!1)),t.removeEventListener("error",n,c(!1))}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var d=s(a),p="function"==typeof d.parent[d.key];if(p){var l={};u.inPlace(d.parent,[d.key],"cb-",l),t.addEventListener("load",e,c(!1)),t.addEventListener("error",n,c(!1)),f.emit("new-jsonp",[t.src],l)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(d);return e?e[1]:null}function a(t,e){var n=t.match(l),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(p);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t(23),f=t("ee").get("jsonp"),u=t("wrap-function")(f);if(e.exports=f,o()){var d=/[?&](?:callback|cb)=([^&#]+)/,p=/(.*)\.([^.]+)/,l=/^(\w+)(\.|$)(.*)$/,h=["appendChild","insertBefore","replaceChild"];Node&&Node.prototype&&Node.prototype.appendChild?u.inPlace(Node.prototype,h,"dom-"):(u.inPlace(HTMLElement.prototype,h,"dom-"),u.inPlace(HTMLHeadElement.prototype,h,"dom-"),u.inPlace(HTMLBodyElement.prototype,h,"dom-")),f.on("dom-start",function(t){r(t[0])})}},{}],11:[function(t,e,n){var r=t("ee").get("mutation"),o=t("wrap-function")(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],12:[function(t,e,n){function r(t){var e=i.context(),n=s(t,"executor-",e,null,!1),r=new f(n);return i.context(r).getCtx=function(){return e},r}var o=t("wrap-function"),i=t("ee").get("promise"),a=t("ee").getOrSetContext,s=o(i),c=t(32),f=NREUM.o.PR;e.exports=i,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){i.emit("propagate",[null,!o],a,!1,!1),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var a=e.apply(f,arguments),s=f.resolve(a);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&i.emit("propagate",[t,!0],n,!1,!1),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),o.wrapInPlace(f.prototype,"then",function(t){return function(){var e=this,n=o.argsToArray.apply(this,arguments),r=a(e);r.promise=e,n[0]=s(n[0],"cb-",r,null,!1),n[1]=s(n[1],"cb-",r,null,!1);var c=t.apply(this,n);return r.nextPromise=c,i.emit("propagate",[e,!0],c,!1,!1),c}}),i.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this,null,!1),t[1]=s(t[1],"resolve-",this,null,!1)}),i.on("executor-err",function(t,e,n){t[1](n)}),i.on("cb-end",function(t,e,n){i.emit("propagate",[n,!0],this.nextPromise,!1,!1)}),i.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=i.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],13:[function(t,e,n){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],14:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],15:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){x.push(t),m&&(E?E.then(a):w?w(a):(R=-R,O.data=R))}function a(){for(var t=0;t<x.length;t++)r([],x[t]);x.length&&(x=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(7);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),p=t(23),l=NREUM.o,h=l.XHR,m=l.MO,v=l.PR,w=l.SI,g="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],x=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new h(t);try{u.emit("new-xhr",[e],e),e.addEventListener(g,o,p(!1))}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(h,b),b.prototype=h.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),m){var E=v&&v.resolve();if(!w&&!v){var R=1,O=document.createTextNode(R);new m(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===g||a()})},{}],16:[function(t,e,n){function r(t){if(!s(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=l.generateSpanId(),m=l.generateTraceId(),v=Date.now(),w={spanId:h,traceId:m,timestamp:v};return(t.sameOrigin||c(t)&&p())&&(w.traceContextParentHeader=o(h,m),w.traceContextStateHeader=i(h,v,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&c(t)&&d())&&(w.newrelicHeader=a(h,m,v,n,r,f)),w}function o(t,e){return"00-"+e+"-"+t+"-01"}function i(t,e,n,r,o){var i=0,a="",s=1,c="",f="";return o+"@nr="+i+"-"+s+"-"+n+"-"+r+"-"+t+"-"+a+"-"+c+"-"+f+"-"+e}function a(t,e,n,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:e,ti:n}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function s(t){return f()&&c(t)}function c(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var o=h(n.allowed_origins[r]);if(t.hostname===o.hostname&&t.protocol===o.protocol&&t.port===o.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function p(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var l=t(29),h=t(18);e.exports={generateTracePayload:r,shouldGenerateTrace:s}},{}],17:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(d[r],this.listener,!1);return e.protocol&&"data"===e.protocol?void g("Ajax/DataUrl/Excluded"):void(e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):i(this,t),n.cbTime=this.cbTime,s("xhr",[e,n,this.startTime,this.endTime,"xhr"],this)))}}function o(t,e){var n=c(e),r=t.params;r.hostname=n.hostname,r.port=n.port,r.protocol=n.protocol,r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=n,t.sameOrigin=n.sameOrigin}function i(t,e){t.params.status=e.status;var n=v(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable&&!a.disabled){var s=t("handle"),c=t(18),f=t(16).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],p=d.length,l=t("id"),h=t(24),m=t(22),v=t(19),w=t(23),g=t(25).recordSupportability,y=NREUM.o.REQ,x=window.XMLHttpRequest;a.features.xhr=!0,t(15),t(8),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,e.params=this.params||{},e.metrics=this.metrics||{},t.addEventListener("load",function(n){i(e,t)},w(!1)),h&&(h>34||h<10)||t.addEventListener("progress",function(t){e.lastSize=t.loaded},w(!1))}),u.on("open-xhr-start",function(t){this.params={method:t[0]},o(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=m(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<p;s++)e.addEventListener(d[s],this.listener,w(!1))}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("xhr-resolved",function(){this.endTime=a.now()}),u.on("addEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof x&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url?n=t[0].url:window.URL&&t[0]&&t[0]instanceof URL&&(n=t[0].href),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var o=f(this.parsedOrigin);if(o&&(o.newrelicHeader||o.traceContextParentHeader))if("string"==typeof t[0]||window.URL&&t[0]&&t[0]instanceof URL){var i={};for(var a in r)i[a]=r[a];i.headers=new Headers(r.headers||{}),e(i.headers,o)&&(this.dt=o),t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&e(t[0].headers,o)&&(this.dt=o)}),u.on("fetch-start",function(t,e){this.params={},this.metrics={},this.startTime=a.now(),this.dt=e,t.length>=1&&(this.target=t[0]),t.length>=2&&(this.opts=t[1]);var n,r=this.opts||{},i=this.target;if("string"==typeof i?n=i:"object"==typeof i&&i instanceof y?n=i.url:window.URL&&"object"==typeof i&&i instanceof URL&&(n=i.href),o(this,n),"data"!==this.params.protocol){var s=(""+(i&&i instanceof y&&i.method||r.method||"GET")).toUpperCase();this.params.method=s,this.txSize=m(r.body)||0}}),u.on("fetch-done",function(t,e){if(this.endTime=a.now(),this.params||(this.params={}),"data"===this.params.protocol)return void g("Ajax/DataUrl/Excluded");this.params.status=e?e.status:0;var n;"string"==typeof this.rxSize&&this.rxSize.length>0&&(n=+this.rxSize);var r={txSize:this.txSize,rxSize:n,duration:a.now()-this.startTime};s("xhr",[this.params,r,this.startTime,this.endTime,"fetch"],this)})}},{}],18:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];if(0===(t||"").indexOf("data:"))return{protocol:"data"};var e=document.createElement("a"),n=window.location,o={};e.href=t,o.port=e.port;var i=e.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=e.hostname||n.hostname,o.pathname=e.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return o.sameOrigin=a&&(!e.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],19:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?o(t.response):"text"===n||""===n||void 0===n?o(t.responseText):void 0}var o=t(22);e.exports=r},{}],20:[function(t,e,n){function r(){}function o(t,e,n,r){return function(){return u.recordSupportability("API/"+e+"/called"),i(t+e,[f.now()].concat(s(arguments)),n?null:this,r),n?void 0:this}}var i=t("handle"),a=t(32),s=t(33),c=t("ee").get("tracer"),f=t("loader"),u=t(25),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",h=l+"ixn-";a(p,function(t,e){d[e]=o(l,e,!0,"api")}),d.addPageAction=o(l,"addPageAction",!0),d.setCurrentRouteName=o(l,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(h+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=o(h,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),u.recordSupportability("API/noticeError/called"),i("err",[t,f.now(),!1,e])}},{}],21:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],22:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],23:[function(t,e,n){var r=!1;try{var o=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,o),window.removeEventListener("testPassive",null,o)}catch(i){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],24:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],25:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return i("storeMetric",n,null,"api"),n}function o(t,e){var n=[s,t,{name:t},e];return i("storeEventMetrics",n,null,"api"),n}var i=t("handle"),a="sm",s="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:s},recordSupportability:r,recordCustom:o}},{}],26:[function(t,e,n){function r(){return s.exists&&performance.now?Math.round(performance.now()):(i=Math.max((new Date).getTime(),i))-a}function o(){return i}var i=(new Date).getTime(),a=i,s=t(34);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=o},{}],27:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],28:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?l("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&l("timing",["fcp",Math.floor(t.startTime)])})}function o(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(f&&f<r.startTime)return;var o=[r],i=a({});i&&o.push(i),l("lcp",o)}}function i(t){t.getEntries().forEach(function(t){t.hadRecentInput||l("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function s(t){if(t instanceof w&&!y){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=h.now()?n.fid=h.now()-e:e>h.offset&&e<=Date.now()?(e-=h.offset,n.fid=h.now()-e):e=h.now(),y=!0,l("timing",["fi",e,n])}}function c(t){"hidden"===t&&(f=h.now(),l("pageHide",[f]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,d,p,l=t("handle"),h=t("loader"),m=t(31),v=t(23),w=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){u=new PerformanceObserver(r);try{u.observe({entryTypes:["paint"]})}catch(g){}d=new PerformanceObserver(o);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(g){}p=new PerformanceObserver(i);try{p.observe({type:"layout-shift",buffered:!0})}catch(g){}}if("addEventListener"in document){var y=!1,x=["click","keydown","mousedown","pointerdown","touchstart"];x.forEach(function(t){document.addEventListener(t,s,v(!1))})}m(c)}},{}],29:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){return a(16)}function i(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,o=window.crypto||window.msCrypto;o&&o.getRandomValues&&Uint8Array&&(n=o.getRandomValues(new Uint8Array(31)));for(var i=[],a=0;a<t;a++)i.push(e().toString(16));return i.join("")}e.exports={generateUuid:r,generateSpanId:o,generateTraceId:i}},{}],30:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],31:[function(t,e,n){function r(t){function e(){t(s&&document[s]?document[s]:document[i]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,o(!1))}var o=t(23);e.exports=r;var i,a,s;"undefined"!=typeof document.hidden?(i="hidden",a="visibilitychange",s="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",a="webkitvisibilitychange",s="webkitVisibilityState")},{}],32:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],33:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],34:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?f(t,c,a):a()}function n(n,r,o,i,a){if(a!==!1&&(a=!0),!l.aborted||i){t&&a&&t(n,r,o);for(var s=e(o),c=m(n),f=c.length,u=0;u<f;u++)c[u].apply(s,r);var p=d[y[n]];return p&&p.push([x,n,r,s]),s}}function i(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function v(t){return p[t]=p[t]||o(n)}function w(t,e){l.aborted||u(t,function(t,n){e=e||"feature",y[n]=e,e in d||(d[e]=[])})}var g={},y={},x={on:i,addEventListener:i,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:s,aborted:!1};return x}function i(t){return f(t,c,a)}function a(){return new r}function s(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",f=t("gos"),u=t(32),d={},p={},l=e.exports=o();e.exports.getOrSetContext=i,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!S++){var t=T.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();c(R,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+T.offset],null,"api"),s("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=h+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function o(){"complete"===v.readyState&&i()}function i(){s("mark",["domContent",a()+T.offset],null,"api")}var a=t(26),s=t("handle"),c=t(32),f=t("ee"),u=t(30),d=t(27),p=t(21),l=t(23),h=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,w="addEventListener",g="attachEvent",y=m.XMLHttpRequest,x=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var E=""+location,R={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1215.min.js"},O=y&&x&&x[w]&&!/CriOS/.test(navigator.userAgent),T=e.exports={offset:a.getLastTimestamp(),now:a,origin:E,features:{},xhrWrappable:O,userAgent:u,disabled:b};if(!b){t(20),t(28),v[w]?(v[w]("DOMContentLoaded",i,l(!1)),m[w]("load",r,l(!1))):(v[g]("onreadystatechange",o),m[g]("onload",r)),s("mark",["firstbyte",a.getLastTimestamp()],null,"api");var S=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,f){function nrWrapper(){var i,a,u,p;try{a=this,i=d(arguments),u="function"==typeof r?r(i,a):r||{}}catch(l){o([l,"",[i,a,c],u],t)}s(n+"start",[i,a,c],u,f);try{return p=e.apply(a,i)}catch(h){throw s(n+"err",[i,a,h],u,f),h}finally{s(n+"end",[i,a,p],u,f)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,i(e,nrWrapper,t),nrWrapper)}function r(t,e,r,o,i){r||(r="");var s,c,f,u="-"===r.charAt(0);for(f=0;f<e.length;f++)c=e[f],s=t[c],a(s)||(t[c]=n(s,u?c+r:r,o,c,i))}function s(n,r,i,a){if(!h||e){var s=h;h=!0;try{t.emit(n,r,i,e,a)}catch(c){o([c,n,r,i],t)}h=s}}return t||(t=u),n.inPlace=r,n.flag=p,n}function o(t,e){e||(e=u);try{e.emit("internal-error",t)}catch(n){}}function i(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(i){o([i],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function s(t,e){var n=e(t);return n[p]=t,i(t,n,u),n}function c(t,e,n){var r=t[e];t[e]=s(r,n)}function f(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var u=t("ee"),d=t(33),p="nr@original",l=Object.prototype.hasOwnProperty,h=!1;e.exports=r,e.exports.wrapFunction=s,e.exports.wrapInPlace=c,e.exports.argsToArray=f},{}]},{},["loader",2,17,5,3,4]);</script>
+<title>TED Talks</title>
+<meta name="description" content="TED Talks are influential videos from expert speakers on education, business, science, tech and creativity, with subtitles in 100+ languages. Ideas free to stream and download." />
+<meta name="rss-feed" content="https://www.ted.com/feeds/talks.rss" />
+<meta name="keywords" content="TED, Talks, Themes, Speakers, Technology, Entertainment, Design" />
+<link rel="mask-icon" href="https://pa.tedcdn.com/mask-icon.svg" color="#E62B1E" sizes="any" />
+<meta name="theme-color" content="#E62B1E" />
+<link rel="icon" href="https://pa.tedcdn.com/favicon.ico" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-title" content="TED Talks" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link rel="apple-touch-icon" href="https://pa.tedcdn.com/apple-touch-icon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://pa.tedcdn.com/apple-touch-icon-precomposed.png" />
+<meta name="application-name" content="TED Talks" />
+<meta name="msapplication-config" content="https://www.ted.com/browserconfig.xml" />
+<meta name="msapplication-TileColor" content="#000000" />
+<meta http-equiv="cleartype" content="on" />
+<meta name="title" content="TED Talks" /><!-- (+-CONTENT-IS-LIVE-SUCCESS-+) --><link href='https://pa.tedcdn.com/javascripts/screens/c8f34d674de025fd3e00.chunk.js' rel='prefetch'>
+<link href='https://pa.tedcdn.com/javascripts/screens/52f789f7fcf38f85ab83.chunk.js' rel='prefetch'>
+<link href='https://pa.tedcdn.com/javascripts/screens/global-e53130d4d6c4e83992de.chunk.css' rel='stylesheet'>
+<link href='https://pa.tedcdn.com/javascripts/screens/shed-4c66e36fff66345a8ec4.chunk.css' rel='stylesheet'>
+<link href='https://pa.tedcdn.com/javascripts/screens/talks-d380f00c42dc78edee30.chunk.css' rel='stylesheet'><script>
+  if(top != self) top.location.replace(location);
+</script><script>
+  (function(i,r,l,d,o){
+    i.__gaIn=function(){(i[r].q=i[r].q||[]).push(arguments)};
+    i['GoogleAnalyticsObject']=r;i[r]=i[r]||__gaIn,i[r].l=1*new Date();
+    if(l && d!="yes" && d!="1") o.userId=l[2];
+    __ga('create',"UA-40781755-2",'ted.com',o);
+    __ga('set',"dimension3",'logged'+(l ? 'In' : 'Out'));
+    __ga('set',"dimension28","default");
+  })(window,"__ga",('; '+document.cookie).match(/; (_ted_user_id|_explr_uid)=(\d+);/),(window.navigator && window.navigator.doNotTrack),{});
+</script><script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+  
+  googletag.cmd.push(function() {
+    googletag.pubads().enableAsyncRendering();
+    googletag.enableServices();
+  });
+</script><script>
+  _q=[];q=function(){_q.push(arguments)};
+  _g=[];g=function(){_g.push(arguments)};
+  
+  TED = {"env":"production","assetBuster":1646081335,"playerPath":"//pb.tedcdn.com/assets/player/flash_hls/player_4_01_002.swf","assetHost":"https://pa.tedcdn.com","authHost":"https://auth.ted.com","settingsUrl":"https://www.ted.com/settings/account","signInUrl":"/session/new","signOutUrl":"https://auth.ted.com/session/logout","signInHelpUrl":"https://auth.ted.com/account/password/new","signUpUrl":"/session/new","csClientId":"7341760","gaDimensions":{"breakpoint":"dimension1","talkId":"dimension2","authState":"dimension3","playlistId":"dimension5","testId":"dimension7","embedZone":"dimension8","gaClientId":"dimension9","tedUserId":"dimension10","playContext":"dimension11","sourceContext":"dimension12","playbackRate":"dimension13","playerMode":"dimension14","proxy":"dimension15","playToken":"dimension16","subtitleLanguage":"dimension17","playerPresentation":"dimension18","videoType":"dimension19","listHasProgress":"dimension20","exploreState":"dimension21","hasEndorsement":"dimension22","exploreCTASource":"dimension23","authContext":"dimension24","streamStructure":"dimension25","streamHost":"dimension26","exploreTest":"dimension27","subproperty":"dimension28"}};
+  TED.headReady = new Date();
+  TED.signOutUrl += '?referer=' + location.protocol + '//' + location.host + '/session/logout';
+  
+  TED.createDiscussionsUrl = function createDiscusisonsUrl(id, slug) {
+    return location.protocol + '//' + location.host + '/discussions/'+String(id)+'/'+String(slug);
+  }
+  
+  TED.startTime = new Date();
+  TED.isFirstVisit = !document.cookie.match(/; _ga=/);
+  
+  TED.abby = (function () {
+    var abs=(document.cookie.match(/_abby_(\w+)=(\w+)/g) || []), dms=[], ts={}, t;
+    for (var i=-1, l=abs.length; ++i < l;) {
+      t = abs[i].match(/_abby_(\w+)=(\w+)/);
+      ts[t[1]] = t[2];
+      tstr = t[1] + ':' + t[2];
+      if (dms.indexOf(tstr) < 0) dms.push(tstr);
+    }
+    if (dms.length) {
+      __ga('set', "dimension7", dms.join(','));
+    }
+    return {tests: ts}
+  }());
+  
+  (function() {
+    var exCookie = document.cookie.match(/_exv=([^;]+)/);
+  
+    if (exCookie) {
+      __ga('set', "dimension27", decodeURIComponent(exCookie[1]));
+    }
+  }());
+</script>
+<script>
+  TED.abby.overridden = false;
+  TED.abby.disabled = false;
+  TED.abby.tests.post15s = "b";
+  TED.abby.tests.hero_form = "c";
+  TED.abby.tests.web_606_talkpage_membership_conversion = "c";
+  TED["controller"]="talks"
+</script></head>
+<body class='talks-body'>
+<div class='shoji' id='shoji'>
+<div class='shoji__fixtures' id='shoji-fixtures'></div>
+<div class='shoji__door'>
+<div class='page shoji__washi'>
+<noscript>
+<div class='alert alert--flash alert--warning'>
+<div class='container'>
+<div class='h9'>You have JavaScript disabled</div>
+For the best experience, please turn JavaScript on.
+<a href='https://enable-javascript.com/'>Here's how</a>
+</div>
+</div>
+</noscript>
+<script>
+  (function(d,h){
+    if (('; '+d.cookie).match(/; _uconf=0;/)) {
+      d.write(h);
+      g('uconf.init',"uconf","uconf-close");
+    }
+  }(document,"<div class='alert alert--flash alert--warning' id='uconf'>\n<div class='container'>\n<div class='alert__container'><h4 class='h10 m5'>Your account isn't active yet.</h4>Please click on the confirmation link we sent you.\nIf you don't receive the email within ten minutes, we can\n<a href='https://auth.ted.com/account/confirmation/new'>send it again</a>.\n<a class='alert__close g g-button-modal-close' href='#' id='uconf-close'>Close</a>\n</div>\n</div>\n</div>\n"))
+</script><nav class='Main-nav Main-nav--uninitialized Main-nav/Popper' id='main-nav' role='navigation'>
+<div class='Main-nav/Popper__smoke Main-nav__smoke z-i:9' id='main-nav-popper-smoke'></div>
+<div class='hide-lg fl:l d:n@lg' role='presentation'>
+<a aria-haspopup='true' class='Main-nav__item Main-nav__label f-w:700 t-t:u undec' href='#' onclick='g(&#39;mainNav.openHamburger&#39;); return false' role='button'><span class='if-no-svg'>Menu</span>
+<svg baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" width="54" height="54" viewBox="0, 0, 512, 512" class="if-svg Main-nav__icon Main-nav__icon--hamburger"><title>Main menu</title><path d="M12 80h488v56H12V80zM12 228h488v56H12v-56zM12 376h488v56H12v-56z"/></svg></a>
+</div>
+<a class='Main-nav__home-button ga-link' data-ga-action='home' data-ga-category='navigation.item' data-ga-label='/' href='/' rel='home'>
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="54" viewBox="0, 0, 96, 54" class="Main-nav__logo"><title>TED</title><rect x="0" y="0" width="640" height="360" fill="none"/><path d="M21.244 21.053h-6.761V14.85h21.012v6.203h-6.762V39.15h-7.489V21.053zm15.414-6.203h20.43v6.203H44.147v2.992h12.941v5.837H44.147v3.065h12.941v6.203h-20.43v-24.3zm21.666 0h12.287c8.071 0 10.906 5.984 10.906 12.114 0 7.443-3.926 12.186-12.36 12.186H58.324v-24.3zm7.489 18.097h2.908c4.653 0 5.308-3.794 5.308-6.056 0-1.533-.509-5.765-5.89-5.765H65.74l.073 11.821z" fill="#E62B1E"/></svg>
+<div class='Main-nav__motto c:gray f-w:200 fl:l p-x:0 show-lg' role='presentation'><div class='v-a:m w:full d:i-b l-h:n'>
+<svg class='v-a:m' style='width: 210px;' viewbox='0 0 343 36' xmlns='http://www.w3.org/2000/svg'>
+<path d='M0.708067,0.848485 L3.110116,0.848485 L3.110116,28.1212123 L0.708067,28.1212123 L0.708067,0.848485 Z M24.128041,0.848485 L24.128041,27.6545687 L22.097408,27.6545687 L22.097408,23.8695704 C20.691585,26.5657335 18.244411,28.1212123 14.964156,28.1212123 C9.549133,28.1212123 6.112676,24.0769675 6.112676,17.9587512 C6.112676,11.8405348 9.549133,7.79629 14.964156,7.79629 C18.140276,7.79629 20.587449,9.2999195 21.941205,11.8405348 L21.941205,0.848485 L24.128041,0.848485 Z M22.04534,17.9587512 C22.04534,12.9293699 19.389896,9.7147138 15.224494,9.7147138 C11.007024,9.7147138 8.403648,13.0330685 8.403648,18.0624497 C8.403648,23.091831 11.059092,26.2027885 15.224494,26.2027885 C19.389896,26.2027885 22.04534,23.0399817 22.04534,17.9587512 Z M45.145967,18.7844776 L29.901512,18.7844776 C30.108216,23.5293755 32.536994,26.1824368 36.567731,26.1824368 C39.719974,26.1824368 41.838695,24.3457021 42.458809,21.5395796 L44.680882,21.5395796 C43.854064,25.3661102 41.011878,28.1212123 36.516055,28.1212123 C31.090062,28.1212123 27.731114,24.1416204 27.731114,18.1212123 C27.731114,12.2028449 31.038386,8.1212123 36.464379,8.1212123 C42.148752,8.1212123 45.145967,12.5599878 45.145967,18.0701919 L45.145967,18.7844776 Z M29.901512,16.8967225 L42.768866,16.8967225 C42.562161,12.968151 40.391764,10.0089674 36.412703,10.0089674 C32.692022,10.0089674 30.31492,12.5089674 29.901512,16.8967225 Z M64.962869,8.5293755 L64.962869,27.6620286 L62.953462,27.6620286 L62.953462,24.0395796 C61.613858,26.5906 59.295313,28.1212123 56.100873,28.1212123 C50.742456,28.1212123 47.548016,24.1416204 47.548016,18.1212123 C47.548016,12.1008041 50.742456,8.1212123 56.100873,8.1212123 C59.192266,8.1212123 61.510812,9.5497837 62.850416,11.9987633 L62.850416,8.5803959 L64.962869,8.5803959 L64.962869,8.5293755 Z M62.901939,18.0701919 C62.901939,13.1212123 60.531871,9.957947 56.306965,9.957947 C52.185107,9.957947 49.711992,13.2232531 49.711992,18.1722327 C49.711992,23.1212123 52.185107,26.1824368 56.306965,26.1824368 C60.480347,26.1824368 62.901939,23.0701919 62.901939,18.0701919 Z M67.965429,21.7436613 L70.136818,21.7436613 C70.395316,24.7538653 72.101407,26.2844776 75.978886,26.2844776 C79.442768,26.2844776 81.407357,25.1110082 81.407357,22.6620286 C81.407357,20.7232531 80.166564,19.7028449 76.650983,19.0906 L74.686393,18.7334572 C70.550416,17.968151 68.585826,16.335498 68.585826,13.3252939 C68.585826,10.1110082 71.170812,8.1212123 75.513589,8.1212123 C80.735261,8.1212123 83.010049,10.468151 83.165148,14.0395796 L80.99376,14.0395796 C80.786961,11.2844776 79.184269,9.9069266 75.513589,9.9069266 C72.463305,9.9069266 70.705515,11.1314164 70.705515,13.2742735 C70.705515,15.4171306 72.308206,16.2844776 75.30679,16.8457021 L77.271379,17.2028449 C81.717556,18.0191715 83.578746,19.6008041 83.578746,22.5599878 C83.578746,26.2844776 80.476762,28.1212123 76.030586,28.1212123 C70.912314,28.1212123 68.223928,25.8252939 67.965429,21.7436613 Z M120.209988,8.7272729 L113.391269,28.1212123 L111.118363,28.1212123 L107.399061,16.6917173 C106.830835,14.9850507 106.262608,13.1232325 105.797696,11.3648486 C105.332783,13.1232325 104.764556,14.9850507 104.19633,16.6917173 L100.477029,28.1212123 L98.204123,28.1212123 L91.385404,8.7272729 L93.65831,8.7272729 L97.377611,19.3810103 C98.100809,21.5014143 98.720692,23.5701012 99.392233,25.638788 C100.012116,23.518384 100.632,21.4496971 101.30354,19.3810103 L104.7129,8.7272729 L106.985806,8.7272729 L110.446822,19.3810103 C111.118363,21.4496971 111.738246,23.5701012 112.306473,25.638788 C112.926356,23.5701012 113.597897,21.4496971 114.269437,19.3810103 L118.040395,8.7272729 L120.209988,8.7272729 Z M120.209988,18.1212123 C120.209988,12.1008041 123.875005,8.1212123 129.19186,8.1212123 C134.560336,8.1212123 138.225353,12.1008041 138.225353,18.1212123 C138.225353,24.1416204 134.560336,28.1212123 129.19186,28.1212123 C123.926625,28.1212123 120.209988,24.1416204 120.209988,18.1212123 Z M136.057314,18.1212123 C136.057314,13.1722327 133.373077,10.0089674 129.24348,10.0089674 C125.113884,10.0089674 122.481266,13.1722327 122.481266,18.1212123 C122.481266,23.0701919 125.165503,26.2334572 129.24348,26.2334572 C133.373077,26.2334572 136.057314,23.1212123 136.057314,18.1212123 Z M151.43662,8.1738438 L151.43662,10.2264754 L150.572391,10.2264754 C146.302082,10.2264754 143.912743,12.910686 143.912743,17.0685807 L143.912743,28.1212123 L141.828426,28.1212123 L141.828426,8.4370017 L143.811069,8.4370017 L143.811069,12.5422649 C144.827809,10.2264754 146.861289,8.1212123 150.369043,8.1212123 C150.674065,8.1738438 151.029924,8.1738438 151.43662,8.1738438 Z M161.645327,10.1813143 L157.610947,10.1813143 L157.610947,28.1212123 L155.434505,28.1212123 L155.434505,10.1813143 L152.037132,10.1813143 L152.037132,8.2761924 L155.434505,8.2761924 L155.434505,2.66666682 L157.610947,2.66666682 L157.610947,8.2761924 L161.645327,8.2761924 L161.645327,10.1813143 Z M179.06018,15.1166493 L179.06018,28.1212123 L176.904806,28.1212123 L176.904806,15.2745994 C176.904806,11.5890957 175.012283,9.851644 171.647797,9.851644 C168.703872,9.851644 165.654807,12.0102962 165.602237,17.0647012 L165.602237,28.1212123 L163.446863,28.1212123 L163.446863,0.848485 L165.602237,0.848485 L165.602237,11.799696 C166.811349,9.4830936 169.124433,7.9035921 172.068358,7.9035921 C176.536815,7.9035921 179.06018,10.4834446 179.06018,15.1166493 Z M189.869399,21.7436613 L192.040787,21.7436613 C192.299286,24.7538653 194.005376,26.2844776 197.882856,26.2844776 C201.346737,26.2844776 203.311327,25.1110082 203.311327,22.6620286 C203.311327,20.7232531 202.070533,19.7028449 198.554952,19.0906 L196.590363,18.7334572 C192.454385,17.968151 190.489795,16.335498 190.489795,13.3252939 C190.489795,10.1110082 193.074781,8.1212123 197.417558,8.1212123 C202.63923,8.1212123 204.914018,10.468151 205.069117,14.0395796 L202.897729,14.0395796 C202.69093,11.2844776 201.088238,9.9069266 197.417558,9.9069266 C194.367275,9.9069266 192.609484,11.1314164 192.609484,13.2742735 C192.609484,15.4171306 194.212175,16.2844776 197.210759,16.8457021 L199.175349,17.2028449 C203.621525,18.0191715 205.482715,19.6008041 205.482715,22.5599878 C205.482715,26.2844776 202.380732,28.1212123 197.934555,28.1212123 C192.816283,28.1212123 190.127897,25.8252939 189.869399,21.7436613 Z M225.299616,18.3030305 C225.299616,24.4329006 221.853199,28.4848486 216.42248,28.4848486 C213.237155,28.4848486 210.782887,26.9783551 209.425208,24.4329006 L209.425208,35.3939395 L207.284251,35.3939395 L207.284251,8.5887447 L209.320771,8.5887447 L209.320771,12.3809525 C210.730669,9.6796538 213.184936,8.1212123 216.474698,8.1212123 C221.853199,8.1212123 225.299616,12.2251084 225.299616,18.3030305 Z M223.054223,18.1991344 C223.054223,13.1601733 220.338864,10.0432902 216.161388,10.0432902 C211.931693,10.0432902 209.320771,13.2640694 209.320771,18.3030305 C209.320771,23.3419915 211.983912,26.5627707 216.161388,26.5627707 C220.391082,26.5627707 223.054223,23.2380954 223.054223,18.1991344 Z M238.510884,8.1738438 L238.510884,10.2264754 L237.646655,10.2264754 C233.376346,10.2264754 230.987007,12.910686 230.987007,17.0685807 L230.987007,28.1212123 L228.902689,28.1212123 L228.902689,8.4370017 L230.885333,8.4370017 L230.885333,12.5422649 C231.902073,10.2264754 233.935553,8.1212123 237.443307,8.1212123 C237.799166,8.1738438 238.104188,8.1738438 238.510884,8.1738438 Z M255.925737,18.7844776 L240.681281,18.7844776 C240.887985,23.5293755 243.316763,26.1824368 247.347501,26.1824368 C250.499744,26.1824368 252.618465,24.3457021 253.238578,21.5395796 L255.460652,21.5395796 C254.633834,25.3661102 251.791647,28.1212123 247.295824,28.1212123 C241.869832,28.1212123 238.510884,24.1416204 238.510884,18.1212123 C238.510884,12.2028449 241.818156,8.1212123 247.244148,8.1212123 C252.928522,8.1212123 255.925737,12.5599878 255.925737,18.0701919 L255.925737,18.7844776 Z M240.681281,16.8967225 L253.548635,16.8967225 C253.341931,12.968151 251.171534,10.0089674 247.192472,10.0089674 C243.471792,10.0089674 241.043014,12.5089674 240.681281,16.8967225 Z M275.742638,8.5293755 L275.742638,27.6620286 L273.733232,27.6620286 L273.733232,24.0395796 C272.393628,26.5906 270.075082,28.1212123 266.880642,28.1212123 C261.522226,28.1212123 258.327785,24.1416204 258.327785,18.1212123 C258.327785,12.1008041 261.522226,8.1212123 266.880642,8.1212123 C269.972036,8.1212123 272.290581,9.5497837 273.630186,11.9987633 L273.630186,8.5803959 L275.742638,8.5803959 L275.742638,8.5293755 Z M273.681709,18.0701919 C273.681709,13.1212123 271.31164,9.957947 267.086735,9.957947 C262.964876,9.957947 260.491761,13.2232531 260.491761,18.1722327 C260.491761,23.1212123 262.964876,26.1824368 267.086735,26.1824368 C271.31164,26.1824368 273.681709,23.0701919 273.681709,18.0701919 Z M296.760564,0.848485 L296.760564,27.6545687 L294.72993,27.6545687 L294.72993,23.8695704 C293.324107,26.5657335 290.876933,28.1212123 287.596679,28.1212123 C282.181656,28.1212123 278.745199,24.0769675 278.745199,17.9587512 C278.745199,11.8405348 282.181656,7.79629 287.596679,7.79629 C290.772798,7.79629 293.219972,9.2999195 294.573728,11.8405348 L294.573728,0.848485 L296.760564,0.848485 Z M294.677863,17.9587512 C294.677863,12.9293699 292.022419,9.7147138 287.857016,9.7147138 C283.691614,9.7147138 281.03617,13.0330685 281.03617,18.0624497 C281.03617,23.091831 283.691614,26.2027885 287.857016,26.2027885 C292.022419,26.2027885 294.677863,23.0399817 294.677863,17.9587512 Z M300.363637,3.69268457 C300.363637,2.79767386 301.177234,2.06060621 302.165173,2.06060621 C303.153113,2.06060621 303.96671,2.79767386 303.96671,3.69268457 C303.96671,4.58769528 303.153113,5.3247629 302.165173,5.3247629 C301.235348,5.3247629 300.363637,4.58769528 300.363637,3.69268457 Z M301.002892,8.3783289 L303.385569,8.3783289 L303.385569,28.1212123 L301.002892,28.1212123 L301.002892,8.3783289 Z M323.183099,15.2235455 L323.183099,28.1212123 L321.027725,28.1212123 L321.027725,15.3801973 C321.027725,11.7249881 319.135202,10.001818 315.770717,10.001818 C312.826792,10.001818 309.777726,12.1427263 309.725156,17.1555846 L309.725156,28.1212123 L307.569783,28.1212123 L307.569783,8.5397343 L309.620016,8.5397343 L309.620016,12.1949435 C310.829128,9.7407316 313.194782,8.1219961 316.191277,8.1219961 C320.659735,8.0697788 323.183099,10.6284253 323.183099,15.2235455 Z M343,8.5380913 L343,27.3497594 C343,32.7170775 340.336552,36.0000002 334.497455,36.0000002 C329.73398,36.0000002 327.172972,33.4987257 326.814431,29.9031437 L328.914458,29.9031437 C329.272999,32.6128577 331.168145,34.1761542 334.548675,34.1761542 C338.851168,34.1761542 340.951194,31.9875391 340.951194,27.3497594 L340.951194,24.6921553 C339.51703,27.08921 337.212123,28.5482868 334.138914,28.5482868 C328.863238,28.5482868 325.585148,24.4837158 325.585148,18.3347495 C325.585148,12.1857832 328.863238,8.1212123 334.138914,8.1212123 C337.263343,8.1212123 339.67069,9.6323989 341.053635,12.1857832 L341.053635,8.5380913 L343,8.5380913 Z M340.951194,18.3347495 C340.951194,13.2800908 338.390186,10.049278 334.343794,10.049278 C330.194962,10.049278 327.736394,13.3843105 327.736394,18.3347495 C327.736394,23.2851885 330.246182,26.6202211 334.343794,26.6202211 C338.390186,26.6202211 340.951194,23.4415181 340.951194,18.3347495 Z' fill='currentColor'></path>
+</svg>
+</div></div>
+</a>
+<div class='pos:a right:0 top:0 Main-nav__bar' role='presentation'>
+<ul class='sl fl:l show-lg' role='menubar'>
+<li class='pos:r fl:l z-i:10 Main-nav__category' data-popper-name='watch' data-popper-root role='presentation'>
+<a aria-haspopup class='Main-nav__category__label Main-nav__item Main-nav__label f-w:700 t-t:u undec' data-popper-target href='#' onclick='return false' role='menuitem'>Watch</a>
+<ul aria-hidden class='Main-nav/Popper__popup Main-nav__category__list popup popup--inverse popup--tailed popup--tailed--center popup--tailed--top sl' role='menu'>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='watch' data-ga-category='navigation.item' data-ga-label='/talks' href='/talks'>
+<div class='f-w:700 m-b:.1'>TED Talks</div>
+<div class='c:gray'>Browse the library of TED talks and speakers</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='watch' data-ga-category='navigation.item' data-ga-label='/recommends?exploreCTASource=main-nav.item' href='/recommends?exploreCTASource=main-nav.item'>
+<div class='f-w:700 m-b:.1'>TED Recommends</div>
+<div class='c:gray'>Get TED Talks picked just for you</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='watch' data-ga-category='navigation.item' data-ga-label='/playlists' href='/playlists'>
+<div class='f-w:700 m-b:.1'>Playlists</div>
+<div class='c:gray'>100+ collections of TED Talks, for curious minds</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='watch' data-ga-category='navigation.item' data-ga-label='/series' href='/series'>
+<div class='f-w:700 m-b:.1'>TED Series</div>
+<div class='c:gray'>Go deeper into fascinating topics with original video series from TED.</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='watch' data-ga-category='navigation.item' data-ga-label='/watch/ted-ed' href='/watch/ted-ed'>
+<div class='f-w:700 m-b:.1'>TED-Ed videos</div>
+<div class='c:gray'>Watch, share and create lessons with TED-Ed</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='watch' data-ga-category='navigation.item' data-ga-label='/watch/tedx-talks' href='/watch/tedx-talks'>
+<div class='f-w:700 m-b:.1'>TEDx Talks</div>
+<div class='c:gray'>Talks from independently organized local events</div>
+</a>
+</li>
+</ul>
+</li>
+<li class='pos:r fl:l z-i:10 Main-nav__category' data-popper-name='discover' data-popper-root role='presentation'>
+<a aria-haspopup class='Main-nav__category__label Main-nav__item Main-nav__label f-w:700 t-t:u undec' data-popper-target href='#' onclick='return false' role='menuitem'>Discover</a>
+<ul aria-hidden class='Main-nav/Popper__popup Main-nav__category__list popup popup--inverse popup--tailed popup--tailed--center popup--tailed--top sl' role='menu'>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='discover' data-ga-category='navigation.item' data-ga-label='/topics' href='/topics'>
+<div class='f-w:700 m-b:.1'>Topics</div>
+<div class='c:gray'>Explore TED offerings by topic</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='discover' data-ga-category='navigation.item' data-ga-label='https://audiocollective.ted.com' href='https://audiocollective.ted.com'>
+<div class='f-w:700 m-b:.1'>Podcasts</div>
+<div class='c:gray'>TED&#39;s original podcast initiatives</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='discover' data-ga-category='navigation.item' data-ga-label='/read/ted-books' href='/read/ted-books'>
+<div class='f-w:700 m-b:.1'>TED Books</div>
+<div class='c:gray'>Short books to feed your craving for ideas</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='discover' data-ga-category='navigation.item' data-ga-label='https://ideas.ted.com' href='https://ideas.ted.com'>
+<div class='f-w:700 m-b:.1'>Ideas Blog</div>
+<div class='c:gray'>Our daily coverage of the world of ideas</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='discover' data-ga-category='navigation.item' data-ga-label='/newsletter' href='/newsletter'>
+<div class='f-w:700 m-b:.1'>Newsletter</div>
+<div class='c:gray'>Inspiration delivered straight to your inbox</div>
+</a>
+</li>
+</ul>
+</li>
+<li class='pos:r fl:l z-i:10 Main-nav__category' data-popper-name='attend' data-popper-root role='presentation'>
+<a aria-haspopup class='Main-nav__category__label Main-nav__item Main-nav__label f-w:700 t-t:u undec' data-popper-target href='#' onclick='return false' role='menuitem'>Attend</a>
+<ul aria-hidden class='Main-nav/Popper__popup Main-nav__category__list popup popup--inverse popup--tailed popup--tailed--center popup--tailed--top sl' role='menu'>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='attend' data-ga-category='navigation.item' data-ga-label='/attend/conferences' href='/attend/conferences'>
+<div class='f-w:700 m-b:.1'>Conferences</div>
+<div class='c:gray'>Take part in our events: TED, TEDGlobal and more</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='attend' data-ga-category='navigation.item' data-ga-label='/tedx/events' href='/tedx/events'>
+<div class='f-w:700 m-b:.1'>TEDx events</div>
+<div class='c:gray'>Find and attend local, independently organized events</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='attend' data-ga-category='navigation.item' data-ga-label='/attend/ted-on-screen' href='/attend/ted-on-screen'>
+<div class='f-w:700 m-b:.1'>TED on screen</div>
+<div class='c:gray'>Experience TED from home</div>
+</a>
+</li>
+</ul>
+</li>
+<li class='pos:r fl:l z-i:10 Main-nav__category' data-popper-name='participate' data-popper-root role='presentation'>
+<a aria-haspopup class='Main-nav__category__label Main-nav__item Main-nav__label f-w:700 t-t:u undec' data-popper-target href='#' onclick='return false' role='menuitem'>Participate</a>
+<ul aria-hidden class='Main-nav/Popper__popup Main-nav__category__list popup popup--inverse popup--tailed popup--tailed--center popup--tailed--top sl' role='menu'>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='participate' data-ga-category='navigation.item' data-ga-label='/participate/nominate' href='/participate/nominate'>
+<div class='f-w:700 m-b:.1'>Nominate</div>
+<div class='c:gray'>Recommend speakers, Audacious Projects, Fellows and more</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='participate' data-ga-category='navigation.item' data-ga-label='/participate/organize-a-local-tedx-event' href='/participate/organize-a-local-tedx-event'>
+<div class='f-w:700 m-b:.1'>Organize a local TEDx event</div>
+<div class='c:gray'>Rules and resources to help you plan a local TEDx event</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='participate' data-ga-category='navigation.item' data-ga-label='/participate/translate' href='/participate/translate'>
+<div class='f-w:700 m-b:.1'>Translate</div>
+<div class='c:gray'>Bring TED to the non-English speaking world</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='participate' data-ga-category='navigation.item' data-ga-label='/participate/ted-fellows-program' href='/participate/ted-fellows-program'>
+<div class='f-w:700 m-b:.1'>TED Fellows</div>
+<div class='c:gray'>Join or support innovators from around the globe</div>
+</a>
+</li>
+</ul>
+</li>
+<li class='pos:r fl:l z-i:10 Main-nav__category' data-popper-name='about' data-popper-root role='presentation'>
+<a aria-haspopup class='Main-nav__category__label Main-nav__item Main-nav__label f-w:700 t-t:u undec' data-popper-target href='#' onclick='return false' role='menuitem'>About</a>
+<ul aria-hidden class='Main-nav/Popper__popup Main-nav__category__list popup popup--inverse popup--tailed popup--tailed--center popup--tailed--top sl' role='menu'>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='about' data-ga-category='navigation.item' data-ga-label='/about/our-organization' href='/about/our-organization'>
+<div class='f-w:700 m-b:.1'>Our organization</div>
+<div class='c:gray'>Our mission, history, team, and more</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='about' data-ga-category='navigation.item' data-ga-label='/about/conferences' href='/about/conferences'>
+<div class='f-w:700 m-b:.1'>Conferences</div>
+<div class='c:gray'>TED Conferences, past, present, and future</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='about' data-ga-category='navigation.item' data-ga-label='/about/programs-initiatives' href='/about/programs-initiatives'>
+<div class='f-w:700 m-b:.1'>Programs &amp; Initiatives</div>
+<div class='c:gray'>Details about TED&#39;s world-changing initiatives</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='about' data-ga-category='navigation.item' data-ga-label='/about/partner-with-ted' href='/about/partner-with-ted'>
+<div class='f-w:700 m-b:.1'>Partner with TED</div>
+<div class='c:gray'>Learn how you can partner with us</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='about' data-ga-category='navigation.item' data-ga-label='https://blog.ted.com' href='https://blog.ted.com'>
+<div class='f-w:700 m-b:.1'>TED Blog</div>
+<div class='c:gray'>Updates from TED and highlights from our global community</div>
+</a>
+</li>
+<li role='menuitem'>
+<a class='d:b hover/bg:gray-ll Main-nav__fs-1 p-x:4 p-y:.8 undec ga-link' data-ga-action='about' data-ga-category='navigation.item' data-ga-label='/read/ted-talks-the-official-ted-guide-to-public-speaking' href='/read/ted-talks-the-official-ted-guide-to-public-speaking'>
+<div class='f-w:700 m-b:.1'>TED Guide to Public Speaking</div>
+<div class='c:gray'>An insider’s guide to creating talks that are unforgettable</div>
+</a>
+</li>
+</ul>
+</li>
+<a class='ga-link bg:red b-r:.2 c:white hover/c:white fl:l f-w:700 m-x:.7 m-t:.6 p-x:.7 p-y:.7 t-d:n t-t:u' data-ga-action='membership' data-ga-category='navigation.item' data-ga-label='/membership' href='/membership'>
+Membership
+</a>
+</ul>
+<div class='Main-nav__divider nav__divider fl:l show-lg'></div>
+<div class='loggedin-only fl:l pos:r z-i:10' data-popper-name='account' data-popper-root><a class='Main-nav__item Main-nav__account-button' data-popper-target href='/dashboard' id='main-nav-account-button' onclick='return false' role='button' title='Your account'>
+<div class='Main-nav__account-button__avatar'>
+<div class='Main-nav__account-button__badge'></div>
+</div>
+</a>
+<div aria-hidden class='Main-nav/Popper__popup Main-nav__category__list Main-nav__category__list--account popup popup--inverse popup--tailed popup--tailed--center popup--tailed--top' id='main-nav-account-menu' role='menu'></div></div>
+<a class='Main-nav__item Main-nav__label f-w:700 fl:l ga-link loggedout-only t-t:u undec' data-ga-action='signin' data-ga-category='navigation.item' data-ga-label='/session/new?context=ted.www%2Fmain-nav&amp;referer=https%3A%2F%2Fwww.ted.com%2Ftalks' href='/session/new?context=ted.www%2Fmain-nav&amp;referer=https%3A%2F%2Fwww.ted.com%2Ftalks'>Sign in</a>
+<div class='Main-nav__divider fl:l show-lg'></div>
+<div class='fl:l show-lg'>
+<a class='Main-nav__item' href='/search' id='main-nav-search' role='button'>
+<svg baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" width="54" height="54" viewBox="0 0 512 512" class="Main-nav__icon Main-nav__icon--search"><title>Search</title><path d="M221.414 12.31C105.96 12.31 12 106.164 12 221.475c0 115.34 93.96 209.202 209.452 209.202 41.684 0 80.52-12.4 113.205-33.512l89.652 89.576c17.304 17.267 45.413 17.267 62.697 0 17.342-17.322 17.304-45.374 0-62.677l-89.634-89.5c21.13-32.646 33.512-71.406 33.512-113.09-.02-115.31-93.92-209.163-209.47-209.163zm167.5 209.165c0 92.267-75.136 167.27-167.462 167.27-92.344 0-167.462-75.04-167.462-167.27 0-92.22 75.118-167.25 167.462-167.193 92.326 0 167.424 74.973 167.463 167.193z"/></svg>
+</a>
+</div>
+</div>
+<form action='/search' aria-hidden='true' class='Main-nav__search pos:a right:0' id='main-nav-search-form' role='search'>
+<div class='Main-nav__search__content left:0 pos:a'>
+<div class='Main-nav__divider fl:l'></div>
+<label>
+<span class='screen-reader-text'>
+Search:
+</span>
+<input aria-label='Search' autocorrect='off' class='Main-nav__fs-6 Main-nav__search__input' name='q' placeholder='Type to search' tabindex='-1' title='Press Enter to begin search'>
+</label>
+<a aria-label='Close' class='Main-nav__search__close fl:r' href='#' role='button' tabindex='-1'>
+<svg xmlns="http://www.w3.org/2000/svg" width="54" height="54" viewBox="0, 0, 30, 30" class="Main-nav__icon"><title>Cancel search</title><path d="M24.5 6.718L6.936 24.282 24.5 6.718zm-18 0l17.564 17.564L6.5 6.718z" stroke="#414141" stroke-width="2" stroke-linecap="square" fill="none"/></svg>
+</a>
+</div>
+</form>
+</nav>
+<div id='main-nav-slideouts'></div>
+<script>g("mainNav.init",{"menuItems":[{"label":"Watch","name":"watch","items":[{"url":"/talks","label":"TED Talks","info":"Browse the library of TED talks and speakers"},{"url":"/recommends?exploreCTASource=main-nav.item","label":"TED Recommends","info":"Get TED Talks picked just for you"},{"url":"/playlists","label":"Playlists","info":"100+ collections of TED Talks, for curious minds"},{"url":"/series","label":"TED Series","info":"Go deeper into fascinating topics with original video series from TED."},{"url":"/watch/ted-ed","label":"TED-Ed videos","info":"Watch, share and create lessons with TED-Ed"},{"url":"/watch/tedx-talks","label":"TEDx Talks","info":"Talks from independently organized local events"}]},{"label":"Discover","name":"discover","items":[{"url":"/topics","label":"Topics","info":"Explore TED offerings by topic"},{"url":"https://audiocollective.ted.com","label":"Podcasts","info":"TED's original podcast initiatives"},{"url":"/read/ted-books","drilldown":true,"label":"TED Books","info":"Short books to feed your craving for ideas"},{"url":"https://ideas.ted.com","label":"Ideas Blog","info":"Our daily coverage of the world of ideas","external":true},{"url":"/newsletter","label":"Newsletter","info":"Inspiration delivered straight to your inbox"}]},{"label":"Attend","name":"attend","items":[{"url":"/attend/conferences","drilldown":true,"label":"Conferences","info":"Take part in our events: TED, TEDGlobal and more"},{"url":"/tedx/events","label":"TEDx events","info":"Find and attend local, independently organized events"},{"url":"/attend/ted-on-screen","label":"TED on screen","info":"Experience TED from home"}]},{"label":"Participate","name":"participate","items":[{"url":"/participate/nominate","label":"Nominate","info":"Recommend speakers, Audacious Projects, Fellows and more"},{"url":"/participate/organize-a-local-tedx-event","drilldown":true,"label":"Organize a local TEDx event","info":"Rules and resources to help you plan a local TEDx event"},{"url":"/participate/translate","drilldown":true,"label":"Translate","info":"Bring TED to the non-English speaking world"},{"url":"/participate/ted-fellows-program","label":"TED Fellows","info":"Join or support innovators from around the globe"}]},{"label":"About","name":"about","items":[{"url":"/about/our-organization","drilldown":true,"label":"Our organization","info":"Our mission, history, team, and more"},{"url":"/about/conferences","drilldown":true,"label":"Conferences","info":"TED Conferences, past, present, and future"},{"url":"/about/programs-initiatives","label":"Programs & Initiatives","info":"Details about TED's world-changing initiatives"},{"url":"/about/partner-with-ted","label":"Partner with TED","info":"Learn how you can partner with us"},{"url":"https://blog.ted.com","label":"TED Blog","info":"Updates from TED and highlights from our global community","external":true},{"url":"/read/ted-talks-the-official-ted-guide-to-public-speaking","label":"TED Guide to Public Speaking","info":"An insider’s guide to creating talks that are unforgettable"}]}]})</script><div class='main talks-main' role='main'>
+<div id="recommends-banner"></div>
+<script data-spec="q">q("recommendsBanner","#recommends-banner",{"source":"talks-directory.banner"})</script>
+
+<header class='talks-header'>
+<div class='container'>
+<div class='h1 m4 text-primary talks-header__title'>
+<span class='h1__alt'></span>
+3900+ talks
+<span class='h1__alt'>to stir your curiosity</span>
+</div>
+<div class='h5 f:3'>
+Find just the right one
+</div>
+</div>
+</header>
+
+<form action='' class='filters m1 talks-filters' id='filters' method='get'>
+<div class='filters__top'>
+<div class='container'>
+<div class='filters__opener hide-sm'>
+Browse all talks
+</div>
+<div class='filters__top__content'>
+<div class='row row-skinny'>
+<div class='col col-lg-10'>
+<div class='row row-skinny'>
+<div class='col col-lg-3 filters__filter'>
+<div class='pos:r'>
+<input autocorrect='off' class='filters__filter__input form-control' name='q' placeholder='Search talks&hellip;'>
+<svg class="filters__filter__setter pos:a right:0 top:0" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-5 -5 50 50" role="button" tabindex="0" style="cursor:pointer">
+  <title>Search</title>
+  <path d="M2 2h36v36H2V2z" fill="#FFF"/>
+  <path d="M17.769 5.081c-7.006 0-12.708 5.695-12.708 12.693 0 6.999 5.702 12.695 12.711 12.695 2.529 0 4.886-.752 6.869-2.033l5.441 5.435a2.695 2.695 0 0 0 3.805 0 2.688 2.688 0 0 0 0-3.803l-5.44-5.431a12.59 12.59 0 0 0 2.034-6.863c-.001-6.998-5.7-12.693-12.712-12.693zm10.165 12.693c0 5.599-4.56 10.151-10.162 10.151-5.604 0-10.163-4.554-10.163-10.151 0-5.597 4.559-10.15 10.163-10.146 5.602 0 10.16 4.549 10.162 10.146z" fill="#666"/>
+</svg>
+
+</div>
+</div>
+<div class='col col-sm-10 col-lg-9'>
+<div class='row row-skinny'>
+<div class='col col-sm-4 filters__filter'>
+<select class='form-control form-control--dropdown form-control--small filters__filter__select' data-filter-multiple='true' id='topics' name='topics'>
+<option>Topics</option>
+<optgroup label='Popular topics'>
+<option value='Technology'>Technology</option>
+<option value='Entertainment'>Entertainment</option>
+<option value='Design'>Design</option>
+<option value='Business'>Business</option>
+<option value='Science'>Science</option>
+<option value='Global issues'>Global issues</option>
+
+</optgroup>
+<option disabled role='presentation'></option>
+<option value='...'>See all topics</option>
+</select>
+</div>
+<div class='col col-sm-4 filters__filter'>
+<select class='form-control form-control--dropdown form-control--small filters__filter__select' id='languages' name='language'>
+<option>Languages</option>
+<optgroup label='Top languages'>
+<option value='en'>English</option>
+<option lang='es' title='Spanish' value='es'>Español</option>
+<option lang='ja' title='Japanese' value='ja'>日本語</option>
+<option lang='pt-BR' title='Portuguese, Brazilian' value='pt-br'>Português brasileiro</option>
+<option lang='zh' title='Chinese, Traditional' value='zh-tw'>中文 (繁體)</option>
+<option lang='ko' title='Korean' value='ko'>한국어</option>
+</optgroup>
+<option disabled role='presentation'></option>
+<option value='...'>See all languages</option>
+</select>
+</div>
+<div class='col col-sm-4 filters__filter'>
+<select class='form-control form-control--dropdown form-control--small filters__filter__select' name='duration'>
+<option value="">Duration</option>
+<option value="0-6">0–6 minutes</option>
+<option value="6-12">6–12 minutes</option>
+<option value="12-18">12–18 minutes</option>
+<option value="18+">18+ minutes</option>
+</select>
+</div>
+</div>
+</div>
+<div class='col col-sm-2 show-sm hide-lg'>
+<button class='button button--wide js-filters-more'>More</button>
+</div>
+</div>
+</div>
+<div class='col col-sm-2 show-lg'>
+<button class='button js-filters-more' style='min-width:7em'>More</button>
+</div>
+<div class='col col-sm-10 talks-filters__additional'>
+<div class='row row-skinny'>
+<div class='col col-sm-4 col-lg-3 col-lg-offset-3 filters__filter'>
+<select class='form-control form-control--dropdown form-control--small filters__filter__select' id='events' name='event'>
+<option>Events</option>
+<option value="ted conference">TED Conference</option>
+<option value="tedglobal">TEDGlobal</option>
+<option value="tedx">TEDx</option>
+<optgroup label='Recent events'>
+<option value='tmonterey2021'>TEDMonterey 2021</option>
+<option value='t2020'>TED2020</option>
+<option value='t2019'>TED2019</option>
+<option value='t2018'>TED2018</option>
+<option value='tw2017'>TEDWomen 2017</option>
+<option value='tg2017'>TEDGlobal 2017</option>
+<option value='t2017'>TED2017</option>
+<option value='tw2016'>TEDWomen 2016</option>
+<option value='tedsummit2016'>TEDSummit 2016</option>
+</optgroup>
+<option disabled role='presentation'></option>
+<option value='...'>See all events</option>
+</select>
+</div>
+<div class='col col-sm-4 col-lg-3 filters__filter'>
+<a class='button button--wide' href='/people/speakers'>
+Find a speaker
+&#x25B8;
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class='filters__filter hide-sm'>
+<div class='row row-skinny row-oh-2up'>
+<div class='col'>
+<input type="submit" name="commit" value="Submit" class="button button--wide button--dark filters__apply" data-disable-with="Submit" />
+</div>
+<div class='col'>
+<button class='button button--wide filters__clear'>Clear</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='filters__bottom'>
+<div class='container'>
+<div class='row row-skinny'>
+<div class='col col-sm-8 col-lg-9 filters__active'>
+<div class='filters__active__label'>
+Active filters:
+</div>
+<div class='filters__active__stubs'>
+<a class='l3 filters__clear' href='#'>Clear</a>
+</div>
+</div>
+<div class='col col-sm-4 col-lg-3 filters__sort filters__active__sort'>
+<div class='row row-skinny'>
+<div class='col col-sm-4 text-right show-sm'>
+<label class='filters__label' for='filters-sort'>Sort by:</label>
+</div>
+<div class='col col-sm-8'>
+<select name="sort" id="filters-sort" class="form-control form-control--dropdown form-control--small filters__sort__select"><optgroup label="Sort by..." Newest="newest" Relevance="relevance" Oldest="oldest" Most viewed="popular"><option value="newest">Newest</option>
+<option value="relevance">Relevance</option>
+<option value="oldest">Oldest</option>
+<option value="popular">Most viewed</option></optgroup></select>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</form>
+<div class='container results' id='browse-results'>
+<div class='row row-sm-4up row-lg-6up row-skinny'>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/maria_gallucci_the_carbonless_fuel_that_could_change_how_we_ship_goods'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="439" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/05ab786a-9e5a-4424-92e5-9cb1dae4876b/MariaGallucci_2021-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 7:19</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Maria Gallucci</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/maria_gallucci_the_carbonless_fuel_that_could_change_how_we_ship_goods'>
+The carbonless fuel that could change how we ship goods
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/hannah_fisher_and_sorren_maclean_this_town_too_far_gone'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="588" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ce44e4fa-3c28-4183-9208-599ff5da62a8/HannahFisher_SorrenMaclean_2021T-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 9:48</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'> Hannah Fisher and Sorren Maclean</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/hannah_fisher_and_sorren_maclean_this_town_too_far_gone'>
+&quot;This Town&quot; / &quot;Too Far Gone&quot;
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/james_tanton_can_you_survive_the_creation_of_the_universe_by_solving_this_riddle'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="0" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/5cdd5f32-7500-40a4-8f23-53ed89adfc45/antimatter_texless.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 0:00</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>James Tanton</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/james_tanton_can_you_survive_the_creation_of_the_universe_by_solving_this_riddle'>
+Can you survive the creation of the universe by solving this riddle?
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/orit_tykocinski_the_counterintuitive_psychology_of_insurance'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="0" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/a2ff07c3-a998-496a-bc5b-1dde3a198cb2/OritTykocinski_2021X-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 0:00</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Orit Tykocinski</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/orit_tykocinski_the_counterintuitive_psychology_of_insurance'>
+The counterintuitive psychology of insurance
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/solitaire_townsend_are_ad_agencies_pr_firms_and_lobbyists_destroying_the_climate'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="576" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/6f9a176d-3d70-46ec-b531-c9069bdbe73f/SolitaireTownsend_2021T-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 9:36</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Solitaire Townsend</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/solitaire_townsend_are_ad_agencies_pr_firms_and_lobbyists_destroying_the_climate'>
+Are ad agencies, PR firms and lobbyists destroying the climate?
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/alex_gendler_building_the_impossible_golden_gate_bridge'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="0" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/a24bc324-4729-41ee-acc3-9cd25fbef474/goldengatetextless.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 0:00</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Alex Gendler</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/alex_gendler_building_the_impossible_golden_gate_bridge'>
+Building the impossible: Golden Gate Bridge
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/sathya_raghu_mokkapati_the_greenhouse_in_a_box_empowering_farmers_in_india'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="387" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/9379b600-914f-4eff-b597-0491ecdf461b/SathyaRaghuMokkapati_2021T-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 6:27</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Sathya Raghu Mokkapati</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/sathya_raghu_mokkapati_the_greenhouse_in_a_box_empowering_farmers_in_india'>
+The &quot;greenhouse-in-a-box&quot; empowering farmers in India
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/ozawa_bineshi_albert_climate_action_needs_new_frontline_leadership'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="834" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/cf92dab7-c94d-4d4e-adf1-14949d332311/OzawaBineshiAlbert_2021W-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration">13:54</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Ozawa Bineshi Albert</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/ozawa_bineshi_albert_climate_action_needs_new_frontline_leadership'>
+Climate action needs new frontline leadership
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/sydney_iaukea_the_dark_history_of_the_overthrow_of_hawaii'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="0" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/26df51da-f732-40ef-8478-a002c1bc2228/queentextless.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 0:00</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Sydney Iaukea</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/sydney_iaukea_the_dark_history_of_the_overthrow_of_hawaii'>
+The dark history of the overthrow of Hawaii
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/martin_reeves_how_play_can_spark_new_ideas_for_your_business'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="665" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/8b0fb2ef-0417-42bc-878e-5b78a0acc763/MartinReeves_2021S_embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration">11:05</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Martin Reeves</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/martin_reeves_how_play_can_spark_new_ideas_for_your_business'>
+How play can spark new ideas for your business
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/james_k_thornton_why_is_china_appointing_judges_to_combat_climate_change'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="695" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/e9c4e0a6-816b-45d9-881e-5f365ff341a3/JamesKThornton_2021T-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration">11:35</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>James K. Thornton</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/james_k_thornton_why_is_china_appointing_judges_to_combat_climate_change'>
+Why is China appointing judges to combat climate change?
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/mahendra_singhi_cement_s_carbon_problem_and_2_ways_to_fix_it'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="671" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/7e69b4ad-c695-412f-8851-9d0913f5a732/MahendraSinghi_2021T-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration">11:11</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Mahendra Singhi</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/mahendra_singhi_cement_s_carbon_problem_and_2_ways_to_fix_it'>
+Cement&#39;s carbon problem — and 2 ways to fix it
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/rosamund_adoo_kissi_debrah_the_tragedy_of_air_pollution_and_an_urgent_demand_for_clean_air'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="483" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/bc5b1c25-3d0a-4bc7-9298-3b5bc1087c73/RosamunAdoo-Kissi-Debrah_2021T-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 8:03</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Rosamund Adoo-Kissi-Debrah</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/rosamund_adoo_kissi_debrah_the_tragedy_of_air_pollution_and_an_urgent_demand_for_clean_air'>
+The tragedy of air pollution — and an urgent demand for clean air
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/iseult_gillespie_the_myth_of_narcissus_and_echo'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="0" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/fd1c7da5-150d-4f9f-b3dd-2a305b4843ed/echotextless.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 0:00</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Iseult Gillespie</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/iseult_gillespie_the_myth_of_narcissus_and_echo'>
+The myth of Narcissus and Echo
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/gay_gordon_byrne_you_deserve_the_right_to_repair_your_stuff'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="620" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/47996720-e398-41ec-b043-25ad9adf83fd/GayGordon-Byrne_2021-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration">10:20</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Gay Gordon-Byrne</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/gay_gordon_byrne_you_deserve_the_right_to_repair_your_stuff'>
+You deserve the right to repair your stuff
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/erin_meezan_what_nature_can_teach_us_about_sustainable_business'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="235" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/f3a402e7-d179-491d-a7d4-0141a67279ac/ErinMeezan_2022T-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 3:55</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Erin Meezan</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/erin_meezan_what_nature_can_teach_us_about_sustainable_business'>
+What nature can teach us about sustainable business
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/dwan_reece_the_origins_of_blackface_and_black_stereotypes'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="0" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/1bf710af-e9c9-40aa-a37d-dd7ecda88065/DwanReece_2019X-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 0:00</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Dwan Reece</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/dwan_reece_the_origins_of_blackface_and_black_stereotypes'>
+The origins of blackface and Black stereotypes
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/ian_kerner_a_sex_therapist_s_secret_to_rediscovering_your_spark'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="689" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/5f6857e0-50bf-43b4-8ef0-f6070a5053bd/IanKerner_2021-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration">11:29</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Ian Kerner</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/ian_kerner_a_sex_therapist_s_secret_to_rediscovering_your_spark'>
+A sex therapist&#39;s secret to rediscovering your spark
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/richard_browning_how_do_jetpacks_work_and_why_don_t_we_all_have_them'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="0" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d0b20407-eb98-4d0d-b283-b1be34c43170/jetsuittextless.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 0:00</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Richard Browning</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/richard_browning_how_do_jetpacks_work_and_why_don_t_we_all_have_them'>
+How do jetpacks work? And why don&#39;t we all have them?
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/daniel_h_pink_what_regret_can_teach_you_about_living_a_good_life'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="1379" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ac2f771b-bddb-429a-bacd-0ff11cb98af6/DanielHPink_2021H-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration">22:59</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Daniel H. Pink</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/daniel_h_pink_what_regret_can_teach_you_about_living_a_good_life'>
+What regret can teach you about living a good life
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/lucas_joppa_how_to_fix_the_bugs_in_the_net_zero_code'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="626" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/83404444-426d-46a9-b053-73d1995615aa/LucasJoppa_2021T-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration">10:26</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Lucas Joppa</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/lucas_joppa_how_to_fix_the_bugs_in_the_net_zero_code'>
+How to fix the &quot;bugs&quot; in the net-zero code
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/belle_and_sebastian_big_yellow_taxi_song_for_sunshine'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="551" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/cbabc310-1e5b-45d0-b03a-f3404a0b5967/BelleandSebastian_2021T-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 9:11</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'> Belle and Sebastian</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/belle_and_sebastian_big_yellow_taxi_song_for_sunshine'>
+&quot;Big Yellow Taxi&quot; / &quot;Song for Sunshine&quot;
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/mounia_akl_how_film_captures_the_space_between_hope_and_despair'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="751" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/8ac3d171-5479-429e-a44c-d60c4096c92f/MouniaAkl_2021W-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration">12:31</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Mounia Akl</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/mounia_akl_how_film_captures_the_space_between_hope_and_despair'>
+How film captures the space between hope and despair
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/yana_buhrer_tavanier_what_is_normal_and_what_is_different'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="0" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/dff82559-59a8-4d12-bedb-ac5c548e8530/01.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 0:00</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Yana Buhrer Tavanier</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/yana_buhrer_tavanier_what_is_normal_and_what_is_different'>
+What is &quot;normal&quot; and what is &quot;different&quot;?
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/susan_ruffo_the_ocean_s_ingenious_climate_solutions'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="527" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/9b7cbb1e-be28-4db6-95d3-a270f556d6f1/SusanRuffo_2021T-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 8:47</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Susan Ruffo</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/susan_ruffo_the_ocean_s_ingenious_climate_solutions'>
+The ocean&#39;s ingenious climate solutions
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/tim_dunn_how_we_re_reducing_the_climate_impact_of_electronics'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="200" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/b449a15a-655e-44f3-8e55-4b7b970eda9b/TimDunn_2022T-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 3:20</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Tim Dunn</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/tim_dunn_how_we_re_reducing_the_climate_impact_of_electronics'>
+How we&#39;re reducing the climate impact of electronics
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/let_it_happen_a_vibrant_dance_performance_of_funk_classics'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="268" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/5cc68676-f2e8-4fbb-b166-4c1af1663331/LetItHappen_2021T-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 4:28</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'> Let It Happen</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/let_it_happen_a_vibrant_dance_performance_of_funk_classics'>
+A vibrant dance performance of funk classics
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/dave_matthews_dive_in'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="334" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/8f6ffb78-7827-422b-9eba-5c88b320872f/DaveMatthews_2021T-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 5:34</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Dave Matthews</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/dave_matthews_dive_in'>
+&quot;Dive In&quot;
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/zoe_karl_waithaka_got_millet_how_marketing_could_improve_the_lives_of_african_farmers'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="653" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/8da25bf2-0b8d-4689-8ad3-18acd7da71f0/ZoeKarl-Waithaka_2021S-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration">10:53</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Zoë Karl-Waithaka</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/zoe_karl_waithaka_got_millet_how_marketing_could_improve_the_lives_of_african_farmers'>
+Got millet? How marketing could improve the lives of African farmers
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/dan_kwartler_the_myth_of_gawain_and_the_green_knight'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="0" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/87df496c-284b-404a-89fd-9c28875f8920/greenknighttextless.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 0:00</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Dan Kwartler</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/dan_kwartler_the_myth_of_gawain_and_the_green_knight'>
+The myth of Gawain and the Green Knight
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/dan_jorgensen_how_wind_energy_could_power_earth_18_times_over'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="649" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/f2860e79-4d9e-4497-ba0f-a7492b04e373/DanJorgensen_2021T-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration">10:49</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Dan Jørgensen</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/dan_jorgensen_how_wind_energy_could_power_earth_18_times_over'>
+How wind energy could power Earth ... 18 times over
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/lei_li_the_incredible_cancer_detecting_potential_of_photoacoustic_imaging'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="410" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/e06257e3-250c-434e-aba0-dba56756bdef/LeiLi_2021-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 6:50</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Lei Li</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/lei_li_the_incredible_cancer_detecting_potential_of_photoacoustic_imaging'>
+The incredible cancer-detecting potential of photoacoustic imaging
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/nick_turner_and_whitney_pennington_rodgers_how_to_fix_two_of_the_most_broken_systems_in_the_us'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="972" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d14a9e10-69b7-4ee9-b180-3115f6d6dfe8/NickTurner_2021S-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration">16:12</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Nick Turner and Whitney Pennington Rodgers</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/nick_turner_and_whitney_pennington_rodgers_how_to_fix_two_of_the_most_broken_systems_in_the_us'>
+How to fix two of the most broken systems in the US
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/elizabeth_cox_can_you_outsmart_the_fallacy_that_divided_a_nation'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="0" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/3932fa6c-3035-4df1-a958-496eb48e2ced/middlegroundtextless.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 0:00</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Elizabeth Cox</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/elizabeth_cox_can_you_outsmart_the_fallacy_that_divided_a_nation'>
+Can you outsmart the fallacy that divided a nation?
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/kaz_sex_education_should_start_with_consent'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="627" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/6073a914-5112-42f1-a6bd-5b192f2c9d06/Kaz_2021W-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration">10:27</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'> Kaz</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/kaz_sex_education_should_start_with_consent'>
+Sex education should start with consent
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Feb 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class='col'>
+<div class='m3'>
+<div class='talk-link'>
+<div class='media media--sm-v'>
+<div class='media__image media__image--thumb talk-link__image'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/katie_mcginty_smart_solutions_to_decarbonize_buildings'>
+<span class="thumb thumb--video thumb--crop-top"><span class="thumb__sizer"><span class="thumb__tugger"><img alt="" class=" thumb__image" play="223" src="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/aa04ddb7-27f5-4ed5-9ae5-a6868bf428c5/KatieMcGinty_2022T-embed.jpg?quality=89&amp;w=320" crop="top" /><span class="thumb__aligner"></span></span></span><span class="thumb__duration"> 3:43</span></span>
+</a>
+</div>
+<div class='media__message'>
+<h4 class='h12 talk-link__speaker'>Katie McGinty</h4>
+<h4 class='f-w:700 h9 m5'>
+<a class=' ga-link' data-ga-context='talks' href='/talks/katie_mcginty_smart_solutions_to_decarbonize_buildings'>
+Smart solutions to decarbonize buildings
+</a>
+</h4>
+<div class='meta'>
+<span class='meta__item'>
+Posted
+<span class='meta__val'>
+Jan 2022
+</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class='results__pagination'>
+<div role="navigation" aria-label="Pagination" class="pagination"><span class="pagination__prev pagination__flipper pagination__flipper--disabled">Previous</span><span class=pagination__separator>|</span><span class="pagination__item pagination__current">1</span><span class=pagination__separator>|</span><a rel="next" class="pagination__item pagination__link" href="/talks?page=2">2</a><span class=pagination__separator>|</span><a class="pagination__item pagination__link" href="/talks?page=3">3</a><span class=pagination__separator>|</span><a class="pagination__item pagination__link" href="/talks?page=4">4</a><span class=pagination__separator>|</span><a class="pagination__item pagination__link" href="/talks?page=5">5</a><span class="pagination__item pagination__gap">&hellip;</span><a class="pagination__item pagination__link" href="/talks?page=152">152</a><span class=pagination__separator>|</span><a class="pagination__next pagination__flipper pagination__link" rel="next" href="/talks?page=2">Next</a></div>
+</div>
+</div>
+<div class='m1'></div>
+<script data-spec="q">q("browse.init",{"defaultSorts":{"Newest":"newest","Relevance":"relevance","Oldest":"oldest","Most viewed":"popular"}})</script></div>
+<footer class='footer'>
+<div class='container'>
+<div class='footer__content'>
+<a class="g-logo-small footer__logo" href="/">TED</a>
+<div class='footer__content__links'>
+<nav class='footer__section' role='navigation'>
+<h3 class='footer__title'>
+Programs &amp; initiatives
+</h3>
+<ul class='footer__links'>
+<li class='m5'><a class="footer__link" href="/about/programs-initiatives/tedx-program">TEDx</a></li>
+<li class='m5'><a class="footer__link" href="/about/programs-initiatives/ted-fellows-program">TED Fellows</a></li>
+<li class='m5'><a class="footer__link" href="/about/programs-initiatives/ted-ed">TED Ed</a></li>
+<li class='m5'><a class="footer__link" href="/about/programs-initiatives/ted-translators">TED Translators</a></li>
+<li class='m5'><a class="footer__link" href="/about/programs-initiatives/ted-institute">TED Institute</a></li>
+<li class='m5'><a class="footer__link" href="/about/programs-initiatives/the-audacious-project">The Audacious Project</a></li>
+<li class='m5'><a class="footer__link" href="https://tedatwork.ted.com/">TED@Work</a></li>
+</ul>
+</nav>
+<nav class='footer__section' role='navigation'>
+<h3 class='footer__title'>
+Ways to get TED
+</h3>
+<ul class='footer__links'>
+<li class='m5'><a class="footer__link" href="/podcasts">Podcasts</a></li>
+<li class='m5'><a class="footer__link" href="/about/programs-initiatives/ted-talks/ways-to-get-ted-talks">More ways to get TED</a></li>
+</ul>
+</nav>
+<nav class='footer__section' role='navigation'>
+<h3 class='footer__title'>Follow TED</h3>
+<ul class='footer__links'>
+<li class='m5'><a class="footer__link" target="_blank" href="https://www.facebook.com/TED">Facebook</a></li>
+<li class='m5'><a class="footer__link" target="_blank" href="https://twitter.com/tedtalks">Twitter</a></li>
+<li class='m5'><a class="footer__link" target="_blank" href="https://instagram.com/ted">Instagram</a></li>
+<li class='m5'><a class="footer__link" target="_blank" href="https://www.youtube.com/ted">YouTube</a></li>
+<li class='m5'><a class="footer__link" target="_blank" href="https://www.linkedin.com/company/ted-conferences/">LinkedIn</a></li>
+<li><a class="footer__link" href="https://blog.ted.com">TED Blog</a></li>
+</ul>
+</nav>
+<nav class='footer__section' role='navigation'>
+<h3 class='footer__title'>Our community</h3>
+<ul class='footer__links'>
+<li class='m5'><a class="footer__link" href="/people/speakers">TED Speakers</a></li>
+<li class='m5'><a class="footer__link" href="/people/fellows">TED Fellows</a></li>
+<li class='m5'><a class="footer__link" href="/people/translators">TED Translators</a></li>
+<li class='m5'><a class="footer__link" rel="nofollow" href="/people/tedx">TEDx Organizers</a></li>
+<li class='m5'><a class="footer__link" href="/people">TED Community</a></li>
+</ul>
+</nav>
+</div>
+<div class='footer__content__forms'>
+<form class='footer-newsletter footer__section footer__section--form p-r:.8'>
+<h3 class='footer__title'>Want personalized recommendations?</h3>
+<div class='c:black f:.9 m-b:2'>
+Join
+<span class='f-w:700'>
+TED Recommends
+</span>
+and get the perfect ideas selected just for you.
+</div>
+<a class='ga-link bg:gray-dd b-r:.2 c:white hover/c:white d:i-b f:1 f-w:700 p-y:1 p-x:4 t-d:n' data-ga-action='getStarted' data-ga-category='footer' data-ga-label='recommends' href='/recommends?exploreCTASource=footer.link'>
+Get started
+</a>
+</form>
+<form class='footer__section' style='display:none;'>
+<h3 class='footer__title'>Language Selector</h3>
+<p>TED.com translations are made possible by volunteer
+translators. Learn more about the
+<a href="/pages/open_translation_project">Open Translation Project</a>.</p>
+<select class='form-control' disabled>
+<option>English</option>
+</select>
+</form>
+</div>
+</div>
+</div>
+<div class='footer__services'>
+<div class='container footer__services__container'>
+<nav role='navigation'>
+<ul class='footer__links'>
+<li><a class="footer__service" href="/about/our-organization/our-policies-terms/ted-talks-usage-policy">TED Talks Usage Policy</a></li>
+<li><a class="footer__service" href="/about/our-organization/our-policies-terms/privacy-policy">Privacy Policy</a></li>
+<li><a class="footer__service" href="/about/partner-with-ted">Advertising / Partnership</a></li>
+<li><a class="footer__service" href="/about/our-organization/our-policies-terms/ted-com-terms-of-use">TED.com Terms of Use</a></li>
+<li><a class="footer__service" href="/about/our-organization/jobs-at-ted">Jobs</a></li>
+<li><a class="footer__service" href="/about/our-organization/contact-us/press-and-media-information">Press</a></li>
+<li><a class="footer__service" href="https://support.ted.com ">Help</a></li>
+<li><a class="footer__service" data-ga="{&quot;category&quot;:&quot;footer&quot;,&quot;action&quot;:&quot;navigation&quot;,&quot;label&quot;:&quot;/membership&quot;}" href="/membership">Membership</a></li>
+</ul>
+</nav>
+<p class='footer__service footer__service--info' role='contentinfo'>
+&copy; TED Conferences, LLC. All rights reserved.
+</p>
+</div>
+</div>
+</footer></div>
+<a class='shoji__lattice' href='#' id='shoji-lattice'></a>
+</div>
+</div>
+<div id="activity-feed" style="position: relative;"></div>
+<script>g("activityFeed","#activity-feed",{})</script><script src='https://pa.tedcdn.com/javascripts/screens/manifest-56b454f1646511e0a702.js'></script>
+<script src='https://pa.tedcdn.com/javascripts/screens/c8f34d674de025fd3e00.chunk.js'></script>
+<script async src='https://pa.tedcdn.com/javascripts/screens/52f789f7fcf38f85ab83.chunk.js'></script><script>
+  (function() {
+    if (window.TED && TED.zone && TED.zone.hide_advertising) return;
+  
+    window.advBidxc = window.advBidxc || {};
+    window.advBidxc.timeout = 400;
+    window.advBidxc.customerId = '8CUETUT4L';
+    window.advBidxc.domain = window.location.hostname;
+    window.advBidxc.version = 5.1;
+    window.advBidxc.startTime = new Date().getTime();
+  
+    function loadScript(tagSrc) {
+      var scriptTag = document.createElement('script');
+      var placeTag = document.getElementsByTagName("script")[0];
+      scriptTag.type = 'text/javascript';
+      scriptTag.async = true;
+      scriptTag.src = tagSrc;
+      placeTag.parentNode.insertBefore(scriptTag, placeTag);
+    }
+  
+    function loadGPT() {
+      if (!window.advBidxc.isAdServerLoaded) {
+        loadScript('https://www.googletagservices.com/tag/js/gpt.js');
+        window.advBidxc.isAdServerLoaded = true;
+      }
+    }
+  
+    function init() {
+      window.advBidxc.loadGPT = setTimeout(loadGPT, window.advBidxc.timeout);
+      var mnSrc = 'https://hbx.media.net/bidexchange.js?cid=' + window.advBidxc.customerId + "&version=" + window.advBidxc.version + '&dn=' + window.advBidxc.domain;
+      loadScript(mnSrc);
+    }
+  
+    init();
+  })();
+</script><script>
+  (function(s,o,b,a,m){
+    a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+    a.async=1;a.src=b;
+    m.parentNode.insertBefore(a,m)
+  })(document,'script','https://www.google-analytics.com/analytics.js');
+</script><script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "7341760" });
+  (function() {
+    if (window.TED && TED.zone && TED.zone.hide_advertising) return;
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script><script>
+  (function(d,s,u,e,m,r){r=(d.location.search||'').match(/[?&](geo=[A-Z]{2})\b/);e=d.createElement(s),m=d.getElementsByTagName(s)[0];e.async=1;e.src=u+(r?'&'+r[1]:'');m.parentNode.insertBefore(e,m)})(document,'script','https://geo-assets.tedcdn.com/cookie-notice/tcn.js?cb=1.1.4')
+</script></body></html>

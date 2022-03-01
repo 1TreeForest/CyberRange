@@ -1,0 +1,898 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>【电影票_2014电影票团购信息】订电影票就上中票在线</title>
+		<meta name="keywords" content="电影票,电影票订票,2014电影票信息,电影票怎么买,电影票哪里买">	
+	<meta name="description" content="中票在线电影票频道,为您提供中国2014电影票信息大全,同时您可以在线购买、预定电影票门票,感谢您选择中票在线电影票订票中心!24小时订票热线电话,400-810-8810">
+		<link rel="stylesheet" type="text/css" href="https://www.chinaticket.com/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="https://www.chinaticket.com/css/common.css">
+	<link href="https://www.chinaticket.com/images/favicon.ico" type="image/x-icon" rel="icon">
+	<script type="text/javascript" src="https://www.chinaticket.com/js/base.js"></script>
+</head>
+<body id="home">
+<link rel="stylesheet" type="text/css" href="https://www.chinaticket.com/css/listing.css">
+<script type="text/javascript" src="https://www.chinaticket.com/js/date.js"></script>
+<script type="text/javascript">
+var catid = '36';
+jQuery(document).ready(function () {
+	$('input.s_search_time').simpleDatepicker({ startdate: 2020, enddate: 2025, stats: 'show' });
+	$("#cityitem-list").bind("mouseleave",function() {
+		$("#cityitem-list").css("display","none");
+	});
+	$("#venitem-list").bind("mouseleave",function() {
+		$("#venitem-list").css("display","none");
+	});
+    $("#top-id").bind("mouseleave",function() {
+        $("#top-id").css("display","none");
+    });
+});
+function zhSearch(){
+  var cityen = document.getElementById('cityval').value;
+  var vid = document.getElementById('venues').value;
+  var time = document.getElementById('timeval').value;
+  var zhurl = '';
+  if(!cityen){
+    alert("请选择城市");
+  }else{
+    if(cityen){
+      zhurl = 'https://www.chinaticket.com/'+cityen+'/qita/dianyingpiao/';
+    }else{
+		zhurl = 'https://www.chinaticket.com/qita/dianyingpiao/';
+	}
+    if(vid>0){
+      zhurl = zhurl + '?vid='+vid;
+    }
+    if(time!='选择时间'){
+      zhurl = zhurl + (vid>0 ? '&' : '?') + 'date='+time;
+    }
+    window.location.href = zhurl;
+  }
+}
+function Setcity(id,en,name){
+	$('#cityval').val(en);
+	$('#cityitem-list').hide();
+	$('#cityselect-item').html(name);
+	GetVenue(id);
+}
+function GetVenue(cityid){
+	var html = '';
+	$.ajax({
+		type:"POST",
+		url:"/ajax/getvenues.do",
+		dataType:"html",
+		data:'cityid='+cityid+'&catid='+catid,
+		success:function(msg)
+		{
+			$("#venues_list").html(msg);
+		}
+	});
+}
+function SetVenue(vid,name){
+	$('#venues').val(vid);
+	$('#venitem-list').hide();
+	$('#venselect-item').html(name);
+}
+</script>
+<div id="wrapper">
+  <div id="header" class="bgColor fl clearfix">
+		<ul class="user w clearfix">
+		<li><a href="https://www.chinaticket.com/faq/">帮助中心</a></li>
+		<li>|</li>
+		<li><a href="https://www.chinaticket.com/my/">我的账户</a></li>
+	</ul>
+	<a href="https://www.chinaticket.com/" class="logolink"><h1 class="w100 fb f18 pl170 pt18 ml15 fl">中票在线</h1></a>
+	<form action="https://www.chinaticket.com/search.html" method="get" id="searchFrom" name="searchFrom" class="mt10 fl">
+		<fieldset>
+			<span id="soso_submit" class="fr search_btn" href="javascript:;"></span>
+			<input type="text" class="search f14 pl35 fl" name="kw" id="search" value="开心麻花" onkeydown="if(event.keyCode==13){document.getElementById('searchFrom').submit()}">
+		</fieldset>
+	</form>
+	<div class="fl f16 ml15 mt5">
+		<div class="fl mr15 mt20">订票电话:<span class="bookphone">400-880-2880</span></div>
+	</div>
+	<div class="clear"></div>
+	<span class="fr pt10 dlform"><a href="https://www.chinaticket.com/register.html" style="padding-right:0;" rel="nofollow">注册</a> | <a href="https://www.chinaticket.com/login.html" rel="nofollow">登录</a>  </span>
+	<div id="area" class="area fl ml15 pr">
+		<a href="https://www.chinaticket.com" class="fl">全国</a><img class="ml5 fl mt2" src="https://www.chinaticket.com/imgs/select_area.gif" />
+		<div id="area-block">
+			<div class="area_f">
+				<a href="https://www.chinaticket.com/" onclick="setCookie('pc_cookie_city', '', 30, '/', '.chinaticket.com', '');">全国</a>
+			</div>
+			<ul class="area_k">
+																		<li><a href="https://www.chinaticket.com/beijing/" title="查看北京地区票务信息" >北京</a></li>
+																											<li><a href="https://www.chinaticket.com/shanghai/" title="查看上海地区票务信息" >上海</a></li>
+																											<li><a href="https://www.chinaticket.com/tianjin/" title="查看天津地区票务信息" >天津</a></li>
+																											<li><a href="https://www.chinaticket.com/chongqing/" title="查看重庆地区票务信息" >重庆</a></li>
+																											<li><a href="https://www.chinaticket.com/hangzhou/" title="查看杭州地区票务信息" >杭州</a></li>
+																											<li><a href="https://www.chinaticket.com/wenzhou/" title="查看温州地区票务信息" >温州</a></li>
+																											<li><a href="https://www.chinaticket.com/jiaxing/" title="查看嘉兴地区票务信息" >嘉兴</a></li>
+																											<li><a href="https://www.chinaticket.com/huzhou/" title="查看湖州地区票务信息" >湖州</a></li>
+																											<li><a href="https://www.chinaticket.com/shaoxing/" title="查看绍兴地区票务信息" >绍兴</a></li>
+																											<li><a href="https://www.chinaticket.com/jinhua/" title="查看金华地区票务信息" >金华</a></li>
+																											<li><a href="https://www.chinaticket.com/zhoushan/" title="查看舟山地区票务信息" >舟山</a></li>
+																											<li><a href="https://www.chinaticket.com/taizhou/" title="查看台州地区票务信息" >台州</a></li>
+																											<li><a href="https://www.chinaticket.com/lishui/" title="查看丽水地区票务信息" >丽水</a></li>
+																											<li><a href="https://www.chinaticket.com/ningbo/" title="查看宁波地区票务信息" >宁波</a></li>
+																											<li><a href="https://www.chinaticket.com/nanjing/" title="查看南京地区票务信息" >南京</a></li>
+																											<li><a href="https://www.chinaticket.com/suzhou/" title="查看苏州地区票务信息" >苏州</a></li>
+																											<li><a href="https://www.chinaticket.com/changzhou/" title="查看常州地区票务信息" >常州</a></li>
+																											<li><a href="https://www.chinaticket.com/wuxi/" title="查看无锡地区票务信息" >无锡</a></li>
+																											<li><a href="https://www.chinaticket.com/xuzhou/" title="查看徐州地区票务信息" >徐州</a></li>
+																											<li><a href="https://www.chinaticket.com/nantong/" title="查看南通地区票务信息" >南通</a></li>
+																											<li><a href="https://www.chinaticket.com/yancheng/" title="查看盐城地区票务信息" >盐城</a></li>
+																											<li><a href="https://www.chinaticket.com/yangzhou/" title="查看扬州地区票务信息" >扬州</a></li>
+																											<li><a href="https://www.chinaticket.com/zhenjiang/" title="查看镇江地区票务信息" >镇江</a></li>
+																											<li><a href="https://www.chinaticket.com/suqian/" title="查看宿迁地区票务信息" >宿迁</a></li>
+																											<li><a href="https://www.chinaticket.com/shijiazhuang/" title="查看石家庄地区票务信息" >石家庄</a></li>
+																											<li><a href="https://www.chinaticket.com/tangshan/" title="查看唐山地区票务信息" >唐山</a></li>
+																											<li><a href="https://www.chinaticket.com/qinhuangdao/" title="查看秦皇岛地区票务信息" >秦皇岛</a></li>
+																											<li><a href="https://www.chinaticket.com/handan/" title="查看邯郸地区票务信息" >邯郸</a></li>
+																											<li><a href="https://www.chinaticket.com/xingtai/" title="查看邢台地区票务信息" >邢台</a></li>
+																											<li><a href="https://www.chinaticket.com/baoding/" title="查看保定地区票务信息" >保定</a></li>
+																											<li><a href="https://www.chinaticket.com/zhangjiakou/" title="查看张家口地区票务信息" >张家口</a></li>
+																											<li><a href="https://www.chinaticket.com/cangzhou/" title="查看沧州地区票务信息" >沧州</a></li>
+																											<li><a href="https://www.chinaticket.com/langfang/" title="查看廊坊地区票务信息" >廊坊</a></li>
+																											<li><a href="https://www.chinaticket.com/hengshui/" title="查看衡水地区票务信息" >衡水</a></li>
+																											<li><a href="https://www.chinaticket.com/taiyuan/" title="查看太原地区票务信息" >太原</a></li>
+																																																																			<li><a href="https://www.chinaticket.com/baotou/" title="查看包头地区票务信息" >包头</a></li>
+																											<li><a href="https://www.chinaticket.com/eerduosi/" title="查看鄂尔多斯地区票务信息" >鄂尔多斯</a></li>
+																											<li><a href="https://www.chinaticket.com/xinganmeng/" title="查看兴安盟地区票务信息" >兴安盟</a></li>
+																											<li><a href="https://www.chinaticket.com/shenyang/" title="查看沈阳地区票务信息" >沈阳</a></li>
+																											<li><a href="https://www.chinaticket.com/dalian/" title="查看大连地区票务信息" >大连</a></li>
+																											<li><a href="https://www.chinaticket.com/anshan/" title="查看鞍山地区票务信息" >鞍山</a></li>
+																											<li><a href="https://www.chinaticket.com/yingkou/" title="查看营口地区票务信息" >营口</a></li>
+																											<li><a href="https://www.chinaticket.com/liaoyang/" title="查看辽阳地区票务信息" >辽阳</a></li>
+																											<li><a href="https://www.chinaticket.com/chaoyang/" title="查看朝阳地区票务信息" >朝阳</a></li>
+																											<li><a href="https://www.chinaticket.com/changchun/" title="查看长春地区票务信息" >长春</a></li>
+																											<li><a href="https://www.chinaticket.com/jilinshi/" title="查看吉林地区票务信息" >吉林</a></li>
+																											<li><a href="https://www.chinaticket.com/tonghua/" title="查看通化地区票务信息" >通化</a></li>
+																											<li><a href="https://www.chinaticket.com/mudanjiang/" title="查看牡丹江地区票务信息" >牡丹江</a></li>
+																											<li><a href="https://www.chinaticket.com/haerbing/" title="查看哈尔滨地区票务信息" >哈尔滨</a></li>
+																											<li><a href="https://www.chinaticket.com/hefei/" title="查看合肥地区票务信息" >合肥</a></li>
+																											<li><a href="https://www.chinaticket.com/wuhu/" title="查看芜湖地区票务信息" >芜湖</a></li>
+																											<li><a href="https://www.chinaticket.com/bengbu/" title="查看蚌埠地区票务信息" >蚌埠</a></li>
+																											<li><a href="https://www.chinaticket.com/maanshan/" title="查看马鞍山地区票务信息" >马鞍山</a></li>
+																											<li><a href="https://www.chinaticket.com/anqing/" title="查看安庆地区票务信息" >安庆</a></li>
+																											<li><a href="https://www.chinaticket.com/fuyang/" title="查看阜阳地区票务信息" >阜阳</a></li>
+																											<li><a href="https://www.chinaticket.com/xiamen/" title="查看厦门地区票务信息" >厦门</a></li>
+																											<li><a href="https://www.chinaticket.com/fuzhou/" title="查看福州地区票务信息" >福州</a></li>
+																											<li><a href="https://www.chinaticket.com/quanzhou/" title="查看泉州地区票务信息" >泉州</a></li>
+																											<li><a href="https://www.chinaticket.com/ningde/" title="查看宁德地区票务信息" >宁德</a></li>
+																											<li><a href="https://www.chinaticket.com/nanchang/" title="查看南昌地区票务信息" >南昌</a></li>
+																											<li><a href="https://www.chinaticket.com/ganzhou/" title="查看赣州地区票务信息" >赣州</a></li>
+																											<li><a href="https://www.chinaticket.com/jian/" title="查看吉安地区票务信息" >吉安</a></li>
+																											<li><a href="https://www.chinaticket.com/jaingxiyichun/" title="查看宜春地区票务信息" >宜春</a></li>
+																											<li><a href="https://www.chinaticket.com/qingdao/" title="查看青岛地区票务信息" >青岛</a></li>
+																											<li><a href="https://www.chinaticket.com/jinan/" title="查看济南地区票务信息" >济南</a></li>
+																											<li><a href="https://www.chinaticket.com/zibo/" title="查看淄博地区票务信息" >淄博</a></li>
+																											<li><a href="https://www.chinaticket.com/yantai/" title="查看烟台地区票务信息" >烟台</a></li>
+																											<li><a href="https://www.chinaticket.com/weifang/" title="查看潍坊地区票务信息" >潍坊</a></li>
+																											<li><a href="https://www.chinaticket.com/jining/" title="查看济宁地区票务信息" >济宁</a></li>
+																											<li><a href="https://www.chinaticket.com/taian/" title="查看泰安地区票务信息" >泰安</a></li>
+																											<li><a href="https://www.chinaticket.com/linyi/" title="查看临沂地区票务信息" >临沂</a></li>
+																											<li><a href="https://www.chinaticket.com/liaocheng/" title="查看聊城地区票务信息" >聊城</a></li>
+																											<li><a href="https://www.chinaticket.com/binzhou/" title="查看滨州地区票务信息" >滨州</a></li>
+																											<li><a href="https://www.chinaticket.com/heze/" title="查看菏泽地区票务信息" >菏泽</a></li>
+																											<li><a href="https://www.chinaticket.com/zhengzhou/" title="查看郑州地区票务信息" >郑州</a></li>
+																											<li><a href="https://www.chinaticket.com/luoyang/" title="查看洛阳地区票务信息" >洛阳</a></li>
+																											<li><a href="https://www.chinaticket.com/xinxiang/" title="查看新乡地区票务信息" >新乡</a></li>
+																											<li><a href="https://www.chinaticket.com/nanyang/" title="查看南阳地区票务信息" >南阳</a></li>
+																											<li><a href="https://www.chinaticket.com/wuhan/" title="查看武汉地区票务信息" >武汉</a></li>
+																											<li><a href="https://www.chinaticket.com/jingzhou/" title="查看荆州地区票务信息" >荆州</a></li>
+																											<li><a href="https://www.chinaticket.com/yichang/" title="查看宜昌地区票务信息" >宜昌</a></li>
+																											<li><a href="https://www.chinaticket.com/huanggang/" title="查看黄冈地区票务信息" >黄冈</a></li>
+																											<li><a href="https://www.chinaticket.com/xiangyang/" title="查看襄阳地区票务信息" >襄阳</a></li>
+																											<li><a href="https://www.chinaticket.com/changsha/" title="查看长沙地区票务信息" >长沙</a></li>
+																											<li><a href="https://www.chinaticket.com/xiangtan/" title="查看湘潭地区票务信息" >湘潭</a></li>
+																											<li><a href="https://www.chinaticket.com/ZZ/" title="查看株洲地区票务信息" >株洲</a></li>
+																											<li><a href="https://www.chinaticket.com/guangzhou/" title="查看广州地区票务信息" >广州</a></li>
+																											<li><a href="https://www.chinaticket.com/shenzhen/" title="查看深圳地区票务信息" >深圳</a></li>
+																											<li><a href="https://www.chinaticket.com/foshan/" title="查看佛山地区票务信息" >佛山</a></li>
+																											<li><a href="https://www.chinaticket.com/dongguan/" title="查看东莞地区票务信息" >东莞</a></li>
+																											<li><a href="https://www.chinaticket.com/zhuhai/" title="查看珠海地区票务信息" >珠海</a></li>
+																											<li><a href="https://www.chinaticket.com/shantou/" title="查看汕头地区票务信息" >汕头</a></li>
+																											<li><a href="https://www.chinaticket.com/jiangmen/" title="查看江门地区票务信息" >江门</a></li>
+																											<li><a href="https://www.chinaticket.com/huizhou/" title="查看惠州地区票务信息" >惠州</a></li>
+																											<li><a href="https://www.chinaticket.com/heyuan/" title="查看河源地区票务信息" >河源</a></li>
+																											<li><a href="https://www.chinaticket.com/zhongshan/" title="查看中山地区票务信息" >中山</a></li>
+																											<li><a href="https://www.chinaticket.com/chaozhou/" title="查看潮州地区票务信息" >潮州</a></li>
+																											<li><a href="https://www.chinaticket.com/nanning/" title="查看南宁地区票务信息" >南宁</a></li>
+																											<li><a href="https://www.chinaticket.com/LZ/" title="查看柳州地区票务信息" >柳州</a></li>
+																											<li><a href="https://www.chinaticket.com/haikou/" title="查看海口地区票务信息" >海口</a></li>
+																											<li><a href="https://www.chinaticket.com/sanya/" title="查看三亚地区票务信息" >三亚</a></li>
+																											<li><a href="https://www.chinaticket.com/wanning/" title="查看万宁地区票务信息" >万宁</a></li>
+																											<li><a href="https://www.chinaticket.com/lingshui/" title="查看陵水地区票务信息" >陵水</a></li>
+																											<li><a href="https://www.chinaticket.com/chengdu/" title="查看成都地区票务信息" >成都</a></li>
+																											<li><a href="https://www.chinaticket.com/leshan/" title="查看乐山地区票务信息" >乐山</a></li>
+																											<li><a href="https://www.chinaticket.com/guangan/" title="查看广安地区票务信息" >广安</a></li>
+																											<li><a href="https://www.chinaticket.com/dazhou/" title="查看达州地区票务信息" >达州</a></li>
+																											<li><a href="https://www.chinaticket.com/guiyang/" title="查看贵阳地区票务信息" >贵阳</a></li>
+																											<li><a href="https://www.chinaticket.com/zunyi/" title="查看遵义地区票务信息" >遵义</a></li>
+																											<li><a href="https://www.chinaticket.com/liupanshuishi/" title="查看六盘水市地区票务信息" >六盘水市</a></li>
+																											<li><a href="https://www.chinaticket.com/kunming/" title="查看昆明地区票务信息" >昆明</a></li>
+																											<li><a href="https://www.chinaticket.com/lasa/" title="查看拉萨地区票务信息" >拉萨</a></li>
+																											<li><a href="https://www.chinaticket.com/xian/" title="查看西安地区票务信息" >西安</a></li>
+																											<li><a href="https://www.chinaticket.com/yanan/" title="查看延安地区票务信息" >延安</a></li>
+																											<li><a href="https://www.chinaticket.com/lanzhou/" title="查看兰州地区票务信息" >兰州</a></li>
+																											<li><a href="https://www.chinaticket.com/jiuquan/" title="查看酒泉地区票务信息" >酒泉</a></li>
+																											<li><a href="https://www.chinaticket.com/yinchuan/" title="查看银川地区票务信息" >银川</a></li>
+																											<li><a href="https://www.chinaticket.com/wulumuqi/" title="查看乌鲁木齐地区票务信息" >乌鲁木齐</a></li>
+																	<li><a href="https://www.chinaticket.com/huhehaote/" title="查看乌鲁木齐地区票务信息" >呼和浩特</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<ul id="menu" class="mt5 fl">
+		<li id="home" class="menu_bg pr"><a href="https://www.chinaticket.com/">首页</a></li>
+				<li class="menu_bg line"></li>
+		<li id="wenyi" class="menu_bg pr">
+			<a href="https://www.chinaticket.com/wenyi/">文艺演出</a>
+			<div id="wenyi_list" class="pa none downselect">
+				<div class="waikuang">
+					<div class="neikuang">
+						<ul class="first_list fl">
+														<li><a href="https://www.chinaticket.com/wenyi/yanchanghui/">演唱会</a></li>
+														<li><a href="https://www.chinaticket.com/wenyi/huaju/">话剧/舞台剧</a></li>
+														<li><a href="https://www.chinaticket.com/wenyi/yinlehui/">音乐会</a></li>
+														<li><a href="https://www.chinaticket.com/wenyi/yinleju/">音乐剧/歌剧</a></li>
+														<li><a href="https://www.chinaticket.com/wenyi/xiqu/">戏曲曲艺</a></li>
+														<li><a href="https://www.chinaticket.com/wenyi/baleiwu/">芭蕾舞/舞蹈</a></li>
+														<li><a href="https://www.chinaticket.com/wenyi/qinzijiating/">亲子家庭</a></li>
+														<li><a href="https://www.chinaticket.com/wenyi/zaji/">马戏/杂技/魔术</a></li>
+														<li><a href="https://www.chinaticket.com/wenyi/xiangshengxiaopin/">相声/小品</a></li>
+														<li><a href="https://www.chinaticket.com/wenyi/zongyijiemu/">综艺节目</a></li>
+													</ul>
+						<ul class="second_list">
+														<li><a href="https://www.chinaticket.com/view/47931.html" title="昆曲《牡丹亭》">昆曲《牡丹亭》</a></li>
+														<li><a href="https://www.chinaticket.com/view/48447.html" title="舞剧《朱鹮》">舞剧《朱鹮》</a></li>
+														<li><a href="https://www.chinaticket.com/view/48085.html" title="话剧《白鹿原》">话剧《白鹿原》</a></li>
+														<li><a href="https://www.chinaticket.com/view/48902.html" title="开心麻花《婿事待发》">开心麻花《婿事待发》</a></li>
+													</ul>
+					</div>
+				</div>
+			</div>
+		</li>
+				<li class="menu_bg line"></li>
+		<li id="tiyu" class="menu_bg pr">
+			<a href="https://www.chinaticket.com/tiyu/">体育赛事</a>
+			<div id="tiyu_list" class="pa none downselect">
+				<div class="waikuang">
+					<div class="neikuang">
+						<ul class="first_list fl">
+														<li><a href="https://www.chinaticket.com/tiyu/qiulei/">球类</a></li>
+														<li><a href="https://www.chinaticket.com/tiyu/qitalei/">其他类</a></li>
+														<li><a href="https://www.chinaticket.com/tiyu/dianjinglei/">电竞类</a></li>
+														<li><a href="https://www.chinaticket.com/tiyu/zonghesaishi/">综合赛事</a></li>
+													</ul>
+						<ul class="second_list">
+													</ul>
+					</div>
+				</div>
+			</div>
+		</li>
+				<li class="menu_bg line"></li>
+		<li id="qita" class="menu_bg curr pr">
+			<a href="https://www.chinaticket.com/qita/">其他</a>
+			<div id="qita_list" class="pa none downselect">
+				<div class="waikuang">
+					<div class="neikuang">
+						<ul class="first_list fl">
+														<li><a href="https://www.chinaticket.com/qita/dianyingpiao/">电影票</a></li>
+														<li><a href="https://www.chinaticket.com/qita/jingdianmenpiao/">景点门票</a></li>
+														<li><a href="https://www.chinaticket.com/qita/zhanlan/">展览</a></li>
+														<li><a href="https://www.chinaticket.com/qita/yundongxiuxian/">运动休闲</a></li>
+														<li><a href="https://www.chinaticket.com/qita/lipinquan/">代金券</a></li>
+														<li><a href="https://www.chinaticket.com/qita/huiyi/">会议/论坛</a></li>
+													</ul>
+						<ul class="second_list">
+														<li><a href="https://www.chinaticket.com/view/47414.html" title="多美味蛋糕卡">多美味蛋糕卡</a></li>
+														<li><a href="https://www.chinaticket.com/view/26479.html" title="中影票务通电影卡">中影票务通电影卡</a></li>
+													</ul>
+					</div>
+				</div>
+			</div>
+		</li>
+				<li class="menu_bg line"></li>
+		<li class="menu_bg"><a href="https://www.chinaticket.com/venue.html">场馆</a></li>
+		<li class="menu_bg line"></li>
+		<li class="menu_bg"><a href="https://www.chinaticket.com/rank.html">排行榜</a></li>
+		<li class="menu_bg line"></li>
+		<li class="menu_bg"><a href="https://www.chinaticket.com/calendar.html">活动日历</a></li>
+		<li class="line_end fl"></li>
+		<div class="new pa"></div>
+		<div class="car pa">
+			<span class="car_right fr"></span>
+			<span class="car_center fr"><a href="https://www.chinaticket.com/mycart.html">购物车 (0)</a></span>
+			<span class="car_left fr"></span>
+		</div>
+	</ul>
+</div>
+
+  <div id="content" class="clearfix">
+    <div class="first fl">
+      <div class="f_title"> <a href="#" class="f_title_link"></a><span class="f_title_txt">其他票务</span> </div>
+      <ul class="f_list f_last_line">
+        								<li><a href="https://www.chinaticket.com/qita/dianyingpiao/" title="电影票" class="fl">电影票</a><span class="fl active"></span></li>
+																<li><a href="https://www.chinaticket.com/qita/jingdianmenpiao/" title="景点门票">景点门票</a></li>
+																<li><a href="https://www.chinaticket.com/qita/zhanlan/" title="展览">展览</a></li>
+																<li><a href="https://www.chinaticket.com/qita/yundongxiuxian/" title="运动休闲">运动休闲</a></li>
+																<li><a href="https://www.chinaticket.com/qita/lipinquan/" title="代金券">代金券</a></li>
+																<li><a href="https://www.chinaticket.com/qita/huiyi/" title="会议/论坛">会议/论坛</a></li>
+								      </ul>
+		<div class="f_title mt10"><span class="f_title_txt">推荐场馆</span> </div>
+		<ul class="f_list_venues f_last_line">
+	        				        <li class="cg_title">
+	          北京
+	        </li>
+	        	        <li><a href="https://www.chinaticket.com/beijing/venue/97.html" target="_blank">
+	          国家大剧院演出信息
+	          </a></li>
+	        	        <li><a href="https://www.chinaticket.com/beijing/venue/72.html" target="_blank">
+	          保利剧院演出信息
+	          </a></li>
+	        	        <li><a href="https://www.chinaticket.com/beijing/venue/71.html" target="_blank">
+	          首都剧场演出信息
+	          </a></li>
+	        	        <li><a href="https://www.chinaticket.com/beijing/venue/119.html" target="_blank">
+	          蜂巢剧场演出信息
+	          </a></li>
+	        	        <li><a href="https://www.chinaticket.com/beijing/venue/96.html" target="_blank">
+	          梅兰芳大剧院演出信息
+	          </a></li>
+	        			<li class="tr pr10"><a href="https://www.chinaticket.com/beijing/venue.html">更多&gt;&gt;</a></li>
+				        				        <li class="cg_title">
+	          上海
+	        </li>
+	        	        <li><a href="https://www.chinaticket.com/shanghai/venue/125.html" target="_blank">
+	          上海大剧院演出信息
+	          </a></li>
+	        	        <li><a href="https://www.chinaticket.com/shanghai/venue/78.html" target="_blank">
+	          梅赛德斯-奔驰文化中心演出信息
+	          </a></li>
+	        			<li class="tr pr10"><a href="https://www.chinaticket.com/shanghai/venue.html">更多&gt;&gt;</a></li>
+				        		</ul>
+    </div>
+    <div class="second fl">
+      <div class="s_num">
+        <h2>电影票</h2>
+        （共6条） </div>
+      <div id="jsdate" class="s_search pr"> <span class="txt fl">筛选：</span>
+        <input type="hidden" value="" id="cityval" />
+        <span onclick="$('#cityitem-list').show();$('#venitem-list').hide();$('#top-id').hide();" id="cityselect-item" class="f_search_city fl">全国</span>
+        <div class="city_k">
+          <div id="cityitem-list" style="display:none;" class="city_list">
+            <p class="city ss-neikuang">
+							                            <a onclick="Setcity('1','beijing','北京');">
+              北京
+              </a>
+                                                        <a onclick="Setcity('3','shanghai','上海');">
+              上海
+              </a>
+                                                        <a onclick="Setcity('2','tianjin','天津');">
+              天津
+              </a>
+                                                        <a onclick="Setcity('4','chongqing','重庆');">
+              重庆
+              </a>
+                                                        <a onclick="Setcity('11','hangzhou','杭州');">
+              杭州
+              </a>
+                                                        <a onclick="Setcity('140','wenzhou','温州');">
+              温州
+              </a>
+                                                        <a onclick="Setcity('141','jiaxing','嘉兴');">
+              嘉兴
+              </a>
+                                                        <a onclick="Setcity('142','huzhou','湖州');">
+              湖州
+              </a>
+                                                        <a onclick="Setcity('143','shaoxing','绍兴');">
+              绍兴
+              </a>
+                                                        <a onclick="Setcity('144','jinhua','金华');">
+              金华
+              </a>
+                                                        <a onclick="Setcity('146','zhoushan','舟山');">
+              舟山
+              </a>
+                                                        <a onclick="Setcity('147','taizhou','台州');">
+              台州
+              </a>
+                                                        <a onclick="Setcity('148','lishui','丽水');">
+              丽水
+              </a>
+                                                        <a onclick="Setcity('421','ningbo','宁波');">
+              宁波
+              </a>
+                                                        <a onclick="Setcity('5','nanjing','南京');">
+              南京
+              </a>
+                                                        <a onclick="Setcity('14','suzhou','苏州');">
+              苏州
+              </a>
+                                                        <a onclick="Setcity('29','changzhou','常州');">
+              常州
+              </a>
+                                                        <a onclick="Setcity('130','wuxi','无锡');">
+              无锡
+              </a>
+                                                        <a onclick="Setcity('131','xuzhou','徐州');">
+              徐州
+              </a>
+                                                        <a onclick="Setcity('132','nantong','南通');">
+              南通
+              </a>
+                                                        <a onclick="Setcity('135','yancheng','盐城');">
+              盐城
+              </a>
+                                                        <a onclick="Setcity('136','yangzhou','扬州');">
+              扬州
+              </a>
+                                                        <a onclick="Setcity('137','zhenjiang','镇江');">
+              镇江
+              </a>
+                                                        <a onclick="Setcity('139','suqian','宿迁');">
+              宿迁
+              </a>
+                                                        <a onclick="Setcity('61','shijiazhuang','石家庄');">
+              石家庄
+              </a>
+                                                        <a onclick="Setcity('62','tangshan','唐山');">
+              唐山
+              </a>
+                                                        <a onclick="Setcity('63','qinhuangdao','秦皇岛');">
+              秦皇岛
+              </a>
+                                                        <a onclick="Setcity('64','handan','邯郸');">
+              邯郸
+              </a>
+                                                        <a onclick="Setcity('65','xingtai','邢台');">
+              邢台
+              </a>
+                                                        <a onclick="Setcity('66','baoding','保定');">
+              保定
+              </a>
+                                                        <a onclick="Setcity('67','zhangjiakou','张家口');">
+              张家口
+              </a>
+                                                        <a onclick="Setcity('69','cangzhou','沧州');">
+              沧州
+              </a>
+                                                        <a onclick="Setcity('70','langfang','廊坊');">
+              廊坊
+              </a>
+                                                        <a onclick="Setcity('71','hengshui','衡水');">
+              衡水
+              </a>
+                                                        <a onclick="Setcity('72','taiyuan','太原');">
+              太原
+              </a>
+                                                        <a onclick="Setcity('83','huhehaote','呼和浩特');">
+              呼和浩特
+              </a>
+                                                        <a onclick="Setcity('84','baotou','包头');">
+              包头
+              </a>
+                                                        <a onclick="Setcity('87','eerduosi','鄂尔多斯');">
+              鄂尔多斯
+              </a>
+                                                        <a onclick="Setcity('91','xinganmeng','兴安盟');">
+              兴安盟
+              </a>
+                                                        <a onclick="Setcity('26','shenyang','沈阳');">
+              沈阳
+              </a>
+                                                        <a onclick="Setcity('95','dalian','大连');">
+              大连
+              </a>
+                                                        <a onclick="Setcity('96','anshan','鞍山');">
+              鞍山
+              </a>
+                                                        <a onclick="Setcity('101','yingkou','营口');">
+              营口
+              </a>
+                                                        <a onclick="Setcity('102','liaoyang','辽阳');">
+              辽阳
+              </a>
+                                                        <a onclick="Setcity('105','chaoyang','朝阳');">
+              朝阳
+              </a>
+                                                        <a onclick="Setcity('108','changchun','长春');">
+              长春
+              </a>
+                                                        <a onclick="Setcity('109','jilinshi','吉林');">
+              吉林
+              </a>
+                                                        <a onclick="Setcity('112','tonghua','通化');">
+              通化
+              </a>
+                                                        <a onclick="Setcity('126','mudanjiang','牡丹江');">
+              牡丹江
+              </a>
+                                                        <a onclick="Setcity('427','haerbing','哈尔滨');">
+              哈尔滨
+              </a>
+                                                        <a onclick="Setcity('149','hefei','合肥');">
+              合肥
+              </a>
+                                                        <a onclick="Setcity('150','wuhu','芜湖');">
+              芜湖
+              </a>
+                                                        <a onclick="Setcity('151','bengbu','蚌埠');">
+              蚌埠
+              </a>
+                                                        <a onclick="Setcity('153','maanshan','马鞍山');">
+              马鞍山
+              </a>
+                                                        <a onclick="Setcity('156','anqing','安庆');">
+              安庆
+              </a>
+                                                        <a onclick="Setcity('159','fuyang','阜阳');">
+              阜阳
+              </a>
+                                                        <a onclick="Setcity('15','xiamen','厦门');">
+              厦门
+              </a>
+                                                        <a onclick="Setcity('22','fuzhou','福州');">
+              福州
+              </a>
+                                                        <a onclick="Setcity('27','quanzhou','泉州');">
+              泉州
+              </a>
+                                                        <a onclick="Setcity('416','ningde','宁德');">
+              宁德
+              </a>
+                                                        <a onclick="Setcity('172','nanchang','南昌');">
+              南昌
+              </a>
+                                                        <a onclick="Setcity('178','ganzhou','赣州');">
+              赣州
+              </a>
+                                                        <a onclick="Setcity('179','jian','吉安');">
+              吉安
+              </a>
+                                                        <a onclick="Setcity('180','jaingxiyichun','宜春');">
+              宜春
+              </a>
+                                                        <a onclick="Setcity('16','qingdao','青岛');">
+              青岛
+              </a>
+                                                        <a onclick="Setcity('28','jinan','济南');">
+              济南
+              </a>
+                                                        <a onclick="Setcity('183','zibo','淄博');">
+              淄博
+              </a>
+                                                        <a onclick="Setcity('186','yantai','烟台');">
+              烟台
+              </a>
+                                                        <a onclick="Setcity('187','weifang','潍坊');">
+              潍坊
+              </a>
+                                                        <a onclick="Setcity('189','jining','济宁');">
+              济宁
+              </a>
+                                                        <a onclick="Setcity('190','taian','泰安');">
+              泰安
+              </a>
+                                                        <a onclick="Setcity('193','linyi','临沂');">
+              临沂
+              </a>
+                                                        <a onclick="Setcity('195','liaocheng','聊城');">
+              聊城
+              </a>
+                                                        <a onclick="Setcity('196','binzhou','滨州');">
+              滨州
+              </a>
+                                                        <a onclick="Setcity('197','heze','菏泽');">
+              菏泽
+              </a>
+                                                        <a onclick="Setcity('19','zhengzhou','郑州');">
+              郑州
+              </a>
+                                                        <a onclick="Setcity('30','luoyang','洛阳');">
+              洛阳
+              </a>
+                                                        <a onclick="Setcity('203','xinxiang','新乡');">
+              新乡
+              </a>
+                                                        <a onclick="Setcity('209','nanyang','南阳');">
+              南阳
+              </a>
+                                                        <a onclick="Setcity('10','wuhan','武汉');">
+              武汉
+              </a>
+                                                        <a onclick="Setcity('217','jingzhou','荆州');">
+              荆州
+              </a>
+                                                        <a onclick="Setcity('218','yichang','宜昌');">
+              宜昌
+              </a>
+                                                        <a onclick="Setcity('222','huanggang','黄冈');">
+              黄冈
+              </a>
+                                                        <a onclick="Setcity('433','xiangyang','襄阳');">
+              襄阳
+              </a>
+                                                        <a onclick="Setcity('20','changsha','长沙');">
+              长沙
+              </a>
+                                                        <a onclick="Setcity('231','xiangtan','湘潭');">
+              湘潭
+              </a>
+                                                        <a onclick="Setcity('428','ZZ','株洲');">
+              株洲
+              </a>
+                                                        <a onclick="Setcity('6','guangzhou','广州');">
+              广州
+              </a>
+                                                        <a onclick="Setcity('9','shenzhen','深圳');">
+              深圳
+              </a>
+                                                        <a onclick="Setcity('21','foshan','佛山');">
+              佛山
+              </a>
+                                                        <a onclick="Setcity('25','dongguan','东莞');">
+              东莞
+              </a>
+                                                        <a onclick="Setcity('243','zhuhai','珠海');">
+              珠海
+              </a>
+                                                        <a onclick="Setcity('244','shantou','汕头');">
+              汕头
+              </a>
+                                                        <a onclick="Setcity('246','jiangmen','江门');">
+              江门
+              </a>
+                                                        <a onclick="Setcity('250','huizhou','惠州');">
+              惠州
+              </a>
+                                                        <a onclick="Setcity('253','heyuan','河源');">
+              河源
+              </a>
+                                                        <a onclick="Setcity('256','zhongshan','中山');">
+              中山
+              </a>
+                                                        <a onclick="Setcity('257','chaozhou','潮州');">
+              潮州
+              </a>
+                                                        <a onclick="Setcity('24','nanning','南宁');">
+              南宁
+              </a>
+                                                        <a onclick="Setcity('430','LZ','柳州');">
+              柳州
+              </a>
+                                                        <a onclick="Setcity('273','haikou','海口');">
+              海口
+              </a>
+                                                        <a onclick="Setcity('274','sanya','三亚');">
+              三亚
+              </a>
+                                                        <a onclick="Setcity('277','wanning','万宁');">
+              万宁
+              </a>
+                                                        <a onclick="Setcity('288','lingshui','陵水');">
+              陵水
+              </a>
+                                                        <a onclick="Setcity('13','chengdu','成都');">
+              成都
+              </a>
+                                                        <a onclick="Setcity('300','leshan','乐山');">
+              乐山
+              </a>
+                                                        <a onclick="Setcity('303','guangan','广安');">
+              广安
+              </a>
+                                                        <a onclick="Setcity('304','dazhou','达州');">
+              达州
+              </a>
+                                                        <a onclick="Setcity('23','guiyang','贵阳');">
+              贵阳
+              </a>
+                                                        <a onclick="Setcity('313','zunyi','遵义');">
+              遵义
+              </a>
+                                                        <a onclick="Setcity('417','liupanshuishi','六盘水市');">
+              六盘水市
+              </a>
+                                                        <a onclick="Setcity('18','kunming','昆明');">
+              昆明
+              </a>
+                                                        <a onclick="Setcity('335','lasa','拉萨');">
+              拉萨
+              </a>
+                                                        <a onclick="Setcity('12','xian','西安');">
+              西安
+              </a>
+                                                        <a onclick="Setcity('346','yanan','延安');">
+              延安
+              </a>
+                                                        <a onclick="Setcity('351','lanzhou','兰州');">
+              兰州
+              </a>
+                                                        <a onclick="Setcity('359','jiuquan','酒泉');">
+              酒泉
+              </a>
+                                                        <a onclick="Setcity('373','yinchuan','银川');">
+              银川
+              </a>
+                                                        <a onclick="Setcity('378','wulumuqi','乌鲁木齐');">
+              乌鲁木齐
+              </a>
+                            						</p>
+          </div>
+        </div>
+        <input type="hidden" name="vid" value="" id="venues">
+        <span onclick="if(!$('#cityval').val()){alert('请先选择城市！');}else{$('#venitem-list').show();}$('#cityitem-list').hide();$('#top-id').hide();" id="venselect-item" class="s_search_venues fl">全部场馆</span>
+        <div style="position:absolute;top:0;left:0;">
+          <div id="venitem-list" style="display:none" class="venues_list">
+            <p class="venues ss-neikuang" id="venues_list">
+							              <a onclick="$('#venues').val('');$('#venitem-list').hide();$('#venselect-item').html('');"></a>
+                            <a onclick="$('#venues').val('');$('#venitem-list').hide();$('#venselect-item').html('');"></a>
+              						</p>
+          </div>
+        </div>
+        <input type="text" value="选择时间" onclick="$('#top-id').show();$('#cityitem-list').hide();$('#venitem-list').hide();" class="s_search_time fl" />
+				<input type="hidden" id="timeval" name="date" value=""/>
+        <a onclick="return zhSearch();" class="s_search_go fl"></a>
+			</div>
+      <div class="s_ticket_title"> <span class="fr mr10"><a href="https://www.chinaticket.com/qita/dianyingpiao/?o=2" class="active">按热门</a> | <a href="https://www.chinaticket.com/qita/dianyingpiao/?o=1">按更新</a> | <a href="https://www.chinaticket.com/qita/dianyingpiao/?o=3">按时间</a></span> </div>
+						<div class="s_ticket_list">
+			  			  <ul>
+          <li class="ticket_list_tu fl">
+			<img src="https://img.chinaticket.com/admin/2013/01/06/e3f1d6f414a3f189_60_85.jpg" alt="联合电影观摩兑换券" class="s_tu_img" />
+						<a href="https://www.chinaticket.com/view/5061.html" title="联合电影观摩兑换券">联合电影观摩兑换券 </a>
+			            <span>时间：常年</span>
+			<span>地点：上海</span>
+	        <span>票价：50.00 - 70.00</span>
+		</li>
+        </ul>
+        <div class="s_ticket_listh_height"></div>							  <ul>
+          <li class="ticket_list_tu fl">
+			<img src="https://img.chinaticket.com/admin/2012/12/04/3c4f1b7a2214c9ed_60_85.jpg" alt="看购电影金卡" class="s_tu_img" />
+						<a href="https://www.chinaticket.com/view/10532.html" title="看购电影金卡">看购电影金卡 </a>
+			            <span>时间：常年</span>
+			<span>地点：上海</span>
+	        <span>票价：50.00 - 500.00</span>
+		</li>
+        </ul>
+        <div class="s_ticket_listh_height"></div>							  <ul>
+          <li class="ticket_list_tu fl">
+			<img src="https://img.chinaticket.com/admin/2012/12/04/cf85a9a6c379ff8d_60_85.jpg" alt="看购电影绿卡" class="s_tu_img" />
+						<a href="https://www.chinaticket.com/view/10531.html" title="看购电影绿卡">看购电影绿卡 </a>
+			            <span>时间：常年</span>
+			<span>地点：上海</span>
+	        <span>票价：40.00 - 444.00</span>
+		</li>
+        </ul>
+        <div class="s_ticket_listh_height"></div>							  <ul>
+          <li class="ticket_list_tu fl">
+			<img src="https://img.chinaticket.com/admin/2016/05/20/5cc4e03509465845_60_85.jpg" alt="中影票务通电影卡&电影券" class="s_tu_img" />
+						<a href="https://www.chinaticket.com/view/26479.html" title="中影票务通电影卡&电影券">中影票务通电影卡&电影券 </a>
+			            <span>时间：常年</span>
+			<span>地点：北京</span>
+	        <span>票价：100.00 - 9500.00</span>
+		</li>
+        </ul>
+        <div class="s_ticket_listh_height"></div>							  <ul>
+          <li class="ticket_list_tu fl">
+			<img src="https://img.chinaticket.com/admin/2014/03/20/69ee480e4896a499_60_85.jpg" alt="上海电影券B券（52家影院全场兑不贴钱）" class="s_tu_img" />
+						<a href="https://www.chinaticket.com/view/15505.html" title="上海电影券B券（52家影院全场兑不贴钱）">上海电影券B券（52家影院全场兑不贴钱） </a>
+			            <span>时间：常年~常年</span>
+			<span>地点：上海</span>
+	        <span>票价：60.00 - 150.00</span>
+		</li>
+        </ul>
+        <div class="s_ticket_listh_height"></div>							  <ul>
+          <li class="ticket_list_tu fl">
+			<img src="https://img.chinaticket.com/admin/2016/01/06/24cee7ed6a35a8c4_60_85.jpg" alt="中影票务通一票通45元" class="s_tu_img" />
+						<a href="https://www.chinaticket.com/view/24529.html" title="中影票务通一票通45元">中影票务通一票通45元 </a>
+			            <span>时间：常年</span>
+			<span>地点：北京</span>
+	        <span>票价：225.00 - 7920.00</span>
+		</li>
+        </ul>
+        									      </div>
+			
+      <div class="s_ticket_list_footer">
+	 			<span>查看更多：</span><a href="https://www.chinaticket.com/nanjing/wenyi/yanchanghui/">演唱会</a><a href="https://www.chinaticket.com/nanjing/wenyi/huaju/">话剧</a><a href="https://www.chinaticket.com/nanjing/wenyi/yinlehui/">音乐会</a><a href="https://www.chinaticket.com/nanjing/tiyu/">体育赛事</a>
+	</div>
+
+    </div>
+    <div class="third fl">
+      <div class="t_title f14">电影票推荐</div>
+      			      <a href="https://www.chinaticket.com/view/10531.html" target="_blank" title="看购电影绿卡"><img src="https://img.chinaticket.com/admin/2012/12/04/cf85a9a6c379ff8d_180_253.jpg" alt="看购电影绿卡" class="t_img" /></a>
+            <a href="https://www.chinaticket.com/view/5061.html" target="_blank" title="联合电影观摩兑换券"><img src="https://img.chinaticket.com/admin/2013/01/06/e3f1d6f414a3f189_180_253.jpg" alt="联合电影观摩兑换券" class="t_img" /></a>
+      			 		</div>
+  </div>
+	<div id="footer">
+	<p><a href="https://www.chinaticket.com/faq/43.html" target="_blank" rel="nofollow">交易条款</a> | <a href="https://www.chinaticket.com/faq/44.html" target="_blank" rel="nofollow">安全保证</a> | <a href="https://www.chinaticket.com/faq/42.html" target="_blank" rel="nofollow">关于我们</a> | <a href="https://www.chinaticket.com/faq/45.html" target="_blank" rel="nofollow">联系我们</a></p>
+	<p>Copyright © 2001-2017 by chinaticket.com Inc. All Rights Reserved 中票在线(北京)票务有限公司 版权所有</p>
+	<p><a href="https://beian.miit.gov.cn/" target="_blank">京ICP备05021118号-1</a>&nbsp;&nbsp;&nbsp;京公网安备11010102000024号</p>
+</div>
+
+</div>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+
+		$("#soso_submit").click(function() {
+			$("#searchFrom").submit();
+			return true;
+		});
+
+		$("#search").focus(function(){
+			$("#search").val('');
+		});
+		$("#search").blur(function(){
+			if($("#search").val()==''){
+				$("#search").val('开心麻花');
+			}
+		});
+		$("#area").mousemove(function() {
+			$("#area").css({background:"#2971bd"});
+			$("#area-block").show();
+		});
+		$("#area-block").bind("mouseleave",function() {
+			$("#area").css({background:"#000033"});
+			$("#area-block").hide();
+		});
+
+		$("#wenyi").mousemove(function() {
+			$("#wenyi").css({background:"url('https://www.chinaticket.com/imgs/menu_select.gif') repeat-x"});
+			$("#wenyi_list").show();
+		});
+		$("#wenyi").bind("mouseleave",function() {
+			$("#wenyi").css({background:"url('https://www.chinaticket.com/imgs/menu_down.gif') repeat-x"});
+			$("#wenyi_list").hide();
+		});
+		$("#tiyu").mousemove(function() {
+			$("#tiyu").css({background:"url('https://www.chinaticket.com/imgs/menu_select.gif') repeat-x"});
+			$("#tiyu_list").show();
+		});
+		$("#tiyu").bind("mouseleave",function() {
+			$("#tiyu").css({background:"url('https://www.chinaticket.com/imgs/menu_down.gif') repeat-x"});
+			$("#tiyu_list").hide();
+		});
+		$("#qita").mousemove(function() {
+			$("#qita").css({background:"url('https://www.chinaticket.com/imgs/menu_select.gif') repeat-x"});
+			$("#qita_list").show();
+		});
+		$("#qita").bind("mouseleave",function() {
+			$("#qita").css({background:"url('https://www.chinaticket.com/imgs/menu_down.gif') repeat-x"});
+			$("#qita_list").hide();
+		});
+	});
+	function setCookie(name, value, expires, path, domain, secure){
+	    var today = new Date();
+	    today.setTime(today.getTime());
+	    if(expires){
+	        expires = expires * 1000 * 60 * 60 * 24;
+	    }
+	    var expires_date = new Date(today.getTime() +(expires));
+	    document.cookie = name + '=' + escape(value)
+	    +((expires) ? ';expires=' + expires_date.toGMTString() : '')
+	    +((path) ? ';path=' + path : '')
+	    +((domain) ? ';domain=' + domain : '')
+	    +((secure) ? ';secure' : '');
+	}
+</script>
+<div style="display:none;"><script src="https://s5.cnzz.com/stat.php?id=1440987&web_id=1440987&show=pic1" language="JavaScript"></script>
+<script type="text/javascript">
+	//baidu
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0efcc3f0f7fe230f7855f7039fb7c476' type='text/javascript'%3E%3C/script%3E"));
+	//google
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24945682-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</div>
+</body>
+</html>
+

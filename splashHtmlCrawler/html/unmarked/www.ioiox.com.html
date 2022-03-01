@@ -1,0 +1,1706 @@
+<!DOCTYPE HTML>
+<html class="small-scroll-bar no-js bg" lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta charset="UTF-8">
+    <!--IE 8浏览器的页面渲染方式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <!--默认使用极速内核：针对国内浏览器产商-->
+    <meta name="renderer" content="webkit">
+    <!--chrome Android 地址栏颜色-->
+            <meta name="theme-color" content="#3a3f51"/>
+    
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+    <title>群晖NAS使用Docker部署rrshareweb人人影视Web版教程 - 思有云 - IOIOX</title>
+            <link rel="icon" type="image/ico" href="/favicon.ico">
+        <meta name="description" content="前言rrshareweb人人影视Web版是一款可以部署在Docker中的影视下载工具,我们可以把它部署到群晖NAS或者Linux服务器中,通过域名远程访问Web端管理下载.rrshare早前是使..." />
+<meta name="keywords" content="Synology,群晖,Docker" />
+<meta name="generator" content="Typecho 1.1/17.10.30" />
+<meta name="template" content="handsome" />
+<link rel="pingback" href="https://www.ioiox.com/action/xmlrpc" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.ioiox.com/action/xmlrpc?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.ioiox.com/action/xmlrpc?wlw" />
+<link rel="alternate" type="application/rss+xml" title="群晖NAS使用Docker部署rrshareweb人人影视Web版教程 &raquo; 思有云 - IOIOX &raquo; RSS 2.0" href="https://www.ioiox.com/feed/archives/40.html" />
+<link rel="alternate" type="application/rdf+xml" title="群晖NAS使用Docker部署rrshareweb人人影视Web版教程 &raquo; 思有云 - IOIOX &raquo; RSS 1.0" href="https://www.ioiox.com/feed/rss/archives/40.html" />
+<link rel="alternate" type="application/atom+xml" title="群晖NAS使用Docker部署rrshareweb人人影视Web版教程 &raquo; 思有云 - IOIOX &raquo; ATOM 1.0" href="https://www.ioiox.com/feed/atom/archives/40.html" />
+
+
+    
+    <script type="text/javascript">
+
+        window['LocalConst'] = {
+            //base
+            BASE_SCRIPT_URL: 'https://www.ioiox.com/usr/themes/handsome/',
+            BLOG_URL: 'https://www.ioiox.com/',
+            BLOG_URL_N: 'https://www.ioiox.com',
+            STATIC_PATH: 'https://static.ioiox.com/usr/themes/handsome/assets/',
+            BLOG_URL_PHP: 'https://www.ioiox.com/',
+            VDITOR_CDN: 'https://cdn.jsdelivr.net/npm/vditor@3.8.4',
+            MATHJAX_SVG_CDN: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.min.js',
+            THEME_VERSION: '8.2.02021030201',
+            THEME_VERSION_PRO: '8.2.0',
+            DEBUG_MODE: '0',
+
+            //comment
+            COMMENT_NAME_INFO: '必须填写昵称或姓名',
+            COMMENT_EMAIL_INFO: '必须填写电子邮箱地址',
+            COMMENT_EMAIL_LEGAL_INFO: '邮箱地址不合法',
+            COMMENT_CONTENT_INFO: '必须填写评论内容',
+            COMMENT_SUBMIT_ERROR: '提交失败，请重试！',
+            COMMENT_CONTENT_LEGAL_INFO: '提交失败,评论被拦截或者进入审核区域',
+            COMMENT_CONTENT_CHECK_INFO: '发布的评论不在当前评论页，请切换到评论第一页查看',
+            COMMENT_TITLE: '评论通知',
+
+            //login
+            LOGIN_TITLE: '登录通知',
+            LOGIN_USERNAME_INFO: '必须填写用户名',
+            LOGIN_PASSWORD_INFO: '请填写密码',
+            LOGIN_SUBMIT_ERROR: '登录失败，请重新登录',
+            LOGIN_SUBMIT_INFO: '用户名或者密码错误，请重试',
+            LOGIN_SUBMIT_SUCCESS: '登录成功',
+            CLICK_TO_REFRESH: '点击以刷新页面',
+            LOGOUT_SUCCESS_REFRESH: '退出成功，正在刷新当前页面',
+
+            LOGOUT_ERROR: '退出失败，请重试',
+            LOGOUT_SUCCESS: '退出成功',
+            SUBMIT_PASSWORD_INFO: '密码错误，请重试',
+
+            //comment
+            ChANGYAN_APP_KEY: '',
+            CHANGYAN_CONF: '',
+
+            COMMENT_SYSTEM: '0',
+            COMMENT_SYSTEM_ROOT: '0',
+            COMMENT_SYSTEM_CHANGYAN: '1',
+            COMMENT_SYSTEM_OTHERS: '2',
+            EMOJI: '表情',
+            COMMENT_NEED_EMAIL: '1',
+            COMMENT_REJECT_PLACEHOLDER: '居然什么也不说，哼',
+            COMMENT_PLACEHOLDER: '说点什么吧……',
+
+            //pjax
+            IS_PJAX: '1',
+            IS_PAJX_COMMENT: '1',
+            PJAX_ANIMATE: 'default',
+            PJAX_TO_TOP: '0',
+            TO_TOP_SPEED: '100',
+
+
+            USER_COMPLETED: {"data":""},
+            VDITOR_COMPLETED: {"data":""},
+
+            //ui
+            OPERATION_NOTICE: '操作通知',
+            SCREENSHOT_BEGIN: '正在生成当前页面截图……',
+            SCREENSHOT_NOTICE: '点击顶部下载按钮保存当前卡片',
+            SCREENSHORT_ERROR: '由于图片跨域原因导致截图失败',
+            SCREENSHORT_SUCCESS: '截图成功',
+
+            //music
+            MUSIC_NOTICE: '播放通知',
+            MUSIC_FAILE: '当前音乐地址无效，自动为您播放下一首',
+            MUSIC_FAILE_END: '当前音乐地址无效',
+            MUSIC_LIST_SUCCESS: '歌单歌曲加载成功',
+            MUSIC_API: 'https://www.ioiox.com/action/handsome-meting-api?server=:server&type=:type&id=:id&auth=:auth&r=:r',
+            MUSIC_API_PARSE: 'https://www.ioiox.com/action/handsome-meting-api?do=parse',
+
+            //option
+            TOC_TITLE: '文章目录',
+            HEADER_FIX: '固定头部',
+            ASIDE_FIX: '固定导航',
+            ASIDE_FOLDED: '折叠导航',
+            ASIDE_DOCK: '置顶导航',
+            CONTAINER_BOX: '盒子模型',
+            DARK_MODE: '深色模式',
+            DARK_MODE_AUTO: '深色模式（自动）',
+            DARK_MODE_FIXED: '深色模式（固定）',
+            EDITOR_CHOICE: 'origin',
+            NO_LINK_ICO:'',
+            NO_SHOW_RIGHT_SIDE_IN_POST: '',
+
+            CDN_NAME: 'QCLOUD',
+            LAZY_LOAD: '',
+            PAGE_ANIMATE: '',
+            THEME_COLOR: '14',
+            THEME_COLOR_EDIT: 'white-white-white',
+            THEME_HEADER_FIX: '1',
+            THEME_ASIDE_FIX: '1',
+            THEME_ASIDE_FOLDED: '',
+            THEME_ASIDE_DOCK: '',
+            THEME_CONTAINER_BOX: '1',
+            THEME_HIGHLIGHT_CODE: '1',
+            THEME_TOC: '1',
+            THEME_DARK_MODE: 'auto',
+            THEME_DARK_MODE_VALUE: 'auto',
+            SHOW_SETTING_BUTTON: '1',
+
+            THEME_DARK_HOUR: '18',
+            THEME_LIGHT_HOUR: '6',
+            THUMB_STYLE: '',
+            AUTO_READ_MODE: '',
+            SHOW_LYRIC:'',
+            AUTO_SHOW_LYRIC:'1',
+            //代码高亮
+            CODE_STYLE_LIGHT: 'solarized-light',
+            CODE_STYLE_DARK: 'mac_dark',
+            THEME_POST_CONTENT:'1',
+            //other
+            OFF_SCROLL_HEIGHT: '55',
+            SHOW_IMAGE_ALT: '',
+            USER_LOGIN: '',
+            USE_CACHE: '',
+            POST_SPEECH: '1',
+            POST_MATHJAX: '',
+            SHOW_FOOTER:'1',
+            IS_TRANSPARENT:'',
+            LOADING_IMG:'',
+
+            FIRST_SCREEN_ANIMATE:''
+        };
+
+        if ('serviceWorker' in navigator) {
+            if (LocalConst.USE_CACHE) {
+                navigator.serviceWorker.register(LocalConst.BLOG_URL + 'sw.min.js?v=8.2.02021030201')
+                    .then(function (reg) {
+
+                    }).catch(function (error) {
+                    console.log('cache failed with ' + error); // registration failed
+                });
+            } else {
+                navigator.serviceWorker.getRegistrations()
+                    .then(function (registrations) {
+                        for (var index in registrations) {
+                            registrations[index].unregister();
+                            // 清除缓存
+                            window.caches && caches.keys && caches.keys().then(function (keys) {
+                                keys.forEach(function (key) {
+                                    caches.delete(key);
+                                });
+                            });
+                            console.log("unregister success")
+                        }
+                    });
+            }
+        }
+    </script>
+
+    <!-- 第三方CDN加载CSS -->
+    <link href="https://static.ioiox.com/usr/themes/handsome/assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- 本地css静态资源 -->
+
+        <link rel="stylesheet" href="https://static.ioiox.com/usr/themes/handsome/assets/css/origin/function.min.css?v=8.2.02021030201" type="text/css"/>
+    <link rel="stylesheet"
+          href="https://static.ioiox.com/usr/themes/handsome/assets/css/handsome.min.css?v=8.2.02021030201"
+          type="text/css"/>
+
+        
+    
+    <!--主题组件css文件加载-->
+    
+    <!--引入英文字体文件-->
+            <link rel="stylesheet preload" href="https://static.ioiox.com/usr/themes/handsome/assets/css/features/font.min.css?v=8.2.02021030201" as="style"/>
+    
+    <style type="text/css">
+        
+        html.bg {
+        background: #EFEFEF
+        }
+        .cool-transparent .off-screen+#content {
+        background: #EFEFEF
+        }
+@media (max-width:767px){
+    html.bg {
+        background: 
+        }
+        .cool-transparent .off-screen+#content {
+        background: 
+        }
+}
+.blog-post .panel:not(article) {
+    transition: all 0.3s;
+}
+
+.blog-post .panel:not(article):hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 10px rgba(73, 90, 47, 0.47);
+}    </style>
+
+    <!--全站jquery-->
+    <script src="https://static.ioiox.com/usr/themes/handsome/assets/libs/jquery/jquery.min.js"></script>
+
+    <!--网站统计代码-->
+    <!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3ad972b523e12b3653b9a99a5232e918";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+window.ga_tid = "UA-138693454-1";
+window.ga_url = "https://ga.ioiox.com";
+</script>
+<script src="https://cdn.ioiox.com/github/giuem/ga-proxy/ga.min.js" async></script>
+
+<!-- CSS -->
+<link href="https://cdn.ioiox.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- favicon -->
+<link rel=”icon” href=”/favicon.ico” mce_href=”/favicon.ico” type=”image/x-icon”>
+<link rel=”shortcut icon” href=”/favicon.ico” mce_href=”/favicon.ico” type=”image/x-icon”>
+
+<script async defer data-website-id="3507ad62-3b9d-4cc0-a46f-03b98dd291d6" src="https://umami.ioiox.com/umami.js"></script>
+
+</head>
+
+<body id="body" class="fix-padding skt-loading">
+
+	<!-- aside -->
+	  
+  <div id="alllayout" class="app app-aside-fix container app-header-fixed ">  <!-- headnav -->
+  <header id="header" class="app-header navbar box-shadow-bottom-lg" role="menu">
+    <!-- navbar header（交集处） -->
+    <div class="text-ellipsis navbar-header bg-white">
+    <button class="pull-right visible-xs" ui-toggle-class="show animated animated-lento fadeIn" target=".navbar-collapse">
+        <span class="menu-icons"><i data-feather="search"></i></span>
+    </button>
+    <button class="pull-left visible-xs" ui-toggle-class="off-screen animated" target=".app-aside" ui-scroll="app">
+        <span class="menu-icons"><i data-feather="menu"></i></span>
+    </button>
+    <!-- brand -->
+    <a href="https://www.ioiox.com/" class="navbar-brand text-lt">
+        <span id="navbar-brand-day">
+                                                <i class="fontello fontello-home"></i>
+                            <span class="hidden-folded m-l-xs">IOIOX</span>
+                    </span>
+            </a>
+    <!-- / brand -->
+    </div>
+    <!-- / navbar header -->
+
+    <!-- navbar collapse（顶部导航栏） -->
+    <div class="collapse pos-rlt navbar-collapse bg-white">
+    <!-- statitic info-->
+        <ul class="nav navbar-nav hidden-sm">
+        <li class="dropdown pos-stc">
+            <a id="statistic_pane" data-status="false" href="#" data-toggle="dropdown" class="dropdown-toggle feathericons dropdown-toggle"
+               aria-expanded="false">
+                <i data-feather="pie-chart"></i>
+                <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu wrapper w-full bg-white">
+                <div class="row">
+                    <div class="col-sm-8 b-l b-light">
+                        <div class="m-l-xs m-t-xs m-b-sm font-bold">动态日历<span class="info-icons"><i
+                                        data-feather="info"
+                                                                                  data-toggle="tooltip" title="统计近10个月的文章和作者评论数目"></i>
+                            </span></div>
+                        <div class="text-center">
+                            <nav class="loading-echart text-center m-t-lg m-b-lg">
+                                <p class="infinite-scroll-request"><i class="animate-spin fontello fontello-refresh"></i>Loading...</p>
+                            </nav>
+                            <div id="post-calendar" class="top-echart hide"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 b-l b-light">
+                        <div class="m-l-xs m-t-xs m-b-sm font-bold">分类雷达图</div>
+                        <div class="text-center">
+                            <nav class="loading-echart text-center m-t-lg m-b-lg">
+                                <p class="infinite-scroll-request"><i class="animate-spin fontello fontello-refresh"></i>Loading...</p>
+                            </nav>
+                            <div id="category-radar" class="top-echart hide"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 b-l b-light">
+                        <div class="m-l-xs m-t-xs m-b-sm font-bold">发布统计图</div>
+                        <div class="text-center">
+                            <nav class="loading-echart text-center m-t-lg m-b-lg">
+                                <p class="infinite-scroll-request"><i class="animate-spin fontello fontello-refresh"></i>Loading...</p>
+                            </nav>
+                            <div id="posts-chart" class="top-echart hide"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 b-l b-light">
+                        <div class="m-l-xs m-t-xs m-b-sm font-bold">分类统计图</div>
+                        <div class="text-center">
+                            <nav class="loading-echart text-center m-t-lg m-b-lg">
+                                <p class="infinite-scroll-request"><i class="animate-spin fontello fontello-refresh"></i>Loading...</p>
+                            </nav>
+                            <div id="categories-chart" class="top-echart hide"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 b-l b-light">
+                        <div class="m-l-xs m-t-xs m-b-sm font-bold">标签统计图</div>
+                        <div class="text-center">
+                            <nav class="loading-echart text-center m-t-lg m-b-lg">
+                                <p class="infinite-scroll-request"><i class="animate-spin fontello fontello-refresh"></i>Loading...</p>
+                            </nav>
+                            <div id="tags-chart" class="top-echart hide"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    
+    <!-- search form -->
+
+    <form id="searchform1" class="searchform navbar-form navbar-form-sm navbar-left shift" method="post"
+          role="search">
+        <div class="form-group">
+            <div class="input-group rounded bg-white-pure box-shadow-wrap-normal">
+                <input  autocomplete="off" id="search_input" type="search" name="s" class="transparent rounded form-control input-sm no-borders padder" required placeholder="输入关键词搜索…">
+                <!--搜索提示-->
+                <ul id="search_tips_drop" class="overflow-y-auto small-scroll-bar dropdown-menu hide" style="display:
+                 block;top:
+                30px; left: 0px;">
+                </ul>
+                <span id="search_submit" class="transparent input-group-btn">
+                  <button  type="submit" class="transparent btn btn-sm">
+                      <span class="feathericons" id="icon-search"><i data-feather="search"></i></span>
+                      <span class="feathericons animate-spin  hide" id="spin-search"><i
+                                  data-feather="loader"></i></span>
+                      <!--                      <i class="fontello fontello-search" id="icon-search"></i>-->
+                      <!--                      <i class="animate-spin  fontello fontello-spinner hide" id="spin-search"></i>-->
+                  </button>
+              </span>
+            </div>
+        </div>
+    </form>
+    <a href="" style="display: none" id="searchUrl"></a>
+    <!-- / search form -->
+        <ul class="nav navbar-nav navbar-right">
+                                    </ul>
+    </div>
+    <!-- / navbar collapse -->
+</header>
+  <!-- / headnav -->
+
+  <!--选择侧边栏的颜色-->
+  <aside id="aside" class="app-aside hidden-xs bg-white">  <!--<aside>-->
+        <div class="aside-wrap" layout="column">
+        <div class="navi-wrap scroll-y scroll-hide" flex>
+          <!-- user -->
+          <div class="clearfix hidden-xs text-center hide  show" id="aside-user">
+            <div class="dropdown wrapper ">
+                <div ui-nav>
+                          <a href="https://www.ioiox.com/stille.html">
+                            <span class="thumb-lg w-auto-folded avatar m-t-sm  ">
+                  <img src="https://www.ioiox.com/avatar.jpg" class="img-full img-circle normal-shadow">
+                </span>
+              </a>
+                </div>
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded  ">
+                <span class="clear">
+                  <span class="block m-t-sm">
+                    <strong class="font-bold text-lt">Stille</strong>
+                    <b class="caret"></b>
+                  </span>
+                  <span class="text-muted text-xs block">以不折腾为目标的折腾,才是折腾的最高境界!</span>
+                </span>
+              </a>
+              <!-- dropdown -->
+              <ul class="dropdown-menu animated fadeInRight w hidden-folded no-padder">
+                <li class="wrapper b-b m-b-sm bg-info m-n">
+                  <span class="arrow top hidden-folded arrow-info"></span>
+                  <div>
+                                                <p>晚上好，注意早点休息</p>
+                                  </div>
+                  <div class="progress progress-xs m-b-none dker">
+                    <div class="progress-bar bg-white" data-toggle="tooltip" data-original-title="时间已经度过91.67%" style="width: 91.67%"></div>
+                  </div>
+                </li>
+              </ul>
+              <!-- / dropdown -->
+            </div>
+          </div>
+          <!-- / user -->
+
+          <!-- nav -->
+          <nav ui-nav class="navi clearfix">
+            <ul class="nav">
+             <!--index-->
+
+
+                <!-- <div class="line dk hidden-folded"></div> stille 修改,隐藏首页logo和下方菜单之间的白线-->
+
+
+                <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+
+
+                <!--以下-stille手动修改-->
+                <!-- <span>导航</span> -->
+                <!--以下-stille手动修改-->
+                
+                
+              </li>
+                                          <!--主页-->
+              <li>
+                <a href="https://www.ioiox.com/" class="auto">
+                    <span class="nav-icon"><i data-feather="home"></i></span>
+                    <span>首页</span>
+                </a>
+              </li>
+              <!-- /主页 -->
+
+
+
+
+
+              <!--以下-stille手动复制-分类category-->
+              <!--stille 001 分类category-->
+                            <li >
+                <a class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="fontello icon-fw fontello-angle-right text"></i>
+                    <i class="fontello icon-fw fontello-angle-down text-active"></i>
+                  </span>
+                  <!-- <i class="glyphicon glyphicon-th"></i>-->
+                    <span class="nav-icon"><i data-feather="grid"></i></span>
+
+                    <span>分类</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="nav-sub-header">
+                    <a>
+                      <span>分类</span>
+                    </a>
+                  </li>
+                  <!--循环输出分类-->
+                    <li><a href="https://www.ioiox.com/category/default/"><b class="badge pull-right">15</b><span>日常资讯</span></a></li><li><a href="https://www.ioiox.com/category/digital/"><b class="badge pull-right">4</b><span>数字生活</span></a></li><li><a href="https://www.ioiox.com/category/ops/"><b class="badge pull-right">54</b><span>运维部署</span></a></li><li><a href="https://www.ioiox.com/category/tech/"><b class="badge pull-right">43</b><span>技术教程</span></a></li><li><a class="auto"><span class="pull-right text-muted">
+                    <i class="fontello icon-fw fontello-angle-right text"></i>
+                    <i class="fontello icon-fw fontello-angle-down text-active"></i>
+                  </span><span>群辉专栏</span></a><ul class="nav nav-sub dk child-nav"><li><a href="https://www.ioiox.com/category/%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"><b class="badge pull-right">6</b><span>基础服务</span></a></li><li><a href="https://www.ioiox.com/category/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/"><b class="badge pull-right">17</b><span>网络服务</span></a></li><li><a href="https://www.ioiox.com/category/%E5%A5%97%E4%BB%B6%E6%9C%8D%E5%8A%A1/"><b class="badge pull-right">9</b><span>套件服务</span></a></li><li><a href="https://www.ioiox.com/category/%E9%AB%98%E7%BA%A7%E6%9C%8D%E5%8A%A1/"><b class="badge pull-right">15</b><span>高级服务</span></a></li></ul></li>                </ul>
+              </li>
+              <!--stille 002 独立页面pages-->
+                <li>
+                <a class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="fontello icon-fw fontello-angle-right text"></i>
+                    <i class="fontello icon-fw fontello-angle-down text-active"></i>
+                  </span>
+                    <span class="nav-icon"><i data-feather="file"></i></span>
+                  <span>页面</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="nav-sub-header">
+                    <a data-no-instant>
+                      <span>页面</span>
+                    </a>
+                  </li><!--这个字段不会被显示出来-->
+                  <!--循环输出独立页面-->
+                                                                                   <li><a href="https://www.ioiox.com/donate.html"><span>捐赠打赏</span></a></li>
+                                                                 <li><a href="https://www.ioiox.com/links.html"><span>友链库</span></a></li>
+                                                                 <li><a href="https://www.ioiox.com/cross.html"><span>时光机</span></a></li>
+                                                                 <li><a href="https://www.ioiox.com/msg.html"><span>留言板</span></a></li>
+                                                                 <li><a href="https://www.ioiox.com/github.html"><span>Github</span></a></li>
+                                                                 <li><a href="https://www.ioiox.com/archives.html"><span>归档库</span></a></li>
+                                                                 <li><a href="https://www.ioiox.com/stille.html"><span>关于我</span></a></li>
+                                   </ul>
+              </li>
+              <!--stille 003 群晖专栏pages-->
+              <li>
+                <a class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="fontello icon-fw fontello-angle-right text"></i>
+                    <i class="fontello icon-fw fontello-angle-down text-active"></i>
+                  </span>
+                  <span class="nav-icon"><i data-feather="server"></i></span>
+                  <span>群晖</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="nav-sub-header">
+                    <a data-no-instant>
+                      <span>群晖</span>
+                    </a>
+                  </li>
+                    <li><a href="https://www.ioiox.com/synology.html"><span>专栏首页</span></a></li>
+                    <li><a href="https://www.ioiox.com/category/基础服务/"><span>基础服务</span></a></li>
+                    <li><a href="https://www.ioiox.com/category/网络服务/"><span>网络服务</span></a></li>
+                    <li><a href="https://www.ioiox.com/category/套件服务/"><span>套件服务</span></a></li>
+                    <li><a href="https://www.ioiox.com/category/高级服务/"><span>高级服务</span></a></li>
+                 </ul>
+              </li>
+              <!--以上-stille手动复制-分类category-->
+
+
+
+
+
+
+
+                            <li> <a target="_blank" href="https://freefrp.net" 
+class ="auto"><span class="nav-icon"><i data-feather="globe"></i></span><span>FRP</span></a></li><li> <a target="_blank" href="https://rssforever.com" 
+class ="auto"><span class="nav-icon"><i data-feather="rss"></i></span><span>RSS</span></a></li><li> <a target="_blank" href="https://docs.ioiox.com" 
+class ="auto"><span class="nav-icon"><i data-feather="book-open"></i></span><span>文档</span></a></li><li> <a target="_blank" href="https://pic.ioiox.com" 
+class ="auto"><span class="nav-icon"><i data-feather="image"></i></span><span>图床</span></a></li><li> <a target="_blank" href="https://t.me/ioioxcom" 
+class ="auto"><span class="nav-icon"><i data-feather="send"></i></span><span>TG群</span></a></li><li> <a target="_blank" href="https://github.com/stilleshan" 
+class ="auto"><span class="nav-icon"><i data-feather="github"></i></span><span>仓库</span></a></li><li> <a target="_self" href="https://www.ioiox.com/about.html" 
+class ="auto"><span class="nav-icon"><i data-feather="info"></i></span><span>关于</span></a></li>                
+
+              <!--全站友情链接 下移 stille 改动 -->
+              <!--友情链接-->
+              <li>
+                <a class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="fontello icon-fw fontello-angle-right text"></i>
+                    <i class="fontello icon-fw fontello-angle-down text-active"></i>
+                  </span>
+                    <span class="nav-icon"><i data-feather="user"></i></span>
+                  <span>友链</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="nav-sub-header">
+                    <a data-no-instant>
+                      <span>友链</span>
+                    </a>
+                  </li>
+                  <!--使用links插件，输出全站友链-->
+                 <li data-original-title="Typecho官方网站" data-toggle="tooltip" 
+data-placement="top"><a rel='noopener' href="http://typecho.org/" target="_blank"><span>Typecho官方网站</span></a></li><li data-original-title="群晖官方网站" data-toggle="tooltip" 
+data-placement="top"><a rel='noopener' href="https://www.synology.com" target="_blank"><span>群晖官方网站</span></a></li><li data-original-title="小楼一夜听风雨" data-toggle="tooltip" 
+data-placement="top"><a rel='noopener' href="https://sunpma.com" target="_blank"><span>SunPma'Blog</span></a></li><li data-original-title="心有猛虎，细嗅蔷薇。" data-toggle="tooltip" 
+data-placement="top"><a rel='noopener' href="https://www.quchao.net" target="_blank"><span>Mark's Blog</span></a></li>                </ul>
+              </li>
+              <!--     全站友情链接 下移 stille 改动       -->
+
+
+
+
+            </ul>
+          </nav>
+          <!-- nav -->
+        </div>
+          <!--end of .navi-wrap-->
+          <!--left_footer-->
+                    <div id="left_footer" class="footer wrapper-xs text-center nav-xs lt">
+                  
+                                    <div class="col-xs-6 no-padder">
+                      <a target="_blank" class="tinav" href="https://www.ioiox.com/feed/" title=""
+                         data-toggle="tooltip" data-placement="top" data-original-title="文章RSS订阅">
+                          <span class="left-bottom-icons block"><i data-feather="rss"></i></span>
+                          <small class="text-muted">文章</small>
+                      </a>
+                  </div>
+                  <div class="col-xs-6 no-padder">
+                      <a target="_blank" href="https://www.ioiox.com/feed/comments/" title=""
+                         data-toggle="tooltip" data-placement="top" data-original-title="评论RSS订阅">
+                          <span class="left-bottom-icons block"><i data-feather="message-square"></i></span>
+                          <small class="text-muted">评论</small>
+                      </a>
+                  </div>
+          </div>
+          
+      </div><!--.aside-wrap-->
+  </aside>
+<!-- content -->
+<div id="content" class="app-content">
+    <!--loading animate-->
+    <div id="loading" class="butterbar active hide">
+            <span class="bar"></span>
+        </div>
+
+
+
+
+
+	<!-- / aside -->
+<style>
+    #post-content{
+        font-size: 14px;
+    }
+</style>
+<!-- <div id="content" class="app-content"> -->
+   <a class="off-screen-toggle hide"></a>
+   <main class="app-content-body ">
+    <div class="hbox hbox-auto-xs hbox-auto-sm">
+    <!--文章-->
+     <div class="col center-part">
+         <!--生成分享图片必须的HTML结构-->
+             <!--标题下的一排功能信息图标：作者/时间/浏览次数/评论数/分类-->
+      
+        <header id="small_widgets" class="bg-light lter wrapper-md">
+             <h1 class="entry-title m-n font-thin text-black l-h">群晖NAS使用Docker部署rrshareweb人人影视Web版教程<a class="plus-font-size" data-toggle="tooltip" data-original-title="点击改变文章字体大小"><i data-feather="type"></i></a><a class="speech-button m-l-sm superscript" data-toggle="tooltip" data-original-title="朗读文章"><i data-feather="mic"></i></a><a data-morphing style="vertical-align: -1px;" id="morphing" data-src="#morphing-content" href="javascript:;" class="read_mode superscript m-l-sm" 
+data-toggle="tooltip" data-placement="right" data-original-title="阅读模式"><i data-feather="book-open"></i></a></h1>       <!--文章标题下面的小部件-->
+                  <ul  class="entry-meta text-muted list-inline m-b-none small
+             post-head-icon">
+             <!--作者-->
+             <li class="meta-author"><span class="post-icons"><i data-feather="user"></i></span><span
+                         class="sr-only">博主：</span> <a class="meta-value" href="https://www.ioiox.com/author/1/" rel="author"> Stille</a></li>
+             <!--发布时间-->
+             <li class="meta-date"><span class="post-icons"><i data-feather="clock"></i></span><span class="sr-only">发布时间：</span><time class="meta-value">2019 年 05 月 09 日</time></li>
+             <!--浏览数-->
+             <li class="meta-views"><span class="post-icons"><i data-feather="eye"></i></span><span class="meta-value">24795次浏览</span></li>
+                              <!--评论数-->
+                 <li class="meta-comments"><span class="post-icons"><i data-feather="message-circle"></i></span><a
+                             class="meta-value" href="#comments">20 条评论</a></li>
+             
+             <!--文字数目-->
+             <li class="meta-word"><span class="post-icons"><i data-feather="pen-tool"></i></span><span class="meta-value">1388字数</span></li>
+             <!--分类-->
+             <li class="meta-categories"><span class="post-icons"><i data-feather="hash"></i></span><span class="sr-only">分类：</span> <span class="meta-value"><a href="https://www.ioiox.com/category/%E9%AB%98%E7%BA%A7%E6%9C%8D%E5%8A%A1/">高级服务</a> <a href="https://www.ioiox.com/category/synology/">群辉专栏</a></span></li>
+         </ul>
+      </header>
+      <div class="wrapper-md" id="post-panel">
+	   <ol class="breadcrumb bg-white-pure" itemscope=""><li>
+                 <a href="https://www.ioiox.com/" itemprop="breadcrumb" title="返回首页" data-toggle="tooltip"><span class="home-icons"><i data-feather="home"></i></span>首页</a>
+             </li><li class="active">正文&nbsp;&nbsp;</li></ol>       <!--博客文章样式 begin with .blog-post-->
+       <div id="postpage" class="blog-post">
+        <article class="single-post panel">
+        <!--文章页面的头图-->
+        <div class="entry-thumbnail" aria-hidden="true"><div class="item-thumb lazy"  style="background-image: url(https://static.ioiox.com/usr/uploads/2019/11/2292247499.jpg)"></div></div>         <!--文章内容-->
+         <div id="post-content" class="wrapper-lg">
+
+             <script>
+        LocalConst.POST_MATHJAX = ""
+</script><div class="entry-content l-h-2x" id="md_handsome_origin"><h2>前言</h2><p>rrshareweb人人影视Web版是一款可以部署在Docker中的影视下载工具,我们可以把它部署到群晖NAS或者Linux服务器中,通过域名远程访问Web端管理下载.</p><p>rrshare早前是使用<code>oldiy</code>提供的docker镜像,并提供了详细的部署教程.由于近期人人影视Web更新,oldiy的镜像未及时更新,导致暂时无法使用.所以又找到了<code>auska</code>的镜像,但苦于没有提供详细的部署教程,只能靠自己根据dockerfile慢慢摸索,也成功部署到群晖NAS上.本文将详细介绍在群晖上部署auska/docker-rrshareweb的流程.</p><p><div class="tip inlineBlock success">本文为<a href="https://www.ioiox.com/stille.html" target="_blank"> Stille </a>原创文章.经实践,测试,整理发布.如需转载请联系作者获得授权,并注明转载地址.</div><hr><h2>部署流程</h2><p><strong>群晖NAS中打开Docker</strong><br>注册表<br>搜索<code>rrshareweb</code><br>找到auska/docker-rrshareweb<br>下载-选择latest标签即最新版<br><img src="https://static.ioiox.com/usr/uploads/2019/05/1479490850.jpg" alt="1.jpg" title="1.jpg"></p><p><strong>Docker-映像</strong><br>选中下好的auska/docker-rrshareweb<br>启动<br><img src="https://static.ioiox.com/usr/uploads/2019/05/2943301438.jpg" alt="2.jpg" title="2.jpg"></p><p><strong>高级设置-卷</strong><br>添加文件夹-选择任意你想存放下载文件的目录<br>装载路径为<code>/download</code><br><img src="https://static.ioiox.com/usr/uploads/2019/05/2360223377.jpg" alt="3.jpg" title="3.jpg"></p><p><strong>高级设置-网络</strong><br><code>勾选</code>使用与Docker Host相同的网络<br><img src="https://static.ioiox.com/usr/uploads/2019/05/4192665291.jpg" alt="4.jpg" title="4.jpg"></p><p><strong>高级设置-环境</strong><br>新增PGID值为0<br>新增PUID值为0<br>应用即启动容器<br><img src="https://static.ioiox.com/usr/uploads/2019/05/2212888878.jpg" alt="5.jpg" title="5.jpg"></p><p>访问<code>http://群晖内网IP:3001</code><br>默认密码为123456<br>设置存储路径为<code>/download</code><br>修改密码<br>确定保存即可开始使用<br><img src="https://static.ioiox.com/usr/uploads/2019/05/3052383497.jpg" alt="6.jpg" title="6.jpg"></p><hr><h2>结语</h2><p>更多群晖NAS相关技巧,教程及信息,请持续关注本站群晖Synology专栏:</p><p><button class="btn m-b-xs btn-success btn-addon" onclick='window.open("https://www.ioiox.com/synology.html","_blank")'><i class="glyphicon glyphicon-tasks"></i>群晖Synology专栏</button></p><hr class="content-copyright" style="margin-top:50px" /><div align="center"><p class="content-copyright"><div class="tip inlineBlock success">
+
+本站提供免费和付费的技术支持.你可以通过留言,邮件,TG群的方式来技术交流和免费咨询.同时也可以付费支持的方式获得相关的技术支持,项目部署配置等服务.具体相关详情请点击查看 <a href="https://www.ioiox.com/support.html" target="_blank">技术支持页面</a>
+</div></p></div></div>
+
+                          <!--文章的页脚部件：打赏和其他信息的输出-->
+             <div class="show-foot"><div class="copyright" data-toggle="tooltip" data-html="true" data-original-title="转载请保留本文转载地址，著作权归作者所有"><span>© 允许规范转载</span>
+                 </div>
+             </div>
+                                      <!--打赏模块-->
+                 
+             <div class="support-author">
+                 <button id="support_author" data-toggle="modal" data-target="#myModal" class="btn btn-pay btn-yellow btn-rounded"><svg style="width: 15px;height: 15px;vertical-align: -2px;margin-right: 5px;" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon" aria-hidden="true"><path d="M10.084 7.606c3.375-1.65 7.65-1.154 10.493 1.487 3.497 3.25 3.497 8.519 0 11.77-3.498 3.25-9.167 3.25-12.665 0-.897-.834-2.488-2.96-2.488-5.085" stroke="currentColor" stroke-width="1.4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M17.392 14.78s1.532-1.318-.053-2.79c-1.585-1.473-3.17-.404-3.719.403-.549.807.495 2.082.93 2.69.434.61 1.364 2.182-.054 3.202-1.417 1.012-3.002.658-4.153-.708-1.15-1.367-.602-3.365 0-3.924M17.338 11.982l1.159-1.076M9.87 18.922l.937-.871" stroke="currentColor" stroke-width="1.4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M.8 1.205s7.15 4.673 8.773 6.182c1.623 1.508 3.231 4.008 1.616 5.509-2.195 2.04-4.054.595-6.737-.75-.884-.447-3.15-1.777-3.15-1.777M10.136.9l1.047 3.188" stroke="currentColor" stroke-width="1.4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>&nbsp;赞赏</button>
+                 <div class="mt20 text-center article__reward-info">
+                     <span class="mr10">如果喜欢我的文章,觉得对你有帮助,请随意赞赏!</span>
+                 </div>
+             </div>
+             <div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                 <div class="modal-dialog modal-sm" role="document">
+                     <div class="modal-content box-shadow-wrap-lg">
+                         <div class="modal-header box-shadow-bottom-normal">
+                             <button type="button" class="close" data-dismiss="modal"><i style="vertical-align: bottom;" data-feather="x-circle"></i></button>
+                             <h4 class="modal-title">赞赏作者</h4>
+                         </div>
+                         <div class="modal-body">
+                             <div class="solid-tab tab-container post_tab">
+                                <ul class="nav no-padder b-b scroll-hide" role="tablist"> <li class="nav-item active" role="presentation"><a class="nav-link active" style="" data-toggle="tab"  role="tab" data-target="#alipay_author"><i class="iconfont icon-alipay" aria-hidden="true"></i>支付宝</a></li><li class="nav-item " role="presentation"><a class="nav-link " style="" data-toggle="tab"  role="tab" data-target="#wechatpay_author"><i class="iconfont icon-wechatpay" aria-hidden="true"></i>微信</a></li>        </ul>
+                                <div class="tab-content no-border"><div role="tabpanel" id="alipay_author" class="tab-pane fade active in">
+                            <img noGallery class="pay-img tab-pane" id="alipay_author" role="tabpanel" src="https://static.ioiox.com/usr/themes/handsome/assets/img/loading.svg" data-original="https://www.ioiox.com/alipay.jpg" />
+                            </div><div role="tabpanel" id="wechatpay_author" class="tab-pane fade  ">
+                            <img noGallery  class="pay-img tab-pane" id="wechatpay_author" role="tabpanel" src="https://static.ioiox.com/usr/themes/handsome/assets/img/loading.svg" data-original="https://www.ioiox.com/wechatpay.jpg" />
+                            </div>    </div><!--tab-content-->
+                             </div> <!--tab-container--></div> <!--modal-body-->
+                         </div><!--modal-content-->
+                     </div><!--modal-dialog-->
+                 </div><!--modal-->
+                                  <!--/文章的页脚部件：打赏和其他信息的输出-->
+         </div>
+        </article>
+       </div>
+       <!--上一篇&下一篇-->
+       <nav class="m-t-lg m-b-lg">
+        <ul class="pager">
+        <li class="next"> <a class="box-shadow-wrap-normal" href="https://www.ioiox.com/archives/39.html" title="群晖NAS设置Docker中国官方镜像加速教程" data-toggle="tooltip"> 
+下一篇 </a></li>   <li class="previous"> <a class="box-shadow-wrap-normal" href="https://www.ioiox.com/archives/41.html" title="TinyPNG批量压缩图片Python脚本使用教程" data-toggle="tooltip"> 上一篇 </a></li>
+        </ul>
+       </nav>
+       <!--评论-->
+        
+    
+    
+    <div id="comments">
+        
+                    <!--评论列表-->
+            <div id="post-comment-list" class="skt-loading"><h4 class="comments-title m-t-lg m-b">20 条评论</h4><nav class="loading-nav text-center m-t-lg m-b-lg hide">
+<p class="infinite-scroll-request"><i class="animate-spin fontello fontello-refresh"></i>Loading...</p>
+</nav><ol class="comment-list">
+        <!--自定义评论代码结构-->
+
+        <li id="comment-2514" class="comment-body comment-parent comment-odd">
+            <div id="div-comment-2514" class="comment-body">
+
+                <a class="pull-left thumb-sm comment-avatar" rel="nofollow">
+                    <img nogallery src="https://sdn.geekzu.org/avatar/21b0a3c408a08809d2f88c3938ea9695?s=65&r=G&d=" class="img-40px photo img-square normal-shadow">                    
+                </a>
+                <div class="m-b m-l-xxl">
+                    <div class="comment-meta">
+            <span class="comment-author vcard">
+              <b class="fn">305778551</b>
+              </span>
+                        <div class="comment-metadata">
+                            <time class="format_time text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="2021-01-18T16:35:58+08:00">January 18th, 2021 at 04:35 pm</time>
+                        </div>
+                    </div>
+                    <!--回复内容-->
+                    <div class="comment-content m-t-sm">
+                        <span class="comment-author-at"><b></b></span><div class="comment-content-true">
+                            <p>最近卸载重装 提示No Data</p>                        </div>
+                    </div>
+                    <!--回复按钮-->
+                    <div class="comment-reply m-t-sm">
+                        <a href="https://www.ioiox.com/archives/40.html/comment-page-1?replyTo=2514#respond-post-575" rel="nofollow" onclick="return TypechoComment.reply('comment-2514', 2514);">回复</a>                    </div>
+                </div>
+
+            </div>
+            <!-- 单条评论者信息及内容 -->
+             <!-- 是否嵌套评论判断开始 -->
+                <div class="comment-children list-unstyled m-l-xxl">
+                    <ol class="comment-list">
+        <!--自定义评论代码结构-->
+
+        <li id="comment-2515" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div id="div-comment-2515" class="comment-body">
+
+                <a class="pull-left thumb-sm comment-avatar" rel="nofollow">
+                    <img nogallery src="https://sdn.geekzu.org/avatar/fcd3d445aa3217941b370fa93ed3eb26?s=65&r=G&d=" class="img-40px photo img-square normal-shadow">                    <label data-toggle="tooltip" data-placement="right" title="博主" class="label comment-author-logo m-l-xs"><span><i data-feather="zap"></i></span></label>
+                </a>
+                <div class="m-b m-l-xxl">
+                    <div class="comment-meta">
+            <span class="comment-author vcard">
+              <b class="fn"><a href="https://www.ioiox.com"target="_blank" rel="external nofollow" class="no-external-link">Stille</a></b>
+              </span>
+                        <div class="comment-metadata">
+                            <time class="format_time text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="2021-01-18T17:11:20+08:00">January 18th, 2021 at 05:11 pm</time>
+                        </div>
+                    </div>
+                    <!--回复内容-->
+                    <div class="comment-content m-t-sm">
+                        <span class="comment-author-at"><b><a href="#comment-2514">@305778551</a></b></span><div class="comment-content-true">
+                            <p>人人影视都关站了</p>                        </div>
+                    </div>
+                    <!--回复按钮-->
+                    <div class="comment-reply m-t-sm">
+                        <a href="https://www.ioiox.com/archives/40.html/comment-page-1?replyTo=2515#respond-post-575" rel="nofollow" onclick="return TypechoComment.reply('comment-2515', 2515);">回复</a>                    </div>
+                </div>
+
+            </div>
+            <!-- 单条评论者信息及内容 -->
+             <!-- 是否嵌套评论判断结束 -->
+        </li><!--匹配`自定义评论的代码结构`下面的li标签-->
+    </ol> <!-- 嵌套评论所有内容-->
+                </div>
+             <!-- 是否嵌套评论判断结束 -->
+        </li><!--匹配`自定义评论的代码结构`下面的li标签-->
+    
+        <!--自定义评论代码结构-->
+
+        <li id="pingback-1887" class="comment-body comment-parent comment-even">
+            <div id="div-pingback-1887" class="comment-body">
+
+                <a class="pull-left thumb-sm comment-avatar" rel="nofollow">
+                    <img nogallery src="https://sdn.geekzu.org/avatar/d41d8cd98f00b204e9800998ecf8427e?s=65&r=G&d=" class="img-40px photo img-square normal-shadow">                    
+                </a>
+                <div class="m-b m-l-xxl">
+                    <div class="comment-meta">
+            <span class="comment-author vcard">
+              <b class="fn"><a href="http://bg0axe.com/2020/08/rrshareweb/"target="_blank" rel="external nofollow" class="no-external-link">rrshareweb人人影视Web版群晖部署 R11; BGØAXE</a></b>
+              </span>
+                        <div class="comment-metadata">
+                            <time class="format_time text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="2020-08-16T12:33:14+08:00">August 16th, 2020 at 12:33 pm</time>
+                        </div>
+                    </div>
+                    <!--回复内容-->
+                    <div class="comment-content m-t-sm">
+                        <span class="comment-author-at"><b></b></span><div class="comment-content-true">
+                            <p>[...]reference address:<a href="https://www.ioiox.com/archives/40.html">https://www.ioiox.com/archives/40.html</a>[...]</p>                        </div>
+                    </div>
+                    <!--回复按钮-->
+                    <div class="comment-reply m-t-sm">
+                        <a href="https://www.ioiox.com/archives/40.html/comment-page-1?replyTo=1887#respond-post-575" rel="nofollow" onclick="return TypechoComment.reply('pingback-1887', 1887);">回复</a>                    </div>
+                </div>
+
+            </div>
+            <!-- 单条评论者信息及内容 -->
+             <!-- 是否嵌套评论判断结束 -->
+        </li><!--匹配`自定义评论的代码结构`下面的li标签-->
+    
+        <!--自定义评论代码结构-->
+
+        <li id="comment-1168" class="comment-body comment-parent comment-odd">
+            <div id="div-comment-1168" class="comment-body">
+
+                <a class="pull-left thumb-sm comment-avatar" rel="nofollow">
+                    <img nogallery src="https://sdn.geekzu.org/avatar/41c9957610189c5526cf115a09f83fa6?s=65&r=G&d=" class="img-40px photo img-square normal-shadow">                    
+                </a>
+                <div class="m-b m-l-xxl">
+                    <div class="comment-meta">
+            <span class="comment-author vcard">
+              <b class="fn">southhill</b>
+              </span>
+                        <div class="comment-metadata">
+                            <time class="format_time text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="2020-03-26T16:27:22+08:00">March 26th, 2020 at 04:27 pm</time>
+                        </div>
+                    </div>
+                    <!--回复内容-->
+                    <div class="comment-content m-t-sm">
+                        <span class="comment-author-at"><b></b></span><div class="comment-content-true">
+                            <p>设置存储路径为/download ，NAS进去后找不到这个路径，搜都都不到，怎么回事呢</p>                        </div>
+                    </div>
+                    <!--回复按钮-->
+                    <div class="comment-reply m-t-sm">
+                        <a href="https://www.ioiox.com/archives/40.html/comment-page-1?replyTo=1168#respond-post-575" rel="nofollow" onclick="return TypechoComment.reply('comment-1168', 1168);">回复</a>                    </div>
+                </div>
+
+            </div>
+            <!-- 单条评论者信息及内容 -->
+             <!-- 是否嵌套评论判断开始 -->
+                <div class="comment-children list-unstyled m-l-xxl">
+                    <ol class="comment-list">
+        <!--自定义评论代码结构-->
+
+        <li id="comment-1169" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div id="div-comment-1169" class="comment-body">
+
+                <a class="pull-left thumb-sm comment-avatar" rel="nofollow">
+                    <img nogallery src="https://sdn.geekzu.org/avatar/fcd3d445aa3217941b370fa93ed3eb26?s=65&r=G&d=" class="img-40px photo img-square normal-shadow">                    <label data-toggle="tooltip" data-placement="right" title="博主" class="label comment-author-logo m-l-xs"><span><i data-feather="zap"></i></span></label>
+                </a>
+                <div class="m-b m-l-xxl">
+                    <div class="comment-meta">
+            <span class="comment-author vcard">
+              <b class="fn"><a href="https://www.ioiox.com"target="_blank" rel="external nofollow" class="no-external-link">Stille</a></b>
+              </span>
+                        <div class="comment-metadata">
+                            <time class="format_time text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="2020-03-26T16:30:43+08:00">March 26th, 2020 at 04:30 pm</time>
+                        </div>
+                    </div>
+                    <!--回复内容-->
+                    <div class="comment-content m-t-sm">
+                        <span class="comment-author-at"><b><a href="#comment-1168">@southhill</a></b></span><div class="comment-content-true">
+                            <p>高级设置-卷 在仔细看这一步</p>                        </div>
+                    </div>
+                    <!--回复按钮-->
+                    <div class="comment-reply m-t-sm">
+                        <a href="https://www.ioiox.com/archives/40.html/comment-page-1?replyTo=1169#respond-post-575" rel="nofollow" onclick="return TypechoComment.reply('comment-1169', 1169);">回复</a>                    </div>
+                </div>
+
+            </div>
+            <!-- 单条评论者信息及内容 -->
+             <!-- 是否嵌套评论判断开始 -->
+                <div class="comment-children list-unstyled m-l-xxl">
+                    <ol class="comment-list">
+        <!--自定义评论代码结构-->
+
+        <li id="comment-2219" class="comment-body comment-child2 comment-level-even comment-odd">
+            <div id="div-comment-2219" class="comment-body">
+
+                <a class="pull-left thumb-sm comment-avatar" rel="nofollow">
+                    <img nogallery src="https://sdn.geekzu.org/avatar/fd5838c8fe66307be1e1393291f9dcc5?s=65&r=G&d=" class="img-40px photo img-square normal-shadow">                    
+                </a>
+                <div class="m-b m-l-xxl">
+                    <div class="comment-meta">
+            <span class="comment-author vcard">
+              <b class="fn">123456</b>
+              </span>
+                        <div class="comment-metadata">
+                            <time class="format_time text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="2020-10-26T19:27:49+08:00">October 26th, 2020 at 07:27 pm</time>
+                        </div>
+                    </div>
+                    <!--回复内容-->
+                    <div class="comment-content m-t-sm">
+                        <span class="comment-author-at"><b><a href="#comment-1169">@Stille</a></b></span><div class="comment-content-true">
+                            <p>好长一段时间   更新数据里显示“没有数据”</p>                        </div>
+                    </div>
+                    <!--回复按钮-->
+                    <div class="comment-reply m-t-sm">
+                        <a href="https://www.ioiox.com/archives/40.html/comment-page-1?replyTo=2219#respond-post-575" rel="nofollow" onclick="return TypechoComment.reply('comment-2219', 2219);">回复</a>                    </div>
+                </div>
+
+            </div>
+            <!-- 单条评论者信息及内容 -->
+             <!-- 是否嵌套评论判断结束 -->
+        </li><!--匹配`自定义评论的代码结构`下面的li标签-->
+    </ol> <!-- 嵌套评论所有内容-->
+                </div>
+             <!-- 是否嵌套评论判断结束 -->
+        </li><!--匹配`自定义评论的代码结构`下面的li标签-->
+    </ol> <!-- 嵌套评论所有内容-->
+                </div>
+             <!-- 是否嵌套评论判断结束 -->
+        </li><!--匹配`自定义评论的代码结构`下面的li标签-->
+    
+        <!--自定义评论代码结构-->
+
+        <li id="comment-490" class="comment-body comment-parent comment-even">
+            <div id="div-comment-490" class="comment-body">
+
+                <a class="pull-left thumb-sm comment-avatar" rel="nofollow">
+                    <img nogallery src="https://sdn.geekzu.org/avatar/e4f5c1b7738aea485f585e0d2820ea34?s=65&r=G&d=" class="img-40px photo img-square normal-shadow">                    
+                </a>
+                <div class="m-b m-l-xxl">
+                    <div class="comment-meta">
+            <span class="comment-author vcard">
+              <b class="fn">depeng</b>
+              </span>
+                        <div class="comment-metadata">
+                            <time class="format_time text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="2019-11-29T11:55:08+08:00">November 29th, 2019 at 11:55 am</time>
+                        </div>
+                    </div>
+                    <!--回复内容-->
+                    <div class="comment-content m-t-sm">
+                        <span class="comment-author-at"><b></b></span><div class="comment-content-true">
+                            <p>CPU 占用很高，不知道哪里出了问题 DS916+</p>                        </div>
+                    </div>
+                    <!--回复按钮-->
+                    <div class="comment-reply m-t-sm">
+                        <a href="https://www.ioiox.com/archives/40.html/comment-page-1?replyTo=490#respond-post-575" rel="nofollow" onclick="return TypechoComment.reply('comment-490', 490);">回复</a>                    </div>
+                </div>
+
+            </div>
+            <!-- 单条评论者信息及内容 -->
+             <!-- 是否嵌套评论判断开始 -->
+                <div class="comment-children list-unstyled m-l-xxl">
+                    <ol class="comment-list">
+        <!--自定义评论代码结构-->
+
+        <li id="comment-1010" class="comment-body comment-child comment-level-odd comment-even">
+            <div id="div-comment-1010" class="comment-body">
+
+                <a class="pull-left thumb-sm comment-avatar" rel="nofollow">
+                    <img nogallery src="https://q2.qlogo.cn/g?b=qq&nk=2542017115&s=100" class="img-40px photo img-square normal-shadow">                    
+                </a>
+                <div class="m-b m-l-xxl">
+                    <div class="comment-meta">
+            <span class="comment-author vcard">
+              <b class="fn">king</b>
+              </span>
+                        <div class="comment-metadata">
+                            <time class="format_time text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="2020-03-13T14:37:17+08:00">March 13th, 2020 at 02:37 pm</time>
+                        </div>
+                    </div>
+                    <!--回复内容-->
+                    <div class="comment-content m-t-sm">
+                        <span class="comment-author-at"><b><a href="#comment-490">@depeng</a></b></span><div class="comment-content-true">
+                            <p>原版会在后台偷偷上传，有个改版的，docker玩倦了没折腾了。可以百度大法试一下</p>                        </div>
+                    </div>
+                    <!--回复按钮-->
+                    <div class="comment-reply m-t-sm">
+                        <a href="https://www.ioiox.com/archives/40.html/comment-page-1?replyTo=1010#respond-post-575" rel="nofollow" onclick="return TypechoComment.reply('comment-1010', 1010);">回复</a>                    </div>
+                </div>
+
+            </div>
+            <!-- 单条评论者信息及内容 -->
+             <!-- 是否嵌套评论判断结束 -->
+        </li><!--匹配`自定义评论的代码结构`下面的li标签-->
+    
+        <!--自定义评论代码结构-->
+
+        <li id="comment-491" class="comment-body comment-child comment-level-odd comment-odd comment-by-author">
+            <div id="div-comment-491" class="comment-body">
+
+                <a class="pull-left thumb-sm comment-avatar" rel="nofollow">
+                    <img nogallery src="https://sdn.geekzu.org/avatar/fcd3d445aa3217941b370fa93ed3eb26?s=65&r=G&d=" class="img-40px photo img-square normal-shadow">                    <label data-toggle="tooltip" data-placement="right" title="博主" class="label comment-author-logo m-l-xs"><span><i data-feather="zap"></i></span></label>
+                </a>
+                <div class="m-b m-l-xxl">
+                    <div class="comment-meta">
+            <span class="comment-author vcard">
+              <b class="fn"><a href="https://www.ioiox.com"target="_blank" rel="external nofollow" class="no-external-link">Stille</a></b>
+              </span>
+                        <div class="comment-metadata">
+                            <time class="format_time text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="2019-11-29T15:32:34+08:00">November 29th, 2019 at 03:32 pm</time>
+                        </div>
+                    </div>
+                    <!--回复内容-->
+                    <div class="comment-content m-t-sm">
+                        <span class="comment-author-at"><b><a href="#comment-490">@depeng</a></b></span><div class="comment-content-true">
+                            <p>我昨天还用了,没啥问题呢..你查下性能监控看下是不是这个容器占用过高?<br>不过有一点就是这个容器不用时确实会慢慢占用资源,一般都是不用就关掉.</p>                        </div>
+                    </div>
+                    <!--回复按钮-->
+                    <div class="comment-reply m-t-sm">
+                        <a href="https://www.ioiox.com/archives/40.html/comment-page-1?replyTo=491#respond-post-575" rel="nofollow" onclick="return TypechoComment.reply('comment-491', 491);">回复</a>                    </div>
+                </div>
+
+            </div>
+            <!-- 单条评论者信息及内容 -->
+             <!-- 是否嵌套评论判断结束 -->
+        </li><!--匹配`自定义评论的代码结构`下面的li标签-->
+    </ol> <!-- 嵌套评论所有内容-->
+                </div>
+             <!-- 是否嵌套评论判断结束 -->
+        </li><!--匹配`自定义评论的代码结构`下面的li标签-->
+    
+        <!--自定义评论代码结构-->
+
+        <li id="comment-241" class="comment-body comment-parent comment-odd">
+            <div id="div-comment-241" class="comment-body">
+
+                <a class="pull-left thumb-sm comment-avatar" rel="nofollow">
+                    <img nogallery src="https://q2.qlogo.cn/g?b=qq&nk=553234729&s=100" class="img-40px photo img-square normal-shadow">                    
+                </a>
+                <div class="m-b m-l-xxl">
+                    <div class="comment-meta">
+            <span class="comment-author vcard">
+              <b class="fn">xxx</b>
+              </span>
+                        <div class="comment-metadata">
+                            <time class="format_time text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="2019-08-23T12:14:36+08:00">August 23rd, 2019 at 12:14 pm</time>
+                        </div>
+                    </div>
+                    <!--回复内容-->
+                    <div class="comment-content m-t-sm">
+                        <span class="comment-author-at"><b></b></span><div class="comment-content-true">
+                            <p>安装配置好了,但是速度很慢,只有10kb.</p>                        </div>
+                    </div>
+                    <!--回复按钮-->
+                    <div class="comment-reply m-t-sm">
+                        <a href="https://www.ioiox.com/archives/40.html/comment-page-1?replyTo=241#respond-post-575" rel="nofollow" onclick="return TypechoComment.reply('comment-241', 241);">回复</a>                    </div>
+                </div>
+
+            </div>
+            <!-- 单条评论者信息及内容 -->
+             <!-- 是否嵌套评论判断结束 -->
+        </li><!--匹配`自定义评论的代码结构`下面的li标签-->
+    </ol><nav id="comment-navigation" class="text-center m-t-lg m-b-lg" role="navigation"><ol class="page-navigator"><li class="current"><a href="https://www.ioiox.com/archives/40.html/comment-page-1#comments">1</a></li><li><a href="https://www.ioiox.com/archives/40.html/comment-page-2#comments">2</a></li><li class="next"><a href="https://www.ioiox.com/archives/40.html/comment-page-2#comments"><i class="fontello fontello-chevron-right"></i></a></li></ol></nav><script type="text/javascript" id='outputCommentJS'>
+(function () {
+    window.TypechoComment = {
+        dom : function (id) {
+            return document.getElementById(id);
+        },
+    
+        create : function (tag, attr) {
+            var el = document.createElement(tag);
+        
+            for (var key in attr) {
+                el.setAttribute(key, attr[key]);
+            }
+        
+            return el;
+        },
+
+        reply : function (cid, coid) {
+            var comment = this.dom(cid), parent = comment.parentNode,
+                response = this.dom('respond-post-575'), input = this.dom('comment-parent'),
+                form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
+                textarea = response.getElementsByTagName('textarea')[0];
+
+            if (null == input) {
+                input = this.create('input', {
+                    'type' : 'hidden',
+                    'name' : 'parent',
+                    'id'   : 'comment-parent'
+                });
+
+                form.appendChild(input);
+            }
+
+            input.setAttribute('value', coid);
+
+            if (null == this.dom('comment-form-place-holder')) {
+                var holder = this.create('div', {
+                    'id' : 'comment-form-place-holder'
+                });
+
+                response.parentNode.insertBefore(holder, response);
+            }
+
+            comment.appendChild(response);
+            this.dom('cancel-comment-reply-link').style.display = '';
+
+            if (null != textarea && 'text' == textarea.name) {
+                textarea.focus();
+            }
+
+            return false;
+        },
+
+        cancelReply : function () {
+            var response = this.dom('respond-post-575'),
+            holder = this.dom('comment-form-place-holder'), input = this.dom('comment-parent');
+
+            if (null != input) {
+                input.parentNode.removeChild(input);
+            }
+
+            if (null == holder) {
+                return true;
+            }
+
+            this.dom('cancel-comment-reply-link').style.display = 'none';
+            holder.parentNode.insertBefore(response, holder);
+            return false;
+        }
+    };
+})();
+</script>
+<script type="text/javascript">
+var registCommentEvent = function() {
+    var event = document.addEventListener ? {
+        add: 'addEventListener',
+        focus: 'focus',
+        load: 'DOMContentLoaded'
+    } : {
+        add: 'attachEvent',
+        focus: 'onfocus',
+        load: 'onload'
+    };
+    var r = document.getElementById('respond-post-575');
+        
+    if (null != r) {
+        var forms = r.getElementsByTagName('form');
+        if (forms.length > 0) {
+            var f = forms[0], textarea = f.getElementsByTagName('textarea')[0], added = false;
+            var submitButton = f.querySelector('button[type="submit"]');
+            if (null != textarea && 'text' == textarea.name) {
+                var referSet =  function () {
+                    if (!added) {
+//                        console.log('commentjs');
+                        const child = f.querySelector('input[name="_"]');
+                        const child2 = f.querySelector('input[name="checkReferer"]');
+                        if (child!=null){
+                            f.removeChild(child);                        
+                        } 
+                        if (child2!=null){
+                            f.removeChild(child2);                        
+                        } 
+                        var input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = '_';
+                            input.value = (function () {
+    var _OfgNNbK = 'a5'//'v'
++//'C5F'
+'f69'+'9'//'m'
++//'bF'
+'0'+//'Y'
+'65'+''///*'n3n'*/'n3n'
++'561'//'YQ'
++'5'//'E5'
++//'6x6'
+'46d'+//'m'
+'4d'+//'J2g'
+'ea5'+//'fV2'
+'c'+/* 'xby'//'xby' */''+'f69'//'MD'
++'859'//'TO'
++'e8e'//'pi'
++//'f'
+'f'+//'G'
+'c', _b4JT = [[31,32]];
+    
+    for (var i = 0; i < _b4JT.length; i ++) {
+        _OfgNNbK = _OfgNNbK.substring(0, _b4JT[i][0]) + _OfgNNbK.substring(_b4JT[i][1]);
+    }
+
+    return _OfgNNbK;
+})();
+                    
+                        f.appendChild(input);
+                        
+                        input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = 'checkReferer';
+                        input.value = 'false';
+                        
+                        f.appendChild(input);
+                        
+
+                        added = true;
+                    }
+                };//end of reset
+                referSet();
+            }
+        }
+    }
+};
+
+$(function(){
+    registCommentEvent();
+});
+</script></div>        
+        <!--如果允许评论，会出现评论框和个人信息的填写-->
+                    <div id="respond-post-575" class="respond comment-respond no-borders">
+
+                <h4 id="reply-title" class="comment-reply-title m-t-lg m-b">发表评论                    <small><i class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="right" title="使用cookie技术保留您的个人信息以便您下次快速评论，继续评论表示您已同意该条款"></i>
+                    </small>
+                    <small class="cancel-comment-reply">
+                        <a id="cancel-comment-reply-link" href="https://www.ioiox.com/archives/40.html#respond-post-575" rel="nofollow" style="display:none" onclick="return TypechoComment.cancelReply();">取消回复</a>                    </small>
+                </h4>
+                <form id="comment_form" method="post" action="https://www.ioiox.com/archives/40.html/comment"  class="comment-form" role="form">
+                    <input type="hidden" name="receiveMail" id="receiveMail" value="yes" />
+                    <div class="comment-form-comment form-group">
+                        <label class="padder-v-sm" for="comment">评论                            <span class="required text-danger">*</span></label>
+                        <textarea id="comment" class="textarea form-control OwO-textarea" name="text" rows="5" placeholder="说点什么吧……" onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
+                        <div class="OwO padder-v-sm"></div>
+                                                <div class="secret_comment" id="secret_comment" data-toggle="tooltip"
+                        data-original-title="开启该功能，您的评论仅作者和评论双方可见">
+                            <label class="secret_comment_label control-label">私密评论</label>
+                            <div class="secret_comment_check">
+                                <label class="i-switch i-switch-sm bg-dark m-b-ss m-r">
+                                    <input type="checkbox" id="secret_comment_checkbox">
+                                    <i></i>
+                                </label>
+                            </div>
+                        </div>
+                                            </div>
+                    <!--判断是否登录-->
+                                                                <div id="author_info" class="row row-sm">
+                                                        <div class="comment-form-author form-group col-sm-6 col-md-4">
+                                <label for="author">名称                                    <span class="required text-danger">*</span></label>
+                                <div>
+                                                                        <img class="author-avatar" src="https://sdn.geekzu.org/avatar/d41d8cd98f00b204e9800998ecf8427e?s=65&r=G&d=" nogallery/>
+                                    <input id="author" class="form-control" name="author" type="text" value="" maxlength="245" placeholder="姓名或昵称">
+                                                                        <div class="random_user_name shake-constant">🎲</div>
+                                                                    </div>
+                            </div>
+
+                            <div class="comment-form-email form-group col-sm-6 col-md-4">
+                                <label for="email">邮箱                                                                        <span class="required text-danger">*</span>
+                                                                    </label>
+                                <input type="text" name="mail" id="mail" class="form-control" placeholder="邮箱 (必填,将保密)" value="" />
+                            </div>
+
+                            <div class="comment-form-url form-group col-sm-12 col-md-4">
+                                <label for="url">地址</label>
+                                <input id="url" class="form-control" name="url" type="url" value="" maxlength="200" placeholder="网站或博客"></div>
+                        </div>
+                                                <!--提交按钮-->
+                        <div class="form-group">
+                            <button type="submit" name="submit" id="submit" class="submit btn-rounded box-shadow-wrap-lg btn-gd-primary padder-lg">
+                                <span>发表评论</span>
+                                <span class="text-active">提交中...</span>
+                            </button>
+                            <i class="animate-spin fontello fontello-spinner hide" id="spin"></i>
+                            <input type="hidden" name="comment_post_ID" id="comment_post_ID">
+                            <input type="hidden" name="comment_parent" id="comment_parent">
+                        </div>
+                </form>
+            </div>
+        
+            </div>
+
+
+      </div>
+     </div>
+     <!--文章右侧边栏开始-->
+             <aside class="asideBar col w-md bg-white-only bg-auto no-border-xs" role="complementary">
+     <div id="sidebar">
+               <section id="tabs-4" class="widget widget_tabs clear">
+       <div class="nav-tabs-alt no-js-hide">
+        <ul class="nav nav-tabs nav-justified box-shadow-bottom-normal tablist" role="tablist">
+         <li data-index="0" class="active" role="presentation"> <a data-target="#widget-tabs-4-hots" role="tab"
+                                                                   aria-controls="widget-tabs-4-hots" aria-expanded="true" data-toggle="tab"><div class="sidebar-icon wrapper-sm"><i data-feather="thumbs-up"></i></div><span class="sr-only">热门文章</span> </a></li>
+                            <li role="presentation" data-index="1"> <a data-target="#widget-tabs-4-comments" role="tab" aria-controls="widget-tabs-4-comments" aria-expanded="false" data-toggle="tab"><div class="sidebar-icon wrapper-sm"><i  data-feather="message-square"></i></div> <span class="sr-only">最新评论</span> </a></li>
+                        <li data-index="2" role="presentation"> <a data-target="#widget-tabs-4-random" role="tab" aria-controls="widget-tabs-4-random" aria-expanded="false" data-toggle="tab"> <div class="sidebar-icon wrapper-sm"><i data-feather="gift"></i></div>  <span class="sr-only">随机文章</span>
+             </a></li>
+            <span class="navs-slider-bar"></span>
+        </ul>
+       </div>
+       <div class="tab-content">
+       <!--热门文章-->
+        <div id="widget-tabs-4-hots" class="tab-pane  fade in wrapper-md active" role="tabpanel">
+         <h5 class="widget-title m-t-none text-md">热门文章</h5>
+         <ul class="list-group no-bg no-borders pull-in m-b-none">
+          <li class="list-group-item">
+                <a href="https://www.ioiox.com/archives/26.html" class="pull-left thumb-sm m-r"></a>
+                <div class="clear">
+                    <h4 class="h5 l-h text-second"> <a href="https://www.ioiox.com/archives/26.html" title="群晖NAS使用Docker安装配置frpc内网穿透教程"> 群晖NAS使用Docker安装配置frpc内网穿透教程 </a></h4>
+                    <small class="text-muted post-head-icon"><span class="meta-date"> <i class="fontello fontello-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">192306</span>
+                    </span>
+              </small></div></li><li class="list-group-item">
+                <a href="https://www.ioiox.com/archives/94.html" class="pull-left thumb-sm m-r"></a>
+                <div class="clear">
+                    <h4 class="h5 l-h text-second"> <a href="https://www.ioiox.com/archives/94.html" title="本站提供免费 RSS 和 RSSHub 服务"> 本站提供免费 RSS 和 RSSHub 服务 </a></h4>
+                    <small class="text-muted post-head-icon"><span class="meta-date"> <i class="fontello fontello-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">109963</span>
+                    </span>
+              </small></div></li><li class="list-group-item">
+                <a href="https://www.ioiox.com/archives/6.html" class="pull-left thumb-sm m-r"></a>
+                <div class="clear">
+                    <h4 class="h5 l-h text-second"> <a href="https://www.ioiox.com/archives/6.html" title="群晖NAS安装配置免费frp内网穿透教程"> 群晖NAS安装配置免费frp内网穿透教程 </a></h4>
+                    <small class="text-muted post-head-icon"><span class="meta-date"> <i class="fontello fontello-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">102322</span>
+                    </span>
+              </small></div></li><li class="list-group-item">
+                <a href="https://www.ioiox.com/archives/81.html" class="pull-left thumb-sm m-r"></a>
+                <div class="clear">
+                    <h4 class="h5 l-h text-second"> <a href="https://www.ioiox.com/archives/81.html" title="docker compose 部署配置 Awesome TTRSS 教程"> docker compose 部署配置 Awesome TTRSS 教程 </a></h4>
+                    <small class="text-muted post-head-icon"><span class="meta-date"> <i class="fontello fontello-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">68115</span>
+                    </span>
+              </small></div></li><li class="list-group-item">
+                <a href="https://www.ioiox.com/archives/3.html" class="pull-left thumb-sm m-r"></a>
+                <div class="clear">
+                    <h4 class="h5 l-h text-second"> <a href="https://www.ioiox.com/archives/3.html" title="群晖NAS配置DNSPod国际域名DDNS动态域名解析教程"> 群晖NAS配置DNSPod国际域名DDNS动态域名解析教程 </a></h4>
+                    <small class="text-muted post-head-icon"><span class="meta-date"> <i class="fontello fontello-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">61620</span>
+                    </span>
+              </small></div></li>         </ul>
+        </div>
+                   <!--最新评论-->
+        <div id="widget-tabs-4-comments" class="tab-pane fade wrapper-md no-js-show" role="tabpanel">
+         <h5 class="widget-title m-t-none text-md">最新评论</h5>
+         <ul class="list-group no-borders pull-in auto m-b-none no-bg">
+                              <li class="list-group-item">
+
+              <a href="https://www.ioiox.com/archives/notice-2022-01-19.html/comment-page-1#comment-3549" class="pull-left thumb-sm avatar m-r">
+                                </a>
+              <a href="https://www.ioiox.com/archives/notice-2022-01-19.html/comment-page-1#comment-3549" class="text-muted">
+                  <!--<i class="iconfont icon-comments-o text-muted pull-right m-t-sm text-sm" title="" aria-hidden="true" data-toggle="tooltip" data-placement="auto left"></i>
+                  <span class="sr-only"></span>-->
+              </a>
+              <div class="clear">
+                  <div class="text-ellipsis">
+                      <a href="https://www.ioiox.com/archives/notice-2022-01-19.html/comment-page-1#comment-3549" title="chris"> chris </a>
+                  </div>
+                  <small class="text-muted">
+                      <span>
+                          你完全可以搞有关节点的CDP加速                      </span>
+                  </small>
+              </div>
+          </li>
+                    <li class="list-group-item">
+
+              <a href="https://www.ioiox.com/donate.html/comment-page-1#comment-3548" class="pull-left thumb-sm avatar m-r">
+                                </a>
+              <a href="https://www.ioiox.com/donate.html/comment-page-1#comment-3548" class="text-muted">
+                  <!--<i class="iconfont icon-comments-o text-muted pull-right m-t-sm text-sm" title="" aria-hidden="true" data-toggle="tooltip" data-placement="auto left"></i>
+                  <span class="sr-only"></span>-->
+              </a>
+              <div class="clear">
+                  <div class="text-ellipsis">
+                      <a href="https://www.ioiox.com/donate.html/comment-page-1#comment-3548" title="骄傲的准打工人"> 骄傲的准打工人 </a>
+                  </div>
+                  <small class="text-muted">
+                      <span>
+                          今天snapdrop.net突然打不开了，博主这里还可以用。支...                      </span>
+                  </small>
+              </div>
+          </li>
+                    <li class="list-group-item">
+
+              <a href="https://www.ioiox.com/archives/notice-2022-01-19.html/comment-page-1#pingback-3547" class="pull-left thumb-sm avatar m-r">
+                                </a>
+              <a href="https://www.ioiox.com/archives/notice-2022-01-19.html/comment-page-1#pingback-3547" class="text-muted">
+                  <!--<i class="iconfont icon-comments-o text-muted pull-right m-t-sm text-sm" title="" aria-hidden="true" data-toggle="tooltip" data-placement="auto left"></i>
+                  <span class="sr-only"></span>-->
+              </a>
+              <div class="clear">
+                  <div class="text-ellipsis">
+                      <a href="https://www.ioiox.com/archives/notice-2022-01-19.html/comment-page-1#pingback-3547" title="服务器傻妞sillyGirl对接qq机器人 R11; 堕星落羽"> 服务器傻妞sillyGirl对接qq机器人 R11; 堕星落羽 </a>
+                  </div>
+                  <small class="text-muted">
+                      <span>
+                          [...]说明：区别就是github地址的加速前缀。傻妞官方命...                      </span>
+                  </small>
+              </div>
+          </li>
+                    <li class="list-group-item">
+
+              <a href="https://www.ioiox.com/archives/141.html/comment-page-1#comment-3546" class="pull-left thumb-sm avatar m-r">
+                                </a>
+              <a href="https://www.ioiox.com/archives/141.html/comment-page-1#comment-3546" class="text-muted">
+                  <!--<i class="iconfont icon-comments-o text-muted pull-right m-t-sm text-sm" title="" aria-hidden="true" data-toggle="tooltip" data-placement="auto left"></i>
+                  <span class="sr-only"></span>-->
+              </a>
+              <div class="clear">
+                  <div class="text-ellipsis">
+                      <a href="https://www.ioiox.com/archives/141.html/comment-page-1#comment-3546" title="大名鼎鼎的贫僧"> 大名鼎鼎的贫僧 </a>
+                  </div>
+                  <small class="text-muted">
+                      <span>
+                          好了 我本地环境问题....                      </span>
+                  </small>
+              </div>
+          </li>
+                    <li class="list-group-item">
+
+              <a href="https://www.ioiox.com/archives/141.html/comment-page-1#comment-3545" class="pull-left thumb-sm avatar m-r">
+                                </a>
+              <a href="https://www.ioiox.com/archives/141.html/comment-page-1#comment-3545" class="text-muted">
+                  <!--<i class="iconfont icon-comments-o text-muted pull-right m-t-sm text-sm" title="" aria-hidden="true" data-toggle="tooltip" data-placement="auto left"></i>
+                  <span class="sr-only"></span>-->
+              </a>
+              <div class="clear">
+                  <div class="text-ellipsis">
+                      <a href="https://www.ioiox.com/archives/141.html/comment-page-1#comment-3545" title="大名鼎鼎的贫僧"> 大名鼎鼎的贫僧 </a>
+                  </div>
+                  <small class="text-muted">
+                      <span>
+                          请问应该怎么转换一下?                      </span>
+                  </small>
+              </div>
+          </li>
+                   </ul>
+        </div>
+                   <!--随机文章-->
+        <div id="widget-tabs-4-random" class="tab-pane fade wrapper-md no-js-show" role="tabpanel">
+            <h5 class="widget-title m-t-none text-md">随机文章</h5>
+            <ul class="list-group no-bg no-borders pull-in">
+            <li class="list-group-item">
+                <a href="https://www.ioiox.com/archives/152.html" class="pull-left thumb-sm m-r"></a>
+                <div class="clear">
+                    <h4 class="h5 l-h text-second"> <a href="https://www.ioiox.com/archives/152.html" title="drone ci 工作流语法变量高级使用教程"> drone ci 工作流语法变量高级使用教程 </a></h4>
+                    <small class="text-muted post-head-icon"><span class="meta-date"> <i class="fontello fontello-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">2933</span>
+                    </span>
+              </small></div></li><li class="list-group-item">
+                <a href="https://www.ioiox.com/archives/34.html" class="pull-left thumb-sm m-r"></a>
+                <div class="clear">
+                    <h4 class="h5 l-h text-second"> <a href="https://www.ioiox.com/archives/34.html" title="macOS使用oh-my-zsh美化Terminal,iTerm2,VSCode命令行终端配置教程"> macOS使用oh-my-zsh美化Terminal,iTerm2,VSCode命令行终端配置教程 </a></h4>
+                    <small class="text-muted post-head-icon"><span class="meta-date"> <i class="fontello fontello-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">18601</span>
+                    </span>
+              </small></div></li><li class="list-group-item">
+                <a href="https://www.ioiox.com/archives/112.html" class="pull-left thumb-sm m-r"></a>
+                <div class="clear">
+                    <h4 class="h5 l-h text-second"> <a href="https://www.ioiox.com/archives/112.html" title="群晖NAS网络服务 - docker 部署配置腾讯云 DNSPod DDNS 动态域名解析"> 群晖NAS网络服务 - docker 部署配置腾讯云 DNSPod DDNS 动态域名解析 </a></h4>
+                    <small class="text-muted post-head-icon"><span class="meta-date"> <i class="fontello fontello-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">11203</span>
+                    </span>
+              </small></div></li><li class="list-group-item">
+                <a href="https://www.ioiox.com/archives/69.html" class="pull-left thumb-sm m-r"></a>
+                <div class="clear">
+                    <h4 class="h5 l-h text-second"> <a href="https://www.ioiox.com/archives/69.html" title="GitHub Actions + 腾讯云COS + SCF云函数 + 自动刷新CDN 完美自动化部署静态网站"> GitHub Actions + 腾讯云COS + SCF云函数 + 自动刷新CDN 完美自动化部署静态网站 </a></h4>
+                    <small class="text-muted post-head-icon"><span class="meta-date"> <i class="fontello fontello-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">13369</span>
+                    </span>
+              </small></div></li><li class="list-group-item">
+                <a href="https://www.ioiox.com/archives/25.html" class="pull-left thumb-sm m-r"></a>
+                <div class="clear">
+                    <h4 class="h5 l-h text-second"> <a href="https://www.ioiox.com/archives/25.html" title="群晖Virtual Machine Manager套件安装CentOS虚拟机"> 群晖Virtual Machine Manager套件安装CentOS虚拟机 </a></h4>
+                    <small class="text-muted post-head-icon"><span class="meta-date"> <i class="fontello fontello-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">17209</span>
+                    </span>
+              </small></div></li>            </ul>
+        </div>
+       </div>
+      </section>
+               <!--博客信息-->
+               <section id="blog_info" class="widget widget_categories wrapper-md clear">
+       <h5 class="widget-title m-t-none text-md">博客信息</h5>
+       <ul class="list-group box-shadow-wrap-normal">
+                      <li class="list-group-item text-second"><span class="blog-info-icons"> <i data-feather="award"></i></span> <span
+                       class="badge
+           pull-right">163</span>文章数目</li>
+                      <li class="list-group-item text-second"> <span class="blog-info-icons"> <i data-feather="message-circle"></i></span>
+               <span class="badge
+           pull-right">3454</span>评论数目</li>
+                      <li class="list-group-item text-second"><span class="blog-info-icons"> <i data-feather="calendar"></i></span>
+               <span class="badge
+           pull-right">3年16天</span>运行天数</li>
+           <li class="list-group-item text-second"><span class="blog-info-icons"> <i data-feather="activity"></i></span> <span
+                       class="badge
+           pull-right">1 星期前</span>最后活动</li>
+       </ul>
+      </section>
+                        <!--非文章页面-->
+                <!--文章页面-->
+          <section id="tag_cloud-2" class="widget widget_tag_cloud wrapper-md clear">
+              <h5 class="widget-title m-t-none text-md">标签云</h5>
+              <div class="post-tags tags l-h-2x">
+                  <a href="https://www.ioiox.com/tag/Synology/">Synology</a> <a href="https://www.ioiox.com/tag/%E7%BE%A4%E6%99%96/">群晖</a> <a href="https://www.ioiox.com/tag/Docker/">Docker</a>              </div>
+          </section>
+                    <div id="tag_toc_body" class="tag_toc_body">
+              <section id="tag_toc" class="widget widget_categories wrapper-md clear">
+                  <h5 class="widget-title m-t-none text-md">文章目录</h5>
+                  <div class="tags l-h-2x box-shadow-wrap-normal">
+                      <div id="toc" class="small-scroll-bar overflow-y-auto"></div>
+                  </div>
+              </section>
+          </div>
+                  </div>
+     </aside>
+       <!--文章右侧边栏结束-->
+    </div>
+   </main>
+
+
+    <div id="morphing-content" class="hidden read_mode_article">
+        <div class="page">
+            <h1 class="title">群晖NAS使用Docker部署rrshareweb人人影视Web版教程</h1>
+            <div class="metadata singleline"><a href="#" rel="author" class="byline">Stille</a>&nbsp;•&nbsp;<span class="delimiter"></span><time class="date">2019 年 05 月 09 日</time></div>     
+            <div id="morphing-content-real_origin"><h2>前言</h2><p>rrshareweb人人影视Web版是一款可以部署在Docker中的影视下载工具,我们可以把它部署到群晖NAS或者Linux服务器中,通过域名远程访问Web端管理下载.</p><p>rrshare早前是使用<code>oldiy</code>提供的docker镜像,并提供了详细的部署教程.由于近期人人影视Web更新,oldiy的镜像未及时更新,导致暂时无法使用.所以又找到了<code>auska</code>的镜像,但苦于没有提供详细的部署教程,只能靠自己根据dockerfile慢慢摸索,也成功部署到群晖NAS上.本文将详细介绍在群晖上部署auska/docker-rrshareweb的流程.</p><p><div class="tip inlineBlock success">本文为<a href="https://www.ioiox.com/stille.html" target="_blank"> Stille </a>原创文章.经实践,测试,整理发布.如需转载请联系作者获得授权,并注明转载地址.</div><hr><h2>部署流程</h2><p><strong>群晖NAS中打开Docker</strong><br>注册表<br>搜索<code>rrshareweb</code><br>找到auska/docker-rrshareweb<br>下载-选择latest标签即最新版<br><img src="https://static.ioiox.com/usr/uploads/2019/05/1479490850.jpg" alt="1.jpg" title="1.jpg"></p><p><strong>Docker-映像</strong><br>选中下好的auska/docker-rrshareweb<br>启动<br><img src="https://static.ioiox.com/usr/uploads/2019/05/2943301438.jpg" alt="2.jpg" title="2.jpg"></p><p><strong>高级设置-卷</strong><br>添加文件夹-选择任意你想存放下载文件的目录<br>装载路径为<code>/download</code><br><img src="https://static.ioiox.com/usr/uploads/2019/05/2360223377.jpg" alt="3.jpg" title="3.jpg"></p><p><strong>高级设置-网络</strong><br><code>勾选</code>使用与Docker Host相同的网络<br><img src="https://static.ioiox.com/usr/uploads/2019/05/4192665291.jpg" alt="4.jpg" title="4.jpg"></p><p><strong>高级设置-环境</strong><br>新增PGID值为0<br>新增PUID值为0<br>应用即启动容器<br><img src="https://static.ioiox.com/usr/uploads/2019/05/2212888878.jpg" alt="5.jpg" title="5.jpg"></p><p>访问<code>http://群晖内网IP:3001</code><br>默认密码为123456<br>设置存储路径为<code>/download</code><br>修改密码<br>确定保存即可开始使用<br><img src="https://static.ioiox.com/usr/uploads/2019/05/3052383497.jpg" alt="6.jpg" title="6.jpg"></p><hr><h2>结语</h2><p>更多群晖NAS相关技巧,教程及信息,请持续关注本站群晖Synology专栏:</p><p><button class="btn m-b-xs btn-success btn-addon" onclick='window.open("https://www.ioiox.com/synology.html","_blank")'><i class="glyphicon glyphicon-tasks"></i>群晖Synology专栏</button></p><hr class="content-copyright" style="margin-top:50px" /><div align="center"><p class="content-copyright"><div class="tip inlineBlock success">
+
+本站提供免费和付费的技术支持.你可以通过留言,邮件,TG群的方式来技术交流和免费咨询.同时也可以付费支持的方式获得相关的技术支持,项目部署配置等服务.具体相关详情请点击查看 <a href="https://www.ioiox.com/support.html" target="_blank">技术支持页面</a>
+</div></p></div></div>
+        </div>
+    </div>
+<!-- footer -->
+	</div><!-- /content -->
+
+<!--right panel-->
+    <script type="text/template" id="tmpl-customizer">
+        <div class="settings panel panel-default setting_body_panel right_panel" aria-hidden="true">
+            <button class="rightSettingBtn fix-padding btn btn-default pos-abt border-radius-half-left"
+                    data-toggle="tooltip" data-placement="left" data-original-title="夜/日间模式"
+                    data-toggle-class=".settings=active, .settings-icon=animate-spin-span,.tocify-mobile-panel=false">
+                  <span class="settings-icon"><i width="13px" height="13px"
+                                                 data-feather="settings"></i></span>
+            </button>
+            <div class="panel-heading">
+                <button class="pull-right btn btn-xs btn-rounded btn-danger " name="reset" data-toggle="tooltip"
+                        data-placement="left" data-original-title="恢复默认值" >重置</button>
+                夜/日间模式
+            </div>
+            <div class="setting_body">
+                <div class="panel-body">
+                    <# for ( var keys = _.keys( data.sections.settings ), i = 0, name; keys.length > i; ++i ) { #>
+                    <div<# if ( i !== ( keys.length - 1 ) ) print( ' class="m-b-sm"' ); else print(' id="mode_set"')
+                    #>>
+                    <label class="i-switch bg-info pull-right">
+                        <input type="checkbox" name="{{ keys[i] }}" <#
+                        print( ' value="'+handsome_UI.mode+data
+                        .defaults[keys[i]]+'"' )
+                        if ((data.defaults[keys[i]]=="auto" && handsome_UI.mode =="dark") || data
+                        .defaults[keys[i]] == true) print( ' checked="checked"' );
+                        #> />
+                        <i></i>
+                    </label>
+
+                    <span> <# if(data.defaults[keys[i]]=="auto") print(LocalConst.DARK_MODE_AUTO); else if(data
+                      .sections.settings[keys[i]] == LocalConst.DARK_MODE) {print(LocalConst.DARK_MODE_FIXED)
+                      }else print(data.sections.settings[keys[i]]);#></span>
+                    <# if ( i == ( keys.length - 1 ) ) {print( ' <small id="auto_info"'); if(data.defaults[keys[i]]!=="auto") print(' style="display:none"') ;print('><i class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" data-original-title="网站深色模式自动依据您的设备关于深色模式的设置进行切换"></i></small>')}; #>
+                </div>
+                <# } #>
+            </div>
+            <div class="wrapper b-t b-light bg-light lter r-b">
+                <div class="row row-sm">
+                    <div class="col-xs-4">
+                        <#
+                        _.each( data.sections.colors, function( color, i ) {
+                        var newColumnBefore = ( i % 5 ) === 4;
+                        #>
+                        <label class="i-checks block<# if ( !newColumnBefore ) print( ' m-b-sm' ); #>">
+                            <input type="radio" name="color" value="{{ i }}"<# if ( data.defaults['color'] === i ) print( ' checked="checked"' ); #> />
+                            <span class="block bg-light clearfix pos-rlt">
+								<span class="active pos-abt w-full h-full bg-black-opacity text-center">
+									<i class="fontello fontello-check text-md text-white m-t-xs"></i>
+								</span>
+								<b class="{{ color.navbarHeader }} header"></b>
+								<b class="{{ color.navbarCollapse }} header"></b>
+								<b class="{{ color.aside.replace( ' b-r', '' ) }}"></b>
+							</span>
+                        </label>
+                        <#
+                        if ( newColumnBefore && ( i + 1 ) < data.sections.colors.length )
+                        print( '</div><div class="col-xs-4">' );
+                        } );
+                        #>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </script>
+<div class="topButton panel panel-default">
+    <button id="goToTop" class="fix-padding btn btn-default rightSettingBtn  pos-abt hide
+          border-radius-half-left"
+            data-toggle="tooltip" data-placement="left" data-original-title="返回顶部">
+        <span class="settings-icon2"><i width="13px" height="13px" data-feather="corner-right-up"></i></span>
+        <!--              <i class="fontello fontello-chevron-circle-up" aria-hidden="true"></i>-->
+    </button>
+</div>
+    <div class="tag_toc_body hide">
+        <div class="tocify-mobile-panel panel panel-default setting_body_panel right_panel" aria-hidden="true">
+            <button class="fix-padding rightSettingBtn border-radius-half-left btn btn-default pos-abt "
+                    data-toggle="tooltip"
+                    data-placement="left"
+                    data-original-title="目录" data-toggle-class=".tocify-mobile-panel=active,
+                    .settings=false">
+                <span class="settings-icon2"><i width="13px" height="13px" data-feather="list"></i></span>
+            </button>
+            <div class="panel-heading">文章目录</div>
+            <div class="setting_body toc-mobile-body">
+                <div class="panel-body">
+                    <div id="tocTree" class="tocTree overflow-y-auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<footer id="footer" class="app-footer" role="footer">
+<!--    <div class="wrapper bg-light">-->
+<!--        <a class="pull-right hidden-xs text-ellipsis">-->
+<!--            <span class="label badge" style="margin-right: 10px;">Powered by typecho</span>-->
+<!--            <a href="https://www.ihewro.com/archives/489/" class="label badge">Theme by handsome</a>-->
+<!--        </a>-->
+<!--        <a href="https://www.ddg.ink/" target="_blank" rel="noopener noreferrer" class="label badge" data-toggle="tooltip" data-original-title="©2021 低调阁">Copyright ©2021</a>-->
+<!--    </div>-->
+    <div class="wrapper bg-light">
+      <span class="pull-right hidden-xs text-ellipsis">
+      <a target="blank" href="https://beian.miit.gov.cn/">鄂ICP备16020197号-2</a>      Powered by <a target="_blank" href="http://www.typecho.org">Typecho</a>&nbsp;|&nbsp;Theme by <a target="_blank"
+                                                                                                      href="https://www.ihewro.com/archives/489/">handsome</a>
+      </span>
+        <span class="text-ellipsis">&copy;&nbsp;2022 Copyright&nbsp;<a target="blank" href="https://www.ioiox.com/">ioiox.com</a></span>
+    </div>
+
+</footer>
+
+
+
+  </div><!--end of .app app-header-fixed-->
+
+
+
+
+        
+
+<!--定义全局变量-->
+
+
+<style>
+    .setting_body .panel-body .m-b-sm{
+        display: none;
+    }
+    .setting_body .panel-body ~ .wrapper{
+        display: none;
+    }
+</style>
+
+<!--主题核心js-->
+
+
+
+
+
+    <script src="https://static.ioiox.com/usr/themes/handsome/assets/js/function.min.js?v=8.2.02021030201"></script>
+
+    <script src="https://static.ioiox.com/usr/themes/handsome/assets/js/core.min.js?v=8.2.02021030201"></script>
+
+
+
+<script>
+    if ('serviceWorker' in navigator) {
+        if (LocalConst.USE_CACHE) {
+            navigator.serviceWorker.addEventListener('controllerchange', function (ev) {
+                try {
+                    $.message({
+                        title:"检测到本地缓存需要更新",
+                        message:"<a href='#' onclick='window.location.reload();'>点击刷新页面</a>更新本地缓存",
+                        type:'warning',
+                        time: '300000'
+                    });
+                }catch (e) {
+                    console.log("controllerchange");
+                }
+            });
+        }
+    }
+
+</script>
+
+<!--主题组件js加载-->
+    <script src="https://static.ioiox.com/usr/themes/handsome/assets/js/features/jquery.pjax.min.js" type="text/javascript"></script>
+
+
+
+<!--pjax动画组件-->
+
+
+
+
+
+
+<!--主题组件js加载结束-->
+
+<!--用户自定义js-->
+<script type="text/javascript">
+    let tags = document.querySelectorAll("#tag_cloud-2 a");
+let colorArr = ["#428BCA", "#AEDCAE", "#ECA9A7", "#DA99FF", "#FFB380", "#D9B999"];
+tags.forEach(tag => {
+    tagsColor = colorArr[Math.floor(Math.random() * colorArr.length)];
+    tag.style.backgroundColor = tagsColor;
+});</script>
+
+
+
+</body>
+</html><!--html end-->
+  	<!-- / footer -->
+
+
