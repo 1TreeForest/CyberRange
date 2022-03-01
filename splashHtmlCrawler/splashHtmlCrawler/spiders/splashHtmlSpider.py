@@ -1,4 +1,5 @@
 import logging
+import platform
 import random
 
 import pymysql
@@ -15,6 +16,7 @@ class SplashhtmlspiderSpider(scrapy.Spider):
     pms_count = 0  # 用来记录有多少条pms记录，用以分两个文件夹存储pms和notpms的网站
     conn = None
     cursor = None
+    save_path = None
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -37,6 +39,15 @@ class SplashhtmlspiderSpider(scrapy.Spider):
         for item in item_list:
             self.start_urls.append(item[0])
         print(self.start_urls)
+
+    def get_platform(self):
+        sysstr = platform.system()
+        if sysstr == "Windows":
+            self.save_path = '../html/'
+        elif sysstr == "Linux":
+            self.save_path = '/home/ubuntu/CyberRange/splashHtmlCrawler/html/'
+        else:
+            print("Other System tasks")
 
     def get_unmarked_pages(self):
         sql = "select url, domain from `results` where isPMS is null limit 2000"  # 若要整体重爬，注释掉where子句
@@ -73,11 +84,12 @@ class SplashhtmlspiderSpider(scrapy.Spider):
         logging.info('已处理 {0} 个页面'.format(self.count))
 
     def save_as_text(self, response):
+        self.get_platform()
         if response.meta.get('flag') == 'unmarked':
             sql = 'update `pms` set html = 1 where url = "%s"' % response.meta.get('site')
             self.cursor.execute(sql)
             self.conn.commit()
-            with open('../html/unmarked/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'w',
+            with open(self.save_path + 'unmarked/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'w',
                       encoding="utf-8") as f:
                 try:
                     f.write(response.body.decode(encoding='{0}'.format(response.encoding), errors='ignore'))
@@ -88,7 +100,7 @@ class SplashhtmlspiderSpider(scrapy.Spider):
             sql = 'update `pms` set html = 1 where url = "%s"' % response.meta.get('site')
             self.cursor.execute(sql)
             self.conn.commit()
-            with open('../html/pms/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'w',
+            with open(self.save_path + 'pms/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'w',
                       encoding="utf-8") as f:
                 try:
                     f.write(response.body.decode(encoding='{0}'.format(response.encoding), errors='ignore'))
@@ -99,7 +111,7 @@ class SplashhtmlspiderSpider(scrapy.Spider):
             sql = 'update `notpms` set html = 1 where url = "%s"' % response.meta.get('site')
             self.cursor.execute(sql)
             self.conn.commit()
-            with open('../html/notpms/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'w',
+            with open(self.save_path + 'notpms/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'w',
                       encoding="utf-8") as f:
                 try:
                     f.write(response.body.decode(encoding='{0}'.format(response.encoding), errors='ignore'))
