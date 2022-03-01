@@ -1,0 +1,1289 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>国家广播电影电视总局-电视剧电子政务平台</title>
+<link rel="stylesheet" type="text/css" href="/tims/site/styles/default/style.shanty" />
+</head>
+<body>
+<div style="margin:auto;text-align:center;">
+    <table width="1002" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <td width="320"><img src="/site/styles/default/images/newHome/logo.jpg" width="320" height="90" /></td>
+    <td width="682" rowspan="3" background="/site/styles/default/images/newHome/bannerbg.jpg"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="682" height="104">
+      <param name="movie" value="/site/styles/default/images/newHome/banner.swf">
+      <param name="quality" value="high">
+      <embed src="/site/styles/default/images/newHome/banner.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="682" height="104"></embed>
+    </object></td>
+  </tr>
+  <tr>
+    <td><img src="/site/styles/default/images/newHome/line1.jpg" width="320" height="14" /></td>
+  </tr>
+  
+</table>
+    <table width="1002" border="0" cellpadding="0" cellspacing="0" background="/site/styles/default/images/newHome/topline.jpg" align="center">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td width="186" height="27" class="stitle_orange"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="27%">&nbsp;</td>
+        <td width="73%" class="title_orange">快速查询</td>
+      </tr>
+    </table></td>
+    <td width="12">&nbsp;</td>
+    <td width="507">&nbsp;</td>
+    <td width="287" align="center">
+    
+    <table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td></td>
+        <td>
+       
+        </td>
+        <td>
+        </td>
+      </tr>
+</table>
+
+    </td>
+  </tr>
+</table>
+
+    <table width="1002" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td width="186" height="170" valign="top">
+        <table width="100%" height="128" border="0" cellpadding="0" cellspacing="0" background="/site/styles/default/images/newHome/c_bg01.jpg">
+      <tr>
+        <td width="7%" height="128">&nbsp;</td>
+        <td width="86%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<form name="queryForm1" method="post" style="margin:0;padding:0;"  target="ActionsForm" action="/tims/site/views/include/quickSearch/checkIssue.shanty">
+            <tr>
+              <td>发行许可证号</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td><input name="teleplay.title" type="text" class="input1 input_tip_unfocus" style="height:18px;" tip="请输入剧目全称"></td>
+              <td><img src="/site/styles/default/images/bt_ysearch.gif" style="width:45px;height:18px;cursor:pointer;" onclick="doQuery('queryForm1')"></td>
+            </tr>
+</form>
+<form name="queryForm2" method="post" style="margin:0;padding:0;"  target="ActionsForm" action="/tims/site/views/include/quickSearch/checkBlueprint.shanty">
+            <tr>
+              <td>备案公示剧目</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td><input name="teleplay.title" type="text" class="input1 input_tip_unfocus" style="height:18px;" tip="请输入公示剧目全称"></td>
+              <td><img src="/site/styles/default/images/bt_ysearch.gif" style="width:45px;height:18px;cursor:pointer;" onclick="doQuery('queryForm2')"></td>
+            </tr>
+</form>
+<form name="queryForm3" method="post" style="margin:0;padding:0;"  target="ActionsForm" action="/tims/site/views/include/quickSearch/checkpro.shanty">
+            <tr>
+              <td>制作经营许可证</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td><input name="producer.name" type="text" class="input1 input_tip_unfocus" style="height:18px;" tip="请输入制作机构全称"></td>
+              <td><img src="/site/styles/default/images/bt_ysearch.gif" style="width:45px;height:18px;cursor:pointer;" onclick="doQuery('queryForm3')"></td>
+            </tr>
+</form> 
+        </table></td>
+        <td width="7%">&nbsp;</td>
+      </tr>
+    </table>
+		
+<iframe name="ActionsForm" src="about:blank" style="display:none;width:1px;height:1px;"></iframe>
+<!-- <iframe name="ActionsForm" src="about:blank"></iframe> -->
+
+<script>
+    var doQuery=function(form){
+       var formObj = document.forms[form];
+       if(formObj.elements[0].value!='' && formObj.elements[0].value!=formObj.elements[0].getAttribute('tip')){
+          formObj.submit();
+       } else{
+          alert('请输入查询关键字');
+          return false;
+       }
+    }
+
+/*
+ * 初始化查询输入框
+ */
+function initSearchField(formName){
+    var form = document.forms[formName];
+    var elements = form.elements;
+    for (i = 0; i < elements.length; i++) {
+        if (form.elements[i].type == "text"){
+            var tip = form.elements[i].getAttribute('tip');
+            form.elements[i].value = tip;
+            form.elements[i].onfocus=function(){this.className='input1 input_tip_focus'; if(this.value==this.getAttribute('tip'))this.value='';};
+            form.elements[i].onblur=function(){if(this.value==''){this.value=this.getAttribute('tip');this.className='input1 input_tip_unfocus';}};
+        }
+    }
+}
+initSearchField('queryForm1');
+initSearchField('queryForm2');
+initSearchField('queryForm3');
+</script>
+    
+
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><img src="/site/styles/default/images/newHome/titlebg02.jpg" width="186" height="20"></td>
+        </tr>
+        <tr>
+          <td height="29" background="/site/styles/default/images/newHome/titlebg03.jpg"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="27%">&nbsp;</td>
+              <td width="73%" class="title_orange">下载中心</td>
+            </tr>
+          </table></td>
+        </tr>
+      </table>
+      <table width="100%" height="102" border="0" cellpadding="0" cellspacing="0" background="/site/styles/default/images/newHome/c_bg02.jpg">
+        <tr>
+          <td width="7%">&nbsp;</td>
+          <td width="88%" valign="top">
+          
+          
+            <div class="border_line1"><a href="/article.shanty?id=017969229d09123d40284e9479613d71" target="_blank">&nbsp; 电视剧系统客户端</a></div>
+            <div class="border_line1"><a href="/article.shanty?id=011ffde10bc20005402881a01ffddcdd" target="_blank">&nbsp; 电视剧拍摄制作备案公…</a></div>
+            <div class="border_line1"><a href="/article.shanty?id=011fff40244600044028819e1fff1dae" target="_blank">&nbsp; 国产电视剧报审表</a></div>
+     <div style="text-align:right;height:22px;"><a href="/catalog.shanty?id=011fd4b0940000004028811f1fd4b093" target="_blank" class="more12">更多&gt;&gt;</a></div>
+              </td>
+          <td width="5%">&nbsp;</td>
+        </tr>
+      </table>
+		
+	 <a href="/tims/site/views/guestbook/listIndex.shanty" target="_blank"> <img src="/site/styles/default/images/newHome/flow.jpg" width="186" height="56" border="0"></a>
+    </td>
+    <td width="12">&nbsp;</td>
+    <td width="794" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td height="15">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td background="/site/styles/default/images/newHome/banshibg.jpg">
+		
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="790" height="122">
+          <param name="movie" value="/site/styles/default/images/newHome/guide.swf">
+          <param name="quality" value="high">
+          <embed src="/site/styles/default/images/newHome/guide.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="790" height="122"></embed>
+        </object>
+</td>
+      </tr>
+    </table>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="50%" valign="top">
+
+<table width="97%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+  <td width="90" valign="bottom" bgcolor="#34A1C7" class="white12bold" style="padding:0px 5px 0px 5px;"><nobr>好剧选介</nobr></td>
+  <td align="left"><img src="/site/styles/default/images/corner01.gif" width="20" height="20"></td>
+  <td width="40"><a href="/tims/site/views/catalog/hjxj.shanty?id=0156346ce40800104028e4a056345b44" target="_blank" class="more12"><img src="/site/styles/default/images/more01.gif" border="0" width="51" height="18"></a></td>
+</tr>
+<tr>
+  <td height="5" colspan="3" bgcolor="#34A1C7"></td>
+</tr>
+<tr>
+  <td height="1" colspan="3" bgcolor="#ffffff"></td>
+</tr>
+  </table>
+<table id="hjtj_panel" width="97%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+        <style>
+.td-theme{
+        border:1px solid #bdbdbd;
+         border-radius:4px; 
+         box-shadow:0 0 2px 2px #d7d7d7;
+         background-image:url('/site/styles/default/hjxj/td-bg.png');
+}
+.border_line1{
+        border-bottom:1px solid #e2e2e2;
+}
+</style>
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="210" class="td-theme" align="center" valign="top">
+        <table width="90%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="border_line1">
+                <a href="/article.shanty?id=01683b70915411fa4028e4a0682c7c58"  style="width:100%;text-align:left;" title="好剧选介-第十九期" target="_blank">
+                好剧选介-第十九期  </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="border_line1">
+                <a href="/article.shanty?id=016661aa9a330a2a4028e4a1634a0dff"  style="width:100%;text-align:left;" title="好剧选介-第十八期" target="_blank">
+                好剧选介-第十八期  </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="border_line1">
+                <a href="/article.shanty?id=01656b96f74416004028e4a1634a0dff"  style="width:100%;text-align:left;" title="好剧选介-第十七期" target="_blank">
+                好剧选介-第十七期  </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="border_line1">
+                <a href="/article.shanty?id=0163972f7c1628de4028e4a1634a0dff"  style="width:100%;text-align:left;" title="好剧选介-第十六期" target="_blank">
+                好剧选介-第十六期  </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="border_line1">
+                <a href="/article.shanty?id=0161d59866805f994028e4a060079d70"  style="width:100%;text-align:left;" title="好剧选介-第十五期" target="_blank">
+                好剧选介-第十五期  </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="border_line1">
+                <a href="/article.shanty?id=015fed92b0c73d114028e4a05e503e86"  style="width:100%;text-align:left;" title="好剧选介-第十四期" target="_blank">
+                好剧选介-第十四期  </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="border_line1">
+                <a href="/article.shanty?id=015d88a6a3b13cd84028e4a15ce77315"  style="width:100%;text-align:left;" title="好剧选介-第十三期" target="_blank">
+                好剧选介-第十三期  </a>
+            </td>
+          </tr>
+        </table></td>
+      </tr>
+    </table>
+   </td>
+  </tr>
+</table>
+<script>
+     var scrollByTime=function(id,bodyId,panelId){
+             var el=document.getElementById(id);
+             var bodyEl=document.getElementById(bodyId);
+             var nodes=el.getElementsByTagName('td');
+             if(nodes.length==0){
+                 return;
+             }
+             var bodyNodes=bodyEl.getElementsByTagName('tr');
+             var panel=document.getElementById(panelId);
+             var index=0;
+             var interval=4000;
+             panel.onmouseover=function(){
+                 this.over=true;
+             };
+             panel.onmouseout=function(){
+                this.over=false;
+             };
+             var toview=function(){
+                   for(var i=0;i<nodes.length;i++){
+                         nodes[i].className='border3_out';
+                         if(i<bodyNodes.length){
+                                bodyNodes[i].style.display='none';
+                         }
+                   }
+                   nodes[index].className='border3_on';
+                   if(index<bodyNodes.length){
+                                bodyNodes[index].style.display='';
+                   }
+             };
+             for(var i=0;i<nodes.length;i++){
+                 var node=nodes[i];
+                 node.index_=i;
+                 node.style.cursor='pointer';
+                 node.onclick=function(){
+                       index=this.index_;
+                       toview();
+                 }
+             }
+
+             var fun=function(){
+                 if(!panel.over){
+                   toview();
+                   index++;
+                   if(index==nodes.length){
+                      index=0;
+                   }
+                  }
+                    window.setTimeout(fun,interval);
+
+             }
+             fun();             
+     }
+     scrollByTime('hjtj_heading','hjtj_body','hjtj_panel');
+</script>
+          </td>
+          <td width="50%" valign="top">
+
+     
+<table width="97%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td id="gstgTd">
+                  <div onClick="showGstgTable(1,3)" class="white12bold tab0_selected"><div class="tab0_inner">公示与通告</div></div>
+                  <div onClick="showGstgTable(2,3)" class="tab0_unselected"><div class="tab0_inner">重大题材公示</div></div>
+                  <div onClick="showGstgTable(3,3)" class="tab0_unselected"><div class="tab0_inner">变更通报</div></div>
+
+              </td>
+            </tr>
+            <tr>
+              <td height="5" colspan="4" bgcolor="#34A1C7"></td>
+              </tr>
+	<tr>
+              <td height="1" colspan="4" bgcolor="#ffffff"></td>
+              </tr>
+          </table>
+
+    
+<table width="97%" border="0" cellspacing="0" cellpadding="0" id="gstgTable_1">
+  <tr>
+    <td valign="top">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="tab1_bg">&nbsp;</td>
+    <td class="tab2_bg"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td id="view_all" width="100" class="tab2_selected" type="areaId" value="" style="cursor:pointer;">全国</td>
+        <td>
+		<!-- Marquee Body Head -->
+    	<div id="blueprint_marquee_view" style="overflow:hidden;height:22px; border:0px;padding:0px; width:180px;" class="tab2_marquee">
+                                         <ul>
+                                              			<li><a type="areaId" value="402881f11b7d732b011b7d7340430002" style="display:block">北京</a></li>
+                                                 			<li><a type="areaId" value="64dadab3a7cd428aa793699421692fca" style="display:block">中直</a></li>
+                                                 			<li><a type="areaId" value="402881e81c0226e4011c022c23b20003" style="display:block">上海</a></li>
+                                                 			<li><a type="areaId" value="402881e81c0226e4011c022cf9cf0004" style="display:block">天津</a></li>
+                                                 			<li><a type="areaId" value="402881e81c0226e4011c023917110007" style="display:block">河北</a></li>
+                                                 			<li><a type="areaId" value="402881e81c0226e4011c023dd6d3000b" style="display:block">吉林</a></li>
+                                                 			<li><a type="areaId" value="402881e81c0226e4011c023e5d87000c" style="display:block">黑龙江</a></li>
+                                                 			<li><a type="areaId" value="402881e81c0226e4011c023efc96000d" style="display:block">江苏</a></li>
+                                                 			<li><a type="areaId" value="402881e81c0226e4011c023fd33f000e" style="display:block">浙江</a></li>
+                                                 			<li><a type="areaId" value="402881e81c0226e4011c024108450010" style="display:block">福建</a></li>
+                                                 			<li><a type="areaId" value="402881e81c0226e4011c02434ddf0012" style="display:block">山东</a></li>
+                                                 			<li><a type="areaId" value="402881e81c0226e4011c0244b7430014" style="display:block">湖北</a></li>
+                                                 			<li><a type="areaId" value="402881e81c0226e4011c024577660015" style="display:block">湖南</a></li>
+                                                 			<li><a type="areaId" value="402881e81c0226e4011c024600da0016" style="display:block">广东</a></li>
+                                                 			<li><a type="areaId" value="402881e81c0226e4011c024ce929001f" style="display:block">海南</a></li>
+                                                 		 </ul></div>
+	<!-- Marquee Body Bottom -->
+		<!-- Marquee Body Head -->
+
+        <div id="production_marquee_view" class="tab2_marquee" style="overflow:hidden;height:22px; border:0px;padding:0px; width:180px;">
+		<ul>
+		
+					</ul></div>
+	   	<!-- Marquee Body Bottom -->
+		<!-- Marquee Body Head -->
+        <div id="" style="overflow:hidden;height:22px; border:0px;padding:0px; width:234px; display:none;">
+		<div style="height:22px;" class="tab2_marquee"><ul>
+			<li><a href="#" onclick="selectArea(this)">全国</a></li>
+		</ul></div>
+	    </div>
+		<!-- Marquee Body Bottom -->
+
+		</td>
+                               <td id="view_selected" width="120" class="tab2_more" style="color:#abcdef;">&nbsp;</td> 
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td class="tab1_bg" id="tabs_view" valign="top">
+		<div class="tab1_selected" type="model" value="blueprint" nId="017ef728051724de4028819a7d693588">备案公示</div>
+		<div class="tab1_unselected" type="model" value="production" nId="01751f6b837e39274028819a74be1459">发行许可</div>
+		<!-- <div class="tab1_unselected" type="model" value="change">变更</div> -->
+	</td>
+    <td class="img_container">
+<img id="images_view" src="/site/data/images/blueprint/017ef728051724de4028819a7d693588_.png" areaId="" model="blueprint" width="270" height="155" nId="017ef728051724de4028819a7d693588">
+<!-- 
+<img src="/tims/inner/blueprintTask.action?status=1&dateTag=year" width="270">
+-->
+    </td>
+  </tr>
+</table>
+	</td>
+    <td valign="top" width="70" class="stat_month">
+<div id="blueprint_note_month">
+<div style="font-weight:bold; color:#FF0000;">以往公示</div>
+            <strong><a href="tims/site/views/applications/note/view.shanty?appName=note&id=017ef728051724de4028819a7d693588" target="_blank">2022年01月</a></strong> <br />
+               <a href="tims/site/views/applications/note/view.shanty?appName=note&id=017e767c59d3133a4028819a7d693588" target="_blank"> 2021年12月 </a><br />
+               <a href="tims/site/views/applications/note/view.shanty?appName=note&id=017d9780c6a738af4028819a7d693588" target="_blank"> 2021年11月 </a><br />
+               <a href="tims/site/views/applications/note/view.shanty?appName=note&id=017d2667252f0f324028819a7ccb344a" target="_blank"> 2021年10月 </a><br />
+               <a href="tims/site/views/applications/note/view.shanty?appName=note&id=017c783d0288001b4028819a7c78361b" target="_blank"> 2021年09月 </a><br />
+               <a href="tims/site/views/applications/note/view.shanty?appName=note&id=017bc9a4985a00774028819a7bc80744" target="_blank"> 2021年08月 </a><br />
+               <a href="tims/site/views/applications/note/view.shanty?appName=note&id=017b8049158438724028819a79511714" target="_blank"> 2021年07月 </a><br />
+    <div style="text-align:right;padding-right:5px; margin-top:10px;"><a href="tims/site/views/applications.shanty?appName=note" target="_blank" class="more12">更多&gt;&gt;</a></div>
+</div>
+<div id="production_note_month" style="display:none;">
+<div style="font-weight:bold; color:#FF0000;">以往通告</div> 
+            <strong><a href="tims/site/views/applications/announce/view.shanty?appName=announce&id=0168507b43e30b7d4028819a684a0a74" target="_blank">
+2018 10-12月
+ </a></strong> <br />
+               <a href="tims/site/views/applications/announce/view.shanty?appName=announce&id=016786908799031e4028819a66e47bd8" target="_blank"> 
+2018 7-9月
+</a><br />
+               <a href="tims/site/views/applications/announce/view.shanty?appName=announce&id=015dbb3cc27213e84028819a5cc84001" target="_blank"> 
+2017 4-6月
+</a><br />
+               <a href="tims/site/views/applications/announce/view.shanty?appName=announce&id=015c1559aee229f04028819a5ba90569" target="_blank"> 
+2017 1-3月
+</a><br />
+               <a href="tims/site/views/applications/announce/view.shanty?appName=announce&id=0158af8700da31a74028819a5691de6f" target="_blank"> 
+2016 7-9月
+</a><br />
+               <a href="tims/site/views/applications/announce/view.shanty?appName=announce&id=0156da914be47f544028819a5691de6f" target="_blank"> 
+2016 4-6月
+</a><br />
+               <a href="tims/site/views/applications/announce/view.shanty?appName=announce&id=015552f8dcf734dd4028819a522fa312" target="_blank"> 
+2016 1-3月
+</a><br />
+    <div style="text-align:right;padding-right:5px; margin-top:10px;"><a href="tims/site/views/applications/announce.shanty?appName=announce" target="_blank" class="more12">更多&gt;&gt;</a></div>
+</div>
+    </td>
+  </tr>
+</table>
+    <table width="97%" border="0" cellspacing="0" cellpadding="0"
+	style="border: 1px solid #99d0e3; height: 190px; display:none;" id="gstgTable_3">
+	<tr>
+		<td valign="top" style="padding: 10px;">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								 				<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/changing/view.shanty?appName=changing&id=017e515d60f179d640284e937c256fb3"  style="width: 100%; text-align: left;" title="2021年12月全国电视剧月报备案通报" target="_blank">
+							2021年12月全国电视剧月报备案通报
+							</a>
+					</td>
+				</tr>
+								<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/changing/view.shanty?appName=changing&id=017d9c8c3edc49304028819a7d693588"  style="width: 100%; text-align: left;" title="2021年11月全国电视剧月报备案通报" target="_blank">
+							2021年11月全国电视剧月报备案通报
+							</a>
+					</td>
+				</tr>
+								<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/changing/view.shanty?appName=changing&id=017cfd5774a02fbf4028819a7ccb344a"  style="width: 100%; text-align: left;" title="2021年10月全国电视剧月报备案通报" target="_blank">
+							2021年10月全国电视剧月报备案通报
+							</a>
+					</td>
+				</tr>
+								<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/changing/view.shanty?appName=changing&id=017c6e722ac23c724028819a7bc80744"  style="width: 100%; text-align: left;" title="2021年9月全国电视剧月报备案通报" target="_blank">
+							2021年9月全国电视剧月报备案通报
+							</a>
+					</td>
+				</tr>
+								<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/changing/view.shanty?appName=changing&id=017bdcdbcc2b0d104028819a7bc80744"  style="width: 100%; text-align: left;" title="2021年8月全国电视剧月报备案通报" target="_blank">
+							2021年8月全国电视剧月报备案通报
+							</a>
+					</td>
+				</tr>
+								<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/changing/view.shanty?appName=changing&id=017b193fbd9553aa4028819a79511714"  style="width: 100%; text-align: left;" title="2021年7月全国电视剧月报备案通报" target="_blank">
+							2021年7月全国电视剧月报备案通报
+							</a>
+					</td>
+				</tr>
+								<tr>
+					<td align="right">
+						<a
+							href="/tims/site/views/applications.shanty?appName=changing"
+							target="_blank" class="more12">更多&gt;&gt;</a>
+					</td>
+				</tr>
+							</table>
+		</td>
+	</tr>
+</table>
+    
+<table width="97%" border="0" cellspacing="0" cellpadding="0" style="height: 190px; display:none;" id="gstgTable_2">
+  <tr>
+    <td class="tab1_bg" style="vertical-align:top;" id="tabs_gongsi">
+		<div class="tab1_selected" value="lixiang">立项公示</div>
+		<div class="tab1_unselected" value="shezhi">摄制公示</div>
+	</td>
+    <td class="img_container" style="border-top-width:1px; padding:10px;" valign="top">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" id="talbe_lixiang">
+								 				<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/importantLixiang/view.shanty?appName=importantLixiang&id=017e767c59d3133a4028819a7d693588"  style="width: 100%; text-align: left;" title="2021年12月重大革命和重大历史题材电视剧立项公示表" target="_blank">
+							2021年12月重大革命和重大历史题材电视剧立项公示表
+							</a>
+					</td>
+				</tr>
+								<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/importantLixiang/view.shanty?appName=importantLixiang&id=017d2667252f0f324028819a7ccb344a"  style="width: 100%; text-align: left;" title="2021年10月重大革命和重大历史题材电视剧立项公示表" target="_blank">
+							2021年10月重大革命和重大历史题材电视剧立项公示表
+							</a>
+					</td>
+				</tr>
+								<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/importantLixiang/view.shanty?appName=importantLixiang&id=017b8049158438724028819a79511714"  style="width: 100%; text-align: left;" title="2021年7月重大革命和重大历史题材电视剧立项公示表" target="_blank">
+							2021年7月重大革命和重大历史题材电视剧立项公示表
+							</a>
+					</td>
+				</tr>
+								<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/importantLixiang/view.shanty?appName=importantLixiang&id=0178015bacef6f354028819a77b8fcd5"  style="width: 100%; text-align: left;" title="2021年2月重大革命和重大历史题材电视剧立项公示表" target="_blank">
+							2021年2月重大革命和重大历史题材电视剧立项公示表
+							</a>
+					</td>
+				</tr>
+								<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/importantLixiang/view.shanty?appName=importantLixiang&id=0176da71242953944028819a74be1459"  style="width: 100%; text-align: left;" title="2020年12月重大革命和重大历史题材电视剧立项公示表" target="_blank">
+							2020年12月重大革命和重大历史题材电视剧立项公示表
+							</a>
+					</td>
+				</tr>
+								<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/importantLixiang/view.shanty?appName=importantLixiang&id=01742ebbbc6017164028819a7296ba68"  style="width: 100%; text-align: left;" title="2020年8月重大革命和重大历史题材电视剧立项公示表" target="_blank">
+							2020年8月重大革命和重大历史题材电视剧立项公示表
+							</a>
+					</td>
+				</tr>
+								<tr>
+					<td align="right">
+						<a
+							href="/tims/site/views/applications.shanty?appName=importantLixiang"
+							target="_blank" class="more12">更多&gt;&gt;</a>
+					</td>
+				</tr>
+							</table>
+
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" id="table_shezhi" style="display:none;">
+								 				<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/importantShezhi/view.shanty?appName=importantShezhi&id=017baab333597d744028819a79511714"  style="width: 100%; text-align: left;" title="2021年9月重大革命和重大历史题材电视剧同意摄制公示表 " target="_blank">
+							2021年9月重大革命和重大历史题材电视剧同意摄制公示
+							…  </a>
+					</td>
+				</tr>
+								<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/importantShezhi/view.shanty?appName=importantShezhi&id=0179cf96f4636db54028819a79511714"  style="width: 100%; text-align: left;" title="2021年06月重大革命和重大历史题材电视剧同意摄制公示表" target="_blank">
+							2021年06月重大革命和重大历史题材电视剧同意摄制公
+							…  </a>
+					</td>
+				</tr>
+								<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/importantShezhi/view.shanty?appName=importantShezhi&id=017921d12a801e414028819a77b8fcd5"  style="width: 100%; text-align: left;" title="2021年04月重大革命和重大历史题材电视剧同意摄制公示表" target="_blank">
+							2021年04月重大革命和重大历史题材电视剧同意摄制公
+							…  </a>
+					</td>
+				</tr>
+								<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/importantShezhi/view.shanty?appName=importantShezhi&id=01787c61be97674c4028819a77b8fcd5"  style="width: 100%; text-align: left;" title="2021年03月重大革命和重大历史题材电视剧同意摄制公示表" target="_blank">
+							2021年03月重大革命和重大历史题材电视剧同意摄制公
+							…  </a>
+					</td>
+				</tr>
+								<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/importantShezhi/view.shanty?appName=importantShezhi&id=017746dcbed532254028819a77279641"  style="width: 100%; text-align: left;" title="2021年01月重大革命和重大历史题材电视剧同意摄制公示表" target="_blank">
+							2021年01月重大革命和重大历史题材电视剧同意摄制公
+							…  </a>
+					</td>
+				</tr>
+								<tr>
+					<td class="border_line2">
+						<a href="/tims/site/views/applications/importantShezhi/view.shanty?appName=importantShezhi&id=01756de63a3819bf4028819a74be1459"  style="width: 100%; text-align: left;" title="2020年10月重大革命和重大历史题材电视剧同意摄制公示表" target="_blank">
+							2020年10月重大革命和重大历史题材电视剧同意摄制公
+							…  </a>
+					</td>
+				</tr>
+								<tr>
+					<td align="right">
+						<a
+							href="/tims/site/views/applications.shanty?appName=importantShezhi"
+							target="_blank" class="more12">更多&gt;&gt;</a>
+					</td>
+				</tr>
+							</table>
+    </td>
+  </tr>
+</table>
+
+
+    <script language="JavaScript">
+var domarquee = function(config) {
+	var id, pre, handler;
+	if (typeof config == 'string') {
+		id = config;
+		pre = 22;
+	} else {
+		id = config.id;
+		pre = config.pre;
+		handler = config.handler;
+	}
+	var mq = document.getElementById(id);
+	if (mq) {
+		var nodes = mq.childNodes;
+		var unit = nodes[0];
+
+		mq.appendChild(unit.cloneNode(true));// 拷贝第一个补尾，制造没有直接往上跳的感觉
+		if (handler) {
+			var items = mq.getElementsByTagName('a');
+			for (var i = 0; i < items.length; i++) {
+				var item = items[i];
+				item.handler = handler;
+				item.onclick = function() {
+					this.handler(this);
+				}
+			}
+		}
+	}
+	var p = 22;
+	if (pre) {
+		p = pre;
+	}
+	var offsetHeight = unit.parentNode.offsetHeight;
+	var h = offsetHeight * nodes.length;
+	var n = nodes.length;
+	var max = offsetHeight - p;
+	var k = 0;
+	mq.scrollTop = 0;
+	var over = false;
+	mq.style.cursor = 'pointer';
+	mq.onmouseover = function() {
+		over = true;
+	};
+	mq.onmouseout = function() {
+		over = false;
+	};
+
+	var toScroll = function() {
+		if (k < p) {
+			if (over === false) {
+				mq.scrollTop += 1;
+				k++;
+			}
+			setTimeout(toScroll, 50);
+		} else {
+			if (over === false) {
+				if (mq.scrollTop > h) {
+					mq.scrollTop = 0;
+				}
+				k = 0;
+			}
+			setTimeout(toScroll, 1000);
+		}
+	};
+	setTimeout(toScroll, 1000);
+}
+/**
+ * 切换tab方法
+ * 
+ * @param {}
+ *            config
+ */
+var tabs = function(config) {
+	var id, s = 1, handler, onCls = 'tab1_selected', offCls = 'tab1_unselected', tag = 'div';
+	if (typeof config == 'string') {
+		id = config;
+		s = 1;
+		onCls = 'tab1_selected';
+		offCls = 'tab1_unselected';
+		tag = 'div';
+	} else {
+		id = config.id;
+		if (config.s) {
+			s = config.s;
+		}
+		handler = config.handler;
+		if (config.onCls) {
+			onCls = config.onCls;
+		}
+		if (config.offCls) {
+			offCls = config.offCls;
+		}
+		if (config.tag) {
+			tag = config.tag;
+		}
+	}
+	var el = document.getElementById(id);
+	if (el) {
+		// alert(el+id)
+		var items = el.getElementsByTagName(tag);
+
+		/**
+		 * 改变tab样式（状态tab或时间tab）
+		 */
+		var showTab = function(node) {
+			for (var i = 0; i < items.length; i = i + s) {
+				var item = items[i];
+				item.className = offCls;
+			}
+			node.className = onCls;
+		};
+
+		for (var i = 0; i < items.length; i = i + s) {
+			var item = items[i];
+			item.handler = handler;
+			item.style.cursor = 'pointer'
+			item.onclick = function() {
+				showTab(this);
+				if (this.handler) {
+					this.handler(this); // 显示图片操作
+				}
+			}
+		}
+	}
+};
+/**
+ * 显示图片
+ * 
+ * @param {}
+ *            config
+ * @return {}
+ */
+var images = function(config) {
+	var id, change;
+	if (typeof config == 'string') {// 参数为图片对象
+		id = config;
+		change = function() {
+			return this.src;
+		};
+	} else {
+		id = config.id;
+		change = config.change;
+	}
+	var el = document.getElementById(id);// 获取图片对象
+	if (config.type) {
+		el.setAttribute(config.type, config.value);
+		el.setAttribute('nId', config.nId);
+	}
+	el.change = change;
+	return function(node) {
+		var type = node.getAttribute('type');
+		var value = node.getAttribute('value');
+		var pageAction = node.getAttribute('pageAction');
+		// 外网开始
+		var nId = node.getAttribute('nId'); // 公示或通告id
+		if (nId) {
+			el.setAttribute('nId', nId);
+		} else if (nId == '') {
+			el.setAttribute('nId', '');
+		}
+		el.setAttribute(type, value);
+		if(pageAction)
+			el.setAttribute('pageAction', pageAction );
+		// 外网结束
+		var url = el.change(el);
+		el.src = url;
+	}
+
+}
+
+/**
+ * 内网四大模块图片显示
+ * 
+ * @param {}
+ *            id
+ * @param {}
+ *            action
+ */
+var showImages = function(id, action) {
+	// 状态、地区id、时间、查看详情的请求地址
+	var params = ['taskTag', 'areaId', 'dateTag', 'detailpath', 'pageAction']
+	/**
+	 * 改变图片地址
+	 */
+	var change = function() {
+		var p = '';
+		var v = '';
+		for (var i = 0; i < params.length; i++) {
+			var type = params[i];
+			p += type + "=" + this.getAttribute(type) + '&';
+		}
+		p += "currentTime=" + new Date();
+		return action + '?' + p;
+	};
+	var handler = images({
+		id : 'images_' + id,
+		change : change
+	});
+	// 通过id获取图片对象，id值为“blueprit, production, play ...”
+	var img = document.getElementById('images_' + id);
+	// var ael=document.getElementById('all_'+id);
+	// “详情”连接对象
+	var del = document.getElementById('detail_' + id);
+	// 显示所选地区的显示对象
+	var vel = document.getElementById('view_' + id);
+	// 点击详情促发的事件
+	del.onclick = function() {
+var record = {
+action : img.getAttribute(params[4]),
+params:{
+			taskTag : img.getAttribute(params[0]),
+			areaId : img.getAttribute(params[1]),
+			dateTag : img.getAttribute(params[2])
+		}
+}
+		openView(img.getAttribute(params[3]), '剧目列表', record );
+	}
+	/**
+	 * 定义点击地区促发的事件
+	 */
+	var thandler = function(node) {
+		vel.innerHTML = node.innerHTML;
+		handler(node);
+	}
+	domarquee({
+		id : 'marquee_' + id,
+		handler : thandler
+	});
+	/**
+	 * 定义事件tab的显示事件
+	 */
+	tabs({
+		id : 'tabs_' + id,
+		handler : handler,
+		s : 1
+	});
+	/**
+	 * 定义状态tab的显示事件和样式
+	 */
+	tabs({
+		id : 'tabs_view_' + id,
+		handler : handler,
+		s : 1,
+		onCls : 'status_selected title_orange',
+		offCls : 'status_unselected'
+	});
+};
+
+/**
+ * 外网直接显示静态图片地址
+ * 
+ * @param {}
+ *            id
+ */
+var showImagesByPath = function(id) {
+	/**
+	 * 改变图片地址
+	 */
+	var change = function(el) {
+		var model = el.getAttribute('model');
+		var areaId = el.getAttribute('areaId');
+		var nId = el.getAttribute('nId');// 公示或通告id
+		var url = '/site/data/images/';
+		if (!areaId) {
+			areaId = '';
+		}
+		if(nId != ''){
+			url += model + '/';
+		}
+		return url + nId + '_' + areaId + '.png';
+	}
+	var handler = images({
+		id : 'images_' + id,
+		change : change
+	});
+	var ael = document.getElementById('view_all');
+	var vel = document.getElementById('view_selected');
+	var b = document.getElementById('blueprint_marquee_view');
+	var p = document.getElementById('production_marquee_view');
+	var bMonth = document.getElementById('blueprint_note_month');
+	var pMonth = document.getElementById('production_note_month');
+	p.style.display = 'none';
+	ael.onclick = function() {
+		handler(this);
+	};
+	/**
+	 * 点击过程促发的事件
+	 */
+	var thandler = function(node) {// 过程对象
+		// Gavin 2009-03-12
+		//解决地区不存在的问题，切换公示后，返回全国的图片 
+		document.getElementById('images_'+id).setAttribute('areaId','');
+		var t = node.getAttribute('value');
+		var nId = node.getAttribute('nId');
+		if (t == 'blueprint') {
+			b.style.display = 'block';
+			p.style.display = 'none';
+			bMonth.style.display = 'block';
+			pMonth.style.display = 'none';
+		} else {
+			p.style.display = 'block';
+			b.style.display = 'none';
+			pMonth.style.display = 'block';
+			bMonth.style.display = 'none';
+		}
+		handler(node);
+	};
+	/**
+	 * 点击地区促发的事件
+	 */
+	var bhandler = function(node) {
+		vel.innerHTML = node.innerHTML;
+		handler(node);
+	};
+
+	domarquee({
+		id : 'blueprint_marquee_view',
+		handler : bhandler
+	});
+	domarquee({
+		id : 'production_marquee_view',
+		handler : bhandler
+	});
+
+	tabs({
+		id : 'tabs_' + id,
+		handler : thandler
+	});
+}
+
+/**
+ * 内网播出统计
+ */
+var showPlayImages = function(id, action) {
+	var params = ['channelId', 'dateTag', 'detailpath']
+	var change = function() {
+		var p = '';
+		var v = '';
+		for (var i = 0; i < params.length; i++) {
+			var type = params[i];
+			p += type + "=" + this.getAttribute(type) + '&';
+		}
+		p += "currentTime=" + new Date();
+		return action + '?' + p;
+	};
+	var handler = images({
+		id : 'images_' + id,
+		change : change
+	});
+	var img = document.getElementById('images_' + id);
+	var vel = document.getElementById('view_' + id);
+	var del = document.getElementById('detail_play');
+	/**
+	 * 定义点击全国促发的事件
+	 */
+	vel.onclick = function() {
+		handler(this);
+	};
+	/**
+	 * 定义点击详情促发的事件
+	 */
+	del.onclick = function() {
+		openView(img.getAttribute(params[2]), '剧目列表', {
+			channelId : img.getAttribute(params[0]),
+			dateTag : img.getAttribute(params[1])
+		});
+	}
+	selectStation({
+		id : 'play_select_view',
+		handler : handler
+	});
+	tabs({
+		id : 'tabs_' + id,
+		handler : handler,
+		s : 1
+	});
+};
+
+
+/**
+ * 重大题材切换
+ * 
+ * @param {}
+ *            id
+ */
+var showZDTC = function(id) {
+	var lixiangObj= document.getElementById('talbe_lixiang');
+	var shezhiObj= document.getElementById('table_shezhi');
+	/**
+	 * 点击过程促发的事件
+	 */
+	var thandler = function(node) {// 过程对象
+		var t = node.getAttribute('value');
+		if (t == 'lixiang') {
+			lixiangObj.style.display = 'block';
+			shezhiObj.style.display = 'none';
+		} else {
+			shezhiObj.style.display = 'block';
+			lixiangObj.style.display = 'none';
+		}
+	};
+
+	tabs({
+		id : 'tabs_' + id,
+		handler : thandler
+	});
+}
+
+
+/**
+ * 重大题材公示
+ */
+var showGstgTab = function(index){
+            var divs = document.getElementById('gstgTd').childNodes;
+            for(var i=0; i<divs.length; i++){
+            if(i != index)
+              divs[i].className = 'tab0_unselected';
+            else
+              divs[i].className = 'white12bold tab0_selected';
+            }
+}
+
+var showGstgTable = function(index, len){
+            var obj;
+            for(var i=1; i<=len; i++){
+              obj = document.getElementById('gstgTable_'+i);
+       if(obj)
+              obj.style.display = 'none';
+            }
+            obj = document.getElementById('gstgTable_'+index);
+            obj.style.display = 'block';
+            showGstgTab(index-1);
+}
+
+showImagesByPath('view');
+
+showZDTC('gongsi');
+
+</script>
+          </td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+    
+
+<table width="1002" border="0" cellpadding="0" cellspacing="0" background="/site/styles/default/images/newHome/foot_bg0.jpg" style="background-repeat: no-repeat;background-position: bottom;" align="center">
+  <tr>
+    <td width="10" valign="bottom">&nbsp;</td>
+    <td width="186" valign="top">
+    			
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="25" align="center"><label>
+                <select name="select5" class="input180" onChange="if(this.options[this.selectedIndex].value!=''){window.open(this.options[this.selectedIndex].value,'','')}">
+					<option>--- 行 业 协 会 ---</option>
+									<option value="http://www.cbbpa.com.cn"> 首都制作业协会  </option>
+					<option value="http://ent.sina.com.cn/dygw/"> 中国电视剧导演工作委员会  </option>
+				                </select>
+              </label></td>
+            </tr>
+            <tr>
+              <td height="25" align="center">
+				<select name="select5" class="input180" onChange="if(this.options[this.selectedIndex].value!=''){window.open(this.options[this.selectedIndex].value,'','')}">
+					<option>--- 影 视 基 地 ---</option>
+									<option value="http://www.hengdianworld.com/"> 横店影视城  </option>
+					<option value="http://www.ctvwx.com"> 无锡影视基地  </option>
+					<option value="http://www.xsysc.com/"> 象山影视城  </option>
+				              </select></td>
+            </tr>
+            <tr>
+              <td height="25" align="center">
+				<select name="select5" class="input180" onChange="if(this.options[this.selectedIndex].value!=''){window.open(this.options[this.selectedIndex].value,'','')}">
+					<option>--- 影 视 节 展 ---</option>
+									<option value="http://www.chnpec.com/"> 中国国际影视节目展  </option>
+					<option value="http://www.stvf.com/"> 上海电影节  </option>
+					<option value="http://www.sctvf.com/"> 四川电视节  </option>
+					<option value="http://ent.hunantv.com/v/tv/7jyj/"> 金鹰电视艺术节  </option>
+				              </select></td>
+            </tr>
+		
+      </table>
+    </td><td width="12">&nbsp;</td>
+    <td width="794" valign="top">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr><td>
+            <td width="264">			
+
+	
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><img src="/site/styles/default/images/newHome/top_01.gif" width="264" height="10"></td>
+                </tr>
+                <tr>
+                  <td align="center" background="/site/styles/default/images/newHome/bg_01.gif" height="100" valign="top"><table width="90%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td height="20" class="title_orange">政策法规</td>
+                        <td align="right"><a href="/catalog.shanty?id=011d8a2075210000402881ed1d8a2075" target="_blank" class="more12">更多&gt;&gt;</a></td>
+                      </tr>
+                    </table>
+                      <table width="90%" border="0" cellspacing="0" cellpadding="0">
+						
+
+          <tr>
+            <td class="border_line1">
+                <a href="/article.shanty?id=0128c8768295021a402881a1289562a3"  style="width:100%;text-align:left;" title="电视剧内容管理规定" target="_blank">
+                电视剧内容管理规定  </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="border_line1">
+                <a href="/article.shanty?id=0141a03471b761bc402881a23eac78c4"  style="width:100%;text-align:left;" title="电视剧拍摄制作备案公示管理办法" target="_blank">
+                电视剧拍摄制作备案公示管理办法  </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="border_line1">
+                <a href="/article.shanty?id=014e7123d1d2791f4028819a4d2365a7"  style="width:100%;text-align:left;" title="优秀电视剧剧本扶持引导项目评选章程（修订版）" target="_blank">
+                优秀电视剧剧本扶持引导项目评选章程（…  </a>
+            </td>
+          </tr>
+                    </table></td>
+                </tr>
+                <tr>
+                  <td><img src="/site/styles/default/images/newHome/bottom_01.gif" width="264" height="13"></td>
+                </tr>
+            </table>
+	
+            	</td>
+            <td width="264">			
+
+
+	
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><img src="/site/styles/default/images/newHome/top_02.gif" width="264" height="10"></td>
+                </tr>
+                <tr>
+                  <td align="center" background="/site/styles/default/images/newHome/bg_02.gif" height="100" valign="top"><table width="90%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td height="20" class="title_orange">通知公告</td>
+                        <td align="right"><a href="/catalog.shanty?id=011d89ef529e001e402881fa1d89ed4f" target="_blank" class="more12">更多&gt;&gt;</a></td>
+                      </tr>
+                    </table>
+                      <table width="90%" border="0" cellspacing="0" cellpadding="0">
+						
+
+          <tr>
+            <td width="91%" class="border_line2">
+                <a href="/article.shanty?id=0176d1d1ee8711a14028e4a074e57af3"  style="width:100%;text-align:left;" title="【请注意】系统迁移通知：由于系统硬件老化，本周日进行系统迁移，届时系统将停止对外服务，下周一早上10点恢复服务。" target="_blank">
+                【请注意】系统迁移通知：由于系统…  </a>
+            </td>
+          </tr>
+          <tr>
+            <td width="91%" class="border_line2">
+                <a href="/article.shanty?id=016b5434c9ec1f254028e4a06a8dc69d"  style="width:100%;text-align:left;" title="【请注意】关于国家广播电视总局电视剧电子政务平台域名更换的通知" target="_blank">
+                【请注意】关于国家广播电视总局电…  </a>
+            </td>
+          </tr>
+          <tr>
+            <td width="91%" class="border_line2">
+                <a href="/article.shanty?id=015779b117e60ca44028819a5691de6f"  style="width:100%;text-align:left;" title="关于2016年度优秀电视剧剧本扶持引导项目评审结果公示的通知" target="_blank">
+                关于2016年度优秀电视剧剧本扶…  </a>
+            </td>
+          </tr>
+                    </table></td>
+                </tr>
+                <tr>
+                  <td><img src="/site/styles/default/images/newHome/bottom_02.gif" width="264" height="10"></td>
+                </tr>
+            </table>
+	
+            	</td>
+            <td width="264">			
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td><img src="/site/styles/default/images/newHome/top_03.gif" width="264" height="10"></td>
+                </tr>
+                <tr>
+                  <td align="center" background="/site/styles/default/images/newHome/bg_03.gif" height="100" valign="top"><table width="90%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td height="20" class="title_orange">业界动态</td>
+                        <td align="right"><a href="/tims/site/views/catalog/yjdt.shanty" target="_blank" class="more12">更多&gt;&gt;</a></td>
+                      </tr>
+                    </table>
+                      <table width="90%" border="0" cellspacing="0" cellpadding="0">
+						
+						
+
+          <tr>
+            <td width="91%" class="border_line2">
+                <a href="/article.shanty?id=014e0b74fa68003c4028e4a04e0b5de4"  style="width:100%;text-align:left;" title="全国电视剧产量总体平稳，作品质量不断提升" target="_blank">
+                全国电视剧产量总体平稳，作品质量…  </a>
+            </td>
+          </tr>
+          <tr>
+            <td width="91%" class="border_line2">
+                <a href="/article.shanty?id=014e0b6fc5dc00254028e4a04e0b5de4"  style="width:100%;text-align:left;" title="中国电视艺术委员会召开电视剧《原乡》研讨会" target="_blank">
+                中国电视艺术委员会召开电视剧《原…  </a>
+            </td>
+          </tr>
+          <tr>
+            <td width="91%" class="border_line2">
+                <a href="/article.shanty?id=012cb959e876129c402881a22c2adb13"  style="width:100%;text-align:left;" title="浙江华策影视股份有限公司探索影视制作产业发展新路" target="_blank">
+                浙江华策影视股份有限公司探索影视…  </a>
+            </td>
+          </tr>
+                    </table></td>
+                </tr>
+                <tr>
+                  <td><img src="/site/styles/default/images/newHome/bottom_03.gif" width="264" height="10"></td>
+                </tr>
+            </table>
+            	</td>
+          </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+    
+
+
+<table width="1002" height="30" border="0" cellpadding="0" cellspacing="0" background="/site/styles/default/images/newHome/foot_bg.jpg" align="center">
+  <tr>
+    <td align="center">主办单位：国家广播电影电视总局电视剧管理司       &nbsp;&nbsp;技术支持：国家广播电影电视总局信息中心<br />
+      中华人民共和国国家广播电影电视总局&nbsp;&nbsp;版权所有，未经许可不得转载</td>
+  </tr>
+</table>
+
+</div>
+</body>
+</html>
+

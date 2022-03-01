@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <script type="text/javascript" src="/libs/es6-shim.min.js?v=76454ed1ed1c1e141cfe"></script>
+        <script type="text/javascript" src="/libs/es6-sham.min.js?v=76454ed1ed1c1e141cfe"></script>
+        <script type="text/javascript" src="/libs/es6-promise.auto.min.js?v=76454ed1ed1c1e141cfe"></script>
+        <script type="text/javascript" src="/libs/es7-shim.min.js?v=76454ed1ed1c1e141cfe"></script>
+        <script type="text/javascript" src="/libs/base64.min.js?v=76454ed1ed1c1e141cfe"></script>
+
+        <!--IE9和IE10中input输入框无法输入‘-’，将字符用其他字体集中的代替-->
+        <!--[if IE 9]>
+            <script type="text/javascript" src="/libs/pdfjs-dist/web/compatibility.js?v=76454ed1ed1c1e141cfe"></script>
+            <style>
+                @font-face {
+                    font-family: "Noto Sans SC";
+                    font-style: normal;
+                    font-weight: 400;
+                    src: local("Arial"), local("SimSun"), local("Microsoft Yahei");
+                    unicode-range: U+002d;
+                }
+                body {
+                    line-height: 1.45;
+                }
+            </style>
+        <![endif]-->
+        <!--IE10不支持条件注释，使用动态脚本的方式加载包含连接符‘-’的字体集-->
+        <script type="text/javascript">
+            if (Object.setPrototypeOf && Object.setPrototypeOf.toString().indexOf("[native code]") === -1) {
+                delete Object.setPrototypeOf;
+            }
+
+            if (document.documentMode === 10) {
+                var link = document.createElement("link");
+                link.type = "text/css";
+                link.rel = "stylesheet";
+                link.href = "/libs/fontie10.css?v=76454ed1ed1c1e141cfe";
+                var head = document.getElementsByTagName("head")[0];
+                head.appendChild(link);
+            }
+        </script>
+
+        <!--[if gte IE 9]><!-->
+        <script type="text/javascript" src="/libs/hls.js/dist/hls.min.js?v=76454ed1ed1c1e141cfe"></script>
+        <!--<![endif]-->
+
+        <script type="text/javascript">
+            (function () {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src =
+                    !document.documentMode || (document.documentMode && document.documentMode > 10)
+                        ? "/libs/pdf.js?v=76454ed1ed1c1e141cfe"
+                        : "/libs/pdfjs-dist/build/pdf.combined.js?v=76454ed1ed1c1e141cfe";
+                script.defer = "defer";
+
+                script.onload = function () {
+                    if (window.pdfjsLib) {
+                        window.PDFJS = window.pdfjsLib;
+                    }
+
+                    if (window.PDFJS) {
+                        if (window.PDFJS.version.startsWith("1")) {
+                            PDFJS.workerSrc = "/libs/pdfjs-dist/build/pdf.worker.entry.js?v=76454ed1ed1c1e141cfe";
+                            PDFJS.cMapUrl = "/libs/pdfjs-dist/cmaps/";
+                            PDFJS.cMapPacked = true;
+                        } else {
+                            PDFJS.GlobalWorkerOptions.workerSrc = "/libs/pdf.worker.js?v=76454ed1ed1c1e141cfe";
+                        }
+                    }
+                };
+
+                document.querySelector("head").appendChild(script);
+            })();
+        </script>
+
+        
+        <link href="/styles/main.css?v=76454ed1ed1c1e141cfe" rel="stylesheet" />
+        
+        <title></title>
+    </head>
+
+    <body>
+        <div id="root"></div>
+        <script type="text/javascript" src="/scripts/vendor.js?v=76454ed1ed1c1e141cfe"></script>
+        <script type="text/javascript" src="/scripts/main.js?v=76454ed1ed1c1e141cfe"></script>
+    </body>
+</html>

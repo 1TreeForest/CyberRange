@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" class="__meteor-css__" href="/58ddf1a082948b4ba7d8e51e75dfa4e188ca3145.css?meteor_css_resource=true">
+<title id='API-Docs-Title'>API Docs</title>
+  <meta id='og:title' name='og:title' content='API Docs'>
+
+  <meta id='API-Docs-Meta-Description' name='description' content='Hosted API documentation for every OAS (Swagger) and RAML spec out there. Powered by Stoplight.io. Document, mock, test, and more, with the StopLight API Designer.'>
+  <meta id='og:description' name='og:description' content='Hosted API documentation for every OAS (Swagger) and RAML spec out there. Powered by Stoplight.io. Document, mock, test, and more, with the StopLight API Designer.'>
+
+  <link id='API-Docs-Favicon' rel='shortcut icon' type='image/x-icon' href='/favicon.ico'>
+  <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,600italic,400italic'>
+
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+  <meta name='robots' content='index,follow'>
+  <meta name='application-name' content='API Docs'>
+  <meta name='og:type' content='website' id='og:type'>
+  <meta name='og:site_name' content='API Docs' id='og:site_name'>
+
+  <meta name='viewport' content='width=device-width,minimum-scale=1,maximum-scale=1'>
+  <meta name='HandheldFriendly' content='True'>
+  <meta name='MobileOptimized' content='320'>
+
+  <script>
+    // because IE is dumb
+    if (!Array.prototype.find) {
+      Array.prototype.find = function (predicate) {
+        'use strict';
+        if (this == null) {
+          throw new TypeError('Array.prototype.find called on null or undefined');
+        }
+        if (typeof predicate !== 'function') {
+          throw new TypeError('predicate must be a function');
+        }
+        var list = Object(this);
+        var length = list.length >>> 0;
+        var thisArg = arguments[1];
+        var value;
+
+        for (var i = 0; i < length; i++) {
+          value = list[i];
+          if (predicate.call(thisArg, value, i, list)) {
+            return value;
+          }
+        }
+        return undefined;
+      };
+    }
+
+    function main() {
+      function createRequest(key, listener, apiKey) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', key);
+        xhr.addEventListener('load', listener);
+        xhr.setRequestHeader('Cache-Control', 'no-cache');
+        if (apiKey) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + apiKey);
+        }
+        xhr.send();
+      }
+
+      function getPreviewData(environmentId, apiKey) {
+        var apiHost = 'https://api.stoplight.io';
+
+        switch (window.location.host) {
+          case '127.0.0.1:3003':
+          case 'localhost:3003':
+            apiHost = 'http://localhost:5100';
+            break;
+          case 'api-docs-staging.io':
+            apiHost = 'https://api-staging.stoplight.io';
+            break;
+          default:
+            break;
+        }
+
+        createRequest(apiHost + '/versions/' + environmentId + '/preview', function () {
+          if (this.status === 200) {
+            try {
+              var res = JSON.parse(this.responseText);
+              window._Base_Data = res.baseStructure;
+              window._Main_Data = res.environment;
+            } catch (e) {
+              window._S3_Error = e.message;
+            }
+          }
+        }, apiKey);
+      }
+
+      function getVersion(folder) {
+        if (!window._Base_Data || (!window._Base_Data.nav || (window._Base_Data.nav && !window._Base_Data.nav.apis.length))) {
+          window._S3_Error = 'This API does not have any published versions';
+          return;
+        }
+
+        // find the api with this subdomain/customDomain
+        var api = window._Base_Data.nav.apis.find(function (a) {
+          return a.subdomain === folder || a.customDomain === folder;
+        });
+
+        if (api && api.versions && api.versions.length) {
+          // find the master version
+          var version = api.versions.find(function (v) {
+            return v.master
+          }) || api.versions[api.versions.length - 1];
+
+          if (!version) {
+            window._S3_Error = 'This API does not have any published versions';
+            return;
+          }
+
+          getMainFileFromS3(version.name, true, folder);
+        } else {
+          window._S3_Error = 'This API does not have any published versions';
+        }
+      }
+
+      function getMainFileFromS3(version, throwError, folder) {
+        var mainFileKey = window.s3BasePath + '/' + version + '.json';
+
+        if (window[mainFileKey]) {
+          window._Main_Data = window[mainFileKey];
+        } else {
+          createRequest(mainFileKey, function () {
+            if (this.status === 200) {
+              var mainData = window.JSON.parse(this.responseText);
+
+              window._Main_Data = mainData;
+              window[mainFileKey] = mainData;
+            } else if (throwError) {
+              window._S3_Error = 'This API version does not have any published documentation.';
+            } else if (folder) {
+              getVersion(folder);
+            }
+          });
+        }
+      }
+
+      function getBaseFileFromS3(folder, version) {
+        var baseStructureKey = window.s3BasePath + '.json';
+
+        if (window[baseStructureKey]) {
+          window._Base_Data = window[baseStructureKey];
+        } else {
+          createRequest(baseStructureKey, function () {
+            if (this.status === 200) {
+              var baseStructure = window.JSON.parse(this.responseText);
+              window._Base_Data = baseStructure;
+              window[baseStructureKey] = baseStructure;
+
+              if (version) {
+                getMainFileFromS3(version, false, folder);
+              } else if (window._Base_Data && window._Base_Data.type !== 'portal') {
+                getVersion(folder);
+              }
+            } else {
+              window._S3_Error = 'This API does not have any published versions';
+            }
+          });
+        }
+      }
+
+      function searchToObject() {
+        var pairs = window.location.search.substring(1).split('&');
+        var obj = {};
+        var pair;
+
+        for (var i = 0; i < pairs.length; i++) {
+          if (pairs[i] === '') continue;
+
+          pair = pairs[i].split('=');
+          obj[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+        }
+
+        return obj;
+      }
+
+      var envs = ['localhost:3003', 'api-docs.io', 'api-docs-staging.io'];
+      var pathParams = window.location.pathname.split('/') || [];
+      var queryParams = searchToObject();
+      var version = pathParams[1] !== '' ? pathParams[1] : undefined;
+
+      if (envs.find(function (env) {
+          return env === window.location.host;
+        })) {
+        if (version !== 'preview') {
+          return;
+        }
+      }
+
+      var bucket = 'api-docs.io';
+      var folder = window.location.host;
+
+      var foundEnv = envs.find(function (env) {
+        return new RegExp(env).test(window.location.host);
+      });
+
+      if (foundEnv) {
+        folder = window.location.host.replace('.' + foundEnv, '');
+        switch (foundEnv) {
+          case 'localhost:3003':
+            bucket = 'localhost-api-docs.io';
+            break;
+          case 'api-docs-staging.io':
+            bucket = 'api-docs-staging.io';
+            break;
+          default:
+            break;
+        }
+      }
+
+      window.s3BasePath = 'https://s3.amazonaws.com/' + bucket + '/' + folder;
+
+      if (version === 'preview') {
+        getPreviewData(pathParams[2], queryParams.apiKey);
+      } else {
+        getBaseFileFromS3(folder, version);
+      }
+    }
+
+    main();
+  </script>
+
+  <script src="https://cdn.auth0.com/js/lock/11.5.1/lock.min.js"></script>
+  <script src='https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js' async></script>
+  <script src='https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js' async></script>
+
+</head>
+<body>
+
+
+
+<script type="text/javascript">__meteor_runtime_config__ = JSON.parse(decodeURIComponent("%7B%22meteorRelease%22%3A%22METEOR%401.4.4.1%22%2C%22meteorEnv%22%3A%7B%22NODE_ENV%22%3A%22production%22%2C%22TEST_METADATA%22%3A%22%7B%7D%22%7D%2C%22PUBLIC_SETTINGS%22%3A%7B%22env%22%3A%22production%22%2C%22proxyHost%22%3A%22stoplight-proxy.io%22%2C%22apiHost%22%3A%22https%3A%2F%2Fapi.stoplight.io%22%2C%22docsHost%22%3A%22api-docs.io%22%2C%22designerHost%22%3A%22https%3A%2F%2Fapp.stoplight.io%22%2C%22algolia%22%3A%7B%22applicationId%22%3A%229KL2NLKQDZ%22%2C%22apiKey%22%3A%22f372f305e0f48b794b1e45a28df8c5ab%22%7D%7D%2C%22ROOT_URL%22%3A%22https%3A%2F%2Fapi-docs.io%22%2C%22ROOT_URL_PATH_PREFIX%22%3A%22%22%2C%22appId%22%3A%2210pb1ur5or7ak9fp7jg%22%2C%22autoupdateVersion%22%3A%22f2c80d9f099035b2e13b4c6834b98ad0a34272d8%22%2C%22autoupdateVersionRefreshable%22%3A%224ee975635daa68c8dbed86c042d62ea67dc41552%22%2C%22autoupdateVersionCordova%22%3A%22none%22%7D"));</script>
+
+  <script type="text/javascript" src="/1e48a792b86a37dc19156fb76d020d8bda9122db.js?meteor_js_resource=true"></script>
+
+
+</body>
+</html>

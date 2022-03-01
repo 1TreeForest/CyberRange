@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>招生远程面试系统</title>
+        <meta content="text/html" charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+        
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+        <meta name="renderer" content="webkit"/>
+        <link rel="stylesheet" type="text/css" href="//t1.chei.com.cn/bm/ycms/stu/assets/css/app.css?20210318" />
+        <!-- <link rel="stylesheet" type="text/css" href="/ycms/assets/css/app.css" /> -->
+        <style>
+            .ycms-xtxz {
+                padding-top: 0.64rem;
+            }
+            .ycms-ts-novideo {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: flex; 
+                width: 100%;
+                height: 100%; 
+                padding: .32rem 0.64rem;
+                box-sizing: border-box; 
+                align-items: center; 
+                justify-content: center; 
+                color: #fff; 
+                font-size: 0.4rem;
+            }
+            .van-nav-bar__left {
+                padding: 0;
+                margin: 0 16px;
+            }
+        </style>
+        <script type="text/javascript" src="//t2.chei.com.cn/common/wap/js/wap.min.js"></script>
+        <script src="//t1.chei.com.cn/common/fwxy/app-1.0.2.js"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100524-24"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-100524-24');
+</script>
+    </head>
+    <body>
+        <div class="ycms-layout" id="app" v-cloak>
+            <template v-if="isWapFn">
+                <div class="header"><van-nav-bar :title="titleText" @click-left="Goback">
+    <template slot="left" v-if="typeof navBarIcon != 'undefined' ? navBarIcon : true">
+        <van-icon class="van-nav-bar__arrow" name="arrow-left"></van-icon>
+    </template>
+    <template slot="right">
+        <van-icon tag="a" href="/ycms/stu/message/" name="chat-o" size="24" style="margin-right: 15px;"></van-icon>
+        <van-icon name="manager" size="24" @click.stop="isShowInfo = !isShowInfo"></van-icon>
+    </template>
+</van-nav-bar>
+<ul class="ycms-user-center" v-if="isShowInfo">
+    <li><a href="https://account.chsi.com.cn/account/account!show.action">账号管理</a></li>
+    <li><a href="https://account.chsi.com.cn/passport/logout?service=https://bm.chsi.com.cn/ycms/logout/">退出登录</a></li>
+</ul></div>
+                <div class="content">
+    <div class="ksczsc-container">
+        <h1>招生远程面试系统</h1>
+        <h1>考生操作手册</h1>
+        <p>招生远程面试系统（以下简称“系统”）为高校考生远程在线面试提供服务。请考生按照以下流程操作:</p>
+        <p>1.下载安装软件；</p>
+        <p>2.注册登录；</p>
+        <p>3.同意学信网用户协议；</p>
+        <p>4.账号实人验证；</p>
+        <p>5.阅读系统须知；</p>
+        <p>6.选择报考单位及考试；</p>
+        <p>7.确认准考信息、承诺书；</p>
+        <p>8.交费、提交面试材料；</p>
+        <p>9.选择面试考场；</p>
+        <p>10.考场实人验证；</p>
+        <p>11.进入考场。</p>
+        <p><span style="color: #a00;">注意：</span><strong>本说明文档内容如有变动，请以系统内页面提示为准。</strong>有些学校可能不需要交费、提交面试材料环节。</p>
+
+        <h2>1. 下载安装软件</h2>
+        <p>支持Windows、Mac电脑以及安卓和苹果手机，对于需要双机位的考场，考生第二机位需使用手机。相关系统软件要求如下：</p>
+        <p>1）Windows和Mac台式机及笔记本：需下载安装最新版Chrome浏览器（下载： <a href="https://www.google.cn/chrome/"
+            target="_blank" style="color: #2d8cf0;">Mac版</a>、<a href="https://www.google.cn/chrome/" target="_blank"
+            style="color: #2d8cf0;">Windows版</a>），其中台式机需提前准备外置摄像头。</p>
+        <p>2）需下载安装最新版学信网App（<a href="https://www.chsi.com.cn/wap/download.jsp" target="_blank" style="color: #2d8cf0;">下载</a>），安装时请允许学信网App使用摄像头、扬声器、存储空间、网络等权限，以保证正常进行实人验证。同时建议安装最新版Chrome浏览器。</p>
+        <p>考生首次登录系统，或每次进入考场之前均需要进行实人验证。实人验证需使用学信网App。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/down-app.png?20210318" alt="下载APP">
+        </div>
+
+        <h2>2. 注册登录</h2>
+        <p>
+            系统登录页面地址为：<a href="https://bm.chsi.com.cn/ycms/stu/" style="color: #2d8cf0;">https://bm.chsi.com.cn/ycms/stu/</a>，使用<a href="https://account.chsi.com.cn/account/help/index.jsp?keywords=%E5%AD%A6%E4%BF%A1%E7%BD%91%E8%B4%A6%E5%8F%B7%E5%8F%AF%E4%BB%A5%E5%81%9A%E4%BB%80%E4%B9%88" target="_blank">学信网账号</a>登录。
+        </p>
+        <h3>2.1 注册</h3>
+        <p>参加研究生复试的考生，使用网报时的账号登录即可，无需重新注册。</p>
+        <p>无学信网账号的考生，进入系统登录页面，点击【注册】按钮，进入学信网账号注册页面。账号注册需提供<b>考生</b>的手机号及短信验证码、姓名、证件号码等信息，设置密码后，即可完成注册。请牢记账号及密码。</p>
+        <p><span style="color: #a00;">注意：</span>请准确填选姓名、证件类型及证件号码等信息，否则将影响进入考试。</p>
+        <h3>2.2 登录</h3>
+        <p>进入系统登录页面，使用手机号或身份证号、密码，即可登录。登录后，请认真仔细阅读学信网用户协议和隐私政策，勾选“同意”方可进入系统。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/login.png?20210318" alt="登录">
+        </div>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/yhxy.png?20210318" alt="用户协议">
+        </div>
+
+        <h2>3. 实人验证</h2>
+        <p>首次登录系统时，考生须进行实人验证，使用 “学信网App”方式进行验证。下面对学信网App的使用进行介绍说明。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sryz-8.png?20210318" alt="实人验证">
+        </div>
+        <h3>3.1 电脑端实人验证</h3>
+        <p>若考生从电脑端登录系统，则选择“学信网App”方式后，电脑页面会显示实人验证二维码。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sryz-2.png?20210318" alt="实人验证">
+        </div>
+        <p>考生使用移动设备上的学信网App右上角的扫一扫功能，扫描电脑页面上的二维码，此时电脑页面显示“验证中”状态，考生在移动设备的学信网App中按照提示进行实人验证操作。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sryz-3.png?20210318" alt="实人验证">
+        </div>
+        <p>实人验证通过时，电脑页面显示“实人验证成功”，点击【继续】按钮进行后续操作。</p>
+        <p><span style="color: #a00;">注意：</span>验证不通过时，可返回重试。若实人验证不通过次数超过5次，则需要进入人工身份认证流程。</p>
+        <h3>3.2 移动端实人验证</h3>
+        <p>若考生从移动设备登录系统，则选择“学信网App”方式后，在移动设备页面点击【开始】，按照提示进行实人验证操作，完成后点击“返回首页”回到原操作的浏览器进行后续操作。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sryz-4.png?20210318" alt="实人验证">
+        </div>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sryz-5.png?20210318" alt="实人验证">
+        </div>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sryz-6.png?20210318" alt="实人验证">
+        </div>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sryz-7.png?20210318" alt="实人验证">
+        </div>
+
+        <h2>4. 查阅系统须知及考试信息</h2>
+        <p>实人验证通过后，请认真仔细阅读系统须知！阅读完成后点击【下一步】可选择考生所报考的单位及考试信息。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/xtxz.png?20210318" alt="系统须知">
+        </div>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/ksxx.png?20210318" alt="考试信息">
+        </div>
+
+        <h2>5. 考试流程</h2>
+        <h3>5.1 确认准考信息、承诺书</h3>
+        <p>选择本次要参加的考试后，进入准考信息确认界面。考生应仔细核对个人信息，确认无误后再点击【确认无误】按钮进入承诺书阅读界面。请考生认真仔细阅读，并点击【同意】按钮。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/qrzkxx.png?20210318" alt="确认准考信息">
+        </div>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/cns.png?20210318" alt="承诺书">
+        </div>
+        <h3>5.2 交费及面试材料</h3>
+        <p>同意承诺书后，进入交费、提交面试材料界面。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/jfmscl.png?20210402" alt="交费及面试材料">
+        </div>
+        <h3>5.2.1 交费</h3>
+        <p>若报考单位要求考生在线支付考试费用，则考生须在规定时间内交费成功后才能进入面试。</p>
+        <p><span style="color: #a00;">注意：</span>面试是否需要交费由考试单位设置，若未设置交费，此处不显示【交费】按钮。</p>
+        <h3>5.2.2 提交面试材料</h3>
+        <p>若考试单位要求考生提供面试附加材料，则考生需在规定时间内按学校要求上传。要求的必填材料都添加后，方可点击【确认提交面试材料】按钮提交至考试单位审阅。材料一旦提交，不可修改。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/tjmscl-1.png?20210318" alt="未提交面试材料">
+        </div>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/tjmscl-2.png?20210318" alt="面试材料尚未提交完成">
+        </div>
+        <p>文字类型的材料直接在文本框中输入文字保存，视频、音频、图片、其他类型的材料，需按学校规定的格式、数量、大小等要求上传并保存。</p>
+        <p><span style="color: #a00;">注意：</span>如上传材料不符合学校要求，材料有可能被打回，需重新修改并提交，请考生提交材料后，随时关注后续进展。面试材料要求（包括文件大小、个数、文件类型等）由考试单位设置，分必填和非必填项。必填项的材料要求考生必须上传并提交，才可进入面试；非必填的材料，可传可不传，不影响后续进入面试考场。</p>
+        <h3>5.2.3 考场列表</h3>
+        <p>点击“进入考场”，进入考场列表界面。考生可以查看面试时间要求及考场信息等。考生在面试前须再次实人验证。点击面试名称进入实人验证界面。具体见“3.实人验证”操作介绍。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/mslb.png?20210402" alt="考场列表">
+        </div>
+        <h3>5.3 远程面试</h3>
+        <p>实人验证通过后，考生进入考场候考页面。考生可以查看考试开始时间、考试顺序、考官发送的群消息和私信等。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/ycms.png?20210318" alt="远程面试">
+        </div>
+        <h3>5.3.1 音视频调试</h3>
+        <p>如考生使用台式机+摄像头进行远程面试，登录系统后，在候考区界面，建议进行音视频调试。点击【音视频调试】按钮进入调试界面。若设备有多个摄像头，可点击【转换摄像头】按钮转换，若设备仅有一个摄像头则不可转换。调试界面的图像无异常后，点击【调整完毕】结束调试返回考场候考区等待考官发送面试邀请。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/yssb.png?20210318" alt="调试设备">
+        </div>
+        <p><span style="color: #a00;">注意：</span>调试设备功能，网页端提供，移动端不提供。</p>
+        <h3>5.3.2 候考区</h3>
+        <p>考生完成音视频调试后，进入考场候考。在考场候考区，考生可以看到本人姓名及面试序号，其他考生仅显示考生序号。如考场当前无人在考试，则显示“无人考试”；如有考生正在考试，则显示该序号的考生正在考试，同时该考生在考生列表中高亮显示。</p>
+        <p><span style="color: #a00;">注意：</span>候考中的考生，请随时关注考场动态，下一位即将面试的考生可能会收到考官发送的私信通知，提醒考生准备面试。</p>
+        <h3>5.3.3 远程面试</h3>
+        <p>考生远程面试模式分为单机位和双机位。单机位指考生使用一台设备进行考试；双机位指考生同时使用两台设备进行考试。考试采用的面试模式，由考试单位进行设置。建议考生随时关注考试单位的考试要求，提前做好视频设备准备。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sbyq.png?20210319" alt="设备要求">
+        </div>
+
+        <p><b>模式一：</b>单机位模式</p>
+        <p>如考试为单机位模式，考生选择一台设备进行远程面试，可以是电脑+摄像头、笔记本或手机。</p>
+        <p>考官发起面试邀请后，考生点击【接通】即可进入视频面试环节。面试过程中，考官发送考题时，会在面试中通知考生查看考题，考生需点击“刷新考题”才可查看考题详情。面试完成时，由考官主动结束，考生端提示“面试已结束”。</p>
+        <p>视频面试过程中，若考官将考生状态标记暂缓，考生回到候考区进行等待，待下次考官发起视频邀请再次进行考试。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/djw.png?20210318" alt="单机位">
+        </div>
+
+        <p><b>模式二：</b>双机位模式</p>
+        <p>如考试为双机位模式，考生需要用两台设备进行远程面试，可以是电脑+手机、笔记本+手机、手机+手机。</p>
+        <p>主界面为考官界面，可以看到考官的视频画面，听到考官的声音。</p>
+        <p>一机位为考生面试界面，考官们通过此界面可以听见考生声音。</p>
+        <p>二机位仅显示考生的视频画面，不支持音频播放及采集（即二机位仅显示考生静音状态的视频画面）。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sjw.png?20210318" alt="双机位">
+        </div>
+        <p><span style="color: #a00;">注意：</span>一机位可以使用电脑、笔记本、手机，二机位必须使用手机，且该手机需确保考前安装并登录学信网APP，以备顺利进行二机位二维码扫一扫操作。</p>
+        
+        <p><b>缩屏提醒（仅支持PC端）</b></p>
+        <p>考生使用PC端Chrome浏览器进行视频面试时，请尽量保持全屏视频面试，除面试组老师要求外，禁止考生随意切换窗口、离开或缩小视频窗口。</p>
+        <p>考生首次接通面试邀请后，必须点击弹框提示中的“确认”才能接入视频面试。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sptx1.png" alt="缩屏提醒1">
+        </div>
+        <p>考生视频面试过程中，有缩小、退出全屏等操作，系统会弹出提示，提醒考生继续全屏视频面试。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sptx2.png" alt="缩屏提醒2">
+        </div>
+
+        <p><b>屏幕共享（仅支持PC端）</b></p>
+        <p>允许屏幕共享的考场中，考生可以在视频面试时共享屏幕。支持整个屏幕、指定窗口或者浏览器标签页的共享。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/pmgx1.png" alt="屏幕共享1">
+        </div>
+        <p>点击界面上的“开启屏幕共享”按钮，在弹框中根据需要选择要共享的类型、是否分享音频后，点击“分享”按钮进入共享模式，考生界面显示“共享中”状态。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/pmgx2.png" alt="屏幕共享2">
+        </div>
+        <p><span style="color: #a00;">注意：</span>如果考生只需要共享 PPT，则需提前打开 PPT，选择窗口中的 PPT 窗口。如果考生需要共享本机音频，则需勾选“分享音频”。</p>
+        <p>共享屏幕开始后，点击界面上的“停止共享”按钮或页面下方的“停止共享”按钮，退出共享模式。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/pmgx3.png" alt="屏幕共享3">
+        </div>
+
+        <h3>5.3.4 面试结束</h3>
+        <p>考官点击【结束面试】按钮后，考生会收到面试已结束的提示，考生点击【确认】即退出考场，且考生不允许再次进入考场，该考生在考生列表中消失。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/msjs.png?20210318" alt="面试结束">
+        </div>
+
+        <h2>6. 常见问题</h2>
+        <p style="text-indent: 0;">1.如果无法正常开启视频，请检查麦克风、摄像头/相机是否被其他应用占用或是否已授权。</p>
+        <p style="text-indent: 0;">2.面试为远程实时视频方式，请考生提前确认视频设备和环境可用。需保证设备电量充足，存储空间充足，建议连接优质Wi-Fi网络，关闭移动设备通话、录屏、锁屏、外放音乐、闹钟等可能影响面试的应用程序。</p>
+        <p style="text-indent: 0;">3.若使用手机设备进行考试，建议保证手机电量充足并接通电源后再进行面试。建议将手机设置为飞行模式并连接到Wi-Fi网络，以确保在考试过程中无电话打入。</p>
+        <p style="text-indent: 0;">4.考生需提前确认面试场地的光线清楚、不逆光，面试时正对摄像头、保持坐姿端正。</p>
+        <p style="text-indent: 0;">5.考生在面试过程中若出现视频卡顿、黑屏等现象，可以尝试刷新界面或关闭App重新进入考场。</p>
+        <p style="text-indent: 0;">6.如考试使用台式机+摄像头进行远程面试，不要在面试过程中插拔摄像头设备。</p>
+        <p style="text-indent: 0;">7.若考生进入系统后提示“没有考试资格”，请核对本人学信网账号信息中的姓名、证件类型及证件号码是否准确，确认无误仍有此提示的请联系考试单位核实。</p>
+        <p style="text-indent: 0;">8.二机位扫码提示“请先登录网页版进行实人核验”时，请考生一机位使用浏览器访问系统，重新实人验证进候考区，接受面试后，在二机位App中登录本人账号再次扫描二机位的二维码。</p>
+    </div>
+</div>
+            </template>
+            <template v-else>
+                <template v-if="isGoogle">
+                    <div class="header"><van-nav-bar :title="titleText" @click-left="Goback">
+    <template slot="left" v-if="typeof navBarIcon != 'undefined' ? navBarIcon : true">
+        <van-icon class="van-nav-bar__arrow" name="arrow-left"></van-icon>
+    </template>
+    <template slot="right">
+        <van-icon tag="a" href="/ycms/stu/message/" name="chat-o" size="24" style="margin-right: 15px;"></van-icon>
+        <van-icon name="manager" size="24" @click.stop="isShowInfo = !isShowInfo"></van-icon>
+    </template>
+</van-nav-bar>
+<ul class="ycms-user-center" v-if="isShowInfo">
+    <li><a href="https://account.chsi.com.cn/account/account!show.action">账号管理</a></li>
+    <li><a href="https://account.chsi.com.cn/passport/logout?service=https://bm.chsi.com.cn/ycms/logout/">退出登录</a></li>
+</ul></div>
+                    <div class="content">
+    <div class="ksczsc-container">
+        <h1>招生远程面试系统</h1>
+        <h1>考生操作手册</h1>
+        <p>招生远程面试系统（以下简称“系统”）为高校考生远程在线面试提供服务。请考生按照以下流程操作:</p>
+        <p>1.下载安装软件；</p>
+        <p>2.注册登录；</p>
+        <p>3.同意学信网用户协议；</p>
+        <p>4.账号实人验证；</p>
+        <p>5.阅读系统须知；</p>
+        <p>6.选择报考单位及考试；</p>
+        <p>7.确认准考信息、承诺书；</p>
+        <p>8.交费、提交面试材料；</p>
+        <p>9.选择面试考场；</p>
+        <p>10.考场实人验证；</p>
+        <p>11.进入考场。</p>
+        <p><span style="color: #a00;">注意：</span><strong>本说明文档内容如有变动，请以系统内页面提示为准。</strong>有些学校可能不需要交费、提交面试材料环节。</p>
+
+        <h2>1. 下载安装软件</h2>
+        <p>支持Windows、Mac电脑以及安卓和苹果手机，对于需要双机位的考场，考生第二机位需使用手机。相关系统软件要求如下：</p>
+        <p>1）Windows和Mac台式机及笔记本：需下载安装最新版Chrome浏览器（下载： <a href="https://www.google.cn/chrome/"
+            target="_blank" style="color: #2d8cf0;">Mac版</a>、<a href="https://www.google.cn/chrome/" target="_blank"
+            style="color: #2d8cf0;">Windows版</a>），其中台式机需提前准备外置摄像头。</p>
+        <p>2）需下载安装最新版学信网App（<a href="https://www.chsi.com.cn/wap/download.jsp" target="_blank" style="color: #2d8cf0;">下载</a>），安装时请允许学信网App使用摄像头、扬声器、存储空间、网络等权限，以保证正常进行实人验证。同时建议安装最新版Chrome浏览器。</p>
+        <p>考生首次登录系统，或每次进入考场之前均需要进行实人验证。实人验证需使用学信网App。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/down-app.png?20210318" alt="下载APP">
+        </div>
+
+        <h2>2. 注册登录</h2>
+        <p>
+            系统登录页面地址为：<a href="https://bm.chsi.com.cn/ycms/stu/" style="color: #2d8cf0;">https://bm.chsi.com.cn/ycms/stu/</a>，使用<a href="https://account.chsi.com.cn/account/help/index.jsp?keywords=%E5%AD%A6%E4%BF%A1%E7%BD%91%E8%B4%A6%E5%8F%B7%E5%8F%AF%E4%BB%A5%E5%81%9A%E4%BB%80%E4%B9%88" target="_blank">学信网账号</a>登录。
+        </p>
+        <h3>2.1 注册</h3>
+        <p>参加研究生复试的考生，使用网报时的账号登录即可，无需重新注册。</p>
+        <p>无学信网账号的考生，进入系统登录页面，点击【注册】按钮，进入学信网账号注册页面。账号注册需提供<b>考生</b>的手机号及短信验证码、姓名、证件号码等信息，设置密码后，即可完成注册。请牢记账号及密码。</p>
+        <p><span style="color: #a00;">注意：</span>请准确填选姓名、证件类型及证件号码等信息，否则将影响进入考试。</p>
+        <h3>2.2 登录</h3>
+        <p>进入系统登录页面，使用手机号或身份证号、密码，即可登录。登录后，请认真仔细阅读学信网用户协议和隐私政策，勾选“同意”方可进入系统。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/login.png?20210318" alt="登录">
+        </div>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/yhxy.png?20210318" alt="用户协议">
+        </div>
+
+        <h2>3. 实人验证</h2>
+        <p>首次登录系统时，考生须进行实人验证，使用 “学信网App”方式进行验证。下面对学信网App的使用进行介绍说明。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sryz-8.png?20210318" alt="实人验证">
+        </div>
+        <h3>3.1 电脑端实人验证</h3>
+        <p>若考生从电脑端登录系统，则选择“学信网App”方式后，电脑页面会显示实人验证二维码。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sryz-2.png?20210318" alt="实人验证">
+        </div>
+        <p>考生使用移动设备上的学信网App右上角的扫一扫功能，扫描电脑页面上的二维码，此时电脑页面显示“验证中”状态，考生在移动设备的学信网App中按照提示进行实人验证操作。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sryz-3.png?20210318" alt="实人验证">
+        </div>
+        <p>实人验证通过时，电脑页面显示“实人验证成功”，点击【继续】按钮进行后续操作。</p>
+        <p><span style="color: #a00;">注意：</span>验证不通过时，可返回重试。若实人验证不通过次数超过5次，则需要进入人工身份认证流程。</p>
+        <h3>3.2 移动端实人验证</h3>
+        <p>若考生从移动设备登录系统，则选择“学信网App”方式后，在移动设备页面点击【开始】，按照提示进行实人验证操作，完成后点击“返回首页”回到原操作的浏览器进行后续操作。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sryz-4.png?20210318" alt="实人验证">
+        </div>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sryz-5.png?20210318" alt="实人验证">
+        </div>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sryz-6.png?20210318" alt="实人验证">
+        </div>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sryz-7.png?20210318" alt="实人验证">
+        </div>
+
+        <h2>4. 查阅系统须知及考试信息</h2>
+        <p>实人验证通过后，请认真仔细阅读系统须知！阅读完成后点击【下一步】可选择考生所报考的单位及考试信息。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/xtxz.png?20210318" alt="系统须知">
+        </div>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/ksxx.png?20210318" alt="考试信息">
+        </div>
+
+        <h2>5. 考试流程</h2>
+        <h3>5.1 确认准考信息、承诺书</h3>
+        <p>选择本次要参加的考试后，进入准考信息确认界面。考生应仔细核对个人信息，确认无误后再点击【确认无误】按钮进入承诺书阅读界面。请考生认真仔细阅读，并点击【同意】按钮。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/qrzkxx.png?20210318" alt="确认准考信息">
+        </div>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/cns.png?20210318" alt="承诺书">
+        </div>
+        <h3>5.2 交费及面试材料</h3>
+        <p>同意承诺书后，进入交费、提交面试材料界面。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/jfmscl.png?20210402" alt="交费及面试材料">
+        </div>
+        <h3>5.2.1 交费</h3>
+        <p>若报考单位要求考生在线支付考试费用，则考生须在规定时间内交费成功后才能进入面试。</p>
+        <p><span style="color: #a00;">注意：</span>面试是否需要交费由考试单位设置，若未设置交费，此处不显示【交费】按钮。</p>
+        <h3>5.2.2 提交面试材料</h3>
+        <p>若考试单位要求考生提供面试附加材料，则考生需在规定时间内按学校要求上传。要求的必填材料都添加后，方可点击【确认提交面试材料】按钮提交至考试单位审阅。材料一旦提交，不可修改。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/tjmscl-1.png?20210318" alt="未提交面试材料">
+        </div>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/tjmscl-2.png?20210318" alt="面试材料尚未提交完成">
+        </div>
+        <p>文字类型的材料直接在文本框中输入文字保存，视频、音频、图片、其他类型的材料，需按学校规定的格式、数量、大小等要求上传并保存。</p>
+        <p><span style="color: #a00;">注意：</span>如上传材料不符合学校要求，材料有可能被打回，需重新修改并提交，请考生提交材料后，随时关注后续进展。面试材料要求（包括文件大小、个数、文件类型等）由考试单位设置，分必填和非必填项。必填项的材料要求考生必须上传并提交，才可进入面试；非必填的材料，可传可不传，不影响后续进入面试考场。</p>
+        <h3>5.2.3 考场列表</h3>
+        <p>点击“进入考场”，进入考场列表界面。考生可以查看面试时间要求及考场信息等。考生在面试前须再次实人验证。点击面试名称进入实人验证界面。具体见“3.实人验证”操作介绍。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/mslb.png?20210402" alt="考场列表">
+        </div>
+        <h3>5.3 远程面试</h3>
+        <p>实人验证通过后，考生进入考场候考页面。考生可以查看考试开始时间、考试顺序、考官发送的群消息和私信等。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/ycms.png?20210318" alt="远程面试">
+        </div>
+        <h3>5.3.1 音视频调试</h3>
+        <p>如考生使用台式机+摄像头进行远程面试，登录系统后，在候考区界面，建议进行音视频调试。点击【音视频调试】按钮进入调试界面。若设备有多个摄像头，可点击【转换摄像头】按钮转换，若设备仅有一个摄像头则不可转换。调试界面的图像无异常后，点击【调整完毕】结束调试返回考场候考区等待考官发送面试邀请。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/yssb.png?20210318" alt="调试设备">
+        </div>
+        <p><span style="color: #a00;">注意：</span>调试设备功能，网页端提供，移动端不提供。</p>
+        <h3>5.3.2 候考区</h3>
+        <p>考生完成音视频调试后，进入考场候考。在考场候考区，考生可以看到本人姓名及面试序号，其他考生仅显示考生序号。如考场当前无人在考试，则显示“无人考试”；如有考生正在考试，则显示该序号的考生正在考试，同时该考生在考生列表中高亮显示。</p>
+        <p><span style="color: #a00;">注意：</span>候考中的考生，请随时关注考场动态，下一位即将面试的考生可能会收到考官发送的私信通知，提醒考生准备面试。</p>
+        <h3>5.3.3 远程面试</h3>
+        <p>考生远程面试模式分为单机位和双机位。单机位指考生使用一台设备进行考试；双机位指考生同时使用两台设备进行考试。考试采用的面试模式，由考试单位进行设置。建议考生随时关注考试单位的考试要求，提前做好视频设备准备。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sbyq.png?20210319" alt="设备要求">
+        </div>
+
+        <p><b>模式一：</b>单机位模式</p>
+        <p>如考试为单机位模式，考生选择一台设备进行远程面试，可以是电脑+摄像头、笔记本或手机。</p>
+        <p>考官发起面试邀请后，考生点击【接通】即可进入视频面试环节。面试过程中，考官发送考题时，会在面试中通知考生查看考题，考生需点击“刷新考题”才可查看考题详情。面试完成时，由考官主动结束，考生端提示“面试已结束”。</p>
+        <p>视频面试过程中，若考官将考生状态标记暂缓，考生回到候考区进行等待，待下次考官发起视频邀请再次进行考试。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/djw.png?20210318" alt="单机位">
+        </div>
+
+        <p><b>模式二：</b>双机位模式</p>
+        <p>如考试为双机位模式，考生需要用两台设备进行远程面试，可以是电脑+手机、笔记本+手机、手机+手机。</p>
+        <p>主界面为考官界面，可以看到考官的视频画面，听到考官的声音。</p>
+        <p>一机位为考生面试界面，考官们通过此界面可以听见考生声音。</p>
+        <p>二机位仅显示考生的视频画面，不支持音频播放及采集（即二机位仅显示考生静音状态的视频画面）。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sjw.png?20210318" alt="双机位">
+        </div>
+        <p><span style="color: #a00;">注意：</span>一机位可以使用电脑、笔记本、手机，二机位必须使用手机，且该手机需确保考前安装并登录学信网APP，以备顺利进行二机位二维码扫一扫操作。</p>
+        
+        <p><b>缩屏提醒（仅支持PC端）</b></p>
+        <p>考生使用PC端Chrome浏览器进行视频面试时，请尽量保持全屏视频面试，除面试组老师要求外，禁止考生随意切换窗口、离开或缩小视频窗口。</p>
+        <p>考生首次接通面试邀请后，必须点击弹框提示中的“确认”才能接入视频面试。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sptx1.png" alt="缩屏提醒1">
+        </div>
+        <p>考生视频面试过程中，有缩小、退出全屏等操作，系统会弹出提示，提醒考生继续全屏视频面试。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/sptx2.png" alt="缩屏提醒2">
+        </div>
+
+        <p><b>屏幕共享（仅支持PC端）</b></p>
+        <p>允许屏幕共享的考场中，考生可以在视频面试时共享屏幕。支持整个屏幕、指定窗口或者浏览器标签页的共享。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/pmgx1.png" alt="屏幕共享1">
+        </div>
+        <p>点击界面上的“开启屏幕共享”按钮，在弹框中根据需要选择要共享的类型、是否分享音频后，点击“分享”按钮进入共享模式，考生界面显示“共享中”状态。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/pmgx2.png" alt="屏幕共享2">
+        </div>
+        <p><span style="color: #a00;">注意：</span>如果考生只需要共享 PPT，则需提前打开 PPT，选择窗口中的 PPT 窗口。如果考生需要共享本机音频，则需勾选“分享音频”。</p>
+        <p>共享屏幕开始后，点击界面上的“停止共享”按钮或页面下方的“停止共享”按钮，退出共享模式。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/pmgx3.png" alt="屏幕共享3">
+        </div>
+
+        <h3>5.3.4 面试结束</h3>
+        <p>考官点击【结束面试】按钮后，考生会收到面试已结束的提示，考生点击【确认】即退出考场，且考生不允许再次进入考场，该考生在考生列表中消失。</p>
+        <div class="img-box">
+            <img src="//t1.chei.com.cn/bm/ycms/stu/assets/images/ksczsc/msjs.png?20210318" alt="面试结束">
+        </div>
+
+        <h2>6. 常见问题</h2>
+        <p style="text-indent: 0;">1.如果无法正常开启视频，请检查麦克风、摄像头/相机是否被其他应用占用或是否已授权。</p>
+        <p style="text-indent: 0;">2.面试为远程实时视频方式，请考生提前确认视频设备和环境可用。需保证设备电量充足，存储空间充足，建议连接优质Wi-Fi网络，关闭移动设备通话、录屏、锁屏、外放音乐、闹钟等可能影响面试的应用程序。</p>
+        <p style="text-indent: 0;">3.若使用手机设备进行考试，建议保证手机电量充足并接通电源后再进行面试。建议将手机设置为飞行模式并连接到Wi-Fi网络，以确保在考试过程中无电话打入。</p>
+        <p style="text-indent: 0;">4.考生需提前确认面试场地的光线清楚、不逆光，面试时正对摄像头、保持坐姿端正。</p>
+        <p style="text-indent: 0;">5.考生在面试过程中若出现视频卡顿、黑屏等现象，可以尝试刷新界面或关闭App重新进入考场。</p>
+        <p style="text-indent: 0;">6.如考试使用台式机+摄像头进行远程面试，不要在面试过程中插拔摄像头设备。</p>
+        <p style="text-indent: 0;">7.若考生进入系统后提示“没有考试资格”，请核对本人学信网账号信息中的姓名、证件类型及证件号码是否准确，确认无误仍有此提示的请联系考试单位核实。</p>
+        <p style="text-indent: 0;">8.二机位扫码提示“请先登录网页版进行实人核验”时，请考生一机位使用浏览器访问系统，重新实人验证进候考区，接受面试后，在二机位App中登录本人账号再次扫描二机位的二维码。</p>
+    </div>
+</div>
+                </template>
+                <template v-else>
+                    <div class="header">
+                        <van-nav-bar title="招生远程面试系统" @click-left="Goback">
+                            <template slot="left" v-if="typeof navBarIcon != 'undefined' ? navBarIcon : true">
+                                <van-icon class="van-nav-bar__arrow" name="arrow-left"></van-icon>
+                            </template>
+                        </van-nav-bar>
+                        <ul class="ycms-user-center" v-if="isShowInfo">
+                            <li><a href="https://account.chsi.com.cn/account/account!show.action">账号管理</a></li>
+                            <li><a href="https://account.chsi.com.cn/passport/logout?service=https://bm.chsi.com.cn/ycms/logout/">退出登录</a></li>
+                        </ul>
+                    </div>
+                    <div class="content">
+                        <div class="ycms-xtxz" style="text-align: center;">
+                            <van-icon name="warning" color="#F79B00" size="1rem"></van-icon>
+                            <p style="text-align: center;margin-bottom: 30px;">不支持当前浏览器，请使用最新版Chrome浏览器进行考试</p>
+                            <div style="text-align: center;display: flex;justify-content: center;">
+                                <van-button style="border-radius: 4px;width: 160px;" color="#146DE3" tag="a" :href="chromeDownload" target="_blank">Mac版下载</van-button>
+                                <van-button style="margin-left: 25px;border-radius: 4px;width: 160px;" color="#34A28C" tag="a" :href="chromeDownload" target="_blank">Windows版下载</van-button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </template>
+        </div>
+        <div class="footer">Copyright &copy; 2003-<span>2022</span> <a href="https://www.chsi.com.cn" target="_blank">学信网</a> All Rights Reserved<br/>
+客服电话：010-67410388&ensp;&ensp;客服邮箱：kefu@chsi.com.cn</div>
+        <script type="text/javascript" src="//t2.chei.com.cn/common/js/vue-plugins/moment.min.js"></script>
+        <script type="text/javascript" src="//t4.chei.com.cn/common/js/lodash.min.js"></script>
+        <script type="text/javascript" src="//t4.chei.com.cn/common/js/vue/2.5.6/vue.min.js"></script>
+        <script type="text/javascript" src="//t1.chei.com.cn/bm/ycms/stu/assets/utils/vant/2.6.1/vant.min.js"></script>
+        <script type="text/javascript" src="//t3.chei.com.cn/bm/ycms/stu/assets/js/vendors.js"></script>
+        <script type="text/javascript" src="//t1.chei.com.cn/bm/ycms/stu/assets/js/app-1.0.1.js"></script>
+        <script type="text/javascript" src="//t3.chei.com.cn/bm/ycms/stu/assets/utils/webim-1.0.0.3.js"></script>
+        <!-- <script type="text/javascript" src="/ycms/assets/utils/webim.js"></script> -->
+        <script type="text/javascript" src="//t4.chei.com.cn/bm/ycms/stu/assets/utils/ali/aliyun-webrtc-sdk-1.12.0.js"></script>
+        <script type="text/javascript" src="//t1.chei.com.cn/bm/ycms/stu/assets/utils/ali/utils.js"></script>
+        <script type="text/javascript" src="//t3.chei.com.cn/common/js/axios/0.19.2/axios.min.js"></script>
+        <script>
+            function heatHitPolling(url, options) {
+                // 回调函数
+                var _heartCallback = options.heartCallback;
+                var _config;
+                var instance = axios.create({ responseType: 'json' }); //自动转换
+                options.errorCount = 0;
+
+                var _retry = function (conf, _relay) {
+                    // 创建promise，确保最初的回调函数
+                    let nextPolling = new Promise(function (resolve) {
+                        setTimeout(function () {
+                            resolve();
+                        }, _relay);
+                    });
+
+                    // 保证回调
+                    return nextPolling.then(function () {
+                        // 重新发起请求
+                        return instance(conf);
+                    });
+                };
+
+
+
+                // 设置应答拦截器
+                instance.interceptors.response.use(function (response) {
+                    var config = _config = response.config;
+                    var responsedata = response.data;
+                    var _nextTime;
+                    if (responsedata && responsedata.flag) {
+                        // 符合预期，心跳正常时，错误次数清零
+                        config.errorCount = 0;
+                        setTimeout(function () {
+                            // 轮询正确后，再次轮询
+                            instance.get(url, options).then(_heartCallback);
+                        }, config.heartHit || 2000);
+                        // 结果正确，则返回promise应答
+                        return responsedata;
+                    } else {
+                        config.errorCount++;
+                        var _modCount = config.errorCount % config.heartRetry;
+                        var _iseven = ((config.errorCount / config.heartRetry) & 1) === 0;
+                        // 偶数则正向增加时间，奇数则负向减时间
+                        if (_iseven) {
+                            config.errorCount = _modCount;
+                            _nextTime = _modCount;
+                        } else {
+                            _nextTime = config.heartRetry - _modCount;
+                        }
+                    }
+
+                    var _t = (_nextTime * config.heartGaps + config.heartHit) || 2000;
+                    _retry(config, _t);
+
+
+
+                }, function (error) {
+                    // console.log('有错误发生了');
+                    var config = (error.response && error.response.config) || _config;
+                    config.errorCount++;
+                    var _nextTime;
+                    var _modCount = config.errorCount % config.heartRetry;
+                    var _iseven = ((config.errorCount / config.heartRetry) & 1) === 0;
+                    // 偶数则正向增加时间，奇数则负向减时间
+                    if (_iseven) {
+                        config.errorCount = _modCount;
+                        _nextTime = _modCount;
+                    } else {
+                        _nextTime = config.heartRetry - _modCount;
+                    }
+                    var _t = (_nextTime * config.heartGaps + config.heartHit) || 2000;
+
+                    // console.log(_t)
+                    _retry(config, _t);
+
+                });
+                return instance.get(url, options).then(_heartCallback);
+            }
+        </script>
+        <script type="text/javascript">
+    var mixin = {
+        data: function () {
+            return {
+                navBarIcon: false, //不显示返回按钮
+                show: false,
+                logoutIcon: '', //不展示退出图标
+                titText: '考生操作手册'
+            }
+        },
+        mounted: function () {
+            this.titleText = '考生操作手册';
+        }
+    };
+</script>
+        <div></div>
+        <script>
+            new Vue({
+                el: '#app',
+                WebIM,
+                store,
+                mixins: typeof mixin != 'undefined' ? [mixin] : {},
+                data: function () {
+                    return {
+                        titleText: '',
+                        backUrl: '',
+                        isWapFn: wapFn(),
+                        isGoogle: true,
+                        chromeDownload: 'https://www.google.cn/chrome/',
+                        isSryz: false,
+                        isShowInfo: false
+                    }
+                },
+                methods: {
+                    onGoback: function() {
+                        if (this.backUrl) {
+                            location.href = this.backUrl;
+                        } else {
+                            window.history.back();
+                        }
+                    },
+                    changeCenter: function() {
+                        this.userCenter = true;
+                    },
+                    Goback: function () {
+                        if (this.isSryz) {
+                            this.onGobackSryz();
+                        } else {
+                            this.onGoback();
+                        }
+                    },
+                    getChromeVersion:function(){
+                        var arr = navigator.userAgent.split(' ');
+                        var chromeVersion = '';
+                        for(var i=0;i < arr.length;i++){
+                            if(/chrome/i.test(arr[i])) {
+                                chromeVersion = arr[i];
+                            }
+                        }
+                        if(chromeVersion){
+                            return Number(chromeVersion.split('/')[1].split('.')[0]);
+                        } else {
+                            return false;
+                        }
+                    }
+                },
+                created: function() {
+                    if (!this.getChromeVersion() || this.getChromeVersion() < 88){
+                        this.isGoogle =false;
+                    }else{
+                        this.isGoogle =true;
+                    }
+                },
+                mounted: function () {
+                }
+            })
+        </script>
+
+       
+    </body>
+</html>

@@ -1,0 +1,607 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>驱动之家-值得信赖的专业驱动中文网站</title>
+<meta name="keywords" content="驱动,驱动程序,驱动下载,驱动中心,驱动之家,驱动精灵,万能驱动,驱动天空,驱动程序下载,驱动大全,常用驱动,全面驱动,驱动安装,驱动介绍,笔记本驱动,显卡驱动,主板驱动,MP3驱动,网卡驱动,声卡驱动,AC97驱动,摄像头驱动,催化剂驱动,NVIDIA驱动" />
+<meta name="description" content="驱动之家-驱动下载频道共有十多万种各类别产品驱动、工具及说明书，为您提供全面的驱动下载和驱动一体化自动安装服务" />
+	<link href="//drivers.mydrivers.com/css/stylev3.css" rel="stylesheet" type="text/css" />
+	<link href="//drivers.mydrivers.com/css/public.css" rel="stylesheet" type="text/css" />
+	<link href="//drivers.mydrivers.com/css/newstyle.css" rel="stylesheet" type="text/css" />
+	<link href="//drivers.mydrivers.com/css/iconfont.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="//11.mydrivers.com/common/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="//11.mydrivers.com/common/js/jquery.artDialog.min.js"></script>
+<!--	<script type="text/javascript" src="//11.mydrivers.com/www/2013/js/jquery.jscrollpane.min.js"></script>-->
+	<script type="text/javascript" src="//11.mydrivers.com/www/2013/js/scroll-startstop.events.jquery.js"></script>
+    <script type="text/javascript" src="//11.mydrivers.com/2018/news/jquery.lazyload.min.js"></script>
+<base target="_blank" />
+</head>
+<body>
+<div class="header">
+  <div class="top_box">
+    <div class="top_1_center"><a title="首页" href="//www.mydrivers.com/">首页</a> <a title="资讯" href="//news.mydrivers.com/">资讯</a> <a title="评测" href="//hardware.mydrivers.com/">评测</a> <a title="驱动" href="//drivers.mydrivers.com">驱动</a> <a title="图赏" href="//www.mydrivers.com/tushang/">图赏</a> <a href="//blog.mydrivers.com/tougao.htm">投稿</a></div>
+    <div class="top_1_right" style="position:relative">
+      <ul>
+        <li id="i_login"><a target="_self" id="a_login" href="javascript:;">登录</a></li>
+        <li id="i_reg"><a href="//passport.mydrivers.com/reg.aspx">注册</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="driver_title">
+  <div class="logo"> <a href="//drivers.mydrivers.com/"><img src="/images/icon/kkg_logo.png" width="130" height="77" alt="驱动之家_logo"/></a></div>
+  <div class="search_box">
+    <div class="search_warp">
+      <div class="search_form">
+        <form action="#" onSubmit="return search()" name="myform" id="myform">
+          <div class="search_word_warp">
+            <input type="text" autocomplete="off" onFocus="this.value='';" value="请输入关键字" name="q" id="q" class="search_word">
+          </div>
+			   <input type="hidden" value="1" name="s_class" id="s_class">
+          <div class="search_button_warp">
+            <input type="submit" name="button" id="button" value="" class="search_button">
+          </div>
+        </form>
+      </div>
+      <div class="hot_search"> <script type="text/javascript" src="/inc/utf8KeyWords.js"></script></div>
+    </div>
+  </div>
+  <div class="weather"><iframe allowtransparency="true" frameborder="0" width="410" height="62" scrolling="no" src="//tianqi.2345.com/plugin/widget/index.htm?s=2&amp;z=1&amp;t=1&amp;v=2&amp;d=1&amp;bd=0&amp;k=000000&amp;f=808080&amp;q=1&amp;e=1&amp;a=1&amp;c=54511&amp;w=410&amp;h=62&amp;align=left"></iframe></div>
+</div>
+<!-- <div class="app_icon"><a herf="#">
+  <div><img src="/images/icon/app_1.png" width="40" height="40"></div>
+  驱家旗下产品</a> <a herf="#">
+  <div><img src="/images/icon/app_2.png" width="40" height="40"></div>
+  快科技</a> <a herf="#">
+  <div><img src="/images/icon/app_3.png" width="40" height="40"></div>
+  硬件狗狗</a> <a herf="#">
+  <div><img src="/images/icon/app_3.png" width="40" height="40"></div>
+  懂好货</a> 
+	</div>-->
+<script language="javascript">
+    function GetObj(element) {
+        return document.getElementById(element);
+    }
+    function search() {
+        GetObj("q").name = "q";
+        var s_keywords = document.myform.q.value;
+        if ((s_keywords == "" || s_keywords == "请输入关键字")) {
+            alert("请输入查询关键字!");
+            GetObj("q").focus();
+            return false;
+        }
+        switch (GetObj("s_class").value) {
+            case "0"://百度
+                GetObj("q").name = "word";
+                GetObj("myform").action = "https://www.baidu.com/baidu";
+                break;
+            case "1"://驱动
+                GetObj("myform").action = "https://so.mydrivers.com/drivers.aspx?q=" + escape(s_keywords);
+                break;
+            case "2"://新闻
+                GetObj("myform").action = "https://so.mydrivers.com/news.aspx?q=" + escape(s_keywords);
+                break;
+            case "3"://软件
+                GetObj("myform").action = "https://so.myfiles.com.cn/soft.aspx?q=" + escape(s_keywords);
+                break;
+            case "4"://APP
+                GetObj("myform").action = "https://app.mydrivers.com/search/default.aspx?q=" + escape(s_keywords);
+                break;
+            case "5"://图片
+                GetObj("q").name = "word";
+                GetObj("myform").action = "https://image.baidu.com/i?word=" + escape(s_keywords);
+                break;
+            case "6"://视频
+                GetObj("q").name = "word";
+                GetObj("myform").action = "https://video.baidu.com/v?ch=14&ie=utf-8&word=" + escape(s_keywords);
+                break;
+            case "7"://工具
+                GetObj("q").name = "kw";
+                GetObj("myform").action = "https://tools.mydrivers.com/searchlist.aspx";
+                break;
+            default:
+                GetObj("q").name = "wd";
+                GetObj("myform").action = "https://www.baidu.com/baidu";
+                break;
+        }
+        return true;
+    }
+</script>
+
+<!--      <div style="margin:0 auto; width:1100px; height:90px;"><a href="https://www.ctyun.cn/h5/activity/2021/1111/application?track=|cp:cz_kkj|tgdy:qudongxiazaizhongxin|ttjh:yundiannao|key:czkk249|pf:PC" target="_blank"><img src="//img1.mydrivers.com/img/2005/tianyiyun1100.gif" width="1100" height="90" /></a></div> -->
+
+	<div class="nav">
+  <ul>
+    <li class="mtitle"><a target="_self" title="驱动中心" href="/" class="cur">驱动中心</a></li>
+    <li><a target="_self" title="每日更新" href="/update/">每日更新</a></li>
+    <li><a target="_self" title="分类查询" href="/search/">分类查询</a></li>
+    <li><a target="_self" title="常用驱动" href="/install/">常用驱动</a></li>
+    <li><a target="_self" title="驱动技巧" href="#">驱动技巧</a></li>
+  </ul>
+</div>
+<div class="main">
+  <div class="main_title">
+    <ul>
+      <li class="tleft">驱动分类</li>
+      <li class="tcenter">驱动资讯</li>
+      <li  class="tright">驱动推荐</li>
+    </ul>
+  </div>
+  <div class="main_left">
+    <ul class="drivers_list">
+      <li id="li_1"> <a class="li_1" href="#" onClick="return false;"><i class="iconfont icon-hardware1"></i>电脑硬件</a> </li>
+      <li id="li_2"> <a class="li_2" href="#" onClick="return false;"><i class="iconfont icon-digital2"></i>数码周边</a></li>
+      <li id="li_3"> <a class="li_3" href="#" onClick="return false;"><i class="iconfont icon-notebook3"></i>整机笔记本</a> </li>
+      <li id="li_4"> <a class="li_4" href="#" onClick="return false;"><i class="iconfont icon-official4"></i>办公外设</a> </li>
+      <li id="li_5"> <a  class="li_5" href="#" onClick="return false;"><i class="iconfont icon-router5"></i>网络设备</a> </li>
+      <li id="li_6"> <a  class="li_6" href="#" onClick="return false;"><i class="iconfont icon-telephone6"></i>手机相关</a> </li>
+      <li id="li_7"> <a  class="li_7" href="#" onClick="return false;"><i class="iconfont icon-game7"></i>游戏产品</a> </li>
+      <li id="li_8"> <a  class="li_8" href="#" onClick="return false;"><i class="iconfont icon-car8"></i>交通工具</a> </li>
+      <li id="li_9"> <a  class="li_9" href="#" onClick="return false;"><i class="iconfont icon-appliances9"></i>生活家电</a> </li>
+      <li id="li_10"> <a  class="li_10" href="#" onClick="return false;"><i class="iconfont icon-soft10"></i>常用软件</a> </li>
+      <li id="li_11"> <a  class="li_11" href="#" onClick="return false;"><i class="iconfont icon-mac11"></i>Mac驱动</a> </li>
+      <li id="li_12"> <a  class="li_12" href="#" onClick="return false;"><i class="iconfont icon-linux12"></i>Linux驱动</a> </li>
+      <li id="li_13"> <a  class="li_13" href="#" onClick="return false;"><i class="iconfont icon-more13"></i>更多驱动</a> </li>
+     <div class="er_list" style="display: none;" id="index_menus_sub"> 
+		 
+		 <div class="item-sub"><!--电脑硬件-->
+			 <a target="_blank" href="//drivers.mydrivers.com/search-1/">显卡</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-4/">主板</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-5/">CPU </a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-6/">硬盘</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-7/">光驱刻录机</a>
+			 <a target="_blank" href="//drivers.mydrivers.com/search-2/">声卡</a> 
+			  <a target="_blank" href="//drivers.mydrivers.com/search-30/">鼠标键盘</a> 
+			  <a target="_blank" href="//drivers.mydrivers.com/search-34/">显示器</a> 
+			  <a target="_blank" href="//drivers.mydrivers.com/search-35/">SCSI/RAID控制器</a> 
+		</div>
+		 
+		 <div class="item-sub"><!--数码周边-->
+		 <a target="_blank" href="//drivers.mydrivers.com/search-8/">U盘</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-9/">MP3/MP4</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-10/">数码相机</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-11/">数码摄像机</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-12/">录音笔</a>
+			 <a target="_blank" href="//drivers.mydrivers.com/search-13/">摄像头</a> 
+			  <a target="_blank" href="//drivers.mydrivers.com/search-28/">蓝牙</a> 
+			  <a target="_blank" href="//drivers.mydrivers.com/search-29/">手写板</a> 
+			  <a target="_blank" href="//drivers.mydrivers.com/search-33/">音频设备</a> 
+			   <a target="_blank" href="//drivers.mydrivers.com/search-37/">电视卡/盒</a> 
+		 </div>
+		 
+		 	 <div class="item-sub"><!--整机笔记本-->
+		     <a target="_blank" href="//drivers.mydrivers.com/search-1/">显卡</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-14/">笔记本</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-15/">台式机</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-36/">平板电脑</a> 
+			 
+		    </div>
+		 
+		 	 <div class="item-sub"><!--办公外设-->
+		     <a target="_blank" href="//drivers.mydrivers.com/search-36/">平板电脑</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-16/">打印机</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-17/">扫描仪</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-18/">影印一体机</a> 
+			 	 <a target="_blank" href="//drivers.mydrivers.com/search-19/">投影机</a> 
+		    </div>
+		 
+		  	 <div class="item-sub"><!--网络设备-->
+		     <a target="_blank" href="//drivers.mydrivers.com/search-3/">网卡</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-20/">无线网卡</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-21/">调制解调器</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-22/">路由器</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-23/">交换机</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-24/">网络存储设备</a> 
+		    </div>
+		 
+		 	 <div class="item-sub"><!--手机相关-->
+		     <a target="_blank" href="//drivers.mydrivers.com/search-8/">U盘</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-9/">MP3/MP4</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-10/">数码相机</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-11/">数码摄像机</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-12/">录音笔</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-13/">摄像头</a> 
+				  <a target="_blank" href="//drivers.mydrivers.com/search-28/">蓝牙</a> 
+				  <a target="_blank" href="//drivers.mydrivers.com/search-29/">手写板</a> 
+				  <a target="_blank" href="//drivers.mydrivers.com/search-33/">音频设备</a> 
+				  <a target="_blank" href="//drivers.mydrivers.com/search-37/">电视卡/盒</a> 
+		    </div>
+		 
+		 	 <div class="item-sub"><!--游戏产品-->
+		     <a target="_blank" href="//drivers.mydrivers.com/search-31/">游戏机</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-32/">游戏手柄</a>  
+		    </div>
+		 
+		  <div class="item-sub"><!--交通工具-->
+		     <a target="_blank" href="//drivers.mydrivers.com/search-40/">汽车</a> 
+		    </div>
+		 
+		 	 <div class="item-sub"><!--生活家电-->
+		     <a target="_blank" href="//drivers.mydrivers.com/search-39/">电视</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-41/">空调</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-42/">洗衣机</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-43/">扫地机器人</a> 
+			 <a target="_blank" href="//drivers.mydrivers.com/search-44/">风扇</a> 
+		    </div>
+		   
+		   <div class="item-sub"><!--常用软件-->
+		 
+		    </div>
+		 
+		   <div class="item-sub"><!--Mac驱动-->
+		      
+		    </div>
+		 
+		   <div class="item-sub"><!--Linux驱动-->
+		     
+		    </div>
+		 
+		  
+		 
+		</div>
+    </ul>
+  </div>
+	<script>
+          document.domain = "mydrivers.com";
+	$(function(){
+		   $(".drivers_list").children("li").hover(function() { //一级导航悬浮
+			        var index = $(this).index(); 
+				    $(this).addClass("hover").siblings("li").removeClass("hover"); 
+                    $(".er_list").children(".item-sub").hide();
+                    $(".er_list").children(".item-sub").eq(index).show(); 
+                })
+		   $(".drivers_list").hover(function() { //整个导航菜单悬浮，是否显示二级导航到出厂
+			    $("#index_menus_sub").show();
+                }, function() {
+                    $("#index_menus_sub").hide();
+                    $('li').removeClass("hover");
+                })
+           $("#index_menus_sub").children(".item-sub").hover(function() { //二级导航悬浮
+                    var index = $(this).index(); 
+				    $(".drivers_list").children("li").eq(index).addClass("hover");
+                    $("#index_menus_sub").show();
+                 
+                }, function() {
+                    //$("#index_menus_sub").hide();
+                    //$(".drivers_list").children("li").removeClass("hover");
+                })
+		
+		
+	})
+	</script>
+  <div class="main_center">
+	   <div class="photo"> 
+  <div id="pic_banner">  <div class="slider"> <ul class="slider-main" id="pic_banner_main" style="width:2200px; position:relative;"><li class="slider-panel"><a href="https://news.mydrivers.com/1/769/769349.htm" target="_blank"><img src="/img/20210715/173909508.png"  alt="硬件狗狗Mac 2021预览测试版首发！能监测、能跑分" /><span class="ct_txt">硬件狗狗Mac 2021预览测试版首发！能监测、能跑分</span></a></li><li class="slider-panel"><a href="https://news.mydrivers.com/1/812/812772.htm" target="_blank"><img src="/img/20220203/203408450.jpg"  alt="NVIDIA 511.65正式版显卡驱动发布下载：点亮RTX 3070 Ti/3080 Ti游戏本" /><span class="ct_txt">NVIDIA 511.65正式版显卡驱动发布下载：点亮RTX 3070 Ti/3080 Ti游戏本</span></a></li><li class="slider-panel"><a href="https://news.mydrivers.com/1/816/816749.htm" target="_blank"><img src="/img/20220225/220334508.jpg"  alt="AMD 22.2.3版显卡驱动发布：零时差优化满分大作《艾尔登法环》" /><span class="ct_txt">AMD 22.2.3版显卡驱动发布：零时差优化满分大作《艾尔登法环》</span></a></li><li class="slider-panel"><a href="https://news.mydrivers.com/1/813/813966.htm" target="_blank"><img src="/img/20220217/223644511.png"  alt="Intel发布新版核显驱动：修复一大堆DX11/12游戏崩溃、卡死bug" /><span class="ct_txt">Intel发布新版核显驱动：修复一大堆DX11/12游戏崩溃、卡死bug</span></a></li></ul><div class="slider-extra"><ul class="slider-nav" id="pic_page"> <li class="slider-item"></li> <li class="slider-item"></li> <li class="slider-item"></li> <li class="slider-item"></li></ul> </div> </div></div><script>  		 var sWidth = 550;    var len =4;     var index = 0;    var picTimer;    $("#pic_page li").mouseover(function() {        index = $("#pic_page li").index(this);        showPics(index);    }).eq(0).trigger("mouseover");      $("#pic_banner").hover(function() {        clearInterval(picTimer);    },function() {        picTimer = setInterval(function() {            showPics(index);            index++;            if(index == len) {index = 0;}        },4000);     }).trigger("mouseleave");        function showPics(index) {         var nowLeft = -index*sWidth;         $("#pic_banner_main").stop(true,false).animate({"left":nowLeft},300);  $("#pic_page li").stop(true,false).animate({"opacity":"0.4"},300).eq(index).stop(true,false).animate({"opacity":"1"},300); 			$("#pic_page li").stop(true,false).css("background-color","#ffffff").eq(index).stop(true,false).css("background-color","#fb691c");     }</script>
+	  </div>
+    <div class="news">
+      <ul class="newslist">
+      <li><a href="//news.mydrivers.com/1/816/816895.htm" target="_blank" Title="《艾尔登法环》发售第一天：Intel驱动丢了">《艾尔登法环》发售第一天：Intel驱动丢了</a><span class=t>25日</span></li><li><a href="//news.mydrivers.com/1/816/816749.htm" target="_blank" Title="AMD 22.2.3版显卡驱动发布：零时差优化满分大作《艾尔登法环》">AMD 22.2.3版显卡驱动发布：零时差优化满分大作《艾尔登法环》</a><span class=t>25日</span></li><li><a href="//news.mydrivers.com/1/815/815206.htm" target="_blank" Title="AMD 22.2.2版显卡驱动发布：游戏性能白捡最多24％！">AMD 22.2.2版显卡驱动发布：游戏性能白捡最多24％！</a><span class=t>17日</span></li><li><a href="//news.mydrivers.com/1/813/813966.htm" target="_blank" Title="Intel发布新版核显驱动：修复一大堆DX11/12游戏崩溃、卡死bug">Intel发布新版核显驱动：修复一大堆DX11/12游戏崩溃、卡死bug</a><span class=t>11日</span></li><li><a href="//news.mydrivers.com/1/813/813148.htm" target="_blank" Title="NVIDIA 511.72补丁驱动发布：G-Sync关了就打不开">NVIDIA 511.72补丁驱动发布：G-Sync关了就打不开</a><span class=t>07日</span></li><li><a href="//news.mydrivers.com/1/813/813112.htm" target="_blank" Title="NVIDIA 511.72 Hotfix驱动程序发布：主要修复G-SYNC无法启用的问题">NVIDIA 511.72 Hotfix驱动程序发布：主要修复G-SYNC无法启用的问题</a><span class=t>06日</span></li><li><a href="//news.mydrivers.com/1/812/812772.htm" target="_blank" Title="NVIDIA 511.65正式版显卡驱动发布下载：点亮RTX 3070 Ti/3080 Ti游戏本">NVIDIA 511.65正式版显卡驱动发布下载：点亮RTX 3070 Ti/3080 Ti游戏本</a><span class=t>01日</span></li><li><a href="//news.mydrivers.com/1/812/812722.htm" target="_blank" Title="NVIDIA良心了！GTX 600/700/TITAN新驱动发布下载：修复安全BUG">NVIDIA良心了！GTX 600/700/TITAN新驱动发布下载：修复安全BUG</a><span class=t>01日</span></li>
+      </ul>
+    </div>
+  </div>
+	
+  <div class="main_right">
+    <div class="tjian_i">
+      <ul id="jp-container" class="cyqd">
+         <li><a title="电脑硬件检测监控神器-硬件狗狗 3.0.1.17版" href="https://yjgg.mydrivers.com/"><font color='red'>电脑硬件检测监控神器-硬件狗狗 3.0.1.17版</font></a></li><li><a title="电池狗狗-电池检测工具" href="https://dcgg.kkj.cn/">电池狗狗-电池检测工具</a></li><li><a title="AMD官方显卡驱动22.2.1版(Win10-64/Win11)" href="https://drivers.mydrivers.com/drivers/570_228162.htm"><font color='red'>AMD官方显卡驱动22.2.1版(Win10-64/Win11)</font></a></li><li><a title="Intel核芯显卡驱动30.0.101.1340版(Win10-64)" href="https://drivers.mydrivers.com/drivers/570_228388.htm"><font color='red'>Intel核芯显卡驱动30.0.101.1340版(Win10-64)</font></a></li><li><a title="NVIDIA桌面显卡驱动511.65正式版(Win10-64/Win11)" href="https://drivers.mydrivers.com/drivers/570_228147.htm"><font color='red'>NVIDIA桌面显卡驱动511.65正式版(Win10-64/Win11)</font></a></li><li><a title="NVIDIA桌面显卡驱动472.12正式版(Win7-64)" href="https://drivers.mydrivers.com/drivers/557_222897.htm">NVIDIA桌面显卡驱动472.12正式版(Win7-64)</a></li><li><a title="AMD官方显卡驱动22.1.2 WHQL版(Win10-64/Win11)" href="https://drivers.mydrivers.com/drivers/570_228112.htm"><font color='red'>AMD官方显卡驱动22.1.2 WHQL版(Win10-64/Win11)</font></a></li><li><a title="AMD官方显卡驱动21.5.2 WHQL版(Win10-64)" href="https://drivers.mydrivers.com/drivers/547_219013.htm">AMD官方显卡驱动21.5.2 WHQL版(Win10-64)</a></li><li><a title="AMD官方显卡驱动21.5.2 WHQL版(Win7-64)" href="https://drivers.mydrivers.com/drivers/547_219012.htm">AMD官方显卡驱动21.5.2 WHQL版(Win7-64)</a></li><li><a title="Realtek瑞昱官方声卡驱动R2.82版" href="https://drivers.mydrivers.com/drivers/569_227625.htm">Realtek瑞昱官方声卡驱动R2.82版</a></li><li><a title="Intel英特尔芯片组驱动10.1.18793.8276版" href="https://drivers.mydrivers.com/drivers/549_219794.htm"><font color='red'>Intel英特尔芯片组驱动10.1.18793.8276版</font></a></li><li><a title="AMD Chipset主板芯片组驱动3.10.08.506版" href="https://drivers.mydrivers.com/drivers/560_224045.htm"><font color='red'>AMD Chipset主板芯片组驱动3.10.08.506版</font></a></li><li><a title="NVIDIA官方显卡驱动391.35正式版(Win10)" href="http://drivers.mydrivers.com/drivers/496_198523.htm">NVIDIA官方显卡驱动391.35正式版(Win10)</a></li><li><a title="NVIDIA官方显卡驱动391.35正式版(Win7)" href="http://drivers.mydrivers.com/drivers/496_198522.htm">NVIDIA官方显卡驱动391.35正式版(Win7)</a></li><li><a title="NVIDIA GF400/GF500官方显卡驱动391.35版(Win10)" href="http://drivers.mydrivers.com/drivers/496_198524.htm">NVIDIA GF400/GF500官方显卡驱动391.35版(Win10)</a></li><li><a title="HDTune Pro硬盘检测工具" href="http://drivers.mydrivers.com/drivers/486_194464.htm"><font color='red'>HDTune Pro硬盘检测工具</font></a></li><li><a title="Intel核芯显卡15.36.23.64.4251正式版(64位)" href="http://drivers.mydrivers.com/drivers/493_197368.htm">Intel核芯显卡15.36.23.64.4251正式版(64位)</a></li><li><a title="Intel核芯显卡15.36.23.4251 正式版(32位)" href="http://drivers.mydrivers.com/drivers/493_197367.htm">Intel核芯显卡15.36.23.4251 正式版(32位)</a></li><li><a title="VIA威盛HD Audio音频驱动6.0.11.0600版" href="http://drivers.mydrivers.com/drivers/491_196436.htm">VIA威盛HD Audio音频驱动6.0.11.0600版</a></li><li><a title="AMD官方显卡驱动18.9.3 WHQL版(Win10)" href="http://drivers.mydrivers.com/drivers/496_198533.htm">AMD官方显卡驱动18.9.3 WHQL版(Win10)</a></li><li><a title="AMD官方显卡驱动18.9.3 WHQL版(Win7)" href="http://drivers.mydrivers.com/drivers/496_198532.htm"><font color='red'>AMD官方显卡驱动18.9.3 WHQL版(Win7)</font></a></li><li><a title="NVIDIA移动显卡驱动496.13正式版(Win10-64/Win11)" href="https://drivers.mydrivers.com/drivers/559_223642.htm">NVIDIA移动显卡驱动496.13正式版(Win10-64/Win11)</a></li><li><a title="NVIDIA移动显卡驱动471.96正式版(Win7-64)" href="https://drivers.mydrivers.com/drivers/554_221995.htm">NVIDIA移动显卡驱动471.96正式版(Win7-64)</a></li><li><a title="更多推荐驱动" href="http://drivers.mydrivers.com/install/"><font color='red'>更多推荐驱动</font></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--<script>
+ 
+              // the element we want to apply the jScrollPane
+              var $el = $('#jp-container').jScrollPane({
+                  verticalGutter: -16
+              }),
+
+              // the extension functions and options 	
+                  extensionPlugin = {
+
+                      extPluginOpts: {
+                          // speed for the fadeOut animation
+                          mouseLeaveFadeSpeed: 500,
+                          // scrollbar fades out after hovertimeout_t milliseconds
+                          hovertimeout_t: 1000,
+                          // if set to false, the scrollbar will be shown on mouseenter and hidden on mouseleave
+                          // if set to true, the same will happen, but the scrollbar will be also hidden on mouseenter after "hovertimeout_t" ms
+                          // also, it will be shown when we start to scroll and hidden when stopping
+                          useTimeout: true,
+                          // the extension only applies for devices with width > deviceWidth
+                          deviceWidth: 980
+                      },
+                      hovertimeout: null, // timeout to hide the scrollbar
+                      isScrollbarHover: false,// true if the mouse is over the scrollbar
+                      elementtimeout: null,	// avoids showing the scrollbar when moving from inside the element to outside, passing over the scrollbar
+                      isScrolling: false,// true if scrolling
+                      addHoverFunc: function () {
+
+                          // run only if the window has a width bigger than deviceWidth
+                          if ($(window).width() <= this.extPluginOpts.deviceWidth) return false;
+
+                          var instance = this;
+
+                          // functions to show / hide the scrollbar
+                          $.fn.jspmouseenter = $.fn.show;
+                          $.fn.jspmouseleave = $.fn.fadeOut;
+
+                          // hide the jScrollPane vertical bar
+                          var $vBar = this.getContentPane().siblings('.jspVerticalBar').hide();
+
+                          /*
+                           * mouseenter / mouseleave events on the main element
+                           * also scrollstart / scrollstop - @James Padolsey : http://james.padolsey.com/javascript/special-scroll-events-for-jquery/
+                           */
+                          $el.bind('mouseenter.jsp', function () {
+
+                              // show the scrollbar
+                              $vBar.stop(true, true).jspmouseenter();
+
+                              if (!instance.extPluginOpts.useTimeout) return false;
+
+                              // hide the scrollbar after hovertimeout_t ms
+                              clearTimeout(instance.hovertimeout);
+                              instance.hovertimeout = setTimeout(function () {
+                                  // if scrolling at the moment don't hide it
+                                  if (!instance.isScrolling)
+                                      $vBar.stop(true, true).jspmouseleave(instance.extPluginOpts.mouseLeaveFadeSpeed || 0);
+                              }, instance.extPluginOpts.hovertimeout_t);
+
+
+                          }).bind('mouseleave.jsp', function () {
+
+                              // hide the scrollbar
+                              if (!instance.extPluginOpts.useTimeout)
+                                  $vBar.stop(true, true).jspmouseleave(instance.extPluginOpts.mouseLeaveFadeSpeed || 0);
+                              else {
+                                  clearTimeout(instance.elementtimeout);
+                                  if (!instance.isScrolling)
+                                      $vBar.stop(true, true).jspmouseleave(instance.extPluginOpts.mouseLeaveFadeSpeed || 0);
+                              }
+
+                          });
+
+                          if (this.extPluginOpts.useTimeout) {
+
+                              $el.bind('scrollstart.jsp', function () {
+
+                                  // when scrolling show the scrollbar
+                                  clearTimeout(instance.hovertimeout);
+                                  instance.isScrolling = true;
+                                  $vBar.stop(true, true).jspmouseenter();
+
+                              }).bind('scrollstop.jsp', function () {
+
+                                  // when stop scrolling hide the scrollbar (if not hovering it at the moment)
+                                  clearTimeout(instance.hovertimeout);
+                                  instance.isScrolling = false;
+                                  instance.hovertimeout = setTimeout(function () {
+                                      if (!instance.isScrollbarHover)
+                                          $vBar.stop(true, true).jspmouseleave(instance.extPluginOpts.mouseLeaveFadeSpeed || 0);
+                                  }, instance.extPluginOpts.hovertimeout_t);
+
+                              });
+
+                              // wrap the scrollbar
+                              // we need this to be able to add the mouseenter / mouseleave events to the scrollbar
+                              var $vBarWrapper = $('<div/>').css({
+                                  position: 'absolute',
+                                  left: $vBar.css('left'),
+                                  top: $vBar.css('top'),
+                                  right: $vBar.css('right'),
+                                  bottom: $vBar.css('bottom'),
+                                  width: $vBar.width(),
+                                  height: $vBar.height()
+                              }).bind('mouseenter.jsp', function () {
+
+                                  clearTimeout(instance.hovertimeout);
+                                  clearTimeout(instance.elementtimeout);
+
+                                  instance.isScrollbarHover = true;
+
+                                  // show the scrollbar after 100 ms.
+                                  // avoids showing the scrollbar when moving from inside the element to outside, passing over the scrollbar								
+                                  instance.elementtimeout = setTimeout(function () {
+                                      $vBar.stop(true, true).jspmouseenter();
+                                  }, 100);
+
+                              }).bind('mouseleave.jsp', function () {
+
+                                  // hide the scrollbar after hovertimeout_t
+                                  clearTimeout(instance.hovertimeout);
+                                  instance.isScrollbarHover = false;
+                                  instance.hovertimeout = setTimeout(function () {
+                                      // if scrolling at the moment don't hide it
+                                      if (!instance.isScrolling)
+                                          $vBar.stop(true, true).jspmouseleave(instance.extPluginOpts.mouseLeaveFadeSpeed || 0);
+                                  }, instance.extPluginOpts.hovertimeout_t);
+
+                              });
+
+                              $vBar.wrap($vBarWrapper);
+
+                          }
+
+                      }
+
+                  },
+
+                  // the jScrollPane instance
+                  jspapi = $el.data('jsp');
+
+              // extend the jScollPane by merging	
+              $.extend(true, jspapi, extensionPlugin);
+              jspapi.addHoverFunc();
+
+$(".jspHorizontalBar").hide();
+</script>-->
+<div id="new_gxin">
+  <div class="ngxin_left"> <span>最新更新</span>
+    <div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- drivers页面banner1 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-3265093218051583"
+     data-ad-slot="3561634703"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+    <div class="ngxin_flei">
+        <div  class="new_g"><div class="new_g_t1"><a href="//drivers.mydrivers.com/drivers/572_229198.htm">Fujifilm富士X-E4数码相机固件1.10版（2022年2月28日发布）</a> <br /></div><div class="new_g_info"><p>Fujifilm富士X-E4数码相机固件1.10版（2022年2月28日发布）</p><p>新版固件更新如下：</p><p>1、修正了相应规格以提高与SDXC卡格式的兼容性，单个文件夹可存储的最大张数将从9999更改至999。</p><p></p></div><div class="gx_list"><ul><li>发布时间：2022-02-28</li>  <li>发布厂商：富士（Fujifilm）</li><li>文件大小：15.99MB</li><li>下载次数：<script language="javascript" src="/download/downloads.ashx?id=229198"></script></li><li>驱动界定：<a title="驱动研发厂商官方发布的驱动程序" class="newstiao2-2" href="/help/zhinan-02.shtml#1" target="_blank">官方正式版</a>  </li></ul></div></div> <div  class="new_g"><div class="new_g_t1"><a href="//drivers.mydrivers.com/drivers/572_229197.htm">Fujifilm富士X-Pro3数码相机固件1.30版（2022年2月28日发布）</a> <br /></div><div class="new_g_info"><p>Fujifilm富士X-Pro3数码相机固件1.30版（2022年2月28日发布）</p><p>新版固件更新如下：</p><p>1、修正了相应规格以提高与SDXC卡格式的兼容性，单个文件夹可存储的最大张数将从9999更改至999。</p><p></p></div><div class="gx_list"><ul><li>发布时间：2022-02-28</li>  <li>发布厂商：富士（Fujifilm）</li><li>文件大小：15.32MB</li><li>下载次数：<script language="javascript" src="/download/downloads.ashx?id=229197"></script></li><li>驱动界定：<a title="驱动研发厂商官方发布的驱动程序" class="newstiao2-2" href="/help/zhinan-02.shtml#1" target="_blank">官方正式版</a>  </li></ul></div></div> <div  class="new_g"><div class="new_g_t1"><a href="//drivers.mydrivers.com/drivers/572_229196.htm">Fujifilm富士X-T30II数码相机固件1.10版（2022年2月28日发布）</a> <br /></div><div class="new_g_info"><p>Fujifilm富士X-T30II数码相机固件1.10版（2022年2月28日发布）</p><p>新版固件更新如下：</p><p>1、修正了相应规格以提高与SDXC卡格式的兼容性，单个文件夹可存储的最大张数将从9999更改至999。</p><p></p></div><div class="gx_list"><ul><li>发布时间：2022-02-28</li>  <li>发布厂商：富士（Fujifilm）</li><li>文件大小：17.11MB</li><li>下载次数：<script language="javascript" src="/download/downloads.ashx?id=229196"></script></li><li>驱动界定：<a title="驱动研发厂商官方发布的驱动程序" class="newstiao2-2" href="/help/zhinan-02.shtml#1" target="_blank">官方正式版</a>  </li></ul></div></div> <div  class="new_g"><div class="new_g_t1"><a href="//drivers.mydrivers.com/drivers/572_229195.htm">Fujifilm富士GFX50R数码相机固件2.40版（2022年2月28日发布）</a> <br /></div><div class="new_g_info"><p>Fujifilm富士GFX50R数码相机固件2.40版（2022年2月28日发布）</p><p>新版固件更新如下：</p><p>1、修正了相应规格以提高与SDXC卡格式的兼容性，单个文件夹可存储的最大张数将从9999更改至999。</p><p></p></div><div class="gx_list"><ul><li>发布时间：2022-02-28</li>  <li>发布厂商：富士（Fujifilm）</li><li>文件大小：13.53MB</li><li>下载次数：<script language="javascript" src="/download/downloads.ashx?id=229195"></script></li><li>驱动界定：<a title="驱动研发厂商官方发布的驱动程序" class="newstiao2-2" href="/help/zhinan-02.shtml#1" target="_blank">官方正式版</a>  </li></ul></div></div> <div  class="new_g"><div class="new_g_t1"><a href="//drivers.mydrivers.com/drivers/572_229194.htm">Fujifilm富士GFX50S II数码相机固件1.10版（2022年2月28日发布）</a> <br /></div><div class="new_g_info"><p>Fujifilm富士GFX50S II数码相机固件1.10版（2022年2月28日发布）</p><p>新版固件更新如下：</p><p>1、修正了相应规格以提高与SDXC卡格式的兼容性，单个文件夹可存储的最大张数将从9999更改至999。</p><p></p></div><div class="gx_list"><ul><li>发布时间：2022-02-28</li>  <li>发布厂商：富士（Fujifilm）</li><li>文件大小：16.75MB</li><li>下载次数：<script language="javascript" src="/download/downloads.ashx?id=229194"></script></li><li>驱动界定：<a title="驱动研发厂商官方发布的驱动程序" class="newstiao2-2" href="/help/zhinan-02.shtml#1" target="_blank">官方正式版</a>  </li></ul></div></div> <div  class="new_g"><div class="new_g_t1"><a href="//drivers.mydrivers.com/drivers/572_229193.htm">Fujifilm富士X100V数码相机固件2.10版（2022年2月28日发布）</a> <br /></div><div class="new_g_info"><p>Fujifilm富士X100V数码相机固件2.10版（2022年2月28日发布）</p><p>新版固件主要解决了如下问题：</p><p>1、修正了相应规格以提高与SDXC卡格式的兼容性，单个文件夹可存储的最大张数将从9999更改至999。</p><p></p></div><div class="gx_list"><ul><li>发布时间：2022-02-28</li>  <li>发布厂商：富士（Fujifilm）</li><li>文件大小：15.18MB</li><li>下载次数：<script language="javascript" src="/download/downloads.ashx?id=229193"></script></li><li>驱动界定：<a title="驱动研发厂商官方发布的驱动程序" class="newstiao2-2" href="/help/zhinan-02.shtml#1" target="_blank">官方正式版</a>  </li></ul></div></div> <div  class="new_g"><div class="new_g_t1"><a href="//drivers.mydrivers.com/drivers/572_229192.htm">MSI微星MPG Z590 GAMING PLUS主板BIOS 7D07vA4版（2022年1月20日发布）</a> <br /></div><div class="new_g_info"><p>MSI微星MPG Z590 GAMING PLUS主板BIOS 7D07vA4版（2022年1月20日发布）</p><p>新版BIOS更新如下：</p><p>1、更新GOP。</p><p>2、修复WHQL问题。</p><p></p></div><div class="gx_list"><ul><li>发布时间：2022-01-20</li>  <li>发布厂商：微星（MSI）</li><li>文件大小：8.58MB</li><li>下载次数：<script language="javascript" src="/download/downloads.ashx?id=229192"></script></li><li>驱动界定：<a title="驱动研发厂商官方发布的驱动程序" class="newstiao2-2" href="/help/zhinan-02.shtml#1" target="_blank">官方正式版</a>  </li></ul></div></div> <div  class="new_g"><div class="new_g_t1"><a href="//drivers.mydrivers.com/drivers/572_229191.htm">MSI微星MPG Z590 GAMING CARBON WIFI主板BIOS 7D06v16版（2022年1月20日发布）</a> <br /></div><div class="new_g_info"><p>MSI微星MPG Z590 GAMING CARBON WIFI主板BIOS 7D06v16版（2022年1月20日发布）</p><p>新版BIOS更新如下：</p><p>1、升级CPU微代码。</p><p>2、调整PCI-E通道设置。</p><p></p></div><div class="gx_list"><ul><li>发布时间：2022-01-20</li>  <li>发布厂商：微星（MSI）</li><li>文件大小：8.59MB</li><li>下载次数：<script language="javascript" src="/download/downloads.ashx?id=229191"></script></li><li>驱动界定：<a title="驱动研发厂商官方发布的驱动程序" class="newstiao2-2" href="/help/zhinan-02.shtml#1" target="_blank">官方正式版</a>  </li></ul></div></div> <div  class="new_g"><div class="new_g_t1"><a href="//drivers.mydrivers.com/drivers/572_229190.htm">MSI微星MPG Z590 GAMING FORCE主板BIOS 7D06vA4版（2022年1月20日发布）</a> <br /></div><div class="new_g_info"><p>MSI微星MPG Z590 GAMING FORCE主板BIOS 7D06vA4版（2022年1月20日发布）</p><p>新版BIOS更新如下：</p><p>1、升级CPU微代码。</p><p>2、调整PCI-E通道设置。</p><p></p></div><div class="gx_list"><ul><li>发布时间：2022-01-20</li>  <li>发布厂商：微星（MSI）</li><li>文件大小：8.6MB</li><li>下载次数：<script language="javascript" src="/download/downloads.ashx?id=229190"></script></li><li>驱动界定：<a title="驱动研发厂商官方发布的驱动程序" class="newstiao2-2" href="/help/zhinan-02.shtml#1" target="_blank">官方正式版</a>  </li></ul></div></div> <div  class="new_g"><div class="new_g_t1"><a href="//drivers.mydrivers.com/drivers/572_229189.htm">MSI微星MPG Z590 GAMING EDGE WIFI主板BIOS 7D07v14版（2022年1月20日发布）</a> <br /></div><div class="new_g_info"><p>MSI微星MPG Z590 GAMING EDGE WIFI主板BIOS 7D07v14版（2022年1月20日发布）</p><p>新版BIOS更新如下：</p><p>1、升级CPU微代码。</p><p>2、调整PCI-E通道设置。</p><p></p></div><div class="gx_list"><ul><li>发布时间：2020-01-20</li>  <li>发布厂商：微星（MSI）</li><li>文件大小：8.58MB</li><li>下载次数：<script language="javascript" src="/download/downloads.ashx?id=229189"></script></li><li>驱动界定：<a title="驱动研发厂商官方发布的驱动程序" class="newstiao2-2" href="/help/zhinan-02.shtml#1" target="_blank">官方正式版</a>  </li></ul></div></div>
+    </div>
+    <div class="ckgx"><a title="每日更新" href="/update/">点击查看全部更新>></a></div>
+  </div>
+  <div class="ngxin_right">
+      <div>
+	  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- drivers_shouye_right -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-3265093218051583"
+     data-ad-slot="5364842286"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+	  </div>
+    <div class="right_t">
+      <ul>
+        <li><span>热门文章</span></li>
+        <li style="float:right"><a href="javascript:;" id="i_yuedu_tab" onClick="news_PaiHang('yuedu')" target="_self" class="cur">阅读</a>|<a href="javascript:;" id="i_pinglun_tab" onClick="news_PaiHang('pinglun')" target="_self">评论</a></li>
+      </ul>
+    </div>
+    <div id="i_yuedu_content" class="hot photo">
+	      <ul><li style="border-bottom:#CCC 1px dotted; padding-bottom:15px;"><div class="hot_left"> <a href="//news.mydrivers.com/1/817/817195.htm"><img src="//news.mydrivers.com/img/20220228/3a4efd7cfdef44668a23b48927d3da1a.jpg"  width="100" height="72"></a></div><div class="hot_right"><span><a href="//news.mydrivers.com/1/817/817195.htm">人大代表建议春节假期延长至10天 充分感受与家人团聚温暖：网友点赞支持</a></span><br><a href="//news.mydrivers.com/1/817/817195.htm">据中国新闻周刊报道称，全国人大代表李小莉建议，将春节法定假期由现在的7天延长到10天左右。
+李小莉表示，春节作为重要的传统节日，是千家万户大团圆的日子。
+视频
+按照李小莉的说法，现行的</a></div></li><div style="clear:both";></div></ul><ul class="hot_list"><li><a href="//news.mydrivers.com/1/817/817089.htm">性能最强安卓手机 没有之一！拯救者Y90电竞手机首发评测：跑分1小时仍然满血</a></li><li><a href="//news.mydrivers.com/1/817/817103.htm">真不一样了！iPhone 14外形设计提前曝光 苹果用打孔+药丸设计</a></li><li><a href="//news.mydrivers.com/1/817/817250.htm">3月新规来了！收款码最受关注：官方确定个人收款码不受影响</a></li><li><a href="//news.mydrivers.com/1/817/817070.htm">荣耀Magic 4明天发布：四曲面屏 中框几乎无了</a></li><li><a href="//news.mydrivers.com/1/817/817161.htm">一汽集团员工购车价曝光：全系车型打折 16万就能买奥迪</a></li><li><a href="//news.mydrivers.com/1/817/817301.htm">极致省电 顶级护眼！荣耀Magic4首发上手体验：频闪仅为iPhone四分之一</a></li><li><a href="//news.mydrivers.com/1/817/817104.htm">Zen4架构锐龙7000将首次集成核显GPU：不求性能 亮机就行</a></li></ul>
+    </div>
+	     <div id="i_pinglun_content" class="hot photo" style="display:none;">
+      <ul><li style="border-bottom:#CCC 1px dotted; padding-bottom:15px;"><div class="hot_left"> <a href="//news.mydrivers.com/1/813/813723.htm"><img src="//news.mydrivers.com"  width="100" height="72"></a></div><div class="hot_right"><span><a href="//news.mydrivers.com/1/813/813723.htm">新骁龙8冷血旗舰！Redmi K50电竞版发布会有奖直播</a></span><br><a href="//news.mydrivers.com/1/813/813723.htm">今晚7点，Redmi K50 电竞版「全线拉满的冷血旗舰」新品发布会，将在小米科技园举行，届时，我们快科技将进行图文视频直播，欢迎观看。
+
+为了感谢各位读者一如既往的支持，此次发布会直播我们将</a></div></li><div style="clear:both";></div></ul><ul class="hot_list"><li><a href="//news.mydrivers.com/1/816/816086.htm">谁是多核王者！锐龙9 5950X、酷睿i9-12900K生产力对比：依然领先对手</a></li><li><a href="//news.mydrivers.com/1/815/815582.htm">酷睿i5-12600KF VS.锐龙7 5800X：生产力、游戏性能全方位占优</a></li><li><a href="//news.mydrivers.com/1/814/814408.htm">华硕RTX 30显卡全系原价开卖！12.5万人疯抢</a></li><li><a href="//news.mydrivers.com/1/815/815705.htm">Intel Arc显卡旗舰性能曝光：竟只相当于RTX 2070</a></li><li><a href="//news.mydrivers.com/1/812/812678.htm">RX 6500 XT显卡备受吐槽 媒体：AMD还不如推出700多块的RX 6400</a></li><li><a href="//news.mydrivers.com/1/816/816774.htm">麒麟9000L曝光：华为储备芯片、Mate40E衍生版搭载 支持5G</a></li><li><a href="//news.mydrivers.com/1/812/812653.htm">女子电脑20多个杀毒软件惊呆男友 C盘17万个文件：平时只删桌面图标</a></li><li><a href="//news.mydrivers.com/1/815/815813.htm">南方湿冷攻击威力太大！10省区气温将持续偏低 整个“鸡腿省”都冻绿了</a></li><li><a href="//news.mydrivers.com/1/815/815106.htm">今晚 华硕RTX 30显卡全系原价开卖！500多万人疯抢</a></li></ul>
+    </div>
+  <script>function news_PaiHang(tabname) {
+	$("#i_yuedu_tab,#i_pinglun_tab").toggleClass("cur");
+	$("#i_yuedu_content,#i_pinglun_content").hide();
+	$("#i_"+tabname+"_content").show();
+}</script>
+<div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- drivers_shouye_right2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3265093218051583"
+     data-ad-slot="2355535566"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+    <div class="right_t">
+      <ul>
+        <li><span>标签</span></li>
+      </ul>
+    </div>
+    <div class="bqian">驱动</div>
+  </div>
+</div>
+<!--页尾-->
+ <div class="footer_about">
+  <div class="pageFooter">
+    <div class="footerleft">
+      <dl>
+        <dd> 关于我们 </dd>
+        <dt> <a href="//www.mydrivers.com/contact/Company.html">关于我们</a> </dt>
+        <dt> <a href="//www.mydrivers.com/contact/privacy.html">隐私权说明 </a></dt>
+      </dl>
+      <dl>
+        <dd> 交流合作 </dd>
+        <dt><a href="//www.mydrivers.com/contact/jobs.html">加入我们</a> </dt>
+        <dt> <a id="a_fankui" href="javascript:;" target="_self">意见反馈</a> </dt>
+        <dt> <a href="//www.mydrivers.com/contact/advertising.html">广告刊例</a> </dt>
+      </dl>
+      <dl>
+        <dd> 关注我们 </dd>
+        <dt id="mydrivers_wx" style="color:#888;position: relative;"> 微信公众号：<img src="//icons.mydrivers.com/2018/common/erwm_small.png" width="25" height="25" alt="驱动之家微信公众号"/>
+          <!-- 悬浮二维码-->
+          <div id="mydrivers_wx_dia" class="wxewm_cur" style="none;">
+            <div class="float_ewm"><img src="//icons.mydrivers.com/2018/common/kkj_wx.png" width="127" height="127"></div>
+            <div class="float_ewmar"><img src="//icons.mydrivers.com/2018/common/ewmar.png" width="6" height="15" /></div>
+          </div>
+           </dt>
+        <dt> 微博号：<a title="快科技官方微博" href="https://weibo.com/mydrivers">快科技官方</a></dt>
+        <dt> QQ群：53467377 </dt>
+      </dl>
+    </div>
+    <div class="footerright">
+      <ul>
+        <li> <span><img src="//icons.mydrivers.com/2018/common/kkj_android.png" width="110" height="110" alt="安卓客户端下载"/></span>安卓客户端下载 </li>
+        <li> <span><img src="//icons.mydrivers.com/2018/common/kkj_ios.png" width="110" height="110" alt="IOS客户端下载"/></span>IOS客户端下载 </li>
+      </ul>
+    </div>
+    <div class="footerForm clear1"> </div>
+  </div>
+</div>
+
+<div id="footer">  
+    <p class="copyright">快科技（驱动之家旗下媒体）·1997-2022 版权所有</p>
+    <p class="copyright">Copyright(C)Mydrivers.com, All Rights Reserved.</p>
+    <p class="copyright"><a href="https://beian.miit.gov.cn/">豫ICP备18024899号-2</a><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41010502003949" style="margin-left:20px;"><img src="//icons.mydrivers.com/2018/news/batb.png"/>豫公网安备 41010502003949号</a>
+      <br>
+      <br>
+</p>
+</div>
+<div id="append_parent"></div>
+<div id="div_login" class="pinglun_login"></div>
+<div id="div_fankui" class="pinglun_login" style="width:514px; height:530px;"></div>
+ 
+<div style="display:none;"><script type="text/javascript">
+                               var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                               document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ffa993fdd33f32c39cbb6e7d66096c422' type='text/javascript'%3E%3C/script%3E"));
+</script>
+    <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?272a3165694c25efa85725e514ebbcd3";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+</script>
+</div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-2034714-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-2034714-4');
+</script>
+ 
+
+ 
+ 
+    <style>
+.top_1_right {
+	float: right;	
+	height:40px;
+	line-height:40px;	
+}
+.top_1_right li {		
+	float:left;
+	height:40px;	
+	padding:0px 10px;
+	cursor:pointer;
+	font-size:12px;
+}
+.top_1_right li img {
+    border: 0;
+    vertical-align: top;
+    margin: 0px 8px 0 0;
+} 
+    </style>
+<link href="//11.mydrivers.com/2018/css/fl_login.css" rel="stylesheet" type="text/css" />
+<link href="//11.mydrivers.com/2020/css/winpop.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="//11.mydrivers.com/2018/news/comm.js"></script>
+</body>
+</html>
