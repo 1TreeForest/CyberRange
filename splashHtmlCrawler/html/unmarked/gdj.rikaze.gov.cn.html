@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>日喀则市广播电视局·首页</title>
+	<meta name="keywords" content="日喀则市广播电视剧,广电局" />
+	<meta name="description" content="日喀则市广播电视剧,广电局" />
+	
+	<meta name="SiteName" content="日喀则市广播电视局"/>
+    <meta name="SiteDomain" content="http://gdj.rikaze.gov.cn/"/>
+    <meta name="SiteIDCode" content=""/>
+
+	
+    
+
+	<script src="http://gdj.rikaze.gov.cn/rkzgdj/template/js/jquery-3.2.1.min.js"></script> 
+  <link rel="stylesheet" href="http://gdj.rikaze.gov.cn/rkzgdj/template/css/reset.css">
+  <link rel="stylesheet" href="http://gdj.rikaze.gov.cn/rkzgdj/template/fonts/iconfont.css">
+  <link rel="stylesheet" href="http://gdj.rikaze.gov.cn/rkzgdj/template/css/swiper.min.css">
+  <link rel="stylesheet" href="http://gdj.rikaze.gov.cn/rkzgdj/template/layui/css/layui.css">
+  <link rel="stylesheet" href="http://gdj.rikaze.gov.cn/rkzgdj/template/css/common.min.css">
+  <link rel="stylesheet" href="http://gdj.rikaze.gov.cn/rkzgdj/template/css/index.min.css">
+</head>
+
+<body>
+<style>
+ /*登录 注册start*/
+.login-box {
+	top: 0;
+	left: 0;
+	width: 100%
+}
+.login-box .wrapper-content {
+	text-align: right;
+    width: 1200px;
+    min-width: 1200px;
+    margin: 0 auto;
+}
+.login-box .wrapper-content .login-box-main {
+	display: inline-block;
+	background: #e6eef6;
+	line-height: 30px;
+	padding: 0 20px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px
+}
+.login-box .wrapper-content .login-box-main .left-login {
+	position: relative;
+	padding-right: 7px
+}
+.login-box .wrapper-content .login-box-main .left-login::after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 1px;
+	height: 40%;
+	background: #245399;
+	transform: translate(0, -50%)
+}
+.login-box .wrapper-content .login-box-main .left-login .center, .login-box .wrapper-content .login-box-main .left-login .welcome-msg {
+	display: none
+}
+.login-box .wrapper-content .login-box-main .register-loginout {
+	padding-left: 6px
+}
+.login-box .wrapper-content .login-box-main .register-loginout a {
+	color: #bd1a2d
+}
+.login-box .wrapper-content .login-box-main .register-loginout .out {
+	display: none
+}
+.login-box.has-login .wrapper-content .login-box-main .left-login .center, .login-box.has-login .wrapper-content .login-box-main .left-login .welcome-msg {
+	display: inline-block
+}
+.login-box.has-login .wrapper-content .login-box-main .left-login .login {
+	display: none
+}
+.login-box.has-login .wrapper-content .login-box-main .register-loginout .out {
+	display: inline-block
+}
+.login-box.has-login .wrapper-content .login-box-main .register-loginout .register {
+	display: none
+}
+/*登录 注册end*/   
+  </style>
+<header>
+    <!-- 添加 has-login 切换为已登录样式-->
+      <div class="login-box has-login">
+        <div class="wrapper-content">
+             <div class="login-box-main clear-float-fix">
+             
+            <div class="left-login fl" id="memDivLogin1" style="display:none">
+              <span class="welcome-msg">欢迎您，<span id="memName"></span>！</span>
+              <a href="member-center.thtml" class="center">个人中心</a>
+               
+            </div>
+            <div class="register-loginout fl" id="memDivLogin2" style="display:none">
+             
+              <a href="member/ssoMemberLogin.do?action=LoginOut" class="out">注销</a>
+            </div>
+            
+            <div class="left-login fl" id="memDivLogin3">
+              
+              <a href="ids/redirectUri.do?direct=true"  >登录</a>
+               
+            </div>
+            <div class="register-loginout fl" id="memDivLogin4">
+              <a href="ids/redirectUri.do?reg=true"  >注册</a>
+              
+            </div>
+          </div>
+             <script type="text/javascript">
+ 
+	 					 //会员状态
+	  					var url = 'http://gdj.rikaze.gov.cn/member/memberStatus.do';
+	 		
+				 		$.ajax({
+				      		type: "POST",
+				       		url: url,
+				       		data:'',
+				            dataType:'json',
+				       		success: function(msg)
+				            {      
+				             
+				            	if(msg != "")
+				            	{ 
+				            		var mem = msg;
+				            		
+				            		$('#memDivLogin3').hide();
+				            		$('#memDivLogin4').hide();
+				            		
+				            		$('#memDivLogin1').show();
+				            		$('#memDivLogin2').show();
+				            		
+				            		 
+				            		$('#memName').html(mem.trueName);
+				            		 
+				            		 
+				            	}
+				            	else
+				            	{ 
+				            		$('#memDivLogin3').show();
+				            		$('#memDivLogin4').show();
+				            		
+				            		$('#memDivLogin1').hide();
+				            		$('#memDivLogin2').hide();
+				            		
+				            		  
+				            	}
+		                
+				            }
+				     	});	
+				     	
+	
+	  
+	  	</script>
+        </div>
+    <div class="container headerTop  ">
+      <a href="#" class="leftBox">
+        <img src="http://gdj.rikaze.gov.cn/rkzgdj/template/images/logo.png" alt="logo">
+      </a>
+      
+      <div class="searchBox">
+        <form class="layui-form search" id="form_">
+          <div class="layui-form-item text">
+            <div class="layui-input-block">
+              <input type="text"name="key" id="key" required lay-verify="required"
+                                        placeholder="请输入关键词…" autocomplete="off" class="layui-input">
+            </div>
+          </div>
+          <div class="layui-form-item btn">
+            <div class="layui-input-block">
+
+              <button class="layui-btn" type="button"  lay-submit onclick="javascript:search(1,'')"><span
+                  class="iconfont icon-sousuo"></span>搜索</button>
+            </div>
+          </div>
+        </form>
+        <div class="top_search">
+          <span>热搜：</span>
+          <ul>
+    
+				<li><a href="javascript:search(1,'公务员考试')">公务员考试</a></li>
+    
+				<li><a href="javascript:search(1,'身份证办理')">身份证办理</a></li>
+    
+				<li><a href="javascript:search(1,'公告')">公告</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="nav">
+      <ul class="container">
+            	 
+                    <li class="current"><a href="http://gdj.rikaze.gov.cn/">首页</a></li>
+                 
+           
+			
+			
+			
+ 							
+                  
+				 	
+
+					  	 <li><a href="http://gdj.rikaze.gov.cn/news-index.thtml?chId=13184">要闻</a>
+					  	 	
+					  	 <div class="nav_lists">
+						            <div class="wrapper_content container">
+						              <div class="left_img_title">
+						                <img src="http://gdj.rikaze.gov.cn/rkzgdj/template/images/nav-left-title.png" alt="" />
+						              </div>
+						              <ul  >
+											<li  >
+												 
+												  	<a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=13188">广电局要闻</a>
+									 
+	                                            
+	                                        </li>
+											<li  >
+												 
+												  	<a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=13189">国务院信息</a>
+									 
+	                                            
+	                                        </li>
+											<li  >
+												 
+												  	<a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=14868">广电局工作动态</a>
+									 
+	                                            
+	                                        </li>
+					                  </ul>
+						            </div>
+						          </div>
+					  	 </li>
+	               
+          
+          
+                      
+          
+ 							
+                  
+				 	
+
+					  	 <li><a href="http://gdj.rikaze.gov.cn/pubilc-index.thtml?chId=13185">公开</a>
+					  	 	
+					  	 <div class="nav_lists">
+						            <div class="wrapper_content container">
+						              <div class="left_img_title">
+						                <img src="http://gdj.rikaze.gov.cn/rkzgdj/template/images/nav-left-title.png" alt="" />
+						              </div>
+						              <ul  >
+											<li  >
+												 
+												  	<a href="http://gdj.rikaze.gov.cn/public-policy.thtml?id=13199">机构信息</a>
+									 
+	                                            
+	                                        </li>
+											<li  >
+												 
+												  	<a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=15316">政府网站季度抽查</a>
+									 
+	                                            
+	                                        </li>
+											<li  >
+												 
+												  	<a href="http://gdj.rikaze.gov.cn/info-public-item-list-single.thtml?id=13202">政府信息公开</a>
+									 
+	                                            
+	                                        </li>
+											<li  >
+												 
+												  	<a href="http://gdj.rikaze.gov.cn/public-policy.thtml?id=13217">政策文件</a>
+									 
+	                                            
+	                                        </li>
+											<li  >
+												 
+												  	<a href="http://gdj.rikaze.gov.cn/public-policy.thtml?id=13218">政策解读</a>
+									 
+	                                            
+	                                        </li>
+											<li  >
+												 	
+									 
+	                                            
+	                                        </li>
+											<li  >
+												 
+												  	<a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=13196">通知公告</a>
+									 
+	                                            
+	                                        </li>
+					                  </ul>
+						            </div>
+						          </div>
+					  	 </li>
+	               
+          
+          
+                      
+          
+ 							
+                  
+				 	
+
+					  	 <li><a href="https://www.xzzwfw.gov.cn/portal/bszn/fwbm/list.shtml?siteId=20&amp;type=1&amp;serverType=2&amp;dictOid=bb597a946bad2801016badc555691ec1&amp;bm=%E6%97%A5%E5%96%80%E5%88%99%E5%B8%82%E5%B9%BF%E6%92%AD%E7%94%B5%E8%A7%86%E5%B1%80">办事</a>
+					  	 	
+					  	 <div class="nav_lists">
+						            <div class="wrapper_content container">
+						              <div class="left_img_title">
+						                <img src="http://gdj.rikaze.gov.cn/rkzgdj/template/images/nav-left-title.png" alt="" />
+						              </div>
+						              <ul  >
+											<li  >
+												 
+												  	<a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=13222">服务事项</a>
+									 
+	                                            
+	                                        </li>
+											<li  >
+												 
+												  	<a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=13221">便民查询</a>
+									 
+	                                            
+	                                        </li>
+					                  </ul>
+						            </div>
+						          </div>
+					  	 </li>
+	               
+          
+          
+                      
+          
+ 							
+                  
+				 	
+
+					  	 <li><a href="http://gdj.rikaze.gov.cn/interaction-index.thtml?chId=13187">互动</a>
+					  	 	
+					  	 <div class="nav_lists">
+						            <div class="wrapper_content container">
+						              <div class="left_img_title">
+						                <img src="http://gdj.rikaze.gov.cn/rkzgdj/template/images/nav-left-title.png" alt="" />
+						              </div>
+						              <ul  >
+											<li  >
+												 	<a href="http://gdj.rikaze.gov.cn/interaction-index.thtml?chId=13187">信箱</a>
+												 	
+									 
+	                                            
+	                                        </li>
+											<li  >
+												 
+												  	<a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=13225">民意征集</a>
+									 
+	                                            
+	                                        </li>
+											<li  >
+												 
+												  	<a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=13226">服务热线</a>
+									 
+	                                            
+	                                        </li>
+					                  </ul>
+						            </div>
+						          </div>
+					  	 </li>
+	               
+          
+          
+                      
+          
+                   
+      </ul>
+    </div>
+  </header>
+
+  <section class="index">
+    
+    <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=212022" class="news_borad container">
+      <img src="http://gdj.rikaze.gov.cn/rkzgdj/template/images/important_news.png" alt="">
+      <p>我向总理说句话</p>
+      <span class="more">查看详情</span>
+    </a>
+    
+              
+
+    <!-- 轮播 -->
+    <div class="floor_one container">
+      <div class="swiper-container index_top_slide">
+        <div class="swiper-wrapper ">
+        
+    
+          <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=225313" class="swiper-slide ">
+            <img src="/rkzgdj/upload/2022-02-25/1645764571397402880907dc304ef3017f2f3671051196.png" style="width:602px;height:342px" alt="市广播电视局组织召开2022年党风廉政建设工作安排部署会" />
+            <div class='text'>
+              <p>
+                市广播电视局组织召开2022年党风廉政建设工作安排部署会
+              </p>
+            </div>
+          </a>
+           
+    
+          <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=225235" class="swiper-slide ">
+            <img src="/rkzgdj/upload/2022-02-25/1645759150444402880907dc304ef332017f2ee3b96c06ee.png" style="width:602px;height:342px" alt="市广播电视局召开党组理论中心组2022年第3次学习会" />
+            <div class='text'>
+              <p>
+                市广播电视局召开党组理论中心组2022年第3次学习会
+              </p>
+            </div>
+          </a>
+           
+    
+          <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=212022" class="swiper-slide ">
+            <img src="/rkzgdj/upload/2021-12-22/1640166758132402880907dc304ef447017de18e96f43c2a.jpg" style="width:602px;height:342px" alt="我向总理说句话" />
+            <div class='text'>
+              <p>
+                我向总理说句话
+              </p>
+            </div>
+          </a>
+           
+    
+          <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=173218" class="swiper-slide ">
+            <img src="/rkzgdj/upload/2021-10-27/1635341166082402880907b3fbfab850017cc1ede60249ba.png" style="width:602px;height:342px" alt="市广播电视局开展党史学习教育 专题学习新民主主义革命时期历史" />
+            <div class='text'>
+              <p>
+                市广播电视局开展党史学习教育 专题学习新民主主义革命时期历史
+              </p>
+            </div>
+          </a>
+           
+    
+          <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=166336" class="swiper-slide ">
+            <img src="/rkzgdj/upload/2021-10-07/1633600093332402880907b3fbfab256017c5a273c941551.png" style="width:602px;height:342px" alt="市广播电视局开展节前非法地面卫星接收设施整治活动 维护广播电视传播秩序" />
+            <div class='text'>
+              <p>
+                市广播电视局开展节前非法地面卫星接收设施整治活动 维护广播电视传播秩序
+              </p>
+            </div>
+          </a>
+           
+    
+        </div>
+        <!-- 分页器 -->
+        <div class="swiper-pagination floor_one_swiper-pagination"></div>
+      </div>
+      <div class="news_tab top_tab">
+        <ul class="tab_title">
+						<li class="fl active"><a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=13188">广电局要闻</a></li>
+            	
+						<li class="fl"><a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=13189">国务院信息</a></li>
+            	
+						<li class="fl"><a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=14868">广电局工作动态</a></li>
+            	
+        </ul>
+        <div id="floor_one_tab_content">
+          <div>
+            
+           		<div class="tab-item show">
+           		
+		            <ul>
+							
+		              <li>
+		                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=225313">
+		                  <p>市广播电视局组织召开2022年党风廉政建设工作安排部署会</p>
+		                  <span>2022-02-25</span>
+		                </a>
+		              </li>
+							
+		              <li>
+		                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=225235">
+		                  <p>市广播电视局召开党组理论中心组2022年第3次学习会</p>
+		                  <span>2022-02-25</span>
+		                </a>
+		              </li>
+							
+		              <li>
+		                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=222950">
+		                  <p>市广播电视局召开春节节后收心会</p>
+		                  <span>2022-02-14</span>
+		                </a>
+		              </li>
+							
+		              <li>
+		                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=221746">
+		                  <p>全市广电系统圆满完成2022年春节期间和北京冬奥会开幕式广播电视安全播出工作</p>
+		                  <span>2022-02-07</span>
+		                </a>
+		              </li>
+							
+		              <li>
+		                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=221338">
+		                  <p>市广播电视局党组理论学习中心组集体观看《零容忍》专题片</p>
+		                  <span>2022-01-29</span>
+		                </a>
+		              </li>
+		            </ul>
+		          </div>
+           
+           
+           		<div class="tab-item">
+           		
+		            <ul>
+							
+		              <li>
+		                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=225331">
+		                  <p>李克强主持召开国务院常务会议 听取2021年全国两会建议提案办理情况汇报等</p>
+		                  <span>2022-02-25</span>
+		                </a>
+		              </li>
+							
+		              <li>
+		                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=222976">
+		                  <p>全国广电系统圆满完成2022年中央广播电视总台春节联欢晚会安全播出保障工作</p>
+		                  <span>2022-02-14</span>
+		                </a>
+		              </li>
+							
+		              <li>
+		                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=221748">
+		                  <p>国务院关于河南郑州等地特大暴雨洪涝灾害灾后恢复重建总体规划的批复</p>
+		                  <span>2022-02-07</span>
+		                </a>
+		              </li>
+							
+		              <li>
+		                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=221342">
+		                  <p>习近平山西考察看望慰问受灾群众</p>
+		                  <span>2022-01-29</span>
+		                </a>
+		              </li>
+							
+		              <li>
+		                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=219718">
+		                  <p>李克强主持召开国务院常务会议</p>
+		                  <span>2022-01-20</span>
+		                </a>
+		              </li>
+		            </ul>
+		          </div>
+           
+           
+           		<div class="tab-item">
+           		
+		            <ul>
+							
+		              <li>
+		                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=225300">
+		                  <p>市广播电视局进一步改进作风贯彻市委政法工作会议精神</p>
+		                  <span>2022-02-25</span>
+		                </a>
+		              </li>
+							
+		              <li>
+		                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=223271">
+		                  <p>市广播电视局集中整治“灰广播”及非法医药广告播出</p>
+		                  <span>2022-02-16</span>
+		                </a>
+		              </li>
+							
+		              <li>
+		                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=221983">
+		                  <p>市广播电视局组织对机关食堂进行卫生安全检查</p>
+		                  <span>2022-02-10</span>
+		                </a>
+		              </li>
+							
+		              <li>
+		                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=221365">
+		                  <p>市广电局开展喜迎新春“包街”志愿服务</p>
+		                  <span>2022-01-29</span>
+		                </a>
+		              </li>
+							
+		              <li>
+		                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=219481">
+		                  <p>市广播电视局组织开展党的十九届六中全会和自治区第十次党代会精神应知应会知识测试</p>
+		                  <span>2022-01-19</span>
+		                </a>
+		              </li>
+		            </ul>
+		          </div>
+           
+           
+              
+            </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="floor_two container">
+      <a href="http://gdj.rikaze.gov.cn/"><img src="/rkzgdj/upload/2021-03-29/1616950464462402880907864c23417017879c20fce3bf3.gif" alt=""></a>
+    </div>   
+
+    <div class="floor_three container">
+      <div class=" news_tab three_1">
+        <div class="title_box">
+          <ul class="tab_title">
+                      
+            	<li class="active"><a href="http://gdj.rikaze.gov.cn/public-policy.thtml?id=13217">政策文件</a></li>
+            
+                 
+                           
+            	<li><a href="http://gdj.rikaze.gov.cn/public-policy.thtml?id=13218">政策解读</a></li>
+            
+            
+            
+          </ul>
+          
+        </div>
+
+        <div id="floor_three_tab_content1">
+          <div>
+          <div class="tab-item show">
+            <ul>
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/public-wj-detail.thtml?cid=226325">
+                  <p class="single-line">国家广播电视总局关于发布《电视剧母版制作规范》一项广播电视和网络视听行业标准的通知</p>
+                  <span>2022-02-27</span>
+                </a>
+              </li>
+               
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/public-wj-detail.thtml?cid=180832">
+                  <p class="single-line">《广播电视行业统计管理规定》</p>
+                  <span>2021-11-18</span>
+                </a>
+              </li>
+               
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/public-wj-detail.thtml?cid=179818">
+                  <p class="single-line">卫星电视广播地面接收设施管理规定</p>
+                  <span>2021-11-17</span>
+                </a>
+              </li>
+               
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/public-wj-detail.thtml?cid=179749">
+                  <p class="single-line">国家广电总局令第4号：国家广播电视总局立法工作规定</p>
+                  <span>2021-11-17</span>
+                </a>
+              </li>
+               
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/public-wj-detail.thtml?cid=157191">
+                  <p class="single-line">中共中央国务院关于实现巩固拓展脱贫攻坚成果同乡村振兴有效衔接的意见</p>
+                  <span>2021-09-05</span>
+                </a>
+              </li>
+               
+               
+            </ul>
+          
+          </div>
+          <div class="tab-item">
+            <ul>
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/public-jd-detail2.thtml?cid=226319">
+                  <p class="single-line">广电总局电视剧司负责人就《电视剧母版制作规范》答记者问</p>
+                  <span>2022-02-27</span>
+                </a>
+              </li>
+               
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/public-jd-detail2.thtml?cid=180854">
+                  <p class="single-line">国家广播电视总局新闻发言人就《广播电视行业统计管理规定》答记者问</p>
+                  <span>2021-11-18</span>
+                </a>
+              </li>
+               
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/public-jd-detail2.thtml?cid=157193">
+                  <p class="single-line">文字解读：《中共中央国务院关于实现巩固拓展脱贫攻坚成果同乡村振兴有效衔接的意见》答问</p>
+                  <span>2021-09-05</span>
+                </a>
+              </li>
+               
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/public-jd-detail2.thtml?cid=132510">
+                  <p class="single-line">司法部有关负责人解读《关于加强社会主义法治文化建设的意见》</p>
+                  <span>2021-06-17</span>
+                </a>
+              </li>
+               
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/public-jd-detail2.thtml?cid=77739">
+                  <p class="single-line">国家广播电视总局新闻发言人就《国家广播电视总局立法工作规定》《国家广播电视总局行政规范性文件管理规定》答记者问</p>
+                  <span>2021-01-11</span>
+                </a>
+              </li>
+               
+            </ul>
+          </div>
+            </div>
+        </div>
+      </div>
+      <div class="news_tab three_2">
+        <div class="title_box">
+          <ul class=" tab_title">
+                      
+            	<li class="active"><a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=13196">通知公告</a></li>
+            
+                 
+                           
+            	<li><a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=13225">民意征集</a></li>
+            
+          </ul>
+           
+        </div>
+        <div id="floor_three_tab_content2">
+          <div>
+          <div class="tab-item show">
+            <ul>
+              <ul>
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=203670">
+                  <p class="single-line">各地防控疫情措施</p>
+                  <span>2021-12-10</span>
+                </a>
+              </li>
+               
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=177179">
+                  <p class="single-line">日喀则市人民政府办公室关于日喀则市政府系统网站群升级改造的公告</p>
+                  <span>2021-11-10</span>
+                </a>
+              </li>
+               
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=168417">
+                  <p class="single-line">广播电视和网络视听“十四五”发展规划</p>
+                  <span>2021-10-13</span>
+                </a>
+              </li>
+               
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=168407">
+                  <p class="single-line">关于公示全国普法工作先进单位、先进个人推荐名单的通知</p>
+                  <span>2021-10-13</span>
+                </a>
+              </li>
+               
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=156779">
+                  <p class="single-line">关于对省级人民政府履行教育职责情况满意度调查的公告</p>
+                  <span>2021-09-03</span>
+                </a>
+              </li>
+               
+               
+            </ul>
+            </ul>
+          </div>
+          <div class="tab-item">
+            <ul>
+              <ul>
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=157200">
+                  <p class="single-line">国务院办公厅印发《关于全面推进政务公开工作的意见》实施细则的通知</p>
+                  <span>2021-09-05</span>
+                </a>
+              </li>
+               
+			
+              <li>
+                <a href="http://gdj.rikaze.gov.cn/news-detail.thtml?cid=29341">
+                  <p class="single-line">民意征集</p>
+                  <span>2020-11-04</span>
+                </a>
+              </li>
+               
+               
+            </ul>
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="floor_four container">
+      <ul class="left_part">
+        
+        <li>
+          <a href="http://gdj.rikaze.gov.cn/interaction-index.thtml?chId=13187">
+            领导信箱
+          </a>
+        </li>
+        
+         
+        
+        <li>
+          <a href="https://www.xzzwfw.gov.cn/portal/bszn/fwbm/list.shtml?siteId=20&amp;type=1&amp;serverType=2&amp;dictOid=bb597a946bad2801016badc555691ec1&amp;bm=%E6%97%A5%E5%96%80%E5%88%99%E5%B8%82%E5%B9%BF%E6%92%AD%E7%94%B5%E8%A7%86%E5%B1%80">
+            政务服务
+          </a>
+        </li>
+         
+        
+        <li>
+          <a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=13225">
+            意见征集
+          </a>
+        </li>
+        
+         
+      </ul>
+      <div class="right_part">
+        <ul class="top_part">
+                 
+          <li>
+            <a href="http://gdj.rikaze.gov.cn/goverment-leaders.thtml?id=13198">
+              <span class="iconfont icon-leader"></span>
+              <span>领导介绍</span>
+            </a>
+          </li>
+          
+                 
+          <li>
+            <a href="http://gdj.rikaze.gov.cn/public-policy.thtml?id=13199">
+              <span class="iconfont icon-jigoushezhi"></span>
+              <span>机构设置</span>
+            </a>
+          </li>
+          
+                 
+          <li>
+            <a href="http://gdj.rikaze.gov.cn/public-policy.thtml?id=13200">
+              <span class="iconfont icon-qingdan"></span>
+              <span>权责清单</span>
+            </a>
+          </li>
+          
+                 
+          <li>
+            <a href="http://gdj.rikaze.gov.cn/published-application-push.thtml?id=13195">
+              <span class="iconfont icon-shenqing"></span>
+              <span>依申请公开</span>
+            </a>
+          </li>
+          
+                 
+          <li>
+            <a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=13222">
+              <span class="iconfont icon-zhinan"></span>
+              <span>办事指南</span></a>
+          </li>
+          
+                 
+          <li>
+            <a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=13223">
+              <span class="iconfont icon-ai231"></span>
+              <span>表格下载</span>
+            </a>
+          </li>
+          
+                 
+          <li>
+            <a href="http://gdj.rikaze.gov.cn/info-public-item-list-single.thtml?id=13215">
+              <span class="iconfont icon-kaoshi"></span>
+              <span>考试查询</span>
+            </a>
+          </li>
+          
+        </ul>
+        <div class="bottom_part">
+          <ul>
+          
+          
+            <li>
+              <a href="http://gdj.rikaze.gov.cn/info-public-item-list-single.thtml?id=13191">
+                <span class="iconfont icon-wenjianjia"></span>
+                <span>政府信息公开目录</span>
+              </a>
+            </li>
+            
+            
+          
+            <li>
+              <a href="http://gdj.rikaze.gov.cn/info-public-item-list-single.thtml?id=13201">
+                <span class="iconfont icon-jilu"></span>
+                <span>政府信息公开制度</span>
+              </a>
+            </li>
+            
+            
+          
+            <li>
+              <a href="http://gdj.rikaze.gov.cn/info-public-item-list-single.thtml?id=13202">
+                <span class="iconfont icon-zhengwu"></span>
+                <span>政府信息公开指南</span>
+              </a>
+            </li>
+            
+            
+          
+            <li>
+              <a href="http://gdj.rikaze.gov.cn/info-public-item-list-single.thtml?id=13192">
+                <span class="iconfont icon-diannao"></span>
+                <span>政府网站年度报表</span>
+              </a>
+            </li>
+            
+            
+          
+            <li>
+              <a href="http://gdj.rikaze.gov.cn/info-public-item-list-single.thtml?id=13205">
+                <span class="iconfont icon-jilu"></span>
+                <span>法定主动公开内容</span>
+              </a>
+            </li>
+            
+            
+          
+            <li>
+              <a href="http://gdj.rikaze.gov.cn/info-public-item-list-single.thtml?id=13204">
+                <span class="iconfont icon-nianbao"></span>
+                <span>政府信息公开年报</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="floor_five">
+      <div class="container">
+        <p class="title">
+                    
+          <span>专题专栏</span>
+          <a href="http://gdj.rikaze.gov.cn/">查看更多 <span class="iconfont icon-gengduo"></span> </a>
+          
+        </p>
+
+        <div class="swiper-container floor_five_slide">
+          <div class="swiper-wrapper ">
+            <div class="swiper-slide ">
+              <ul class="content">
+              
+                            
+                <li>
+                  <a href="http://www.rikaze.gov.cn/news-list.thtml?id=15209">
+                    <img src="/rkzgdj/upload/2021-02-04/16124334014734028809077634cf640401776c852681495b.png" alt="习近平报道专集">
+                    <p>习近平报道专集</p>
+                  </a>
+                </li>
+                 
+                            
+                <li>
+                  <a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=13219">
+                    <img src="/rkzgdj/upload/2021-02-02/1612253721710402880907753cf5493017761cf746e62a4.jpg" alt="深化“放管服”改革">
+                    <p>深化“放管服”改革</p>
+                  </a>
+                </li>
+                 
+                            
+                <li>
+                  <a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=15186">
+                    <img src="/rkzgdj/upload/2021-02-02/1612253764294402880907753cf54115017761d01ac662bb.jpg" alt="卫星电视广播地面接收设施">
+                    <p>卫星电视广播地面接收设施</p>
+                  </a>
+                </li>
+                 
+                            
+                <li>
+                  <a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=15187">
+                    <img src="/rkzgdj/upload/2021-02-02/1612253772998402880907753cf54514017761d03cc662c8.jpg" alt="&#39;村村通&#39;建设和维护">
+                    <p>&#39;村村通&#39;建设和维护</p>
+                  </a>
+                </li>
+                 
+                            
+                <li>
+                  <a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=15188">
+                    <img src="/rkzgdj/upload/2021-02-02/1612253781671402880907753cf54261017761d05ea762cd.jpg" alt="疫情防控">
+                    <p>疫情防控</p>
+                  </a>
+                </li>
+                 
+                            
+                <li>
+                  <a href="http://gdj.rikaze.gov.cn/news-list.thtml?id=15189">
+                    <img src="/rkzgdj/upload/2021-02-02/1612253788729402880907753cf54884017761d07a3962d2.jpg" alt="公益广告">
+                    <p>公益广告</p>
+                  </a>
+                </li>
+                 
+                 
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 引入尾部 -->
+	                  	  
+
+<footer>
+    <div class="nav ">
+      <ul class="container">
+        <li>
+          <div class="select-box">
+            <div class="layui-unselect layui-form-select">
+              <div class="layui-select-title">
+                <input type="text" placeholder="市（地）网站" value="市（地）网站" readonly class="layui-input layui-unselect">
+                <span class="iconfont icon-xiangshangxialakuang"></span>
+              </div>
+              <dl class="layui-anim layui-anim-upbit">
+                <dd class="layui-select-tips">市（地）网站</dd>
+                <dd lay-value="http://www.lasa.gov.cn/" class="layui-select-tips">拉萨</dd>
+                <dd lay-value="http://www.shannan.gov.cn/" class="layui-select-tips">山南</dd>
+                <dd lay-value="http://www.linzhi.gov.cn/" class="layui-select-tips">林芝</dd>
+                <dd lay-value="http://www.changdu.gov.cn/" class="layui-select-tips">昌都</dd>
+                <dd lay-value="http://www.naqu.gov.cn/" class="layui-select-tips">那曲</dd>
+                <dd lay-value="http://www.al.gov.cn/" class="layui-select-tips">阿里</dd>
+              </dl>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="select-box">
+            <div class="layui-unselect layui-form-select">
+              <div class="layui-select-title">
+                <input type="text" placeholder="县（区）网站" value="县（区）网站" readonly class="layui-input layui-unselect">
+                <span class="iconfont icon-xiangshangxialakuang"></span>
+              </div>
+              <dl class="layui-anim layui-anim-upbit">
+                <dd class="layui-select-tips">县（区）网站</dd>
+                <dd lay-value="http://www.sangzhuzi.gov.cn/" class="layui-select-tips">桑珠孜区</dd>
+                <dd lay-value="http://www.jiangzi.gov.cn/" class="layui-select-tips">江孜县</dd>
+                <dd lay-value="http://www.blx.gov.cn/" class="layui-select-tips">白朗县</dd>
+                <dd lay-value="http://www.ydx.gov.cn/" class="layui-select-tips">亚东县</dd>
+                <dd lay-value="http://www.nlmx.gov.cn/" class="layui-select-tips">聂拉木县</dd>
+                <dd lay-value="http://www.arx.gov.cn/" class="layui-select-tips">昂仁县</dd>
+                <dd lay-value="http://www.drx.gov.cn/" class="layui-select-tips">定日县</dd>
+                <dd lay-value="http://www.nmlx.gov.cn/" class="layui-select-tips">南木林县</dd>
+                <dd lay-value="http://www.sj.gov.cn/" class="layui-select-tips">萨迦县</dd>
+                <dd lay-value="http://www.xietongmen.gov.cn/" class="layui-select-tips">谢通门县</dd>
+                <dd lay-value="http://www.djx.gov.cn/" class="layui-select-tips">定结县</dd>
+                <dd lay-value="http://www.renbu.gov.cn/" class="layui-select-tips">仁布县</dd>
+                <dd lay-value="http://www.sgx.gov.cn/" class="layui-select-tips">萨嘎县</dd>
+                <dd lay-value="http://www.kmx.gov.cn/" class="layui-select-tips">康马县</dd>
+                <dd lay-value="http://www.jilong.gov.cn/" class="layui-select-tips">吉隆县</dd>
+                <dd lay-value="http://www.gbx.gov.cn/" class="layui-select-tips">岗巴县</dd>
+                <dd lay-value="http://www.zbx.gov.cn/" class="layui-select-tips">仲巴县</dd>
+              </dl>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="select-box">
+            <div class="layui-unselect layui-form-select">
+              <div class="layui-select-title">
+                <input type="text" placeholder="部门网站" value="部门网站" readonly class="layui-input layui-unselect">
+                <span class="iconfont icon-xiangshangxialakuang"></span>
+              </div>
+              <dl class="layui-anim layui-anim-upbit">
+                <dd class="layui-select-tips">部门网站</dd>
+                <dd lay-value="http://rikaze.zgxzqw.gov.cn/" class="layui-select-tips">中共日喀则市委员会</dd>
+                <dd lay-value="http://rkzjjw.gov.cn:6180/" class="layui-select-tips">日喀则市纪检监察网</dd>
+                <dd lay-value="http://fgw.rkzszf.gov.cn/" class="layui-select-tips">日喀则市发展和改革委员会</dd>
+                <dd lay-value="http://jyj.rkzszf.gov.cn/" class="layui-select-tips">日喀则市教育局</dd>
+                <dd lay-value="http://mzj.rkzszf.gov.cn/" class="layui-select-tips">日喀则市民政局</dd>
+                <dd lay-value="http://sfj.rkzszf.gov.cn/" class="layui-select-tips">日喀则市司法局</dd>
+                <dd lay-value="http://gtzyj.rkzszf.gov.cn/" class="layui-select-tips">日喀则市自然资源局</dd>
+                <dd lay-value="http://hbj.rkzszf.gov.cn/" class="layui-select-tips">日喀则市生态环境局</dd>
+                <dd lay-value="http://ggzyjy.rkzszf.gov.cn/" class="layui-select-tips">日喀则市公共资源交易信息网</dd>
+                <dd lay-value="http://swj.rkzszf.gov.cn/" class="layui-select-tips">日喀则市商务局</dd>
+                <dd lay-value="http://syjj.rkzszf.gov.cn/" class="layui-select-tips">日喀则市市场监督管理局</dd>
+                <dd lay-value="http://rkz.tibetsafety.gov.cn/" class="layui-select-tips">日喀则市应急管理局</dd>
+                <dd lay-value="http://xfj.rkzszf.gov.cn/" class="layui-select-tips">日喀则市信访局</dd>
+                <dd lay-value="http://xzrkz.wenming.cn/" class="layui-select-tips">日喀则文明网</dd>
+                <dd lay-value="http://rikazezj.chinahrt.com/" class="layui-select-tips">日喀则市专业技术人员继续教育网</dd>
+                <dd lay-value="http://xzrkz.spb.gov.cn/" class="layui-select-tips">日喀则市邮政管理局</dd>
+              </dl>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="select-box">
+            <div class="layui-unselect layui-form-select">
+              <div class="layui-select-title">
+                <input type="text" placeholder="法院、检察院" value="法院、检察院" readonly class="layui-input layui-unselect">
+                <span class="iconfont icon-xiangshangxialakuang"></span>
+              </div>
+              <dl class="layui-anim layui-anim-upbit">
+                <dd class="layui-select-tips">法院、检察院</dd>
+                <dd lay-value="http://rkzzy.chinacourt.gov.cn/index.shtml" class="layui-select-tips">日喀则市中级人民法院</dd>
+                <dd lay-value="http://www.rikaze.jcy.gov.cn/" class="layui-select-tips">日喀则市人民检察院</dd>
+
+              </dl>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="select-box">
+            <div class="layui-unselect layui-form-select">
+              <div class="layui-select-title">
+                <input type="text" placeholder="中央垂直管理部门" value="中央垂直管理部门" readonly class="layui-input layui-unselect">
+                <span class="iconfont icon-xiangshangxialakuang"></span>
+              </div>
+              <dl class="layui-anim layui-anim-upbit">
+                <dd class="layui-select-tips">中央垂直管理部门</dd>
+                <dd lay-value="http://www.gov.cn/" class="layui-select-tips">中国政府网</dd>
+                <dd lay-value="https://www.mem.gov.cn/" class="layui-select-tips">中华人民共和国应急管理部</dd>
+                <dd lay-value="http://www.sport.gov.cn/" class="layui-select-tips">国家体育总局</dd>
+                <dd lay-value="http://www.nppa.gov.cn/" class="layui-select-tips">国家新闻出版广电总局</dd>
+                <dd lay-value="http://www.chinatax.gov.cn/" class="layui-select-tips">国家税务总局</dd>
+              </dl>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="footer">
+      <div class="container">
+
+        <div class="bottom">
+          <ul>
+            <li>
+              <p>日喀则市广播电视局 版权所有</p>
+              <p>网站识别码：542300028 </p>
+              <p>联系电话： </p>
+            </li>
+            <li>
+              <p>藏ICP备 18000111号-1</p>
+              <p>
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=54020202000015" target="_blank">
+                  藏公网安备 54020202000015号
+                </a>
+              </p>
+
+              <p>联系邮箱：</p>
+            </li>
+            <li>
+              <a href="http://www.12377.cn" target="_blank">
+                <img src="http://www.rkzszf.gov.cn/main/template/images/footer/report-img.png" alt=""
+                  class="report-pic">
+              </a>
+              <div>
+                <a href="http://bszs.conac.cn/sitename?method=show&id=6CC287031CBE4369E053022E1AACE2A7" class="organ "
+                  target="_blank">
+                  <img src="http://www.rkzszf.gov.cn/main/template/images/footer/organ.png" alt="">
+                </a>
+                <a href="http://121.43.68.40/exposure/jiucuo.html?site_code=5423000060&url=http%3A%2F%2Fwww.rkzszf.gov.cn%2F"
+                  class="fault " target="_blank">
+                  <img src="http://www.rkzszf.gov.cn/main/template/images/footer/fault.png" alt="">
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    </div>
+  </footer>
+</body>
+<!-- [if lt IE 9]>
+<script type="text/javascript" src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif] -->
+<script src="http://gdj.rikaze.gov.cn/rkzgdj/template/js/polyfill.min.js"></script>
+<script src="http://gdj.rikaze.gov.cn/rkzgdj/template/js/swiper.min.js"></script>
+<script src="http://gdj.rikaze.gov.cn/rkzgdj/template/layui/layui.js"></script>
+
+<script src="http://gdj.rikaze.gov.cn/rkzgdj/template/js/swiper.animate1.0.3.min.js"></script>
+<script src="http://gdj.rikaze.gov.cn/rkzgdj/template/js/jquery.dotdotdot.js"></script>
+<script src="http://gdj.rikaze.gov.cn/rkzgdj/template/js/common.js"></script>  
+<script src="http://gdj.rikaze.gov.cn/rkzgdj/template/js/common-cms.js"></script>    
+    <script>
+    
+    basePath = 'http://gdj.rikaze.gov.cn/';
+      
+    layui.use(['form'], function () 
+    {
+	    var form = layui.form;
+	
+	    form.on('select(link)', function(data)
+	    {
+	    	if('' != data.value)
+	    	{
+	        	window.open(data.value);
+	        }
+	        
+	    })
+	})
+    
+    </script> 
+  </body>
+<script type="text/javascript" src="http://gdj.rikaze.gov.cn/core/javascript/stat.js?siteId=46&siteUrl=http://gdj.rikaze.gov.cn/&notHost=false&contentId=-1&classId=-1" ></script></html>

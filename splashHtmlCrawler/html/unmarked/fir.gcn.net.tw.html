@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+  <title>iptv by country</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9F6B6154M8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-9F6B6154M8');
+  </script>
+  <script>
+    $(function() {
+      $(document).on("click", '.ccc', function(event) {
+        var url = $(this).html();
+        //console.log(url);
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val(url).select();
+        document.execCommand("copy");
+        $temp.remove();
+        $('.copyind').html('');
+        $(this).next('.copyind').html(' <span class="badge badge-secondary">copied</span>');
+      });
+      $(document).on("click", '.golink', function(event) {
+        $('.myind').html('');
+        $(this).prev('.myind').html('➤');
+      });
+      $(".country-btn").click(function() {
+        var country_code = $(this).attr('id').substring(4);
+        //console.log(country_code);
+        //console.log($("#country_"+country_code).is(":visible"));
+        if ($("#country_" + country_code).is(":visible")) {
+          // close
+          $("#country_" + country_code).html('');
+        } else {
+          // list
+          var is_safari=false;
+          $.get('https://fir.gcn.net.tw/iptv-org/api_country_json.php', {
+              country: country_code
+            },
+            function(data) {
+              //console.log(data);
+              $.each(data, function(i, item) {
+                if (typeof item.tvmedia != 'undefined' && typeof item.tvtitle != 'undefined') {
+                  var status = item.status;
+                  var my_ind = '<span class="myind"></span>';
+                  var copy_ind = '<span class="copyind"></span>';
+                  var mylink = '&nbsp;<span class="ccc">' + item.tvmedia + '</span>';
+                  var url = '';
+
+                  if (item.tvmedia.indexOf('.mpd') != -1)
+                    url = 'http://play.gcn.net.tw/html/plaympd.html?' + encodeURIComponent(item.tvmedia);
+                  else if (item.tvmedia.indexOf('.m3u8') != -1 && !is_safari)
+                    url = 'http://play.gcn.net.tw/html/playm3u8.html?' + encodeURIComponent(item.tvmedia);
+                  else if (item.tvmedia.indexOf('.m3u8') < 0 && item.tvmedia.indexOf('.m3u') != -1)
+                    url = 'http://play.gcn.net.tw/html/playm3u.html?' + encodeURIComponent(item.tvmedia);
+                  else
+                    url = item.tvmedia;
+
+                  if (status == 'online')
+                    status_class = 'btn btn-dark btn-sm';
+                  else
+                    status_class = 'btn btn-outline-dark btn-sm';
+
+                  var badge = ' <span class="badge badge-pill badge-light">' + status + '</span>';
+                  var html = my_ind + '<a class="golink ' + status_class + '" href="' + url + '" target="_blank" role="button">' +
+                    item.tvtitle + badge + '</a>' + mylink + copy_ind + '<br>';
+                  $("#country_" + country_code).append(html);
+                }
+              });
+            }
+          );
+        }
+      });
+    });
+  </script>
+  <style>
+    /* a:link, a:visited {
+            background-color: chocolate;
+            color: white;
+            padding: 1px 1px;
+            margin: 2px 10px 2px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        a:hover, a:active {
+            background-color: brown;
+        } */
+
+    .ccc:hover {
+      background-color: Wheat;
+    }
+
+    button {
+      margin: 5px 1px 5px 1px;
+    }
+
+    .golink {
+      margin: 1px 1px 1px 1px;
+    }
+
+    .myind {
+      width: 10px;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <p></p>
+    <a class="btn btn-primary btn-sm" role="button" href="/iptv-org/category/">by category</a>
+    &nbsp;
+    <a class="btn btn-primary btn-sm" role="button" href="/iptv-org/language/">by language</a>
+    <span style='float:right;'><a href="#" class="btn btn-primary btn-sm" role="button">click url will copy to clipboard</a></span><br><br>
+    <button id="btn_AF" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_AF" aria-expanded="false" aria-controls="country_AF">Afghanistan</button><div id="country_AF" class="collapse"></div>&nbsp;
+
+<button id="btn_AL" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_AL" aria-expanded="false" aria-controls="country_AL">Albania</button><div id="country_AL" class="collapse"></div>&nbsp;
+
+<button id="btn_DZ" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_DZ" aria-expanded="false" aria-controls="country_DZ">Algeria</button><div id="country_DZ" class="collapse"></div>&nbsp;
+
+<button id="btn_AD" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_AD" aria-expanded="false" aria-controls="country_AD">Andorra</button><div id="country_AD" class="collapse"></div>&nbsp;
+
+<button id="btn_AO" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_AO" aria-expanded="false" aria-controls="country_AO">Angola</button><div id="country_AO" class="collapse"></div>&nbsp;
+
+<button id="btn_AG" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_AG" aria-expanded="false" aria-controls="country_AG">Antigua and Barbuda</button><div id="country_AG" class="collapse"></div>&nbsp;
+
+<button id="btn_AR" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_AR" aria-expanded="false" aria-controls="country_AR">Argentina</button><div id="country_AR" class="collapse"></div>&nbsp;
+
+<button id="btn_AM" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_AM" aria-expanded="false" aria-controls="country_AM">Armenia</button><div id="country_AM" class="collapse"></div>&nbsp;
+
+<button id="btn_AW" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_AW" aria-expanded="false" aria-controls="country_AW">Aruba</button><div id="country_AW" class="collapse"></div>&nbsp;
+
+<button id="btn_AU" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_AU" aria-expanded="false" aria-controls="country_AU">Australia</button><div id="country_AU" class="collapse"></div>&nbsp;
+
+<button id="btn_AT" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_AT" aria-expanded="false" aria-controls="country_AT">Austria</button><div id="country_AT" class="collapse"></div>&nbsp;
+
+<button id="btn_AZ" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_AZ" aria-expanded="false" aria-controls="country_AZ">Azerbaijan</button><div id="country_AZ" class="collapse"></div>&nbsp;
+
+<button id="btn_BS" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_BS" aria-expanded="false" aria-controls="country_BS">Bahamas</button><div id="country_BS" class="collapse"></div>&nbsp;
+
+<button id="btn_BH" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_BH" aria-expanded="false" aria-controls="country_BH">Bahrain</button><div id="country_BH" class="collapse"></div>&nbsp;
+
+<button id="btn_BD" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_BD" aria-expanded="false" aria-controls="country_BD">Bangladesh</button><div id="country_BD" class="collapse"></div>&nbsp;
+
+<button id="btn_BB" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_BB" aria-expanded="false" aria-controls="country_BB">Barbados</button><div id="country_BB" class="collapse"></div>&nbsp;
+
+<button id="btn_BY" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_BY" aria-expanded="false" aria-controls="country_BY">Belarus</button><div id="country_BY" class="collapse"></div>&nbsp;
+
+<button id="btn_BE" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_BE" aria-expanded="false" aria-controls="country_BE">Belgium</button><div id="country_BE" class="collapse"></div>&nbsp;
+
+<button id="btn_BJ" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_BJ" aria-expanded="false" aria-controls="country_BJ">Benin</button><div id="country_BJ" class="collapse"></div>&nbsp;
+
+<button id="btn_BO" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_BO" aria-expanded="false" aria-controls="country_BO">Bolivia</button><div id="country_BO" class="collapse"></div>&nbsp;
+
+<button id="btn_BA" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_BA" aria-expanded="false" aria-controls="country_BA">Bosnia and Herzegovina</button><div id="country_BA" class="collapse"></div>&nbsp;
+
+<button id="btn_BR" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_BR" aria-expanded="false" aria-controls="country_BR">Brazil</button><div id="country_BR" class="collapse"></div>&nbsp;
+
+<button id="btn_BN" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_BN" aria-expanded="false" aria-controls="country_BN">Brunei</button><div id="country_BN" class="collapse"></div>&nbsp;
+
+<button id="btn_BG" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_BG" aria-expanded="false" aria-controls="country_BG">Bulgaria</button><div id="country_BG" class="collapse"></div>&nbsp;
+
+<button id="btn_BF" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_BF" aria-expanded="false" aria-controls="country_BF">Burkina Faso</button><div id="country_BF" class="collapse"></div>&nbsp;
+
+<button id="btn_KH" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_KH" aria-expanded="false" aria-controls="country_KH">Cambodia</button><div id="country_KH" class="collapse"></div>&nbsp;
+
+<button id="btn_CM" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_CM" aria-expanded="false" aria-controls="country_CM">Cameroon</button><div id="country_CM" class="collapse"></div>&nbsp;
+
+<button id="btn_CA" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_CA" aria-expanded="false" aria-controls="country_CA">Canada</button><div id="country_CA" class="collapse"></div>&nbsp;
+
+<button id="btn_CL" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_CL" aria-expanded="false" aria-controls="country_CL">Chile</button><div id="country_CL" class="collapse"></div>&nbsp;
+
+<button id="btn_CN" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_CN" aria-expanded="false" aria-controls="country_CN">China</button><div id="country_CN" class="collapse"></div>&nbsp;
+
+<button id="btn_CO" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_CO" aria-expanded="false" aria-controls="country_CO">Colombia</button><div id="country_CO" class="collapse"></div>&nbsp;
+
+<button id="btn_CR" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_CR" aria-expanded="false" aria-controls="country_CR">Costa Rica</button><div id="country_CR" class="collapse"></div>&nbsp;
+
+<button id="btn_HR" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_HR" aria-expanded="false" aria-controls="country_HR">Croatia</button><div id="country_HR" class="collapse"></div>&nbsp;
+
+<button id="btn_CU" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_CU" aria-expanded="false" aria-controls="country_CU">Cuba</button><div id="country_CU" class="collapse"></div>&nbsp;
+
+<button id="btn_CW" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_CW" aria-expanded="false" aria-controls="country_CW">Curacao</button><div id="country_CW" class="collapse"></div>&nbsp;
+
+<button id="btn_CY" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_CY" aria-expanded="false" aria-controls="country_CY">Cyprus</button><div id="country_CY" class="collapse"></div>&nbsp;
+
+<button id="btn_CZ" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_CZ" aria-expanded="false" aria-controls="country_CZ">Czech Republic</button><div id="country_CZ" class="collapse"></div>&nbsp;
+
+<button id="btn_CD" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_CD" aria-expanded="false" aria-controls="country_CD">Democratic Republic of the Congo</button><div id="country_CD" class="collapse"></div>&nbsp;
+
+<button id="btn_DK" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_DK" aria-expanded="false" aria-controls="country_DK">Denmark</button><div id="country_DK" class="collapse"></div>&nbsp;
+
+<button id="btn_DO" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_DO" aria-expanded="false" aria-controls="country_DO">Dominican Republic</button><div id="country_DO" class="collapse"></div>&nbsp;
+
+<button id="btn_EC" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_EC" aria-expanded="false" aria-controls="country_EC">Ecuador</button><div id="country_EC" class="collapse"></div>&nbsp;
+
+<button id="btn_EG" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_EG" aria-expanded="false" aria-controls="country_EG">Egypt</button><div id="country_EG" class="collapse"></div>&nbsp;
+
+<button id="btn_SV" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_SV" aria-expanded="false" aria-controls="country_SV">El Salvador</button><div id="country_SV" class="collapse"></div>&nbsp;
+
+<button id="btn_GQ" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_GQ" aria-expanded="false" aria-controls="country_GQ">Equatorial Guinea</button><div id="country_GQ" class="collapse"></div>&nbsp;
+
+<button id="btn_EE" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_EE" aria-expanded="false" aria-controls="country_EE">Estonia</button><div id="country_EE" class="collapse"></div>&nbsp;
+
+<button id="btn_ET" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_ET" aria-expanded="false" aria-controls="country_ET">Ethiopia</button><div id="country_ET" class="collapse"></div>&nbsp;
+
+<button id="btn_FO" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_FO" aria-expanded="false" aria-controls="country_FO">Faroe Islands</button><div id="country_FO" class="collapse"></div>&nbsp;
+
+<button id="btn_FJ" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_FJ" aria-expanded="false" aria-controls="country_FJ">Fiji</button><div id="country_FJ" class="collapse"></div>&nbsp;
+
+<button id="btn_FI" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_FI" aria-expanded="false" aria-controls="country_FI">Finland</button><div id="country_FI" class="collapse"></div>&nbsp;
+
+<button id="btn_FR" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_FR" aria-expanded="false" aria-controls="country_FR">France</button><div id="country_FR" class="collapse"></div>&nbsp;
+
+<button id="btn_PF" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_PF" aria-expanded="false" aria-controls="country_PF">French Polynesia</button><div id="country_PF" class="collapse"></div>&nbsp;
+
+<button id="btn_GM" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_GM" aria-expanded="false" aria-controls="country_GM">Gambia</button><div id="country_GM" class="collapse"></div>&nbsp;
+
+<button id="btn_GE" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_GE" aria-expanded="false" aria-controls="country_GE">Georgia</button><div id="country_GE" class="collapse"></div>&nbsp;
+
+<button id="btn_DE" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_DE" aria-expanded="false" aria-controls="country_DE">Germany</button><div id="country_DE" class="collapse"></div>&nbsp;
+
+<button id="btn_GH" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_GH" aria-expanded="false" aria-controls="country_GH">Ghana</button><div id="country_GH" class="collapse"></div>&nbsp;
+
+<button id="btn_GR" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_GR" aria-expanded="false" aria-controls="country_GR">Greece</button><div id="country_GR" class="collapse"></div>&nbsp;
+
+<button id="btn_GL" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_GL" aria-expanded="false" aria-controls="country_GL">Greenland</button><div id="country_GL" class="collapse"></div>&nbsp;
+
+<button id="btn_GP" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_GP" aria-expanded="false" aria-controls="country_GP">Guadeloupe</button><div id="country_GP" class="collapse"></div>&nbsp;
+
+<button id="btn_GT" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_GT" aria-expanded="false" aria-controls="country_GT">Guatemala</button><div id="country_GT" class="collapse"></div>&nbsp;
+
+<button id="btn_GN" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_GN" aria-expanded="false" aria-controls="country_GN">Guinea</button><div id="country_GN" class="collapse"></div>&nbsp;
+
+<button id="btn_HT" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_HT" aria-expanded="false" aria-controls="country_HT">Haiti</button><div id="country_HT" class="collapse"></div>&nbsp;
+
+<button id="btn_HN" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_HN" aria-expanded="false" aria-controls="country_HN">Honduras</button><div id="country_HN" class="collapse"></div>&nbsp;
+
+<button id="btn_HK" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_HK" aria-expanded="false" aria-controls="country_HK">Hong Kong</button><div id="country_HK" class="collapse"></div>&nbsp;
+
+<button id="btn_HU" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_HU" aria-expanded="false" aria-controls="country_HU">Hungary</button><div id="country_HU" class="collapse"></div>&nbsp;
+
+<button id="btn_IS" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_IS" aria-expanded="false" aria-controls="country_IS">Iceland</button><div id="country_IS" class="collapse"></div>&nbsp;
+
+<button id="btn_IN" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_IN" aria-expanded="false" aria-controls="country_IN">India</button><div id="country_IN" class="collapse"></div>&nbsp;
+
+<button id="btn_ID" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_ID" aria-expanded="false" aria-controls="country_ID">Indonesia</button><div id="country_ID" class="collapse"></div>&nbsp;
+
+<button id="btn_IR" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_IR" aria-expanded="false" aria-controls="country_IR">Iran</button><div id="country_IR" class="collapse"></div>&nbsp;
+
+<button id="btn_IQ" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_IQ" aria-expanded="false" aria-controls="country_IQ">Iraq</button><div id="country_IQ" class="collapse"></div>&nbsp;
+
+<button id="btn_IE" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_IE" aria-expanded="false" aria-controls="country_IE">Ireland</button><div id="country_IE" class="collapse"></div>&nbsp;
+
+<button id="btn_IL" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_IL" aria-expanded="false" aria-controls="country_IL">Israel</button><div id="country_IL" class="collapse"></div>&nbsp;
+
+<button id="btn_IT" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_IT" aria-expanded="false" aria-controls="country_IT">Italy</button><div id="country_IT" class="collapse"></div>&nbsp;
+
+<button id="btn_CI" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_CI" aria-expanded="false" aria-controls="country_CI">Ivory Coast</button><div id="country_CI" class="collapse"></div>&nbsp;
+
+<button id="btn_JM" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_JM" aria-expanded="false" aria-controls="country_JM">Jamaica</button><div id="country_JM" class="collapse"></div>&nbsp;
+
+<button id="btn_JP" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_JP" aria-expanded="false" aria-controls="country_JP">Japan</button><div id="country_JP" class="collapse"></div>&nbsp;
+
+<button id="btn_JO" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_JO" aria-expanded="false" aria-controls="country_JO">Jordan</button><div id="country_JO" class="collapse"></div>&nbsp;
+
+<button id="btn_KZ" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_KZ" aria-expanded="false" aria-controls="country_KZ">Kazakhstan</button><div id="country_KZ" class="collapse"></div>&nbsp;
+
+<button id="btn_KE" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_KE" aria-expanded="false" aria-controls="country_KE">Kenya</button><div id="country_KE" class="collapse"></div>&nbsp;
+
+<button id="btn_XK" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_XK" aria-expanded="false" aria-controls="country_XK">Kosovo</button><div id="country_XK" class="collapse"></div>&nbsp;
+
+<button id="btn_KW" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_KW" aria-expanded="false" aria-controls="country_KW">Kuwait</button><div id="country_KW" class="collapse"></div>&nbsp;
+
+<button id="btn_KG" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_KG" aria-expanded="false" aria-controls="country_KG">Kyrgyzstan</button><div id="country_KG" class="collapse"></div>&nbsp;
+
+<button id="btn_LA" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_LA" aria-expanded="false" aria-controls="country_LA">Laos</button><div id="country_LA" class="collapse"></div>&nbsp;
+
+<button id="btn_LV" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_LV" aria-expanded="false" aria-controls="country_LV">Latvia</button><div id="country_LV" class="collapse"></div>&nbsp;
+
+<button id="btn_LB" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_LB" aria-expanded="false" aria-controls="country_LB">Lebanon</button><div id="country_LB" class="collapse"></div>&nbsp;
+
+<button id="btn_LY" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_LY" aria-expanded="false" aria-controls="country_LY">Libya</button><div id="country_LY" class="collapse"></div>&nbsp;
+
+<button id="btn_LI" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_LI" aria-expanded="false" aria-controls="country_LI">Liechtenstein</button><div id="country_LI" class="collapse"></div>&nbsp;
+
+<button id="btn_LT" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_LT" aria-expanded="false" aria-controls="country_LT">Lithuania</button><div id="country_LT" class="collapse"></div>&nbsp;
+
+<button id="btn_LU" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_LU" aria-expanded="false" aria-controls="country_LU">Luxembourg</button><div id="country_LU" class="collapse"></div>&nbsp;
+
+<button id="btn_MO" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_MO" aria-expanded="false" aria-controls="country_MO">Macao</button><div id="country_MO" class="collapse"></div>&nbsp;
+
+<button id="btn_MW" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_MW" aria-expanded="false" aria-controls="country_MW">Malawi</button><div id="country_MW" class="collapse"></div>&nbsp;
+
+<button id="btn_MY" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_MY" aria-expanded="false" aria-controls="country_MY">Malaysia</button><div id="country_MY" class="collapse"></div>&nbsp;
+
+<button id="btn_MV" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_MV" aria-expanded="false" aria-controls="country_MV">Maldives</button><div id="country_MV" class="collapse"></div>&nbsp;
+
+<button id="btn_ML" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_ML" aria-expanded="false" aria-controls="country_ML">Mali</button><div id="country_ML" class="collapse"></div>&nbsp;
+
+<button id="btn_MT" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_MT" aria-expanded="false" aria-controls="country_MT">Malta</button><div id="country_MT" class="collapse"></div>&nbsp;
+
+<button id="btn_MQ" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_MQ" aria-expanded="false" aria-controls="country_MQ">Martinique</button><div id="country_MQ" class="collapse"></div>&nbsp;
+
+<button id="btn_MX" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_MX" aria-expanded="false" aria-controls="country_MX">Mexico</button><div id="country_MX" class="collapse"></div>&nbsp;
+
+<button id="btn_MD" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_MD" aria-expanded="false" aria-controls="country_MD">Moldova</button><div id="country_MD" class="collapse"></div>&nbsp;
+
+<button id="btn_MC" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_MC" aria-expanded="false" aria-controls="country_MC">Monaco</button><div id="country_MC" class="collapse"></div>&nbsp;
+
+<button id="btn_MN" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_MN" aria-expanded="false" aria-controls="country_MN">Mongolia</button><div id="country_MN" class="collapse"></div>&nbsp;
+
+<button id="btn_ME" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_ME" aria-expanded="false" aria-controls="country_ME">Montenegro</button><div id="country_ME" class="collapse"></div>&nbsp;
+
+<button id="btn_MA" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_MA" aria-expanded="false" aria-controls="country_MA">Morocco</button><div id="country_MA" class="collapse"></div>&nbsp;
+
+<button id="btn_MZ" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_MZ" aria-expanded="false" aria-controls="country_MZ">Mozambique</button><div id="country_MZ" class="collapse"></div>&nbsp;
+
+<button id="btn_MM" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_MM" aria-expanded="false" aria-controls="country_MM">Myanmar (Burma)</button><div id="country_MM" class="collapse"></div>&nbsp;
+
+<button id="btn_NP" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_NP" aria-expanded="false" aria-controls="country_NP">Nepal</button><div id="country_NP" class="collapse"></div>&nbsp;
+
+<button id="btn_NL" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_NL" aria-expanded="false" aria-controls="country_NL">Netherlands</button><div id="country_NL" class="collapse"></div>&nbsp;
+
+<button id="btn_NZ" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_NZ" aria-expanded="false" aria-controls="country_NZ">New Zealand</button><div id="country_NZ" class="collapse"></div>&nbsp;
+
+<button id="btn_NI" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_NI" aria-expanded="false" aria-controls="country_NI">Nicaragua</button><div id="country_NI" class="collapse"></div>&nbsp;
+
+<button id="btn_NE" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_NE" aria-expanded="false" aria-controls="country_NE">Niger</button><div id="country_NE" class="collapse"></div>&nbsp;
+
+<button id="btn_NG" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_NG" aria-expanded="false" aria-controls="country_NG">Nigeria</button><div id="country_NG" class="collapse"></div>&nbsp;
+
+<button id="btn_KP" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_KP" aria-expanded="false" aria-controls="country_KP">North Korea</button><div id="country_KP" class="collapse"></div>&nbsp;
+
+<button id="btn_MK" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_MK" aria-expanded="false" aria-controls="country_MK">North Macedonia</button><div id="country_MK" class="collapse"></div>&nbsp;
+
+<button id="btn_NO" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_NO" aria-expanded="false" aria-controls="country_NO">Norway</button><div id="country_NO" class="collapse"></div>&nbsp;
+
+<button id="btn_OM" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_OM" aria-expanded="false" aria-controls="country_OM">Oman</button><div id="country_OM" class="collapse"></div>&nbsp;
+
+<button id="btn_PK" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_PK" aria-expanded="false" aria-controls="country_PK">Pakistan</button><div id="country_PK" class="collapse"></div>&nbsp;
+
+<button id="btn_PS" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_PS" aria-expanded="false" aria-controls="country_PS">Palestine</button><div id="country_PS" class="collapse"></div>&nbsp;
+
+<button id="btn_PA" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_PA" aria-expanded="false" aria-controls="country_PA">Panama</button><div id="country_PA" class="collapse"></div>&nbsp;
+
+<button id="btn_PY" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_PY" aria-expanded="false" aria-controls="country_PY">Paraguay</button><div id="country_PY" class="collapse"></div>&nbsp;
+
+<button id="btn_PE" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_PE" aria-expanded="false" aria-controls="country_PE">Peru</button><div id="country_PE" class="collapse"></div>&nbsp;
+
+<button id="btn_PH" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_PH" aria-expanded="false" aria-controls="country_PH">Philippines</button><div id="country_PH" class="collapse"></div>&nbsp;
+
+<button id="btn_PL" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_PL" aria-expanded="false" aria-controls="country_PL">Poland</button><div id="country_PL" class="collapse"></div>&nbsp;
+
+<button id="btn_PT" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_PT" aria-expanded="false" aria-controls="country_PT">Portugal</button><div id="country_PT" class="collapse"></div>&nbsp;
+
+<button id="btn_PR" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_PR" aria-expanded="false" aria-controls="country_PR">Puerto Rico</button><div id="country_PR" class="collapse"></div>&nbsp;
+
+<button id="btn_QA" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_QA" aria-expanded="false" aria-controls="country_QA">Qatar</button><div id="country_QA" class="collapse"></div>&nbsp;
+
+<button id="btn_CG" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_CG" aria-expanded="false" aria-controls="country_CG">Republic of the Congo</button><div id="country_CG" class="collapse"></div>&nbsp;
+
+<button id="btn_RO" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_RO" aria-expanded="false" aria-controls="country_RO">Romania</button><div id="country_RO" class="collapse"></div>&nbsp;
+
+<button id="btn_RU" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_RU" aria-expanded="false" aria-controls="country_RU">Russia</button><div id="country_RU" class="collapse"></div>&nbsp;
+
+<button id="btn_RW" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_RW" aria-expanded="false" aria-controls="country_RW">Rwanda</button><div id="country_RW" class="collapse"></div>&nbsp;
+
+<button id="btn_SM" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_SM" aria-expanded="false" aria-controls="country_SM">San Marino</button><div id="country_SM" class="collapse"></div>&nbsp;
+
+<button id="btn_SA" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_SA" aria-expanded="false" aria-controls="country_SA">Saudi Arabia</button><div id="country_SA" class="collapse"></div>&nbsp;
+
+<button id="btn_SN" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_SN" aria-expanded="false" aria-controls="country_SN">Senegal</button><div id="country_SN" class="collapse"></div>&nbsp;
+
+<button id="btn_RS" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_RS" aria-expanded="false" aria-controls="country_RS">Serbia</button><div id="country_RS" class="collapse"></div>&nbsp;
+
+<button id="btn_SL" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_SL" aria-expanded="false" aria-controls="country_SL">Sierra Leone</button><div id="country_SL" class="collapse"></div>&nbsp;
+
+<button id="btn_SG" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_SG" aria-expanded="false" aria-controls="country_SG">Singapore</button><div id="country_SG" class="collapse"></div>&nbsp;
+
+<button id="btn_SK" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_SK" aria-expanded="false" aria-controls="country_SK">Slovakia</button><div id="country_SK" class="collapse"></div>&nbsp;
+
+<button id="btn_SI" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_SI" aria-expanded="false" aria-controls="country_SI">Slovenia</button><div id="country_SI" class="collapse"></div>&nbsp;
+
+<button id="btn_SO" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_SO" aria-expanded="false" aria-controls="country_SO">Somalia</button><div id="country_SO" class="collapse"></div>&nbsp;
+
+<button id="btn_KR" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_KR" aria-expanded="false" aria-controls="country_KR">South Korea</button><div id="country_KR" class="collapse"></div>&nbsp;
+
+<button id="btn_ES" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_ES" aria-expanded="false" aria-controls="country_ES">Spain</button><div id="country_ES" class="collapse"></div>&nbsp;
+
+<button id="btn_LK" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_LK" aria-expanded="false" aria-controls="country_LK">Sri Lanka</button><div id="country_LK" class="collapse"></div>&nbsp;
+
+<button id="btn_SD" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_SD" aria-expanded="false" aria-controls="country_SD">Sudan</button><div id="country_SD" class="collapse"></div>&nbsp;
+
+<button id="btn_SE" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_SE" aria-expanded="false" aria-controls="country_SE">Sweden</button><div id="country_SE" class="collapse"></div>&nbsp;
+
+<button id="btn_CH" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_CH" aria-expanded="false" aria-controls="country_CH">Switzerland</button><div id="country_CH" class="collapse"></div>&nbsp;
+
+<button id="btn_SY" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_SY" aria-expanded="false" aria-controls="country_SY">Syria</button><div id="country_SY" class="collapse"></div>&nbsp;
+
+<button id="btn_TW" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_TW" aria-expanded="false" aria-controls="country_TW">Taiwan</button><div id="country_TW" class="collapse"></div>&nbsp;
+
+<button id="btn_TJ" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_TJ" aria-expanded="false" aria-controls="country_TJ">Tajikistan</button><div id="country_TJ" class="collapse"></div>&nbsp;
+
+<button id="btn_TZ" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_TZ" aria-expanded="false" aria-controls="country_TZ">Tanzania</button><div id="country_TZ" class="collapse"></div>&nbsp;
+
+<button id="btn_TH" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_TH" aria-expanded="false" aria-controls="country_TH">Thailand</button><div id="country_TH" class="collapse"></div>&nbsp;
+
+<button id="btn_TT" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_TT" aria-expanded="false" aria-controls="country_TT">Trinidad and Tobago</button><div id="country_TT" class="collapse"></div>&nbsp;
+
+<button id="btn_TN" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_TN" aria-expanded="false" aria-controls="country_TN">Tunisia</button><div id="country_TN" class="collapse"></div>&nbsp;
+
+<button id="btn_TR" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_TR" aria-expanded="false" aria-controls="country_TR">Turkey</button><div id="country_TR" class="collapse"></div>&nbsp;
+
+<button id="btn_TM" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_TM" aria-expanded="false" aria-controls="country_TM">Turkmenistan</button><div id="country_TM" class="collapse"></div>&nbsp;
+
+<button id="btn_UG" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_UG" aria-expanded="false" aria-controls="country_UG">Uganda</button><div id="country_UG" class="collapse"></div>&nbsp;
+
+<button id="btn_UA" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_UA" aria-expanded="false" aria-controls="country_UA">Ukraine</button><div id="country_UA" class="collapse"></div>&nbsp;
+
+<button id="btn_AE" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_AE" aria-expanded="false" aria-controls="country_AE">United Arab Emirates</button><div id="country_AE" class="collapse"></div>&nbsp;
+
+<button id="btn_UK" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_UK" aria-expanded="false" aria-controls="country_UK">United Kingdom</button><div id="country_UK" class="collapse"></div>&nbsp;
+
+<button id="btn_US" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_US" aria-expanded="false" aria-controls="country_US">United States</button><div id="country_US" class="collapse"></div>&nbsp;
+
+<button id="btn_UY" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_UY" aria-expanded="false" aria-controls="country_UY">Uruguay</button><div id="country_UY" class="collapse"></div>&nbsp;
+
+<button id="btn_UZ" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_UZ" aria-expanded="false" aria-controls="country_UZ">Uzbekistan</button><div id="country_UZ" class="collapse"></div>&nbsp;
+
+<button id="btn_VA" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_VA" aria-expanded="false" aria-controls="country_VA">Vatican City</button><div id="country_VA" class="collapse"></div>&nbsp;
+
+<button id="btn_VE" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_VE" aria-expanded="false" aria-controls="country_VE">Venezuela</button><div id="country_VE" class="collapse"></div>&nbsp;
+
+<button id="btn_VN" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_VN" aria-expanded="false" aria-controls="country_VN">Vietnam</button><div id="country_VN" class="collapse"></div>&nbsp;
+
+<button id="btn_YE" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_YE" aria-expanded="false" aria-controls="country_YE">Yemen</button><div id="country_YE" class="collapse"></div>&nbsp;
+
+<button id="btn_ZM" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_ZM" aria-expanded="false" aria-controls="country_ZM">Zambia</button><div id="country_ZM" class="collapse"></div>&nbsp;
+
+<button id="btn_un" data-toggle="collapse" class="btn btn-outline-primary btn-sm country-btn" data-target="#country_un" aria-expanded="false" aria-controls="country_un">unsorted</button><div id="country_un" class="collapse"></div>&nbsp;
+
+    <br /><br />
+    data from <a href="https://github.com/iptv-org/iptv" target="_blank" class="btn btn-primary btn-sm" role="button">https://github.com/iptv-org/iptv</a>
+    &nbsp;<a href="#" class="btn btn-primary btn-sm" role="button">Chrome</a>    <span style='float:right;'>generated by <a href="http://www.sonny.idv.tw/" target="_blank" class="btn btn-primary btn-sm" role="button">Sonny Kuo</a></span>
+    <br /><br />
+    <!-- <a href="https://github.com/iptv-org/iptv">Repository unavailable due to DMCA takedown</a> -->
+  </div>
+</body>
+
+</html>

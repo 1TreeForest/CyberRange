@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zoko</title>
+    <script type="text/javascript" src="//use.typekit.net/apk7kwq.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body class="tk-nimbus-sans">
+    <a href="https://github.com/lulea/game-off-2012/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+    <div class="container">
+      <div id="wrapper">
+        <div class="content">
+          <canvas id="zoko" height="450" width="850"></canvas>
+
+          <div id="overlay">
+            <p id="steps">0 steps</p>
+            <p id="level">Level <span class="levelNumber">1</span></p>
+          </div>
+
+          <div id="menu">
+            <div class="options">
+              <h2 class="title">Options</h2>
+              <button id="continueBtn" class="btn">Continue Game</button>
+              <button id="nextBtn" class="btn">Next Level &rarr;</button>
+              <button id="previousBtn" class="btn">&larr; Previous Level</button>
+            </div>
+            <div class="highscore">
+              <h2>Highscore</h2>
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>Level 1
+                    <td>2 steps</td>
+                  </tr>
+                  <tr>
+                    <td>Level 2
+                    <td>3 steps</td>
+                  </tr>
+                  <tr>
+                    <td>Level 3
+                    <td>?</td>
+                  </tr>
+                  <tr>
+                    <td>Level 4
+                    <td>?</td>
+                  </tr>
+                  <tr class="last">
+                    <td>Level 5
+                    <td>?</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div id="menuOverlay"></div>
+          <h1 id="logo">zoko</h1>
+          <div id="btn-group">
+            <a id="menuBtn" class="icon-btn icon-home" title="Show Menu"></a>
+            <a id="restartBtn" class="icon-btn icon-undo" title="Restart Level"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <!--<div class="instructions">
+        <div class="playerKeys">
+          <ol class="arrow-keys">
+            <li>
+              <a href="#" class="key" id="left">
+                <span>&#8592;</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="key" id="up">
+                <span>&#8593;</span>
+              </a>
+              <a href="#" class="key" id="down">
+                <span>&#8595;</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="key" id="right">
+                <span>&#8594;</span>
+              </a>
+            </li>
+          </ol>
+          <p>Control the player</p>
+        </div>
+        <div class="restartLevelKey">
+          <a href="#" class="key c82"><span>r</span></a>
+          <p>Restart level</p>
+        </div>
+      </div>-->
+
+      <p class="footer">
+        A game entry for <a href="https://github.com/blog/1303-github-game-off">GitHub Game Off 2012</a> by <a href="mailto:samuel02@gmail.com">Samuel Nilsson</a> and <a href="mailto:zyxster@gmail.com">Sebastian Viklund</a>.
+      </p>
+    </footer>
+  </body>
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <script src="js/zoko.js"></script>
+  <script>
+    $(function() {
+      $(document).ready(function() {
+        container = $('div.container');
+        zoko = new Zoko(container);
+      });
+    });
+  </script>
+</html>

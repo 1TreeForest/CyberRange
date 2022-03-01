@@ -1,0 +1,687 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" class="os_win7">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<!--wnsdiff-base-->	<!--wnsdiff-base-end-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="x5-pagetype" content="webapp">
+<title>斗破苍穹（大灰狼超人气热播，版权即将到期，请尽快下载）__企鹅FM</title><meta itemprop="description" name="description" content="苍穹诸神俱灭，斗气风云再起！且看天才少年萧炎以废人之身登上斗气巅峰！" />
+<meta name="keywords" content="斗破苍穹（大灰狼超人气热播，版权即将到期，请尽快下载），qq,喜马拉雅听书,网易云音乐,鬼吹灯电子书,虾米播放器,蜻蜓收音机,凤凰新闻,晋江免费小说,荔枝,航旅纵横,陌秀,快手,得到,小米运动,单车,yy语音,唱吧录音K歌,酷我,樊登读书会,echo,豆瓣" /><meta name="applicable-device" content="pc">	
+<link rel="Shortcut Icon" href="https://qzonestyle.gtimg.cn/qz-proj/fm-official-website/img/favicon.ico?max_age=31536000" type="image/x-icon" />
+
+<script>//interface里面这个变量
+window.g_domain = document.domain;
+window._s_ = new Date();	window.g_isHttps = true;</script>
+<script>
+window.g_qzonetoken = window.shine0callback = '';
+</script>
+<script>
+(function(){	if(window!=top){
+		top.location.href = window.location.href;
+		return;
+	}	var version = {},
+		f		= frameElement || {};
+
+	version.v7		= "@qzone/photo/v7/js#20140214#".split('#')[1];
+	version.zone	= "@qzone/photo/zone/script?deep=1#20131114203912#".split('#')[1];
+	version.zoneNew = "@qzone/photo/zone/new/script?deep=1#20131114221918#".split('#')[1];
+	version.css		= "@qzone_v6?deep=1&type=css#20131114113131#".split('#')[1];
+
+	top.g_photoVersion		= f.g_photoVersion		= Math.max(version.zone,version.zoneNew);
+	top.g_photoVersionV7	= f.g_photoVersionV7	= version.v7;
+	top.g_photoVersionMap	= f.g_photoVersionMap	= version;
+})();
+
+(function(){
+	function postErrLog(errMsg) {
+		try{
+			var result;
+			var pathName = location.pathname;
+			if(!pathName || pathName.length <= 0) {
+				result = location.host;
+			}else {
+				pathName = pathName.substr(1);
+				pathName = pathName.replace("qzone/hybrid/module/", "");
+				pathName = pathName.replace("qzone/hybrid/", "");
+				pathName = pathName.replace("qzone/photo/v7/js/", "");
+				pathName = pathName.replace(".html", "");
+				result = pathName;
+			}
+
+			var xhr = new XMLHttpRequest();
+			xhr.withCredentials = true;
+			var url = 'https://h5.qzone.qq.com/log/post/error/'+result;
+			xhr.open('post', url, true);
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xhr.send(errMsg);
+		}catch(err){}
+	}
+
+	var reportNum = 0,
+		beforeLoad = 1,
+		collector = [],
+		collectorTime = 2000,
+		collectorTimer;
+
+	window.reportHaboGlobal = function(code, appid, command) {
+		var ua = navigator.userAgent || '';
+		var qzoneArray = /Qzone\/(\S+)/.exec(ua);
+		var qqArray = /V\S+_\S+_\S+_\S+_\S+_\S+_\S+/.exec(ua);
+		var apnArray = /NetType\/(\S+)/.exec(ua);
+		var uinArray = /uin=o0*(\S+);/.exec(document.cookie || '');
+		var pathArray = /\/\w+?\/\w+/.exec(location.pathname || '');
+
+		var qua = qzoneArray && qzoneArray[1] || qqArray && qqArray[0];
+		var apn = apnArray && apnArray[1];
+		var uin = uinArray && uinArray[1];
+		command = (command || '') + (pathArray && pathArray[0]);
+
+		var data = {
+			releaseversion: qua,
+			apn: apn,
+			touin: uin,
+			key: 'appid,commandid,resultcode'
+		};
+
+		collector.push([appid || '1000361', 'hybrid' + command, code]);
+
+		var url = "https://h5.qzone.qq.com/wspeed.qq.com/w.cgi";
+		collectorTimer && clearTimeout(collectorTimer);
+		collectorTimer = setTimeout(report, collectorTime);
+
+		function report() {
+			var params = [];
+			for (var key in data) {
+				if (data.hasOwnProperty(key)) {
+					params.push(key + '=' + encodeURIComponent(data[key]));
+				}
+			}
+			if (collector && collector.length) {
+				var i = 0;
+				while (collector.length) {
+					if (params.join('&').length > 1000) {
+						break;
+					}
+					var c = collector.shift();
+					params.push([i + 1, 1].join('_') + '=' + c[0]);
+					params.push([i + 1, 2].join('_') + '=' + c[1]);
+					params.push([i + 1, 3].join('_') + '=' + c[2]);
+					i++;
+				}
+			}
+			params.push('rv=' + Math.random());
+			params = params.join('&');
+			url = url + '?' + params;
+			new Image().src = url;
+
+			if (i > 0) {
+				collector.length && setTimeout(report, 1000);
+			}
+		}
+	};
+
+	window.onerror = function(errorMessage, scriptURI, lineNumber, columnNumber) {
+		try{
+			if(typeof XMLHttpRequest !== 'undefined') {
+				var rand = Math.floor(Math.random() * 100);
+				if(88 == rand) {
+					var xhr = new XMLHttpRequest();
+					xhr.withCredentials = true;
+					xhr.open('post', '//h5.qzone.qq.com/report/jserror', true);
+					xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+					xhr.send('module=' + encodeURIComponent(location.href) + '&fileurl=' + encodeURIComponent(scriptURI) + '&line=' + lineNumber + '&message=' + errorMessage + '&uin=' + '');
+				}
+				if(reportNum == 0) {
+					reportNum = 1;
+					var errMsg = errorMessage + ";url:" + location.href + ";";
+					if(scriptURI && scriptURI != "") {
+						errMsg += "scriptURI:" + scriptURI + ";";
+					}
+					if(lineNumber && lineNumber != "") {
+						errMsg += "lineNumber:" + lineNumber + ";";
+					}
+					if(columnNumber && columnNumber != "") {
+						errMsg += "columnNumber:" + columnNumber + ";";
+					}
+					errMsg += "beforeLoad:" + beforeLoad + ";";
+					postErrLog(errMsg);
+				}
+			}
+		} catch(e) {
+
+		}
+	};
+	window.seajsOnError = function(code) {
+		postErrLog('seajsOnError, code='+code);
+	};
+	window.listenError = true;
+	window.addEventListener('load', function() {
+		beforeLoad = 0;//标记是否需要在上报report.js中上报哈勃，0不需要，1需要
+		!reportNum && window.reportHaboGlobal && reportHaboGlobal(reportNum);
+	});
+}());
+</script>
+
+<script>
+var PSY = {
+		loadTimes :{startLoad:+new Date()},
+		_domains:{},
+		_photoVersionV7: top.g_photoVersionV7 || frameElement.g_photoVersionV7,
+		_photoVersionMap: top.g_photoVersionMap || frameElement.g_photoVersionMap
+	};
+if(top.QZONE){
+	PSY._domains.imgcache = top.QZONE.FP._t.siDomain;
+	PSY._domains.main = 'user.qzone.qq.com';
+	PSY._domains.qzfl = top.QZONE.FP._t.imgcacheDomain;
+	PSY._qzflVersion = top.QZONE.FP._t.g_V.qz || '_v8_2.1.65';
+	PSY._interfaceVersion = top.QZONE.FP._t.g_V.ci;
+	PSY._requestVersion = top.QZONE.FP._t.g_V.req || "61221";
+	window.imgcacheDomain = PSY._domains.qzfl;
+	window.siDomain = PSY._domains.imgcache;
+	window.qlogoDomain = 'store.qq.com';
+}else{
+	PSY._domains.imgcache = 'qzonestyle.gtimg.cn';
+	PSY._domains.main = 'user.qzone.qq.com';
+	PSY._domains.qzfl = 'qzs.qq.com';
+	PSY._qzflVersion = '_v8_2.1.65';
+	PSY._interfaceVersion = '_20131113';
+	PSY._requestVersion = "61221";
+	window.imgcacheDomain = PSY._domains.qzfl;
+	window.siDomain = PSY._domains.imgcache;
+	window.qlogoDomain = 'store.qq.com';
+}
+if(frameElement){
+	frameElement.setAttribute('allowtransparency','yes');
+}
+</script>
+<!--[if lt IE 9]>
+	<script>PSY._jQueryVersion = '1.10.2';</script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+    <script>PSY._jQueryVersion = '2.0.3';</script>
+<!--<![endif]--><script>PSY.loadTimes.bodyStart = +new Date();</script>
+</head>
+
+<body >
+	<!--wnsdiff-body-->	<div id="j-body" data-ip="1.15.220.155">			<style data-url="//qzonestyle.gtimg.cn/qz-proj/fm-official-website/album-detail.css?time=20151228">
+@charset "utf-8";a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}img{border:0}a{background-color:transparent}a:active,a:hover{outline:0}button,input,select,textarea{color:inherit;font:inherit}button{overflow:visible}textarea{overflow:auto}iframe{border:0;overflow:hidden}body{font-family:"Helvetica Neue",Helvetica,"Hiragino Sans GB",STHeitiSC-Light,"Microsoft YaHei","微软雅黑",Arial,sans-serif;font-size:13px;color:#000;min-width:980px;background-color:#fff}a{text-decoration:none;color:#000}a:hover{color:#cb8f0d}.layout{width:980px;margin-left:auto;margin-right:auto}.hide-txt{position:absolute!important;overflow:hidden;clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px);width:1px!important;height:1px!important;padding:0!important;border:0!important}body:hover .hide-txt a,body:hover .hide-txt button,body:hover .hide-txt input{display:none!important}.clearfix:after,.clearfix:before,.layout:after,.layout:before{content:" ";display:table}.clearfix:after,.layout:after{clear:both}.clearfix,.layout{*zoom:1}.icon{font-size:0;display:inline-block;overflow:hidden;background-repeat:no-repeat;-webkit-text-size-adjust:none}.header{width:100%;position:absolute;left:0;top:0;filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#CC000000', endColorstr='#CC000000');background-color:rgba(0,0,0,.8);z-index:999}:root .header{-webkit-filter:none;filter:none}.header-inner{height:40px}.header .logo{float:left;width:79px;height:24px;overflow:hidden;background-image:url(//qzonestyle.gtimg.cn/qz-proj/fm-official-website/sprite/album-detail-kie181030095704@2x.png);background-position:0 0;background-size:79px 24px;margin:8px 0 0 20px}.header-nav{float:right}.header-nav a{color:#fff;font-size:14px;display:inline-block;height:40px;line-height:40px;padding:0 14px;margin-left:30px}.header-nav a:hover{background-color:rgba(0,0,0,.8);color:#dbb76c}.footer{text-align:center;padding-bottom:40px;color:#999}.footer a{color:#999}.footer a:hover{color:#cb8f0d}.footer-links{margin-bottom:10px;text-align:left;line-height:1;padding-left:80px;position:relative;font-size:0}.footer-links .title{position:absolute;left:0;top:0;font-size:13px}.footer-links a{display:inline-block;vertical-align:baseline;margin:0 12px 10px 0;padding-right:12px;border-right:1px solid #ccc;font-size:13px}.footer-links a:last-child{border-right:0}.footer-nav{padding:18px 0;border-top:1px solid #e8e8e8}.footer-nav a{margin:0 12px}.footer-copyright span{margin:0 4px}.col-wrap{position:relative;margin-bottom:70px}.col-wrap-inner{overflow:hidden}.col-main{float:left;width:790px}.col-sub{float:right;width:160px;background-color:#f8f8f8;margin-top:30px;padding-top:28px}.col-equal{margin-bottom:-99999px;padding-bottom:99999px}.col-wrap-single{margin-top:80px;*padding-top:80px;*margin-top:0}.col-wrap-single .side-ext-bar{top:0;*top:80px}.blur-wrap{width:100%;height:100%;position:absolute;z-index:-2;top:0;left:0}.blur-img{text-align:center;overflow:hidden;position:absolute;left:-20px;top:-40px;right:-20px;bottom:-20px;z-index:-1;-webkit-filter:blur(20px);-moz-filter:blur(20px);-ms-filter:blur(20px);filter:blur(20px);filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius=20, MakeShadow=false);background-size:cover;background-position:50% 50%;background-repeat:no-repeat}.blur-img img{width:100%}.blur-mask{position:absolute;left:0;top:0;width:100%;height:100%;filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#7F000000', endColorstr='#7F000000');background:rgba(0,0,0,.5)}:root .blur-mask{-webkit-filter:none!important;filter:none!important}.side-hd{height:26px;line-height:26px;border-left:4px solid #edc56e;background-color:#ededed;font-size:15px;padding-left:15px;margin-bottom:30px}.side-nav{padding:0 15px;margin-bottom:30px}.side-nav a{color:#9e9e9e}.side-nav a:hover{color:#cb8f0d}.side-nav .title{font-size:16px;padding-bottom:10px;border-bottom:1px solid #dfdfdf;margin-bottom:10px;font-weight:400}.side-nav .list{margin-right:-26px}.side-nav .list a{float:left;width:50%;line-height:40px}.side-nav .list a{display:inline-block}.side-nav-sub{padding:0}.side-nav-sub .title{margin-left:15px;margin-right:15px}.side-nav-sub .sub-list a{display:block;height:28px;line-height:28px;margin-bottom:10px;padding:0 15px}.side-nav-sub .sub-list a.selected{background-color:#ededed;padding:0 15px 0 10px;border-left:5px solid #dbb76c;color:#000;font-size:14px}.side-ext-bar{position:absolute;left:100%;top:30px;width:115px;background-color:#fefefe;margin-left:30px;border:1px solid #f2f2f2}.side-ext-bar .btn-close{position:absolute;top:-8px;right:-8px;width:19px;height:19px;background-image:url(//qzonestyle.gtimg.cn/qz-proj/fm-official-website/sprite/album-detail-kie181030095704.png);background-position:-82px 0}.side-ext-bar .mod{padding-left:15px;padding-right:15px;border-bottom:1px solid #f2f2f2;text-align:center;color:#9e9e9e;font-size:12px;margin-bottom:-1px}.side-ext-bar .mod-down{padding-top:24px;padding-bottom:16px}.side-ext-bar .mod-down .title{color:#000;font-size:13px;margin-bottom:20px}.side-ext-bar .mod-down .item{height:22px;line-height:22px;color:#7f7f7f;text-align:left;position:relative;padding-left:22px;margin-bottom:8px}.side-ext-bar .mod-down .item .icon{display:inline-block;vertical-align:middle;position:absolute;top:50%}.side-ext-bar .mod-down .item .icon-apple{width:15px;height:17px;background-image:url(//qzonestyle.gtimg.cn/qz-proj/fm-official-website/sprite/album-detail-kie181030095704.png);background-position:-82px -39px;left:1px;margin-top:-9px}.side-ext-bar .mod-down .item .icon-android{width:17px;height:18px;background-image:url(//qzonestyle.gtimg.cn/qz-proj/fm-official-website/sprite/album-detail-kie181030095704.png);background-position:-82px -20px;left:0;margin-top:-9px}.side-ext-bar .mod-down .item a{color:#7f7f7f}.side-ext-bar .mod-down .item a:hover{color:#cb8f0d}.side-ext-bar .mod-qrcode{padding-top:21px;padding-bottom:15px;line-height:15px}.side-ext-bar .mod-qrcode .img{margin-bottom:5px;text-align:center;overflow:hidden;height:70px}.side-ext-bar .mod-weibo{padding-top:15px;padding-bottom:30px;line-height:18px}.side-ext-bar .mod-weibo .icon-weibo{width:22px;height:18px;background-image:url(//qzonestyle.gtimg.cn/qz-proj/fm-official-website/sprite/album-detail-kie181030095704.png);background-position:-37px -41px;margin-right:3px;vertical-align:-2px}.side-ext-bar .mod-weibo .btn-wrap{margin-top:8px}.side-ext-bar .mod-weibo .btn{display:inline-block;font-size:13px;color:#dbb76c;padding:3px 10px;border:1px solid #dbb76c;border-radius:4px}.breadcrumb-nav{height:20px;line-height:20px;color:#aaa;margin-bottom:10px;margin-top:30px}.breadcrumb-nav .split{margin:0 10px}.breadcrumb-nav a{color:#aaa}.breadcrumb-nav a:hover{color:#cb8f0d}.breadcrumb-nav .current,.breadcrumb-nav a.current{color:#cb8f0d}.page-nav{margin-top:30px;text-align:center;font-size:0}.page-nav a,.page-nav span{display:inline-block;height:25px;line-height:25px;vertical-align:middle;margin:0 8px;overflow:hidden;font-size:12px}.page-nav a{padding:0 9px;border:1px solid transparent;font-size:16px}.page-nav .btn,.page-nav .next,.page-nav .prev{border:1px solid #dedede;border-radius:2px;padding:0 19px;background-color:#f7f7f7}.page-nav .btn{padding:0 10px;font-size:12px}.page-nav .btn:hover,.page-nav .next:hover,.page-nav .prev:hover{border:1px solid #dbb76c}.page-nav .next .icon,.page-nav .prev .icon{width:6px;height:12px;vertical-align:middle;*margin-top:7px;*cursor:pointer}.page-nav .icon-prev{background-image:url(//qzonestyle.gtimg.cn/qz-proj/fm-official-website/sprite/album-detail-kie181030095704.png);background-position:-82px -57px}.page-nav .icon-next{background-image:url(//qzonestyle.gtimg.cn/qz-proj/fm-official-website/sprite/album-detail-kie181030095704.png);background-position:-89px -57px;margin-top:-1px}.page-nav a.selected{color:#cb8f0d}.page-nav .input-wrap{margin:0;height:27px}.page-nav .input-wrap input{padding:0 4px;border:1px solid #dedede;height:25px;line-height:25px;*height:24px;*line-height:24px;width:21px;text-align:center;overflow:hidden;outline:0;border-radius:3px}.page-nav .input-wrap input:focus{border:1px solid #dbb76c}.pop-wrapper .pop-close{position:absolute;width:36px;height:36px;background-image:url(//qzonestyle.gtimg.cn/qz-proj/fm-official-website/sprite/album-detail-kie181030095704.png);background-position:0 -41px}.pop-wrapper{position:fixed;top:0;bottom:0;right:0;left:0;z-index:9999}.pop-wrapper .mask{position:absolute;top:0;bottom:0;left:0;right:0;z-index:0;background-color:#000;filter:alpha(opacity=40);background-color:rgba(0,0,0,.4);z-index:0}.pop-wrapper .qr-wrapper{width:300px;height:402px;margin:-201px 0 0 -150px;text-align:center;background-color:#fff;border-radius:8px;position:absolute;top:50%;left:50%;z-index:0}.pop-wrapper .qr-wrapper .icon{top:-18px;right:-18px;z-index:0;cursor:pointer}.pop-wrapper .qr-wrapper .img{margin-top:40px}.pop-wrapper .qr-wrapper .title{margin:23px 0 18px 0;font-size:23px;line-height:1}.pop-wrapper .qr-wrapper .txt{font-size:16px;line-height:1.5}.tips-box{position:absolute;top:50%;left:50%;margin:-35px 0 0 -188px;width:376px;height:70px;line-height:70px;background-color:#fff;text-align:center;border-radius:5px;border:1px solid #cecece}@media only screen and (max-width:1320px){.side-ext-bar{margin-left:5px}}.banner{width:100%;height:360px;position:relative;overflow:hidden}.banner .item{width:100%;height:360px;overflow:hidden;position:relative}.banner .img-wrap{display:block;height:360px;overflow:hidden;position:relative}.banner-nav{position:absolute;width:400px;left:50%;margin-left:-200px;bottom:0;text-align:center;font-size:0;padding:15px 0 6px}.banner-nav a{display:inline-block;margin:0 4px;width:4px;height:4px;background-color:#fff;border-radius:4px;filter:alpha(opacity=60);opacity:.6}.banner-nav .selected{background-color:#dbb76c}.banner .img-wrap .btn-wrap{position:absolute;z-index:10}.banner .img-wrap .btn-wrap .btn{overflow:hidden;cursor:pointer;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUAQMAAAC3R49OAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAAtJREFUCNdjoDIAAABQAAGAw7uHAAAAAElFTkSuQmCC) repeat 0 0\9}.banner .img-wrap .btn-wrap-1{left:92px;top:264px}.banner .img-wrap .btn-wrap-1 .btn{width:108px;height:36px;float:left;margin-right:8px}.banner .img-wrap .btn-wrap-2{left:603px;top:208px}.banner .img-wrap .btn-wrap-2 .btn{display:block;width:128px;height:43px;margin-bottom:9px}.banner .banner-bg{position:absolute;left:0;top:0;width:100%;height:100%;filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#BF000000', endColorstr='#BF000000');background:rgba(0,0,0,.75);z-index:-5}:root .banner .banner-bg{-webkit-filter:none!important;filter:none!important}.album-summary{height:360px;position:relative;overflow:hidden;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.5)}.album-summary a{color:#fff}.album-summary a:hover{color:#cb8f0d}.album-summary .blur-wrap{z-index:-1}.album-summary .blur-mask{filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#66000000', endColorstr='#66000000');background:rgba(0,0,0,.4)}.album-summary-inner{padding:105px 60px 0;overflow:hidden}.album-summary .main{margin-left:190px;padding-left:20px;filter:alpha(opacity=90);opacity:.9}:root .album-summary .main{-webkit-filter:none;filter:none}.album-summary .cover{width:190px;height:190px;overflow:hidden;float:left;box-shadow:0 0 5px rgba(0,0,0,.3)}.album-summary .cover img{width:100%}.album-summary .main .title{font-size:20px;padding:15px 0 20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.album-summary .main .info{margin-bottom:30px}.album-summary .info .avatar{overflow:hidden;height:36px;width:36px;border-radius:36px;display:inline-block;vertical-align:middle;margin-right:9px}.album-summary .info .avatar img{width:36px;height:36px;border-radius:36px}.album-summary .info span{margin-right:30px}.album-summary .summary{line-height:1.5;overflow:hidden;height:58px;word-wrap:break-word;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}.mod-title{font-size:18px;font-weight:400;margin-bottom:18px;margin-top:40px}.sound-list{border-top:1px solid #e5e5e5}.sound-list .item{overflow:hidden;border-bottom:1px solid #e5e5e5;height:80px;padding:0 20px}.sound-list .item:nth-child(odd){background-color:#f7f7f7}.sound-list .number{display:none}.sound-list .metas{margin:0 60px 0 10px}.sound-list .metas .title{display:inline-block;max-width:100%;_width:100%;font-size:14px;margin-bottom:10px;margin-top:23px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sound-list .metas .info span{color:#b8b8b8;margin-right:40px;font-size:12px}.sound-list .btn-play{float:right;margin-top:20px}.sound-list .icon-play{width:40px;height:40px;background-image:url(//qzonestyle.gtimg.cn/qz-proj/fm-official-website/sprite/album-detail-kie181030095704.png);background-position:0 0}.sound-list .disabled .btn-play{cursor:default}.sound-list .disabled .icon-play{width:40px;height:40px;background-image:url(//qzonestyle.gtimg.cn/qz-proj/fm-official-website/sprite/album-detail-kie181030095704.png);background-position:-41px 0}
+/* kaka:kie181030095706,KIE */
+</style>	
+	<!-- 页头 -->		<div class="header">
+		<div class="header-inner layout">
+			<a href="//fm.qq.com" class="logo" title="企鹅FM官方网站" >
+				<span class="hide-txt">企鹅FM</span>
+			</a>
+			<div class="header-nav">
+				<a href="https://qzs.qzone.qq.com/qzone/qzact/act/external/fm_static/fm_pc/index.html" target="_blank">下载无障碍版</a>
+				<a href="javascript:;" class='j-download-app'>下载APP</a>
+				<a href="http://nextradio.qq.com/" target="_blank">我要当主播</a>
+			</div>
+		</div>
+	</div>
+	<!-- banner -->
+	<div class="banner" id="js_banner">
+		<div class="item">
+			<div class="album-summary layout">
+				<!-- 专辑摘要内容 -->
+				<div class="album-summary-inner">
+					<div class="cover">
+						<img srcset="https://fm-image-1251316161.file.myqcloud.com/fm/photo/album/rmid_album_360/k/V/003EzfEX2t1rkV.jpg?time=1579157660 2x" src="https://fm-image-1251316161.file.myqcloud.com/fm/photo/album/rmid_album_240/k/V/003EzfEX2t1rkV.jpg?time=1579157660" alt="">
+					</div>
+					<div class="main">
+						<h1 class="title">斗破苍穹（大灰狼超人气热播，版权即将到期，请尽快下载）</h1>
+						<div class="info"  data-playNum="-1" >
+							<span class="user">
+								<b class="avatar">
+									<img src="https://fm-image-1251316161.file.myqcloud.com/fm/photo/singer/rmid_singer_240/5/d/002JfMvD175k5d.jpg?time=1563961439" alt="">
+								</b>阅文听书							</span>
+							<span>节目数：<b>1645</b>集</span>						</div>
+						<div class="summary">
+							专辑介绍：苍穹诸神俱灭，斗气风云再起！且看天才少年萧炎以废人之身登上斗气巅峰！						</div>
+					</div>
+				</div>
+
+				<!-- 毛玻璃背景 -->
+				<span class="blur-wrap">
+					<span class="blur-img" style="background-image:url(https://fm-image-1251316161.file.myqcloud.com/fm/photo/album/rmid_album_240/k/V/003EzfEX2t1rkV.jpg?time=1579157660)">
+						<!-- HACK : IE8以及IE8下不用背景图，用图片 -->
+						<!--[if lt IE 9]> <img src="https://fm-image-1251316161.file.myqcloud.com/fm/photo/album/rmid_album_240/k/V/003EzfEX2t1rkV.jpg?time=1579157660" alt=""> <![endif]-->
+					</span>
+					<span class="blur-mask"></span>
+				</span>
+			</div>
+			<!-- 毛玻璃背景 -->
+			<span class="blur-wrap">
+				<span class="blur-img" style="background-image:url(https://fm-image-1251316161.file.myqcloud.com/fm/photo/album/rmid_album_240/k/V/003EzfEX2t1rkV.jpg?time=1579157660)">
+					<!-- HACK : IE8以及IE8下不用背景图，用图片 -->
+					<!--[if lt IE 9]> <img src="https://fm-image-1251316161.file.myqcloud.com/fm/photo/album/rmid_album_240/k/V/003EzfEX2t1rkV.jpg?time=1579157660" alt=""> <![endif]-->
+				</span>
+				<span class="blur-mask"></span>
+			</span>
+		</div>
+	</div>
+
+	<div class="col-wrap layout">
+		
+		<!-- 面包屑导航 -->
+		<div class="breadcrumb-nav">
+			<a href="//fm.qq.com">首页</a>			<span class="split">&gt;</span>
+			<a href="javascript:;" class="current">斗破苍穹（大灰狼超人气热播，版权即将到期，请尽快下载）</a>
+		</div>
+		
+		<div class="mod-title">节目列表（<span class="total">1645</span>）</div>
+		
+		<!-- 节目列表 -->
+		<ul class="sound-list" id="j-show-list">						<!-- 不能播放的加disabled -->
+	<li class="item "  data-url="https://fm.qq.com/show/rd000CrkrT3B9SN0__" >			<a href="https://fm.qq.com/show/rd000CrkrT3B9SN0__" id="j-btn-play" class="btn-play"><i class="icon icon-play"></i></a>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<a href="https://fm.qq.com/show/rd000CrkrT3B9SN0__" id="j-title-play" class="title" title="">第0001集_陨落的天才</a>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>13'24"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item "  data-url="https://fm.qq.com/show/rd002UDF6W2bLGQN__" >			<a href="https://fm.qq.com/show/rd002UDF6W2bLGQN__" id="j-btn-play" class="btn-play"><i class="icon icon-play"></i></a>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<a href="https://fm.qq.com/show/rd002UDF6W2bLGQN__" id="j-title-play" class="title" title="">第0002集_斗气大陆</a>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>16'09"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item "  data-url="https://fm.qq.com/show/rd003tB7jx2q2bJ0__" >			<a href="https://fm.qq.com/show/rd003tB7jx2q2bJ0__" id="j-btn-play" class="btn-play"><i class="icon icon-play"></i></a>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<a href="https://fm.qq.com/show/rd003tB7jx2q2bJ0__" id="j-title-play" class="title" title="">第0003集_客人</a>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>11'50"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item "  data-url="https://fm.qq.com/show/rd002TfOH70KX6ly__" >			<a href="https://fm.qq.com/show/rd002TfOH70KX6ly__" id="j-btn-play" class="btn-play"><i class="icon icon-play"></i></a>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<a href="https://fm.qq.com/show/rd002TfOH70KX6ly__" id="j-title-play" class="title" title="">第0004集_云岚宗</a>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>9'06"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item "  data-url="https://fm.qq.com/show/rd002vUvs73vnuYT__" >			<a href="https://fm.qq.com/show/rd002vUvs73vnuYT__" id="j-btn-play" class="btn-play"><i class="icon icon-play"></i></a>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<a href="https://fm.qq.com/show/rd002vUvs73vnuYT__" id="j-title-play" class="title" title="">第0005集_聚气散</a>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>8'44"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item "  data-url="https://fm.qq.com/show/rd0015fxFb0DrmcA__" >			<a href="https://fm.qq.com/show/rd0015fxFb0DrmcA__" id="j-btn-play" class="btn-play"><i class="icon icon-play"></i></a>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<a href="https://fm.qq.com/show/rd0015fxFb0DrmcA__" id="j-title-play" class="title" title="">第0006集_炼药师</a>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>11'56"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item "  data-url="https://fm.qq.com/show/rd002uj2ZJ2Oi7fQ__" >			<a href="https://fm.qq.com/show/rd002uj2ZJ2Oi7fQ__" id="j-btn-play" class="btn-play"><i class="icon icon-play"></i></a>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<a href="https://fm.qq.com/show/rd002uj2ZJ2Oi7fQ__" id="j-title-play" class="title" title="">第0007集_休！</a>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>14'34"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item "  data-url="https://fm.qq.com/show/rd0048HQWN12AFu9__" >			<a href="https://fm.qq.com/show/rd0048HQWN12AFu9__" id="j-btn-play" class="btn-play"><i class="icon icon-play"></i></a>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<a href="https://fm.qq.com/show/rd0048HQWN12AFu9__" id="j-title-play" class="title" title="">第0008集_神秘的老者</a>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>10'46"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item "  data-url="https://fm.qq.com/show/rd002qLusP3Vd6sG__" >			<a href="https://fm.qq.com/show/rd002qLusP3Vd6sG__" id="j-btn-play" class="btn-play"><i class="icon icon-play"></i></a>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<a href="https://fm.qq.com/show/rd002qLusP3Vd6sG__" id="j-title-play" class="title" title="">第0009集_药老！</a>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>14'42"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item "  data-url="https://fm.qq.com/show/rd000iSd0v2moNRd__" >			<a href="https://fm.qq.com/show/rd000iSd0v2moNRd__" id="j-btn-play" class="btn-play"><i class="icon icon-play"></i></a>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<a href="https://fm.qq.com/show/rd000iSd0v2moNRd__" id="j-title-play" class="title" title="">第0010集_借钱</a>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>11'18"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item  disabled " >			<span class="btn-play"><i class="icon icon-play"></i></span>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<span class="title" title="">第0011集_坊市</span>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>11'50"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item  disabled " >			<span class="btn-play"><i class="icon icon-play"></i></span>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<span class="title" title="">第0012集_离他远点</span>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>9'43"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item  disabled " >			<span class="btn-play"><i class="icon icon-play"></i></span>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<span class="title" title="">第0013集_黑铁片</span>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>8'51"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item  disabled " >			<span class="btn-play"><i class="icon icon-play"></i></span>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<span class="title" title="">第0014集_吸掌</span>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>10'39"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item  disabled " >			<span class="btn-play"><i class="icon icon-play"></i></span>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<span class="title" title="">第0015集_修炼</span>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>10'55"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item  disabled " >			<span class="btn-play"><i class="icon icon-play"></i></span>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<span class="title" title="">第0016集_萧宁</span>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>9'34"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item  disabled " >			<span class="btn-play"><i class="icon icon-play"></i></span>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<span class="title" title="">第0017集_冲突</span>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>9'17"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item  disabled " >			<span class="btn-play"><i class="icon icon-play"></i></span>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<span class="title" title="">第0018集_玄阶高级斗技：八极崩</span>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>7'46"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item  disabled " >			<span class="btn-play"><i class="icon icon-play"></i></span>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<span class="title" title="">第0019集_残酷训练</span>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>7'55"</b></span>
+			</div>
+		</div>
+	</li> 									<!-- 不能播放的加disabled -->
+	<li class="item  disabled " >			<span class="btn-play"><i class="icon icon-play"></i></span>		<div class="metas">
+			<!--  PC端只允许专辑前5个节目可以收听，其他节目不可收听置灰显示，点击出现引导弹层去app收听或下载app -->				<span class="title" title="">第0020集_拍卖</span>			<div class="info"  data-playNum='-1'>				<span>总时长：<b>7'30"</b></span>
+			</div>
+		</div>
+	</li> 					</ul>
+
+		<!-- 翻页 -->
+		<div class="page-nav" id="j-page-nav">
+			<a href="javascript:;" class="prev" id="pagination-prev"><i class="icon icon-prev"></i></a>
+				<a href="javascript:;" data-type="number"  class="selected" >1</a>
+				<a href="javascript:;" data-type="number" >2</a>
+				<a href="javascript:;" data-type="number" >3</a>
+				<a href="javascript:;" data-type="number" >4</a>
+				<a href="javascript:;" data-type="number" >5</a>
+				<a href="javascript:;" data-type="number" >6</a>
+				<a href="javascript:;" data-type="number" >7</a>
+				<a href="javascript:;" data-type="number" >8</a>			
+			<a href="javascript:;" class="next" id="pagination-next"><i class="icon icon-next"></i></a>
+			<span class="txt">跳转至</span>
+			<span class="input-wrap"><input type="text" maxlength="3"></span>
+			<a href="javascript:;" class="btn">确定</a>
+		</div>
+	
+		<!-- 侧边浮层 -->	<div class="side-ext-bar">
+		<a href="javascript:;" class="btn-close" id="j-close-side"></a>
+		<div class="mod-down mod">
+			<p class="title">下载客户端</p>
+			<p class="item">
+				<a href="https://itunes.apple.com/cn/app/qi-efm-ting-xiao-shuo-xiang/id978646727?l=en&mt=8" target="_blank"><i class="icon icon-apple"></i>iPhone版</a>
+			</p>
+			<p class="item">
+				<a href="http://android.myapp.com/myapp/search.htm?kw=企鹅fm" target="_blank"><i class="icon icon-android"></i>Android版</a>
+			</p>
+		</div>
+		<div class="mod-qrcode mod">
+			<p class="img"><img src="https://qzonestyle.gtimg.cn/qz-proj/fm-official-website/img/qrcode-70.png" alt=""></p>
+			<p>扫描二维码</p>
+			<p>下载企鹅FM</p>
+		</div>
+		<div class="mod-weibo mod">
+			<p>企鹅FM</p>
+			<p>新浪微博</p>
+			<p class="btn-wrap">
+				<a href="http://weibo.com/u/5380452810?topnav=1&wvr=6&topsug=1" class="btn" target="_blank"><i class="icon icon-weibo"></i>关注</a>
+			</p>
+		</div>
+	</div>	</div>
+	
+
+
+
+	<!-- 页脚 -->		<!-- 页脚 -->
+	<div class="footer one-page">
+		<div class="layout">
+			<div class="footer-links">
+				<span class="title">友情链接：</span>					<a href="https://im.qq.com/" title="下载QQ" target="_blank">下载QQ</a> <a href="https://z.qzone.qq.com/" title="QQ空间" target="_blank">QQ空间</a> <a href="http://y.qq.com/#type=index" title="QQ音乐" target="_blank">QQ音乐</a> <a href="http://www.weiyun.com/index.html" title="腾讯微云" target="_blank">腾讯微云</a> <a href="http://kg.qq.com/" title="全民K歌" target="_blank">全民K歌</a> <a href="http://v.qq.com/" title="腾讯视频" target="_blank">腾讯视频</a> <a href="http://act.qzone.qq.com/" title="QQ空间黄钻活动" target="_blank">QQ空间黄钻活动</a> <a href="https://ke.qq.com/?from=173163" title="腾讯课堂" target="_blank">腾讯课堂</a> <a href="https://docs.qq.com?from=173163" title="腾讯文档" target="_blank">腾讯文档</a><a href="https://abcmouse.qq.com/" title="ABCmouse腾讯版" target="_blank">ABCmouse腾讯版</a>							</div>
+			<div class="footer-nav">
+				<a href="http://www.tencent.com/zh-cn/index.shtml">关于腾讯</a>
+				<a href="http://www.qq.com/contract.shtml">服务条款</a>
+				<a href="http://www.tencentmind.com/">广告服务</a>
+				<a href="http://kf.qq.com/">联系我们</a>
+			</div>
+			<div class="footer-copyright">
+				<span class="name"><a href="http://y.qq.com/fm/index.html" >QQ音乐电台</a></span>
+				<span>腾讯公司 版权所有</span>
+				<span>Copyright &copy; 1998-2022 Tencent.All Rights Reserved.</span>
+			</div>
+		</div>
+	</div>
+	<!-- 弹框 -->
+	<!-- 点x 或者mask 都会关闭弹窗 -->
+	<div class="pop-wrapper" id="j-pop-download" style="display:none;">
+		<div class="mask"></div>
+
+		<!-- 扫描二维码 -->
+		<div class="qr-wrapper">
+			<i class="icon pop-close" id="js_pop_close"></i>
+			<p class="img"><img src="https://qzonestyle.gtimg.cn/qz-proj/fm-official-website/img/qrcode-220.png" alt="扫描二维码下载"></p>
+			<h3 class="title">扫描二维码下载</h3>
+			<p class="txt">使用手机扫描此二维码</p>
+			<p class="txt">下载企鹅FM听点有趣的</p>
+		</div>
+	</div>
+
+	<div class="pop-wrapper" id="j-pop-error" style="display:none;">
+		<div class="mask"></div>
+
+		<!-- 提示 -->
+		<div class="tips-box">
+			<span class="txt">服务器出错，请刷新页面</span>
+		</div>
+
+	</div>
+<!-- CssGaga 151211181231,man,334 -->
+
+
+
+	<script type='text/javascript'>
+		window.onload = function() {
+			seajs.use(['photo.v7/lib/jquery', 'photo.v7/module/fm/album_detail/index'], function($, mod) {
+				var container = $('#j-body');
+				mod.get('./init').init({
+					jbody: container,
+					totalPageNum: 83,
+					pageSize: 20,
+					offset: 0,
+					albumId: 'rd003EzfEX2t1rkV',
+					showIdList: ["rd000CrkrT3B9SN0","rd002UDF6W2bLGQN","rd003tB7jx2q2bJ0","rd002TfOH70KX6ly","rd002vUvs73vnuYT","rd0015fxFb0DrmcA","rd002uj2ZJ2Oi7fQ","rd0048HQWN12AFu9","rd002qLusP3Vd6sG","rd000iSd0v2moNRd","rd001V3T7Z3zGYNw","rd001AGlyB0hSQ5A","rd003DYHf71Pn3DT","rd001oEWaM1kicoA","rd004cpI4r10878y","rd002f3Pn64M4zL0","rd000PYwP62lKZNY","rd001y5iXy01rLBv","rd002RxckC43ypNi","rd000ImrHk2AMCzo","rd001NF6Jx2DS7NI","rd002EVJZ22rsoH0","rd0046Plqa3zLw6F","rd000oL15P0QFUdw","rd003l6xlT1uM7GC","rd0049DmlS4V6N1c","rd001cVGz11ShOrB","rd00122NX41yv1mX","rd002fJMzk1W68c6","rd000BcGql2udMXB","rd002tMsn02n28EL","rd003hTASU2d5BSi","rd003lSEUA3GvCte","rd000cVK3g0FmAf5","rd0029wILk42SxZu","rd003lYKpO1aCQ6y","rd003z0rUv1wJCYY","rd003ABadf1cWQuU","rd002HlWPP0NyJHL","rd000kGQyd2h6RAZ","rd002rxJWM2nciG1","rd004FIicJ1NiYb8","rd003h1Uko4CHtMW","rd002mNdYV0llGng","rd000LlwNL3ujAg5","rd002wYOZU3Wcjw4","rd001oU3ht0RCw6w","rd000VjTG03jAUW5","rd00364QcI1rmDWP","rd000SkbqA1Zw8H7","rd000KxBB04ISDcv","rd004byhSJ0RXMPO","rd004epmGd4fXAHl","rd001boGO12HsYWw","rd004OVHsI0Z42Y8","rd004NvjaN3Hz2Wm","rd004gWxzU0ko7Kj","rd0007sMzL0aLabm","rd002vdGjS3dvfwf","rd002FbEK81lM23y","rd003RSq2V1Oap4k","rd002qEL0D0iNebn","rd000HThGw2Onkme","rd002BAfUb4VqSH6","rd002NNeS63kIYcJ","rd002KzZ3D3RXf28","rd0013388d1QNsD1","rd0014FIWX1L1Lo6","rd003fPiiZ1CWAbd","rd000G8ZuQ085cXX","rd003HR56i3P71pm","rd001qd76d0kGAna","rd002WjutV1z1gQP","rd0049dNCX3gLrNW","rd003qYHpM37lCHo","rd001X54US2t346r","rd001SEhSf3dcwg7","rd001WQddE2KfwhP","rd003xztqr1ebTUk","rd000465tx1WoquU","rd004NRdzY3yfKfL","rd000QaWLz2srKVu","rd000wBKOr1dvhk2","rd000JtVOs0N64ee","rd000LhQ553UBwAR","rd002Rv5bZ0xhUB3","rd001FiWn01Q7apA","rd0034H85k4PjwIL","rd003TpzXG0yZHRz","rd003QVr0q3LwKTR","rd002YPtEe0nIcm7","rd002JpAhv1w8bAg","rd0047RI9o0FzgiB","rd003RC0752swCsp","rd0015jgek0EeP6U","rd003UtSwj04HlLm","rd002aBPUV1WuBoV","rd003tg1ON0xUYWk","rd003trGJP2wI3kN","rd000IWNWn3cJqIh","rd001rvHLo2PFSvG","rd002vfa7q1VqHuv","rd003lxP6i4WM1oA","rd0030pOXh0p66yH","rd003Hn6ro0AapsM","rd002ItuY92Hww82","rd002zYrbi4EGpnL","rd002XvBJa0R6GPW","rd003AiPBc11lyj6","rd004Hpl7G4M1Y9F","rd001HREnY4DhupS","rd000sQqZu0qjJlR","rd000Wf3J13Pbkna","rd0044Oagy2sW0Cp","rd000FobS11QwOO4","rd002HPMC008dvkh","rd00284GlJ0terce","rd000RfUNh0QAwMA","rd002PjBB12iwW8p","rd003ZDQj93aFq5a","rd000UF8eP2wqM3L","rd0049R3X43DvwEQ","rd004U6fOb0v9XKl","rd0020KRbk1vTUv7","rd001RVrpd0bD3LH","rd001QNLUC0GG3gQ","rd003LQtax0wck3c","rd001dsAif0Lhfoy","rd003kvFhd2KwcHu","rd00468VXr2hw9V5","rd001SMNOT33ATey","rd003sGKnZ4FdXto","rd002JNjxo3xezpg","rd0028DOk62qA4wM","rd003swZrL2mS9Gm","rd004fGZ2n3cXPvN","rd003ldJKD4J1Vvk","rd003vdCVf04RJI3","rd001o6NE43ITLOa","rd003VRnDa0PeGip","rd003fGPOA1E0oWe","rd002V2guR3yd49U","rd002VAJaO1cHCkw","rd000C0EI32hWWUH","rd0018Sp9S4Sp1Yb","rd0036ISbv0jDEDF","rd0014QWxa3aERLY","rd004T95iV3fNLh1","rd002PIsWa0gehRR","rd003ANYc52xFgSn","rd003ydZGR1DWN0j","rd003oh6Ze2LM4jr","rd0032ktRt4GTKvQ","rd002xoQos42W01F","rd004YsOFu2yIkJW","rd003kiXxZ1h0FTV","rd001HhcD747cIYf","rd003AAd4e1yGUjz","rd0007lykV1w85FZ","rd002iux1O3CGmH5","rd0005ORYj49UBr0","rd004L1kBD06nRAd","rd004QW61h1XZwTb","rd004KcEpJ1F2cjN","rd001LiTUq1VurTw","rd002kqN2a1pIFcY","rd003sPdaz3N8yXR","rd000K32Mr46MBq2","rd001SXRs54T4koi","rd002xj0K44DwezO","rd002IRU9k16sBML","rd001njafr0RN3mj","rd000OaCj50egrSb","rd003Kko5Z0F67dU","rd002UNGJq0Sg9il","rd004BYAUy1Jl8gR","rd000BM7mM3nRtIa","rd004PZlWi4Vkrzf","rd0018Foqj0ewjRY","rd000UVwMG2dROg4","rd001qCijx3ucShI","rd001Nj0MY3c6Rvk","rd000XoNLK0n64tj","rd0000eLkb44rybp","rd002edUTV15Lg78","rd003f3guN42pIlS","rd002NiUTo0JTsdm","rd001cPs0y1kRDDd","rd000LBP492NmeZg","rd002eoaAZ2sYht4","rd002WWqMk4MIaZI","rd0032Js3n0mF8hT","rd003olYxt2C8S2r","rd0008raWi4ObHxE","rd0012VyU61RFg5U","rd000rWwad4K6eOo","rd003ZPhvA3dUZ4N","rd001UYtqC2YtrAH","rd003z4Jsp0uIdZx","rd002apVa12zZXLh","rd003MNnAs035lmu","rd000nOsy03YikVB","rd001kiVO41tkwee","rd004IUU213gMDKi","rd000FBRI31qw0Af","rd002Kvs0C00OJoe","rd004E8fT42KdZ7s","rd003Vmiks2YK513","rd0039ltAW1e831E","rd000arK084ZG95W","rd003LzKMp2aGz2R","rd003lnSJK39OyEF","rd003Ui0LD1iHbAR","rd004RHT6y19l98t","rd0009sdnj2MSIlZ","rd002LwOEc3ZLKsh","rd001bK9NJ1lTBIJ","rd003rdef30RJRVN","rd002TFwYd1AchPQ","rd002CgQgh2OVZPG","rd003EjagM4XcSp8","rd003nPG0J2Tgd5W","rd004HOQ8S1fmIRh","rd000pKMlv1UjuVP","rd0048srJr4HAoQU","rd000xguAR4Xjku7","rd001Pw9oG3NAMtE","rd002KovQX3jsAnj","rd002RUyGP0J0blR","rd004UvvdQ3CO36s","rd002L1FqN0NyEMZ","rd0008Xrxg0qCDNj","rd000FPxKE1W60pM","rd001ouFi633z5Rt","rd000oOWoW3tRjQr","rd000OJrDn07yCm8","rd000JhZky0w2U0D","rd000ldyP91IL0y1","rd002NR2jc0YzxYo","rd00247mrZ0OLwNE","rd000sP71w3ss74Y","rd0039oqEK0ueIUZ","rd0026m8WO3epNTW","rd000naVkA3V2css","rd001AEtxg0OFKc7","rd003j4FVt4BYoOc","rd002zzCyg4FQuJO","rd001QpuQy3UM1ti","rd001eTeFp4MSguv","rd002cgZ7j44MLKp","rd003KKCiZ0brhPh","rd001sFEe40wO5AE","rd003yxFbD45MOWn","rd004ZaX1g1rrN2J","rd001WmvRx0HWAvc","rd000GE0Zm0EyTyn","rd0031ZMuO3lzk0s","rd002H87Xk3m6Il0","rd001aFGWb4KE0bu","rd000pNrvA1gqXzr","rd003UzFlw2YChCr","rd0004Hfhz2NttIn","rd003Yc0NV1eY8AM","rd000i2QW02gCozh","rd001d6c7H4dN6tH","rd0006mPmA1KI8Dh","rd003x0GzN0lmzzi","rd0009u3o84A2suD","rd001bOe2W1m7ibz","rd001krmJ04QQWGG","rd000Zc6FF1yRWip","rd002YVKaV23uBdp","rd000TZF134cvgmJ","rd0046J48k3qDetR","rd0045ie7n2CpIAA","rd000CBzjb1BNjgx","rd001vxFoK44w7NQ","rd002IZKoN2j0aGE","rd000PJSHs0COJcV","rd004FT2Dh0JoIAE","rd002y3WpJ09ruTM","rd000iFXRk0OvfsN","rd0009rWBK4Y0ifl","rd003wWfne3JIEBp","rd004b274o1Tls2G","rd004QQph83iYmuT","rd001PReYA3wZdIc","rd001zBlCL1JIOMB","rd001YNZI51IU9AV","rd003FRNnt3JcPGW","rd000iJZF93ywgY0","rd000rAApn39uQvc","rd0045SG2W2C1GZu","rd002jqNVu46loZR","rd000hAShO0lWsc7","rd000pi9CY3qw1RV","rd000oMR8X2rAuub","rd0000643q328Qel","rd004erLis3jMChV","rd000hPihA0AmvyA","rd002BeqGr2l4YXV","rd004W3xjs2Ju1ck","rd003u8cgz4fuhds","rd003OBygw1eLwGE","rd003IoE3R3HxcNE","rd001htXq12ROk0x","rd0029n9jr01m6I9","rd003qvLyR21302Y","rd00161bS61U6Pmx","rd002N29we4AC3vk","rd004WYGrX2l2guO","rd003y9aDJ2LPRvs","rd002GvJ241i6NAm","rd002RFfQg3lJJX7","rd004MXJWQ1MyQs6","rd0041dJAp2dDSQu","rd0006DD9P3UXfZH","rd004Fgkri2VI7ve","rd001ckgtO3UdKJx","rd002663CP2Cb4nQ","rd003rsO773NS8kJ","rd003NfLFr169oes","rd0039dest3Gyu8O","rd001c7j141XOatC","rd000PHGgC2UGgLg","rd003OJbJc1nd7VK","rd001Pw5Hg0JF8SG","rd002Dm57B06NhvN","rd003CoqVG0ayO8Z","rd0042uGYY0bKECi","rd002TY8WI1OewwO","rd001SXV9o0dCVWy","rd001njzld3iMyyT","rd001de4fI1TiKjP","rd001S1CDk0ViG6j","rd001MQhr20uMaRH","rd0048lRRk0NXOzq","rd004ajDe92Tq4hb","rd004XwZGF3UTA1i","rd00423RaZ1TnX49","rd003jDkhR3lqSLh","rd003rx5OT2MSYV0","rd000r9v7p2z2Beh","rd003p8LeO0XdU8B","rd003uvFC51aUNOh","rd003aH9Yj0rjTGu","rd000it7t80r6kcI","rd002ZTq7V1kf1JD","rd004DMCst214CCQ","rd001Qccs00J7HBF","rd0046Ahhq0Al2gZ","rd000LnptW2D5EBP","rd0046nvOI0WbYap","rd0003ZSEr2lxkXa","rd00373uQB1HC523","rd003WmWBl2nYiAh","rd002EBhfM2RX87a","rd0037z7Yo07ZpwV","rd003izmrF3DW05k","rd003LNMl61J3WlM","rd003zIXa00NDM7d","rd001L9ouC1aiqxo","rd002w26GQ10wp73","rd002MQGk63pKyv8","rd004OGG8U1dtgKm","rd002UCReZ1ahylJ","rd002906Vt1AWjmg","rd004SwNbq0yxIHp","rd000NKsQ330TAbC","rd003iQngE3KEDKs","rd004KlKDi1S7A8Y","rd000k5v6K3Lq15T","rd000DKwz64YT0ax","rd003WXuAt2ycuDG","rd003BaUKa3MgfEL","rd002cNy5u4Daj1J","rd000RxSgO0lgxUI","rd001f6lnh2upUra","rd003KgXcl30awwf","rd003RxVBj2cuHut","rd000KRfk12OMFkA","rd003EPTaU3sVTVb","rd003Xwj2I1EMRn1","rd002RUpij2DQCLC","rd001nDutC3BHanQ","rd0047zss339hjKo","rd0023sely23KA4P","rd002ni7Qs1eiqqv","rd0040KBre2EHmVI","rd003LlIAT0LRSFt","rd004CBUfX0ILNkK","rd0043DLVL0Rqw5V","rd0042N3i51Jw516","rd003sLObN3PeS0R","rd000Ynr8A4RRqkr","rd0009f7sP1nxG5J","rd002Lh3NJ3CSRqk","rd003A4HRG2Fppbt","rd001MEtSG1Xpt8h","rd001nogrr0ulwyj","rd001G0AxV4Cy5iN","rd002uft4u0Oyvbu","rd003xyHk837w7Dp","rd001cFN7y3iqbnT","rd000dtNOL1lKkSm","rd003DH83y12wRLo","rd002Mav2C36rQIi","rd003HXuJN2bi3Ph","rd004Tf3XQ0guySv","rd000ui8kM2jfVHt","rd002iRWJG2XWbam","rd001dmboK21sPpx","rd000rgUkm1FKMH1","rd0018MWrj1hJgi0","rd001Aludh3FcMjS","rd002DTbdt05Y9Fp","rd001MsVKB2VLChA","rd003fjD3s0jm0YJ","rd001HwehW4EbYSZ","rd001DTlsc2oUJlG","rd001wExO73sajJi","rd001QEhO90XwZiK","rd003kmssM2VUC61","rd000vmW921R0q1G","rd003mwbXa1z1hj6","rd002pj37U1eXvZG","rd004fiIdJ0KLzOP","rd001210CF2SO7Cx","rd001onzzB02n4VV","rd000EpUa61PaVsz","rd002inGwb4PnXJ9","rd0037uvh11gWSi5","rd002My3uR4QtfUm","rd002SxcGT0uPUoq","rd003662jH0vYx8B","rd000hN0b01h4mOi","rd003JpEpF0Qd9cM","rd002fx0dc3NI3D7","rd002I5sK43I8paG","rd002wd4Vi4FtAFj","rd000Hb97u0yCviZ","rd001FsgWs0IunYq","rd0046qf2e1K12nr","rd003iM5yg3jTzHa","rd00354AEA0KzfIp","rd000jML5v4NAKyP","rd004BzlWe1Y69Uw","rd003yGxt81n19mg","rd002R0yPn1B3jW8","rd000xbXBt0XG2iO","rd002Gzqk943kak8","rd001EUe0A3vLT4D","rd002WmclR0o7qeD","rd000d2NDs0fA0zA","rd002lXaM21VuGOI","rd001g6ArS4ETjJZ","rd000eSUip0WX6Qp","rd003BIFct48tuPj","rd001JiDmm086baj","rd000FVhG63FinYJ","rd002swJHS3f2u0J","rd0003x5A4423fxJ","rd003tOhIF3zwssb","rd000mwCZA3qB136","rd003eUQ0D0fg57R","rd0001ut0z1gcJLQ","rd00397zr30sgXGg","rd004AlsWl2L4F9d","rd001F1rhS2AOjxY","rd00464IV51weZPB","rd003eGqbu3rynaW","rd0017rGBH2xk4yL","rd004YYRDh4VycPq","rd004dEdhP4bBDYN","rd002Jdaiq0D7o3B","rd0029ykA123VbIe","rd0023OG5L3ZepJc","rd000zluMg4YB0Ij","rd001kmqro0H7uab","rd001reO6I3a8dBf","rd00056yVc3MY2Gt","rd003kGbe83WGJUa","rd003l3rPo4MJXcd","rd000PK4Hm0qXKgj","rd0046VHFP3bPFT7","rd000Rl6rg1FYPnN","rd001cNYFe3LMY98","rd002pEXdZ0Nx2gq","rd002MjlDr1a3rdE","rd0029OpBr3UBQ65","rd000FuE894Q2DrD","rd001hVsfx3phYmB","rd003DEtGQ4QQrCI","rd003MRkdc3CzgVx","rd004MTKk24dKENX","rd002mGYPs3DJ2zK","rd001Qg07y4GPGGu","rd000u37sc2IoiPc","rd000pwu1M0anPjV","rd000uYlYr0a6NYn","rd0034mzR32RKQwi","rd003RsJDR3Kw082","rd000wrMb10FFswA","rd003RLJQm0ZzO7e","rd003bxKoC49IOQW","rd0041Etbb4es82U","rd002bOL0W1xD5zg","rd001BQ8Ry1FNrGI","rd000BT0sV27Qr8i","rd004JIgCo1uyZTV","rd003cKvnD1lmyXQ","rd000ylX4D3h6mQP","rd000loncH2IJEUe","rd003BUnX9160Qtr","rd001Fdr194dK4QV","rd000dLG6L4VAOhQ","rd0001idcf0XHhhz","rd003UIBCK0VuJRb","rd001bkt8g2ozyze","rd003UEfnA0FU8AF","rd00047vRl4KJFQP","rd003U0wpB1DoHxR","rd003tBdih0iQW6y","rd004ENfNd1s2Ww9","rd002GUd8W2MLgTl","rd004ZbOSA4PK48f","rd002Ec0012xiNjm","rd003Z6DLN1aiaTN","rd003J8wVN3qYTkr","rd003wDcmb1CfKf5","rd0038uZtR3AXF95","rd003KywPv3C3RGm","rd0022xGbH4WRsu1","rd000CzKjR2LOoQv","rd002zYqnr1t8nh3","rd003ua3u715DJ4a","rd0015NWcO0dXhyS","rd0011ytj92eaPKQ","rd0020SgvG0czot7","rd002l9PVA1qg1vT","rd000m1d8K03uTBo","rd000YXs2W3jT0z4","rd003ftOx209S707","rd0025NQEO1mUoZJ","rd001X2fae1IizpO","rd003RBwlg0jciPT","rd003xljiC1CYRwe","rd002v3o7510UV9o","rd0027VYvP4aQJBH","rd004CsbJ34WzTi5","rd003Vjown29twZq","rd002sPGLD13N3L2","rd003CSfbH4BoASe","rd000G0lhF2RU8B3","rd002q6AG42XRHZr","rd000QD8vQ3aPZvK","rd001ZU18W1OiFqf","rd000WOFTY09THEw","rd001ahgcE1BFfwz","rd001EiYFO1T8yiD","rd000MCsax08JTo9","rd003WBv2j3gDQz3","rd001TUw0B0Vqsd6","rd000lScSG45zWMp","rd004Pfh640nM2jF","rd002ppL0b3yWFEc","rd0019MgSQ2kjYHi","rd004c5xh63hQDjA","rd003QkBRj1apVWQ","rd001qaHnJ1XLzAr","rd0003uEwX0bztWt","rd000SaSht0YdhFA","rd001E6Bx41G7iod","rd002r9OK32H65L4","rd004VON0h49pbBg","rd001qFsLJ4FWuYe","rd003CoKh943wdy6","rd001ocZfM0pnKyZ","rd000EE6oR4EM6Sr","rd000p0SHU4O45DG","rd003XqMpC3Qagub","rd000Weot61KxWha","rd002ujYFY08ZqeM","rd000tM0GD0CVye0","rd000d9nJJ1RDBFw","rd001CVzWI1qQHFF","rd000oroT11MFhMk","rd002L1uzD0g6fMK","rd004OnIMN0RXg2q","rd000xekFw16UsOV","rd002PiSLP0EaZ0f","rd000CA5cK0hbkmA","rd004ZNfjK3H067E","rd003UfM9H4GtVXl","rd000b2Nm40QShvY","rd003OMon84FhpCO","rd004XmS6r3LdXGl","rd001wN1tS4QW6MM","rd0009f4J80fqxdt","rd000bhVEW1MU1RG","rd000GCEFN4UrmFD","rd000gynPn1QdxWx","rd003hrQY43lhmb5","rd001UZmI40t6YXU","rd001ufW3J3ccw2e","rd003pOPyt3BNMGy","rd003OXwp63IgMe5","rd001YeoWI4BQjqu","rd0022XxYO2bbpKJ","rd004MF7qZ2zhzy9","rd000dfriQ4BLyXD","rd002BNEtP2cSwXg","rd000vYVhq1hP8Du","rd001jAHoO1mpwpV","rd004OXv322742CJ","rd002kXIDr0pjMyR","rd002Wftfs3EyYTj","rd002E64eL4ZTfrx","rd000R6Imn18PQ3u","rd002hQQkw0EjYY0","rd000Wq3Tr1yQsbQ","rd001BtF0h4BGXb0","rd001HfVyn0rn20b","rd0044KhlX4Wq5OO","rd000O26oU3p6ImD","rd0038RwA00G85pX","rd000vsuBO4I8SlB","rd002puowg3incTv","rd002zHRWQ47BSGr","rd000CpVWP4UKZlh","rd002br6PZ4FcN8i","rd000q2R0u0JT2VL","rd004Usg8d29qFom","rd001o22Ia3uWLai","rd0005fD8Y3ycuIe","rd004OQv2M3FlX3s","rd002PMHky1wTITT","rd0011lPTr06IW5X","rd004caovF3gOHJL","rd001wFySY07uPms","rd00429X5643GH2W","rd002fmbtu2t7Nxq","rd001Am6sS227Afj","rd0018oqmx3NqJBw","rd003IDlqw1BW03k","rd0026rNhy0rYghZ","rd000VNRxY3n7IBO","rd003v8WVq1u7IPy","rd003MM3QU4bVkPW","rd000DDUoj3q6U3g","rd001Hl0hN22eiIl","rd001IuTwT0CnJrR","rd0017T4kz2nbKqG","rd0041YXWr2qgzZP","rd002dp0nG13bLEY","rd0012h5S93D0ig9","rd0013nAUm0jHqm9","rd001OV5B00fWQ4K","rd003uDeBg00aT6r","rd0048yW630Nzzrn","rd002TaV380lgl14","rd001oc5d63wKcHl","rd003BpqrC1JxJTI","rd003OQclV4OG7O5","rd0038vItX3f8K70","rd003jXnjd0cQtz1","rd000i1Ak54JCpr9","rd00092UNp1bo4yn","rd004aR1bt1e0WZc","rd002ZfnLG07Z5bd","rd0009SePJ0VlKoX","rd004e8BoP1BwjE4","rd0021Nzah144Pg2","rd000dRqZr4fkXIY","rd001cE4Lk32V4cX","rd003ISAWF3Ln9gA","rd002NW0wA1uHRN0","rd003Y6foK3tTEBs","rd001SBWUU207hmI","rd000k2N9z4TevOm","rd001WlEEa058CUX","rd000cNLiE3K80GL","rd000jxF620t9dlN","rd0023s8PI3mmtDu","rd000yfjbk4NKO4K","rd0031U8yO3MMdEs","rd002bYXzf2V5BQl","rd003vz4io0GmOrA","rd001i1C1Z1cYmkL","rd002jn9uO4WcdxI","rd000Y04FN1wkbQ9","rd003OLJDE0eQ5uE","rd003Njqcv08OjYX","rd004fTizd3gTWbz","rd001gc0xI01qtOe","rd003nhoIy4NcV8D","rd0023XNSX3hcrM6","rd002835Ux3k4zSR","rd002jaQQX2NLp75","rd003W00E03FevD9","rd0024blee3IH0Bw","rd003pK1b0189Mec","rd001Ux4m90hxYEp","rd003qvCJo0YhbrR","rd003b2dbR1eprSp","rd000Q3C2K26PXAD","rd0027gsBp2sEzj3","rd002ZeCOo4PDS0y","rd003buraZ0vIk5H","rd001FwwgR2dvb20","rd0025O5v82mtnNB","rd000Q0hnn2mqYSt","rd002RjbB80EqDpm","rd003Fo29L3b45Zo","rd004BZgzh1UMPFX","rd0015X03y47UBTx","rd0029WYfI3psfFY","rd004SKNBN48P60C","rd001UMHOY2Ro51p","rd0035yQGN3OydZk","rd002T9hO63rId0w","rd002JjLwc3fKFsV","rd000ozFrK3HS7el","rd003xSr4K113lzy","rd004PShnB2II9Af","rd0012yaAz1BX9aW","rd004dsvfn2rHrrI","rd004MeVDt2izcBA","rd0024hdXv0TMCGC","rd003VcCev0fwAOC","rd000CnjME11MWgj","rd003V1trK1YYeYL","rd00453iYa0f3Rk5","rd002a04rK26pL3z","rd0039DN1w22x1Yw","rd002w9TWq1b8CfH","rd001VSwM936yVtR","rd003jcjmq3Sp8zz","rd0010pObZ1Zld6S","rd003kYEhP0ZeW8A","rd003zqZfx15cGet","rd003OAh4Z1ez8Zr","rd001rT9Xx2MnGi0","rd002WDGar430FPe","rd0028KQm92NZRRh","rd000dH6ic0w4DnC","rd003Kk9be35GnBD","rd000ZHwVi2QkAhH","rd001Sh3aV0yL3yg","rd0006A8dZ1xZ62n","rd002OHrsq2fI4ty","rd000vbfhf3k4mFb","rd000CbqqG1V4acU","rd003zXkgh2WO9lN","rd001F5dxQ30Lc0G","rd00238yht3Ly74k","rd000Ydtza0gAnYH","rd001Wy7fO0EIlE2","rd001I5ZcQ1v2C2Y","rd003oVRCI4aSVlw","rd000LvVlZ072vQ7","rd0010xoyF2tVsw0","rd004IKbC80aI8iF","rd0031DRUX4HPo6y","rd0037qR1N0q5F5M","rd003G7J7Y4R8ONq","rd000FCvDQ4afYYz","rd002N2VEX2xCHP0","rd002GNysu3zwkXj","rd004MuMRG1h0FrY","rd0020SQK10i63ei","rd0041kZK21a9Ncp","rd003xHaO342RsIl","rd003muPnr0atLln","rd000qIWOW0x5pzn","rd004Skuki1ihmdm","rd0036gXBq2MD96B","rd001OFyXJ1xT27t","rd002bWav60xz5tL","rd001iMGsV2X0B2p","rd0030A0RV0qYBgp","rd002ON3Lx0gkpB1","rd004Piqzq27Xhzd","rd004Cjcep2UI8XR","rd000rqAFu32Jue1","rd000zXaEx4ewDNk","rd000z8L9D1mxkL1","rd002e8c1A44Dkng","rd002dGKSU2Wj9iY","rd003qSMgg2mv6s2","rd001n7jOH3olALH","rd00133Xux4WnWka","rd00313AQf3FIq5a","rd000e7eR61fGsTS","rd00394lJk4VOXgv","rd001AI7h60A2by0","rd004KnazU0CmsHU","rd0046keEt0LCOk8","rd003kT5a547bC3G","rd002l0eCm1xjuv1","rd003gSIWd4B8Ev7","rd000IlavS1jUpy6","rd004Yeoci1QTjPk","rd001aMpc80LYwQC","rd001tQoDO0GknNa","rd003v16yl00nebs","rd000V8XcO2hZxDB","rd002BrGi32AgaOF","rd002KFtLu122NJ6","rd003OE0or0hXc3N","rd001qaXAs24fs8s","rd0042pBBu2qpMoo","rd001WxwAG0dEM3k","rd000wJ3Qs1LtSLQ","rd004UEfOM3t2D5b","rd002xW11x1EMdYM","rd0032y2680IHyHo","rd003q42Hj1bLRav","rd002tF3JQ42RaoK","rd002zU9A823VUrJ","rd000mfDI219iaht","rd003ApKQE2qzghh","rd004Qht5U4MJGlx","rd003g5uUl1fTtVc","rd002kArOg268G6A","rd000R2E8G4gaKj7","rd001QRDwP0ecKCq","rd003uJDeT0bNO9W","rd000UoKJx3xcMLv","rd001Am2Va0JxBOF","rd001VskUY1hN23R","rd003tQ7730pEl15","rd002Qprge1a3viw","rd002Outzk33JK1n","rd003uMGXM2by0cq","rd001EAKuA0stAhL","rd002032Ue2mK5lB","rd004foDc90jOzGe","rd002qEkdP1aGzv3","rd0049cisA33ACNp","rd001ZNDrY2JDtnW","rd004QJqSQ4EEdKK","rd003iLup90C2IXP","rd001l5kSP0pbrzl","rd002Rv8v54J4XUG","rd002cUCJU13nG2M","rd0046Ky7z1o2D55","rd0020kcOH30uYuI","rd003mMeQH1h1qHm","rd002xkC9x3fiG6K","rd0032qDvg3kJiGi","rd000D1L4Y1wIkKx","rd004Nsbyr0CuXHA","rd004E2N3M0JSNDd","rd003GcVQo18HvIq","rd004QaD9r2tQN5E","rd0030BFsJ4UH1TQ","rd003p0Ajy1XbXd5","rd003NS1Fz1kAh4s","rd003Q4RiZ4AdVip","rd001R8vnL10EzAc","rd000zhIRQ2B2jPy","rd000WKrI13hfUg5","rd003b8CJV3xnnGc","rd001dNIdF1bYl2w","rd001TUmlm3pnr1m","rd000B7rr23yxbQm","rd002DT3eS2i5fij","rd002HPPLK1aP9lQ","rd0033zlVp3p5YGg","rd000aWdmT1R4ftX","rd003AxVUu2mOKtJ","rd003FFEHH3NIJjv","rd001KozCI0dvQjq","rd003TbfRQ0xbaXu","rd0036RGks1S3K57","rd003Vmjux1ErsKz","rd003kciTU3q6UDb","rd0025xI4Q0WreTL","rd001o4uh733iFaO","rd002yLNRl3kYRUV","rd002cG7IJ3U9aow","rd000eci762R6lcb","rd000EpQ8S40JtpH","rd003vb5J60EyuD2","rd0023eEcq0bQrmA","rd001ytUK03Rso1U","rd002edm2p3e1kAy","rd001h3Egx2GVtTC","rd002bzYn24gGaUw","rd003aPG8u1DkM6b","rd0012Ij2Z4M3Fq7","rd001Rn7Nb3YYn6A","rd000iCaPD063wjQ","rd000xlqNo13C0Jb","rd001aG2cy3N1oh2","rd002by9kT4KCu4U","rd003NDOhN2XUWKV","rd001Uo6v049mifF","rd004HDRdr0AKEgu","rd003vWfG5177pe5","rd0033Xkkw3SOKvd","rd001SENGe1OvieP","rd0033cAlD1oNlNo","rd003o5yaW03Zr6X","rd004MW97i2PMio1","rd002dG9ak0PPaVo","rd0012YIPd3MjACC","rd001bA4QI0coisy","rd003klMWr3ATlKH","rd004PV2gQ2A3CIl","rd002t3AXU1spfKK","rd00432F2h2wWKQc","rd001rG4H53psSxn","rd004JHN560Bl98m","rd00091B0N0MN6LV","rd003qhHNP0Srxuc","rd000sHPTo0iFznz","rd004Ad5EJ3ztzOg","rd003bomzE3IAAZK","rd001rTafJ0u0UnS","rd003i3u6I1ch18b","rd002bZu3N4GNizu","rd004SF3qx14N2fT","rd003rAaIe2wrb15","rd0008SxC31zTdpO","rd002zTBql09CqyG","rd001TBxOx0gaVbR","rd001yXjWk4bt1kP","rd003rHKMx2tDqMI","rd003PMn941LxU74","rd003kSv5A33xhfl","rd001wBEPl4GK5sl","rd003GpbBT4FRI7L","rd000z736z47z3Rw","rd00084PKM1o8d9B","rd003xKmdb1JKuaj","rd002BKdhC1xheFy","rd004fWnOk2ytQmT","rd002iKcA52xYfrX","rd004OusIH31lxHj","rd000i6jv916nYV5","rd001rbpBT1uCgiC","rd002fTyFT4fQIVD","rd001n4sZe0xahol","rd001yiUnq2bqeu2","rd000bNkU40HNJxn","rd001DzEfs3Pv2vG","rd001K8cBz3acoD7","rd000o5lW40qFvII","rd0026DXXp0eDk02","rd001v206P3rFhrw","rd000JFh122Z5ZdL","rd000Fixzv3byPaZ","rd001fjjDU16WAax","rd003tg5bV1VnhhS","rd003ZKMpO36zu3J","rd003q8TLs1JPU3E","rd004HUUIQ2NxrXl","rd0007F2tx4ThGIR","rd002kftFh0SWdBl","rd003unlAy0g7zBG","rd000HosOB1FsKmO","rd000RiVUT20qSnq","rd002zORHD2ENIfA","rd002cT7O40a8L2y","rd001CJq7I11Z1F4","rd002ROZy60E1LMU","rd003JzxKV2zRVAy","rd001gnX962tULoE","rd000AXkfn1TfecR","rd000q8HSw1PVZqL","rd002SrqJ91pkd3D","rd001S3tpK2InnmV","rd0043PcSz1Bw5FI","rd001KtAvZ1v39Qd","rd001O35Uw0cOIaB","rd0037rjaF3lahqE","rd001X9s8j4X0ZZR","rd003g30wz0m1GOF","rd003laCj11BIFCW","rd002rL8te1cxKuA","rd001CJFa52gzVKa","rd001tUgxb15qDzk","rd003xan7c0nTPC3","rd003taLCJ4a6QNe","rd004Ashfo2hWmYk","rd0019LeQi1hT7y5","rd000yxYDZ3sDLtb","rd003RVU9E3GkToQ","rd002WaIPZ1KqMQY","rd002qe5mb1LjdTy","rd001WRQwQ3tID1B","rd001M0xoS1Q3ijr","rd004Xcwk21vfCX7","rd001eySTO03E7C6","rd000bwvkC2CJW2h","rd000MFtUO0j5Pw2","rd0006VBRV4NTxus","rd003Y04rv2aeUc2","rd0045ymiv2UbMTu","rd001xfx601DONgv","rd001RjXMf0RLAMb","rd00439BCT32NeQj","rd000P8KkM14XvVm","rd000JDcho05K19e","rd0029o2mf2GvYmn","rd0010FA772zjH3k","rd003QINC337FWrk","rd001xSIyc2oUGoA","rd000OzjFj1Hgawu","rd002TJCU22p4q5x","rd002dDLlF3L7F0E","rd000agJ1f09tlX4","rd002n6NX31bWw2r","rd002MUdXi035oV7","rd002qJ64R1rt4dZ","rd0035VQsi0sfkrC","rd0038bkGA3v2u1H","rd0030U83p4bnHSz","rd000a6WOr49maXq","rd001sB3uC0Kv6pH","rd002X9PWh4UIqLL","rd002sGQFm3jZMnJ","rd003JSlz63p9bQf","rd002E26cf48OsFT","rd004aUjkC3jOwil","rd003w04Pi3NxcTe","rd004K6QMA3OneQK","rd003AM7NG1rGkyJ","rd002TIuUp4DOmhS","rd001xekJf3mCQJW","rd004ezkJM3ihjkV","rd001MnKbD17f8Do","rd0046CaSB3v7SAZ","rd000VTOIf1eDzQH","rd000YXxNw0XUaPZ","rd003xAjez3GGQMP","rd004bWQrY4SGr43","rd003KHtAl4fZRGJ","rd002xCSdG1P2oZJ","rd002HOFdO2eYcb3","rd000g2WMP28WBbl","rd003c8eYI1JBfbu","rd0017X0852D6ES6","rd001JOhqF3L1If8","rd004TyruH0hV5MJ","rd0020SHO318zc2f","rd004QmerH2cDyro","rd004WegOJ00ejuO","rd00131GFo06Iwgu","rd003SX9EU3ZjpOD","rd003TcjRV47QGlG","rd003wl9sP14b1uQ","rd000Rebsa09Qd2W","rd000AsRyd1nEBRA","rd004LBhXh2OiGys","rd003G9SVg2Z3Rli","rd004Pf1yA1fGniy","rd0042CHKp1kP4UU","rd001NXDDa2ziCXG","rd003Bjk5B2WhkRk","rd001cU9lZ1oWuGZ","rd00025yTC1B8pAJ","rd000tOieZ0XP8bN","rd000samOR3plkad","rd001hdkwC0g9P0A","rd0007jfU74U8Uyl","rd002q56LO1gFBC6","rd003zoBci1wRXrD","rd000HEYTu1ns0S5","rd003tVXYX0h7tC4","rd004bPogq2KC88S","rd001OZnqd30e9bO","rd000VGgZn38Bdky","rd000OfemL4ay2rI","rd0041rRCe0lLJXC","rd0020tUmQ28tWTC","rd001bkHcp09dsHn","rd002Hd2Ig0KmHXl","rd000GzzlK4btXsp","rd002NTvmS1lV16c","rd000P4exW4OrkV5","rd001p2HK128Hrg5","rd0041C6My2h5RDS","rd000uZ3Oa0dM4pS","rd0008NcKw0ElDfH","rd003cHLut03FG2x","rd003OsCc73qoO4i","rd004FCwqr1oqnfj","rd001CgwM82llEtA","rd004Lsy2G3zgyrk","rd003s9Qen3MVseW","rd002rAoEZ0Go2Aa","rd002uk2hG1pxFRR","rd000QcQl41qloDb","rd0017Jj5l013ntB","rd001JaVZi3UWbW0","rd003dui130vWClJ","rd004cMKDk1zriYl","rd003Kxuoi3azNdh","rd002OvFvu1BlTUV","rd0045Tosx3zG8Co","rd001poh7V1AXmML","rd000GytrK0mRdN8","rd004DLkPd2TVTGt","rd00012EXO2M8QqP","rd0004VqKA2Kz9Co","rd001EjnMV2NaA7v","rd002DOc9O4F27pD","rd001cFl4N34IQip","rd001bhCe23YCmik","rd000Btnsv1oGPJo","rd000tUMo73BLddm","rd003gifAm0vq21K","rd0037QF1J2GfI4i","rd003ihAJE3jGhlo","rd004dttBb4ON9ym","rd003tvDYe3yU8v1","rd003neqXc07j0O4","rd003JMevS2y48H1","rd004Cp7NQ3zZBT0","rd001xgz5q43AOwB","rd001nbaeB0zOHgf","rd001NzF4c43pCQD","rd002xPPQR3uID41","rd004WATUA3307oe","rd003QqDQM0PHeuT","rd003UN19g2HIDab","rd001qYZmK0HCg93","rd000ZyNto4TMOJS","rd003jLfVJ2xlwba","rd002PAVjr3hGRrp","rd0038Z2Vr1mkKCj","rd0040VLdU0FA3BM","rd004NiNVg49AuWB","rd000mCNIh2t8rBJ","rd001G1iEQ3Jrk6A","rd002qVadn2kzOJT","rd0015v4o74UdUgP","rd003LZYRb0RyxqH","rd000B7xSZ0Wm7hi","rd0026yf9E4FB0J1","rd003mPXkK2I4UOT","rd000VKvyq0taG0e","rd00326fp30fLtQR","rd000cofiw3FzAtC","rd000JXJxz3dML0H","rd003gqgKy00kE4i","rd0032QhVX4TPQO1","rd004e0p9S2m1fKp","rd000QkZOW1DvUvV","rd0029slqD4NfA7m","rd004GkkJD36Uquq","rd00358GTP4MvmDi","rd0020zskz3XXOZp","rd001IGZg92bXTyC","rd004bGfRj14rVxG","rd002PrYvJ4dyghU","rd003xa06N2Exq2W","rd000yUWM20dPWvm","rd003cwQmD2KSpq4","rd0002XgiU2fI1bi","rd000StVxZ0EIAyd","rd000alKC81IByqU","rd003LUf6Y0uJrqm","rd003rUJi140uQ68","rd0006Nlaf2B7Wbj","rd003IGksJ4IMG7F","rd002fnxkw0gV8EJ","rd000AlR3X18PROd","rd001wsN4r0qVROL","rd0013x4vi44VeRP","rd001hjvPZ31IglU","rd001LyiY02dRvpD","rd000N7dQd00BTFD","rd00018v9d1Id2c0","rd002ZnQ3e07YlsW","rd001GrRFi0Hzoqe","rd000Pf9v94W09Mn","rd003HyEZv4667OU","rd004DdixZ3QjNKw","rd0014t0YE0GyeTa","rd000aNIn03YadNT","rd00338dxu3GsSD6","rd0004SVMN1FYCfc","rd002UoFVa2OaDzy","rd000ZtoEX2DFkPJ","rd002m5unK2QLbS9","rd0001wr2a01GXKq","rd003HnXCr1idVCZ","rd001TT8vz17g0JJ","rd002cU25i3grUjG","rd0007cEU72f1Rv8","rd003pA4s70uHLPt","rd004VFNZx1ToF5U","rd003krCKI2u3VrP","rd004SBPJf48a7Ne","rd001mh0HX37fzJD","rd001uBgnh0fhhCD","rd002m0fgf3e8Ll9","rd000iTQe82sLw82","rd001FB3Sb1Rorwf","rd003h7ucm3HGUXA","rd0007Ahts3IE5xP","rd002g8jyc1JFolX","rd001dHfdI0xU0QP","rd0003YhU211fKTg","rd00371IN42a1dFC","rd004XdTn63gpkEZ","rd001mkLoR0azPHJ","rd002G8Mjs3UkKod","rd000W4ChF326XNb","rd0037X7XR3SSfN3","rd002huf632zRhIR","rd003oGiuo4d0SvT","rd000LUdpI1SFjFP","rd000pFLGT2988sH","rd000HHQZ538QugH","rd0024cWVO2u92RK","rd001fm4GQ4L8BBU","rd001PVdTO3rVl6y","rd003DxXzq2LEvD9","rd003uP1Rl21MbcG","rd003kPmFg0icHvE","rd0034ALeC4U8QtZ","rd004bKz1t0aoP2f","rd001Cvo0x0MiKAH","rd003cFnO42ByK3h","rd0037BM7804W5XY","rd000jUA0m1Q5kEs","rd002Qin943jna2n","rd001B895j1A2BXY","rd001WHnrE0JPib2","rd001ABHAY07KtRV","rd000yRFym3FsI4l","rd002ae1Ak0x5BXt","rd0033AQHP0YouID","rd003NRdpo3ZeEeJ","rd001YOe4V0WVTei","rd001wguqE1DpD9m","rd0007A4Ps3TFHLi","rd0033KZxb4eV1pI","rd004UVQD71eSfbE","rd002mI85A4O6XQ7","rd001GGCrF2nNNl3","rd001UGo344CxQKw","rd003we5gm2tKHCw","rd002GbJNt43LMrA","rd000QsTDX4Y8loj","rd003lQKdQ0NiMjl","rd001uzVZ52kIBKw","rd000kLs3m3ckSSh","rd002bKBA34E5tsc","rd0023xihj43wHqA","rd0004XbOa2LPx5D","rd001uYoOz2PKWiU","rd000GcPgl04QJJY","rd001kedHa1x99LX","rd004JFv6v0xZaTg","rd002IcGWZ3Tb1jP","rd001Qxz6146Vxo1","rd004b7R5Z3wd0Bk","rd003nUEmd3yqvne","rd0013Kp3S4eMmB8","rd0014P4OP1wRE9u","rd0025zxSS1upRc2","rd004389aa1UqROv","rd001Ri9Lm0Qi6oE","rd0041BK1P1XtBV7","rd003zKMFe2MBYTH","rd001K5Vpm3uzyx5","rd00178tqW0V7IJW","rd004B9O1N0Tb9qG","rd001ag3Jm3fL8Ib","rd004FhkXI4fziUG","rd002Xe4ZN2QwKrq","rd000rb2P100WlJA","rd001Baj7R3X6E4w","rd002TpNfL4ToTWg","rd001J2LLN2sB2i3","rd002pMjt63aULdK","rd001xMbVB2DNl5T","rd004eYj7k1GUUup","rd003r8D6F30jgaK","rd002EtSzX1lKkwM","rd004KGX2r2DuRMH","rd0001gehY3tnT9O","rd003Ey7If4KOKnF","rd003iidub3Efbhv","rd000CSzNX08D1JP","rd0016EEVu0PrHTx","rd0037r6K725uKVO","rd000lQGtI1ZBioo","rd003kMmmB2fNlz4","rd002JVYxb2Lno9V","rd002oZxqJ2d6Xkn","rd0010fxUG27dcwI","rd003hOSRc25hoTh","rd001xugvf4TXqbs","rd003HBTHQ08A4x0","rd000NguBT2jjldT","rd004LhJF60U7zuj","rd003BhZA03Zs5Fg","rd002y6uVc089sgC","rd002yqN4d3qDkUX","rd000sQxV41atP4L","rd002TkutP2jZ1sr","rd000zZ8mL4BBiez","rd00296tQL1MxeOQ","rd000mgQ2s0DSM1b","rd002SEpz70iDOnk","rd003L45Id2tqGAq","rd003fSImb06ryEZ","rd002qBBYv1gaxxx","rd000dEx8m4cy9TL","rd003pAH4E1tf41u","rd002o9TtM4UNZAg","rd003Btjen3017ij","rd000dRJ7E2Ggmwl","rd002uIf3V2cckyB","rd001HHi8p0PSnvc","rd003xbKNW1hyMt1","rd001zmrMJ40WS0c","rd004SQHq10XnyIu","rd000BQKSr3Phqpv","rd002uIYij2BAS4k","rd0026M7X04Gi54M","rd000IYY4l1lZkxy","rd000UiVKy1h6Pii","rd002fLWW92Yr3Dw","rd002heamy3Nh7mY","rd003k8vqN2arQqJ","rd0043dQT63wE1pc","rd0013eV6I4FdFJU","rd001O1ZsM3AGwfg","rd000Tovj71WyVJn","rd003Z396A0qGxgW","rd003Uag6T3Zi1A1","rd000l5Rtx2itBw9","rd00014Ob64ZARdu","rd000yQzJh2VwlHt","rd001Vatcn4Oxqwc","rd00405lDP3QGyhq","rd001I24GX0XjMea","rd004CmFqr1n6bkl","rd002MhixF4EKi5V","rd002LcOEE0KawZH","rd002RRcKz1CTtec","rd001NaMu93rxm7J","rd000LSyLr1WG4IR","rd003039Xh3TJ5Hv","rd003AF22J1Zycm6","rd002SP70H1s3OSb","rd004V3X5M0m8tiC","rd003ceQix4OMOzl","rd004WScni4ZaUKY","rd004ZOA490nTvMp","rd000GKycB4MEebz","rd0048ut7H2yVFyg","rd003gfjpq0aazU7","rd002CM7Uo08LJSp","rd003oJHvM2tD6Cs","rd0046BmRf2fvz0z","rd000jVN100RCK43","rd00159ftT2hWFfg","rd002uqdXJ3VT8Yt","rd000JGGY80FAoSL","rd003pwPvP2gvEop","rd004TiP1A3f7Cg7","rd002hFMaU1Gl2b9","rd0023f3E420oUh0","rd003julle2SKDk8","rd001Zqqcp1vqQFq","rd002ylzEE0SIzHT","rd000OMe8n3szLEJ","rd002ms1md2vOo02","rd0006pUbK1w8SyU","rd004dCmh21VQRZw","rd000QD5a03UqxYC","rd002gaEeq37hGrV","rd004H2ymq3CgJQ1","rd004XUHNg3u1Xll","rd003I2Ch63E6gGm","rd003uj8Ga330gK0","rd003MEqqy05R3S9","rd001FXntL2oZIuq","rd002WkuUx2rnT4H","rd000bd3s23t889v","rd002NMAw20Gzu21","rd001dvXNG4YGpCl","rd0006XOi82b8LMy","rd003EPXtc4UCXdp","rd0044RuBh01A7qk","rd002tGdjO1OSPd3","rd000c5Xb12ViQ1E","rd002qHhkl2e19St","rd000w8KmB1dM93X","rd003dUyvP0lsbBv","rd001FKgDo19BNUI","rd0037DVrG0pYI9x","rd002NlKCy3r5eFQ","rd004a7har3lJxcM","rd000zltAk24BfX3","rd004C3uKq2essTE","rd000jhVQL1ml58l","rd003qt3Bu2LlGEE","rd001Fc6S30DfCnc","rd00122gqJ3Fmo6Y","rd002gxnSR10tclU","rd004ABqUi0oIKYr","rd003D7vMH3RbJ7e","rd000zY3gU28d97r","rd0004wjzi1a1E9l","rd001jfLO005KIgP","rd000JHeTQ0dx0Vv","rd004SzCSV31AZsH","rd0047wsHM1bf5qg","rd001skWRU1kBOd9","rd0010QNfZ2A9Loz","rd004ItdqL1N290P","rd003GzLNu2TlAwX","rd001VfrXq3kaTqg","rd001qJzQ41AWBkT","rd000mBDfN2jXSCU","rd0035so9B4Gr2zP","rd0002vqY52DOZq0","rd002gMGGc2OCUBL","rd0017CCW82sbDIS","rd004S4iE61f3V7Z","rd0035k1Mx3V5raK","rd000AtTTO2UlQbT","rd003zkdeK4Kity4","rd003j0GBT2bRIAF","rd0042gZ4s2nfgXg","rd004eoUgF3T73Vp","rd002L4xfF4QSrdL","rd000k2Fil0JBYIU","rd001NH3Sq1OCOGS","rd003qbMFH0hjQWp","rd001uDMKU27xR1P","rd0020xyaD2AdpBd","rd000Sl25W3XdSs2","rd004VnOCw0whpnd","rd003C7laM1XoCSQ","rd000jtLwV008vLQ","rd0038W8y40XYWuE","rd000T9M472cD7YX","rd0020KYRG1mXigG","rd004UVo3Y3irIBI","rd002DJUvT3mrDLB","rd000c9MJx2QPF5G","rd0035cDBG1J6CJw","rd0020rqrt0JQTuK","rd001vDbRq0X4CO1","rd000LYI0i2Ikf5S","rd003AJyYm2wPIBH","rd000WtfFH3GVFKX","rd002QUsZt2jMYJC","rd001gyqzp4aEnJW","rd002pvOkE0eW45Z","rd004QTLpP2kyLxC","rd000PHPwu3MwlV2","rd0005Ic2e0b5BUa","rd000yRPGw1uf9nQ","rd000gLHpT3SeSQC","rd0042oUa60GYClB","rd004EuDyU4Y0JT6","rd000bPAIg0nMdU7","rd002pwN854AoYAH","rd003GyAdC2mdKIZ","rd001FL4ZB0eUwhU","rd003ZvXcj4cRZms","rd001v2Z281tvsLz","rd003Gk1Rd26UEAB","rd002e2BXu0XNRhs","rd001UbXXm4Tbf9s","rd000bwjQb2c917x","rd002Ix4jF4B7TZM","rd000IqlN53vA2rc","rd003wW688107lsc","rd000JS8YX3GsM0U","rd0044aTQR1becpn","rd004QuWmt28k4cP","rd003hkWZZ2IAVxp","rd004b2ftA02TVJP","rd0021UQ4t1W0ffi","rd001ksK6X4LCY27","rd001k2emw1Vzsb6","rd002BDz7Q4bCGPc","rd000QdWFL4BnZN7","rd002KKjNs1PEEty","rd004NYAsC3kgARB","rd002HGlwO4LrRvR","rd000PkRB91CDFNO","rd003rWN2r3QUYad","rd003IdL671oP4yF","rd003F2ldn3kmYAD","rd003vzfFt2CieEC","rd003D0zfP3VqE1J","rd002HRGdF2YKWqm","rd000JiaFB3gDauy","rd003KCi0m4JOUm6","rd004SzP4B09aQ7R","rd000Axl6s19rI3T","rd001Gm2470DVCma","rd0019YG7Z1edvry","rd002OPq5q2sLVVJ","rd002vCfxk3xtgJP","rd004a3TPv3h2mAt","rd000X4bXj4DQ85b","rd001mFE4d0dlQ3a","rd001yXoiV4ZLNE6","rd002iJAf22XhoU2","rd0016KAXo0yoUhL","rd0029X7df2OKLFX","rd0024fMIL1AQ6l9","rd0001lvi40yHdYJ","rd002wNFvd0YYwgi","rd004bADnP2TU4Ps","rd004a7tbN1LLDwq","rd000hPaw726ViEu","rd003kstS430aNhx","rd0048p81z29JwNF","rd000sKvaf43NH53","rd004NCYiV1eQGn2","rd003cvM09296KjH","rd000EJ0rB1rfMLS","rd002d4FvS1oLLwi","rd004GZwuJ4GV3XX","rd002NTmsb4IGfpF","rd002YM0F20nQS9r","rd003k1Y9p03G7Ro","rd002245N3103NWY","rd002IE9mn16dNbX","rd002YhwLc0asqI6","rd002k7nci0ydtwu","rd000MnlRj3oCdec","rd001RFMMU3hcbqt","rd002Kwo8K3DvpM0","rd004WZVXI0ZCjtd","rd003bMBwy44YuRB","rd002AgLqz1gligl","rd0037fgZn2COJQs","rd000MEfTQ31zzvf","rd000RBxRc3NuxTA","rd000yyeQC4UYHlP","rd003IGhdQ3CbclB","rd003YwtKs1qJtot","rd000AtEdG0b7wBo","rd003GO6f408r5Dc","rd003CEcdh05rPcy","rd002JP7Gb08cZ9Q","rd0025bxVp2nfpw7","rd0042S1sJ2zExhB","rd0002B34N1nuN4Y","rd000Ro1Bs2e5FyO","rd002xDkYr0FMlS1","rd0000htg82bLTb8","rd000wpkMH2f02pT","rd004LiwGo2QFHnG","rd004HvLpb2TdNol","rd0001TJv92nRydo","rd002uZXU32jRAVb","rd003XI5Gq3PMaKo","rd001ZrXCY2nVxSq","rd000vz0si2M7urw","rd003hu6bU1iSVFz","rd0005fIn92Xd8UZ","rd004OHomj14KKfa","rd004bOyb91Jy2wc","rd003rHBDD465kVK","rd0011dJ780MWdc1","rd002XHv2M3XKi56","rd004EISkw1ISUHY","rd000JJBEp1jgdiV","rd0000y3BP15PYLf","rd000CXgmQ38qfie","rd00201Gs21Kc0lV","rd002RBE5H4PoauM","rd003WoZOa4Fu3vQ","rd000Vi8AY0ppYUZ","rd002PLe1u0LtJrc","rd002n4Ko81UfTDt","rd0033ae7e0OJWoL","rd0000D9Wh1NmGJo","rd001AbrOt2eC2AO","rd002VYaLx4YWNzE","rd00011R210dOedn","rd003NGrfS0TmYqJ","rd003ypZlB142WxU","rd002I4Nzy4DpQM6","rd003jh8ju33IJpd","rd003P7MgU1D82R4","rd001NPcVM2fB66J","rd001N16jV44VxSR","rd001VLAKD0I5qDJ","rd000ZNarT2l37KC","rd001PZfAW0qKDr8","rd002J95w00ExXhR","rd002kul7E2VhJsM","rd001gdPst0Snnrw","rd002qDsgu01ndMZ","rd0039ohEI3Pmdrb","rd0025bApt3KadeI","rd002fMTtz4Ij8cz","rd004ek0DH1NU2QY","rd000D0ohA1Bpx6I","rd000yz8zc0YIhUl","rd003u8I3i23R3dX","rd002TVgE43SDMzD","rd000R1Oco2VzC0f","rd004E6hNt2YbXs2","rd0048sVVj35HyNv","rd001urqAe3SruKK","rd001UsmiZ2C1i1i","rd0039JeaQ35INMM","rd003YB38Z1KHIk9","rd001Sga934U0FyR","rd001OIGPh1fDOgZ","rd002KSvlX1esqyh","rd001I37774GlE2M","rd004JGeoN4G4pmy","rd004Py73X3YZMZI","rd000L2Q4r3i4wEf","rd000KV6tx3AkgUG","rd003ayWVx2kRSzT","rd003wgTr41GkVdW","rd000bviOv0FcWfo","rd001KUH550zEZFZ","rd000Qws8t1Vo60Y","rd000zwd5415mYyy","rd001UT5Id3tPLT8","rd004Y9ID23lbHBc","rd001mrdVo0xQDUu","rd004M4PiL2yFpCy","rd000ANpWo1WycIB","rd0012sqEF09NcmC","rd000n9u0U1xV9lN","rd0010ZJhN35eiPV","rd002DqDKr3FwppH","rd000wPRgh21eljU","rd003L8jPp2aXr4r","rd003xxwTa0oBUDa","rd003PPtws0YC7TF"],
+					displayPageNum: 8				});
+			});
+		};
+	</script>	</div>	<!--wnsdiff-body-end-->
+
+<script>
+	document.body.className = document.body.className;
+
+	PSY.loadTimes.bodyEnd = +new Date();
+	setTimeout(function(){
+		PSY.loadTimes.bodyEndT0 = +new Date();
+	},0)
+</script>
+<script type="text/javascript">
+	if((location.search + location.hash || '').indexOf('useqzfl')!==-1){
+		PSY._useqzfl = 1;
+		document.write('<script type="text/javascript" charset="utf-8" src="'+'//'+PSY._domains.imgcache+'/ac/qzone/qzfl/qzfl'+PSY._qzflVersion+'.js"\/><\/script>');
+	}
+	if((location.search + location.hash || '').indexOf('useinterface')!==-1){
+		PSY._useinterface = 1;
+	}
+</script>	<script data-content="seajsText">
+		var SeajsloadErrorMap = {};
+		(function(t,u){function v(b){return function(c){return Object.prototype.toString.call(c)==="[object "+b+"]"}}function Q(){return w++}function I(b,c){var a;a=b.charAt(0);if(R.test(b))a=b;else if("."===a){a=(c?c.match(E)[0]:h.cwd)+b;for(a=a.replace(S,"/");a.match(J);)a=a.replace(J,"/")}else a="/"===a?(a=h.cwd.match(T))?a[0]+b.substring(1):b:h.base+b;return a}function K(b,c){if(!b)return"";var a=b,d=h.alias,a=b=d&&F(d[a])?d[a]:a,d=h.paths,g;if(d&&(g=a.match(U))&&F(d[g[1]]))a=d[g[1]]+g[2];g=a;var e=h.vars;
+			e&&-1<g.indexOf("{")&&(g=g.replace(V,function(a,b){return F(e[b])?e[b]:a}));a=g.length-1;d=g.charAt(a);b="#"===d?g.substring(0,a):".js"===g.substring(a-2)||0<g.indexOf("?")||".css"===g.substring(a-3)||"/"===d?g:g+".js";g=I(b,c);var a=h.map,l=g;if(a)for(var d=0,f=a.length;d<f&&!(l=a[d],l=x(l)?l(g)||g:g.replace(l[0],l[1]),l!==g);d++);return l}function L(b,c){var a=b.sheet,d;if(M)a&&(d=!0);else if(a)try{a.cssRules&&(d=!0)}catch(g){"NS_ERROR_DOM_SECURITY_ERR"===g.name&&(d=!0)}setTimeout(function(){d?
+				c():L(b,c)},20)}function W(){if(y)return y;if(z&&"interactive"===z.readyState)return z;for(var b=s.getElementsByTagName("script"),c=b.length-1;0<=c;c--){var a=b[c];if("interactive"===a.readyState)return z=a}}function e(b,c){this.uri=b;this.dependencies=c||[];this.exports=null;this.status=0;this._waitings={};this._remain=0}if(!t.seajs){var f=t.seajs={version:"2.1.1"},h=f.data={},X=v("Object"),F=v("String"),A=Array.isArray||v("Array"),x=v("Function"),w=0,p=h.events={};f.on=function(b,c){(p[b]||(p[b]=
+				[])).push(c);return f};f.off=function(b,c){if(!b&&!c)return p=h.events={},f;var a=p[b];if(a)if(c)for(var d=a.length-1;0<=d;d--)a[d]===c&&a.splice(d,1);else delete p[b];return f};var m=f.emit=function(b,c){var a=p[b],d;if(a)for(a=a.slice();d=a.shift();)d(c);return f},E=/[^?#]*\//,S=/\/\.\//g,J=/\/[^/]+\/\.\.\//,U=/^([^/:]+)(\/.+)$/,V=/{([^{]+)}/g,R=/^\/\/.|:\//,T=/^.*?\/\/.*?\//,n=document,q=location,B=q.href.match(E)[0],k=n.getElementsByTagName("script"),k=n.getElementById("seajsnode")||k[k.length-
+				1],k=((k.hasAttribute?k.src:k.getAttribute("src",4))||B).match(E)[0],s=n.getElementsByTagName("head")[0]||n.documentElement,N=s.getElementsByTagName("base")[0],O=/\.css(?:\?|$)/i,Y=/^(?:loaded|complete|undefined)$/,y,z,M=536>1*navigator.userAgent.replace(/.*AppleWebKit\/(\d+)\..*/,"$1"),Z=/"(?:\\"|[^"])*"|'(?:\\'|[^'])*'|\/\*[\S\s]*?\*\/|\/(?:\\\/|[^\/\r\n])+\/(?=[^\/])|\/\/.*|\.\s*require|(?:^|[^$])\brequire\s*\(\s*(["'])(.+?)\1\s*\)/g,$=/\\\\/g,r=f.cache={},C,G={},H={},D={},j=e.STATUS={FETCHING:1,
+			SAVED:2,LOADING:3,LOADED:4,EXECUTING:5,EXECUTED:6};e.prototype.resolve=function(){for(var b=this.dependencies,c=[],a=0,d=b.length;a<d;a++)c[a]=e.resolve(b[a],this.uri);return c};e.prototype.load=function(){if(!(this.status>=j.LOADING)){this.status=j.LOADING;var b=this.resolve();m("load",b);for(var c=this._remain=b.length,a,d=0;d<c;d++)a=e.get(b[d]),a.status<j.LOADED?a._waitings[this.uri]=(a._waitings[this.uri]||0)+1:this._remain--;if(0===this._remain)this.onload();else{for(var g={},d=0;d<c;d++)a=
+				r[b[d]],a.status<j.FETCHING?a.fetch(g):a.status===j.SAVED&&a.load();for(var h in g)if(g.hasOwnProperty(h))g[h]()}}};e.prototype.onload=function(){this.status=j.LOADED;this.callback&&this.callback();var b=this._waitings,c,a;for(c in b)if(b.hasOwnProperty(c)&&(a=r[c],a._remain-=b[c],0===a._remain))a.onload();delete this._waitings;delete this._remain};e.prototype.fetch=function(b){function c(){var a=g.requestUri,b=g.onRequest,c=g.charset,d=O.test(a),e=n.createElement(d?"link":"script");if(c&&(c=x(c)?
+						c(a):c))e.charset=c;var f=e;d&&(M||!("onload"in f))?setTimeout(function(){L(f,b)},1):f.onload=f.onreadystatechange=function(e){Y.test(f.readyState) && (f.onload=f.onerror=f.onreadystatechange=null,!d&&!h.debug&&s.removeChild(f),f=null,b(e))};f.onerror=function(e){SeajsloadErrorMap[f.src]=1;Y.test(f.readyState) && (f.onload=f.onerror=f.onreadystatechange=null,!d&&!h.debug&&s.removeChild(f),f=null,b(e))};d?(e.rel="stylesheet",e.href=a):(e.async=!0,e.src=a);y=e;s.getElementsByTagName("base")[0]?s.insertBefore(e,s.getElementsByTagName("base")[0]):s.appendChild(e);y=null}function a(){delete G[f];H[f]=!0;C&&(e.save(d,C),C=null);var a,b=D[f];for(delete D[f];a=b.shift();)a.load()}var d=this.uri;this.status=j.FETCHING;var g=
+		{uri:d};m("fetch",g);var f=g.requestUri||d;!f||H[f]?this.load():G[f]?D[f].push(this):(G[f]=!0,D[f]=[this],m("request",g={uri:d,requestUri:f,onRequest:a,charset:h.charset}),g.requested||(b?b[g.requestUri]=c:c()))};e.prototype.exec=function(){function b(a){return e.get(b.resolve(a)).exec()}if(this.status>=j.EXECUTING)return this.exports;this.status=j.EXECUTING;var c=this.uri;b.resolve=function(a){return e.resolve(a,c)};b.async=function(a,g){e.use(a,g,c+"_async_"+w++);return b};var a=this.factory,a=
+				x(a)?a(b,this.exports={},this):a;a===u&&(a=this.exports);null===a&&!O.test(c)&&m("error",this);delete this.factory;this.exports=a;this.status=j.EXECUTED;m("exec",this);return a};e.resolve=function(b,c){var a={id:b,refUri:c};m("resolve",a);return a.uri||K(a.id,c)};e.define=function(b,c,a){var d=arguments.length;1===d?(a=b,b=u):2===d&&(a=c,A(b)?(c=b,b=u):c=u);if(!A(c)&&x(a)){var g=[];a.toString().replace($,"").replace(Z,function(a,b,c){c&&g.push(c)});c=g}d={id:b,uri:e.resolve(b),deps:c,factory:a};if(!d.uri&&
+				n.attachEvent){var f=W();f&&(d.uri=f.src)}m("define",d);d.uri?e.save(d.uri,d):C=d};e.save=function(b,c){var a=e.get(b);a.status<j.SAVED&&(a.id=c.id||b,a.dependencies=c.deps||[],a.factory=c.factory,a.status=j.SAVED)};e.get=function(b,c){return r[b]||(r[b]=new e(b,c))};e.use=function(b,c,a){var d=e.get(a,A(b)?b:[b]);d.callback=function(){for(var a=[],b=d.resolve(),e=0,f=b.length;e<f;e++)a[e]=r[b[e]].exec();c&&c.apply(t,a);delete d.callback};d.load()};e.preload=function(b){var c=h.preload,a=c.length;
+			a?e.use(c,function(){c.splice(0,a);e.preload(b)},h.cwd+"_preload_"+w++):b()};f.use=function(b,c){e.preload(function(){e.use(b,c,h.cwd+"_use_"+w++)});return f};e.define.cmd={};t.define=e.define;f.Module=e;h.fetchedList=H;h.cid=Q;f.resolve=K;f.require=function(b){return(r[e.resolve(b)]||{}).exports};h.base=(k.match(/^(.+?\/)(\?\?)?(seajs\/)+/)||["",k])[1];h.dir=k;h.cwd=B;h.charset="utf-8";var B=h,P=[],q=q.search.replace(/(seajs-\w+)(&|$)/g,"$1=1$2"),q=q+(" "+n.cookie);q.replace(/(seajs-\w+)=1/g,function(b,c){P.push(c)});
+			B.preload=P;f.config=function(b){for(var c in b){var a=b[c],d=h[c];if(d&&X(d))for(var e in a)d[e]=a[e];else A(d)?a=d.concat(a):"base"===c&&("/"===a.slice(-1)||(a+="/"),a=I(a)),h[c]=a}m("config",b);return f}}})(this);
+	</script>
+
+<script type="text/javascript"></script>
+<script>		var CDN_URL = 'https://' + PSY._domains.imgcache;
+		;seajs.config({
+			base: CDN_URL + '/',
+			charset:'utf-8',
+			timeout:5*60*1000,
+			debug:true,
+			alias:{
+				'jquery' : CDN_URL +'/qzone/photo/v7/js/lib/jquery.js',
+				'migrate-plugin': CDN_URL + '/qzone/v8/engine/migrate-plugin.js',
+				'interface':'v8/core/interface_mini.js',
+				'console-plus':'v8/engine/console-plus/console-plus.js',
+				'request':'v8/engine/request/request_'+PSY._requestVersion+'.js',
+				'qzact.v8.lib':CDN_URL + '/qzone/qzact/lib/index.js',
+				'qzact.v8':CDN_URL + '/qzone/qzact/',
+				'jsbridge' : CDN_URL + '/qzone/phone/m/v4/widget/mobile/jsbridge.js?_bid=339',
+				'app_engine':'v8/core/app_engine_ex.js',
+		        "zepto": CDN_URL + "/ac/lib/zepto/zepto-1.1.4.js?_bid=333",
+		        "qz": CDN_URL + "/qzone/hybrid/lib/index.js",
+				"qqapi" : "https://pub.idqqimg.com/qqmobile/qqapi.js",
+				"qzoneapi" : "hybridPath/lib/jsbridge.js"
+			},
+			paths:{
+				'photo.v7' : CDN_URL +'/qzone/photo/v7/js',
+				'cssBase' : CDN_URL,
+				'v8': CDN_URL + '/qzone/v8',
+				'mall.v8': CDN_URL + '/qzone/mall/v8',
+				'qzact': CDN_URL + '/qzone/qzact',
+				'app' : CDN_URL +'/qzone/app',
+				'hybridPath':CDN_URL + '/qzone/hybrid'
+			},
+			map:[
+				[/(v4\/manifest.js)$/i, '$1?v=' + Math.random().toString().substr(10)],
+				[/^.+\/lib\/qzfl\.js$/i,CDN_URL +'/ac/qzone/qzfl/qzfl'+(PSY._qzflVersion)+'.js'],
+				[/^.+\/jquery\.js$/,CDN_URL + '/ac/lib/jquery/jquery-'+PSY._jQueryVersion+'.js'],
+				[/^(.+\/qzone\/photo\/v7\/js\/.+\.js)$/i,'$1?ver=' + PSY._photoVersionV7 + ''],
+				[/^(.+\/qzone_v6\/[^\/]+\.css)$/i,'$1?max_age=2592000&ver=' + PSY._photoVersionMap.css]
+			],
+			comboSyntax:['c/=',','],
+			comboIncludes:/\/qzone\/v8/,
+			comboExcludes:/jquery|app_engine/,
+			preload:PSY._useinterface?['migrate-plugin','interface', 'console-plus', 'request'] : null
+		});//自动处理https
+window.seajs && seajs.on('resolve',function(data){
+        if((location.protocol === 'https:' || window.g_cdn_proto === 'https:') && data && data.id && data.refUri&&data.id.indexOf('http://')===0){
+        	if(data.id.indexOf('http://qzs.qzone.qq.com/')==0 || data.id.indexOf('http://qzonestyle.gtimg.cn/')==0 || data.id.indexOf('http://qzs.qq.com/')==0 || data.id.indexOf('http://imgcache.qq.com/')==0){
+        		data.id = data.id.replace('http://','https://');
+        	}
+        }
+});
+window.g_sdms = {
+    'taotao.qq.com' : 1,
+    'taotao.qzone.qq.com' : 1,
+    'b.qzone.qq.com' : 1,
+    'b11.qzone.qq.com' : 1,
+    'b1.qzone.qq.com' : 1,
+    'br.qzone.qq.com' : 1,
+    'm.qzone.qq.com' : 1,
+    'base.qzone.qq.com' : 1,
+    'w.qzone.qq.com' : 1,
+    'g.qzone.qq.com' : 1,
+    'r.qzone.qq.com' : 1,
+    'ic2.qzone.qq.com' : 1,
+    'boss.qzone.qq.com' : 1,
+    'mall.qzone.qq.com' : 1,
+    'statistic.qzone.qq.com' : 1,
+    'fav.qzone.qq.com' : 1,
+    'snsapp.qzone.qq.com' : 1,
+    'vip.qzone.qq.com' : 1,
+    'route.store.qq.com' : 1,
+            'drift.qzone.qq.com' : 1,
+            'p1.qzone.qq.com' : 1,
+            'p2.qzone.qq.com' : 1,
+            'xalist.photo.qzone.qq.com' :1,
+            'hzalist.photo.qzone.qq.com' :1,
+            'alist.photo.qzone.qq.com' :1,
+            'shalist.photo.qzone.qq.com' :1,
+            'plist.photo.qzone.qq.com':1,
+            'xaplist.photo.qzone.qq.com':1,
+            'hzplist.photo.qzone.qq.com':1,
+            'gzplist.photo.qzone.qq.com':1,
+            'shplist.photo.qzone.qq.com':1,
+            'photo.qzone.qq.com':1,
+            'xa.photo.qzone.qq.com':1,
+            'hz.photo.qzone.qq.com':1,
+            'gz.photo.qzone.qq.com':1,
+            'shanghai.photo.qzone.qq.com':1,
+            'tj.photo.qzone.qq.com':1,
+            'app.photo.qzone.qq.com':1,
+            'memo.qq.com' : 1,
+            'analy.qq.com' : 1,
+            'page.qq.com' : 1,
+            'rsh.qzone.qq.com' : 1,
+            'search.qzone.qq.com' : 1,
+            'flower.qzone.qq.com' : 1
+};
+
+</script>
+<script>
+	if(PSY._useinterface){
+		document.write('<script type="text/javascript" charset="utf-8" src="'+'//'+PSY._domains.imgcache+'/qzone/v8/engine/plugin-combo.js"\/><\/script>');
+		document.write('<script type="text/javascript" charset="utf-8" src="'+'//'+PSY._domains.imgcache+'/c/=/qzone/v8/engine/migrate-plugin.js,/qzone/v8/engine/console-plus/console-plus.js,/qzone/v8/engine/request/request_'+PSY._requestVersion+'.js,/qzone/v8/core/interface_mini.js,/qzone/v8/core/app_engine_ex.js"\/><\/script>');
+	}
+
+	if(PSY._useqzfl || PSY._useinterface){
+		document.write('<script type="text/javascript" charset="utf-8" src="'+'//'+PSY._domains.imgcache+'/qzone/v8/applib/embeded.js"\/><\/script>');
+
+		window.g_V = window.g_V || {};
+		window.g_V.qz = PSY._qzflVersion;
+		var g_version  = 6;
+		var g_isDirectApp = 0;
+		var _s_ = new Date();
+		var g_NowTime = _s_.getTime()/1000;
+		var g_V = window.g_V;
+	}
+
+	if((location.search + location.hash || '').indexOf('useqphoto')!==-1){
+		PSY._useqphoto = 1;
+		document.write('<script type="text/javascript" charset="utf-8" src="'+'//'+PSY._domains.imgcache+'/qzone/photo/zone/script/AlbumGet.js"\/><\/script>');
+	}
+</script>
+<script type="text/javascript">
+	if(PSY._useinterface){
+		seajs.use('app_engine');
+	}
+</script>
+<script type="text/javascript">
+if(PSY._useinterface === 1){
+	define("photo.v7/module/album/sync/tmpl",["photo.v7/nodejs/module/qzonetoken/qzonetoken.js","hybrid/common/sync/tpl/tmpl"],function(require,module,exports){
+		return window.TCISD;
+	});
+}
+</script>
+<script type="text/javascript">
+(function(){
+	var search = {};
+	(location.search + location.hash || '').replace(/([^?=&#]+)=([^?&#]*)/gi,function($0,k,v){
+		search[k] = decodeURIComponent(v || '');
+	});
+	if(top.QZONE && top.QZONE.FP){
+		top.QZONE.FP._t.g_V = top.QZONE.FP._t.g_V || {};
+		top.QZONE.FP._t.g_V.qz = PSY._qzflVersion;
+		if(!window.g_iLoginUin || window.g_iLoginUin <= 0){
+			window.g_iLoginUin = top.QZONE.FP.getQzoneConfig&&top.QZONE.FP.getQzoneConfig("loginUin");
+		}
+		if(!window.g_iUin || window.g_iUin <= 0){
+			window.g_iUin = top.QZONE.FP.getQzoneConfig&&top.QZONE.FP.getQzoneConfig("ownerUin");
+			window.g_iUin = window.g_iUin > 0 ? window.g_iUin : search.ownerUin;
+		}
+	}
+})();
+</script><!--[if IE 6]>
+<script>
+try{document.execCommand("BackgroundImageCache",false,true);}catch(e){}
+</script>
+<![endif]-->
+<script>PSY.loadTimes.domReady = +new Date();</script><script>
+(function () {
+    var arr = ['QzAvatarDressJSInterface','QzFeedDressJSInterface','QZPhoneTagJSInterface','QZImagePickerJSInterface'];
+
+    for(var i = 0,key; key = arr[i++];){
+        window[key] = window[key] || {
+            onReceive : function(){},
+            onRecieve : function(){}
+        };
+    }
+})();
+</script>
+</body>
+</html>

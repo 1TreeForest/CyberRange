@@ -1,0 +1,1005 @@
+
+
+
+<!-- https://pd.youku.com/ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Language" content="zh-CN" />
+    <meta name="title" content="优酷客户端下载中心" />
+    <meta name="keywords" content="视频,视频分享,视频搜索,视频播放" />
+    <meta name="description" content="视频服务平台,提供视频播放,视频发布,视频搜索,视频分享" />
+    <link type="application/rss+xml" rel="alternate" title="优酷视频-推荐视频" href="/index/rss_cool_v" />
+    <link rel="search" type="application/opensearchdescription+xml" title="优酷视频搜索"
+        href="//desktop.youku.com/opensearch/youku.xml">
+    <link href="//static.youku.com/v1.0.166/index/css/yk.css" type="text/css" rel="stylesheet" />
+    <link href="//static.youku.com/v1.0.166/cms/css/grid_pc.css" type="text/css" rel="stylesheet" />
+    <link href="//static.youku.com/v1.0.166/cms/css/uhome.css" type="text/css" rel="stylesheet" />
+    <link rel="Shortcut Icon" href="//img.alicdn.com/tfs/TB1WeJ9Xrj1gK0jSZFuXXcrHpXa-195-195.png" />
+    <link href="//img.alicdn.com/tfs/TB1hCN0S4jaK1RjSZKzXXXVwXXa-48-48.ico" rel="apple-touch-icon-precomposed" />
+    <meta name="application-name" content="优酷网" />
+    <meta name="msapplication-starturl" content="//www.youku.com/" />
+    <meta name="msapplication-task"
+        content="name=上传视频;action-uri=//www.youku.com/v/upload/;icon-uri=//www.youku.com/favicon.ico" />
+    <meta name="msapplication-task"
+        content="name=我的点播单;action-uri=//www.youku.com/v_showlist/type_99.html#playlist;icon-uri=//www.youku.com/favicon.ico" />
+    <meta name="msapplication-task"
+        content="name=我的优盘;action-uri=//u.youku.com/my/;icon-uri=//www.youku.com/favicon.ico" />
+    <meta name="google-site-verification" content="F2zYXuMVH2X76NeYEdAiGokv0QFtgOB1ZgCSZPglQbs" />
+   
+    <script src="//static.youku.com/v1.0.166/js/jquery.js"></script>
+    <script src="//g.alicdn.com/mtb/lib-mtop/2.4.2/mtop.js"></script>
+    <script>
+        jQuery.noConflict();
+    </script>
+    <script src="//static.youku.com/v1.0.166/js/prototype.js"></script>
+    <link type="text/css"
+        href="https://g.alicdn.com/pc-playpage-components/youku-component-compatible-jquery/style/index.css"
+        rel="stylesheet">
+    <script type="text/javascript"
+        src="https://g.alicdn.com/pc-playpage-components/youku-component-compatible-jquery/index.js"></script>
+    <script>
+        if (!window.Nova) {
+            Nova = {};
+        }
+        if (!window.NovaOptions) {
+            NovaOptions = {};
+            NovaOptions.compatibleMode = true;
+        }
+    </script>
+    <script>
+        if (!window.Local) {
+            Local = {
+                "RELEASE_TAG": "v1.0.166",
+                "PLAYER_RELEASE_TAG": "v1.0.0653",
+                "YOUKU_DOMAIN": "youku.com",
+                "YOUKU_HOMEURL": "www.youku.com",
+                "IMGSERVER": "\/\/static.youku.com",
+                "JSSERVER": "\/\/static.youku.com",
+                "CSSSERVER": "\/\/static.youku.com",
+                "VIDEO_PLAYPAGE_DOMAIN": "v.youku.com",
+                "PASSPORT_DOMAIN": "passport.youku.com",
+                "LOGIN_DOMAIN": "login.youku.com",
+                "UC_DOMAIN": "i.youku.com",
+                "SPACE_DOMAIN": "u.youku.com",
+                "INDEX_DOMAIN": "index.youku.com",
+                "NOTICE_DOMAIN": "notice.youku.com",
+                "COMMENT_DOMAIN": "comments.youku.com",
+                "NC_DOMAIN": "nc.youku.com",
+                "CMS_DOMAIN": "youku.com",
+                "WIDGET_DOMAIN": "comments.youku.com"
+            };
+        }
+    </script>
+    <script src="//account.youku.com/static-resources/js/loadFrame.js"></script>
+    <script src="//js.ykimg.com/youku/dist/js/page/nova/common_1.js"></script>
+    <script type="text/javascript" src="//static.youku.com/v1.0.166/cms/js/cmsCommon.js"></script>
+    <script type="text/javascript" src="//static.youku.com/v1.0.166/cms/js/cmsDatafromPrototype.js"></script>
+    <title>优酷客户端下载中心</title>
+
+    <style type="text/css">
+        body {
+            background-color: #fff;
+        }
+
+        .mBox {
+            background-color: #fff;
+            border: 1px solid #83cfff;
+        }
+
+        .mBox .head {
+            background: #cfecff url(//r1.ykimg.com/100120080909172151D87163EB1944481E2EE41F48B7645C1E) repeat-x;
+            border-bottom: 1px solid #83cfff;
+        }
+
+        .mBox .head .c {
+            padding: 2px 0;
+        }
+
+        .mBox .title,
+        .mBox .title *,
+        .bigVideo .v_title a {
+            color: #000;
+        }
+
+        input.txt,
+        textarea {
+            background-color: #fff;
+            border: 1px solid #83cfff;
+        }
+
+        .s_body button,
+        .s_body input.btn {
+            color: #000;
+        }
+
+        .line {
+            border-top-color: #e5e5e5;
+        }
+
+        .label {
+            color: #909090;
+        }
+
+        .disabled {
+            color: #909090;
+        }
+
+        .pageBar .page_stat {
+            color: #909090;
+        }
+
+        .pageBar .page_stat .num {
+            color: #909090;
+        }
+
+        .LPageBar {
+            border-top: 1px solid #c6c6c6;
+        }
+
+        .LPageBar .pages a {
+            border: 1px solid #bbdded;
+        }
+
+        .LPageBar .pages a:hover {
+            background: #bbdded;
+        }
+
+        .uListColl_T .user,
+        .uListColl_W .user {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+        }
+
+        .user_head img {
+            background-color: #fff;
+            border: 1px solid #83cfff;
+        }
+
+        .order {
+            color: #83cfff;
+        }
+
+        .top1,
+        .top2,
+        .top3 {
+            color: #d71118;
+        }
+
+        .message .user,
+        .message .reply {
+            color: #909090;
+        }
+    </style>
+
+    <script language="javascript">
+        var topicId = "TNDQyMTI=";
+        var pageId = "TOTAwODA=";
+        var domain = "pd";
+        var pageurl = "index";
+        var pagetype = "5";
+        var topicIdNum = "11053";
+        var pageIdNum = "22520";
+        var countryCode = "CN";
+
+        window.pv_abtest = '1'; //土豆统计pc
+        //矫正屏幕
+
+        if (!window.location.href.match(/screen=/)) {
+            if (navigator.userAgent.match(/(Nexus 7|GT-N8000)/i)) {
+                if (window.location.href.match(/\?/)) {
+                    window.location.href += '&screen=pad';
+                } else {
+                    window.location.href += '?screen=pad'; 
+                }
+            } else if (navigator.userAgent.match(/(iphone|Android)/i)) {
+                if (window.location.href.match(/\?/)) {
+                    window.location.href += '&screen=phone';
+                } else {
+                    window.location.href += '?screen=phone';
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="yk-w970"><script>
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","userid=&aplus&sidx=0&ckx=|",id="beacon-aplus",src="//g.alicdn.com/alilog/mlog/aplus_o.js")
+</script>
+    <script language="javascript" type="text/javascript">
+      window.location.href="//youku.com/product/index";
+    </script>
+    <script>
+        with(document) with(body) with(insertBefore(createElement("script"), firstChild)) setAttribute("exparams",
+            "userid=&aplus&sidx=0&ckx=|", id = "beacon-aplus", src = "//g.alicdn.com/alilog/mlog/aplus_o.js")
+    </script>
+    <script type="text/javascript" src="//static.youku.com/v1.0.166/index/js/qwindow.js"></script>
+    <script type="text/javascript" src="//static.youku.com/v1.0.166/index/js/popup.js"></script>
+    <script type="text/javascript" src="//static.youku.com/v1.0.166/cms/js/resize.js"></script>
+    <script>
+        var udomain = 'u.youku.com',
+            UC_DOMAIN = 'i.youku.com',
+            nc_domain = 'nc.youku.com',
+            youku_index_domain = 'www.youku.com',
+            notice_domain = '//notice.youku.com' //NOTICE_DOMAIN
+            ,
+            space_domain = 'u.youku.com',
+            comments_domain = '//comments.youku.com' //COMMENT_DOMAIN
+            ,
+            openLookingClick = '1',
+            passport = '1',
+            passport_url = '//passport.youku.com' //PASSPORT_DOMAIN
+            ,
+            callback = 'mynull',
+            novamodule = '',
+            youku_homeurl = 'www.youku.com'
+
+            ,
+            loginSwitchToNew = true,
+            loginDomainNew = 'login.youku.com'
+
+            ,
+            lottery_open_sidetool = "1",
+            lottery_id_sidetool = "",
+            lottery_sidetool = ""
+    </script>
+    <div class="screen">
+
+        <div id="topbanner" style="display:none;"></div>
+        <div id="youkuheader"></div>
+        <div class="s-body" style="margin-top: 70px">
+            <div name="m_pos" id="m_221104">
+                <style>
+                    body,
+                    div,
+                    dl,
+                    dt,
+                    dd,
+                    ul,
+                    ol,
+                    li,
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5,
+                    h6,
+                    pre,
+                    form,
+                    fieldset,
+                    input,
+                    button,
+                    select,
+                    option,
+                    textarea,
+                    p,
+                    blockquote,
+                    th,
+                    td {
+                        font-family: "Microsoft YaHei", "微软雅黑", helvetica, arial, verdana, tahoma, sans-serif;
+                    }
+
+                    * {
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    i,
+                    em {
+                        font-style: normal;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+
+                    body {
+                        padding: 0px;
+                    }
+
+                    img {
+                        border: 0 none;
+                    }
+
+                    .download-top {
+                        height: 50px;
+                        background: #fff;
+                        padding: 0;
+                        border-bottom: 2px solid #e0dfdf;
+                    }
+
+                    .download-top p {
+                        width: 1216px;
+                        height: 50px;
+                        margin: 0 auto;
+                        zoom: 1;
+                    }
+
+                    .download-top p .logo {
+                        float: left;
+                        width: 148px;
+                    }
+
+                    .download-top span {
+                        float: right;
+                        font-size: 16px;
+                        padding-top: 18px;
+                    }
+
+                    .download-top span em {
+                        display: inline;
+                        margin: 0px 5px 0 5px;
+                    }
+
+                    .download-top span a.cpcenter {
+                        margin-right: 70px;
+                    }
+
+                    .download-top span a {
+                        color: #555;
+                        display: inline;
+                        line-height: 20px;
+                    }
+
+                    .download-top span em.img {
+                        display: inline;
+                        margin: 0 5px 0 70px;
+                    }
+
+                    .download-top span em.img img {
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    .download-top span em.name {
+                        display: inline;
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+
+                    .download-top span em.name a {
+                        color: #555;
+                    }
+
+                    .download-top span em.colred a {
+                        color: #ed402d;
+                    }
+
+                    .carousel {
+                        display: none;
+                        height: 580px;
+                    }
+
+                    .carousel-pic {
+                        display: block;
+                        width: 100%;
+                        height: 580px;
+                        position: relative;
+                        z-index: 0;
+                    }
+
+                    .carousel-pic a {
+                        display: block;
+                        height: 580px;
+                    }
+
+                    .carousel-pic img {
+                        border: 0 none;
+                        height: 580px;
+                        padding: 0;
+                        margin: 0;
+                    }
+
+                    .carousel-btn {
+                        width: 560px;
+                        height: 120px;
+                        position: absolute;
+                        bottom: 40px;
+                        left: 50%;
+                        margin-left: -280px;
+                        z-index: 100;
+                    }
+
+                    .carousel-btn ul {
+                        height: 170px;
+                    }
+
+                    .carousel-btn ul li {
+                        float: left;
+                        width: 120px;
+                        height: 120px;
+                        border-radius: 5px;
+                        margin-right: 10px;
+                        position: relative;
+                    }
+
+                    .carousel-btn ul li img {
+                        width: 120px;
+                        height: 120px;
+                        border-radius: 5px;
+                    }
+
+                    .carousel-btn ul li a {
+                        display: block;
+                        width: 120px;
+                        height: 120px;
+                        border-radius: 4px;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        border-radius: 5px;
+                        opacity: 0.5;
+                        filter: alpha(opacity=50);
+                    }
+
+                    .carousel-btn ul li a.cur {
+                        opacity: 1;
+                        filter: alpha(opacity=100);
+                    }
+
+                    .carousel {
+                        display: none;
+                    }
+
+                    .pic-ydapp {
+                        background: url(//img.alicdn.com/tfs/TB1r.6IEAL0gK0jSZFxXXXWHVXa-1920-580.png) center no-repeat;
+                    }
+
+                    .pic-cibn {
+                        background: url(//r1.ykimg.com/051000005AD442EAAD9AB79701051AC8) center no-repeat;
+                    }
+
+                    .pic-iku {
+                        background: url(//img.alicdn.com/tfs/TB1xcXdTzDpK1RjSZFrXXa78VXa-1920-580.png) center no-repeat;
+                    }
+
+                    .pic-laifeng {
+                        background: url(//r1.ykimg.com/051000005637425667BC3D0EBF0BE1D0) center no-repeat;
+                    }
+
+                    .pic-lyq {
+                        background: url(//r1.ykimg.com/0510000056373E9967BC3D42800D5FCA) center no-repeat;
+                    }
+
+                    .boxnull {
+                        width: 100%;
+                        height: 70px;
+                        background: #fff;
+                        border-bottom: 1px solid #e9e8e8;
+                        box-shadow: 0px 3px 3px #f0efef;
+                    }
+
+                    .box-dl {
+                        background: #f8f8f8;
+                        overflow: hidden;
+                        zoom: 1;
+                        padding-bottom: 50px;
+                        position: relative;
+                    }
+
+                    .boxnva {
+                        width: 1216px;
+                        height: 70px;
+                        margin: 0 auto;
+                    }
+
+                    .boxnva p {
+                        float: left;
+                        width: 110px;
+                        height: 70px;
+                    }
+
+                    .boxnva p a {
+                        display: block;
+                        width: 110px;
+                        height: 70px;
+                        background: url(//r1.ykimg.com/051000005638256667BC3D6AA006CFC1) 0 0 no-repeat;
+                    }
+
+                    .boxnva p a:hover,
+                    .boxnva p a.show {
+                        background: url(//r1.ykimg.com/051000005638256667BC3D6AA006CFC1) -110px 0 no-repeat;
+                    }
+
+                    .ul-nva {
+                        float: right;
+                        width: 770px;
+                        height: 70px;
+                        margin: 0 auto;
+                        overflow: hidden;
+                    }
+
+                    .ul-nva li {
+                        float: left;
+                        width: 190px;
+                        height: 70px;
+                    }
+
+                    .ul-nva li a {
+                        display: block;
+                        width: 190px;
+                        height: 70px;
+                    }
+
+                    .ul-nva li a.pc {
+                        background: url(//r1.ykimg.com/051000005638256667BC3D6AA006CFC1) 0px -140px no-repeat;
+                    }
+
+                    .ul-nva li a.tv {
+                        background: url(//r1.ykimg.com/051000005638256667BC3D6AA006CFC1) 0px -210px no-repeat;
+                    }
+
+                    .ul-nva li a.wireless {
+                        background: url(//r1.ykimg.com/051000005638256667BC3D6AA006CFC1) 0px -70px no-repeat;
+                    }
+
+                    .ul-nva li a.hardware {
+                        background: url(//r1.ykimg.com/051000005638256667BC3D6AA006CFC1) 0px -280px no-repeat;
+                    }
+
+                    .ul-nva li a.pc:hover,
+                    .ul-nva li.show a.pc {
+                        background: url(//r1.ykimg.com/051000005638256667BC3D6AA006CFC1) -190px -140px no-repeat;
+                    }
+
+                    .ul-nva li a.tv:hover,
+                    .ul-nva li.show a.tv {
+                        background: url(//r1.ykimg.com/051000005638256667BC3D6AA006CFC1) -190px -210px no-repeat;
+                    }
+
+                    .ul-nva li a.wireless:hover,
+                    .ul-nva li.show a.wireless {
+                        background: url(//r1.ykimg.com/051000005638256667BC3D6AA006CFC1) -190px -70px no-repeat;
+                    }
+
+                    .ul-nva li a.hardware:hover,
+                    .ul-nva li.show a.hardware {
+                        background: url(//r1.ykimg.com/051000005638256667BC3D6AA006CFC1) -190px -280px no-repeat;
+                    }
+
+                    .navFix {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        z-index: 199;
+                        _position: absolute;
+                    }
+
+                    .box-sort {
+                        width: 1250px;
+                        margin: 30px auto;
+                    }
+
+                    .box-sort .sort {
+                        display: block;
+                        width: 1260px;
+                        margin-bottom: 30px;
+                    }
+
+                    .sort ul {
+                        float: left;
+                        width: 240px;
+                        height: 250px;
+                        position: relative;
+                        margin: 0 10px 10px 0;
+                        opacity: 0.3;
+                        filter: alpha(opacity=30);
+                    }
+
+                    .sort ul li {
+                        font-size: 14px;
+                        background: #fff;
+                        text-align: center;
+                        border: 1px solid #f0efef;
+                        border-radius: 5px;
+                    }
+
+                    .sort ul li img {
+                        width: 94px;
+                        height: 94px;
+                    }
+
+                    .sort ul li p {
+                        color: #9c9c9c;
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+
+                    .sort ul li a {
+                        color: #9c9c9c;
+                        font-size: 20px;
+                    }
+
+                    .sort ul li .sortSbtn {
+                        display: none
+                    }
+
+                    .sort ul li .sortSbtn a {
+                        display: block;
+                        width: 210px;
+                        height: 46px;
+                        font-size: 20px;
+                        line-height: 46px;
+                        color: #fff;
+                        text-align: center;
+                        background: #3384ff;
+                        border: 1px solid #f2f2f2;
+                        border-radius: 3px;
+                        cursor: pointer;
+                    }
+
+                    .sort ul li.sortNormal {
+                        width: 200px;
+                        height: 220px;
+                        padding: 15px 20px 15px;
+                        margin: 0 10px 10px 0;
+                    }
+
+                    .sort ul li.sortNormal a {
+                        color: #9c9c9c;
+                        line-height: 30px;
+                    }
+
+                    .sort ul li.sortNormal p {
+                        margin-top: 10px;
+                    }
+
+                    .sort ul li.sortSuspend {
+                        width: 210px;
+                        height: 250px;
+                        padding: 30px 20px 10px;
+                        position: absolute;
+                        text-align: center;
+                        top: -20px;
+                        left: -5px;
+                        z-index: 99;
+                        box-shadow: 0px 0px 6px #eae8e8;
+                    }
+
+                    .sort ul li.sortSuspend .words {
+                        margin: 0px;
+                    }
+
+                    #m_221104 .words2 {
+                        margin: 0 0 10px;
+                    }
+
+                    #m_221104 .words2 em {
+                        font-size: 20px;
+                        line-height: 30px;
+                    }
+
+                    .sort ul li.sortSuspend .words em {
+                        font-size: 20px;
+                        line-height: 30px;
+                    }
+
+                    .sort ul li.sortSuspend .sortSbtn {
+                        display: block
+                    }
+
+                    .sort ul.show {
+                        opacity: 1;
+                        filter: alpha(opacity=100);
+                    }
+
+                    .box-iku {
+                        width: 1216px;
+                        margin: 0 auto;
+                        padding-top: 180px;
+                    }
+                </style>
+                <div class="iku">
+                    <div class="carousel-pic">
+                        <div class="carousel" style="display:block;">
+                            <a href="//mobile.youku.com/index/wireless" class="carousel-pic pic-ydapp" target="_blank">
+                                <!--<img src="//r1.ykimg.com/051000005638868067BC3D6E5903E67E" >--></a>
+                        </div>
+
+                        <div class="carousel">
+                            <a href="//acz.youku.com/wow/tvact/act/cibn" class="carousel-pic pic-cibn" target="_blank">
+                                <!--<img src="//r1.ykimg.com/051000005AD442EAAD9AB79701051AC8">--></a>
+                        </div>
+
+                        <div class="carousel">
+                            <a href="//pd.youku.com/pc" class="carousel-pic pic-iku" target="_blank">
+                                <!--<img src="//r1.ykimg.com/051000005637429A67BC3D55BF0EDA37">--></a>
+                        </div>
+                        <div class="carousel">
+                            <a href="//pd.youku.com/laifeng" class="carousel-pic pic-laifeng" target="_blank">
+                                <!--<img src="//r1.ykimg.com/051000005637425667BC3D0EBF0BE1D0" >--></a>
+                        </div>
+
+
+                        <div class="carousel-btn" style="z-index:99;">
+                            <ul id="carousel">
+                                <li><a href="//mobile.youku.com/index/wireless" target="_blank" class="cur"><img
+                                            src="//img.alicdn.com/tfs/TB1UV05XqL7gK0jSZFBXXXZZpXa-195-195.png"></a>
+                                </li>
+                                <li><a href="//acz.youku.com/wow/tvact/act/cibn" target="_blank"><img
+                                            src="//gw.alicdn.com/imgextra/i3/O1CN01r986xR24U2o3KZDTm_!!6000000007393-2-tps-120-120.png"></a></li>
+                                <li><a href="//pd.youku.com/pc" target="_blank"><img
+                                            src="//img.alicdn.com/tfs/TB1vAE9Xrr1gK0jSZFDXXb9yVXa-160-160.png"></a>
+                                </li>
+                                <li><a href="//www.laifeng.com/app/download" target="_blank"><img
+                                            src="//img.alicdn.com/tfs/TB1.Xg7XAT2gK0jSZFkXXcIQFXa-195-195.png"></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="box-dl">
+                        <div class="box-sort">
+                            <div class="sort" id="sort">
+                                <ul class="show" data-sort="1">
+                                    <li class="sortNormal">
+                                        <p class="pic"><img
+                                                src="//img.alicdn.com/tfs/TB1WeJ9Xrj1gK0jSZFuXXcrHpXa-195-195.png"><br><a
+                                                href="//mobile.youku.com/index/wireless" target="_blank">优酷移动</a>
+                                        </p>
+                                        <p class="words">看世界，尽在优酷</p>
+                                    </li>
+                                    <li class="sortSuspend" style="display: none;">
+                                        <p class="pic"><img
+                                                src="//img.alicdn.com/tfs/TB1daXqTq6qK1RjSZFmXXX0PFXa-200-200.png">
+                                        </p>
+                                        <p class="words">扫描二维码<br><em>优酷移动</em></p>
+                                        <p class="sortSbtn"><a href="//mobile.youku.com/index/wireless" class="xz"
+                                                target="_blank">了解详情</a></p>
+                                    </li>
+                                </ul>
+
+                                <ul class="show" data-sort="3">
+                                    <li class="sortNormal">
+                                        <p class="pic"><img src="//gw.alicdn.com/imgextra/i4/O1CN01yrXjY01d8yxkIsYUu_!!6000000003692-2-tps-94-94.png"><br><a
+                                                href="//acz.youku.com/wow/tvact/act/cibn" target="_blank">优酷TV版</a></p>
+                                        <p class="words">家有酷喵享看享玩</p>
+                                    </li>
+                                    <li class="sortSuspend" style="display: none;">
+                                        <p class="pic"><a href="//acz.youku.com/wow/tvact/act/cibn" target="_blank"><img
+                                                    src="//gw.alicdn.com/imgextra/i4/O1CN01yrXjY01d8yxkIsYUu_!!6000000003692-2-tps-94-94.png"><br>优酷TV版</a>
+                                        </p>
+                                        <p class="words">家有酷喵享看享玩</p>
+                                        <p class="sortSbtn"><a href="//acz.youku.com/wow/tvact/act/cibn" target="_blank"
+                                                class="xz">了解详情</a></p>
+                                    </li>
+                                </ul>
+
+                                <ul class="show" data-sort="1">
+                                    <li class="sortNormal">
+                                        <p class="pic"><img src="//r1.ykimg.com/05100000574803A167BC3D595B0CEE70"><br><a
+                                                href="//h5.pl.youku.com/kids_youku_download/pc.html"
+                                                target="_blank">小小优酷</a></p>
+                                        <p class="words">0至12岁宝宝专属视频应用</p>
+                                    </li>
+                                    <li class="sortSuspend" style="display: none;">
+                                        <p class="pic"><a href="//h5.pl.youku.com/kids_youku_download/pc.html"
+                                                target="_blank"><img
+                                                    src="//r1.ykimg.com/05100000574803A167BC3D595B0CEE70"><br>小小优酷</a>
+                                        </p>
+                                        <p class="words">0至12岁宝宝专属视频应用</p>
+                                        <p class="sortSbtn"><a href="//h5.pl.youku.com/kids_youku_download/pc.html"
+                                                class="xz" target="_blank">了解详情</a></p>
+                                    </li>
+                                </ul>
+
+                                <ul class="show" data-sort="1">
+                                    <li class="sortNormal">
+                                        <p class="pic"><img
+                                                src="//img.alicdn.com/tfs/TB1.Xg7XAT2gK0jSZFkXXcIQFXa-195-195.png"><br><a
+                                                href="//www.laifeng.com/app/download" target="_blank">来疯</a></p>
+                                        <p class="words">人生没有彩排，每天都是直播。互联网最火得生活直播秀平台...</p>
+                                    </li>
+                                    <li class="sortSuspend" style="display: none;">
+                                        <p class="pic"><a href="//www.laifeng.com/app/download" target="_blank"><img
+                                                    src="//img.alicdn.com/tfs/TB1.Xg7XAT2gK0jSZFkXXcIQFXa-195-195.png"><br>来疯</a>
+                                        </p>
+                                        <p class="words">人生没有彩排，每天都是直播。互联网最火得生活直播秀平台...</p>
+                                        <p class="sortSbtn"><a href="//pd.youku.com/laifeng" class="xz"
+                                                target="_blank">了解详情</a></p>
+                                    </li>
+                                </ul>
+                                <ul class="show" data-sort="2">
+                                    <li class="sortNormal">
+                                        <p class="pic"><img
+                                                src="//img.alicdn.com/tfs/TB1WeJ9Xrj1gK0jSZFuXXcrHpXa-195-195.png"><br><a
+                                                href="//pd.youku.com/pc" target="_blank">PC客户端</a></p>
+                                        <p class="words">优酷Windows & Mac版</p>
+                                        <p class="words2">流畅体验，支持下载、离线观看</p>
+
+                                    </li>
+                                    <li class="sortSuspend" style="display: none;">
+                                        <p class="pic"><a href="//pd.youku.com/pc" target="_blank"><img
+                                                    src="//img.alicdn.com/tfs/TB1WeJ9Xrj1gK0jSZFuXXcrHpXa-195-195.png"><br>PC客户端</a>
+                                        </p>
+                                        <p class="words">优酷Windows & Mac版</p>
+                                        <p class="words2">流畅体验，支持下载、离线观看</p>
+
+                                        <p class="sortSbtn"><a href="//pd.youku.com/pc" class="xz">了解详情</a></p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<script src="//js.ykimg.com/youku/dist/js/lib_13.js" id="libjsnode" charset="utf-8"></script>-->
+                <script type="text/javascript" src="//js.ykimg.com/youku/dist/js/g_69.js"></script>
+                <script type="text/javascript" src="//js.ykimg.com/youku/dist/js/page/find/g_114.js"></script>
+
+                <script>
+                    document.domain = "youku.com";
+                    var $dltop = $('#dltop');
+                    $.getJSON('//lv.youku.com/api/grade/get_uinfo?callback=?', function (res) {
+                        if (res.errno == 0) {
+                            //console.log(res);
+                            if (res.data) {
+                                if (res.data.is_vip == false) {
+                                    $dltop.html(
+                                        '<p><a href="//www.youku.com/" target="_blank" class="logo"><img src="//static.youku.com/youku/dist/img/find/yk-logo-1220.png" width="148" height="50" ></a><span><em class="img"><img class="avatar" src="' +
+                                        res.data.user_image +
+                                        '"></em><em class="name"><a href="//i.youku.com/u/profile" target="_blank">' +
+                                        res.data.user_name +
+                                        '</a></em><!--<em class="vip"></em><em class="grade"></em>--></span></p>'
+                                    );
+                                } else {
+                                    $dltop.html(
+                                        '<p><a href="//www.youku.com/" target="_blank" class="logo"><img src="//static.youku.com/youku/dist/img/find/yk-logo-1220.png" width="148" height="50"></a><span><em class="img"><img class="avatar" src="' +
+                                        res.data.user_image +
+                                        '"></em><em class="name colred"><a href="//i.youku.com/u/profile" target="_blank">' +
+                                        res.data.user_name +
+                                        '</a></em><!--<em class="vip"></em><em class="grade"></em>--></span></p>'
+                                    );
+                                }
+                            }
+                        } else { //未登录
+                            $dltop.html(
+                                '<p><a href="//www.youku.com/" target="_blank"  class="logo"><img src="//static.youku.com/youku/dist/img/find/yk-logo-1220.png" width="148" height="50" ></a><span><em><a href="//account.youku.com/register.htm" target="_blank">注册</a><em class="line">/</em><a href="//account.youku.com/?callback=//pd.youku.com/" id="login">登录</a></em></span></p>'
+                            );
+                        }
+                    });
+
+                    var len = $("#carousel > li").length;
+                    var index = 0;
+                    var adTimer;
+
+                    $("#carousel li").mouseover(function () {
+                        index = $("#carousel li").index(this);
+                        showImg(index);
+                    }).eq(0).mouseover();
+                    $('.carousel-pic').hover(function () {
+                        clearInterval(adTimer);
+                    }, function () {
+                        clearInterval(adTimer);
+                        adTimer = setInterval(function () {
+                            showImg(index)
+                            index++;
+                            if (index == len) {
+                                index = 0;
+                            }
+                        }, 8000);
+                    }).trigger("mouseleave");
+
+                    function showImg(index) {
+                        $(".carousel").css('display', 'none').eq(index).css('display', 'block')
+                        $("#carousel li a").removeClass("cur").eq(index).addClass("cur");
+                    }
+
+                    var $oUl = $('.sort').find('ul');
+                    var $sortNormal = $oUl.find('.sortNormal');
+                    var $sortSuspend = $oUl.find('.sortSuspend');
+
+                    $oUl.bind({
+                        mouseover: function (event) {
+                            event.preventDefault();
+                            var uId = $(this).attr('data-sort');
+                            $oUl.removeClass('show');
+                            $(this).find('.sortSuspend').css('display', 'block');
+                            $(this).addClass('show');
+                            $aA.parent().removeClass('show');
+                            $aAll.removeClass('show');
+                            $aA.parent().find('[href=' + uId + ']').parent().addClass('show');
+                        },
+                        mouseout: function () {
+                            $(this).parent().find('.sortSuspend').css('display', 'none');
+                            $aAll.trigger('click');
+                        }
+                    });
+
+                    var $boxNva = $('#boxnva');
+                    var $nvaLi = $boxNva.find('li');
+                    var $aA = $nvaLi.find('a');
+                    var $boxSort = $('#sort');
+                    var $aAll = $boxNva.find('.all a');
+
+                    $aA.bind('click', function (event) {
+                        event.preventDefault();
+
+                        var id = $(this).attr('href');
+                        $nvaLi.removeClass('show');
+                        $aAll.removeClass('show');
+
+                        $(this).parent().addClass('show');
+                        $('#sort ul').removeClass('show');
+                        $oUl.parent().find('[data-sort= ' + id + ']').addClass('show');
+                    });
+                    $aAll.bind('click', function (event) {
+                        event.preventDefault();
+                        $('#sort ul').addClass('show');
+                        $aAll.addClass('show');
+                        $nvaLi.removeClass('show');
+                    })
+
+                    var $window = $(window);
+                    var $headHeight = 580;
+                    $(document).ready(function () {
+                        $window.scroll(function () {
+                            if ($(this).scrollTop() > $headHeight) {
+                                $boxNva.addClass("navFix");
+                            } else {
+                                $boxNva.removeClass("navFix");
+                            }
+                        })
+                    });
+                </script>
+            </div>
+
+
+
+        </div>
+        <div id="fixbar"></div>
+        <div id="youkufooter"></div>
+    </div>
+
+
+    <script type="text/javascript">
+        var cateStr = 'cms-00-11053-22520-0';
+    </script>
+    <script type="text/javascript">
+        Nova.img_lazyload = true;
+    </script>
+    <script type="text/javascript">
+        window.nova_init_hook_click_charset = function () {
+            Event.observe(document, "mousedown", charset_click);
+        }
+
+        function setCharset(_charset) {
+            document.cookie = "__utmarea=" + _charset + "; path=/; domain=.youku.com;";
+        }
+    </script>
+    <script type="text/javascript" src="//static.youku.com/v1.0.166/index/js/tdstat.js"></script>
+    <script type="text/javascript" src="//static.youku.com/v1.0.166/cms/js/ani.js"></script>
+    <script type="text/javascript" src="//static.youku.com/v1.0.166/cms/js/hover.js"></script>
+    <script type="text/javascript" src="//static.youku.com/v1.0.166/cms/js/gridTab.js"></script>
+    <script type="text/javascript" src="//static.youku.com/v1.0.166/index/js/ikuAdapterNew.js"></script>
+    <script type="text/javascript" src="//static.youku.com/v1.0.166/cms/js/ikuDown.js"></script>
+
+    <script>
+        document.observe("dom:loaded", function () {
+            VideoHover('.ishover');
+        });
+    </script>
+    <script>
+        if (window.$$InitYoukuHeader && window.$$InitYouKuFooter && window.$$InitYoukuFixedBar) {
+            const currentChannel = {
+                domain: '//sky.vip.youku.com/bwsvip/136/c5597b1a',
+                name: ''
+            }
+            window.$$InitYoukuHeader('youkuheader', {
+                currentChannel: currentChannel,
+                focusWhite: true,
+                enableScroll: false
+            });
+
+            window.$$InitYouKuFooter('youkufooter', {});
+
+            window.$$InitYoukuFixedBar('fixbar', {});
+        }
+    </script>
+</body>
+
+</html>
+<!-- 1523860619 - 1556509558 -->

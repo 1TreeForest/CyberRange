@@ -1,0 +1,363 @@
+
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+    <meta content="中国加盟网,登录页面" name="keywords">
+    <meta content="中国加盟网个人中心登录页面。" name="description">
+	<title>个人中心--登录</title>
+	<link rel="stylesheet" href="http://image1.jmw.com.cn/login_v1/css/reset.css" />
+	<link rel="stylesheet" href="http://image1.jmw.com.cn/login_v1/css/style.css" />
+	<script type="text/javascript" src="http://image1.jmw.com.cn/login_v1/js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+	<div class="mainBody"> 
+		<div class="autoWidth clear"> 
+			<div class="logo fl"> 
+				<a href="http://www.jmw.com.cn/" class="fl jmw">
+                    <img src="http://image1.jmw.com.cn/login_v1/images/logo.png" />
+                </a>
+				<p class="title fl">个人登录</p>
+			</div>
+			<div class="freeConsultation fr"> 
+				<span class="free">免费咨询：4000-500-555</span>
+				<a href="http://www.jmw.com.cn/" class="return">返回首页</a>
+				<a href="http://comp.jmw.com.cn/login.php" class="personalLogin">企业登录</a>
+			</div>
+		</div>
+		<!-- 登录框 -->
+		<div class="loginBox"> 
+			<div class="loginBoxOne personalBoxOne"> 
+				<ul class="personalTitle clear"> 
+					<li class="selected">个人账户登录</li>
+					<li>动态密码登录</li>
+				</ul>
+				<div class="con">
+					<form id="person_login" action="../login_v1.php" style="display:block;" method="post" autocomplete="off">
+						<ul> 
+							<li> 
+								<p class="formPhone clear">
+									<input type="text" name="personPhone" id="personPhone" placeholder="手机号" title="手机号" class="fl" maxlength="11">
+								</p>
+							</li>
+							<li> 
+								<p class="formPhone password">
+									<input type="password" name="pass_word" id="pass_word" placeholder="密码" title="密码">
+								</p>
+							</li>
+							<li class="clear mt24"> 
+								<p class="formPhone yzm fl">
+									<input type="text" name="tuxingyzm" id="tuxingyzm" placeholder="验证码" title="验证码">
+								</p>
+								<p class="fl yzmNum"> 
+									<img id="tuxing" src="../identifying_code.php" onclick="refresh($(this))" />
+								</p>
+								<p class="refresh fr" onclick="refresh($('#tuxing'))">刷新</p>
+							</li>
+							<!--<li class="wrongPass">账号或密码错误</li>-->
+							<li class="personalLog"> 
+								<input type="submit" value="立即登录" class="logImmediately">
+							</li>
+							<li class="clear rememberFindPass">
+								<div class="fr findPassword personalFingPass">
+									<a href="../findpwdbytel.php">忘记密码？</a>
+								</div>
+							</li>
+						</ul>
+					</form>
+					<form action="../login_by_code_v1.php" id="person_send_login" method="post" autocomplete="off">
+						<ul> 
+							<li> 
+								<div class="formPhone clear">
+									<input type="text" id="person_phone" name="person_phone" placeholder="手机号" title="手机号" class="fl" maxlength="11">
+								</div>
+							</li>
+							<li class="clear mt24"> 
+								<p class="formPhone yzm fl">
+									<input type="text" name="tuxing_yzm" id="tuxing_yzm" placeholder="图形验证码" title="图形验证码">
+								</p>
+								<p class="fl yzmNum"> 
+									<img id="graphics" src="../identifying_code.php" alt="" onclick="refresh($(this))" />
+								</p>
+								<p class="refresh fr" onclick="refresh($('#graphics'))">刷新</p>
+							</li>
+							<li class="mt24"> 
+								<p class="formPhone dxin_yzm clear">
+									<input type="text" name="send_code" id="send_code" placeholder="短信验证码" title="短信验证码" class="fl">
+									<input type="button" value="获取验证码" class="getYzm fr" id="getYzm" onclick="sendemail()">
+								</p>
+							</li>
+							<!--<li class="wrongPass">验证码错误</li>-->
+							<li class="personalLog"> 
+								<input type="submit" value="立即登录" class="logImmediately">
+							</li>
+							<li class="clear rememberFindPass"> 
+								<p class="fl">
+									<label class="fl">若无平台账号，登录后平台自动为您注册</label>
+								</p>
+							</li>
+						</ul>
+					</form>
+				</div>
+			</div>
+			<p class="notRegistered">
+				<span>尚未注册？</span>
+				<a href="../registered.php">立即注册</a>
+			</p>
+		</div>
+		<!-- 底部版权信息 -->
+		<!-- <div class="footer"> 
+			<p>Copyright©2004-2022 JMW.COM.CN. All Rights Reserved   北京天创时代信息技术有限公司  版权所有</p>
+			<p class="icp clear"><a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202006020700545" target="_blank"></a><font class="fl">京ICP证：040787号   京公海网安备案编号:1101084667</font></p>
+		</div> -->
+        <div class="footer"> 
+			<p>Copyright©2004-2022 JMW.COM.CN. All Rights Reserved   北京天创时代信息技术有限公司  版权所有</p>
+			<p class="icp clear"><a href="https://beian.miit.gov.cn/" class="beian" target="_blank"></a><font class="fl"><a href="https://beian.miit.gov.cn/" style="color:#fff" target="_blank">京ICP证：040787号</a>   <a href="https://beian.miit.gov.cn/" style="color:#fff" target="_blank">京公海网安备案编号:1101084667</a></font></p>
+		</div>
+
+
+
+	</div>
+    <script type="text/javascript" src="../public/js/jquery.validate.js"></script>
+	<script type="text/javascript" src="../public/js/jquery.form.js"></script>
+	<script type="text/javascript"> 
+		//个人账户登录和动态密码切换
+		$('.personalBoxOne .personalTitle li').click(function(){
+            $('.wrongPass').remove();
+            $('.formPhone').css('border','1px solid #e3e4ee');
+			$(this).addClass('selected').siblings('.selected').removeClass('selected');
+			$('.personalBoxOne .con form').eq($(this).index()).show().siblings().hide();
+		});
+		$('.formPhone input:text,.formPhone input:password').focus(function(){
+			$(this).parents('.formPhone').css('border','1px solid #a1aed4')
+		});
+
+        //验证账号密码登录信息
+        $(function () {
+            $("#person_login").validate({
+                rules: {
+                    personPhone:{
+                        required:true,
+                        maxlength:11
+                    },
+                    pass_word:{
+                        required:true,
+                        maxlength:20
+                    },
+                    tuxingyzm:{
+                        required:true,
+                        remote:{
+                            url:'../ajax_check_code.php',
+                            type:'post',
+                            data:{
+                                tuxingyzm:function () {
+                                    return $('#tuxingyzm').val();
+                                }
+                            }
+                        }
+                    }
+                },
+                messages: {
+                    personPhone:{
+                        required:'请填写手机号',
+                        maxlength:'手机号最多输入11位'
+                    },
+                    pass_word:{
+                        required:'请填写密码',
+                        maxlength:'密码最多输入20位'
+                    },
+                    tuxingyzm:{
+                        required:'请填写验证码',
+                        remote:'验证码不正确'
+                    }
+                },
+                focusInvalid: false,
+                onfocusout: function(element) {
+                    $(element).valid();
+                },
+                showErrors: function(errorMap,errorList){
+                    if(errorList.length > 0)
+                    {
+                        var key = Object.keys(errorMap);
+                        $('#'+key[0]).parent().css('border','1px solid #f45242');
+                        $('.wrongPass').remove();
+                        $('.personalLog').before('<li class="wrongPass">'+errorList[0].message+'</li>');
+                    }else{
+                        $('.wrongPass').remove();
+                        $(':text,:password').parent().css('border','1px solid #e3e4ee');
+                    }
+                },
+				submitHandler: function (form) {
+					$(form).ajaxSubmit({
+						dataType:"json",
+						success:function (result) {
+							if(result.code == 0)
+							{
+								setTimeout(function () {
+								
+									$('.wrongPass').remove();
+									$('.personalLog').before('<li class="wrongPass">'+result.msg+'</li>');
+								}, 1000);
+							}else{
+								window.location.href = './index.php';
+							}
+						}
+					});
+				}
+            });
+
+            //自定义验证--手机号
+            $.validator.addMethod("isMobile",function(value,element){
+                var mobile = /^1[\d]{10}$/;
+                return this.optional(element) || mobile.test(value);
+            },"请输入正确的手机号");
+
+            //验证动态密码登录信息
+            $("#person_send_login").validate({
+                rules: {
+                    person_phone:{
+                        required:true,
+                        maxlength:11,
+                        isMobile:true
+                    },
+                    tuxing_yzm:{
+                        required:true,
+                        remote:{
+                            url:'../ajax_check_code.php',
+                            type:'post',
+                            data:{
+                                tuxingyzm:function () {
+                                    return $('#tuxing_yzm').val();
+                                }
+                            }
+                        }
+                    },
+                    send_code:{
+                        required:true,
+                        remote:{
+                            url:'../checkpersoncode.php',
+                            type:'post',
+                            data:{
+                                code:function () {
+                                    return $('#send_code').val();
+                                },
+                                telphone:function () {
+                                    return $('#person_phone').val();
+                                }
+                            }
+                        }
+                    }
+                },
+                messages: {
+                    person_phone:{
+                        required:'请填写手机号码',
+                        maxlength:'手机号最多输入11位',
+                        isMobile:'请输入正确的手机号'
+                    },
+                    tuxing_yzm:{
+                        required:'请填写图形验证码',
+                        remote:'图形验证码不正确'
+                    },
+                    send_code:{
+                        required:'请填写短信验证码',
+                        remote:'短信验证码不正确'
+                    }
+                },
+                focusInvalid: false,
+                onfocusout: function(element) {
+                    $(element).valid();
+                },
+                showErrors: function(errorMap,errorList){
+                    if(errorList.length > 0)
+                    {
+                        var key = Object.keys(errorMap);
+                        $('#'+key[0]).parent().css('border','1px solid #f45242');
+                        $('.wrongPass').remove();
+                        $('.personalLog').before('<li class="wrongPass">'+errorList[0].message+'</li>');
+                    }else{
+                        $('.wrongPass').remove();
+                        $(':text,:password').parent().css('border','1px solid #e3e4ee');
+                    }
+                }
+            });
+        });
+		
+		//获取验证码
+		var countdown=60;
+		function sendemail()
+        {
+			var person_phone = $("#person_phone").val();
+			var tuxing_yzm = $("#tuxing_yzm").val();
+			var myreg=/^1[\d]{10}$/;
+			if(!myreg.test(person_phone)) 
+            {
+                $('.wrongPass').remove();
+                $('.personalLog').before('<li class="wrongPass">手机号错误</li>');
+                return false;
+            }
+			if(tuxing_yzm=='')
+            {
+                $('.wrongPass').remove();
+                $('.personalLog').before('<li class="wrongPass">图形验证码为空</li>');
+                return false;
+            }
+			var obj = $("#getYzm");
+			$.ajax({
+                async:false,
+                type:'post',
+                url:"../send_code.php",
+                data:{telephone:person_phone,code:tuxing_yzm},
+                success:function(html)
+                {
+                    if(html == -5)
+                    {
+                        $('.wrongPass').remove();
+                        $('.personalLog').before('<li class="wrongPass">您好，您当天获取短信次数已达安全上限，请明天再试！</li>');
+                        return false;
+                    }
+                    else if(html == -111)
+                    {
+                        $('.wrongPass').remove();
+                        $('.personalLog').before('<li class="wrongPass">请检查图形验证码！</li>');
+                        return false;
+                    }
+                    else if(html == -4)
+                    {
+                        $('.wrongPass').remove();
+                        $('.personalLog').before('<li class="wrongPass">您好，24小时内已经向你手机发送了3次验证短信，达到安全上限，请明天再试！</li>');
+                        return false;
+                    }
+                    else
+                    {
+                        tuxing_yzm="";
+                        settime(obj);<!-- 显示倒计时 -->
+                    }
+                }
+            })
+		}
+		function settime(obj)
+        {
+			if (countdown == 0)
+			{
+				obj.attr('disabled',false); 
+				obj.val("重新发送");
+				countdown = 60; 
+				return;
+			} else { 
+				obj.attr('disabled',true);
+				obj.val("(" + countdown + ")秒");
+				countdown--; 
+			} 
+		    setTimeout(function() { settime(obj) },1000)
+		}
+
+		//图形验证码变化
+		function refresh(obj)
+        {
+            obj.attr("src","./identifying_code.php?rand"+Math.random());
+			return false;
+		}
+		//测试ftp
+	</script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN"> 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telphone=no, email=no" />
+    <title>域名whois查询 - 站长工具</title>
+    <meta name="keywords" content="whois查询,域名whois查询" />
+    <meta name="description" content="站长工具提供域名whois查询工具，汉化版的域名whois查询工具。帮您快速检测域名的whois信息以及whois反查信息。" />
+    <link href="/Content/Mobile/css/boot3.3.7/bootstrap.min.css" rel="stylesheet" />
+ 
+<link href="//csstools.chinaz.com/common/wap/iconfont/iconfont.css" rel="stylesheet" /> 
+<link href="//csstools.chinaz.com/common/wap/normalize.css" rel="stylesheet"/>
+<link href="//csstools.chinaz.com/common/wap/t-common.css" rel="stylesheet" />
+
+<link href="//csstools.chinaz.com/tools/wap/css/t-whoistyle.css" rel="stylesheet" />    
+<script src="/Content/jquery-1.10.2/jquery.js"></script>
+<script src="/Content/Mobile/js/boot3.3.7/bootstrap.min.js"></script>
+<script src="//csstools.chinaz.com/common/wap/t-common.js"></script>
+
+<!--[if lt IE 9]>
+<script src="~/Content/Mobile/js/ieh5/html5shiv.min.js"></script>
+<script src="~/Content/Mobile/js/ieh5/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+
+</head>
+<body>
+    <style>
+        .layui-input, .layui-select, .layui-textarea {
+            height: 28px;
+            line-height: 1.3;
+            line-height: 28px\9;
+            border-width: 1px;
+            padding: 0 5px;
+            border-color: #ccc;
+            width: 180px;
+            border-style: solid;
+            background-color: #fff;
+            border-radius: 2px;
+        }
+    </style>
+    <!--whois head begin-->
+    <nav class="tw-navbar" id="top">
+        <div class="tw-navcont">
+            <div class="tw-navtxt clearfix">
+                <a href="//mtool.chinaz.com/" class="btn pull-left tw-nav-l"><span class="iconfont icon-home"></span></a>
+                <div class="tw-navtitle">whois查询</div>
+                <button type="button" class="btn pull-right tw-nav-r js-menu"><span class="iconfont icon-list1"></span></button>
+            </div>
+        </div>
+    </nav>
+    
+
+
+<div class="bg-nav"><div class="closebg"><a href="javascript:"><span class="iconfont icon-close1"></span></a></div></div>
+
+<div class="SideNavbar" >
+    <div class="nb-list"><a href="//mtool.chinaz.com/" class="nb-listhd">工具首页</a></div>
+    <div class="nb-list"><a href="//mseo.chinaz.com/" class="nb-listhd">SEO综合查询</a></div>
+    <div class="nb-list"><a href="//mrank.chinaz.com/all/" class="nb-listhd">综合权重查询</a></div>
+    <div class="nb-list"><a href="//mindex.chinaz.com/" class="nb-listhd">指数查询</a></div>
+    <div class="nb-list"><a href="//mtool.chinaz.com/othertools/" class="nb-listhd">更多工具</a></div>
+</div>
+
+ 
+
+    <!--discover begin-->
+    <div class="discover pb01">
+        <div class="input-group">
+            <a href="javascript:" class="dis-clear ndorp"><span class="iconfont icon-wrong">&nbsp;</span></a>
+            <input type="search" class="form-control tw-input-list tw-inbg" AUTOCOMPLETE="off" id="domain" placeholder="请输入域名，例如：chinaz.com" data-toggle="collapse">
+            <div class="input-txtlist collapse" id="suffix-floor">
+            </div>
+            <span class="input-group-btn"><button class="btn dis-btn" onclick="submits()" type="button">查询</button></span>
+        </div>
+
+    </div>
+
+    <div id="radios" class="tw-suffix clearfix collapse in">
+        <span class="pull-left">常用后缀:</span>
+        <div class="btn-group pull-left btn-group-xs" data-toggle="buttons" id="btn-suf">
+            <label class="btn btn-suffix" data-hz=".com"><input type="radio" name="suffix" id="suffix1" onchange="Get(0)" autocomplete="off">.com</label>
+            <label class="btn btn-suffix" data-hz=".cn"><input type="radio" name="suffix" id="suffix2" onchange="Get(0)" autocomplete="off" />.cn</label>
+            <label class="btn btn-suffix" data-hz=".cc"><input type="radio" name="suffix" id="suffix3" onchange="Get(0)" autocomplete="off">.cc</label>
+            <label class="btn btn-suffix" data-hz=".net"><input type="radio" name="suffix" id="suffix4" onchange="Get(0)" autocomplete="off">.net</label>
+            <label class="btn btn-suffix" data-hz=".com.cn"><input type="radio" name="suffix" id="suffix5" onchange="Get(0)" autocomplete="off">.com.cn</label>
+            <label class="btn btn-suffix" data-hz=".org"><input type="radio" name="suffix" id="suffix6" onchange="Get(0)" autocomplete="off">.org</label>
+        </div>
+    </div>
+
+        <div class="bg10"></div>
+        <script src="//stats.chinaz.com/mt_g/wap_mtoolTop.js" type="text/javascript"></script>
+        <div class="bg10"></div>
+    <!--discover end-->
+    <!--whois head end-->
+    <!--whois content begin-->
+    <div style="display:none" id="zb" class="tw-listwarp">
+
+        <div class="tw-headinfo">
+            <div class='pa10'>
+                域名 <strong class='c-red'>""</strong>已注册，
+                <a onclick='wtqg("","");' class='c-blue'>求购此域名</a>
+                
+            </div>
+        </div>
+
+        <div class="wt-mian z-mt0">
+            <table class="table mb0" id="tbody">
+                
+            </table>
+        </div>
+    </div>
+    <div id="zc" style="display:none" class="alert bor-a1s" role="alert">
+
+        <p>该域名<a href="javascript:" class="col-red">未被注册或被隐藏</a>(<a href="javascript:void(0)" onclick="Get(0)" style="color: #338de6;" class="alert-link">重试</a>)，</p>
+        <p>推荐以下顶级域名商注册该域名：</p>
+        <p class="pt15">
+            <a class="alert-link" style="color: #338de6;" rel="nofollow" href="//www.juming.com/regym.htm?tt=126777" target="_blank">聚名网</a>&nbsp;&nbsp;
+            <a class="alert-link" style="color: #338de6;" rel="nofollow" href="http://click.aliyun.com/m/4665/" target="_blank">阿里云万网</a>
+        </p>
+    </div>
+    <button type="button" style="display:none" id="btn-En" class="btn btn-default btn-xs tw-btninfo" data-toggle="collapse" data-target="#tw-Eninfo"><span class="iconfont icon-corner-x"></span>查看详细英文信息</button>
+
+    <div class="tw-Eninfo collapse" id="tw-Eninfo">
+
+        <div class="tw-Enlist" id="tw-Eninfonews">
+            
+        </div>
+    </div>
+    <!--whois EN info begin-->
+
+ <div class="bg10"></div>
+        <script src="//stats.chinaz.com/mt_g/wap_mtoolBotm.js" type="text/javascript"></script>
+
+
+    <div class="bg10"></div>
+
+
+    <!--whois content end-->
+    <div id="remark" class="tool-intro">
+        <div class="mb10"><span class="c-blue">工具简介</span></div>
+        <p>您可以用Whois来查看域名的当前信息状态，包括域名是否已被注册、域名当前所有者、所有者联系方式、注册日期、过期日期、域名状态、DNS解析服务器等。</p>
+
+    </div>
+
+    <!--footer navbar begin-->
+    <nav class="navbar navbar-default" id="tw-ftwrap">
+        <div class="clearfix">
+            <a href="javascript:" class="gbrand"><img src="//csstools.chinaz.com/tools/wap/img/mlogo/mwhois.gif"></a>
+            <div class="tw-ftlink">
+                <a href="javascript:void(0)" onclick="javascript:window.location.href='//whois.chinaz.com/'+$('#domain').val()">电脑端</a>
+                <span>丨</span>
+                <a href="#top">回顶部</a>
+            </div>
+        </div>
+    </nav>
+    <!--footer navbar end-->
+    <!-- popVerif modal begin -->
+
+    <div class="modal fade tw-popVerif" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="tw-verif">
+                    <h2 class="text-center mb15 fz24">安全验证</h2>
+                    <div class="tw-verimg text-center mb15" id="codeimg"></div>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" id="code" class="form-control mb10" placeholder="输入验证码">
+                            <button type="button" onclick="Get(1)" data-dismiss="modal" class="btn btn-default btn-block tw-verbtn">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- popVerif modal end -->
+    <!-- popEninfo modal begin -->
+    <div class="modal fade tw-popEninfo" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                    <h4 class="modal-title" id="mySmallModalLabel">域名的状态解释</h4>
+                </div>
+                <div class="tw-namerend" id="dsxx">
+                    <p>ok ······································正常状态</p>
+                    <p>inactive ·······························非激活状态(注册的时候没有填写域名服务器，不能进行解析)</p>
+                    <p>client Delete Prohibited ············：注册商设置禁止删除</p>
+                    <p>server Delete Prohibited ···········：注册局设置禁止删除</p>
+                    <p>client Update Prohibited ···········注册商设置禁止修改（不允许修改域名信息，可以设置或修改解析记录）</p>
+                    <p>server Update Prohibited ··········注册局设置禁止修改（不允许修改域名信息，可以设置或修改解析记录）</p>
+                    <p>pending Delete ·······················注册信息待删除</p>
+                    <p>pending Transfer ····················：正在转移过程中</p>
+                    <p>client Transfer Prohibited ··········注册商设置禁止转移（注册商处设置不允许转出）</p>
+                    <p>server Transfer Prohibited ·········：注册局设置禁止转移（有的域名新注册及转移注册商60天内会被注册局设置该状态，60天后自动解除；有的则为域名涉及仲裁或诉讼案被注册局设置，仲裁或诉讼案结束会被解除）</p>
+                    <p>client Renew Prohibited ············：注册商设置禁止续费（域名不能被续费，通常处于该状态表示该域名处于仲裁或法院争议期，需联系注册商确认原因）</p>
+                    <p>server Renew Prohibited ···········：注册局设置禁止续费（域名不能被续费，通常处于该状态表示该域名处于仲裁或法院争议期，需联系注册商确认原因）</p>
+                    <p>client Hold ·····························注册商设置暂停解析，联系注册商解除该状态</p>
+                    <p>server Hold ····························注册局设置暂停解析（大多原因是.com、.cn、.net等域名未进行实名认证，完成实名审核后自动解除该状态）</p>
+                    <p>pending Verification ·················域名审核期（域名注册后未进行实名审核，需尽早在购买后5天内提交资料审核，5天后仍未实名审核的，将进入ServerHold状态）</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="fromsub" style="display:none;">
+        <div style="padding:15px 25px;text-align:center;">
+            <div style="margin-bottom:3px;">&nbsp;&nbsp;&nbsp;<span style="color:red;">*</span><span>域名：</span><span><input type="text" id="fsurl" class="layui-input" readonly /></span> </div>
+            <div style="margin-bottom:3px;"><span style="color:red;">*</span><span>联系人：</span><span><input type="text" id="fslinaximan" style="width:115px;" class="layui-input" /></span><select id="fssex" style="width:65px;" class="layui-select"><option value="1">先生</option><option value="0">女士</option></select></span> </div>
+            <div style="margin-bottom:3px;">&nbsp;<span>注册商：</span><span><input type="text" id="fsregistrant" class="layui-input" readonly /></span> </div>
+            <div style="margin-bottom:3px;">&nbsp;&nbsp; <span style="color:red;">*</span><span>手机：</span><span><input type="text" id="fsphone" class="layui-input" /></span> </div>
+            <div style="margin-bottom:3px;"><span>&nbsp;&nbsp;&nbsp;&nbsp;微信：</span><span><input type="text" id="fswechar" class="layui-input" /></span> </div>
+            <div style="margin-bottom:3px;"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QQ：</span><span><input type="text" id="fsqq" class="layui-input" /></span> </div>
+            <div style="margin-bottom:3px;">&nbsp;&nbsp; <span style="color:red;">*</span><span>预算：</span><span><input type="number" id="fsys" step="500" class="layui-input" /></span> </div>
+            <div style="margin-bottom:3px;"><span>&nbsp;&nbsp;&nbsp;&nbsp;备注：</span><span><textarea id="fsbeizhu" rows="3" style="border:1px solid #ccc;width:190px;"></textarea></span> </div>
+        </div>
+    </div>
+    <div id="IdmsgTxt" style="display:none;">
+        <div style="text-align:center;padding:5px 0;">
+            <div style="padding:0px 0;">您可联系经纪人微信,随时了解购买进度!</div>
+            <div style="padding:5px 0 5px 0;font-size:14px;">手机：18030165671</div>
+            <div>
+                <img width="180" style="width:180px;" src="https://csstools.chinaz.com/whois/images/whois_qiugou.png" />
+            </div>
+            <div style="padding:5px 0 0 0;">微信扫码添加好友</div>
+        </div>
+    </div>
+
+    <div class="floatwrap" id="wTopId" style="visibility: hidden;"><a href="javascript:" class="floatop" id="goTopBtn" title="返回顶部"><span class="iconfont icon-top1 fz24"></span></a></div>
+
+    <!-- popEninfo modal end -->
+    <script src="/Content/layer/layer.js"></script>
+    <script src="/Content/Mobile/js/whois-index.js?v=2020090802"></script>
+    <div style="display:none">
+        <script src='//s11.cnzz.com/stat.php?id=5082706&web_id=5082706' language='JavaScript' charset='gb2312' type="text/javascript"></script>
+    </div>
+    <script>
+
+        var subbol = true;
+
+        function wtqg(url, registrant) {
+            if (subbol) subbol = false;
+            $("#fsurl").val(url);
+            $("#fsregistrant").val(registrant);
+
+            layer.open({
+                type: 1, id: 'openwinfromsub', anim: 0, resize: false, shade: 0.2, title: "委托求购域名", area: ['320px', '430px'],
+                content: $('#fromsub'), moveType: 1, btn: ['提交'], btnAlign: 'r', closeBtn: 1,
+                cancel: function () { opw0 = true; }, end: function () { }, success: function (layero) { },
+                btn1: function (index) {
+                    var fslinaximan = $("#fslinaximan").val();
+                    if (fslinaximan == null || fslinaximan == undefined || fslinaximan == '') {
+                        layer.msg("联系人不能为空.", { icon: 2 }); $("#fslinaximan").focus();
+                        subbol = true;
+                        return;
+                    }
+                    var fssex = $("#fssex").val();
+                    var fsphone = $("#fsphone").val();
+                    if (fsphone == null || fsphone == undefined || fsphone == '') {
+                        layer.msg("手机不能为空.", { icon: 2 }); $("#fsphone").focus();
+                        subbol = true;
+                        return;
+                    }
+                    var fswechar = $("#fswechar").val();
+                    if (!/^((13\d|14[5-9]|15[0-35-9]|166|17[0-8]|18\d|19[8-9])\d{8})|([a-zA-Z]([-_a-zA-Z0-9]{5,19})+)|\d*(\.\d{1,2})?$/.test(fswechar)) {
+                        layer.msg("微信输入不合法.", { icon: 2 }); $("#fswechar").focus();
+                        subbol = true;
+                        return;
+                    }
+                    var fsqq = $("#fsqq").val();
+                    var fsys = $("#fsys").val();
+                    if (fsys == null || fsys == undefined || fsys == '') {
+                        layer.msg("预算不能为空.", { icon: 2 }); $("#fsys").focus();
+                        subbol = true;
+                        return;
+                    }
+                    var reg = /^\d+(?=\.{0,1}\d+$|$)/
+                    if (!reg.test(fsys)) {
+                        layer.msg("预算预算格式不正确.", { icon: 2 }); $("#fsys").focus();
+                        subbol = true;
+                        return;
+                    }
+                    var fsbeizhu = $("#fsbeizhu").val();
+
+                    var postdata = {
+                        linkurl: url,
+                        name: fslinaximan,
+                        phone: fsphone,
+                        weixin: fswechar,
+                        qq: fsqq,
+                        registrant: registrant,
+                        sex: fssex,
+                        budget: fsys,
+                        remark: fsbeizhu,
+                    };
+
+                    jQuery.ajax({
+                        type: "post",
+                        url: "//whois.chinaz.com/ajaxsync.aspx?at=jy&" + Math.random(),
+                        data: postdata,
+                        dataType: "jsonp",
+                        success: function (result) {
+                            //var result = JSON.parse(res);
+                            if (result.code == 1) {
+                                layer.close(index);
+                                msgTxt();
+                                subbol = true;
+                            }
+                            else {
+                                layer.msg(result.msg, { icon: 2 }); $("#fsphone").focus();
+                                subbol = true;
+                                return;
+                            }
+                        },
+                        complete: function (XHR, TS) {
+                            XHR = null;
+                        }
+                    });
+                }
+            });
+        }
+        function msgTxt() {
+            layer.open({
+                type: 1, id: 'openwindowsone1', anim: 0, resize: false, shade: 0.2, title: "申请提交成功!", area: ['280px', '365px'],
+                content: $("#IdmsgTxt"), moveType: 0, btn: ['确定'], btnAlign: 'r', closeBtn: 0,
+                cancel: function () { opw0 = true; }, end: function () { }, success: function (layero) { },
+                btn1: function (index) { layer.close(index); }
+            });
+        }
+    </script>
+</body>
+</html>
+

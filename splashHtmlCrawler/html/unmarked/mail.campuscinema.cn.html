@@ -1,0 +1,234 @@
+<!DOCTYPE html> <html> <head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <title>中教华影电影院线股份有限公司</title> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> <meta name="renderer" content="webkit" /> <script language="JavaScript" src="js/base64.js?v=c3278944068837888c85ed224320583c" type="text/javascript"></script> <link rel="stylesheet" href="css/default/webmail.css?v=c3278944068837888c85ed224320583c" type="text/css"> <script language="javascript" src="js/jquery.js?v=c3278944068837888c85ed224320583c" type="text/javascript"></script> <link rel="stylesheet" href="common/dialog/jquery.dialog.css?v=c3278944068837888c85ed224320583c" type="text/css"> <script language="JavaScript" src="common/dialog/jquery.dialog.js?v=c3278944068837888c85ed224320583c" type="text/javascript"></script> <script language="JavaScript" src="js/qrcode.js?v=c3278944068837888c85ed224320583c" type="text/javascript"></script> <link rel="SHORTCUT ICON" href="favicon.ico"> </head> <script language="Javascript">
+function contact(address) {
+	location.href = 'mailto:'+address;
+}
+
+function encryptPwd(sVal) {
+	if (sVal.substr(0, 10) == '{wm_crypt}')
+		return sVal;
+		
+	var sResult = '' ;
+	for(i = 0; i < sVal.length; i++) {
+		sTemp = String.fromCharCode((sVal.charCodeAt(i) & 0x0f) | 0xa0);
+		sResult = sResult + sTemp;
+		sTemp = String.fromCharCode(((sVal.charCodeAt(i) >> 4) & 0x0f) | 0x80);
+		sResult = sResult + sTemp;
+	}
+	
+	sResult = '{wm_crypt}' + BASE64.encode(sResult);
+		
+	return sResult;
+}
+
+function getvalue(item) {
+	if (item != '') {
+		var obj = $('input[name="'+item+'"]');
+		if (obj) {
+			if (isPlaceholder())
+				return obj.val();
+			
+			if (obj.hasClass('placeholder'))
+				return '';
+			else
+				return obj.val();
+		}
+	}
+	
+	return '';
+}
+
+function selectLanguage() {
+	var sUser = '';
+	var sDomain = '';
+	var sLanguage = '';
+	var sTheme = '';
+	
+	var frm = document.form1;
+	
+	sUser = getvalue('f_user');
+	if (frm.f_domain){
+		if (frm.f_domain.options)
+			sDomain = frm.f_domain.options[frm.f_domain.selectedIndex].value;
+		else
+			sDomain = frm.f_domain.value;
+	}
+	if (frm.f_lang)
+		sLanguage = frm.f_lang.options[frm.f_lang.selectedIndex].value;
+	if (frm.f_theme)
+		sTheme = frm.f_theme.options[frm.f_theme.selectedIndex].value;
+
+	sLocation = 'index.php?f_lang='+sLanguage+'&f_theme='+sTheme+'&f_user='+escape(sUser)+'&f_domain='+escape(sDomain)+'&retid='+Math.random().toString();
+	location.replace(sLocation);
+}
+
+function lostUserFocus() {
+	var frm = document.form1;
+	if (!frm.f_domain || !frm.f_domain.options)
+		return;
+	
+	var sUser = getvalue('f_user');
+	var sDomain = '';
+	
+	pos = sUser.indexOf('@');
+	if (pos != -1)
+		sDomain = sUser.substring(pos+1).toLowerCase();
+	
+	if (sDomain == '')
+		return;	
+	
+	var found = false;
+	for (i = 0; i < frm.f_domain.options.length; i++) {
+		if (frm.f_domain.options[i].value == sDomain) {
+			frm.f_domain.selectedIndex = i;
+			found = true;
+			break;
+		}
+	}
+	
+	if (found)
+		frm.f_user.value = sUser.substring(0, pos);
+}
+	
+function loginCheck() {
+	sUser = '';
+	sDomain	= '';
+	sPassword = '';
+	
+	frm = document.form1;
+	sUser = getvalue('f_user');
+
+	if (frm.f_domain){
+		if (frm.f_domain.options)
+			sDomain = frm.f_domain.options[frm.f_domain.selectedIndex].value;
+		else
+			sDomain = frm.f_domain.value;
+	}
+	sPassword = getvalue('f_pass');
+
+	if (sUser == '' || sPassword == ''){
+
+		alert('用户名和密码栏不能为空！');
+
+		if (sUser == '' || sDomain == '')
+			frm.f_user.focus();
+		if (sPassword == '')
+			frm.f_pass.focus();
+
+		return;
+	}
+	
+	if (frm.f_checkcode) {
+		var checkcode = getvalue('f_checkcode');
+		if (checkcode == ''){
+
+			alert('图形码不能为空！');
+
+			frm.f_checkcode.focus();
+			return;
+		}
+	}
+
+	frm.f_pass.value = encryptPwd(sPassword);
+
+	
+	frm.submit();
+}
+
+function getPwd() {
+	location.href = 'forgot.php';
+}
+
+function qrcode() {
+
+	var qrcodetip = '扫描二维码，访问 Webmail。';
+
+
+	jQuery.fn.dialog({
+		title: false,
+		content: '<div><div style="width:100%;height:16px"><div style="float:right;width:16px;height:16px" onclick="javascript:jQuery.fn.dlgclose();"><img src="images/close.gif"></div></div><div id="qrcode" style="padding-left:16px;width:160px;height:160px;"></div><div style="width:100%;height:20px;text-align:center;"><span style="color:#bbbbbb;">'+qrcodetip+'</span></div></div>',
+		buttons: false,
+		width: 200,
+		height: 200
+	});
+	
+	var str = location.protocol+'//'+location.host+location.pathname;
+	var qrcode = new QRCode('qrcode', {
+		text: str,
+		width: 150,
+		height: 150
+	});
+}
+
+function keypress(keypressed) {
+	var key;
+	if (document.all) 
+		key = window.event.keyCode
+	else 
+		key = keypressed.which;
+		
+	if (key == 13) {
+		loginCheck();
+	}
+}
+
+function isPlaceholder(){
+    var input = document.createElement('input');
+    return 'placeholder' in input;
+}
+
+$(document).ready(function() {
+	var frm = document.form1;
+	
+	frm.f_user.focus();
+	frm.f_user.onkeypress = keypress;
+	frm.f_pass.onkeypress = keypress;
+	if (frm.f_checkcode)
+		frm.f_checkcode.onkeypress = keypress;
+
+    if (!isPlaceholder()) {
+        $('input').not('input[type=\'password\']').each(
+            function(){
+                if($(this).val() == '' && $(this).attr('placeholder') != '') { 
+                    $(this).val($(this).attr('placeholder'));
+                	$(this).addClass('placeholder');
+                }
+                    
+                $(this).focus(function(){
+                    if($(this).val() == $(this).attr('placeholder'))
+                    	$(this).val('');
+                    	$(this).removeClass('placeholder');
+                });
+                $(this).blur(function(){
+                    if($(this).val() == '') {
+                    	$(this).val($(this).attr('placeholder'));
+                    	$(this).addClass('placeholder');
+                    }
+                });
+        });
+
+        var pwdField = $('input[type=password]');  
+        var pwdVal = pwdField.attr('placeholder');  
+        pwdField.after('<input id="pwdplaceholder" type="text" value="'+pwdVal+'" class="textbox placeholder" size=15 autocomplete="off" />');  
+
+        var pwdPlaceholder = $('#pwdplaceholder');  
+        pwdPlaceholder.show();  
+        pwdField.hide();  
+          
+        pwdPlaceholder.focus(function(){
+            pwdPlaceholder.hide();
+            pwdField.show();
+            pwdField.focus();
+        });
+
+        pwdField.blur(function(){
+            if(pwdField.val() == '') {
+                pwdPlaceholder.show();
+                pwdField.hide();
+            }
+        });
+    }
+});
+
+</script> <body> <table height="100%" width="100%" border=0 align="center" cellpadding=0 cellspacing=0> <tr> <td align="center" valign="middle" bgcolor="#FFFFFF"> <table width="100%" cellspacing=0 cellpadding=0 border=0> <tr height="65"> <td align="center" valign="bottom"> <table width="940" border="0" cellspacing="0" cellpadding="0"> <tr> <td width="400" align="left" style="line-height:0"><img src="customer/campuscinema.cn_logo.png" style="margin-bottom:5px;border:0;max-width:180px;max-height:60px;"></td> <td width="500" align="right" valign="bottom" style="padding-bottom:5px;color:#666;"> </td> </tr> </table> </td> </tr> <tr height="420"> <td align="center" valign="middle" background="customer/index_bg4.jpg" style="background-color:#fafafa;background-repeat:no-repeat;background-position:center;background-cover:contain;"> <table width="940" height="420" border="0" cellspacing="0" cellpadding="0"> <tr> <td align="right"> <table width="400" border="0" cellpadding="0" cellspacing="1" bgcolor="#e1e1e1" style="opacity:0.90;filter:alpha(opacity=85);"> <tr> <td align="right" valign="top" background="images/default/login_bg.gif" bgcolor="#ffffff" style="padding:5px"> <table width="100%" border="0" cellspacing="0" cellpadding="0"> <tr height="110"> <td width=20%>&nbsp;</td> <td align="left"><img src="customer/index_winmail_new.gif" width="290" height="102"></td> </tr> </table> <table width="100%" border=0 cellspacing=0 cellpadding=0 style="padding:0 30px"> <form name="form1" action="login.php" method="post"> <input type="hidden" name="sessid" value=""> <tr height="35"> <td align="left"><input type="text" size="20" name="f_user" value="" placeholder="用户名" class="textbox" maxlength=64 onblur="javascript:lostUserFocus();">&nbsp;@&nbsp;campuscinema.cn <input type="hidden" name="f_domain" value="campuscinema.cn"></td> </tr> <tr height="35"> <td align="left"><input type="password" size="20" name="f_pass" value="" placeholder="密码" class="textbox" maxlength=64 autocomplete="off">
+									&nbsp;&nbsp;<a class="blue" href="javascript:getPwd();">忘记密码？</a> </td> </tr> <tr height="35"> <td align="left">	                            &nbsp;<input type="checkbox" name="f_autologin" value="1"><acronym style="cursor:hand;cursor:pointer;" onclick="document.form1.f_autologin.click()">自动登录</acronym> </td> </tr> <tr height="50"> <td align="left"> <table border="0" cellpadding="0" cellspacing="0"> <tr height="35"> <td width="100" align="center" class="bluebtn" onclick="javascript:loginCheck();">登录 &gt;&gt;</td> </tr> </table> </td> </tr> </form> </table> <table width="100%" border="0" cellspacing="0" cellpadding="0"> <tr height="20"> <td colspan=3 align="center" valign="bottom"><img src="images/default/l.gif"></td> </tr> <tr height="30"> <td width="30%" nowrap align="right"><img src="images/default/b_02.gif" align="absmiddle">&nbsp;<a class="gray" href="javascript:contact('postmaster@campuscinema.cn');">联系我们</a></td> <td width="5%">&nbsp;</td> <td width="*%" nowrap align="center"><img src="images/default/b_02.gif" align=absmiddle>&nbsp;<a class="gray" target="_blank" href="http://www.campuscinema.cn">中教华影电影院线股份有限公司</a>
+	                          	&nbsp;<a href="javascript:qrcode();"><img src="images/qrcode.gif" width="16" height="16" border=0 align=absmiddle></a></td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </td> </tr> <tr height="60"> <td align="center" valign="top"> <table width="940" border="0" cellspacing="0" cellpadding="0" style="padding-top:10px"> <tr> <td height="60" align="center" class="indextip"> <table align=center border=0 width="90%"><tr><td width="50%" style="color: #444444; font-size: 11px;"><li> 本系统可以使用如下方式收发邮件:</li></td><td width="2%">&nbsp;</td><td width="48%" style="color: #444444; font-size: 11px;"><li> 使用邮件客户端软件时, 帐号设置事项:</li></td></tr><tr><td style="color: #888888; font-size: 11px;">&nbsp;&nbsp;&nbsp;&nbsp;1) Webmail 收发邮件 - 通过网页来收发和查阅邮件</td><td>&nbsp;</td><td style="color: #888888; font-size: 11px;">&nbsp;&nbsp;&nbsp;&nbsp;POP3,SMTP 服务器都是: <font color=red>mail.campuscinema.cn</font></td></tr><tr><td style="color: #888888; font-size: 11px;">&nbsp;&nbsp;&nbsp;&nbsp;2) 使用邮件客户端 - 如 Outlook, Foxmail, Windows Live Mail ...</td><td>&nbsp;</td><td style="color: #888888; font-size: 11px;">&nbsp;&nbsp;&nbsp;&nbsp;SMTP选项[我的服务要求身份验证] - 必须选中</td></tr></table> </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </body> </html>

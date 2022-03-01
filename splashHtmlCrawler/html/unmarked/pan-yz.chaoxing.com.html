@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="/css/fanya/common.css">
+    <link rel="stylesheet" href="/css/fanya/login.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/common/jquery.base64.js"></script>
+    <script type="text/javascript" src="/js/fanya/util.js"></script>
+    <script src="/js/common/commonUtil.js?v=112" type="text/javascript"></script>
+    <script>
+        $(function(){
+            if ($("#shownotice").val() == 1) {
+                showNotice($("#fid").val());
+            }
+            enterSubmit("loginBtn");
+
+            if(top != self){
+                $(".default-login").css("height","520px");
+                //$(".default-login").css("border-radius","0px");
+                //$(".default-login").css("box-shadow","");
+
+                $("body").css("background","none");
+                $(".lg-container").css("background","none");
+                $(".lg-container").css("border-top","none");
+
+
+            }
+
+            if("http%3A%2F%2Fpan-yz.chaoxing.com%2F".indexOf("duxiu.com") != -1 || "http%3A%2F%2Fpan-yz.chaoxing.com%2F".indexOf("blyun.com") != -1 || "http%3A%2F%2Fpan-yz.chaoxing.com%2F".indexOf("zhizhen.com") != -1){
+                $("#dxshowtip").show();
+                $("#otherlogin").hide();
+                $("#showlogintext").html("账号登录");
+                $("#kf").hide();
+            }
+            if($("#showthird").val() == "1"){
+                $("#thirdLogin").show();
+            }
+
+            if (navigator.userAgent.indexOf("1000332") != -1) {
+                $("#leftdiv").hide();
+            }
+
+        });
+    </script>
+</head>
+<style type="text/css">
+    .Agreement{text-align:center;font-size: 12px;color: #A8A8B3;position:relative;left:0px;bottom:-70px;}
+    .Agreement a{display:inline-block;padding:0 5px;color:#3A8BFF}
+    .lg-title img{display:block;width:254px;height: 37px;margin:0 auto;}
+</style>
+<body>
+<div class="lg-container">
+    <!--登录 start -->
+    <div class="main default-login-main">
+        <!--默认登录 start-->
+        <div class="default-login">
+            <div class="lg-top fs14">
+                <a href="/v5/toCustomer" target="_blank" class="service col-lightblue" id="kf">客服</a>
+            </div>
+            <div class="left" id="leftdiv">
+                                    <h3 class="lg-title" id="showlogintext">
+                                                    用户登录                                            </h3>
+                                <p id = "dxshowtip" style="display:none;position:absolute;left:90px;top:105px;color:#A8A8B3;font-size:12px">提示：可使用学习通账号登录</p>
+                <form action="">
+                    <input type="hidden" id="needVcode" name="needVcode" value="" />
+                    <input type="hidden" id="fid" name="fid" value="-1" />
+                    <input type="hidden" id="pid" name="pid" value="-1" />
+                    <input type="hidden" id="refer" name="refer" value="http%3A%2F%2Fpan-yz.chaoxing.com%2F" />
+                    <input type="hidden" id="forbidotherlogin" name="forbidotherlogin" value="0" />
+                    <input type="hidden" id="t" name="t" value="true" />
+                    <input type="hidden" id="_blank" value="1">
+                    <input type="hidden" id="regurl" value="">
+                    <input type="hidden" id="showthird" value="0">
+                    <input type="hidden" id="accounttip" value="">
+                    <input type="hidden" id="pwdtip" value="">
+                    <input type="hidden" id="quick" value="0">
+                    <input type="hidden" name="shownotice" id="shownotice" value="1"/>
+                    <input type="hidden" id="hidecompletephone" name="hidecompletephone" value="0" />
+                    <!--电话号码-->
+                    <div class="lg-item icon-tel margin-btm24">
+                        <input type="text" class="ipt-tel"
+                               placeholder="手机号/超星号"
+                                                           id="phone" maxlength="50">
+                        <p class="err-txt" id="phoneMsg"></p>
+                    </div>
+                    <!--密码-->
+                    <div class="lg-item item-pwd icon-pwd">
+                        <input type="password" class="ipt-pwd" placeholder="学习通密码" id="pwd" maxlength="20">
+                        <i class="icon-eye icon-eye-close" onclick="initPassword(this)"></i>
+                        <a href="javaScript:void(0)" onclick="toFindPwd()" class="col-lightblue pos-r24">忘记密码?</a>
+                        <p class="err-txt" id="pwdMsg"></p>
+                    </div>
+                    <input type="hidden" name="validate" id="validate"/>
+                    <!--按钮不可点击 加上class：disable -->
+                    <div class="btns-box">
+                        <p class="err-tip" id="err-txt"></p>
+                        <button type="button" class="btn-big-blue margin-btm24" onclick="loginByPhoneAndPwd();" id="loginBtn">登录</button>
+                    </div>
+                </form>
+                <div class="clearaft fs14 pd-lr-24">
+                                            <a href="javaScript:void(0)" onclick="toRegister()" class="col-blue fl">新用户注册</a>
+                                                    <a href="javaScript:void(0)" onclick="otherLogin(2)" class="col-blue fr">手机验证码登录</a>
+                                            
+                </div>
+                <div class="line">
+                                            <a href="javaScript:void(0)" onclick="otherLogin(3)" id="otherlogin" class="col-lightblue fs14 icon-right">其它方式登录</a>
+                                    </div>
+                <p class="Agreement">登录即表示同意平台<a href="https://homewh.chaoxing.com/agree/privacyPolicy?appId=900001" target="_blank">《隐私政策》</a>和<a href="https://homewh.chaoxing.com/agree/userAgreement?appId=900001" target="_blank">《用户协议》</a></p>
+            </div>
+            
+<style>
+
+    .social-login{color:#91A0B5;width:100%;position:absolute;left:0;bottom:30px;}
+    .social-login span{display:inline-block;margin:0 10px;}
+    .social-login span i{display:inline-block;width:20px;height:20px;margin-right:6px;}
+    .social-login span i img{width:100%;height:100%;vertical-align:middle;}
+    .social-login span.marLeft30{margin-left:30px;}
+
+</style>
+<div class="right" id="rightdiv">
+    <div  id="step1" >
+        <div class="ecode-box" style="position: relative;">
+
+
+            <style>
+                .ewmDisable{width:100%;height:100%;position:absolute;left:0;top:0;background:rgba(255,255,255,0.9);z-index:3;display:none;}
+                .ewmDisable p{width:100%;text-align:center;font-size:18px;color:#181e33;margin-top:80px;}
+                .ewmDisable a{display:inline-block;width:94px;height:34px;background: #FFFFFF;border: 1px solid #3A8BFF;border-radius: 18px;margin:0 auto;text-align:center;line-height:34px;font-size: 14px;color: #3A8BFF;margin-top:10px;}
+            </style>
+            <div class="ewmDisable">
+                <p>二维码已失效</p>
+                <a href="javascript:void(0);" onclick="refrushEwm();">重新获取</a>
+
+            </div>
+
+            <input type = "hidden" value="1c3697266be64d74be97835364f0b758" id = "uuid"/>
+            <input type = "hidden" value="ba4f65fcd248a02193b193d416e52d94" id = "enc"/>
+            <img src="/createqr?uuid=1c3697266be64d74be97835364f0b758&fid=-1" id="quickCode">
+
+            <span id="ahszk_custom" style="width: 30px;height: 30px;display:inline-block;position: absolute;left: 50%;top: 50%;margin-left: -12px;margin-top: -15px;">
+        <img src="/images/fanya/ahszk.png" style="width:30px;height:30px;">
+        </span>
+        </div>
+        <p class="fs14 colorIn tip" id="quickCodeMsg">使用学习通APP扫码登录</p>
+    </div>
+
+    <div class="social-login" style="display: none" id="thirdLogin">社交账号登录
+        <span onclick="to_third_login('weixin')" class="marLeft30" style=" cursor: pointer; "><i><img src="/images/common/weixin.png"/></i>微信</span>
+        <span onclick="to_third_login('qq')"  style=" cursor: pointer; "><i><img src="/images/common/qq.png"/></i>QQ</span>
+    </div>
+
+    <div class="Rmain-cont"  style="display:none" id="step2">
+        <div class="g_code_end">
+            <img src="" alt="" id="photo"/>
+        </div>
+        <p class="g_code_name mt30" id="shownickname"></p>
+        <p class="g_code_over">请在学习通上点击确认以登录</p>
+        <p class="g_code_btn" onclick="changeUser();" style="cursor:pointer;color: #3A8BFF;">返回扫码</p>
+    </div>
+
+
+
+</div>
+
+<script>
+    /***/
+    function to_third_login(type,ref){
+        var fd=$("#fid").val();
+        if ("qq" == type) {
+            window.location.href="/oauth2/qq?newversion=true&fid="+fd+"&refer="+$("#refer").val();
+        } else if("weixin" == type){
+            window.location.href="/oauth2/weixin?newversion=true&fid="+fd+"&refer="+$("#refer").val();
+        }
+    }
+    function hideQRcode(){
+        $(".right").hide();
+        $(".default-login-main").attr("class","main default-login-min");
+    }
+
+
+    function changeUser(){
+        window.location.reload();
+    }
+    var qrInterValObj;
+    var enc = $("#enc").val();
+    var uuid = $("#uuid").val();
+    var ref = decodeURIComponent($("#refer").val());
+    var c =  0 ;
+
+    //定制不显示二维码
+    if(1 != 1 || 1 != 1){
+        hideQRcode();
+    }else if(-1==34415){
+        $("#quickCode").attr("src","images/guide/34415ewm.png");
+        $("#quickCodeMsg").html("扫一扫下载移动客户端");
+    }else if(-1==9566){
+        $("#quickCode").attr("src","images/guide/9566ewm.jpg");
+        $("#quickCodeMsg").html("扫一扫关注微信公众号");
+    }else{
+        qrInterValObj = window.setInterval(loopStatus, 3000); //启动计时器，1秒执行一次
+    }
+
+    //重新加载二维码
+    function refrushEwm(){
+        window.location.reload();
+    }
+    function loopStatus(){
+
+        jQuery.ajax({
+            url : "/getauthstatus",
+            type :'post',
+            async : true,
+            data:{ "enc":enc,"uuid":uuid},
+            dataType : 'json',
+            success : function(data){
+                if(c >= 50){
+                    window.clearInterval(qrInterValObj);//停止计时器
+                    $(".ewmDisable").show();
+                    //window.location.reload();
+                }
+                c++;//记录循环次数
+                if(data.status){
+                    window.clearInterval(qrInterValObj);//停止计时器
+                    $("#logining").show();
+                    if(ref != "undefined" && ref != ''){
+                        if(ref == window.location.href){
+                            var url = "http://i.mooc.chaoxing.com/space/index";
+                            if(top.location != self.location){
+                                top.location = url;
+                            }else{
+                                window.location = url;
+                            }
+                        }else{
+                            var url = ref;
+
+                            if(top.location != self.location){
+                                top.location = url;
+                            }else{
+                                window.location = url;
+                            }
+
+                        }
+                    }else{
+                        var url = "http://i.mooc.chaoxing.com/space/index";
+                        if(window.parent != this.window){
+                            window.open(url,"_blank");
+                        }else{
+                            location.href = url;
+                        }
+                    }
+                }else{
+                    if(data.type == 4){//
+                        $("#shownickname").html(data.nickname);
+                        $("#photo").attr('src',"http://photo.chaoxing.com/p/"+data.uid+"_160");
+                        $("#step1").hide();
+                        $("#step2").show();
+                    }else if(data.type == 6){//客户端取消
+                        location.reload() ;
+                    }
+                }
+            }
+
+        });
+    }
+
+    if($("#refer").val().indexOf("ahszk.portal.chaoxing.com") != -1){
+        $("#quickCodeMsg").html("使用移动端扫码登录");
+        $("#ahszk_custom").show();
+    }else{
+        $("#ahszk_custom").hide();
+    }
+    if (navigator.userAgent.indexOf("1000332") != -1) {
+        $("#rightdiv").css("position","relative");
+        $("#rightdiv").css("margin","0 auto");
+        $("#rightdiv").css("border-left","0 ");
+        $("#quickCodeMsg").html("使用学在西电扫码登录");
+    }
+
+    //
+
+
+
+</script>
+        </div>
+        <!--默认登录 end-->
+        <!--通知-->
+        <div class="lg-notice" id="notice" style="display:none;">
+            <h2 class="msg-title">通知</h2>
+            <p id="noticeContent">
+
+            </p>
+        </div>
+    </div>
+    <!--登录 end-->
+</div>
+
+
+<script type="text/javascript" src="/js/fanya/login.js?v=20211209"></script>
+<script>
+    var capInstance  = null;
+    $(function () {
+        initTelList();
+
+        var needVcode = $("#needVcode").val();
+        if (needVcode == "1") {
+
+            var url = document.location.protocol+'//captcha.chaoxing.com/load.min.js' + '?t=' + getTimestamp(1 * 60 * 1000) // 时长1分钟，建议时长分钟级别
+            loadScript(url, function () {
+                try{
+                    //验证码初始化
+                    var initCaptcha = initCXCaptcha({
+                        captchaId: 'GcXX5vewqE7DezKGlyvleKCnkTglvGpL',
+                        element: '#captcha',
+                        mode:'popup',
+                        onVerify: function (err, data) {
+                            if (err) return; // 当验证失败时，内部会自动refresh方法，无需手动再调用一次
+                            $("#validate").val(data.validate);
+                            // 成功事件
+                            loginByPhoneAndPwdSubmit();
+                            //
+                            capInstance.refresh();
+                        }
+                    }, function onload(instance) {
+                        capInstance = instance;
+                    }, function onerror(err) {
+                    });
+                }catch(e){}
+            })
+        }
+    })
+</script>
+<div id="captcha"></div>
+</body>
+</html>

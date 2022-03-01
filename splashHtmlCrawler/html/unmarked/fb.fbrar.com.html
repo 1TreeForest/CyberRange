@@ -1,0 +1,23 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>1秒后跳转</title>
+<script type="text/javascript">
+var t = 1;
+function countDown(){
+var time = document.getElementById("time");
+t--;
+time.value=t;
+if (t<=0) {
+location.href="https://m.dogtop.xyz/forum.php";
+clearInterval(inter);
+};
+}
+var inter = setInterval("countDown()",1000);
+//window.onload=countDown;
+</script>
+</head>
+<body onload="countDown()">
+<input type="text" readonly="true" value="1" id="time" />
+</body>
+</html>

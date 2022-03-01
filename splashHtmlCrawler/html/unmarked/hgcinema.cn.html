@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>华夏银河院线</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="description" content="华夏银河院线<">
+    <meta name="keywords" content="华夏,银河,院线">
+    <script>
+		//判断设备是否为手机
+		!function () {
+			var devices = ["iPhone","Android","Windows Phone"]
+			var ua = window.navigator.userAgent
+			for (var i = 0; i < devices.length; i++) {
+				if (ua.indexOf(devices[i]) !== -1) {
+					window.location.href = 'app.html'
+				}
+			}
+		}()
+    </script>
+    <!--重置样式-->
+    <link rel="stylesheet" href="./css/reset.css">
+    <!--公共样式-->
+    <link rel="stylesheet" href="./css/common.css?t=20190705">
+    <!--swiper样式-->
+    <link rel="stylesheet" href="./css/idangerous.swiper.css?t=20190705">
+    <!--字体图标样式-->
+    <link rel="stylesheet" href="./css/iconfont/iconfont.css?t=20190705">
+    <!--主页样式-->
+    <link rel="stylesheet" href="./css/home.css?t=2019070501">
+</head>
+<body>
+<!--头部-->
+<div class="header" id="header">
+    <div class="content">
+        <a class="logo" href="/"></a>
+        <ul class="nav">
+            <li><a href="javascript:void(0)">院线介绍</a></li>
+            <li><a href="javascript:void(0)">业务板块</a></li>
+            <li><a href="javascript:void(0)">新闻动态</a></li>
+            <li><a href="contact.html?type=9">联系我们</a></li>
+        </ul>
+        <div class="header-right">
+            <div class="search-box">
+                <input type="text" placeholder="关键字搜索" id="searchInput">
+                <div class="icon" id="searchButton"></div>
+            </div>
+            <div class="entry-box">
+                <div class="search-content">快捷入口</div>
+                <ul class="search-select hide">
+                    <li><a href="detail.html?type=16">院线介绍</a></li>
+                    <li><a href="detail.html?type=30">业务板块</a></li>
+                    <li><a href="news.html?type=11">新闻动态</a></li>
+                    <li><a href="contact.html?type=9">联系我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="sub-nav">
+        <div class="content">
+            <ul class="sub-nav-item intro" id="intro"></ul>
+            <ul class="sub-nav-item business" id="business"></ul>
+            <ul class="sub-nav-item news" id="headerNews"></ul>
+        </div>
+    </div>
+</div>
+<!--轮播图-->
+<div class="banner">
+    <div class="swiper-container" id="bannerContainer">
+        <div class="swiper-wrapper" id="bannerWrapper">
+            <!--<div class="swiper-slide">-->
+                <!--<div class="banner-item" style="background-image: url(./images/banner-1.png)"></div>-->
+            <!--</div>-->
+        </div>
+        <div class="pagination"></div>
+    </div>
+</div>
+<!--新闻动态-->
+<div class="news" id="target">
+    <div class="content">
+        <dl class="content-title">
+            <dt>
+                <span class="content-line left"></span>
+                <span class="content-name">新闻动态</span>
+                <span class="content-line right"></span>
+            </dt>
+            <dd id="newsTitle"></dd>
+        </dl>
+        <ul class="news-tab" id="news"></ul>
+        <ul class="news-wrap"></ul>
+        <a href="#" class="more-plus" id="newsMore">
+            <div class="icon-plus"></div>
+        </a>
+    </div>
+</div>
+<!--院线介绍-->
+<div class="introduce">
+    <div class="content">
+        <dl class="content-title">
+            <dt>
+                <span class="content-line left"></span>
+                <span class="content-name">院线介绍</span>
+                <span class="content-line right"></span>
+            </dt>
+            <dd id="introduceTitle">About us</dd>
+        </dl>
+        <div class="introduce-wrap">
+            <div class="slogan"></div>
+            <div class="info-box">
+                <div class="message">我们致力于打造成集院线、版权、媒体、文化、公益、金融等多元业态为一体的商业服务平台，满足全社会消费者个性化需求的影视社交平台以及观影客户的大数据平台。</div>
+            </div>
+        </div>
+        <div class="classify">
+            <div>
+                <img class="classify-icon" src="images/home-icon/icon-movie.png" alt="">
+                <div class="classify-name">电影</div>
+            </div>
+            <div>
+                <img class="classify-icon" src="images/home-icon/icon-culture.png" alt="">
+                <div class="classify-name">文化</div>
+            </div>
+            <div>
+                <img class="classify-icon" src="images/home-icon/icon-public-welfare.png" alt="">
+                <div class="classify-name">公益</div>
+            </div>
+            <div>
+                <img class="classify-icon" src="images/home-icon/icon-entertainment.png" alt="">
+                <div class="classify-name">娱乐</div>
+            </div>
+            <div>
+                <img class="classify-icon" src="images/home-icon/icon-financial.png" alt="">
+                <div class="classify-name">金融</div>
+            </div>
+        </div>
+        <a href="#" class="more-plus" id="introductionMore">
+            <div class="icon-plus"></div>
+        </a>
+    </div>
+</div>
+<!--加盟门店展示-->
+<div class="culture-news">
+    <div class="content">
+        <dl class="content-title">
+            <dt>
+                <span class="content-line left"></span>
+                <span class="content-name">加盟门店展示</span>
+                <span class="content-line right"></span>
+            </dt>
+            <dd id="cultureTitle"></dd>
+        </dl>
+        <ul class="news-tab" id="culture"></ul>
+        <div class="culture-news-wrap">
+            <a class="arrow-left" href="#"></a>
+            <a class="arrow-right" href="#"></a>
+            <div class="swiper-container" id="cultureContainer">
+                <div class="swiper-wrapper" id="cultureWrapper">
+                </div>
+            </div>
+        </div>
+<!--        <a href="" class="more" id="cultureMore">-->
+<!--            <div class="name">More</div>-->
+<!--            <div class="arrow"></div>-->
+<!--        </a>-->
+    </div>
+</div>
+<!--广告-->
+<div class="advertisement-wrap">
+    <div class="content">
+        <ul class="advertisement">
+            <li class="first">
+                <a href="join.html?id=25" class="">
+                    <div class="icon icon-join"></div>
+                    <div class="title">院线加盟</div>
+                </a>
+            </li>
+            <li class="second">
+                <a href="http://ccct.ftxjoy.com/" target="_blank" class="" id="introduceMore">
+                    <div class="icon icon-cooperation"></div>
+                    <div class="title">华中国家版权交易中心大数据运营平台</div>
+                </a>
+            </li>
+            <li class="third">
+                <a href="news.html?id=31" class="">
+                    <div class="icon icon-ad"></div>
+                    <div class="title">加盟门店</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--统计-->
+<div class="count">
+    <div class="content">
+        <div class="accumulative">
+            <div class="play wrapper">
+                <div>累计点播</div>
+                <ul id="play"></ul>
+                <div>次</div>
+            </div>
+            <div class="view wrapper">
+                <div>累计观影</div>
+                <ul id="view"></ul>
+                <div>人</div>
+            </div>
+        </div>
+        <ul class="class">
+            <li>
+                <div class="number" id="screen"></div>
+                <div class="name">有效屏幕</div>
+            </li>
+            <li>
+                <div class="number">500+</div>
+                <div class="name">好莱坞独家</div>
+            </li>
+            <li>
+                <div class="number">8000+</div>
+                <div class="name">正版影片</div>
+            </li>
+            <li>
+                <div class="number">8w+</div>
+                <div class="name">海量综艺/电视剧</div>
+            </li>
+        </ul>
+        <ul class="poster" id="poster"></ul>
+    </div>
+</div>
+<!--友情链接-->
+<div class="links-wrap">
+    <div class="content">
+        <div class="links"></div>
+    </div>
+</div>
+<!--页脚-->
+<div class="footer">
+    <div class="content">
+        <div class="address">
+            <div class="cp">Copyright© 2019华夏银河院线版权所有&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="https://beian.miit.gov.cn/" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="./images/reference.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">鄂公网安备 42010602004512号&nbsp;&nbsp;&nbsp;&nbsp;鄂ICP备19015159号-1</p ></a></div>
+            <div class="contact">地址：湖北省武汉市武昌区楚天181文化创意产业园7号楼&nbsp;&nbsp;&nbsp;&nbsp;电话：4001521668&nbsp;&nbsp;027-88105411&nbsp;&nbsp;&nbsp;&nbsp;邮箱：hgc@hgcinema.cn</div>
+        </div>
+        <div class="code">
+            <div>扫描关注</div>
+            <img src="./images/qc-code-1.jpg" alt="">
+            <img src="./images/qc-code-2.jpg" alt="">
+        </div>
+    </div>
+</div>
+<!--导航-->
+<ul class="scroll-nav">
+    <li id="showChat"></li>
+    <li id="index"></li>
+    <li id="top"></li>
+</ul>
+
+<!--js-->
+<!--jQuery-->
+<script src="./javascript/jquery.min.js"></script>
+<!--swiper-->
+<script src="./javascript/idangerous.swiper.min.js"></script>
+<!--接口地址-->
+<script src="./javascript/api.js?t=20190705"></script>
+<!--留言-->
+<script src="./javascript/chat.js"></script>
+<!--公共js-->
+<script src="./javascript/common.js?t=20190705"></script>
+<!--主页js-->
+<script src="./javascript/home.js?t=20190705"></script>
+</body>
+</html>

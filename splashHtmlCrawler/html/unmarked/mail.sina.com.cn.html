@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="免费邮箱,新浪邮箱,微博,网盘,电子邮件,电子邮箱,cn邮箱,com邮箱,Free Email">
+<meta name="description" content="新浪邮箱，提供以@sina.com和@sina.cn为后缀的免费邮箱。2G超大附件和50M普通附件，容量5G至无限大，整合新浪微博应用，支持客户端收发，更加安全，更少垃圾邮件。">
+<meta name="title" content="新浪邮箱">
+<script type="text/javascript">
+    var conf = {
+        isVip:false,
+        isMem:false
+    };
+    var sinaSSOConfig = {
+        entry : 'cnmail', // 本产品的标识
+        loginType : 0,
+        setDomain : true,
+        pageCharset :'UTF-8',
+        timeoutEnable : true,
+        loginTimeout : 45000,
+        customInit : function() {
+            sinaSSOController.setLoginType(3);
+        },
+        customLoginCallBack : function(status){
+            conf.loginCallBack(status);
+        }
+    };
+</script>
+<title>新浪邮箱</title>
+<link href="/assets/login/css/free/login.css?ver=202106031" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.main a.countNum{cursor:default;position:absolute;left:0px;top:0px;width:100%;height:485px;border:0;outline:none;text-indent:-9999px;}
+.positionBox{position:relative;}
+.positionBox a.countNum{width:100%;height:412px;}
+.activity .main a.countNum,.activity .positionBox a.countNum{cursor:pointer;}
+</style>
+</head>
+<body style="height:100%">
+  <div class="mailLoginBox">
+    <div class="mailLogin">
+        <div class="headerBox">
+            <div class="header clearfix">
+                <h1><a href="" class="logo">新浪邮箱</a></h1>
+                <div class="nav">
+                    <a target="_blank" href="https://vip.sina.com.cn">VIP邮箱</a>
+                    <span>|</span>
+                    <a target="_blank" href="http://mail.sina.net">企业邮箱</a>
+                    <span>|</span>
+                    <a target="_blank" href="//mail.sina.com.cn/client/mobile/index.php?suda-key=mail_app&suda-value=login" class="telMailIco"><img src="/images/telMailIco.gif" style="margin:-1px 5px 0px 0px; vertical-align:top;" />手机邮箱</a>
+                </div>
+            </div>
+        </div>
+        <!--背景通过改变class,bg1为荷花背景，bg2为小象背景-->
+        <div class="mainBox bg1" data-sudaclick="bg1">
+            <div class="main">
+                <div class="positionBox clearfix">
+                     <div class="error timeout" style="display:none;">
+                        <h3>无法正常登录？请联系客服帮您解决。</h3>
+                    </div>
+                    <div class="error locked" style="display:none;">
+                        <h3>帐号被锁定：</h3>
+                        <p>·如需解锁，请编辑短信js发送到1069009060201进行解锁。</p>
+                    </div>
+                    <div class="error keyerr" style="display:none;">
+                        <h3>已检测到您的会员帐号没有开通邮箱，请重新登录</h3>
+                    </div>
+                    <noscript>
+                        <div class="error keyerr"><h3 style="color:red;font-size:20px">浏览器不支持或禁止了网页脚本，导致您无法正常登录。</h3>
+                            <br>
+                            <br>
+                            <a href="http://help.sina.com.cn/index.php?s=comquestiondetail&a=view&id=1380" target="_blank">如何解除脚本限制</a>
+                        </div>
+                    </noscript>
+                    <div>
+                        <div class="loginBox" data-sudaclick="loginBox" style="cursor:default;display:none">
+                        <ul class="tit clearfix">
+                            <!--被选中的情况，在li上加入class为current-->
+                            <li class="current">
+                                <a href="#" onclick="return false;"><span class="free"></span>免费邮箱登录</a>
+                            </li>
+                            <li class="lastChild">
+                                <a href="#" onclick="return false;"><span class="vip"></span>VIP登录</a>
+                            </li>
+                        </ul>
+                        <!--freeMailbox为免费邮箱，vipMailbox为VIP邮箱,切换时设另一个为display:none-->
+                        <div class="freeMailbox">
+                            <div class="freeError">
+                                <span class="loginError tip11" style="display:none">您输入的邮箱名或密码不正确</span>
+                                <span class="loginError tip13" style="display:none">请输入密码</span>
+                            </div>
+                            <div class="usernameBox">
+                                <input tabindex="1" id="freename" type="text" class="username focus" value=""/>
+                                <a href="#" class="clearname"></a>
+                                <label for="freename" class="placeholder">输入邮箱名/手机号</label>
+                            </div>
+                            <div class="passwordBox">
+                                <input tabindex="2" id="freepassword" type="password" class="password" value=""/>
+                                <label for="freepassword" class="placeholder">输入密码</label>
+                            </div>
+                            <div class="loginSetting clearfix">
+                                <a href="https://security.weibo.com/iforgot/loginname?entry=freemail" target="_blank" class="forgetPas">忘记密码？</a>
+                                <input tabindex="4" id="store1" type="checkbox" checked="checked"/>
+                                <label for="store1">自动登录</label>
+                                <input tabindex="5" id="ssl1" type="checkbox" checked="checked" style="display:none;">
+                            </div>
+                            <div class="safeTip tip14">请不要在网吧或者公共电脑上使用自动登录选项</div>
+                            <!--若没有验证码，设置display:none-->
+                            <div class="checkcodeBox" style="display:none">
+                                <div class="freeError">
+                                    <span class="loginError tip16" style="display:none"></span>
+                                </div>
+                                <div class="clearfix">
+                                    <input id="freecheckcode" name="checkcode" type="text" value=""/>
+                                    <img alt="" class="checkcode" />
+                                    <label for="freecheckcode" class="placeholder">验证码</label>
+                                </div>
+                                <p class="clearfix"><a href="">看不清？换一个</a>按右图填写，不区分大小写</p>
+
+                            </div>
+                            <div class="loginOrRegister clearfix">
+                            	<!--loginRegisterSubmit-->
+                                <div class="loginRegisterSubmit">
+                                	<a href="#" class="loginBtn" tabindex="3" >登录</a>
+                                    <a href="/register/regmail.php" class="registerBtn" target="_blank">注册</a>
+                                </div>
+                                <!--loginRegisterSubmit end-->
+                                <!--selectLogin-->
+                                <div class="selectLogin">
+                                    <a href="https://weibo.com" title="" id="member" class="member" target="_blank">微博账号登录</a>
+                                    <a href="/cgi-bin/speeddetect.php" title="" target="_blank" class="frEle">更快登录</a>
+                                </div>
+                                <!--selectLogin end-->
+                            </div>                            
+                        </div>
+                        <div class="vipMailbox" style="display:none">
+                            <form name="vip_login" method="post" action="/cgi-bin/sla.php">
+                            <div class="vipError" style="visibility:visble;">
+                                <span class="loginError tip21" style="display:none">您输入的邮箱名或密码不正确</span>
+                                <span class="loginError tip23" style="display:none">请输入密码</span>
+                            </div>
+                            <div class="usernameBox">
+                                <label for="vipname" class="placeholder">输入邮箱名</label>
+                                <input tabindex="1" id="vipname" type="text" class="username" name="username" value=""/><span class="vipDomain">@vip.sina.com</span>
+                                <a href="#" class="clearname"></a>
+
+                            </div>
+                            <span style="visibility:hidden" class="loginError"></span>
+                            <div class="passwordBox">
+                                <input  tabindex="2"  id="vippassword" type="password" class="password" name="password" value=""/>
+                                <label for="vippassword" class="placeholder">输入密码</label>
+                            </div>
+                            <div class="mailvsn" style="display:none">
+                                <div class="freeError">
+                                    <span class="loginError tip25" style="display:none">请输入微盾动态码</span>
+                                </div>
+                                <input tabindex="3" id="vipvsn" type="text" class="vsn" name="vsn" value="" maxlength="6"/><span class="vipDomain"><a class="vipfindVdun" href="https://vdun.weibo.com/report_loss" target="_blank">微盾挂失</a></span>
+                                <label for="vipvsn" class="placeholder placeholder1" >输入微盾动态码</label>
+                            </div>
+                            <div class="loginSetting clearfix">
+                                <a href="https://security.weibo.com/iforgot/loginname?entry=vipmail" target="_blank" class="forgetPas">忘记密码？</a>
+                                <input tabindex="4"  id="store2" type="checkbox" checked="checked"/>
+                                <label for="store2">自动登录</label>
+                                <input tabindex="5" id="ssl2" type="checkbox" checked="checked" style="display:none;">
+                            </div>
+                            <div class="safeTip tip24">请不要在网吧或者公共电脑上使用自动登录选项</div>
+                            <!--若没有验证码，设置display:none-->
+                            <div class="checkcodeBox" style="display:none;">
+                                <div class="freeError">
+                                    <span class="loginError tip26" style="display:none"></span>
+                                </div>
+                                <div class="clearfix">
+                                    <input id="vipcheckcode" name="checkcode" type="text" value="验证码"/>
+                                    <img alt="" class="checkcode" />
+                                    <label for="vipcheckcode" class="placeholder">验证码</label>
+                                </div>
+                                <p class="clearfix"><a href="">看不清？换一个</a>按右图填写，不区分大小写</p>
+                            </div>
+                            <div class="loginOrRegister clearfix">
+                                <!--loginRegisterSubmit-->
+                                <div class="loginRegisterSubmit">
+                                	<a href="#" class="loginBtn" tabindex="3" >登录</a>
+                                    <a href="/register/reg_vipmail.php" class="registerBtn" target="_blank">注册</a>
+                                </div>
+                                <!--loginRegisterSubmit end-->
+                                <!--selectLogin-->
+                                <div class="selectLogin">
+                                	<a class="pay" target="_blank" href="https://vip.sina.com.cn/payment/payonce.php">代人续费</a>
+                                    <a href="/cgi-bin/speeddetect.php?type=vip" title="" target="_blank" class="frEle">更快登录</a>
+                                </div>
+                                <!--selectLogin end-->                                
+                            </div>
+                            </form>                            
+                        </div>
+                        <!--loginMobile-->
+                        <div class="loginMobile">
+                            <div>
+                                <a class="tip" href="//mail.sina.com.cn/client/mobile/index.php?suda-key=mail_app&amp;suda-value=login" target="_blank">手机客户端下载</a>
+                            </div>                           
+                        </div>
+                        <!--loginMobile end-->
+                            <a href="javascript:void(0)" class="switch"></a>
+                        <div class="yellowTip">扫码登录更安全</div>    
+                    </div>
+                        <div class="loginBox_code" style="display: none">
+                            <ul class="tit_code clearfix">
+                                <!--被选中的情况，在li上加入class为current-->
+                                <li class="current">
+                                    <a href="#" onclick="return false;"><span class="app"></span></a>
+                                </li>
+                                <li class="">
+                                    <a href="#" onclick="return false;"><span class="weibo"></span></a>
+                                </li>
+                                <li class="">
+                                    <a href="#" onclick="return false;"><span class="weixin"></span></a>
+                                </li>
+                            </ul>
+
+                            <div class="app_login">
+                                <div class="app_code" >
+                                    <img />
+                                </div>
+                                <div class="code_err">
+                                    <div class="code_bg"></div>
+                                    <div class="err"><p class="tip">二维码已失效<br>请点击刷新</p></div>
+                                </div>
+                                <div class="code_success">
+                                    <div class="code_bg"></div>
+                                    <div class="success"><p class="tip">扫码成功</p></div>
+                                </div>
+                                <div class="app_tip">
+                                    请打开新浪邮箱客户端扫一扫
+                                </div>
+                            </div>
+                            <div class="weibo_login" style="display:none;">
+                                <div class="weibo_code" >
+                                    <img />
+                                </div>
+                                <div id="code_refresh" class="code_refresh">
+                                    <div class="code_bg"></div>
+                                    <div class="refresh_tip"><p>二维码已失效<br>请点击刷新</p></div>
+                                </div>
+                                <div class="weibo_tip">
+                                    请打开微博客户端扫一扫
+                                </div>
+                            </div>
+                            <div id="weixin" class="weixin_login"  style="display:none;">
+                                <iframe width="200" height="258" frameborder="0" scrolling="no" src="">
+                                </iframe>
+                            </div>
+                            <div class="loginMobile">
+                                <div>
+                                    <a class="tip" href="/register/regmail.php" target="_blank">注册邮箱</a>
+                                </div>
+                            </div>
+                            <a href="javascript:void(0)" class="switch"></a>
+                            <div class="yellowTip">密码登录在这里</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footerBox">
+    <div class="footer clearfix">
+        <p class="copy">新浪公司&nbsp;版权所有&nbsp;&nbsp;&nbsp;&nbsp;Copyright&nbsp;©&nbsp;1996-2022&nbsp;SINA&nbsp;Corporation,&nbsp;All&nbsp;Rights&nbsp;Reserved</p>
+        <a target="_blank" href="https://passport.sinaimg.cn/html/sso/signupagreement_freemail.html">服务条款</a><span>|</span>
+        <a target="_blank" href="https://mail.sina.cn/privacy_policy.html">隐私政策</a><span>|</span>
+        <a target="_blank" href="http://weibo.com/sinamail">官方微博</a><span>|</span>
+        <a class="service_im" href="javascript:void(0)">在线客服</a><span>|</span>
+        <a target="_blank" href="http://www.12321.cn">不良信息举报</a><span>|</span><a target="_blank" href="http://help.sina.com.cn/index.php?s=commonquestion&a=subview&productid=2">帮助</a>
+    </div>    
+</div>    </div>
+ </div>
+<script type="text/javascript" src="https://2008mail.sina.com.cn/js/r.core.js?ver=20140811"></script><script type="text/javascript">
+    using(['r/core'],function(R){
+        var window = R.global, document = window.document, DOM = R.dom, E = R.event, $S = DOM.query, $ = DOM.$;
+        R.declare({
+            confdata: {
+                'bgdata':  [{
+                    img: '',
+                    bgcolor: '#eaf9e6',
+                    infoHtml: '<p style="position: absolute;right: 0;top: 580px;color: rgba(255,255, 255, .6);font: 12px/1.5 MicrosoftYaHei;">图文来自 @杨世奥</p>',
+                    link: '',
+                    borderbg: '//n.sinaimg.cn/mail/sysmail/mailcommon/mail2021-login/2021-spring.jpg'
+                }]
+            }
+        });
+    });
+</script>
+<script type="text/javascript" src="https://2008mail.sina.com.cn/js/ssologin.js?ver=202012291"></script><script type="text/javascript" src="/assets/login/js/free/login.js?ver=202106031"></script>
+<script type="text/javascript" src="https://2008mail.sina.com.cn/js/kefu.js?ver=202107301"></script><script type="text/javascript" src="https://www.sinaimg.cn/unipro/pub/suda_s_v851c.js"></script><div style="display: none">
+    <script src="https://s11.cnzz.com/z_stat.php?id=1261017783&web_id=1261017783" language="JavaScript"></script>
+</div>
+</body>
+</html>
