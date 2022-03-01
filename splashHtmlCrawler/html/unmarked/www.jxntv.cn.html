@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>在线直播 - 江西网络广播电视台</title>
+    <link rel="stylesheet" href="//img.jxntv.cn/templates/jxntv/v1.1.0/css/global.css" />
+    <link rel="stylesheet" href="//img.jxntv.cn/templates/jxntv/category/live/css/live.css" />
+    <link rel="stylesheet" href="//www.jxntv.cn/live/css/sylive.css?v=202011172028">
+
+    <script type="text/javascript" src="//img.jxntv.cn/js/config.js?v=202012011608"></script>
+    <script src="//img.jxntv.cn/templates/jxntv/v1.1.0/js/frame.js"></script>
+    <script src="https://img.jxntv.cn/templates/jxntv/v1.1.0/js/common.js"></script>
+
+    
+<script src="https://img.jxntv.cn/plugins/vue/vue.min.js"></script>
+<script src="https://img.jxntv.cn/plugins/vue/vue-router.min.js"></script>
+<script src="https://img.jxntv.cn/plugins/moment/moment.min.js"></script>
+<script src="https://img.jxntv.cn/plugins/vue/axios.min.js"></script>
+    
+    <!-- require cdn assets css -->
+    
+  <link href="static/css/app.2bd1b83d.css" rel="stylesheet"></head>
+  <body>
+    <noscript>
+      <strong>We're sorry but Webpack App doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="common_header">
+      <div class="container">
+          <div class="navbar">
+              <div class="logo"><a href="http://www.jxntv.cn " target="_blank">江西网络广播电视台</a></div>
+              <ul class="nav">
+                  <li><a href="http://news.jxntv.cn" target="_blank">新闻</a></li>
+                  <li><a href="http://opinion.jxntv.cn" target="_blank">时评</a></li>
+                  <li><a href="http://v.jxntv.cn" target="_blank">辣TV</a></li>
+                  <li><a href="http://www.jxntv.cn/live/" target="_blank">直播</a></li>
+                  <li class="dropdown" data-type="hover"><span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">更多 <i class="iconfont">&#xe617;</i></span>
+                      <ul class="dropdown-menu">
+                          <li class="item"><a href="http://edu.jxntv.cn/" target="_blank">教育</a></li>
+                          <li class="item"><a href="http://health.jxntv.cn/" target="_blank">健康</a></li>
+                          <li class="item"><a href="http://fa.jxntv.cn/" target="_blank">法制</a></li>
+                          <li class="item"><a href="http://finance.jxntv.cn/" target="_blank">金融</a></li>
+                          <li class="item"><a href="http://fangtan.jxntv.cn/" target="_blank">访谈</a></li>
+                          <li class="item"><a href="http://travel.jxntv.cn/" target="_blank">旅游</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+          <div class="servers">
+              <div class="channel dropdown">
+                  <div class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="iconfont">&#xe60d;</i> 频道官网</div>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://jxtv.jxntv.cn" target="_blank">江西卫视</a></li>
+                      <li><a href="http://v.jxntv.cn/so/?fr=pg&ch=139&ca=139" target="_blank">都市频道</a></li>
+                      <li><a href="http://v.jxntv.cn/so/?fr=pg&ch=140&ca=140" target="_blank">经视频道</a></li>
+                      <li><a href="http://v.jxntv.cn/so/?fr=pg&ch=141&ca=141" target="_blank">影视频道</a></li>
+                      <li><a href="http://v.jxntv.cn/so/?fr=pg&ch=142&ca=142" target="_blank">公共频道</a></li>
+                      <li><a href="http://v.jxntv.cn/so/?fr=pg&ch=143&ca=143" target="_blank">哈尼卡通</a></li>
+                      <li><a href="http://v.jxntv.cn/so/?fr=pg&ch=144&ca=144" target="_blank">电影频道</a></li>
+                      <li><a href="http://v.jxntv.cn/so/?fr=pg&ch=145&ca=145" target="_blank">移动电视</a></li>
+                      <li><a href="http://www.jxntv.cn/radio/" target="_blank">网络电台</a></li>
+                  </ul>
+              </div>
+              <div class="mobile dropdown">
+                  <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="iconfont">&#xe63b;</i> <span href="http://www.jxntv.cn/app/" target="_blank">移动端</span></span>
+                  <!--div class="dropdown-menu" style="padding:10px;"><img src="http://www.jxntv.cn/app/assets/images/ewmwxz.png" width="140" /></div-->
+  
+                  <style>
+                      #common_header .open .imglist{color:#292929}
+                      .secxmtjz .m-bd{margin:0 16px}
+                      .secxmtjz .imglist .pic{width:90px;height:90px}
+                      .secxmtjz .imglist li{width:90px;text-align:center}
+                      .secxmtjz .imglist li img{width:90px;height:90px}
+                      .secxmtjz .imglist li .linktitle{font-size:16px}
+                      .secxmtjz .imglist li .small{font-size:14px}
+                      .secxmtjz .weibo{display:inline-block}
+                      .secxmtjz .weibo img{float:left}
+                      .secxmtjz .weibo ul{float:right;height:38px}
+                      .secxmtjz .weibo li{float:left;height:30px;background-color:#e93333;border-radius:10px;color:#fff;padding:0 8px;margin-left:8px}
+                      .secxmtjz .weibo li a{color:#fff;background:#e93333;}
+                  </style>
+                  <div class="dropdown-menu" style="padding:10px;left:auto; right:0;width:340px;">
+                      <div class="m-box secxmtjz" style="margin-bottom: 0;">
+                          <div class="m-bd" style="padding-top: 10px ">
+                              <ul class="imglist">
+                                <li>
+                                    <img src="https://upload.jxntv.cn/2021/1213/1639389211524.png" alt="今视频APP">
+                                    今视频<p class="small">手机APP</p>
+                                </li>
+                                <li>
+                                    <img src="https://upload.jxntv.cn/2021/1214/1639453825455.jpg" alt="江西网络台微信公众平台">
+                                    江西网络台<p class="small">微信公众平台</p>
+                                </li>
+                                <li>
+                                    <img src="https://upload.jxntv.cn/2021/1214/1639453825491.jpg" alt="手机江西台">
+                                    手机江西台<p class="small">微信公众平台</p>
+                                </li>
+                              </ul>
+                              <div class="weibo">
+                                  <img src="http://img.jxntv.cn/templates/jxntv/images/index/logoWeibo.png" alt="江西网络台手机APP">
+                                  <ul>
+                                      <li><a href="http://weibo.com/cjxtv?is_hot=1" class="pic" target="_blank">江西网络台微博</a></li>
+                                      <li><a href="http://weibo.com/lovejxtv?is_hot=1" class="pic" target="_blank">江西卫视微博</a></li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+  
+  
+              </div>
+          </div>
+      </div>
+    </div>
+    <div id="vheader" class="container">
+      <h1><a href="http://www.jxntv.cn" target="_blank" class="main">江西网络广播电视台</a></h1>
+      <h2><i class="iconfont">&#xe600;</i><a href="#" target="_blank">在线直播</a></h2>
+      
+<div class="searchbar">
+    <form name="head_search" action="http://app.jxntv.cn" method="GET" target="_blank">
+        <input  x-webkit-speech="" autocomplete="off" id="head_wd" name="wd" class="keywords blur" placeholder="请输入关键字" />
+        <button type="submit">搜索</button>
+
+        <!--  请不要修改这段 -->
+        <input type="hidden" name="app" value="search">
+        <input type="hidden" name="controller" value="index">
+        <input type="hidden" name="action" value="search">
+        <input type="hidden" id="type" name="type" value="all">
+        <!--  请不要修改上面这段 -->
+    </form>
+</div>
+    </div>
+    <div id="app"></div>
+    
+    <!-- 子页面标准尾 -->
+    <div id="common-footer">
+    <div class="container">
+        <div class="links">
+            <a href="http://www.jxntv.cn/about/jxtvintro.shtml" target="_blank">江西广播电视台介绍</a><a href="http://www.jxntv.cn/about/jxntvintro.shtml" target="_blank">江西网络广播电视台介绍</a><a href="http://www.jxntv.cn/about/contact.shtml" target="_blank">联系我们</a><a href="http://www.jxntv.cn/about/lawyer.shtml" target="_blank">法律顾问</a><a href="http://special.jxntv.cn/ad/" target="_blank">广告中心</a><a href="http://www.jxntv.cn/about/flinks.shtml" target="_blank">友情链接</a>
+        </div>
+        <div class="copyright">
+            <p>江西网络广播电视台 版权所有 Copyright © 2008-2021 JXNTV Inc. All Rights Reserved</p>
+            <p><a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备12001566号-4</a> | 互联网新闻信息服务许可证36120170004号 | 网络视听许可证1410592号</p>        
+        </div>
+    </div>
+</div>
+    <!-- / 子页面标准尾 -->
+  <script type="text/javascript" src="static/js/vendors~app.49959d6a.js"></script><script type="text/javascript" src="static/js/app.2561a2ba.js"></script></body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html> <html> <head> <title> 爱菲音响商城</title> <meta name="keywords" content="ThinkCMF,php,内容管理框架,cmf,cms,简约风, simplewind,framework" /> <meta name="description" content="ThinkCMF是简约风网络科技发布的一款用于快速开发的内容管理框架"> <meta name="author" content="ThinkCMF"> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> <!-- Set render engine for 360 browser --> <meta name="renderer" content="webkit"> <!-- No Baidu Siteapp--> <meta http-equiv="Cache-Control" content="no-siteapp"/> <!-- HTML5 shim for IE8 support of HTML5 elements --> <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <![endif]--> <link rel="icon" href="/themes/simplebootx/Public/assets/images/favicon.ico" type="image/x-icon"> <link rel="shortcut icon" href="/themes/simplebootx/Public/assets/images/favicon.ico" type="image/x-icon"> <link href="/themes/simplebootx/Public/assets/simpleboot/themes/simplebootx/theme.min.css" rel="stylesheet"> <link href="/themes/simplebootx/Public/assets/simpleboot/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"> <link href="/themes/simplebootx/Public/assets/simpleboot/font-awesome/4.4.0/css/font-awesome.min.css"  rel="stylesheet" type="text/css"> <!--[if IE 7]> <link rel="stylesheet" href="/themes/simplebootx/Public/assets/simpleboot/font-awesome/4.4.0/css/font-awesome-ie7.min.css"> <![endif]--> <link href="/themes/simplebootx/Public/assets/css/style.css" rel="stylesheet"> <style>
+		/*html{filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);-webkit-filter: grayscale(1);}*/
+		#backtotop{position: fixed;bottom: 50px;right:20px;display: none;cursor: pointer;font-size: 50px;z-index: 9999;}
+		#backtotop:hover{color:#333}
+		#main-menu-user li.user{display: none}
+	</style> <!--在线客服  --> <!--在线客服  --> <link rel="stylesheet" type="text/css" href="/themes/simplebootx/Public/assets/huibo/css/kefu.css"/> <div class="scrollsidebar" id="scrollsidebar" > <div class="side_content"> <div class="side_list"> <div class="side_title"><a title="隐藏" class="close_btn"><span>关闭</span></a></div> <form action="" method="post" class="elegant-aero"> <div class="side_center"> <div class="custom_service"> <p> <a  target="_blank" style="color: #9c0000;">免费电话咨询</a> </p> </div> <div class="other"> <p><input id="phone" type="text" name="name" placeholder="请输入您的电话号码" /></p> </div> <div class="msgserver"> <p><input type="button" onclick='appPost()' class="button" value="给您回电" /></p> </div> </div> <div class="side_bottom"></div> </form> </div> </div> <div class="show_btn" style="width: 35px;"> <span class='span1'>&#9742;</span> <span class='span2'>电</span> <span class='span2'>话</span> <span class='span2'>回</span> <span class='span2'>拨</span> </div> </div> <script src="/themes/simplebootx/Public/assets/huibo/js/kefu.js" type="text/javascript"></script> <script>function appPost() {
+		var phone = document.getElementById("phone").value;
+		
+		var url="https://www.lovehifi.com/index.php/api/Guestbook/sendmsg/phone/"+phone;
+
+
+		var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
+        httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中  ps:"./Ptest.php?name=test&nameone=testone"
+        httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+        /**
+         * 获取数据后的处理程序
+         */
+        httpRequest.onreadystatechange = function () {
+            if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                var json = httpRequest.responseText;//获取到json字符串，还需解析
+				if(json == 0){
+					alert('发送成功！');
+				}else if(json == 2){
+					alert('请输入正确的手机号！');
+				}else if(json == 3){
+					alert('请输入正确的手机号！');
+				}else if(json == 4){
+					alert('已经记录您的联系方式，请耐心等待！');
+				}else{
+					alert('发送失败！');
+				}
+                //console.log(json);
+            }
+        };
+	}
+</script> <script>function ClickPost() {
+
+		
+		var url="https://www.lovehifi.com/index.php/api/Guestbook/add_click_num";
+
+
+		var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
+        httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中  ps:"./Ptest.php?name=test&nameone=testone"
+        httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+        /**
+         * 获取数据后的处理程序
+         */
+        httpRequest.onreadystatechange = function () {
+
+        };
+	}
+</script> <script>
+(function(){
+var _53code = document.createElement("script");
+_53code.src = "https://tb.53kf.com/code/code/10144866/1";
+var s = document.getElementsByTagName("script")[0]; 
+s.parentNode.insertBefore(_53code, s);
+})();
+</script> <link href="/themes/simplebootx/Public/assets/css/slippry/slippry.css" rel="stylesheet"> <style>
+			.caption-wraper{position: absolute;left:50%;bottom:2em;}
+			.caption-wraper .caption{
+			position: relative;left:-50%;
+			background-color: rgba(0, 0, 0, 0.54);
+			padding: 0.4em 1em;
+			color:#fff;
+			-webkit-border-radius: 1.2em;
+			-moz-border-radius: 1.2em;
+			-ms-border-radius: 1.2em;
+			-o-border-radius: 1.2em;
+			border-radius: 1.2em;
+			}
+			@media (max-width: 767px){
+				.sy-box{margin: 12px -20px 0 -20px;}
+				.caption-wraper{left:0;bottom: 0.4em;}
+				.caption-wraper .caption{
+				left: 0;
+				padding: 0.2em 0.4em;
+				font-size: 0.92em;
+				-webkit-border-radius: 0;
+				-moz-border-radius: 0;
+				-ms-border-radius: 0;
+				-o-border-radius: 0;
+				border-radius: 0;}
+			}
+		</style> </head> <body class="body-white"> <div class="navbar navbar-fixed-top"> <div class="navbar-inner" style="background: #ab0a00"> <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="/"><img src="/themes/simplebootx/Public/assets/images/new/head_l.png"/></a> <div class="nav-collapse collapse" id="main-menu"> <ul id="main-menu"  class="nav"><li   class='li-class'   id= 'menu-item-1'><a href='/' target=''>首页</a></li><li   class='dropdown li-class'   id= 'menu-item-2'><a href='/index.php?m=list&a=index&id=1' style='position: inherit;z-index: 999999999;'>音箱</a> <a  target='' class='dropdown-toggle' data-toggle='dropdown' style='position:absolute;top: 0px;left:37px;'> <b class='caret'></b></a><ul class='dropdown-menu'><li   class='li-class' id= 'menu-item-5'><a href='/index.php?m=list&a=index&id=3' target=''>HiFi音箱</a></li><li   class='li-class'   id= 'menu-item-6'><a href='/index.php?m=list&a=index&id=4' target=''>影院音箱</a></li><li   class='li-class'   id= 'menu-item-12'><a href='/index.php?m=list&a=index&id=15' target=''>K歌音箱</a></li><li   class='li-class'   id= 'menu-item-13'><a href='/index.php?m=list&a=index&id=16' target=''>电视音箱</a></li></ul></li><li   class='dropdown li-class'   id= 'menu-item-3'><a href='/index.php?m=list&a=index&id=2' style='position: inherit;z-index: 999999999;'>功放</a> <a  target='' class='dropdown-toggle' data-toggle='dropdown' style='position:absolute;top: 0px;left:37px;'> <b class='caret'></b></a><ul class='dropdown-menu'><li   class='li-class' id= 'menu-item-7'><a href='/index.php?m=list&a=index&id=5' target=''>HiFi功放</a></li><li   class='li-class'   id= 'menu-item-8'><a href='/index.php?m=list&a=index&id=6' target=''>影院功放</a></li></ul></li><li   class='dropdown li-class'   id= 'menu-item-4'><a href='/index.php?m=list&a=index&id=7' style='position: inherit;z-index: 999999999;'>音源</a> <a  target='' class='dropdown-toggle' data-toggle='dropdown' style='position:absolute;top: 0px;left:37px;'> <b class='caret'></b></a><ul class='dropdown-menu'><li   class='li-class' id= 'menu-item-9'><a href='/index.php?m=list&a=index&id=8' target=''>数字播放器</a></li><li   class='li-class'   id= 'menu-item-10'><a href='/index.php?m=list&a=index&id=9' target=''>CD机</a></li></ul></li><li   class='dropdown li-class'   id= 'menu-item-14'><a href='/index.php?m=list&a=index&id=10' style='position: inherit;z-index: 999999999;'>配件</a> <a  target='' class='dropdown-toggle' data-toggle='dropdown' style='position:absolute;top: 0px;left:37px;'> <b class='caret'></b></a><ul class='dropdown-menu'><li   class='li-class' id= 'menu-item-15'><a href='/index.php?m=list&a=index&id=11' target=''>线材 其他</a></li><li   class='li-class'   id= 'menu-item-16'><a href='/index.php?m=list&a=index&id=13' target=''>低音炮</a></li><li   class='li-class'   id= 'menu-item-17'><a href='/index.php?m=list&a=index&id=14' target=''>脚架</a></li></ul></li><li   class='li-class'   id= 'menu-item-11'><a href='https://shop.lovehifi.com/' target=''>社区论坛</a></li></ul> <!--<ul class="nav pull-right" id="main-menu-user">--> <!-- <li class="user login" style="margin-left: 5px;"> <a class="dropdown-toggle user notifactions" href="/index.php?g=user&m=notification&a=index"> <i class="fa fa-envelope"></i> <span class="count">0</span> </a> </li> --> <!--<li class="dropdown user login">--> <!--<a class="dropdown-toggle user" data-toggle="dropdown" href="#">--> <!--<img src="/themes/simplebootx/Public/assets/images/headicon.png" class="headicon"/>--> <!--<span class="user-nicename"></span><b class="caret"></b></a>--> <!--<ul class="dropdown-menu pull-right">--> <!--<li><a href="/index.php?g=user&m=center&a=index"><i class="fa fa-user"></i> &nbsp;个人中心</a></li>--> <!--<li class="divider"></li>--> <!--<li><a href="/index.php?g=user&m=index&a=logout"><i class="fa fa-sign-out"></i> &nbsp;退出</a></li>--> <!--</ul>--> <!--</li>--> <!--<li class="dropdown user offline">--> <!--<a class="dropdown-toggle user" data-toggle="dropdown" href="#">--> <!--<img src="/themes/simplebootx/Public/assets/images/headicon.png" class="headicon"/>登录<b class="caret"></b>--> <!--</a>--> <!--<ul class="dropdown-menu pull-right">--> <!--<li><a href="/index.php?g=api&m=oauth&a=login&type=sina"><i class="fa fa-weibo"></i> &nbsp;微博登录</a></li>--> <!--<li><a href="/index.php?g=api&m=oauth&a=login&type=qq"><i class="fa fa-qq"></i> &nbsp;QQ登录</a></li>--> <!--<li><a href="/index.php?g=user&m=login&a=index"><i class="fa fa-sign-in"></i> &nbsp;登录</a></li>--> <!--<li class="divider"></li>--> <!--<li><a href="/index.php?g=user&m=register&a=index"><i class="fa fa-user"></i> &nbsp;注册</a></li>--> <!--</ul>--> <!--</li>--> <!--</ul>--> <div class="pull-right"> <form method="post" class="form-inline" action="/index.php?g=portal&m=search&a=index" style="margin:18px 0;"> <input type="text" class="" placeholder="Search" name="keyword" value=""/> <input type="submit" class="btn btn-info" value="Go" style="margin:0"/> </form> </div> </div> </div> </div> </div> <ul id="homeslider" class="unstyled"> <li> <div class="caption-wraper"> <div class="caption">世纪全景声影院</div> </div> <a href="https://h6.lovehifi.com/index.php?g=&amp;m=article&amp;a=index&amp;id=27&amp;cid=1"><img src="https://www.lovehifi.com/data/upload/admin/20210130/601524e0a2576.gif" alt=""></a> </li><li> <div class="caption-wraper"> <div class="caption">红衣教主</div> </div> <a href="https://h6.lovehifi.com/index.php?g=&amp;m=article&amp;a=index&amp;id=28&amp;cid=1"><img src="https://www.lovehifi.com/data/upload/admin/20210130/60152500646db.jpg" alt=""></a> </li><li> <div class="caption-wraper"> <div class="caption">交响一号</div> </div> <a href="https://h6.lovehifi.com/index.php?g=&amp;m=article&amp;a=index&amp;id=23&amp;cid=1"><img src="https://www.lovehifi.com/data/upload/admin/20210130/6015250de5c76.jpg" alt=""></a> </li><li> <div class="caption-wraper"> <div class="caption">天弦UE</div> </div> <a href="https://h6.lovehifi.com/index.php?g=&amp;m=article&amp;a=index&amp;id=19&amp;cid=1"><img src="https://www.lovehifi.com/data/upload/admin/20210130/601525200e6cb.jpg" alt=""></a> </li></ul> <div class="container"> <div> <h1 class="text-center" style="padding-bottom: 30px;padding-top: 30px;">热卖商品</h1> </div> <div class="row"> <div class="span3" style="margin-bottom: 30px;"> <div class="tc-gridbox"> <div class="header"> <div class="item-image"> <a href="/index.php?g=&m=article&a=index&id=16&cid=1"> <img src="https://www.lovehifi.com/data/upload/portal/20191212/5df1a75428545.jpg" class="img-responsive img-thumbnail" alt="BT-AUDIO 歌剧·拉夫堡同轴HIFI音箱" /> </a> </div> <h3><a href="/index.php?g=&m=article&a=index&id=16&cid=1">BT-AUDIO 歌剧·拉夫堡同轴HIFI音箱</a></h3> <hr> </div> <div class="body"> <p><a href="/index.php?g=&m=article&a=index&id=16&cid=1">商城价格：8480元
+...</a></p> </div> </div> </div> <div class="span3" style="margin-bottom: 30px;"> <div class="tc-gridbox"> <div class="header"> <div class="item-image"> <a href="/index.php?g=&m=article&a=index&id=13&cid=1"> <img src="https://www.lovehifi.com/data/upload/portal/20191212/5df1a5e680b16.jpg" class="img-responsive img-thumbnail" alt="BT-AUDIO 拿破仑古典大落地箱" /> </a> </div> <h3><a href="/index.php?g=&m=article&a=index&id=13&cid=1">BT-AUDIO 拿破仑古典大落地箱</a></h3> <hr> </div> <div class="body"> <p><a href="/index.php?g=&m=article&a=index&id=13&cid=1">商城价格：18980元...</a></p> </div> </div> </div> <div class="span3" style="margin-bottom: 30px;"> <div class="tc-gridbox"> <div class="header"> <div class="item-image"> <a href="/index.php?g=&m=article&a=index&id=15&cid=1"> <img src="https://www.lovehifi.com/data/upload/portal/20191212/5df1a6f40592a.jpg" class="img-responsive img-thumbnail" alt="BT-AUDIO 枫丹白露HI-END音箱" /> </a> </div> <h3><a href="/index.php?g=&m=article&a=index&id=15&cid=1">BT-AUDIO 枫丹白露HI-END音箱</a></h3> <hr> </div> <div class="body"> <p><a href="/index.php?g=&m=article&a=index&id=15&cid=1">商城价格：69000元
+...</a></p> </div> </div> </div> <div class="span3" style="margin-bottom: 30px;"> <div class="tc-gridbox"> <div class="header"> <div class="item-image"> <a href="/index.php?g=&m=article&a=index&id=19&cid=1"> <img src="https://www.lovehifi.com/data/upload/portal/20191212/5df1a9fc5cf5a.jpg" class="img-responsive img-thumbnail" alt="BT-AUDIO 天弦UE HIFI音箱" /> </a> </div> <h3><a href="/index.php?g=&m=article&a=index&id=19&cid=1">BT-AUDIO 天弦UE HIFI音箱</a></h3> <hr> </div> <div class="body"> <p><a href="/index.php?g=&m=article&a=index&id=19&cid=1">商城价格：6680元
+...</a></p> </div> </div> </div> <div class="span3" style="margin-bottom: 30px;"> <div class="tc-gridbox"> <div class="header"> <div class="item-image"> <a href="/index.php?g=&m=article&a=index&id=21&cid=1"> <img src="https://www.lovehifi.com/data/upload/portal/20191212/5df1aa6ad0e9b.jpg" class="img-responsive img-thumbnail" alt="BT-AUDIO AB HIFI音箱" /> </a> </div> <h3><a href="/index.php?g=&m=article&a=index&id=21&cid=1">BT-AUDIO AB HIFI音箱</a></h3> <hr> </div> <div class="body"> <p><a href="/index.php?g=&m=article&a=index&id=21&cid=1">商城价格：2380元...</a></p> </div> </div> </div> <div class="span3" style="margin-bottom: 30px;"> <div class="tc-gridbox"> <div class="header"> <div class="item-image"> <a href="/index.php?g=&m=article&a=index&id=23&cid=1"> <img src="https://www.lovehifi.com/data/upload/portal/20191212/5df1af0940126.jpg" class="img-responsive img-thumbnail" alt="BT-AUDIO 交响一号落地音箱" /> </a> </div> <h3><a href="/index.php?g=&m=article&a=index&id=23&cid=1">BT-AUDIO 交响一号落地音箱</a></h3> <hr> </div> <div class="body"> <p><a href="/index.php?g=&m=article&a=index&id=23&cid=1">商城价格：17980元...</a></p> </div> </div> </div> <div class="span3" style="margin-bottom: 30px;"> <div class="tc-gridbox"> <div class="header"> <div class="item-image"> <a href="/index.php?g=&m=article&a=index&id=14&cid=1"> <img src="https://www.lovehifi.com/data/upload/portal/20191212/5df1a6719f8fa.jpg" class="img-responsive img-thumbnail" alt="BT-AUDIO 歌剧·卡迪夫同轴HIFI音箱" /> </a> </div> <h3><a href="/index.php?g=&m=article&a=index&id=14&cid=1">BT-AUDIO 歌剧·卡迪夫同轴HIFI音箱</a></h3> <hr> </div> <div class="body"> <p><a href="/index.php?g=&m=article&a=index&id=14&cid=1">商城价格：8480元...</a></p> </div> </div> </div> <div class="span3" style="margin-bottom: 30px;"> <div class="tc-gridbox"> <div class="header"> <div class="item-image"> <a href="/index.php?g=&m=article&a=index&id=27&cid=1"> <img src="https://www.lovehifi.com/data/upload/portal/20191212/5df1b245cb354.jpg" class="img-responsive img-thumbnail" alt="BT-AUDIO 世纪全景声影院" /> </a> </div> <h3><a href="/index.php?g=&m=article&a=index&id=27&cid=1">BT-AUDIO 世纪全景声影院</a></h3> <hr> </div> <div class="body"> <p><a href="/index.php?g=&m=article&a=index&id=27&cid=1">商城价格：22980元...</a></p> </div> </div> </div> </div> <style>
+	.security_div{
+		/*background: #fff;*/
+		padding: 30px 0px 0;
+	}
+
+	.security  .set_m{
+		display: flex;
+		-webkit-display:flex;
+		margin: 20px 0;
+	}
+	.security  .set_m>div{
+		width:50%;
+		display: inline-block;
+		text-align: center;
+		margin: 8px 0;
+	}
+	.security  .set_m>div img{
+		width: 60%;
+	}
+	.security_div {
+		border-bottom: 1px solid #a40c0b;
+	}
+	.directory_l{
+		display: flex;
+		margin-top: 20px;
+		border-bottom: 1px solid #a40c0b;
+	}
+	.directory_l .c {
+		display: inline;
+		float: left;
+		margin-left: 10px;
+		margin-right: 10px;
+		width: 18%;
+		position: relative;
+		text-align: center;
+		border-right: 1px solid #a40c0b;
+		height: 173px;
+		padding-top: 20px;
+		margin-bottom: 20px;
+	}
+	.directory_l .c dt {
+		font-size: 16px;
+		padding: 0px;
+		margin: 0px 0px 5px 0px;
+		color: #222;
+	}
+	.directory_l .c dd {
+		line-height: 25px;
+		padding: 0px 0px 0px 0px;
+		margin: 0px 0px 0px 0px;
+	}
+	.directory_l .c a{
+		color: #98979A;
+	}
+	.directory_l .c_5 {
+		border-right: 0px solid #a40c0b;
+	}
+	.directory_l .c_5 span {
+		padding-top: 1px;
+		margin-top: 0px;
+		color: #a40c0b;
+	}
+	.focus_div{
+		text-align: center;
+		/*background: #fff;*/
+		padding: 15px 0px;
+		padding-bottom: 40px;
+	}
+	.focus_div  p{
+		font-size: 14px;
+		color: #98979A;
+		margin-bottom: 15px;
+	}
+	.focus_div  p:last-child{
+		margin-bottom:0;
+	}
+
+</style> <div class="security_div"> <div class="security"> <div class="set_m"> <div> <img src="/themes/simplebootx/Public/assets/images/new/1-1.png" alt=""> </div> <div> <img src="/themes/simplebootx/Public/assets/images/new/1-2.png" alt=""> </div> <div> <img src="/themes/simplebootx/Public/assets/images/new/1-3.png" alt=""> </div> <div> <img src="/themes/simplebootx/Public/assets/images/new/1-4.png" alt=""> </div> <div> <img src="/themes/simplebootx/Public/assets/images/new/1-5.png" alt=""> </div> </div> </div> </div> <div class="directory_l"> <div class="c c_1"><i></i> <dt>帮助中心</dt> <dd><a title="购买指南" href="https://www.lovehifi.com/goumaizhinan.html" target="_parent">购买指南</a></dd> <dd><a title="用户必读" href="https://www.lovehifi.com/yonghubidu.html" target="_parent">用户必读</a></dd> <dd><a title="配送方式" href="https://www.lovehifi.com/peisongfangshi.html" target="_parent">配送方式</a></dd> </div> <div class="c c_2"><i></i> <dt>服务支持</dt> <dd><a title="售后政策" href="https://www.lovehifi.com/shouhouzhengce.html" target="_parent">售后政策</a></dd> <dd><a title="运费说明" href="https://www.lovehifi.com/yunfeishuoming.html" target="_parent">运费说明</a></dd> <dd><a title="退货办理" href="https://www.lovehifi.com/tuihuobanli.html" target="_parent">退货办理</a></dd> </div> <div class="c c_3"><i></i> <dt>支付方式</dt> <dd><a title="支付宝付款" target="_parent">支付宝付款</a></dd> <dd><a title="网银转账" target="_parent">网银转账</a></dd> <dd><a title="货到付款" target="_parent">货到付款</a></dd> </div> <div class="c c_4"><i></i> <dt>关于爱HIFI</dt> <dd><a title="了解爱HIFI" href="https://www.lovehifi.com/jianjie.html" target="_parent">了解爱HIFI</a></dd> <dd><a title="媒体推荐" target="_parent">媒体推荐</a></dd> <dd><a title="联系我们" href="https://www.lovehifi.com/lianxi.html" target="_parent">联系我们</a></dd> </div> <div class="c c_5"> <dt>关注爱HIFI微信</dt> <dd><img src="/themes/simplebootx/Public/assets/images/new/weixin.jpg"></dd> <span>400-9955-739</span> </div> </div> <!--<div class="service_div">--> <!--<div class="service">--> <!--<div class="ser_l">--> <!--<h3 style="margin: 0;line-height: 0;">24小时全国热线</h3>--> <!--<h2 style="margin-top: 6px;margin-bottom: 0px;line-height: 34px;">400-9955-739</h2>--> <!--</div><div class="ser_r">--> <!--<a href="http://dwz.cn/3I1B8y"><img src="/themes/simplebootx/Public/assets/images/new/7.png" alt=""></a>--> <!--</div>--> <!--</div>--> <!--</div>--> <div class="focus_div"> <!--<p><a href="https://www.lovehifi.com/jianjie.html">网站简介</a>&nbsp;&nbsp;&nbsp;&nbsp;<a  href="https://www.lovehifi.com/jianjie.html">联系我们</a></p>--> <p>
+		&copy;2005-2018 爱HIFI (爱菲) 音响网由天津梦幻之声音响技术有限公司版权所有，并保留所有权利。<a style="color:#98979A;" href="https://beian.miit.gov.cn/">津B2-20080131</a> </p> </div> <div id="backtotop"> <i class="fa fa-arrow-circle-up"></i> </div> <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?adcd1abed6eed8d199ef0888f7c52bdf";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script> </div> <script type="text/javascript">
+//全局变量
+var GV = {
+    ROOT: "/",
+    WEB_ROOT: "/",
+    JS_ROOT: "public/js/"
+};
+</script> <!-- Placed at the end of the document so the pages load faster --> <script src="/public/js/jquery.js"></script> <script src="/public/js/wind.js"></script> <script src="/themes/simplebootx/Public/assets/simpleboot/bootstrap/js/bootstrap.min.js"></script> <script src="/public/js/frontend.js"></script> <script>
+$(function(){
+	$('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropagation(); });
+	
+	$("#main-menu li.dropdown").hover(function(){
+		$(this).addClass("open");
+	},function(){
+		$(this).removeClass("open");
+	});
+	
+	$.post("/index.php?g=user&m=index&a=is_login",{},function(data){
+		if(data.status==1){
+			if(data.user.avatar){
+				$("#main-menu-user .headicon").attr("src",data.user.avatar.indexOf("http")==0?data.user.avatar:"https://www.lovehifi.com/data/upload/[AVATAR]".replace('[AVATAR]',data.user.avatar));
+			}
+			
+			$("#main-menu-user .user-nicename").text(data.user.user_nicename!=""?data.user.user_nicename:data.user.user_login);
+			$("#main-menu-user li.login").show();
+			
+		}
+		if(data.status==0){
+			$("#main-menu-user li.offline").show();
+		}
+		
+		/* $.post("/index.php?g=user&m=notification&a=getlastnotifications",{},function(data){
+			$(".nav .notifactions .count").text(data.list.length);
+		}); */
+		
+	});	
+	;(function($){
+		$.fn.totop=function(opt){
+			var scrolling=false;
+			return this.each(function(){
+				var $this=$(this);
+				$(window).scroll(function(){
+					if(!scrolling){
+						var sd=$(window).scrollTop();
+						if(sd>100){
+							$this.fadeIn();
+						}else{
+							$this.fadeOut();
+						}
+					}
+				});
+				
+				$this.click(function(){
+					scrolling=true;
+					$('html, body').animate({
+						scrollTop : 0
+					}, 500,function(){
+						scrolling=false;
+						$this.fadeOut();
+					});
+				});
+			});
+		};
+	})(jQuery); 
+	
+	$("#backtotop").totop();
+	
+	
+});
+</script> <script src="/themes/simplebootx/Public/assets/js/slippry.min.js"></script> <script>
+$(function() {
+	var demo1 = $("#homeslider").slippry({
+		transition: 'fade',
+		useCSS: true,
+		captions: false,
+		speed: 1000,
+		pause: 3000,
+		auto: true,
+		preload: 'visible'
+	});
+});
+</script> </body> </html>

@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=990, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta charset="utf-8" />
+        <meta name="renderer" content="webkit">
+        <title>江西电影票网_江西最大的电影在线选座购票平台</title>
+        <meta name="keywords" content="江西电影票,江西电影票网,江西电影院,江西影票,江西电影,电影票，电影"/>
+        <meta name="description" content="江西电影票网是江西最大的电影票在线选座平台，同时江西电影票网还提供电影排期，影院信息查询、江西本土电影行业资讯等服务。看电影，来江西电影票选座"/>
+        <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="/resource/css/main.css" rel="stylesheet" />
+        <link href="/resource/css/style.min.css?v=20180606" rel="stylesheet" />
+         
+    <link href="/resource/css/jquery.flexslider.css" rel="stylesheet" />
+
+        <script src="/resource/js/jquery.1.7.2.min.js" type="text/javascript"></script>
+        <script src="/resource/js/json2.min.js" type="text/javascript"></script>
+        <script src="/resource/js/helper.js" type="text/javascript"></script>
+        <script src="/resource/js/jquery.tool.expose.min.js" type="text/javascript"></script>
+        <script src="/resource/js/jquery.tool.overlay.min.js" type="text/javascript"></script>
+        <script src="/resource/js/jquery.tool.tabs.min.js" type="text/javascript"></script>
+          
+    <script src="/resource/js/jquery.flexslider.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".hot-active-index .active-recomment li:last").addClass("fn-right");
+            $(".gyfc-film-index .gyfc-film li:not(:last)").addClass("mr31");
+            $(".future-film-index .future-film li:not(:last)").addClass("mr30");
+        });
+        $(window).load(function () {
+            $('.main-ad').flexslider({
+                animation: "slide"
+            });
+            $('.hot-film-index').flexslider({
+                animation: "slide",
+                slideshow: false,
+                controlNav: false,
+                itemWidth: 169,
+                after: function (slider) {
+                    $(".hot-film-index .current em").text(slider.currentSlide+1);
+                }
+            });
+            $(".main-ad").hover(function () {
+                $(".main-ad .flex-direction-nav").show();
+            }, function () {
+                $(".main-ad .flex-direction-nav").hide();
+            });
+        });
+        
+  </script>
+
+        <script type="text/javascript">
+            $(function () {
+                $(".bottom-nav li:first").css("margin-left","0");
+                $(".bottom-nav li:last").addClass("fn-nobg");
+                $(".top-nav .user-name").text(getCookie("NickName") + "(" + getCookie("Mobile") + ")");
+                $(".main-nav .location").toggle(function () {
+                    $(this).addClass("lsec").find(".other-city").show();
+                }, function () {
+                    $(this).removeClass("lsec").find(".other-city").hide();
+                });
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > 100) {
+                        $(".nav-scroll").fadeIn(1500);
+                    } else {
+                        $(".nav-scroll").fadeOut(1500);
+                    }
+                });
+                $(".scroll-top").click(function () {
+                    $("html, body").animate({
+                        scrollTop: "0px"
+                    }, {
+                        duration: 500,
+                        easing: "swing"
+                    });
+                    return false;
+                });
+                $(".nav-scroll .code").hover(function () {
+                    $(this).find("span").show();
+                }, function () {
+                    $(this).find("span").hide();
+                });
+            });
+
+            function changecity(citycode) {
+                if (window.location.toString().indexOf("cinemalist") > -1) {
+                    window.location = "/cinemalist/" + citycode + ".html";
+                }
+                else {
+                    document.getElementById("ccitycode").value = citycode;
+                    document.getElementById("citycodeform").submit();
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <div class="top-nav">
+                <div class="container fn-clear">
+                      <span class="tip">欢迎来到江西电影票<a rel="#verlayLogin" href="javascript:void(0)" class="boxLogin blue">登录</a><a href="/register.html">注册</a></span>
+                    <ul>
+                        <li><a href="/account/usercenter.html" title="个人中心" data-flag="1">个人中心</a></li>
+                        <li><a href="/account/userorderlist.html" title="我的订单" data-flag="1">我的订单</a></li>
+                        <li><a href="/help/helpindex.html" title="帮助中心" target="_blank">帮助中心</a></li>
+                        <li>&nbsp;联系客服：0791-87871177</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-nav">
+                <div class="container fn-clear">
+                    <div class="logo"><a href="/"><img src="/resource/images/logo.png" alt="江西电影票" title="江西电影票" width="165"/></a></div>
+                    <div class="location" data-citycode="360100">
+                        <span class="lc">南昌</span>
+                        <ul class="other-city">
+                            <li><a onclick="changecity('360100')" href="javascript:void(0)">南昌</a></li>
+                            <li><a onclick="changecity('360200')" href="javascript:void(0)">景德镇</a></li>
+                            <li><a onclick="changecity('360300')" href="javascript:void(0)">萍乡</a></li>
+                            <li><a onclick="changecity('360400')" href="javascript:void(0)">九江</a></li>
+                            <li><a onclick="changecity('360500')" href="javascript:void(0)">新余</a></li>
+                            <li><a onclick="changecity('360600')" href="javascript:void(0)">鹰潭</a></li>
+                            <li><a onclick="changecity('360700')" href="javascript:void(0)">赣州</a></li>
+                            <li><a onclick="changecity('360800')" href="javascript:void(0)">吉安</a></li>
+                            <li><a onclick="changecity('360900')" href="javascript:void(0)">宜春</a></li>
+                            <li><a onclick="changecity('361000')" href="javascript:void(0)">抚州</a></li>
+                            <li><a onclick="changecity('361100')" href="javascript:void(0)">上饶</a></li>
+                        </ul>
+                    </div>
+                    <ul class="nav-list fn-clear">
+                        <li data-index="index"><a href="/">首页</a></li>
+                        <li data-index="film"><a href="/filmshowlist.html">电影</a></li>
+                        <li data-index="cinema"><a href="/cinemalist/360100.html">影院</a></li>
+                        <li data-index="event"><a href="/eventlist.html">活动</a></li>
+                        <li data-index="news"><a href="/newslist/newsall_1.html">资讯</a></li>
+                        <li data-index="gyk"><a href="/event/gyk.html">电子换票券</a></li>
+                    </ul>
+                    <div class="box-code-tg">
+                        
+                        <p class="code">
+                            <a href="javascript:void(0);">手机购影票</a>
+                            <span class="tag"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="body" class="main">
+                
+    <div class="main-ad">
+        <ul class="slides">
+                <li style="background-image: url(/backuploads/images/website/tj/2020052909065779803975.jpg);">
+               </li>
+        </ul>
+    </div>
+    <div class="wrapper-main">
+        <div class="hot-film-index pt30">
+            <div class="title">
+                <span class="titb">正在热映</span>
+                <span>共26部热映电影</span>
+                <span class="current"><em class="blue">1</em>/5</span>
+            </div>
+            <ul class="fn-clear slides">
+                    <li>
+                        <a href="/filmdetail/ea8dec48-91b4-4f94-aa22-0938ea007ea0.html" title="十年一品温如言" target="_blank"><img src="/backuploads/images/film/ea8dec48-91b4-4f94-aa22-0938ea007ea0/mid/20210817004605877608048.jpg" alt="十年一品温如言" /></a>
+                        <a class="overhide" href="/filmdetail/ea8dec48-91b4-4f94-aa22-0938ea007ea0.html" title="十年一品温如言" target="_blank">十年一品温如言</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="6.7" data-id="5"></p><span class="jscore">6.7</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/d2b9f42a-c970-4284-a5e6-1091b2e1f0c3.html" title="尼罗河上的惨案" target="_blank"><img src="/backuploads/images/film/d2b9f42a-c970-4284-a5e6-1091b2e1f0c3/mid/2022011911281035595998.jpg" alt="尼罗河上的惨案" /></a>
+                        <a class="overhide" href="/filmdetail/d2b9f42a-c970-4284-a5e6-1091b2e1f0c3.html" title="尼罗河上的惨案" target="_blank">尼罗河上的惨案</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="7.7" data-id="5"></p><span class="jscore">7.7</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/abe54f60-45a3-43fa-8395-3447e0d3cb5b.html" title="三湾改编" target="_blank"><img src="/backuploads/images/film/abe54f60-45a3-43fa-8395-3447e0d3cb5b/mid/20210711134056721841671.jpg" alt="三湾改编" /></a>
+                        <a class="overhide" href="/filmdetail/abe54f60-45a3-43fa-8395-3447e0d3cb5b.html" title="三湾改编" target="_blank">三湾改编</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="" data-id="5"></p><span class="jscore"></span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/d5b56aa4-0269-460f-bfe6-4179ac0526c4.html" title="你是我的一束光" target="_blank"><img src="/backuploads/images/film/d5b56aa4-0269-460f-bfe6-4179ac0526c4/mid/20220216202319486863271.jpg" alt="你是我的一束光" /></a>
+                        <a class="overhide" href="/filmdetail/d5b56aa4-0269-460f-bfe6-4179ac0526c4.html" title="你是我的一束光" target="_blank">你是我的一束光</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="" data-id="5"></p><span class="jscore"></span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/8fac3565-c4c1-4b5f-9959-442cd7341584.html" title="好想去你的世界爱你" target="_blank"><img src="/backuploads/images/film/8fac3565-c4c1-4b5f-9959-442cd7341584/mid/20220107165042782433285.jpg" alt="好想去你的世界爱你" /></a>
+                        <a class="overhide" href="/filmdetail/8fac3565-c4c1-4b5f-9959-442cd7341584.html" title="好想去你的世界爱你" target="_blank">好想去你的世界爱你</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="8.8" data-id="5"></p><span class="jscore">8.8</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/bcef663e-ccbf-4353-a8ac-67cf43be0a01.html" title="纽约的一个雨天" target="_blank"><img src="/backuploads/images/film/bcef663e-ccbf-4353-a8ac-67cf43be0a01/mid/20220216201326815064713.jpg" alt="纽约的一个雨天" /></a>
+                        <a class="overhide" href="/filmdetail/bcef663e-ccbf-4353-a8ac-67cf43be0a01.html" title="纽约的一个雨天" target="_blank">纽约的一个雨天</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="8.5" data-id="5"></p><span class="jscore">8.5</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/c52fdab4-0542-4ce4-9526-6ab80b8c8826.html" title="狙击手" target="_blank"><img src="/backuploads/images/film/c52fdab4-0542-4ce4-9526-6ab80b8c8826/mid/20210615001201959321590.jpg" alt="狙击手" /></a>
+                        <a class="overhide" href="/filmdetail/c52fdab4-0542-4ce4-9526-6ab80b8c8826.html" title="狙击手" target="_blank">狙击手</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="9.3" data-id="5"></p><span class="jscore">9.3</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/0837cbc0-eaf7-4153-8833-8829c2eae841.html" title="邓小平小道" target="_blank"><img src="/backuploads/images/film/0837cbc0-eaf7-4153-8833-8829c2eae841/mid/20211025192243110019170.jpg" alt="邓小平小道" /></a>
+                        <a class="overhide" href="/filmdetail/0837cbc0-eaf7-4153-8833-8829c2eae841.html" title="邓小平小道" target="_blank">邓小平小道</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="" data-id="5"></p><span class="jscore"></span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/756ca530-2e66-453c-b003-9370bcc79b4a.html" title="奇迹&#183;笨小孩" target="_blank"><img src="/backuploads/images/film/756ca530-2e66-453c-b003-9370bcc79b4a/mid/20220112121325621257713.jpg" alt="奇迹&#183;笨小孩" /></a>
+                        <a class="overhide" href="/filmdetail/756ca530-2e66-453c-b003-9370bcc79b4a.html" title="奇迹&#183;笨小孩" target="_blank">奇迹&#183;笨小孩</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="9.5" data-id="5"></p><span class="jscore">9.5</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/4524f707-3d50-4c33-8ad9-99359ec477f4.html" title="这个杀手不太冷静" target="_blank"><img src="/backuploads/images/film/4524f707-3d50-4c33-8ad9-99359ec477f4/mid/20211218005648514004327.jpg" alt="这个杀手不太冷静" /></a>
+                        <a class="overhide" href="/filmdetail/4524f707-3d50-4c33-8ad9-99359ec477f4.html" title="这个杀手不太冷静" target="_blank">这个杀手不太冷静</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="9.2" data-id="5"></p><span class="jscore">9.2</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/c7773929-c74f-46dd-b3ac-998a183dd8b9.html" title="不要忘记我爱你" target="_blank"><img src="/backuploads/images/film/c7773929-c74f-46dd-b3ac-998a183dd8b9/mid/20220107164551920298653.jpg" alt="不要忘记我爱你" /></a>
+                        <a class="overhide" href="/filmdetail/c7773929-c74f-46dd-b3ac-998a183dd8b9.html" title="不要忘记我爱你" target="_blank">不要忘记我爱你</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="8.2" data-id="5"></p><span class="jscore">8.2</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/3721b44f-e0a9-43cd-9622-a2df450e2ec9.html" title="四海" target="_blank"><img src="/backuploads/images/film/3721b44f-e0a9-43cd-9622-a2df450e2ec9/mid/20211218004632537456343.jpg" alt="四海" /></a>
+                        <a class="overhide" href="/filmdetail/3721b44f-e0a9-43cd-9622-a2df450e2ec9.html" title="四海" target="_blank">四海</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="9.2" data-id="5"></p><span class="jscore">9.2</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/a99655dd-3b1b-4ac5-b9ee-a6117650a132.html" title="密案1922" target="_blank"><img src="/backuploads/images/film/a99655dd-3b1b-4ac5-b9ee-a6117650a132/mid/20220107165922356721921.jpg" alt="密案1922" /></a>
+                        <a class="overhide" href="/filmdetail/a99655dd-3b1b-4ac5-b9ee-a6117650a132.html" title="密案1922" target="_blank">密案1922</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="" data-id="5"></p><span class="jscore"></span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/328f68aa-126e-43a0-bb51-ab4cd96c4421.html" title="跨过鸭绿江" target="_blank"><img src="/backuploads/images/film/328f68aa-126e-43a0-bb51-ab4cd96c4421/mid/20211210154747261455301.jpg" alt="跨过鸭绿江" /></a>
+                        <a class="overhide" href="/filmdetail/328f68aa-126e-43a0-bb51-ab4cd96c4421.html" title="跨过鸭绿江" target="_blank">跨过鸭绿江</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="9.2" data-id="5"></p><span class="jscore">9.2</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/53b49813-c6ba-4c68-b561-c064b5455de1.html" title="我们的冬奥" target="_blank"><img src="/backuploads/images/film/53b49813-c6ba-4c68-b561-c064b5455de1/mid/20211210155055167603811.jpg" alt="我们的冬奥" /></a>
+                        <a class="overhide" href="/filmdetail/53b49813-c6ba-4c68-b561-c064b5455de1.html" title="我们的冬奥" target="_blank">我们的冬奥</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="9.3" data-id="5"></p><span class="jscore">9.3</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/6d839725-644a-40c6-93cd-cc5c04425c21.html" title="长津湖之水门桥" target="_blank"><img src="/backuploads/images/film/6d839725-644a-40c6-93cd-cc5c04425c21/mid/20220113104308785313251.jpg" alt="长津湖之水门桥" /></a>
+                        <a class="overhide" href="/filmdetail/6d839725-644a-40c6-93cd-cc5c04425c21.html" title="长津湖之水门桥" target="_blank">长津湖之水门桥</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="9.6" data-id="5"></p><span class="jscore">9.6</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/9f8d0cc3-e62a-4e15-80ce-ce5a3c203246.html" title="暑期何漫漫" target="_blank"><img src="/backuploads/images/film/9f8d0cc3-e62a-4e15-80ce-ce5a3c203246/mid/20220216200943768235947.jpg" alt="暑期何漫漫" /></a>
+                        <a class="overhide" href="/filmdetail/9f8d0cc3-e62a-4e15-80ce-ce5a3c203246.html" title="暑期何漫漫" target="_blank">暑期何漫漫</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="" data-id="5"></p><span class="jscore"></span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/7608d723-42d2-410b-a320-d0e55e3e21ff.html" title="只属于我们的一天" target="_blank"><img src="/backuploads/images/film/7608d723-42d2-410b-a320-d0e55e3e21ff/mid/20220216201502502523048.jpg" alt="只属于我们的一天" /></a>
+                        <a class="overhide" href="/filmdetail/7608d723-42d2-410b-a320-d0e55e3e21ff.html" title="只属于我们的一天" target="_blank">只属于我们的一天</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="" data-id="5"></p><span class="jscore"></span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/5c0d381c-963d-4573-a996-d614b187356e.html" title="柳浪闻莺" target="_blank"><img src="/backuploads/images/film/5c0d381c-963d-4573-a996-d614b187356e/mid/20211223210010919858021.jpg" alt="柳浪闻莺" /></a>
+                        <a class="overhide" href="/filmdetail/5c0d381c-963d-4573-a996-d614b187356e.html" title="柳浪闻莺" target="_blank">柳浪闻莺</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="" data-id="5"></p><span class="jscore"></span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/e24ac57b-02cf-43b3-9498-ddf7381b6f19.html" title="屋内有人" target="_blank"><img src="/backuploads/images/film/e24ac57b-02cf-43b3-9498-ddf7381b6f19/mid/20211130141559060079165.jpg" alt="屋内有人" /></a>
+                        <a class="overhide" href="/filmdetail/e24ac57b-02cf-43b3-9498-ddf7381b6f19.html" title="屋内有人" target="_blank">屋内有人</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="" data-id="5"></p><span class="jscore"></span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/7459da6c-c27f-48ee-b335-e18d4d1bd5ab.html" title="我心飞扬" target="_blank"><img src="/backuploads/images/film/7459da6c-c27f-48ee-b335-e18d4d1bd5ab/mid/20211218004736904669275.jpg" alt="我心飞扬" /></a>
+                        <a class="overhide" href="/filmdetail/7459da6c-c27f-48ee-b335-e18d4d1bd5ab.html" title="我心飞扬" target="_blank">我心飞扬</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="9.1" data-id="5"></p><span class="jscore">9.1</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/6f30e246-24d0-45a3-b5bc-e553db9000aa.html" title="大国粮仓" target="_blank"><img src="/backuploads/images/film/6f30e246-24d0-45a3-b5bc-e553db9000aa/mid/20220216200345867059177.jpg" alt="大国粮仓" /></a>
+                        <a class="overhide" href="/filmdetail/6f30e246-24d0-45a3-b5bc-e553db9000aa.html" title="大国粮仓" target="_blank">大国粮仓</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="" data-id="5"></p><span class="jscore"></span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/f763034b-4d41-4609-b051-e826ce11e7be.html" title="花束般的恋爱" target="_blank"><img src="/backuploads/images/film/f763034b-4d41-4609-b051-e826ce11e7be/mid/20220217144844068068272.jpg" alt="花束般的恋爱" /></a>
+                        <a class="overhide" href="/filmdetail/f763034b-4d41-4609-b051-e826ce11e7be.html" title="花束般的恋爱" target="_blank">花束般的恋爱</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="8.9" data-id="5"></p><span class="jscore">8.9</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/0c691033-1af2-49bd-9064-f0607edc4a2a.html" title="汪汪队立大功大电影" target="_blank"><img src="/backuploads/images/film/0c691033-1af2-49bd-9064-f0607edc4a2a/mid/20211228111510754435055.jpg" alt="汪汪队立大功大电影" /></a>
+                        <a class="overhide" href="/filmdetail/0c691033-1af2-49bd-9064-f0607edc4a2a.html" title="汪汪队立大功大电影" target="_blank">汪汪队立大功大电影</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="9.0" data-id="5"></p><span class="jscore">9.0</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/35bdf320-c68f-4b51-bdff-f210e642f7d7.html" title="熊出没&#183;重返地球" target="_blank"><img src="/backuploads/images/film/35bdf320-c68f-4b51-bdff-f210e642f7d7/mid/20211218005226795318019.jpg" alt="熊出没&#183;重返地球" /></a>
+                        <a class="overhide" href="/filmdetail/35bdf320-c68f-4b51-bdff-f210e642f7d7.html" title="熊出没&#183;重返地球" target="_blank">熊出没&#183;重返地球</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="9.4" data-id="5"></p><span class="jscore">9.4</span></div></div>
+                    </li>
+                    <li>
+                        <a href="/filmdetail/b6cc71e4-8421-48c8-bc09-f5ed974ff28e.html" title="喜羊羊与灰太狼之筐出未来" target="_blank"><img src="/backuploads/images/film/b6cc71e4-8421-48c8-bc09-f5ed974ff28e/mid/20211218005441435836686.jpg" alt="喜羊羊与灰太狼之筐出未来" /></a>
+                        <a class="overhide" href="/filmdetail/b6cc71e4-8421-48c8-bc09-f5ed974ff28e.html" title="喜羊羊与灰太狼之筐出未来" target="_blank">喜羊羊与灰太狼之筐出未来</a>
+                        <div class="wrap-score fn-clear"><div class="box-score fn-clear"><p class="score" data-average="9.5" data-id="5"></p><span class="jscore">9.5</span></div></div>
+                    </li>
+            </ul>
+        </div>
+        <div class="hot-active-index fn-clear pt30">
+            <div class="active-recomment">
+                <div class="title fn-clear"><span class="titb fn-left">热门活动</span><span class="fn-right"><a class="more" href="/eventlist.html" target="_blank">更多</a></span></div>
+                <ul>
+                        <li>
+                            <a title="北京银行1元、10元观影" href="https://www.jxdyp.com/newsdetail/1708.html" target="_blank"><img src="/backuploads/images/website/tj/20200102111133607304498.jpg" width="310" height="180" /></a>
+                            <p><a title="北京银行1元、10元观影" href="https://www.jxdyp.com/newsdetail/1708.html" target="_blank">北京银行1元、10元观影</a></p>
+                            <span class="cor999">活动期间，北京银行信用卡持卡用户每自然月可计积分消费金额累计满888元（含），次月10日后即可获得2次10元特惠购票权益。</span>
+                        </li>
+                        <li>
+                            <a title="江西银行白金卡6元观影" href="https://www.jxdyp.com/newsdetail/1709.html" target="_blank"><img src="/backuploads/images/website/tj/20200102111441997936772.png" width="310" height="180" /></a>
+                            <p><a title="江西银行白金卡6元观影" href="https://www.jxdyp.com/newsdetail/1709.html" target="_blank">江西银行白金卡6元观影</a></p>
+                            <span class="cor999">活动期间，2019年5月1日至2020年4月30日。白金卡客户无需抢券，每月可至“江西银行信用卡”获取一次白金卡6元观影专享权益。</span>
+                        </li>
+                </ul>
+            </div>
+            <div class="top-sale">
+                <div class="title"><span class="titb">热门影院</span></div>
+                <ul>
+	                    <li class="fn-clear"><a href="/cinemacreenings/be50d4bf-3205-4c5e-aaa3-a5c9bc516e57.html" target="_blank">博纳国际影城（铜锣湾中国巨幕店）</a><span></span></li>
+	                    <li class="fn-clear"><a href="/cinemacreenings/e0e5bd51-4fd2-40a6-bf4c-afa8e791cbab.html" target="_blank">万象影城（南昌万象汇IMAX激光店）</a><span></span></li>
+	                    <li class="fn-clear"><a href="/cinemacreenings/a15e5d10-4771-4efd-8a47-ed237402098a.html" target="_blank">中影数字国际影城(梦时代店)</a><span></span></li>
+	                    <li class="fn-clear"><a href="/cinemacreenings/bbec314c-ae94-41c3-bd86-8e8b9a8a8dd3.html" target="_blank">南昌嘉莱国际影城（印象城山姆会员店）</a><span>9.3</span></li>
+	                    <li class="fn-clear"><a href="/cinemacreenings/bfd3bf26-9619-4565-86aa-ab3222ea1c85.html" target="_blank">丁丁影城（红谷滩莱蒙店）</a><span>9.4</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ad pt30">
+                <a href="https://www.jxdyp.com/filmdetail/9d50535f-e70c-464e-ab9b-9deb92597704.html" title="熊出没&#183;狂野大陆" target="_blank"><img src="/backuploads/images/website/tj/20200111221710175501215.jpg" width="990" alt="熊出没&#183;狂野大陆" /></a>
+        </div>
+
+        <div class="future-film-index pt30 fn-clear">
+            <div class="future-film">
+                <div class="title pb10">
+                    <span class="titb">热门预告</span>
+                </div>
+                <ul class="fn-clear">
+                        <li>
+                            <a href="https://www.jxdyp.com/filmdetail/ed6fef59-b8bb-4f0e-94a1-dc359ee8f9d7.html" target="_blank"><img src="/backuploads/images/website/tj/20191226154547640917431.jpg" alt="动物特工局" width="140" height="193" /></a>
+                            <p class="overhide"><a href="https://www.jxdyp.com/filmdetail/ed6fef59-b8bb-4f0e-94a1-dc359ee8f9d7.html">动物特工局</a></p>
+                            <a href="javascript:void(0);" data-url="" rel="#futurefilmPlay" class="btn-video"></a>
+                        </li>
+                        <li>
+                            <a href="https://www.jxdyp.com/filmdetail/ad9d613c-b0f0-4b53-a2e8-497ea8d92987.html" target="_blank"><img src="/backuploads/images/website/tj/20191226154748469043489.jpg" alt="站住小偷" width="140" height="193" /></a>
+                            <p class="overhide"><a href="https://www.jxdyp.com/filmdetail/ad9d613c-b0f0-4b53-a2e8-497ea8d92987.html">站住小偷</a></p>
+                            <a href="javascript:void(0);" data-url="" rel="#futurefilmPlay" class="btn-video"></a>
+                        </li>
+                        <li>
+                            <a href="https://www.jxdyp.com/filmdetail/fd0a78b7-23ce-43d2-a031-e178c7e2e559.html" target="_blank"><img src="/backuploads/images/website/tj/20191226154638234663294.jpg" alt="为家而战" width="140" height="193" /></a>
+                            <p class="overhide"><a href="https://www.jxdyp.com/filmdetail/fd0a78b7-23ce-43d2-a031-e178c7e2e559.html">为家而战</a></p>
+                            <a href="javascript:void(0);" data-url="" rel="#futurefilmPlay" class="btn-video"></a>
+                        </li>
+                        <li>
+                            <a href="https://www.jxdyp.com/filmdetail/3ca5f60b-fe81-475b-831c-6a0527078dff.html" target="_blank"><img src="/backuploads/images/website/tj/20191226154907140915932.jpg" alt="变身特工" width="140" height="193" /></a>
+                            <p class="overhide"><a href="https://www.jxdyp.com/filmdetail/3ca5f60b-fe81-475b-831c-6a0527078dff.html">变身特工</a></p>
+                            <a href="javascript:void(0);" data-url="" rel="#futurefilmPlay" class="btn-video"></a>
+                        </li>
+                </ul>
+            </div>
+            <div class="top-cinema">
+                <div class="title pb10">
+                    <span class="titb">一周票房排行</span>
+                </div>
+                <ul>
+                        <li class="fn-clear"><a href="/filmdetail/4524f707-3d50-4c33-8ad9-99359ec477f4.html" title="这个杀手不太冷静" target="_blank">这个杀手不太冷静</a><span>9.2</span></li>
+                        <li class="fn-clear"><a href="/filmdetail/6d839725-644a-40c6-93cd-cc5c04425c21.html" title="长津湖之水门桥" target="_blank">长津湖之水门桥</a><span>9.6</span></li>
+                        <li class="fn-clear"><a href="/filmdetail/756ca530-2e66-453c-b003-9370bcc79b4a.html" title="奇迹&#183;笨小孩" target="_blank">奇迹&#183;笨小孩</a><span>9.5</span></li>
+                        <li class="fn-clear"><a href="/filmdetail/c52fdab4-0542-4ce4-9526-6ab80b8c8826.html" title="狙击手" target="_blank">狙击手</a><span>9.3</span></li>
+                        <li class="fn-clear"><a href="/filmdetail/f763034b-4d41-4609-b051-e826ce11e7be.html" title="花束般的恋爱" target="_blank">花束般的恋爱</a><span>8.9</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="classic-comment-index fn-clear pt30">
+            <div class="comment">
+                <div class="title"><span class="titb">电影资讯&nbsp;/&nbsp;精彩影评</span></div>
+                <ul class="fn-clear">
+                       <li>
+                        <h3 class="overhide"><a href="https://www.jxdyp.com/newsdetail/1704.html" target="_blank">金牌班底 林超贤新作《紧急救援》展现华语电影新高度</a></h3>
+                        <p>电影《紧急救援》取材自真实海上救援事件，由林超贤导演、梁凤英监制，彭于晏、王彦霖、辛芷蕾、蓝盈莹、王雨甜、徐洋、陈家乐、李岷城等主演，将于2020年大年初一正式上映。</p>
+                        <span><a href="https://www.jxdyp.com/newsdetail/1704.html" target="_blank"><img src="/backuploads/images/website/tj/2019111909262318237345.jpg" alt="金牌班底 林超贤新作《紧急救援》展现华语电影新高度" width="72" height="100" /></a></span>
+                       </li>
+                       <li>
+                        <h3 class="overhide"><a href="https://www.jxdyp.com/newsdetail/1705.html" target="_blank">《南方车站的聚会》曝新特辑 “贪心”胡歌挑战极限</a></h3>
+                        <p>电影《南方车站的聚会》发布“从心出发”胡歌特辑，展现胡歌参与电影拍摄的心路历程和敬业态度。</p>
+                        <span><a href="https://www.jxdyp.com/newsdetail/1705.html" target="_blank"><img src="/backuploads/images/website/tj/20191119092739494871915.jpg" alt="《南方车站的聚会》曝新特辑 “贪心”胡歌挑战极限" width="72" height="100" /></a></span>
+                       </li>
+                       <li>
+                        <h3 class="overhide"><a href="https://www.jxdyp.com/newsdetail/1706.html" target="_blank">《触不可及》超前点映好评不断 毒师老白“脸”技获赞</a></h3>
+                        <p>作为一部集结好莱坞群星阵容的电影，《触不可及》延续了美式幽默风格，用接连不断的生活笑料，刻画出两个人生“失败者”之间，最真实真挚的友情。</p>
+                        <span><a href="https://www.jxdyp.com/newsdetail/1706.html" target="_blank"><img src="/backuploads/images/website/tj/20191119092837416752724.jpg" alt="《触不可及》超前点映好评不断 毒师老白“脸”技获赞" width="72" height="100" /></a></span>
+                       </li>
+                       <li>
+                        <h3 class="overhide"><a href="https://www.jxdyp.com/newsdetail/1707.html" target="_blank">陈思诚不再执导《唐探4》将筹备新系列电影</a></h3>
+                        <p>他还透露，电影《唐人街探案3》是他导演的最后一部《唐探》作品，之后会以编剧和监制的身份，继续参与《唐探》系列。</p>
+                        <span><a href="https://www.jxdyp.com/newsdetail/1707.html" target="_blank"><img src="/backuploads/images/website/tj/20191119093039869877254.jpg" alt="陈思诚不再执导《唐探4》将筹备新系列电影" width="72" height="100" /></a></span>
+                       </li>
+                </ul>
+            </div>
+            <div class="new">
+                <div class="title pb10"><span class="titb">行业资讯</span></div>
+                <ul>
+                        <li>
+                            <h4 class="overhide"><a href="https://www.jxdyp.com/newsdetail/1689.html" target="_blank">内地经纪行业二十年：一直在阵痛 从未被理解</a></h4>
+                            <p>从上世纪八九十年代的“穴头”，到面面俱到的“保姆”，再到综合性经纪公司，经纪行业一直在随着影视市场的发展而进化，并在时代更迭中经历着自己的阵痛。</p>
+                        </li>
+                        <li>
+                            <h4 class="overhide"><a href="/newsdetail/1174.html" target="_blank">经朝阳群众举报 缉毒电影《毒战》制作人吸毒被抓</a></h4>
+                            <p>昨天，北京晨报记者从北京警方获悉，在朝阳群众的举报下，民警日前将一名吸毒嫌疑人刘某抓获。</p>
+                        </li>
+                        <li>
+                            <h4 class="overhide"><a href="/newsdetail/1180.html" target="_blank">81岁阿兰&#183;德龙宣布将息影 希望回戛纳作最后告别</a></h4>
+                            <p>现年81岁的法国著名影星阿兰&#183;德龙，日前在一次采访中宣布自己即将告别影坛</p>
+                        </li>
+                        <li>
+                            <h4 class="overhide"><a href="/newslist/xingyezixun_1.html" target="_blank">中国电影未来还要过哪些坎？</a></h4>
+                            <p>中国电影市场有望在短期内超越美国，成为“世界第一”。除了迅猛攀升的市场增量，在前进的道路上还要过哪些坎？</p>
+                        </li>
+                        <li>
+                            <h4 class="overhide"><a href="/newsdetail/31.html" target="_blank">五大电影公司抱团建电影联盟</a></h4>
+                            <p>随着中国电影市场的爆发性增长，竞争激烈的发行业终于从群雄逐鹿进入合纵连横的新时代，传统发行行业格局或将改变。</p>
+                        </li>
+                </ul>
+            </div>
+        </div>
+        <div class="gyfc-film-index pt30 fn-clear">
+            <div class="gyfc-film">
+                <div class="title pb10">
+                    <span class="titb">赣影风采</span>
+                </div>
+                <ul class="fn-clear">
+                         <li>
+                            <a href="/newsdetail/1116.html" target="_blank"><img src="/backuploads/images/website/tj/20170407114132568251433.jpg" alt="《建军大业》新生代演绎革命史" width="196" height="98" /></a>
+                            <span class="overhide" style="cursor:pointer">《建军大业》新生代演绎革命史</span>
+                        </li>
+                         <li>
+                            <a href="/newsdetail/401.html" target="_blank"><img src="/backuploads/images/website/tj/20160510095950937015059.png" alt="江西电影《与诡同谋之煞》" width="196" height="98" /></a>
+                            <span class="overhide" style="cursor:pointer">江西电影《与诡同谋之煞》</span>
+                        </li>
+                         <li>
+                            <a href="/newsdetail/1081.html" target="_blank"><img src="/backuploads/images/website/tj/20170314153324047707153.jpg" alt="海昏侯大电影5月开拍" width="196" height="98" /></a>
+                            <span class="overhide" style="cursor:pointer">海昏侯大电影5月开拍</span>
+                        </li>
+                </ul>
+            </div>
+            <div class="public-service">
+                <div class="title pb10">
+                    <span class="titb">公众服务</span>
+                </div>
+                <ul class="fn-clear">
+                    <li><a href="http://www.jxxgj.gov.cn/" target="_blank"><p>政府信息公开</p></a></li>
+                    <li class="ts"><a href="/help/complaint/all.html" target="_blank"><p>投诉专区</p></a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    <div id="futurefilmPlay">
+        <div class="box-video"></div>
+    </div>
+
+        </div>
+        <div class="footer">
+            <div class="info-help fn-clear">
+                <div class="container">
+                    <div class="logo"><img src="/resource/images/logo_1.png" alt="江西电影票" /></div>
+                    <div class="help-nav">
+                        <ul>
+                            <li><a href="/help/usehelp.html#chooseat" target="_blank">如何选座</a></li>
+                            <li><a href="/help/usehelp.html#dopay" target="_blank">如何支付</a></li>
+                            <li><a href="/help/usehelp.html#geticket" target="_blank">如何取票</a></li>
+                            <li><a href="/help/usehelp.html#buyfailed" target="_blank">购票失败</a></li>
+                            <li><a href="/help/usehelp.html#reglogin" target="_blank">注册登录</a></li>
+                            <li><a href="/help/usehelp.html">使用帮助</a></li>
+                        </ul>
+                    </div>
+                    <div class="contact-info">
+                        <span>0791-87871177</span>
+                    </div>
+                    <span class="code"></span>
+                </div>
+            </div>
+            
+    <div class="friend-link">
+        <div class="container">
+            <ul class="fn-clear">
+                <li><a href="http://www.jxdyp.com/" target="_blank" rel="nofollow">江西电影票</a></li>
+                <li><a href="http://www.jxcbj.gov.cn/" target="_blank" rel="nofollow">江西省新闻出版广电局</a></li>
+                <li><a href="http://xh.jxdysc.com/" target="_blank" rel="nofollow">星河院线</a></li>
+                <li><a href="http://www.nccbank.com.cn/" target="_blank" rel="nofollow">南昌银行</a></li>
+                <li><a href="http://branch.cmbchina.com/0791.htm" target="_blank" rel="nofollow">招商银行</a></li>
+                <li><a href="http://www.ccb.com/jx/" target="_blank" rel="nofollow">建设银行</a></li>
+                <li><a href="http://www.abchina.com/cn/branch/jx/" target="_blank" rel="nofollow">农业银行</a></li>
+                <li><a href="http://www.xw2012.com/" target="_blank" rel="nofollow">象网</a></li>
+                <li><a href="http://www.0792ju.com/" target="_blank" rel="nofollow">九江九聚网</a></li>
+            </ul>
+            <span>友情链接：</span>
+        </div>
+    </div>
+
+            <div class="bottom-nav">
+                <div class="container fn-clear">
+                    <ul>
+                        <li><a href="/help/helpindex.html" target="_blank">关于我们</a></li>
+                        <li><a href="/help/contactus.html" target="_blank">联系我们</a></li>
+                        <li><a href="/help/joinus.html" target="_blank">诚聘英才</a></li>
+                        <li><a href="/help/legalstatement.html" target="_blank">法律声明</a></li>
+                        <li><a href="/help/serviceterms.html" target="_blank">服务条款</a></li>
+                        <li><a href="/help/cooperativepartner.html" target="_blank">合作伙伴</a></li>
+                    </ul>
+                    <span>经营性ICP：赣B2-20140012&nbsp;&nbsp;ICP证：<a href="http://beian.miit.gov.cn" rel="nofollow" target="_blank">赣ICP备14000663号</a>&nbsp; &copy;江西省影票文化传媒有限公司版权所有</span>
+                </div>
+            </div>
+        </div>
+        <div class="verlayLogin" id="verlayLogin">
+            <div class="container">
+                <h2>&nbsp;</h2>
+                <div class="tag">
+                    <ul>
+                        <li><a href="#"data-tag="2">手机验证码登录</a>/</li>
+                        <li><a href="#" data-tag="1">账户登录</a></li>
+                    </ul>
+                </div>
+                <div class="box-form" style="display:block;">
+                    <p><input name="telc" class="telc" type="text" maxlength="15" placeholder="手机号" /></p>
+                    <div class="img-code-wrap">
+                        <div class="img-code"><input name="imgCode" type="text" maxlength="8" placeholder="输入右侧验证码" /></div>
+                        <span class="img-code-show"><img src="/account/CheckCode.html" width="100%" /></span>
+                    </div>
+                    <p class="box-checkcode">
+                        <input name="checkCode" class="check-code" type="text" maxlength="8" placeholder="输入验证码" />
+                        <span class="btn send-checkcode">获取验证码</span>
+                    </p>
+                </div>
+
+                <div class="box-form">
+                    <p><input name="tel" class="tel" type="text" value="手机号" /></p>
+                    <p><input name="password" class="pwd bgpwd2" type="password" /></p>
+                    <div class="remember-status fn-clear">
+                        <label><input type="checkbox" name="rememberStatus" class="rememberst"/>记住密码一周</label>
+                    </div>
+                </div>
+                <div class="login"><p class="btn" id="doLogin">登录</p></div>
+                <div class="intro fn-clear">
+                    <span class="fn-left"><a href="/forgetpwd.html">忘记密码</a></span>
+                    <span class="fn-right"><a href="/register.html">立即注册</a></span>
+                </div>
+                
+            </div>
+        </div>
+        <div class="nav-scroll">
+            <p class="scroll-top"><a href="javascript:void(0);"></a></p>
+            <p class="feedback"><a href="/help/feedback.html" target="_blank"></a></p>
+            <p class="code">
+                <span></span>
+            </p>
+        </div>
+        <script type="text/javascript">
+            var linkLogin = "";
+            var scrollFunc = function (e) {
+                e = e || window.event;
+                if (e && e.preventDefault) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                } else {
+                    e.returnvalue = false;
+
+                    return false;
+                }
+            }
+            $(".top-nav li a").click(function () {
+                if ($(this).attr("data-flag") == 1) {
+                    linkLogin = $(this).attr("href");
+                    if ("False".toLowerCase() != "true") {
+                        $(".boxLogin").overlay({ api: true }).load();
+                        return false;
+                    }
+                }
+            });
+            $(".img-code-show img").on('click', function () {
+                $(this).attr("src", "/account/CheckCode.html?v=" + Math.random());
+            });
+            $(".main-nav .code a").hover(function () {
+                $(this).siblings(".tag").show();
+            }, function () {
+                $(this).siblings(".tag").hide();
+            });
+            $(".verlayLogin").keydown(function (e) {
+                var curKey = e.which; 
+                if (curKey == 13) {
+                    $("#doLogin").trigger("click");
+                }
+            });
+            $(".boxLogin").overlay({
+                closeOnClick: false,
+                top: 'center',
+                mask: {
+                    color: '#000',
+                    closeSpeed: 700,
+                    opacity: 0.7
+                },
+                onBeforeLoad: function (k) {
+                    $('body').on('mousewheel', function (e) {
+                        scrollFunc(e);
+                    });
+                },
+                onClose: function () {
+                    $('body').off('mousewheel');
+                }
+            });
+            var cursec = 60;
+            var submiting = false;
+            $(".verlayLogin .send-checkcode").click(function () {
+                var $this = $(this);
+                if (submiting) return false;
+                var telc = $.trim($(".verlayLogin .telc").val());
+                var imgCode = $.trim($("input[name=imgCode]").val());
+                if (!telc) {
+                    alert("请输入手机号码！");
+                    return;
+                }
+                if (!imgCode) {
+                    alert("请输入图形验证码！");
+                    return;
+                }
+                $.ajax({
+                    url: '/account/SendSmsRandom.html',
+                    data: { Mobile: telc, ValilCode: imgCode },
+                    type: 'post',
+                    dataType: 'json',
+                    beforeSend: function () {
+                        submiting = true;
+                        $this.text("正在发送");
+                        $this.addClass("disable");
+                    },
+                    success: function (data) {
+                        if (data.ResultCode == "0") {
+                            submiting = true;
+                            if (cursec < 60) {
+                                return;
+                            }
+                            var timer = setInterval(function () {
+                                if (cursec == 60) {
+                                    $this.addClass("disable");
+                                }
+                                $this.text(cursec + "秒后重发");
+                                if (cursec == 0) {
+                                    window.clearInterval(timer);
+                                    submiting = false;
+                                    cursec = 60;
+                                    $this.text("获取验证码");
+                                    $this.removeClass("disable");
+                                } else {
+                                    cursec--;
+                                }
+                            }, 1000);
+                        } else {
+                            $(".img-code-show img").attr("src", "/account/CheckCode.html?v=" + Math.random());
+                            submiting = false;
+                            alert(data.ErrMsg);
+                            $this.removeClass("disable");
+                            $this.text("获取验证码");
+                        }
+                    },
+                    error: function () {
+                        submiting = false;
+                        $this.removeClass("disable");
+                        alert("获取验证码失败");
+                    }
+                });
+            });
+            $("#verlayLogin input.tel").focus(function () {
+                if ($(this).val() == "手机号") {
+                    $(this).val("");
+                }
+            });
+            $("#verlayLogin input.tel").blur(function () {
+                if ($(this).val() == "") {
+                    $(this).val("手机号");
+                }
+            });
+            $("#verlayLogin input.pwd").focus(function () {
+                $(this).removeClass("bgpwd2");
+            });
+            $("#verlayLogin input.pwd").blur(function () {
+                if ($(this).val() == "") {
+                    $(this).addClass("bgpwd2");
+                }
+            });
+            $("#doLogin").click(function () {
+                var tag=$(this).attr("data-tag");
+                var tel = $.trim($(".verlayLogin .tel").val());
+                var pwd = $.trim($(".verlayLogin .pwd").val());
+                var telc = $.trim($(".verlayLogin .telc").val());
+                var checkCode = $.trim($(".verlayLogin .check-code").val());
+                var isCheckRemember = false;
+                if ($(".rememberst").is(':checked')) {
+                    isCheckRemember = true;
+                }
+                if (tag == 1) {
+                    if (!tel || tel == "手机号") {
+                        alert("请输入手机号码！");
+                        return;
+                    }
+                    if (!pwd) {
+                        alert("请输入密码！");
+                        return;
+                    }
+                    postdata = { Mobile: tel, Pass: pwd, Type: tag };
+                }
+                if (tag == 2) {
+                    if (!telc) {
+                        alert("请输入手机号码！");
+                        return;
+                    }
+                    if (!checkCode) {
+                        alert("请输入验证码！");
+                        return;
+                    }
+                    postdata = { Mobile: telc, Pass: checkCode, Type: tag };
+                }
+                $.ajax({
+                    url: '/account/VerifyMember.html',
+                    data: postdata,
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.ResultCode == "0") {
+                            if (isCheckRemember) {
+                                SetCookie("LocalToken", data.ErrMsg, 7);
+                                SetCookie("LocalMobile", data.Mobile, 7);
+                            }
+                            setsessionstorage(data);
+                            if (linkLogin) {
+                                window.location.href = linkLogin;
+                            } else {
+                                window.location.reload();
+                            }
+                        } else {
+                            alert(data.ErrMsg);
+                        } 
+                    },
+                    error: function () {
+                        alert("网络错误,稍后再试！");
+                    }
+                });
+            });
+            $(".loginout").click(function () {
+                loginout();
+            });
+            $(".verlayLogin .tag ul").tabs(".verlayLogin .box-form", {
+                onClick: function () {
+                    $("#doLogin").attr("data-tag", this.getCurrentTab().attr("data-tag"));
+                }
+            });
+            
+            function loginout(){
+                $.ajax({
+                    url: '/account/loginout.html',
+                    data: {},
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.ResultCode == "0") {
+                            clearsessionstorage();
+                            window.location = "/";
+                        } else {
+                            alert(data.ErrMsg);
+                        }
+                    },
+                    error: function () {
+                        alert("网络错误,稍后再试！");
+                    }
+                });
+            }
+            
+        </script>
+        <form id="citycodeform" method="post" enctype="application/x-www-form-urlencoded"  action="/">
+           <input type="hidden"  name="CityCode" id="ccitycode"/>
+        </form>
+        
+<link href="/resource/css/jquery.jRating.css" rel="stylesheet" />
+<script src="/resource/js/jquery.jRating.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".classic-comment-index .new li p:first").show();
+        $(".classic-comment-index .new li").hover(function () {
+            $(this).siblings().find("p").hide();
+            $(this).find("p").show();
+        }, function () {
+           
+        });
+        $('.score').jRating({
+            rateMax: 10,
+            isDisabled: true,
+            length: 5,
+            type:'small',
+            smallStarsPath: '../../resource/images/ico_tb_stars_small.png'
+        });
+    });
+    $(".future-film-index .btn-video").overlay({
+        closeOnClick: false,
+        top: 'center',
+        mask: {
+            color: '#333',
+            closeSpeed: 100,
+            opacity: 0.8
+        },
+        onBeforeLoad: function () {
+            $('body').on('mousewheel', function (e) {
+                scrollFunc(e);
+            });
+        },
+        onBeforeLoad: function (e) {
+            var video = $(e.target);
+            var html = '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="600" height="400">';
+            html += '<param name="movie" value="/resource/images/flvplayer.swf" />';
+            html += '<param name="quality" value="high" />';
+            html += '<param name="allowFullScreen" value="true" />';
+            html += '<param name="wmode" value="transparent"/>';
+            html += '<param name="FlashVars" value="vcastr_file=' + video.attr("data-url") + '&&IsAutoPlay=1" />';
+            html += '<embed src="/resource/images/flvplayer.swf" womode="transparent" allowfullscreen="true" flashvars="vcastr_file=' + video.attr("data-url") + '&&IsAutoPlay=1" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="600" height="400"></embed>';
+            html += '</object>';
+            $("#futurefilmPlay .box-video").html(html);
+        },
+        onClose: function () {
+            $('body').off('mousewheel');
+            $("#futurefilmPlay .box-video").empty();
+        }
+    });
+</script>
+
+        <script type="text/javascript">
+            var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+            document.write(unescape("%3Cspan id='cnzz_stat_icon_1255526993'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255526993' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+    </body>
+</html>

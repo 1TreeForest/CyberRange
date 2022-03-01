@@ -1,0 +1,1191 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta property="wb:webmaster" content="5b6df707c92c16c4" />
+    <meta name="keywords" content="mvbox,录歌软件,唱歌软件,k歌软件,在线k歌,卡拉ok软件,虚拟视频软件, ktv软件,mvbox虚拟视频, mvbox官方下载, mvbox播放器, mvbox下载,录音软件,视频录像软件,虚拟视频,视频特效,mv制作软件, mv下载" />
+    <meta name="description" content="mvbox虚拟视频播放器是一款功能强大的多媒体卡拉OK娱乐软件，集在线录歌,在线k歌,虚拟视频等众多功能于一身，是国内受欢迎的卡拉OK播放器和虚拟视频软件.目前官方新版本为mvbox6.0."/>
+    <title>MVBOX虚拟视频播放器,是国内的卡拉OK,录歌,k歌软件-MVBOX官方网站</title>
+    <link rel="stylesheet" href="css/new_base.css">
+    <link rel="stylesheet" href="css/page.index.css?v=20180402">
+	<link rel="stylesheet" href="css/floatAlarm.css">
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/selectBox.js"></script>
+    <script type="text/javascript" src="js/startMove.js"></script>
+    <script type="text/javascript" src="js/slidePic.js"></script>
+    <!--[if IE 6]>
+    <script src="js/DD_belatedPNG.js"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('img,.flash_bar,.current_over,.current,div,img,p,span,a,em')
+    </script>
+    <![endif]-->
+</head>
+<body>
+<script type="text/javascript" src="js/ajax.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/login.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/top_search.js"></script>
+<script type="text/javascript">
+    //验证查询输入不能为空
+    function checkSearch(){
+        var q_type = document.getElementById("q_type").value;
+        if(q_type == ""){
+            q_type = 1;
+        }
+        var q_str = document.getElementById("q_str").value;
+        if (q_str.length==0){
+            alert("请输入查询内容！");
+            return false;
+        }
+        searchType(q_type);
+        searchSubmit();
+    }
+    //设置查询参数
+    function searchType(q_type){
+        switch(parseInt(q_type)){
+            case 3:
+                document.getElementById("searchForm").action = "/music.do";
+                document.getElementById("method").value = "vq";
+                document.getElementById("q_type").value = q_type;
+                break;
+            case 4:
+                document.getElementById("searchForm").action = "/search.do";
+                document.getElementById("method").value = "photoalbum";
+                document.getElementById("q_type").value = q_type;
+                break;
+            case 5:
+                document.getElementById("searchForm").action = "/search.do";
+                document.getElementById("method").value = "userlist";
+                document.getElementById("qt").value = 12;
+                document.getElementById("n_type").value = 2;
+                document.getElementById("name").value = document.getElementById("q_str").value;
+                break;
+            default:
+                document.getElementById("searchForm").action = "/search.do";
+                document.getElementById("method").value = "music";
+                document.getElementById("q_type").value = q_type;
+        }
+    }
+    //查询提交
+    function searchSubmit(){
+        document.getElementById("searchForm").submit();
+    }
+</script>
+
+<div id="header">
+    <div class="headTop">
+        <div class="headtopContent">
+            <ul class="left">
+                <li>
+                    <a href="javascript:void(0);">软件下载</a>
+                    <img src="images/new_index/qie.gif" alt="软件下载">
+                    <ul>
+						<!-- <li><a href="http://www.51vv.com/zhuanti/vvlivedown.shtml" target="_blank">VV直播iOS/Android</a></li> -->
+                        <li><a href="http://k.51vv.com/index.htm" target="_blank">VV音乐PC/ios/Android</a></li>
+                        <li><a href="http://www.51vv.com/soft/soft_mvbox.shtml" target="_blank">Mvbox直播版</a></li>
+                        <li><a href="http://www.51vv.com/soft/soft_vv.shtml" target="_blank">VV娱乐社区</a></li>
+                        <li><a href="http://www.51vv.com/51vvm/share/sharepc/beta.html" target="_blank">51vv移动版</a></li>
+						<li><a href="https://p.51vv.com/wx/pc/down/index.html" target="_blank">V篇PC/ios/Android</a></li>
+                    </ul>
+                </li>
+                <li><span class="line">|</span><a href="http://www.51vv.com/soft/soft_mvboxDetail.shtml" target="_blank">帮助中心</a></li>
+            </ul>
+            <ul class="right" >
+                    <li id="user_info"></li>
+                <li>
+                    <img src="images/new_index/uploadBtn.png">
+                    <a href="http://user.mvbox.cn/video.do?method=select" target="_blank">上传作品</a>
+                </li>
+            </ul>
+			<!--<div class="alarmWindow" style="display:none">
+				<div class="alarmRight">
+					<p class="alarmCon">
+						绑定VV号，空间音视频作品会在手机<a class="vvmuslink" href="http://www.51vv.com/vvmusic/index.shtml" target="_blank">“VV音乐”</a>中显示，用手机就可以轻松浏览并分享到您的朋友圈！<a href="http://user.mvbox.cn" class="cxiangqing" target="_blank">查看详情>></a>
+					</p>
+					<div class="bindbtnArea">
+						<a href="http://user.mvbox.cn" class="bindrbtn" target="_blank">立即绑定</a>
+						<a href="javascript:void(0)" class="noalarm">不再提醒~</a>
+					</div>
+				</div>
+			</div>-->
+        </div>
+		
+		
+    </div>
+    <div class="headMain">
+        <div class="headmainContent">
+            <div class="logo">
+                <a href="index.shtml" title="mvbox" class="fix-png"></a>
+                <h1>mvbox官方网站</h1>
+            </div>
+            <!--ad-->
+            <div class="banner"><a href="https://p.51vv.com/vp/mwl3ZGTo" target="_blank"><img src="images/new_index/vpian0112.png" alt="mvbox"></a></div>
+            <!--guanzhu-->
+            <!--<div style="float: left;position: relative;top: 25px;left: 10px;">
+                <iframe src="http://open.qzone.qq.com/like?url=http%3A%2F%2Fuser.qzone.qq.com%2F909478891&type=button&width=400&height=30&style=3" allowtransparency="true" scrolling="no" border="0"
+                        frameborder="0" style="width:100px;height:30px;border:none;overflow:hidden;"></iframe>
+            </div>-->
+            <!--search-->
+            <div class="search" style="display:none">
+                <form action="" id="searchForm" name="searchForm" method="post" onsubmit="return checkSearch();">
+									<input type="hidden" id="method" name="method" />
+									<input type="hidden" id="q_type" name="q_type" />
+									<input type="hidden" id="page" name="page" />
+									<input type="hidden" id="qt" name="qt" />
+									<input type="hidden" id="n_type" name="n_type" />
+									<input type="hidden" id="name" name="name" />
+                    <div class="mod_select">
+                        <div class="select_box">
+                            <a class="select_txt" onclick="q_str_click(1,1)" href="javascript:void(0)">
+                                歌曲
+                            </a><a class="selet_open"></a>
+                            <div class="option">
+                                <a href="javascript:void(0)" id="search_GQ" onclick="q_str_click(1,1)">歌曲</a>
+                                <a href="javascript:void(0)" id="search_GS" onclick="q_str_click(2,1)">歌手</a>
+                                <a href="javascript:void(0)" id="search_SP" onclick="q_str_click(3,1)">视频</a>
+                            </div>
+                        </div>
+                        <input type="hidden" id="select_value" />
+                    </div>
+                    <input type="text" onfocus="this.value='';" value="请输入歌曲名" class="text" id="q_str"  name="q_str" onclick="q_str_click(0,9);">
+                    <input type="submit" class="button" value="搜索" id="search_button" name="search_button">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--菜单开始-->
+    <div class="headMenu">
+        <div class="menuContent">
+            <ul>
+                <li class="current"><a href="index.shtml">首页</a><span class="line">|</span></li>
+                <li ><a href="http://www.51vv.com/music/toIndex.htm" target="_blank">原创</a><span class="line">|</span></li>
+                <li ><a href="http://www.51vv.com/music/zp_cover.htm" target="_blank">翻唱</a><span class="line">|</span></li>
+                <li ><a href="http://www.51vv.com/music/video.htm" target="_blank">视频</a><span class="line">|</span></li>
+                <li><a href="http://www.51vv.com/music/hotstar/1628-0-1.htm" target="_blank">名人</a><span class="line">|</span></li>
+                <li><a href="http://pay.mvbox.cn/vip/">蓝钻</a><span class="line">|</span></li>
+                <li><a href="http://www.51vv.com/soft/soft_mvbox.shtml" target="_blank" class="downTongji">MVBOX下载</a><span class="line">|</span></li>
+                <li><a href="http://www.51vv.com/" target="_blank">聊天室</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--菜单结束-->
+</div>
+<script type="text/javascript" src="/js/loginBox/loadLoginBox.js"></script>
+<script type="text/javascript">
+	SendRequest("/xmldata/getUser.jsp", onGetLogin, onGetError);
+</script>
+<!--<script type="text/javascript" src="js/floattopadv.js"></script>-->
+
+<!--图片slide开始-->
+<div class="boxBg" style="background:#b2955d">
+    <div id="box">
+        <ul id="pic_list">
+            <!--ql-->
+        <li style="z-index:2;opacity:1;fliter:alpha(opacity=100);">
+    <a href="//www.51vv.com/mp3/#id=90464171&from=ksc" target="_blank"><img src="images/new_index/slide/202203011.jpg" alt=""/></a></li>
+<li><a href="//www.51vv.com/mp3/#id=90464158&from=ksc" target="_blank"><img src="images/new_index/slide/202203012.jpg" alt=""/></a></li>				
+<li><a href="//www.51vv.com/mp3/#id=90464154&from=ksc" target="_blank"><img src="images/new_index/slide/202203013.jpg" alt=""/></a></li>
+<li><a href="//www.51vv.com/mp3/#id=90464167&from=ksc" target="_blank"><img src="images/new_index/slide/202203014.jpg" alt=""/></a></li>
+<li><a href="//www.51vv.com/mp3/#id=90464163&from=ksc" target="_blank"><img src="images/new_index/slide/202203015.jpg" alt=""/></a></li>
+<li><a href="//www.51vv.com/mp3/#id=90464159&from=ksc" target="_blank"><img src="images/new_index/slide/202203016.jpg" alt=""/></a></li>			
+		
+<li><a href="//www.51vv.com/mp3/#id=90464003&from=ksc" target="_blank"><img src="images/new_index/slide/202202251.jpg" alt=""/></a></li>
+<li><a href="//www.51vv.com/mp3/#id=90463997&from=ksc" target="_blank"><img src="images/new_index/slide/202202252.jpg" alt=""/></a></li>				
+<li><a href="//www.51vv.com/mp3/#id=90463999&from=ksc" target="_blank"><img src="images/new_index/slide/202202253.jpg" alt=""/></a></li>
+<li><a href="//www.51vv.com/mp3/#id=90463980&from=ksc" target="_blank"><img src="images/new_index/slide/202202254.jpg" alt=""/></a></li>		
+		
+<li><a href="//www.51vv.com/mp3/#id=90463901&from=ksc" target="_blank"><img src="images/new_index/slide/202202241.jpg" alt=""/></a></li>
+<li><a href="//www.51vv.com/mp3/#id=90463914&from=ksc" target="_blank"><img src="images/new_index/slide/202202242.jpg" alt=""/></a></li>				
+<li><a href="//www.51vv.com/mp3/#id=90463907&from=ksc" target="_blank"><img src="images/new_index/slide/202202243.jpg" alt=""/></a></li>		
+	
+	
+	
+
+		
+		
+	
+	
+		
+	
+		
+
+	
+		
+	
+				
+
+
+
+ 
+
+
+ <!--lm-->  
+             <!-- <li>
+               <a href="//www.51vv.com/soft/soft_mvbox.shtml" target="_blank"><img src="images/new_index/slide/mvbox0505.jpg" alt="mvbox7.0"/></a>
+            </li>  -->          
+             <!--lm-->  
+              <!--<li>
+               <a href="//www.51vv.cc" target="_blank"><img src="images/new_index/slide/vvzb0815.jpg" alt="VV直播"/></a>
+            </li>-->						
+            
+            <!--lm-->  
+            <!--  <li>
+                <a href="//www.51vv.com/soft/kscPopularize.shtml" target="_blank"><img src="" alt="字幕"/></a>
+                <a href="//www.51vv.com/music/song_menu_detail.htm?songMenuID=3476 " target="_blank"><img src="" alt="华语群星"/></a>
+            </li>-->
+        
+    
+           
+        </ul>
+        <div id="ico_list">
+            <ul>
+<li><a href="javascript:void(0)"><img src="images/new_index/slide/202203011s.jpg" alt=""/></a></li>
+<li><a href="javascript:void(0)"><img src="images/new_index/slide/202203012s.jpg" alt=""/></a></li>	
+<li><a href="javascript:void(0)"><img src="images/new_index/slide/202203013s.jpg" alt=""/></a></li>
+<li><a href="javascript:void(0)"><img src="images/new_index/slide/202203014s.jpg" alt=""/></a></li>	
+<li><a href="javascript:void(0)"><img src="images/new_index/slide/202203015s.jpg" alt=""/></a></li>
+<li><a href="javascript:void(0)"><img src="images/new_index/slide/202203016s.jpg" alt=""/></a></li>	
+			
+			
+<li><a href="javascript:void(0)"><img src="images/new_index/slide/202202251s.jpg" alt=""/></a></li>
+<li><a href="javascript:void(0)"><img src="images/new_index/slide/202202252s.jpg" alt=""/></a></li>	
+<li><a href="javascript:void(0)"><img src="images/new_index/slide/202202253s.jpg" alt=""/></a></li>
+<li><a href="javascript:void(0)"><img src="images/new_index/slide/202202254s.jpg" alt=""/></a></li>				
+			
+<li><a href="javascript:void(0)"><img src="images/new_index/slide/202202241s.jpg" alt=""/></a></li>
+<li><a href="javascript:void(0)"><img src="images/new_index/slide/202202242s.jpg" alt=""/></a></li>						
+<li><a href="javascript:void(0)"><img src="images/new_index/slide/202202243s.jpg" alt=""/></a></li>			
+	
+		
+	
+
+		
+						
+				
+
+
+		
+			
+
+		
+
+
+
+
+               <!-- <li><a href="javascript:void(0)"><img src="images/new_index/slide/mvbox0505s.jpg" alt="抠像"/></a></li>               
+                   <li><a href="javascript:void(0)"><img src="images/new_index/slide/vvzb0815s.jpg" alt="直播"/></a></li>-->
+                   <!-- <li><a href="javascript:void(0)"><img src="images/new_index/slide/ksc0729s.jpg" alt="ksc字幕"/></a></li>-->			   
+
+                 </ul>  
+
+                  
+                   
+                   
+        </div>
+        <a href="javascript:void(0)" id="btn_prev" class="btn"></a>
+        <a href="javascript:void(0)" id="btn_next" class="btn showBtn"></a>
+    </div>
+</div>
+<!--图片slide结束-->
+<div class="h20"></div>
+<!--主体开始-->
+<div id="main">
+    <!--热门标签开始
+    <div class="hotTag">
+        <h2>热门分类</h2>
+        <div class="newlatest">
+            <ul>
+                <li><a href="http://www.51vv.com/music/yc.htm">最新原创>></a></li>
+                <li><a href="http://www.51vv.com/music/fc.htm">最新翻唱>></a></li>
+                <li><a href="http://www.51vv.com/music/video.htm">最新视频>></a></li>
+            </ul>
+        </div>
+        <img src="images/new_index/tagLine.jpg" alt="">
+        <div class="hot">
+            <span>热门</span>
+            <p>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=1&categoryThreeID=296" target="_blank">新歌发布</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=1&categoryThreeID=194" target="_blank">演唱会</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=1&categoryThreeID=180" target="_blank">MV制作</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=16" target="_blank">歌手</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=1&categoryThreeID=26" target="_blank">翻唱</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=1&categoryThreeID=295" target="_blank">片花</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=17" target="_blank">主持</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=44" target="_blank">慢摇</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=42" target="_blank">劲嗨</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=4&categoryThreeID=281" target="_blank">口哨</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=13&categoryThreeID=216" target="_blank">景点</a>
+            </p>
+        </div>
+        <img src="images/new_index/tagLine.jpg" alt="">
+        <div class="singer">
+            <span>按歌手</span>
+            <p>
+                <a href="http://space.mvbox.cn/4087252.html" target="_blank">高安</a>
+                <a href="http://space.mvbox.cn/3632888.html" target="_blank">祁隆</a>
+                 <a href="http://space.mvbox.cn/7056217.html" target="_blank">安东阳</a>
+                <a href="http://space.mvbox.cn/1980449.html" target="_blank">波拉</a>
+               <a href="http://space.mvbox.cn/401509613.html" target="_blank">杨梓</a>
+                 <a href="http://space.mvbox.cn/4544873.html" target="_blank">天籁天</a>
+               
+                <a href="http://space.mvbox.cn/43528910.html" target="_blank">马健涛</a>
+                <a href="http://space.mvbox.cn/2949683.html" target="_blank">蔡献华</a>
+                <a href="http://space.mvbox.cn/4130542.html" target="_blank">陈瑞</a>
+                <a href="http://space.mvbox.cn/3310552.html" target="_blank">囚鸟</a>
+                <a href="http://space.mvbox.cn/413868392.html" target="_blank">孙家山</a>
+                
+
+            </p>
+        </div>
+        <img src="images/new_index/tagLine.jpg" alt="">
+        <div class="theme">
+            <span>按活动</span>
+            <p>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=21" target="_blank">节日</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=11&categoryThreeID=109" target="_blank">生日</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=11&categoryThreeID=116" target="_blank">翻唱赛</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=1&categoryThreeID=193" target="_blank">作品展</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=11&categoryThreeID=108" target="_blank">联谊会</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=3&categoryThreeID=201" target="_blank">朗诵晚会</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=197" target="_blank">舞蹈晚会</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=10&categoryThreeID=97" target="_blank">军人晚会</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=11&categoryThreeID=112" target="_blank">纪念</a>
+            </p>
+        </div>
+        <img src="images/new_index/tagLine.jpg" alt="">
+        <div class="special">
+            <span>特色</span>
+            <p>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=14&categoryThreeID=141" target="_blank">要闻播报</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=14&categoryThreeID=177" target="_blank">每周之星</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=9" target="_blank">婚恋</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=12&categoryThreeID=137" target="_blank">软件教学</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=198" target="_blank">舞蹈教学</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=13" target="_blank">同城</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=10" target="_blank">军旅</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=7&categoryThreeID=153" target="_blank">戏曲</a>
+                <a href="http://www.51vv.com/app/applist?categoryOneID=7&categoryThreeID=154" target="_blank">二人转</a>
+            </p>
+        </div>
+    </div>
+    热门标签结束-->
+    <div class="h20"></div>
+    <!--盒子1开始，原创歌曲，新特性-->
+    <div class="box_1">
+        <!--原创歌曲  左边-->
+        <div class="left">
+<div class="title">
+    <h2><img src="images/new_index/yuanchuang.png" alt="" class="fix-png"></h2>
+    <ul class="yuanchuangTab">
+        <li class="current fix-png"><a href="javascript:void(0)" hidefocus="true">新歌</a></li>
+        <li><a href="javascript:void(0)" hidefocus="true">热门</a></li>
+    </ul>
+    <!--<p><a href="http://www.51vv.com/zhaomu/tuiguang.html" target="_blank">更多推广，请申请应用>></a></p>-->
+</div>
+<div class="yuanchuangContent">
+<!--默认显示的盒子-->
+<div class="yuanchuangBox current">
+    <div class="imglist">
+        <dl>
+            <dt><a href="//k.51vv.com/player.htm?avId=11690625&userId=931578213" target="_blank"><img src="images/new_index/xg_01.jpg" alt="杨翔" ></a></dt>
+            <dd>
+                <a href="//k.51vv.com/player.htm?avId=11690625&userId=931578213" target="_blank">认真</a>
+                <a href="//k.51vv.com/space.htm?userId=931578213" class="name" target="_blank">【杨翔】</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt><a href="//k.51vv.com/player.htm?avId=11741506&userId=520365" target="_blank"><img src="images/new_index/xg_04.jpg" alt="音乐走廊"></a></dt>
+            <dd>
+                <a href="//k.51vv.com/player.htm?avId=11741506&userId=520365" target="_blank">再唱天门情歌</a>
+                <a href="//k.51vv.com/space.htm?userId=520365" class="name" target="_blank">【音乐走廊】</a>
+            </dd>
+        </dl>			
+        <dl>
+            <dt><a href="//k.51vv.com/player.htm?avId=11257675&userId=610757" target="_blank"><img src="images/new_index/xg_02.jpg" alt="顾晓娟"></a></dt>
+            <dd>
+                <a href="//k.51vv.com/player.htm?avId=11257675&userId=610757" target="_blank">千年缘</a>
+              <a href="//k.51vv.com/space.htm?userId=610757" class="name" target="_blank">【顾晓娟】</a>
+            </dd>
+        </dl>	
+        <dl>
+          <dt><a href="//k.51vv.com/player.htm?avId=11814057&userId=610852" target="_blank"><img src="images/new_index/xg_03.jpg" alt="毒恋"></a></dt>
+            <dd>
+                <a href="//k.51vv.com/player.htm?avId=11814057&userId=610852" target="_blank">最美的春天</a>
+            <a href="//k.51vv.com/space.htm?userId=610852" class="name" target="_blank">【毒恋/飞歌】</a>
+            </dd>
+        </dl>			    
+
+    </div>
+    <div class="musicList">
+        <div class="musiclistLeft">
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="//k.51vv.com/player.htm?avId=11657937&userId=918676409" target="_blank">静夜痴怨</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=918676409" target="_blank">天缘百合</a></li>
+                    <li class="listen"><a href="//k.51vv.com/player.htm?avId=11657937&userId=918676409" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>	
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="//k.51vv.com/player.htm?avId=11297849&userId=610591" target="_blank">幸福的伪装</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=610591" target="_blank">李恩俊</a></li>
+                    <li class="listen"><a href="//k.51vv.com/player.htm?avId=11297849&userId=610591" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>				
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="//k.51vv.com/player.htm?avId=11145440&userId=610653" target="_blank">爱你么么哒</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=610653" target="_blank">何秋萍</a></li>
+                    <li class="listen"><a href="//k.51vv.com/player.htm?avId=11145440&userId=610653" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>			
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="//k.51vv.com/player.htm?avId=11841129&userId=610623" target="_blank">一个人在爱情中乞讨</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=610623" target="_blank">吴情儿</a></li>
+                    <li class="listen"><a href="//k.51vv.com/player.htm?avId=11841129&userId=610623" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="//k.51vv.com/player.htm?avId=11519491&userId=719076978" target="_blank">世间最美丽的新娘</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=719076978" target="_blank">葫芦晓峰</a></li>
+                    <li class="listen"><a href="//k.51vv.com/player.htm?avId=11519491&userId=719076978" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="//k.51vv.com/player.htm?avId=11674558&userId=610215" target="_blank">实实在在</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=610215" target="_blank">红陌</a></li>
+                    <li class="listen"><a href="//k.51vv.com/player.htm?avId=11674558&userId=610215" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://k.51vv.com/player.htm?avId=11537148&userId=610032" target="_blank">遣怀</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=610032" target="_blank">甜妹紫烟</a></li>
+                    <li class="listen"><a href="https://k.51vv.com/player.htm?avId=11537148&userId=610032" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="//k.51vv.com/player.htm?avId=10985148&userId=610835" target="_blank">夜</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=610835" target="_blank">陈雪伊</a></li>
+                    <li class="listen"><a href="//k.51vv.com/player.htm?avId=10985148&userId=610835" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+        </div>
+        <img src="images/new_index/song_heightLine.jpg" alt="">
+        <div class="musiclistRight">
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="//k.51vv.com/player.htm?avId=11664132&userId=936576218" target="_blank">喜欢你</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=936576218" target="_blank">刘菡</a></li>
+                    <li class="listen"><a href="//k.51vv.com/player.htm?avId=11664132&userId=936576218" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>			
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="//k.51vv.com/player.htm?avId=11543500&userId=610236" target="_blank">情谊温暖</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=610236" target="_blank">梦琪</a></li>
+                    <li class="listen"><a href="//k.51vv.com/player.htm?avId=11543500&userId=610236" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">						
+                <ul>
+                    <li class="musicName"><a href="//k.51vv.com/player.htm?avId=11097158&userId=610683" target="_blank">不再为爱情伤心落</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=610683" target="_blank">贾富营/其中</a></li>
+                    <li class="listen"><a href="//k.51vv.com/player.htm?avId=11097158&userId=610683" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>		
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="//k.51vv.com/player.htm?avId=11395525&userId=610052" target="_blank">爱如沙</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=610052" target="_blank">画画</a></li>
+                    <li class="listen"><a href="//k.51vv.com/player.htm?avId=11395525&userId=610052" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="//k.51vv.com/player.htm?avId=10105232&userId=610732" target="_blank">爱不移</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=610732" target="_blank">轨道</a></li>
+                    <li class="listen"><a href="//k.51vv.com/player.htm?avId=10105232&userId=610732" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="//k.51vv.com/player.htm?avId=11891755&userId=610240" target="_blank">命中注定在一起</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=610240" target="_blank">天爱</a></li>
+                    <li class="listen"><a href="//k.51vv.com/player.htm?avId=11891755&userId=610240" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="//k.51vv.com/player.htm?avId=11039851&userId=610093" target="_blank">今生有你相伴</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=610093" target="_blank">韩晓辉</a></li>
+                    <li class="listen"><a href="//k.51vv.com/player.htm?avId=11039851&userId=610093" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>			
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="//k.51vv.com/player.htm?avId=11008657&userId=915402829" target="_blank">思念的泪滴</a></li>
+                    <li class="author"><a href="//k.51vv.com/space.htm?userId=915402829" target="_blank">冷沫</a></li>
+                    <li class="listen"><a href="//k.51vv.com/player.htm?avId=11008657&userId=915402829" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--默认隐藏的盒子-->
+<div class="yuanchuangBox">
+    <div class="imglist">
+        <dl>
+            <dt><a href="https://p.51vv.com/vp/2H2lcCBG?vpian_userid=936474850" target="_blank"><img src="images/new_index/rg_01.jpg" alt="枫舞"></a></dt>
+            <dd>
+                <a href="https://p.51vv.com/vp/2H2lcCBG?vpian_userid=936474850" target="_blank">还没好好爱你</a>
+              <a href="http://space.mvbox.cn/4187289.html" class="name" target="_blank">【枫舞】</a>
+            </dd>
+        </dl>	
+        <dl>
+          <dt><a href="https://p.51vv.com/vp/7bk3cyKA?vpian_userid=936474850" target="_blank"><img src="images/new_index/rg_02.jpg" alt="小溪"></a></dt>
+            <dd>
+                <a href="https://p.51vv.com/vp/7bk3cyKA?vpian_userid=936474850" target="_blank">水乡等你来划船</a>
+            <a href="https://p.51vv.com/vp/userarticles/909865235" class="name" target="_blank">【小溪】</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt><a href="https://p.51vv.com/vp/3O2kc0V5?vpian_userid=936474850" target="_blank"><img src="images/new_index/rg_03.jpg" alt="天籁天" ></a></dt>
+            <dd>
+                <a href="https://p.51vv.com/vp/3O2kc0V5?vpian_userid=936474850" target="_blank">我的情人</a>
+                <a href="https://p.51vv.com/vp/userarticles/610802" class="name" target="_blank">【聿儿】</a>
+            </dd>
+        </dl>			
+        <dl>
+            <dt><a href="https://p.51vv.com/vp/NSm8cvjC?vpian_userid=936474850" target="_blank"><img src="images/new_index/rg_04.jpg" alt="蓝沁"></a></dt>
+            <dd>
+                <a href="https://p.51vv.com/vp/NSm8cvjC?vpian_userid=936474850" target="_blank">红尘水袖</a>
+                <a href="https://p.51vv.com/vp/userarticles/610149" class="name" target="_blank">【蓝沁】</a>
+            </dd>
+        </dl> 
+    </div>
+    <div class="musicList">
+        <div class="musiclistLeft">
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/hbObcCIQ?vpian_userid=936474850" target="_blank">道别</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/610225" target="_blank">王菲儿</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/hbObcCIQ?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/SSl7cyr1?vpian_userid=936474850l" target="_blank">油菜花开情满怀</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/610093" target="_blank">醉歌</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/SSl7cyr1?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/OYwic0XB?vpian_userid=936474850" target="_blank">生命匆匆</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/610803" target="_blank">蔡颖璐</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/OYwic0XB?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/H8wPcyF4?vpian_userid=936474850" target="_blank">何求</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/913760735" target="_blank">平安是福</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/H8wPcyF4?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/hsYOcCXu?vpian_userid=936474850" target="_blank">一生有你才会幸福</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/610803" target="_blank">姜山/阿影</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/hsYOcCXu?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/NSkDcvQe?vpian_userid=936474850" target="_blank">梦在烟雨的江南</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/610799" target="_blank">子墨清漓</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/NSkDcvQe?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/sP8ScveI?vpian_userid=936474850" target="_blank">午夜的伤</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/610727" target="_blank">飞歌/小灵魂</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/sP8ScveI?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/w8kDcCxf?vpian_userid=936474850" target="_blank">洱海我的母亲湖</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/610203" target="_blank">贺筠筠</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/w8kDcCxf?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+        </div>
+        <img src="images/new_index/song_heightLine.jpg" alt="">
+        <div class="musiclistRight">
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/7h7NcBTZ?vpian_userid=936474850" target="_blank">红尘恋</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/610828" target="_blank">书雅/嚎嚎</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/7h7NcBTZ?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/SlRScAQv?vpian_userid=936474850" target="_blank">瑞狗迎新春</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/610509" target="_blank">媚儿菲菲</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/SlRScAQv?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/ms3ScyIG?vpian_userid=936474850" target="_blank">记得我</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/610134" target="_blank">冷酷</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/ms3ScyIG?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/sm7Hc1UZ?vpian_userid=936474850" target="_blank">我应该早点说再见</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/610821" target="_blank">逸云</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/sm7Hc1UZ?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/YPNRcEFL?vpian_userid=936474850" target="_blank">岁月的河流</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/610052" target="_blank">画画</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/YPNRcEFL?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/HY37cBXt?vpian_userid=936474850" target="_blank">
+风之殇</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/936417096" target="_blank">浅笑</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/HY37cBXt?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/8O2hcxfg?vpian_userid=936474850" target="_blank">最难忍受是分离</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/937502831" target="_blank">毒恋</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/8O2hcxfg?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+            <div class="musicRow">
+                <ul>
+                    <li class="musicName"><a href="https://p.51vv.com/vp/2NwHcvKC?vpian_userid=936474850" target="_blank">
+不苛求你爱我</a></li>
+                    <li class="author"><a href="https://p.51vv.com/vp/userarticles/610215" target="_blank">望海高歌</a></li>
+                    <li class="listen"><a href="https://p.51vv.com/vp/2NwHcvKC?vpian_userid=936474850" class="fix-png" target="_blank"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--<div class="h10"></div>-->
+<div class="imgLine">
+    <img src="images/new_index/song_widthLine.jpg" alt="">
+</div>
+<!--现场直击-->
+<div class="xianchangTitle">
+    <span></span>
+    <h3>现场直击</h3>
+    <a href="http://www.51vv.com/huodong/index.htm" target="_blank">更多精彩</a>
+</div>
+<div class="xianchangContent">
+    <a href="//www.51vv.com/app/85077" target="_blank"><img src="images/new_index/hd_01.jpg" alt="首届中华少年儿童网络朗诵晚会" width="180" height="120"></a>
+    <ul class="one">
+      	<li><span>.</span><a href="//www.51vv.com/app/85399" target="_blank" style="color:#F00">《相逢是首歌》第9期：春之歌大型文艺晚会</a></li>	
+        <li><span>.</span><a href="//www.51vv.com/app/85486" target="_blank" >画画/兰天/飞歌《红尘夙愿》新歌发布会</a></li>			
+      	<li><span class="">.</span><a href="//www.51vv.com/app/85316" target="_blank" style="color:#F00">《民韵•岁月留声》同城中南区民歌山歌专场</a></li>
+        <li><span>.</span><a href="//www.51vv.com/app/85391" target="_blank">《五彩缤纷文艺晚会》第76期</a></li>
+        <li><span>.</span><a href="//www.51vv.com/app/85329" target="_blank">三月春风暖大型歌舞晚会</a></li>        
+       <!-- <li><span>.</span><a href="//www.51vv.com/app/61263" target="_blank">吴情儿/凝听新歌发布会</a></li>-->		
+    </ul>
+    <ul class="two">
+   		<li><span>.</span><a href="//www.51vv.com/app/85327" target="_blank" >天缘百合《静夜痴怨》新歌发布会</a></li>	    
+        <li><span>.</span><a href="//www.51vv.com/app/85390" target="_blank">《幸福的男人》心有灵作品展示会</a></li>        
+        <li><span>.</span><a href="//www.51vv.com/app/85358" target="_blank">最美三月天大型歌舞晚会</a></li>
+        <li><span>.</span><a href="//www.51vv.com/app/85424" target="_blank">梦想专区艺术团迎新春大型歌舞晚会</a></li>
+        <li><span>.</span><a href="//www.51vv.com/app/85330" target="_blank">吴情儿《分手不要说爱我》新歌发布会</a></li>
+      <!--  <li><span>.</span><a href="http://bbs.51vv.com/viewthread.php?tid=646718" target="_blank">黄勇《兄弟酒一杯》新歌发布会</a></li> -->
+    </ul>
+</div>
+</div>
+        <!--右边mvbox新特性-->
+        <div class="right">
+            <h2><img src="images/new_index/newMvbox1.png" alt=""></h2>
+            <ul class="new">
+                <li><span>.</span>高清视频极致体验，精彩直播零距离</li>
+                <li><span>.</span>智能美肤瘦脸，就是要你美美哒</li>
+                <li><span>.</span>音效气氛广播，直播不冷场更好玩</li>
+                
+            </ul>
+            <div class="down"><a href="http://down.im.51vv.com/mvbox/MvBoxPlayer7.1_Setup_7102_20181123_mvbox.exe" class="liantong"></a></div>
+            <h3 class="softDetail">软件功能</h3>
+            <div class="soft">
+                <ul class="iconleft">
+                    <li>海量高质量伴奏</li>
+                    <li>支持高清视屏</li>
+                    <li>桌面同步歌词</li>
+                    <li>录音录像</li>
+                </ul>
+                <ul class="iconright">
+                    <li>虚拟视频</li>
+                    <li>屏幕捕获</li>
+                    <li>视频特效</li>
+                    <li>海量特效素材</li>
+                </ul>
+            </div>
+            <div class="helpBox">
+                <img src="images/new_index/newMvbox_line.jpg" alt="" class="newMvboxline">
+                <div class="helpTitle">
+                    <h3>使用帮助</h3>
+                    <a href="http://www.51vv.com/soft/soft_mvboxDetail.shtml" target="_blank">更多</a>
+                </div>
+                <ul class="help">
+                    <li><span>.</span><a href="http://www.51vv.com/soft/intro-2.shtml#b2" target="_blank">如何设置摄像头</a></li>
+                    <li><span>.</span><a href="http://www.51vv.com/soft/intro-2.shtml#b6" target="_blank">如何使用屏幕捕获</a></li>
+                    <li><span>.</span><a href="http://www.51vv.com/soft/intro-2.shtml#b10" target="_blank">如何上传歌词字幕</a></li>
+                    <li><span>.</span><a href="http://www.51vv.com/soft/intro-6.shtml#f1" target="_blank">如何在聊天室关联虚拟摄像头</a></li>
+                    <li><span>.</span><a href="http://www.51vv.com/soft/intro-10.shtml#j2" target="_blank">音视频格式的转换</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--盒子1结束-->
+    <div class="h20"></div>
+    <!--ad开始-->
+    <div class="banner">
+        <a href="http://k.51vv.com/" target="_blank"><img src="images/new_index/vvyy1011.jpg" alt="VV音乐"></a>
+    </div>
+    <!--ad结束-->
+    <div class="h20"></div>
+    <!--盒子2开始，我型我秀，欢聚一堂-->
+    <div class="box_2">
+        <!--show left-->
+        <div class="left">
+<div class="showtitle">
+    <h2><img src="images/new_index/showTitle.png" alt="" class="fix-png"></h2>
+    <p><a href="#">上传作品，秀出个性自我>></a></p>
+</div>
+<div class="h10"></div>
+<!--dance-->
+<div class="dance">
+    <div class="danceTitle">
+        <span></span>
+        <h3>舞动人生</h3>
+       <!-- <a href="http://www.51vv.com/app/applist?categoryOneID=2" target="_blank">更多</a> -->
+    </div>
+    <div class="danceImglist">
+        <dl>
+          <dt><a href="http://space.mvbox.cn/5922949/sp/6574975.html" target="_blank"><img alt="迎春花" src="images/new_index/wd_01.jpg" width="150" height="100"></a></dt>
+            <dd>
+                <a href="http://space.mvbox.cn/5922949/sp/6574975.html" target="_blank">迎春花</a>
+                <a class="name" href="http://space.mvbox.cn/5922949.html" target="_blank">【虞瑶】</a>
+            </dd>
+      </dl>
+        <dl>
+        <dt><a href="http://space.mvbox.cn/6773148/sp/6572200.html" target="_blank"><img alt="草原花" src="images/new_index/wd_02.jpg" width="150" height="100"></a></dt>
+            <dd>
+                <a href="http://space.mvbox.cn/6773148/sp/6572200.html" target="_blank">草原花</a>
+                <a class="name" href="http://space.mvbox.cn/6773148.html" target="_blank">【燕子】</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt><a href="http://space.mvbox.cn/5199999/sp/6527249.html" target="_blank"><img alt="生日晚会开场舞" src="images/new_index/wd_03.jpg" width="150" height="100"></a></dt>
+            <dd>
+                <a href="http://space.mvbox.cn/5199999/sp/6527249.html" target="_blank">生日晚会开场舞</a>
+                <a class="name" href="http://space.mvbox.cn/5199999.html" target="_blank">【紫柔】</a>
+            </dd>
+        </dl>
+      <dl>
+            <dt><a href="http://space.mvbox.cn/473632990/sp/6553939.html" target="_blank"><img alt="自由拽" src="images/new_index/wd_04.jpg" width="150" height="100"></a></dt>
+            <dd>
+              <a href="http://space.mvbox.cn/473632990/sp/6553939.html" target="_blank">自由拽</a>
+              <a class="name" href="http://space.mvbox.cn/473632990.html" target="_blank">【妖妖】</a>
+            </dd>
+        </dl>		
+    </div>
+    <div class="danceTag">
+        <p>
+            <span><a href="http://www.51vv.com/app/applist?categoryOneID=2" target="_blank">【舞蹈标签】</a></span>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=31" target="_blank">流行</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=33" target="_blank">民族</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=42" target="_blank">劲嗨</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=44" target="_blank">慢摇</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=43" target="_blank">枪舞</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=45" target="_blank">形体</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=47" target="_blank">踏足</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=179" target="_blank">飘舞</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=51" target="_blank">肚皮舞</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=191" target="_blank">手舞</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=286" target="_blank">蝶舞</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=50" target="_blank">柔姿</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=38" target="_blank">特效</a>
+        </p>
+        <p>
+            <span><a href="http://www.51vv.com/app/applist?categoryOneID=2&categoryThreeID=55" target="_blank">【才子佳人】</a></span>
+            <a href="http://space.mvbox.cn/2251850.html" target="_blank">花帅</a>
+            <a href="http://space.mvbox.cn/4544589.html" target="_blank">不帅</a>
+            <a href="http://space.mvbox.cn/4916483.html" target="_blank">闲舞</a>
+            <a href="http://space.mvbox.cn/4688414.html" target="_blank">海娜丽</a>
+            <a href="http://space.mvbox.cn/5239384.html" target="_blank">热带鱼</a>
+            <a href="http://space.mvbox.cn/1910915.html" target="_blank">飞蝶</a>
+            <a href="http://space.mvbox.cn/5786482.html" target="_blank">调皮鱼</a>
+            <a href="http://space.mvbox.cn/4718362.html" target="_blank">乔安娜</a>
+            <a href="http://space.mvbox.cn/2213200.html" target="_blank">月亮宝贝</a>
+            <a href="http://space.mvbox.cn/3646114.html" target="_blank">弦子</a>
+        </p>
+    </div>
+</div>
+<div class="h20"></div>
+<!--sound-->
+<div class="sound">
+    <div class="soundTitle">
+        <span></span>
+        <h3>朗诵艺术</h3>
+  <!--      <a href="http://www.51vv.com/app/applist?categoryOneID=3" target="_blank" >更多</a>   -->
+    </div>
+    <div class="soundImglist">
+        <dl>
+            <dt><a href="https://p.51vv.com/vp/8Rl7c6XT" target="_blank"><img alt="春" src="images/new_index/ls_01.jpg" width="150" height="100"></a></dt>
+            <dd>
+                <a href="https://p.51vv.com/vp/8Rl7c6XT" target="_blank">春</a>
+                <a class="name" href="https://p.51vv.com/vp/userarticles/71831069" target="_blank">【杨克毅】</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt><a href="https://p.51vv.com/vp/s3NDc5LA" target="_blank"><img alt="父亲的手" src="images/new_index/ls_02.jpg" width="150" height="100"></a></dt>
+            <dd>
+                <a href="https://p.51vv.com/vp/s3NDc5LA" target="_blank">父亲的手</a>
+                <a class="name" href="https://p.51vv.com/vp/userarticles/940538837" target="_blank">【黑马】</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt><a href="https://p.51vv.com/vp/HOwHc11M" target="_blank"><img alt="深情地叫一声：妈妈" src="images/new_index/ls_03.jpg" width="150" height="100"></a></dt>
+            <dd>
+                <a href="https://p.51vv.com/vp/HOwHc11M" target="_blank">深情地叫一声妈妈</a>
+                <a class="name" href="https://p.51vv.com/vp/userarticles/940538837" target="_blank">【磊明】</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt><a href="https://p.51vv.com/vp/DPi8cy9j" target="_blank"><img alt="相信未来" src="images/new_index/ls_04.jpg" width="150" height="100"></a></dt>
+            <dd>
+                <a href="https://p.51vv.com/vp/DPi8cy9j" target="_blank">相信未来</a>
+                <a class="name" href="https://p.51vv.com/vp/userarticles/937969042" target="_blank">【管乐】</a>
+            </dd>
+        </dl>
+    </div>
+    <div class="soundTag">
+        <p>
+            <span><a href="http://www.51vv.com/app/applist?categoryOneID=3" target="_blank">【朗诵标签】</a></span>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=3&categoryThreeID=294" target="_blank">每月精选</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=3&categoryThreeID=60" target="_blank">文学朗诵</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=3&categoryThreeID=61" target="_blank">影视配音</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=3&categoryThreeID=62" target="_blank">朗诵专题</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=3&categoryThreeID=303" target="_blank">朗诵视频素材</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=3&categoryThreeID=305" target="_blank">朗诵音乐素材</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=3&categoryThreeID=201" target="_blank">朗诵晚会</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=3&categoryThreeID=202" target="_blank">朗诵教学</a>
+        </p>
+        <p>
+            <span><a href="http://www.51vv.com/app/applist?categoryOneID=3&categoryThreeID=65" target="_blank">【才子佳人】</a></span>
+            <a href="http://space.mvbox.cn/1171155.html" target="_blank">寂寞沙洲</a>
+            <a href="http://space.mvbox.cn/4032559.html" target="_blank">陶文</a>
+            <a href="http://space.mvbox.cn/6740102.html" target="_blank">春晓</a>
+            <a href="http://space.mvbox.cn/6049991.html" target="_blank">林枫</a>
+            <a href="http://space.mvbox.cn/6053323.html" target="_blank">踏雪无痕</a>
+            <a href="http://space.mvbox.cn/6665085.html" target="_blank">赛姆</a>
+            <a href="http://space.mvbox.cn/1260002.html" target="_blank">海马</a>
+            <a href="http://space.mvbox.cn/44980256.html" target="_blank">静芯佳美</a>
+            <a href="http://space.mvbox.cn/6842477.html" target="_blank">大鹏展翅</a>
+            <a href="http://space.mvbox.cn/402561296.html" target="_blank">清影</a>
+            <a href="http://space.mvbox.cn/5814410.html" target="_blank">影儿</a>
+        </p>
+    </div>
+</div>
+<div class="h20"></div>
+<!--sing-->
+<div class="sing">
+    <div class="singTitle">
+        <span></span>
+        <h3>吹啦弹唱</h3>
+   <!--     <a href="http://www.51vv.com/app/applist?categoryOneID=4" target="_blank">更多</a>  -->
+    </div>
+    <div class="singImglist">
+        <dl>
+            <dt><a href="https://p.51vv.com/vp/wPhDcyUd" target="_blank"><img alt="古筝教学" src="images/new_index/qy_01.jpg" width="150" height="100"></a></dt>
+            <dd>
+                <a href="https://p.51vv.com/vp/wPhDcyUd" target="_blank">古筝教学</a>
+               <a class="name" href="https://p.51vv.com/vp/userarticles/909542663" target="_blank">【赵泓】</a>  
+            </dd>
+        </dl>
+        <dl>
+            <dt><a href="https://p.51vv.com/vp/N8w2cj9o" target="_blank"><img alt="笛子独奏《小苹果》" src="images/new_index/qy_02.jpg" width="150" height="100"></a></dt>
+            <dd>
+                <a href="https://p.51vv.com/vp/N8w2cj9o" target="_blank">月光下的凤尾竹</a>
+                <a class="name" href="https://p.51vv.com/vp/userarticles/75103642" target="_blank">【梦葫】</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt><a href="https://p.51vv.com/vp/kkmkczzM" target="_blank"><img alt="来生愿做一朵莲" src="images/new_index/qy_03.jpg" width="150" height="100"></a></dt>
+            <dd>
+                <a href="https://p.51vv.com/vp/kkmkczzM" target="_blank">红色娘子军</a>
+                <a class="name" href="https://p.51vv.com/vp/userarticles/7835718" target="_blank">【微笑】</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt><a href="https://p.51vv.com/vp/733HcIX6" target="_blank"><img alt="回娘家" src="images/new_index/qy_04.jpg" width="150" height="100"></a></dt>
+            <dd>
+                <a href="https://p.51vv.com/vp/733HcIX6" target="_blank">花鼓戏：补锅</a>
+                <a class="name" href="https://p.51vv.com/vp/userarticles/74530618" target="_blank">【大轩】</a>
+            </dd>
+        </dl>
+    </div>
+    <div class="singTag">
+        <p>
+            <span><a href="http://www.51vv.com/app/applist?categoryOneID=4" target="_blank">【热门标签】</a></span>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=4&categoryThreeID=282" target="_blank">葫芦丝</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=4&categoryThreeID=70" target="_blank">埙</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=4&categoryThreeID=71" target="_blank">笛子</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=4&categoryThreeID=68" target="_blank">萨克斯</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=4&categoryThreeID=281" target="_blank">口哨</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=7&categoryThreeID=271" target="_blank">花鼓戏</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=7&categoryThreeID=272" target="_blank">秦腔</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=7&categoryThreeID=279" target="_blank">黄梅戏</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=7&categoryThreeID=276" target="_blank">京剧</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=7&categoryThreeID=274" target="_blank">豫剧</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=7&categoryThreeID=154" target="_blank">二人转</a>
+            <a href="http://www.51vv.com/app/applist?categoryOneID=7&categoryThreeID=155" target="_blank">相声</a>
+
+        </p>
+        <p>
+            <span><a href="http://www.51vv.com/app/applist?categoryOneID=4&categoryThreeID=152" target="_blank">【才子佳人】</a></span>
+            <a href="http://space.mvbox.cn/6280390.html" target="_blank">蓝猫</a>
+            <a href="http://space.mvbox.cn/1619307.html" target="_blank">歪瓜咧枣</a>
+            <a href="http://space.mvbox.cn/6038671.html" target="_blank">顽石</a>
+            <a href="http://space.mvbox.cn/3516251.html" target="_blank">悟空</a>
+            <a href="http://space.mvbox.cn/4017544.html" target="_blank">艺魂</a>
+            <a href="http://space.mvbox.cn/1967907.html" target="_blank">杨柳依依</a>
+            <a href="http://space.mvbox.cn/7547313.html" target="_blank">宝宝</a>
+            <a href="http://space.mvbox.cn/402172238.html" target="_blank">梦归梨园</a>
+            <a href="http://space.mvbox.cn/45062943.html" target="_blank">浪漫静听</a>
+            <a href="http://space.mvbox.cn/6461313.html" target="_blank">小乔</a>
+          
+        </p>
+    </div>
+</div>
+</div>
+        <!--欢聚一堂-->
+        <div class="right">
+    <div class="huanjuTitle">
+        <h2><img src="images/new_index/huanjuTitle.png" alt="欢聚一堂 " class="fix-png"></h2>
+ <!--       <p><a href="http://www.51vv.com/app/applist?categoryOneID=11" target="_blank">更多</a></p>  -->
+    </div>
+    <!--dance-->
+    <div class="dance">
+        <a href="http://www.51vv.com/app/85306" class="huanjuHover" target="_blank"><img src="//images.51vv.com/upload/app/19/03/icon/1551751484611.jpg" alt="沉香醉墨/紫蘅《花雨中把你想起》新歌发布会" width="250" height="115"></a>
+        <div class="h10"></div>
+        <p><a href="http://www.51vv.com/app/85309" target="_blank">伊露阳光《遣怀》新歌发布会</a></p>
+        <p><a href="http://www.51vv.com/app/85194" target="_blank">贺燕《风冷冷的吹》新歌发布会</a></p>
+        <p><a href="http://www.51vv.com/app/85000" target="_blank">葫芦晓峰《感恩妈妈》新歌发布会</a></p>
+        
+    </div>
+    <div class="h10"></div>
+    <!--sound-->
+    <div class="sound">
+        <a href="http://www.51vv.com/app/85295" class="huanjuHover" target="_blank"><img src="//images.51vv.com/upload/app/19/03/icon/1552023825825.jpg" alt="《民韵 岁月留声》同城西南区民歌山歌专场晚会" width="250" height="115"></a>
+        <div class="h10"></div>
+        <p><a href="http://www.51vv.com/app/85228" target="_blank">《微酷之星》第32期：歌手贾富营</a></p>
+        <p><a href="http://www.51vv.com/app/85339" target="_blank">《生日密码》第56期：保罗·莫里哀</a></p>
+        <p><a href="http://www.51vv.com/app/85391" target="_blank">《五彩缤纷文艺晚会》第76期</a></p>
+    </div>
+    <div class="h10"></div>
+    <!--sing-->
+    <div class="sing">
+        <a href="http://www.51vv.com/app/85322" class="huanjuHover" target="_blank"><img src="//images.51vv.com/upload/activity/19/02/huodong/1551335203974.jpg" alt="和春天同行向梦想出发歌舞晚会" width="250" height="115"></a>
+        <div class="h10"></div>
+        <p><a href="http://www.51vv.com/app/85406" target="_blank">泡吧时尚鸿运当头大型歌舞晚会</a></p>
+        <p><a href="http://www.51vv.com/app/85356" target="_blank">情系VV爱在家园大型文艺晚会</a></p>
+        <p><a href="http://www.51vv.com/app/85310" target="_blank">璀璨特区大型春之韵歌舞晚会</a></p>
+    </div>
+</div>
+    </div>
+    <!--盒子2结束-->
+
+</div>
+<!--主体结束-->
+<div class="h20"></div>
+<!--尾部开始-->
+<div id="footer">
+    <div class="link">
+        <span>友情链接：</span>
+        <p>
+            <a href="http://www.51vv.com/soft/soft_mvbox.shtml" target="_blank">卡拉ok软件</a>
+            <a href="http://naruto.5068.com/" target="_blank">火影忍者中文网</a>
+            <a href="http://v.zol.com.cn/" target="_blank">中关村视频</a>
+            <a href="http://www.51vv.com/" target="_blank">在线聊天室</a>
+            <a href="http://www.weixinju.com/" target="_blank">微信公众平台</a>
+            <a href="http://www.dju8.com/" target="_blank">dj舞曲</a>
+            <a href="http://www.cxt8.com/" target="_blank">有声小说</a>
+            <a href="http://sh.offcn.com/" target="_blank">上海公务员</a>
+            <a href="http://www.57dj.com/" target="_blank">dj嗨嗨网</a>
+            <a href="http://www.26595.com/" target="_blank">265网址大全</a>
+            <a href="http://www.33lc.com/soft/13333.html" target="_blank">绿茶软件下载</a>
+            <a href="http://www.fengxingwang.com" target="_blank">风行播放器官方下载</a>
+            <a href="http://www.kagneen.com/" target="_blank" >曳舞天下视频网</a>
+            <a href="http://www.ed2kers.com/" target="_blank" >电驴</a>
+            <a href="http://www.penglai.com.cn" target="_blank" >蓬莱信息港</a>
+            <a href="http://wpa.qq.com/msgrd?V=1&Uin=2651031368&Site=mvbox.cn&Menu=yes" class="perlink" target="_blank" rel="nofollow">申请友链</a>
+        </p>
+        <p style="text-align: center;width: 960px;color: #FF9801;">由于作品来自网友通过网络上传，本站未及时一一审核，如有侵犯版权请及时电邮service@mail.51vv.com并出示版权证明，我们将在24小时内删除。
+        </p>
+    </div>
+    ﻿<link type="text/css" rel="stylesheet" href="../css/footer.css" />
+<div class="clear"></div>
+<!--版权信息开始-->
+<div class="wrap">
+	<hr id="footer_hr" />
+	<div id="footer_link_info" class="wrap">
+        <p>
+            <a href="http://www.51vv.com/about/aboutus.shtml" target="_blank">关于VV社区</a>
+            <span>|</span>
+            <a href="http://www.51vv.com/" target="_blank">聊天室</a>
+            <span>|</span>
+            <a href="http://www.51vv.com/about/cooperation.shtml" target="_blank">合作推广</a>
+            <span>|</span>
+            <a href="http://www.51vv.com/about/joinus.shtml" target="_blank">诚聘英才</a>
+            <span>|</span>
+            <a href="http://www.51vv.com/about/contactus.shtml" target="_blank">联系我们</a>
+            <span>|</span>
+            <a href="http://www.51vv.com/about/statement.shtml" target="_blank">版权声明</a>
+            <span>|</span>
+            <a href="http://www.51vv.com/about/friendlinks.shtml" target="_blank">友情链接</a>
+            <span>|</span>
+            <a href="http://www.51vv.com/about/convention.shtml" target="_blank">联盟公约</a>
+            <span>|</span>
+            <!-- <a href="http://www.51vv.com/about/shengming2018.shtml" target="_blank">2018净网行动</a>
+            <span>|</span> -->
+            <a href="http://www.51vv.com/zhuanti/fraud/fraudlist.shtml" target="_blank">防网络诈骗</a>
+        </p>
+        <p>Copyright &copy; 2011-2022 优贝在线 All Rights Reserved. 北京优贝在线网络科技有限公司</p>
+		<p>
+            <a title="网络文化经营许可证 京网文[2021]2382-653号" rel="nofollow" target="_blank" href="//www.51vv.com/about/licence.shtml?v=20220125">网络文化经营许可证 京网文[2021]2382-653号</a> | <a title="广播电视节目制作经营许可证 (京)字第02194号" rel="nofollow" target="_blank" href="//www.51vv.com/about/licence2.shtml?v=20220125">广播电视节目制作经营许可证 (京)字第02194号</a>
+        </p>
+		<p>
+            <a title="电信与信息服务业务经营许可证 京ICP证 110356号" rel="nofollow" target="_blank" href="//www.51vv.com/about/licence3.shtml?v=20220125">电信与信息服务业务经营许可证 京ICP证 110356号</a> | <a title="京ICP备09019824号-1" rel="nofollow" target="_blank" href="//beian.miit.gov.cn">京ICP备09019824号-3</a> | <a target="_blank" href="//www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502033299" style="display: inline-block; height: 20px; line-height: 20px;"><img src="//www.51vv.com/images_1405/ghs.png" style="float:left;"/>京公网安备 11010502033299号</a>
+        </p>
+		<p>
+			<a target="_blank" href="http://www.bnia.cn/">
+				<img width="115" height="48" alt="北京网络行业协会" src="http://data.mvbox.cn/images/logo/vvhome_bnia.gif">
+			</a>
+		</p>
+	</div>
+</div>
+<!--版权信息结束-->
+<div class="clear"></div>
+
+<script type="text/javascript">
+    function setCookie(name, value) {
+        var Then = new Date()
+        Then.setTime(Then.getTime() + 60*1000 ) //60秒
+        document.cookie = name + "=" + escape(value) + ";domain=.mvbox.cn;expires="+ Then.toGMTString();
+    }
+
+    function getCookie(Name) {
+        var search = Name + "=";
+        if (document.cookie.length > 0) {
+            offset = document.cookie.indexOf(search);
+            if (offset != -1) {
+                offset += search.length;
+                end = document.cookie.indexOf(";", offset);
+                if (end == -1) {
+                    end = document.cookie.length;
+                }
+                return unescape(document.cookie.substring(offset, end));
+            } else {
+                return ("");
+            }
+        } else {
+            return ("");
+        }
+    }
+    setCookie("mvbox_import","have");
+
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe682a1c2f448c3769b5e6c3a46279b6d' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+    <!-- 净化声明 -->
+    <div class="jhsm" id="jhsm" style="display:none">
+        <div class="jhsm_closeBtn" id="jhsm_closeBtn"></div>
+        <h2><a href="index.shtml">MVBOX网站</a>致网友一封信</h2>
+        <div style="font-size: 16px;"><b>MVBOX网站</b>加强落实“净网2014行动” 一同营造洁净社区空间</div>
+        <p>自2014年四月中旬起， 为依法严厉打击淫秽色情信息传播，全国“扫黄打非”工作小组办公室、国家互联网信息办公室、工业和信息化部、公安部联合发布《关于开展打击网上淫秽色情信息专项行动的公告》，以及首都互联网协会发起《坚决清理网上淫秽色情信息的倡议书》，MVBOX网站坚决支持并积极响应此次全国性专项行动和落实倡议书内容，采取切实有效的措施，狠抓落实，突出重点，凝聚共识、形成合力，与广大网友一起彻底打击网上淫秽色情信息，还网络一片清澈天空。</p>
+        <p>由于近年来淫秽色情信息的传播泛滥已成为社会公害，并危害着广大青少年身心健康，严重败坏社会风气，开展“扫黄打非•净网2014”专项行动，实属迫在眉睫。MVBOX网站为将“2014净网”专项行动的各项要求落到实处，将根据国家要求采取以下几项措施：</p>
+        <p>一、全面、彻底清查各栏目和视频页面，完善内容审核把关机制，及时发现并处理各互动环节中出现的不良信息；</p>
+        <p>二、由MVBOX网站相关内容责任人牵头、部署，成立专项小组，建立小组工作管理机制，依法上报、严惩制作传播淫秽色情信息的企业及个人；</p>
+        <p>三、严格落实互联网企业主体责任，定期开展自查自纠、并建立内部相互监督举报机制，发现一起处理一起，起到网络净化的带头作用；</p>
+        <p>四、加强对从业人员的相关培训，根据主管部门指示，加强审核力度，提高采编人员把关意识，严格追究失职渎职者责任；</p>
+        <p>五、开辟举报专线通道，欢迎广大网友和社会各界予以监督支持，共同抵制网络低俗不良之风。举报专线4008858711举报邮箱：2431815773@qq.com</p>
+        <p>“净网2014”专项行动是贯彻落实十八届三中全会精神的一项重要工作，是积极回应社会重大关切问题，维护广大人民群众利益的有力措施，是依法推进互联网行业健康发展的积极之举。MVBOX网站将与网友们共同抵制低俗不良信息，推动网络环境治理，共建文明、诚信、法治、安全、创新的网络空间。</p>
+        <div class="foot01">MVBOX网站</div>
+        <div class="foot02">2014年4月25日</div>
+    </div>
+    <!--<script>
+        var jhsm = document.getElementById('jhsm'),jhsmBtn = document.getElementById('jhsm_closeBtn'),
+		jwlink = document.getElementById('jwlink');
+       
+        jhsmBtn.onclick = function(){
+            jhsm.style.display = "none";
+        };
+        jwlink.onclick = function(){
+            jhsm.style.display = "block";
+        }
+    </script>-->
+</div>
+<!--尾部结束-->
+<!--share-->
+<div class="shareTop" style="display: none;">
+    <a href="javascript:void(0)" class="top" title="返回顶部" onClick="window.scrollTo(0,0);"></a>
+    <!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_b" style="border: none; position:relative;">
+        <a href="javascript:void(0)" class="img" title="喜欢就分享吧！"></a>
+    </div>
+    <script type="text/javascript" id="bdshare_js" data="type=button&amp;uid=509178" ></script>
+    <script type="text/javascript" id="bdshell_js"></script>
+    <script type="text/javascript">
+        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+			$.ajax({
+			    url: 'https://www.51vv.com/app/findApplication.htm?productids=23',
+			    type: 'GET',
+			    dataType: "jsonp",
+			    success: function (data) {
+			    	//"日期：2019.01.07\n大小：75.2M\n更新日志：\n1、增强人像美容度。\n2、修改皮肤红润算法。\n3、改进抠像边缘处理。"
+			    	if(data.applicationList){
+			    		$(".liantong").attr("href",data.applicationList[0].url)
+			    	}
+
+			    },
+			    error: function (data) {
+			    }
+			});         
+    </script>
+    <!-- Baidu Button END -->
+    <div class="tecentWeibo">
+        <a href="http://t.qq.com/VV_51VV" title="快来关注51vv官方微博吧！" target="_blank"></a>
+    </div>
+</div>
+</body>
+</html>
