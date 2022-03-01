@@ -1,0 +1,66 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!--1.URL地址防注入：-->
+<script language="javascript">
+var sUrl=location.search.toLowerCase();
+var sQuery=sUrl.substring(sUrl.indexOf("=")+1);
+re=/select|update|delete|truncate|join|union|exec|insert|drop|count|'|"|;|>|<|%/i;
+if(re.test(sQuery)){
+	alert("请勿输入非法字符");
+	location.href=sUrl.replace(sQuery,"");
+}
+</script>
+
+<!--2.输入文本框防注入：-->
+<script language="javascript">
+function AntiSqlValid(oField)
+{
+re= /select|update|delete|exec|count|'|"|=|;|>|<|%/i;
+if (re.test(oField.value)){
+	alert("请您不要在参数中输入特殊字符和SQL关键字！");
+	oField.value = "";
+	oField.className="errInfo";
+	oField.focus();
+	return false;
+	}
+}
+txtName.Attributes.Add("onblur", "AntiSqlValid(this)");
+</script>
+
+
+ 
+<title>广东广州版权引进,制作策划,投资拍摄,影视发行,多元化影视传播,广东东昇影视文化传播有限公司</title>
+<meta name="keywords" content="广东广州版权引进,制作策划,投资拍摄,影视发行,多元化影视传播,广东东昇影视文化传播有限公司">
+<meta name="description" content="广东东昇影视文化传播有限公司是广东广州一家集版权引进、制作策划、投资拍摄、影视发行于一体的多元化影视传播公司，是国家文化部、广东省文化厅重点支持的大型文化传播企业之一,公司产品涵盖影视剧、卡通、百科、音乐等多个类别，拥有较完整的产品体系。">
+<meta name="author" content="广东东昇影视文化传播有限公司版权所有www.dsys.com.cn" />
+<meta name="copyright" content="广东东昇影视文化传播有限公司" />
+<link href="dsys_wh/css/base.css" rel="stylesheet" type="text/css" />
+<link href="dsys_wh/css/glcss.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="background:#a62a28;">
+<div style="width:100%; margin:0 auto;  margin-top:100px; padding-top:70px; padding-bottom:150px; text-align:center; background:url(dsys_wh/lab/index33_1.jpg) repeat-x ; overflow:hidden; min-height:310px;">
+    <div style="width:100%; ">
+    <img src="dsys_wh/lab/index5.png" border="0" style="width: auto;   height: auto;   max-width: 100%;  max-height: 100%; "/>
+    </div>
+    <div style="width:70%; margin-top:40px; ">
+        <div style="width:50%; float:left;">
+        <a href="dsys_ys/index.asp">
+        <img src="dsys_wh/lab/cc1.png" border="0" style="width: auto;   height: auto;   max-width: 100%;  max-height: 100%; "/>
+        </a>
+        </div>
+        <div style="width:50%; float:right;">
+        <a href="dsys_wh/index.asp">
+        <img src="dsys_wh/lab/cc2.png" border="0" style="width: auto;   height: auto;   max-width: 100%;  max-height: 100%; "/>
+        </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

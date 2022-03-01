@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>在线直播交流系统-登录</title>
+<link href="//www.cdeledu.com/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link href="/zbapi/css/zbShare.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/zbapi/js/common/common.js"></script>
+<script type="text/javascript" src="/zbapi/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="http://www.chinaacc.com/head/head_champion_new1000.js"></script>
+</head>
+<body>
+<!-- 未登录 start -->
+<div class="dl">
+
+	<form id="login_form" action="//portal.chinatet.com/auth/index.php" method="post" target="_self">
+		<div class="center">
+			<div class="top01">
+				<h1><a href="http://www.cdeledu.com/" title="正保远程教育"></a></h1>
+			</div>
+			<div class="top02"></div>
+			<div class="top03">
+				<ul class="login">
+					<li>用户名
+						<input name="username" id="username" type="text"class="inputa" tabindex="1" width="150px" maxlength="30"
+							onfocus="domainShow();" onblur="domainShow();" oninput="domainShow();" autocomplete="off"/>
+						<div id="domainshow" style="display: none;"></div>
+					</li>
+					<li>密&#12288;码
+						<input type="password" name="passwd" id="passwd" class="inputa" tabindex="2" maxlength="18" />
+					</li>
+					<li id="randcodeli" style="display:none;">验证码
+						<input type="text" id="randcode" name="randcode" class="inputa" value="">
+						<img alt="" src="" onclick="chgverify();" id="randcodeImg"
+							width="50px" height="20px" style="vertical-align: middle;">
+					</li>
+					<li class="btn" >
+					    <img id="loadImage" src="/zbapi/zbapi/images/loading.gif" alt="" style="position: absolute;display:none" >
+						<input type="button" style="width: 80px" name="submit2" id="submit1" value="登  录" onclick="checkPwd();" tabindex="3" />
+						<input id="domain" type="hidden"/>
+					</li>
+				</ul>
+			</div>
+			<div class="top04"></div>
+		</div>
+		<!--获取登录后的跳转参数 -->
+		<input type="hidden" name="backUrl" id="backUrl" value="" />
+	</form>
+
+<script type="text/javascript">
+
+	$(function(){
+	//给跳转url赋值
+		if (isEmpty($("#backUrl").val())) {
+			$("#backUrl").val("http://www.chinatet.com/zbapi/zbShare/roomListInit.shtm");
+		}
+		//自动登录
+		var loginValue = '{}';
+		var uid = '';
+		var userName = '';
+		var domain = '';
+		if(uid != '' && userName != '' && domain != ''){
+			window.location.href="http://www.chinatet.com/zbapi/zbShare/roomListInit.shtm";
+		}
+		var errorNum = '';
+		if(errorNum >= 3 ){
+            $("#randcodeli").show();
+			chgverify();
+		}
+	});
+
+    function checkdata() {
+
+		if (isEmpty($("#username").val()) || $.trim($("#username").val()) == "用户名") {
+			alert("用户名不能为空！");
+			$("#username").focus();
+			return false;
+		} else if (isEmpty($("#passwd").val())) {
+			alert("密码不能为空！");
+			$("#passwd").focus();
+			return false;
+		} else if (isEmpty($("#randcode").val()) && needCheck == "1") {
+			alert("验证码不能为空！");
+			$("#randcode").focus();
+			$("#randcode").val("");
+			return false;
+		}
+		return true;
+	}
+
+    //
+	function chgverify() {
+        document.getElementById('randcodeImg').src='/zbapi/common/image.shtm?VIName=Login&radNum='+Math.random();
+	}
+
+	$("form[name='login_form']").find("input").keydown(function(e) {
+		if (e.keyCode == 13) {
+			checkPwd();
+		}
+	});
+
+
+	function overCss(obj) {
+		$(obj).css("background", "#3CC4C4");
+	}
+
+	function outCss(obj) {
+		$(obj).css("background", "#FFFFFF");
+	}
+
+	//选择 <li>
+	function aaP(obj) {
+		var vun = $("#username").val();
+		var vtt = $(obj).attr("title");
+		$("#username").val(vun + vtt);
+		$("#domain").val(vtt);
+		$("#domainshow").hide();
+	}
+
+    // 判断是否需要显示验证码
+	function checkUserStatus(){
+	    if(needCheck  == "1"){
+			$("#randcodeli").show();
+	    }
+	}
+
+
+    function domainShow() {
+		var username = $.trim($("#username").val());
+		if (username.length < 3) {
+			$("#domainshow").hide();
+		} else {
+			delayed();
+			checkUserStatus();
+		}
+	}
+
+
+    var t = "";
+
+    function delayed(){
+
+    	if(t != ""){
+    		clearTimeout(t);
+    	}
+    	t = setTimeout("getDoMainList()",200);
+
+
+    }
+
+	function getDoMainList() {
+		var username = $.trim($("#username").val());
+		$.get("/zbapi/login/doMainlist.shtm", {
+			username : $("#username").val()
+		}, function(data) {
+			if ($.trim(data) != '') {
+				$("#domainshow").html($.trim(data));
+				$("#domainshow").css("display", "");
+			} else {
+				$("#domainshow").css("display", "none");
+			}
+		});
+	}
+
+    var sid = "";
+
+    var needCheck = "0";
+
+    function checkPwd(){
+        var flag = checkdata();
+		var domain = $.trim($("#domain").val());
+		if(domain == ""){
+			domain = "@cdeledu.com";
+		}
+		if(flag){
+            var username = $.trim($("#username").val());
+            var passwd = $.trim($("#passwd").val());
+            var randcode = $.trim($("#randcode").val());
+            var url = "/zbapi/login/checkPwd.shtm?domain="
+                    + domain
+                    + "&userName="
+                    + username
+                    + "&passwd="
+                    + passwd
+                    + "&check="
+                    + randcode;
+            $.getJSON(url,function(json){
+                code = json.code;
+                needCheck = json.needCheck;
+                if(code == "0"){
+                    // 登录成功直接跳转
+                    sid = json.sid;
+                    login();
+                }else if( code == "2" ){
+                    alert("用户名或密码错误");
+                    $("#passwd").val('');
+                    $("#randcode").val('');
+                }else if( code == "3" ){
+                    alert("验证码不正确");
+                    $("#randcode").val('');
+                }else if( code == "-14"){
+                    alert("您的账户存在安全隐患，已被暂时锁定保护");
+                }
+                checkUserStatus();
+                if(needCheck == "1"){
+                	chgverify();
+                }
+            });
+		}
+    }
+
+    function login(){
+
+        var loadImage = document.getElementById("loadImage");
+        loadImage.style.display = 'block';
+        $("#submit1").attr("disabled","disabled");
+
+        var url = "/zbapi/login/loginBySid.shtm?sid="+sid;
+        $.getJSON(url,function(json){
+            var code = json.code;
+
+            loadImage.style.display = 'none';
+            $("#submit1").attr("disabled","");
+
+            if(code == "0"){
+                window.location.href="http://www.chinatet.com/zbapi/zbShare/roomListInit.shtm";
+            }else if(code == "-1"){
+                alert("登陆失败");
+            }else if(code == "-2"){
+                window.top.location.href="http://www.chinatet.com/zbapi/login/logout.shtm?gotoURL=http://www.chinatet.com/pub/member/blacklistTip.shtm";
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

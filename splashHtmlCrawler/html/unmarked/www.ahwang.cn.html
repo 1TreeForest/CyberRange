@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>看点-安徽网</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <script>
+    var isPC = function (){
+        var userAgentInfo = navigator.userAgent.toLowerCase();
+        var Agents = new Array("android", "iphone", "symbianOS", "windows phone", "ipad", "ipod");
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
+        }
+        return flag;
+    }
+    var pcUlr = "http://www.ahwang.cn";
+    var mobleUlr = "http://m.ahwang.cn";
+    var fileurl = window.location.href;
+
+     if(isPC()&&window.location.href.indexOf(mobleUlr)!=-1){
+        window.location.href = fileurl;
+    }else if(!isPC()&&window.location.href.indexOf(pcUlr)!=-1 &&window.location.href.indexOf("mobile")==-1){
+               window.location.href = mobleUlr+GetUrlRelativePath(); 
+            
+        }
+
+     if(/iphone|nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|wap|android|iPod/i.test(navigator.userAgent.toLowerCase())){
+            if(mobleUlr){
+                document.location.href = mobleUlr+GetUrlRelativePath();
+            }
+    }
+
+    function GetUrlRelativePath(){
+        var url = document.location.toString();
+        var arrUrl = url.split("//");       
+        var start = arrUrl[1].indexOf("/");
+        var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+        if(relUrl.indexOf("?") != -1){
+            relUrl = relUrl.split("?")[0];
+        }
+
+       return relUrl;
+    }
+    // Jade
+</script> 
+    <link rel="stylesheet" href="http://res.ahwang.cn/t/site/10001/d7673e8f8e43a2896797d23374ea999f/assets/pc/css/site.css"/>
+    <link rel="stylesheet" href="http://res.ahwang.cn/t/site/10001/d7673e8f8e43a2896797d23374ea999f/assets/pc/css/article.css"/>
+    <!--[if IE]>
+    <script>
+        (function() {
+            if (!
+                    /*@cc_on!@*/
+                    0) return;
+            var e = "abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video".split(', ');
+            var i= e.length;
+            while (i--){
+                document.createElement(e[i])
+            }
+        })()
+    </script>
+    <![endif]-->
+    <script type="text/javascript" src="http://res.ahwang.cn/t/site/10001/d7673e8f8e43a2896797d23374ea999f/assets/pc/js/jquery.js"></script>
+    <script type="text/javascript" src="http://res.ahwang.cn/t/site/10001/d7673e8f8e43a2896797d23374ea999f/assets/pc/js/article.js"></script>
+    <script type="text/javascript" src="http://res.ahwang.cn/t/site/10001/d7673e8f8e43a2896797d23374ea999f/assets/pc/js/ahwang.gotop.js"></script>  
+</head>
+<body class="body-article">
+<!-- 头部 -->
+<script type="text/javascript" src="http://res.ahwang.cn/assets/js/sensitive.js"></script>
+<script type="text/javascript" src="http://res.ahwang.cn/assets/lib/jquery.xcConfirm/js/xcConfirm.js"></script>
+<link rel="stylesheet" type="text/css" href="http://res.ahwang.cn/assets/lib/jquery.xcConfirm/css/xcConfirm.css"/>
+
+<header class="header">
+    <div class="column">
+                  <div class="topmenu pos-r">
+                    <ul>
+                        <li><a href="http://www.ahwang.cn/" target="_blank">安徽网首页</a></li>
+                        <li id="citybox">城市<i></i>
+                            <!--城市-->
+                            <ul class="citybox" id="city-box" style="display:none;"> 
+                                <li><a href="http://www.ahwang.cn/hefei">合肥</a></li>
+                                <li><a href="http://hn.ahwang.cn/" target="_blank">淮南</a></li>
+                                <li><a href="http://luan.ahwang.cn/" target="_blank">六安</a></li>
+                                <li><a href="http://bb.ahwang.cn">蚌埠</a></li>
+                                <li><a href="http://hch.ahwang.cn">巢湖</a></li>
+                                <li><a href="http://cz.ahwang.cn">池州</a></li>
+                                <li><a href="http://www.ahwang.cn/suzhou/">宿州</a></li>
+                                <li><a href="http://aq.ahwang.cn">安庆</a></li>
+                                <li><a href="http://chuzhou.ahwang.cn">滁州</a></li>
+                                <li><a href="http://www.ahwang.cn/fuyang/">阜阳</a></li>
+                                <li><a href="http://www.ahwang.cn/huaibei/">淮北</a></li>
+                                <li><a href="http://www.ahwang.cn/bozhou/">亳州</a></li>
+                                <li><a href="http://www.ahwang.cn/wuhu/">芜湖</a></li>
+                                <li><a href="http://www.ahwang.cn/tongling/">铜陵</a></li>
+                                <li><a href="http://www.ahwang.cn/huangshan">黄山</a></li>
+                                <li><a href="http://www.ahwang.cn/xuancheng">宣城</a></li>
+                                <li><a href="http://www.ahwang.cn/mashan">马鞍山</a></li>
+                            </ul>
+                            <!-- @end城市 -->
+                        </li>
+
+                        <li id="rmediabox">融媒体<i></i>
+                            <!--融媒体-->
+                            <ul class="rmediabox" id="rmedia-box" style="display: none;"> 
+                                <li><a href="https://sj.qq.com/myapp/search.htm?kw=%E5%A4%A7%E7%9A%96" target="_blank">大皖新闻APP</a></li>
+                                <li><a href="http://epaper.ahwang.cn/" target="_blank">数字报</a></li>
+                                <li><a href="http://epaper.ahwang.cn/" target="_blank">新安E报</a></li>
+                                <li><a href="http://www.ahwang.cn/anhui/20161116/1579508.shtml" target="_blank">政务双微</a></li>
+
+                                <li><a href="http://www.ahwang.cn/vr/" target="_blank">新安VR</a></li>
+                                <li><a href="http://weibo.com/xinanwanbao" target="_blank">微博</a></li>
+                                <li><a href="javascript:;" target="_blank">微信</a></li>
+                                <li><a href="http://www.ahwang.cn/live/" target="_blank">直播</a></li>
+
+                                <li><a href="http://www.ahwang.cn/video/" target="_blank">短视频</a></li>
+                                <li><a href="http://www.boryou.com/?page_id=63" target="_blank">舆情</a></li>
+                                <li><a href="http://www.ahwang.cn/weixin/" target="_blank"> 排行榜</a></li>
+                                <li><a href="http://dingbao.xawb.cn/" target="_blank">网上订报</a></li>
+                            </ul>
+                            <!-- @end融媒体 -->
+                        </li>
+
+                        <li id="morebox">更多<i></i>
+                            <ul class="morebox" id="moremenu-box" style="display: none;">
+                            <li><a href="http://www.ahwang.cn/video/">视频</a></li>
+                            <li><a href="http://photo.ahwang.cn/">图片</a></li>
+                            <li><a href="http://jiaoyu.ahwang.cn/">教育</a></li>
+                            <li><a href="http://auto.ahwang.cn">汽车</a></li>
+                            <li><a href="http://news.ahwang.cn/travel/">旅游</a></li>
+                            <li><a href="http://zt.ahwang.cn/">专题</a></li>
+                            <li><a href="http://jingji.ahwang.cn/caijing/">财经</a></li>
+                            <li><a href="http://jinrong.ahwang.cn/">金融</a></li>
+                            </ul>
+                        </li>
+                   </ul>
+                  </div>          
+    </div>
+    <div class="clear"></div>
+</header>
+
+   <div class="header_content2 clearfix">
+        <div class="width">
+            <div class="logo"><a href="http://www.ahwang.cn"><img src="http://res.ahwang.cn/t/site/10001/d7673e8f8e43a2896797d23374ea999f/assets/pc/img/logonews2.gif"></a></div>
+            <div class="nav2">
+                <dl>
+                    <dd><a href="http://www.ahwang.cn/kandian/index.html">看点</a></dd>
+                    <dd><a href="http://www.ahwang.cn/bbt/index.html">帮帮团</a></dd>
+                    <dd><a href="http://www.ahwang.cn/newsflash/index.html">即时看</a></dd>
+                    <dd><a href="http://www.ahwang.cn/hefei/index.html">合肥</a></dd>
+                    <dd><a href="http://www.ahwang.cn/anhui/index.html">安徽</a></dd>
+                    <dd><a href="http://www.ahwang.cn/video/index.html">视频</a></dd>
+                    <dd><a href="http://www.ahwang.cn/live/index.html">直播</a></dd>
+                    <dd><a href="http://www.ahwang.cn/yaowen/index.html">要闻</a></dd>    
+                    <dd><a href="http://www.ahwang.cn/china/index.html">国内</a></dd>
+                    <dd><a href="http://www.ahwang.cn/world/index.html">国际</a></dd>
+                    <dd><a href="http://www.ahwang.cn/ent/index.html">文娱</a></dd>
+                    <dd><a href="http://www.ahwang.cn/sports/index.html">体育</a></dd>
+                    <dd><a href="http://www.ahwang.cn/ahedu">教育</a></dd>
+                    <dd><a href="http://www.ahwang.cn/life/index.html">民生</a></dd>
+                    <dd><a href="http://www.ahwang.cn/ztpd/" target="_blank">专题</a></dd>    
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+
+<span style="display: none;">
+            <div id="member-loading" class="login-loading">
+              <img width="20px" height="20px" src="http://res.ahwang.cn/assets/templates/web/1/css/images/loading.gif">
+            </div>
+            <div id="member-login" class="login" style="display:none">
+                <a href="javascript:;" class="login-btn">登录</a></br>
+
+<!-- 登录框 -->
+<div class="login-box" id="login-box">
+    <h3 class="title">
+        <span class="icon">
+            <img src="http://res.ahwang.cn/a/10001/201708/5ff8159252f50179ca7cd0a66a6d7a09.png" alt="">
+        </span>
+        登录新安云账号
+        <button class="close" id="close-login-dialog">×</button>
+    </h3>
+
+    <!-- 主体内容 -->
+    <div class="hole-box">
+        <!-- 加载框 -->
+        <div class="login-loading" id="login-loading">
+            <img src="http://res.ahwang.cn/assets/templates/web/1/css/images/loading.gif" class="login-loading-image">
+        </div>
+
+        <!-- 登录框 -->
+        <div class="login-box-ipt-area" id="login-box-ipt" style="display: none;">
+            <div class="form-area">
+                <div class="h20"></div>
+                <div class="form-row ipt-area">
+                    <label for="account" class="read-only">邮箱/手机号</label>
+                    <span class="icon icon-account"></span>
+                    <input type="text" class="ipt-txt account" id="account" autocomplete="off" placeholder="邮箱/手机号" />
+                </div>
+                <div class="h20"></div>
+                <div class="form-row ipt-area">
+                    <label for="password" class="read-only">密码</label>
+                    <span class="icon icon-password"></span>
+                    <input type="password" class="ipt-txt password" id="password" autocomplete="off" placeholder="密码"/>
+                </div>
+                <div class="h20"></div>
+                <div class="form-row ipt-area" id="captcha-box">
+                    <label for="password" class="read-only">验证码</label>
+                    <span class="icon icon-password"></span>
+                    <input type="text" class="ipt-txt captcha" id="captcha" autocomplete="off" placeholder="验证码"/>
+                    <span class="captcha-result" id="captcha-result"></span>
+                    <img src="/index/login/captcha" class="captcha-image" id="captcha-image" alt="">
+                </div>
+                <div class="h20" id="captcha-box-hr"></div>
+                <div class="chk-area">
+                    <label class="remember-area elem-text">
+                        <input type="checkbox" id="remember" class="ipt-chk" />
+                        下次自动登录
+                    </label>
+                    <a href="/index/login/password" class="elem-text">忘记密码？</a>
+                </div>
+                <div class="h20"></div>
+                <div class="btn-area">
+                    <p class="login-submit submit" id="submit">登录</p>
+                    <p class="login-submit loading" id="loading"><i class="fa fa-spinner fa-spin"></i></p>
+                </div>
+                <div class="h20"></div>
+                <div class="txt-area">
+                    <p class="elem-text regist">还没账号？<a href="/index/login/regist">立即注册</a></p>
+                </div>
+            </div>
+            <!--无外网则隐藏-云设置可设置-->
+            <div class="social-login">
+                <span class="text-title">其它登录方式</span>
+                <div class="social-btns">
+                    <a href="/index/login/qq" class="icon icon-qq">QQ登录</a>
+                    <a href="/index/login/sina" class="icon icon-sina">新浪登录</a>
+                    <a href="/index/login/wechat" class="icon icon-wechat">微信登录</a>
+                </div>
+            </div>
+                    </div>
+
+        <!-- 快速登录 -->
+        <div class="login-box-quick-area" id="login-quick-box" style="display: none;">
+            <div class="avatar">
+                <img src="http://res.ahwang.cn/assets/templates/web/1/images/default.png" id="quick-image" alt="">
+            </div>
+            <p class="user-account" id="quick-nickname"></p>
+            <p class="desc">点击头像快速登录</p>
+            <div class="switch-btn">
+                <a href="javascript:;" id="switch-account">切换账号</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var isLogined = false,
+    oauthConfig = {
+        'mode' : 'public',
+        'appUrl' : 'http://app.ahwang.cn', // APP站点的URL
+        'noticeUrl' : 'http://www.ahwang.cn/index/login/notice', // 登录成功后，通知本站点登录的URL
+        'siteid' : '10001'
+    },
+        key = "e42d3fa0186c957b",  // 密码加密的公钥
+        iv = "e42d3fa0186c957b"; // 密码加密的公钥偏移量
+</script>
+<script src="http://res.ahwang.cn/assets/js/aes.js"></script>
+<script type="text/javascript" src="http://res.ahwang.cn/t/site/10001/d7673e8f8e43a2896797d23374ea999f/assets//js/ie-placeholder.min.js"></script>
+<script type="text/javascript" src="http://res.ahwang.cn/assets/lib/dialog/dialog.js"></script>
+<script type="text/javascript" src="http://res.ahwang.cn/assets/lib/dialog/dialog-modal.js"></script>
+<script type="text/javascript" src="http://app.ahwang.cn/assets/member/oauth.js"></script>
+<script type="text/javascript" src="http://res.ahwang.cn/t/site/10001/d7673e8f8e43a2896797d23374ea999f/assets//js/member.js"></script>
+            </div>
+            <div id="member-user" class="user" style="display:none">
+                <div class="thumb-area">
+        <img src="http://res.ahwang.cn/assets/templates/web/1/images/default.png" alt="" class="user-thumb"/>
+        <i class="down-tag"></i>
+</div>
+<div class="toggle-menu logined">
+    <span class="rotate-tag"></span>
+    <ul class="user-options">
+        <li>
+            <a href="/index/member/index">
+                <i class="user-icon icon-user"></i>
+                <span>个人中心</span>
+            </a>
+        </li>
+        		<li>
+			<!-- 判断地址 -->
+            <a target="_blank" title="新安晚报号" href="/media/login">
+                <i class="user-icon icon-ctmedia"></i>
+                <span>新安晚报号</span>
+            </a>
+        </li>
+                <li>
+            <a href="/contribution/index" target="_blank">
+                <i class="user-icon icon-contribution"></i>
+                <span>我的投稿</span>
+            </a>
+        </li>
+        <li>
+            <a href="/index/login/edit" target="_blank">
+                <i class="user-icon icon-setting"></i>
+                <span>云账号设置</span>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" id="logout-btn">
+                <i class="user-icon icon-logout"></i>
+                <span>退出登录</span>
+            </a>
+        </li>
+    </ul>
+</div>
+            </div>
+        </span>
+
+
+<!-- 面包屑 -->
+<div class="column clearfix">
+    <div class="crumb mar-t-10 clearfix">
+    <s class="position_ico f-l"></s>
+     <span class="f-l"><a href="http://www.ahwang.cn/">安徽网首页</a> »  <a href="">看点</a> » </span>
+    </div>
+</div>
+<!-- @end面包屑 -->
+
+<div class="column clearfix">
+    <div class="crumb mar-t-10 clearfix">
+        <img src="http://img.ahwang.cn/a/10001/202102/83f32be2fb8148b7772987ab8b58bb2e.jpg" alt="大皖看点">
+    </div>
+</div>
+
+
+
+    <div class="column clearfix article pos-r ov_v js-returntop">
+        <!-- 左侧主体 -->
+        <div class="left-cont">
+            <!-- 文章列表 -->
+            <section class="ov">
+                <ul class="pic-list">
+                    <div class="news_list clearfix"> 
+    <h3><a href="http://www.ahwang.cn/newsflash/20220216/2342415.html" target="_blank" title="记者探访合肥站塘马路劳务市场：凌晨4点多就有几百人来找活干 ">记者探访合肥站塘马路劳务市场：凌晨4点多就有几百人来找活干 </a></h3>
+
+           
+            <div class="pic">
+                <a href="http://www.ahwang.cn/newsflash/20220216/2342415.html" target="_blank" title="记者探访合肥站塘马路劳务市场：凌晨4点多就有几百人来找活干 ">
+                    <img src="http://img.ahwang.cn/a/thumb/10001/202202/766cbae5acd9a7752d56b154dc162a57.jpeg!w190_h130.jpeg" alt="记者探访合肥站塘马路劳务市场：凌晨4点多就有几百人来找活干 " width="190" height="130">
+                </a>
+            </div>        
+        
+        <p>马路边，务工人员三五成群，你一言我一语，边聊边寻找前来招工的老板，黑压压一片，几百位务工人员站在马路上，让原本宽阔的十字路口显得有些拥挤。</p> 
+
+        <div class="fl_right clearfix"> 
+            <span>2022-02-16 12:39</span>
+        </div>
+
+    
+       
+        <div class="hr-1"></div>
+</div><div class="news_list clearfix"> 
+    <h3><a href="http://www.ahwang.cn/newsflash/20220215/2341964.html" target="_blank" title="亳州81位领导干部公布手机号一周之后：群众的急事难事有了“直通车”">亳州81位领导干部公布手机号一周之后：群众的急事难事有了“直通车”</a></h3>
+
+           
+            <div class="pic">
+                <a href="http://www.ahwang.cn/newsflash/20220215/2341964.html" target="_blank" title="亳州81位领导干部公布手机号一周之后：群众的急事难事有了“直通车”">
+                    <img src="http://img.ahwang.cn/a/thumb/10001/202108/eb08b9ce95965aa16d06ac6d209c6f96.jpeg!w190_h130.jpeg" alt="亳州81位领导干部公布手机号一周之后：群众的急事难事有了“直通车”" width="190" height="130">
+                </a>
+            </div>        
+        
+        <p>万瑞年认为，手机号码有着12345热线等渠道不可替代的功能。在他看来，从群众角度来说，主要在于开通一条有些诉求不愿意、不方便向基层干部反映的渠道，群众的急事、难事就...</p> 
+
+        <div class="fl_right clearfix"> 
+            <span>2022-02-15 14:29</span>
+        </div>
+
+    
+       
+        <div class="hr-1"></div>
+</div><div class="news_list clearfix"> 
+    <h3><a href="http://www.ahwang.cn/newsflash/20220211/2340690.html" target="_blank" title="“美关公”门禁系统罢工数月，涉及合肥100多个小区 公司通知：系经营困难所致">“美关公”门禁系统罢工数月，涉及合肥100多个小区 公司通知：系经营困难所致</a></h3>
+
+           
+            <div class="pic">
+                <a href="http://www.ahwang.cn/newsflash/20220211/2340690.html" target="_blank" title="“美关公”门禁系统罢工数月，涉及合肥100多个小区 公司通知：系经营困难所致">
+                    <img src="http://img.ahwang.cn/a/thumb/10001/202202/b8669ff71a51e150846c46189dff938b.jpeg!w190_h130.jpeg" alt="“美关公”门禁系统罢工数月，涉及合肥100多个小区 公司通知：系经营困难所致" width="190" height="130">
+                </a>
+            </div>        
+        
+        <p>合肥目前有100多个小区使用该门禁系统。由于该门禁系统的研发公司—合肥优恩物联网科技有限公司出现经营困难，无力支付每台门禁机的网费、服务器费用，才暂停门禁机的网络...</p> 
+
+        <div class="fl_right clearfix"> 
+            <span>2022-02-11 16:17</span>
+        </div>
+
+    
+       
+        <div class="hr-1"></div>
+</div><div class="news_list clearfix"> 
+    <h3><a href="http://www.ahwang.cn/newsflash/20220209/2339863.html" target="_blank" title="河北邢台寻亲男孩刘学州亲属委托律师，将向三亚警方启动刑事控告">河北邢台寻亲男孩刘学州亲属委托律师，将向三亚警方启动刑事控告</a></h3>
+
+           
+            <div class="pic">
+                <a href="http://www.ahwang.cn/newsflash/20220209/2339863.html" target="_blank" title="河北邢台寻亲男孩刘学州亲属委托律师，将向三亚警方启动刑事控告">
+                    <img src="http://img.ahwang.cn/a/thumb/10001/202202/9a9cae15491cb9eafd609501c398c3f4.jpeg!w190_h130.jpeg" alt="河北邢台寻亲男孩刘学州亲属委托律师，将向三亚警方启动刑事控告" width="190" height="130">
+                </a>
+            </div>        
+        
+        <p>“三亚警方应该将刘学州遗书作为‘犯罪线索’进行排查，并且结合刘学州手机里面的重要证据来判断是否存在犯罪，如果存在就应该主动进行立案侦查</p> 
+
+        <div class="fl_right clearfix"> 
+            <span>2022-02-09 15:41</span>
+        </div>
+
+    
+       
+        <div class="hr-1"></div>
+</div><div class="news_list clearfix"> 
+    <h3><a href="http://www.ahwang.cn/newsflash/20220209/2339761.html" target="_blank" title="巢湖雍景湾两栋已交付住宅楼将拆除  当地曾“叫停”为何又建成？">巢湖雍景湾两栋已交付住宅楼将拆除  当地曾“叫停”为何又建成？</a></h3>
+
+           
+            <div class="pic">
+                <a href="http://www.ahwang.cn/newsflash/20220209/2339761.html" target="_blank" title="巢湖雍景湾两栋已交付住宅楼将拆除  当地曾“叫停”为何又建成？">
+                    <img src="http://img.ahwang.cn/a/thumb/10001/202202/ec039fc7507e83b32a54c4bee944d75d.jpeg!w190_h130.jpeg" alt="巢湖雍景湾两栋已交付住宅楼将拆除  当地曾“叫停”为何又建成？" width="190" height="130">
+                </a>
+            </div>        
+        
+        <p>新安晚报、安徽网、大皖新闻记者采访时了解到，巢湖市相关部门曾发出通知，要求弘宇雍景湾在建项目立即暂停项目施工，但1#、4#楼还是建成并交付。</p> 
+
+        <div class="fl_right clearfix"> 
+            <span>2022-02-09 11:26</span>
+        </div>
+
+    
+       
+        <div class="hr-1"></div>
+</div><div class="news_list clearfix"> 
+    <h3><a href="http://www.ahwang.cn/newsflash/20220128/2336717.html" target="_blank" title="大接访，安徽做了篇“大文章”">大接访，安徽做了篇“大文章”</a></h3>
+
+           
+            <div class="pic">
+                <a href="http://www.ahwang.cn/newsflash/20220128/2336717.html" target="_blank" title="大接访，安徽做了篇“大文章”">
+                    <img src="http://img.ahwang.cn/a/thumb/10001/202201/c5b4c6ed895e118f6d4a2291f2dddb3c.jpeg!w190_h130.jpeg" alt="大接访，安徽做了篇“大文章”" width="190" height="130">
+                </a>
+            </div>        
+        
+        <p>一个多月来，从省级领导，到各市县、各厅局，安徽全省上下写出一篇领导干部公开接访的“大文章”。</p> 
+
+        <div class="fl_right clearfix"> 
+            <span>2022-01-28 20:28</span>
+        </div>
+
+    
+       
+        <div class="hr-1"></div>
+</div><div class="news_list clearfix"> 
+    <h3><a href="http://www.ahwang.cn/anhui/20220123/2334078.html" target="_blank" title="蚌埠，绷住！">蚌埠，绷住！</a></h3>
+
+           
+            <div class="pic">
+                <a href="http://www.ahwang.cn/anhui/20220123/2334078.html" target="_blank" title="蚌埠，绷住！">
+                    <img src="http://img.ahwang.cn/a/thumb/10001/202201/8a6f46e9f2d446cd1c5b2b15de561205.jpeg!w190_h130.jpeg" alt="蚌埠，绷住！" width="190" height="130">
+                </a>
+            </div>        
+        
+        <p>李先生和许多蚌埠市民一样，一直关心着家乡的发展，在看到蚌埠市2021年GDP增速为0%的消息之后，他坦言，心里有一种说不出的滋味</p> 
+
+        <div class="fl_right clearfix"> 
+            <span>2022-01-23 10:33</span>
+        </div>
+
+    
+       
+        <div class="hr-1"></div>
+</div><div class="news_list clearfix"> 
+    <h3><a href="http://www.ahwang.cn/newsflash/20220117/2331508.html" target="_blank" title="泾县野猪约8500头已突破生态环境限制  记者全程体验集中猎捕行动">泾县野猪约8500头已突破生态环境限制  记者全程体验集中猎捕行动</a></h3>
+
+           
+            <div class="pic">
+                <a href="http://www.ahwang.cn/newsflash/20220117/2331508.html" target="_blank" title="泾县野猪约8500头已突破生态环境限制  记者全程体验集中猎捕行动">
+                    <img src="http://img.ahwang.cn/a/thumb/10001/202201/9b225619a5b74a2f2e59e50399c63952.jpeg!w190_h130.jpeg" alt="泾县野猪约8500头已突破生态环境限制  记者全程体验集中猎捕行动" width="190" height="130">
+                </a>
+            </div>        
+        
+        <p>年关将近，狩猎期也将于本月底结束，1月16日，新安晚报、安徽网、大皖新闻记者，跟随狩猎队一起走进泾县的山林，采访当地2022年第一次集中猎捕野猪行动。</p> 
+
+        <div class="fl_right clearfix"> 
+            <span>2022-01-17 13:07</span>
+        </div>
+
+    
+       
+        <div class="hr-1"></div>
+</div><div class="news_list clearfix"> 
+    <h3><a href="http://www.ahwang.cn/newsflash/20220116/2331132.html" target="_blank" title="2022年安徽两会｜安徽省人大代表方书莲：建议在全省范围内禁止燃放烟花爆竹">2022年安徽两会｜安徽省人大代表方书莲：建议在全省范围内禁止燃放烟花爆竹</a></h3>
+
+           
+            <div class="pic">
+                <a href="http://www.ahwang.cn/newsflash/20220116/2331132.html" target="_blank" title="2022年安徽两会｜安徽省人大代表方书莲：建议在全省范围内禁止燃放烟花爆竹">
+                    <img src="http://img.ahwang.cn/a/thumb/10001/202201/9e71ab9e01862bae7ab4e6b85359befb.png!w190_h130.png" alt="2022年安徽两会｜安徽省人大代表方书莲：建议在全省范围内禁止燃放烟花爆竹" width="190" height="130">
+                </a>
+            </div>        
+        
+        <p>建议修订或制定全省范围内禁止燃放烟花爆竹的相关地方性法规和条例。同时加大宣传力度，营造良好氛围。</p> 
+
+        <div class="fl_right clearfix"> 
+            <span>2022-01-16 20:17</span>
+        </div>
+
+    
+       
+        <div class="hr-1"></div>
+</div><div class="news_list clearfix"> 
+    <h3><a href="http://www.ahwang.cn/newsflash/20220116/2331249.html" target="_blank" title="安徽省人大代表蓝红英：建议在义务教育阶段实施职业启蒙教育">安徽省人大代表蓝红英：建议在义务教育阶段实施职业启蒙教育</a></h3>
+
+           
+            <div class="pic">
+                <a href="http://www.ahwang.cn/newsflash/20220116/2331249.html" target="_blank" title="安徽省人大代表蓝红英：建议在义务教育阶段实施职业启蒙教育">
+                    <img src="http://img.ahwang.cn/a/thumb/10001/202201/3df917d8ce70b7168d3555d9bfd5b656.jpeg!w190_h130.jpeg" alt="安徽省人大代表蓝红英：建议在义务教育阶段实施职业启蒙教育" width="190" height="130">
+                </a>
+            </div>        
+        
+        <p>蓝红英提出，建议就“在普通中小学实施职业启蒙教育”形成一定制度，制定具体指导意见，对学生进行有目的、有组织、有计划的职业素质教育，帮助学生对社会的职业形成初步的...</p> 
+
+        <div class="fl_right clearfix"> 
+            <span>2022-01-16 18:06</span>
+        </div>
+
+    
+       
+        <div class="hr-1"></div>
+</div><div class="news_list clearfix"> 
+    <h3><a href="http://www.ahwang.cn/hefei/20220104/2326908.html" target="_blank" title="刚入住的宝妈被迫离开！合肥沁悦汇月子中心突然关门">刚入住的宝妈被迫离开！合肥沁悦汇月子中心突然关门</a></h3>
+
+           
+            <div class="pic">
+                <a href="http://www.ahwang.cn/hefei/20220104/2326908.html" target="_blank" title="刚入住的宝妈被迫离开！合肥沁悦汇月子中心突然关门">
+                    <img src="http://img.ahwang.cn/a/thumb/10001/202201/8b14764806c8b9e3109c17f3a9f42a29.jpeg!w190_h130.jpeg" alt="刚入住的宝妈被迫离开！合肥沁悦汇月子中心突然关门" width="190" height="130">
+                </a>
+            </div>        
+        
+        <p>新安晚报、安徽网、大皖新闻记者核实了解到，合肥沁悦汇月子中心于2017年4月13日正式开业，前期投入超过1400万元，在关门后，运营公司公开发出致歉信，目前合肥蜀山经侦已...</p> 
+
+        <div class="fl_right clearfix"> 
+            <span>2022-01-04 19:49</span>
+        </div>
+
+    
+       
+        <div class="hr-1"></div>
+</div><div class="news_list clearfix"> 
+    <h3><a href="http://www.ahwang.cn/newsflash/20220104/2326699.html" target="_blank" title="安徽小夫妻在上海出租房卫生间离奇身亡  家属索赔99万多元">安徽小夫妻在上海出租房卫生间离奇身亡  家属索赔99万多元</a></h3>
+
+           
+            <div class="pic">
+                <a href="http://www.ahwang.cn/newsflash/20220104/2326699.html" target="_blank" title="安徽小夫妻在上海出租房卫生间离奇身亡  家属索赔99万多元">
+                    <img src="http://img.ahwang.cn/a/thumb/10001/202201/c08bf67d4803a65144fe427e61a9e5f3.jpeg!w190_h130.jpeg" alt="安徽小夫妻在上海出租房卫生间离奇身亡  家属索赔99万多元" width="190" height="130">
+                </a>
+            </div>        
+        
+        <p> 2019年8月，安徽赴上海开奶茶店的一对小夫妻，在出租屋的卫生间内离奇身亡，死因竟是硫化氢中毒，一时引起巨大关注。2022年1月4日，记者从女方家属处获悉，女方家属将以“...</p> 
+
+        <div class="fl_right clearfix"> 
+            <span>2022-01-04 14:27</span>
+        </div>
+
+    
+       
+        <div class="hr-1"></div>
+</div><div class="news_list clearfix"> 
+    <h3><a href="http://www.ahwang.cn/newsflash/20211223/2322598.html" target="_blank" title="高考状元流落街头：开过公司开过水果店 村干部称其不愿受约束">高考状元流落街头：开过公司开过水果店 村干部称其不愿受约束</a></h3>
+
+           
+            <div class="pic">
+                <a href="http://www.ahwang.cn/newsflash/20211223/2322598.html" target="_blank" title="高考状元流落街头：开过公司开过水果店 村干部称其不愿受约束">
+                    <img src="http://img.ahwang.cn/a/thumb/10001/202112/e020540f8b3ace17df912c99047ef01a.jpeg!w190_h130.jpeg" alt="高考状元流落街头：开过公司开过水果店 村干部称其不愿受约束" width="190" height="130">
+                </a>
+            </div>        
+        
+        <p> 近日，一则“高考状元流落街头”的视频引起了社会关注。视频中，一位衣着褴褛的男子站在山东省滕州市的街头，形似一位流浪汉。在与他人聊天中，这位男子介绍，自己老家在...</p> 
+
+        <div class="fl_right clearfix"> 
+            <span>2021-12-23 10:09</span>
+        </div>
+
+    
+       
+        <div class="hr-1"></div>
+</div><div class="news_list clearfix"> 
+    <h3><a href="http://www.ahwang.cn/hefei/20211222/2322228.html" target="_blank" title="北大博士在肥东县当选村委会主任：把新思路新方法用到乡村建设中去">北大博士在肥东县当选村委会主任：把新思路新方法用到乡村建设中去</a></h3>
+
+           
+            <div class="pic">
+                <a href="http://www.ahwang.cn/hefei/20211222/2322228.html" target="_blank" title="北大博士在肥东县当选村委会主任：把新思路新方法用到乡村建设中去">
+                    <img src="http://img.ahwang.cn/a/thumb/10001/202102/1f8ca6691e8588c7e1d07184f573a4af.jpeg!w190_h130.jpeg" alt="北大博士在肥东县当选村委会主任：把新思路新方法用到乡村建设中去" width="190" height="130">
+                </a>
+            </div>        
+        
+        <p>“我深感责任重大、使命光荣，我要把新思路新方法运用到乡村建设中去，我相信自己有能力为乡村振兴做出成绩。”12 月21 日，刚刚高票当选为肥东县石塘镇红光社区村委会主任...</p> 
+
+        <div class="fl_right clearfix"> 
+            <span>2021-12-22 10:52</span>
+        </div>
+
+    
+       
+        <div class="hr-1"></div>
+</div><div class="news_list clearfix"> 
+    <h3><a href="http://www.ahwang.cn/anhui/20211215/2319824.html" target="_blank" title="淮南一女子被男友杀害！ 之前遭多次殴打  两人在社交平台认识">淮南一女子被男友杀害！ 之前遭多次殴打  两人在社交平台认识</a></h3>
+
+           
+            <div class="pic">
+                <a href="http://www.ahwang.cn/anhui/20211215/2319824.html" target="_blank" title="淮南一女子被男友杀害！ 之前遭多次殴打  两人在社交平台认识">
+                    <img src="http://img.ahwang.cn/a/thumb/10001/202112/0b0e517dc8488088124ad64a0b7c716b.jpeg!w190_h130.jpeg" alt="淮南一女子被男友杀害！ 之前遭多次殴打  两人在社交平台认识" width="190" height="130">
+                </a>
+            </div>        
+        
+        <p> 39岁的张某翠是淮南人，在家人眼中，她性格外向，活泼、好相处。但令人唏嘘的是，今年11月5日，张某翠被男友张某残忍杀害。</p> 
+
+        <div class="fl_right clearfix"> 
+            <span>2021-12-15 18:59</span>
+        </div>
+
+    
+       
+        <div class="hr-1"></div>
+</div>                </ul>
+            </section>
+
+            <div class="hr-10"></div>
+            <!-- 分页 -->
+                        <div class="page ov">
+                <a href='javascript:void(0);' class='prev disable'>&lt;</a><a href='javascript:void(0);' class='now'>1</a><a href='http://www.ahwang.cn/kandian/index_2.html'>2</a><a href='http://www.ahwang.cn/kandian/index_3.html'>3</a><a href='http://www.ahwang.cn/kandian/index_4.html'>4</a><a href='http://www.ahwang.cn/kandian/index_5.html'>5</a><a href='http://www.ahwang.cn/kandian/index_2.html' class='next'>&gt;</a>            </div>
+                    </div>
+
+        <!-- 右侧主体 -->
+            <aside class="right-cont">
+                
+    <!-- 广告位 -->
+
+    <div class="f-l mar-t-20 pos-r">
+     <script type="text/javascript">BAIDU_CLB_fillSlot("7010363");</script>
+    <div class="advimg"></div>
+</div>
+<div class="f-l mar-t-20 pos-r">
+     <script type="text/javascript">BAIDU_CLB_fillSlot("4987399");</script>
+    <div class="advimg"></div>
+</div>
+    <div class="hr-20"></div>
+
+    <!--点击排行-->
+                    <div class="commend-article">
+                    <div class="m-title-a">
+                        <h2 class="m-title-h2"><a>点击排行</a></h2>
+                    </div>
+                    <div class="commend-inner">
+                        <div class="m-accordion js-accordion">
+                            <ul>
+                                	<li class="m-accordion-item top">
+	       <a href="http://www.ahwang.cn/hefei/20220301/2347131.html" target="_blank" class="title" style="display: none;">肥东县人大常委会最新任免人员名单发布</a>
+	           <div class="m-accordion-thumb ov" style="display: block;">
+	               <a href="http://www.ahwang.cn/hefei/20220301/2347131.html" target="_blank">
+	                   <img class="thumb f-l" src="http://img.ahwang.cn/a/thumb/10001/201909/0e8788c65f611672b64c521909d7c86d.jpeg!w120_h80.jpeg" alt="肥东县人大常委会最新任免人员名单发布"></a>
+	                   <p><a href="http://www.ahwang.cn/hefei/20220301/2347131.html" target="_blank">肥东县人大常委会最新任免人员名单发布</a></p>
+	           </div>
+	</li> 
+	<li class="m-accordion-item top">
+	       <a href="http://aq.ahwang.cn/aqnews/20220301/2347108.html" target="_blank" class="title" style="display: none;">宿松人大常委会任免人员名单 陈志鹃任副县长</a>
+	           <div class="m-accordion-thumb ov" style="display: block;">
+	               <a href="http://aq.ahwang.cn/aqnews/20220301/2347108.html" target="_blank">
+	                   <img class="thumb f-l" src="http://img.ahwang.cn/a/thumb/10001/201909/d2383b6acf2b977fbb45feb49cf9d4ed.jpeg!w120_h80.jpeg" alt="宿松人大常委会任免人员名单 陈志鹃任副县长"></a>
+	                   <p><a href="http://aq.ahwang.cn/aqnews/20220301/2347108.html" target="_blank">宿松人大常委会任免人员名单 陈志鹃任副县长</a></p>
+	           </div>
+	</li> 
+	<li class="m-accordion-item top">
+	       <a href="http://www.ahwang.cn/anhui/20220301/2347375.html" target="_blank" class="title" style="display: none;">十一届安徽省委第一轮巡视任务分工宣布</a>
+	           <div class="m-accordion-thumb ov" style="display: block;">
+	               <a href="http://www.ahwang.cn/anhui/20220301/2347375.html" target="_blank">
+	                   <img class="thumb f-l" src="http://img.ahwang.cn/a/thumb/10001/202203/39118f647076d62c6c33fc35b8a4eaab.jpeg!w120_h80.jpeg" alt="十一届安徽省委第一轮巡视任务分工宣布"></a>
+	                   <p><a href="http://www.ahwang.cn/anhui/20220301/2347375.html" target="_blank">十一届安徽省委第一轮巡视任务分工宣布</a></p>
+	           </div>
+	</li> 
+	<li class="m-accordion-item top">
+	       <a href="http://www.ahwang.cn/anhui/20220301/2347224.html" target="_blank" class="title" style="display: none;">张耿任安庆市市直机关事务管理中心党组书记、主任</a>
+	           <div class="m-accordion-thumb ov" style="display: block;">
+	               <a href="http://www.ahwang.cn/anhui/20220301/2347224.html" target="_blank">
+	                   <img class="thumb f-l" src="http://img.ahwang.cn/a/thumb/10001/201910/05ac5ccad6ef0a8847af750f0037fdda.jpg!w120_h80.jpg" alt="张耿任安庆市市直机关事务管理中心党组书记、主任"></a>
+	                   <p><a href="http://www.ahwang.cn/anhui/20220301/2347224.html" target="_blank">张耿任安庆市市直机关事务管理中心党组书记、主任</a></p>
+	           </div>
+	</li> 
+	<li class="m-accordion-item top">
+	       <a href="http://www.ahwang.cn/hefei/20220301/2347060.html" target="_blank" class="title" style="display: none;">合肥离子医学中心质子治疗临床试验首批患者出院</a>
+	           <div class="m-accordion-thumb ov" style="display: block;">
+	               <a href="http://www.ahwang.cn/hefei/20220301/2347060.html" target="_blank">
+	                   <img class="thumb f-l" src="http://img.ahwang.cn/a/thumb/10001/202203/d77d4af3e39ff6cd48f254e23669a5e2.png!w120_h80.png" alt="合肥离子医学中心质子治疗临床试验首批患者出院"></a>
+	                   <p><a href="http://www.ahwang.cn/hefei/20220301/2347060.html" target="_blank">合肥离子医学中心质子治疗临床试验首批患者出院</a></p>
+	           </div>
+	</li> 
+	<li class="m-accordion-item top">
+	       <a href="http://www.ahwang.cn/newsflash/20220301/2347086.html" target="_blank" class="title" style="display: none;">霸榜！中国科大“祖冲之号”入选2021年度中国科学十大进展</a>
+	           <div class="m-accordion-thumb ov" style="display: block;">
+	               <a href="http://www.ahwang.cn/newsflash/20220301/2347086.html" target="_blank">
+	                   <img class="thumb f-l" src="http://img.ahwang.cn/a/thumb/10001/202009/8f5acc1931ae16d5c64c50fcee087ae7.jpeg!w120_h80.jpeg" alt="霸榜！中国科大“祖冲之号”入选2021年度中国科学十大进展"></a>
+	                   <p><a href="http://www.ahwang.cn/newsflash/20220301/2347086.html" target="_blank">霸榜！中国科大“祖冲之号”入选2021年度中国科学十大进展</a></p>
+	           </div>
+	</li> 
+	<li class="m-accordion-item top">
+	       <a href="http://www.ahwang.cn/anhui/20220301/2347187.html" target="_blank" class="title" style="display: none;">霍山县国土资源局诸佛庵国土资源管理中心所原所长康嵩被双开</a>
+	           <div class="m-accordion-thumb ov" style="display: block;">
+	               <a href="http://www.ahwang.cn/anhui/20220301/2347187.html" target="_blank">
+	                   <img class="thumb f-l" src="http://img.ahwang.cn/a/thumb/10001/201909/88faf3b8613555ee6af057a88c9de7a3.jpg!w120_h80.jpg" alt="霍山县国土资源局诸佛庵国土资源管理中心所原所长康嵩被双开"></a>
+	                   <p><a href="http://www.ahwang.cn/anhui/20220301/2347187.html" target="_blank">霍山县国土资源局诸佛庵国土资源管理中心所原所长康嵩被双开</a></p>
+	           </div>
+	</li> 
+	<li class="m-accordion-item top">
+	       <a href="http://www.ahwang.cn/anhui/20220301/2347369.html" target="_blank" class="title" style="display: none;">宁芜高速实施“四改八”   网友建议收费减免获官方回复   </a>
+	           <div class="m-accordion-thumb ov" style="display: block;">
+	               <a href="http://www.ahwang.cn/anhui/20220301/2347369.html" target="_blank">
+	                   <img class="thumb f-l" src="http://img.ahwang.cn/a/thumb/10001/202201/d6ade250beffc4da2e98e052de30174d.jpeg!w120_h80.jpeg" alt="宁芜高速实施“四改八”   网友建议收费减免获官方回复   "></a>
+	                   <p><a href="http://www.ahwang.cn/anhui/20220301/2347369.html" target="_blank">宁芜高速实施“四改八”   网友建议收费减免获官方回复   </a></p>
+	           </div>
+	</li> 
+	<li class="m-accordion-item top">
+	       <a href="http://www.ahwang.cn/newsflash/20220301/2347294.html" target="_blank" class="title" style="display: none;">突发！合肥街头一奥迪轿车撞向绿化带</a>
+	           <div class="m-accordion-thumb ov" style="display: block;">
+	               <a href="http://www.ahwang.cn/newsflash/20220301/2347294.html" target="_blank">
+	                   <img class="thumb f-l" src="http://img.ahwang.cn/a/thumb/10001/202203/fa31ab65d2f161d8cef1ed1411f77ae3.jpeg!w120_h80.jpeg" alt="突发！合肥街头一奥迪轿车撞向绿化带"></a>
+	                   <p><a href="http://www.ahwang.cn/newsflash/20220301/2347294.html" target="_blank">突发！合肥街头一奥迪轿车撞向绿化带</a></p>
+	           </div>
+	</li> 
+	<li class="m-accordion-item top">
+	       <a href="http://www.ahwang.cn/anhui/20220301/2347227.html" target="_blank" class="title" style="display: none;">桐城：女子举报前男友无证驾驶 交警核查出6次</a>
+	           <div class="m-accordion-thumb ov" style="display: block;">
+	               <a href="http://www.ahwang.cn/anhui/20220301/2347227.html" target="_blank">
+	                   <img class="thumb f-l" src="http://img.ahwang.cn/a/thumb/10001/202203/5932e7d10b245d6fa47e98060a210282.png!w120_h80.png" alt="桐城：女子举报前男友无证驾驶 交警核查出6次"></a>
+	                   <p><a href="http://www.ahwang.cn/anhui/20220301/2347227.html" target="_blank">桐城：女子举报前男友无证驾驶 交警核查出6次</a></p>
+	           </div>
+	</li> 
+                           
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+     
+    <div class="clear"></div>            </aside>
+            <!-- @右侧主体 -->
+    </div>
+ <!-- 返回顶部 -->
+ <!-- 返回顶部 -->
+    <div class="scroll-btns js-scrollbtns">
+        <div class="btn home icon40x40">
+            <a href="http://www.ahwang.cn" class="text" style="display: none;">返回首页</a>
+        </div>       
+        <div class="hr-10"></div>
+        <div class="btn top icon40x40">
+            <a href="" class="text">返回顶部</a>
+        </div>
+    </div>
+<div class="hr-20"></div>
+
+
+<!-- 页脚 -->
+<footer class="footer">
+    <div class="column">
+        <div class="ft-1 f-l">
+            <ul>
+                <li><a href="http://www.ahwang.cn/about/about.html" target="_blank">关于我们</a></li>
+                <li><a href="http://www.ahwang.cn/about/adprice.html" target="_blank">广告服务</a></li>
+                <li><a href="http://www.ahwang.cn/about/contact.html" target="_blank">联系我们</a></li>
+                <li><a href="http://www.ahwang.cn/about/copyright.html" target="_blank">版权声明</a></li>
+                <li><a href="http://m.ahwang.cn/" target="_blank">手机安徽网</a></li>
+                <li><script type="text/javascript">
+            var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+            document.write(unescape("%3Cspan id='cnzz_stat_icon_1000426151'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1000426151%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
+                </script></li>
+            </ul>
+        </div>
+        <div class="ft-2 f-l">
+            <p>Copyright © 2000-2018 ahwang.cn All Right Reserved.</p>
+            <p>安徽省合肥市潜山路1469号安徽报业大厦11楼</p>
+            <p>
+                <a href="http://res.ahwang.cn/t/site/10001/d7673e8f8e43a2896797d23374ea999f/assets//pc/img/xxfbxkz.jpg" target="_blank">互联网新闻信息服务许可证：34120180002</a>　
+                <a href="http://img.ahwang.cn/templates/ahwang2017/images/tv.jpg" target="_blank">广播电视节目制作经营许可证：皖 00441</a>
+            </p>
+            </p>
+            <p>新闻备案号：皖网宣备06024号 &nbsp; <a href="http://beian.miit.gov.cn" target="_blank">皖ICP备05001054号-2</a> </p>
+            <p><a target="_blank" class="ml5" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=34010402700194" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;margin-left: 20px;"><img src="https://uploads.dahe.cn/lxx/img/beian.png" style="float:left;">皖公网安备 34010402700194号</a></p>
+            <p>未经新安晚报、安徽网书面特别授权，请勿转载或建立镜像</p>
+            <p>网站不良信息举报邮箱：services@ahwang.cn &nbsp; 举报电话：0551-62639900</p>
+            <p>
+                本网站法律顾问：<a href="http://www.tianhelaw.cn/cn/info_23.aspx?itemid=556" target="_blank">天禾律师事务所 陈军</a>
+            </p>
+        </script>
+        </div>
+
+        <div class="ft-3 f-l">
+            <p>版权保护 电话：0551-65183269</p>
+            <ul>
+                <li>
+                        <img src="http://res.ahwang.cn/t/site/10001/d7673e8f8e43a2896797d23374ea999f/assets/city/chizhou/images/dwapp.png" width="120" height="120" alt="">
+                        <p>扫一扫下载</p>
+                    </li>
+                     <li>
+                        <img src="http://res.ahwang.cn/t/site/10001/d7673e8f8e43a2896797d23374ea999f/assets/pc/img/twocode.jpg" width="120" height="120" alt="">
+                        <p>扫一扫关注</p>
+                    </li>
+            </ul>
+        </div>
+       
+
+        <div class="hide"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260143879'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260143879%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></div>
+    </div>
+
+</footer> 
+
+<!-- Cmstop pv 统计代码，勿删 -->
+<script type="text/javascript">
+    var shareVariable = {
+        sid: '',
+        aid: '',
+        cid: '',
+        suffix: ''
+    };
+    window.TJ = 'http://tj.ahwang.cn/tj.gif';
+    (function() {
+        var unique = (function () {
+            var time= (new Date()).getTime()+'-', i=0;
+            return function () {
+                return time + (i++);
+            }
+        })();
+
+        var imgLog = function (url) {
+            var data = window['imgLogData'] || (window['imgLogData'] = {});
+            var img = new Image();
+            var uid = unique();
+            img.onload = img.onerror = function () {//销毁一些对象
+                img.onload = img.onerror = null;
+                img = null;
+                delete data[uid];
+            };
+            img.src = url + '&_uid=' + uid;
+        };
+        var src = window.TJ + '?sid=' + shareVariable.sid + '&cid=' + shareVariable.cid + '&aid=' + shareVariable.aid + '&url='+location.href;
+        imgLog(src);
+    })();
+</script>
+
+<script>
+var _mtac = {};
+(function() {
+    var mta = document.createElement("script");
+    mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+    mta.setAttribute("name", "MTAH5");
+    mta.setAttribute("sid", "500730101");
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(mta, s);
+})();
+</script>
+            
+</body>
+</html>

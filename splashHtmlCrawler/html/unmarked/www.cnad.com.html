@@ -1,0 +1,2366 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>中国广告网 - 广告传媒业知名门户</title>
+  <meta name="Keywords" content="广告网,广告,广告人,广告案例,广告公司,广告业,广告主,广告沙龙,广告微博,广告媒体,平面广告,影视广告,广告展,广告设备,4A学院,户外广告,广告招聘" />
+  <meta name="Description" content="Ad,广告,China,Chinese Ad,Ad Movie,户外广告,广告制作,传媒,媒体,平面广告,杂志,电视,创意,广州4A,Cnad,广告论坛,论坛,广告交流中心,最新广告,广告设计,广告影视,品牌,市场,策划,营销,活动f,模特,广告博客,创意影视,平面创意,嘎纳广告,金犊奖,动漫,广告学,广告节,广告人物,设计师,人才,猎头,oneshow,中国4A" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=0.26, maximum-scale=0.26, minimum-scale=0.26">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="shortcut icon" href="http://img1.cnad.cn/html/static/image/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="http://img1.cnad.cn/html/static/css/weui.css" />
+  <link rel="stylesheet" type="text/css" href="http://img1.cnad.cn/html/static/css/weuix.css" />
+  <link rel="stylesheet" type="text/css" href="http://img1.cnad.cn/html/static/css/font/iconfont.css" />
+  <link rel="stylesheet" type="text/css" href="http://img1.cnad.cn/html/static/css/style.css" />
+  <script type="text/javascript" src="http://img1.cnad.cn/html/static/js/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="html/static/js/jquery.kinmaxshow.js?v=1"></script>
+  <script type="text/javascript" src="http://img1.cnad.cn/html/static/js/jquery.carouFredSel.js"></script>
+  <script type="text/javascript" src="http://img1.cnad.cn/html/static/js/public.js"></script>
+  <script type="text/javascript" src="http://img1.cnad.cn/html/static/js/ZeroClipboard.js"></script>
+  <script type="text/javascript">
+    //幻灯片
+    $(function(){
+        $("#kinMaxShow").kinMaxShow();
+        var is_first = getCookie("is_first");
+        if (is_first != 1) {
+            showNewUser();
+            var time = getTodayOtherTime(); //每天一次
+            setCookie("is_first", 1, time);//3600 * 24 有效期一天
+        } else {
+            hideNewUser();
+        }
+        $('#content-tuijian-tabs').carouFredSel({
+            circular: false,
+            items: 1,
+            width: '100%',
+            auto: false,
+            height:'395',
+            pagination: {
+                container: '#content-tuijian-pager',
+                anchorBuilder: function( nr ) {
+                    return '<a href="#">' + $(this).find('h3').text() + '</a>';
+                }
+            }
+        });
+        //点击查看更多
+        $("body").on("click",".content-ckgd-btn",function(){
+        	console.log('点击查看更多')
+            var postData = {'mod': 'member', 'act': 'more'};
+            yzAjax(apiUrl, postData , function(){
+                 console.log('成功加载更多')
+            }, 'defaultFail');
+        })
+        //点击左侧搜索
+        $("body").on("click","#search-btn",function(){
+        	var keyword = $.trim($('.main-left #search-input').val()) 
+        	if(keyword!=''){
+        		window.open("index.php?mod=search&act=list&keyword="+keyword+"&type=0&screen=hot"); 
+        	}
+        })
+		//点击右侧搜索
+		$("body").on("click",".content-search-btn",function(){
+        	var keyword = $.trim($('.main-right #content-search').val()) 
+        	if(keyword!=''){
+        		window.open("index.php?mod=search&act=list&keyword="+keyword+"&type=0&screen=hot"); 
+        	}
+        })
+
+        //走近公司
+        $("body").on("click","#goZjgg",function(){
+        	var href = $(this).attr('data-href');
+        	if(href!=''){
+        		window.open(href); 
+        	}
+        })
+        
+    });
+function showNewUser() {
+        var document_height = $(document).height();
+        var window_height = $(window).height();
+        var height = document_height > window_height ? document_height : window_height;
+        $("#overlay").css({"height": height, "display": "block"})
+        $("#new_user").show();
+    }
+    function hideNewUser() {
+        $("#new_user").hide();
+        $("#overlay").css({"display": "none"})
+    }
+    //设置cookies函数
+    function setCookie(name, value, time) { //name:cookie键名，value:cookie键值,和时间S
+        var exp = new Date();
+        exp.setTime(exp.getTime() + time * 1000);//有效期1小时 
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+    }
+    //取cookies函数 
+    function getCookie(name) {
+        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        if (arr != null)
+            return unescape(arr[2]);
+        return null;
+    }
+    //删除cookies
+    function delCookie(name) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval = getCookie(name);
+        if (cval != null)
+            document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    }
+    //从当前时间到明日0点的时间戳
+    function getTodayOtherTime() {
+        var today = new Date();
+        today.setHours(0);
+        today.setMinutes(0);
+        today.setSeconds(0);
+        today.setMilliseconds(0);
+        //明日0点时间戳
+        var tomorrow_0 = today.getTime() / 1000 + (24 * 3600);
+        var current_time = Math.round(new Date().getTime() / 1000);
+        var expire = tomorrow_0 - current_time;
+        return expire;
+    }
+    </script>
+<style>
+.new_user {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 1001;
+	transform: translate(-50%, -50%);
+	width:900px;
+	height:600px;
+}
+    .new_user .new_pic {
+		height: auto;
+		overflow: hidden;
+    }
+    .new_user img {
+		display: block;
+		height: auto;
+		width: 100%;
+    }
+    .new_user .new_close {
+        background: url("http://img1.cnad.cn/html/static/image/close.png") no-repeat scroll 0 0;
+        overflow: hidden;
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        display: block;
+        cursor: pointer;
+        height: 40px;
+        width: 40px;
+        margin-left: 420px;
+    }
+    .overlay{
+        background-color: #000;
+        left: 0;
+        width: 100%;
+        opacity: 0.6;
+        filter:alpha(opacity=60);
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        z-index: 1000;
+    }
+    .monaco-editor .suggest-widget {
+    z-index: 104;
+    width: 430px;
+    }
+    .ienotice-div {
+    color: rgb(33, 30, 20);
+    font-size: 16px;
+    line-height: 45px;
+    height: 45px;
+    text-align: center;
+    background: rgba(179, 165, 105, 0.6);
+    }
+    .shadow {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.5;
+    position: absolute;
+    z-index: 9999999999;
+    }
+    .ienotice-div .ienotice-img {
+        width: 38px;
+        height: 34px;
+        margin-right: 30px;
+        margin-top: 5px;
+    }
+    .ienotice-div .ienotice-p {
+    display: inline-block;
+    }
+    .ienotice-div a {
+        color: #da2246;
+    }
+    .ienotice-div a:hover {
+        opacity: 0.9;
+    }
+    #search-btn i:hover{
+        color: #ff0000;
+    }
+</style>
+</head>
+<body>
+<script>
+function myBrowser() {
+      var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+      if (userAgent.indexOf("Opera") > -1) {
+        return "Op";
+      } //判断是否Opera浏览器
+      if (userAgent.indexOf("Firefox") > -1) {
+        return "FF";
+      } //判断是否Firefox浏览器
+      if (userAgent.indexOf("Chrome") > -1) {
+        return "Ch";
+      }
+      if (userAgent.indexOf("Safari") > -1) {
+        return "Sa";
+      } //判断是否Safari浏览器
+      if (
+        userAgent.indexOf("MSIE") > -1 ||
+        userAgent.indexOf("Trident") > -1
+      ) {
+        return "IE";
+      } //判断是否IE浏览器
+      if (userAgent.indexOf("AppleWebKit") > -1) {
+        return "Mo";
+      } //判断是否手机
+      return "None";
+    }
+    if (
+      !(
+        myBrowser() == "FF" ||
+        myBrowser() == "Ch" ||
+        myBrowser() == "Sa" ||
+        myBrowser() == "Mo"
+      )
+    ) {
+      //window.stop ? window.stop() : document.execCommand("Stop");
+      var d = document.createElement("div");
+      d.className = "ienotice-div";
+      var zhezhao = document.createElement("div");
+      zhezhao.className = "shadow";
+      var t =
+        '\
+                    <img class="ienotice-img" src="../html/static/image/ie-notice.png" alt="">\
+                        <p class="ienotice-p">\
+                            <span>此网站在<span style="color:red;">ie浏览器</span>中无法正常运行，请使用</span>\
+                            <a href="https://www.google.cn/chrome/" target="_blank">Google Chrome</a>\
+                            <span>、</span>\
+                            <a href="https://browser.360.cn/ee/" target="_blank">360极速浏览器（极速模式）</a>\
+                            <span>或者</span>\
+                            <a href="https://mozilla.org/firefox/" target="_blank">Firefox浏览器</a>\
+                        </p>\
+                    ';
+      d.innerHTML = t;
+      document.getElementsByTagName("body")[0].appendChild(d);
+      document.getElementsByTagName("body")[0].appendChild(zhezhao);
+      $("body").css("overflow", "hidden");
+    }
+</script>
+    <style>
+@media only screen and (max-width: 1440px) {
+    #upbtn{
+        left: auto !important;
+        right: 0;
+    }
+}
+.footer-menu .footer-menu-item:first-child:before{
+    display:none !important;
+}
+.footer-menu .footer-menu-item:last-child:after{
+    display:none !important;
+}
+#tbad_box{
+    width:100%;
+    display: block;
+    height: 90px;
+    background-size: 1450px 90px !important;
+}
+.tbad{
+    height:90px;
+    width: 100%;
+    display: inline-block;
+}
+
+@media only screen and (max-width: 636px){
+#upbtn {
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    right: 10px !important;
+    bottom: 70px !important;
+}
+#upbtn i {
+    font-size: 24px !important;
+}
+}
+.swiper-slide img{
+    width:100%;
+    height:90px;
+}
+.tbad_box_info{
+    width:100%;
+    height:90px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+.content-info-left-center {
+    overflow: auto;
+}
+</style>
+<link rel="stylesheet" href="../html/static/js/css/layui.css?v=91"/>
+<link rel="stylesheet" type="text/css" href="http://img1.cnad.cn/html/static/css/style.css?v=3" />
+<script type="text/javascript" src="http://img1.cnad.cn/html/static/js/layui.js"></script>
+<script type="text/javascript" src="http://img1.cnad.cn/html/static/js/qrcode.js"></script>
+
+<!-- 分享 -->
+<div id="list-share" style="display:none;">
+    <div class="mark"></div>
+    <div class="share-dialog">
+        <div class="share-close"><i class="iconfont icon-guanbi"></i></div>
+        <div class="share-dialog-title">分享</div>
+        <div class="share-dialog-cont">
+            <div class="share-copy">
+                <div class="share-copy-l">分享链接：</div>
+                <div class="share-copy-c"><input id="copytext" type="text"/></div>
+                <div id="btnCopy" class="share-copy-r"  data-clipboard-target="copytext">复制链接</div>
+                <div class="clear"></div>
+            </div>
+            <div class="share-platform">
+                <div class="share-platform-l">社交平台：</div>
+                <div class="share-platform-r">
+                    <div class="bdsharebuttonbox">
+                        <div class="bds_weixin">
+                            <a href="#"  data-cmd="weixin" title="分享到微信"></a>
+                            <i class="iconfont icon-weixin1"></i>
+                        </div>
+                        <div class="bds_tsina">
+                            <a href="#"  data-cmd="tsina" title="分享到新浪微博"></a>
+                            <i class="iconfont icon-sina"></i>
+                        </div>
+                        <div class="bds_sqq">
+                            <a href="#" data-cmd="sqq" title="分享到QQ好友"></a>
+                            <i class="iconfont icon-QQ"></i>
+                        </div>
+                        <div class="bds_qzone">
+                            <a href="#" data-cmd="qzone" title="分享到QQ空间"></a>
+                            <i class="iconfont icon-qqkongjian1"></i>
+                        </div>        
+                    </div>
+                    <div class="share-platform-text">
+                        您可以直接复制短链，分享给朋友，也可直接点击社交平台图标，指定分享。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script language="javascript" src="js.php?mod=public&act=memhead"></script>
+
+ 
+<div id="tbad_box" style="background:#ffffff">
+    <div class="tbad_box_info">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                 
+                <a target="_blank" class="swiper-slide" href="http://www.gimc.cn/">
+                    <img src="http://www.cnad.com/upload/tmp/08/03/1014566108a6a021d57127.jpg">
+                </a>
+                 
+                <a target="_blank" class="swiper-slide" href="https://www.weiq.com">
+                    <img src="http://www.cnad.com/upload/tmp/06/28/02425160d96f6b06413339.png">
+                </a>
+                 
+                <a target="_blank" class="swiper-slide" href="http://www.charmgroup.cn/">
+                    <img src="http://www.cnad.com/upload/tmp/06/28/02415560d96f3357753320.png">
+                </a>
+                 
+                <a target="_blank" class="swiper-slide" href="http://www.cnad.com/html/special/159/380/index.shtml">
+                    <img src="http://www.cnad.com/upload/tmp/06/28/02403660d96ee40acb1128.png">
+                </a>
+                 
+                <a target="_blank" class="swiper-slide" href="http://www.pmm.cn/">
+                    <img src="http://www.cnad.com/upload/tmp/06/23/11504660d2af96157b494.jpg">
+                </a>
+                            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="http://img1.cnad.cn/html/static/css/swiper.min.css">
+<script src="http://img1.cnad.cn/html/static/js/swiper.min.js"></script>
+<script>
+var swiper = new Swiper('.swiper-container', {
+    loop: true,
+    autoplay : 5000
+});
+</script>
+
+<!-- 菜单 -->
+<div id="header2">
+    <div class="header2-info">
+        <a  href="index.php" class="logo">
+            <image title="中国广告网" style="cursor: pointer;" src="../html/static/image/logo222.png" />
+        </a>
+        <div id="menu" class="menu-info">
+                            <a class="menu-item active" href="/">首 页</a>
+                                   <a class="menu-item " href="index.php?mod=article&amp;act=list">C网热点</a>
+                                   <a class="menu-item " href="index.php?mod=case&amp;act=list">案 例</a>
+                                   <a class="menu-item " href="index.php?mod=video&amp;act=list">广告眼</a>
+                                   <a class="menu-item " href="index.php?mod=library&amp;act=list">C网文库</a>
+                                   <a class="menu-item " href="index.php?mod=works&amp;act=list">大奖作品</a>
+                                   <a class="menu-item " href="index.php?mod=xipai&amp;act=index">喜 派</a>
+                                   <a class="menu-item " href="index.php?mod=peixun&amp;act=index">4A学院</a>
+                                   <a class="menu-item " href="index.php?mod=outdoor&amp;act=list">酷榜户外</a>
+                                   <a class="menu-item " href="index.php?mod=zhuanti&amp;act=index">专 题</a>
+                                   <a class="menu-item " href="index.php?mod=recruit&amp;act=list">招 聘</a>
+                               <div class="line"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    /*退出系统xxx*/
+    function exitSystem() {
+        var postData = {'mod': 'member', 'act': 'exit'};
+        yzAjax(apiUrl, postData, function () {
+            window.location.reload();/*刷新页面*/
+        }, 'defaultFail');
+    }
+
+    $(function () {
+        
+        $('#search-input').keydown(function(event){
+            if(event.keyCode==13){
+            	var keyword = $.trim($('#search-input').val()) 
+            	if(keyword!=''){
+            		window.open("index.php?mod=search&act=list&keyword="+keyword+"&type=0&screen=hot"); 
+            	}
+            }
+        });
+        
+        //搜索回车
+        $('#search-inputx2').keydown(function(event){
+            if(event.keyCode==13){
+            	var keyword = $.trim($('#search-inputx2').val()) 
+            	if(keyword!=''){
+            		window.open("index.php?mod=search&act=list&keyword="+keyword+"&type=0&screen=hot"); 
+            	}
+            }
+        });
+        
+        $("body").on("click",".search-btn-btn",function(){
+            var _input = $('#search-inputx2').val();
+            if(_input!=''){
+                window.open("index.php?mod=search&act=list&keyword="+_input+"&type=0&screen=hot");  
+            }
+        })
+        
+        //登录弹窗=====================================
+        $('body').on('click', '#login,#login2,.login-btn,.login,.tougao1', function () {
+			$(".login-main .valicode img").attr("src", "http://"+window.location.host+"/index.php?mod=public&act=code&a="+Math.round(Math.random() * 100000));
+			$('#forget-tan').hide();
+			$('#register-tan').hide();
+			$('#bind-tan').hide();
+            $('#login-tan').fadeIn();
+        })
+        //关闭
+        $('body').on('click', '#login-tan .close', function () {
+            $('#login-tan').fadeOut();
+        })
+        //触焦变色
+        $(".login-main .form-input").focus(function () {
+            $(this).removeClass('red');
+        });
+        //失去焦点验证当前表单
+
+        $(".login-main #name").blur(function () {
+
+            var name = $('.login-main #name').val();
+            if (name == "") {
+                $('.login-main #name').addClass('red');
+            } else {
+                $('.login-main #name').removeClass('red');
+            }
+        })
+        $(".login-main #password").blur(function () {
+            var password = $('.login-main #password').val();
+            if (password == "") {
+                $('.login-main #password').addClass('red');
+            } else {
+                if (password.length < 6) {
+                    $('.register-main #password').addClass('red');
+                } else {
+                    $('.register-main #password').removeClass('red');
+                }
+                $('.login-main #password').removeClass('red');
+            }
+        })
+        $(".login-main #valicode").blur(function () {
+            var valicode = $('.login-main #valicode').val();
+            if (valicode == "") {
+                $('.login-main #valicode').addClass('red');
+            } else {
+                $('.login-main #valicode').removeClass('red');
+            }
+        })
+		
+		//点击切换图形验证码
+		$('body').on('click', '.login-main .valicode img', function () {
+			$(".login-main .valicode img").attr("src", "http://"+window.location.host+"/index.php?mod=public&act=code&a="+Math.round(Math.random() * 100000));
+		})
+		
+		
+        //登陆验证
+        $('body').on('click', '#login-submit', function () {
+            var thisid = "";
+            $('.login-main .form-input').removeClass('red');
+            var name = $('.login-main input[name=logname]').val(),
+                    password = $('.login-main input[name=logpassword]').val(),
+                    valicode = $('.login-main input[name=logvalicode]').val();
+
+            if (name == "") {
+                thisid = "logname";
+            }
+            if (password == "" && thisid == '') {
+                thisid = "logpassword";
+            }
+            if (password != "" && thisid == '') {
+                if (password.length < 6) {
+                    thisid = "logpassword";
+                }
+            }
+            if (valicode == "" && thisid == '') {
+                thisid = "logvalicode";
+            }
+			
+            //错误边框变红
+            if (thisid) {
+                $('.login-main .form-input').removeClass('red');
+				$('.login-main #'+thisid).addClass('red');
+                return false;
+            } else {
+                $('.login-main .form-input').removeClass('red');
+            }
+
+            /*开始提交了*/
+            var postData = {'mod': 'member', 'act': 'login', 'username': name, 'password': password, 'valicode': valicode};
+            yzAjax(apiUrl, postData, 'loginSuc', 'defaultFail');
+
+        })
+
+        /*登陆成功*/
+        postFuns.loginSuc = function (data) {
+			window.location.reload();
+        }
+
+        //注册弹窗=====================================
+        $('body').on('click', '#register,#register2,.register', function () {
+			$(".register-main .valicode img").attr("src", "http://"+window.location.host+"/index.php?mod=public&act=code&a="+Math.round(Math.random() * 100000));
+			$('#bind-tan').hide();
+			$('#login-tan').hide();
+			$('#forget-tan').hide();
+            $('#register-tan').fadeIn();
+            $('.register-main #valicode').val('')
+            $('.register-main #password').val('')
+        })
+		
+        //关闭
+        $('body').on('click', '#register-tan .close', function () {
+            $('#register-tan').fadeOut();
+        })
+		
+        //触焦变色
+        $(".register-main .form-input").focus(function () {
+            $(this).removeClass('red');
+        });
+		
+		//点击切换图形验证码
+		$('body').on('click', '.register-main .valicode img', function () {
+			$(".register-main .valicode img").attr("src", "index.php?mod=public&act=code&a="+Math.random());
+		})
+		
+        //失去焦点验证当前表单
+        $(".register-main #name").blur(function () {
+            var name = $('.register-main #name').val();
+			$('.name-info-text').html('');
+            if (name == "") {
+                $('.register-main #name').addClass('red');
+            } else {
+                $('.register-main #name').removeClass('red');
+            }
+        })
+        $(".register-main #mobile").blur(function () {
+            var mobile = $('.register-main #mobile').val();
+            if (mobile == "") {
+                $('.register-main #mobile').addClass('red');
+            } else {
+                if (!check_mobile(mobile)) {
+                    $('.register-main #mobile').addClass('red');
+                } else {
+                    $('.register-main #mobile').removeClass('red');
+                }
+            }
+        })
+        $(".register-main #valicode").blur(function () {
+            var valicode = $('.register-main #valicode').val();
+            if (valicode == "") {
+                $('.register-main #valicode').addClass('red');
+            } else {
+                $('.register-main #valicode').removeClass('red');
+            }
+        })
+        $(".register-main #smscode").blur(function () {
+            var smscode = $('.register-main #smscode').val();
+            if (smscode == "") {
+                $('.register-main #smscode').addClass('red');
+            } else {
+                $('.register-main #smscode').removeClass('red');
+            }
+        })
+        $(".register-main #password").blur(function () {
+            var password = $('.register-main #password').val();
+            if (password == "") {
+                $('.register-main #password').addClass('red');
+            } else {
+                if (password.length < 6) {
+                    $('.register-main #password').addClass('red');
+                    $('.register-main #password-div .password-info-text').html('不低于6位数');
+                } else {
+                    $('.register-main #password').removeClass('red');
+                    $('.register-main #password-div .password-info-text').html('');
+                }
+            }
+        })
+        $(".register-main #password2").blur(function () {
+            var password = $('.register-main #password').val();
+            var password2 = $('.register-main #password2').val();
+			$('#password2-div .password-info-text').html('');
+            if (password2 == "") {
+                $('.register-main #password2').addClass('red');
+            } else {
+                if (password != password2) {
+                    $('.register-main #password2').addClass('red');
+                    $('.register-main #password2-div .password-info-text').html('两次密码不一致');
+                } else {
+                    $('.register-main #password2').removeClass('red');
+                    $('.register-main #password2-div .password-info-text').html('');
+                }
+            }
+        })
+        //注册获取验证码
+        $('body').on('click', '#register-tan #second', function () {
+            sendyzm($("#register-tan #second"));
+        });
+
+        function sendyzm(obj) {
+            var mobile = $("#register-tan #mobile").val();
+            var username = $("#register-tan #name").val();
+            var valicode = $("#register-tan #valicode").val();
+            if (!check_mobile(mobile)) {
+                $('.register-main #mobile').addClass('red');
+                return false;
+            }
+            var postData = {'mod': 'smscode', 'act': 'register', 'username': username, 'mobile': mobile, 'valicode': valicode};
+            yzAjax(apiUrl, postData, 'getSmscodeSuc', 'defaultFail');
+        }
+
+        /*成功处理*/
+        postFuns.getSmscodeSuc = function (data) {
+        	layer.msg('已发送验证码');
+            setTime($("#register-tan #second"));//开始倒计时
+        }
+
+        //60s倒计时实现逻辑
+        var countdown = 60;
+        function setTime(obj) {
+            if (countdown == 0) {
+                obj.prop('disabled', false);
+                obj.text("获取验证码");
+                countdown = 60; //60秒过后button上的文字初始化,计时器初始化;
+                return;
+            } else {
+                obj.prop('disabled', true);
+                obj.text(countdown + "s后可重发");
+                countdown--;
+            }
+            setTimeout(function () {
+                setTime(obj)
+            }, 1000) //每1000毫秒执行一次
+        }
+
+        //验证
+        $('#register-submit').click(function () {
+            var thisid = "";
+            $('.register-main .form-input').removeClass('red');
+            var name = $('.register-main input[name=name]').val(),
+                    mobile = $('.register-main input[name=mobile]').val(),
+                    valicode = $('.register-main input[name=valicode]').val(),
+                    smscode = $('.register-main input[name=smscode]').val(),
+                    password = $('.register-main input[name=password]').val(),
+                    password2 = $('.register-main input[name=password2]').val(),
+                    type = $(".register-main input[type='checkbox']:checked").val();
+            if (name == "") {
+                thisid = "name";
+            }
+			if (name != "" && thisid == '') {
+                if (name.length<5) {
+                    thisid = "name";
+					$('.name-info-text').html('用户名不能少于4位');
+                }
+            }
+            if (thisid == "" &&mobile == "") {
+                thisid = "mobile";
+            }
+            if (mobile != "" && thisid == '') {
+                if (!check_mobile(mobile)) {
+                    thisid = "mobile";
+                }
+            }
+            if (valicode == "" && thisid == '') {
+                thisid = "valicode";
+            }
+            if (smscode == "" && thisid == '') {
+                thisid = "smscode";
+            }
+            if (password == "" && thisid == '') {
+                thisid = "password";
+            }
+            if (password != "" && thisid == '') {
+                if (password.length < 6) {
+                    thisid = "password";
+                }
+            }
+            if (password2 == "" && thisid == '') {
+                thisid = "password2";
+            }
+            if (password != "" && thisid == '') {
+                if (password.length < 6) {
+                    thisid = "password";
+                }
+                if (password != password2) {
+                    thisid = "password2";
+					$('#password2-div .password-info-text').html('两次密码不一致');
+					
+                }
+            }
+            if (!type && thisid == '') {
+				layer.msg('请勾选声明和条款');
+                $('.register-main .register-opt').addClass('red');
+                return false;
+            } else {
+                $('.register-main .register-opt').removeClass('red')
+            }
+  
+			//错误边框变红
+            if (thisid) {
+                $('.register-main .form-input').removeClass('red');
+				$('.register-main #'+thisid).addClass('red');
+                return false;
+            } else {
+                $('.register-main .form-input').removeClass('red');
+            }
+			
+            /*提交*/
+            var postData = {'mod': 'member', 'act': 'register', 'username': name, 'mobile': mobile, 'smscode': smscode, 'password': password};
+            yzAjax(apiUrl, postData, 'registerSuc', 'defaultFail');
+        })
+
+        /*注册成功*/
+        postFuns.registerSuc = function (data) {
+        	layer.alert('注册成功',{icon: 1, closeBtn: 0},
+            function () {
+                 window.location.reload();
+            });
+        }
+
+        //找回密码弹窗=====================================
+        $('body').on('click', '#forget', function () {
+			$(".forget-main .valicode img").attr("src", "http://"+window.location.host+"/index.php?mod=public&act=code&a="+Math.round(Math.random() * 100000));
+			$('#bind-tan').hide();
+			$('#login-tan').hide();
+			$('#register-tan').hide();
+            $('#forget-tan').fadeIn();
+            $('.forget-main #valicode').val('')
+            $('.forget-main #password').val('')
+        })
+		
+        //关闭
+        $('body').on('click', '#forget-tan .close', function () {
+            $('#forget-tan').fadeOut();
+        })
+		
+        //触焦变色
+        $(".forget-main .form-input").focus(function () {
+            $(this).removeClass('red');
+        });
+		
+		//点击切换图形验证码
+		$('body').on('click', '.forget-main .valicode img', function () {
+			$(".forget-main .valicode img").attr("src", "index.php?mod=public&act=code&a="+Math.random());
+		})
+		
+        //失去焦点验证当前表单
+//         $(".forget-main #name").blur(function () {
+//             var name = $('.forget-main #name').val();
+// 			$('.name-info-text').html('');
+//             if (name == "") {
+//                 $('.forget-main #name').addClass('red');
+//             } else {
+//                 $('.forget-main #name').removeClass('red');
+//             }
+//         })
+        // $(".forget-main #mobile").blur(function () {
+        //     var mobile = $('.forget-main #mobile').val();
+        //     if (mobile == "") {
+        //         $('.forget-main #mobile').addClass('red');
+        //     } else {
+        //         if (!check_mobile(mobile)) {
+        //             $('.forget-main #mobile').addClass('red');
+        //         } else {
+        //             $('.forget-main #mobile').removeClass('red');
+        //         }
+        //     }
+        // })
+        $(".forget-main #valicode").blur(function () {
+            var valicode = $('.forget-main #valicode').val();
+            if (valicode == "") {
+                $('.forget-main #valicode').addClass('red');
+            } else {
+                $('.forget-main #valicode').removeClass('red');
+            }
+        })
+        $(".forget-main #smscode").blur(function () {
+            var smscode = $('.forget-main #smscode').val();
+            if (smscode == "") {
+                $('.forget-main #smscode').addClass('red');
+            } else {
+                $('.forget-main #smscode').removeClass('red');
+            }
+        })
+        $(".forget-main #password").blur(function () {
+            var password = $('.forget-main #password').val();
+            if (password == "") {
+                $('.forget-main #password').addClass('red');
+            } else {
+                if (password.length < 6) {
+                    $('.forget-main #password').addClass('red');
+                    $('.forget-main #password-div .password-info-text').html('不低于6位数');
+                } else {
+                    $('.forget-main #password').removeClass('red');
+                    $('.forget-main #password-div .password-info-text').html('');
+                }
+            }
+        })
+        //注册获取验证码
+        $('body').on('click', '#forget-tan #second', function () {
+            sendyzm3($("#forget-tan #second"));
+        });
+
+        function sendyzm3(obj) {
+            var mobile = $("#forget-tan #mobile").val();
+            var valicode = $("#forget-tan #valicode").val();
+            var postData = {'mod': 'smscode', 'act': 'findpass', 'mobile': mobile, 'valicode': valicode};
+            yzAjax(apiUrl, postData, 'getSmscodeSuc2', 'defaultFail');
+        }
+
+        /*成功处理*/
+        postFuns.getSmscodeSuc2 = function (data) {
+        	layer.msg('已发送验证码');
+            setTime3($("#forget-tan #second"));//开始倒计时
+        }
+
+        //60s倒计时实现逻辑
+        var countdown3 = 60;
+        function setTime3(obj) {
+            if (countdown3 == 0) {
+                obj.prop('disabled', false);
+                obj.text("获取验证码");
+                countdown3 = 60; //60秒过后button上的文字初始化,计时器初始化;
+                return;
+            } else {
+                obj.prop('disabled', true);
+                obj.text(countdown3 + "s后可重发");
+                countdown3--;
+            }
+            setTimeout(function () {
+                setTime3(obj)
+            }, 1000) //每1000毫秒执行一次
+        }
+
+        //验证
+        $('#forget-submit').click(function () {
+            var thisid = "";
+            $('.forget-main .form-input').removeClass('red');
+            var name = $('.forget-main input[name=name]').val(),
+                    mobile = $('.forget-main input[name=mobile]').val(),
+                    valicode = $('.forget-main input[name=valicode]').val(),
+                    smscode = $('.forget-main input[name=smscode]').val(),
+                    password = $('.forget-main input[name=password]').val();
+            // if (name == "") {
+            //     thisid = "name";
+            // }
+// 			if (name != "" && thisid == '') {
+//                 if (name.length<5) {
+//                     thisid = "name";
+// 					$('.name-info-text').html('用户名不能少于4位');
+//                 }
+//             }
+            if (thisid == "" &&mobile == "") {
+                thisid = "mobile";
+                $('.name-info-text').html('用户名或者手机号不存在');
+            }
+            // if (mobile != "" && thisid == '') {
+            //     if (!check_mobile(mobile)) {
+            //         thisid = "mobile";
+            //     }
+            // }
+            if (valicode == "" && thisid == '') {
+                thisid = "valicode";
+            }
+            if (smscode == "" && thisid == '') {
+                thisid = "smscode";
+            }
+            if (password == "" && thisid == '') {
+                thisid = "password";
+            }
+            if (password != "" && thisid == '') {
+                if (password.length < 6) {
+                    thisid = "password";
+                }
+            }
+			//错误边框变红
+            if (thisid) {
+                $('.forget-main .form-input').removeClass('red');
+				$('.forget-main #'+thisid).addClass('red');
+                return false;
+            } else {
+                $('.forget-main .form-input').removeClass('red');
+            }
+			
+            /*提交*/
+            var postData = {'mod': 'member', 'act': 'modipass', 'mobile': mobile, 'valicode': smscode, 'password': password};
+            yzAjax(apiUrl, postData, 'forgetSuc', 'defaultFail');
+        })
+
+        /*注册成功*/
+        postFuns.forgetSuc = function (data) {
+        	layer.alert('修改成功',{icon: 1, closeBtn: 0},
+            function () {
+                 window.location.reload();
+            });
+        }
+
+        //绑定弹窗=====================================
+        //关闭
+        $('body').on('click', '#bind-tan .close', function () {
+            $('#bind-tan').hide();
+        })
+        //触焦变色
+        $(".bind-main .form-input").focus(function () {
+            $(this).removeClass('red');
+        });
+        //失去焦点验证当前表单
+        $(".bind-main #mobile").blur(function () {
+            var mobile = $('.bind-main #mobile').val();
+            if (mobile == "") {
+                $('.bind-main #mobile').addClass('red');
+            } else {
+                if (!check_mobile(mobile)) {
+                    $('.bind-main #mobile').addClass('red');
+                } else {
+                    $('.bind-main #mobile').removeClass('red');
+                }
+            }
+        })
+        $(".bind-main #smscode").blur(function () {
+            var smscode = $('.bind-main #smscode').val();
+            if (smscode == "") {
+                $('.bind-main #smscode').addClass('red');
+            } else {
+                $('.bind-main #smscode').removeClass('red');
+            }
+        })
+        //注册获取验证码
+        $('body').on('click', '#bind-tan #second', function () {
+            sendyzm2($("#bind-tan #second"));
+        });
+
+        //点击微信登录
+        $('body').on('click', '#weixin', function () {
+        	window.location.href='https://open.weixin.qq.com/connect/qrconnect?appid=wxadc1750eb8c576bc&redirect_uri=http%3A%2F%2Fwww.cnad.com%2Fmember%2Fwxlogin.php&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect';
+        	var url = window.location.href;
+        	document.cookie = "url="+url;
+        });
+
+        /**/
+        function sendyzm2(obj) {
+            var mobile = $("#bind-tan #mobile").val();
+            if (!check_mobile(mobile)) {
+                $('.bind-main #mobile').addClass('red');
+                return false;
+            }
+        }
+
+        //60s倒计时实现逻辑
+        var countdown2 = 60;
+        function setTime2(obj) {
+            if (countdown2 == 0) {
+                obj.prop('disabled', false);
+                obj.text("获取验证码");
+                countdown2 = 60; //60秒过后button上的文字初始化,计时器初始化;
+                return;
+            } else {
+                obj.prop('disabled', true);
+                obj.text(countdown2 + "s后可重发");
+                countdown2--;
+            }
+            setTimeout(function () {
+                setTime(obj)
+            }, 1000) //每1000毫秒执行一次
+        }
+        //点击可见，改成不可见
+        $('body').on('click', '.icon-kejian', function () {
+            $(this).parent('.password-info').find('.form-input').attr('type', 'password');
+            $(this).hide();
+            $(this).parent('.password-info').find('.icon-bukejian').show();
+        })
+
+        //点击不可见，改成可见
+        $('body').on('click', '.icon-bukejian', function () {
+            $(this).parent('.password-info').find('.form-input').attr('type', 'text');
+            $(this).hide();
+            $(this).parent('.password-info').find('.icon-kejian').show();
+        })
+    })
+    
+    //签到缓存
+    function sign_cookie(n){
+    	var curDate = new Date();
+ 
+        //当前时间戳
+        var curTamp = curDate.getTime();
+
+        //当日凌晨的时间戳,减去一毫秒是为了防止后续得到的时间不会达到00:00:00的状态
+        var curWeeHours = new Date(curDate.toLocaleDateString()).getTime() - 1;
+
+        //当日已经过去的时间（毫秒）
+        var passedTamp = curTamp - curWeeHours;
+
+        //当日剩余时间
+        var leftTamp = 24 * 60 * 60 * 1000 - passedTamp;
+        var leftTime = new Date();
+        leftTime.setTime(leftTamp + curTamp);
+        //创建cookie
+        var userid = ""
+        document.cookie = "sign_"+userid+"=1;expires=" + leftTime.toGMTString(); 
+	}
+    
+	/*签到*/
+	function sign(e,a){
+		if(!($(e).hasClass('disabled'))){
+			$(e).addClass('disabled');
+	        $(e).parent().find('#qiandao-number').html('+20').show().addClass("fadeOutUp");
+	        setTimeout(() => {
+	            $(e).parent().find('#qiandao-number').removeClass("fadeOutUp").hide();
+	        }, 1000);
+		}
+	   var postData = {'mod': 'integral', 'act': 'sign'};
+	   sign_cookie()
+       yzAjax(apiUrl, postData,function(){
+	       	if(a==1){
+	       		$(e).addClass('active');
+	       		setTimeout(() => {
+					location.reload() 
+       			}, 1000);
+	       	}else{
+	       		$(e).addClass('active');
+	       		setTimeout(() => {
+		       	   layer.alert('签到成功', { icon: 1 }, function (index) {
+			            //关闭弹窗
+					    layer.close(index);		 	
+						location.reload() 
+					});
+	       		}, 500);
+	       	}
+	   },'defaultFail');
+	}
+</script>
+		<!-- 首屏广告 -->
+	         <!-- 幻灯片 -->
+     <div id="kinMaxShow">
+         
+         <div>
+            <a href="http://1118.cctv.com/chinese/" target="_blank"><img src="http://www.cnad.com/upload/tmp/11/17/0253536194a7011d4c9575.png" /></a>
+        </div>
+         
+         <div>
+            <a href="https://srt1314.com/srt_gzh/pages/module_smdk/productDetails.html?prodUuid=xyd1&amp;lxdh=15218350436&amp;userUuid=402880897a5bceac017a759347ae013d&amp;openid=ox39ev1MQ7ysYItmAZJG8-B0Syi0&amp;userName=%E5%8F%AA%E4%BC%9A%E6%87%92%E6%B4%8B%E6%B4%8B%E7%9C%8B%" target="_blank"><img src="http://www.cnad.com/upload/tmp/11/17/11555761947d4d1973645.png" /></a>
+        </div>
+         
+         <div>
+            <a href="http://www.cnad.com/html/special/2/499/index.shtml" target="_blank"><img src="http://www.cnad.com/upload/tmp/08/23/0101535f41f841acdba252.jpg" /></a>
+        </div>
+         
+         <div>
+            <a href="http://www.cnad.com/html/special/2/500/index.shtml" target="_blank"><img src="http://www.cnad.com/upload/tmp/07/06/09342060e3b31ca1036879.jpg" /></a>
+        </div>
+         
+         <div>
+            <a href="http://www.cnad.com/html/special/2/483/index.shtml" target="_blank"><img src="http://www.cnad.com/upload/tmp/01/07/05352661d8095e227fa400.jpg" /></a>
+        </div>
+             </div>
+     <!-- 内容 -->
+     <div id="index-main1" class="main">
+        <!-- 左边 -->
+        <div class="main-left">
+           <!-- 热门标签 -->
+           <div class="tip-main">
+               <div class="tip-title">热门标签</div>
+               <div class="tip-info">
+                     
+                   <a class="tip-item" href="index.php?mod=label&act=list&labels=1" target="_blank">广告</a>
+                    
+                   <a class="tip-item" href="index.php?mod=label&act=list&labels=13" target="_blank">作品</a>
+                    
+                   <a class="tip-item" href="index.php?mod=label&act=list&labels=2" target="_blank">营销</a>
+                    
+                   <a class="tip-item" href="index.php?mod=label&act=list&labels=3" target="_blank">观点</a>
+                    
+                   <a class="tip-item" href="index.php?mod=label&act=list&labels=8" target="_blank">创意</a>
+                    
+                   <a class="tip-item" href="index.php?mod=label&act=list&labels=6" target="_blank">案例</a>
+                    
+                   <a class="tip-item" href="index.php?mod=label&act=list&labels=4" target="_blank">干货</a>
+                    
+                   <a class="tip-item" href="index.php?mod=label&act=list&labels=9" target="_blank">视频</a>
+                    
+                   <a class="tip-item" href="index.php?mod=label&act=list&labels=7" target="_blank">媒介</a>
+                    
+                   <a class="tip-item" href="index.php?mod=label&act=list&labels=10" target="_blank">数据</a>
+                    
+                   <a class="tip-item" href="index.php?mod=label&act=list&labels=14" target="_blank">原创</a>
+                    
+                   <a class="tip-item" href="index.php?mod=label&act=list&labels=51" target="_blank">资讯</a>
+                                  </div>
+            </div>
+            <!-- 搜索 -->
+            <div class="header-search">
+                    <input placeholder="搜索文章" id="search-input" type="text" />
+                    <div id="search-btn">
+                        <i class="iconfont icon-sousuo" style="font-size:26px;"></i>
+                    </div>
+            </div>
+            <!-- 走进广告 -->
+            <div id="goZjgg" class="zjgg" data-href="index.php?mod=article&act=list&typeId=1418" >
+                <div class="zjgg_text1" style="font-size: 17px;">走进知名广告公司</div>
+                <div class="zjgg_text2">更多</div>
+                <img class="zjgg-none" src="http://img1.cnad.cn/html/static/image/zjgg.png">
+                <div class="zjgg-imginfo">
+                   <img class="zjgg-img" src="http://img1.cnad.cn/html/static/image/zjgg.png">
+                </div>
+            </div>
+            
+            <a class="ggzs" href="http://www.cnad.com/index.php?mod=monitor&act=list" target="_blank">
+                <div class="ggzs_text"><span>户外监测</span></div>
+                <img src="http://www.cnad.com/html/module/home/img/huwai.jpg">
+            </a>
+            <!-- 每日必读 -->
+            <div class="mrbd">
+                <div class="mrbd-title-info">
+                    <div class="mrbd-title">每<span>日</span>必读</div>
+                    <a href="index.php?mod=article&act=list" class="mrbd-more" target="_blank"><span>更多</span></a>
+                </div>                
+                <div class="mrbd-main">
+                                        <a href="index.php?mod=article&act=view&titleId=329087" class="mrbd-item" target="_blank">
+                        <div class="mrbd-item-left">
+                            <img src="http://www.cnad.com/upload/tmp/03/01/102537621d8421f2f93321.png" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'">
+                        </div>
+                        <div class="mrbd-item-right">
+                            <div class="mrbd-item-text" style="line-height: 20px; height: 40px; text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; white-space: normal; -webkit-box-orient: vertical;">
+                                2021年中国网络音频产业研究报告 
+                            </div>
+                        </div>
+                    </a>
+                                        <a href="index.php?mod=article&act=view&titleId=329086" class="mrbd-item" target="_blank">
+                        <div class="mrbd-item-left">
+                            <img src="http://www.cnad.com/upload/tmp/03/01/101514621d81b28d24d569.png" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'">
+                        </div>
+                        <div class="mrbd-item-right">
+                            <div class="mrbd-item-text" style="line-height: 20px; height: 40px; text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; white-space: normal; -webkit-box-orient: vertical;">
+                                2022年中国品质直播选型与应用白皮书 
+                            </div>
+                        </div>
+                    </a>
+                                        <a href="index.php?mod=article&act=view&titleId=329095" class="mrbd-item" target="_blank">
+                        <div class="mrbd-item-left">
+                            <img src="http://www.cnad.com/upload/tmp/03/01/034655621dcf6f771ce997.png" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'">
+                        </div>
+                        <div class="mrbd-item-right">
+                            <div class="mrbd-item-text" style="line-height: 20px; height: 40px; text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; white-space: normal; -webkit-box-orient: vertical;">
+                                拒绝百来个代言，苏翊鸣与谷爱凌成对比？ 
+                            </div>
+                        </div>
+                    </a>
+                                        <a href="index.php?mod=article&act=view&titleId=329078" class="mrbd-item" target="_blank">
+                        <div class="mrbd-item-left">
+                            <img src="http://www.cnad.com/upload/tmp/02/28/023625621c6d69dc767569.jpg" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'">
+                        </div>
+                        <div class="mrbd-item-right">
+                            <div class="mrbd-item-text" style="line-height: 20px; height: 40px; text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; white-space: normal; -webkit-box-orient: vertical;">
+                                2022年第一波户外广告案例，给你新的创意灵感！ 
+                            </div>
+                        </div>
+                    </a>
+                                        <a href="index.php?mod=article&act=view&titleId=329076" class="mrbd-item" target="_blank">
+                        <div class="mrbd-item-left">
+                            <img src="http://www.cnad.com/upload/tmp/02/28/020839621c66e70df95287.jpg" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'">
+                        </div>
+                        <div class="mrbd-item-right">
+                            <div class="mrbd-item-text" style="line-height: 20px; height: 40px; text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; white-space: normal; -webkit-box-orient: vertical;">
+                                这届冬奥会真就段子大舞台呗？ 
+                            </div>
+                        </div>
+                    </a>
+                                        <a href="index.php?mod=article&act=view&titleId=329072" class="mrbd-item" target="_blank">
+                        <div class="mrbd-item-left">
+                            <img src="http://www.cnad.com/upload/tmp/02/28/103236621c344472fee873.jpg" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'">
+                        </div>
+                        <div class="mrbd-item-right">
+                            <div class="mrbd-item-text" style="line-height: 20px; height: 40px; text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; white-space: normal; -webkit-box-orient: vertical;">
+                                明星代言为彩妆带来的流量效应 
+                            </div>
+                        </div>
+                    </a>
+                                    </div>
+            </div>
+            <!-- 专题 -->
+            <div class="zhuanti">
+                <div class="zhuanti-title-info">
+                    <div class="zhuanti-title">专题</div>
+                    <a href="index.php?mod=zhuanti&act=index" class="zhuanti-more" target="_blank"><span>更多</span></a>
+                </div>
+                                 <a href="index.php?mod=zhuanti&act=view&zhuantiColumnId=100" target="_blank">
+                <div class="zhuanti-main">
+                    <div class="zhuanti-item">
+                        <div class="zhuanti-item-top">
+                            <img class="zhuanti-item-none" src="http://www.cnad.com/upload/tmp/12/13/06182761b71df3b15cc693.png">
+                            <div class="zhuanti-item-imginfo">
+                             <img class="zhuanti-item-img" src="http://www.cnad.com/upload/tmp/12/13/06182761b71df3b15cc693.png">
+                            </div>
+                        </div>
+                        <div class="zhuanti-item-bottom">
+                            <div class="zhuanti-item-text">
+                               2021亚洲广告会议澳门大会                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+                            </div>
+			<!-- 创意图库 -->
+             
+            <a class="cytk" href="index.php?mod=picture&amp;act=list&amp;typeId=1379" target="_blank">
+                <div class="cytk_text"><span>创意宝典</span></div>
+                <img src="http://www.cnad.com/upload/tmp/08/26/1124455f45d5fd1b3b3389.jpg">
+            </a>
+                        <!-- 广告招商 -->
+             
+            <a class="ggzs" href="http://www.cnad.com/html/special/2/483/index.shtml" target="_blank">
+                <div class="ggzs_text"><span>招商</span></div>
+                <img src="http://www.cnad.com/upload/tmp/08/24/0322195f436aab05983280.jpg">
+            </a>
+                        <!-- 户外招商 -->
+            <div class="hwzs">
+                <div class="hwzs-title-info">
+                    <div class="hwzs-title">户外招商</div>
+                    <a href="index.php?mod=outdoor&act=list" class="hwzs-more" target="_blank"><span>更多</span></a>
+                </div>
+                <div class="hwzs-main">
+                                        <a href="index.php?mod=outdoor&act=view&outdoorAdId=10673" class="hwzs-item" target="_blank">
+                        <div class="hwzs-item-top">
+                            <span class="hwzs-item-text1-l">【上海城区】</span>
+                            <span class="hwzs-item-text1-r">户外路牌</span>
+                        </div>
+                        <div class="hwzs-item-foot">
+                            <div class="hwzs-item-foot-text"><span>上海来福士广场外墙竖屏LED</span></div>
+                        </div>
+                    </a>
+                                        <a href="index.php?mod=outdoor&act=view&outdoorAdId=10672" class="hwzs-item" target="_blank">
+                        <div class="hwzs-item-top">
+                            <span class="hwzs-item-text1-l">【上海城区】</span>
+                            <span class="hwzs-item-text1-r">户外路牌</span>
+                        </div>
+                        <div class="hwzs-item-foot">
+                            <div class="hwzs-item-foot-text"><span>上海浦东世纪大道金茂大厦屏</span></div>
+                        </div>
+                    </a>
+                                        <a href="index.php?mod=outdoor&act=view&outdoorAdId=10671" class="hwzs-item" target="_blank">
+                        <div class="hwzs-item-top">
+                            <span class="hwzs-item-text1-l">【重庆】</span>
+                            <span class="hwzs-item-text1-r">户外路牌</span>
+                        </div>
+                        <div class="hwzs-item-foot">
+                            <div class="hwzs-item-foot-text"><span>重庆观音桥商圈中心新世界百货LED媒体</span></div>
+                        </div>
+                    </a>
+                                    </div>
+            </div>
+            <!-- 数据 -->
+            <div class="zhuanti">
+                <div class="zhuanti-title-info">
+                    <div class="zhuanti-title">数据</div>
+                    <a class="zhuanti-more" href="index.php?mod=label&act=list&labels=10" target="_blank"><span>更多</span></a>
+                </div>
+                                <a href="index.php?mod=article&act=view&titleId=328602" target="_blank">
+                <div class="zhuanti-main">
+                    <div class="zhuanti-item">
+                        <div class="zhuanti-item-top">
+                            <img class="zhuanti-item-none" src="upload/tmp/01/20/02571161e907c789922996.png">
+                            <div class="zhuanti-item-imginfo">
+                                <img class="zhuanti-item-img" src="upload/tmp/01/20/02571161e907c789922996.png">
+                            </div>
+                        </div>
+                        <div class="zhuanti-item-bottom">
+                            <div class="zhuanti-item-text">
+                                2021年中国网络广告年度洞察报告—产业篇                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+                            </div>
+            <!-- 推荐广告公司 -->
+            <!-- 使用请删除style="background: #f2f2f2;"和把 优秀企业 打开 -->
+            <div class="tjgggs" style="background: #f2f2f2;">
+                <div class="tjgggs-title-info">
+                    <!--<div class="tjgggs-title">优秀企业</div>-->
+                    <!-- <div class="tjgggs-more"><span>更多</span></div> -->
+                </div>
+                <div class="tjgggs-main">
+                                        
+                </div>
+            </div>
+            
+        </div>
+        <!-- 右边 -->
+        <div class="main-right">
+            <div class="content-main">
+                <div class="content-top">
+                    <div class="content-title">全部内容</div>
+                    <div class="content-menu">
+                        <!-- <div class="content-menu-item"><span>上周热门案例</span><i class="icon icon-74"></i></div>
+                        <div class="content-menu-item"><span>上周热门案例</span><i class="icon icon-74"></i></div>
+                        <div class="content-menu-item"><span>上周热门案例</span><i class="icon icon-74"></i></div>
+                        <div class="content-menu-item"><span>上周热门案例</span><i class="icon icon-74"></i></div>
+                        <div class="content-menu-item"><span>上周热门案例</span><i class="icon icon-74"></i></div> -->
+                    </div>
+                    <div class="content-search" style="display:none;">
+                        <input placeholder="想看什么" id="content-search" type="text" />
+                        <button class="content-search-btn">?</button>
+                    </div> 
+                </div>
+                <!-- 内容 -->
+                <div class="content-list">
+                                        <div class="content-item">
+                        <a href="index.php?mod=article&act=view&titleId=329096" class="content-item-top" target="_blank">
+                            <div class="content-item-img"><img src="http://www.cnad.com/upload/tmp/03/01/040811621dd46b229c6251.jpg" onload="loadImage(this)"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'"></div>
+                            <div class="content-item-mask">
+                                <div class="content-item-mask-text">
+                                    2月的文案，其实很多都和情绪有关，不管是归家，还是爱情，会让你感慨语言这东西，原来表达情绪的时候，也很滋养人。
+
+接下来，就把我攥着的好文案，分享给大家吧：                                    
+                                </div>
+                            </div>
+                        </a>
+                        <div class="content-item-foot">
+                            <a href="index.php?mod=article&act=view&titleId=329096" class="content-item-foot-text" target="_blank">
+                                2月，最爱的10句文案                            </a>
+							<div class="labelsInfos_div">
+								                        <div class="content-item-foot-type" style='background:#17C6A9;border-color:#17C6A9;color:#ffffff;'>
+	                            案例	                        </div>
+	                                                	</div>
+                              <div class="content-item-foot-info">
+                                <div class="content-item-foot-info-left">
+                                    <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">683</div>
+                                    <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">1</div>
+                                    <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                                    <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">0</div>
+                                </div>
+                                <div class="content-item-foot-info-right">
+                                    2022.03.01                                </div>
+                            </div>
+                            <div class="content-item-foot-info2">
+                                <div class="content-item-foot-info2-left">
+                                    <img src="http://www.cnad.com/upload/tmp/05/12/102213609b3bd52641c551.jpg"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/logo2.png'" />
+                                    <div class="content-item-foot-infow-text">广告女王（ID：adqueen）</div>
+                                </div>
+                                <div class="content-item-foot-info2-right" onclick='setBaiduShare("2月，最爱的10句文案","index.php?mod=article&act=view&titleId=329096","2月的文案，其实很多都和情绪有关，不管是归家，还是爱情，会让你感慨语言这东西，原来表达情绪的时候，也很滋养人。接下来，就把我攥着的好文案，分享给大家吧：","http://www.cnad.com/upload/tmp/03/01/040811621dd46b229c6251.jpg")' >
+                                    <i class="icon icon-3"></i><div class="content-item-foot-info-share">分享</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                                        <div class="content-item">
+                        <a href="index.php?mod=article&act=view&titleId=329092" class="content-item-top" target="_blank">
+                            <div class="content-item-img"><img src="http://www.cnad.com/upload/tmp/03/01/025949621dc4659aee9690.png" onload="loadImage(this)"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'"></div>
+                            <div class="content-item-mask">
+                                <div class="content-item-mask-text">
+                                    不知道你们大家有没有被2月14日热搜榜上的巨形玫瑰花刷屏，这一巨型玫瑰花惊现长沙王府井商场外，引得路人争相打卡，并且快速在网络上发酵，引起讨论。就是这么一普通的节日营销，为什么能火出圈？                                    
+                                </div>
+                            </div>
+                        </a>
+                        <div class="content-item-foot">
+                            <a href="index.php?mod=article&act=view&titleId=329092" class="content-item-foot-text" target="_blank">
+                                一夜之间成户外广告顶流，节日营销才是出圈王道！                            </a>
+							<div class="labelsInfos_div">
+								                        <div class="content-item-foot-type" style='background:#6d75f1;border-color:#6d75f1;color:#ffffff;'>
+	                            营销	                        </div>
+	                                                	</div>
+                              <div class="content-item-foot-info">
+                                <div class="content-item-foot-info-left">
+                                    <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">672</div>
+                                    <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">1</div>
+                                    <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                                    <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">0</div>
+                                </div>
+                                <div class="content-item-foot-info-right">
+                                    2022.03.01                                </div>
+                            </div>
+                            <div class="content-item-foot-info2">
+                                <div class="content-item-foot-info2-left">
+                                    <img src="http://www.cnad.com/upload/tmp/07/20/04521560f68ebf05f28864.jpg"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/logo2.png'" />
+                                    <div class="content-item-foot-infow-text">户外广告内参</div>
+                                </div>
+                                <div class="content-item-foot-info2-right" onclick='setBaiduShare("一夜之间成户外广告顶流，节日营销才是出圈王道！","index.php?mod=article&act=view&titleId=329092","不知道你们大家有没有被2月14日热搜榜上的巨形玫瑰花刷屏，这一巨型玫瑰花惊现长沙王府井商场外，引得路人争相打卡，并且快速在网络上发酵，引起讨论。就是这么一普通的节日营销，为什么能火出圈？","http://www.cnad.com/upload/tmp/03/01/025949621dc4659aee9690.png")' >
+                                    <i class="icon icon-3"></i><div class="content-item-foot-info-share">分享</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                                        <div class="content-item">
+                        <a href="index.php?mod=article&act=view&titleId=329091" class="content-item-top" target="_blank">
+                            <div class="content-item-img"><img src="http://www.cnad.com/upload/tmp/03/01/021327621db98769e76976.png" onload="loadImage(this)"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'"></div>
+                            <div class="content-item-mask">
+                                <div class="content-item-mask-text">
+                                    随着消费者网购的
+要求越来越高
+一些卖家为了提高商品的销量
+表情包、玩段子、玩梗、蹭热度
+可谓是用尽了浑身解数
+这不，最近一家名为
+@根据地的二狗的淘宝店文案
+就因为过于狂野的
+文案风格而火了！
+
+别人家的店铺主页
+都是经过多方面研究
+采用的都是各种看起来
+十分高大上的设计
+而它家的店铺却画风十分清奇                                    
+                                </div>
+                            </div>
+                        </a>
+                        <div class="content-item-foot">
+                            <a href="index.php?mod=article&act=view&titleId=329091" class="content-item-foot-text" target="_blank">
+                                淘宝美妆店神文案，脑洞绝了                            </a>
+							<div class="labelsInfos_div">
+								                        <div class="content-item-foot-type" style='background:#17C6A9;border-color:#17C6A9;color:#ffffff;'>
+	                            案例	                        </div>
+	                                                	</div>
+                              <div class="content-item-foot-info">
+                                <div class="content-item-foot-info-left">
+                                    <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">699</div>
+                                    <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">2</div>
+                                    <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                                    <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">0</div>
+                                </div>
+                                <div class="content-item-foot-info-right">
+                                    2022.03.01                                </div>
+                            </div>
+                            <div class="content-item-foot-info2">
+                                <div class="content-item-foot-info2-left">
+                                    <img src="http://www.cnad.com/upload/tmp/09/17/1121105f62d626ce853648.jpg"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/logo2.png'" />
+                                    <div class="content-item-foot-infow-text">广告猎人（ID:i4AADS）</div>
+                                </div>
+                                <div class="content-item-foot-info2-right" onclick='setBaiduShare("淘宝美妆店神文案，脑洞绝了","index.php?mod=article&act=view&titleId=329091","随着消费者网购的要求越来越高一些卖家为了提高商品的销量表情包、玩段子、玩梗、蹭热度可谓是用尽了浑身解数这不，最近一家名为@根据地的二狗的淘宝店文案就因为过于狂野的文案风格而火了！别人家的店铺主页都是经过多方面研究采用的都是各种看起来十分高大上的设计而它家的店铺却画风十分清奇","http://www.cnad.com/upload/tmp/03/01/021327621db98769e76976.png")' >
+                                    <i class="icon icon-3"></i><div class="content-item-foot-info-share">分享</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                                        <div class="content-item">
+                        <a href="index.php?mod=article&act=view&titleId=329090" class="content-item-top" target="_blank">
+                            <div class="content-item-img"><img src="http://www.cnad.com/upload/tmp/03/01/015939621db64b174c1909.jpg" onload="loadImage(this)"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'"></div>
+                            <div class="content-item-mask">
+                                <div class="content-item-mask-text">
+                                    周三，工作日最绝望的一天
+前不着周日，后不着周五
+在这种时刻，最容易不自律
+所以圈仔甘当互联网提醒小助手
+督促你忙里偷闲地打卡完成某些项目
+维持身心健康，从你我做起
+
+ 梗图预警，随时保存                                     
+                                </div>
+                            </div>
+                        </a>
+                        <div class="content-item-foot">
+                            <a href="index.php?mod=article&act=view&titleId=329090" class="content-item-foot-text" target="_blank">
+                                还在提肛的互联网人，你们都out了！                            </a>
+							<div class="labelsInfos_div">
+								                        <div class="content-item-foot-type" style='background:#17C6A9;border-color:#17C6A9;color:#ffffff;'>
+	                            案例	                        </div>
+	                                                	</div>
+                              <div class="content-item-foot-info">
+                                <div class="content-item-foot-info-left">
+                                    <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">695</div>
+                                    <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">2</div>
+                                    <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                                    <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">0</div>
+                                </div>
+                                <div class="content-item-foot-info-right">
+                                    2022.03.01                                </div>
+                            </div>
+                            <div class="content-item-foot-info2">
+                                <div class="content-item-foot-info2-left">
+                                    <img src="http://www.cnad.com/upload/tmp/05/13/050631609cec17d8833348.jpg"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/logo2.png'" />
+                                    <div class="content-item-foot-infow-text"> 文案圈（ID:cwcode）</div>
+                                </div>
+                                <div class="content-item-foot-info2-right" onclick='setBaiduShare("还在提肛的互联网人，你们都out了！","index.php?mod=article&act=view&titleId=329090","周三，工作日最绝望的一天前不着周日，后不着周五在这种时刻，最容易不自律所以圈仔甘当互联网提醒小助手督促你忙里偷闲地打卡完成某些项目维持身心健康，从你我做起梗图预警，随时保存","http://www.cnad.com/upload/tmp/03/01/015939621db64b174c1909.jpg")' >
+                                    <i class="icon icon-3"></i><div class="content-item-foot-info-share">分享</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                                        <div class="content-item">
+                        <a href="index.php?mod=article&act=view&titleId=329089" class="content-item-top" target="_blank">
+                            <div class="content-item-img"><img src="http://www.cnad.com/upload/tmp/03/01/110915621d8e5bbd436108.jpg" onload="loadImage(this)"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'"></div>
+                            <div class="content-item-mask">
+                                <div class="content-item-mask-text">
+                                    事实上，早在去年10月，元气森林就签约了这三位代言人，并将其组合成“冰雪新青年”，如今押三中三，可谓妥妥的预言家牌了。在我看来，元气森林这波还是赢在了敏感度，其一是顺势抓住了“家门口的体育盛事”这一营销热点，引领了年轻群体的奥运情绪；其二主题广告语“为年轻争口气”也紧扣了年轻主旋律，让后续“预判”的胜算大幅提升。
+                                    
+                                </div>
+                            </div>
+                        </a>
+                        <div class="content-item-foot">
+                            <a href="index.php?mod=article&act=view&titleId=329089" class="content-item-foot-text" target="_blank">
+                                元气森林押三冠、得物公关反转                            </a>
+							<div class="labelsInfos_div">
+								                        <div class="content-item-foot-type" style='background:#17C6A9;border-color:#17C6A9;color:#ffffff;'>
+	                            案例	                        </div>
+	                                                	</div>
+                              <div class="content-item-foot-info">
+                                <div class="content-item-foot-info-left">
+                                    <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">731</div>
+                                    <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">2</div>
+                                    <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                                    <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">0</div>
+                                </div>
+                                <div class="content-item-foot-info-right">
+                                    2022.03.01                                </div>
+                            </div>
+                            <div class="content-item-foot-info2">
+                                <div class="content-item-foot-info2-left">
+                                    <img src="http://www.cnad.com/upload/tmp/05/11/1038596099ee4337798699.jpg"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/logo2.png'" />
+                                    <div class="content-item-foot-infow-text">营销案例精选（ID：m-cases）</div>
+                                </div>
+                                <div class="content-item-foot-info2-right" onclick='setBaiduShare("元气森林押三冠、得物公关反转","index.php?mod=article&act=view&titleId=329089","事实上，早在去年10月，元气森林就签约了这三位代言人，并将其组合成“冰雪新青年”，如今押三中三，可谓妥妥的预言家牌了。在我看来，元气森林这波还是赢在了敏感度，其一是顺势抓住了“家门口的体育盛事”这一营销热点，引领了年轻群体的奥运情绪；其二主题广告语“为年轻争口气”也紧扣了年轻主旋律，让后续“预判”的胜算大幅提升。","http://www.cnad.com/upload/tmp/03/01/110915621d8e5bbd436108.jpg")' >
+                                    <i class="icon icon-3"></i><div class="content-item-foot-info-share">分享</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                                        <div class="content-item">
+                        <a href="index.php?mod=article&act=view&titleId=329085" class="content-item-top" target="_blank">
+                            <div class="content-item-img"><img src="http://www.cnad.com/upload/tmp/03/01/095909621d7dedb4e87643.png" onload="loadImage(this)"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'"></div>
+                            <div class="content-item-mask">
+                                <div class="content-item-mask-text">
+                                    很多精炼又有趣的问答，
+初看是不太正经的段子，
+细看却也是一针见血的洞察。
+
+我们摘录了一些“人生的灵魂问答”，
+来自网络，来自身边朋友，
+也来自自己的生活体验。
+
+希望以不太严肃的方式，
+看透生活，笑着活下去。                                    
+                                </div>
+                            </div>
+                        </a>
+                        <div class="content-item-foot">
+                            <a href="index.php?mod=article&act=view&titleId=329085" class="content-item-foot-text" target="_blank">
+                                人生的灵魂问答（27）                            </a>
+							<div class="labelsInfos_div">
+								                        <div class="content-item-foot-type" style='background:#17C6A9;border-color:#17C6A9;color:#ffffff;'>
+	                            案例	                        </div>
+	                                                	</div>
+                              <div class="content-item-foot-info">
+                                <div class="content-item-foot-info-left">
+                                    <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">739</div>
+                                    <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">2</div>
+                                    <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                                    <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">1</div>
+                                </div>
+                                <div class="content-item-foot-info-right">
+                                    2022.03.01                                </div>
+                            </div>
+                            <div class="content-item-foot-info2">
+                                <div class="content-item-foot-info2-left">
+                                    <img src="http://www.cnad.com/upload/tmp/12/10/09001761b2a6a1ae24c322.jpg"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/logo2.png'" />
+                                    <div class="content-item-foot-infow-text">一周文案（ID:copyweekly）</div>
+                                </div>
+                                <div class="content-item-foot-info2-right" onclick='setBaiduShare("人生的灵魂问答（27）","index.php?mod=article&act=view&titleId=329085","很多精炼又有趣的问答，初看是不太正经的段子，细看却也是一针见血的洞察。我们摘录了一些“人生的灵魂问答”，来自网络，来自身边朋友，也来自自己的生活体验。希望以不太严肃的方式，看透生活，笑着活下去。","http://www.cnad.com/upload/tmp/03/01/095909621d7dedb4e87643.png")' >
+                                    <i class="icon icon-3"></i><div class="content-item-foot-info-share">分享</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                                        <div class="content-item">
+                        <a href="index.php?mod=article&act=view&titleId=329083" class="content-item-top" target="_blank">
+                            <div class="content-item-img"><img src="http://www.cnad.com/upload/tmp/03/01/093428621d782455481611.jpg" onload="loadImage(this)"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'"></div>
+                            <div class="content-item-mask">
+                                <div class="content-item-mask-text">
+                                    2月22日，税务机关对知名网红主播驴嫂平荣，因为涉嫌偷逃税款，被依法追缴税款、加收滞纳金并处罚款，合计6200.3万元。事情的起因是税务机关通过税收的大数据系统分析，驴嫂平荣在2019年至2020年期间，做直播带货的时候，通过隐藏直播佣金收入偷逃个人所得税1926.05万元，未根据税收规定少缴有关税款1450.72万元。这几年直播带货频繁暴雷，让品牌们开始反思，直播带货难道都是好处，没有什么坏处吗？                                    
+                                </div>
+                            </div>
+                        </a>
+                        <div class="content-item-foot">
+                            <a href="index.php?mod=article&act=view&titleId=329083" class="content-item-foot-text" target="_blank">
+                                主播被罚6200万，看直播卖货最大瓶颈                            </a>
+							<div class="labelsInfos_div">
+								                        <div class="content-item-foot-type" style='background:#17C6A9;border-color:#17C6A9;color:#ffffff;'>
+	                            案例	                        </div>
+	                        	                        <div class="content-item-foot-type" style='background:#ff0000;border-color:#ff0000;color:#ffffff;'>
+	                            原创	                        </div>
+	                                                	</div>
+                              <div class="content-item-foot-info">
+                                <div class="content-item-foot-info-left">
+                                    <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">728</div>
+                                    <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">2</div>
+                                    <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                                    <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">0</div>
+                                </div>
+                                <div class="content-item-foot-info-right">
+                                    2022.03.01                                </div>
+                            </div>
+                            <div class="content-item-foot-info2">
+                                <div class="content-item-foot-info2-left">
+                                    <img src="http://www.cnad.com/upload/tmp/08/24/0937335f4319dd831aa682.jpg"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/logo2.png'" />
+                                    <div class="content-item-foot-infow-text">CN广告网</div>
+                                </div>
+                                <div class="content-item-foot-info2-right" onclick='setBaiduShare("主播被罚6200万，看直播卖货最大瓶颈","index.php?mod=article&act=view&titleId=329083","2月22日，税务机关对知名网红主播驴嫂平荣，因为涉嫌偷逃税款，被依法追缴税款、加收滞纳金并处罚款，合计6200.3万元。事情的起因是税务机关通过税收的大数据系统分析，驴嫂平荣在2019年至2020年期间，做直播带货的时候，通过隐藏直播佣金收入偷逃个人所得税1926.05万元，未根据税收规定少缴有关税款1450.72万元。这几年直播带货频繁暴雷，让品牌们开始反思，直播带货难道都是好处，没有什么坏处吗？","http://www.cnad.com/upload/tmp/03/01/093428621d782455481611.jpg")' >
+                                    <i class="icon icon-3"></i><div class="content-item-foot-info-share">分享</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                                        <div class="content-item">
+                        <a href="index.php?mod=article&act=view&titleId=329082" class="content-item-top" target="_blank">
+                            <div class="content-item-img"><img src="http://www.cnad.com/upload/tmp/02/28/044207621c8adff069a881.jpg" onload="loadImage(this)"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'"></div>
+                            <div class="content-item-mask">
+                                <div class="content-item-mask-text">
+                                    《人世间》是前段时间悄悄开播的一部剧，没有铺天盖地的宣传，没有频频的热搜，就是这样一部于人间烟火处彰显道义和担当，在悲欢离合中抒写情怀和热望的剧目，最近好评如潮。                                    
+                                </div>
+                            </div>
+                        </a>
+                        <div class="content-item-foot">
+                            <a href="index.php?mod=article&act=view&titleId=329082" class="content-item-foot-text" target="_blank">
+                                《人世间》的台词，无敌了                            </a>
+							<div class="labelsInfos_div">
+								                        <div class="content-item-foot-type" style='background:#17C6A9;border-color:#17C6A9;color:#ffffff;'>
+	                            案例	                        </div>
+	                                                	</div>
+                              <div class="content-item-foot-info">
+                                <div class="content-item-foot-info-left">
+                                    <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">1032</div>
+                                    <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">3</div>
+                                    <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                                    <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">0</div>
+                                </div>
+                                <div class="content-item-foot-info-right">
+                                    2022.02.28                                </div>
+                            </div>
+                            <div class="content-item-foot-info2">
+                                <div class="content-item-foot-info2-left">
+                                    <img src="http://www.cnad.com/upload/tmp/05/12/042817609b91a17bac4236.jpg"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/logo2.png'" />
+                                    <div class="content-item-foot-infow-text">烧脑广告（ID:shukewenzhai）</div>
+                                </div>
+                                <div class="content-item-foot-info2-right" onclick='setBaiduShare("《人世间》的台词，无敌了","index.php?mod=article&act=view&titleId=329082","《人世间》是前段时间悄悄开播的一部剧，没有铺天盖地的宣传，没有频频的热搜，就是这样一部于人间烟火处彰显道义和担当，在悲欢离合中抒写情怀和热望的剧目，最近好评如潮。","http://www.cnad.com/upload/tmp/02/28/044207621c8adff069a881.jpg")' >
+                                    <i class="icon icon-3"></i><div class="content-item-foot-info-share">分享</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                                        <div class="content-item">
+                        <a href="index.php?mod=article&act=view&titleId=329081" class="content-item-top" target="_blank">
+                            <div class="content-item-img"><img src="http://www.cnad.com/upload/tmp/02/28/035420621c7fac7cb53938.png" onload="loadImage(this)"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'"></div>
+                            <div class="content-item-mask">
+                                <div class="content-item-mask-text">
+                                    1849年，美国加州发现金矿，一时淘金热盛行，无数冒险者涌入其间，只为一寸立锥之地争夺火拼，流血无数。
+
+2020年伊始，私域概念成为企业们挂在口头的商业密钥，各行各业如寻找黄金的淘金客一般涌入只为破解后疫情时代的企业增长难题。与私域运营近乎完美契合的SaaS企业，成为市场黑洞，虹吸着资本、客户、用户等多端进入，一时成为商业明星。
+ 
+人力有时穷，市场有尽头。时至今日，无论是私域运营亦或SaaS服务，企业们之所以想要求助这些助力，是因其面临着增长难题。                                    
+                                </div>
+                            </div>
+                        </a>
+                        <div class="content-item-foot">
+                            <a href="index.php?mod=article&act=view&titleId=329081" class="content-item-foot-text" target="_blank">
+                                企业微信可以连接12亿用户金矿，不过你需要一把金铲子！                            </a>
+							<div class="labelsInfos_div">
+								                        <div class="content-item-foot-type" style='background:#da716e;border-color:#da716e;color:#ffffff;'>
+	                            观点	                        </div>
+	                                                	</div>
+                              <div class="content-item-foot-info">
+                                <div class="content-item-foot-info-left">
+                                    <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">913</div>
+                                    <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">4</div>
+                                    <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                                    <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">1</div>
+                                </div>
+                                <div class="content-item-foot-info-right">
+                                    2022.02.28                                </div>
+                            </div>
+                            <div class="content-item-foot-info2">
+                                <div class="content-item-foot-info2-left">
+                                    <img src="http://www.cnad.com/upload/tmp/05/12/031009609b7f51a8f72952.jpg"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/logo2.png'" />
+                                    <div class="content-item-foot-infow-text">甲方财经(ID:jiafangcaijing2019)</div>
+                                </div>
+                                <div class="content-item-foot-info2-right" onclick='setBaiduShare("企业微信可以连接12亿用户金矿，不过你需要一把金铲子！","index.php?mod=article&act=view&titleId=329081","1849年，美国加州发现金矿，一时淘金热盛行，无数冒险者涌入其间，只为一寸立锥之地争夺火拼，流血无数。2020年伊始，私域概念成为企业们挂在口头的商业密钥，各行各业如寻找黄金的淘金客一般涌入只为破解后疫情时代的企业增长难题。与私域运营近乎完美契合的SaaS企业，成为市场黑洞，虹吸着资本、客户、用户等多端进入，一时成为商业明星。人力有时穷，市场有尽头。时至今日，无论是私域运营亦或SaaS服务，企业们之所以想要求助这些助力，是因其面临着增长难题。","http://www.cnad.com/upload/tmp/02/28/035420621c7fac7cb53938.png")' >
+                                    <i class="icon icon-3"></i><div class="content-item-foot-info-share">分享</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                                    </div>
+                <!-- 品牌案例 -->
+                <div class="content-top content-top2">
+                    <div class="content-title" style=" width: 100%; position: relative;">品牌案例<a href="index.php?mod=case&act=list" class="content-tuijian-more" style="line-height: 60px;">查看更多</a></div>
+                </div>
+                <!-- 案例 -->
+                <div class="content-list content-list2">
+                     
+                    <div class="content-item">
+						<a href="index.php?mod=article&act=view&titleId=329094" class="content-item-top" target="_blank">
+                            <div class="content-item-img"><img src="http://www.cnad.com/upload/tmp/03/01/033014621dcb865966e342.jpg" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'"></div>
+                            <div class="content-item-mask">
+                                <div class="content-item-mask-text">
+                                   今天讲一件非常有趣的事情，昨天给我看到的时候真笑裂开了。
+ 
+大家都知道情人节刚过去几天，秀恩爱分手撕逼五花八门精彩绝伦，但没想到情人节的余热还能延续到现在。
+ 
+除了劝分组疯狂上分，得物也在疯狂上分。
+ 
+事情是这样的：
+ 
+有一位女生在小红书po出了一篇文章，怒斥得物卖假鞋。                                </div>
+                            </div>
+                        </a>
+                        <div class="content-item-foot">
+                            <a href="index.php?mod=article&act=view&titleId=329094" class="content-item-foot-main" target="_blank">
+                                <div class="content-item-foot-title">
+                                    辟谣又鉴渣男，小红书的得物运营太难了！  
+                                </div>
+                                <div class="content-item-foot-text2">
+                                    今天讲一件非常有趣的事情，昨天给我看到的时候真笑裂开了。
+ 
+大家都知道情人节刚过去几天，秀恩爱分手撕逼五花八门精彩绝伦，但没想到情人节的余热还能延续到现在。
+ 
+除了劝分组疯狂上分，得物也在疯狂上分。
+ 
+事情是这样的：
+ 
+有一位女生在小红书po出了一篇文章，怒斥得物卖假鞋。                                </div>
+                            </a>
+                            <div class="content-item-foot-type-text">
+								<div class="labelsInfos_div">
+										                        <div class="content-item-foot-type" style='background:#17C6A9;border-color:#17C6A9;color:#ffffff;'>
+		                            案例		                        </div>
+		                        	                        	</div>
+                                <div class="content-item-foot-type-time"><span>4</span>小时前</div>
+                            </div>
+                            <div class="content-item-foot-info2">
+                                <div class="content-item-foot-info2-left">
+                                <img src="http://www.cnad.com/upload/tmp/12/01/0959415fc5a38dae47b918.jpg"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/logo2.png'" />
+                                    <div class="content-item-foot-infow-text">4A广告圈(ID:newggm)</div>
+                                </div>
+                                <div class="content-item-foot-info2-right" onclick='setBaiduShare("辟谣又鉴渣男，小红书的得物运营太难了！","index.php?mod=article&act=view&titleId=329094","今天讲一件非常有趣的事情，昨天给我看到的时候真笑裂开了。大家都知道情人节刚过去几天，秀恩爱分手撕逼五花八门精彩绝伦，但没想到情人节的余热还能延续到现在。除了劝分组疯狂上分，得物也在疯狂上分。事情是这样的：有一位女生在小红书po出了一篇文章，怒斥得物卖假鞋。","http://www.cnad.com/upload/tmp/03/01/033014621dcb865966e342.jpg")' >
+                                    <i class="icon icon-3"></i><div class="content-item-foot-info-share">分享</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     
+                    <div class="content-item">
+						<a href="index.php?mod=article&act=view&titleId=329093" class="content-item-top" target="_blank">
+                            <div class="content-item-img"><img src="http://www.cnad.com/upload/tmp/03/01/031057621dc701e5df2925.jpg" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'"></div>
+                            <div class="content-item-mask">
+                                <div class="content-item-mask-text">
+                                   根据Gartner的调查数据显示，九大行业的营销预算都出现了缩紧，纵观2021年没有一个行业的营销预算超过收入的9%。在信息爆炸的年代，互联网所带来的的信息瞬息万变，品牌主花钱投放的广告随时被淹没在信息流中。同时，随着互联网获客的成本居高不下，品牌主躺着也能收割线上红利的日子已经一去不返。在这样的大背景下，2022年品牌主的营销主旋律必然是险中求稳，稳中求胜。                                </div>
+                            </div>
+                        </a>
+                        <div class="content-item-foot">
+                            <a href="index.php?mod=article&act=view&titleId=329093" class="content-item-foot-main" target="_blank">
+                                <div class="content-item-foot-title">
+                                    2022年品牌营销要求稳，首选电梯广告  
+                                </div>
+                                <div class="content-item-foot-text2">
+                                    根据Gartner的调查数据显示，九大行业的营销预算都出现了缩紧，纵观2021年没有一个行业的营销预算超过收入的9%。在信息爆炸的年代，互联网所带来的的信息瞬息万变，品牌主花钱投放的广告随时被淹没在信息流中。同时，随着互联网获客的成本居高不下，品牌主躺着也能收割线上红利的日子已经一去不返。在这样的大背景下，2022年品牌主的营销主旋律必然是险中求稳，稳中求胜。                                </div>
+                            </a>
+                            <div class="content-item-foot-type-text">
+								<div class="labelsInfos_div">
+										                        <div class="content-item-foot-type" style='background:#17C6A9;border-color:#17C6A9;color:#ffffff;'>
+		                            案例		                        </div>
+		                        	                        	</div>
+                                <div class="content-item-foot-type-time"><span>5</span>小时前</div>
+                            </div>
+                            <div class="content-item-foot-info2">
+                                <div class="content-item-foot-info2-left">
+                                <img src="http://www.cnad.com/upload/tmp/07/20/04521560f68ebf05f28864.jpg"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/logo2.png'" />
+                                    <div class="content-item-foot-infow-text">户外广告内参</div>
+                                </div>
+                                <div class="content-item-foot-info2-right" onclick='setBaiduShare("2022年品牌营销要求稳，首选电梯广告","index.php?mod=article&act=view&titleId=329093","根据Gartner的调查数据显示，九大行业的营销预算都出现了缩紧，纵观2021年没有一个行业的营销预算超过收入的9%。在信息爆炸的年代，互联网所带来的的信息瞬息万变，品牌主花钱投放的广告随时被淹没在信息流中。同时，随着互联网获客的成本居高不下，品牌主躺着也能收割线上红利的日子已经一去不返。在这样的大背景下，2022年品牌主的营销主旋律必然是险中求稳，稳中求胜。","http://www.cnad.com/upload/tmp/03/01/031057621dc701e5df2925.jpg")' >
+                                    <i class="icon icon-3"></i><div class="content-item-foot-info-share">分享</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     
+                    <div class="content-item">
+						<a href="index.php?mod=article&act=view&titleId=329088" class="content-item-top" target="_blank">
+                            <div class="content-item-img"><img src="http://www.cnad.com/upload/tmp/03/01/103918621d875689fec888.jpg" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'"></div>
+                            <div class="content-item-mask">
+                                <div class="content-item-mask-text">
+                                   55555作为麻辣烫第一股的忠实消费者，我只能说，不要看不起任何一个行业和品类，每一个微小的机会点都有可能创造出巨大的利益。
+
+从不起眼的街边小吃到如今即将上市，这样的大好发展估计连19年前刚开张第一家麻辣烫店的杨国福应该也没想到吧~
+
+说起杨国福的经历，其早年也是充满了传奇色彩。
+
+15岁辍学，20岁去哈尔滨摆摊，卖烤肉串和铁板鱿鱼，随着摊位生意的每况愈下，杨国福将眼光投向麻辣烫，并在2003年开张了第一家麻辣烫店。                                </div>
+                            </div>
+                        </a>
+                        <div class="content-item-foot">
+                            <a href="index.php?mod=article&act=view&titleId=329088" class="content-item-foot-main" target="_blank">
+                                <div class="content-item-foot-title">
+                                    街边小吃变上市公司，杨国福做对了什么？  
+                                </div>
+                                <div class="content-item-foot-text2">
+                                    55555作为麻辣烫第一股的忠实消费者，我只能说，不要看不起任何一个行业和品类，每一个微小的机会点都有可能创造出巨大的利益。
+
+从不起眼的街边小吃到如今即将上市，这样的大好发展估计连19年前刚开张第一家麻辣烫店的杨国福应该也没想到吧~
+
+说起杨国福的经历，其早年也是充满了传奇色彩。
+
+15岁辍学，20岁去哈尔滨摆摊，卖烤肉串和铁板鱿鱼，随着摊位生意的每况愈下，杨国福将眼光投向麻辣烫，并在2003年开张了第一家麻辣烫店。                                </div>
+                            </a>
+                            <div class="content-item-foot-type-text">
+								<div class="labelsInfos_div">
+										                        <div class="content-item-foot-type" style='background:#17C6A9;border-color:#17C6A9;color:#ffffff;'>
+		                            案例		                        </div>
+		                        	                        	</div>
+                                <div class="content-item-foot-type-time"><span>9</span>小时前</div>
+                            </div>
+                            <div class="content-item-foot-info2">
+                                <div class="content-item-foot-info2-left">
+                                <img src="http://www.cnad.com/upload/tmp/05/11/1038596099ee4337798699.jpg"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/logo2.png'" />
+                                    <div class="content-item-foot-infow-text">营销案例精选（ID：m-cases）</div>
+                                </div>
+                                <div class="content-item-foot-info2-right" onclick='setBaiduShare("街边小吃变上市公司，杨国福做对了什么？","index.php?mod=article&act=view&titleId=329088","55555作为麻辣烫第一股的忠实消费者，我只能说，不要看不起任何一个行业和品类，每一个微小的机会点都有可能创造出巨大的利益。从不起眼的街边小吃到如今即将上市，这样的大好发展估计连19年前刚开张第一家麻辣烫店的杨国福应该也没想到吧~说起杨国福的经历，其早年也是充满了传奇色彩。15岁辍学，20岁去哈尔滨摆摊，卖烤肉串和铁板鱿鱼，随着摊位生意的每况愈下，杨国福将眼光投向麻辣烫，并在2003年开张了第一家麻辣烫店。","http://www.cnad.com/upload/tmp/03/01/103918621d875689fec888.jpg")' >
+                                    <i class="icon icon-3"></i><div class="content-item-foot-info-share">分享</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     
+                    <div class="content-item">
+						<a href="index.php?mod=article&act=view&titleId=329084" class="content-item-top" target="_blank">
+                            <div class="content-item-img"><img src="http://www.cnad.com/upload/tmp/03/01/095143621d7c2fddd18100.jpg" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'"></div>
+                            <div class="content-item-mask">
+                                <div class="content-item-mask-text">
+                                   俗话说，不到十五都是年。今天，咱就抓住元宵的尾巴和大家谈谈CNY营销。
+ 
+作为一年之中最具仪式感的节日，春节一直都是品牌的必争之地，面对这个集文化、情感、社交等多需求于一体的节点，如何在拥挤的营销赛场突出重围，实现口碑和销量的双丰收，是摆在各个品牌面前的难题。
+ 
+精选君认为，做好CNY营销，“氛围感”的打造很重要，红火、喜庆的温暖氛围不仅能够增强“年味”体验的浓度，更能借思乡情绪的迸发输出品牌温度，从而快速触达消费者。                                </div>
+                            </div>
+                        </a>
+                        <div class="content-item-foot">
+                            <a href="index.php?mod=article&act=view&titleId=329084" class="content-item-foot-main" target="_blank">
+                                <div class="content-item-foot-title">
+                                    这部“把酒倒满”的微电影，拍出了正宗的中国年味儿  
+                                </div>
+                                <div class="content-item-foot-text2">
+                                    俗话说，不到十五都是年。今天，咱就抓住元宵的尾巴和大家谈谈CNY营销。
+ 
+作为一年之中最具仪式感的节日，春节一直都是品牌的必争之地，面对这个集文化、情感、社交等多需求于一体的节点，如何在拥挤的营销赛场突出重围，实现口碑和销量的双丰收，是摆在各个品牌面前的难题。
+ 
+精选君认为，做好CNY营销，“氛围感”的打造很重要，红火、喜庆的温暖氛围不仅能够增强“年味”体验的浓度，更能借思乡情绪的迸发输出品牌温度，从而快速触达消费者。                                </div>
+                            </a>
+                            <div class="content-item-foot-type-text">
+								<div class="labelsInfos_div">
+										                        <div class="content-item-foot-type" style='background:#17C6A9;border-color:#17C6A9;color:#ffffff;'>
+		                            案例		                        </div>
+		                        	                        	</div>
+                                <div class="content-item-foot-type-time"><span>10</span>小时前</div>
+                            </div>
+                            <div class="content-item-foot-info2">
+                                <div class="content-item-foot-info2-left">
+                                <img src="http://www.cnad.com/upload/tmp/05/11/1038596099ee4337798699.jpg"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/logo2.png'" />
+                                    <div class="content-item-foot-infow-text">营销案例精选（ID：m-cases）</div>
+                                </div>
+                                <div class="content-item-foot-info2-right" onclick='setBaiduShare("这部“把酒倒满”的微电影，拍出了正宗的中国年味儿","index.php?mod=article&act=view&titleId=329084","俗话说，不到十五都是年。今天，咱就抓住元宵的尾巴和大家谈谈CNY营销。作为一年之中最具仪式感的节日，春节一直都是品牌的必争之地，面对这个集文化、情感、社交等多需求于一体的节点，如何在拥挤的营销赛场突出重围，实现口碑和销量的双丰收，是摆在各个品牌面前的难题。精选君认为，做好CNY营销，“氛围感”的打造很重要，红火、喜庆的温暖氛围不仅能够增强“年味”体验的浓度，更能借思乡情绪的迸发输出品牌温度，从而快速触达消费者。","http://www.cnad.com/upload/tmp/03/01/095143621d7c2fddd18100.jpg")' >
+                                    <i class="icon icon-3"></i><div class="content-item-foot-info-share">分享</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     
+                    <div class="content-item">
+						<a href="index.php?mod=article&act=view&titleId=329080" class="content-item-top" target="_blank">
+                            <div class="content-item-img"><img src="http://www.cnad.com/upload/tmp/02/28/031839621c774f2f8d6836.png" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'"></div>
+                            <div class="content-item-mask">
+                                <div class="content-item-mask-text">
+                                   除了鲜花，巧克力也是情人节的标配，没想到我却在网上看到了这样一个热搜：事情的起因是，最近有消费者在天猫上查找好时店铺时，却发现好时消失了。也有其他消费者提醒说京东还有店铺存在。                                </div>
+                            </div>
+                        </a>
+                        <div class="content-item-foot">
+                            <a href="index.php?mod=article&act=view&titleId=329080" class="content-item-foot-main" target="_blank">
+                                <div class="content-item-foot-title">
+                                    好时退出中国？kindle：这局面我熟悉  
+                                </div>
+                                <div class="content-item-foot-text2">
+                                    除了鲜花，巧克力也是情人节的标配，没想到我却在网上看到了这样一个热搜：事情的起因是，最近有消费者在天猫上查找好时店铺时，却发现好时消失了。也有其他消费者提醒说京东还有店铺存在。                                </div>
+                            </a>
+                            <div class="content-item-foot-type-text">
+								<div class="labelsInfos_div">
+										                        <div class="content-item-foot-type" style='background:#17C6A9;border-color:#17C6A9;color:#ffffff;'>
+		                            案例		                        </div>
+		                        	                        	</div>
+                                <div class="content-item-foot-type-time"><span>1</span>天前</div>
+                            </div>
+                            <div class="content-item-foot-info2">
+                                <div class="content-item-foot-info2-left">
+                                <img src="http://www.cnad.com/upload/tmp/12/01/0959415fc5a38dae47b918.jpg"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/logo2.png'" />
+                                    <div class="content-item-foot-infow-text">4A广告圈(ID:newggm)</div>
+                                </div>
+                                <div class="content-item-foot-info2-right" onclick='setBaiduShare("好时退出中国？kindle：这局面我熟悉","index.php?mod=article&act=view&titleId=329080","除了鲜花，巧克力也是情人节的标配，没想到我却在网上看到了这样一个热搜：事情的起因是，最近有消费者在天猫上查找好时店铺时，却发现好时消失了。也有其他消费者提醒说京东还有店铺存在。","http://www.cnad.com/upload/tmp/02/28/031839621c774f2f8d6836.png")' >
+                                    <i class="icon icon-3"></i><div class="content-item-foot-info-share">分享</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     
+                    <div class="content-item">
+						<a href="index.php?mod=article&act=view&titleId=329077" class="content-item-top" target="_blank">
+                            <div class="content-item-img"><img src="http://www.cnad.com/upload/tmp/02/28/022107621c69d391ca0828.jpg" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'"></div>
+                            <div class="content-item-mask">
+                                <div class="content-item-mask-text">
+                                   刚刚，谷爱凌再多一金，网友又沸腾了。
+
+冬奥会还没结束，大叔看到，圈内不少人都已评出了冬奥营销的最大赢家。
+
+就在伊利和蒙牛因为“抢”冬奥冠军代言人，争得不可开交之时，元气森林杀出重围，前几天，喜提了一个热搜——#元气森林赢麻了#                                </div>
+                            </div>
+                        </a>
+                        <div class="content-item-foot">
+                            <a href="index.php?mod=article&act=view&titleId=329077" class="content-item-foot-main" target="_blank">
+                                <div class="content-item-foot-title">
+                                    冬奥营销“赢麻”后，元气森林回答了我的8个问题  
+                                </div>
+                                <div class="content-item-foot-text2">
+                                    刚刚，谷爱凌再多一金，网友又沸腾了。
+
+冬奥会还没结束，大叔看到，圈内不少人都已评出了冬奥营销的最大赢家。
+
+就在伊利和蒙牛因为“抢”冬奥冠军代言人，争得不可开交之时，元气森林杀出重围，前几天，喜提了一个热搜——#元气森林赢麻了#                                </div>
+                            </a>
+                            <div class="content-item-foot-type-text">
+								<div class="labelsInfos_div">
+										                        <div class="content-item-foot-type" style='background:#17C6A9;border-color:#17C6A9;color:#ffffff;'>
+		                            案例		                        </div>
+		                        	                        	</div>
+                                <div class="content-item-foot-type-time"><span>1</span>天前</div>
+                            </div>
+                            <div class="content-item-foot-info2">
+                                <div class="content-item-foot-info2-left">
+                                <img src="http://www.cnad.com/upload/tmp/10/09/0401135f8018c99f587900.jpg"  onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/logo2.png'" />
+                                    <div class="content-item-foot-infow-text"> 万能的大叔（ID:wannengdedashu）</div>
+                                </div>
+                                <div class="content-item-foot-info2-right" onclick='setBaiduShare("冬奥营销“赢麻”后，元气森林回答了我的8个问题","index.php?mod=article&act=view&titleId=329077","刚刚，谷爱凌再多一金，网友又沸腾了。冬奥会还没结束，大叔看到，圈内不少人都已评出了冬奥营销的最大赢家。就在伊利和蒙牛因为“抢”冬奥冠军代言人，争得不可开交之时，元气森林杀出重围，前几天，喜提了一个热搜——#元气森林赢麻了#","http://www.cnad.com/upload/tmp/02/28/022107621c69d391ca0828.jpg")' >
+                                    <i class="icon icon-3"></i><div class="content-item-foot-info-share">分享</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    </div>
+                <!-- 干货类型 -->
+                <div class="content-top content-top2">
+                    <div class="content-title">干货类型</div>
+                </div>
+                <div class="content-diy">
+                                        <a href="index.php?mod=article&act=view&titleId=326083" class="content-diy-left" target="_blank">
+                        <div class="content-diy-left-type">干货</div>
+                        <img class="content-diy-none" src="upload/tmp/10/09/02590461613db8b7cec305.png">
+                        <div class="content-diy-imginfo" style="height: 100%;">
+                            <img class="content-diy-img" style="height: 100%;" src="upload/tmp/10/09/02590461613db8b7cec305.png">
+                         </div>
+                    </a>
+                                        <div class="content-diy-right">
+                                                <div class="content-diy-item">
+						    <a href="index.php?mod=article&act=view&titleId=328985" class="content-diy-item-left" target="_blank">
+                                <div class="content-diy-item-left-imginfo">
+                                    <img class="content-diy-item-left-img" src="http://www.cnad.com/upload/tmp/02/21/0948356212ef7323423583.png" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'">
+                                 </div>
+                            </a>
+                            <div class="content-diy-item-right">
+                                <div class="content-diy-item-right-info">
+                                    <a href="index.php?mod=article&act=view&titleId=328985" class="content-diy-item-title" target="_blank">从热点到爆点的距离：冬奥看体育营销新姿势</a>
+                                    <div class="content-diy-item-info">
+                                        2022北京冬季奥运会马上要结束了，让大家记住的不仅仅是“冰墩墩”，而是让更多的人感受到了冰雪运动的魅力。
+
+每天蹲赛事直播刷微博看实时热搜和评论，除了关注比赛项目和运动员，中国夺几块金牌，这个冬奥会也让人们看到了体育营销的新可能。今天就谈谈我关注3个品牌：安踏、伊利、元气森林。                                    </div>
+                                </div>
+                                <div class="content-diy-item-right-foot">
+                                    <div class="content-diy-item-right-foot-left">
+                                        <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">2964</div>
+                                        <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">9</div>
+                                        <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                                        <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">2</div>                                    
+                                    </div>
+                                    <div class="content-diy-item-right-foot-right">
+                                        2022.02.21                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="content-diy-item">
+						    <a href="index.php?mod=article&act=view&titleId=328869" class="content-diy-item-left" target="_blank">
+                                <div class="content-diy-item-left-imginfo">
+                                    <img class="content-diy-item-left-img" src="http://www.cnad.com/upload/tmp/02/15/034246620b59769c8e116.jpg" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'">
+                                 </div>
+                            </a>
+                            <div class="content-diy-item-right">
+                                <div class="content-diy-item-right-info">
+                                    <a href="index.php?mod=article&act=view&titleId=328869" class="content-diy-item-title" target="_blank">【梁将军】墩式营销：如何让你的新品像冰墩墩一样火？</a>
+                                    <div class="content-diy-item-info">
+                                        明尼苏达大学的一支研究团队做过一项和“稀缺”有关的实验。他们招来36位身体健康的男性志愿者，一开始让他们吃饱，接下来把他们的食物不断减量，但保证食物的热量可以维持生命。
+食物稀缺状态下，志愿者面对食物时的占有欲变得非常强，会像小猫一样用胳膊护食，甚至吃完还要把盘子舔一遍。原本准备攻克学术的年轻人，开始迷恋起菜谱，会严格比对报纸上水果和蔬菜的价格。还有些人，准备在实验结束后去种地……                                    </div>
+                                </div>
+                                <div class="content-diy-item-right-foot">
+                                    <div class="content-diy-item-right-foot-left">
+                                        <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">4234</div>
+                                        <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">6</div>
+                                        <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                                        <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">2</div>                                    
+                                    </div>
+                                    <div class="content-diy-item-right-foot-right">
+                                        2022.02.15                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="content-diy-item">
+						    <a href="index.php?mod=article&act=view&titleId=328507" class="content-diy-item-left" target="_blank">
+                                <div class="content-diy-item-left-imginfo">
+                                    <img class="content-diy-item-left-img" src="http://www.cnad.com/upload/tmp/01/18/01534161e655e5761db358.png" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'">
+                                 </div>
+                            </a>
+                            <div class="content-diy-item-right">
+                                <div class="content-diy-item-right-info">
+                                    <a href="index.php?mod=article&act=view&titleId=328507" class="content-diy-item-title" target="_blank">2022年，营销怎么办？</a>
+                                    <div class="content-diy-item-info">
+                                        显然，“2022年企业营销该怎么做”这类问题既没有标准答案，也难以给出具体的实践指导。但我们认为，整个营销行业的变化趋势是比较明显的，那就是我们正在进入一个“后红利”的阶段，所谓的营销方法论，如今已经相对透明并且被大量企业广泛认知。
+
+方法论的优势不足以成为长期优势，因为方法论本身也在不断迭代；流量红利的优势也不足以持续，因为任何新的流量洼地都会被快速透支，况且线上头部流量平台格局已经形成，新流量平台的池子也在越分越小，对企业营销大盘的影响实际上也在减弱。                                    </div>
+                                </div>
+                                <div class="content-diy-item-right-foot">
+                                    <div class="content-diy-item-right-foot-left">
+                                        <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">12491</div>
+                                        <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">9</div>
+                                        <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                                        <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">3</div>                                    
+                                    </div>
+                                    <div class="content-diy-item-right-foot-right">
+                                        2022.01.18                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- 推荐视频 -->
+    <div id="main2" class="main">
+        <div id="content-tuijian">
+            <!--<div class="content-tuijian-more">查看更多</div>-->
+            <div id="content-tuijian-pager"></div>
+            <div id="content-tuijian-tabs">
+                                 <div>
+                	<a href="http://www.cnad.com/index.php?mod=article&amp;act=view&amp;titleId=328239" target="_blank">
+                    <img src="upload/tmp/01/13/02275761dfc66dd07a8617.jpg"  style="width: 100%;height: 100%;"/>
+                    <h3>中广协影视广告分会</h3>
+                    <div class="tuijian1-info">
+                        <div class="tuijian1-text1">热门推荐</div>
+                        <div class="tuijian1-text2">酷榜指数排名活动正式发布</div>
+                        <div class="tuijian1-text3">“2021中国影视广告公司酷榜指数TOP20杰出品牌”新鲜出炉</div>
+                    </div>
+                    </a>
+                </div>
+                                <div>
+                	<a href="http://www.cnad.com/html/special/2/499/index.shtml" target="_blank">
+                    <img src="upload/tmp/07/01/10393160dd2ae36ea7558.jpg"  style="width: 100%;height: 100%;"/>
+                    <h3>LED共建共享平台</h3>
+                    <div class="tuijian1-info">
+                        <div class="tuijian1-text1">热门推荐</div>
+                        <div class="tuijian1-text2">LED共建共享平台</div>
+                        <div class="tuijian1-text3"></div>
+                    </div>
+                    </a>
+                </div>
+                            </div>
+        </div>
+    </div>
+    <!-- 视频橱窗 -->
+    <div id="main3" class="main" style="flex-direction: column;">
+        <div style="font-size: 25px; line-height: 52px; height: 60px; color: #da2246; margin: 20px 30px 10px; font-weight: 700;">最新世界影视广告</div>
+        <div class="content-shipin" style="margin: 0px 30px 20px 30px;">
+            			 <a href="index.php?mod=video&act=view&videoId=20719&titleId=328914" class="content-shipin-item" target="_blank">
+                <img src="upload/tmp/02/17/103613620db49d210d1433.png" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'">
+                <i class="iconfont icon-bofang"></i>
+                <div class="content-shipin-info">
+                    <div class="content-shipin-title" style="display:none-;">
+                        New ziploc                    </div>
+                    <div class="content-shipin-icon">
+                      <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">1795</div>
+                      <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">3</div>
+                      <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                      <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">0</div>
+                    </div>
+                </div>
+            </a>
+            			 <a href="index.php?mod=video&act=view&videoId=20718&titleId=328913" class="content-shipin-item" target="_blank">
+                <img src="upload/tmp/02/17/103417620db4290ef46813.png" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'">
+                <i class="iconfont icon-bofang"></i>
+                <div class="content-shipin-info">
+                    <div class="content-shipin-title" style="display:none-;">
+                        NINTENDO SWITCH                    </div>
+                    <div class="content-shipin-icon">
+                      <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">1722</div>
+                      <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">3</div>
+                      <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                      <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">0</div>
+                    </div>
+                </div>
+            </a>
+            			 <a href="index.php?mod=video&act=view&videoId=20716&titleId=328911" class="content-shipin-item" target="_blank">
+                <img src="upload/tmp/02/17/103045620db355839a1882.png" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'">
+                <i class="iconfont icon-bofang"></i>
+                <div class="content-shipin-info">
+                    <div class="content-shipin-title" style="display:none-;">
+                        StarBuck                    </div>
+                    <div class="content-shipin-icon">
+                      <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">1758</div>
+                      <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">3</div>
+                      <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                      <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">0</div>
+                    </div>
+                </div>
+            </a>
+            			 <a href="index.php?mod=video&act=view&videoId=20714&titleId=328909" class="content-shipin-item" target="_blank">
+                <img src="upload/tmp/02/17/102340620db1ac46be5940.png" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'">
+                <i class="iconfont icon-bofang"></i>
+                <div class="content-shipin-info">
+                    <div class="content-shipin-title" style="display:none-;">
+                        DQ                    </div>
+                    <div class="content-shipin-icon">
+                      <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">1740</div>
+                      <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">3</div>
+                      <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                      <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">0</div>
+                    </div>
+                </div>
+            </a>
+            			 <a href="index.php?mod=video&act=view&videoId=20713&titleId=328907" class="content-shipin-item" target="_blank">
+                <img src="upload/tmp/02/17/102036620db0f481c87140.png" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'">
+                <i class="iconfont icon-bofang"></i>
+                <div class="content-shipin-info">
+                    <div class="content-shipin-title" style="display:none-;">
+                        amazon prime day                    </div>
+                    <div class="content-shipin-icon">
+                      <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">1720</div>
+                      <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">2</div>
+                      <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                      <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">0</div>
+                    </div>
+                </div>
+            </a>
+            			 <a href="index.php?mod=video&act=view&videoId=20710&titleId=328903" class="content-shipin-item" target="_blank">
+                <img src="upload/tmp/02/17/101538620dafca1fc08662.png" onload="loadImage(this)" onerror="this.οnerrοr='';this.src='http://img1.cnad.cn/html/static/image/nopic.png'">
+                <i class="iconfont icon-bofang"></i>
+                <div class="content-shipin-info">
+                    <div class="content-shipin-title" style="display:none-;">
+                        LAZ BOY                    </div>
+                    <div class="content-shipin-icon">
+                      <i class="icon icon-63 content-item-foot-info-eye"></i><div class="content-item-foot-info-eye-text">1222</div>
+                      <i class="icon icon-79 content-item-foot-info-pinglun"></i><div class="content-item-foot-info-pinglun-text">3</div>
+                      <i class="icon icon-96 content-item-foot-info-shoucang"></i><div class="content-item-foot-info-shoucang-text">0</div>
+                      <i class="icon icon-38 content-item-foot-info-zan"></i><div class="content-item-foot-info-zan-text">0</div>
+                    </div>
+                </div>
+            </a>
+                        
+        </div>
+    </div>
+    <!-- 查看更多详情 -->
+    <!--<div id="main4" class="main">-->
+    <!--   <div class="content-ckgd">-->
+    <!--       <div class="content-ckgd-btn">-->
+    <!--           查看更多内容-->
+    <!--       </div>-->
+    <!--   </div>-->
+    <!--</div>-->
+    <!-- 品牌 -->
+    <div id="main5">
+        <div class="content-pinpai">
+                        
+            <a class="content-pinpai-item" href="http://ad.cnr.cn/" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/07/01/11220760dd34df929d1431.gif" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="https://www.hans-ad.com/" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/07/01/11191860dd343631737952.jpg" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="https://www.pmm.cn/" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/07/01/11185160dd341b08d0d319.png" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="http://www.gimc.cn/" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/07/01/11170160dd33ad5df21403.jpg" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="https://www.focusmedia.cn/" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/07/01/11144960dd3329872be848.jpg" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="http://www.charmgroup.cn/" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/07/01/11120960dd3289d33c6421.gif" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="https://posterscope.com/" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/06/29/11531760da992df192d923.png" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="https://www.5iidea.com/xyj" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/06/29/11513160da98c3dea79754.jpg" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="https://www.gdtv.cn/" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/06/29/11502660da98824e84a183.jpg" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="http://www.cig.com.cn/" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/06/29/11485560da9827acea3700.jpg" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="http://www.jstv.com/" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/06/29/11284660da936eb0263102.jpg" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="http://www.topexcel.cn/" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/06/29/11280360da9343ec309435.jpg" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="http://www.cctvgb.com.cn/" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/06/29/11262760da92e315e92706.jpg" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="http://www.himalayas.net.cn/" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/06/29/11254460da92b813c28294.jpg" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="http://www.adsame.com/" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/06/29/11244960da928175324167.jpg" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/06/29/11181160da90f3c8eb7397.png" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="http://www.inmyshow.com/home/index" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/06/29/11175160da90df326a560.jpg" style="width:190px;height:70px;">
+            </a>
+                        
+            <a class="content-pinpai-item" href="http://www.publicis.com/" target="_blank">
+                <img src="http://www.cnad.com/upload/tmp/05/24/02000960ab40e9e4b37400.gif" style="width:190px;height:70px;">
+            </a>
+                    </div>
+     </div>
+
+    <!-- 底部 -->
+      <div id="footer">
+        <div class="footer-info">
+            <div class="footer-top">
+                <div class="footer-menu">
+                                        <a class="footer-menu-item" href="index.php?mod=info&amp;act=view&amp;infoTypeId=1" target="_blank">关于我们</a>
+                                        <a class="footer-menu-item" href="index.php?mod=info&amp;act=view&amp;infoTypeId=2" target="_blank">业务联系</a>
+                                        <a class="footer-menu-item" href="index.php?mod=recruit&amp;act=list" target="_blank">招聘信息</a>
+                                        <a class="footer-menu-item" href="index.php?mod=info&amp;act=view&amp;infoTypeId=4" target="_blank">免责条款</a>
+                                        <a class="footer-menu-item" href="index.php?mod=info&amp;act=view&amp;infoTypeId=5" target="_blank">隐私条例</a>
+                                        <a class="footer-menu-item" href="index.php?mod=info&amp;act=view&amp;infoTypeId=6" target="_blank">版权所有</a>
+                                        <a class="footer-menu-item" href="http://2021.cnad.cn/index.php?mod=info&amp;act=view&amp;infoTypeId=7" target="_blank">友情链接</a>
+                                    </div>
+            </div>
+            <div class="footer-center">
+                <div class="footer-center-left">
+                    <div class="footer-center-left-text">
+                      编辑声明：
+                    </div>
+                    <div class="footer-center-left-text2">
+                       本网站所收集的部分公开资料来源于互联网，转载的目的在于传递更多信息及用于网络分享，并不代表本站赞同其观点和对其真实性负责，也不构成任何其他建议。本站部分作品是由网友自主投稿和发布、编辑整理上传，对此类作品本站仅提供交流平台，不为其版权负责。如果您发现网站上有侵犯您的知识产权的作品，请与我们取得联系，我们会及时修改或删除。
+                    </div>
+                    <div class="footer-center-left-text3">
+                        联系方式：
+                     </div>
+                     <div class="footer-center-left-text4">
+                        020-38814986
+                     </div>
+                </div>
+                <div class="footer-center-right">
+                    <div class="footer-center-right-icon">
+                        <div class="footer-center-right-weixin">
+                            <div class="footer-center-right-weixin-img">
+                                <img src="http://img1.cnad.cn/html/static/image/weixin.png">
+                            </div>
+                            <div class="footer-center-right-weixin-ewm">
+                                <img src="http://img1.cnad.cn/html/static/image/ewm.png">
+                            </div>
+                            <div class="footer-center-right-weixin-arrow"></div>
+                        </div>
+                        <a target="_blank" href="https://weibo.com/p/1006061712737914/home?from=page_100606&mod=TAB#place" class="footer-center-right-weibo">
+                            <div class="footer-center-right-weibo-img">
+                                <img src="http://img1.cnad.cn/html/static/image/weibo.png">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                版权所有 广告网 <a rel="nofollow" href="https://beian.miit.gov.cn" style="color: #FFF;padding-right:10px;padding-left:10px;">粤B2-20040750号</a> © Copyright 1998-2021 cnad.com All <a  href="https://www.chinesewords.org" target="_blank" style="color: #fff; cursor: default">Rights</a> Reserved
+            </div>
+        </div>
+    </div></body>
+</html>

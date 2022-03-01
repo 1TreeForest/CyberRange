@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="gb2312">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="HLS播放器" />
+<meta name="description" content="HLS播放器,输入RTMP或者HLS播放地址" />
+<title>HLS播放器</title>
+<link rel="shortcut icon" href="favicon.ico">
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="/skin/bs/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/skin/bs/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/skin/bs/css/animate.min.css">   
+   
+        <link rel="stylesheet" href="/skin/bs/css/common_bs.css">
+        <link rel="stylesheet" href="/skin/bs/css/responsive.css">    
+
+ 
+
+	<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="/skin/bs/css/bootstrap-theme.min.css">
+
+     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://www.easydarwin.org/skin/bs/js/html5shiv.min.js"></script>
+      <script src="http://www.easydarwin.org/skin/bs/js/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/skin/bs/js/jquery.min.js"></script>
+    <script src="/skin/bs/js/bootstrap.min.js"></script>
+    <script src="/skin/bs/js/main.js"></script>
+    <script src="/skin/bs/js/wow.min.js"></script>
+    <script src="/skin/bs/js/lightbox.min.js"></script>
+    <script src="/skin/bs/js/common.js"></script>
+   <script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+     hm.src = "https://hm.baidu.com/hm.js?d2db72b1f8f07dc33e6ef40d91fb50d3";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+    })();
+   </script>
+
+<link href="/skin/bs/css/nr.css" type="text/css" rel="stylesheet" />
+<script src="/skin/bs/js/globals.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://www.easydarwin.org/ckplayer/ckplayer.js" charset="utf-8"></script>
+<style>
+.input-css .input-name{border:1px solid #00a892; background:#fff; padding:2px; font-size:14px; color:#666; width:80%}
+.input-css .input-buttom{ height:40px; line-height:30px; background:#00a892; border:none; color:#fff; font-size:16px;cursor:pointer; padding-left:12px; padding-right:12px;}
+#ToolBox {border: 1px solid #ebebeb; position: absolute;}
+	
+#ToolBox ul {margin:0px; padding: 0px; text-align: left;font-family:"微软雅黑"; font-size:12px;color:#666;}
+
+#ToolBox ul a{ font-family:"微软雅黑"; font-size:12px; text-decoration:none;color:#999}
+
+#ToolBox ul li {line-height: 25px; list-style-type: none; background-color: #f0f0f0; padding-top:3px; padding-bottom:3px; padding-left:10px}
+
+
+#ToolBox ul li a {width:100%;  font-family: Arial; display: block; cursor: pointer}
+
+#ToolBox ul li a:hover {color: #666; text-decoration: none;}
+    </style>
+<script src="/skin/easydarwin/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+<script src="http://www.easydarwin.org/js/cyberplayer.js" type="text/javascript"></script>
+<script language="javascript" type="text/javascript">
+	
+	function mainload(seturl) {
+           
+
+             var url = seturl;
+           var divs = document.getElementById("dvplay");
+ var player = cyberplayer("dvplay").setup({
+		flashplayer:"http://www.easydarwin.org/cyberplayer.flash.swf",
+           
+            stretching: "uniform",
+            file: url ,
+	   width:divs.scrollWidth,
+            height: divs.scrollHeight,
+            autostart: true,
+            repeat: false,
+            volume: 100,
+            controls: true,
+            ak: '515d61b893134f40bd4297b75a03494b' // 公有云平台注册即可获得accessKey
+        });
+          /*   var flag=0;//0表示hls，1表示rtmp
+           if(typeof(seturl) != 'undefined')
+			{
+
+				  if(seturl.indexOf('rtmp://')!=-1)
+				{
+					flag=1;
+					
+				}
+			}
+ var snap = '';
+var flashvars
+             if(flag==0)
+             {
+			  flashvars = {
+                 f: 'http://www.easydarwin.org/m3u8.swf',
+                 a: url,
+                 c: 0,
+                 s: 4,
+                 lv: 0,
+                 p:1,
+                 i: snap
+             };
+             }
+             else
+             {
+                 flashvars = {
+                 f: url,
+                 c: 0,
+                 p:1
+                 
+             };
+             }
+
+             var params = { bgcolor: '#FFF', allowFullScreen: true, allowScriptAccess: 'always' }; //这里定义播放器的其它参数如背景色（跟flashvars中的b不同），是否支持全屏，是否支持交互
+             var video = [url , url , url ];
+             
+             CKobject.embed('http://www.easydarwin.org/ckplayer/ckplayer.swf', 'dvplay', 'ckplayer_dvplay', '100%', '100%', false, flashvars, video, params);*/
+
+         }
+
+		  function  play() {
+ToolBoxAdd();
+            var url = document.getElementById("q").value;
+            mainload(url);
+        }
+    </script>
+</head>
+<body onload="mainload()">
+
+<!--header Start-->
+<header id="header">      
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 overflow">
+                   <div class="social-icons pull-right">
+                        <ul class="nav nav-pills">
+                           <li><span>咨询：</span>18855115353（同微信）</li>
+                            <li><a href="mailto:support@easydarwin.org"><i class="fa fa-envelope-o"></i></a></li>
+                            <li><a href="https://github.com/EasyDarwin"><i class="fa fa-github"></i></a></li>
+                            <li><a href="http://jq.qq.com/?_wv=1027&k=29cMGBC"><i class="fa fa-qq"></i></a></li>
+                            <li><a href="http://weibo.com/easydarwin"><i class="fa fa-weibo"></i></a></li>
+                            <li><a href=""><i class="fa fa-weixin"></i></a></li>
+                        </ul>
+                    </div> 
+                </div>
+             </div>
+        </div>
+        <div class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">EasyDarwin</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="index.html">
+                    	<h1><img src="/skin/bs/images/logo.png" alt="logo"></h1>
+                    </a>
+                    
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/">首页</a></li>
+                        <li class="dropdown"><a href="#">EasyDarwin <i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="/article/news/" target="_blank">最新动态</a></li>
+                                <li><a href="/article/EasyDarwin/" target="_blank">文档资料</a></li>
+                            </ul>
+                        </li>
+                       <li class="dropdown"><a href="#">商业方案<i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="http://www.easydss.com" target="_blank">EasyDSS流媒体解决方案</a></li>
+                                <li><a href="http://www.easynvr.com" target="_blank">EasyNVR无插件直播</a></li>
+                            </ul>
+                        </li>
+			<li><a href="/article/Streaming/" target="_blank">流媒体知识库</a></li> 
+                        <li class="dropdown"><a href="#">在线文档 <i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="https://github.com/EasyDarwin/EasyDarwin"  target="_blank">EasyDarwin</a></li> 
+								<li><a href="https://github.com/EasyDarwin/EasyAudioDecoder"  target="_blank">EasyAudioDecoder</a></li>
+								<li><a href="https://github.com/EasyDarwin/EasyAACEncoder"  target="_blank">EasyAACEncoder</a></li>
+								<li><a href="/github/EasyDarwin%20Protocol.pdf"  target="_blank">EasyProtocol</a></li>	
+								
+								<li><a href="http://www.pvale.com/devdoc/EasyPusher.html"  target="_blank">EasyPusher</a></li>   
+								<li><a href="http://www.pvale.com/devdoc/EasyRTMP.html"  target="_blank">EasyRTMP</a></li>   
+								<li><a href="http://www.pvale.com/devdoc/EasyScreenLive_Windows.html"  target="_blank">EasyScreenLive</a></li>   
+								<li><a href="http://www.pvale.com/devdoc/EasyRTSPClient.html"  target="_blank">EasyRTSPClient</a></li>   
+								<li><a href="http://www.pvale.com/devdoc/EasyRTMPClient.html"  target="_blank">EasyRTMPClient</a></li>   
+								<li><a href="http://www.pvale.com/devdoc/EasyHLS.html"  target="_blank">EasyHLS</a></li>   
+								<li><a href="http://www.pvale.com/devdoc/EasyAACEncoder.html"  target="_blank">EasyAACEncoder(授权版)</a></li>   
+								<li><a href="http://www.pvale.com/devdoc/EasyPlayer_RTSP_Windows.html"  target="_blank">EasyPlayer_RTSP</a></li>   
+								<li><a href="http://www.pvale.com/devdoc/EasyPlayer_RTMP_Windows.html"  target="_blank">EasyPlayer_RTMP</a></li>   
+								<li><a href="http://www.pvale.com/devdoc/EasyPlayerPro_Windows.html"  target="_blank">EasyPlayerPro</a></li>   
+
+								<li><a href="http://www.pvale.com/devdoc/EasyIPCamera.html"  target="_blank">EasyIPCamera</a></li>      	
+								<li><a href="http://demo.easynvr.com:10800/apidoc/"  target="_blank">EasyNVR</a></li>
+								<li><a href="http://demo.easydss.com:10080/apidoc/"  target="_blank">EasyDSS</a></li>   							
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" >在线演示 <i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+							<li><a href="http://demo.easynvr.com:10800/" target="_blank">EasyNVR视频广场</a></li> 
+							<li role="separator" class="divider"></li>     
+							<li><a href="/article/video/hlsplayer/">HLS播放器</a></li>    
+                            </ul>
+                        </li> 
+					
+						<li class="dropdown">
+						  <a href="#" >支持我们 <span class="caret"></span></a>
+						  <ul role="menu" class="sub-menu">
+							<li><a href="/article/joinus/">支持我们</a></li>     
+							<li><a href="/article/joinus/bug.html">解决bug奖励</a></li>  
+							<li><a href="/article/joinus/zhengwen.html">有奖征文</a></li>   
+							<li><a href="/article/joinus/friendlylink.html">友链招募</a></li>        
+						  </ul>
+						</li>	
+					<!-- <li><a href="/forum/forum.php" target="_blank">交流社区</a></li>-->				
+                    </ul>
+                </div>
+
+                <div class="search">
+                    <form role="form" role="search" method="get" action="/e/sch/index.php">
+                        <i class="fa fa-search"></i>
+                        <div class="field-toggle">
+                            <input type="text" class="search-form" autocomplete="off" placeholder="搜索" id="keyboard" name="keyboard">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--/#header-->
+<!--header End  -->
+
+<div class="container bn">
+<div class="jumbotron nr-banner">
+        <h1>EasyDarwin</h1>
+        <p><strong>面向企业级的流媒体平台框架</strong></p>
+        <p id="bn-wz">EasyDarwin开始于2013年，遵循 Apple开源License APSL，为了敏捷流媒体服务器开发和简化企业流媒体应用开发而诞生的。</p>
+        <p><a class="btn btn-sm btn-success" href="https://github.com/EasyDarwin/EasyDarwin" role="button">详细 >></a></p>
+</div></div>
+
+<div class="container list01">
+<div class="list01_1"><img style="vertical-align:middle;"src="/skin/easydarwin/images/new.png" border="0" />HLS播放</div>
+<div class="list01_2">
+	<div class="subtitle" style="line-height:40px"><span>您当前所在位置：<a href="/index.html">首页</a>&nbsp;>&nbsp;<a href="/article/video/">视频广场</a>&nbsp;>&nbsp;<a href="/article/video/hlsplayer/">HLS播放器</a></span></div>
+</div>
+</div>
+
+<div class="container"><hr/></div>
+
+<div class="container g-main">
+   <div id="list"></div>
+  <div class="input-css" style="padding:12px 0px;">
+	
+<INPUT  id="q" class="input-name" name="host" type="text" autocomplete="off" url="true"  >
+	<input id="btn" type="button" class="input-buttom" onclick="play()" value="播放"></input>
+
+
+   </div>
+
+<div id="dvplay" style="height:600px;margin-bottom:20px;"></div>
+ </div>
+
+<!--footer Start-->
+	<div class="yqlj">
+<div class="container">
+           <div class="yqlj-title">友情链接　|　<a href="http://www.easydarwin.org/article/joinus/friendlylink.html" target="_blank">申请链接</a></div>
+           <div class="row f-link">
+           <div class="col-md-1  col-xs-6 f-link1"><a href="http://www.ckplayer.com" title="ckplayer" target="_blank">ckplayer</a></div>
+           <div class="col-md-1  col-xs-6 f-link1"><a href="https://github.com/" title="Github" target="_blank">Github</a></div>
+</div></div>
+</div>
+
+<div class="bottom">
+<div class="container">
+
+		<div class="col-md-2 col-xs-12"><figure class="qrcode">
+				<img src="/skin/default/images/img-qrcode.png" alt="EasyDarwin官方微信!">
+				<figcaption></figcaption>
+			</figure></div>	
+
+
+
+          <div class="col-md-3 col-xs-6">
+			 <dl>
+              <dt>开源&免费</dt>
+			<dd><a href="https://github.com/EasyDarwin/EasyDarwin" target="_blank">EasyDarwin(开源)</a></dd>
+			<dd><a href="https://github.com/EasyDarwin/EasyAACEncoder" target="_blank">EasyAACEncoder(开源)</a></dd>
+			<dd><a href="https://github.com/EasyDarwin/EasyAudioDecoder" target="_blank">EasyAudioDecoder(开源)</a></dd>
+			<dd><a href="https://github.com/EasyDarwin/EasyProtocol" target="_blank">EasyProtocol(开源)</a></dd>    
+			<dd><a href="https://github.com/EasyDSS/EasyPusher" target="_blank">EasyPusher(免费)</a></dd>	
+			</dl></div>
+
+          <div class="col-md-3 col-xs-6">
+			 <dl>
+              <dt>授权</dt>
+
+			<dd><a href="https://github.com/EasyDSS/EasyRTMP" target="_blank">EasyRTMP(商用授权)</a></dd>
+			<dd><a href="https://github.com/EasyDSS/EasyScreenLive" target="_blank">EasyScreenLive(商用授权)</a></dd>
+			<dd><a href="https://github.com/EasyDSS/EasyRTSPClient"  target="_blank">EasyRTSPClient(商用授权)</a></dd>   
+			<dd><a href="https://github.com/EasyDSS/EasyRTMPClient"  target="_blank">EasyRTMPClient(商用授权)</a></dd>   
+			<dd><a href="https://github.com/EasyDSS/EasyHLS"  target="_blank">EasyHLS(商用授权)</a></dd>   
+			<dd><a href="https://github.com/EasyDSS/EasyAACEncoder-arm"  target="_blank">EasyAACEncoder((商用授权))</a></dd>   
+			<dd><a href="https://github.com/EasyDSS/EasyPlayer-RTSP"  target="_blank">EasyPlayer_RTSP(商用授权)</a></dd>   
+			<dd><a href="https://github.com/EasyDSS/EasyPlayer-RTMP"  target="_blank">EasyPlayer_RTMP(商用授权)</a></dd>   
+			<dd><a href="https://github.com/EasyDSS/EasyPlayerPro"  target="_blank">EasyPlayerPro(商用授权)</a></dd>   
+			<dd><a href="https://github.com/EasyDSS/EasyIPCamera"  target="_blank">EasyIPCamera(商用授权)</a></dd>      	
+			<dd><a href="http://www.easynvr.com/"  target="_blank">EasyNVR(商用授权)</a></dd>
+			<dd><a href="http://www.easydss.com/"  target="_blank">EasyDSS(商用授权)</a></dd>   
+			</dl></div>
+			
+			
+		<div class="col-md-2 col-xs-6">
+			<dl>
+				<dt>地图</dt>
+				<dd><a href="/article/news/" target="_blank">最新动态</a></dd>
+				<dd><a href="/article/EasyDarwin/" target="_blank">EasyDarwin知识库</a></dd>
+				<dd><a href="/article/Streaming/" target="_blank">流媒体知识库</a></dd>
+                                <dd><a href="http://demo.easynvr.com:10800/" target="_blank">视频广场</a></dd>
+                                <dd><a href="/article/video/hlsplayer/" target="_blank">HLS播放器</a></dd>
+                                <dd><a href="http://www.pvale.com" target="_blank">商用授权中心</a></dd>
+				<dd><a href="/article/joinus/" target="_blank">支持我们</a></dd>
+			</dl></div>
+			
+			<div class="col-md-2 col-xs-6">
+			<dl>
+				<dt>开发者</dt>
+				<dd><a href="http://blog.csdn.net/xiejiashu/" target="_blank">开发者随笔</a></dd>
+				<dd><a href="mailto:support@easydarwin.org" target="_blank">邮箱咨询</a></dd>
+				<dd><a href="http://www.weibo.com/easydarwin" target="_blank">官方微博</a></dd>
+				<dd><a href="http://www.easydarwin.org/sitemap.xml" target="_blank">Sitemap</a></dd>
+			</dl></div>
+		
+	
+		</div>
+		</div>
+
+
+	<div class="container-fluid ft2">
+<div class="footer_content">Copyright &copy; 2012-2019 www.easydarwin.org All Rights Reserved.  <a  target="_blank"href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">皖ICP备14018369号</a>&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=34010302000119">皖公网安备 34010302000119号</a>
+<div>		 
+</div>
+
+<script src='/e/public/onclick/?enews=doclass&classid=28'></script>
+<!--footer End  -->
+<DIV id="ToolBox" onmouseover="this.style.display='block'" onmouseout="BoxHide()">
+<DIV id="xhead"></DIV>
+<UL id="xlist"></UL>
+<DIV id="xfoot"></DIV></DIV>
+<SCRIPT type="text/javascript">Init();</SCRIPT>
+</body>
+</html>

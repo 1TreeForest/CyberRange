@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Welcome</title>
+
+  <script>
+    function isMobile() {
+      return !!(navigator.userAgent.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+        ))
+    }
+    if (isMobile() !== false) {
+      if (location.href.indexOf('#') > -1) {
+        location.href = location.origin + '/m/#/home?' + (location.href.split('#')[1].split('?')[1] || '')
+      } else {
+        location.href = location.origin + '/m/#/home' + location.search
+      }
+    }
+    (function () {
+      var url = window.location.href,
+        obj = {},
+        keyvalue = [],
+        key = '',
+        value = '',
+        parseString = url.substring(url.indexOf('?') + 1, url.length).split('&')
+      for (var i in parseString) {
+        keyvalue = parseString[i].split('=')
+        key = keyvalue[0]
+        value = keyvalue[1] && keyvalue[1].includes('#/') ? keyvalue[1].split('#/')[0] : keyvalue[1]
+        obj[key] = value
+      }
+
+      if (obj.agent) {
+        localStorage.setItem('agent', obj.agent)
+      }
+      if (obj.isPcInfo) {
+        isPcInfo = obj.isPcInfo;
+      }
+      if(obj.register){
+        if(!localStorage.token){
+              localStorage.setItem('register', obj.register)
+          }
+      }
+    })()
+    window.vis = true
+    window.onblur = function () {
+      window.vis = false
+    }
+    window.onfocus = function () {
+      window.vis = true
+      if (typeof window.balanceTask === 'function') {
+        window.balanceTask()
+      }
+    }
+    if(!isMobile()) {
+      function loadJS( url, callback ) {
+        var script = document.createElement('script'),
+        fn = callback || function(){};
+        script.type = 'text/javascript';
+
+        //IE
+        if(script.readyState){
+          script.onreadystatechange = function(){
+            if( script.readyState == 'loaded' || script.readyState == 'complete' ){
+                script.onreadystatechange = null;
+                fn()
+            }
+          }
+        }else{
+          // 其他浏览器
+          script.onload = function(){
+            fn()
+          }
+        }
+        script.src = url;
+        document.getElementsByTagName('head')[0].appendChild(script);
+      }
+
+      let loadTable = ['/static/public/js/stomp.js', '/static/public/js/qrcode.js'
+      , `https://cstaticdun.126.net/load.min.js?t=1645949551671`,
+      `https://acstatic-dun.126.net/tool.min.js?t=1645949551671`
+      ]
+      // 用法
+      loadTable.forEach( (url) => {
+        loadJS(url,function(e){
+          // console.log("🚀 ~ file: index.html ~ line 85 ~ loadJS ~ url loaded success", url)
+        })
+      })
+
+    }
+  </script>
+  <link rel="shortcut icon" href="/static/tccp/img/favicon.ico" type="image/x-icon">
+  <!-- <script src="/static/public/js/stomp.js"></script>
+  <script src="/static/public/js/qrcode.js"></script> -->
+ 
+  <!-- <script src="https://cstaticdun.126.net/load.min.js?t=1645949551671"></script>
+  <script type="text/javascript" src="https://acstatic-dun.126.net/tool.min.js?t=1645949551671"></script> -->
+<link href="/static-tccp/style.css" rel="stylesheet"><link href="/static-tccp/css/pages/tccp/index.1d9785581629f166583be80e439940b7.css" rel="stylesheet"></head>
+
+<body style="height: 100%;">
+  <div id="klkApp">
+
+  </div>
+<script type="text/javascript" src="/static-tccp/js/manifest.d2b942424a25748d1c30.js?v=2022-2-27-16:11:17"></script><script type="text/javascript" src="/static-tccp/js/vendor.0ac63b6badb3ad418a65.js?v=2022-2-27-16:11:17"></script><script type="text/javascript" src="/static-tccp/js/pages/tccp/index.d51bd1c2645ffa83cd28.js?v=2022-2-27-16:11:17"></script></body>
+
+</html>

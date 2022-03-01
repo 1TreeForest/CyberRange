@@ -1,0 +1,630 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>蓝光高清影音</title>
+<meta name="description" content="蓝光高清影音|高清电影在线选片系统|高清硬盘|高清电影拷贝|3D电影|高清电影拷贝|3D电视高清电影|" />
+<meta name="keywords" content="蓝光高清影音|高清电影在线选片系统|高清硬盘|高清电影拷贝|3D电影|高清电影拷贝|3D电视高清电影|" />
+<link rel="stylesheet" type="text/css" href="css/nstyle.css" />
+<!--二级导航--><script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+<!--二级导航--><script type="text/javascript" src="js/slide.js"></script>
+<!--吊牌--><script type="text/javascript" src="js/jquery.js"></script>
+<!--吊牌--><script type="text/javascript" src="js/js.js"></script>
+<!--banner--><script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
+<!--banner--><script src="js/jquery.kinMaxShow-1.0.min.js" type="text/javascript"></script>
+</head>
+
+<script type="text/javascript">
+$(function(){
+	$("#kinMaxShow").kinMaxShow();
+});
+</script>
+
+<script language="javascript">
+<!--
+var xmlHttp = false;
+try {
+  xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+} catch (e) {
+  try {
+    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+  } catch (e2) {
+    xmlHttp = false;
+  }
+}
+if (!xmlHttp && typeof XMLHttpRequest != "undefined") {
+  xmlHttp = new XMLHttpRequest();
+}
+
+function updatePage() {
+  if (xmlHttp.readyState == 4) {
+    var response = xmlHttp.responseText;
+    var arrstr= new Array();
+    if (response!="")
+    {
+        arrstr=response.split("|");
+	var varTrElem = document.getElementById("select_total_rl");	
+	//var varTrElem_0 = document.getElementById("select_total_rl_0");
+	if(arrstr[1] =="" )
+	{
+		varTrElem.innerHTML = "0.00G";	
+		//varTrElem_0.innerHTML = "<font color=green><strong>0.00G</strong></font>";	
+	}
+	else
+	{ 
+		varTrElem.innerHTML = arrstr[1]+"G";
+		//varTrElem_0.innerHTML = "<font color=green ><strong>"+arrstr[1]+"G</strong></font>";
+	}
+	var varSElem = document.getElementById("select_total_num");
+	//var varSElem_0 = document.getElementById("select_total_num_0");		
+	if (arrstr[0]=="")
+	{
+	    varSElem.innerHTML = "0部";
+	    //varSElem_0.innerHTML = "<font color=green><strong>0部</strong></font>";	
+	}
+	else
+	{
+	    varSElem.innerHTML = arrstr[0]+"部";
+	    //varSElem_0.innerHTML = "<font color=green ><strong>"+arrstr[0]+"部</strong></font>";
+	}		
+	var varSElem = document.getElementById("select_total_disk");
+    varSElem.innerHTML = arrstr[3];
+    }
+  }
+}
+
+function addCookies(sf)
+{
+  var u_name = sf;
+  var url = "vipmovie.asp";
+  xmlHttp.open("POST", url, true);
+  xmlHttp.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  xmlHttp.onreadystatechange = updatePage;
+  //xmlHttp.send(null);  
+  xmlHttp.send("action=add&mid="+u_name);
+//alert(f.value);
+//setCookie(f.value,f.value);
+//alert("已加入购物车");
+}
+
+function delCookies(sf)
+{
+  var u_name = sf;
+  var url = "vipmovie.asp";
+  xmlHttp.open("POST", url, true);
+  xmlHttp.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  xmlHttp.onreadystatechange = updatePage;
+  xmlHttp.send("action=del&mid="+u_name);
+  //xmlHttp.send(null);  
+//delCookie(f.value);
+//alert("已从购物车中清除");
+}
+
+function getCookie(name)
+{
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg)) return unescape(arr[2]);
+        //else return null;
+        else return "";
+}
+
+function SelectThis(CB,newsID,sty)
+{
+　//如果没有把参数newsID传进来
+  var cval=getCookie("member0075");
+  if ((cval=="")||(cval==null))
+  {
+    alert("为了您更好的选片，请先注册登陆后，再选片！");
+    CB.checked=false;
+    //window.location.href="memreg.asp";
+    return false;
+  }
+  var sval=getCookie("shdtv0075");
+  if ((sval=="")||(sval==null))
+  {
+    alert("该会员已到期，无法选片下单！");
+    CB.checked=false;
+    //window.location.href="index.asp";
+    return false;
+  }
+　if (typeof(newsID) == "undefined")
+　{
+　　return false;
+　}
+	if (CB.checked)
+	{
+		var aaa=newsID;
+		document.getElementById(aaa).className="row_c";//
+		addCookies(CB.value+",");
+	}
+	else
+	{
+		var aaa=newsID;
+		if(sty==1)
+		{
+			document.getElementById(aaa).className="row_b";//
+		}
+		else if (sty==2)
+		{
+			document.getElementById(aaa).className="row_d";///
+		}
+		else
+		{
+			document.getElementById(aaa).className="row_a";///
+		}
+		delCookies(CB.value+",");
+	}　
+	
+	//addCookies(CB);
+	//SetSelectRl();
+}
+
+function SelectPicture(newsID,sty,lxid)
+{
+　//如果没有把参数newsID传进来
+  var cval=getCookie("member0075");
+  if ((cval=="")||(cval==null))
+  {
+    alert("为了您更好的选片，请先注册登陆后，再选片！");
+    CB.checked=false;
+    //window.location.href="memreg.asp";
+    return false;
+  }
+  var sval=getCookie("shdtv0075");
+  if ((sval=="")||(sval==null))
+  {
+    alert("该会员已到期，无法选片下单！");
+    CB.checked=false;
+    //window.location.href="index.asp";
+    return false;
+  }
+　if (typeof(newsID) == "undefined")
+　{
+　　return false;
+　}
+   for(var  i=0;i<document.form1.elements.length;i++)
+   {  
+       var  e=document.form1.elements[i];
+       
+       var name_pre = e.name.slice(0,10);
+       
+       if  (name_pre  ==  "moviearray" && e.type == "checkbox")
+       { 			
+	      if (e.value==newsID)
+		  {
+		    if (lxid==1)
+			{
+		      e.checked  =  true;  
+			}
+		     else
+		       {
+		      e.checked  =  false;
+		        }
+
+	if (e.checked)
+	{
+		var aaa=newsID;
+		document.getElementById(aaa).className="row_c";//
+		addCookies(e.value+",");
+	}
+	else
+	{
+		var aaa=newsID;
+		if(sty==1)
+		{
+			document.getElementById(aaa).className="row_b";//
+		}
+		else if (sty==2)
+		{
+			document.getElementById(aaa).className="row_d";///
+		}
+		else
+		{
+			document.getElementById(aaa).className="row_a";///
+		}
+		delCookies(e.value+",");
+	}
+        break;
+		  }
+　
+	}//if 
+			 
+   } //for
+	//addCookies(CB);
+	//SetSelectRl();
+}
+
+function SelectAll()
+{		
+   var selmid="";
+  var cval=getCookie("member0075");
+  if ((cval=="")||(cval==null))
+  {
+    alert("为了您更好的选片，请先注册登陆后，再选片！");
+    document.form1.chkall.checked=false;
+    //window.location.href="memreg.asp";
+    return false;
+  }
+  var sval=getCookie("shdtv0075");
+  if ((sval=="")||(sval==null))
+  {
+    alert("该会员已到期，无法选片下单！");
+    document.form1.chkall.checked=false;
+    //window.location.href="index.asp";
+    return false;
+  }
+   for(var  i=0;i<document.form1.elements.length;i++)
+   {  
+       var  e=document.form1.elements[i];
+       
+       var name_pre = e.name.slice(0,10);
+       
+       if  (name_pre  ==  "moviearray" && e.type == "checkbox")
+       { 			
+	      if (document.form1.chkall.checked)
+		  {
+		    if (! e.checked)
+			{
+		      e.checked  =  document.form1.chkall.checked;  
+			  selmid=selmid+e.value+",";
+			  //addCookies(e);
+			}
+		  }
+		  else
+		  {
+		    if (e.checked)
+		    {
+		      e.checked  =  document.form1.chkall.checked;  
+  		      //addCookies(e);
+  		      selmid=selmid+e.value+",";
+  		    }
+		  }
+		var strYpid=e.value.toString();	
+                var name_bz = e.name.slice(10,11);
+					if (e.checked)
+					{
+						document.getElementById(strYpid).className="row_c";
+					}
+					else
+					{
+                        if (name_bz=='1')
+                        {
+						  document.getElementById(strYpid).className="row_b";
+                        }
+                        else if (name_bz=='2')
+                        {
+						  document.getElementById(strYpid).className="row_d";
+                         }
+                         else
+                         {
+                           document.getElementById(strYpid).className="row_a";
+                         }
+					}
+			}//if 
+			 
+   } //for 
+   if (selmid!="")
+   {
+     if (document.form1.chkall.checked)
+     {
+       addCookies(selmid);
+     }
+     else
+     {
+       delCookies(selmid);
+     }
+   }
+   //SetSelectRl();
+   
+   // 改变选择框的文件
+   //		SetCheckValue();
+}  //function
+
+function delselall()
+{
+  if (!confirm("所选影片清空后不可恢复！请确定您是否清空所有选片？"))
+  {
+     return false;
+  }
+  if (document.form1.chkall.checked)
+  {
+    document.form1.chkall.checked=false;
+  }
+   for(var  i=0;i<document.form1.elements.length;i++)
+   {  
+       var  e=document.form1.elements[i];
+       
+       var name_pre = e.name.slice(0,10);
+       
+       if  (name_pre  ==  "moviearray" && e.type == "checkbox")
+       { 			
+	      if (document.form1.chkall.checked)
+		  {
+		    if (! e.checked)
+			{
+		      e.checked  =  document.form1.chkall.checked;  
+			}
+		  }
+		  else
+		  {
+		    if (e.checked)
+		    {
+		      e.checked  =  document.form1.chkall.checked;  
+  		    }
+		  }
+			var strYpid=e.value.toString();	
+                        var name_bz = e.name.slice(10,11);
+
+					if (e.checked)
+					{
+						document.getElementById(strYpid).className="row_c";
+					}
+					else
+					{
+                        if (name_bz=='1')
+                        {
+						  document.getElementById(strYpid).className="row_b";
+                        }
+                        else if (name_bz=='2')
+                        {
+						  document.getElementById(strYpid).className="row_d";
+                         }
+                         else
+                         {
+                           document.getElementById(strYpid).className="row_a";
+                         }
+					}
+			}//if 
+			 
+   } //for   
+  delCookies(0);
+  //SelectAll();
+  //delall();
+}
+  
+function SearchBut()
+{
+  searchform.submit();
+}
+//-->
+</script>
+
+<body>
+
+<div class="top">
+  <div class="top_index">
+    <div class="logo"><img src="images/logo.gif" /></div>
+
+    <div class="menu">
+      <ul id="nav">
+        <li class="mainlevel" id="mainlevel_01"><a href="index.asp">首 &nbsp;&nbsp; 页</a></li>
+        <li class="mainlevel" id="mainlevel_02"><a href="mlist.asp">选片平台</a></li>
+        <li class="mainlevel" id="mainlevel_03"><a href="product.asp">产品中心</a>
+          <ul id="sub_03">
+			<li><a href="product.asp?SortID=1">硬盘拷贝</a></li><li><a href="product.asp?SortID=2">碟片</a></li>            
+          </ul>
+        </li>
+        <li class="mainlevel" id="mainlevel_04"><a href="help.asp">帮助中心</a></li>
+        <li class="mainlevel" id="mainlevel_05"><a href="UploadFile/壹诺蓝光(2月-2).xls">目录下载</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<div class="line"></div>
+<div class="body_main">
+
+  <div class="main">
+    
+    <div class="banner">
+      <div id="kinMaxShow">
+	  <div><a href="javascript:void(0);" target="_blank"><img src="UploadFile/linbonei01.jpg" alt="通知" /></a></div><div><a href="javascript:void(0);" target="_blank"><img src="UploadFile/20205918555664365b.jpg" alt="价格" /></a></div><div><a href="javascript:void(0);" target="_blank"><img src="UploadFile/201912181095643145b.jpg" alt="包装" /></a></div>
+	  <!--javascript:void(0)-->
+      </div>
+    </div> 
+    <div class="film_list">
+      <div class="film_type">
+        <div class="search">
+		<form name="searchform" action="mlist.asp" method="post">
+		<input name="searchstr" type="text" size="37" /><input name="submit1" class="butt" type="button" onclick="return SearchBut();" />
+		</form>
+		</div>
+		<div style="clear:both;"></div>
+		<div class="search_options">
+              <ul class="option">
+                <li class="first">检索条件：</li>
+				<li>BBC纪录片<a href="mlist.asp?movieyear=e2018"></a></li><li>2018<a href="mlist.asp?movieclass=2"></a></li>
+              </ul>
+              <div style="margin-top:3px;"></div>
+		</div>
+        <div class="div_type">
+          <div class="type">
+            <strong>类型：</strong>
+	  
+	  <span class="type_all"><a href="mlist.asp?movieclass=2&movieyear=e2018">全部</a></span>
+	  <a href="mlist.asp?movietype=34&movieclass=2&movieyear=e2018">纪录片</a><a href="mlist.asp?movietype=35&movieclass=2&movieyear=e2018">演示碟</a><a href="mlist.asp?movietype=36&movieclass=2&movieyear=e2018">剧集</a><a href="mlist.asp?movietype=19&movieclass=2&movieyear=e2018">音乐</a><a href="mlist.asp?movietype=1&movieclass=2&movieyear=e2018">动作</a><a href="mlist.asp?movietype=2&movieclass=2&movieyear=e2018">冒险</a><a href="mlist.asp?movietype=3&movieclass=2&movieyear=e2018">爱情</a><a href="mlist.asp?movietype=23&movieclass=2&movieyear=e2018">动画</a><a href="mlist.asp?movietype=4&movieclass=2&movieyear=e2018">喜剧</a><a href="mlist.asp?movietype=5&movieclass=2&movieyear=e2018">剧情</a><a href="mlist.asp?movietype=17&movieclass=2&movieyear=e2018">情色</a><a href="mlist.asp?movietype=6&movieclass=2&movieyear=e2018">科幻</a><a href="mlist.asp?movietype=7&movieclass=2&movieyear=e2018">奇幻</a><a href="mlist.asp?movietype=8&movieclass=2&movieyear=e2018">悬疑</a><a href="mlist.asp?movietype=9&movieclass=2&movieyear=e2018">惊悚</a><a href="mlist.asp?movietype=10&movieclass=2&movieyear=e2018">恐怖</a><a href="mlist.asp?movietype=11&movieclass=2&movieyear=e2018">传记</a><a href="mlist.asp?movietype=12&movieclass=2&movieyear=e2018">历史</a><a href="mlist.asp?movietype=13&movieclass=2&movieyear=e2018">战争</a><a href="mlist.asp?movietype=14&movieclass=2&movieyear=e2018">犯罪</a><select name="movietype" onChange="javascript:window.location.href='mlist.asp?movieclass=2&movieyear=e2018&movietype='+this.options[this.options.selectedIndex].value;"><option>更多...</option><option value=15>西部</option><option value=16>灾难</option><option value=18>同性</option><option value=20>歌舞</option><option value=21>家庭</option><option value=22>儿童</option><option value=24>武侠</option><option value=25>古装</option><option value=26>鬼怪</option><option value=27>运动</option><option value=28>戏曲</option><option value=29>短片</option><option value=30>美剧</option><option value=31>韩剧</option><option value=32>日剧</option><option value=33>大陆剧</option></select>				
+          </div>
+          <div class="type">
+            <strong>地区：</strong>
+				  
+	  <span class="type_all"><a href="mlist.asp?movieclass=2&movieyear=e2018">全部</a></span>
+	  <a href="mlist.asp?moviequality=%C3%C0%B9%FA&movieclass=2&movieyear=e2018">美国</a><a href="mlist.asp?moviequality=%D6%D0%B9%FA%B4%F3%C2%BD&movieclass=2&movieyear=e2018">中国大陆</a><a href="mlist.asp?moviequality=%CF%E3%B8%DB&movieclass=2&movieyear=e2018">香港</a><a href="mlist.asp?moviequality=%CC%A8%CD%E5&movieclass=2&movieyear=e2018">台湾</a><a href="mlist.asp?moviequality=%C8%D5%B1%BE&movieclass=2&movieyear=e2018">日本</a><a href="mlist.asp?moviequality=%BA%AB%B9%FA&movieclass=2&movieyear=e2018">韩国</a><a href="mlist.asp?moviequality=%D3%A2%B9%FA&movieclass=2&movieyear=e2018">英国</a><a href="mlist.asp?moviequality=%B7%A8%B9%FA&movieclass=2&movieyear=e2018">法国</a><a href="mlist.asp?moviequality=%D2%E2%B4%F3%C0%FB&movieclass=2&movieyear=e2018">意大利</a><a href="mlist.asp?moviequality=%CE%F7%B0%E0%D1%C0&movieclass=2&movieyear=e2018">西班牙</a><a href="mlist.asp?moviequality=%B5%C2%B9%FA&movieclass=2&movieyear=e2018">德国</a><a href="mlist.asp?moviequality=%CC%A9%B9%FA&movieclass=2&movieyear=e2018">泰国</a><a href="mlist.asp?moviequality=%D3%A1%B6%C8&movieclass=2&movieyear=e2018">印度</a><a href="mlist.asp?moviequality=%BC%D3%C4%C3%B4%F3&movieclass=2&movieyear=e2018">加拿大</a><a href="mlist.asp?moviequality=%B0%C4%B4%F3%C0%FB%D1%C7&movieclass=2&movieyear=e2018">澳大利亚</a><a href="mlist.asp?moviequality=%B6%ED%C2%DE%CB%B9&movieclass=2&movieyear=e2018">俄罗斯</a><a href="mlist.asp?moviequality=%B2%A8%C0%BC&movieclass=2&movieyear=e2018">波兰</a>			
+          </div>
+          <div class="type">
+            <strong>年代：</strong>
+				  
+	  <a href="mlist.asp?movieclass=2">全部</a>
+	  <a href="mlist.asp?movieyear=e2022&movieclass=2">2022</a><a href="mlist.asp?movieyear=e2021&movieclass=2">2021</a><a href="mlist.asp?movieyear=e2020&movieclass=2">2020</a><a href="mlist.asp?movieyear=e2019&movieclass=2">2019</a><span class="type_all"><a href="mlist.asp?movieyear=e2018&movieclass=2">2018</a></span><a href="mlist.asp?movieyear=e2017&movieclass=2">2017</a><a href="mlist.asp?movieyear=e2016&movieclass=2">2016</a><a href="mlist.asp?movieyear=e2015&movieclass=2">2015</a><a href="mlist.asp?movieyear=e2014&movieclass=2">2014</a><a href="mlist.asp?movieyear=e2013&movieclass=2">2013</a><a href="mlist.asp?movieyear=e2012&movieclass=2">2012</a><a href="mlist.asp?movieyear=e2011&movieclass=2">2011</a><a href="mlist.asp?movieyear=e2010&movieclass=2">2010</a><a href="mlist.asp?movieyear=e2009&movieclass=2">2009</a><a href="mlist.asp?movieyear=e2008&movieclass=2">2008</a><a href="mlist.asp?movieyear=e2007&movieclass=2">2007</a><a href="mlist.asp?movieyear=e2006&movieclass=2">2006</a><a href="mlist.asp?movieyear=e2005&movieclass=2">2005</a><a href="mlist.asp?movieyear=e2004&movieclass=2">2004</a><a href="mlist.asp?movieyear=e2003&movieclass=2">2003</a><select name="movieyear" onChange="javascript:window.location.href='mlist.asp?movieclass=2&movieyear='+this.options[this.options.selectedIndex].value;"><option>更多...</option><option value=e2002>2002</option><option value=e2001>2001</option><option value=e2000>2000</option><option value=e1999>1999</option><option value=e1998>1998</option><option value=e1997>1997</option><option value=e1996>1996</option><option value=e1995>1995</option><option value=e1994>1994</option><option value=e1993>1993</option><option value=e1992>1992</option><option value=e1991>1991</option><option value=e1990>1990</option><option value=e1989>1989</option><option value=e1988>1988</option><option value=e1987>1987</option><option value=e1986>1986</option><option value=e1985>1985</option><option value=e1984>1984</option><option value=e1983>1983</option><option value=e1982>1982</option><option value=e1981>1981</option><option value=e1980>1980</option><option value=e1979>1979</option><option value=e1978>1978</option><option value=e1977>1977</option><option value=e1976>1976</option><option value=e1975>1975</option><option value=e1974>1974</option><option value=e1973>1973</option><option value=e1972>1972</option><option value=e1971>1971</option><option value=e1970>1970</option><option value=e1969>1969</option><option value=e1968>1968</option><option value=e1967>1967</option><option value=e1966>1966</option><option value=e1965>1965</option><option value=e1964>1964</option><option value=e1963>1963</option><option value=e1962>1962</option><option value=e1961>1961</option><option value=e1960>1960</option><option value=e1959>1959</option><option value=e1958>1958</option><option value=e1957>1957</option><option value=e1956>1956</option><option value=e1955>1955</option><option value=e1954>1954</option><option value=e1953>1953</option><option value=e1952>1952</option><option value=e1951>1951</option><option value=e1950>1950</option><option value=e1949>1949</option><option value=e1948>1948</option><option value=e1947>1947</option><option value=e1946>1946</option><option value=e1945>1945</option><option value=e1944>1944</option><option value=e1943>1943</option><option value=e1942>1942</option><option value=e1941>1941</option><option value=e1940>1940</option><option value=e1939>1939</option><option value=e1938>1938</option><option value=e1937>1937</option><option value=e1936>1936</option><option value=e1935>1935</option><option value=e1934>1934</option><option value=e1933>1933</option><option value=e1932>1932</option><option value=e1931>1931</option><option value=e1930>1930</option><option value=e1929>1929</option><option value=e1928>1928</option><option value=e1927>1927</option><option value=e1926>1926</option></select>
+          </div>
+          <div class="type">
+            <strong>分类：</strong>
+	  
+	  <a href="mlist.asp?movieyear=e2018">全部</a>
+	  <a href="mlist.asp?movieclass=1&movieyear=e2018">3D蓝光</a><a href="mlist.asp?movieclass=6&movieyear=e2018">4K蓝光碟</a><span class="type_all"><a href="mlist.asp?movieclass=2&movieyear=e2018">BBC纪录片</a></span><a href="mlist.asp?movieclass=7&movieyear=e2018">宫崎骏</a><a href="mlist.asp?movieclass=4&movieyear=e2018">IMDb_250</a><a href="mlist.asp?movieclass=9&movieyear=e2018">漫威宇宙</a>			
+          </div>
+          <div class="type">
+            <strong>影片片源：</strong>
+				  
+	  <span class="type_all"><a href="mlist.asp?movieclass=2&movieyear=e2018">全部</a></span>
+	  <a href="mlist.asp?moviesource=BD25%C0%B6%B9%E2&movieclass=2&movieyear=e2018">BD25蓝光</a><a href="mlist.asp?moviesource=BD50%C0%B6%B9%E2&movieclass=2&movieyear=e2018">BD50蓝光</a><a href="mlist.asp?moviesource=4K%5F%C0%B6%B9%E2&movieclass=2&movieyear=e2018">4K_蓝光</a><a href="mlist.asp?moviesource=4K%5F%BF%BD%B1%B4&movieclass=2&movieyear=e2018">4K_拷贝</a><a href="mlist.asp?moviesource=%CE%DE%CB%F0%D2%F4%C0%D6&movieclass=2&movieyear=e2018">无损音乐</a>
+          </div>
+          <div class="type">
+            <strong>分辨率：</strong>
+				  
+	  <span class="type_all"><a href="mlist.asp?movieclass=2&movieyear=e2018">全部</a></span>
+	  <a href="mlist.asp?movieresolu=2160p&movieclass=2&movieyear=e2018">2160p</a><a href="mlist.asp?movieresolu=1080p&movieclass=2&movieyear=e2018">1080p</a><a href="mlist.asp?movieresolu=1080i&movieclass=2&movieyear=e2018">1080i</a><a href="mlist.asp?movieresolu=720p&movieclass=2&movieyear=e2018">720p</a><a href="mlist.asp?movieresolu=%C6%E4%CB%FB&movieclass=2&movieyear=e2018">其他</a>			
+          </div>
+          <div class="type">
+            <strong>视频编码：</strong>
+				  
+	  <span class="type_all"><a href="mlist.asp?movieclass=2&movieyear=e2018">全部</a></span>
+	  <a href="mlist.asp?movieviedo=H%2E265&movieclass=2&movieyear=e2018">H.265</a><a href="mlist.asp?movieviedo=H%2E264&movieclass=2&movieyear=e2018">H.264</a><a href="mlist.asp?movieviedo=MPEG%2D4&movieclass=2&movieyear=e2018">MPEG-4</a>			
+          </div>
+          <div class="type">
+            <strong>文件格式：</strong>
+				  
+	  <span class="type_all"><a href="mlist.asp?movieclass=2&movieyear=e2018">全部</a></span>
+	  <a href="mlist.asp?movieaudio=%C0%B6%B9%E2%D4%AD%C5%CC&movieclass=2&movieyear=e2018">蓝光原盘</a><a href="mlist.asp?movieaudio=Remux&movieclass=2&movieyear=e2018">Remux</a><a href="mlist.asp?movieaudio=%CE%DE%CB%F0%D2%F4%C0%D6&movieclass=2&movieyear=e2018">无损音乐</a>			
+          </div>
+          <div class="type">
+            <strong>对白语言：</strong>
+				  
+	  <span class="type_all"><a href="mlist.asp?movieclass=2&movieyear=e2018">全部</a></span>
+	  <a href="mlist.asp?movielangue=%B9%FA%D3%EF&movieclass=2&movieyear=e2018">国语</a><a href="mlist.asp?movielangue=%D4%C1%D3%EF&movieclass=2&movieyear=e2018">粤语</a><a href="mlist.asp?movielangue=%D3%A2%D3%EF&movieclass=2&movieyear=e2018">英语</a><a href="mlist.asp?movielangue=%B7%A8%D3%EF&movieclass=2&movieyear=e2018">法语</a><a href="mlist.asp?movielangue=%B5%C2%D3%EF&movieclass=2&movieyear=e2018">德语</a><a href="mlist.asp?movielangue=%D2%E2%B4%F3%C0%FB%D3%EF&movieclass=2&movieyear=e2018">意大利语</a><a href="mlist.asp?movielangue=%CE%F7%B0%E0%D1%C0%D3%EF&movieclass=2&movieyear=e2018">西班牙语</a><a href="mlist.asp?movielangue=%C6%CF%CC%D1%D1%C0%D3%EF&movieclass=2&movieyear=e2018">葡萄牙语</a><a href="mlist.asp?movielangue=%C8%D5%D3%EF&movieclass=2&movieyear=e2018">日语</a><a href="mlist.asp?movielangue=%BA%AB%D3%EF&movieclass=2&movieyear=e2018">韩语</a><a href="mlist.asp?movielangue=%CC%A9%D3%EF&movieclass=2&movieyear=e2018">泰语</a><a href="mlist.asp?movielangue=%B6%ED%D3%EF&movieclass=2&movieyear=e2018">俄语</a>			
+          </div>
+        </div>
+      </div>
+	  <div align="center"><B>
+<P class=unnamed1>&nbsp;</P></B></div>
+	  
+	  <form  name="form1" method="post" action="mlist.asp?movieclass=2&movieyear=e2018">
+      <div class="film_conn">
+        <div class="titl"><span class="ff"><label>
+                <input type="checkbox" name="chkall" id="chkall" value=1 onclick="SelectAll()" />
+                全选本页影片</label><label>&nbsp;&nbsp;&nbsp;&nbsp;
+		
+		</label>
+		<label>
+		  颜色提示：<span style="border-style: solid; border-width: 1px; padding-left: 2px; padding-right: 2px; padding-top: 2px; padding-bottom: 2px; background-color: #cacaca">已选购过的</span>
+		  <span style="border-style: solid; border-width: 1px; padding-left: 2px; padding-right: 2px; padding-top: 2px; padding-bottom: 2px; background-color: #b8d8ff">当前选定的</span>
+		  </label>
+		</span>影片列表</div>
+        <div class="film_list2"><table id="tb" border="0" cellspacing="1" cellpadding="5"><tbody><tr><th width="4%">选定</th><th width="42%"><a href=mlist.asp?orderid=chinaname&sfdesc=1&movieclass=2&movieyear=e2018 title='点击可排列顺序'>电影片名</a></th><th width="34%">片源信息</th><th width="5%"><a href=mlist.asp?orderid=doubanpf&sfdesc=1&movieclass=2&movieyear=e2018 title='点击可排列顺序'>豆瓣</a></th><th width="5%"><a href=mlist.asp?orderid=imdb&sfdesc=1&movieclass=2&movieyear=e2018 title='点击可排列顺序'>IMDB</a></th><th width="10%"><a href=mlist.asp?orderid=movieupdate&sfdesc=1&movieclass=2&movieyear=e2018 title='点击可排列顺序'>更新日期</a></th></tr><tr class="list1_data" id="17043"><TD><INPUT type=checkbox name=moviearray017043 value=17043 onclick="SelectThis(this,17043,0);"></TD><td><table width="98%" border="0" cellpadding="0" cellspacing="0"><tr><td width="68" align="center" valign="middle"><a href="mdetail.asp?id=17043" target="_blank" title='选片请勾选方框或点击图片查看剧情介绍'><img src="UploadFile/20200114030150698473c_s.jpg" width="78" height="104" style="margin:4px;"/></a></td><td><div style="text-align:left; font-weight:bold;color:red;">[BBC纪录片]</div><div style="text-align:left"><a href='mdetail.asp?id=17043' target='_blank'  title='点击查看剧情介绍'><span class="name">BBC：文明 第一季</span></a><span class="label_txt">( 2018 )</span><div class="label_txt">Civilisations</div></div><div><div style="float:right;"><span class="label_txt">地区：</span>英国</div><div style="float:left;"><span class="label_txt">类型：</span>纪录片</div><div style="float:left;"><span class="label_txt">IMDB评分：</span><font style='font-size:14px; font-weight:bold;color:red;'>7.6</font><span class="label_txt">&nbsp;&nbsp;豆瓣评分：</span><font style='font-size:14px; font-weight:bold;color:#0F7E00;'>9.1</font><span class="label_txt">&nbsp;&nbsp;豆瓣链接：</span><a href='https://movie.douban.com/subject/26692442/' target='_blank'><font style='font-size:14px; color:#0072BC;'>26692442</font></a></div></div></td></tr></table></td><td align='left'>音轨：LPCM2.0英<BR>字幕：中简/中繁/英<BR>容量：<font style='font-size:14px; color:#0072BC;'>68.1G</font><BR>碟数：<font style='font-size:14px; font-weight:bold;color:red;'>BD25G×3</font></td><td style='font-size:14px; font-weight:bold;color:#0F7E00;'>9.1</td><td style='font-size:14px; font-weight:bold;color:red;'>7.6</td><td title="更新日期：2020-1-14　BBC：文明 第一季"><p>2020-1-14</p></td></tr><tr class="list1_data" id="16884"><TD><INPUT type=checkbox name=moviearray016884 value=16884 onclick="SelectThis(this,16884,0);"></TD><td><table width="98%" border="0" cellpadding="0" cellspacing="0"><tr><td width="68" align="center" valign="middle"><a href="mdetail.asp?id=16884" target="_blank" title='选片请勾选方框或点击图片查看剧情介绍'><img src="UploadFile/20191220152813240463c_s.jpg" width="78" height="104" style="margin:4px;"/></a></td><td><div style="text-align:left; font-weight:bold;color:red;">[BBC纪录片]</div><div style="text-align:left"><a href='mdetail.asp?id=16884' target='_blank'  title='点击查看剧情介绍'><span class="name">BBC:大猫</span></a><span class="label_txt">( 2018 )</span><div class="label_txt">Big Cats</div></div><div><div style="float:right;"><span class="label_txt">地区：</span>英国 美国 法国</div><div style="float:left;"><span class="label_txt">类型：</span>纪录片</div><div style="float:left;"><span class="label_txt">IMDB评分：</span><font style='font-size:14px; font-weight:bold;color:red;'>0</font><span class="label_txt">&nbsp;&nbsp;豆瓣评分：</span><font style='font-size:14px; font-weight:bold;color:#0F7E00;'>9.5</font><span class="label_txt">&nbsp;&nbsp;豆瓣链接：</span><a href='https://movie.douban.com/subject/27620616/' target='_blank'><font style='font-size:14px; color:#0072BC;'>27620616</font></a></div></div></td></tr></table></td><td align='left'>音轨：DTS-HD Master2.0英，DD2.0国<BR>字幕：中简/中繁/英<BR>容量：<font style='font-size:14px; color:#0072BC;'>22.6G</font><BR>碟数：<font style='font-size:14px; font-weight:bold;color:red;'>BD25G×1</font></td><td style='font-size:14px; font-weight:bold;color:#0F7E00;'>9.5</td><td style='font-size:14px; font-weight:bold;color:red;'>0</td><td title="更新日期：2019-12-20　BBC:大猫/大猫：终极猎食者"><p>2019-12-20</p></td></tr><tr class="list1_data" id="16478"><TD><INPUT type=checkbox name=moviearray016478 value=16478 onclick="SelectThis(this,16478,0);"></TD><td><table width="98%" border="0" cellpadding="0" cellspacing="0"><tr><td width="68" align="center" valign="middle"><a href="mdetail.asp?id=16478" target="_blank" title='选片请勾选方框或点击图片查看剧情介绍'><img src="UploadFile/20181210113056410991c_s.jpg" width="78" height="104" style="margin:4px;"/></a></td><td><div style="text-align:left; font-weight:bold;color:red;">[4K蓝光碟][BBC纪录片]</div><div style="text-align:left"><a href='mdetail.asp?id=16478' target='_blank'  title='点击查看剧情介绍'><span class="name">4K 王朝</span></a><span class="label_txt">( 2018 )</span><div class="label_txt">Dynasties</div></div><div><div style="float:right;"><span class="label_txt">地区：</span>英国</div><div style="float:left;"><span class="label_txt">类型：</span>纪录片</div><div style="float:left;"><span class="label_txt">IMDB评分：</span><font style='font-size:14px; font-weight:bold;color:red;'>9.2</font><span class="label_txt">&nbsp;&nbsp;豆瓣评分：</span><font style='font-size:14px; font-weight:bold;color:#0F7E00;'>9.5</font><span class="label_txt">&nbsp;&nbsp;豆瓣链接：</span><a href='https://movie.douban.com/subject/27182707/' target='_blank'><font style='font-size:14px; color:#0072BC;'>27182707</font></a></div></div></td></tr></table></td><td align='left'>音轨：Dolby Atmos 英，DTS-HD Master5.1国(腾讯)/英<BR>字幕：中简/中繁/中简英/中繁英/英(简繁特效中字)<BR>容量：<font style='font-size:14px; color:#0072BC;'>0G</font><BR>碟数：<font style='font-size:14px; font-weight:bold;color:red;'>4K50G×2</font></td><td style='font-size:14px; font-weight:bold;color:#0F7E00;'>9.5</td><td style='font-size:14px; font-weight:bold;color:red;'>9.2</td><td title="更新日期：2019-10-24　4K 王朝/The Rise and Fall of Animal Families"><p>2019-10-24</p></td></tr></tbody></table></div><div class="page_1"> 共3影片 页次1/1<a href='mlist.asp?page=1&movieclass=2&movieyear=e2018'> << </a><span class="disabled"> < </span><span class="current">1</span><span class="disabled"> > </span><a href='mlist.asp?page=1&movieclass=2&movieyear=e2018'> >> </a><input type='text' name='page' size=2 maxlength=4 class=smallInput value=1>&nbsp;<input type='submit'  class='button' value='GO' name='cndok'></div>
+      </div>
+	  </form>
+    </div>
+  </div>
+  
+<script language="javascript">
+<!--
+function checkdata1()
+{
+  var errorcharcode="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz><,[>{}?/+=|\\'\":;~!#$%()`";
+  if(form21.username.value=="" )
+  {
+    alert("请输入用户名");
+	 form21.username.focus();
+    return false;
+  }
+  if(form21.password.value=="" )
+  {
+    alert("请输入会员密码");
+	 form21.password.focus();
+    return false;
+  }
+  form21.submit();
+}
+function checkspace(checkstr) {
+  var str = '';
+  for(i = 0; i < checkstr.length; i++) {
+    str = str + ' ';
+  }
+  return (str == checkstr);
+}
+//-->
+</script>
+
+  <div class="sub">
+    <div class="fixed">
+	 	
+	  <form name="form21" action="memcheck.asp" method="post">
+      <p><input name="username" type="text" size="12" value="" /></p>
+      <p><input name="password" type="password" size="12" value="" /></p>
+	  </form>
+      <div class="login"><a href="javascript:void(0);" onclick="return checkdata1();">登录</a></div>
+      <div class="regist"><a href="javascript:void(0);" onclick="self.location='memreg.asp';">注册成为会员</a></div>
+	  
+      <div class="xp1"><a href="javascript:void(0);" onClick="self.location='mlist.asp?movielist=2';">封面选片</a></div>
+      <div class="xp2"><a href="javascript:void(0);" onClick="self.location='mlist.asp?movielist=1';">列表选片</a></div>
+      <div class="regist"><a href="javascript:void(0);" onclick="delselall();">X 清空所选影片</a></div>
+      <div class="dd"><a href="javascript:void(0);" onclick="self.location='mselect.asp?movielist=1';">查看影片/生成订单</a></div>
+      <p>
+	  <a href="tencent://message/?uin=25317007"><img border="0" SRC="http://wpa.qq.com/pa?p=1:25317007:1" alt="点击这里给我发消息"></a>
+	  </p>
+      <div class="capacity">
+        <p class="fon10px">已选影片容量</p>
+        <p class="fon20px" id="select_total_rl">0.00G</p>
+        <p class="fon10px">已选影片数量</p>
+        <p class="fon20px" id="select_total_num">0部</p>
+        <p class="fon10px">已选影片碟数</p>
+        <p class="fon20px" id="select_total_disk"></p>
+      </div>
+    </div>		
+  </div>
+
+</div>
+
+    <div class="mui-clearfix lowLogin">
+	
+	<a href="regist.asp" class="mui-pull-left">注册</a><a href="login.asp" class="mui-pull-left">登录</a>
+    
+    <a  class="mui-pull-right top">&uarr;TOP</a>
+	</div>
+	<div class="mui-clearfix lowView">
+        <a class="homeIcon active" href="home.html">&nbsp;</a>
+        <a class="filmIcon" href="orderDetails.html">&nbsp;</a>
+        <div class="mui-pull-right filmInfo">
+            <span id="select_count">已选0部</span>
+            <span>|</span>
+            <span id="select_rl">0 G</span>
+            <span>|</span>
+            <span id="select_total_disk"></span>
+        </div>
+
+    </div>
+<script language="javascript">
+function rowHover(){
+	$(".list1_data").hover(function() {
+			$(this).addClass("row_hover");
+		}, function() {
+			$(this).removeClass("row_hover");
+		}
+	);
+	$(".list2_data").hover(function() {
+			$(this).addClass("row_hover");
+		}, function() {
+			$(this).removeClass("row_hover");
+		}
+	);	
+	$(".list3_data").hover(function() {
+			$(this).addClass("row_hover");
+		}, function() {
+			$(this).removeClass("row_hover");
+		}
+	);	
+	$(".list4_data").hover(function() {
+			$(this).addClass("row_hover");
+		}, function() {
+			$(this).removeClass("row_hover");
+		}
+	);	
+}
+
+$(function(){
+	rowHover();	
+});
+</script>
+</body>
+</html>

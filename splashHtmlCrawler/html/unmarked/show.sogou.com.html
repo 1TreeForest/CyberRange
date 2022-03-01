@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    
+    <title>搜狗直播 - 高清游戏娱乐直播平台</title>
+    <meta name="description" content="搜狗直播平台提供高清，流畅的视频直播服务,包含游戏直播、美女直播、户外直播、体育直播等各类直播供您观看。">
+    <meta name="keywords" content="搜狗直播，游戏直播，娱乐直播">
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/index.css?ver=1.5">
+    
+    
+    <link href="/img/favicon.ico" rel="Shortcut Icon" type="image/x-icon">
+</head>
+<body>
+<script>
+  !function () {
+      var supports = (function () {
+        var div = document.createElement('div'),
+            vendors = 'Khtml Ms O Moz Webkit'.split(' '),
+            len;
+        return function (prop) {
+          len = vendors.length;
+          if (prop in div.style) return true;
+          prop = prop.replace(/^[a-z]/, function (val) {
+            return val.toUpperCase();
+          });
+          while (len--) {
+            if (vendors[len] + prop in div.style) {
+              // browser supports box-shadow. Do what you need.
+              // Or use a bang (!) to test if the browser doesn't.
+              return true;
+            }
+          }
+          return false;
+        };
+      })();
+      var toDash = function(str) {
+        return str.replace(/([A-Z])/g, function($1) {
+          return '-' + $1.toLowerCase();
+        });
+      };
+      var suportList = function(list){
+        list = list || [];
+        var klassName = document.documentElement.className.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+        var klassNameArr = !!klassName ? klassName.split(/\s+/) : [];
+        for(var i = 0, item; item = list[i++];){
+          if(supports(item)){
+            klassNameArr.push(toDash(item + 'Style'));
+          }
+        }
+        document.documentElement.className = klassNameArr.join(' ');
+      }
+      suportList(['transform', 'borderRadius']);
+    }();
+
+    // sub-pub
+    (function(win, wn) {
+
+        var meta = {},
+                cbs = [],
+                timer;
+
+        var event = function() {
+            var fnlist = {},
+                    listen,
+                    trigger,
+                    remove;
+            listen = function(e, fn) {
+                if (!fnlist[e]) {
+                    fnlist[e] = [];
+                }
+                fnlist[e].push(fn);
+            };
+            trigger = function(e) {
+                var key = [].shift.call(arguments),
+                        fns = fnlist[key];
+                if (!fns || fns.length === 0) {
+                    return false;
+                }
+                for (var i = 0, fn; fn = fns[i++];) {
+                    fn.apply(this, arguments);
+                }
+            };
+            remove = function(e, fn) {
+                var fns = fnlist[e];
+                if (!fns) {
+                    return false;
+                }
+                if (!fn) {
+                    fns && (fns.length = 0);
+                } else {
+                    for (var j = 0, l = fns.length; j < l; j--) {
+                        if (fn === fns[j]) {
+                            fns.splice(j, 1);
+                        }
+                    }
+                }
+            }
+            return {
+                listen: listen,
+                trigger: trigger,
+                remove: remove
+            }
+        }();
+
+        var addEvent = (function(){
+                    if (window.addEventListener) {
+                        return function(e, type, handler) {
+                            e.addEventListener(type, handler, false);
+                        };
+                    }
+                    if (window.attachEvent) {
+                        return function(e, type, handler) {
+                            e.attachEvent('on' + type, handler);
+                        };
+                    }
+                })(),
+                _body = document.body;
+
+        var set = function(){
+            var _width = Math.max(document.documentElement.clientWidth, _body.clientWidth);
+            if (_width < 1251) {
+                _body.className = 'narrow';
+                meta.current = 'n';
+            } else {
+                _body.className = '';
+                meta.current = 'w';
+            }
+            return function(){
+                _width = Math.max(document.documentElement.clientWidth, _body.clientWidth);
+                if (_width < 1251) {
+                    if(meta.current !== 'n'){
+                        _body.className = 'narrow';
+                        meta.current = 'n';
+                        event.trigger('__m__', meta);
+                    }
+                } else {
+                    if(meta.current !== 'w'){
+                        _body.className = '';
+                        meta.current = 'w';
+                        event.trigger('__m__', meta);
+                    }
+                }
+            }
+        }();
+        event.listen('__m__', function(event){
+            if (cbs.length === 0) {
+                return false;
+            }
+            for (var i = 0, cb; cb = cbs[i++];) {
+                if (typeof cb === 'function') {
+                    cb.call(wn, event);
+                } else {
+                    throw new Error('The accepted argument of wn.on must be a function.');
+                }
+            }
+        });
+
+        addEvent(win, 'resize', set, false);
+
+        // 接口
+        wn.screen = meta;
+        wn.event = event;
+        wn.on = function(cb) {
+            cbs.push(cb);
+        }
+    })(window, window['wn'] || (window['wn'] = {}));
+</script>
+<!-- ietip -->
+<!--[if lt IE 8]>
+<style>
+    .ietip{
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 180px;
+        background-color: #ffe609;
+        font-size: 24px;
+        z-index: 9999;
+    }
+    .ietip-wp{
+        width: 1000px;
+        padding-top: 50px;
+        margin: 0 auto;
+    }
+    .ietip-c{
+        text-decoration: underline;
+        font-weight: 700;
+        text-decoration: none;
+    }
+    .ietip-c:hover{
+        text-decoration: underline;
+    }
+</style>
+<div class="ietip">
+    <div class="ietip-wp">
+        <p>Hi，您当前的浏览器版本过低，可能本站部分内容无法正常显示，为了获得更好的体验，建议您升级到<a href="http://browsehappy.com/" class="ietip-c" target="_blank">最新版本</a>，或使用 <a href="http://ie.sogou.com/" class="ietip-c" target="_blank">搜狗高速浏览器</a></p>
+    </div>
+</div>
+<![endif]-->
+<!-- background -->
+<div class="background">
+    <p class="background-txt">欢迎来到sogou直播</p>
+</div>
+<!-- topbar -->
+
+<div class="topbar" pbflag="wc_0_top">
+    <div class="topbar-wrapper">
+        <div class="logo">
+            <a href="/" class="logo-txt">搜狗直播</a>
+        </div>
+        <div class="nav">
+            <a href="/" class="nav-item nav-selected">首页</a>
+            <a href="/meinv/" class="nav-item ">美女</a>
+            <a href="/youxi/" class="nav-item ">游戏</a>
+            <a href="/xiuchang/" class="nav-item ">秀场</a>
+            
+            
+            
+	    
+        </div>
+        <div class="search" pbflag="wc_0_搜索框">
+            <form action="/search/" target="_blank" class="search-form js-form" autocomplete="off">
+                <span class="search-form-txt"><input type="text" class="js-formtxt" value="" pholder="搜索主播/房间" autocomplete="off" autocorrect="off" name="keyword" maxlength="100"></span>
+                <a href="javascript:void(0);" class="search-form-icon js-formbtn"><i></i></a>
+            </form>
+            <div class="search-sites">
+                <a href="/site/" class="search-sites-item">直播网站大全</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- header -->
+
+<div class="header" pbflag="wc_0_顶部轮播">
+	<img src="../img/banner_preload.jpg" data-original="../img/banner.jpg" class="header-bg header-bg-lazyload">
+	<div class="header-wp">
+		<div class="header-m1">
+			<div class="header-m1-l">
+				<a href="https://x.kuwo.cn/32031848?refer=2178" class="picinfo" target="_blank">
+					<img class="picinfo-img lazyload" src="http://p1.123.sogoucdn.com/imgu/2021/12/20211203141047_579.gif" alt="" class="lazyload" data-original="https://x.kuwo.cn/32031848?refer=2178">
+					<span class="picinfo-barbg"></span>
+					<span class="picinfo-hover"><i class="picinfo-hover-icon"></i></span>
+					<div class="picinfo-bar">
+						<h4 class="picinfo-bar-r1">新秀主播PK</h4>
+						<p class="picinfo-bar-r2">
+							<span class="l">月亮__</span>
+							<span class="r"><i></i>2.2万</span>
+						</p>
+					</div>
+				</a>
+			</div>
+			<div class="header-m1-r" pbflag="wc_0_shouyetu">
+				<ul class="list">
+																									<li class="list-item">
+					<a href="https://x.kuwo.cn/652553?refer=2178" class="picinfo picinfo-a" target="_blank">
+							<img class="picinfo-img lazyload" src="http://p1.123.sogoucdn.com/imgu/2021/12/20211203143250_945.jpg" alt="" class="lazyload" data-original="https://x.kuwo.cn/652553?refer=2178">
+							<span class="picinfo-barbg"></span>
+							<span class="picinfo-hover"><i class="picinfo-hover-icon"></i></span>
+							<div class="picinfo-bar">
+								<h4 class="picinfo-bar-r1">声音主播陪你一起唱</h4>
+								<p class="picinfo-bar-r2">
+								<span class="l">yyfyyf</span>
+								<span class="r"><i></i>397.4万</span>
+								</p>
+							</div>
+						</a>
+					</li>
+																				<li class="list-item">
+					<a href="http://v.6.cn/event/promimg/miniVideo/?src=z9weij1096" class="picinfo picinfo-a" target="_blank">
+							<img class="picinfo-img lazyload" src="http://p5.123.sogoucdn.com/imgu/2021/08/20210805172704_308.gif" alt="" class="lazyload" data-original="http://v.6.cn/event/promimg/miniVideo/?src=z9weij1096">
+							<span class="picinfo-barbg"></span>
+							<span class="picinfo-hover"><i class="picinfo-hover-icon"></i></span>
+							<div class="picinfo-bar">
+								<h4 class="picinfo-bar-r1">主播才艺大比拼</h4>
+								<p class="picinfo-bar-r2">
+								<span class="l">未来</span>
+								<span class="r"><i></i>2.8万</span>
+								</p>
+							</div>
+						</a>
+					</li>
+																				<li class="list-item">
+					<a href="https://v.6.cn/61116?src=z9weij1096" class="picinfo picinfo-a" target="_blank">
+							<img class="picinfo-img lazyload" src="https://vi2.xiu123.cn/live/2021/07/22/17/1036v1626947713564734921.gif" alt="" class="lazyload" data-original="https://v.6.cn/61116?src=z9weij1096">
+							<span class="picinfo-barbg"></span>
+							<span class="picinfo-hover"><i class="picinfo-hover-icon"></i></span>
+							<div class="picinfo-bar">
+								<h4 class="picinfo-bar-r1">音乐时空的直播间</h4>
+								<p class="picinfo-bar-r2">
+								<span class="l">音乐时空</span>
+								<span class="r"><i></i>3.5万</span>
+								</p>
+							</div>
+						</a>
+					</li>
+																				<li class="list-item">
+					<a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20196858" class="picinfo picinfo-a" target="_blank">
+							<img class="picinfo-img lazyload" src="http://p3.fx.kgimg.com/v2/fxroomcover/c0b9d7fd5e80d1b012b5cbedd14397d5.jpg" alt="" class="lazyload" data-original="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20196858">
+							<span class="picinfo-barbg"></span>
+							<span class="picinfo-hover"><i class="picinfo-hover-icon"></i></span>
+							<div class="picinfo-bar">
+								<h4 class="picinfo-bar-r1">每天下午三点到六点</h4>
+								<p class="picinfo-bar-r2">
+								<span class="l">美熙舞蹈主播</span>
+								<span class="r"><i></i>1.8万</span>
+								</p>
+							</div>
+						</a>
+					</li>
+																				<li class="list-item">
+					<a href="https://x.kuwo.cn/51168?refer=2178" class="picinfo picinfo-a" target="_blank">
+							<img class="picinfo-img lazyload" src="http://p9.123.sogoucdn.com/imgu/2021/12/20211203144035_82.jpg" alt="" class="lazyload" data-original="https://x.kuwo.cn/51168?refer=2178">
+							<span class="picinfo-barbg"></span>
+							<span class="picinfo-hover"><i class="picinfo-hover-icon"></i></span>
+							<div class="picinfo-bar">
+								<h4 class="picinfo-bar-r1">软萌主播聊天室</h4>
+								<p class="picinfo-bar-r2">
+								<span class="l">王者荣耀官方赛事</span>
+								<span class="r"><i></i>380.5万</span>
+								</p>
+							</div>
+						</a>
+					</li>
+																				<li class="list-item">
+					<a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102648" class="picinfo picinfo-a" target="_blank">
+							<img class="picinfo-img lazyload" src="http://p3.fx.kgimg.com/v2/fxroomcover/7b1f0775c2117e1bd92776671f260270.jpg" alt="" class="lazyload" data-original="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102648">
+							<span class="picinfo-barbg"></span>
+							<span class="picinfo-hover"><i class="picinfo-hover-icon"></i></span>
+							<div class="picinfo-bar">
+								<h4 class="picinfo-bar-r1">一根会跳舞的骨头</h4>
+								<p class="picinfo-bar-r2">
+								<span class="l">舞骨头很漂亮哦</span>
+								<span class="r"><i></i>1.1万</span>
+								</p>
+							</div>
+						</a>
+					</li>
+														</ul>
+			</div>
+		</div>
+		<div class="header-m2" pbflag="wc_0_shouyetuijian">
+			<h3 class="header-m2-r1"></h3>
+			<div class="header-m2-r2">
+				<ul class="list">
+										<li class="list-item">
+					<a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20103502" class="pictxt" target="_blank">
+							<div class="pictxt-wp">
+								<div class="pictxt-pic">
+									<img alt="" class="lazyload" src="/img/preavatar.png" data-original="https://kwimg9.kuwo.cn/star/koowolive/0/43/1608224312080_441930400.jpg">
+								</div>
+								<span class="pictxt-hover"></span>
+								<i class="pictxt-icon"></i>
+							</div>
+							<p class="pictxt-txt">月亮__</p>
+						</a>
+					</li>
+										<li class="list-item">
+					<a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102613" class="pictxt" target="_blank">
+							<div class="pictxt-wp">
+								<div class="pictxt-pic">
+									<img alt="" class="lazyload" src="/img/preavatar.png" data-original="http://p3.fx.kgimg.com/v2/fxuserlogo/318d3195506117f2a5011177e931b079.jpg_45x45.jpg">
+								</div>
+								<span class="pictxt-hover"></span>
+								<i class="pictxt-icon"></i>
+							</div>
+							<p class="pictxt-txt">楚楚求依靠9000</p>
+						</a>
+					</li>
+										<li class="list-item">
+					<a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102408" class="pictxt" target="_blank">
+							<div class="pictxt-wp">
+								<div class="pictxt-pic">
+									<img alt="" class="lazyload" src="/img/preavatar.png" data-original="http://p3.fx.kgimg.com/v2/fxuserlogo/8bb8a627c3bf04dab6ef98ee8d5c7831.jpg_45x45.jpg">
+								</div>
+								<span class="pictxt-hover"></span>
+								<i class="pictxt-icon"></i>
+							</div>
+							<p class="pictxt-txt">FR宛君</p>
+						</a>
+					</li>
+										<li class="list-item">
+					<a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102490" class="pictxt" target="_blank">
+							<div class="pictxt-wp">
+								<div class="pictxt-pic">
+									<img alt="" class="lazyload" src="/img/preavatar.png" data-original="https://kwimg9.kuwo.cn/star/kuwolive/50/47/1617809835913_188010650.jpg">
+								</div>
+								<span class="pictxt-hover"></span>
+								<i class="pictxt-icon"></i>
+							</div>
+							<p class="pictxt-txt">小静儿a</p>
+						</a>
+					</li>
+										<li class="list-item">
+					<a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20165968" class="pictxt" target="_blank">
+							<div class="pictxt-wp">
+								<div class="pictxt-pic">
+									<img alt="" class="lazyload" src="/img/preavatar.png" data-original="https://kwimg9.kuwo.cn/star/koowolive/29/40/1615404825427_528522529.jpg">
+								</div>
+								<span class="pictxt-hover"></span>
+								<i class="pictxt-icon"></i>
+							</div>
+							<p class="pictxt-txt">未来</p>
+						</a>
+					</li>
+										<li class="list-item">
+					<a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20198380" class="pictxt" target="_blank">
+							<div class="pictxt-wp">
+								<div class="pictxt-pic">
+									<img alt="" class="lazyload" src="/img/preavatar.png" data-original="http://p3.fx.kgimg.com/v2/fxuserlogo/8dece35cef0335c3e9471c0c83815f75.jpg_45x45.jpg">
+								</div>
+								<span class="pictxt-hover"></span>
+								<i class="pictxt-icon"></i>
+							</div>
+							<p class="pictxt-txt">江西傻白甜丿</p>
+						</a>
+					</li>
+										<li class="list-item">
+					<a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20196858" class="pictxt" target="_blank">
+							<div class="pictxt-wp">
+								<div class="pictxt-pic">
+									<img alt="" class="lazyload" src="/img/preavatar.png" data-original="http://p3.fx.kgimg.com/v2/fxuserlogo/c98757ec6ced263f0f646f075db8efde.jpg_45x45.jpg">
+								</div>
+								<span class="pictxt-hover"></span>
+								<i class="pictxt-icon"></i>
+							</div>
+							<p class="pictxt-txt">美熙舞蹈主播</p>
+						</a>
+					</li>
+										<li class="list-item">
+					<a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=32040154" class="pictxt" target="_blank">
+							<div class="pictxt-wp">
+								<div class="pictxt-pic">
+									<img alt="" class="lazyload" src="/img/preavatar.png" data-original="http://p3.fx.kgimg.com/v2/fxuserlogo/f86fb8169a321b9dd3700cef2f45ffcd.jpg_45x45.jpg">
+								</div>
+								<span class="pictxt-hover"></span>
+								<i class="pictxt-icon"></i>
+							</div>
+							<p class="pictxt-txt">你的荨宝吖</p>
+						</a>
+					</li>
+										<li class="list-item">
+					<a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102648" class="pictxt" target="_blank">
+							<div class="pictxt-wp">
+								<div class="pictxt-pic">
+									<img alt="" class="lazyload" src="/img/preavatar.png" data-original="https://kwimg9.kuwo.cn/star/koowolive/40/42/1629968171725_379120740.jpg">
+								</div>
+								<span class="pictxt-hover"></span>
+								<i class="pictxt-icon"></i>
+							</div>
+							<p class="pictxt-txt">舞骨头很漂亮哦</p>
+						</a>
+					</li>
+										<li class="list-item">
+					<a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102650" class="pictxt" target="_blank">
+							<div class="pictxt-wp">
+								<div class="pictxt-pic">
+									<img alt="" class="lazyload" src="/img/preavatar.png" data-original="http://p3.fx.kgimg.com/v2/fxuserlogo/4d68d5acf66310cc549f20553ef0561b.jpg_45x45.jpg">
+								</div>
+								<span class="pictxt-hover"></span>
+								<i class="pictxt-icon"></i>
+							</div>
+							<p class="pictxt-txt">喜力1997</p>
+						</a>
+					</li>
+									</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- main layout -->
+
+    <div class="main">
+        <div class="mainc">
+            <!-- m1 -->
+            <div class="m1 js-floor" pbflag="wc_0_美女直播">
+                <!-- mtitle -->
+                <div class="mtitle">
+                    <a href="/meinv/" class="mtitle-l">
+                        <h2 class="mtitle-l-tt">美女直播</h2>
+                    </a>
+                    <div class="mtitle-r">
+                        <div class="mtitle-r-list">
+                                                            <a href="/meinv/?tag=%E8%88%9E%E8%B9%88" target="_blank">舞蹈</a>
+                                                            <a href="/meinv/?tag=%E5%A5%BD%E5%A3%B0%E9%9F%B3" target="_blank">好声音</a>
+                                                        <a href="/meinv/" target="_blank" class="more">查看更多<i></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                                        <ul class="box-list">
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20103502" title="等风来" class="imginfo-img" target="_blank">
+                                        <img data-original="http://p3.fx.kgimg.com/v2/fxroomcover/c58ff2389d6354d46ec3d636ada80a27.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20103502" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://kwimg9.kuwo.cn/star/koowolive/0/43/1608224312080_441930400.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20103502" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">等风来</h4>
+                                                <p class="r2"><i></i>酷我聚星 - 月亮__</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>2.2万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://v.6.cn/61116?src=z9weij1096" title="音乐时空的直播间" class="imginfo-img" target="_blank">
+                                        <img data-original="https://vi2.xiu123.cn/live/2021/07/22/17/1036v1626947713564734921.gif" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://v.6.cn/61116?src=z9weij1096" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://vi0.6rooms.com/live/2021/07/05/15/1003v1625471434940920331.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://v.6.cn/61116?src=z9weij1096" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">音乐时空的直播间</h4>
+                                                <p class="r2"><i></i>六间房 - 音乐时空</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>3.5万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102648" title="一根会跳舞的骨头" class="imginfo-img" target="_blank">
+                                        <img data-original="http://p3.fx.kgimg.com/v2/fxroomcover/7b1f0775c2117e1bd92776671f260270.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102648" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://kwimg9.kuwo.cn/star/koowolive/40/42/1629968171725_379120740.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102648" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">一根会跳舞的骨头</h4>
+                                                <p class="r2"><i></i>酷我聚星 - 舞骨头很漂亮哦</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>1.1万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://v.6.cn/7188?src=z9weij1096" title="♚艺琪♚充值自动返的直播间" class="imginfo-img" target="_blank">
+                                        <img data-original="https://vi0.xiu123.cn/live/2021/12/29/19/1036v1640778319579749256.gif" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://v.6.cn/7188?src=z9weij1096" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://vi2.6rooms.com/live/2021/02/06/18/1003v1612606582494596788.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://v.6.cn/7188?src=z9weij1096" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">♚艺琪♚充值自动返的直播间</h4>
+                                                <p class="r2"><i></i>六间房 - ♚艺琪♚充值自动返</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>2.6万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://v.6.cn/818283?src=z9weij1096" title="柒寳爱唱歌的直播间" class="imginfo-img" target="_blank">
+                                        <img data-original="https://vi3.6rooms.com/live/2021/12/25/00/1010v1640364549247647121_b.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://v.6.cn/818283?src=z9weij1096" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://vi0.6rooms.com/live/2021/08/29/03/1003v1630178556673440068.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://v.6.cn/818283?src=z9weij1096" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">柒寳爱唱歌的直播间</h4>
+                                                <p class="r2"><i></i>六间房 - 柒寳爱唱歌</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>2.4万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102650" title="始于颜值忠于内心" class="imginfo-img" target="_blank">
+                                        <img data-original="http://p3.fx.kgimg.com/v2/fxroomcover/59e59fb7cfe1d6eef7bb1fa450aa7639.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102650" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="http://p3.fx.kgimg.com/v2/fxuserlogo/4d68d5acf66310cc549f20553ef0561b.jpg_45x45.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102650" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">始于颜值忠于内心</h4>
+                                                <p class="r2"><i></i>酷我聚星 - 喜力1997</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>7278</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://v.6.cn/78900?src=z9weij1096" title="灵儿为你而唱的直播间" class="imginfo-img" target="_blank">
+                                        <img data-original="https://vi1.6rooms.com/live/2021/10/04/12/1010v1633322220349091798_b.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://v.6.cn/78900?src=z9weij1096" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://vi0.6rooms.com/live/2021/10/04/12/1003v1633322719502390861.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://v.6.cn/78900?src=z9weij1096" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">灵儿为你而唱的直播间</h4>
+                                                <p class="r2"><i></i>六间房 - 灵儿</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>1.4万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://v.6.cn/7311?src=z9weij1096" title="上善の婼儿的直播间" class="imginfo-img" target="_blank">
+                                        <img data-original="https://vi2.6rooms.com/live/2020/06/02/12/1010v1591071245259224740_b.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://v.6.cn/7311?src=z9weij1096" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://vi0.6rooms.com/live/2022/01/16/12/1003v1642308308532053225.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://v.6.cn/7311?src=z9weij1096" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">上善の婼儿的直播间</h4>
+                                                <p class="r2"><i></i>六间房 - 上善の婼儿</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>1.4万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://v.6.cn/8068?src=z9weij1096" title="恋歌晚上7点到11点的直播间" class="imginfo-img" target="_blank">
+                                        <img data-original="https://vi1.6rooms.com/live/2021/07/20/22/1010v1626790935576095484_b.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://v.6.cn/8068?src=z9weij1096" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://vi2.6rooms.com/live/2022/02/14/21/1003v1644845898540040318.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://v.6.cn/8068?src=z9weij1096" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">恋歌晚上7点到11点的直播间</h4>
+                                                <p class="r2"><i></i>六间房 - 恋歌晚上7点到11点</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>1.2万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://v.6.cn/884440?src=z9weij1096" title="︶刺挠丶的直播间" class="imginfo-img" target="_blank">
+                                        <img data-original="https://vi1.6rooms.com/live/2020/12/15/19/1010v1608031137684779240_b.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://v.6.cn/884440?src=z9weij1096" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://vi3.6rooms.com/live/2021/10/28/19/1003v1635419887373991880.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://v.6.cn/884440?src=z9weij1096" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">︶刺挠丶的直播间</h4>
+                                                <p class="r2"><i></i>六间房 - ︶刺挠丶</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>1.2万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://v.6.cn/222299?src=z9weij1096" title="晴缘❤晚上见的直播间" class="imginfo-img" target="_blank">
+                                        <img data-original="https://vi3.6rooms.com/live/2021/09/02/18/1010v1630578721955764523_b.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://v.6.cn/222299?src=z9weij1096" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://vi2.6rooms.com/live/2021/09/18/23/1003v1631977744516796786.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://v.6.cn/222299?src=z9weij1096" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">晴缘❤晚上见的直播间</h4>
+                                                <p class="r2"><i></i>六间房 - 晴缘❤晚上见</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>1万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://v.6.cn/885776?src=z9weij1096" title="鑫儿～的直播间" class="imginfo-img" target="_blank">
+                                        <img data-original="https://vi1.6rooms.com/live/2022/02/05/22/1010v1644070455128839500_b.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://v.6.cn/885776?src=z9weij1096" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://vi0.6rooms.com/live/2017/05/13/01/1003v1494611900997276155.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://v.6.cn/885776?src=z9weij1096" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">鑫儿～的直播间</h4>
+                                                <p class="r2"><i></i>六间房 - 鑫儿～</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>9938</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                            </ul>
+                </div>
+            </div>
+            <!-- m2 -->
+            <div class="m2 js-floor" pbflag="wc_0_游戏直播">
+                <!-- mtitle -->
+                <div class="mtitle mtitle2">
+                    <a href="/youxi/" class="mtitle-l">
+                        <h2 class="mtitle-l-tt">游戏直播</h2>
+                    </a>
+                    <div class="mtitle-r">
+                        <div class="mtitle-r-list">
+                                                        <a href="/youxi/lol/" target="_blank">英雄联盟</a>
+                                                        <a href="/youxi/how/" target="_blank">炉石传说</a>
+                                                        <a href="/youxi/dnf/" target="_blank">DNF</a>
+                                                        <a href="/youxi/dota2/" target="_blank">DOTA2</a>
+                                                        <a href="/youxi/wzry/" target="_blank">王者荣耀</a>
+                                                        <a href="/youxi/ow/" target="_blank">守望先锋</a>
+                                                        <a href="/youxi/" target="_blank" class="more">查看更多<i></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                                        <ul class="box-list">
+                                                    <li class="box-list-item">
+                                <div class="imginfo">
+                                    <a href="https://www.douyu.com/9999?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" title="祝大家新年快乐，万事如意!" class="imginfo-img" target="_blank">
+                                        <img data-original="https://rpic.douyucdn.cn/asrpic/220301/9999_1933.png/dy1" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://www.douyu.com/9999?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://apic.douyucdn.cn/upload/avanew/face/201803/23/17/faa711e232041d7525a1bd695bf8fa8e_big.jpg?rltime" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://www.douyu.com/9999?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">祝大家新年快乐，万事如意!</h4>
+                                                <p class="r2"><i></i>斗鱼 - yyfyyf</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <a href="/youxi/dota2/" class="r1" target="_blank">DOTA2</a>
+                                                <span class="r2"><i></i>397.4万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo">
+                                    <a href="https://www.douyu.com/kpl?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" title="预告丨3日 佛山GK vs 北京WB" class="imginfo-img" target="_blank">
+                                        <img data-original="https://rpic.douyucdn.cn/asrpic/220301/1863767_1933.png/dy1" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://www.douyu.com/kpl?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://apic.douyucdn.cn/upload/avatar_v3/202202/1cb54f5a6751445ebb8c187a3a2f9c98_big.jpg?rltime" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://www.douyu.com/kpl?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">预告丨3日 佛山GK vs 北京WB</h4>
+                                                <p class="r2"><i></i>斗鱼 - 王者荣耀官方赛事</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <a href="/youxi/wzry/" class="r1" target="_blank">王者荣耀</a>
+                                                <span class="r2"><i></i>380.5万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo">
+                                    <a href="https://www.douyu.com/yinzitv?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" title="家里有事开播推迟" class="imginfo-img" target="_blank">
+                                        <img data-original="https://rpic.douyucdn.cn/asrpic/220301/71415_1933.png/dy1" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://www.douyu.com/yinzitv?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://apic.douyucdn.cn/upload/avatar/002/48/83/16_avatar_big.jpg?rltime" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://www.douyu.com/yinzitv?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">家里有事开播推迟</h4>
+                                                <p class="r2"><i></i>斗鱼 - 寅子</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <a href="/youxi/tvgame/" class="r1" target="_blank">主机游戏</a>
+                                                <span class="r2"><i></i>367.2万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo">
+                                    <a href="https://www.douyu.com/911?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" title="骚白全能秀系列" class="imginfo-img" target="_blank">
+                                        <img data-original="https://rpic.douyucdn.cn/asrpic/220301/911_1933.png/dy1" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://www.douyu.com/911?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://apic.douyucdn.cn/upload/avanew/face/201801/25/00/f4412efb21d9f7a8f7dffbe54034b2f7_big.jpg?rltime" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://www.douyu.com/911?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">骚白全能秀系列</h4>
+                                                <p class="r2"><i></i>斗鱼 - 骚白</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <a href="/youxi/wzry/" class="r1" target="_blank">王者荣耀</a>
+                                                <span class="r2"><i></i>364.3万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo">
+                                    <a href="https://www.douyu.com/5063899?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" title="冲国服小乔第一天~" class="imginfo-img" target="_blank">
+                                        <img data-original="https://rpic.douyucdn.cn/asrpic/220301/5063899_1927.png/dy1" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://www.douyu.com/5063899?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://apic.douyucdn.cn/upload/avatar_v3/202102/710671e865884d77b5342a86c05af770_big.jpg?rltime" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://www.douyu.com/5063899?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">冲国服小乔第一天~</h4>
+                                                <p class="r2"><i></i>斗鱼 - BLUE呀丶</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <a href="/youxi/wzry/" class="r1" target="_blank">王者荣耀</a>
+                                                <span class="r2"><i></i>314.3万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo">
+                                    <a href="https://www.douyu.com/9418?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" title="我帶你們打加油，冲" class="imginfo-img" target="_blank">
+                                        <img data-original="https://rpic.douyucdn.cn/asrpic/220301/9418_1926.png/dy1" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://www.douyu.com/9418?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://apic.douyucdn.cn/upload/avatar_v3/202103/43d8d2e1e8834007831d8e8e3bead897_big.jpg?rltime" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://www.douyu.com/9418?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">我帶你們打加油，冲</h4>
+                                                <p class="r2"><i></i>斗鱼 - Big茄子</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <a href="/youxi/csgo/" class="r1" target="_blank">CSGO</a>
+                                                <span class="r2"><i></i>283.6万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo">
+                                    <a href="https://www.douyu.com/Gemini?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" title="Gemini：2200分，我来了！" class="imginfo-img" target="_blank">
+                                        <img data-original="https://rpic.douyucdn.cn/asrpic/220301/36252_1933.png/dy1" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://www.douyu.com/Gemini?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://apic.douyucdn.cn/upload/avatar_v3/202102/47f4de22caa349ad9814ac032869252b_big.jpg?rltime" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://www.douyu.com/Gemini?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">Gemini：2200分，我来了！</h4>
+                                                <p class="r2"><i></i>斗鱼 - MrGemini</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <a href="/youxi/wzry/" class="r1" target="_blank">王者荣耀</a>
+                                                <span class="r2"><i></i>276.8万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo">
+                                    <a href="https://www.douyu.com/605964?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" title="【直播】AG 0:0 eStar" class="imginfo-img" target="_blank">
+                                        <img data-original="https://rpic.douyucdn.cn/live-cover/roomCove_coverUpdate_2022-03-01_aab4f9377cc1b3b53563699edea3b20b.jpg/dy1" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://www.douyu.com/605964?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://apic.douyucdn.cn/upload/avatar_v3/202201/240075a3b23b445da3d3728d5e4507de_big.jpg?rltime" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://www.douyu.com/605964?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">【直播】AG 0:0 eStar</h4>
+                                                <p class="r2"><i></i>斗鱼 - 穿越火线运营团队</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <a href="/youxi/cf/" class="r1" target="_blank">穿越火线</a>
+                                                <span class="r2"><i></i>269.2万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo">
+                                    <a href="https://www.douyu.com/cfbaisha?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" title="快乐不是拥有的多而是计较的少~" class="imginfo-img" target="_blank">
+                                        <img data-original="https://rpic.douyucdn.cn/asrpic/220301/12821_1926.png/dy1" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://www.douyu.com/cfbaisha?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://apic.douyucdn.cn/upload/avatar_v3/202005/79843b0f9bee492688ef1d74e2192b2e_big.jpg?rltime" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://www.douyu.com/cfbaisha?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">快乐不是拥有的多而是计较的少~</h4>
+                                                <p class="r2"><i></i>斗鱼 - 白鲨AyoM</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <a href="/youxi/cf/" class="r1" target="_blank">穿越火线</a>
+                                                <span class="r2"><i></i>258.4万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo">
+                                    <a href="https://www.douyu.com/793400?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" title="挑战一把不输直上2000" class="imginfo-img" target="_blank">
+                                        <img data-original="https://rpic.douyucdn.cn/live-cover/roomCove_coverUpdate_2022-03-01_8a6186731e8d501a8bc43bb9a14e4ab0.jpg/dy1" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://www.douyu.com/793400?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://apic.douyucdn.cn/upload/avatar/face/201607/24/71fdc2fdb425fa36ba40e6458466c90c_big.jpg?rltime" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://www.douyu.com/793400?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">挑战一把不输直上2000</h4>
+                                                <p class="r2"><i></i>斗鱼 - DL丶拖米</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <a href="/youxi/wzry/" class="r1" target="_blank">王者荣耀</a>
+                                                <span class="r2"><i></i>256.3万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo">
+                                    <a href="https://www.douyu.com/9408500?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" title="来学习10分钟，三天上王者。" class="imginfo-img" target="_blank">
+                                        <img data-original="https://rpic.douyucdn.cn/live-cover/roomCove_coverUpdate_2022-02-15_566f3292c26dfd27098f16881293af8a.jpg/dy1" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://www.douyu.com/9408500?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://apic.douyucdn.cn/upload/avatar_v3/202102/77c560ee22864cb9948b284db2b563fd_big.jpg?rltime" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://www.douyu.com/9408500?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">来学习10分钟，三天上王者。</h4>
+                                                <p class="r2"><i></i>斗鱼 - 灵药LoveLing</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <a href="/youxi/lol/" class="r1" target="_blank">英雄联盟</a>
+                                                <span class="r2"><i></i>249万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo">
+                                    <a href="https://www.douyu.com/4921614?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" title="没有什么进步的一个月哎哎哎" class="imginfo-img" target="_blank">
+                                        <img data-original="https://rpic.douyucdn.cn/asrpic/220301/4921614_1934.png/dy1" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://www.douyu.com/4921614?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://apic.douyucdn.cn/upload/avatar_v3/201811/105772659ea57c0f3368f5f91784b64c_big.jpg?rltime" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://www.douyu.com/4921614?ditchName=sgsy&hmsr=sgsy&hmpl=&hmcu=&hmkw=&hmci=" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">没有什么进步的一个月哎哎哎</h4>
+                                                <p class="r2"><i></i>斗鱼 - 李知恩nn</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <a href="/youxi/wzry/" class="r1" target="_blank">王者荣耀</a>
+                                                <span class="r2"><i></i>234.1万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                            </ul>
+                </div>
+            </div>
+            <!-- m3 -->
+            <div class="m3 js-floor" pbflag="wc_0_秀场">
+                <!-- mtitle -->
+                <div class="mtitle mtitle3">
+                    <a href="/xiuchang/" class="mtitle-l">
+                        <h2 class="mtitle-l-tt">秀场</h2>
+                    </a>
+                    <div class="mtitle-r">
+                        <div class="mtitle-r-list">
+                                                            <a href="/xiuchang/?tag=%E6%90%9E%E7%AC%91" target="_blank">搞笑</a>
+                                                            <a href="/xiuchang/?tag=%E5%94%A0%E5%97%91" target="_blank">唠嗑</a>
+                                                        <a href="/xiuchang/" target="_blank" class="more">查看更多<i></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                                        <ul class="box-list">
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20165968" title="新主播求关注呀" class="imginfo-img" target="_blank">
+                                        <img data-original="http://p3.fx.kgimg.com/v2/fxroomcover/8f1e1f81e5f234def4f4662e1c232e6b.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20165968" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://kwimg9.kuwo.cn/star/koowolive/29/40/1615404825427_528522529.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20165968" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">新主播求关注呀</h4>
+                                                <p class="r2"><i></i>酷我聚星 - 未来</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>2.8万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20196858" title="每天下午三点到六点" class="imginfo-img" target="_blank">
+                                        <img data-original="http://p3.fx.kgimg.com/v2/fxroomcover/c0b9d7fd5e80d1b012b5cbedd14397d5.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20196858" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="http://p3.fx.kgimg.com/v2/fxuserlogo/c98757ec6ced263f0f646f075db8efde.jpg_45x45.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20196858" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">每天下午三点到六点</h4>
+                                                <p class="r2"><i></i>酷我聚星 - 美熙舞蹈主播</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>1.8万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102613" title="新人求关注" class="imginfo-img" target="_blank">
+                                        <img data-original="http://p3.fx.kgimg.com/v2/fxroomcover/adc77dcb6dd05148f7035b951489653d.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102613" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="http://p3.fx.kgimg.com/v2/fxuserlogo/318d3195506117f2a5011177e931b079.jpg_45x45.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102613" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">新人求关注</h4>
+                                                <p class="r2"><i></i>酷我聚星 - 楚楚求依靠9000</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>1.5万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://v.6.cn/919191?src=z9weij1096" title="一表人才~分析分析的直播间" class="imginfo-img" target="_blank">
+                                        <img data-original="https://vi3.6rooms.com/live/2018/08/20/22/1010v1534775403166784915_b.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://v.6.cn/919191?src=z9weij1096" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://vi2.6rooms.com/live/2018/04/27/21/1003v1524837275561990012.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://v.6.cn/919191?src=z9weij1096" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">一表人才~分析分析的直播间</h4>
+                                                <p class="r2"><i></i>六间房 - 一表人才~分析分析</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>3.9万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102408" title="岁月漫漫 平平安安" class="imginfo-img" target="_blank">
+                                        <img data-original="http://p3.fx.kgimg.com/v2/fxroomcover/9619e0a25e21ba88d28888f67b04e66e.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102408" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="http://p3.fx.kgimg.com/v2/fxuserlogo/8bb8a627c3bf04dab6ef98ee8d5c7831.jpg_45x45.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=20102408" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">岁月漫漫 平平安安</h4>
+                                                <p class="r2"><i></i>酷我聚星 - FR宛君</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>1.2万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://v.6.cn/6807?src=z9weij1096" title="小北贺老爷子元始天尊的直播间" class="imginfo-img" target="_blank">
+                                        <img data-original="https://vi0.6rooms.com/live/2019/11/08/00/1010v1573144688460877084_b.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://v.6.cn/6807?src=z9weij1096" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://vi1.6rooms.com/live/2021/05/07/02/1003v1620325286007858725.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://v.6.cn/6807?src=z9weij1096" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">小北贺老爷子元始天尊的直播间</h4>
+                                                <p class="r2"><i></i>六间房 - 小北贺老爷子元始天尊</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>3.1万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://v.6.cn/58018?src=z9weij1096" title="恩熙；猪丢了呀的直播间" class="imginfo-img" target="_blank">
+                                        <img data-original="https://vi0.6rooms.com/live/2017/08/05/18/1010v1501928977490788458_b.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://v.6.cn/58018?src=z9weij1096" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="https://vi2.6rooms.com/live/2019/08/22/23/1003v1566486504321610714.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://v.6.cn/58018?src=z9weij1096" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">恩熙；猪丢了呀的直播间</h4>
+                                                <p class="r2"><i></i>六间房 - 恩熙；猪丢了呀</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>2.5万</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                                    <li class="box-list-item">
+                                <div class="imginfo imginfoA">
+                                    <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=32040154" title="西安妹子新开播" class="imginfo-img" target="_blank">
+                                        <img data-original="http://p3.fx.kgimg.com/v2/fxroomcover/03c21751c6416af430c328fe63dcf367.jpg" alt="" class="lazyload" src="/img/prelive.png">
+                                        <span class="imginfo-hover"><i class="imginfo-hover-icon"></i></span>
+                                    </a>
+                                    <div class="imginfo-info">
+                                        <div class="imginfo-info-wrapper">
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=32040154" class="imginfo-info-c1" target="_blank">
+                                                <img data-original="http://p3.fx.kgimg.com/v2/fxuserlogo/f86fb8169a321b9dd3700cef2f45ffcd.jpg_45x45.jpg" alt="" class="lazyload" src="/img/preavatar.png">
+                                            </a>
+                                            <a href="https://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?from=3008001001&rid=32040154" class="imginfo-info-c2" target="_blank">
+                                                <h4 class="r1">西安妹子新开播</h4>
+                                                <p class="r2"><i></i>酷我聚星 - 你的荨宝吖</p>
+                                            </a>
+                                            <div class="imginfo-info-c3">
+                                                <span class="r1 vhidden"></span>
+                                                <span class="r2"><i></i>7679</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                            </ul>
+                </div>
+            </div>
+            <!-- m4 -->
+            
+            <!-- m5 -->
+    
+            <!-- m6 -->
+    
+
+    
+        </div>
+    </div>
+
+
+<!-- footer -->
+
+<div class="indexfooter" pbflag="wc_0_bottom">
+    <div class="indexfooter-wrapper">
+        <div class="indexfooter-r1">
+            <div class="links">
+                <h4 class="links-tt">友情链接</h4>
+                <div class="links-wrapper">
+                    <a href="http://www.douyu.com/?ditchName=sg2&hmsr=sg2&hmpl=&hmcu=&hmkw=&hmci=" target="_blank"><img class="lazyload" data-original="/img/douyu.jpg" src="http://p2.123.sogoucdn.com/imgu/2017/01/20170110143352_710.jpg" alt="斗鱼"></a>
+                    <a href="http://longzhu.com/?utm_sr=22703909ed" target="_blank"><img class="lazyload" data-original="/img/longzhu.jpg" src="http://p2.123.sogoucdn.com/imgu/2017/01/20170110143352_710.jpg" alt="龙珠"></a>
+                    <a href="http://www.6.cn/?src=z9weij1096" target="_blank"><img class="lazyload" data-original="/img/liujianfang.jpg" src="http://p2.123.sogoucdn.com/imgu/2017/01/20170110143352_710.jpg" alt="六间房"></a>
+                    <!--<a href="http://www.9xiu.com/" target="_blank"><img class="lazyload" data-original="/img/jiuxiu.jpg" src="http://p2.123.sogoucdn.com/imgu/2017/01/20170110143352_710.jpg" alt="九秀"></a>-->
+                    <a href="http://jx.kuwo.cn/KuwoLive/OpenLiveRoomLink?type=hall&from=3008001002" target="_blank"><img class="lazyload" data-original="/img/juxing.jpg" src="http://p2.123.sogoucdn.com/imgu/2017/01/20170110143352_710.jpg" alt="聚星"></a>
+                </div>
+            </div>
+        </div>
+        <div class="indexfooter-r2">
+            <div class="indexfooter-r2-c1">
+                <div class="list">
+                    <h4 class="list-tt">产品中心</h4>
+                    <div class="list-wrapper">
+                        <a href="http://kan.sogou.com/" target="_blank">搜狗影视</a>
+                        <a href="http://haha.sogou.com/" target="_blank">搜狗哈哈</a>
+                        <a href="http://toutiao.sogou.com/" target="_blank">搜狗头条</a>
+                        <a href="http://xiaoshuo.sogou.com/" target="_blank">搜狗小说</a>
+                        <a href="http://mai.sogou.com/" target="_blank">搜狗逛逛</a>
+                        <a href="http://123.sogou.com/yx/" target="_blank">搜狗游戏</a>
+                        <a href="http://go.sogou.com/" target="_blank">搜狗旅游</a>
+                        <a href="http://fa.sogou.com/" target="_blank">搜狗理财</a>
+                    </div>
+                </div>
+            </div>
+            <div class="indexfooter-r2-c2">
+                <div class="list">
+                    <h4 class="list-tt">热门游戏</h4>
+                    <div class="list-wrapper">
+                        <a href="/youxi/lol/" target="_blank">英雄联盟</a>
+                        
+                        
+                        <a href="/youxi/ow/" target="_blank">守望先锋</a>
+                        <a href="/youxi/wzry/" target="_blank">王者荣耀</a>
+                        <a href="/youxi/cf/" target="_blank">穿越火线</a>
+                        <a href="/youxi/yys/" target="_blank">阴阳师</a>
+                        <a href="/youxi/csgo/" target="_blank">CS:GO</a>
+                        <a href="/youxi/dnf/" target="_blank">地下城与勇士</a>
+                    </div>
+                </div>
+            </div>
+            <div class="indexfooter-r2-c3">
+                <div class="list">
+                    <h4 class="list-tt">搜狗直播热门</h4>
+                    <div class="list-wrapper">
+                        <a href="/meinv/" target="_blank">美女</a>
+                        <a href="/meinv/?tag=%E5%A5%BD%E5%A3%B0%E9%9F%B3" target="_blank">好声音</a>
+                        <a href="/meinv/?tag=%E9%A2%9C%E5%80%BC" target="_blank">颜值</a>
+                        <a href="/xiuchang/?tag=%E7%A7%80%E5%9C%BA" target="_blank">秀场</a>
+                        <a href="/huwai/" target="_blank">户外</a>
+                        <a href="/youxi/" target="_blank">游戏</a>
+                        <a href="/yingshi/" target="_blank">影视</a>
+                        <a href="/xiuchang/?tag=%E9%9A%8F%E6%8B%8D
+        " target="_blank">随拍</a>
+                        <a href="/dazahui/" target="_blank">大杂烩</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="indexfooter-r3">
+            <div class="indexfooter-r3-c1">
+                <a href="http://123.sogou.com/about/" class="about" target="_blank">关于我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://123.sogou.com/about/feedback.html?url=http://123.sogou.com/eurocup/index/" target="_blank">意见反馈</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.sogou.com/docs/terms.htm" target="_blank">免责声明</a>
+            </div>
+            <div class="indexfooter-r3-c2">Copyright ©&nbsp;2018 Sogou.com.&nbsp;All Rights Reserved.&nbsp;<a href="http://www.miibeian.gov.cn/" target="_blank" id="ft_icp">京ICP证050897号</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- back2top -->
+
+
+<div class="elevator" id="elevator">
+    <div class="elevator-wrapper js-elevator">
+        <a href="javascript:void(0);" class="elevator-item js-btn">美女</a>
+        <a href="javascript:void(0);" class="elevator-item js-btn">游戏</a>
+        <a href="javascript:void(0);" class="elevator-item js-btn">秀场</a>
+        
+        
+	
+        <a href="javascript:void(0);" class="elevator-back2top js-back2top"><i class="icon"></i><span class="txt">返回顶部</span></a>
+    </div>
+    <a href="http://123.sogou.com/about/feedback.html?url=http://show.sogou.com/" class="elevator-feedback" target="_blank"><i class="icon"></i><span class="txt">反馈</span></a>
+</div>
+
+
+<!-- template -->
+<!-- script -->
+
+    
+    <script>
+        window['page_code'] = "main";
+        window.spb_vars = window.spb_vars || {
+                    "ptype": "zhibo",
+                    "pcode": window['page_code']
+                };
+    </script>
+    
+    <script type="text/javascript" src="//upd10.sogoucdn.com/nstatic/js/sa_v1.0.3.js"></script>
+
+
+
+<script type="text/javascript" src="/js/common.js?ver=1.5"></script>
+<script type="text/javascript" src="/js/index.js?ver=1.5"></script>
+
+</body>
+</html>

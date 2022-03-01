@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
+　　<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+	<style type="text/css">
+		html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select , option { margin: 0;padding: 0;}
+		body {
+			font-family: "微软雅黑";
+			font-size: 2rem;
+			position: relative;
+			background-color: #fff;
+			color: #4b4b4b;
+		}
+		img {
+			border: none;
+			vertical-align: middle;
+			/*border-radius: 5px;*/
+		}
+		a {
+			text-decoration: none;
+			color: #000000;
+		}
+		a:hover {
+			color: blue;
+		}
+		ul,ol,dl,dt,dd,li {
+			list-style: none;
+		}
+		table {
+		    border-collapse: collapse;
+		    table-layout: fixed;
+		}
+		input, textarea , select {
+		    outline: none;
+		    border: none;
+		}
+		textarea {
+		    resize: none;
+		    overflow: auto;
+		}
+		/*清楚浮动*/
+		.clearfix{
+			zoom: 1;
+		}
+		.clearfix:after{
+			content: "";
+			visibility: hidden;
+			display: block;
+			overflow: hidden;
+			height: 0;
+			line-height: 0;
+			font-size: 0;
+			clear: both;
+		}
+		.main {
+			width: 100%;
+			margin: 0 auto;
+			text-align: center;
+			position: absolute;
+			top: 10.5rem;
+		}
+		.main p {
+			height: 4rem;
+			line-height: 4rem;
+		}
+		.main .gif {
+			margin-bottom: 2.25rem;
+		}
+		.main .gif img {
+			width: 5.5rem;
+		}
+		.abs {
+			color: #999;
+		}
+		.click {
+			margin-top: 80px;
+		}
+		#count {
+			padding: 0 20px;
+			;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<p class="gif"><img src="images/loading.gif" ></p>
+		<p>国家乡村振兴局已启动新的域名：<a href="http://nrra.gov.cn" style="color: blue;">www.nrra.gov.cn</a></p>
+		<p class="abs">2022年5月16日后www.cpad.gov.cn域名停用</p>
+		<p class="click"><a href="http://nrra.gov.cn" >立即前往</a><span id="count">10</span></p>
+	</div>
+	
+	<script type="text/javascript">
+	$(document).ready(function (){ 
+		var count = 10 ;
+		var timer = setInterval(function(){
+			count--;
+			if(count == 0){
+				window.location = 'http://nrra.gov.cn'
+				clearInterval(timer);
+			}
+			$('#count').html(count);
+		},1000)
+	});
+	</script>
+</body>
+</html>

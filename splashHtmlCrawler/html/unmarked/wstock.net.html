@@ -1,0 +1,358 @@
+<HTML>
+
+<!-- WSTOCK.NET用户登陆及数据下载：港股美股，香港股市，美国股市，纳斯达克、纽约，Nasdaq、NYSE、AMEX，HKEX等数据下载，
+	日线数据，5分钟线数据及分笔成交数据 -->
+
+<HEAD>
+	<title>WSTOCK.NET：用户登陆及数据下载</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv='Content-Language' content='zh-cn'>
+	<meta http-equiv='Content-Type' content='text/html; charset=gb2312'>
+	<META content='用户登陆及股票数据下载' name=keywords>
+	<META content='用户登陆及股票数据下载：日线数据，5分钟线数据及分笔成交数据' name=Title>
+	<META name=description content='用户登陆及数据下载：港股美股，香港股市，美国股市，纳斯达克、纽约，Nasdaq、NYSE、AMEX，HKEX等数据下载，
+	日线数据，5分钟线数据及分笔成交数据'>
+
+	<LINK href="inc/wstockV2.css" type=text/css rel=STYLESHEET>
+	<SCRIPT Language="javascript" src="http://www.wstock.net/wstock/inc/wstockV2.js"></script>
+	<SCRIPT Language="javascript" Src="inc/pubDown.js"> </SCRIPT>
+	<SCRIPT Language="javascript" Src="inc/shszdown.js"> </SCRIPT>
+
+<script language='Javascript'>
+function funGetKeyword() {
+	var i; 
+	var tStr,tL;
+
+	tStr=document.location.href;
+	i=tStr.indexOf("?");
+	if (i>=0) {
+		tStr=tStr.substring(i+1,tStr.length);  tL=tStr.toLowerCase();
+		if (tL == "pay") {document.frmBoard.txtUser.focus()}
+		if (tL == "free") {document.frmBoard_f.txtUser.focus()}
+		}
+	return;
+}
+</script>
+
+
+</HEAD>
+
+<BODY text=#000000 bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0" onload="funGetKeyword()">
+
+
+	<!-- 开始：顶部图片及快捷菜单 -->
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TR>
+          <TD vAlign=top width="1%" height=64 bgColor=#a30207>
+		<A href="http://www.ws-data.com/">
+			<IMG width=175 height=64 border=0 src="imgs/icon_v2.gif" title="WSTOCK图标"></A></TD>
+          <TD vAlign=top align=right width="99%" height=64 bgColor=#a30207>
+            <TABLE cellSpacing=0 cellPadding=0 width=550 border=0><TR>
+                <TD valign=center align=right height=64 width=550 background="imgs/top_r.jpg">
+			<TABLE border=0><TR>
+			<TD vAlign="bottom"><A href="big5/login.htm"><img border="0" height="57" width="48" alt="Chinese BIG5 text" title="Chinese BIG5 text" src="imgs/cn.jpg"></A></TD>
+			<TD>
+			   <TABLE border=0><TR><TD><A href="down.htm" class="WhiteLink">数据下载</A></TD></TR>
+				<TR><TD><A href="buy.htm" class="WhiteLink">产品购买</A></TD></TR>
+				<TR><TD><A href="board.htm" class="WhiteLink"><font face="宋体">留&nbsp;言&nbsp;板</font></A></TD></TR>
+			   </TABLE></TD>
+			<TD width=20>&nbsp;</TD></TR></TABLE>
+	    </TD></TR></TABLE>
+	  </TD></TR></TABLE>
+	<!-- 结束：顶部图片及快捷菜单 -->
+
+
+
+
+
+      <!-- 开始：顶部横向一级菜单 -->
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><TBODY><TR>
+          <TD bgColor=#214a73><IMG height=1 src="imgs/b.gif" width=1></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><TBODY><TR class=TopMenuBGColor>
+	<TD width="500">
+            <TABLE cellSpacing=0 cellPadding=0 border=0 width="100%"><TBODY><TR>
+                <TD noWrap bgColor=#214a73><IMG height=4 src="imgs/b.gif" width=4></TD>
+                <TD vAlign=bottom noWrap><IMG height=19 src="imgs/b.gif" width=1></TD>
+
+                <TD noWrap><A class=TopMenu 
+                  href="index.htm">&nbsp;首页&nbsp;</A></TD>
+                <TD vAlign=bottom noWrap><IMG height=19 src="imgs/barre.gif" width=1></TD>
+
+                <TD noWrap><A class=TopMenu 
+                  href="services.htm">&nbsp;产品与服务&nbsp;</A></TD>
+                <TD vAlign=bottom noWrap><IMG height=19 src="imgs/barre.gif" width=1></TD>
+
+                <TD noWrap><A class=TopMenu 
+                  href="buy.htm">&nbsp;购买&nbsp;</A></TD>
+                <TD vAlign=bottom noWrap><IMG height=19 src="imgs/barre.gif" width=1></TD>
+
+                <TD noWrap><A class=TopMenu 
+                  href="free.htm">&nbsp;免费服务&nbsp;</A></TD>
+                <TD vAlign=bottom noWrap><IMG height=19 src="imgs/b.gif" width=1></TD>
+
+                <TD noWrap><A class=TopMenuOn 
+                  href="supports.htm">&nbsp;技术支持&nbsp;</A></TD>
+                <TD vAlign=bottom noWrap><IMG height=19 src="imgs/b.gif" width=1></TD>
+
+                <TD noWrap><A class=TopMenu 
+                  href="formula.htm">&nbsp;公式定制&nbsp;</A></TD>
+
+		</TR></TBODY></TABLE></TD>
+
+	<TD>&nbsp;</TD>
+
+		<!-- 动态字幕开始 -->
+	<TD WIDTH="180">
+		<MARQUEE behavior=scroll direction=up scrollamount=14 scrolldelay=3000 height=14 onmouseover="this.stop()" onmouseout="this.start()">
+			<SCRIPT Language="javascript">	funMarquee()	</SCRIPT>
+		</MARQUEE>
+	</TD>
+		<!-- 动态字幕结束 -->
+	</TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY><TR><TD bgColor=#214a73><IMG height=1 src="imgs/b.gif" width=1></TD></TR></TBODY></TABLE>
+      <!-- 结束：顶部横向一级菜单 -->
+
+
+
+
+
+
+      <!-- 此处为留空 -->
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><TR>
+		<TD height=13><IMG height=1 src="imgs/b.gif" width=1></TD></TR></TABLE>
+
+
+      <!--  开始：中间的二级菜单 及 主体内容 -->
+      <TABLE cellSpacing=0 cellPadding=0 width=100% border=0><TBODY><TR>
+          <TD width=8><IMG height=1 src="imgs/b.gif" width=8></TD>
+
+	  <!-- 开始：二级菜单 -->
+          <TD vAlign=top width="1%">
+            <TABLE cellSpacing=2 cellPadding=0 width="100%" border=0><TBODY>
+              <TR><TD><IMG height=43 src="imgs/LeftMenu.jpg" width=162></TD></TR>
+
+              <TR>
+                <TD width="100%" class=LeftMenu><A class=LeftMenu 
+                  href="supports.htm">技术支持综合说明</A> </TD></TR>
+              <TR>
+                <TD width="100%" class=LeftMenuOn><A class=LeftMenuOn 
+                  href="down.htm">数据下载</A> </TD></TR>
+              <TR>
+                <TD width="100%" class=LeftMenu><A class=LeftMenu 
+                  href="guide.htm">数据安装</A> </TD></TR>
+              <TR>
+                <TD width="100%" class=LeftMenu><A class=LeftMenu 
+                  href="wsinfo.htm">证券资料</A> </TD></TR>
+              <TR>
+                <TD width="100%" class=LeftMenu><A class=LeftMenu 
+                  href="wsinfo.htm">各交易所休市日期一览</A> </TD></TR>
+              <TR>
+                <TD width="100%" class=LeftMenu><A class=LeftMenu 
+                  href="us_cn.htm">美股 之 中国概念股</A> </TD></TR>
+
+	  </TBODY></TABLE>
+	  <!-- 结束：二级菜单 -->
+
+	  <BR>
+	  <TABLE width="162" Class="BorderGreen">
+		<TD align="center"><A href="/wstock/wsmin.htm" style="FONT-WEIGHT: bold; FONT-SIZE: 14px; ">通达信等格式股票数据</A></TD>
+	  </TABLE>
+
+
+<!-- 链接开始 -->
+<BR><BR>
+
+		<CENTER>
+<A href="board.htm#ad" class="HideInBody">相关链接</A></CENTER>
+
+	  <TABLE width="162" Class="BorderGreen">
+		<TR><TD align="center"><A href="/wstock/wsmin.htm" style="FONT-WEIGHT: bold; FONT-SIZE: 14px; ">沪深5分钟数据下载</A></TD></TR>
+		<TR><TD>
+			<A href="/wstock/wsmin.htm" class="HideInBody">
+				多种格式的2000年至今的沪深5分钟数据下载
+			</A>
+		</TD></TR>
+	  </TABLE>
+	  <TABLE width="162" border="0"><TR><TD height="5"></TD></TR></TABLE>
+
+	  <TABLE width="162" Class="BorderGreen">
+		<TR><TD align="center"><A href="/wstock/futures.htm" target="_blank" style="FONT-WEIGHT: bold; FONT-SIZE: 14px;">内地期货分笔数据</A></TD></TR>
+		<TR><TD>
+			<A href="/wstock/futures.htm" class="HideInBody" target="_blank">
+				上期所、大商所、郑商所、中金所、上期能源等分笔数据
+			</A>
+		</TD></TR>
+	  </TABLE>
+	  <TABLE width="162" border="0"><TR><TD height="5"></TD></TR></TABLE>
+
+	  <TABLE width="162" Class="BorderGreen">
+		<TR><TD align="center"><A href="/wstock/highfreq.htm" style="FONT-WEIGHT: bold; FONT-SIZE: 14px; ">超高频分笔数据</A></TD></TR>
+		<TR><TD>
+			<A href="/wstock/highfreq.htm" class="HideInBody">
+				沪深、港股、中金、期货、黄金等五档分笔数据
+			</A>
+		</TD></TR>
+	  </TABLE>
+	  <TABLE width="162" border="0"><TR><TD height="5"></TD></TR></TABLE>
+
+	  <TABLE width="162" Class="BorderGreen">
+		<TR><TD align="center"><A href="/wstock/buy_d.htm" target="_blank" style="FONT-WEIGHT: bold; FONT-SIZE: 14px; ">港股美股分钟数据</A></TD></TR>
+		<TR><TD>
+			<A href="/wstock/buy_d.htm" target="_blank" class="HideInBody">
+				港股美股1分钟、5分钟等高频数据<BR>
+			</A>
+		</TD></TR>
+	  </TABLE>
+	  <TABLE width="162" border="0"><TR><TD height="5"></TD></TR></TABLE>
+
+	  <TABLE width="162" Class="BorderGreen">
+		<TR><TD align="center"><img src="imgs/u8i9.png" /></TD></TR>
+	  </TABLE>
+	  <TABLE width="162" border="0"><TR><TD height="5"></TD></TR></TABLE>
+	  
+<!-- 链接结束 -->
+
+
+
+
+
+
+
+	  </TD>
+
+
+
+
+          <TD width=8><IMG height=1 src="imgs/b.gif" width=8></TD>
+
+	  <!-- 开始：本页的内容 -->
+          <TD vAlign=top><BR>
+            <TABLE cellSpacing=0 cellPadding=0 border=0 width="90%"><TBODY>
+		<TR><TD class=TitleRedNoSpacing>&gt;<A href="supports.htm" 
+class="TitleRedNoSpacing">技术支持</A>&nbsp;--&gt;&nbsp;数据下载</TD></TR>
+		<TR><TD height=12><IMG height=3 src="imgs/b.gif" width=1></TD></TR>
+		<TR><TD>
+			<TABLE border=0><TR>
+				<TD width=10><IMG width=10 height=1 src="imgs/b.gif"></TD>
+				<TD vAlign="Top" class=TextBody>
+
+<!-- 开始：具体的内容 -->
+	<TABLE border=0 width="100%">
+	<TR><TD width="283" vAlign="Top">
+            <TABLE cellSpacing=0 cellPadding=2 width="180" border=0 height="110"><TBODY>
+		<TR><TD align='center' vAlign="center" height="2%" Class=LeftMenuOn>
+		    付&nbsp;费&nbsp;用&nbsp;户&nbsp;登&nbsp;陆&nbsp;区
+		</TD></TR>
+		<TR> <TD align='left' bgcolor="#d3e1ee" height="90%" vAlign="Top"  style="{line-height:150%;}">
+		   <FORM name="frmBoard" border=0 style="{margin:0;}" method="POST" action="http://www.wstock.net/cgi-bin/wstockV2/login.pl">
+			用户名：&gt;&gt;<A href="changePW.htm?pay" title="点击此处可更改您的登陆密码">更改密码</A><BR>
+			<INPUT type="text" name="txtUser" size="16" class="BorderBlack">&nbsp;
+			<BR>密码：<BR>
+			<INPUT type="password" name="txtPW" size="16" class="BorderBlack">&nbsp;
+			<INPUT type="submit" name="cmdOK" size="6" class="BorderBlack" value="确定"><BR>
+		   </FORM>
+		</TD></TR>
+	    </TBODY></TABLE>
+	</TD><TD vAlign="Top">
+            <TABLE cellSpacing=0 cellPadding=2 width="180" border=0 height="110"><TBODY>
+		<TR><TD align='center' vAlign="center" height="2%" Class=LeftMenuOn>
+		    免&nbsp;费&nbsp;用&nbsp;户&nbsp;登&nbsp;陆&nbsp;区
+		</TD></TR>
+		<TR> <TD align='left' bgcolor="#d3e1ee" height="90%" vAlign="Top"  style="{line-height:150%;}">
+		   <FORM name="frmBoard_f" border=0 style="{margin:0;}" method="POST" action="http://www.wstock.net/cgi-bin/wstockV2/login_f.pl">
+			用户名：&gt;&gt;<A href="changePW.htm?free" title="点击此处可更改您的登陆密码">更改密码</A><BR>
+			<INPUT type="text" name="txtUser" size="16" class="BorderBlack">&nbsp;
+			<A href="free_reg.htm" title="点击此处可申请免费港股美股数据下载">点此申请</A>
+			<BR>密码：<BR>
+			<INPUT type="password" name="txtPW" size="16" class="BorderBlack">&nbsp;
+			<INPUT type="submit" name="cmdOK" size="6" class="BorderBlack" value="确定"><BR>
+		   </FORM>
+		</TD></TR>
+	    </TBODY></TABLE>
+	</TD></TR>
+	</TABLE>
+
+	<BR>
+
+	<TABLE border=0>
+	<TR>
+  <!--  开始：数据下载区 及 大智慧(分析家)格式的日线数据、5分钟数据 免费下载 -->
+	   <TD align="center">   <SCRIPT Language="javascript">	funSHSZ_down("r")	</SCRIPT> </TD>
+		<TD width=20>&nbsp;</TD>
+	   <TD align="center">   <SCRIPT Language="javascript">	funSHSZ_down("f")	</SCRIPT> </TD>
+  <!--  结束：数据下载区 及 大智慧(分析家)格式的日线数据、5分钟数据 免费下载 -->
+	</TR>
+	</TABLE>
+如数据不能正常下载，<A href="board.htm#downshsz">可点此给我们留言</A>，我们将在正常工作日的24小时内回复。
+<BR><img src='imgs/u8i8.gif' border=0 width=521 height=38><BR>
+
+
+
+<!-- 结束：具体的内容 -->
+
+				</TD>
+			</TR></TABLE>
+		</TD></TR>
+	     </TBODY></TABLE></TD>
+	  <!-- 结束：本页的内容 -->
+
+          <TD vAlign=top width=18>&nbsp;</TD></TR></TBODY></TABLE><BR>
+      <!--  结束：中间的二级菜单 及 主体内容 -->
+
+
+
+
+
+
+
+
+  <!--  开始：底部菜单 -->
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><TR><TD 
+		bgColor=#214a73><IMG height=1 src="imgs/b.gif" width=1></TD></TR></TABLE>
+
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD class=TextWhite noWrap align=left
+          height=20>&nbsp; &nbsp; Copyright &nbsp;&copy;2001 - 2021&nbsp;&nbsp; <A class=WhiteLink 
+		href="http://www.wstock.net/">微盛投资</A></TD>
+
+          <TD noWrap class=TextWhite align=center width="10%"
+          height=20><A class=WhiteLink 
+            href="contact.htm">联系方式</A></TD>
+          <TD class=TextWhite noWrap align=center width="1%"
+          height=20>&nbsp;|&nbsp;</TD>
+
+          <TD noWrap class=TextWhite align=center width="10%"
+          height=20><A class=WhiteLink 
+            href="terms.htm">使用条款</A></TD>
+          <TD class=TextWhite noWrap align=center width="1%"
+          height=20>&nbsp;|&nbsp;</TD>
+
+          <TD noWrap class=TextWhite align=center width="10%"
+          height=20><A class=WhiteLink 
+            href="map.htm">站点地图</A></TD>
+          <TD class=TextWhite noWrap align=center width="1%"
+          height=20>&nbsp;|&nbsp;</TD>
+
+          <TD noWrap class=TextWhite align=center width="10%"
+          height=20><A class=WhiteLink 
+            href="cooperation.htm">合作机会</A></TD>
+          <TD class=TextWhite noWrap align=center width="1%"
+          height=20>&nbsp;|&nbsp;</TD>
+
+          <TD noWrap class=TextWhite align=center width="10%"
+          height=20><A class=WhiteLink 
+            href="links.htm">友情链接</A></TD>
+
+	</TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><TR>
+          <TD bgColor=#214a73><IMG height=1 src="imgs/b.gif" 
+          width=1></TD></TR></TABLE>
+
+  <!--  结束：底部菜单 -->
+
+
+
+</BODY></HTML>

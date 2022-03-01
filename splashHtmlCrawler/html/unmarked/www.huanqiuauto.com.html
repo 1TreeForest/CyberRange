@@ -1,0 +1,5975 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+
+<head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
+<title>环球汽车网 - 开心互动新生活</title>
+
+
+
+<meta content="all" name="robots" />
+
+
+
+<meta content="汽车,汽车网,环球汽车,环球汽车网,汽车资讯,汽车生活,汽车导购,汽车用品,汽车保养" name="keywords" />
+
+
+
+<meta content="环球汽车网（简称环网）成立于2008年5月6日，以打造“最具互动力的汽车网站”为目标，通过真实有趣的报道、为消费者提供丰富多样的汽车产品信息及实用性、技术性、权威性的最新资讯！" name="description" />
+
+
+
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+
+
+
+<meta name="iwebchoice-site-verification" content="ty1p31awyhraiq6q" />
+
+
+
+<link rel="shortcut icon" type="image/x-icon" href="http://www.huanqiuauto.com/template/default/favicon.ico" />
+
+
+
+<link type="text/css" rel="stylesheet" href="http://www.huanqiuauto.com/template/default/css/zyp_base.css" />
+
+
+
+<link type="text/css" rel="stylesheet" href="http://www.huanqiuauto.com/template/default/css/zyp_head.css" />
+
+
+
+<link type="text/css" rel="stylesheet" href="http://www.huanqiuauto.com/template/default/css/zyp_main.css" />
+
+
+
+<link type="text/css" rel="stylesheet" href="http://www.huanqiuauto.com/template/default/css/zyp_footer.css" />
+
+
+
+<script src="http://www.huanqiuauto.com/template/default/js/jquery-1.8.0.min.js" type="text/ecmascript"></script>
+
+
+
+<script src="http://www.huanqiuauto.com/template/default/js/zyp_js.js" type="text/javascript"></script>
+
+
+
+<script src="http://www.huanqiuauto.com/template/default/js/jquery.KinSlideshow-1.2.1.min.js" type="text/javascript"></script>
+
+
+
+<script src="http://www.huanqiuauto.com/template/default/js/ScrollPic.js" type="text/javascript"></script>
+
+
+
+<script src="http://www.huanqiuauto.com/template/default/js/door.js" type="text/javascript"></script>
+
+
+
+<script type="text/javascript" src="http://www.huanqiuauto.com/template/default//newscommon/js/gongyong.js"></script>
+
+
+
+<script type="text/javascript">
+
+
+
+    window.onload = function(){
+
+
+
+        var SDmodel = new scrollDoor();
+
+
+
+        SDmodel.sd(["m01","m02","m03","m04"],["c01","c02","c03","c04"],"sd01","sd02");
+
+
+
+        SDmodel.sd(["mm01","mm02","mm03","mm04","mm05","mm06"],["cc01","cc02","cc03","cc04","cc05","cc06"],"sd01","sd02");
+
+
+
+        SDmodel.sd(["mmm01","mmm02","mmm03","mmm04","mmm05","mmm06"],["ccc01","ccc02","ccc03","ccc04","ccc05","ccc06"],"sd01","sd02");
+
+
+
+    }
+
+
+
+</script>
+
+
+
+<!--
+
+
+
+<script>
+
+
+
+$(function(){ 
+
+
+
+　　　　$.ajax({
+
+
+
+            type: "POST", //用POST方式传输
+
+
+
+            url: 'http://www.huanqiuauto.com/ip.php', //目标地址
+
+
+
+            data:  "",
+
+
+
+            success: function (msg){ 
+
+
+
+            if(msg =='无锡') { //如果成功
+
+
+
+                window.location.href="http://wuxi.huanqiuauto.com/";
+
+
+
+            }
+
+
+
+    
+
+
+
+            }
+
+
+
+        });
+
+
+
+
+
+
+
+　　});
+
+
+
+</script>
+
+
+
+-->
+
+
+
+<script>
+
+
+
+    $(function() {
+
+
+
+        var sWidth = $("#focus_hd").width(); //获取焦点图的宽度（显示面积）
+
+
+
+        var len = $("#focus_hd ul li").length; //获取焦点图个数
+
+
+
+        var index = 0;
+
+
+
+        var picTimer;
+
+
+
+
+
+
+
+        //以下代码添加数字按钮和按钮后的半透明条，还有上一页、下一页两个按钮
+
+
+
+        var btn = "<div class='btnBg'></div><div class='btn'>";
+
+
+
+        for(var i=0; i < len; i++) {
+
+
+
+            btn += "<span></span>";
+
+
+
+        }
+
+
+
+        btn += "</div><div class='preNext pre'></div><div class='preNext next'></div>";
+
+
+
+        $("#focus_hd").append(btn);
+
+
+
+        $("#focus_hd .btnBg").css("opacity",0.5);
+
+
+
+
+
+
+
+        //为小按钮添加鼠标滑入事件，以显示相应的内容
+
+
+
+        $("#focus_hd .btn span").css("opacity",0.4).mouseenter(function() {
+
+
+
+            index = $("#focus_hd .btn span").index(this);
+
+
+
+            showPics(index);
+
+
+
+        }).eq(0).trigger("mouseenter");
+
+
+
+
+
+
+
+        //上一页、下一页按钮透明度处理
+
+
+
+        $("#focus_hd .preNext").css("opacity",0.2).hover(function() {
+
+
+
+            $(this).stop(true,false).animate({"opacity":"0.5"},300);
+
+
+
+        },function() {
+
+
+
+            $(this).stop(true,false).animate({"opacity":"0.2"},300);
+
+
+
+        });
+
+
+
+
+
+
+
+        //上一页按钮
+
+
+
+        $("#focus_hd .pre").click(function() {
+
+
+
+            index -= 1;
+
+
+
+            if(index == -1) {index = len - 1;}
+
+
+
+            showPics(index);
+
+
+
+        });
+
+
+
+
+
+
+
+        //下一页按钮
+
+
+
+        $("#focus_hd .next").click(function() {
+
+
+
+            index += 1;
+
+
+
+            if(index == len) {index = 0;}
+
+
+
+            showPics(index);
+
+
+
+        });
+
+
+
+
+
+
+
+        //本例为左右滚动，即所有li元素都是在同一排向左浮动，所以这里需要计算出外围ul元素的宽度
+
+
+
+        $("#focus_hd ul").css("width",sWidth * (len));
+
+
+
+
+
+
+
+        //鼠标滑上焦点图时停止自动播放，滑出时开始自动播放
+
+
+
+        $("#focus_hd").hover(function() {
+
+
+
+            clearInterval(picTimer);
+
+
+
+        },function() {
+
+
+
+            picTimer = setInterval(function() {
+
+
+
+                showPics(index);
+
+
+
+                index++;
+
+
+
+                if(index == len) {index = 0;}
+
+
+
+            },4000); //此4000代表自动播放的间隔，单位：毫秒
+
+
+
+        }).trigger("mouseleave");
+
+
+
+
+
+
+
+        //显示图片函数，根据接收的index值显示相应的内容
+
+
+
+        function showPics(index) { //普通切换
+
+
+
+            var nowLeft = -index*sWidth; //根据index值计算ul元素的left值
+
+
+
+            $("#focus_hd ul").stop(true,false).animate({"left":nowLeft},300); //通过animate()调整ul元素滚动到计算出的position
+
+
+
+            //$("#focus_hd .btn span").removeClass("on").eq(index).addClass("on"); //为当前的按钮切换到选中的效果
+
+
+
+            $("#focus_hd .btn span").stop(true,false).animate({"opacity":"0.4"},300).eq(index).stop(true,false).animate({"opacity":"1"},300); //为当前的按钮切换到选中的效果
+
+
+
+        }
+
+
+
+    });
+
+
+
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
+
+
+
+</head>
+
+
+
+<body>
+
+
+
+<script type="text/javascript">var carids = [], $cms_abs = "http://www.huanqiuauto.com/", car_compare_url = $cms_abs + "info.php?fid=&carids=";</script> 
+
+
+
+<script type="text/javascript" src="http://www.huanqiuauto.com/template/default/js/selectwlw.js"></script>
+
+
+
+
+
+
+<!--瀑布广告-->
+
+
+
+<div class="zhome_pbad"> 
+
+
+
+  <script type="text/javascript">BAIDU_CLB_fillSlot("1011656");</script> 
+
+
+
+</div>
+
+
+
+<div class="zhome_pbad_small"> 
+
+
+
+  <script type="text/javascript">BAIDU_CLB_fillSlot("1033060");</script>
+
+
+
+  <div class="zhome_pbad_over"> <span>重播</span> <em>关闭</em> </div>
+
+
+
+</div>
+
+
+
+<!--擎天柱--> 
+
+
+
+<!--<div class="zhome_qtzad_l"><span>×关闭</span>    <script type="text/javascript">BAIDU_CLB_fillSlot("1011655");</script></div><div class="zhome_qtzad_r"><span>×关闭</span>    <script type="text/javascript">BAIDU_CLB_fillSlot("1011655");</script></div>--><script type="text/javascript">document.write('<script type="text/javascript" src="http://www.huanqiuauto.com/tools/js.php?is_p=1&tname=logininfo2new_new&t='+(new Date).getTime()+'"></'+'script>')</script><div class="znews_nav">
+  <div class="znews_nav_logo"><a href="http://www.huanqiuauto.com" title="环球汽车网"></a></div>
+  <div class="znews_nav_r">
+      <div class="znews_nav_li">
+          <div class="znews_nav_class">
+              <h3><a href="http://www.huanqiuauto.com/news/xinwen/list.html" target="_blank" class="on">资讯</a></h3>
+              <span> <a href="http://www.huanqiuauto.com/news/xinwen/list.html" target="_blank"   class="wt">新闻</a> <a href="http://www.huanqiuauto.com/news/daogou/list.html" target="_blank"   class="wt">导购</a> <a href="http://www.huanqiuauto.com/news/gaizhuang/list.html" target="_blank"   class="wt">改装</a> <a href="http://www.huanqiuauto.com/news/fangtan/list.html" target="_blank"   class="wt">访谈</a> <a href="http://www.huanqiuauto.com/news/pingce/list.html" target="_blank"   class="wt">评测</a> <a href="http://www.huanqiuauto.com/news/competition/list.html" target="_blank"   class="wt">赛事</a> </span> </div>
+          <div class="znews_nav_class">
+              <h3><a href="http://www.huanqiuauto.com/info.php?fid=14">选车</a></h3>
+              <span> <a href="http://www.huanqiuauto.com/xuanche/video/video.html" target="_blank"   class="wt">视频</a> <a href="http://www.huanqiuauto.com/info.php?fid=14" target="_blank"   class="wt">车型</a> <a href="http://www.huanqiuauto.com/cars/" target="_blank"   class="wt">报价</a> <a href="http://www.huanqiuauto.com/cars/tuku.html" target="_blank"   class="wt">图库</a> <a href="http://www.huanqiuauto.com/info.php?fid=1" target="_blank"   class="wt">对比</a> <a href="http://www.huanqiuauto.com/xuanche/jiangjia/list.html" target="_blank"   class="wt">降价</a> </span> </div>
+          <div class="znews_nav_class">
+              <h3><a href="http://www.huanqiuauto.com/cars/business.html">购车</a></h3>
+              <span> <a href="http://www.huanqiuauto.com/cars/business.html" target="_blank"   class="wt">&nbsp;经销商</a> <a href="http://www.huanqiuauto.com/cars/business.html" target="_blank"   class="wt">&nbsp;诚信店</a> <a href="http://www.huanqiuauto.com/cars/business.html" target="_blank"   class="wt">&nbsp;环球购</a> <a href="http://www.huanqiuauto.com/cars/business.html" target="_blank"   class="wt">&nbsp;爱心店</a></span> </div>
+          <div class="znews_nav_class">
+              <h3><a href="http://www.huanqiuauto.com/use/anquan2/list.html">用车</a></h3>
+              <span> <a href="http://www.huanqiuauto.com/use/anquan2/list.html" target="_blank"   class="wt">安全</a> <a href="http://www.huanqiuauto.com/use/weixiu2/list.html" target="_blank"   class="wt">维修</a> <a href="http://www.huanqiuauto.com/use/baike/list.html" target="_blank"   class="wt">百科</a> <a href="http://www.huanqiuauto.com/use/baoyang/list.html" target="_blank"   class="wt">保养</a> <a href="#" target="_blank"   class="wt">问答</a> <a href="http://www.huanqiuauto.com/use/culture/list.html" target="_blank"   class="wt">文化</a> </span> </div>
+          <div class="znews_nav_class">
+              <h3><a href="http://www.huanqiuauto.com/life/huodong2/list.html">生活</a></h3>
+              <span> <a href="http://www.huanqiuauto.com/life/huodong2/list.html" target="_blank"   class="wt">活动</a> <a href="http://www.huanqiuauto.com/life/gongyi/list.html" target="_blank"   class="wt">公益</a> <a href="http://www.huanqiuauto.com/life/yangsheng/list.html" target="_blank"   class="wt">养生</a> <a href="http://www.huanqiuauto.com/life/zijia/list.html" target="_blank"   class="wt">自驾</a> <a href="http://bbs.huanqiuauto.com" target="_blank"   class="wt">论坛</a> <a href="http://www.huanqiuauto.com/life/yangxin/list.html" target="_blank"   class="wt">养心</a> </span> </div>
+      </div>
+    <div class="znews_nav_car">
+      <ul>
+        <li><a href="http://www.huanqiuauto.com/cars/jibie/weixingche/" target="_blank" class="car1">微型车</a></li>
+        <li><a href="http://www.huanqiuauto.com/cars/jibie/xiaoxingche/"  target="_blank"class="car2">小型车</a></li>
+        <li><a href="http://www.huanqiuauto.com/cars/jibie/jincouxingche/" target="_blank" class="car3">紧凑型车</a></li>
+        <li><a href="http://www.huanqiuauto.com/cars/jibie/zhongxingche/" target="_blank" class="car4">中型车</a></li>
+        <li><a href="http://www.huanqiuauto.com/cars/jibie/zhongdaxingche/" target="_blank" class="car5">中大型车</a></li>
+        <li><a href="http://www.huanqiuauto.com/cars/jibie/haohuache/" target="_blank" class="car6">豪华车</a></li>
+        <li><a href="http://www.huanqiuauto.com/cars/jibie/mpv/" target="_blank" class="car7">MPV</a></li>
+        <li><a href="http://www.huanqiuauto.com/cars/jibie/suv/" target="_blank" class="car8">SUV</a></li>
+        <li><a href="http://www.huanqiuauto.com/cars/jibie/paoche/" target="_blank" class="car9">跑车</a></li>
+        <li><a href="http://www.huanqiuauto.com/cars/jibie/mianbaoche/" target="_blank" class="car10">面包车</a></li>
+        <li><a href="http://www.huanqiuauto.com/cars/jibie/diandongche/" target="_blank" class="car11">电动车</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="blank10"></div>
+
+
+
+<div class="ad980"> 
+
+
+
+  <!-- 广告位：首页通栏1 --> 
+
+
+
+  <script type="text/javascript">BAIDU_CLB_fillSlot("1032381");</script> 
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="blank10"></div>
+
+
+
+<div class="nhome_hotcar">
+
+
+
+  <div class="nhome_hotcar_label"> <span class="sd01" id="m01">热门车</span> <span class="sd02" id="m02">推荐车</span> <span class="sd02" id="m03">新车型</span> <span class="sd02" id="m04">SUV</span> <a href="http://www.huanqiuauto.com/info.php?fid=16#c8379" target="_blank" class="bt">5万以下</a> <a href="http://www.huanqiuauto.com/info.php?fid=16#c8380" target="_blank"class="bt">5-8万</a> <a href="http://www.huanqiuauto.com/info.php?fid=16#c8381" class="bt">10-15万</a> <a href="http://www.huanqiuauto.com/info.php?fid=16#c81369" target="_blank" class="bt">20-25万</a> <a href="http://www.huanqiuauto.com/info.php?fid=16#c81241" class="bt">25-35万</a> <a href="http://www.huanqiuauto.com/info.php?fid=16#c81242" class="bt">35-50万</a> <a href="http://www.huanqiuauto.com/info.php?fid=16#c811067" target="_blank"class="bt">50万-70万</a> <a href="http://www.huanqiuauto.com/info.php?fid=16#c811068" target="_blank" class="bt">70-100万</a> <a href="http://www.huanqiuauto.com/info.php?fid=16#c811069" target="_blank" class="bt">100-150万</a> <a href="http://www.huanqiuauto.com/info.php?fid=16#c811070" target="_blank" class="bt">150万-300万</a> <a href="http://www.huanqiuauto.com/info.php?fid=16#c81243" target="_blank" class="bt">300万以上</a> </div>
+
+
+
+  <div class="nhome_hotcar_con">
+
+
+
+    <div class="nhome_hotcar_l" id="c01"> 
+
+
+<span><a href="http://www.huanqiuauto.com/car/ds/xtlds5/" class="kt3" target="_blank">DS 5</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/qiya/k5/" class="kt3" target="_blank">起亚K5</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/baoma/hcbm3xi/" class="kt3" target="_blank">宝马3系</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/dazhong/gaoerfu/" class="kt3" target="_blank">高尔夫</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/sikeda/mingrui/" class="kt3" target="_blank">明锐</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/beiqihuansu/beiqihuansuh3/" class="kt3" target="_blank">北汽幻速H3</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/fengtian/kaimeirui/" class="kt3" target="_blank">凯美瑞</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/bieke/yinglang/" class="kt3" target="_blank">英朗</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/mazida/mazida3/" class="kt3" target="_blank">马自达3</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/mazida/mazida3axelaangkesaila/" class="kt3" target="_blank">马自达3 Axela昂克赛拉</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/oge/ougetlx/" class="kt3" target="_blank">讴歌TLX</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/xiandai/suonata9/" class="kt3" target="_blank">索纳塔九</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/bieke/angkewei/" class="kt3" target="_blank">昂科威</a>
+
+     
+
+         </span>
+
+
+<span><a href="#" class="kt3" target="_blank">雅阁</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/woerwo/s80l/" class="kt3" target="_blank">沃尔沃S80L</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/bt/bentengb70/" class="kt3" target="_blank">奔腾B70</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/qiya/aopao/" class="kt3" target="_blank">起亚KX3</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/leinuo/laguna/" class="kt3" target="_blank">拉古那</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/dazhong/suteng/" class="kt3" target="_blank">速腾</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/fengtian/huangguan/" class="kt3" target="_blank">皇冠</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/changanjiaoche/changancs75/" class="kt3" target="_blank">长安CS75</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/fengtian/kaluola/" class="kt3" target="_blank">卡罗拉</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/hafu/h6/" class="kt3" target="_blank">哈弗H6</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/beiqishenbao/shenbaox65/" class="kt3" target="_blank">绅宝X65</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/xuefolan/keluzi/" class="kt3" target="_blank">科鲁兹</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/fute/fukesiliangxiang/" class="kt3" target="_blank">福克斯</a>
+
+     
+
+         </span>
+
+
+<span><a href="#" class="kt3" target="_blank">雅阁</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/mazida/mazida6atenazatezi/" class="kt3" target="_blank">马自达6 阿特兹</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/aodi1/ada3/" class="kt3" target="_blank">奥迪A3</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/biaozhi/biaozhi408/" class="kt3" target="_blank">标致408</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/dazhong/langyi/" class="kt3" target="_blank">朗逸</a>
+
+     
+
+         </span>
+
+
+<span><a href="http://www.huanqiuauto.com/car/biyadi/qin/" class="kt3" target="_blank">秦</a>
+
+     
+
+         </span> </div>
+
+
+
+    <div class="nhome_hotcar_l" id="c02" style="display: none"> <span><a href="http://www.huanqiuauto.com/car/binli/oulu/" class="kt3" target="_blank">欧陆</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/baoma/x6/" class="kt3" target="_blank">宝马X6</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/leikesasi/nweishangshi/" class="kt3" target="_blank">雷克萨斯NX</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/luhu/lanshengjiguangjinkou/" class="kt3" target="_blank">揽胜极光(进口)</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/biaozhi/biaozhi2008/" class="kt3" target="_blank">标致2008</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/oge/ougerlx/" class="kt3" target="_blank">讴歌RLX</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/yingfeinidi/yingfeinidiq50l/" class="kt3" target="_blank">英菲尼迪Q50L</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/oge/ougetlx/" class="kt3" target="_blank">讴歌TLX</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/dazhong/shdzpolo/" class="kt3" target="_blank">POLO</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/changanshangyongche/ouliwei/" class="kt3" target="_blank">欧力威</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/jili/gx7/" class="kt3" target="_blank">全球鹰GX7</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/xiandai/ruina/" class="kt3" target="_blank">瑞纳</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/dongfengxiaokang2/fengguang/" class="kt3" target="_blank">风光</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/zhongtai/zhongtait600/" class="kt3" target="_blank">众泰T600</a>
+
+     
+
+         </span><span><a href="#" class="kt3" target="_blank">飞度</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/biyadi/s6/" class="kt3" target="_blank">比亚迪S6</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/bentian/binzhi/" class="kt3" target="_blank">缤智</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/biyadi/qin/" class="kt3" target="_blank">秦</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/kaiyi/kaiyic3/" class="kt3" target="_blank">凯翼C3</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/jili/ziyoujian/" class="kt3" target="_blank">自由舰</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/sikeda/xidong/" class="kt3" target="_blank">昕动</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/aodi1/q5ad/" class="kt3" target="_blank">奥迪Q5(进口)</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/jili/yuanjing/" class="kt3" target="_blank">远景</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/bentian/xrv/" class="kt3" target="_blank">XR-V</a>
+
+     
+
+         </span><span><a href="#" class="kt3" target="_blank">思铂睿</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/bc/glaamg/" class="kt3" target="_blank">奔驰GLA级AMG</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/fute/fusi/" class="kt3" target="_blank">福睿斯</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/dongfengfengxing/jingyix5/" class="kt3" target="_blank">景逸X5</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/beiqishenbao/d20/" class="kt3" target="_blank">绅宝D20</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/aodi1/s3weishangshiad/" class="kt3" target="_blank">奥迪S3</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/dongfengfengshen/fengshenax7/" class="kt3" target="_blank">风神AX7</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/rchan/machi/" class="kt3" target="_blank">玛驰</a>
+
+     
+
+         </span> </div>
+
+
+
+    <div class="nhome_hotcar_l" id="c03" style="display: none"> <span><a href="http://www.huanqiuauto.com/car/dongfengfengdu/dongfengfengdumx6/" class="kt3" target="_blank">东风风度MX6</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/aodi1/ada4l/" class="kt3" target="_blank">奥迪A4L</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/aodi1/s7ad/" class="kt3" target="_blank">奥迪S7</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/aodi1/a7ad/" class="kt3" target="_blank">奥迪A7</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/aodi1/a6ad/" class="kt3" target="_blank">奥迪A6(进口)</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/aodi1/a5ad/" class="kt3" target="_blank">奥迪A5</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/aodi1/q7ad/" class="kt3" target="_blank">奥迪Q7</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/baoma/baoma3xigt/" class="kt3" target="_blank">宝马3系GT</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/baoma/baoma1xi/" class="kt3" target="_blank">宝马1系</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/baoma/baoma6xi/" class="kt3" target="_blank">宝马6系</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/zhongtai/zhongtaisr7/" class="kt3" target="_blank">众泰SR7</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/xuetielong/ailishe/" class="kt3" target="_blank">爱丽舍</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/woerwo/wewxc90/" class="kt3" target="_blank">沃尔沃XC90</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/laosilaisi/gusite/" class="kt3" target="_blank">古思特</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/kaidilake/kaidilakect6/" class="kt3" target="_blank">凯迪拉克CT6</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/jianghuai/ruifengs5/" class="kt3" target="_blank">瑞风S5</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/hafu/hafuh5/" class="kt3" target="_blank">哈弗H5</a>
+
+     
+
+         </span><span></span><span><a href="http://www.huanqiuauto.com/car/futian/tuix5/" class="kt3" target="_blank">伽途ix5</a>
+
+     
+
+         </span><span><a href="#" class="kt3" target="_blank">福田汽车</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/dongfengfengxing/jingyis50/" class="kt3" target="_blank">景逸S50</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/dazhong/spasate/" class="kt3" target="_blank">帕萨特</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/dazhong/jiakechong/" class="kt3" target="_blank">甲壳虫</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/changanshangyongche/xingm90/" class="kt3" target="_blank">睿行M90</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/changanshangyongche/shenf50/" class="kt3" target="_blank">神骐F50</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/changanshangyongche/shenqif30/" class="kt3" target="_blank">神骐F30</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/biaozhi/biaozhi301/" class="kt3" target="_blank">标致301</a>
+
+     
+
+         </span><span><a href="#" class="kt3" target="_blank">雅阁</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/bentian/ailishen/" class="kt3" target="_blank">艾力绅</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/bc/jkbcgji/" class="kt3" target="_blank">奔驰G级</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/bc/jkbccji/" class="kt3" target="_blank">奔驰C级</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/beiqishenbao/shenbaox55/" class="kt3" target="_blank">绅宝X55</a>
+
+     
+
+         </span> </div>
+
+
+
+    <div class="nhome_hotcar_l" id="c04" style="display: none"> <span><a href="http://www.huanqiuauto.com/car/amg/ruiteng/" class="kt3" target="_blank">锐腾</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/bentian/binzhi/" class="kt3" target="_blank">缤智</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/baoma/hcbmx1/" class="kt3" target="_blank">宝马X1</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/sibalu/aohu/" class="kt3" target="_blank">傲虎</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/guangqijiao/jiaogx6/" class="kt3" target="_blank">吉奥GX6</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/baoma/x5/" class="kt3" target="_blank">宝马X5</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/leikesasi/gx/" class="kt3" target="_blank">雷克萨斯GX</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/linken/mkc/" class="kt3" target="_blank">林肯MKC</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/luhu/shenxingzhe2/" class="kt3" target="_blank">神行者2</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/luhu/disidaifaxian/" class="kt3" target="_blank">第四代发现</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/jianghuai/ruifengs5/" class="kt3" target="_blank">瑞风S5</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/amg/mggt/" class="kt3" target="_blank">MG GT</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/aodi1/q3jinkou/" class="kt3" target="_blank">奥迪Q3(进口)</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/sanling/sljinasx/" class="kt3" target="_blank">劲炫ASX</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/shuanglong/kelanduo/" class="kt3" target="_blank">柯兰多</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/jili/gx7/" class="kt3" target="_blank">全球鹰GX7</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/baoma/x6/" class="kt3" target="_blank">宝马X6</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/dongfengfengxing/jingyix5/" class="kt3" target="_blank">景逸X5</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/leikesasi/nweishangshi/" class="kt3" target="_blank">雷克萨斯NX</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/bc/bjbcglkji/" class="kt3" target="_blank">奔驰GLK级</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/bentian/xrv/" class="kt3" target="_blank">XR-V</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/biaozhi/biaozhi3008/" class="kt3" target="_blank">标致3008</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/aodi1/adq5/" class="kt3" target="_blank">奥迪Q5</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/xuetielong/c3xr/" class="kt3" target="_blank">C3-XR</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/rchan/znxiangshiche/" class="kt3" target="_blank">日产ZN厢式车</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/sanling/slsanlinggelan/" class="kt3" target="_blank">三菱戈蓝</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/xuefolan/mairuibao/" class="kt3" target="_blank">迈锐宝</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/qiya/k5/" class="kt3" target="_blank">起亚K5</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/amg/sqmg6/" class="kt3" target="_blank">MG 6</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/leinuo/fenglang/" class="kt3" target="_blank">风朗</a>
+
+     
+
+         </span><span><a href="#" class="kt3" target="_blank">英朗XT</a>
+
+     
+
+         </span><span><a href="http://www.huanqiuauto.com/car/bieke/shtyangkela/" class="kt3" target="_blank">昂科拉</a>
+
+     
+
+         </span> </div>
+
+
+
+    <div class="nhome_hotcar_r"> 
+
+
+
+      <span><a href="http://www.huanqiuauto.com/car/baowo/baowobx5/"><img src="http://www.huanqiuauto.com/userfiles/image/20160306/06120518de8813ccdd0086_130_90.jpg" width="130" height="90" /></a><a class="nhome_hotcar_over" href="http://www.huanqiuauto.com/car/baowo/baowobx5/">宝沃BX5</a> </span>            <em><a href="http://www.huanqiuauto.com/car/baowo/baowobx5/param.html">参数配置</a></em>            <em><a href="http://www.huanqiuauto.com/car/baowo/baowobx5/baojia.html">最新报价</a></em>            <em><a href="http://www.huanqiuauto.com/index.php?addno=2&chid=1&caid=1&ccid1=12093">经销商</a></em>
+
+
+
+ </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+<div class="blank10"></div>
+
+
+
+
+
+
+
+<div class="znews_hd">
+
+
+
+    <div id="focus_hd">
+
+
+
+        <ul>
+
+
+
+            <li>
+
+
+
+                <div class="nhome_hd">
+
+
+
+                   
+<div class="nhome_hd_l">        <a href="http://www.huanqiuauto.com/news/20220301/1265130_1.html" target="_blank"><img  src="http://www.huanqiuauto.com/userfiles/image/20220301/011534496f922f7a887002.jpg" width="430" height="320"  alt="东风风神创历史最佳2月！1-2月累计同比增">            <p>东风风神创历史最佳2月</p></a>    </div>
+
+
+<div class="nhome_hd_r">        <a href="http://www.huanqiuauto.com/news/20220301/1265110_1.html" target="_blank"><img  src="http://www.huanqiuauto.com/userfiles/image/20220301/01094836c963f201f03948.png" width="230" height="155" alt="年销411台，“高性价比”的北京U7为何沦">            <p>年销411台，“高性价比”北京U7为何沦落</p></a>    </div>
+
+
+<div class="nhome_hd_r">        <a href="http://www.huanqiuauto.com/news/20220301/1265109_1.html" target="_blank"><img  src="http://www.huanqiuauto.com/userfiles/image/20220301/0109320614f62ab63c1082.png" width="230" height="155" alt="“降级风波”危中存机，英菲尼迪路在何方">            <p>“降级风波”危中存机，英菲尼迪路在何方</p></a>    </div>
+
+
+<div class="nhome_hd_r">        <a href="http://www.huanqiuauto.com/news/20220225/1265036_1.html" target="_blank"><img  src="http://www.huanqiuauto.com/userfiles/image/20220225/25122527bb7e3379b85483.png" width="230" height="155" alt="车主“送”歌、销量“断更”，“F4”威马">            <p>销量“断更”，“F4”威马汽车何去何从</p></a>    </div>
+
+
+<div class="nhome_hd_r">        <a href="http://www.huanqiuauto.com/news/20220224/1265022_1.html" target="_blank"><img  src="http://www.huanqiuauto.com/userfiles/image/20220224/24230228f219491d4c8201.png" width="230" height="155" alt="现代汽车高性能N品牌车型2021年销量倍">            <p>现代汽车高性能N品牌车型2021年销量倍</p></a>    </div>
+
+
+
+
+
+                </div>
+
+
+
+            </li>
+
+
+
+
+
+
+
+            <li>
+
+
+
+                <div class="nhome_hd">
+
+
+
+                     
+<div class="nhome_hd_l">        <a href="http://www.huanqiuauto.com/news/20220224/1265020_1.html" target="_blank"><img  src="http://www.huanqiuauto.com/userfiles/image/20220224/2422501553351c12d11663.png" width="430" height="320"  alt="MG ONE β荒野猎人绿将“潮流平替”进">            <p>MGONEβ荒野猎人绿将“潮流平替”进行</p></a>    </div>
+
+
+
+<div class="nhome_hd_r">        <a href="http://www.huanqiuauto.com/news/20220224/1265019_1.html" target="_blank"><img  src="http://www.huanqiuauto.com/userfiles/image/20220224/242239317d77f789c21845.png" width="230" height="155" alt="电动车冬季续航短？奥迪智能热管理系统解">            <p>专家详解奥迪智能热管理系统</p></a>    </div>
+
+
+
+<div class="nhome_hd_r">        <a href="http://www.huanqiuauto.com/news/20220224/1265016_1.html" target="_blank"><img  src="http://www.huanqiuauto.com/userfiles/image/20220224/24220138bae13a108b2141.png" width="230" height="155" alt="这个春天怎样high出“嗲味”？全新第四代">            <p>全新第四代汉兰达“以诗相告”</p></a>    </div>
+
+
+
+<div class="nhome_hd_r">        <a href="http://www.huanqiuauto.com/news/20220223/1264988_1.html" target="_blank"><img  src="http://www.huanqiuauto.com/userfiles/image/20220223/23191635e7520d3eec4850.png" width="230" height="155" alt="“宜乘宜驾”重构生活质感，上汽大众新威">            <p>上汽大众新威然NewVilorang预售开启！</p></a>    </div>
+
+
+
+<div class="nhome_hd_r">        <a href="http://www.huanqiuauto.com/news/20220223/1264956_1.html" target="_blank"><img  src="http://www.huanqiuauto.com/userfiles/image/20220223/23102009253cd1a4599109.png" width="230" height="155" alt="“无边界式宠爱”有多甜？长安UNI-V：有你">            <p>长安UNI-V：有你的地方，我会及时到场</p></a>    </div>
+
+
+
+
+
+
+                </div>
+
+
+
+            </li>
+
+
+
+
+
+
+
+            <li>
+
+
+
+                <div class="nhome_hd">
+
+
+
+                     
+<div class="nhome_hd_l">        <a href="http://www.huanqiuauto.com/news/20220221/1264912_1.html" target="_blank"><img  src="http://www.huanqiuauto.com/userfiles/image/20220221/212305319a24ba71743452.png" width="430" height="320"  alt="奔腾B70S“悄悄变美”后惊艳众人，这是准">            <p>奔腾B70S“悄悄变美”后惊艳众人</p></a>    </div>
+
+
+
+<div class="nhome_hd_r">        <a href="http://www.huanqiuauto.com/news/20220220/1264882_1.html" target="_blank"><img  src="http://www.huanqiuauto.com/userfiles/image/20220220/2018105906c2ce22a46970.png" width="230" height="155" alt="对话欧拉式“大女生”：我们为什么关注“">            <p>我们为什么关注“她力量”？</p></a>    </div>
+
+
+
+<div class="nhome_hd_r">        <a href="http://www.huanqiuauto.com/news/20220219/1264873_1.html" target="_blank"><img  src="http://www.huanqiuauto.com/userfiles/image/20220219/191633575fefbb93f69921.png" width="230" height="155" alt="A级纯电市场性能“天花板”！元PLUS上市">            <p>元PLUS上市售价13.18万元起</p></a>    </div>
+
+
+
+<div class="nhome_hd_r">        <a href="http://www.huanqiuauto.com/news/20220219/1264869_1.html" target="_blank"><img  src="http://www.huanqiuauto.com/userfiles/image/20220219/1915421439523a3a320247.png" width="230" height="155" alt="舒适安全又有趣 家庭畅玩冰雪就选第四">            <p>家庭畅玩冰雪就选第四代嘉华</p></a>    </div>
+
+
+
+<div class="nhome_hd_r">        <a href="http://www.huanqiuauto.com/news/20220219/1264868_1.html" target="_blank"><img  src="http://www.huanqiuauto.com/userfiles/image/20220219/19152427fa0e7d49c96623.png" width="230" height="155" alt="交2000抵5000，华晨鑫源金杯金卡S3起售4.">            <p>华晨鑫源金杯金卡S3起售4.39万元</p></a>    </div>
+
+
+
+
+
+
+                </div>
+
+
+
+            </li>
+
+
+
+
+
+
+
+        </ul>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="blank10"></div>
+
+
+
+<div class="nhome_main">
+
+
+
+  <div class="nhome_w390">
+
+
+
+    <div class="nhome_zc">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>找车</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/info.php?fid=14" class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="nhome_zc_con" style="padding-bottom: 10px;">
+
+
+
+        <div class="nhome_zc_form">
+
+
+
+          <form 　method="get" action="http://www.huanqiuauto.com/index.php">
+
+
+
+            <input type="hidden" name="caid" value="1" />
+
+
+
+            <div class="nhome_zc_form_l">
+
+
+
+              <select class="same" onchange="ajaxCarSeries(this,'ccid1_wlw2')">
+
+
+
+                <option>--选择品牌--</option>
+
+
+
+                <option value="10690">
+
+
+
+
+
+
+
+                       A 阿尔法.罗密欧</option><option value="27">
+
+
+
+
+
+
+
+                       A 阿斯顿·马丁</option><option value="11913">
+
+
+
+
+
+
+
+                       A 安凯客车</option><option value="8783">
+
+
+
+
+
+
+
+                       A 奥迪</option><option value="4191">
+
+
+
+
+
+
+
+                       B 巴博斯</option><option value="1531">
+
+
+
+
+
+
+
+                       B 宝骏</option><option value="8858">
+
+
+
+
+
+
+
+                       B 宝马</option><option value="12087">
+
+
+
+
+
+
+
+                       B 宝沃</option><option value="38">
+
+
+
+
+
+
+
+                       B 保时捷</option><option value="4235">
+
+
+
+
+
+
+
+                       B 北京汽车</option><option value="4382">
+
+
+
+
+
+
+
+                       B 北汽绅宝</option><option value="10687">
+
+
+
+
+
+
+
+                       B 北汽幻速</option><option value="10962">
+
+
+
+
+
+
+
+                       B 北汽威旺</option><option value="9294">
+
+
+
+
+
+
+
+                       B 北汽新能源</option><option value="37">
+
+
+
+
+
+
+
+                       B 北汽制造</option><option value="9296">
+
+
+
+
+
+
+
+                       B 奔驰</option><option value="9300">
+
+
+
+
+
+
+
+                       B 奔腾</option><option value="30">
+
+
+
+
+
+
+
+                       B 本田</option><option value="32">
+
+
+
+
+
+
+
+                       B 比亚迪</option><option value="35">
+
+
+
+
+
+
+
+                       B 标致</option><option value="31">
+
+
+
+
+
+
+
+                       B 别克</option><option value="39">
+
+
+
+
+
+
+
+                       B 宾利</option><option value="10684">
+
+
+
+
+
+
+
+                       B 布加迪</option><option value="46">
+
+
+
+
+
+
+
+                       C 昌河</option><option value="10688">
+
+
+
+
+
+
+
+                       C 成功汽车</option><option value="43">
+
+
+
+
+
+
+
+                       C 长安(轿车)</option><option value="4014">
+
+
+
+
+
+
+
+                       C 长安(商用)</option><option value="42">
+
+
+
+
+
+
+
+                       C 长城</option><option value="4241">
+
+
+
+
+
+
+
+                       D DS</option><option value="11914">
+
+
+
+
+
+
+
+                       D 大发</option><option value="47">
+
+
+
+
+
+
+
+                       D 大众</option><option value="52">
+
+
+
+
+
+
+
+                       D 道奇</option><option value="50">
+
+
+
+
+
+
+
+                       D 东风</option><option value="4482">
+
+
+
+
+
+
+
+                       D 东风风度</option><option value="57">
+
+
+
+
+
+
+
+                       D 东风风行</option><option value="51">
+
+
+
+
+
+
+
+                       D 东风风神</option><option value="10876">
+
+
+
+
+
+
+
+                       D 东风小康</option><option value="12148">
+
+
+
+
+
+
+
+                       D 东风风光</option><option value="48">
+
+
+
+
+
+
+
+                       D 东南</option><option value="56">
+
+
+
+
+
+
+
+                       F 法拉利</option><option value="59">
+
+
+
+
+
+
+
+                       F 菲亚特</option><option value="54">
+
+
+
+
+
+
+
+                       F 丰田</option><option value="11887">
+
+
+
+
+
+
+
+                       F 福迪</option><option value="12141">
+
+
+
+
+
+
+
+                       F Faraday Future</option><option value="11915">
+
+
+
+
+
+
+
+                       F 福汽启腾</option><option value="55">
+
+
+
+
+
+
+
+                       F 福特</option><option value="58">
+
+
+
+
+
+
+
+                       F 福田</option><option value="62">
+
+
+
+
+
+
+
+                       G GMC</option><option value="8038">
+
+
+
+
+
+
+
+                       G 观致</option><option value="9304">
+
+
+
+
+
+
+
+                       G 广汽传祺</option><option value="10689">
+
+
+
+
+
+
+
+                       G 广汽吉奥</option><option value="66">
+
+
+
+
+
+
+
+                       H 哈飞</option><option value="10864">
+
+
+
+
+
+
+
+                       H 哈弗</option><option value="12134">
+
+
+
+
+
+
+
+                       H 汉腾</option><option value="11899">
+
+
+
+
+
+
+
+                       H 海格</option><option value="65">
+
+
+
+
+
+
+
+                       H 海马</option><option value="11916">
+
+
+
+
+
+
+
+                       H 恒天</option><option value="70">
+
+
+
+
+
+
+
+                       H 红旗</option><option value="12095">
+
+
+
+
+
+
+
+                       H 华凯</option><option value="11890">
+
+
+
+
+
+
+
+                       H 华颂</option><option value="76">
+
+
+
+
+
+
+
+                       H 华泰</option><option value="12098">
+
+
+
+
+
+
+
+                       H 华泰新能源</option><option value="1537">
+
+
+
+
+
+
+
+                       H 黄海</option><option value="77">
+
+
+
+
+
+
+
+                       J Jeep</option><option value="75">
+
+
+
+
+
+
+
+                       J 吉利</option><option value="74">
+
+
+
+
+
+
+
+                       J 江淮</option><option value="79">
+
+
+
+
+
+
+
+                       J 江铃</option><option value="9308">
+
+
+
+
+
+
+
+                       J 捷豹</option><option value="78">
+
+
+
+
+
+
+
+                       J 金杯</option><option value="84">
+
+
+
+
+
+
+
+                       J 金龙</option><option value="4383">
+
+
+
+
+
+
+
+                       J 金旅</option><option value="4209">
+
+
+
+
+
+
+
+                       J 九龙</option><option value="10691">
+
+
+
+
+
+
+
+                       K KTM</option><option value="11917">
+
+
+
+
+
+
+
+                       K 卡升</option><option value="10692">
+
+
+
+
+
+
+
+                       K 卡威</option><option value="1555">
+
+
+
+
+
+
+
+                       K 开瑞</option><option value="85">
+
+
+
+
+
+
+
+                       K 凯迪拉克</option><option value="11213">
+
+
+
+
+
+
+
+                       K 凯翼</option><option value="11952">
+
+
+
+
+
+
+
+                       K 康迪</option><option value="87">
+
+
+
+
+
+
+
+                       K 科尼赛克</option><option value="88">
+
+
+
+
+
+
+
+                       K 克莱斯勒</option><option value="92">
+
+
+
+
+
+
+
+                       L 兰博基尼</option><option value="95">
+
+
+
+
+
+
+
+                       L 劳斯莱斯</option><option value="11918">
+
+
+
+
+
+
+
+                       L 雷丁</option><option value="8597">
+
+
+
+
+
+
+
+                       L 雷克萨斯</option><option value="97">
+
+
+
+
+
+
+
+                       L 雷诺</option><option value="10694">
+
+
+
+
+
+
+
+                       L 理念</option><option value="93">
+
+
+
+
+
+
+
+                       L 力帆</option><option value="96">
+
+
+
+
+
+
+
+                       L 莲花汽车</option><option value="45">
+
+
+
+
+
+
+
+                       L 猎豹汽车</option><option value="98">
+
+
+
+
+
+
+
+                       L 林肯</option><option value="89">
+
+
+
+
+
+
+
+                       L 铃木</option><option value="11929">
+
+
+
+
+
+
+
+                       L 陆地方舟</option><option value="94">
+
+
+
+
+
+
+
+                       L 陆风</option><option value="90">
+
+
+
+
+
+
+
+                       L 路虎</option><option value="10693">
+
+
+
+
+
+
+
+                       L 路特斯</option><option value="9306">
+
+
+
+
+
+
+
+                       M MG</option><option value="102">
+
+
+
+
+
+
+
+                       M MINI</option><option value="100">
+
+
+
+
+
+
+
+                       M 马自达</option><option value="104">
+
+
+
+
+
+
+
+                       M 玛莎拉蒂</option><option value="11969">
+
+
+
+
+
+
+
+                       M 迈巴赫</option><option value="4381">
+
+
+
+
+
+
+
+                       M 迈凯伦</option><option value="4426">
+
+
+
+
+
+
+
+                       M 摩根</option><option value="106">
+
+
+
+
+
+
+
+                       N 纳智捷</option><option value="11919">
+
+
+
+
+
+
+
+                       N 南京金龙</option><option value="11079">
+
+
+
+
+
+
+
+                       O 讴歌</option><option value="108">
+
+
+
+
+
+
+
+                       O 欧宝</option><option value="4237">
+
+
+
+
+
+
+
+                       O 欧朗</option><option value="109">
+
+
+
+
+
+
+
+                       Q 奇瑞</option><option value="4184">
+
+
+
+
+
+
+
+                       Q 启辰</option><option value="110">
+
+
+
+
+
+
+
+                       Q 起亚</option><option value="12080">
+
+
+
+
+
+
+
+                       Q 前途</option><option value="12020">
+
+
+
+
+
+
+
+                       P 帕加尼</option><option value="9703">
+
+
+
+
+
+
+
+                       R 日产</option><option value="114">
+
+
+
+
+
+
+
+                       R 荣威</option><option value="4359">
+
+
+
+
+
+
+
+                       R 如虎</option><option value="115">
+
+
+
+
+
+
+
+                       R 瑞麒</option><option value="1556">
+
+
+
+
+
+
+
+                       S Smart</option><option value="122">
+
+
+
+
+
+
+
+                       S 萨博</option><option value="12176">
+
+
+
+
+
+
+
+                       S 斯威汽车</option><option value="117">
+
+
+
+
+
+
+
+                       S 三菱</option><option value="4203">
+
+
+
+
+
+
+
+                       S 陕汽通家</option><option value="10695">
+
+
+
+
+
+
+
+                       S 上汽大通</option><option value="123">
+
+
+
+
+
+
+
+                       S 世爵</option><option value="120">
+
+
+
+
+
+
+
+                       S 双环</option><option value="119">
+
+
+
+
+
+
+
+                       S 双龙</option><option value="4238">
+
+
+
+
+
+
+
+                       S 思铭</option><option value="8596">
+
+
+
+
+
+
+
+                       S 斯巴鲁</option><option value="116">
+
+
+
+
+
+
+
+                       S 斯柯达</option><option value="10697">
+
+
+
+
+
+
+
+                       T 泰卡特</option><option value="4480">
+
+
+
+
+
+
+
+                       T 特斯拉</option><option value="10696">
+
+
+
+
+
+
+
+                       T 腾势</option><option value="127">
+
+
+
+
+
+
+
+                       W 威麟</option><option value="4087">
+
+
+
+
+
+
+
+                       W 威兹曼</option><option value="8864">
+
+
+
+
+
+
+
+                       W 沃尔沃</option><option value="125">
+
+
+
+
+
+
+
+                       W 五菱汽车</option><option value="4240">
+
+
+
+
+
+
+
+                       W 五十铃</option><option value="4236">
+
+
+
+
+
+
+
+                       X 西雅特</option><option value="128">
+
+
+
+
+
+
+
+                       X 现代</option><option value="131">
+
+
+
+
+
+
+
+                       X 新凯</option><option value="129">
+
+
+
+
+
+
+
+                       X 雪佛兰</option><option value="130">
+
+
+
+
+
+
+
+                       X 雪铁龙</option><option value="11283">
+
+
+
+
+
+
+
+                       Y 潍柴英致</option><option value="138">
+
+
+
+
+
+
+
+                       Y 野马汽车</option><option value="134">
+
+
+
+
+
+
+
+                       Y 一汽</option><option value="1238">
+
+
+
+
+
+
+
+                       Y 依维柯</option><option value="11922">
+
+
+
+
+
+
+
+                       Y 银基</option><option value="136">
+
+
+
+
+
+
+
+                       Y 英菲尼迪</option><option value="135">
+
+
+
+
+
+
+
+                       Y 永源</option><option value="12158">
+
+
+
+
+
+
+
+                       Y 驭胜</option><option value="11920">
+
+
+
+
+
+
+
+                       Z 知豆</option><option value="1239">
+
+
+
+
+
+
+
+                       Z 中华</option><option value="143">
+
+
+
+
+
+
+
+                       Z 中兴</option><option value="142">
+
+
+
+
+
+
+
+                       Z 众泰</option>
+
+
+              </select>
+
+
+
+              <select class="same" name="ccid1" id="ccid1_wlw2">
+
+
+
+                <option>选择车型(可不选)</option>
+
+
+
+              </select>
+
+
+
+            </div>
+
+
+
+            <div class="nhome_zc_form_r">
+
+
+
+              <input type="submit" value="找 车" class="btn" />
+
+
+
+            </div>
+
+
+
+          </form>
+
+
+
+        </div>
+
+
+
+        <div class="nhome_zc_ico">
+
+
+
+          <ul>
+
+
+
+            <li><a href="http://www.huanqiuauto.com/info.php?fid=14" target="_blank"><span class="ico1"></span>
+
+
+
+              <p>车型查找</p>
+
+
+
+              </a></li>
+
+
+
+            <li><a href="http://www.huanqiuauto.com/cars/" target="_blank"><span class="ico2"></span>
+
+
+
+              <p>车型报价</p>
+
+
+
+              </a></li>
+
+
+
+            <li><a href="http://www.huanqiuauto.com/info.php?fid=1" target="_blank"><span class="ico3"></span>
+
+
+
+              <p>车型对比</p>
+
+
+
+              </a></li>
+
+
+
+            <li><a href="http://www.huanqiuauto.com/info.php?fid=5" target="_blank"><span class="ico4"></span>
+
+
+
+              <p>购车计算</p>
+
+
+
+              </a></li>
+
+
+
+            <li style="border-right:1px solid #ddd;"><a href="http://www.huanqiuauto.com/cars/business.html" target="_blank"><span class="ico5"></span>
+
+
+
+              <p>查经销商</p>
+
+
+
+              </a></li>
+
+
+
+          </ul>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <div class="blank10"></div>
+
+
+
+    <div class="ad390"> 
+
+
+
+      <!-- 广告位：首页左小通栏1 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("693319");</script> 
+
+
+
+    </div>
+
+
+
+    <div class="blank10"></div>
+
+
+
+    <div class="ad390"> 
+
+
+
+      <!-- 广告位：首页左小通栏2 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("1021588");</script> 
+
+
+
+    </div>
+
+
+
+    <div class="nhome_zc mt10">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>活动</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/life/huodong2/list.html" target="_blank"class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="nhome_zc_con"> <div class="nhome_zc_img"> <span><a href="http://www.huanqiuauto.com/life/20220301/1265136_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/011625528ea5bd1e3b0803_120_80.jpg" width="120" height="80" alt="汇聚前沿科技丨2022 中国智能汽车技术展4月强势登陆重庆！"></a></span>
+
+                    <h3><a href="http://www.huanqiuauto.com/life/20220301/1265136_1.html" target="_blank" title="汇聚前沿科技丨2022 中国智能汽车技术展4月强势登陆重庆！" class="kt3">2022 中国智能汽车技术展4</a></h3>
+
+                    <p>一直以来，汽车产业都是重庆的重要经济支柱之一。2021年，重庆地区生产总值近2.8万亿元，规模以上工业...<a href="http://www.huanqiuauto.com/life/20220301/1265136_1.html" target="_blank" class="kt3">[详情]</a></p>
+
+                </div><div class="nhome_zc_img"> <span><a href="http://www.huanqiuauto.com/life/20220228/1265101_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220228/2817495761f4fb8cda3488_120_80.jpg" width="120" height="80" alt="虎虎生威！2022第七届遵义国际汽车展览会正式启动！"></a></span>
+
+                    <h3><a href="http://www.huanqiuauto.com/life/20220228/1265101_1.html" target="_blank" title="虎虎生威！2022第七届遵义国际汽车展览会正式启动！" class="kt3">2022第七届遵义国际汽车展</a></h3>
+
+                    <p>2022第七届遵义国际汽车展览会暨新能源·智能汽车展（简称：遵义国际汽车展览会）将于2022年3月24日-27...<a href="http://www.huanqiuauto.com/life/20220228/1265101_1.html" target="_blank" class="kt3">[详情]</a></p>
+
+                </div> </div>
+
+
+
+    </div>
+
+
+
+    <div class="nhome_zc mt10">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>自驾</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/life/zijia/list.html"target="_blank" class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="nhome_zc_con"> <div class="nhome_zc_img"> <span><a href="http://www.huanqiuauto.com/life/20220125/1264393_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220125/25173840b8f1942db08488_120_80.jpg" width="120" height="80" alt="采用徽城翘楚2.0 新捷途X70S亮相冰雪试驾"></a></span>
+
+                    <h3><a href="http://www.huanqiuauto.com/life/20220125/1264393_1.html" target="_blank" title="采用徽城翘楚2.0 新捷途X70S亮相冰雪试驾" class="kt3">采用徽城翘楚2.0 新捷途X7</a></h3>
+
+                    <p>2022年1月13日-19日，智取威虎山——2022捷途汽车林海雪原撒野大会试驾活动中，捷途汽车首次亮相了全...<a href="http://www.huanqiuauto.com/life/20220125/1264393_1.html" target="_blank" class="kt3">[详情]</a></p>
+
+                </div> </div>
+
+
+
+    </div>
+
+
+
+    <div class="nhome_zc mt10">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>公益</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/life/gongyi/list.html" target="_blank"class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="nhome_zc_con"> <div class="nhome_zc_img"> <span><a href="http://www.huanqiuauto.com/life/20220119/1264220_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220119/1915191168c19b9a722593_120_80.jpg" width="120" height="80" alt="驰援抗洪 护航科考 长城炮2021践行公益脚步不停歇"></a></span>
+
+                    <h3><a href="http://www.huanqiuauto.com/life/20220119/1264220_1.html" target="_blank" title="驰援抗洪 护航科考 长城炮2021践行公益脚步不停歇" class="kt3">驰援抗洪 护航科考</a></h3>
+
+                    <p>2021年，长城皮卡再次毫无意外的稳居销量榜首，全年销量突破23.3万台，连续24年国内、出口销量第一，长城...<a href="http://www.huanqiuauto.com/life/20220119/1264220_1.html" target="_blank" class="kt3">[详情]</a></p>
+
+                </div> </div>
+
+
+
+    </div>
+
+
+
+    <div class="nhome_zc mt10">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>养生</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/life/yangsheng/list.html" target="_blank"class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="nhome_zc_con"> <div class="nhome_zc_img"> <span><a href="http://www.huanqiuauto.com/news/20220125/1264388_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220125/2515570712aa27859b9691_120_80.jpg" width="120" height="80" alt="“鹏客”养生，这届年轻人直呼“太懂了”"></a></span>
+
+                    <h3><a href="http://www.huanqiuauto.com/news/20220125/1264388_1.html" target="_blank" title="“鹏客”养生，这届年轻人直呼“太懂了”" class="kt3">“鹏客”养生，这届年轻人直</a></h3>
+
+                    <p>近日，小鹏汽车旗下探索生活美学方式的精品品牌小鹏XPLORE探索实验室，针对年轻人生活方式推出一系列...<a href="http://www.huanqiuauto.com/news/20220125/1264388_1.html" target="_blank" class="kt3">[详情]</a></p>
+
+                </div> </div>
+
+
+
+    </div>
+
+
+
+    <div class="nhome_zc mt10">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>养心</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/life/yangxin/list.html"target="_blank" class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="nhome_zc_con"> <div class="nhome_zc_img"> <span><a href="http://www.huanqiuauto.com/news/20210401/1253861_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20210401/01115811487701593e1898_120_80.jpg" width="120" height="80" alt="踏春出行哪款家用suv最合适，第四代胜达成首选"></a></span>
+
+                    <h3><a href="http://www.huanqiuauto.com/news/20210401/1253861_1.html" target="_blank" title="踏春出行哪款家用suv最合适，第四代胜达成首选" class="kt3">踏春出行哪款家用suv最合</a></h3>
+
+                    <p>进入春季，四处盛开的繁花召唤着出游的心，清明小长假和家人一起踏青赏景，自驾游必然是最好的方式，而说...<a href="http://www.huanqiuauto.com/news/20210401/1253861_1.html" target="_blank" class="kt3">[详情]</a></p>
+
+                </div> </div>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+  <div class="nhome_w385">
+
+
+
+    <div class="nhome_hotnews">
+
+
+
+      <h1><a href="http://www.huanqiuauto.com/news/20220301/1265109_1.html" class="rt"  target="_blank">“降级风波”危中存机，英菲尼迪路在何方？</a>
+
+</h1>
+
+
+
+      <span>[<a href="http://www.huanqiuauto.com/news/20220301/1265151_1.html" class="kt3" target="_blank">「我们来辣」凌渡L 预售发布</a>][<a href="http://www.huanqiuauto.com/news/20220301/1265117_1.html" class="kt3" target="_blank">全新英菲尼迪QX60非凡上市</a>]</span> </div>
+
+
+
+    <div class="nhome_adnews"> <a href="http://www.huanqiuauto.com/news/20220301/1265110_1.html" target="_blank" class="rt"> 年销411台，“高性价比”的北京U7为</a> </div>
+
+
+
+    <div class="nhome_hotli">
+
+
+
+      <ul>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/news/20220301/1265150_1.html" class="kt3" target="_blank">途锐车主郭文博的热忱与爱</a></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265149_1.html" class="kt3" target="_blank">星途凌云为何成为中型SUV最</a></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265147_1.html" class="kt3" target="_blank">速腾聚创与酷哇机器人达成战</a></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265146_1.html" class="kt3" target="_blank">极氪品牌发展持续企稳</a></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265145_1.html" class="kt3" target="_blank">蔚来助力赛里木湖生态守护</a></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265144_1.html" class="kt3" target="_blank">小鹏汽车2月交付量6225台 同</a></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265143_1.html" class="kt3" target="_blank">蔚来助力中国新闻工作者援助</a></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265142_1.html" class="kt3" target="_blank">踏青出游好选择 第五代途胜L</a></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265141_1.html" class="kt3" target="_blank">进一步丰富宝马本土化产品阵</a></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265140_1.html" class="kt3" target="_blank">普利司通推动碳中和再发力</a></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265139_1.html" class="kt3" target="_blank">2023年款路虎·卫士硬核上市</a></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265134_1.html" class="kt3" target="_blank">华晨宝马入选可持续发展目标</a></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265133_1.html" class="kt3" target="_blank">上汽成立超万人规模“创新研</a></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265129_1.html" class="kt3" target="_blank">不好惹！这可能是最凶狠轿跑！</a></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265128_1.html" class="kt3" target="_blank">长安第二代CS75PLUS让开车“</a></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265127_1.html" class="kt3" target="_blank">你要的凡尔赛C5X 18英寸车轮</a></li>
+
+
+
+      </ul>
+
+
+
+    </div>
+
+
+
+    <div class="nhome_adnews"> <a href="http://www.huanqiuauto.com/news/20220219/1264861_1.html" target="_blank" class="rt"> “国服赵云”能抗能打能单带？捷途X9</a> </div>
+
+
+
+    <div class="nhome_hotli_o">
+
+
+
+      <ul>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/news/xinwen/list.html" target="_blank" class="kt3 list">新闻</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/news/20220301/1265151_1.html" class="kt3">「我们来辣」凌渡L 预售发布会</a><a target="_blank" href="http://www.huanqiuauto.com/news/20220301/1265150_1.html" class="kt3">途锐车主郭文博的热忱与爱</a> </li>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/news/xinwen/list.html" target="_blank" class="kt3 list">新闻</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/news/20220301/1265149_1.html" class="kt3">星途凌云为何成为中型SUV最优选择</a><a target="_blank" href="http://www.huanqiuauto.com/news/20220301/1265147_1.html" class="kt3">速腾聚创与酷哇机器人达成战略合作</a> </li>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/news/fangtan/list.html" target="_blank" class="kt3 list">访谈</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/news/20211227/1263537_1.html" class="kt3">对话欧阳谨：新能源汽车时代下的汽车金融</a><a target="_blank" href="http://www.huanqiuauto.com/news/20210514/1255573_1.html" class="kt3">专访卡仕达营销总监洪任翔：變革阶段，坚守</a> </li>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/news/daogou/list.html" target="_blank" class="kt3 list">导购</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/news/20220301/1265148_1.html" class="kt3">3月1日起，好猫GT版价格调整，2022款欧拉好</a><a target="_blank" href="http://www.huanqiuauto.com/news/20220301/1265137_1.html" class="kt3">国潮当红，谁是车界国潮担当呢？</a> </li>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/news/pingce/list.html" target="_blank" class="kt3 list">评测</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/news/20220220/1264884_1.html" class="kt3">试驾第二代CS75PLUS   乐享“明日座驾</a><a target="_blank" href="http://www.huanqiuauto.com/news/20220217/1264772_1.html" class="kt3">猛犬相伴四海相随 哈弗大狗实力护航女</a> </li>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/news/gaizhuang/list.html" target="_blank" class="kt3 list">改装</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/news/20210325/1253596_1.html" class="kt3">改装大赛热力无限！8万级国民改装神车带</a><a target="_blank" href="http://www.huanqiuauto.com/news/20201120/1249100_1.html" class="kt3">潮跑全新MG5限定版和第三代MG6车系改装</a> </li>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/news/competition/list.html" target="_blank" class="kt3 list">赛事</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/news/20220227/1265072_1.html" class="kt3">燃擎竞速！ 阿尔法·罗密欧四叶草训练营</a><a target="_blank" href="http://www.huanqiuauto.com/news/20220223/1264953_1.html" class="kt3">中国车手马青骅加盟领克车队 出征新赛</a> </li>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/shangyongche/jiangjiayouhui/list.html" target="_blank" class="kt3 list">降价</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/news/20200731/1244075_1.html" class="kt3">限时豪礼齐放送 购上汽荣威热销明星车</a><a target="_blank" href="http://www.huanqiuauto.com/news/20200731/1244044_1.html" class="kt3">这款大热运动轿车靠“抢”的！第三代名爵</a> </li>
+
+
+
+      </ul>
+
+
+
+    </div>
+
+
+
+    <div class="nhome_adnews"> <a href="http://www.huanqiuauto.com/news/20220117/1264178_1.html" target="_blank" class="rt"> 奥迪RS Q e-tron驰骋达喀尔拉力赛：</a> </div>
+
+
+
+    <div class="nhome_hotli_o">
+
+
+
+      <ul>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/use/anquan2/list.html" target="_blank" class="kt3 list">安全</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/news/20220211/1264624_1.html" class="kt3">收下这份冬季驾驶指南，尽量享受冬季冰雪</a><a target="_blank" href="http://www.huanqiuauto.com/use/20220113/1264063_1.html" class="kt3">柯锐世宣布将发布智能技术与产品，为新能</a> </li>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/use/baoyang/list.html" target="_blank" class="kt3 list">保养</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/use/20220223/1264966_1.html" class="kt3">春机勃发 汽车蓄电池检测正当时</a><a target="_blank" href="http://www.huanqiuauto.com/use/20211220/1263265_1.html" class="kt3">国六时代，奥铃提醒您使用合格燃油、机油</a> </li>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/use/baoyang/list.html" target="_blank" class="kt3 list">维修</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/use/20211202/1262729_1.html" class="kt3">车险兼业代理许可证到期换证，车商该如何</a><a target="_blank" href="http://www.huanqiuauto.com/news/20211118/1262058_1.html" class="kt3">把汽修做成时间服务：B+修车铺借助私域赋</a> </li>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/use/baike/list.html" target="_blank" class="kt3 list">百科</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/news/20210603/1256280_1.html" class="kt3">试驾、陪孩子两不误，看车新体验尽在荣威</a><a target="_blank" href="http://www.huanqiuauto.com/use/20210521/1255857_1.html" class="kt3">从三星堆文物极致工艺，看现代工业的传承</a> </li>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/use/culture/list.html" target="_blank" class="kt3 list">文化</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/news/20201124/1249282_1.html" class="kt3">宝马汽车金融（中国）有限公司成立十周年</a><a target="_blank" href="http://www.huanqiuauto.com/news/20201122/1249211_1.html" class="kt3">一汽-大众产品电动化战略升级正式启动</a> </li>
+
+
+
+        <li><a href="#" target="_blank" class="kt3 list">媒体</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/hezuo/20150106/793414_1.html" class="kt3">入选年度36路 ，与沃尔沃一起探秘世界《</a><a target="_blank" href="http://www.huanqiuauto.com/hezuo/20150106/793413_1.html" class="kt3">买车有牌尽在车惠网天津斯柯达看车团</a></li>
+
+
+
+        <li><a href="#" target="_blank" class="kt3 list">展会</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/hezuo/20141226/792094_1.html" class="kt3">强生膜入驻深圳改装展 加微信豪礼送</a></li>
+
+
+
+        <li><a href="#" target="_blank" class="kt3 list">活动</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/hezuo/20150106/793408_1.html" class="kt3">儿童摄影让冬季不再寒冷</a></li>
+
+
+
+      </ul>
+
+
+
+    </div>
+
+
+
+    
+
+
+
+    <div class="nhome_hotarea">
+
+
+
+      <h3>上海行情&nbsp;</h3>
+
+
+
+      <i>[切换城市]
+
+
+
+      <div class="area_con">
+
+
+
+        <ul>
+
+
+
+           <li><a href="http://beijing.huanqiuauto.com/" target="_blank" class="bt">北京</a></li> <li><a href="http://shanghai.huanqiuauto.com/" target="_blank" class="bt">上海</a></li> <li><a href="http://tianjin.huanqiuauto.com/" target="_blank" class="bt">天津</a></li> <li><a href="http://chongqing.huanqiuauto.com/" target="_blank" class="bt">重庆</a></li> <li><a href="http://anhui.huanqiuauto.com/" target="_blank" class="bt">安徽</a></li> <li><a href="http://guangdong.huanqiuauto.com/" target="_blank" class="bt">广东</a></li> <li><a href="http://hubei.huanqiuauto.com/" target="_blank" class="bt">湖北</a></li> <li><a href="http://jiangsu.huanqiuauto.com/" target="_blank" class="bt">江苏</a></li> <li><a href="http://www.huanqiuauto.com/shanxi/" target="_blank" class="bt">陕西</a></li> <li><a href="http://zhejiang.huanqiuauto.com/" target="_blank" class="bt">浙江</a></li> <li><a href="http://wuxi.huanqiuauto.com/" target="_blank" class="bt">无锡</a></li> <li><a href="http://www.huanqiuauto.com/nanjing/" target="_blank" class="bt">南京</a></li> <li><a href="http://wuhan.huanqiuauto.com/" target="_blank" class="bt">武汉</a></li> <li><a href="http://guangzhou.huanqiuauto.com/" target="_blank" class="bt">广州</a></li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+      </i> <span><a href="#" target="_blank" class="bt">查看本地降价信息&gt;&gt;</a></span> </div>
+
+
+
+    <div class="nhome_adnews" style="margin-top:5px;"> <a href="http://www.huanqiuauto.com/news/20220117/1264173_1.html" target="_blank" class="rt"> 2022款途锐正式上市，售价65.18至84.</a> </div>
+
+
+
+    <div class="nhome_hotli_o">
+
+
+
+      <ul>
+
+
+
+        <li><a href="#" target="_blank" class="kt3 list">优惠</a><span>|</span><a target="_blank" href="http://www.huanqiuauto.com/hezuo/20150106/793408_1.html" class="kt3">儿童摄影让冬季不再寒冷</a></li>
+
+
+
+        <li><a href="#" target="_blank" class="kt3 list">优惠</a><span>|</span></li>
+
+
+
+        <li><a href="#" target="_blank" class="kt3 list">优惠</a><span>|</span></li>
+
+
+
+        <li><a href="#" target="_blank" class="kt3 list">优惠</a><span>|</span></li>
+
+
+
+        <li><a href="#" target="_blank" class="kt3 list">优惠</a><span>|</span></li>
+
+
+
+        <li><a href="#" target="_blank" class="kt3 list">优惠</a><span>|</span></li>
+
+
+
+        <li><a href="#" target="_blank" class="kt3 list">优惠</a><span>|</span></li>
+
+
+
+        <li><a href="#" target="_blank" class="kt3 list">优惠</a><span>|</span></li>
+
+
+
+        <li><a href="#" target="_blank" class="kt3 list">优惠</a><span>|</span></li>
+
+
+
+        <li><a href="#" target="_blank" class="kt3 list">优惠</a><span>|</span></li>
+
+
+
+      </ul>
+
+
+
+    </div>
+
+
+
+    <!--<div class="nhome_adnews"></div>--> 
+
+
+
+  </div>
+
+
+
+  <div class="nhome_w185">
+
+
+
+    <div class="nhome_zc">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>关注排行</h3>
+
+
+
+      </div>
+
+
+
+      <div class="nhome_gzph">
+
+
+
+        <ul>
+
+
+
+          <li><span><i>1</i><a href="http://www.huanqiuauto.com/car/fengtian/hanlanda/" class="kt3" target="_blank">汉兰达</a></span><em>23.98~42.98万</em></li><li><span><i>2</i><a href="http://www.huanqiuauto.com/car/fute/fukesiliangxiang/" class="kt3" target="_blank">福克斯</a></span><em>9.98~16.99万</em></li><li><span><i>3</i><a href="http://www.huanqiuauto.com/car/sikeda/mingrui/" class="kt3" target="_blank">明锐</a></span><em>9.98~18.2万</em></li><li><span><i>4</i><a href="http://www.huanqiuauto.com/car/luhu/lanshengjiguangjinkou/" class="kt3" target="_blank">揽胜极光(进口)</a></span><em>52.8~66.8万</em></li><li><span><i>5</i><a href="http://www.huanqiuauto.com/car/woerwo/wewxc90/" class="kt3" target="_blank">沃尔沃XC90</a></span><em>61.89~135.8万</em></li><li><span><i>6</i><a href="http://www.huanqiuauto.com/car/tesila/models/" class="kt3" target="_blank">Model S</a></span><em>64.11~104.85万</em></li><li><span><i>7</i><a href="http://www.huanqiuauto.com/car/aodi1/q7ad/" class="kt3" target="_blank">奥迪Q7</a></span><em>75.38~133.9万</em></li><li><span><i>8</i><a href="http://www.huanqiuauto.com/car/baoma/x6/" class="kt3" target="_blank">宝马X6</a></span><em>83.8~216.8万</em></li><li><span><i>9</i><a href="http://www.huanqiuauto.com/car/biaozhi/biaozhi508/" class="kt3" target="_blank">标致508</a></span><em>18.17~26.97万</em></li><li><span><i>10</i><a href="http://www.huanqiuauto.com/car/leikesasi/nweishangshi/" class="kt3" target="_blank">雷克萨斯NX</a></span><em>31.8~59.9万</em></li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <div class="blank10"></div>
+
+
+
+    <div class="nhome_w185_news">
+
+
+
+      <div class="nhome_w185_ad"> 
+
+
+
+        <script type="text/javascript">BAIDU_CLB_fillSlot("886059");</script> 
+
+
+
+      </div>
+
+
+
+      <ul>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/news/20201117/1248855_1.html" target="_blank" class="bt">广州车展“十大偶像 </a></li><li><a href="http://www.huanqiuauto.com/gzcz/" target="_blank" class="bt">起点·终点 </a></li><li><a href="http://www.huanqiuauto.com/zhuanti/20160204/850349_1.html" target="_blank" class="bt">面向大众-有奖征文   </a></li><li><a href="http://www.huanqiuauto.com/zhuanti/20160204/850346_1.html" target="_blank" class="bt">关注微信 转发有奖 </a></li><li><a href="http://www.huanqiuauto.com/zhuanti/20150506/817835_1.html" target="_blank" class="bt">“ 1 元”抢车展门票， </a></li><li><a href="http://www.huanqiuauto.com/zhuanti/20140729/655970_1.html" target="_blank" class="bt">七月盛夏激情 卜蜂莲 </a></li><li><a href="http://www.huanqiuauto.com/zhuanti/20140725/654502_1.html" target="_blank" class="bt">感恩500万 聚力再飞跃 </a></li><li><a href="http://www.huanqiuauto.com/zhuanti/20140725/654468_1.html" target="_blank" class="bt">夏日激情，魔都车展 </a></li>
+
+
+
+      </ul>
+
+
+
+    </div>
+
+
+
+    <div class="nhome_w185_ad1 mt10"> 
+
+
+
+      <!-- 广告位：首页旗帜2 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("700659");</script> 
+
+
+
+    </div>
+
+
+
+    <div class="nhome_w185_ad2 mt10"> 
+
+
+
+      <!-- 广告位：首页旗帜3 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("739776");</script> 
+
+
+
+    </div>
+
+
+
+    <div class="nhome_w185_ad3 mt10"> 
+
+
+
+      <!-- 广告位：首页旗帜4 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("1011659");</script> 
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+<div class="blank10"></div>
+
+
+
+<div class="nhome_ssxc">
+
+
+
+  <div class="nhome_zc_label">
+
+
+
+    <h3>上市新车</h3>
+
+
+
+    <em><a href="#" class="wt">MORE&gt;</a></em> </div>
+
+
+
+  <div class="nhome_ssxc_con"> 
+
+ <div class="nhome_ssxc_big">
+
+            <a href="http://www.huanqiuauto.com/news/20220228/1265099_1.html"  title="第二代CS75PLUS上市 全系8AT“明日座驾”售价12.49万元起" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220228/281724404e8f756f8d9449_300_200.jpg" width="300" height="200" ></a>
+
+            <p><a href="http://www.huanqiuauto.com/news/20220228/1265099_1.html"  title="第二代CS75PLUS上市 全系8AT“明日座驾”售价12.49万元起"  target="_blank" class="kt6" >第二代CS75PLUS上市 全系8AT“明日座驾”售价12.49万元起</a></p>
+
+        </div>
+
+
+
+    <div class="nhome_ssxc_li">
+
+
+
+      <ul>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/news/20220228/1265097_1.html"  target="_blank" ><img src="http://www.huanqiuauto.com/userfiles/image/20220228/28163101e9a89ba04b0421_150_100.jpg" width="150" height="100"  /></a><p>
+
+<a href="http://www.huanqiuauto.com/news/20220228/1265097_1.html" class="kt6"  target="_blank" >全新第三代荣威RX5谍</a></p></li>
+
+
+
+<li><a href="http://www.huanqiuauto.com/news/20220221/1264906_1.html"  target="_blank" ><img src="http://www.huanqiuauto.com/userfiles/image/20220221/2117264740598550891081_150_100.jpg" width="150" height="100"  /></a><p>
+
+<a href="http://www.huanqiuauto.com/news/20220221/1264906_1.html" class="kt6"  target="_blank" >暗夜·奕炫MAX【锋芒</a></p></li>
+
+
+
+<li><a href="http://www.huanqiuauto.com/news/20220219/1264871_1.html"  target="_blank" ><img src="http://www.huanqiuauto.com/userfiles/image/20220219/19161212dea4d373b52143_150_100.jpg" width="150" height="100"  /></a><p>
+
+<a href="http://www.huanqiuauto.com/news/20220219/1264871_1.html" class="kt6"  target="_blank" >金杯金卡S3-新一代金</a></p></li>
+
+
+
+<li><a href="http://www.huanqiuauto.com/news/20220214/1264672_1.html"  target="_blank" ><img src="http://www.huanqiuauto.com/userfiles/image/20220214/141905303fb5570bc61817_150_100.jpg" width="150" height="100"  /></a><p>
+
+<a href="http://www.huanqiuauto.com/news/20220214/1264672_1.html" class="kt6"  target="_blank" >10万级超值大家轿！2022</a></p></li>
+
+
+
+<li><a href="http://www.huanqiuauto.com/news/20220211/1264625_1.html"  target="_blank" ><img src="http://www.huanqiuauto.com/userfiles/image/20220211/111755270a5f81a8d44693_150_100.jpg" width="150" height="100"  /></a><p>
+
+<a href="http://www.huanqiuauto.com/news/20220211/1264625_1.html" class="kt6"  target="_blank" >，捷途X90子龙将于2月28</a></p></li>
+
+
+
+<li><a href="http://www.huanqiuauto.com/news/20220211/1264609_1.html"  target="_blank" ><img src="http://www.huanqiuauto.com/userfiles/image/20220211/1112143911c3ba46507026_150_100.jpg" width="150" height="100"  /></a><p>
+
+<a href="http://www.huanqiuauto.com/news/20220211/1264609_1.html" class="kt6"  target="_blank" >2022年第一条喜讯，金杯</a></p></li>
+
+
+
+<li><a href="http://www.huanqiuauto.com/news/20211227/1263530_1.html"  target="_blank" ><img src="http://www.huanqiuauto.com/userfiles/image/20211227/27142501b6181b0b7b3422_150_100.jpg" width="150" height="100"  /></a><p>
+
+<a href="http://www.huanqiuauto.com/news/20211227/1263530_1.html" class="kt6"  target="_blank" >机车炮正式上市秀“操</a></p></li>
+
+
+
+<li><a href="http://www.huanqiuauto.com/news/20211222/1263387_1.html"  target="_blank" ><img src="http://www.huanqiuauto.com/userfiles/image/20211222/22160407317b0d00530444_150_100.jpg" width="150" height="100"  /></a><p>
+
+<a href="http://www.huanqiuauto.com/news/20211222/1263387_1.html" class="kt6"  target="_blank" >郑州日产奇骏·荣耀正</a></p></li>
+
+
+
+
+
+
+
+      </ul>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+<div class="blank10"></div>
+
+
+
+<div class="ad980"> 
+
+
+
+  <!-- 广告位：首页通栏2 --> 
+
+
+
+  <script type="text/javascript">BAIDU_CLB_fillSlot("666026");</script> 
+
+
+
+</div>
+
+
+
+<div class="blank10"></div>
+
+
+
+<div class="nhome_nav">
+
+
+
+  <ul>
+
+
+
+    <li>资讯</li>
+
+
+
+    <li class="sd01" id="mm01">新闻</li>
+
+
+
+    <li class="sd02" id="mm02">访谈</li>
+
+
+
+    <li class="sd02" id="mm03">导购</li>
+
+
+
+    <li class="sd02" id="mm04">测评</li>
+
+
+
+    <li class="sd02" id="mm05">改装</li>
+
+
+
+    <li class="sd02" id="mm06">赛事</li>
+
+
+
+  </ul>
+
+
+
+  <em><a href="http://www.huanqiuauto.com/news/xinwen/list.html" class="wt">MORE&gt;</a></em> </div>
+
+
+
+<!--新闻-->
+
+
+
+<div class="znews_nav_scon" id="cc01">
+
+
+
+  <div class="znews_nav_scon_l" style="padding-bottom: 0px;">
+
+
+
+    <ul>
+
+
+
+      <li><span><a href="http://www.huanqiuauto.com/news/20220301/1265151_1.html"target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/011902214eab1940395268_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220301/1265151_1.html" class="bt" target="_blank">「我们来辣」凌渡L预售发布会</a></h3>
+
+                <i>2022-03-01</i>
+
+                <p>3月1日19:00-20:30，「我们来辣」凌渡L 预售发布会全辣上线！辣感设计、辣感科技、辣感驾控----三重辣感全开，与「辣么多」大咖一起驾临辣感美学数字轿跑直播间！</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220301/1265150_1.html"target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/01185859d9e06aa4879447_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220301/1265150_1.html" class="bt" target="_blank">途锐车主郭文博的热忱与爱</a></h3>
+
+                <i>2022-03-01</i>
+
+                <p>途锐车主郭文博的热忱与爱</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220301/1265149_1.html"target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/01183623005c11893a6641_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220301/1265149_1.html" class="bt" target="_blank">星途凌云为何成为中型SUV最优选择</a></h3>
+
+                <i>2022-03-01</i>
+
+                <p>星途凌云为何成为中型SUV最优选择</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220301/1265147_1.html"target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/011823077de42d8a4e2233_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220301/1265147_1.html" class="bt" target="_blank">速腾聚创与酷哇机器人达成战略合作</a></h3>
+
+                <i>2022-03-01</i>
+
+                <p>速腾聚创与酷哇机器人达成战略合作</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220301/1265146_1.html"target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/011811463b526e01403113_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220301/1265146_1.html" class="bt" target="_blank">极氪001累计交付12,453台极氪品牌发展持续企稳</a></h3>
+
+                <i>2022-03-01</i>
+
+                <p>极氪001累计交付12,453台  极氪品牌发展持续企稳</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220301/1265145_1.html"target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/01175548e10b28b5337076_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220301/1265145_1.html" class="bt" target="_blank">蔚来助力赛里木湖生态守护</a></h3>
+
+                <i>2022-03-01</i>
+
+                <p>蔚来助力赛里木湖生态守护</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220301/1265144_1.html"target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/01174644bcffd9092e2748_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220301/1265144_1.html" class="bt" target="_blank">小鹏汽车2月交付量6225台同比增长180%</a></h3>
+
+                <i>2022-03-01</i>
+
+                <p>小鹏汽车2月交付量6225台 同比增长180%</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220301/1265143_1.html"target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/011738456b5cfa18928330_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220301/1265143_1.html" class="bt" target="_blank">蔚来助力中国新闻工作者援助项目</a></h3>
+
+                <i>2022-03-01</i>
+
+                <p>蔚来助力中国新闻工作者援助项目</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220301/1265142_1.html"target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/01172346239115b9538951_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220301/1265142_1.html" class="bt" target="_blank">踏青出游好选择第五代途胜L出游最佳SUV</a></h3>
+
+                <i>2022-03-01</i>
+
+                <p>踏青出游好选择 第五代途胜L出游最佳SUV</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220301/1265141_1.html"target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/01171028e4c6922d7e9611_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220301/1265141_1.html" class="bt" target="_blank">进一步丰富宝马本土化产品阵列全新BMWX5重磅来袭</a></h3>
+
+                <i>2022-03-01</i>
+
+                <p>进一步丰富宝马本土化产品阵列 全新BMW X5重磅来袭 </p>
+
+            </li>
+
+
+
+    </ul>
+
+
+
+  </div>
+
+
+
+  <div class="znews_nav_scon_r">
+
+
+
+    <div class="zvod_rbsp" style="margin-top:0px;">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>精选推荐</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/news/xinwen/list.html" class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="nhome_jxtj">
+
+
+
+        <ul>
+
+
+
+          <li><a href="http://www.huanqiuauto.com/news/20220301/1265151_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/011902214eab1940395268_120_80.jpg" width="120" height="80" alt="「我们来辣」凌渡L 预售发布会"></a><p><a href="http://www.huanqiuauto.com/news/20220301/1265151_1.html" target="_blank" class="kt6">「我们来辣」凌渡L 预</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265150_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/01185859d9e06aa4879447_120_80.jpg" width="120" height="80" alt="途锐车主郭文博的热忱与爱"></a><p><a href="http://www.huanqiuauto.com/news/20220301/1265150_1.html" target="_blank" class="kt6">途锐车主郭文博的热忱</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265149_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/01183623005c11893a6641_120_80.jpg" width="120" height="80" alt="星途凌云为何成为中型SUV最优选择"></a><p><a href="http://www.huanqiuauto.com/news/20220301/1265149_1.html" target="_blank" class="kt6">星途凌云为何成为中型</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265147_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/011823077de42d8a4e2233_120_80.jpg" width="120" height="80" alt="速腾聚创与酷哇机器人达成战略合作"></a><p><a href="http://www.huanqiuauto.com/news/20220301/1265147_1.html" target="_blank" class="kt6">速腾聚创与酷哇机器人</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265146_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/011811463b526e01403113_120_80.jpg" width="120" height="80" alt="极氪001累计交付12,453台  极氪品牌发展持续企稳"></a><p><a href="http://www.huanqiuauto.com/news/20220301/1265146_1.html" target="_blank" class="kt6">极氪品牌发展持续企稳</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265145_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/01175548e10b28b5337076_120_80.jpg" width="120" height="80" alt="蔚来助力赛里木湖生态守护"></a><p><a href="http://www.huanqiuauto.com/news/20220301/1265145_1.html" target="_blank" class="kt6">蔚来助力赛里木湖生态</a></p></li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <div class="blank10"></div>
+
+
+
+    <div class="ad300"> 
+
+
+
+      <!-- 广告位：首页旗帜5 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("761969");</script> 
+
+
+
+    </div>
+
+
+
+    <div class="zvod_rbsp">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>热门文章</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/news/xinwen/list.html" class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="znews_hotnews">
+
+
+
+        <ul>
+
+
+
+          <li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20210512/1255467_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20210512/12081510b2bdb626386856_120_80.jpg" width="120" height="80" alt="豪华质感更进阶  配置体验再升级 2021款凯迪拉克XT6尊贵型上市售价不变"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20210512/1255467_1.html" title="豪华质感更进阶  配置体验再升级 2021款凯迪拉克XT6尊贵型上市售价不变" class="kt3" target="_blank">2021款凯迪拉克XT6尊贵型</a></h3>
+
+                        <p> 上汽通用汽车凯迪拉克品牌宣布，新美式大型SUV2021款凯迪拉克...<a href="http://www.huanqiuauto.com/news/20210512/1255467_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20210525/1255981_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20210525/25164251b34c2a6f371344_120_80.jpg" width="120" height="80" alt="2021款凯迪拉克CT5新增尊贵型 售价32.27万元"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20210525/1255981_1.html" title="2021款凯迪拉克CT5新增尊贵型 售价32.27万元" class="kt3" target="_blank">2021款凯迪拉克CT5新增尊</a></h3>
+
+                        <p> 今日，上汽通用汽车凯迪拉克品牌宣布，2021款凯迪拉克CT5新增尊...<a href="http://www.huanqiuauto.com/news/20210525/1255981_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20200730/1244013_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200730/30142618806b1e79438825_120_80.jpg" width="120" height="80" alt="帕萨特20周年庆推“十全十美”计划，上汽大众再次开启价值营销"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20200730/1244013_1.html" title="帕萨特20周年庆推“十全十美”计划，上汽大众再次开启价值营销" class="kt3" target="_blank">帕萨特20周年庆推“十全十</a></h3>
+
+                        <p>转眼间，帕萨特入华已有20周年。值此20周年庆之际，上汽大众为帕...<a href="http://www.huanqiuauto.com/news/20200730/1244013_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20220215/1264691_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220215/151124504ae1a73df58134_120_80.jpg" width="120" height="80" alt="破而后立，福特领睿这次玩真的"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20220215/1264691_1.html" title="破而后立，福特领睿这次玩真的" class="kt3" target="_blank">破而后立，福特领睿这次玩真</a></h3>
+
+                        <p>SUV仍是中国消费者的心头好。在刚刚过去的2021年，中国乘用车...<a href="http://www.huanqiuauto.com/news/20220215/1264691_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <div class="blank10"></div>
+
+
+
+    <div class="ad300"> 
+
+
+
+      <!-- 广告位：首页旗帜6 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("744317");</script> 
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+<!--访谈-->
+
+
+
+<div class="znews_nav_scon" id="cc02" style="display: none">
+
+
+
+  <div class="znews_nav_scon_l" style="padding-bottom: 0px;">
+
+
+
+    <ul>
+
+
+
+      <li><span><a href="http://www.huanqiuauto.com/news/20211227/1263537_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20211227/271655250bc73013139524_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20211227/1263537_1.html" class="bt" target="_blank">对话欧阳谨：新能源汽车时代下的汽车金融服务将如何乘势发展</a></h3>
+
+                <i>2021-12-27</i>
+
+                <p>作为中国第一家外资汽车金融公司，大众汽车金融（中国）有限公司【以下简称大众汽车金融（中国）】自2004年成立以来，经历了中国汽车市场的风云变幻，在凭借优秀产品和运营经验</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20210514/1255573_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20210514/1414344766bffb6bfa4725_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20210514/1255573_1.html" class="bt" target="_blank">专访卡仕达营销总监洪任翔：變革阶段，坚守品牌才是王道！</a></h3>
+
+                <i>2021-05-14</i>
+
+                <p>第21届深圳国际智慧出行、汽车改装及汽车服务业生态展览会(简称九州展)，已于5月9日落下帷幕。作为汽车后市场的一场盛宴，在行业经历疫情、</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20210513/1255543_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20210513/1317131845fccad2ee7464_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20210513/1255543_1.html" class="bt" target="_blank">传承父辈精神情系至尊龙椅——采访卡二代闫师傅</a></h3>
+
+                <i>2021-05-13</i>
+
+                <p>无论是六朝古都，还是十朝都会，南京无疑是历代文人墨客的怀古之地。来自南京的闫师傅，拥有一口浓郁的金陵口音，讲述着来自魔都的国际动向，分享着苏锡常的奇闻轶事。闫师</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20210322/1253457_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20210322/22160948697acf7f806183_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20210322/1253457_1.html" class="bt" target="_blank">让汽车驱动梦想——华北赛区参赛团队及负责人专访</a></h3>
+
+                <i>2021-03-22</i>
+
+                <p>记者黄炎 2021年3 ...</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20201123/1249228_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201123/2311142168e9e5f0474881_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20201123/1249228_1.html" class="bt" target="_blank">长江后浪推前浪，小鹏P7的“黑科技”把比亚迪汉EV拍在了沙滩上！</a></h3>
+
+                <i>2020-11-23</i>
+
+                <p>智能化一直是小鹏 ...</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20201121/1249157_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201121/21120007c39ac8e2b40959_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20201121/1249157_1.html" class="bt" target="_blank">硬刚15万级合资！吉利星瑞“颠覆者”不是说说而已</a></h3>
+
+                <i>2020-11-21</i>
+
+                <p>一场不走寻常路的 ...</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20201117/1248903_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201117/17205505ee767f8e8a6588_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20201117/1248903_1.html" class="bt" target="_blank">动力强劲=油耗高价格贵?索纳塔给你满意答案</a></h3>
+
+                <i>2020-11-17</i>
+
+                <p>在消费者的潜意识 ...</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20201116/1248853_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201116/16232814ff561b9ad46925_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20201116/1248853_1.html" class="bt" target="_blank">斯柯达新速派：经典不会沉寂，只会续写</a></h3>
+
+                <i>2020-11-16</i>
+
+                <p>走过八十五年风雨 ...</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20201114/1248781_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201114/141825466dd04579db0075_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20201114/1248781_1.html" class="bt" target="_blank">长安汽车、华为、宁德时代联合打造高端智能汽车品牌，“国家队”进场</a></h3>
+
+                <i>2020-11-14</i>
+
+                <p>当国外某新能源汽 ...</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20201113/1248773_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201113/13213749406e81a2769788_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20201113/1248773_1.html" class="bt" target="_blank">经典即永恒现代汽车伊兰特三十年迭代之途</a></h3>
+
+                <i>2020-11-13</i>
+
+                <p>今年是伊兰特推出 ...</p>
+
+            </li>
+
+
+
+    </ul>
+
+
+
+  </div>
+
+
+
+  <div class="znews_nav_scon_r">
+
+
+
+    <div class="zvod_rbsp" style="margin-top:0px;">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>精选推荐</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/news/fangtan/list.html" class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="nhome_jxtj">
+
+
+
+        <ul>
+
+
+
+          <li><a href="http://www.huanqiuauto.com/news/20211227/1263537_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20211227/271655250bc73013139524_120_80.jpg" width="120" height="80" alt="对话欧阳谨：新能源汽车时代下的汽车金融服务将如何乘势发展"></a><p><a href="http://www.huanqiuauto.com/news/20211227/1263537_1.html" target="_blank" class="kt6">对话欧阳谨</a></p></li><li><a href="http://www.huanqiuauto.com/news/20201123/1249228_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201123/2311142168e9e5f0474881_120_80.jpg" width="120" height="80" alt="长江后浪推前浪，小鹏P7的“黑科技”把比亚迪汉EV拍在了沙滩上！"></a><p><a href="http://www.huanqiuauto.com/news/20201123/1249228_1.html" target="_blank" class="kt6">小鹏P7的“黑科技”把</a></p></li><li><a href="http://www.huanqiuauto.com/news/20201121/1249157_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201121/21120007c39ac8e2b40959_120_80.jpg" width="120" height="80" alt="硬刚15万级合资！吉利星瑞“颠覆者”不是说说而已"></a><p><a href="http://www.huanqiuauto.com/news/20201121/1249157_1.html" target="_blank" class="kt6">吉利星瑞“颠覆者”不</a></p></li><li><a href="http://www.huanqiuauto.com/news/20201117/1248903_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201117/17205505ee767f8e8a6588_120_80.jpg" width="120" height="80" alt="动力强劲=油耗高价格贵?  索纳塔给你满意答案"></a><p><a href="http://www.huanqiuauto.com/news/20201117/1248903_1.html" target="_blank" class="kt6">油耗高价格贵?  索纳</a></p></li><li><a href="http://www.huanqiuauto.com/news/20201116/1248853_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201116/16232814ff561b9ad46925_120_80.jpg" width="120" height="80" alt="斯柯达新速派：经典不会沉寂，只会续写"></a><p><a href="http://www.huanqiuauto.com/news/20201116/1248853_1.html" target="_blank" class="kt6">斯柯达新速派：经典不会</a></p></li><li><a href="http://www.huanqiuauto.com/news/20201114/1248781_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201114/141825466dd04579db0075_120_80.jpg" width="120" height="80" alt="长安汽车、华为、宁德时代联合打造高端智能汽车品牌，“国家队”进场"></a><p><a href="http://www.huanqiuauto.com/news/20201114/1248781_1.html" target="_blank" class="kt6">长安汽车打造高端智能</a></p></li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <div class="blank10"></div>
+
+
+
+    <div class="ad300"> 
+
+
+
+      <!-- 广告位：首页旗帜5 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("761969");</script> 
+
+
+
+    </div>
+
+
+
+    <div class="zvod_rbsp">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>热门文章</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/news/fangtan/list.html" class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="znews_hotnews">
+
+
+
+        <ul>
+
+
+
+          <li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20201121/1249157_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201121/21120007c39ac8e2b40959_120_80.jpg" width="120" height="80" alt="硬刚15万级合资！吉利星瑞“颠覆者”不是说说而已"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20201121/1249157_1.html" title="硬刚15万级合资！吉利星瑞“颠覆者”不是说说而已" class="kt3" target="_blank">吉利星瑞“颠覆者”不是说</a></h3>
+
+                        <p>一场不走寻常路的 ......<a href="http://www.huanqiuauto.com/news/20201121/1249157_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20201123/1249228_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201123/2311142168e9e5f0474881_120_80.jpg" width="120" height="80" alt="长江后浪推前浪，小鹏P7的“黑科技”把比亚迪汉EV拍在了沙滩上！"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20201123/1249228_1.html" title="长江后浪推前浪，小鹏P7的“黑科技”把比亚迪汉EV拍在了沙滩上！" class="kt3" target="_blank">小鹏P7的“黑科技”把比亚</a></h3>
+
+                        <p>智能化一直是小鹏 ......<a href="http://www.huanqiuauto.com/news/20201123/1249228_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20210322/1253457_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20210322/22160948697acf7f806183_120_80.jpg" width="120" height="80" alt="让汽车驱动梦想——华北赛区参赛团队及负责人专访"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20210322/1253457_1.html" title="让汽车驱动梦想——华北赛区参赛团队及负责人专访" class="kt3" target="_blank">华北赛区参赛团队及负责人</a></h3>
+
+                        <p>记者黄炎 2021年3 ......<a href="http://www.huanqiuauto.com/news/20210322/1253457_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20201117/1248903_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201117/17205505ee767f8e8a6588_120_80.jpg" width="120" height="80" alt="动力强劲=油耗高价格贵?  索纳塔给你满意答案"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20201117/1248903_1.html" title="动力强劲=油耗高价格贵?  索纳塔给你满意答案" class="kt3" target="_blank">油耗高价格贵?  索纳塔给</a></h3>
+
+                        <p>在消费者的潜意识 ......<a href="http://www.huanqiuauto.com/news/20201117/1248903_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <div class="blank10"></div>
+
+
+
+    <div class="ad300"> 
+
+
+
+      <!-- 广告位：首页旗帜6 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("744317");</script> 
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+<!--导购-->
+
+
+
+<div class="znews_nav_scon" id="cc03" style="display: none">
+
+
+
+  <div class="znews_nav_scon_l" style="padding-bottom: 0px;">
+
+
+
+    <ul>
+
+
+
+      <li><span><a href="http://www.huanqiuauto.com/news/20220301/1265148_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/01183300010539afc78309_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220301/1265148_1.html" class="bt" target="_blank">3月1日起，好猫GT版价格调整，2022款欧拉好猫1+N模式开始接订</a></h3>
+
+                <i>2022-03-01</i>
+
+                <p>3月1日，欧拉APP发布”3月1日起，2022款欧拉好猫开始接订，好猫GT版价格调整”的消息。据悉，2022款欧拉好猫售价12.19万-15.19万元。采用“1+N”订制模式：其中，“1”代表40</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220301/1265137_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/0116285742823217880188_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220301/1265137_1.html" class="bt" target="_blank">国潮当红，谁是车界国潮担当呢？</a></h3>
+
+                <i>2022-03-01</i>
+
+                <p>   近年来，众多国货品牌走红，中国文化、中国美学、中国产品，受到越来越多用户的喜爱。“国潮”不仅是国货之潮，也是国力之潮。同样，作为代表工业制造与智能科技集大成</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220228/1265100_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220228/281739538ef3eb09e71575_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220228/1265100_1.html" class="bt" target="_blank">不止于越野，哈弗H9-2022款让你拥有一个行走的“智能起居室”</a></h3>
+
+                <i>2022-02-28</i>
+
+                <p>“慢”是一种生活态度，而有些人喜欢用旅行来表达。随着生活节奏的加快和生活品质的提高，越来越多的朋友都想跳出两点一线的复制粘贴式生活，开始在快节奏中寻找可以放</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220228/1265096_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220228/28162200a00d63e1d75267_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220228/1265096_1.html" class="bt" target="_blank">同为运动型选手，影豹对比暗夜·奕炫MAX谁更让人心动？</a></h3>
+
+                <i>2022-02-28</i>
+
+                <p>如今要满足年轻消费者的喜爱，不仅要有过硬的产品性能，外观更是重中之重。10万级紧凑家轿市场中，诞生了不少偶像+实力派选手，比如东风风神暗夜·奕炫MAX，以及广汽传祺影</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220228/1265095_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220228/28161650f8675a78248094_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220228/1265095_1.html" class="bt" target="_blank">真听、真看、真感受，金杯金卡S3到底好不好？</a></h3>
+
+                <i>2022-02-28</i>
+
+                <p>最近刚刚上市的“金杯金卡S3——新一代金刚小卡”赢得了消费者的广泛关注，但是随着生活水平的提高，车主们选车的眼光也愈发挑剔，那么这辆势头正旺的金杯金卡S3都有哪</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220228/1265092_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220228/2814481536068f02683647_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220228/1265092_1.html" class="bt" target="_blank">三款乘坐舒适、空间灵活的SUV推荐：捷途X70PLUS、第三代哈弗H6和比亚迪宋Pro，买谁更省</a></h3>
+
+                <i>2022-02-28</i>
+
+                <p>对家庭用车来说，拥有大空间SUV是一件非常令人羡慕的事，能在满足家用的同时时不时地出门自驾游山玩水，因此不少朋友也想要拥有。而10万元左右正是空间与动力性价比最</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220228/1265088_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220228/28133851ec785ceefc1878_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220228/1265088_1.html" class="bt" target="_blank">哈弗H6国潮版VS长安CS75PLUS，谁才是实力派</a></h3>
+
+                <i>2022-02-28</i>
+
+                <p>开工半月有余，你是否已经适应了节后上班的工作节奏。当你完成了一天的工作，拖着筋疲力尽的身体来到地铁站台，看着步履匆匆的过客，是否想过要拥有一辆自己的车？那么，面对</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220228/1265076_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220228/2810254670b6744f4f0473_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220228/1265076_1.html" class="bt" target="_blank">改变生活的一台车北京现代库斯途当仁不让</a></h3>
+
+                <i>2022-02-28</i>
+
+                <p>曾几何时，拥有一台家用小轿车是多少普通中国家庭遥不可及的梦想，而如今随着人们生活水平的逐步提高，拥有多台车的家庭已然不在少数。从轿车到SUV再到新能源，多类型的</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220227/1265071_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220227/270935272f583097185712_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220227/1265071_1.html" class="bt" target="_blank">10万左右预算，哈弗H6国潮版和吉利博越，谁更值得？</a></h3>
+
+                <i>2022-02-27</i>
+
+                <p>近年来 “国潮”热成为了民众们热议的话题，从服装到吃穿住行和电视综艺节目都纷纷推出“国潮”概念类产品和节目。汽车市场也是如此，不少国产品牌也争相推出主打国</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220225/1265060_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220225/25172405ffe35da4c66794_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220225/1265060_1.html" class="bt" target="_blank">影豹“同胞兄弟”升级啦！增配不增价，超值来袭！</a></h3>
+
+                <i>2022-02-25</i>
+
+                <p>自去年上市以来, ...</p>
+
+            </li>
+
+
+
+    </ul>
+
+
+
+  </div>
+
+
+
+  <div class="znews_nav_scon_r">
+
+
+
+    <div class="zvod_rbsp" style="margin-top:0px;">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>精选推荐</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/news/daogou/list.html" class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="nhome_jxtj">
+
+
+
+        <ul>
+
+
+
+          <li><a href="http://www.huanqiuauto.com/news/20220301/1265148_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/01183300010539afc78309_120_80.jpg" width="120" height="80" alt="3月1日起，好猫GT版价格调整，2022款欧拉好猫1+N模式开始接订"></a><p><a href="http://www.huanqiuauto.com/news/20220301/1265148_1.html" target="_blank" class="kt6">2022款欧拉好猫1+N模</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220301/1265137_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220301/0116285742823217880188_120_80.jpg" width="120" height="80" alt="国潮当红，谁是车界国潮担当呢？"></a><p><a href="http://www.huanqiuauto.com/news/20220301/1265137_1.html" target="_blank" class="kt6">国潮当红，谁是车界国潮</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220228/1265100_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220228/281739538ef3eb09e71575_120_80.jpg" width="120" height="80" alt="不止于越野，哈弗H9-2022款让你拥有一个行走的“智能起居室”"></a><p><a href="http://www.huanqiuauto.com/news/20220228/1265100_1.html" target="_blank" class="kt6">哈弗H9-2022款让你拥</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220228/1265095_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220228/28161650f8675a78248094_120_80.jpg" width="120" height="80" alt="真听、真看、真感受，金杯金卡S3到底好不好？"></a><p><a href="http://www.huanqiuauto.com/news/20220228/1265095_1.html" target="_blank" class="kt6">金杯金卡S3到底好不好</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220228/1265092_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220228/2814481536068f02683647_120_80.jpg" width="120" height="80" alt="三款乘坐舒适、空间灵活的SUV推荐：捷途X70 PLUS、第三代哈弗H6和比亚迪宋Pro，买谁更省心?"></a><p><a href="http://www.huanqiuauto.com/news/20220228/1265092_1.html" target="_blank" class="kt6">三款乘坐舒适、空间灵</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220228/1265088_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220228/28133851ec785ceefc1878_120_80.jpg" width="120" height="80" alt="哈弗H6国潮版VS长安CS75PLUS，谁才是实力派"></a><p><a href="http://www.huanqiuauto.com/news/20220228/1265088_1.html" target="_blank" class="kt6">哈弗H6国潮版VS长安CS</a></p></li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <div class="blank10"></div>
+
+
+
+    <div class="ad300"> 
+
+
+
+      <!-- 广告位：首页旗帜5 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("761969");</script> 
+
+
+
+    </div>
+
+
+
+    <div class="zvod_rbsp">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>热门文章</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/news/daogou/list.html" class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="znews_hotnews">
+
+
+
+        <ul>
+
+
+
+          <li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20210104/1251089_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20210112/12092417d73de240250760_120_80.jpg" width="120" height="80" alt="长安马自达的“圈粉利器”"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20210104/1251089_1.html" title="长安马自达的“圈粉利器”" class="kt3" target="_blank">长安马自达的“圈粉利器”</a></h3>
+
+                        <p>随着年轻购车客群的崛起，“读懂年轻人”成为各大汽车品牌在当...<a href="http://www.huanqiuauto.com/news/20210104/1251089_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20210501/1255272_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20210501/01215721166a3e0dc77183_120_80.jpg" width="120" height="80" alt="购车娱乐两不误 凯迪拉克推“五五焕新礼遇”促进汽车消费升级"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20210501/1255272_1.html" title="购车娱乐两不误 凯迪拉克推“五五焕新礼遇”促进汽车消费升级" class="kt3" target="_blank">凯迪拉克推“五五焕新礼遇</a></h3>
+
+                        <p>5月，与气温同步上升的，是上海市民的消费热情！伴随着“五一”小...<a href="http://www.huanqiuauto.com/news/20210501/1255272_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20210803/1258510_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20210803/03165121ba790c842b6123_120_80.jpg" width="120" height="80" alt="华晨鑫源金海狮：天赋强大，就是这么自信！"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20210803/1258510_1.html" title="华晨鑫源金海狮：天赋强大，就是这么自信！" class="kt3" target="_blank">华晨鑫源金海狮</a></h3>
+
+                        <p>近日，东京奥运会赛场上的又一花式“凡尔赛”火了，80分钟内连夺...<a href="http://www.huanqiuauto.com/news/20210803/1258510_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20210804/1258522_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20210804/041111590b0014638b6282_120_80.jpg" width="120" height="80" alt="“全能小钢炮”炫界Pro  新时代年轻人的最佳出行伙伴"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20210804/1258522_1.html" title="“全能小钢炮”炫界Pro  新时代年轻人的最佳出行伙伴" class="kt3" target="_blank">新时代年轻人的最佳出行伙</a></h3>
+
+                        <p>如今，90后、95后已成为中国汽车消费的主力军，年轻的他们充满个...<a href="http://www.huanqiuauto.com/news/20210804/1258522_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <div class="blank10"></div>
+
+
+
+    <div class="ad300"> 
+
+
+
+      <!-- 广告位：首页旗帜6 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("744317");</script> 
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+<!--测评-->
+
+
+
+<div class="znews_nav_scon" id="cc04" style="display: none">
+
+
+
+  <div class="znews_nav_scon_l" style="padding-bottom: 0px;">
+
+
+
+    <ul>
+
+
+
+      <li><span><a href="http://www.huanqiuauto.com/news/20220220/1264884_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220220/201946343ee130428e6681_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220220/1264884_1.html" class="bt" target="_blank">试驾第二代CS75PLUS乐享“明日座驾”非凡魅力</a></h3>
+
+                <i>2022-02-20</i>
+
+                <p>当我们还沉浸在冬奥会上，中国队不断摘金夺银的喜悦之时，放眼国内汽车市场，近年来快速向上的长安汽车，又一次为人们带来新的惊喜。近日，长安汽车“第二代CS75PLUS再进化</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220217/1264772_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220217/17115510ad62e1603b0547_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220217/1264772_1.html" class="bt" target="_blank">猛犬相伴四海相随哈弗大狗实力护航女车手闯南北</a></h3>
+
+                <i>2022-02-17</i>
+
+                <p>随着私家车走进千家万户,很多人的生活方式也被逐步改变。一款产品力多元的车型不仅能够帮助车主提升出行效率、扩大生活半径,甚至可以改变一个人的生活方式,让“</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220217/1264771_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220217/17115027df5eb6a6522976_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220217/1264771_1.html" class="bt" target="_blank">冰雪潮玩首选哈弗大狗老司机说日产奇骏这波输的不冤</a></h3>
+
+                <i>2022-02-17</i>
+
+                <p>   伴随高山滑雪、滑冰等冬季项目掀起全民热潮,很多朋友纷纷想在冰雪场地之间周转,感受冬季运动带来的速度与激情。而介于滑雪场大多搭建在高山之上,且远离市区,</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220215/1264689_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220215/15101026506c08511d8272_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220215/1264689_1.html" class="bt" target="_blank">冬季续航提升20%，哪吒S冬标成绩亮眼！</a></h3>
+
+                <i>2022-02-15</i>
+
+                <p>近日，历时3个月的哪吒S冬季标定测试即将收官。哪吒S在极寒天气和复杂冰雪路况下，凭借搭载的新一代自主开发的HozonEPT4.0恒温热管理系统，实测续航里程提升20%。更值</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220129/1264540_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220129/29215301a81b809db97568_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220129/1264540_1.html" class="bt" target="_blank">-35°冰雪路面玩转漂移，星越S极致操控让合资车望尘莫及</a></h3>
+
+                <i>2022-01-29</i>
+
+                <p>正值寒冬时节，想必冬季行车会是很多人所关心的话题。的确，冬季路面积雪、结冰情况较多，容易造成车辆空转或打滑，特别是在冰雪路面打转向的时候，更容易出现轮胎滑移或偏</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220128/1264489_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220128/281059021f8d8f63d59134_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220128/1264489_1.html" class="bt" target="_blank">奇瑞汽车用20年的时间选择了一条更难，但是更正确的海外之路</a></h3>
+
+                <i>2022-01-28</i>
+
+                <p>2021年无疑是汽车行业艰难的一年，但同时又是深刻变化的一年。在看似平静的全球商业格局下，变幻不定的“芯片荒”“用工荒”、起伏难料的疫情和日益收紧的贸易保护，犹</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220128/1264486_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220128/2810434320fa39b8539518_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220128/1264486_1.html" class="bt" target="_blank">潮玩对决野性大赏哈弗大狗凭何完胜丰田RAV4</a></h3>
+
+                <i>2022-01-28</i>
+
+                <p>近期,哈尔滨巨大雪人萌出圈成为人们热议话题,而跟随雪人火爆全网的还有大家对冰雪运动的热爱,然而就在往返各大滑雪场、滑冰场之际,靠谱的座驾能为出行之旅增添潮</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220127/1264460_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220127/27180151f9dbe7e55e7536_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220127/1264460_1.html" class="bt" target="_blank">拒绝“高反”秒点火威狮1949为雪域“添柴”</a></h3>
+
+                <i>2022-01-27</i>
+
+                <p>“预热——点火！”随着2.3T柴油引擎一声浑厚的低吼，已在零下20℃低温环境下静置一整天的中兴威狮1949在海拔4400余米的西藏那曲顺利启动。拍摄视频的中兴汽车研发人</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220119/1264219_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220119/191456163be4496c469563_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220119/1264219_1.html" class="bt" target="_blank">汽车指数探秘之鱼钩测试</a></h3>
+
+                <i>2022-01-19</i>
+
+                <p>美国公路交通安全管理局（NHTSA）统计数据发现，交通事故中，车辆翻滚事故仅占3%，其致死率却高达33%；就算乘员系着安全带，死亡率依然高达75%。美国公路交通安全管理局因此开</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220118/1264188_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220118/1810275821da5d48c67863_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220118/1264188_1.html" class="bt" target="_blank">以高性能对抗冰雪实验，都市家庭靠谱出行还看欧蓝德</a></h3>
+
+                <i>2022-01-18</i>
+
+                <p>1月中旬已过，距离2月4日北京冬奥会开幕的日子也越来越近，届时我们将有机会看到，来自全世界的优秀运动健将在零下低温的寒冷天气下征服一个个高难度竞赛项目。而在国</p>
+
+            </li>
+
+
+
+    </ul>
+
+
+
+  </div>
+
+
+
+  <div class="znews_nav_scon_r">
+
+
+
+    <div class="zvod_rbsp" style="margin-top:0px;">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>精选推荐</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/news/pingce/list.html" class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="nhome_jxtj">
+
+
+
+        <ul>
+
+
+
+          <li><a href="http://www.huanqiuauto.com/news/20220220/1264884_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220220/201946343ee130428e6681_120_80.jpg" width="120" height="80" alt="试驾第二代CS75PLUS   乐享“明日座驾”非凡魅力"></a><p><a href="http://www.huanqiuauto.com/news/20220220/1264884_1.html" target="_blank" class="kt6">试驾第二代CS75PLUS</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220217/1264772_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220217/17115510ad62e1603b0547_120_80.jpg" width="120" height="80" alt="猛犬相伴四海相随 哈弗大狗实力护航女车手闯南北"></a><p><a href="http://www.huanqiuauto.com/news/20220217/1264772_1.html" target="_blank" class="kt6">哈弗大狗实力护航女车</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220217/1264771_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220217/17115027df5eb6a6522976_120_80.jpg" width="120" height="80" alt="冰雪潮玩首选哈弗大狗 老司机说日产奇骏这波输的不冤"></a><p><a href="http://www.huanqiuauto.com/news/20220217/1264771_1.html" target="_blank" class="kt6">老司机说日产奇骏这波</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220215/1264689_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220215/15101026506c08511d8272_120_80.jpg" width="120" height="80" alt="冬季续航提升20%，哪吒S冬标成绩亮眼！"></a><p><a href="http://www.huanqiuauto.com/news/20220215/1264689_1.html" target="_blank" class="kt6">冬季续航提升20%，哪吒S</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220129/1264540_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220129/29215301a81b809db97568_120_80.jpg" width="120" height="80" alt="- 35°冰雪路面玩转漂移，星越S极致操控让合资车望尘莫及"></a><p><a href="http://www.huanqiuauto.com/news/20220129/1264540_1.html" target="_blank" class="kt6">星越S极致操控让合资</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220128/1264489_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220128/281059021f8d8f63d59134_120_80.jpg" width="120" height="80" alt="奇瑞汽车用20年的时间选择了一条更难，但是更正确的海外之路"></a><p><a href="http://www.huanqiuauto.com/news/20220128/1264489_1.html" target="_blank" class="kt6">奇瑞汽车用20年的时间</a></p></li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <div class="blank10"></div>
+
+
+
+    <div class="ad300"> 
+
+
+
+      <!-- 广告位：首页旗帜5 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("761969");</script> 
+
+
+
+    </div>
+
+
+
+    <div class="zvod_rbsp">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>热门文章</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/news/pingce/list.html" class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="znews_hotnews">
+
+
+
+        <ul>
+
+
+
+          <li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20200830/1245304_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200830/3015582047740110fb8818_120_80.jpg" width="120" height="80" alt="别克微蓝7纯电动SUV和微蓝6插电式混动车 动力电池系统解析"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20200830/1245304_1.html" title="别克微蓝7纯电动SUV和微蓝6插电式混动车 动力电池系统解析" class="kt3" target="_blank">别克微蓝7纯电动SUV和微蓝</a></h3>
+
+                        <p>需要经过怎样的设计，才能赋予电池系统真正领先的核心技术？ 需...<a href="http://www.huanqiuauto.com/news/20200830/1245304_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20200902/1245445_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200902/02143144bf0e81895b7791_120_80.jpg" width="120" height="80" alt="中型SUV市场新标杆来了！ 别克昂科威S与昂科威S艾维亚竞争力全解析"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20200902/1245445_1.html" title="中型SUV市场新标杆来了！ 别克昂科威S与昂科威S艾维亚竞争力全解析" class="kt3" target="_blank">别克昂科威S与昂科威S艾维</a></h3>
+
+                        <p>昂科威S及昂科威S ......<a href="http://www.huanqiuauto.com/news/20200902/1245445_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20200901/1245366_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200901/010350285bb747435d0819_120_80.jpg" width="120" height="80" alt="讲道理！全新一代捷途X90内饰精髓不在表面"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20200901/1245366_1.html" title="讲道理！全新一代捷途X90内饰精髓不在表面" class="kt3" target="_blank">讲道理！全新一代捷途X90内</a></h3>
+
+                        <p>前些年，针对汽车座舱有人提出过“可居住性”概念，大致理念就是...<a href="http://www.huanqiuauto.com/news/20200901/1245366_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20200731/1244083_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200731/311652347c06e4756e1281_120_80.jpg" width="120" height="80" alt="中国品牌家用SUV标杆车型——奇瑞捷途X90 吉利豪越"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20200731/1244083_1.html" title="中国品牌家用SUV标杆车型——奇瑞捷途X90 吉利豪越" class="kt3" target="_blank">中国品牌家用SUV标杆车型</a></h3>
+
+                        <p>吉利豪越上市已近有一段时间，但一直热度不减，诚然这款车有他鲜...<a href="http://www.huanqiuauto.com/news/20200731/1244083_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <div class="blank10"></div>
+
+
+
+    <div class="ad300"> 
+
+
+
+      <!-- 广告位：首页旗帜6 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("744317");</script> 
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+<!--改装-->
+
+
+
+<div class="znews_nav_scon" id="cc05" style="display: none">
+
+
+
+  <div class="znews_nav_scon_l" style="padding-bottom: 0px;">
+
+
+
+    <ul>
+
+
+
+      <li><span><a href="http://www.huanqiuauto.com/news/20210325/1253596_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20210325/251710338e01082e4c0418_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20210325/1253596_1.html" class="bt" target="_blank">改装大赛热力无限！8万级国民改装神车带你酷盖!</a></h3>
+
+                <i>2021-03-25</i>
+
+                <p>3月10日火热开赛的东风风神2021奕炫家族改装大赛升温不断。截至发稿时刻，全国已有1000多位热爱汽车文化的改装“发烧友”报名参赛，收获数万网友的前排“围观”。身</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20201120/1249100_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201120/201753362dfcf0b5578735_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20201120/1249100_1.html" class="bt" target="_blank">潮跑全新MG5限定版和第三代MG6车系改装版上市、MG领航PHEV全球首秀</a></h3>
+
+                <i>2020-11-20</i>
+
+                <p>这一届广州车展的 ...</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20200721/1243514_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200721/21111253e784bd52596037_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20200721/1243514_1.html" class="bt" target="_blank">高定私藏丨放飞自我搞改装后，斯威G01F长这样了！</a></h3>
+
+                <i>2020-07-21</i>
+
+                <p>不知道从什么时候起，各种大牌名牌已经不是广大年轻人潮玩时的第一选择。原来越多小年轻在买买买的时候，开始转变潮流方向，大肆追求“私享款”、“限定版”、“定制款</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20200720/1243476_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200720/20142230d6f33b3e029941_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20200720/1243476_1.html" class="bt" target="_blank">德龙X5000移动的五星级酒店</a></h3>
+
+                <i>2020-07-20</i>
+
+                <p></p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20200630/1242617_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200630/30120303bcd9fa31285262_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20200630/1242617_1.html" class="bt" target="_blank">小鹏G3颜色焕新，双色设计解锁年轻新审美</a></h3>
+
+                <i>2020-06-30</i>
+
+                <p>【2020年6月30日】今日，世界青年联欢节，小鹏汽车在这天将为喜爱小鹏G3的年轻鹏友们送上一份礼物，G3i系列车型将新增静谧黑、轻悦蓝2款颜色，加上现有的元气白、悦动红</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20141229/792215_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20141229/29115506adc95fd9064049_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20141229/792215_1.html" class="bt" target="_blank">2015中国国际改装汽车展览会将移馆新国展</a></h3>
+
+                <i>2014-12-29</i>
+
+                <p>随着2014中国国际改装汽车展览会（All in TUNING 2014）的成功举办，2015中国国际改装汽车展览会将于2015年6月12日-14日在中国国际展览中心（新馆）举办。</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20141114/784138_1.html" target="_blank"><img src="http://photos.prnasia.com/prnvar/20141111/0861408394" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20141114/784138_1.html" class="bt" target="_blank">Maxwell获美国先进电池联合会合同</a></h3>
+
+                <i>2014-11-14</i>
+
+                <p>上海2014年11月12日电/美通社/--业界领先的超级电容储能及输电解决方案开发商和制造商Maxwell科技公司（纳斯达克：MXWL）今天宣布公司赢得了美国先进电池联合会(USABC)</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20141111/783438_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20141111/111309558aaaddbaed0987_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20141111/783438_1.html" class="bt" target="_blank">引爆双十一　鑫思翼导航升级50台免费送</a></h3>
+
+                <i>2014-11-11</i>
+
+                <p>双十一鑫思翼天猫活动开始啦，就是现在，对的，就是现在，“汽车车主大狂欢脱光脱光，脱光为止!”要免费车载导航？要半价车载导航，全取决于你。你的行驶安全，我们在意！只为你的</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20141110/783369_1.html" target="_blank"><img src="http://www.huanqiuauto.com/images/common/nopic.gif" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20141110/783369_1.html" class="bt" target="_blank">康普顿润滑油首次参战双11</a></h3>
+
+                <i>2014-11-10</i>
+
+                <p>一年一度的双11购物狂欢节马上就要到了，对网络电商企业来说，这是个非常重要日子，对刚刚涉水电子商务的传统企业来说更是如此。对润滑油行业来说，消费者通常的保养方式</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20141106/782219_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20141106/06115200b1ba578f060296_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20141106/782219_1.html" class="bt" target="_blank">东洋轮胎送好礼活动规则告诉你</a></h3>
+
+                <i>2014-11-06</i>
+
+                <p>即日起，东洋轮胎将正式启动“选择东洋伴你远航”大型促销活动。届时，凡是在东洋轮胎指定有活动海报张贴的零售店参与东洋轮胎促销活动的消费者，都能够获得东洋轮胎活</p>
+
+            </li>
+
+
+
+    </ul>
+
+
+
+  </div>
+
+
+
+  <div class="znews_nav_scon_r">
+
+
+
+    <div class="zvod_rbsp" style="margin-top:0px;">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>精选推荐</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/news/gaizhuang/list.html" class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="nhome_jxtj">
+
+
+
+        <ul>
+
+
+
+          <li><a href="http://www.huanqiuauto.com/news/20201120/1249100_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201120/201753362dfcf0b5578735_120_80.jpg" width="120" height="80" alt="潮跑全新MG5限定版和第三代MG6车系改装版上市、MG领航PHEV全球首秀"></a><p><a href="http://www.huanqiuauto.com/news/20201120/1249100_1.html" target="_blank" class="kt6">潮跑全新MG5限定版和</a></p></li><li><a href="http://www.huanqiuauto.com/news/20200721/1243514_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200721/21111253e784bd52596037_120_80.jpg" width="120" height="80" alt="高定私藏丨放飞自我搞改装后，斯威G01 F长这样了！"></a><p><a href="http://www.huanqiuauto.com/news/20200721/1243514_1.html" target="_blank" class="kt6">放飞自我搞改装后，斯威</a></p></li><li><a href="http://www.huanqiuauto.com/news/20200720/1243476_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200720/20142230d6f33b3e029941_120_80.jpg" width="120" height="80" alt="德龙X5000 移动的五星级酒店"></a><p><a href="http://www.huanqiuauto.com/news/20200720/1243476_1.html" target="_blank" class="kt6">德龙X5000 移动的五星</a></p></li><li><a href="http://www.huanqiuauto.com/news/20200630/1242617_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200630/30120303bcd9fa31285262_120_80.jpg" width="120" height="80" alt="小鹏G3颜色焕新，双色设计解锁年轻新审美"></a><p><a href="http://www.huanqiuauto.com/news/20200630/1242617_1.html" target="_blank" class="kt6">小鹏G3颜色焕新，双色设</a></p></li><li><a href="http://www.huanqiuauto.com/news/20140922/711803_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20140922/221543004e0590688f1607_120_80.jpg" width="120" height="80" alt="不得不了解的汽车头枕常识 时刻进行自我保护"></a><p><a href="http://www.huanqiuauto.com/news/20140922/711803_1.html" target="_blank" class="kt6">不得不了解的汽车头枕</a></p></li><li><a href="http://www.huanqiuauto.com/news/20130313/571123_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20130313/13115328791bd89d8b7346_120_80.jpg" width="120" height="80" alt="春雨来袭 四种实用的车身养护用品推荐"></a><p><a href="http://www.huanqiuauto.com/news/20130313/571123_1.html" target="_blank" class="kt6">四种实用的车身养护用</a></p></li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <div class="blank10"></div>
+
+
+
+    <div class="ad300"> 
+
+
+
+      <!-- 广告位：首页旗帜5 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("761969");</script> 
+
+
+
+    </div>
+
+
+
+    <div class="zvod_rbsp">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>热门文章</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/news/gaizhuang/list.html" class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="znews_hotnews">
+
+
+
+        <ul>
+
+
+
+          <li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20200720/1243476_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200720/20142230d6f33b3e029941_120_80.jpg" width="120" height="80" alt="德龙X5000 移动的五星级酒店"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20200720/1243476_1.html" title="德龙X5000 移动的五星级酒店" class="kt3" target="_blank">德龙X5000 移动的五星级酒</a></h3>
+
+                        <p>...<a href="http://www.huanqiuauto.com/news/20200720/1243476_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20200721/1243514_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200721/21111253e784bd52596037_120_80.jpg" width="120" height="80" alt="高定私藏丨放飞自我搞改装后，斯威G01 F长这样了！"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20200721/1243514_1.html" title="高定私藏丨放飞自我搞改装后，斯威G01 F长这样了！" class="kt3" target="_blank">放飞自我搞改装后，斯威G01 </a></h3>
+
+                        <p>不知道从什么时候起，各种大牌名牌已经不是广大年轻人潮玩时的...<a href="http://www.huanqiuauto.com/news/20200721/1243514_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20200630/1242617_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200630/30120303bcd9fa31285262_120_80.jpg" width="120" height="80" alt="小鹏G3颜色焕新，双色设计解锁年轻新审美"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20200630/1242617_1.html" title="小鹏G3颜色焕新，双色设计解锁年轻新审美" class="kt3" target="_blank">小鹏G3颜色焕新，双色设计解</a></h3>
+
+                        <p>【2020年6月30日】今日，世界青年联欢节，小鹏汽车在这天将为喜...<a href="http://www.huanqiuauto.com/news/20200630/1242617_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20201120/1249100_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201120/201753362dfcf0b5578735_120_80.jpg" width="120" height="80" alt="潮跑全新MG5限定版和第三代MG6车系改装版上市、MG领航PHEV全球首秀"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20201120/1249100_1.html" title="潮跑全新MG5限定版和第三代MG6车系改装版上市、MG领航PHEV全球首秀" class="kt3" target="_blank">潮跑全新MG5限定版和第三</a></h3>
+
+                        <p>这一届广州车展的 ......<a href="http://www.huanqiuauto.com/news/20201120/1249100_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <div class="blank10"></div>
+
+
+
+    <div class="ad300"> 
+
+
+
+      <!-- 广告位：首页旗帜6 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("744317");</script> 
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+<!--赛事-->
+
+
+
+<div class="znews_nav_scon" id="cc06" style="display: none">
+
+
+
+  <div class="znews_nav_scon_l" style="padding-bottom: 0px;">
+
+
+
+    <ul>
+
+
+
+      <li><span><a href="http://www.huanqiuauto.com/news/20220227/1265072_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220227/27153415f77d8740c39984_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220227/1265072_1.html" class="bt" target="_blank">燃擎竞速！阿尔法·罗密欧四叶草训练营全面开启</a></h3>
+
+                <i>2022-02-27</i>
+
+                <p>继2022年1月阿尔法·罗密欧成功举办了首场“四叶草训练营”后， 2月26日，阿尔法·罗密欧“四叶草训练营”华南营于广东竞速国际赛车场再次成功启航，来自各地的近60名</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20220223/1264953_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220223/230937003ae11f71686084_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20220223/1264953_1.html" class="bt" target="_blank">中国车手马青骅加盟领克车队出征新赛季WTCR房车世界杯</a></h3>
+
+                <i>2022-02-23</i>
+
+                <p>【2月22日，哥德堡】今日，中国车手马青骅确认加盟领克车队，宣告将随队出征2022赛季WTCR房车世界杯。本月底，马青骅将前往瑞典哥德堡Cyan Racing的总部，他将在这里为即将</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20211126/1262439_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20211126/26141247c638c4c2cd2469_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20211126/1262439_1.html" class="bt" target="_blank">中国速度与性能的荣耀！2021赛季CTCC中国汽车场地职业联赛圆满收官</a></h3>
+
+                <i>2021-11-26</i>
+
+                <p>经历了上海国际赛车场、株洲国际赛车场、上海天马赛车场、澳门东望洋四大赛道的全年南征北战后，2021年CTCC中国汽车场地职业联赛·TCR汽车系列赛圆满落幕。3个合作</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20211126/1262436_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20211126/26105513d43606a6141361_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20211126/1262436_1.html" class="bt" target="_blank">冠军实力征服赛场！长安汽车蓝鲸车队问鼎CTCC2021赛季年度车手冠军！</a></h3>
+
+                <i>2021-11-26</i>
+
+                <p>11月21日，经历了上海国际赛车场、株洲国际赛车场、上海天马赛车场、澳门东望洋四大赛道的全年南征北战后，2021年CTCC中国汽车场地职业联赛·TCR汽车系列赛圆满落幕</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20211111/1261826_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20211111/11155455aeadc8e3046465_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20211111/1261826_1.html" class="bt" target="_blank">CTCC蓝鲸马赫巅峰对决，是中国品牌动力技术的集体崛起！</a></h3>
+
+                <i>2021-11-11</i>
+
+                <p>“龙争虎斗，交替领先，这是中国顶级自主动力的大比拼，大秀场！”“蓝鲸动力与马赫动力的巅峰对决的背后，是中国品牌动力技术的集体崛起！”行业评价2021 CTCC中国汽车场地</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20211019/1260957_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20211019/19142126a4b1400dcf1701_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20211019/1260957_1.html" class="bt" target="_blank">WRC西班牙站夺冠！现代汽车用成绩诠释高性能基因</a></h3>
+
+                <i>2021-10-19</i>
+
+                <p>北京时间10月17日，2021赛季WRC世界汽车拉力锦标赛第11站西班牙加泰罗尼亚RACC拉力赛在萨鲁结束。现代车队名将诺伊维尔本站发挥出色且稳定，最终夺得分站赛胜利。制</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20211018/1260908_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20211018/181442514905a1b8681988_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20211018/1260908_1.html" class="bt" target="_blank">蓝色风暴席卷波城阿诺斯2021WTCR法国站领克车队再获2亚1季</a></h3>
+
+                <i>2021-10-18</i>
+
+                <p>【10月18日，法国】10月17日，2021赛季WTCR房车世界杯法国站在波城阿诺斯赛道落下帷幕。周六，经过三节激烈的排位赛，泰德·比约克以1分19秒127的成绩排名第9，由于第一回</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20211014/1260817_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20211014/1411154554f12536ab1591_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20211014/1260817_1.html" class="bt" target="_blank">大海道汽车耐力赛一触即发，凯普特星云严阵以待</a></h3>
+
+                <i>2021-10-14</i>
+
+                <p>战车集结，一触即发 ...</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20211011/1260705_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20211011/111001031b083c55831936_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20211011/1260705_1.html" class="bt" target="_blank">感受极致越野激情郑州日产X-Driving赛事学院即将再度开营</a></h3>
+
+                <i>2021-10-11</i>
+
+                <p>　汽车疾驰在沙土飞扬的赛道，发动机的轰鸣声强烈刺激着肾上腺素，让人热血沸腾，极限的竞速让人忘却所有疲惫和烦恼，想不想做一回风驰电掣的少年?</p>
+
+            </li><li><span><a href="http://www.huanqiuauto.com/news/20210927/1260393_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20210927/27145448be1e09c30a6692_150_100.jpg" width="150" height="100"  /></a></span>
+
+                <h3><a href="http://www.huanqiuauto.com/news/20210927/1260393_1.html" class="bt" target="_blank">CCPC再度开战！风行T5EVO尽显硬核实力</a></h3>
+
+                <i>2021-09-27</i>
+
+                <p>9月25日，在国内众多品牌车企、专业车手、车友和媒体们共同见证下，2021年中国量产车性能大赛（以下简称CCPC），专业站第一日的赛事获得圆满结束。而其中，东风风行T5 EVO凭</p>
+
+            </li>
+
+
+
+    </ul>
+
+
+
+  </div>
+
+
+
+  <div class="znews_nav_scon_r">
+
+
+
+    <div class="zvod_rbsp" style="margin-top:0px;">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>精选推荐</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/news/competition/list.html" class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="nhome_jxtj">
+
+
+
+        <ul>
+
+
+
+          <li><a href="http://www.huanqiuauto.com/news/20220227/1265072_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220227/27153415f77d8740c39984_120_80.jpg" width="120" height="80" alt="燃擎竞速！ 阿尔法·罗密欧四叶草训练营全面开启"></a><p><a href="http://www.huanqiuauto.com/news/20220227/1265072_1.html" target="_blank" class="kt6">阿尔法·罗密欧四叶草</a></p></li><li><a href="http://www.huanqiuauto.com/news/20220223/1264953_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20220223/230937003ae11f71686084_120_80.jpg" width="120" height="80" alt="中国车手马青骅加盟领克车队 出征新赛季WTCR房车世界杯"></a><p><a href="http://www.huanqiuauto.com/news/20220223/1264953_1.html" target="_blank" class="kt6">中国车手马青骅加盟领</a></p></li><li><a href="http://www.huanqiuauto.com/news/20211126/1262439_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20211126/26141247c638c4c2cd2469_120_80.jpg" width="120" height="80" alt="中国速度与性能的荣耀！ 2021赛季CTCC中国汽车场地职业联赛圆满收官"></a><p><a href="http://www.huanqiuauto.com/news/20211126/1262439_1.html" target="_blank" class="kt6">中国速度与性能的荣耀</a></p></li><li><a href="http://www.huanqiuauto.com/news/20211126/1262436_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20211126/26105513d43606a6141361_120_80.jpg" width="120" height="80" alt="冠军实力 征服赛场！ 长安汽车蓝鲸车队问鼎CTCC  2021赛季年度车手冠军！"></a><p><a href="http://www.huanqiuauto.com/news/20211126/1262436_1.html" target="_blank" class="kt6">长安汽车蓝鲸车队问鼎</a></p></li><li><a href="http://www.huanqiuauto.com/news/20211019/1260957_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20211019/19142126a4b1400dcf1701_120_80.jpg" width="120" height="80" alt="WRC西班牙站夺冠！现代汽车用成绩诠释高性能基因"></a><p><a href="http://www.huanqiuauto.com/news/20211019/1260957_1.html" target="_blank" class="kt6">现代汽车用成绩诠释高</a></p></li><li><a href="http://www.huanqiuauto.com/news/20211018/1260908_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20211018/181442514905a1b8681988_120_80.jpg" width="120" height="80" alt="蓝色风暴席卷波城阿诺斯 2021WTCR法国站 领克车队再获2亚1季"></a><p><a href="http://www.huanqiuauto.com/news/20211018/1260908_1.html" target="_blank" class="kt6">2021WTCR法国站 领克</a></p></li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <div class="blank10"></div>
+
+
+
+    <div class="ad300"> 
+
+
+
+      <!-- 广告位：首页旗帜5 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("761969");</script> 
+
+
+
+    </div>
+
+
+
+    <div class="zvod_rbsp">
+
+
+
+      <div class="nhome_zc_label">
+
+
+
+        <h3>热门文章</h3>
+
+
+
+        <em><a href="http://www.huanqiuauto.com/news/competition/list.html" class="wt">MORE&gt;</a></em> </div>
+
+
+
+      <div class="znews_hotnews">
+
+
+
+        <ul>
+
+
+
+          <li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20200826/1245138_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200826/261309437249c311043775_120_80.jpg" width="120" height="80" alt="2020奥迪专业双杯竞赛区域决赛火热开启"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20200826/1245138_1.html" title="2020奥迪专业双杯竞赛区域决赛火热开启" class="kt3" target="_blank">2020奥迪专业双杯竞赛区域</a></h3>
+
+                        <p>燃情八月，以“进而无畏”为主题的2020奥迪专业双杯竞赛区域决...<a href="http://www.huanqiuauto.com/news/20200826/1245138_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20201229/1250928_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20201229/29232602b5b59866bc2812_120_80.jpg" width="120" height="80" alt="公路上的赛道冠军 基米·莱科宁亲手打造定制版阿尔法·罗密欧Stelvio"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20201229/1250928_1.html" title="公路上的赛道冠军 基米·莱科宁亲手打造定制版阿尔法·罗密欧Stelvio" class="kt3" target="_blank">公路上的赛道冠军</a></h3>
+
+                        <p>从赛道到公路，阿尔法·罗密欧陪伴F1车手一路同行。近日，阿尔法...<a href="http://www.huanqiuauto.com/news/20201229/1250928_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20210330/1253761_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20210330/301948455ec5f3a3c94686_120_80.jpg" width="120" height="80" alt="日产汽车宣布征战世界电动方程式锦标赛至2025-2026赛季"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20210330/1253761_1.html" title="日产汽车宣布征战世界电动方程式锦标赛至2025-2026赛季" class="kt3" target="_blank">日产汽车宣布征战世界</a></h3>
+
+                        <p>（2021年3月30日，北京）近日，日产汽车公司宣布将继续参加世界电动...<a href="http://www.huanqiuauto.com/news/20210330/1253761_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li><li>
+
+                        <span><a href="http://www.huanqiuauto.com/news/20200731/1244082_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20200731/311642553c3d8efca52694_120_80.jpg" width="120" height="80" alt="捷豹Formula E车队启程柏林 迎接收官赛"></a></span>
+
+                        <h3><a href="http://www.huanqiuauto.com/news/20200731/1244082_1.html" title="捷豹Formula E车队启程柏林 迎接收官赛" class="kt3" target="_blank">捷豹Formula E车队启程柏</a></h3>
+
+                        <p>【2020年7月31日，英国惠特利】在长达158天的休赛期后，捷豹Form...<a href="http://www.huanqiuauto.com/news/20200731/1244082_1.html" target="_blank" class="rt">[详情]</a></p>
+
+</li>
+
+
+
+        </ul>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <div class="blank10"></div>
+
+
+
+    <div class="ad300"> 
+
+
+
+      <!-- 广告位：首页旗帜6 --> 
+
+
+
+      <script type="text/javascript">BAIDU_CLB_fillSlot("744317");</script> 
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+<div class="blank10"></div>
+
+
+
+
+
+
+
+<div class="nhome_nav">
+
+
+
+  <ul>
+
+
+
+    <li class="other"><a href="http://www.huanqiuauto.com/xuanche/video/video.html" target="_blank" class="wt">汽车视频</a></li>
+
+
+
+    <li><a href="http://www.huanqiuauto.com/xuanche/fangtanvideo/" target="_blank" class="wt">访谈视频</a></li>
+
+
+
+    <li><a href="http://www.huanqiuauto.com/xuanche/lewanvideo/" target="_blank" class="wt">乐玩视频</a></li>
+
+
+
+    <li><a href="http://www.huanqiuauto.com/xuanche/fengrenvideo/" target="_blank" class="wt">疯人视频</a></li>
+
+
+
+    <li><a href="http://www.huanqiuauto.com/xuanche/xinchevideo/" target="_blank" class="wt">新车视频</a></li>
+
+
+
+    <li><a href="http://www.huanqiuauto.com/xuanche/yule/" target="_blank" class="wt">广告视频</a></li>
+
+
+
+    <li><a href="http://www.huanqiuauto.com/xuanche/shijiavideo/" target="_blank" class="wt">试驾视频</a></li>
+
+
+
+    <li><a href="http://www.huanqiuauto.com/xuanche/pingcevideo/" target="_blank" class="wt">测评视频</a></li>
+
+
+
+  </ul>
+
+
+
+  <em><a href="http://www.huanqiuauto.com/xuanche/video/video.html" class="wt" target="_blank">MORE&gt;</a></em> </div>
+
+
+
+<div class="nhome_nav_con"> 
+
+
+
+  <!--滚动图片 start-->
+
+
+
+  <div class="rollphotos_1">
+
+
+
+    <div class="blk_1">
+
+
+
+      <div class="LeftBotton" id="LeftArr"></div>
+
+
+
+      <div class="Cont" id="ISL_Cont_1"> <DIV class=box><span><a href="http://www.huanqiuauto.com/xuanche/20160505/857179_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20160505/05102535eeb90658745932_150_100.jpg" width="150" height="100"  /></a></span><p><a href="http://www.huanqiuauto.com/xuanche/20160505/857179_1.html" title="全新BMW M2 - 赛道追逐" class="kt3" target="_blank">全新BMW M2 - 赛道</a></p></DIV><DIV class=box><span><a href="http://www.huanqiuauto.com/xuanche/20160505/857178_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20160505/05102244b13c24451b2341_150_100.jpg" width="150" height="100"  /></a></span><p><a href="http://www.huanqiuauto.com/xuanche/20160505/857178_1.html" title="BMW M Manifesto" class="kt3" target="_blank">BMW M Manifesto</a></p></DIV><DIV class=box><span><a href="http://www.huanqiuauto.com/xuanche/20160503/856654_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20160503/03124903e174cb19f31782_150_100.jpg" width="150" height="100"  /></a></span><p><a href="http://www.huanqiuauto.com/xuanche/20160503/856654_1.html" title="斯巴鲁 傲虎" class="kt3" target="_blank">斯巴鲁 傲虎</a></p></DIV><DIV class=box><span><a href="http://www.huanqiuauto.com/xuanche/20160503/856652_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20160503/03124436169bf775cf0513_150_100.jpg" width="150" height="100"  /></a></span><p><a href="http://www.huanqiuauto.com/xuanche/20160503/856652_1.html" title="斯巴鲁 森林人" class="kt3" target="_blank">斯巴鲁 森林人</a></p></DIV><DIV class=box><span><a href="http://www.huanqiuauto.com/xuanche/20160503/856650_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20160503/031232370dcd67ffc91574_150_100.jpg" width="150" height="100"  /></a></span><p><a href="http://www.huanqiuauto.com/xuanche/20160503/856650_1.html" title="斯巴鲁  Legacy力狮" class="kt3" target="_blank">斯巴鲁  Legacy力狮</a></p></DIV><DIV class=box><span><a href="http://www.huanqiuauto.com/xuanche/20160419/855550_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20160419/191813048e0acbef411569_150_100.jpg" width="150" height="100"  /></a></span><p><a href="http://www.huanqiuauto.com/xuanche/20160419/855550_1.html" title="Jeep75周年-虎克之路视频" class="kt3" target="_blank">Jeep75周年-虎克之</a></p></DIV><DIV class=box><span><a href="http://www.huanqiuauto.com/xuanche/20160419/855547_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20160419/191732092568c6ae378246_150_100.jpg" width="150" height="100"  /></a></span><p><a href="http://www.huanqiuauto.com/xuanche/20160419/855547_1.html" title="Jeep75周年－大品牌广告视频" class="kt3" target="_blank">Jeep75周年－大品牌广</a></p></DIV><DIV class=box><span><a href="http://www.huanqiuauto.com/xuanche/20160126/850025_1.html" target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20160126/26134321b34c6aae882091_150_100.jpg" width="150" height="100"  /></a></span><p><a href="http://www.huanqiuauto.com/xuanche/20160126/850025_1.html" title="路虎揽胜运动版SVR高性能车型03" class="kt3" target="_blank">路虎揽胜运动版SVR</a></p></DIV> </div>
+
+
+
+      <div class="RightBotton" id="RightArr"></div>
+
+
+
+    </div>
+
+
+
+    <SCRIPT language=javascript type=text/javascript>
+
+
+
+            var scrollPic_02 = new ScrollPic();
+
+
+
+            scrollPic_02.scrollContId   = "ISL_Cont_1"; //内容容器ID
+
+
+
+            scrollPic_02.arrLeftId      = "LeftArr";//左箭头ID
+
+
+
+            scrollPic_02.arrRightId     = "RightArr"; //右箭头ID
+
+
+
+
+
+
+
+            scrollPic_02.frameWidth     = 900;//显示框宽度
+
+
+
+            scrollPic_02.pageWidth      = 180; //翻页宽度
+
+
+
+
+
+
+
+            scrollPic_02.speed          = 10; //移动速度(单位毫秒，越小越快)
+
+
+
+            scrollPic_02.space          = 10; //每次移动像素(单位px，越大越快)
+
+
+
+            scrollPic_02.autoPlay       = true; //自动播放
+
+
+
+            scrollPic_02.autoPlayTime   = 3; //自动播放间隔时间(秒)
+
+
+
+            scrollPic_02.initialize(); //初始化
+
+
+
+        </SCRIPT> 
+
+
+
+  </div>
+
+
+
+  <!--滚动图片 end--> 
+
+
+
+</div>
+
+
+
+<div class="blank10"></div>
+
+
+
+<div class="ad980"> 
+
+
+
+  <!-- 广告位：首页通栏3 --> 
+
+
+
+  <script type="text/javascript">BAIDU_CLB_fillSlot("705144");</script> 
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="blank10"></div>
+
+<!--
+
+
+
+<div class="nhome_ssxc">
+
+
+
+  <div class="nhome_zc_label">
+
+
+
+    <h3>上海购车</h3>
+
+
+
+    <em><a href="#" class="wt">MORE&gt;</a></em> </div>
+
+
+
+  <div class="nhome_ssxc_con">
+
+
+
+    <div class="nhome_buy1">
+
+
+
+      <ul>
+
+
+
+        <li><a href="http://www.huanqiuauto.com/news/20150325/810263_1.html"  target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20150325/251506161afe9c7ce47939_178_118.jpg" width="178" height="118"  /></a><p><a href="http://www.huanqiuauto.com/news/20150325/810263_1.html" target="_blank" class="kt6" title="经济环保长安车 欧力威天猫促销送油卡" >经济环保长安车 欧力威天</</a></p></li><li><a href="http://www.huanqiuauto.com/news/20150323/809566_1.html"  target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20150323/23101544a5498097513298_178_118.jpg" width="178" height="118"  /></a><p><a href="http://www.huanqiuauto.com/news/20150323/809566_1.html" target="_blank" class="kt6" title="长安轻型车“千元置补贴”活动燃烧三月天" >长安轻型车“千元置补贴”</</a></p></li><li><a href="http://www.huanqiuauto.com/news/20150311/807272_1.html"  target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20150311/11161116807f2f4b783109_178_118.jpg" width="178" height="118"  /></a><p><a href="http://www.huanqiuauto.com/news/20150311/807272_1.html" target="_blank" class="kt6" title="东风风神A60降8000元 开年大促销" >东风风神A60降8000元 开年</</a></p></li><li><a href="http://www.huanqiuauto.com/news/20150302/806165_1.html"  target="_blank"><img src="http://www.huanqiuauto.com/userfiles/image/20150302/021717553ac974c8e70824_178_118.jpg" width="178" height="118"  /></a><p><a href="http://www.huanqiuauto.com/news/20150302/806165_1.html" target="_blank" class="kt6" title="购江铃真国四轻卡抢微信红包 还可享千金钜惠" >购江铃真国四轻卡抢微信红</</a></p></li>
+
+
+
+      </ul>
+
+
+
+    </div>
+
+
+
+    <div class="nhome_buy2">
+
+
+
+      <div class="nhome_buy2_label">
+
+
+
+        <h6>到店预告</h6>
+
+
+
+        <em><a href="#" class="kt3">更多&gt;</a></em> </div>
+
+
+
+      <ul>
+
+
+
+        
+
+
+
+      </ul>
+
+
+
+    </div>
+
+
+
+    <div class="nhome_buy2">
+
+
+
+      <div class="nhome_buy2_label">
+
+
+
+        <h6>促销信息</h6>
+
+
+
+        <em><a href="#" class="kt3">更多&gt;</a></em> </div>
+
+
+
+      <ul>
+
+
+
+        
+
+
+
+      </ul>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+-->
+
+<!-- 
+
+
+
+<div class="blank10"></div>
+
+
+
+<div class="ad980"> 
+
+
+
+  <!-- 广告位：首页通栏4 --> 
+
+
+
+  <!-- 
+
+
+
+  <script type="text/javascript">BAIDU_CLB_fillSlot("712570");</script> 
+
+
+
+</div>
+
+
+
+<div class="blank10"></div>
+
+
+
+<div class="nhome_nav">
+
+
+
+  <ul>
+
+
+
+    <li>论坛精选</li>
+
+
+
+    <li class="sd01" id="mmm01">车模之星</li>
+
+
+
+    <li class="sd02" id="mmm02">掠影神人</li>
+
+
+
+    <li class="sd02" id="mmm03">自驾达人</li>
+
+
+
+    <li class="sd02" id="mmm04">改装牛人</li>
+
+
+
+    <li class="sd02" id="mmm05">阳阳护驾</li>
+
+
+
+    <li class="sd02" id="mmm06">小资生活</li>
+
+
+
+  </ul>
+
+
+
+  <em><a href="#" class="wt">MORE&gt;</a></em> </div>
+
+
+
+<!--车模之星-->
+
+
+
+<!-- 
+
+
+
+<div class="nhome_lt" id="ccc01">
+
+
+
+  <ul>
+
+
+
+    <script type="text/javascript" src="http://bbs.huanqiuauto.com/api.php?mod=js&amp;bid=64"></script>
+
+
+
+  </ul>
+
+
+
+</div>
+
+
+
+<!--掠影神人-->
+
+
+
+<!-- 
+
+
+
+<div class="nhome_lt" id="ccc02" style="display: none;">
+
+
+
+  <ul>
+
+
+
+    <script type="text/javascript" src="http://bbs.huanqiuauto.com/api.php?mod=js&amp;bid=65"></script>
+
+
+
+  </ul>
+
+
+
+</div>
+
+
+
+<!--自驾达人-->
+
+
+
+<!-- 
+
+
+
+<div class="nhome_lt" id="ccc03" style="display: none;">
+
+
+
+  <ul>
+
+
+
+    <script type="text/javascript" src="http://bbs.huanqiuauto.com/api.php?mod=js&amp;bid=66"></script>
+
+
+
+  </ul>
+
+
+
+</div>
+
+
+
+<!--改装牛人-->
+
+
+
+<!-- 
+
+
+
+<div class="nhome_lt" id="ccc04" style="display: none;">
+
+
+
+  <ul>
+
+
+
+    <script type="text/javascript" src="http://bbs.huanqiuauto.com/api.php?mod=js&amp;bid=67"></script>
+
+
+
+  </ul>
+
+
+
+</div>
+
+
+
+<!--阳阳护驾-->
+
+
+
+<!-- 
+
+
+
+<div class="nhome_lt" id="ccc05" style="display: none;">
+
+
+
+  <ul>
+
+
+
+    <script type="text/javascript" src="http://bbs.huanqiuauto.com/api.php?mod=js&amp;bid=68"></script>
+
+
+
+  </ul>
+
+
+
+</div>
+
+
+
+<!--小资生活--><!-- 
+
+
+
+<div class="nhome_lt" id="ccc06" style="display: none;">
+
+
+
+  <ul>
+
+
+
+    <script type="text/javascript" src="http://bbs.huanqiuauto.com/api.php?mod=js&amp;bid=69"></script>
+
+
+
+  </ul>
+
+
+
+</div>-->
+
+
+
+<div class="blank10"></div>
+
+
+
+<div class="nhome_ssxc">
+
+
+
+  <div class="nhome_zc_label">
+
+
+
+    <h3>环球汽车网排行</h3>
+
+
+
+  </div>
+
+
+
+  <div class="nhome_ssxc_con">
+
+
+
+    <div class="nhome_ph">
+
+
+
+      <div class="nhome_ph_label">
+
+
+
+        <h6>三日内最火文章排行</h6>
+
+
+
+      </div>
+
+
+
+      <ul class="on1">
+
+
+
+        <li><span><i>1</i><a href="http://www.huanqiuauto.com/news/20200823/1245003_1.html" class="kt3" target="_blank">别克昂科威S与昂科威SAvenir艾维</a></span><em><i></i>1822721</em></li><li><span><i>2</i><a href="http://www.huanqiuauto.com/news/20200830/1245304_1.html" class="kt3" target="_blank">别克微蓝7纯电动SUV和微蓝6插电</a></span><em><i></i>802974</em></li><li><span><i>3</i><a href="http://www.huanqiuauto.com/news/20200902/1245445_1.html" class="kt3" target="_blank">别克昂科威S与昂科威S艾维亚竞争</a></span><em><i></i>728654</em></li><li><span><i>4</i><a href="http://www.huanqiuauto.com/news/20200819/1244859_1.html" class="kt3" target="_blank">别克昂科旗五星车内空气质量标准</a></span><em><i></i>531758</em></li><li><span><i>5</i><a href="http://www.huanqiuauto.com/news/20210104/1251089_1.html" class="kt3" target="_blank">长安马自达的“圈粉利器”</a></span><em><i></i>291008</em></li><li><span><i>6</i><a href="http://www.huanqiuauto.com/use/20130402/572679_1.html" class="kt3" target="_blank">33款SUV上市或发布品牌竞争激烈</a></span><em><i></i>210398</em></li><li><span><i>7</i><a href="http://www.huanqiuauto.com/news/20130219/569892_1.html" class="kt3" target="_blank">上海春季车展火热上演</a></span><em><i></i>177326</em></li><li><span><i>8</i><a href="http://www.huanqiuauto.com/news/20130226/570178_1.html" class="kt3" target="_blank">沃尔沃新XC60外形大改</a></span><em><i></i>156772</em></li><li><span><i>9</i><a href="http://www.huanqiuauto.com/news/20121017/498448_1.html" class="kt3" target="_blank">北京现代力推全新豪华SUV</a></span><em><i></i>153447</em></li><li><span><i>10</i><a href="http://www.huanqiuauto.com/news/20121019/498587_1.html" class="kt3" target="_blank">三大常见车贷陷阱“1元车险0利率</a></span><em><i></i>150993</em></li>
+
+
+
+      </ul>
+
+
+
+    </div>
+
+
+
+    <div class="nhome_ph">
+
+
+
+      <div class="nhome_ph_label">
+
+
+
+        <h6>三日内推荐帖点击排行</h6>
+
+
+
+      </div>
+
+
+
+      <ul class="on2">
+
+
+
+        <!--<script type="text/javascript" src="http://bbs.huanqiuauto.com/api.php?mod=js&amp;bid=63"></script>-->
+
+
+
+         <li><span><i>1</i><a href="http://www.huanqiuauto.com/news/20200823/1245003_1.html" class="kt3" target="_blank">别克昂科威S与昂科威SAvenir艾维</a></span><em><i></i>1822721</em></li><li><span><i>2</i><a href="http://www.huanqiuauto.com/news/20200830/1245304_1.html" class="kt3" target="_blank">别克微蓝7纯电动SUV和微蓝6插电</a></span><em><i></i>802974</em></li><li><span><i>3</i><a href="http://www.huanqiuauto.com/news/20200902/1245445_1.html" class="kt3" target="_blank">别克昂科威S与昂科威S艾维亚竞争</a></span><em><i></i>728654</em></li><li><span><i>4</i><a href="http://www.huanqiuauto.com/news/20200819/1244859_1.html" class="kt3" target="_blank">别克昂科旗五星车内空气质量标准</a></span><em><i></i>531758</em></li><li><span><i>5</i><a href="http://www.huanqiuauto.com/news/20210104/1251089_1.html" class="kt3" target="_blank">长安马自达的“圈粉利器”</a></span><em><i></i>291008</em></li><li><span><i>6</i><a href="http://www.huanqiuauto.com/use/20130402/572679_1.html" class="kt3" target="_blank">33款SUV上市或发布品牌竞争激烈</a></span><em><i></i>210398</em></li><li><span><i>7</i><a href="http://www.huanqiuauto.com/news/20130219/569892_1.html" class="kt3" target="_blank">上海春季车展火热上演</a></span><em><i></i>177326</em></li><li><span><i>8</i><a href="http://www.huanqiuauto.com/news/20130226/570178_1.html" class="kt3" target="_blank">沃尔沃新XC60外形大改</a></span><em><i></i>156772</em></li><li><span><i>9</i><a href="http://www.huanqiuauto.com/news/20121017/498448_1.html" class="kt3" target="_blank">北京现代力推全新豪华SUV</a></span><em><i></i>153447</em></li><li><span><i>10</i><a href="http://www.huanqiuauto.com/news/20121019/498587_1.html" class="kt3" target="_blank">三大常见车贷陷阱“1元车险0利率</a></span><em><i></i>150993</em></li>
+
+
+
+      </ul>
+
+
+
+    </div>
+
+
+
+    <div class="nhome_ph">
+
+
+
+      <div class="nhome_ph_label">
+
+
+
+        <h6>三日内热门视频排行</h6>
+
+
+
+      </div>
+
+
+
+      <ul class="on3">
+
+
+
+        <li><span><i>1</i><a href="http://www.huanqiuauto.com/video/20130318/571347_1.html" class="kt3" target="_blank">小伙飞跃兰博基尼</a></span><em><i></i>78427</em></li><li><span><i>2</i><a href="http://www.huanqiuauto.com/video/20130407/591254_1.html" class="kt3" target="_blank">中华骏捷全国试驾会 我奋斗GO精</a></span><em><i></i>72781</em></li><li><span><i>3</i><a href="http://www.huanqiuauto.com/video/20130407/591251_1.html" class="kt3" target="_blank">华晨中华骏捷正面100%碰撞试验结</a></span><em><i></i>64588</em></li><li><span><i>4</i><a href="http://www.huanqiuauto.com/video/20130407/591252_1.html" class="kt3" target="_blank">华晨中华骏捷正面40%碰撞试验结</a></span><em><i></i>64194</em></li><li><span><i>5</i><a href="http://www.huanqiuauto.com/video/20130205/558400_1.html" class="kt3" target="_blank">轮胎接头凹凸篇</a></span><em><i></i>23543</em></li><li><span><i>6</i><a href="http://www.huanqiuauto.com/video/20130314/571204_1.html" class="kt3" target="_blank">是谁刺痛消费者的心</a></span><em><i></i>23393</em></li><li><span><i>7</i><a href="http://www.huanqiuauto.com/video/20130220/569954_1.html" class="kt3" target="_blank">轮胎使用爆胎篇</a></span><em><i></i>22750</em></li><li><span><i>8</i><a href="http://www.huanqiuauto.com/video/20130407/591253_1.html" class="kt3" target="_blank">中华骏捷 C-NCAP侧面碰撞试验结</a></span><em><i></i>17571</em></li><li><span><i>9</i><a href="http://www.huanqiuauto.com/video/20130407/591255_1.html" class="kt3" target="_blank">08车展一瞥 我的心中靓车中华骏</a></span><em><i></i>17217</em></li><li><span><i>10</i><a href="http://www.huanqiuauto.com/video/20130122/545326_1.html" class="kt3" target="_blank">《BYD感恩成就梦想》</a></span><em><i></i>17160</em></li>
+
+
+
+      </ul>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+<div class="blank10"></div>
+
+
+
+<div class="ad980"> 
+
+
+
+  <!-- 广告位：首页通栏5 --> 
+
+
+
+  <script type="text/javascript">BAIDU_CLB_fillSlot("728152");</script> 
+
+
+
+</div>
+
+
+
+<div class="blank10"></div>
+
+
+
+<!--footer--><!--返回顶部 start-->
+
+<div class="znewcon_gotop">
+
+    <div class="znewcon_gotop_b">返回<br>顶部</div>
+
+</div>
+
+<script>
+
+$(function () {
+
+    //返回顶部
+
+    $(".znewcon_gotop_b").click(function(){
+
+        $('html,body').animate({scrollTop:0}, 300);
+
+    });
+
+
+
+})
+
+</script>
+
+<!--返回顶部 start-->
+
+<div class="links">    <div class="linksleft"></div>    <div class="linksright">        <a href="http://www.feelcars.com/" target="_blank" class="ht6" title="汽车探索">汽车探索</a> | <a href="http://auto.ifeng.com/" target="_blank" class="ht6" title="凤凰汽车">凤凰汽车</a> | <a href="http://www.gtuu.com" target="_blank" class="ht6" title="改联汽车改装网">改联汽车改装网</a> | <a href="http://www.yicheshi.com/" target="_blank" class="ht6" title="第一车市">第一车市</a> | <a href="http://www.16888.com/" target="_blank" class="ht6" title="车主之家">车主之家</a> | <a href="http://www.ijia360.com/" target="_blank" class="ht6" title="爱驾网">爱驾网</a> | <a href="http://www.cvworld.cn/" target="_blank" class="ht6" title="第一商用车网">第一商用车网</a> | <a href="http://www.12365auto.com/" target="_blank" class="ht6" title="车质网">车质网</a> | <a href="http://www.unsuv.com/" target="_blank" class="ht6" title="SUV中国网">SUV中国网</a> | <a href="http://www.automarket.net.cn/" target="_blank" class="ht6" title="汽车市场网">汽车市场网</a> | <a href="http://www.cnev.cn" target="_blank" class="ht6" title="中国电动汽车网">中国电动汽车网</a> | <a href="http://www.evdays.com/" target="_blank" class="ht6" title="电动汽车时代网">电动汽车时代网</a> | <a href="http://www.chinatruck.org/" target="_blank" class="ht6" title="卡车网">卡车网</a> | <a href="http://www.d1ev.com" target="_blank" class="ht6" title="第一电动网">第一电动网</a> | <a href="http://www.chefafa.com/" target="_blank" class="ht6" title="养车网">养车网</a> | <a href="http://www.chehq.com/" target="_blank" class="ht6" title="汽车行情网">汽车行情网</a> | <a href="http://www.diandong.com/" target="_blank" class="ht6" title="电动汽车">电动汽车</a> | <a href="http://auto.iqiyi.com/" target="_blank" class="ht6" title="爱奇艺汽车">爱奇艺汽车</a> | <a href="http://www.zhev.com.cn" target="_blank" class="ht6" title="电车之家网">电车之家网</a> | <a href="http://www.guocar.com/" target="_blank" class="ht6" title="国车网">国车网</a> |     </div></div><div class="blank10"></div><div class="gotop">  <div class="gotopl"><a href="http://www.huanqiuauto.com"></a></div>  <div class="gotopm">     <form name="searchform" method="post" action="http://www.huanqiuauto.com/search.php" onsubmit="return checkform(this)">      <input class="txt" type="text" nfocus="this.value=''" name="searchword">      <input class="btn"  type="submit" value="搜索">    </form>  </div>  <div class="gotopr"><a href="#"></a></div></div><div class="footer">    <p><a href="http://www.huanqiuauto.com/info.php?aid=1092" target="_blank" class="ht">广告刊例</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.huanqiuauto.com/info.php?aid=1090" target="_blank" class="ht">申请友链</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.huanqiuauto.com/info.php?aid=1088" target="_blank" class="ht">分站加盟</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.huanqiuauto.com/info.php?aid=96" target="_blank" class="ht">关于我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.huanqiuauto.com/info.php?aid=93" target="_blank" class="ht">法律声明</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.huanqiuauto.com/info.php?aid=92" target="_blank" class="ht">招贤纳士</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.huanqiuauto.com/info.php?aid=91" target="_blank" class="ht">联系我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.huanqiuauto.com/info/f-12.html"  class="kt3">网站地图</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.huanqiuauto.com/info.php?fid=104"  class="kt3">意见反馈</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><img src="http://www.huanqiuauto.com/template/default/img/bottom_xl.jpg" style="vertical-align: middle"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><img src="http://www.huanqiuauto.com/template/default/img/bottom_qq.jpg" style="vertical-align: middle"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><img src="http://www.huanqiuauto.com/template/default/img/bottom_wx.jpg" style="vertical-align: middle"></a> </p>  <p>免责声明：站内会员言论仅代表个人观点，并不代表本站同意其观点，本站不承担由此引起的法律责任。</p>  <p>copyright 2008 <a href="http://www.huanqiuauto.com" class="kt3">www.huanqiuauto.com</a> Inc.All rights reserved.</p>  <p>网站备案号:<a href="https://beian.miit.gov.cn/" class="kt3">沪ICP备12026638-1号</a> <script src="http://s22.cnzz.com/z_stat.php?id=1000235063&web_id=1000235063" language="JavaScript"></script>     <script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fd0e8f5bc99633c1370df6770b1fb5f47' type='text/javascript'%3E%3C/script%3E"));</script>   </p>  <p> <a href="https://beian.miit.gov.cn" target="_blank"><img src="http://www.huanqiuauto.com/template/default/images/else/di_b01.gif" style="display:inline-block" /></a>&nbsp;&nbsp; <a href="http://sh.cyberpolice.cn/infoCategoryListAction.do?act=initjpg" target="_blank"><img src="http://www.huanqiuauto.com/template/default/images/else/di_b05.gif" style="display:inline-block" /></a>&nbsp;&nbsp;<a href="http://www.zx110.org/" target="_blank"><img style="display:inline-block" src="http://www.huanqiuauto.com/template/default/images/else/di_b03.gif" /></a>&nbsp;&nbsp;<a href="http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20120510143018493" target="_blank"><img src='http://www.huanqiuauto.com/template/default/images/else/di_b04.gif' style='display:inline-block' ></a>&nbsp;&nbsp;<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011202001405" style="zoom:1;width:123px;height:52px;position:relative;text-decoration:none;">
+
+
+
+   <img src="http://www.huanqiuauto.com/template/default/images/picp_bg.png" alt="沪公网备" border="0" style="height:41px;"/>
+
+
+
+   <span align="center" style="font-size:12px;color:#001b75;padding:0;margin:0;text-decoration:none;top:50px;left:10px;position:absolute;cursor:pointer;">沪公网安备 31011202001405号</span>
+
+
+
+</a></p></div>
+
+<script>
+
+var _hmt = _hmt || [];
+
+(function() {
+
+  var hm = document.createElement("script");
+
+  hm.src = "//hm.baidu.com/hm.js?93269244d9cdee970ed7027261bd4630";
+
+  var s = document.getElementsByTagName("script")[0]; 
+
+  s.parentNode.insertBefore(hm, s);
+
+})();
+
+</script>
+
+
+</body>
+
+
+
+</html><script type="text/javascript" src="http://www.huanqiuauto.com/tools/ptool.php?static=1&upsen=1&mode=cnindex"></script>

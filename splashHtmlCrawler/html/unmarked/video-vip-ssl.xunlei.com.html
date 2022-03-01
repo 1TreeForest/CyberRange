@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>在线影院</title>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline' 'unsafe-eval' *.video.com *.bootcss.com *.baidu.com *.sina.com.cn cpro.baidustatic.com *.sjzhushou.com *.xunlei.com localhost:* 127.0.0.1:* 192.168.24.164:* static.funshion.com:* h5player-pan.xunlei.com/">
+<link rel="dns-prefetch" href="//video-vip-ssl.xunlei.com">
+
+    <link rel="stylesheet" href="https://img-vip-ssl.a.88cdn.com/vipicon/1.0.0/css/vip-icon.css">
+<link href="css/index.02d7cc87.css" rel="stylesheet"></head>
+<body>
+
+<div id="js-wrapper">
+    <app></app>
+</div>
+
+
+    <script src="/src/assets/thirdlib/swiper/swiper.min.js?_t=20191008"></script>
+    <!--<script src="/src/assets/js/vconsole.min.js?_t=20191008"></script>-->
+
+
+  <script src="/src/assets/thirdlib/client.min.js?t=20171024"></script>
+  <!-- build:js /assets/js/bundle.js -->
+  <script src="/src/assets/thirdlib/vue/2.4.4/vue.min.js"></script>
+  <script src="/src/assets/thirdlib/zepto/1.2.0/zepto.min.js"></script>
+  <!-- endbuild -->
+  <script src="/src/assets/thirdlib/client_iframe.js"></script>
+   <!--<script src="https://cdn.bootcss.com/vConsole/3.3.0/vconsole.min.js"></script>-->
+  <!--<script>-->
+    <!--new VConsole()-->
+  <!--</script>-->
+
+<script>
+  function format(date, format){
+    var o = {
+      "M+" : date.getMonth()+1, //month
+      "d+" : date.getDate(),    //day
+      "h+" : date.getHours(),   //hour
+      "m+" : date.getMinutes(), //minute
+      "s+" : date.getSeconds(), //second
+      "q+" : Math.floor((date.getMonth()+3)/3),  //quarter
+      "S" : date.getMilliseconds() //millisecond
+    }
+    if(/(y+)/.test(format)){
+      format = format.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
+    }
+    for(var k in o){
+      if(new RegExp("("+ k +")").test(format)){
+        format = format.replace(RegExp.$1, RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+      }
+    }
+    return format;
+  }
+
+  Vue.filter('formatDate', function(val, fmt) {
+    if(typeof val === 'string') {
+      val = new Date(val.replace(/-/g, '/'))
+    }
+    return format(val, fmt)
+  })
+
+  Vue.filter('customFormatDate', function(val) {
+    val += ""
+    if(val.length != 8) {
+      return val
+    }else{
+      return val.replace(/^(\d{4})(\d{2})(\d{2})$/,'$1-$2-$3')
+    }
+    return format(val, fmt)
+  })
+
+  Vue.filter('separator', function(val, defaultResult) {
+    if(val == "null"){
+      return defaultResult || '无'
+    }else if(val && typeof val == 'string') {
+      return val.replace(/(\$\$)|(\/)|(\,)/g," / ").replace(/^( \/ )|( \/ )$/g,"")
+    }else{
+      return defaultResult || '无'
+    }
+  })
+
+  Vue.filter('playNumFilter', function(num) {
+    if(num > 99999999) {
+      num = +(num/100000000).toFixed(1)
+      return num.toLocaleString() + '亿'
+    } else if(num > 9999){
+      num = +(num/10000).toFixed(1)
+      return num.toLocaleString() + '万'
+    }else{
+      return num
+    }
+  })
+
+  Vue.filter('scoreFormat', function(score) {
+    if(!score || score == "0" || parseFloat(score) == 0){
+      return ""
+    }
+    return parseFloat(score).toFixed(1)
+  })
+
+  Vue.filter('durationFilter', function(time) {
+    var second = ":" +  ("00" + time%60).substr(-2);
+    var minute = ("00" + Math.floor(time/60)%60).substr(-2);
+    var hour = Math.floor(time/3600);
+
+    if(hour > 0){
+      hour = ("00" + hour).substr(-2) + ":"
+    }else{
+      hour = ""
+    }
+    return hour + minute + second
+  })
+  Vue.prototype.payLabelIcon = function(val) {
+    return ({
+      '1': "vip",
+      '2': "use-quan",
+      '3': "need-pay",
+      '4': "vip" // 新加字段， 风行付费 pay_label 为 4
+    })[val+''] || ""
+  }
+  window.G_bus = window.G_bus || new Vue({name: 'bus', data: {name: 'bus'}})
+  window.Client_refreshUserInfo = function(){}
+  window.Client_closeDetailWebview = function(){}
+</script>
+<script>
+  ;(function() {
+    var httpRequest = function (url, param, callback) {
+      var xhr = null;
+      // 实例化XMLHttpRequest对象
+      if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+      } else if (ActiveXObjcet) {
+        // IE6及其以下版本
+        xhr = new ActiveXObjcet('Microsoft.XMLHTTP');
+      }
+      if (xhr) {
+        xhr.open("POST", url, true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            var responseData = JSON.parse(xhr.responseText)
+            callback(responseData)
+          }
+        };
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        xhr.send(JSON.stringify(param));
+        return xhr
+      }
+    }
+    // 动态加载外部资源工具
+    var DynamciLoadUtil = {
+      // 动态加载外部js文件，并执行回调
+      loadJS: function(url, callback){
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = url;
+        if(typeof callback == 'function'){
+          script.onload = script.onreadystatechange = function(){
+            if(!this.readyState || this.readyState == 'loaded'
+              || this.readyState == 'complete'){
+              callback();
+              script.onload = script.onreadystatechange = null;
+            }
+          }
+        }
+        document.body.appendChild(script);
+      },
+      // 动态加载外部CSS文件
+      loadCSS:function(url){
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = url;
+        document.getElementsByTagName('head')[0].appendChild(link);
+      }
+    }
+
+
+    var ua = navigator.userAgent.toLowerCase();
+    var UA_IOS_REG = /\b(ipad|iphone|ipod)\b.*? os ([\d_]+)/;
+    var UA_ANDROID_REG = /\bandroid([^;]+)/;
+
+    var isIOS = UA_IOS_REG.test(ua);
+    var isAndroid = UA_ANDROID_REG.test(ua);
+
+    var platform
+    if(isAndroid || isIOS){
+      platform = 'wap'
+    }else{
+      platform = 'pc'
+    }
+
+
+    window.globalConfig = {}
+    httpRequest("//api-u-ssl.xunlei.com/videos/getConfig",{
+      platform: platform
+    }, function(res){
+      if(res && res.result == 0){
+        window.globalConfig = res.data || {}
+
+        if(window.globalConfig.gray == 1){
+          var htmlEl = document.getElementsByTagName("html")[0]
+          htmlEl.style.filter = 'url("data:image/svg xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\'><filter id=\\\'grayscale\\\'><feColorMatrix type=\\\'matrix\\\' values=\\\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\\\'/></filter></svg>#grayscale")'
+          htmlEl.style['-webkit-filter'] = 'grayscale(1)'
+        }
+      }
+    })
+  })();
+</script>
+
+<script type="text/javascript" src="assets/index.build.53670959.js"></script></body>
+</html>

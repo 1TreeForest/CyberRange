@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"/>
+    <!-- <meta name="Keywords" content="电子电影卡、电影充值卡、实体电影卡、电影优惠券、电影通兑券、电影优惠、电影福利卡、电影卡采购" /> -->
+    <!-- <meta name="description" content="爱电影网电影卡支持全国8500多家影院，电子电影卡、实体电影卡、电影通兑券可定制，最低3折起，支持企业福利、团体票采购" /> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>爱电影网</title>
+    <link rel="shortcut icon" href="img/icon.ico" type="image/x-icon"/>
+    <link type="text/css" href="css/base.css" rel="stylesheet" />
+    <link type="text/css" href="css/index.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="page">
+        <div id="content">
+            <div class="banner">
+                <div class="text">
+                    <p>12年来“爱电影网”全心，</p>
+                    <p>致力于影院服务。</p>
+                    <p>—— 弥久而新生，只为您更加优惠和舒适的观影体验</p>
+                </div>
+            </div>
+            <div class="img-text">
+                <div class="c-content">
+                    <div class="left">
+                        <p class="title margin-top-200">爱电影网已服务9000+星级影院</p>
+                        <p>目前，爱电影网合作覆盖国内主流院线以及全国350多座城市、9000＋多家影院。为企业、团队定制在线购票服务，并整合导流用户资源至合作影院。</p>
+                    </div>
+                    <div class="right">
+                        <img src="img/phone01.png" style="margin-top: 54px;"/>
+                    </div>
+                </div>
+            </div>
+            <div class="img-text">
+                <div class="c-content">
+                    <div class="left">
+                        <img src="img/phone02.png" style="margin-top: 42px;"/>
+                    </div>
+                    <div class="right">
+                        <p class="title margin-top-200">顶级研发团队，专业技术实力支撑</p>
+                        <p>为影院定制在线购票服务，并整合导流用户资源至合作影院，让影院随着移动互联网的发展和电影票房的复合式增长。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="img-text">
+                <div class="c-content">
+                    <div class="left" style="width:45%;">
+                        <p class="title margin-top-200">助力影片票补，最低至0元</p>
+                        <p>为您提供全国多家星级影院的购票服务影票折扣低至四折，购票优惠从不间断。爱电影网，让您爱上电影，让电影爱上优惠。</p>
+                    </div>
+                    <div class="right" style="padding:0;width:55%;">
+                        <img src="img/phone03.png" style="margin-top: 0px;"/>
+                    </div>
+                </div>
+            </div>
+            <div class="img-text">
+                <div class="c-content">
+                    <div class="left">
+                        <img src="img/phone04.png" style="margin-top: 54px;"/>
+                    </div>
+                    <div class="right">
+                        <p class="title margin-top-200">入驻爱电影网，引爆吸粉红利</p>
+                        <p>到目前为止，约有2,000,000人次以上的用户通过使用了爱电影网提供的服务，而且越来越多的用户也正通过爱电影网走进影院观影。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/baidu.js"></script>
+    <script>
+        $(function(){
+            initCommonHtml.headerAndFooter(0);
+            if(document.documentElement.clientHeight > 680){
+                $(".img-text").eq(0).children(".c-content").children("div").addClass("width50");
+            }
+            initImgText($(document).scrollTop());
+            $(document).scroll(function(){
+                var scrollTop = $(document).scrollTop();
+                initImgText(scrollTop);
+            });
+        })
+        function initImgText(scrollTop){
+            scrollTop < 1000?$(".img-text").eq(0).children(".c-content").children("div").addClass("show"):$(".img-text").eq(0).children(".c-content").children("div").removeClass("show");
+            scrollTop > 450 && scrollTop < 1500?$(".img-text").eq(1).children(".c-content").children("div").addClass("show"):$(".img-text").eq(1).children(".c-content").children("div").removeClass("show");
+            scrollTop >= 950 && scrollTop < 2000?$(".img-text").eq(2).children(".c-content").children("div").addClass("show"):$(".img-text").eq(2).children(".c-content").children("div").removeClass("show");
+            scrollTop >= 1500?$(".img-text").eq(3).children(".c-content").children("div").addClass("show"):$(".img-text").eq(3).children(".c-content").children("div").removeClass("show");
+        }
+    </script>
+</body>
+</html>
