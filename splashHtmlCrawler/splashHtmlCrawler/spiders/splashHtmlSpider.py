@@ -84,7 +84,6 @@ class SplashhtmlspiderSpider(scrapy.Spider):
         logging.info('已处理 {0} 个页面'.format(self.count))
 
     def save_as_text(self, response):
-        self.get_platform()
         if response.meta.get('flag') == 'unmarked':
             sql = 'update `unmarked` set html = 1 where url = "%s"' % response.meta.get('site')
             self.cursor.execute(sql)
