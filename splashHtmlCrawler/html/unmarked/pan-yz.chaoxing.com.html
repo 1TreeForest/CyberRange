@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>用户登录</title>
+    <title>Sign in</title>
     <link rel="stylesheet" href="/css/fanya/common.css">
     <link rel="stylesheet" href="/css/fanya/login.css">
     <script type="text/javascript" src="/js/jquery.min.js"></script>
@@ -58,11 +58,11 @@
         <!--默认登录 start-->
         <div class="default-login">
             <div class="lg-top fs14">
-                <a href="/v5/toCustomer" target="_blank" class="service col-lightblue" id="kf">客服</a>
+                <a href="/v5/toCustomer" target="_blank" class="service col-lightblue" id="kf">service</a>
             </div>
             <div class="left" id="leftdiv">
                                     <h3 class="lg-title" id="showlogintext">
-                                                    用户登录                                            </h3>
+                                                    Sign in                                            </h3>
                                 <p id = "dxshowtip" style="display:none;position:absolute;left:90px;top:105px;color:#A8A8B3;font-size:12px">提示：可使用学习通账号登录</p>
                 <form action="">
                     <input type="hidden" id="needVcode" name="needVcode" value="" />
@@ -82,33 +82,33 @@
                     <!--电话号码-->
                     <div class="lg-item icon-tel margin-btm24">
                         <input type="text" class="ipt-tel"
-                               placeholder="手机号/超星号"
+                               placeholder="Phone number/Chaoxing ID"
                                                            id="phone" maxlength="50">
                         <p class="err-txt" id="phoneMsg"></p>
                     </div>
                     <!--密码-->
                     <div class="lg-item item-pwd icon-pwd">
-                        <input type="password" class="ipt-pwd" placeholder="学习通密码" id="pwd" maxlength="20">
+                        <input type="password" class="ipt-pwd" placeholder="Password" id="pwd" maxlength="20">
                         <i class="icon-eye icon-eye-close" onclick="initPassword(this)"></i>
-                        <a href="javaScript:void(0)" onclick="toFindPwd()" class="col-lightblue pos-r24">忘记密码?</a>
+                        <a href="javaScript:void(0)" onclick="toFindPwd()" class="col-lightblue pos-r24">Forget?</a>
                         <p class="err-txt" id="pwdMsg"></p>
                     </div>
                     <input type="hidden" name="validate" id="validate"/>
                     <!--按钮不可点击 加上class：disable -->
                     <div class="btns-box">
                         <p class="err-tip" id="err-txt"></p>
-                        <button type="button" class="btn-big-blue margin-btm24" onclick="loginByPhoneAndPwd();" id="loginBtn">登录</button>
+                        <button type="button" class="btn-big-blue margin-btm24" onclick="loginByPhoneAndPwd();" id="loginBtn">login</button>
                     </div>
                 </form>
                 <div class="clearaft fs14 pd-lr-24">
-                                            <a href="javaScript:void(0)" onclick="toRegister()" class="col-blue fl">新用户注册</a>
-                                                    <a href="javaScript:void(0)" onclick="otherLogin(2)" class="col-blue fr">手机验证码登录</a>
+                                            <a href="javaScript:void(0)" onclick="toRegister()" class="col-blue fl">sign up</a>
+                                                    <a href="javaScript:void(0)" onclick="otherLogin(2)" class="col-blue fr">Log in via SMS verification code</a>
                                             
                 </div>
                 <div class="line">
-                                            <a href="javaScript:void(0)" onclick="otherLogin(3)" id="otherlogin" class="col-lightblue fs14 icon-right">其它方式登录</a>
+                                            <a href="javaScript:void(0)" onclick="otherLogin(3)" id="otherlogin" class="col-lightblue fs14 icon-right">Other Ways</a>
                                     </div>
-                <p class="Agreement">登录即表示同意平台<a href="https://homewh.chaoxing.com/agree/privacyPolicy?appId=900001" target="_blank">《隐私政策》</a>和<a href="https://homewh.chaoxing.com/agree/userAgreement?appId=900001" target="_blank">《用户协议》</a></p>
+                <p class="Agreement">By logging in, you agree to the<a href="https://homewh.chaoxing.com/agree/privacyPolicy?appId=900001" target="_blank">《Privacy Policy》</a>and<a href="https://homewh.chaoxing.com/agree/userAgreement?appId=900001" target="_blank">《User Agreement》</a></p>
             </div>
             
 <style>
@@ -136,15 +136,15 @@
 
             </div>
 
-            <input type = "hidden" value="1c3697266be64d74be97835364f0b758" id = "uuid"/>
-            <input type = "hidden" value="ba4f65fcd248a02193b193d416e52d94" id = "enc"/>
-            <img src="/createqr?uuid=1c3697266be64d74be97835364f0b758&fid=-1" id="quickCode">
+            <input type = "hidden" value="fe45c63e0f3446cf9f5541d2f8a19eed" id = "uuid"/>
+            <input type = "hidden" value="7e3460594da589fd4785e7b9b6cd5c30" id = "enc"/>
+            <img src="/createqr?uuid=fe45c63e0f3446cf9f5541d2f8a19eed&fid=-1" id="quickCode">
 
             <span id="ahszk_custom" style="width: 30px;height: 30px;display:inline-block;position: absolute;left: 50%;top: 50%;margin-left: -12px;margin-top: -15px;">
         <img src="/images/fanya/ahszk.png" style="width:30px;height:30px;">
         </span>
         </div>
-        <p class="fs14 colorIn tip" id="quickCodeMsg">使用学习通APP扫码登录</p>
+        <p class="fs14 colorIn tip" id="quickCodeMsg">Log in by using Chaoxing APP to scan code</p>
     </div>
 
     <div class="social-login" style="display: none" id="thirdLogin">社交账号登录
@@ -157,8 +157,8 @@
             <img src="" alt="" id="photo"/>
         </div>
         <p class="g_code_name mt30" id="shownickname"></p>
-        <p class="g_code_over">请在学习通上点击确认以登录</p>
-        <p class="g_code_btn" onclick="changeUser();" style="cursor:pointer;color: #3A8BFF;">返回扫码</p>
+        <p class="g_code_over">Please click on the client to confirm login</p>
+        <p class="g_code_btn" onclick="changeUser();" style="cursor:pointer;color: #3A8BFF;">Sweep back to scan code</p>
     </div>
 
 

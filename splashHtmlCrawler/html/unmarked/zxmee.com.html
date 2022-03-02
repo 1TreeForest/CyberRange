@@ -98,40 +98,109 @@ h2,h3,h4,h5,h6{
 </head> 
 <body class="archive tax-favorites term-yingshiapp term-113 io-grey-mode sidebar_right" >
 <div id="loading"><style>   
-.loader{width:130px;height:170px;position:relative}
-.loader::before,.loader::after{content:"";width:0;height:0;position:absolute;bottom:30px;left:15px;z-index:1;border-left:50px solid transparent;border-right:50px solid transparent;border-bottom:20px solid rgba(107,122,131,.15);transform:scale(0);transition:all 0.2s ease}
-.loader::after{border-right:15px solid transparent;border-bottom:20px solid rgba(102,114,121,.2)}
-.loader .getting-there{width:120%;text-align:center;position:absolute;bottom:0;left:-7%;font-family:"Lato";font-size:12px;letter-spacing:2px;color:#555}
-.loader .binary{width:100%;height:140px;display:block;color:#555;position:absolute;top:0;left:15px;z-index:2;overflow:hidden}
-.loader .binary::before,.loader .binary::after{font-family:"Lato";font-size:24px;position:absolute;top:0;left:0;opacity:0}
-.loader .binary:nth-child(1)::before{content:"0";-webkit-animation:a 1.1s linear infinite;animation:a 1.1s linear infinite}
-.loader .binary:nth-child(1)::after{content:"0";-webkit-animation:b 1.3s linear infinite;animation:b 1.3s linear infinite}
-.loader .binary:nth-child(2)::before{content:"1";-webkit-animation:c 0.9s linear infinite;animation:c 0.9s linear infinite}
-.loader .binary:nth-child(2)::after{content:"1";-webkit-animation:d 0.7s linear infinite;animation:d 0.7s linear infinite}
-.loader.JS_on::before,.loader.JS_on::after{transform:scale(1)}
-@-webkit-keyframes a{0%{transform:translate(30px,0) rotate(30deg);opacity:0}
-100%{transform:translate(30px,150px) rotate(-50deg);opacity:1}
-}@keyframes a{0%{transform:translate(30px,0) rotate(30deg);opacity:0}
-100%{transform:translate(30px,150px) rotate(-50deg);opacity:1}
-}@-webkit-keyframes b{0%{transform:translate(50px,0) rotate(-40deg);opacity:0}
-100%{transform:translate(40px,150px) rotate(80deg);opacity:1}
-}@keyframes b{0%{transform:translate(50px,0) rotate(-40deg);opacity:0}
-100%{transform:translate(40px,150px) rotate(80deg);opacity:1}
-}@-webkit-keyframes c{0%{transform:translate(70px,0) rotate(10deg);opacity:0}
-100%{transform:translate(60px,150px) rotate(70deg);opacity:1}
-}@keyframes c{0%{transform:translate(70px,0) rotate(10deg);opacity:0}
-100%{transform:translate(60px,150px) rotate(70deg);opacity:1}
-}@-webkit-keyframes d{0%{transform:translate(30px,0) rotate(-50deg);opacity:0}
-100%{transform:translate(45px,150px) rotate(30deg);opacity:1}
-}@keyframes d{0%{transform:translate(30px,0) rotate(-50deg);opacity:0}
-100%{transform:translate(45px,150px) rotate(30deg);opacity:1}
-}
-.io-black-mode .loader .getting-there,.io-black-mode .loader .binary{color:#bbb}
+.loader-wrapper{width:148px;height:100px;position:absolute}
+.loader{width:148px;height:100px;top:0;left:0;position:absolute}
+.loader:after{content:"";top:auto;position:absolute;display:block;animation:shadow 1.2s infinite linear;-moz-animation:shadow 1.2s infinite linear;bottom:0em;left:0;height:.25em;width:1em;border-radius:50%;background-color:rgba(100,100,100,.5);opacity:0.3}
+.roller,.roller:last-child{width:70px;height:70px;position:absolute;top:0;left:0;-webkit-animation:rollercoaster 1.2s infinite linear;-webkit-transform:rotate(135deg);-moz-animation:rollercoaster 1.2s infinite linear;-moz-transform:rotate(135deg);animation:rollercoaster 1.2s infinite linear;transform:rotate(135deg)}
+.roller:last-child{left:auto;right:0;-webkit-transform:rotate(-45deg);-webkit-animation:rollercoaster2 1.2s infinite linear;-moz-transform:rotate(-45deg);-moz-animation:rollercoaster2 1.2s infinite linear;transform:rotate(-45deg);animation:rollercoaster2 1.2s infinite linear}
+.roller:before,.roller:last-child:before{content:"";display:block;width:15px;height:15px;background:#f1404b;border-radius:50%}
+.io-black-mode .loader:after{background-color:rgba(130,130,130,.5)}
+@-webkit-keyframes rollercoaster{0%{-webkit-transform:rotate(135deg)}
+8%{-webkit-transform:rotate(240deg)}
+20%{-webkit-transform:rotate(300deg)}
+40%{-webkit-transform:rotate(380deg)}
+45%{-webkit-transform:rotate(440deg)}
+50%{-webkit-transform:rotate(495deg);opacity:1}
+50.1%{-webkit-transform:rotate(495deg);opacity:0}
+100%{-webkit-transform:rotate(495deg);opacity:0}
+}@-webkit-keyframes rollercoaster2{0%{opacity:0}
+49.9%{opacity:0}
+50%{opacity:1;-webkit-transform:rotate(-45deg)}
+58%{-webkit-transform:rotate(-160deg)}
+70%{-webkit-transform:rotate(-240deg)}
+80%{-webkit-transform:rotate(-300deg)}
+90%{-webkit-transform:rotate(-340deg)}
+100%{-webkit-transform:rotate(-405deg)}
+}@-webkit-keyframes shadow{0%{opacity:.3;-webkit-transform:translateX(65px) scale(0.5,0.5)}
+8%{-webkit-transform:translateX(30px) scale(2,2)}
+13%{-webkit-transform:translateX(0px) scale(1.3,1.3)}
+30%{-webkit-transform:translateX(-15px) scale(0.5,0.5);opacity:0.1}
+50%{-webkit-transform:translateX(60px) scale(1.2,1.2);opacity:0.3}
+60%{-webkit-transform:translateX(130px) scale(2,2);opacity:0.05}
+65%{-webkit-transform:translateX(145px) scale(1.2,1.2)}
+80%{-webkit-transform:translateX(120px) scale(0.5,0.5);opacity:0.1}
+90%{-webkit-transform:translateX(80px) scale(0.8,0.8)}
+100%{-webkit-transform:translateX(60px);opacity:0.3}
+}@-moz-keyframes rollercoaster{0%{-moz-transform:rotate(135deg)}
+8%{-moz-transform:rotate(240deg)}
+20%{-moz-transform:rotate(300deg)}
+40%{-moz-transform:rotate(380deg)}
+45%{-moz-transform:rotate(440deg)}
+50%{-moz-transform:rotate(495deg);opacity:1}
+50.1%{-moz-transform:rotate(495deg);opacity:0}
+100%{-moz-transform:rotate(495deg);opacity:0}
+}@-moz-keyframes rollercoaster2{0%{opacity:0}
+49.9%{opacity:0}
+50%{opacity:1;-moz-transform:rotate(-45deg)}
+58%{-moz-transform:rotate(-160deg)}
+70%{-moz-transform:rotate(-240deg)}
+80%{-moz-transform:rotate(-300deg)}
+90%{-moz-transform:rotate(-340deg)}
+100%{-moz-transform:rotate(-405deg)}
+}@-moz-keyframes shadow{0%{opacity:.3;-moz-transform:translateX(65px) scale(0.5,0.5)}
+8%{-moz-transform:translateX(30px) scale(2,2)}
+13%{-moz-transform:translateX(0px) scale(1.3,1.3)}
+30%{-moz-transform:translateX(-15px) scale(0.5,0.5);opacity:0.1}
+50%{-moz-transform:translateX(60px) scale(1.2,1.2);opacity:0.3}
+60%{-moz-transform:translateX(130px) scale(2,2);opacity:0.05}
+65%{-moz-transform:translateX(145px) scale(1.2,1.2)}
+80%{-moz-transform:translateX(120px) scale(0.5,0.5);opacity:0.1}
+90%{-moz-transform:translateX(80px) scale(0.8,0.8)}
+100%{-moz-transform:translateX(60px);opacity:0.3}
+}@keyframes rollercoaster{0%{transform:rotate(135deg)}
+8%{transform:rotate(240deg)}
+20%{transform:rotate(300deg)}
+40%{transform:rotate(380deg)}
+45%{transform:rotate(440deg)}
+50%{transform:rotate(495deg);opacity:1}
+50.1%{transform:rotate(495deg);opacity:0}
+100%{transform:rotate(495deg);opacity:0}
+}@keyframes rollercoaster2{0%{opacity:0}
+49.9%{opacity:0}
+50%{opacity:1;transform:rotate(-45deg)}
+58%{transform:rotate(-160deg)}
+70%{transform:rotate(-240deg)}
+80%{transform:rotate(-300deg)}
+90%{transform:rotate(-340deg)}
+100%{transform:rotate(-405deg)}
+}@keyframes shadow{0%{opacity:.3;transform:translateX(65px) scale(0.5,0.5)}
+8%{transform:translateX(30px) scale(2,2)}
+13%{transform:translateX(0px) scale(1.3,1.3)}
+30%{transform:translateX(-15px) scale(0.5,0.5);opacity:0.1}
+50%{transform:translateX(60px) scale(1.2,1.2);opacity:0.3}
+60%{transform:translateX(130px) scale(2,2);opacity:0.05}
+65%{transform:translateX(145px) scale(1.2,1.2)}
+80%{transform:translateX(120px) scale(0.5,0.5);opacity:0.1}
+90%{transform:translateX(80px) scale(0.8,0.8)}
+100%{transform:translateX(60px);opacity:0.3}
+}#loader2:after{-webkit-animation-delay:0.15s;animation-delay:0.15s}
+#loader2 .roller{-webkit-animation-delay:0.15s;animation-delay:0.15s}
+#loader3:after{-webkit-animation-delay:0.3s;animation-delay:0.3s}
+#loader3 .roller{-webkit-animation-delay:0.3s;animation-delay:0.3s}
 </style>
-<div class="loader JS_on">
-	<span class="binary"></span>
-	<span class="binary"></span>
-	<span class="getting-there">LOADING STUFF...</span>
+<div class="loader-wrapper">
+	<div class="loader">
+        <div class="roller"></div>
+        <div class="roller"></div>
+	</div>
+	<div id="loader2" class="loader">
+        <div class="roller"></div>
+        <div class="roller"></div>
+	</div>
+	<div id="loader3" class="loader">
+        <div class="roller"></div>
+        <div class="roller"></div>
+	</div>
 </div></div>   <div class="page-container">
 
         <div id="sidebar" class="sticky sidebar-nav fade ">
@@ -972,124 +1041,124 @@ h2,h3,h4,h5,h6{
         <div class="card-body">
         <div class="tags text-justify">
              
-                <a href="https://zxmee.com/sitetag/cilisousuo" title="磁力搜索" class="tag-cilisousuo color-1">
+                <a href="https://zxmee.com/sitetag/cilisousuo" title="磁力搜索" class="tag-cilisousuo color-8">
                 磁力搜索<span>(51)</span></a>
              
-                <a href="https://zxmee.com/sitetag/meiju" title="美剧" class="tag-meiju color-7">
+                <a href="https://zxmee.com/sitetag/meiju" title="美剧" class="tag-meiju color-2">
                 美剧<span>(27)</span></a>
              
-                <a href="https://zxmee.com/sitetag/manhua" title="漫画" class="tag-manhua color-5">
+                <a href="https://zxmee.com/sitetag/manhua" title="漫画" class="tag-manhua color-2">
                 漫画<span>(22)</span></a>
              
-                <a href="https://zxmee.com/sitetag/wangpansousuo" title="网盘搜索" class="tag-wangpansousuo color-0">
+                <a href="https://zxmee.com/sitetag/wangpansousuo" title="网盘搜索" class="tag-wangpansousuo color-4">
                 网盘搜索<span>(14)</span></a>
              
-                <a href="https://zxmee.com/sitetag/baiduwangpan" title="百度网盘" class="tag-baiduwangpan color-5">
+                <a href="https://zxmee.com/sitetag/baiduwangpan" title="百度网盘" class="tag-baiduwangpan color-2">
                 百度网盘<span>(12)</span></a>
              
-                <a href="https://zxmee.com/sitetag/dianyingtiantang" title="电影天堂" class="tag-dianyingtiantang color-7">
+                <a href="https://zxmee.com/sitetag/dianyingtiantang" title="电影天堂" class="tag-dianyingtiantang color-1">
                 电影天堂<span>(11)</span></a>
              
-                <a href="https://zxmee.com/sitetag/yingshiziyuan" title="影视资源" class="tag-yingshiziyuan color-2">
+                <a href="https://zxmee.com/sitetag/yingshiziyuan" title="影视资源" class="tag-yingshiziyuan color-6">
                 影视资源<span>(9)</span></a>
              
-                <a href="https://zxmee.com/sitetag/shipinjiexi" title="视频解析" class="tag-shipinjiexi color-8">
+                <a href="https://zxmee.com/sitetag/shipinjiexi" title="视频解析" class="tag-shipinjiexi color-5">
                 视频解析<span>(9)</span></a>
              
-                <a href="https://zxmee.com/sitetag/cilixiazai" title="磁力下载" class="tag-cilixiazai color-1">
+                <a href="https://zxmee.com/sitetag/cilixiazai" title="磁力下载" class="tag-cilixiazai color-3">
                 磁力下载<span>(8)</span></a>
              
-                <a href="https://zxmee.com/sitetag/dongman" title="动漫" class="tag-dongman color-7">
+                <a href="https://zxmee.com/sitetag/dongman" title="动漫" class="tag-dongman color-2">
                 动漫<span>(8)</span></a>
              
-                <a href="https://zxmee.com/sitetag/shipinxiazai" title="视频下载" class="tag-shipinxiazai color-7">
+                <a href="https://zxmee.com/sitetag/shipinxiazai" title="视频下载" class="tag-shipinxiazai color-3">
                 视频下载<span>(8)</span></a>
              
-                <a href="https://zxmee.com/sitetag/dianshizhibo" title="电视直播" class="tag-dianshizhibo color-8">
+                <a href="https://zxmee.com/sitetag/dianshizhibo" title="电视直播" class="tag-dianshizhibo color-7">
                 电视直播<span>(7)</span></a>
              
-                <a href="https://zxmee.com/sitetag/vipshipin" title="VIP视频" class="tag-vipshipin color-7">
+                <a href="https://zxmee.com/sitetag/vipshipin" title="VIP视频" class="tag-vipshipin color-8">
                 VIP视频<span>(7)</span></a>
              
-                <a href="https://zxmee.com/sitetag/itzixun" title="IT资讯" class="tag-itzixun color-1">
+                <a href="https://zxmee.com/sitetag/itzixun" title="IT资讯" class="tag-itzixun color-2">
                 IT资讯<span>(6)</span></a>
              
-                <a href="https://zxmee.com/sitetag/hanju" title="韩剧" class="tag-hanju color-7">
+                <a href="https://zxmee.com/sitetag/hanju" title="韩剧" class="tag-hanju color-1">
                 韩剧<span>(6)</span></a>
              
-                <a href="https://zxmee.com/sitetag/yueyu" title="粤语" class="tag-yueyu color-7">
+                <a href="https://zxmee.com/sitetag/yueyu" title="粤语" class="tag-yueyu color-1">
                 粤语<span>(6)</span></a>
              
-                <a href="https://zxmee.com/sitetag/gangju" title="港剧" class="tag-gangju color-2">
+                <a href="https://zxmee.com/sitetag/gangju" title="港剧" class="tag-gangju color-3">
                 港剧<span>(6)</span></a>
              
-                <a href="https://zxmee.com/sitetag/kejifenxiang" title="科技分享" class="tag-kejifenxiang color-7">
+                <a href="https://zxmee.com/sitetag/kejifenxiang" title="科技分享" class="tag-kejifenxiang color-1">
                 科技分享<span>(5)</span></a>
              
-                <a href="https://zxmee.com/sitetag/riju" title="日剧" class="tag-riju color-0">
+                <a href="https://zxmee.com/sitetag/riju" title="日剧" class="tag-riju color-5">
                 日剧<span>(5)</span></a>
              
-                <a href="https://zxmee.com/sitetag/xunlei" title="迅雷" class="tag-xunlei color-5">
+                <a href="https://zxmee.com/sitetag/xunlei" title="迅雷" class="tag-xunlei color-8">
                 迅雷<span>(5)</span></a>
              
-                <a href="https://zxmee.com/sitetag/tvb" title="TVB" class="tag-tvb color-1">
+                <a href="https://zxmee.com/sitetag/tvb" title="TVB" class="tag-tvb color-7">
                 TVB<span>(5)</span></a>
              
-                <a href="https://zxmee.com/sitetag/danmu" title="弹幕" class="tag-danmu color-7">
+                <a href="https://zxmee.com/sitetag/danmu" title="弹幕" class="tag-danmu color-1">
                 弹幕<span>(4)</span></a>
              
                 <a href="https://zxmee.com/sitetag/gaoqingdianying" title="高清电影" class="tag-gaoqingdianying color-0">
                 高清电影<span>(4)</span></a>
              
-                <a href="https://zxmee.com/sitetag/taiju" title="泰剧" class="tag-taiju color-5">
+                <a href="https://zxmee.com/sitetag/taiju" title="泰剧" class="tag-taiju color-6">
                 泰剧<span>(4)</span></a>
              
-                <a href="https://zxmee.com/sitetag/tupianxiazai" title="图片下载" class="tag-tupianxiazai color-3">
+                <a href="https://zxmee.com/sitetag/tupianxiazai" title="图片下载" class="tag-tupianxiazai color-2">
                 图片下载<span>(4)</span></a>
              
-                <a href="https://zxmee.com/sitetag/hanman" title="韩漫" class="tag-hanman color-5">
+                <a href="https://zxmee.com/sitetag/hanman" title="韩漫" class="tag-hanman color-8">
                 韩漫<span>(4)</span></a>
              
-                <a href="https://zxmee.com/sitetag/languangdianying" title="蓝光电影" class="tag-languangdianying color-8">
+                <a href="https://zxmee.com/sitetag/languangdianying" title="蓝光电影" class="tag-languangdianying color-4">
                 蓝光电影<span>(4)</span></a>
              
-                <a href="https://zxmee.com/sitetag/peisegongju" title="配色工具" class="tag-peisegongju color-5">
+                <a href="https://zxmee.com/sitetag/peisegongju" title="配色工具" class="tag-peisegongju color-7">
                 配色工具<span>(3)</span></a>
              
-                <a href="https://zxmee.com/sitetag/peise" title="配色" class="tag-peise color-0">
+                <a href="https://zxmee.com/sitetag/peise" title="配色" class="tag-peise color-4">
                 配色<span>(3)</span></a>
              
-                <a href="https://zxmee.com/sitetag/peisewangzhan" title="配色网站" class="tag-peisewangzhan color-1">
+                <a href="https://zxmee.com/sitetag/peisewangzhan" title="配色网站" class="tag-peisewangzhan color-2">
                 配色网站<span>(3)</span></a>
              
-                <a href="https://zxmee.com/sitetag/chromechajian" title="Chrome插件" class="tag-chromechajian color-8">
+                <a href="https://zxmee.com/sitetag/chromechajian" title="Chrome插件" class="tag-chromechajian color-3">
                 Chrome插件<span>(3)</span></a>
              
-                <a href="https://zxmee.com/sitetag/hulianwang" title="互联网" class="tag-hulianwang color-7">
+                <a href="https://zxmee.com/sitetag/hulianwang" title="互联网" class="tag-hulianwang color-3">
                 互联网<span>(3)</span></a>
              
-                <a href="https://zxmee.com/sitetag/btzhongzi" title="BT种子" class="tag-btzhongzi color-1">
+                <a href="https://zxmee.com/sitetag/btzhongzi" title="BT种子" class="tag-btzhongzi color-5">
                 BT种子<span>(3)</span></a>
              
-                <a href="https://zxmee.com/sitetag/bilibili" title="哔哩哔哩" class="tag-bilibili color-3">
+                <a href="https://zxmee.com/sitetag/bilibili" title="哔哩哔哩" class="tag-bilibili color-4">
                 哔哩哔哩<span>(3)</span></a>
              
-                <a href="https://zxmee.com/sitetag/yitusoutu" title="以图搜图" class="tag-yitusoutu color-1">
+                <a href="https://zxmee.com/sitetag/yitusoutu" title="以图搜图" class="tag-yitusoutu color-0">
                 以图搜图<span>(3)</span></a>
              
-                <a href="https://zxmee.com/sitetag/jiechuyoujian" title="解除右键" class="tag-jiechuyoujian color-5">
+                <a href="https://zxmee.com/sitetag/jiechuyoujian" title="解除右键" class="tag-jiechuyoujian color-8">
                 解除右键<span>(3)</span></a>
              
-                <a href="https://zxmee.com/sitetag/youjianfuzhi" title="右键复制" class="tag-youjianfuzhi color-5">
+                <a href="https://zxmee.com/sitetag/youjianfuzhi" title="右键复制" class="tag-youjianfuzhi color-1">
                 右键复制<span>(3)</span></a>
              
-                <a href="https://zxmee.com/sitetag/pingmujietu" title="屏幕截图" class="tag-pingmujietu color-2">
+                <a href="https://zxmee.com/sitetag/pingmujietu" title="屏幕截图" class="tag-pingmujietu color-8">
                 屏幕截图<span>(3)</span></a>
              
-                <a href="https://zxmee.com/sitetag/guanggaolanjie" title="广告拦截" class="tag-guanggaolanjie color-6">
+                <a href="https://zxmee.com/sitetag/guanggaolanjie" title="广告拦截" class="tag-guanggaolanjie color-4">
                 广告拦截<span>(3)</span></a>
              
-                <a href="https://zxmee.com/sitetag/douban" title="豆瓣" class="tag-douban color-4">
+                <a href="https://zxmee.com/sitetag/douban" title="豆瓣" class="tag-douban color-6">
                 豆瓣<span>(3)</span></a>
              
         </div>
@@ -1198,7 +1267,7 @@ var localize = {"liked":"\u60a8\u5df2\u7ecf\u8d5e\u8fc7\u4e86!","like":"\u8c22\u
 </script>
 <script type='text/javascript' src='//cdn.jsdelivr.net/gh/owen0o0/ioStaticResources@1.1129/onenav/js/app.min.js?ver=3.1129' id='appjs-js'></script>
     <script type="text/javascript">
-        console.log("数据库查询：3次 | 页面生成耗时：0.179947s");
+        console.log("数据库查询：3次 | 页面生成耗时：0.169861s");
     </script>
  
 <!-- 自定义代码 -->

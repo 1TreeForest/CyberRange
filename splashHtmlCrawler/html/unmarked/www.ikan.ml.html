@@ -5,38 +5,34 @@
 <meta name="renderer" content="webkit">
 <meta name="format-detection" content="telephone=no">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-<title>ikan影视网正在播放 - {{title}}</title>
+<title>ikan影视网</title>
 <!--<link rel="stylesheet" type="text/css" href="css/jquery.mobile.min.css">
-<link rel="stylesheet" type="text/css" href="css/common.css">
-<link rel="stylesheet" type="text/css" href="css/item.css">-->
+<link rel="stylesheet" type="text/css" href="css/common.css">-->
 <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
 <link rel="stylesheet" type="text/css" href="css/iconfont.css">
 
 <link media="screen and (max-width :630px)" href="css/appjquery.mobile.min.css" type="text/css" rel="stylesheet" >
-<link media="screen and (max-width :630px)" href="css/itemappcommon.css" type="text/css" rel="stylesheet" >
-<link media="screen and (max-width :630px)" href="css/appitem.css" type="text/css" rel="stylesheet" >
+<link media="screen and (max-width :630px)" href="css/appcommon.css" type="text/css" rel="stylesheet" >
 
-<link media="screen and (min-width :631px)" href="css/jquery.mobile.min.css" type="text/css" rel="stylesheet">
-<link media="screen and (min-width :631px)" href="css/common.css" type="text/css" rel="stylesheet">
-<link media="screen and (min-width :631px)" href="css/item.css" type="text/css" rel="stylesheet">
+<link media="screen and (min-width :631px) and (max-width :1100px)" href="css/ipad-index-jquery.mobile.min.css" type="text/css" rel="stylesheet">
+<link media="screen and (min-width :631px) and (max-width :1100px)" href="css/ipad-index.css" type="text/css" rel="stylesheet">
+
+
+<link media="screen and (min-width :1101px)" href="css/pc-index-jquery.mobile.min.css" type="text/css" rel="stylesheet">
+<link media="screen and (min-width :1101px)" href="css/pc-index.css" type="text/css" rel="stylesheet">
+
 
 
 <style>
-	/*span{text-align: center;display: inline-block;}*/
+	span{text-align: center;display: inline-block;}
 	a{transition:transform 0.4s;}
+	
 </style>
 </head>
-<body class="body">
-<div style="display:none" id="jsApiList">
-<i>https://jx.m3u8.tv/jiexi/?url=</i>
-<i>https://jsap.attakids.com/?url=</i>
-<i>http://okjx.cc/?url=</i>	
-<i>https://jx.youyitv.com/?url=</i>	
-	
 
-	
-</div>
-<div class="header one">
+<body class="body">
+
+<div class="header">
 	<a class="logo" href="index.html"><img src="images/logo.png" /></a>
 	<div class="search">
 		<input type="text" placeholder="输入完整片名" id="search" />
@@ -47,64 +43,120 @@
 		<a href="list/dianshi.html">剧集</a>
 		<a href="list/dianying.html">电影</a>
 		<a href="list/zongyi.html">综艺</a>
-		<a href="list/dongman.html">动漫</a>
+		<a href="list/dongman.html">动漫</a>		
+		<a href="liuyan.html">求片</a>
 	</div>
+</div>
+
+<div class="s-slider">
+	<ul id="bannerList">
+		<div class="template">
+			<li><a href="{{href}}"><img src="{{pic}}" /><span>{{title}}</span></a></li>
+		</div>
+	</ul>
+	<ol></ol>
 </div>
 
 <div class="loading" id="loadBox">
 	<span class="s-loading"><i class="first"></i><i class="second"></i><i class="third"></i></span>
 </div>
 
+<!--横幅-->
+<div class="hengfu" >
+	<img src="images/hengfu-ym.png" >	
+</div>
+
+<!--横幅-->
+
+
+
+
+
 <div id="dataBox" style="display:none">
 
-	<div id="playBox">
+	<div class="list">
 
-		<div class="play-box" id="playBoxIframe">
-			<!--<div class="tip">如无法播放请尝试切换线路，或<a href="">点击前往<span></span>播放</a><i class="close"></i></div>-->
-		</div>
+		<h3 class="title">电视剧</h3>
 
-		<div class="clear" style="height:0.3rem"></div>
-		<p style="width: 15rem;text-align:center;color: #fff;font-size: 16px;background: #000000;padding:2px 1px;border-radius: 5px;"> 若APP无法播放请使用<font color="red">手机自带浏览器</font>或切换<font color="red">线路</font>
-				</p>
-		<p style="width: 15rem;text-align:center;color: #fff;font-size: 16px;background: #000000;padding:2px 1px;border-radius: 5px;"> 若无法全屏播放请<font color="red">关闭手机中的"屏幕旋转"</font>功能<font color="red"></font>
-				</p>		
-		<p style="width: 15rem;text-align:center;color: #fff;font-size: 16px;background: #000000;padding:2px 1px;border-radius: 5px;"> 有问题或者赞助请加<a href="https://hahyiybg.lanzous.com/ibc1qg9xlmb" target="_blank"><font color="red">QQ:1735497955</font></a>并<font color="red">说明来意</font>
-				</p>
-				
-		<h3 class="from-title" id="titleItem"></h3>
-		<div class="from" id="fromList" style="display:none">
-			<div class="template"><a data-api="{{api}}" data-href="{{href}}" data-hasmore="{{hasmore}}" data-site="{{site}}">线路{{number}}</a></div>
+		<div class="items" id="dianshiList">
+			<div class="template">
+				<a href="{{href}}">
+					<i style="background-image:url({{pic}})"><b>{{hint}}</b></i>
+					<span>{{title}}</span>
+				</a>
+			</div>
 			<span class="clear"></span>
 		</div>
 
-		<div class="loading" id="loadBox2">
-			<span class="s-loading"><i class="first"></i><i class="second"></i><i class="third"></i></span>
-		</div>
-
-		<div class="episodes" id="episodesBox" style="display:none;">
-			<div class="clear" style="height:0.3rem"></div>
-			<h3 class="episodes-title">选集</h3>
-			<div id="episodesList">
-				<div class="template"><a data-api="{{api}}" data-href="{{href}}">第{{number}}集</a></div>
-				<span class="clear"></span>
-			</div>
+		<div class="more">
+			<a href="list/dianshi.html"><img src="images/more_1.png" />更多电视剧</a>
+			<a class="switch-button" data-list-type="dianshi"><img src="images/more_2.png" />换一批</a>
 		</div>
 	</div>
 
-	<div class="no-data" id="noDataBox" style="display:none">未找到可用播放线路</div>
+	<div class="clear" style="height:0.8rem"></div>
 
-	<div class="clear" style="height:2rem"></div>
+	<div class="list">
 
-	<div id="itemList" style="display:none">
-		<div class="template">
-			<div class="more">
-				<i style="background-image:url({{pic}})"></i>
-				<h5>{{title}}</h5>
-				{{item}}
+		<h3 class="title">电影</h3>
+
+		<div class="items" id="dianyingList">
+			<div class="template">
+				<a href="{{href}}">
+					<i style="background-image:url({{pic}})"><b>{{hint}}</b></i>
+					<span>{{title}}</span>
+				</a>
 			</div>
-			<div class="more desc">
-				<div>简介：{{desc}}</div>
+			<span class="clear"></span>
+		</div>
+
+		<div class="more">
+			<a href="list/dianying.html"><img src="images/more_1.png" />更多电影</a>
+			<a class="switch-button" data-list-type="dianying"><img src="images/more_2.png" />换一批</a>
+		</div>
+	</div>
+
+	<div class="clear" style="height:0.8rem"></div>
+
+	<div class="list">
+
+		<h3 class="title">综艺</h3>
+
+		<div class="items" id="zongyiList">
+			<div class="template">
+				<a href="{{href}}">
+					<i style="background-image:url({{pic}})"><b>{{hint}}</b></i>
+					<span>{{title}}</span>
+				</a>
 			</div>
+			<span class="clear"></span>
+		</div>
+
+		<div class="more">
+			<a href="list/zongyi.html"><img src="images/more_1.png" />更多综艺</a>
+			<a class="switch-button" data-list-type="zongyi"><img src="images/more_2.png" />换一批</a>
+		</div>
+	</div>
+
+	<div class="clear" style="height:0.8rem"></div>
+
+	<div class="list">
+
+		<h3 class="title">动漫</h3>
+
+		<div class="items" id="dongmanList">
+			<div class="template">
+				<a href="{{href}}">
+					<i style="background-image:url({{pic}})"><b>{{hint}}</b></i>
+					<span>{{title}}</span>
+				</a>
+			</div>
+			<span class="clear"></span>
+		</div>
+
+		<div class="more">
+			<a href="list/dongman.html"><img src="images/more_1.png" />更多动漫</a>
+			<a class="switch-button" data-list-type="dongman"><img src="images/more_2.png" />换一批</a>
 		</div>
 	</div>
 
@@ -123,14 +175,15 @@
 			}
 			body{
 				font-size: 14px;
-				background: #eee;
+				/*background: #bcd0e2;*/
 				padding-bottom: 60px;
-				background-color:#bcd0e2;
+				
 			}
 			a{
 				text-decoration: none;
 				color: #FFFFFF;
 			}
+			
 			
 			
 			.icon{
@@ -141,11 +194,12 @@
 				height: 20px;
 			}
 			
-			a:hover{cursor:pointer;transform:scale(1.1);box-shadow:001px#000inset;}
+			
+			a:hover{cursor:pointer;transform:scale(1.1);}
 			.header .navigate a:hover{color: #FFF;font-size: 0.7rem;}
-		</style>
+			</style>
 <div class="footer">
-			<div class="tab">
+			<div class="tab" >
 				<a href="/index.html">
 					<i class="iconfont icon-shouye">
 						 </i><br />
@@ -186,16 +240,21 @@
 				</a>
 			</div>
 			
+			<div class="tab">
+				<a href="/music.html">
+					<i class="iconfont icon-zongyi">
+						 </i><br />
+						 <span>音乐</span>
+				</a>
+				</div>
+			
 </div>
 <a class="scroll-to-top" id="scrollToTop"></a>
-<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript">
-$("#episodesList>a").each(function(){$(this).prependTo("#episodesList")});
-</script>
+
 <script src="layui/layui.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/common.js"></script>
-<script src="js/item.js"></script>
+<script src="js/index.js"></script>
 <script type="text/javascript">
 window.oncontextmenu = function() {
 	event.preventDefault(); 
@@ -208,32 +267,5 @@ window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
 	}
 }
 </script>
-<!--APP小标签开始-->
-<div class="rax-common-lift-pc" style="border: 0px solid black; box-sizing: border-box; display: flex; -webkit-box-orient: vertical; flex-direction: column; align-content: flex-start; flex-shrink: 0; position: fixed; width: 200px; z-index: 1000; left: 50%; margin-left: 200px; top: 100px;">
-			
-		<!----><div style="border: 0px solid black; box-sizing: border-box; display: flex; -webkit-box-orient: vertical; flex-direction: column; align-content: flex-start; flex-shrink: 0; background-color: rgb(128, 53, 251);">
-			
-		<!----><img src="images/app.png" class="qrcode-img" style="width: 200px; height: 200px;" data-spm-anchor-id="a3204.14339662.2136763990.i0.3b084829Hz9OSg">
-		<div class="title-item" style="border: 0px solid black; box-sizing: border-box; display: flex; -webkit-box-orient: horizontal; flex-direction: row; align-content: flex-start; flex-shrink: 0; position: relative; padding-left: 20px; height: 24px; line-height: 24px; background-color: rgb(81, 34, 162);">
-			<div style="border: 0px solid black; box-sizing: border-box; display: flex; -webkit-box-orient: vertical; flex-direction: column; align-content: flex-start; flex-shrink: 0; position: absolute; width: 15px; height: 24px; top: 5px; left: 5px;">
-				<svg id="J_lift_anchor_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0,0,1024,1024">
-					<path fill="#fff" d="M512 64c-194.08 0-352 157.92-352 352 0 187.36 315.424 520.032 328.832 534.08C494.88 956.448 503.264 960 512 960h.704c8.992 0 17.472-4.192 23.392-10.944l109.216-125.12C790.432 646.176 864 508.928 864 416c0-194.08-157.92-352-352-352zm0 512c-88.384 0-160-71.616-160-160s71.616-160 160-160 160 71.616 160 160-71.616 160-160 160z">					
-					</path>
-				</svg>
-			</div>
-			<span class="text" style="border-width: 0px; border-style: solid; border-color: black; position: relative; box-sizing: border-box; display: block; -webkit-box-orient: vertical;flex-direction: column; align-content: flex-start; flex-shrink: 0; font-size: 18px; white-space: pre-wrap; color: rgb(255, 255, 255);">手机扫一扫下载APP</span>
-		</div>
-	<!--	<div class="title-item" style="border: 0px solid black; box-sizing: border-box; display: flex; -webkit-box-orient: horizontal; flex-direction: row; align-content: flex-start; flex-shrink: 0; position: relative; padding-left: 20px; height: 24px; line-height: 24px; background-color: transparent;">-->			
-		<!--<span class="text" style="border-width: 0px; border-style: solid; border-color: black; position: relative; box-sizing: border-box; display: block; -webkit-box-orient: vertical; flex-direction: column; align-content: flex-start; flex-shrink: 0; font-size: 12px; white-space: pre-wrap; color: rgb(255, 255, 255);">爆款专区
-		</span>-->
-		<!--</div>-->
-		<!--<div class="title-item" style="border: 0px solid black; box-sizing: border-box; display: flex; -webkit-box-orient: horizontal; flex-direction: row; align-content: flex-start; flex-shrink: 0; position: relative; padding-left: 20px; height: 24px; line-height: 24px; background-color: transparent;">			
-		<!--<!----><!--<span class="text" style="border-width: 0px; border-style: solid; border-color: black; position: relative; box-sizing: border-box; display: block; -webkit-box-orient: vertical; flex-direction: column; align-content: flex-start; flex-shrink: 0; font-size: 12px; white-space: pre-wrap; color: rgb(255, 255, 255);">精选好物</span>	-->		
-	<!--	</div>-->
-		<!--<div style="height: 36px; background: url("//img.alicdn.com/tps/i2/TB1x5JsJVXXXXcYXFXXW8koGXXX-34-21.png") center 5px no-repeat; cursor: pointer;">		
-		</div>-->
-		</div>
-		</div>
-<!--APP小标签结束-->
 </body>
 </html>
