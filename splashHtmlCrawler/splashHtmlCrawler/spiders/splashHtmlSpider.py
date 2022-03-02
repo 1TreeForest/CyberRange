@@ -39,6 +39,7 @@ class SplashhtmlspiderSpider(scrapy.Spider):
         for item in item_list:
             self.start_urls.append(item[0])
         print(self.start_urls)
+        self.get_platform()
 
     def get_platform(self):
         sysstr = platform.system()
@@ -85,7 +86,6 @@ class SplashhtmlspiderSpider(scrapy.Spider):
 
     def save_as_text(self, response):
         if response.meta.get('flag') == 'unmarked':
-
             with open(self.save_path + 'unmarked/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'w',
                       encoding="utf-8") as f:
                 try:
