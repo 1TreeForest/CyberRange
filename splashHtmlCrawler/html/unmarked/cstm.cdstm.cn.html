@@ -1,0 +1,2390 @@
+<!doctype html>
+<HTML>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"content="width=device-width, initial-scale=1.0">
+
+<!--<title>中国科学技术馆</title>-->
+<title>中国科学技术馆</title>
+
+<meta content="中国科技馆,中国科普馆,科技馆,科学技术馆,科学技术,科普,科技,科幻,球幕影院,巨幕影院,动感影院,4D影院,实验室、科普教室、科普报告" name="Keywords">
+<meta content="中国科学技术馆的主要教育形式为展览教育，通过科学性、知识性、趣味性相结合的展览内容和参与互动的形式，不仅普及科学知识，而且注重培养观众的科学思想、科学方法和科学精神。" name="Description">
+
+
+<meta name="filetype" content="0" />
+<meta name="publishedtype" content="1" />
+<meta name="pagetype" content="2" />
+<meta name="catalogs" content="" />
+
+
+<link rel="shortcut icon" href="https://statics.cdstm.cn/cstm/favicon.ico">
+<link href="https://statics.cdstm.cn/cstm/css/public.css" rel="stylesheet" type="text/css">
+<style>
+a.index-userbutton-bg {
+    background-image: url(https://statics.cdstm.cn/cstm/img/guanwangzhaopin.png);
+}
+.common_share{margin-top: 10px;}
+.appendix-link{
+    color: rgb(128, 0, 0);
+    font-weight: bold;
+    display: block;
+    font-size: 14px;
+    line-height: 26px;
+    text-indent: 2em;
+}
+</style>
+ <script src="https://cdn.resources.cdstm.cn/site/js/jquery.min.js"></script>
+<script>
+//解决微信二次分享内容问题
+function fnGetQueryString(key) { 
+    var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+    var result = window.location.search.substr(1).match(reg);
+    return result ? decodeURIComponent(result[2]) : false;
+};
+
+if (fnGetQueryString('from')||fnGetQueryString('isappinstalled')) {
+   window.location.replace(window.location.href.replace(location.search, ""));
+}
+</script>
+    <!--微信分享-->
+    <script src="https://www.cdstm.cn/images/jweixin-1.0.0.js"></script> 
+    <script>
+    //用于自定义微信分享的: 标题/摘要/地址/图片
+var shareTitle='--中国科学技术馆';
+var shareDesc='中国科学技术馆的主要教育形式为展览教育，不仅普及科学知识，而且注重培养观众的科学思想、科学方法和科学精神。';
+var shareLink=window.location.href;
+var shareImgUrl='https://statics.cdstm.cn/cstm/img/logo1.png';
+    console.log('我是标题：');
+    </script>
+    <script>
+        upShares()
+        function upShares(){
+        var i=1;
+        upShare()   
+        function upShare(){
+            var url='https://activity.cdstm.cn/shareapi/js/ticket';
+            var publicWechatId=10;
+            var shareData;
+            var ErrorsTimer;
+            
+            $.ajax({
+                type:'post',
+                dataType:'json',
+                async: false, // 同步请求
+                url:url,
+                data:{
+                    publicWechatId:10,
+                    url:window.location.href
+                },
+                success:function(data){
+                    console.log(data);
+                    shareData=data; 
+                    return shareData;
+                },
+                error:function(){
+                    if(i==0){
+                    
+                    clearTimeout(ErrorsTimer);
+                    return;
+                    }
+                    console.log("ajax错误") ;
+                    i--; 
+                    ErrorsTimer=setTimeout(function(){upShare()},1000);
+                }
+                
+            });
+            var appId=shareData.data.appId;
+            var timestamp= shareData.data.timestamp;
+            var nonceStr=shareData.data.randomStr;
+            var signature=shareData.data.signature;
+
+                    
+                wx.config({
+                    appId: appId,//唯一标识
+                    timestamp:timestamp,//生成签名的时间戳
+                    nonceStr: nonceStr,//生成签名的随机串
+                    signature: signature,//签名
+                    jsApiList: [
+                        'onMenuShareTimeline',//需要用到的函数
+                        'onMenuShareAppMessage'
+                    ]
+                });
+                wx.ready(function(){
+                
+                    wx.onMenuShareTimeline({
+                        title: shareTitle,
+                        desc:  shareDesc,
+                        link:shareLink,//分享链接
+                        imgUrl: shareImgUrl,
+                        trigger: function (res) {
+                        },
+                        success: function (res) {
+                            //alert('已分享');
+                        },
+                        cancel: function (res) {
+                            //alert('已取消');
+                        },
+                        fail: function (res) {
+                            alert(JSON.stringify(res));
+                        }
+                    });
+                    wx.onMenuShareAppMessage({
+                        title: shareTitle,
+                        desc:  shareDesc,
+                        link:shareLink,//分享链接
+                        imgUrl: shareImgUrl,
+                        trigger: function (res) {
+                        },
+                        success: function (res) {
+                            //alert('已分享');
+                        },
+                        cancel: function (res) {
+                            //alert('已取消');
+                        },
+                        fail: function (res) {
+                            alert(JSON.stringify(res));
+                        }
+                    });
+                });
+                
+                
+                
+                }
+                
+                
+            }
+    </script>
+<!--<script type="text/javascript" src="loopedslider.min.js"></script>-->
+<script type="text/javascript" src="https://statics.cdstm.cn/cstm/js/down-drop.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript">
+	$(document).ready(function(e) {
+          $(".navmore").hover(function(){
+			$(this).addClass("navmore-hover");
+		    $(this).find(".navMoreUL").show();
+		  },function(){
+			$(this).removeClass("navmore-hover");
+		    $(this).find(".navMoreUL").hide();	
+	 });
+	})
+function hide_drop(){
+		$("#weibo_drop").hide("fast");
+		$("#weixin_drop").hide("fast");
+	}
+function show_weibo_drop(){
+		hide_drop();
+		$("#weibo_drop").show("fast");
+	}
+function show_weixin_drop(){
+		hide_drop();
+		$("#weixin_drop").show("fast");
+	}
+//弹出菜单开始
+$(document).ready(function(){
+  $('.nav_li').mousemove(function(){
+  $(this).find('.nav_box').show();
+  });
+  $('.nav_li').mouseleave(function(){
+  $(this).find('.nav_box').hide();
+  });
+});
+//弹出菜单结束
+
+//跳转登陆页开始
+function login(){
+    var reurl = encodeURIComponent(window.location.href);
+    var url="/e/action/ListInfo/?classid=257&reurl="+reurl;
+    window.location.href=url;
+}
+function go_userinfo_m()
+{
+   window.location.href="http://uc.cdstm.cn/user";
+}
+//跳转登陆页结束
+
+//登出
+function logout(){
+    var url="/e/extend/logout/logout.php?url="+window.location.href;
+    window.location.href=url;
+}
+//登出结束
+
+//注册
+function reg(){
+    var url="/e/extend/reg/reg.php?url="+window.location.href;
+    window.location.href=url;
+}
+//注册结束
+
+//弹出网上售票页
+function ticket(){
+    window.open("http://60.247.10.152:15000/");
+}
+//弹出网上售票页结束
+
+//弹出预约页
+function reserve(){
+    window.open("http://27.98.208.177:8080/lxs/wsyy.jsp");
+}
+//弹出预约页结束
+
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+
+function marquee(i, direction){
+
+var obj = document.getElementById("marquee" + i);
+
+var obj1 = document.getElementById("marquee" + i + "_1");
+
+var obj2 = document.getElementById("marquee" + i + "_2");
+
+if (direction == "up"){
+
+obj.scrollTop++;
+
+if (obj.scrollTop == obj1.offsetHeight){
+
+obj.scrollTop = 1;
+
+}
+
+}else{
+
+obj.scrollLeft++;
+
+if (obj.scrollLeft == obj1.offsetWidth){
+
+obj.scrollLeft = 1;
+
+}
+
+}
+
+}
+
+function marqueeStart(i, direction){
+
+var obj = document.getElementById("marquee" + i);
+
+var obj1 = document.getElementById("marquee" + i + "_1");
+
+var obj2 = document.getElementById("marquee" + i + "_2");
+
+obj.scrollLeft = 1;
+obj.scrollTop = 1;
+
+obj2.innerHTML = obj1.innerHTML;
+
+var marqueeVar = window.setInterval("marquee("+ i +", '"+ direction +"')", 70);
+
+obj.onmouseover = function(){
+
+window.clearInterval(marqueeVar);
+
+}
+
+obj.onmouseout = function(){
+
+marqueeVar = window.setInterval("marquee("+ i +", '"+ direction +"')", 70);
+
+}
+
+}
+
+</SCRIPT>
+
+<!-- Start Alexa Certify Javascript -->
+<SCRIPT LANGUAGE="JavaScript">
+_atrk_opts = { atrk_acct:"5BDMm1a4KM+2WR", domain:"cdstm.cn",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+</SCRIPT>
+<noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=5BDMm1a4KM+2WR" style="display:none" height="1" width="1" alt="" /></noscript>
+<!-- End Alexa Certify Javascript --> 
+
+</head>
+<style type="text/css">
+/* CSS Document */
+
+/*left*/
+.index-main-left {width:274px;height:auto;overflow:hidden;float:left;margin:10px 10px 0 0;}
+
+/*服务信息*/
+.index-time-info {width:100%;height:205px;overflow:hidden;margin-bottom:10px;}
+.index-time-info-k {width:100%;height:216px;overflow:hidden;background-image:url(https://statics.cdstm.cn/cstm/img/time-right-kk.png);background-position:186px 10px;background-repeat:no-repeat;padding:8px 0 0 0;}
+span.index-time-info-title {display:block;width:77px;text-align:center;height:21px;line-height:19px;color:#fefefe;margin-right:10px;margin-top:4px;}
+p.index-time-info-cont {width:92%;padding:0 0 2px;margin:3px auto 0;border-bottom:1px solid #b6b6b6;clear:both;}
+p.last-time-info {border-bottom:0px solid #b6b6b6;}
+span.index-time-info-text {display:block;width:100%;padding:4px 0;clear:both;height:16px;line-height:16px;}
+em.cont-text {padding:8px;}
+a.index-time-info-more {color:#666;}
+a.index-time-info-more:hover {color:#C00;}
+
+/*公告*/
+.index-notes {width:100%;height:280px;overflow:hidden;margin-bottom:10px;}
+.index-notes-k {width:92%;height:260px;overflow:hidden;margin:10px auto 10px;}
+h1.index-notes-title {width:100%;height:44px;overflow:hidden;margin:0 auto 12px;}
+span.index-notes-title-name {display:block;width:63px;height:26px;overflow:hidden;background-image:url(https://statics.cdstm.cn/cstm/img/index-notes-title-bg.png);background-position:left center;background-repeat:no-repeat;padding:18px 0 0;text-align:center;}
+a.title-more {line-height:44px;}
+ul.index-notes-list-k {margin:0 auto 0;padding:0;}
+ul.index-notes-list-k > li {display:block;padding:8px 0 6px;}
+li.index-notes-list {line-height:16px;padding:0;}
+li.index-notes-list > a {display:block;color:#444;text-decoration:none;}
+li.index-notes-list > a:hover {color:#C00;}
+
+.notes-ticker-k {width:247px;height:260px;overflow:hidden;padding-left:9px;}
+ul.notes-ticker {width:100%;height:260px;overflow:hidden;}
+ul.notes-ticker li {font-weight:normal;font-size:14px;line-height:18px;height:33px;margin-bottom:13px;display: flex;}
+ul.notes-ticker li > a {display:block;width:100%;text-align: justify; text-decoration: none;}
+ul.notes-ticker div {margin-top:0;}
+
+/*cdstm*/
+.index-cdstm {width:100%;height:338px;overflow:hidden;}
+.index-cdstm-k {width:92%;height:318px;overflow:hidden;margin:10px auto 10px;}
+h1.index-cdstm-title {width:100%;height:43px;overflow:hidden;margin:0 auto 12px;}
+span.index-cdstm-title-name {display:block;width:69px;height:25px;overflow:hidden;background-image:url(https://statics.cdstm.cn/cstm/img/index-cdstm-title-bg.png);background-position:left center;background-repeat:no-repeat;padding:18px 0 0;text-align:center;}
+a.cdstm-gg-pic {display:block;width:92%;height:116px;overflow:hidden;margin:16px auto 0;}
+a.cdstm-gg-pic > img {width:232px;height:116px;}
+
+/*中间列*/
+.index-main-center {width:386px;height:auto;overflow:hidden;float:left;margin:10px 10px 0 0;}
+
+/*活动预告*/
+.index-trailer {width:100%;height:274px;overflow:hidden;;margin-bottom:10px;}
+.index-trailer-k {width:94%;height:254px;overflow:hidden;margin:10px auto 10px;background-image:url(https://statics.cdstm.cn/cstm/img/yugao-left-kk.png);background-position:bottom left;background-repeat:no-repeat;}
+span.index-trailer-title {display:block;width:24px;height:72px;background-image:url(https://statics.cdstm.cn/cstm/img/index-trailer-title-bg.png);background-position:top left;background-repeat:no-repeat;padding:3px 23px 0 0;text-align:center;line-height:17px;}
+.index-trailer-list {width:306px;height:254px;overflow:hidden;}
+a.trailer-more {line-height:34px;}
+ul.index-trailer-lists {width:297px;height:230px;overflow:hidden;}
+ul.index-trailer-lists > li {display:block;padding:13px 0 8px;}
+li.index-trailer-listt {line-height:18px;padding:0;}
+li.index-trailer-listt > a {display:block;color:#444;text-decoration:none;}
+li.index-trailer-listt > a:hover {color:#C00;}
+
+.index-trailer-lists-wp {width:300px;height:229px;overflow:hidden;}
+.index-trailer-lists-wpk {width:300px;height:758px;overflow:hidden;}
+.index-trailer-lists-wpk ul {width:300px;min-height:229px;}
+.index-trailer-lists-wpk ul li {width:100%;line-height:18px;display:block;height:33px;font-size:14px;display: flex;margin-bottom: 13px;}
+ul.drop-slider div {margin:8px 0 12px;height:auto;}
+#marquee2_1{height: 230px;overflow: hidden;padding-top: 8px;}
+#marquee2_1>li>p{width: 277px;}
+.listimg{width: 16px;height: 16px !important;background-image: url(https://statics.cdstm.cn/cstm/img/rili_o.png);margin:0 !important;margin-right:10px !important;}
+.listimg1{width: 16px;height: 16px !important;background-image: url(https://statics.cdstm.cn/cstm/img/tongzhizhongxin_o.png);margin:0 !important;margin-right:10px !important;}
+.listimg2{width: 16px;height: 16px !important;background-image: url(https://statics.cdstm.cn/cstm/img/xinwen_o.png);margin:0 !important;margin-right:10px !important;}
+
+
+
+/*视频*/
+.index-video {width:382px;height:236px;overflow:hidden;margin-bottom:10px;padding:2px;}
+.index-video-k {width:382px;height:206px;overflow:hidden;background-color:#ccc;}
+a.index-video-name {line-height:30px;text-align:left;text-decoration:none;}
+
+/*场馆漫游*/
+.index-roam {width:100%;height:236px;overflow:hidden;margin-bottom:10px;}
+.index-roam-k {width:94%;height:216px;overflow:hidden;margin:10px auto 10px;}
+h1.index-roam-title {width:100%;height:43px;overflow:hidden;margin:0 auto 12px;}
+span.index-roam-title-name {display:block;width:79px;height:43px;overflow:hidden;background-image:url(https://statics.cdstm.cn/cstm/img/index-roam-title-bg.png);background-position:left center;background-repeat:no-repeat;padding:0 0 0;text-align:center;line-height:22px;}
+.index-roam-pic {clear:both;width:351px;height:138px;background-image:url(https://statics.cdstm.cn/cstm/img/roam-pic.png);background-position:left top;background-repeat:no-repeat;margin:19px auto 0;}
+.index-roam-pic > a {display:block;text-indent:-9999px;float:left;cursor:pointer;}
+a.index-roam-hxzg {width:103px;height:94px;}
+a.index-roam-kjysh {width:90px;height:94px;margin-left:46px;}
+a.index-roam-tzywl {width:98px;height:94px;margin-left:14px;}
+a.index-roam-tsyfx {width:167px;height:44px;margin-left:27px;}
+a.index-roam-kxly {width:136px;height:44px;}
+
+/*广告位*/
+.index-ads {width:384px;height:96px;overflow:hidden;background-color:#FFF;}
+.index-ads > a {display:block;width:384px;height:96px;overflow:hidden;}
+.index-ads > a > img {width:384px;height:96px;}
+
+/*right*/
+.index-main-right {width:300px;height:auto;overflow:hidden;float:right;margin:10px 0 0 0;}
+
+/*重点推荐*/
+.index-hots {width:100%;height:359px;overflow:hidden;margin:0 auto 10px;}
+.index-hots-k {width:94%;height:336px;overflow:hidden;margin:10px auto 10px;}
+h1.index-hots-title {width:100%;height:24px;overflow:hidden;margin:0 auto 7px;}
+span.index-hots-title-name {display:block;width:87px;height:24px;overflow:hidden;background-image:url(https://statics.cdstm.cn/cstm/img/index-hots-title-bg.png);background-position:left center;background-repeat:no-repeat;padding:0 0 0;text-align:center;line-height:23px;}
+a.title-hots-more {line-height:22px;}
+/*幻灯*/
+.index-hots-cont {width:280px;height:328px;overflow:hidden;margin:0 auto 0;background-color:#f4f4f4;}
+dl,dt,dd {padding:0;margin:0;}
+
+#newsSlider .container {margin:0px;overflow:hidden;width:280px;position:relative;height:328px;}
+#newsSlider div.slides {left:0px;position:absolute;tpp:0px;}
+#newsSlider ul.slides {padding:0px;left:0px;margin:0px;list-style-type:none;position:absolute;top:0px;}
+#newsSlider ul.slides dl {margin-top:0px;padding:4px 5px;font-family:"YaHei",Arial, sans-serif;}
+#newsSlider ul.slides dt a {font-size:12px;font-weight:600;padding:6px 0;color:#333;font-family:"YaHei",Arial, sans-serif;text-decoration:none;}
+#newsSlider ul.slides dt a:hover {color:#C00;}
+#newsSlider ul.slides dd {line-height:17px;font-size:12px;color:#666;padding:6px 0;font-family:"YaHei",Arial, sans-serif;}
+#newsSlider div.slides div {padding-right:0px;display:none;padding-left:0px;padding-bottom:0px;margin:0px;width:280px;padding-top:0px; position:absolute;top:0px}
+ul.slides li {padding:0px;display:none;margin:0px;width:280px;position:absolute;top:0px;}
+#newsSlider #loopedSlider {clear:both;margin:0px auto;width:280px;position:relative;}
+#newsSlider {clear:both;margin:0px auto;width:280px;position:relative;}
+#newsSlider {border-bottom:#eee 1px solid}
+#newsSlider .pagination {padding:0px;margin:0px;top:202px;margin-left:10px;position:absolute;right:8px;}
+#newsSlider .pagination li {float:left;margin-right:5px;display:inline;}
+#newsSlider .pagination li a {display:block;background-color:#eaeae9;font-size:12px;line-height:16px;width:16px;height:16px;color:#1eaa56;text-align:center;text-decoration:none;cursor:pointer;}
+#newsSlider .pagination li.active a {background-color:#1eaa56;color:#ffffff;text-decoration:none;border:#003366;}
+.pagination li a:hover {background-position:0px 100%;color:#fff;text-decoration:none}
+.index-hots-cont .slides img {height:222px;width:274px;border:3px solid #f4f4f4;}
+#newsSlider .hd-index-2012-more {top:270px;width:24px;height:24px;background:url(https://statics.cdstm.cn/cstm/img/button-view-details.png) no-repeat top center;text-align:center;}
+#newsSlider .hd-index-2012-more a {font:bold 14px/16px;color:#fff;text-align:center;text-decoration:none;cursor:pointer;}
+
+/*新闻*/
+.index-news {width:100%;overflow:hidden;;margin-bottom:10px;}
+.index-news-k {width:92%;overflow:hidden;margin:10px auto 10px;    position: relative;}
+span.index-news-title {display:block;width:40px;height:60px;transform: rotate(90deg);background-image:url(https://statics.cdstm.cn/cstm/img/index-news-title-bg.png);background-position:top left;background-repeat:no-repeat;padding:19px 0 0 0;text-align:center;line-height:21px;}
+.index-xinwen{display: block; width: 2px; position: absolute; top: 2px; left: 22px;font-size: 16px;line-height: 19px;}
+.index-news-list {width:100%;overflow:hidden;}
+a.news-more {line-height:24px;line-height: 24px; position: absolute; right: 0; top: 11px;}
+ul.index-news-lists {width:100%;height:230px;overflow:hidden;margin-top:5px;}
+ul.index-news-lists > li {display:block;line-height: 18px;height:33px;margin-bottom: 13px;display: flex;}
+li.index-news-listt {line-height:18px;padding:0;}
+li.index-news-listt > a {display:block;color:#444;text-decoration:none;width:100%;text-align: justify;}
+li.index-news-listt > a:hover {color:#C00;}
+
+/*特效影院*/
+.index-film {width:100%;height:274px;overflow:hidden;;margin-bottom:10px;}
+.index-film-k {width:94%;height:254px;overflow:hidden;margin:10px auto 10px;background-image:url(https://statics.cdstm.cn/cstm/img/index-film-left-kk.png);background-position:bottom left;background-repeat:no-repeat;}
+span.index-film-title {display:block;width:36px;height:36px;background-image:url(https://statics.cdstm.cn/cstm/img/index-film-title-bg.png);background-position:top left;background-repeat:no-repeat;padding:9px;text-align:center;line-height:17px;}
+.index-film-pic {width:188px;height:248px;overflow:hidden;float:right;margin-right:17px;}
+.index-film-pic > a {width:188px;height:248px;overflow:hidden;}
+.index-film-pic > a > img {width:188px;height:248px;}
+
+
+
+.index-notes{
+	height:auto !important;
+	min-height:280px;
+}
+.index-notes-k{
+	height:auto !important;
+	min-height:260px;
+}
+ul.notes-ticker{
+    height: 230px !important;
+    overflow: hidden;
+	
+}
+</style>
+
+<style>
+/* 暂时放这儿 */
+            .realTime{
+              height: 90px;
+              margin-bottom: 10px;
+              padding: 17px 13px 0 12px;
+              box-sizing: border-box;
+            }
+            .realTime .scale{
+                font-size: 18px;
+                letter-spacing: 1px;
+            }
+            .realTime .text{
+                color: #808080;
+                font-size: 12px;
+                margin-top: -5px;
+            }
+            .realTime .text + div{
+                color: #808080;
+                font-size: 10px;
+            }
+            .progress{
+                width: 100%;
+                height: 12px;
+                background-image: url(https://cdn.resources.cdstm.cn/site/images/progress_index.png);
+                position: relative;
+            }
+            .bar{
+                width: 0%;
+                height: 100%;
+                border-radius: 6px;
+            }
+            .red > .bar{
+                /*background: linear-gradient(#E35E4C,#C33E2C);*/
+                background-image: url(https://cdn.resources.cdstm.cn/site/images/index/back3.png);
+            }
+            .red + div{
+                color: #DD1F05;
+            }
+            .yellow > .bar{
+                /*background: linear-gradient(#F0C756,#D7AA2F)*/
+                background-image: url(https://cdn.resources.cdstm.cn/site/images/index/back2.png);
+            }
+            .yellow + div{
+                color: #ECAE06;
+            }
+            .listimg {
+                float: left;
+            }  .listimg1 {
+                float: left;
+            }.listimg2 {
+                float: left;
+            }
+            .green > .bar{
+               /*background: linear-gradient(#67E38A,#3DC964);*/
+                background-image: url(https://cdn.resources.cdstm.cn/site/images/index/back1.png);
+            }
+            .green + div{
+                color: #12B741;
+            }
+            .whiteBarO,.whiteBarT{
+                width: 1px;
+                height: 7px;
+                background: rgba(255, 255, 255, 0.8);
+                position: absolute;
+                top: 0;
+                left: 53%;
+            }
+            .whiteBarT{
+                left: 80%;
+            }
+            .hint{
+                width: 40px;
+                height: 26px;
+                background-image: url(https://cdn.resources.cdstm.cn/site/images/hint.png);
+                position: absolute;
+                top: -26px;
+                margin-left: -20px;
+                color: #FEFEFE;
+                text-align: center;
+                line-height: 23px;
+                font-size: 12px;
+            }
+            .index-main-left{
+                overflow: visible;
+            }
+
+</style>
+ <BODY>
+
+<!--顶部logo+menu-->
+<div class="top-nav">
+	<div class="top-nav-main">
+        <a href="/" class="cstm-logo" title="中国科学技术馆"></a>
+        <div class="top-nav-menu-light"></div>
+        <div class="top-nav-menu">
+        	<div class="top-nav-fmenu">
+           <span class="navmore" href="javascript:void(0);">Language<b></b>
+                	<ul class="navMoreUL">
+        				<li><a href="./ywb/" style="text-align:center;">English</a></li>
+      				</ul>
+                </span>
+               <!-- <span class="top-nav-login-reg"><a href="#" onclick="login()" class="top-log-reg">登录</a> | <a href="#" onclick="reg()" class="top-log-reg">注册</a></span>-->
+                <!--<form class="top-searchs"><span class="top-nav-search"><input class="search-input" onFocus="if (value =='请输入关键字'){value =''}" onBlur="if (value ==''){value='请输入关键字'}" value="请输入关键字" /><a class="search-button" href="javascript:void(0);"></a></span></form>-->
+                <div class="clear"></div>
+            </div>
+            <style>
+                ul.nav_ul {
+                    width: 650px;
+                    height: 44px;
+                    float: right;
+                    font-size: 16px;
+                    padding-left: 40px;
+                }
+                ul.nav_ul > li.nav_li {
+                    display: block;
+                    height: 40px;
+                    min-width: 35px;
+                    padding: 0 10px;
+                    float: left;
+                    position: relative;
+                    z-index: 250;
+                }
+            </style>
+            <ul class="nav_ul">
+            	<li class="nav_li">
+                  <a href="/" class="nav_li_a">首页</a>
+                </li>
+                <li class="nav_li">
+                           <a href="./bgs/kjghk/" class="nav_li_a">本馆概况</a>
+                    <div class="nav_box w4em">
+                        <a href="./bgs/kjghk/">关于我们</a>
+                        <a href="./bgs/gzzc/">馆长致辞</a>
+                        <a href="./rlzyb/zzjg/">组织机构</a>
+                        <a href="./bgs/llsyg/">历史沿革</a>
+                        <a href="./bgs/zzxx/">证照信息</a>
+                    </div>
+                </li>
+                <li class="nav_li"><a href="./cszl/cszljs/" class="nav_li_a">常设展览</a>
+                	<div class="nav_box w5em">
+                        <a href="./cszl/hxzg/">华夏之光</a>
+                       <!-- <a href="./kxly/">科学乐园</a> -->
+                        <a href="./cszl/tsyfx/">探索与发现</a>
+                        <a href="./cszl/kjysh/">科技与生活</a>
+                        <a href="./cszl/tzywl/">挑战与未来</a>
+                    </div>
+                </li>
+                <li class="nav_li"><a href="./dqzl/" class="nav_li_a">短期展览</a>
+                	<div class="nav_box w4em">
+                        <a href="./dqzl/dqzlzzrz/">正在热展</a>
+                        <a href="./dqzl/zlhg/">展览回顾</a>
+                    </div>
+                </li>
+                <li class="nav_li"><a href="./kxly/" class="nav_li_a">科学乐园</a>
+                	<div class="nav_box w4em">
+                        <a href="./kxly/lyzl/hlnz/">乐园展览</a>
+                        <a href="./kxly/lyhd/kxby/">乐园活动</a>
+                        <a href="./kxly/lymy/">乐园漫游</a>
+                        <a href="http://www.cdstm.cn/theme/kkxw/" target="_blank">儿童乐园</a>
+                    </div>
+                </li>
+                <li class="nav_li"><a href="./txyy/" class="nav_li_a">特效影院</a>
+                	  <div class="nav_box w5em">
+                        <a href="./txyy/">影院介绍</a>
+                        <a href="./txyy/fyl/fysj/">放映时间</a>
+                        <a href="./txyy/fyl/wjry/">晚间热映</a>
+                        <a href="./txyy/kxymh/">科学影迷会</a>
+                    </div>
+                </li>
+                <li class="nav_li"><a href="./jyhd/" class="nav_li_a last-menu">教育活动</a>
+                	<div class="nav_box w7em">
+                        <a href="./jyhd/zkgdjt/">中科馆大讲堂</a>
+                        <a href="./jyhd/kphdsys/">科普活动实验室</a>
+                        <a href="./jyhd/jyhdkxby/">科学表演</a>
+                        <a href="./jyhd/zthd/">展厅活动</a>
+                        <a href="./jyhd/zyxz/">资源下载</a>
+                    </div>
+                </li>
+                <li class="nav_li last-menu"><a href="./wcbk/wczs/" class="nav_li_a last-menu">文创空间</a>
+                	<div class="nav_box w4em">
+                        <a href="./wcbk/wczs/">文创概览</a>
+                        <a href="./wcbk/wcwczs/">文创展示</a>
+                        <a href="./wcbk/wczj/">文创征集</a>
+                        <a href="./wcbk/wczx/">文创资讯</a>
+                        <a href="./wcbk/hzqt/">合作洽谈</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="mobile-nav-bg"></div>
+    <div class="mobile-nav">
+<!--
+        <div class="login-section">
+            <span class="top-nav-login-reg-m">
+                <a href="#" onclick="login()" class="top-log-reg">登录</a>&nbsp;|&nbsp;<a href="#" onclick="reg()" class="top-log-reg">注册</a>
+            </span>
+        </div>
+-->
+        <div class="green-line"></div>
+        <ul class="nav-ul">
+            <li class="nav-li">
+                <a style="color: rgb(175,175,175);" href="/" class="nav-li-a">首页</a>
+                <div class="lang-sel">
+                   <span>Language: </span>
+                   <a href="./ywb/" style="text-align:center;">English</a>
+                 </div>
+            </li>
+
+            <li class="nav-menu">
+             <a style="line-height: normal;" href="/job/">
+                <em class="quick-menu-text-m">人才招聘</em>
+             </a>
+             <a style="line-height: normal;" href="./gzfw/pwxx/">
+                <em class="quick-menu-text-m">服务信息</em>
+             </a>
+             <a style="line-height: normal;" href="./cgxx/cgyxgk/" >
+                <em class="quick-menu-text-m">采购信息</em>
+             </a>
+             <a style="line-height: normal;" href="./shzr/">
+                <em class="quick-menu-text-m">社会责任</em>
+             </a>
+             <a style="line-height: normal;" href="./xxzyz/">
+                <em class="quick-menu-text-m">志愿者</em>
+             </a>
+            </li>
+            
+            <li class="nav-li">
+                <a href="./bgs/kjghk/" class="nav-li-a">本馆概况</a>
+                <div class="nav-box">
+                     <p>
+                        <a href="./bgs/kjghk/">关于我们</a>
+                        <a href="./bgs/gzzc/">馆长致辞</a>
+                        <a href="./rlzyb/zzjg/">组织机构</a></p>
+                     <p><a href="./bgs/llsyg/">历史沿革</a>
+                        <a href="./bgs/zzxx/">证照信息</a><a></a></p>
+                </div>
+            </li>
+            <li class="nav-li">
+                <a href="./cszl/cszljs/" class="nav-li-a">常设展览</a>
+                <div class="nav-box">
+                  <p><a href="./cszl/hxzg/">华夏之光</a>
+                   <!-- <a href="./kxly/">科学乐园</a> -->
+                    <a href="./cszl/tsyfx/">探索与发现</a></p>
+                  <p><a href="./cszl/kjysh/">科技与生活</a>
+                    <a href="./cszl/tzywl/">挑战与未来</a><a></a></p>
+                </div>
+            </li>
+            <li class="nav-li fixNavLi">
+                <a href="./dqzl/" class="nav-li-a">短期展览</a>
+                <div class="nav-box">
+                    <p><a style="line-height: 38px;" href="./dqzl/dqzlzzrz/">正在热展</a>
+                    <a style="line-height: 38px;" href="./dqzl/zlhg/">展览回顾</a><a></a></p>
+                </div>
+            </li>
+            <li class="nav-li fixNavLi">
+                <a href="./kxly/" class="nav-li-a">科学乐园</a>
+                <div class="nav-box">
+                    <p>
+                        <a href="./kxly/lyzl/hlnz/">乐园展览</a>
+                        <a href="./kxly/lyhd/kxby/">乐园活动</a>
+                        <a href="./kxly/lymy/">乐园漫游</a></p>
+                    <p><a href="http://www.cdstm.cn/theme/kkxw/" target="_blank">儿童乐园</a><a></a><a></a></p>
+                </div>
+            </li>
+            <li class="nav-li fixNavLi">
+                <a href="./txyy/" class="nav-li-a">特效影院</a>
+                    <div class="nav-box">
+                    <p><a href="./txyy/">影院介绍</a>
+                    <a href="./txyy/fyl/fysj/">放映时间</a>
+                    <a href="./txyy/fyl/wjry/">晚间热映</a></p>
+                    <p><a href="./txyy/kxymh/">科学影迷会</a><a></a><a></a></p>
+                </div>
+            </li>
+            <li class="nav-li ">
+                <a href="./jyhd/" class="nav-li-a">教育活动</a>
+                <div class="nav-box" >
+                    <p>
+                    <a href="./jyhd/jyhdkxby/">科学表演</a><a href="./jyhd/zthd/">展厅活动</a><a href="./jyhd/zyxz/">资源下载</a></p>
+                    <p>
+                    
+                    <a href="./jyhd/zkgdjt/">中科馆大讲堂</a>
+                    <a href="./jyhd/kphdsys/">科普活动实验室</a>
+                    </p>
+                </div>
+            </li>
+            <li class="nav-li last-menu">
+                <a href="./wcbk/wczs/" class="nav-li-a last-menu">文创空间</a>
+                <div class="nav-box" >
+                    <p>
+                        <a href="./wcbk/wczs/">文创概览</a>
+                        <a href="./wcbk/wcwczs/">文创展示</a>
+                        <a href="./wcbk/wczj/">文创征集</a>
+                    <p>
+                    
+                        <a href="./wcbk/wczx/">文创资讯</a>
+                        <a href="./wcbk/hzqt/">合作洽谈</a>
+                    </p>
+                </div>
+            </li>
+        </ul>
+       <!-- <div class="green-line"></div>
+      <div class="lang-sel">
+            <span>Language: </span>
+            <a href="./ywb/" style="text-align:center;">English</a>
+        </div>
+        <div class="green-line"></div>
+        <div class="quick-menu-m">
+            <a class="quick-menu-name-m index-rencaibutton-bg" href="http://cstm.cdstm.cn/job/">
+                <em class="quick-menu-text-m">人才招聘</em>
+            </a>
+            <a class="quick-menu-name-m index-fuwubutton-bg" href="./gzfw/pwxx/">
+                <em class="quick-menu-text-m">服务信息</em>
+            </a>
+            <a href="" class="quick-menu-name-m index-userbutton-bg">
+                <em class="quick-menu-text-m">采购信息</em>
+            </a>
+            <a class="quick-menu-name-m index-zerenbutton-bg" href="./shzr/">
+                <em class="quick-menu-text-m">社会责任</em>
+            </a>
+            <a class="quick-menu-name-m index-zhyzhbutton-bg" href="./xxzyz/">
+                <em class="quick-menu-text-m">志愿者</em>
+            </a>
+        </div>-->
+    </div>
+    <script>
+    $(".top-nav-menu-light").click( function(){
+        if( $(".top-nav-menu-light").hasClass("close-btn")){
+            $(".mobile-nav").hide();
+            $(".mobile-nav-bg").hide();
+            $(".top-nav-menu-light").removeClass("close-btn");
+        }else{
+            $(".mobile-nav").show();
+            $(".mobile-nav-bg").show();
+            $(".top-nav-menu-light").addClass("close-btn");
+        }
+    })
+    
+    </script>
+ <style type="text/css">
+        /*mobile样式*/
+        
+        .top-nav-menu-light {
+            background: url('https://statics.cdstm.cn/cstm/img/menu-list.png') center no-repeat;
+            background-size: 32px 32px;
+            height: 42px;
+            width: 42px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: none;
+        }
+        
+        .top-nav-menu-light.close-btn {
+            background-image: url('https://statics.cdstm.cn/cstm/img/menu-close.jpg');   
+            background-size: 16px;
+        }
+        .mobile-nav-bg,
+        .mobile-nav,
+        .quick-menu-m {
+            display: none;
+        }
+        
+        .mobile-nav-bg {
+            background: rgba(0, 0, 0, .7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+        }
+        
+        .mobile-nav {
+            background: #fff;
+            overflow: auto;
+            z-index: 10000;
+            position: fixed;
+            padding-bottom: 20px;
+            right: 0;
+            left: 0;
+        }
+        
+        .mobile-nav .nav-ul {
+            font-size: 14px;
+            list-style: none;
+            padding: 10px;
+            color: #252525;
+            overflow: hidden;
+                background: rgb(243,246,248);
+        }    
+        .mobile-nav .nav-ul .nav-li:not(:first-child){
+         background: rgb(255,255,255);
+         margin:10px 0
+        }
+        /*修改*/
+        .mobile-nav .nav-ul .nav-li {
+           /* display: block;*/
+            clear: left;
+        }
+        .mobile-nav .nav-ul .nav-li .nav-box{
+         border-right: 1px solid rgb(230,230,230);
+         border-bottom: 1px solid rgb(230,230,230);
+        }
+        .mobile-nav .nav-ul a {
+            text-decoration: none;
+            float: left;
+            line-height: 28px;
+        }
+        .mobile-nav .nav-ul a.nav-li-a {
+            line-height: 38px;
+            width: 60px;
+            padding: 0 5px;
+        }
+        .mobile-nav .nav-ul li {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .mobile-nav .nav-ul {}
+        .mobile-nav .nav-ul .nav-box a {
+            white-space: nowrap;
+            display: inline-block;
+            border-left: 1px solid rgb(230,230,230);
+            border-top: 1px solid rgb(230,230,230);
+            flex: 1;
+            text-align: center;
+        }
+        .mobile-nav .nav-ul .fixNavLi .nav-li-a{
+             width: 60px;
+        }
+        .mobile-nav .nav-ul .nav-box{
+             flex: 1;
+             display: flex;
+             flex-direction: column;
+        }    
+        .mobile-nav .nav-ul .nav-box p{
+             display: flex;
+        }
+
+
+        .mobile-nav .quick-menu-m {
+            clear: both;
+            margin-top: 0px;
+            overflow: hidden;
+            background: #aaa;
+        }
+
+        .mobile-nav .quick-menu-m a {
+            float: left;
+            width: 50%;
+            margin: 0;
+            padding: 0;
+            outline: none;
+            border: none;
+            color: #fff;
+        }
+        .mobile-nav .quick-menu-m em.quick-menu-text-m {
+            padding: 10px;
+            line-height: 28px;
+        }
+        
+
+
+
+        .mobile-nav .green-line {
+            background: #0c0;
+            height: 2px;
+            width: 100%;
+        }
+        
+        .mobile-nav .green-line:nth-last-child(2) {
+            display: none;
+        }
+        
+       /* .mobile-nav a.index-rencaibutton-bg {
+            background: #1c8590;
+        }
+        
+        .mobile-nav a.index-fuwubutton-bg {
+            background: #c29528;
+        }
+        
+        .mobile-nav a.index-userbutton-bg {
+            background: #036bab;
+        }
+        
+        .mobile-nav a.index-zerenbutton-bg {
+            background: #419526;
+        }
+        
+        .mobile-nav a.index-zhyzhbutton-bg {
+            background: #6b57a4;
+        }*/
+        /*修改*/
+        .mobile-nav .nav-ul .lang-sel {
+            float:right;
+        }
+        .mobile-nav .nav-ul .lang-sel span {
+            width: 75px;
+            display: inline-block;
+            line-height: 38px;
+            color: rgb(175,175,175);
+        }
+        .mobile-nav .nav-ul .lang-sel a {
+            color: green;
+            float:right;
+            line-height: 38px;
+        }
+        .nav-menu{
+         display: flex;
+         align-items: center;
+         clear: left;
+         border-radius: 5px;
+         height: 38px;
+         background: rgb(108,192,119);
+        }
+        .nav-menu a{
+         display: inline-block;
+         width: 20%;
+         line-height: normal;
+         text-align: center;
+         border-right: 1px rgb(131,202,140) solid;
+        }
+        .nav-menu a:last-child{
+        border-right:none
+       }
+            
+        
+        .mobile-nav .login-section {
+            padding: 10px;
+            text-align: right;
+        }
+        /*mobile样式 end*/
+ 
+    </style>
+    
+<!--顶部logo+menu over-->
+<style>
+       
+        
+       @media screen and (max-width: 1120px) {
+            .floatr-side-bar {
+                left: unset;
+                margin-left: 0;
+                right: 0;
+            }
+        }
+        
+        @media screen and (max-width: 992px) {
+            .footer-main {
+                padding: 20px 15px 15px;
+            }
+            .footer-left-text {
+                width: 430px;
+            }
+            footer-pic-links {
+                width: 282px;
+            }
+            .footer-pic-public {
+                width: 180px;
+            }
+        }
+        
+        @media screen and (max-width: 940px) {
+            .top-nav-menu {
+                width: 240px;
+            }
+            ul.nav_ul {
+                width: 540px;
+            }
+            ul.nav_ul>li.nav_li {
+                padding: 0 6px;
+            }
+            .footer-main {
+                text-align: center;
+            }
+            .footer-left-text {
+                width: 100%;
+            }
+            .footer-pic-links {
+                margin: 0 auto;
+                float: unset;
+            }
+            .footer-pic-public {
+                margin: 0 auto;
+                float: unset;
+            }
+        }
+        
+        @media screen and (max-width: 800px) {
+            .top-nav-menu {
+                display: none;
+            }
+            .top-nav-menu-light {
+                display: block;
+            }
+            .top-nav {
+                height: 82px;
+                min-height: 82px;
+                z-index: 10000;
+                position: fixed;
+                top: 0;
+                width: 100%;
+            }
+            .main-wapper {
+                margin-top: 82px!important;
+            }
+            .mobile-nav {
+                top: 82px
+            }
+            ul.fen-menu2-list>li{padding: 0 10px;margin:0;}
+            ul.fen-menu2-list{width:auto;}
+        }
+        @media screen and (max-width: 660px) {
+            ul.fen-right-list>li {
+                height: unset;
+            }
+            span.fen-right-title {
+                float: none;
+                width: 95%;
+                word-break: keep-all;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                height: 20px;
+                line-height: 20px;
+                text-indent: 0;
+                display: inline-block;
+            }
+            span.fen-right-time {
+                float: none;
+                line-height: 12px;
+                display: block;
+                padding-left: 13px;
+            }
+            .page_nav {
+                display: none;
+            }
+            .page_nav_next {
+                display: block;
+            }
+        }
+        
+        @media screen and (max-width: 600px) {
+            .main-cont{padding:10px;}
+            .fen-banner,
+            .fen-menu2,
+            .index-banner {
+                display: none;
+            }
+            .content-container {
+                padding-right: 0px;
+            }
+            .content-sider {
+                width: 100%;
+                position: static;
+                margin-top: 20px;
+            }
+            .top-nav {
+                height: 60px;
+                min-height: 60px;
+                z-index: 10000;
+                position: fixed;
+                top: 0;
+                width: 100%;
+            }
+            .mobile-nav {
+                height: 75%;
+            }
+            .main-wapper {
+                margin-top: 60px!important;
+            }
+            .mobile-nav {
+                top: 60px
+            }
+            .top-nav-main {
+                height: 60px;
+                min-height: 60px;
+            }
+            .cstm-logo {
+                background-size: contain;
+                height: 40px;
+                margin: 10px 10px;
+            }
+            .quick-menu-m,
+            .mobile-nav .green-line:nth-last-child(2) {
+                display: block;
+            }
+            .top-nav-menu-light {
+                display: block;
+                top: 10px;
+            }
+            .fen-menu2 {
+                width: 100%;
+                display: block;
+                height: auto;
+            }
+            span.fen-menu1,
+            span.fen-menu-line {
+                display: none;
+            }
+            ul.fen-menu2-list {
+                width: 100%;
+                display: flex;
+                font-size: 12px;
+                padding: 0;
+                clear: both;
+                height: 50px;
+                justify-content: space-around;
+            }
+            ul.fen-menu2-list>li {
+                font-size: 12px;
+                padding: 0;
+                line-height: 4.5;
+            }
+            ul.fen-menu2-list>li.fen-menu2-active {
+                height: 37px;
+                line-height: 4.5;
+                margin-top: 0;
+                border: none;
+                background: none;
+                border-bottom: 3px solid #01a905;
+            }
+        }    
+    
+</style>
+<style>
+    .main-body,.index-banner{
+        width: 100%;
+        max-width: 980px;
+        margin: 0 auto;
+    }
+    .index-banner,.index-banner-pic{
+        height: auto;
+    }
+    .index-banner-pic img{
+        width: 100%;
+    }
+    .quick-menu{
+        top: unset;
+        bottom: -2px;
+    }
+    .public-info{
+        top: unset;
+        bottom: 0;
+    }
+    .index-main-left{
+        width: 27.56%;
+        margin-right: 1%;
+    }
+    .index-main-center{
+        width: 39.4%;
+        margin-right: 1%;
+    }
+    .index-main-right{
+        width: 30.62%;
+    }
+
+    .progress {
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .index-time-info,.index-time-info-k{
+        height: auto;
+    }
+    .index-time-info-k {
+        background-position: 94.88% 10px;
+    }
+    .index-cdstm,.index-cdstm-k,a.cdstm-gg-pic{
+        height: auto;
+    }
+    a.cdstm-gg-pic > img {
+        width: 100%;
+        height: auto;
+    }
+    ul.index-news-lists > li{max-height:36px;height:auto;}
+    #marquee2_1, ul.notes-ticker, ul.index-news-lists{height: auto!important;}
+    #marquee2_1 li{width: auto;}/* 活动预告样式冲突 */
+
+    ul.notes-ticker li > a,.index-trailer-lists-wpk ul li a, .index-news-listt a font{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2; /* 控制显示的行数 */
+        max-height: 36px;       /* 对不支持浏览器的弥补 */
+    }
+    ul.notes-ticker li,.index-trailer-lists-wpk ul li{height: auto;}
+    span.index-time-info-text{
+        display: inline-block;
+        height: unset;
+    }
+    .index-trailer-list{
+        width: 84%;
+    }
+    .index-trailer-lists-wp, .index-trailer-lists-wpk, .index-trailer-lists-wpk ul{
+        width: 100%;
+    }
+    .notes-ticker-list, .index-trailer-list-li, li.index-news-listt{
+        background: url(https://statics.cdstm.cn/cstm/img/rili_o.png) left top  no-repeat;       
+        background-size: 16px 16px;
+        padding-left: 24px;
+    }
+    .notes-ticker-list{
+        background-image:url(https://statics.cdstm.cn/cstm/img/tongzhizhongxin_o.png);
+    }
+    li.index-news-listt{
+        background-image:url(https://statics.cdstm.cn/cstm/img/xinwen_o.png);
+    }
+    .realTime{
+        height: auto;
+    }
+    .index-hots, .index-hots-k,.index-hots-cont{
+        height: auto;
+    }
+    .index-hots-cont{width:99.26%;}
+    .index-hots, .index-hots-k,.index-hots-cont{
+        height: auto;
+    }
+    ul.slides li{
+        width: 600px;
+    }
+    #newsSlider,#newsSlider .container{
+        width: 100%;
+        min-height: 280px;
+        height:310px
+    }
+    
+    #newsSlider ul.slides dl{
+        height: 79px;
+    }
+    #newsSlider ul.slides dl dt a{
+        font-size: 16px;
+    }
+    #newsSlider .pagination{
+        top: 0;
+        padding-top: 73%;
+    }
+    .index-ads,.index-ads > a,.index-ads > a > img{
+        width: 100%;
+        height: auto;
+    }
+    .index-video,.index-video-k{
+        width: 100%;
+    }
+    .index-hots-cont .slides img{
+        box-sizing: border-box;
+        width: 100%;
+        height: auto;
+    }
+    .index-film-pic{
+        width:66.67%;
+        height: auto;
+        margin-right: 6%;
+    }
+    .index-film-k{
+        height: auto;
+        background-size: 15%;
+    }
+    span.index-film-title{
+        width: 12.7%;
+        padding: 3%;
+        background-size: cover;
+        height: auto;
+    }
+    .index-film,.index-film-pic > a,.index-film-pic > a > img{
+        width: 100%;
+        height: auto;
+    }
+    .index-film-pic > a {display:inline-block;}
+    .index-roam,.index-roam-k{height: auto;}
+    .index-roam-pic{
+        background: none;
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .index-roam-pic > a{
+        position: absolute;    
+        margin-left: 0;
+    }
+    .index-roam-pic-img{
+        width: 100%;
+        height: auto;
+    }
+    a.index-roam-hxzg{
+        top: 0;
+        left: 0;
+        width: 29.34%;
+        height: 68.11%;
+    }
+    a.index-roam-kjysh{
+        top: 0;
+        left: 42.45%;
+        width: 25.64%;
+        height: 68.11%;
+    }
+    a.index-roam-tzywl{
+        top: 0;
+        left: 72%;
+        width: 27.9%;
+        height: 68.11%;
+    }
+    a.index-roam-tsyfx{
+        top: 68.11%;
+        left: 7.69%;
+        width: 47.58%;
+        height: 32%;
+    }
+    a.index-roam-kxly{
+        top: 68.11%;
+        left: 55.27%;
+        width: 38.75%;
+        height: 32%;
+    }
+
+
+    @media screen and (max-width: 800px){
+        #newsSlider, #newsSlider .container{
+    height: 390px;
+
+}
+        span.index-trailer-title{
+            padding-right: 6px;
+        }
+        .index-banner{
+            margin-top: 82px;
+        }
+        .index-main-left{
+            width: 42%;
+        }
+        .index-main-right{
+            width: 56%;
+        }
+        .index-trailer-list{
+            width: 88%;
+        }
+        .index-main-center{display: none;}
+
+        .realTime{padding-left:25px;}
+    }
+    @media screen and (max-width: 600px){
+        #newsSlider, #newsSlider .container{
+    height: 390px;
+
+}
+
+        .index-main-center{display: block;}
+        .main-body{
+            margin-top: 60px;
+        }
+        .index-main-left,.index-main-center,.index-main-right{
+            width: 100%;
+        }
+        .index-main-left .realTime{
+            height: auto;
+        }
+        .progress{
+            background-size: 98% 12px;
+        }
+        .realTime .scale, .realTime .text, .realTime .text + div{
+            display: inline-block;
+        }
+        .index-time-info-k,.index-trailer-k{
+            background: none;
+        }
+        span.index-time-info-title{
+            margin-left: 20px;
+        }
+        span.index-time-info-title, span.index-notes-title-name,
+        span.index-cdstm-title-name, span.index-trailer-title,
+        span.index-roam-title-name, span.index-xinwen,
+        span.index-film-title{
+            background: #82C78A;
+            margin-bottom: 2px;
+            margin-top: 0;
+            line-height: 21px;
+            height: 21px;
+            width: 77px;
+            padding: 0;
+            float: left;
+        }
+        .index-notes,.index-notes-k{min-height: 180px;}
+        h1.index-notes-title, h1.index-cdstm-title{height: auto;}
+        a.title-more, a.trailer-more{
+            line-height: 21px;
+        }
+        .index-trailer-list{
+            width: 100%;
+        }
+        .notes-ticker-list, .index-trailer-list-li, li.index-news-listt{
+            padding-left: 30px;
+        }
+        a.cdstm-gg-pic{
+            width: 100%;
+            margin: 0;
+            margin-bottom: 5px;
+        }
+        span.index-news-title{
+            display: none;
+        }
+        .colorfff{
+            height: auto!important;
+            margin-top: 0!important;
+        }
+        a.news-more{top: 0;}
+        .index-xinwen{
+            text-align: center;
+            position: static;
+        }
+    }
+</style>
+
+<!--首页banner-->
+<div class="index-banner">
+	<div class="index-banner-pic"><img src="https://statics.cdstm.cn/cstm/img/banner-pic/index-banner.png" class="index-banner-img" /></div>
+ <div id="weibo_drop"><img src="https://statics.cdstm.cn/cstm/img/v_code_weibo2.jpg" /></div>
+    <div id="weixin_drop"><img src="https://statics.cdstm.cn/cstm/img/v_code_weixin2.jpg" /></div>
+	<div class="public-info"><a class="weibo-info" id="weibo" onmouseout="hide_drop();" onclick="" onmouseover="show_weibo_drop();">微博</a><a class="weixin-info" id="weixin" onmouseout="hide_drop();" onmouseover="show_weixin_drop();">微信</a></div>
+    <div class="quick-menu">
+        <a class="quick-menu-name index-rencaibutton-bg" href="http://cstm.cdstm.cn/job/"><em class="quick-menu-text">人才招聘</em></a>
+        <a class="quick-menu-name index-fuwubutton-bg" href="./gzfw/pwxx/"><em class="quick-menu-text">服务信息</em></a>
+        <a href="./cgxx/cgyxgk/" class="quick-menu-name index-userbutton-bg"><em class="quick-menu-text">采购信息</em></a>
+        <a class="quick-menu-name index-zerenbutton-bg" href="./shzr/"><em class="quick-menu-text">社会责任</em></a>
+        <a class="quick-menu-name index-zhyzhbutton-bg" href="./xxzyz/"><em class="quick-menu-text">志愿者</em></a>
+    </div>
+	
+</div>
+<!--首页banner over-->
+<div class="clearfix"></div>
+
+
+<!--主体内容-->
+<div class="main-body">
+    <!--首页左侧-->
+    <div class="index-main-left">
+        <!--实时人数-->
+        <div class="BGcolor-ed BGimg-left realTime" style="display: none;">
+            <div class="progress">
+                <div class="bar"></div>
+                <div class="whiteBarO"></div>
+                <div class="whiteBarT"></div>
+                <div class="hint">舒适</div>
+            </div>
+            <div class="scale">*/<font color='#DD1F05'>10000</font> 人</div>
+            <div class="text">瞬时在馆人数 / 瞬时最大承载人数</div>
+            <div>（数据更新频率：5分钟）</div>
+        </div>
+<script>
+keliuliang();
+window.setInterval(keliuliang, 300000);
+function keliuliang(){ 
+    function setKll(data){
+        var myDate = new Date(data.time);
+        if (data.living<0)data.living=0;
+        if (myDate.getDay()==1)data.living=0;
+        if (0<=myDate.getHours() && myDate.getHours()<9)data.living=0;
+        if (17<=myDate.getHours())data.living=0;
+        var scale=data.living/100;
+        if (scale>100) {
+        scale="100%";
+        } else {
+        scale=scale+"%";
+        }
+        $(".bar").animate({
+        width:scale
+        },1500)
+        $(".hint").animate({
+        left:scale
+        },1500)
+        $(".scale").html($.parseHTML(data.living+"/<font color='#DD1F05'>10000</font> 人"));
+        if (data.living<8000) {
+        $(".progress").addClass("green")
+        $(".hint").text("舒适")
+        } else if(data.living<12000){
+        $(".progress").removeClass("green")
+        $(".progress").addClass("yellow")
+        $(".hint").text("一般")
+        } else {
+        $(".progress").addClass("red")
+        $(".progress").removeClass("green")
+        $(".progress").removeClass("yellow")
+        $(".hint").text("拥挤")
+        }
+    }
+    $.ajax({
+        type: "GET",
+        url: "https://activity.cdstm.cn/keliuliang/jsonp.php",
+        dataType: "jsonp", 
+        jsonp: "callback",
+        success: function(data){
+            setKll(data);
+        },
+        error: function(){
+            $(".scale").html($.parseHTML("--/<font color='#DD1F05'>10000</font> 人"));
+        }
+    })
+}
+</script>
+        <!--实时人数-->
+    	<!--参观信息-->
+    	<div class="index-time-info BGcolor-ed BGimg-left">
+            <div class="index-time-info-k">
+            	<span class="index-time-info-title text16 float-r">参观预约</span>
+           	<p class="index-time-info-cont">
+                	<span class="index-time-info-text"><em class="cont-text color333 float-l text16">开放时间</em></span>
+                        <span class="index-time-info-text"><em class="cont-text color666 float-l text12">星期二至星期日  开馆时间：9:30-17:00</em>
+                            <a href="./gzfw/kfsj/" class="index-time-info-more float-r text12">更多&gt;</a>
+                        </span>
+                </p>
+                <p class="index-time-info-cont">
+                	<span class="index-time-info-text"><em class="cont-text color333 float-l text16">票务信息</em></span>
+                    <span class="index-time-info-text"><em class="cont-text color666 float-l text12">
+                         普通票：30元/人   学生票：20元/人</em>
+                         <a href="./gzfw/pwxx/" class="index-time-info-more float-r text12">更多&gt;</a>
+                    </span>
+                </p>
+                <p class="index-time-info-cont">
+                	<span class="index-time-info-text"><em class="cont-text color333 float-l text16">网上购票</em><a href="http://pcticket.cstm.org.cn/" class="index-time-info-more float-r text12" target="_blank">更多&gt;</a></span>
+                </p>
+                <!--p class="index-time-info-cont">
+                	<span class="index-time-info-text"><em class="cont-text color333 float-l text16">团体预约</em><a href="#" onclick="reserve()" class="index-time-info-more float-r text12">更多&gt;</a></span>
+                </p-->
+                <p class="index-time-info-cont last-time-info">
+                	<span class="index-time-info-text"><em class="cont-text color333 float-l text16">乘车路线</em><a href="./gzfw/cclx/" class="index-time-info-more float-r text12">更多&gt;</a></span>
+                </p>
+            </div>
+        </div>
+        <!--参观信息over-->
+        <!--公告-->
+        <div class="index-notes BGcolor-ed BGimg-right">
+        	<div class="index-notes-k">
+            	<h1 class="index-notes-title"><span class="index-notes-title-name float-l text16 colorfff">公告</span><a class="float-r text14 title-more color333" href="./bgs/gg/">更多&gt;</a></h1>                
+                	<ul class="notes-ticker">
+                              
+                                  <li class="notes-ticker-list"><a href="./bgs/gg/202112/t20211206_1060918.html">中国科技馆关于2022年部分节假日开馆日期的通告</a></li>
+                              
+                                  <li class="notes-ticker-list"><a href="./bgs/gg/202202/t20220223_1065098.html">关于中国科学技术馆闭馆的通告</a></li>
+                              
+                                  <li class="notes-ticker-list"><a href="./bgs/gg/202111/t20211105_1058869.html">关于中国科技馆巨幕影院和动感影院暂时停映的通告</a></li>
+                              
+                                  <li class="notes-ticker-list"><a href="./bgs/gg/202202/t20220218_1064816.html">关于中国科学技术馆三层科技与生活C厅封闭施工的通告</a></li>
+                              
+                                  <li class="notes-ticker-list"><a href="./bgs/gg/202006/t20200609_1027682.html">关于中国科学技术馆媒体采访/拍摄事宜的通告</a></li>
+                              
+                          </ul>
+            </div>
+        </div>
+        <!--公告 over-->
+
+        <!--中国数字科技馆-->
+        <div class="index-cdstm BGcolor-e8 BGimg-left">
+        	<div class="index-cdstm-k">
+            	<h1 class="index-cdstm-title"><span class="index-cdstm-title-name float-l text16 colorfff">数字馆</span></h1>
+
+                <a class="cdstm-gg-pic" target="_blank" href="https://www.cdstm.cn/gallery/wzl/lee/202202/t20220215_1064594.html"><img src="./bgs/szgggw/202202/P020220216476779665799.jpg" /></a>
+
+                <a class="cdstm-gg-pic" target="_blank" href="https://www.cdstm.cn/videos/Tops/v600/"><img src="./bgs/szgggw/202202/P020220228367454395370.jpg" /></a>
+
+            </div>
+        </div>
+        <!--中国数字科技馆 over-->
+    </div>
+    <!--首页左侧 over-->
+    <!--首页中间-->
+    <div class="index-main-center">
+    	<!--活动预告-->
+    	 <div class="index-trailer BGcolor-e8 BGimg-right">
+        	<div class="index-trailer-k">
+            	<p><span class="index-trailer-title float-l colorfff text16">活动预告</span>
+                <a class="float-r text14 trailer-more color333" href="./bgs/hdyg/">更多&gt;</a></p>
+                <div class="index-trailer-list float-r">
+                    <div id="marquee2" class="index-trailer-lists-wp">
+                    	<div class="index-trailer-lists-wpk">
+	                    <ul id="marquee2_1" class="drop-slider">
+                            
+                                  <li class="index-trailer-list-li">
+                             
+                           
+                            
+                           <a href="./bgs/hdyg/202107/t20210720_1051931.html" target="_blank">7月20日-7月31日品牌教育活动预告</a>
+                           
+                          
+                                  </li>
+                            
+                                  <li class="index-trailer-list-li">
+                             
+                           
+                            
+                           <a href="./bgs/hdyg/202107/t20210713_1051443.html" target="_blank">7月13日-7月18日品牌教育活动预告</a>
+                           
+                          
+                                  </li>
+                            
+                                  <li class="index-trailer-list-li">
+                             
+                           
+                            
+                           <a href="./bgs/hdyg/202107/t20210701_1050637.html" target="_blank">7月1日-7月11日品牌教育活动预告</a>
+                           
+                          
+                                  </li>
+                            
+                                  <li class="index-trailer-list-li">
+                             
+                           
+                            
+                           <a href="./bgs/hdyg/202106/t20210615_1049683.html" target="_blank">6月15日-6月30日品牌教育活动预告</a>
+                           
+                          
+                                  </li>
+                            
+                                  <li class="index-trailer-list-li">
+                             
+                           
+                            
+                           <a href="./bgs/hdyg/202106/t20210601_1048855.html" target="_blank">6月1日-6月14日品牌教育活动预告</a>
+                           
+                          
+                                  </li>
+                            					
+                            </ul>
+                        	<ul id="marquee2_2" class="drop-slider"></ul>
+                            <div class="clear"></div>
+                        </div>
+                 <!--script type="text/javascript">marqueeStart(2, "up");</script-->
+					</div>
+                    
+                </div>
+            </div>
+        </div>
+        <!--活动预告 over-->
+       
+        <!--首页视频-->
+        <div class="index-video BGcolor-49c882">
+
+        	<div class="index-video-k" id="show_video"></div>
+            <a class='index-video-name colorfff text14'>体验科学　启迪创新</a>
+            <script type="text/javascript" src="https://statics.cdstm.cn/cstm/js/jwplayer.js"></script>
+            <script type="text/javascript" src="https://statics.cdstm.cn/cstm/js/jwplayer.html5.js"></script>
+            <script type="text/javascript">
+            jwplayer("show_video").setup({
+                flashplayer: "https://statics.cdstm.cn/cstm/js/jwplayer.flash.swf",
+                image: "https://statics.cdstm.cn/cstm/img/fengmian1.jpg",
+                file: "http://mas.cdstm.cn/masvod/public/2020/06/03/20200603_17279686a45_r1.mp4",
+                width:"99%",
+                height:"206",
+                repeat: true
+            });
+            </script>
+
+        </div>
+        <style>
+        .index-trailer,.index-trailer-k,.index-trailer-list,.index-trailer-lists-wp,.index-trailer-lists-wpk,.index-trailer-lists-wpk ul{height:auto;min-height:auto}
+        </style>
+        <!--首页视频 over-->
+        <!--场馆漫游-->
+        <div class="index-roam BGcolor-e8 BGimg-right">
+        	<div class="index-roam-k" >
+        		<h1 class="index-roam-title"><span class="index-roam-title-name float-l text16 colorfff">场馆漫游</span><a class="float-r text14 title-more color333" href="https://xnmy.cdstm.cn/vr/65921/">更多&gt;</a></h1>
+                <div class="index-roam-pic">
+                    <img class="index-roam-pic-img" src="./images/38d7d2b4815a00172b6c625d8ec5d7c6.png" />
+                    <a class="index-roam-hxzg" href="https://xnmy.cdstm.cn/vr/65921/"  target="_blank" >华夏之光</a>
+                    <a class="index-roam-kjysh" href="https://xnmy.cdstm.cn/vr/65921/" target="_blank" >科技与生活</a>
+                    <a class="index-roam-tzywl" href="https://xnmy.cdstm.cn/vr/65921/" target="_blank" >挑战与未来</a>
+                    <a class="index-roam-tsyfx" href="https://xnmy.cdstm.cn/vr/65921/" target="_blank" >探索与发现</a>
+                    <a class="index-roam-kxly" href="https://xnmy.cdstm.cn/vr/67089/" target="_blank" >科学乐园</a>
+                </div>
+            </div>
+        </div>
+        <!--场馆漫游 over-->
+        <!--广告位-->
+        <div class="index-ads" title="">
+            <a href="./xbdpc/" target="_blank"><img src="./images/0918db9debf09a71a17e38e9dcda15e3.jpg" /></a>
+        </div>
+        <!--广告位 over-->
+    </div>
+    <!--首页中间 over-->
+    <!--首页右侧-->
+    <div class="index-main-right">
+    	
+ <!--重点推荐-->
+        <div class="index-hots BGcolor-e8 BGimg-left" id="index-hots">
+            <div class="index-hots-k">
+                <h1 class="index-hots-title"><span class="index-hots-title-name float-l text16 colorfff">重点推荐</span><a class="float-r text14 title-hots-more color333" href="./bgs/syhdgl/">更多&gt;</a></h1>
+                <!--幻灯-->
+                <div class="index-hots-cont">
+                    <div id="newsSlider">
+                        <div class="container">
+                            <ul class="slides">
+                            
+                                <li><a href="https://cstm.cdstm.cn/bgs/gg/202112/t20211209_1061214.html" target="_blank"><img alt="中国科协所属单位2022年度公开招聘应届高校毕业生补充公告" src="./bgs/syhdgl/202112/P020211209352490645470.jpg" /></a>
+                                    <dl style="height:auto">
+                                    <dt>&nbsp&nbsp<a href="https://cstm.cdstm.cn/bgs/gg/202112/t20211209_1061214.html" target="_blank">中国科协所属单位2022年度公开招聘应届高校毕业生补充公告</a></dt>
+                                    <dd>&nbsp&nbsp时间：2021年12月7日</dd>
+                                    </dl>
+                                </li>
+                            
+                                <li><a href="https://cstm.cdstm.cn/bgs/gg/202111/t20211118_1059645.html" target="_blank"><img alt="中国科协所属单位2022年度公开招聘应届高校毕业生公告" src="./bgs/syhdgl/202111/P020211118558758923728.jpg" /></a>
+                                    <dl style="height:auto">
+                                    <dt>&nbsp&nbsp<a href="https://cstm.cdstm.cn/bgs/gg/202111/t20211118_1059645.html" target="_blank">中国科协所属单位2022年度公开招聘应届高校毕业生公告</a></dt>
+                                    <dd>&nbsp&nbsp时间：2021年11月15日</dd>
+                                    </dl>
+                                </li>
+                            
+                                <li><a href="https://cstm.cdstm.cn/dqzl/dqzlzzrz/202107/t20210709_1051293.html" target="_blank"><img alt="科创百年——建党100周年科技成就科普展" src="./bgs/syhdgl/202107/P020210709692220797319.jpg" /></a>
+                                    <dl style="height:auto">
+                                    <dt>&nbsp&nbsp<a href="https://cstm.cdstm.cn/dqzl/dqzlzzrz/202107/t20210709_1051293.html" target="_blank">科创百年——建党100周年科技成就科普展</a></dt>
+                                    <dd>&nbsp&nbsp时间：2021年6月27日-2021年12月10日</dd>
+                                    </dl>
+                                </li>
+                            
+                                <li><a href="https://cstm.cdstm.cn/bgs/hdyg/202107/t20210720_1051931.html" target="_blank"><img alt="7月20日-7月31日品牌教育活动预告" src="./bgs/syhdgl/202107/P020210720414942168266.jpg" /></a>
+                                    <dl style="height:auto">
+                                    <dt>&nbsp&nbsp<a href="https://cstm.cdstm.cn/bgs/hdyg/202107/t20210720_1051931.html" target="_blank">7月20日-7月31日品牌教育活动预告</a></dt>
+                                    <dd>&nbsp&nbsp时间：2021年7月20日-2021年7月31日</dd>
+                                    </dl>
+                                </li>
+                            
+                         
+                    
+                            </ul>
+                        </div>
+                        <div class="pagination float-l">
+                            <li class=""><a rel="1">1</a></li>
+                            <li class=""><a rel="2">2</a></li>  
+                            <li class=""><a rel="3">3</a></li>
+                            <li class=""><a rel="4">4</a></li>                                                                                                              				            
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <!--幻灯 over-->
+            </div>
+        </div>
+<!--重点推荐 over-->
+        <!--新闻-->
+        <div class="index-news BGcolor-e8 BGimg-right">
+        	<div class="index-news-k">
+            	<span class="float-l colorfff text16" style="float: inherit;font-size: 14px;display: block;margin-top: -17px;height: 68px;">
+            		<span class="index-news-title "></span>
+            		<span class="index-xinwen">新闻</span>
+            		<a class="float-r text14 news-more color333" href="./bgs/xw/">更多&gt;</a>
+            	</span>
+                <div class="index-news-list float-r">
+                	<ul class="index-news-lists">
+                        
+                            <li class="index-news-listt text14"><a href="./bgs/xw/202111/t20211118_1059646.html">中国科协所属单位2022年度公开招聘应届高校毕业生公告</a></li>
+                        
+                            <li class="index-news-listt text14"><a href="./bgs/xw/202009/t20200918_1034372.html">中国科技馆“全面小康·科技同行”专题展览开幕</a></li>
+                        
+                            <li class="index-news-listt text14"><a href="./bgs/xw/202006/t20200609_1027587.html">关于开展2020年度科技馆发展奖申报推荐工作的通知</a></li>
+                        
+                            <li class="index-news-listt text14"><a href="./bgs/xw/202006/t20200609_1027586.html">中国科协向全国科技工作者发出倡议 号召坚决打赢疫情防控人民战争</a></li>
+                        
+                            <li class="index-news-listt text14"><a href="./bgs/xw/202006/t20200609_1027585.html">中国科技馆将全面推进实名制预售票暑期过后常态化采取限流措施</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--新闻 over-->
+        <!--特效影院-->
+        <div class="index-film BGcolor-e8 BGimg-left">
+        	<div class="index-film-k">
+            	<span class="index-film-title float-l colorfff text16">影片推荐</span>
+                <div class="index-film-pic">
+                	<a href="https://cstm.cdstm.cn/txyy/qmdy/qmdyfm/202111/t20211102_1058600.html" target="_blank"><img src="https://statics.cdstm.cn/images/dbj.jpg" /></a>
+                </div>
+            </div>
+        </div>
+        <!--特效影院 over-->
+    </div>
+    <!--首页右侧 over-->
+</div>
+
+<script type="text/javascript">
+(function($) {
+    $.fn.loopedSlider = function(options) {
+        
+    var defaults = {			
+        container: '.container',
+        slides: '.slides',
+        pagination: '.pagination',
+        containerClick: true, // Click container for next slide
+        autoStart: 0, // Set to positive number for auto interval and interval time
+        slidespeed: 300, // Speed of slide animation
+        fadespeed: 300, // Speed of fade animation
+        autoHeight: false // Set to positive number for auto height and animation speed
+    };
+        
+    this.each(function() {
+        
+        var obj = $(this);
+        var o = $.extend(defaults, options);
+        var pagination = $(o.pagination+' li a',obj);
+        var m = 0;
+        var t = 1;
+        var s = $(o.slides,obj).children().size();
+        var w = $(o.slides,obj).children().outerWidth();
+        var p = 0;
+        var u = false;
+        var n = 0;
+        
+        $(o.slides,obj).css({width:(s*w)});
+        
+        $(o.slides,obj).children().each(function(){
+            $(this).css({position:'absolute',left:p,display:'block'});
+            p=p+w;
+        });
+        
+        $(pagination,obj).each(function(){
+            n=n+1;
+            $(this).attr('rel',n);
+            $(pagination.eq(0),obj).parent().addClass('active');
+        });
+        
+        $(o.slides,obj).children(':eq('+(s-1)+')').css({position:'absolute',left:-w});
+        
+        if(o.autoHeight){autoHeight(t);}
+        
+        $('.next',obj).click(function(){
+            if(u===false) {
+                animate('next',true);
+                if(o.autoStart){clearInterval(sliderIntervalID);}
+            } return false;
+        });
+        
+        $('.previous',obj).click(function(){
+            if(u===false) {	
+                animate('prev',true);
+                if(o.autoStart){clearInterval(sliderIntervalID);}
+            } return false;
+        });
+        
+        if (o.containerClick) {
+            $(o.container ,obj).click(function(){
+                if(u===false) {
+                    animate('next',true);
+                    if(o.autoStart){clearInterval(sliderIntervalID);}
+                } return false;
+            });
+        }
+        
+        $(pagination,obj).click(function(){
+            if ($(this).parent().hasClass('active')) {return false;}
+            else {
+                t = $(this).attr('rel');
+                $(pagination,obj).parent().siblings().removeClass('active');
+                $(this).parent().addClass('active');
+                animate('fade',t);
+                if(o.autoStart){clearInterval(sliderIntervalID);}
+            } return false;
+        });
+        
+        if (o.autoStart) {
+            sliderIntervalID = setInterval(function(){
+                if(u===false) {animate('next',true);}
+            }, o.autoStart);
+        }
+        $(window).resize(function() {
+            clearInterval(sliderIntervalID);
+            w = $(o.slides,obj).parent(0).width();
+            $(o.slides,obj).children().width(w);
+            p = 0;
+            $(o.slides,obj).children().each(function(){
+                $(this).css({position:'absolute',left:p,display:'block'});
+                p=p+w;
+            });
+            $(o.slides,obj).css({left: -((t-1)*w),width:(s*w)});
+            sliderIntervalID = setInterval(function(){
+                if(u===false) {animate('next',true);}
+            }, o.autoStart);
+        });
+        
+        function current(t) {
+            if(t===s+1){t=1;}
+            if(t===0){t=s;}
+            $(pagination,obj).parent().siblings().removeClass('active');
+            $(o.pagination + ' li a[rel="' + (t) + '"]').parent().addClass('active');
+        };
+        
+        function autoHeight(t) {
+            if(t===s+1){t=1;}
+            if(t===0){t=s;}	
+            var getHeight = $(o.slides,obj).children(':eq('+(t-1)+')',obj).outerHeight();
+            $(o.container,obj).animate({height: getHeight},o.autoHeight);					
+        };		
+        
+        function animate(dir,clicked){	  u = true;	
+            switch(dir){
+                case 'next':
+                    t = t+1;
+                    m = (-(t*w-w));
+                    current(t);
+                    if(o.autoHeight){autoHeight(t);}
+                    $(o.slides,obj).animate({left: m}, o.slidespeed,function(){
+                        if (t===s+1) {
+                            t = 1;
+                            $(o.slides,obj).css({left:0},function(){$(o.slides,obj).animate({left:m})});							
+                            $(o.slides,obj).children(':eq(0)').css({left: 0});
+                            $(o.slides,obj).children(':eq('+(s-1)+')').css({ position:'absolute',left:-w});				
+                        }
+                        if (t===s) $(o.slides,obj).children(':eq(0)').css({left:(s*w)});
+                        if (t===s-1) $(o.slides,obj).children(':eq('+(s-1)+')').css({left:s*w-w});
+                        u = false;
+                    });					
+                    break; 
+                case 'prev':
+                    t = t-1;
+                    m = (-(t*w-w));
+                    current(t);
+                    if(o.autoHeight){autoHeight(t);}
+                    $(o.slides,obj).animate({left: m}, o.slidespeed,function(){
+                        if (t===0) {
+                            t = s;
+                            $(o.slides,obj).children(':eq('+(s-1)+')').css({position:'absolute',left:(s*w-w)});
+                            $(o.slides,obj).css({left: -(s*w-w)});
+                            $(o.slides,obj).children(':eq(0)').css({left:(s*w)});
+                        }
+                        if (t===2 ) $(o.slides,obj).children(':eq(0)').css({position:'absolute',left:0});
+                        if (t===1) $(o.slides,obj).children(':eq('+ (s-1) +')').css({position:'absolute',left:-w});
+                        u = false;
+                    });
+                    break;
+                case 'fade':
+                    t = [t]*1;
+                    m = (-(t*w-w));
+                    current(t);
+                    if(o.autoHeight){autoHeight(t);}
+                    $(o.slides,obj).children().fadeOut(o.fadespeed, function(){
+                        $(o.slides,obj).css({left: m});
+                        $(o.slides,obj).children(':eq('+(s-1)+')').css({left:s*w-w});
+                        $(o.slides,obj).children(':eq(0)').css({left:0});
+                        if(t===s){$(o.slides,obj).children(':eq(0)').css({left:(s*w)});}
+                        if(t===1){$(o.slides,obj).children(':eq('+(s-1)+')').css({ position:'absolute',left:-w});}
+                        $(o.slides,obj).children().fadeIn(o.fadespeed);
+                        u = false;
+                    });
+                    break; 
+                default:
+                    break;
+                }
+          					
+            };
+        });
+    };
+})(jQuery);
+</script>
+
+<script type="text/javascript">
+    $(function(){
+        $('.slides li').click(function(){
+            window.open($(this).find("a").attr("href")); return false;});
+
+        $('.slides li').width($("#newsSlider").width());
+        //$('#newsSlider .container').height($('.slides').children(0).height());	
+        $('#newsSlider').loopedSlider({
+            autoStart: 6000
+        });
+        $(window).resize(function() {
+            //$('#newsSlider .container').height($('.slides').children(0).height());	
+			if($(window).width() <= 600){
+                            $("#index-hots").insertBefore($(".realTime"));
+                        }
+        });
+$(document).ready(function(){
+			if($(window).width() <= 800){
+                          $(".index-video").insertBefore($(".index-news"));
+                          $(".index-roam").insertAfter($(".index-notes"));
+                          $(".index-trailer").insertBefore($(".index-roam"));
+                          $(".index-ads").insertAfter($(".index-film"));
+                          if($(window).width() <= 600){
+                            $("#index-hots").insertBefore($(".realTime"));
+                           }
+                        }
+});
+    });
+</script>
+<!--
+<script>
+	 //		class取
+	function mitulineHide(num,con){
+        var contain = document.getElementsByClassName("con");
+        
+        var maxSize = contain.length;
+        for(i=0;i<maxSize;i++){
+        	var txt= contain[i].innerHTML;
+	        if(txt.length>num){
+	            txt = txt.substring(0,num-1)+"...";
+	            contain[i].innerHTML = txt;
+	        }else{
+	            console.log("error")
+	        }
+	        	
+	        }
+        
+    };
+    mitulineHide(35,'ellipsis');
+function mitulineHide1(num,con){
+        var contain = document.getElementsByClassName("con1");
+        var maxSize = contain.length;
+        for(i=0;i<maxSize;i++){
+        	var txt= contain[i].innerHTML;
+	        if(txt.length>num){
+	            txt = txt.substring(0,num-1)+"...";
+	            contain[i].innerHTML = txt;
+	        }else{
+	            console.log("error")
+	        }
+	        	
+	        }
+    };
+    mitulineHide1(31,'ellipsis');
+
+     var list1=$("#marquee2_1>li").length;
+	 var list2=$(".notes-ticker>li").length;
+	 var list3=$(".index-news-lists>li").length;
+	 var hlist1=list1*46;
+	 var hlist2=list2*46;
+	 var hlist3=list3*46;
+	 
+	if(hlist1>230){
+		$("#marquee2_1").height=230;
+	}else{
+		$("#marquee2_1").height(hlist1);
+		
+	} 
+	 if(hlist2>230){
+		$(".notes-ticker").height=230;
+	}else{
+		$(".notes-ticker").height(hlist2);
+		
+	} 
+	if(hlist3>230){
+		$(".index-news-lists").height=230;
+	}else{
+		$(".index-news-lists").height(hlist3);
+		
+	} 
+	
+</script>
+-->
+<!--主体内容 over-->
+<div class="clearfix"></div>
+
+
+
+
+<!--版权信息-->
+<div class="footer">
+	<div class="footer-main">
+    	<div class="footer-left-text float-l">
+        	<span class="footer-links-t">
+                         <a href="./bgs/kjghk/">关于我们</a><a>|</a>
+                         <a href="./yqlj/gnkpcgwz/">友情链接</a><a>|</a>
+                         <a href="./wzdt/">网站地图</a>
+                         <a>|</a>
+                         <!--<a href="/e/action/ListInfo/?classid=303">联系我们</a><a>|</a>-->
+                         <a href="./gzfw/faq/">留言板</a>
+             </span>
+            <!-- <p class="footer-text-cont">Copyright &copy; 2014-2021 CSTM.org.cn All Rights Reserved<a href="https://beian.miit.gov.cn" style="text-decoration: none;" target="_blank">京ICP备11000850号-3</a><br />
+            京公网安备110105007388号 信息网络传播视听节目许可证0111611号<br /> -->
+地址：北京市朝阳区北辰东路5号　　邮编：100101  &nbsp;&nbsp;&nbsp;<br /> 咨询电话：（010）59041000  &nbsp;&nbsp;&nbsp;投诉电话：（010）59041010  <br />  失物招领电话：（010）59041197 <span style="font-size: 9px;">（接听时间：星期二至星期日9:30-17:00）</span><br />
+总机电话：（010）59041188 &nbsp;&nbsp;&nbsp; 传真电话：（010）59041022<br />E-mail: ticket@cstm.org.cn</p>
+        </div>
+<!--京ICP备11000850号：http://www.miibeian.gov.cn；信息网络传播视听节目许可证0111611号：/eapdomain/home/xuke.htm-->
+        <div class="footer-pic-links" style="margin-top:-5px;">
+        	<a class="pic-links-kjxh" href="http://www.cast.org.cn/" target="_blank">中国科协</a>
+                <a class="pic-links-cdstm" href="http://www.cdstm.cn/" target="_blank">中国数字科技馆</a>
+            <a class="pic-links-jjh" href="http://www.fdstmc.org.cn/" target="_blank">中国科技发展基金会</a>
+            <a class="pic-links-zrbwgxh" href="http://www.cansm.org.cn/" target="_blank">中国自然博物馆协会</a>
+        </div>
+        <div class="footer-pic-public">
+        	<span class="footer-weibo"><img src="https://statics.cdstm.cn/cstm/img/v_code_weibo2.jpg" /></span>
+            <span class="footer-weixin"><img src="https://statics.cdstm.cn/cstm/img/v_code_weixin2.jpg" /></span>
+        </div>
+        <style>
+          .footer-copy p {
+            display: inline-block;
+          }
+            span.footer-weibo ,span.footer-weixin{
+                padding: 0;
+            }
+            .footer-left-text {
+                line-height: 22px;
+            }
+            .footer-left-text span{
+
+            }
+            span.footer-links-t {
+                height: 28px;
+            }
+            .footer-copy {
+                width: 100%;
+                height: 43px;
+                line-height: 43px;
+                background: none;
+                color: #a7a7a7;
+                position: relative;
+                float: right;
+                font-size: 12px;
+                margin-top: 26px;
+                border-top: 1px solid #a7a7a7;
+            }
+            .footer-copy p {
+                color: #a7a7a7;
+                margin: 0px 28px 0 0;
+            }
+            .footer-main {
+                padding: 20px 0 1px;
+            }
+            .footer-qrcode-item{
+                width: auto;
+                margin-left: 0;
+                margin-top: 5px;
+                height: 47px;
+                float: right;
+                margin-right: 0;
+            }
+            .footer-qrcode-item>a{display:inline-block;margin-left: 12px;vertical-align: middle;}
+            .footer-qrcode-item>span{display: inline-block;margin-left: 12px;vertical-align: middle;}
+            .footer-qrcode-item a img{width: auto;}
+            
+            @media only screen and (max-width:979px) {
+              .footer-copy p {
+                color: #a7a7a7;
+                margin: 0px 13px 0 0;
+            }
+            }
+            @media only screen and (max-width:940px) {
+              .footer-copy {
+                  height: 80px;
+              }
+              .footer-qrcode-item {
+                  float: none;
+                  margin: 0 auto;
+              }
+            }
+            @media only screen and (max-width:767px) {
+              .footer-qrcode-item{
+                margin-left: 0;
+                display: flex;
+                flex-wrap: wrap;
+                /* justify-content: space-around; */
+                height: auto;
+              }
+              .footer-qrcode-item > a {
+                  width: 50%;
+                  margin-left: 0;
+                  box-sizing: border-box
+              }
+              .footer-qrcode-item a:nth-child(even) {
+                padding-left: 12px;
+              }
+              .footer-qrcode-item a:nth-child(odd) {
+                padding-right: 12px;
+              }
+              .footer-qrcode-item a:nth-child(1) {
+                  padding-right: 31px;
+              }
+              .footer-qrcode-item a:nth-child(3),.footer-qrcode-item span {
+                margin-top: 12px;
+              }
+              .footer-qrcode-item a img{width: auto;float: right;}
+              .footer-qrcode-item a:nth-child(even) img{width: auto;float: left;}
+              .footer-copy {
+                  width: 100%;
+                  height: 80px;
+                  line-height: 25px;
+                  background: none;
+                  color: #a7a7a7;
+                  position: relative;
+                  float: right;
+                  font-size: 12px;
+                  margin-top: 15px;
+              }
+              .footer-copy p {
+                  margin: 0;
+              }
+          }
+        </style>
+        <div class="footer-qrcode-item" style="margin-left: 0;">
+            <a href="http://bszs.conac.cn/sitename?method=show&amp;id=3BFA6041BF0427F3E053022819ACC511" style="margin-left: 0;" target="_blank">
+                <img style="height: 47px" src="https://statics.cdstm.cn/cstm/img/blue.png" data-bd-imgshare-binded="1" /><!-- 事业单位 -->
+            </a>
+            <a target="cyxyv" href="https://v.yunaq.com/certificate?domain=www.cdstm.cn&from=label&code=90040">
+                 <img src="https://aqyzmedia.yunaq.com/labels/label_sm_90040.png" /><!-- 品牌认证 -->
+            </a>
+            <a id="_pingansec_bottomimagelarge_brand" target="_blank"  href="//si.trustutn.org/info?sn=400200106039113548266&certType=1">
+                <img style="height: 47px;" src="//v.trustutn.org/images/cert/brand_bottom_large.jpg" /><!-- 品牌官网 -->
+            </a>
+            <!--可信网站图片LOGO安装开始--> 
+            <script src="https://kxlogo.knet.cn/seallogo.dll?sn=a16100911010664827xzlk000000&size=0"></script>  
+            <!-- <script>
+                $(".footer-qrcode-item > span > a > img").css("width","auto !important");//屏幕宽度小于767时隐藏侧边栏
+              function imgw(){
+                var wdw=$(window).width();
+                // console.log(w);
+                if(wdw<767) {
+                    $(".footer-qrcode-item > span > a > img").css("width","auto !important","height","28px !important");//屏幕宽度小于767时隐藏侧边栏
+                };
+              }
+              imgw();
+            </script> -->
+            <!--可信网站图片LOGO安装结束--> 
+        </div>
+        <div class="footer-copy">
+            <div  style="margin:0 auto;font-size:12px;">
+                <p class="footer-text-cont">Copyright &copy; 2014-2021 CSTM.org.cn All Rights Reserved</p>
+                <p style="display: inline-flex"><a href="https://beian.miit.gov.cn" style="text-decoration:none;color: #a7a7a7;" target="_blank">
+                  京ICP备11000850号-1</a>&nbsp;&nbsp;</p>
+                  <p>
+                      <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502047831" style="text-decoration:none;color: #a7a7a7;" target="_blank">
+                        <img src="https://statics.cdstm.cn/site/img/police-logo.png" style="align-self: center;vertical-align: middle;" /> &nbsp;京公网安备11010502047831号
+                      </a>
+                  </p>
+                <p style="margin: 0;">信息网络传播视听节目许可证0111611号</p>
+               
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<!--版权信息 over-->
+<!--留言float-->
+<div class="floatr-side-bar"> 
+	<!--a href="#" class="icon-qq">QQ在线咨询</a--> 
+	<!--a href="" class="icon-chat">微信<div class="floatr-chat-tips"><i></i><img style="width:138px;height:138px;" src="img/code.jpg" alt="微信订阅号" /></div></a--> 
+	<!--a target="_blank" href="" class="icon-blog">微博</a--> 
+	<!--a href="mailto:admin@admin.com" class="icon-mail">mail</a-->
+    <a href="./gzfw/faq/" class="icon-mail">FAQ</a> 
+</div>
+<!--留言float over-->
+<script type="text/javascript">
+	<!--new slider({id:'drop-slider'})-->
+</script>
+<script type="text/javascript">
+	  $(function() {
+	  
+		//cache the ticker
+		var ticker = $("#notes-ticker");
+		  
+		//wrap dt:dd pairs in divs
+		ticker.children().filter("li").each(function() {
+		  
+		  var dt = $(this),
+		    container = $("<div>");
+		  
+		  dt.next().appendTo(container);
+		  dt.prependTo(container);
+		  
+		  container.appendTo(ticker);
+		});
+				
+		//hide the scrollbar
+		ticker.css("overflow", "hidden");
+		
+		//animator function
+		function animator(currentItem) {
+		    
+		  //work out new anim duration
+		  var distance = currentItem.height();
+			duration = (distance + parseInt(currentItem.css("marginTop"))) / 0.012;
+
+		  //animate the first child of the ticker
+		  currentItem.animate({ marginTop: -distance }, duration, "linear", function() {
+		    
+			//move current item to the bottom
+			currentItem.appendTo(currentItem.parent()).css("marginTop", 0);
+
+			//recurse
+			animator(currentItem.parent().children(":first"));
+		  }); 
+		};
+		
+		//start the ticker
+		animator(ticker.children(":first"));
+				
+		//set mouseenter
+		ticker.mouseenter(function() {
+		  
+		  //stop current animation
+		  ticker.children().stop();
+		  
+		});
+		
+		//set mouseleave
+		ticker.mouseleave(function() {
+		          
+          //resume animation
+		  animator(ticker.children(":first"));
+		  
+		});
+	  });
+</script>
+
+ <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?eff5d308ebe7066a54ea85827badbf09";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--天润统计-->
+<script src='https://cl.webterren.com/webdig.js?z=7' type='text/javascript'></script>
+<script type="text/javascript">wd_paramtracker("_wdxid=000000000000000000000000000000000000000000")</script>
+
+</BODY> 
+</HTML>
