@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+	<title>蜘蛛资源采集网 - 实时高效采集优质资源网站内容分享的平台</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<meta name="baidu-site-verification" content="code-H5A96xxC34" />
+	<link rel="shortcut icon" href="/upload/file/cdc1f461-9ac5-4a64-ad54-076c9e0bad8b.png">
+	<meta name="keywords" content="蜘蛛采集网,蜘蛛资源,技术导航网,网站导航,网址导航,博客导航,导航君,滚石导航网,QQ导航网,纯悦技术导航,最大资源,最大资源网,资源采集,资源采集网,爱Q,辅助网,资源网,V8秒导航,115国际导航,QQ国际导航网,导航天下,技术导航，新技术导航,老A技术导航网,QQ技术导航网,吾爱技术导航,技术导航网,老a导航,老a网赚,老a论坛,老a工具,老a设计,老a传奇,老a技术,小水滴技术导航,万辰技术导航,小水滴导航,导航天下,技术导航,娱乐网,小刀娱乐网,爱Q,QQ技术,QQ导航,资源网,娱乐网,教程网,小黑娱乐网,小高教程,小k,小刀,源码,软件,老a资源库,老a资源网,聚搜集资源,资源网,娱乐网,技术网,教程网,小刀娱乐网,技术导航,资源平台,免费分享,小高教学网">
+	<meta name="description" content="蜘蛛资源采集网(www.zzmwl.com)-实时高效采集优质资源网站内容分享的平台。本站目前已采集了国内大部分热门技术网站和大量正规资源网站的内容并分享，是一家专门针对网友提供资源查找和服务的完全免费的网站，找资源就上蜘蛛资源采集网!">
+	<link rel="stylesheet" href="/layui/css/layui.css"/>
+	<link rel="stylesheet" href="/element-ui/index.css"/>
+	<link href="/web/jusouji/css/index.css" rel="stylesheet" type="text/css">
+	<link href="/web/jusouji/css/public.css" rel="stylesheet" type="text/css">
+	<link href="/web/jusouji/css/index_daohang.css" rel="stylesheet" type="text/css">
+	<link href="/player/css/player.css" rel="stylesheet" type="text/css">
+
+
+	<style></style>
+	<style type="text/css">
+		.layui-layer,
+		.layui-layer-title {
+			border-radius: 0px !important;
+			background-color: #fff !important;
+		}
+
+		.layui-layer-btn {
+			padding: 10px !important;
+		}
+
+		.tab_hot {
+			border-radius: 14px 14px 14px 0;
+			height: 16px;
+			width: 45px;
+			line-height: 15px;
+			float: right;
+			position: absolute;
+			font-size: 7px;
+			top: -7px;
+			left: 50px;
+			padding-left: 10px;
+			background: rgba(254, 74, 101, .9);
+		}
+		#image_list {
+			margin-top: 10px;
+		}
+
+		#image_list .img{
+			overflow: hidden;
+			border-radius: 5px;
+			height: 278px;
+		}
+		#image_list .card{
+			position: relative;
+			width: calc(19.6% - 18px);
+			margin: 0px 13px 11px 6px;
+			display: inline-block;
+			font-size: 14px;
+			background: #fff;
+			padding: 10px;
+		}
+
+		#image_list .card img{
+			height: 278px;
+			width: 100%;
+
+		}
+		#image_list .card .name{
+			overflow: hidden;
+			display: block;
+			margin: 10px 10px 0px 10px;
+			padding: 5px;
+			height: auto;
+			border: 1px solid #FFF;
+			border-radius: 3px;
+			background-color: #fff;
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
+			box-shadow: 0 0 2px #000;
+			/* text-align: center; */
+			text-overflow: ellipsis;
+			white-space: pre;
+			cursor: pointer;
+			text-align: center;
+		}
+		#image_list .card:hover{
+			cursor:pointer;
+		}
+
+		#image_list .card .name:hover {
+			box-shadow: 0 0 10px #1a53ba;
+		}
+		.page{
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+		}
+
+
+		.page .top {
+			width: 15%;
+		}
+
+		.page .bottom {
+			width: 15%;
+		}
+
+		.page>div {
+			width: auto;
+			padding-left: 15px;
+			padding-right: 15px;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+
+		@media screen and (max-width: 800px){
+			#image_list{
+				display: none;
+			}
+			.tpl-tr-wai{
+				display: block !important;
+			}
+			.page .num{
+				display: none;
+			}
+			.page .cfx{
+				display: block !important;
+			}
+			.page>div {
+				width: 50% !important;
+				padding-left: 0;
+				padding-right: 0;
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+
+
+
+<header class="header">
+	<div class="clearfix">
+		<a href="/" class="logo">
+			<img src="/upload/file/d456a942-f592-4703-9d4c-3188cd918092.png">
+		</a>
+		<a class="webText">实时高效采集优质资源网站内容分享的平台</a>
+		<div class="indexSet tools right">
+			<h3>简约版</h3>
+			<label class="label-switch">
+				<input checked="" type="checkbox">
+				<div class="checkbox"></div>
+			</label>
+		</div>
+		<div class="tools right">
+			<a class="closeSearch">取消</a>
+			<div class="search">
+				<form class="search__form" action="/soso">
+					<input name="q" type="search">
+					<i class="searchIcon layui-icon layui-icon-search"></i>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+</header>
+
+
+<div class="index-box">
+	<div class="container">
+		<div class="tit night-color">
+<!--			<h2>-->
+<!--				全网独家24小时实时更新全网资源-->
+<!--			</h2>-->
+<!--			<p>-->
+<!--				进一站，等于逛全网！精品资源持续搜集中...-->
+<!--			</p>-->
+		</div>
+
+		<div class="search-box">
+			<form class="search__form" action="/soso">
+				<input name="q" placeholder="输入关键词，找到你想要的资源！" required type="search" class="txt night-bg"><input
+					type="submit" class="iconfont" value="搜索">
+			</form>
+		</div>
+
+	</div>
+	
+</div>
+
+
+<div class="nav">
+	<div class="clearfix">
+
+		<div class="list">
+			<a href="/" class="item" alt="网站首页">网站首页</a>
+		</div>
+
+		<div class="list">
+			<a href="/list/139.html" class="item" alt="站点导航">站点导航</a>
+		</div>
+
+
+		<div class="list">
+			<a target="_self" class="item"  href="/update.html" alt="最近更新">最近更新</a>
+			
+		</div>
+
+
+		<div class="list">
+			<a target="_self" class="item"  href="/rmrj.html" alt="热门软件">热门软件</a>
+			
+		</div>
+
+
+		
+
+
+		<div class="list">
+			<a target="_self" class="item"  href="/custom/video.html" alt="在线影视">在线影视</a>
+			
+		</div>
+
+
+		
+
+
+		
+
+
+		
+
+
+		
+
+
+		<div class="list">
+			<a target="_self" class="item"  href="/column/9.html" alt="时尚美图">时尚美图</a>
+			
+		</div>
+
+
+		<div class="list">
+			<a target="_self" class="item"  href="/about/send.html" alt="申请收录">申请收录</a>
+			
+		</div>
+
+	</div>
+
+
+</div>
+
+<div>
+
+
+</div>
+
+<style>
+	.softGroup ul li {
+		float: left;
+	}
+
+	.layui-form-selectup dl {
+		top: 42px;
+		bottom: unset;
+	}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+<section class="uplist_container">
+
+
+
+	<div style="position: relative">
+
+		<div class="dateDiv">
+			<div class="title">
+				<h3 class="index_lanmutitle">最新更新</h3>
+			</div>
+			<div class="layui-form" style="display: block ruby;float: right;margin-top: -38px;">
+				<select name="fatherId" lay-filter="updateFatherId" lay-verify="required">
+
+					<option value="0" selected>最新更新</option>
+
+					<option value="6">小刀娱乐网</option>
+
+					<option value="12">小K娱乐网</option>
+
+					<option value="13">蜗牛娱乐网</option>
+
+					<option value="14">爱收集资源网</option>
+
+					<option value="15">115z资源网</option>
+
+					<option value="17">老a资源库</option>
+
+					<option value="18">乐乐线报网</option>
+
+					<option value="19">小高教学网</option>
+
+					<option value="20">我爱网</option>
+
+				</select>
+			</div>
+
+			<ul id="updatelist">
+
+			</ul>
+
+
+		</div>
+
+
+		<div class="list-loading" style="display: none;">
+			<div class="loadding2">
+				<div class="circ1"></div>
+				<div class="circ2"></div>
+				<div class="circ3"></div>
+				<div class="circ4"></div>
+			</div>
+		</div>
+
+		<input id="route" value="article" type="hidden">
+
+		<input id="pageVal" type="hidden" value="1">
+
+		<div class="page">
+			<div class="top">上一页</div>
+			<b class="cfx" style="display: none"></b>
+			<div class="num" name="1">1</div>
+			<div class="num" name="2">2</div>
+			<div class="num" name="3">3</div>
+			<div class="num" name="4">4</div>
+			<div class="num" name="5">5</div>
+			<div class="bottom">下一页</div>
+		</div>
+
+	</div>
+
+
+
+</section>
+
+
+	<div class="film-list index_ings m_b_0" style="margin-bottom: 12px;">
+		<div class="title">
+			<h3>美图壁纸</h3>
+		</div>
+
+		<!--pc显示-->
+		<div id="image_list">
+
+			<div class="card">
+				<a href="/article/146.html" target="_blank">
+					<div class="img">
+						<img style="width: 100%" src="https://img.jsdhw.xyz/d78d2a2b-51f5-4b65-8af1-c7857a793d36.jpg" alt="推女郎尤妮丝火辣写真摄影">
+					</div>
+					<div class="name">推女郎尤妮丝火辣写真摄影</div>
+				</a>
+			</div>
+
+			<div class="card">
+				<a href="/article/144.html" target="_blank">
+					<div class="img">
+						<img style="width: 100%" src="https://img.jsdhw.xyz/1be4df14-6df0-482e-851d-0d2c475ba4f7.jpg" alt="制服美女秘书黑丝美腿诱惑写真">
+					</div>
+					<div class="name">制服美女秘书黑丝美腿诱惑写真</div>
+				</a>
+			</div>
+
+			<div class="card">
+				<a href="/article/142.html" target="_blank">
+					<div class="img">
+						<img style="width: 100%" src="https://img.jsdhw.xyz/b4ab9927-ae7a-4cda-a0df-db474b71bf99.jpg" alt="白丝美腿美女护士制服诱惑写真">
+					</div>
+					<div class="name">白丝美腿美女护士制服诱惑写真</div>
+				</a>
+			</div>
+
+			<div class="card">
+				<a href="/article/140.html" target="_blank">
+					<div class="img">
+						<img style="width: 100%" src="http://img.jsdhw.xyz/84712ba9-1399-433b-8972-5bdbb0b823de.jpg" alt="黑丝长腿御姐勾魂诱人极品美乳性感人体写真">
+					</div>
+					<div class="name">黑丝长腿御姐勾魂诱人极品美乳性感人体写真</div>
+				</a>
+			</div>
+
+			<div class="card">
+				<a href="/article/139.html" target="_blank">
+					<div class="img">
+						<img style="width: 100%" src="http://img.jsdhw.xyz/61fedfa9-13e2-45c5-95b5-74eca0695800.jpg" alt="性感海边吊带热裤女孩酥胸诱惑写真套图">
+					</div>
+					<div class="name">性感海边吊带热裤女孩酥胸诱惑写真套图</div>
+				</a>
+			</div>
+
+			
+		</div>
+
+		<!--手机显示-->
+		<div class="tpl-tr-wai layui-hide-xs" style="display: none">
+			<div class="tpl-tr layui-clear">
+				<div class="list-top">
+					<ul>
+
+						
+							<li>
+								<a href="/article/146.html" target="_blank">
+									<div class="img">
+										<img src="https://img.jsdhw.xyz/d78d2a2b-51f5-4b65-8af1-c7857a793d36.jpg" alt="推女郎尤妮丝火辣写真摄影">
+									</div>
+									<div class="text">
+										<div class="tit">
+											<h3>推女郎尤妮丝火辣写真摄影</h3>
+										</div>
+									</div>
+								</a>
+							</li>
+
+						
+							<li>
+								<a href="/article/144.html" target="_blank">
+									<div class="img">
+										<img src="https://img.jsdhw.xyz/1be4df14-6df0-482e-851d-0d2c475ba4f7.jpg" alt="制服美女秘书黑丝美腿诱惑写真">
+									</div>
+									<div class="text">
+										<div class="tit">
+											<h3>制服美女秘书黑丝美腿诱惑写真</h3>
+										</div>
+									</div>
+								</a>
+							</li>
+
+						
+							<li>
+								<a href="/article/142.html" target="_blank">
+									<div class="img">
+										<img src="https://img.jsdhw.xyz/b4ab9927-ae7a-4cda-a0df-db474b71bf99.jpg" alt="白丝美腿美女护士制服诱惑写真">
+									</div>
+									<div class="text">
+										<div class="tit">
+											<h3>白丝美腿美女护士制服诱惑写真</h3>
+										</div>
+									</div>
+								</a>
+							</li>
+
+						
+							<li>
+								<a href="/article/140.html" target="_blank">
+									<div class="img">
+										<img src="http://img.jsdhw.xyz/84712ba9-1399-433b-8972-5bdbb0b823de.jpg" alt="黑丝长腿御姐勾魂诱人极品美乳性感人体写真">
+									</div>
+									<div class="text">
+										<div class="tit">
+											<h3>黑丝长腿御姐勾魂诱人极品美乳性感人体写真</h3>
+										</div>
+									</div>
+								</a>
+							</li>
+
+						
+							<li>
+								<a href="/article/139.html" target="_blank">
+									<div class="img">
+										<img src="http://img.jsdhw.xyz/61fedfa9-13e2-45c5-95b5-74eca0695800.jpg" alt="性感海边吊带热裤女孩酥胸诱惑写真套图">
+									</div>
+									<div class="text">
+										<div class="tit">
+											<h3>性感海边吊带热裤女孩酥胸诱惑写真套图</h3>
+										</div>
+									</div>
+								</a>
+							</li>
+
+						
+							<li>
+								<a href="/article/138.html" target="_blank">
+									<div class="img">
+										<img src="http://img.jsdhw.xyz/ca1a1885-f31e-45ff-9300-58a389bfee69.jpg" alt="极品尤物白丝美女吊带裙美腿薄纱诱人图片集">
+									</div>
+									<div class="text">
+										<div class="tit">
+											<h3>极品尤物白丝美女吊带裙美腿薄纱诱人图片集</h3>
+										</div>
+									</div>
+								</a>
+							</li>
+
+						
+
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+<link href="/web/jusouji/css/video.css" rel="stylesheet" type="text/css">
+
+<div class="softGroup index_rj m_b_0" style="margin-bottom: 12px;">
+	<div class="title">
+		<h3>在线影视</h3>
+	</div>
+	<div class="module-list">
+		<div class="module-items" id="yingshi_list">
+
+		</div>
+	</div>
+</div>
+
+<div class="friends-link">
+        <div class="title">
+            <h3>友情链接</h3>
+        </div>
+        <ul class="layui-clear">
+
+            <li>
+                <a href="https://www.shishangjf.cn" target="_blank" title="老李技术导航">老李技术导航</a>
+            </li>
+
+            <li>
+                <a href="https://www.8nv.cn" target="_blank" title="冰点技术导航">冰点技术导航</a>
+            </li>
+
+            <li>
+                <a href="https://iyx0.cn" target="_blank" title="颜兮之家">颜兮之家</a>
+            </li>
+
+            <li>
+                <a href="http://www.ndyywz.com/ndyywz/3929.htm" target="_blank" title="优雅导航">优雅导航</a>
+            </li>
+
+        </ul>
+    </div>
+
+<!--顶部广告-->
+<script id="topListParent" type="text/html">
+	{{#  layui.each(d.topMedias, function(index, item){ }}
+	<ul class="web_group layui-clear">
+		{{#  layui.each(item, function(index2, item2){ }}
+		<li>
+			<a href="{{item2.href}}" target="_blank" class="layui-clear">
+				<img src="{{item2.src}}">
+				<div class="info">
+					<h3>{{item2.name}}</h3>
+					<p>{{item2.desc}}</p>
+				</div>
+			</a>
+		</li>
+		{{#  }); }}
+	</ul>
+	{{#  }); }}
+</script>
+
+
+<!--图片广告-->
+<script id="picListParent" type="text/html">
+	{{#  layui.each(d.topMedias, function(index, item){ }}
+	<ul class="layui-clear">
+		{{#  layui.each(item, function(index2, item2){ }}
+		<li style="width: calc(100% / {{item.length}});">
+			<a href="{{item2.href}}" target="_blank">
+				<img src="{{item2.src}}" style="display:block;width:100%;height:100%;">
+			</a>
+		</li>
+		{{#  }); }}
+	</ul>
+	{{#  }); }}
+</script>
+
+<!--文字广告-->
+<script id="textListParent" type="text/html"> 
+
+
+ <div class="Textdiv Text-Advertising">
+	{{#  layui.each(d.topMedias, function(index, item){ }}
+    	{{#  if(index%5 == 0){ }}
+		<ul class="layui-clear">
+		{{#  } }}
+    	<li  style="width: 20% !important ">
+    		<a href="{{item.href}}" target="_blank" style="color:{{item.color}}">{{item.name}}</a>
+    	</li>
+    	{{#  if(index%5 == 4){ }}
+		</ul>
+		{{#  } }}
+	{{#  }); }}
+</script>
+
+
+<!--最近更新-->
+<script id="uplistDemo" type="text/html">
+	{{#  layui.each(d, function(index, item){ }}
+
+
+
+	<li class="clearfix {{ item.isTop == 1 ? 'AddateDiv' : '' }}">
+		{{#  if(item.isUrl == 1){ }}
+		<a href="{{ item.url }}" class="name url add_r" data-id="{{ item.id }}" target="_blank" >
+			<img src="{{ item.isTop == 1 ? '/web/jusouji/img/ad.jpg' : item.siteIco }}">
+		</a>
+
+		{{#  }else{ }}
+		<a href="/update/{{item.id}}.html" class="name url add_r" data-id="{{ item.id }}" target="_blank" >
+			<img src="{{ item.isTop == 1 ? '/web/jusouji/img/ad.jpg' : item.siteIco }}">
+		</a>
+		{{#  } }}
+
+
+		{{#  if(item.isUrl == 1){ }}
+		<a href="{{ item.url }}" data-id="{{ item.id }}" title="{{ item.name }}" target="_blank" class="title url add_r {{ item.isTop == 1 ? 'liuguang' : '' }}">{{ item.name }}</a>
+		{{#  }else{ }}
+		<a href="/update/{{item.id}}.html" data-id="{{ item.id }}" title="{{ item.name }}" target="_blank" class="title url add_r {{ item.isTop == 1 ? 'liuguang' : '' }}">{{ item.name }}</a>
+		{{#  } }}
+
+		{{#  if(isToday(item.creatTime)){ }}
+		<font style="color: #fd2b2b;">今日</font>
+		{{#  }else{ }}
+		<font>{{ dateFtt(item.creatTime) }}</font>
+		{{#  } }}
+
+		{{#  if(item.isUrl == 1){ }}
+		<a href="{{ item.url }}" data-id="{{ item.id }}" target="_blank" class="btn url add_r">浏览</a>
+		{{#  }else{ }}
+		<a href="/update/{{item.id}}.html" data-id="{{ item.id }}" target="_blank" class="btn url add_r">浏览</a>
+		{{#  } }}
+	</li>
+
+
+	{{#  }); }}
+	{{#  if(d.length === 0){ }}
+	<div style="width:100%;background:#FFF;padding-bottom: 28px;padding-top: 78px;">
+		<img src="/application/images/nodata.png" style="width: 160px;margin: 0px auto;padding:1rem 0;display: block;padding-bottom:1.1rem;">
+		<span style="display: block;margin: 0px auto;text-align: center;line-height: 34px;height: 34px;font-size: 14px;color: #adadad;">暂无更新</span>
+	</div>
+	{{#  } }}
+</script>
+
+<!--最新采集-->
+<script id="lishDemo" type="text/html">
+	{{#  layui.each(d, function(index, item){ }}
+
+	<li>
+		<img src="{{ item.siteIco }}">
+		{{#  if(item.isUrl == 1){ }}
+		<a href="{{ item.url }}" class="add_r" data-id="{{ item.id }}" title="{{ item.name }}" target="_blank">{{ item.name }}</a>
+		{{#  }else{ }}
+		<a href="/update/{{item.id}}.html" class="add_r" data-id="{{ item.id }}" title="{{ item.name }}" target="_blank">{{ item.name }}</a>
+		{{#  } }}
+
+		{{#  if(isToday(item.creatTime)){ }}
+		<span style="color: red;">{{ dateFtt(item.creatTime) }}</span>
+		{{#  }else{ }}
+		<span>{{ dateFtt(item.creatTime) }}</span>
+		{{#  } }}
+	</li>
+
+	{{#  }); }}
+<!--	{{#  if(d.length === 0){ }}-->
+<!--	<div style="width:100%;background:#FFF;padding-bottom: 28px;padding-top: 78px;">-->
+<!--		<img src="/application/images/nodata.png" style="width: 160px;margin: 0px auto;padding:1rem 0;display: block;padding-bottom:1.1rem;">-->
+<!--		<span style="display: block;margin: 0px auto;text-align: center;line-height: 34px;height: 34px;font-size: 14px;color: #adadad;">暂无更新</span>-->
+<!--	</div>-->
+<!--	{{#  } }}-->
+</script>
+
+
+
+
+<!--    <footer style="padding: 25px;text-align: center;" th:inline="text">-->
+<!--        <p><span style="background-color: #ecf0f1; color: #e03e2d;"><strong>蜘蛛资源采集网采集</strong></span></p>-->
+<!--        <p><strong>本站资源来自互联网收集，仅供用于学习和交流，我们尊重任何软件和教程作者的版权，请遵循相关法律法规，本站一切资源不代表本站立场</strong></p>-->
+<!--        <p>Copyright @ All rights Reserved <a style="color: #919191;" target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021164137号-1</a></p>-->
+<!--    </footer>-->
+
+    <!-- 尾部 -->
+    <footer class="footer">
+        <div>
+            <ul class="layui-clear">
+                
+                
+                <li>
+                    <a target="_self" href="/page/11.html">关于我们</a>
+                    
+                </li>
+                
+                <li>
+                    <a target="_self" href="/page/12.html">广告合作</a>
+                    
+                </li>
+                <li>
+                    <a target="_self" href="/sitemap.xml">网站地图</a>
+                    
+                </li>
+                <li>
+                    <a target="_self" href="/about/send.html">申请收录</a>
+                    
+                </li>
+                <li>
+                    <a target="_self" href="/about/buy.html">自助广告</a>
+                    
+                </li>
+                
+                
+            </ul>
+            <p class="copart">
+                蜘蛛资源采集网 - Copyright @ All rights Reserved <img src="/web/jusouji/img/police.png"> <a style="color: #919191;" target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021164137号-1</a>，本站收集的信息若侵害到您的利益，请联系我们删除处理
+                <label><script type="text/javascript" src="//js.users.51.la/21244999.js"></script></label>
+            </p>
+            
+        </div>
+    </footer>
+
+    <!--手机端自适应-->
+    <div class="footer">
+        <div>
+            <a target="_self" href="/update.html">最近</a><a target="_self" href="/rmrj.html">软件</a><a target="_self" href="/page/11.html">关于</a><a target="_self" href="/custom/video.html">影视</a><a target="_self" href="/page/12.html">广告合作</a><a target="_self" href="/about/buy.html">自助广告</a><a target="_self" href="/column/9.html">时尚</a><a target="_self" href="/about/send.html">收录</a>
+        </div>
+        <p>Copyright @ All rights Reserved  粤ICP备2021164137号-1</p>
+
+        
+            <p><script type="text/javascript" src="//js.users.51.la/21244999.js"></script></p>
+        
+        
+            <p style="display: none"><script type="text/javascript" src="//js.users.51.la/21244999.js"></script></p>
+        
+
+        
+
+    </div>
+
+
+    <!--百度推送-->
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+
+    <script type="text/javascript">
+        var domain = "\u8718\u86DB\u8D44\u6E90\u91C7\u96C6\u7F51";
+    </script>
+
+
+    <script type="text/javascript" src="/layui/layui.js"></script>
+    <script src="/web/jusouji/js/ajax-comm.js"></script>
+
+
+
+<script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.js"></script>
+<script type="text/javascript" src="https://lib.baomitu.com/echarts/4.6.0/echarts-en.common.min.js"></script>
+<script src="/web/jusouji/js/jquery.liMarquee.js" type="text/javascript"></script>
+
+<script>
+	$(function () {
+		$('.dowebok').liMarquee({
+			direction: 'up'
+		});
+	})
+</script>
+
+
+
+<script type="text/javascript" src="/web/jusouji/js/index.js"></script>
+
+<script>
+ var ConsoleManager = {
+	onOpen: function() {},
+	onClose: function() {},
+	init: function() {
+		var self = this;
+		var x = new Image();
+		var isOpening = false,
+			isOpened = false;
+		Object.defineProperty(x, 'id', {
+			get: function() {
+				if (!isOpening) {
+					self.onOpen();
+					isOpening = true;
+				}
+				isOpened = true;
+			}
+		});
+		setInterval(function() {
+			isOpened = false;
+			console.info(x);
+			console.clear();
+			if (!isOpened && isOpening) {
+				self.onClose();
+				isOpening = false;
+			}
+		}, 200);
+	}
+}
+ConsoleManager.onOpen = function() {
+	document.documentElement.innerHTML = '<p style="text-align: center">欢迎光临寒舍，有什么需要帮忙的话，请与站长QQ：2301858400联系！谢谢您的合作！！！ </p>';
+}
+ConsoleManager.onClose = function() {
+	window.location.reload();
+}
+ConsoleManager.init();   
+</script>
+
+</body>
+</html>

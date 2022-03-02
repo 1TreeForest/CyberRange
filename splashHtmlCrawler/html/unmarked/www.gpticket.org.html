@@ -1,0 +1,609 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>政府采购机票管理网站</title>
+    <!-- 渲染引擎顺序,双核浏览器优先使用webkit内核 -->
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <!-- 改版purecss -->
+    <link rel="stylesheet" type="text/css" href="/static/neusoft/css/pure.css"/><!--neu -->
+    <link rel="stylesheet" type="text/css" href="/static/neusoft/css/idangerous.swiper.css"/><!--neu -->
+    <link rel="stylesheet" type="text/css" href="/static/neusoft/css/frame.css"/><!--neu -->
+    <script src="/static/neusoft/js/jquery.min.js"></script>
+    <script src="https://dingxiang.gpticket.org:7776/dx-captcha/index.js"></script>
+    <script type="text/javascript">
+        var skip = ''
+        var airArray={};
+        
+        airArray["DR"] = "瑞丽航空";
+        
+        airArray["9D"] = "天骄航空";
+        
+        airArray["CA"] = "中国国航";
+        
+        airArray["MU"] = "东方航空";
+        
+        airArray["CZ"] = "南方航空";
+        
+        airArray["HU"] = "海南航空";
+        
+        airArray["MF"] = "厦门航空";
+        
+        airArray["ZH"] = "深圳航空";
+        
+        airArray["SC"] = "山东航空";
+        
+        airArray["3U"] = "四川航空";
+        
+        airArray["JD"] = "首都航空";
+        
+        airArray["9C"] = "春秋航空";
+        
+        airArray["NS"] = "河北航空";
+        
+        airArray["HO"] = "吉祥航空";
+        
+        airArray["KN"] = "中国联航";
+        
+        airArray["G5"] = "华夏航空";
+        
+        airArray["KY"] = "昆明航空";
+        
+        airArray["GJ"] = "长龙航空";
+        
+        airArray["CN"] = "大新华航空";
+        
+        airArray["DZ"] = "东海航空";
+        
+        airArray["EU"] = "成都航空";
+        
+        airArray["GY"] = "多彩贵州";
+        
+        airArray["RY"] = "江西航空";
+        
+        airArray["BK"] = "奥凯航空";
+        
+        airArray["8L"] = "祥鹏航空";
+        
+        airArray["9H"] = "长安航空";
+        
+        airArray["FU"] = "福州航空";
+        
+        airArray["GS"] = "天津航空";
+        
+        airArray["GT"] = "桂林航空";
+        
+        airArray["GX"] = "北部湾航空";
+        
+        airArray["PN"] = "西部航空";
+        
+        airArray["UQ"] = "乌鲁木齐航空";
+        
+        airArray["Y8"] = "金鹏航空";
+        
+        airArray["QW"] = "青岛航空";
+        
+        airArray["AQ"] = "九元航空";
+        
+        airArray["A6"] = "湖南航空";
+        
+        airArray["JR"] = "幸福航空";
+        
+        airArray["LT"] = "龙江航空";
+        
+        airArray["TV"] = "西藏航空";
+        
+    </script>
+</head>
+
+<body>
+    
+
+
+
+
+
+
+
+<form name="skipForm" method="post" action="" id="skipForm">
+    <input type="hidden" name="userType" id="userType" />
+</form>
+
+<div class="header ">
+    <div class=" pure-padding-top-lg">
+        <div class=" pure-cf">
+            <div class="pure-g   " style="margin:0 auto; width:1210px; ">
+                
+                
+                    <div class="pure-u-5-6" style="height:56px">
+                        <a>
+                            <div class="icons top_logo"></div>
+                        </a>
+                    </div>
+                    <div class="pure-u-1-6">
+                        <button class="pure-button-login pure-align-right pure-text-primary " onclick="register()">立即注册</button>
+                    </div>
+                
+            </div>
+        </div>
+
+        <div class="pure-menu pure-menu-horizontal pure-cf" style="margin:0 auto; text-align:center; background-color: #F6F6F6">
+
+            <ul class="pure-menu-list pure-text-lg " style="text-align:left;width:1210px">
+
+                
+                
+                    
+                        <li class="pure-menu-item pure-menu-item2 pure-index pure-menu-active " style="background-color: #ffffff;padding-top: 3px;"><a href="#" class="pure-menu-link">首页</a>
+                        </li><li class="pure-menu-item pure-menu-item2">
+                            <a href="/gpSupplier/initSupplier.action" class="pure-menu-link">供应商查询</a></li>
+                        <li class="pure-menu-item pure-menu-item2">
+                            <a href="/provider/loginProvider.action" class="pure-menu-link">服务商查询</a></li>
+                        <li class="pure-menu-item pure-menu-item2">
+                            <a href="/ticketCheck/eletkt.action" class="pure-menu-link">机票查验单查询</a></li>
+                        <li class="pure-menu-item pure-menu-item2">
+                            <a href="/routeRecommendation/roteRecInit.action" class="pure-menu-link">国际航线推荐</a></li>
+                        <li class="pure-menu-item pure-menu-item2">
+                            <a href="/budgetGp/init.action" class="pure-menu-link">预算单位信息报送</a></li>
+                        <li class="pure-menu-item pure-menu-item2">
+                            <a href="/mobileClient/getMobileClient.action" class="pure-menu-link">手机端下载</a></li>
+                    
+                
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function toLogout() {
+        window.location.href = "/logout.action";
+    }
+    function register(){
+        $('#userType').val('2');
+        $('#skipForm').attr("action","/register/init.action").submit();
+    }
+
+    $('.pure-menu-list li').hover(function(){
+        $(this).addClass('lihover')
+    },function(){
+        $(this).removeClass('lihover')
+    })
+    $('.pure-menu-list li a').click(function () {
+    })
+
+</script>
+
+    <div class="pure-margin-bottom">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image:url('/static/neusoft/img/bn05.jpg')"></div>
+                <div class="swiper-slide" style="background-image:url('/static/neusoft/img/bn04.jpg')"></div>
+                <div class="swiper-slide" style="background-image:url('/static/neusoft/img/bn02new.png')"
+                    onclick="window.location.href='/announcement/gpInterAirlineRules.action'"></div>
+                <div class="swiper-slide" style="background-image:url('/static/neusoft/img/bn03new.png')"
+                     onclick="window.location.href='/announcement/TicketReimburse.action'"></div>
+
+            </div>
+            <div class="pagination"></div>
+
+            <div class="login" onclick="checkSwiper()">
+                <div class="loginform">
+                    <div class="logintitle pure-text-default pure-text-fff pure-border-bottom-gray ">
+                        购票 , 请登录!
+                    </div>
+                    <form class="pure-form pure-cf pure-form-aligned" name="loginForm" method="post" action="/login.action" id="frmlogin">
+
+                        <div class="pure-control-group pure-rel">
+                            <i class="icons icon_001 pure-form-icon"></i>
+                            <input id="username" name="username" type="text" class=" pure-padding-left-xxl" onclick = "clearErrorMsg();"
+                                   value = "" placeholder="请输入手机号或邮箱">
+                        </div>
+
+                        <div class="pure-control-group pure-rel">
+                            <i class="icons icons icon_002 pure-form-icon"></i>
+                            <input id="password"  name="password" type="password" class=" pure-padding-left-xxl" onclick = "clearErrorMsg();"
+                                   placeholder="请输入密码">
+                        </div>
+                        <div class="pure-control-group pure-cf pure-padding-top-xxs pure-margin-bottom-sm">
+                            <div class="pure-g pure-text-a pure-text-sm">
+                                <div class="pure-u-1-2">
+                                    <a  onclick="registerNow();" style="line-height:17px; cursor:pointer">立即注册</a>
+                                </div>
+                                <div class="pure-u-1-2 ">
+                                    <a  href="/reset.action" class="pure-fr" style="color: #00baff !important;">忘记登录密码?</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pure-control-group" id="indexMsg" style="
+                                
+                                display:none;
+                                ">
+                            <p id="indexMsgHtml" style="text-align:center;color:red;margin:0px;
+                                        text-align:center;font-size:15px;height:24px;font-weight:600;line-height:24px;
+                                    
+                                        display:none
+                                    ">
+                                
+                                </p>
+                        </div>
+                        <div class="pure-control-group">
+                            <input id="submitType" name="submitType" value="" style="display:none"/>
+                        	<input id='captchaToken' name='captchaToken' type='hidden' value='' />
+
+                            <button type="button" class="pure-button-login2" onclick="doSubmit1();">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+    <div class=" pure-cf">
+        <div class="pure-g pure-g-fixed ">
+            <div class="pure-u-1-2" style="padding-right:5px;">
+                <div class="pure-panel pure-fr pure-margin-top-0">
+                    <div class="pure-panel-hd"><i class="icons icon01"></i><span class="pure-padding-left-sm">帮助中心</span>
+                    </div>
+                    <div class="pure-panel-bd">
+                        <ul class="pure-avg-2 pure-text-sm">
+                            
+                                <li class="pure-text-truncate">
+                                    <a class = "pure-text-333"
+                                       href="/helpcenter/listWeb.action?category=1">最新公告</a>
+                                    
+                                </li>
+                            
+                                <li class="pure-text-truncate">
+                                    <a class = "pure-text-333"
+                                       href="/helpcenter/listWeb.action?category=2">购票渠道与方式</a>
+                                    
+                                </li>
+                            
+                                <li class="pure-text-truncate">
+                                    <a class = "pure-text-333"
+                                       href="/helpcenter/listWeb.action?category=3">公务机票票价</a>
+                                    
+                                </li>
+                            
+                                <li class="pure-text-truncate">
+                                    <a class = "pure-text-333"
+                                       href="/helpcenter/listWeb.action?category=4">退票及行程变更</a>
+                                    
+                                </li>
+                            
+                                <li class="pure-text-truncate">
+                                    <a class = "pure-text-333"
+                                       href="/helpcenter/listWeb.action?category=5">公务机票报销</a>
+                                    
+                                </li>
+                            
+                                <li class="pure-text-truncate">
+                                    <a class = "pure-text-333"
+                                       href="/helpcenter/listWeb.action?category=6">预算单位改革前准备</a>
+                                    
+                                </li>
+                            
+                                <li class="pure-text-truncate">
+                                    <a class = "pure-text-333"
+                                       href="/helpcenter/listWeb.action?category=7">公务卡</a>
+                                    
+                                </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pure-u-1-2 " style="padding-left:5px;">
+                <div class="pure-panel pure-margin-top-0">
+                    <div class="pure-panel-hd"><i class="icons icon2"></i><span class="pure-padding-left-sm">政策信息</span>
+                    </div>
+                    <div class="pure-panel-bd">
+                        <ul class="pure-avg-1  pure-text-sm">
+                            <li class="pure-g">
+                                <div class="pure-u-4-5 pure-text-truncate">
+                                    <a href="/policyInfo/officialFile.action" class="pure-text-333 ftw-700" >
+                                        关于加强公务机票购买管理有关事项的通知</a>
+                                </div>
+                                <div class="pure-u-1-5 pure-text-sm pure-text-666 pure-text-right">
+                                    2014-11-15
+                                </div>
+                            </li>
+                            <li class="pure-g">
+                                <div class="pure-u-4-5 pure-text-truncate">
+                                    <a href="/policyInfo/officialFileSecond.action" class="pure-text-333 ftw-700" >
+                                        关于加强公务机票购买管理有关事项的补充通知</a>
+                                </div>
+                                <div class="pure-u-1-5 pure-text-sm pure-text-666 pure-text-right">
+                                    2014-05-25
+                                </div>
+                            </li>
+                            <li class="pure-g">
+                                <div class="pure-u-4-5 pure-text-truncate">
+                                    <a href="/announcement/gpInterAirlineRules.action" class="pure-text-333 ftw-700" >
+                                        国际航线选择标准以及外事部门审批原则</a>
+                                </div>
+                                <div class="pure-u-1-5 pure-text-sm pure-text-666 pure-text-right">
+                                    2014-05-25
+                                </div>
+                            </li>
+                            
+                                
+                                    <li class="pure-g">
+                                        <div class="pure-u-4-5 pure-text-truncate">
+                                            <a href="/policyInfo/detailPolicyInfo.action?policyInfoId=61"
+                                               class="pure-text-333"
+                                               announcementId="61" name="detailAnnouncement">关于北京至澳门的地区航线购买说明</a>
+                                        </div>
+                                        <div class="pure-u-1-5 pure-text-sm pure-text-666 pure-text-right">
+                                            2015-11-06
+                                        </div>
+                                    </li>
+                                
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        
+        
+
+        
+    
+    <div class="bm_bg1">
+    </div>
+    <div class="footer  ">
+
+        <div class=" pure-g-fixed">
+            <div class="pure-g ">
+                <div class="pure-u-1-8 pure-padding-top-xs">
+                    <ul class="pure-text-sm">
+                        <li class="pure-padding-bottom-md">
+                            <a  href="/flightManage/init.action" style="color:#fff;">首页</a>
+                        </li>
+                        <li class="pure-padding-bottom-md">
+                            <a  href="/provider/loginProvider.action" style="color:#fff;">服务商查询</a>
+                        </li>
+                        <li class="pure-padding-bottom-md">
+                            <a  href="/budgetGp/init.action" style="color:#fff;">预算单位信息报送</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pure-u-1-8 pure-padding-top-xs">
+                    <ul class="pure-fr pure-text-sm">
+                        <li class="pure-padding-bottom-md">
+                            <a  href="/gpSupplier/initSupplier.action" style="color:#fff;">供应商查询</a>
+                        </li>
+                        <li class="pure-padding-bottom-md">
+                            <a  href="/ticketCheck/eletkt.action" style="color:#fff;">机票查验单查询</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="pure-u-1-2 pure-text-xs pure-padding-bottom-xl pure-text-center">
+                    <a href="http://bszs.conac.cn/sitename?method=show&id=14601529EA8E4664E053022819AC80DD" target="_blank">
+                        <div class="icons bm_img pure-center " style="margin-top:13px;margin-bottom:19px;"></div>
+                    </a>
+                    <div class="pure-text-center pure-padding-top">
+						<div style="height:44px;line-height:14px;">
+							<p>意见邮箱：gpservice@vip.163.com</p>
+							<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502039295" class="pure-text-fff" style="display:inline-block;text-decoration:none;height:14px;line-height:14px;margin-right:15px;">
+								<img height="14" width="14" style="float:left;" src="/static/images/jgwa.png">
+								<p style="float:left;height:14px;line-height:14px;margin:0px 0px 0px 5px;font-size:12px;">
+									京公网安备 11010502039295号
+								</p>
+							</a>
+
+							<a href="https://beian.miit.gov.cn/" class="pure-text-fff" target="_blank" style="display:inline-block;text-decoration:none;height:14px;line-height:14px;">
+								<p style="float:left;height:14px;line-height:14px;margin:0;font-size:12px;">
+									京ICP备 07001632号-3
+								</p>
+							</a>
+						</div>
+					</div>
+                    <div class="pure-text-center pure-padding-xs">地址：北京市朝阳区金盏金融商务区中国民用航空局清算中心 邮编：100018
+                    </div>
+                </div>
+
+                <div class="pure-u-1-4 pure-border-left">
+                    <div class="pure-fr pure-padding">
+                        <p class="pure-text-lg pure-margin-bottom-sm">7×24小时服务热线</p>
+                        <h2 class="pure-margin-vertical-0 pure-text-thin">400-818-6686</h2>
+                        
+                        <button class="pure-button pure-margin-top pure-text-sm"
+                                onclick="appUrl()">公务行APP移动客户端</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pure-g-fixed pure-border-top">
+            <p class="pure-text-xs pure-text-center pure-padding-top pure-margin-top " style="padding-bottom:56px;">
+                Copyright(C) 2014 CAAC Settlement Center, All rights reserved. 中国民用航空局清算中心版权所有
+            </p>
+        </div>
+        <div class="pure-app-down">
+            <div id="appDownQr">
+                <a id="appDownCloseBtn"></a>
+                <div id="appDownOpenBtn"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div id='gp-captcha'></div>
+<script src="/static/neusoft/js/idangerous.swiper.js"></script>
+<script type="text/javascript">
+	var gpCaptcha;
+    $(function () {
+        $('.swiper-container').swiper({
+            effect:'fade',
+            autoplay: 3000,//可选选项，自动滑动
+            loop: true,
+            speed: 800,
+            pagination: '.pagination',
+            paginationClickable: true,
+            free:false,
+            autoplayDisableOnInteraction: true,
+        });
+
+        //关闭通知
+        $('.tips .close').bind('click', function () {
+            $('.bannertips').remove()
+            $.ajax({
+                url: '/indexTipsShow.action',
+                type: "post",
+                cache: false,
+                dataType: "json",
+                success: function (dataJson) {
+                }
+            });
+
+        });
+
+        var width = (($(window).width()) >= 1920 ? 0 : ($(window).width() - 1920) / 2) + 'px';
+        var posi = ($(window).width() >= 1920 ? ($(window).width() - 1920) / 2 : 0) + 'px';
+
+        $('#appDownQr').animate({left: width}, 'swing', function () {
+            $(this).removeClass('closeStatus').addClass('openStatus')
+        });
+
+        $('.pure-app-down').css({'left': posi});
+        // 唤醒动效
+        $('#appDownOpenBtn').on('click', function () {
+            width = (($(window).width()) >= 1920 ? 0 : ($(window).width() - 1920) / 2) + 'px';
+            $('.pure-app-down').width('1920px')
+            $('#appDownQr').animate({left: width}, 'swing', function () {
+                $(this).removeClass('closeStatus').addClass('openStatus')
+
+            });
+        });
+
+        // 关闭动效
+        $('#appDownCloseBtn').on('click', function () {
+            $('#appDownQr').animate({left: '-1920px'}, 'swing', function () {
+                $(this).removeClass('openStatus').addClass('closeStatus');
+                $('.pure-app-down').width('137px');
+            });
+        });
+        $(window).resize(function () {
+            if ($('#appDownQr').hasClass('openStatus')) {
+                var width = (($(window).width()) >= 1920 ? 0 : ($(window).width() - 1920) / 2) + 'px';
+                $('#appDownQr').css({'left': width});
+            }
+            posi = ($(window).width() >= 1920 ? ($(window).width() - 1920) / 2 : 0) + 'px';
+            $('.pure-app-down').css({'left': posi});
+        });
+
+        $('#capimg').on('click', function () {
+            var timestamp = new Date().getTime();
+            $(this).attr('src', $(this).attr('src') + '?' + timestamp);
+        })
+
+        document.onkeydown = function(e){
+            var ev = document.all ? window.event : e;
+            if(ev.keyCode==13) {
+                doSubmit1();
+            }
+        }
+        
+        // 初始化验证码组件
+        var appId = '4c62eb565d15230ffcbc25def6ac4c11';
+		var apiServer = 'https://dingxiang.gpticket.org:7776';
+		var constIDServer = apiServer + '/udid/c1';
+		var constID_js = apiServer + '/dx-captcha/libs/const-id.js';
+		var ua_js = apiServer + '/dx-captcha/libs/greenseer.js';
+		gpCaptcha = _dx.Captcha(document.getElementById('gp-captcha'), {
+			appId: appId,
+			apiServer: apiServer,
+			constIDServer: constIDServer,
+			constID_js: constID_js,
+			ua_js: ua_js,
+			isSaaS: false,
+			style: 'popup',
+			success: function (token) {
+				$('#captchaToken').val(token);
+				gpCaptcha.hide();
+				doSubmit1();
+			}
+		});
+    })
+
+    function doSubmit1(){
+        if( $(".pure-button-login2").text()=="登 录 中..."){
+            return;
+        }
+        clearErrorMsg();
+        var username = document.getElementById('username').value;
+        username = username.replace(/(^\s*)|(\s*$)/g,'');//清理空格
+        $('#username').val(username);
+
+        var password = document.getElementById('password').value;
+        
+        var captchaToken = document.getElementById('captchaToken').value;
+
+        if(''==username){
+            $("#indexMsg").show();
+            $('#indexMsgHtml').show();
+            $('#indexMsgHtml').text("请输入手机号或邮箱");
+            $("#username").css("border","1px solid red");
+            return false;
+        } else if(''==password){
+            $("#indexMsg").show();
+            $('#indexMsgHtml').show();
+            $('#indexMsgHtml').text("请输入密码");
+            $("#password").css("border","1px solid red");
+            return false;
+        } else if(''==captchaToken){
+        	gpCaptcha.show();
+            return false;
+        }
+
+        $('#userType').val('1');
+        var url = "/login.action?"
+        if(skip){
+            url+='skip='+skip
+        }
+        $('#frmlogin').attr("action",url).submit();
+        $(".pure-button-login2").text("登 录 中...");
+        $(".pure-button-login2").unbind("click");
+
+    }
+    //立即注册
+    function registerNow(){
+        $('#userType').val('2');
+        $('#frmlogin').attr("action","/register/init.action").submit();
+    }
+    //清空错误提示
+    function clearErrorMsg(){
+        $('#indexMsg').hide();
+        $('#indexMsgHtml').hide();
+        $("#username").css("border","1px #ccc solid");
+        $("#password").css("border","1px #ccc solid");
+        $("#captcha").css("border","1px #ccc solid");
+    }
+    function appUrl(){
+        window.location.href="/mobileClient/getMobileClient.action";
+    }
+
+    function checkSwiper(){
+        //$('.swiper-container').find('.swiper-slide-active').click();
+    }
+
+</script>
+</body>
+<!-- <script type="text/javascript">document.write(unescape("%3Cspan id='_ideConac' %3E%3C/span%3E%3Cscript src='http://dcs.conac.cn/js/33/000/0000/60515311/CA330000000605153110002.js' type='text/javascript'%3E%3C/script%3E"));</script> -->
+</html>

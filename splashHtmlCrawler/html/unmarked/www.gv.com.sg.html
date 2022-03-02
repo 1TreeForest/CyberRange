@@ -482,7 +482,7 @@ if (location.pathname != "/")
 </div>
 <div class="login-input">
 <label><strong>Email or Mobile</strong>:</label>
-<input type="text" class="form-control" placeholder="Email or Mobile" ng-model="loginUsername">
+ <input type="text" class="form-control" placeholder="Email or Mobile" ng-model="loginUsername">
 </div>
 <br>
 <div class="login-input">
@@ -502,7 +502,7 @@ Forgot my password
 </div>
 </div>
 </form>
- </div>
+</div>
 </div>
 </div>
 <div class="gvmc-section hidden-xs hidden-sm" ng-cloak>
@@ -644,7 +644,7 @@ Purchase
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </div>
-<div style="float: left;line-height: 1;margin-left: 5px;">Menu</div>
+ <div style="float: left;line-height: 1;margin-left: 5px;">Menu</div>
 </button>
 </div>
 
@@ -665,7 +665,7 @@ Purchase
 </select>
 <div class="clearfix"></div>
 </div>
- <div class="dropdown">
+<div class="dropdown">
 <span>Select Date</span>
 <select class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" aria-haspopup="true" aria-expanded="false" ng-model="selDate" ng-options="date.convertedDate for date in qBuyDates" ng-change="selectDateMainMenu(selDate)" ng-disabled="qBuyDates.length == 0">
 <option value=""></option>
@@ -800,7 +800,7 @@ Purchase
 <option ng-repeat="location in item.locations" value="{{location.id}}" ng-bind-html="location.name" ng-selected="item.location == location.id"></option>
 </select>
 </td>
- </tr>
+</tr>
 </table>
 </td>
 </tr>
@@ -836,7 +836,7 @@ Purchase
 </td>
 </tr>
 <tr>
-<td width="30%">Amount:</td>
+ <td width="30%">Amount:</td>
 <td><span ng-bind-html="item.totalPriceStr"></span></td>
 </tr>
 <tr class="c-location">
@@ -889,7 +889,7 @@ Purchase
 <table border="0" width="100%" class="i-table">
 <tr>
 <td width="12%"><img ng-src="{{item.imgLink}}" style="max-height:50px;max-width:50px;" /></td>
-<td width="54%"><span ng-bind-html="item.itemName"></span></td>
+ <td width="54%"><span ng-bind-html="item.itemName"></span></td>
 <td class="text-center" width="22%"><button type="button" class="btn btn-third" ng-click="removeFromWish(item.productCode, item.itemCode)">Remove</button></td>
 <td class="text-center" width="12%"><button type="button" class="btn btn-primary" ng-click="viewItem(item.productCode)">View</button></td>
 </tr>
@@ -1221,7 +1221,7 @@ Purchase
 <span class="caption-pg-short" ng-show="movie.rating == 'G' || movie.rating == 'PG' || movie.rating == 'PG13'"> {{movie.consumerAdvise}}</span>
 <span class="caption-pg-long" ng-show="movie.rating == 'NC16' || movie.rating == 'M18' || movie.rating == 'R21'"> {{movie.consumerAdvise}}</span>
 </div>
-</div>
+ </div>
 <p class="caption-pg" ng-show="movie.rating.length>0 && !movie.ratingImgUrl">({{movie.rating}}<span ng-show="movie.consumerAdvise.length>0">: {{movie.consumerAdvise}}</span>)</p>
 <div class="col-md-12 col-sm-12 col-xs-12 col-pg-zero text-left" ng-style="{'float': 'unset', 'clear': 'both'}">
 <p class="caption-times" ng-show="movie.duration>0">{{movie.duration}} minutes</p>
@@ -1239,7 +1239,7 @@ Purchase
 </ul>
 <div ng-show="movie.isSubFormatExist && movie.buyTicket">
 <p>Select a format</p>
- <select ng-init="movieFormat = movie.subFilmList[0]" ng-model="movieFormat" class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" ng-options="formatTypes[subFilm.formatCode].description for subFilm in movie.subFilmList" ng-change="selectMovFormat(movie,movieFormat,'now')" aria-haspopup="true" aria-expanded="false">
+<select ng-init="movieFormat = movie.subFilmList[0]" ng-model="movieFormat" class="form-control btn btn-default btn-sm dropdown-toggle ng-pristine ng-valid" ng-options="formatTypes[subFilm.formatCode].description for subFilm in movie.subFilmList" ng-change="selectMovFormat(movie,movieFormat,'now')" aria-haspopup="true" aria-expanded="false">
 </select>
 </div>
 </div>
@@ -1502,7 +1502,7 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
 <li ng-repeat="n in [] | range:movie.reviewRating">
 <a ng-click="showReview(movie)"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/pn-se-1-small.png" ng-if="n == 0 || n >= 1 " /></a>
 <a ng-click="showReview(movie)"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/pn-se-2-small.png" ng-if="n < 1 && n != 0" /></a>
-</li>
+ </li>
 </ul>
 <div class="dropdown">
 <div ng-if="movie.child.length > 1 && movie.buyTicket">
@@ -1597,7 +1597,7 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
 </div>
 </div>
 </div>
- </div>
+</div>
 
 <div class="clearfix"></div>
 </div>
@@ -1634,7 +1634,7 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
 </div>
 
 <div class="row" style="margin: 0; padding: 0">
-<div ng-if="$index < 3" class="col-xs-4 col-sm-4 col-md-4" ng-repeat="movie in exHomeMovies">
+ <div ng-if="$index < 3" class="col-xs-4 col-sm-4 col-md-4" ng-repeat="movie in exHomeMovies">
 <div class="thumbnail">
 <div class="poster brand-poster">
 <a ng-class="{'gv-ee': movie.exclusive && movie.superSneaks == false, 'mr-ee': movie.superSneaks, 'mp-ee': movie.mPassMovie}" ng-style="{'border-color': movie.mPassMovie ? movie.colorCode : ''}" ng-if="movie.specialEvent==false && (movie.type=='Single' || movie.type.length==0)" href="javascript:void(0);" ng-click="buyMovTixNow(movie,'ex')"><img ng-src="{{movie.imageLink}}" alt="..."></a>
@@ -1661,7 +1661,7 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
 <div class="col-md-12 col-sm-12 col-xs-12 col-pg-zero text-left">
 <p class="caption-times" ng-show="movie.duration>0">{{movie.duration}} minutes</p>
 </div>
-<ul class="rating list-unstyled list-inline">
+ <ul class="rating list-unstyled list-inline">
 <li ng-repeat="n in [] | range:movie.reviewRating">
 <a ng-click="showReview(movie)"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/pn-se-1-small.png" ng-if="n == 0 || n >= 1 " /></a>
 <a ng-click="showReview(movie)"><img ng-src="https://media.gv.com.sg/cms/resources/templating-kit/themes/gv/images/pn-se-2-small.png" ng-if="n < 1 && n != 0" /></a>
@@ -1710,7 +1710,7 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
 <li role="presentation" ng-repeat="cinema in cinemas" ng-click="selectedCinema(cinema,$index)"><a role="menuitem" tabindex="-1" href="javascript:void(0);">{{cinema.name}}</a></li>
 </ul>
 </div>
-</div>
+ </div>
 
 <div class="row" style="margin: 0; padding: 0">
 <div ng-if="$index < 3" class="col-xs-4 col-sm-4 col-md-4" ng-repeat="movie in exHomeMovies">
@@ -1751,7 +1751,7 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
 <p>Select a format</p>
 <select ng-init="exMovieFormat =  movie.child[0]" ng-model="exMovieFormat" class="form-control" ng-options="formatTypes[subFilm.formatCode].description for subFilm in movie.child" ng-change="selectMovFormat(movie, exMovieFormat,'ex')">
 </select>
- </div>
+</div>
 </div>
 <p class="button-section" ng-if="movie.buyTicket"><button type="button" class="btn btn-sm btn-primary" ng-disabled="movieFormat.formatCode == '' " ng-click="buyMovTixNow(movie, 'ex')">Buy Tickets</button></p>
 </div>
@@ -1786,7 +1786,7 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
 </span>
 <span ng-if="selExCinema.name == null">
 -- Cinemas -- <span class="caret"></span>
-</span>
+ </span>
 </button>
 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="width: 100%;">
 <li role="presentation" ng-repeat="cinema in cinemas" ng-click="selectedCinema(cinema,$index)"><a role="menuitem" tabindex="-1" href="javascript:void(0);">{{cinema.name}}</a></li>
@@ -1817,7 +1817,7 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
 <span class="caption-pg-long" ng-show="movie.rating == 'NC16' || movie.rating == 'M18' || movie.rating == 'R21'"> {{movie.consumerAdvise}}</span>
 </div>
 </div>
-<div class="col-lg-3 col-md-1" ng-show="movie.rating.length>0 && movie.ratingImgUrl">&nbsp;</div>
+ <div class="col-lg-3 col-md-1" ng-show="movie.rating.length>0 && movie.ratingImgUrl">&nbsp;</div>
 <p class="caption-pg" ng-show="movie.rating.length>0 && !movie.ratingImgUrl">({{movie.rating}}<span ng-show="movie.consumerAdvise.length>0">: {{movie.consumerAdvise}}</span>)</p>
 <div class="col-md-12 col-sm-12 col-xs-12 col-pg-zero text-left">
 <p class="caption-times" ng-show="movie.duration>0">{{movie.duration}} minutes</p>
@@ -1863,7 +1863,7 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
 <button class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
 <span ng-if="selExCinema.name != null">
 {{selExCinema.name}}
-</span>
+ </span>
 <span ng-if="selExCinema.name == null">
 -- Cinemas -- <span class="caret"></span>
 </span>
@@ -1958,7 +1958,7 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
 <div ng-if="$index < 3" class="col-xs-4 col-sm-4 col-md-4" ng-repeat="movie in exHomeMovies">
 <div class="thumbnail">
 <div class="poster brand-poster">
- <a ng-class="{'gv-ee': movie.exclusive && movie.superSneaks == false, 'mr-ee': movie.superSneaks, 'mp-ee': movie.mPassMovie}" ng-style="{'border-color': movie.mPassMovie ? movie.colorCode : ''}" ng-if="movie.specialEvent==false && (movie.type=='Single' || movie.type.length==0)" href="javascript:void(0);" ng-click="buyMovTixNow(movie,'ex')"><img ng-src="{{movie.imageLink}}" alt="..."></a>
+<a ng-class="{'gv-ee': movie.exclusive && movie.superSneaks == false, 'mr-ee': movie.superSneaks, 'mp-ee': movie.mPassMovie}" ng-style="{'border-color': movie.mPassMovie ? movie.colorCode : ''}" ng-if="movie.specialEvent==false && (movie.type=='Single' || movie.type.length==0)" href="javascript:void(0);" ng-click="buyMovTixNow(movie,'ex')"><img ng-src="{{movie.imageLink}}" alt="..."></a>
 <a ng-class="{'gv-ee': movie.exclusive && movie.superSneaks == false, 'mr-ee': movie.superSneaks, 'mp-ee': movie.mPassMovie}" ng-style="{'border-color': movie.mPassMovie ? movie.colorCode : ''}" ng-if="movie.specialEvent==true" href="GVEventDetails#/event/{{movie.filmCd}}"><img ng-src="{{movie.imageLink}}" alt="..."></a>
 <a ng-class="{'gv-ee': movie.exclusive && movie.superSneaks == false, 'mr-ee': movie.superSneaks, 'mp-ee': movie.mPassMovie}" ng-style="{'border-color': movie.mPassMovie ? movie.colorCode : ''}" ng-if="movie.type=='Group'" href="GVGroupSynopsis#/group/{{movie.filmCd}}"><img ng-src="{{movie.imageLink}}" alt="..."></a>
 <span class="gv-ee-text" ng-if="movie.exclusive && movie.superSneaks == false">GV EXCLUSIVE</span>
@@ -2035,7 +2035,7 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
 </div>
 
 <div class="row" style="margin: 0; padding: 0">
- <div ng-if="$index < 3" class="col-xs-4 col-sm-4 col-md-4" ng-repeat="movie in exHomeMovies">
+<div ng-if="$index < 3" class="col-xs-4 col-sm-4 col-md-4" ng-repeat="movie in exHomeMovies">
 <div class="thumbnail">
 <div class="poster brand-poster">
 <a ng-class="{'gv-ee': movie.exclusive && movie.superSneaks == false, 'mr-ee': movie.superSneaks, 'mp-ee': movie.mPassMovie}" ng-style="{'border-color': movie.mPassMovie ? movie.colorCode : ''}" ng-if="movie.specialEvent==false && (movie.type=='Single' || movie.type.length==0)" href="javascript:void(0);" ng-click="buyMovTixNow(movie,'ex')"><img ng-src="{{movie.imageLink}}" alt="..."></a>
@@ -2265,7 +2265,7 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
 <li><a href="TermsOfService">Terms of Service</a></li>
 <li><a href="PrivacyPolicy">Privacy Policy</a></li>
 <li><a href="PrivacyPolicy#cookieMgmt">Ad Choices</a></li>
- </ul>
+</ul>
 <div class="clearfix"></div>
 </div>
 </div>

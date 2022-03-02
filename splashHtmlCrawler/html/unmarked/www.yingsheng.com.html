@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>[英盛网]-专业的在线教育平台_在线培训机构_培训网站</title>
+    <link rel="shortcut icon" type="image/x-icon" href="//static.yingsheng.com/www.yingsheng.com/content/images/global/favicon.ico" />
+    <meta name="keywords" content="在线教育,培训网,培训机构,英盛网,英盛培训网,培训,在线培训,深圳市英盛网络教育科技有限公司" />
+    <meta name="description" content="英盛网是一个面向全国所有经营管理者、职场人士的在线学习及服务的在线培训平台，隶属于深圳市英盛网络教育科技有限公司。英盛网内容覆盖了人力资源，生产管理，营销管理，电子商务，市场营销，财务管理，职业素养，综合管理等多个领域，为用户提供一个最便捷、成本最低、服务最好的经营管理学习平台。" />
+    <meta name="author" content="英盛网" />
+
+    <style type="text/css">
+        .ko-hide{
+            display: none;
+        }
+    </style>
+    
+
+    
+
+    
+    <link rel="stylesheet" href="//www.yingsheng.com/static/dist/common/layer/skin/layer.css" />
+    <link rel="stylesheet" href="//static.yingsheng.com/global/css/global.css">
+    <link rel="stylesheet" href="//static.yingsheng.com/global/css/all_global.css">
+    <link rel="stylesheet" href="//static.yingsheng.com/www.yingsheng.com/content/css/index.css" />
+
+    <!--[if lt IE 9]>
+<script src="//www.yingsheng.com/static/dist/common/json2.js"></script>
+<script src="//www.yingsheng.com/static/dist/common/es5-shim.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+    var baseUrl = '//www.yingsheng.com';
+    var requireConfig = {
+        urlArgs: 'v=1.11',
+        baseUrl: '//www.yingsheng.com/static',
+        paths: {
+            jquery: './dist/common/jquery-1.12.4',
+            common: './js/common',
+            ysCounter: '//global.yingsheng.com/counter/ysCounter',
+            bluebird: './dist/common/bluebird.min',
+            knockout: './dist/common/knockout-3.4.0',
+            mapping: './dist/common/knockout.mapping-latest',
+            underscore: './dist/common/underscore.min',
+            DataSource: './dist/tools/DataSourceExtender.min',
+            hprose: './dist/common/hprose.min',
+            HproseClient: './dist/tools/HproseClient.min',
+            validate: './dist/common/validate.min',
+            KnockoutValidation: './dist/tools/KnockoutValidation.min',
+            text: './dist/common/require.text',
+            
+            
+            
+            
+            
+            cookie: './dist/common/jquery.cookie',
+            layer: './dist/common/layer/layer.min',
+            slider: './js/index',
+            lazyload: './lazyload/jquery.lazyload',
+            ask_course: './js/index_ask_course',
+            footer: './dist/tools/PcFooter.min',
+            //adFloat、adfPopover
+            adFloat: './dist/components/AdFloat.min',
+            adFloatTemplate: './dist/templates/AdFloat.html',
+            adPopover: './dist/components/AdPopover.min',
+            adPopoverTemplate: './dist/templates/AdPopover.html',
+            adPopoverStyle: './dist/style/AdPopover.min',
+            SSO: './dist/components/SSO.min',
+            ssoTemplate: './dist/templates/SSO.html'
+            //adFloat、adfPopover
+            /*此处请根据需求添加插件*/
+//            globalTips: '//static.yingsheng.com/global/js/global_tips'
+        },
+        shim: {
+            ysCounter: {
+                deps: ['jquery']
+            },
+            common: {
+                deps: ['jquery']
+            },
+            layer: {
+                deps: ['jquery']
+            },
+            sso: {
+                deps: ['layer']
+            },
+            adverthome: {
+                deps: ['cookie']
+            },
+            lazyload: {
+                deps: ['jquery']
+            },
+            slider: {
+                deps: ['lazyload']
+            },
+            ask_course: {
+                deps: ['jquery']
+            },
+            cookie: {
+                deps: ['jquery']
+            }
+//            ,
+//            globalTips: {
+//                deps: ['cookie']
+//            }
+        },
+        map: {
+            '*': {
+                'css': './dist/common/css.min'
+            }
+        }
+        /*可以在此处补充其他require的配置*/
+    };
+    if(window.WebSocket && navigator.userAgent.indexOf("AppleWebKit")<0){
+        hproseProtocol = 'wss';
+        requireConfig.paths.hprose = './dist/common/hprose-html5.min';
+    }
+    // requireConfig.paths.work = '';
+</script>
+    <script src="//www.yingsheng.com/static/dist/common/require.js"></script>
+    <script type="text/javascript">
+        
+        function changePartenrIndex(_index){
+            
+             var liPartner = document.getElementById('liPartner')
+            var liFriendLink = document.getElementById('liFriendLink')
+            var divPartner = document.getElementById('divPartner')
+            var divFriendLink = document.getElementById('divFriendLink')
+            if(_index==0){
+                liPartner.classList.add('on')
+                divPartner.style.display="";
+                liFriendLink.classList.remove('on')
+                divFriendLink.style.display="none";
+            }else{
+                liFriendLink.classList.add('on')
+                divFriendLink.style.display="";
+                liPartner.classList.remove('on')
+                divPartner.style.display="none";
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        (function() {
+            require.config(window.requireConfig);
+            define('work',['knockout', 'footer', 'adFloat', 'SSO'], function(ko) {
+                var viewModel, view_model;
+                viewModel = function(){
+                    
+                }
+                view_model = new viewModel();
+                return ko.applyBindings(view_model);
+            });
+
+            require(['ysCounter', 'common', 'work'], function() {});
+
+        }).call(this);
+    </script>
+
+   <script type="text/javascript">
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+
+</head>
+
+<body>
+    
+
+    <div id="ssoTopHead" style="min-height:69px;" data-bind='component: {
+          name: "sso",
+          params: {
+            
+          }
+        }'></div>
+
+    <div data-bind='component: {
+          name: "ad-float",
+          params: {
+            
+          }
+        }'></div>
+
+    <!--<div data-bind='component: {
+      name: "ad-popover",
+      params: {
+        
+      }
+    }'></div> -->
+
+
+    <div id="app">
+    
+    </div>
+    
+    <div class="index_friend">
+        <div class="bannerSwitch">
+            <ul>
+                <li id="liPartner" class="on" onclick="changePartenrIndex(0)">我们的优势
+                    <span></span>
+                </li>
+                <li id="liFriendLink" onclick="changePartenrIndex(1)">友情链接</li>
+            </ul>
+
+            <div class="clear"></div>
+
+            <div class="partner"></div>
+
+            <div id="divPartner"  class="us_goods">
+                <dl>
+                    <a rel="nofollow" href="//www.yingsheng.com/special/150416/#th_12" target="_blank" title="16年经验-企业培训品牌">
+                        <dt><img alt="16年经验-企业培训品牌" class="lazy" src="//static.yingsheng.com/www.yingsheng.com/content/images/index/ys_01.jpg" /></dt>
+                        <dd>
+                            <strong>16年经验</strong>企业培训品牌</dd>
+                    </a>
+                </dl>
+                <dl>
+                    <a rel="nofollow" href="//www.yingsheng.com/special/150416/#biaozhun" target="_blank" title="12条标准-严格筛选讲师">
+                        <dt><img alt="12条标准-严格筛选讲师" class="lazy" src="//static.yingsheng.com/www.yingsheng.com/content/images/index/ys_02.jpg" /></dt>
+                        <dd>
+                            <strong>12条标准</strong>严格筛选讲师</dd>
+                    </a>
+                </dl>
+                <dl>
+                    <a rel="nofollow" href="//www.yingsheng.com/special/150416/#xitong" target="_blank" title="系统实战-全面实操分享">
+                        <dt><img alt="系统实战-全面实操分享" class="lazy" src="//static.yingsheng.com/www.yingsheng.com/content/images/index/ys_03.jpg" /></dt>
+                        <dd>
+                            <strong>系统实战</strong>全面实操分享</dd>
+                    </a>
+                </dl>
+                <dl>
+                    <a rel="nofollow" href="//www.yingsheng.com/ask/" target="_blank" title="639专家-在线答疑职场">
+                        <dt><img alt="639位专家-在线答疑职场" class="lazy" src="//static.yingsheng.com/www.yingsheng.com/content/images/index/ys_04.jpg" /></dt>
+                        <dd>
+                            <strong>639位专家</strong>在线答疑职场</dd>
+                    </a>
+                </dl>
+                <dl>
+                    <a rel="nofollow" href="//www.yingsheng.com/special/150416/#tuikuan" target="_blank" title="7天不满意-全额退款">
+                        <dt><img alt="7天不满意-全额退款" class="lazy" src="//static.yingsheng.com/www.yingsheng.com/content/images/index/ys_05.jpg" /></dt>
+                        <dd>
+                            <strong>7天不满意</strong>全额退款</dd>
+                    </a>
+                </dl>
+                <dl class="nob">
+                    <a rel="nofollow" href="//www.yingsheng.com/app" target="_blank" title="APP学习-离线下载">
+                        <dt><img alt="APP学习-离线下载" class="lazy" src="//static.yingsheng.com/www.yingsheng.com/content/images/index/ys_06.jpg" /></dt>
+                        <dd>
+                            <strong>APP学习</strong>离线下载</dd>
+                    </a>
+                </dl>
+
+                <div class="clear"></div>
+            </div>
+
+            <div  id="divFriendLink" style="display:none" class="link">
+                <a target="_blank"  href="http://www.mingketang.com/">企业管理培训 </a><a target="_blank"  href="http://www.pxwy.cn">培训机构</a><a target="_blank"  href="https://peixun.2018.cn/">2018培训网</a><a target="_blank"  href="http://www.tzcy37.com">特色餐饮加盟</a><a target="_blank"  href="http://sydw.huatu.com/">事业单位招聘信息网</a><a target="_blank"  href="http://www.ixinda.com">托福代报</a><a target="_blank"  href="http://www.jiameng.cn/">加盟网</a><a target="_blank"  href="http://www.guijiaowang.com/">小学作文 归教网</a><a target="_blank"  href="https://www.tantuw.com/">坦途教育网</a><a target="_blank"  href="http://he.huatu.com/">河北人事考试网</a><a target="_blank"  href="https://www.zuowenla.cn">英语作文</a><a target="_blank"  href="https://www.xiaoleteam.com/">网络营销策划</a><a target="_blank"  href="http://sc.kaoyan365.cn/">成都考研辅导班</a><a target="_blank"  href="http://e.kaoyan365.cn">考研网校网课</a><a target="_blank"  href="http://www.3721zhixiao.com/">职校招生</a><a target="_blank"  href="http://www.5goto.com/">山东技校</a><a target="_blank"  href="http://www.wenjuntech.com/">文军营销</a><a target="_blank"  href="http://gd.zgjsks.com/">广东教师考试</a><a target="_blank"  href="http://java.tedu.cn/">Java培训</a><a target="_blank"  href="http://www.121mu.com/">乐考网</a><a target="_blank"  href="https://www.oldboyedu.com/">老男孩Linux</a><a target="_blank"  href="https://www.0554zp.com/">淮南人才网</a><a target="_blank"  href="http://cd.xhd.cn/">成都雅思培训</a><a target="_blank"  href="http://www.gdpx.com.cn">广东培训网</a><a target="_blank"  href="http://www.hecom.cn">移动CRM</a><a target="_blank"  href="http://www.ysedu.com">教师资格证考试</a><a target="_blank"  href="http://www.mobiletrain.org">java培训</a><a target="_blank"  href="http://www.xinxunwei.com/">笔记本维修培训</a><a target="_blank"  href="http://news.yingsheng.com">英盛教育在线</a><a target="_blank"  href="http://www.0577hr.com">温州人才网</a><a target="_blank"  href="http://www.wysls.com/">大学生演讲网 </a><a target="_blank"  href="http://www.docer.com">PPT模板</a><a target="_blank"  href="http://www.15hr.com">台州一网人才</a><a target="_blank"  href="http://www.78gk.com">一级建造师挂靠</a><a target="_blank"  href="http://www.ychr.com">盐城人才网</a><a target="_blank"  href="http://www.djob.com/">中国专业人才网</a><a target="_blank"  href="http://www.yingsheng.com">在线教育</a><a target="_blank"  href="http://bk.5588.tv/  ">美妆百科</a><a target="_blank"  href="http://sh.zyue.com/">上海驾校网</a><a target="_blank"  href="http://www.micronet.com.cn">微网微信商城 </a><a target="_blank"  href="http://en-yinbiao.xiao84.com">英语音标</a><a target="_blank"  href="http://www.china-train.net/">培训机构</a><a target="_blank"  href="http://hn.focus.cn/">搜狐焦点海南站</a><a target="_blank"  href="http://www.yingsheng.com/news/">职场法则</a><a target="_blank"  href="http://www.yingsheng.com/kjxz/">课件下载</a><a target="_blank"  href="http://www.yingsheng.com/afree/">在线培训</a>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    
+</div>
+    <script>
+        var isDebug = 'false'
+        var baseUrl = '//www.yingsheng.com'
+        var friendLinks = '<a target="_blank"  href="http://www.mingketang.com/">企业管理培训 </a><a target="_blank"  href="http://www.pxwy.cn">培训机构</a><a target="_blank"  href="https://peixun.2018.cn/">2018培训网</a><a target="_blank"  href="http://www.tzcy37.com">特色餐饮加盟</a><a target="_blank"  href="http://sydw.huatu.com/">事业单位招聘信息网</a><a target="_blank"  href="http://www.ixinda.com">托福代报</a><a target="_blank"  href="http://www.jiameng.cn/">加盟网</a><a target="_blank"  href="http://www.guijiaowang.com/">小学作文 归教网</a><a target="_blank"  href="https://www.tantuw.com/">坦途教育网</a><a target="_blank"  href="http://he.huatu.com/">河北人事考试网</a><a target="_blank"  href="https://www.zuowenla.cn">英语作文</a><a target="_blank"  href="https://www.xiaoleteam.com/">网络营销策划</a><a target="_blank"  href="http://sc.kaoyan365.cn/">成都考研辅导班</a><a target="_blank"  href="http://e.kaoyan365.cn">考研网校网课</a><a target="_blank"  href="http://www.3721zhixiao.com/">职校招生</a><a target="_blank"  href="http://www.5goto.com/">山东技校</a><a target="_blank"  href="http://www.wenjuntech.com/">文军营销</a><a target="_blank"  href="http://gd.zgjsks.com/">广东教师考试</a><a target="_blank"  href="http://java.tedu.cn/">Java培训</a><a target="_blank"  href="http://www.121mu.com/">乐考网</a><a target="_blank"  href="https://www.oldboyedu.com/">老男孩Linux</a><a target="_blank"  href="https://www.0554zp.com/">淮南人才网</a><a target="_blank"  href="http://cd.xhd.cn/">成都雅思培训</a><a target="_blank"  href="http://www.gdpx.com.cn">广东培训网</a><a target="_blank"  href="http://www.hecom.cn">移动CRM</a><a target="_blank"  href="http://www.ysedu.com">教师资格证考试</a><a target="_blank"  href="http://www.mobiletrain.org">java培训</a><a target="_blank"  href="http://www.xinxunwei.com/">笔记本维修培训</a><a target="_blank"  href="http://news.yingsheng.com">英盛教育在线</a><a target="_blank"  href="http://www.0577hr.com">温州人才网</a><a target="_blank"  href="http://www.wysls.com/">大学生演讲网 </a><a target="_blank"  href="http://www.docer.com">PPT模板</a><a target="_blank"  href="http://www.15hr.com">台州一网人才</a><a target="_blank"  href="http://www.78gk.com">一级建造师挂靠</a><a target="_blank"  href="http://www.ychr.com">盐城人才网</a><a target="_blank"  href="http://www.djob.com/">中国专业人才网</a><a target="_blank"  href="http://www.yingsheng.com">在线教育</a><a target="_blank"  href="http://bk.5588.tv/  ">美妆百科</a><a target="_blank"  href="http://sh.zyue.com/">上海驾校网</a><a target="_blank"  href="http://www.micronet.com.cn">微网微信商城 </a><a target="_blank"  href="http://en-yinbiao.xiao84.com">英语音标</a><a target="_blank"  href="http://www.china-train.net/">培训机构</a><a target="_blank"  href="http://hn.focus.cn/">搜狐焦点海南站</a><a target="_blank"  href="http://www.yingsheng.com/news/">职场法则</a><a target="_blank"  href="http://www.yingsheng.com/kjxz/">课件下载</a><a target="_blank"  href="http://www.yingsheng.com/afree/">在线培训</a>'
+    </script>
+    <script src="//www.yingsheng.com/static/vue/app.min.js?1646146020"></script>
+    <script src="//www.yingsheng.com/static/vue/vendors.min.js?1646146020"></script>
+
+    
+
+
+    <!--底部footer-->
+<div class="bottom_nav">
+    <div class="left_logo"><a title="英盛网" href="//www.yingsheng.com">
+        <img alt="英盛网" src="//static.yingsheng.com/www.yingsheng.com/footer/bottom_logo.png" border="0" /></a></div>
+    <div class="bottom_about">
+        <dl id="c">
+            <dt><a href="//www.yingsheng.com/forme-intro.html" target="_blank">关于我们</a></dt>
+            <dd><a rel="nofollow" target="_blank" href="//www.yingsheng.com/forme-exemption.html" title="免责声明">免责声明</a></dd>
+            <dd><a rel="nofollow" target="_blank" href="//www.yingsheng.com/forme-contact.html" title="联系方式">联系方式</a></dd>
+        </dl>
+        <dl>
+            <dt><a>帮助中心</a></dt>
+            <dd><a rel="nofollow" target="_blank" href="//www.yingsheng.com/forme-member.html" title="会员权益">会员权益</a></dd>
+            <dd><a rel="nofollow" target="_blank" href="//www.yingsheng.com/forme-watch.html" title="如何观看">如何观看</a></dd>
+            <dd><a rel="nofollow" target="_blank" href="//www.yingsheng.com/forme-forgetpass.html" title="忘记密码">忘记密码</a></dd>
+            <dd><a rel="nofollow" target="_blank" href="//www.yingsheng.com/forme-question.html" title="常见问题">常见问题</a></dd>
+        </dl>
+        <dl>
+            <dt><a>商务合作</a></dt>
+            <dd><a rel="nofollow" target="_blank" href="//www.yingsheng.com/msg/nationalAgents4" title="渠道加盟">渠道加盟</a></dd>
+            <dd><a rel="nofollow" target="_blank" href="//www.yingsheng.com/forme-teacher.html" title="讲师合作">讲师合作</a></dd>
+            <dd><a rel="nofollow" target="_blank" href="//www.yingsheng.com/msg/cooperation" title="课程合作">课程合作</a></dd>
+        </dl>
+        <dl class="dl_03">
+            <dd class="tel"><img alt="电话" src="//static.yingsheng.com/www.yingsheng.com/footer/tel.png" />客服热线：400-666-4343</dd>
+            <dd class="email">建议和投诉：ceo@yingsheng.com</dd>
+        </dl>
+    </div>
+    <div class="bottom_contact">
+        <dl>
+            <dt>
+                <img alt="关注微信公众号" src="//static.yingsheng.com/www.yingsheng.com/footer/bottom_code.png" /></dt>
+            <dd>关注我们</dd>
+            <dd class="d1">每天好料不断</dd>
+        </dl>
+        <ul>
+            <li><a title="立即关注" rel="nofollow" target="_blank" href="//www.yingsheng.com/link.htm?linkurl=//weibo.com/609878960">
+                <img alt="立即关注" src="//static.yingsheng.com/www.yingsheng.com/footer/sina.png" /></a></li>
+            <li><a title="立即订阅" rel="nofollow" target="_blank" href="//www.yingsheng.com/link.htm?linkurl=http%3A%2F%2Flist.qq.com%2Fcgi-bin%2Fqf_invite%3Fid%3D3a8775ed4e5158814ede881a7540fa5385994870dacb95d0">
+                <img alt="立即订阅" src="//static.yingsheng.com/www.yingsheng.com/footer/e-mail.png" /></a></li>
+        </ul>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="footer">
+    <div class="certification">
+        <!--<a target="_blank" title="经营性网站备案信息" href="//www.yingsheng.com/link.htm?linkurl=https://ss.knet.cn/verifyseal.dll?sn=e14111144030056156pfd9000000&amp;ct=df&amp;a=1&amp;pa=0.5873584735672921" id="kx_verify" tabindex="-1" target="_blank" kx_type="图标式" style="display: inline-block;" rel="nofollow">
+        <a target="_blank" title="经营性网站备案信息" href="//www.yingsheng.com/link.htm?linkurl=//www.anquan.org/authenticate/cert/?site=yingsheng.com&sn=None&type=gj" id="A1" tabindex="-1" target="_blank" kx_type="图标式" style="display: inline-block;" rel="nofollow">
+            <img alt="安全联盟" src="//static.yingsheng.com/www.yingsheng.com/footer/certification_1.png" /></a>-->
+        <img alt="支付宝" src="//static.yingsheng.com/www.yingsheng.com/footer/certification_2.png" />
+        <img alt="网络警察" src="//static.yingsheng.com/www.yingsheng.com/footer/certification_3.png" />
+        <a rel="nofollow" target="_blank" title="百度信誉" href="//www.yingsheng.com/link.htm?linkurl=//www.baidu.com/s?wd=www.yingsheng.com%40v&tn=baidu&ie=utf-8&bs=www.xsteach.com%40v&f=8&rsv_bp=1&rsv_sug3=13&rsv_sug4=767&rsv_sug1=1&rsv_sug2=0&inputT=4221&rsv_sug=1&qh=360">
+            <img alt="百度信誉" src="//static.yingsheng.com/www.yingsheng.com/footer/certification_4.png" /></a>
+        <img alt="经营性网站备案信息" src="//static.yingsheng.com/www.yingsheng.com/footer/certification_5.png" />
+        <!--<script src="//kxlogo.knet.cn/seallogo.dll?sn=e14111144030056156pfd9000000&size=0"></script>-->
+        <script id="ebsgovicon" src="//szcert.ebs.org.cn/govicon.js?id=31769000-0988-4d9c-835e-1e7552628fa3&width=112&height=40&type=2" type="text/javascript" charset="utf-8"></script>
+    </div>
+<!--
+    | <a href="//www.yingsheng.com/news/72" target="_blank">行业资讯</a>
+    | <a href="//www.yingsheng.com/news/74/" target="_blank">职场法则</a>
+    | <a href="//www.yingsheng.com/news/75/" target="_blank">管 理 学</a>
+    | <a href="//www.yingsheng.com/news/78/" target="_blank">创业项目</a>
+    | <a href="//www.yingsheng.com/news/77/" target="_blank">专家文章</a>
+    | <a href="//www.yingsheng.com/news/83/" target="_blank">HR管理</a>
+    | <a href="//www.yingsheng.com/news/76/" target="_blank">励志故事</a>
+    | <a href="//www.yingsheng.com/news/79/" target="_blank">销售技巧</a>
+    | <a href="//www.yingsheng.com/topic" target="_blank">热门专题</a>
+    | <a href="//news.yingsheng.com" target="_blank">英盛教育在线</a>
+    |
+    <br>
+-->
+   
+
+    版权所有：深圳市英盛网络教育科技有限公司<br />
+    网站备案号：<a href="//beian.miit.gov.cn" target="_blank">粤ICP备05022448号-6</a>    经营许可证：粤B2-20130302<br />
+    地址：深圳市南山区深南大道9966号，威盛科技大厦1801<br />
+    Copyright @ 2011-2022 YingSheng.com
+    <br />
+    All Rights Reserved.
+    <!--<script src="//s96.cnzz.com/z_stat.php?id=1000221911&web_id=1000221911" language="JavaScript"></script>-->
+    <br />
+    <a id="linkPhone" href="//m.yingsheng.com">
+        <img alt="手机版" src="//static.yingsheng.com/www.yingsheng.com/footer/bottom_phone.png" class="phone" />手机版</a>
+
+</div>
+
+<script type="text/javascript" src="//www.yingsheng.com/static/dist/common/global_pkg.js"></script>
+<!--<script type="text/javascript" src="//s.union.360.cn/65280.js"></script>-->
+
+<!--全站统计代码-->
+<div style="display: none">
+    <!--通用统计：百度-->
+    <script type="text/javascript" src="//www.yingsheng.com/static/dist/common/global_counter.js"></script>
+</div>
+
+
+</body>
+</html>

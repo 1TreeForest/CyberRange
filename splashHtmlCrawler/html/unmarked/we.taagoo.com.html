@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	    <meta name="csrf-param" content="_csrf">
+    <meta name="csrf-token" content="UkhRZDYxWU0KAR4sD3BhDhwJYCJ.Xi4SJAI9E0VrMiMZJBoxe1AsGw==">
+    <title>微动景-动景VR交流分享社区，动景VR资源、动景VR摄影、VR视频、VR直播、VR制作、VR内容分享、VR视频拍摄、VR摄影,全景视频,全景相机,360度全景拍摄,VR制作、VR资源交易、VR服务、VR展示</title>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-status-bar-style' content='black'>
+<meta name='format-detection' content='telephone=no'>
+<meta name='keywords' content='动景VR交流分享社区，动景VR资源、动景VR摄影、VR视频、VR直播、VR制作、VR内容分享景摄影,全景视频,全景相机,360度全景拍摄,VR制作'/>
+<meta name='description' content='动景VR资源交流分享社区，提供全方位的动景VR摄影、VR视频拍摄、VR航拍、虚拟现实制作，VR内容营销、VR动景上传、VR资源分享、VR内容展示、虚拟漫游，VR摄影师互动交流、VR资源交易、VR内容服务对接的综合性VR社区服务平台'/>
+<link href="/css/resert.css" rel="stylesheet">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/header-footer.css?v=20170626_2" rel="stylesheet">
+<link href="/css/index.css?v=20170704_2" rel="stylesheet">
+<style>.search-index {
+    margin-top: -190px;
+    }
+</style>
+<style>    #videoTogglePlay {
+        float: right;
+    }
+    #videoTime,#videoFullScreen,#videoViewPortToggle{
+        display: none;
+    }
+    #videoScroll {
+        height: 0px;
+    }
+    div>#videoBG {
+        background-color: rgba(31, 31, 31, 0.01);
+    }
+</style>
+<script type="text/javascript">
+    var taagoo_obj = {
+        img_domain:"http://upld.img-cn-hangzhou.aliyuncs.com/",
+        login_uid:"",
+        go_login:function(url){
+            window.location.href = "http://passport.taagoo.com/login/index.html?returnurl="+encodeURIComponent(location.href);
+        },
+        go_logout:function(url){
+            window.location.href = '/site/logout.html?returnurl='+encodeURIComponent("http://passport.taagoo.com/login/logout.html?returnurl="+encodeURIComponent("https://we.taagoo.com"));
+        },
+        go_register:function(url){
+            window.location.href = "http://passport.taagoo.com/register/index.html?returnurl="+encodeURIComponent(location.href);
+        },
+        go_editpsd:function(url){
+            window.location.href = "http://passport.taagoo.com/login/edit-psd.html?returnurl="+encodeURIComponent(location.href);
+        },
+        go_editmobile:function(url){
+            window.location.href = "http://passport.taagoo.com/login/edit-mobile.html?returnurl="+encodeURIComponent(location.href);
+        },
+        go_qqauth:function(url){
+            window.location.href = "http://passport.taagoo.com/login/auth.html?authclient=qq&safe=1&returnurl="+encodeURIComponent(location.href)+'&uid='+url;
+        },
+        go_weixinauth:function(url,img){
+            if(img){
+                document.getElementById(img).src = "http://passport.taagoo.com/login/auth.html?authclient=wechat&safe=1&returnurl="+encodeURIComponent(location.href)+'&uid='+url;
+            }else{
+                window.location.href = "http://passport.taagoo.com/login/auth.html?authclient=wechat&safe=1&returnurl="+encodeURIComponent(location.href)+'&uid='+url;
+            }
+        },
+        go_weiboauth:function(url){
+            window.location.href = "http://passport.taagoo.com/login/auth.html?authclient=weibo&safe=1&returnurl="+encodeURIComponent(location.href)+'&uid='+url;
+        },
+        check_login:function(){
+            $.getJSON("/user/login-check.html",function(result){
+                if(result && undefined!=result.username){
+                    taagoo_obj.login_uid = result.user_id;
+                    
+                    $('div.header-right').remove();
+                    $(  '<a class="btn-login " href="/user-panoramic/upload.html">发布</a>'
+                    ).prependTo('div.navbar .header-right-login');
+
+                    $('div.navbar .user-area').prepend('<a href="/space/index.html" class="user-photo-area"><img class="user-tx avatar" src="'+result.photo+'"/><img class="arrow-tx" src="/images/user-tx-arrow.png"></a>');
+
+                    $(
+                        '<li class="user-list-li-1"><a href="/space/index.html">我的主页</a></li>'+
+                        '<li class="user-list-li-2"><a href="/user-panoramic/works.html">作品管理</a></li>'+
+                        '<li class="user-list-li-3"><a href="/space/attention.html">我的关注</a></li>'+
+                        '<li class="user-list-li-4"><a href="/space/fans.html">我的粉丝</a></li>'+
+                        '<li class="user-list-li-5"><a href="/space/datum.html">个人中心</a></li>'+
+                        '<li class="user-list-li-6"><a href="/space/dynamic.html">好友动态</a></li>'+
+                        '<li class="user-list-li-7"><a href="javascript:void(0);" onclick="taagoo_obj.go_logout();return false;">退出</a></li>').appendTo('div.navbar .user-list');
+
+                    $('div.navbar .header-right-login').show();
+                    
+                    //招募用户活动
+                    $('.left-sidebar').prepend('<a href="/activity/14.html" ><img src="/images/side_code.png"/></a>');
+                }else{
+                    $('.left-sidebar').prepend('<a href="javascript:void(0)" onclick="taagoo_obj.go_register(\'/site/index.html\')"><img src="/images/sidebar.png"/></a>');
+                }
+            });
+        },
+        check_ajax_return:function(res,callback){
+            if(undefined!=res.status && res.status==-1){
+                if(res.ajax){//ajax方式登录
+                    taagoo_obj.go_login();
+                }else{
+                    taagoo_obj.go_login();
+                }
+            }else{
+                callback();
+            }
+        },
+        moreToggle:function (ele,wrap,arrow) {
+            var eleCss=ele.css('display');
+            var arrowName=arrow.attr('class').split(' ')[0];
+
+            if (eleCss!='none') {
+                wrap.slideUp('fast');
+                // arrow.removeClass(arrowName+'2').addClass(arrowName+'1');
+                $("."+arrowName).removeClass(arrowName+'2').addClass(arrowName+'1');
+
+            }else{
+                wrap.slideUp('fast');
+                ele.slideDown('fast');
+                $("."+arrowName).removeClass(arrowName+'2').addClass(arrowName+'1');
+                arrow.removeClass(arrowName+'1').addClass(arrowName+'2');
+
+            }
+        },
+        on_attention:function(e){
+            //console.log($(event.target).attr('i')+"is clicked;");
+            uid = $(e).attr('i');
+            $.getJSON("/user/add-attention.html",{uid:uid},function(result){
+                taagoo_obj.check_ajax_return(result,function(){
+                    if(result.status == 1){
+                        $('.fansBtn').remove();
+                        if(result.inter == 1){
+                            $('.hisHeaderShotBox').append('<div class="fansBtn" id="click_attention_none">已互关注</div>');
+                        }else{
+                            $('.hisHeaderShotBox').append('<div class="fansBtn" id="click_attention_none">已关注</div>');
+                        }
+                        
+                        $('#fans_munber_count').text(parseInt($('#fans_munber_count').text()*1+1*1));
+                    }else{
+                        alert(result.msg);
+                    }
+                });
+            });
+        },
+        un_follow:function(e){
+            var mythis = $(e);
+            uid = mythis.parent().parent().attr('i');
+            if(confirm('确认取消关注吗？')){
+                $.getJSON("/user/del-attention.html",{uid:uid},function(result){
+                    taagoo_obj.check_ajax_return(result,function(){
+                        if(result.status == 1){
+                            mythis.parent().parent().parent().remove();
+                            $('#follow_munber_count').text(parseInt($('#follow_munber_count').text()*1-1*1));
+                            $('#follow_munber_count_em').text(parseInt($('#follow_munber_count_em').text()*1-1*1));
+                        }else{
+                            alert(result.msg);
+                        }
+                    });
+                });
+            }
+        },
+        
+        //粉丝页面的关注功能
+        on_fans_attention:function(e){
+            uid = $(e).parent().parent().attr('i');
+            parent = $(e).parent();
+            $.getJSON("/user/add-attention.html",{uid:uid},function(result){
+                taagoo_obj.check_ajax_return(result,function(){
+                    if(result.status == 1){
+                        $(e).remove();
+                        if(result.inter == 1){
+                            parent.prepend('<span class="ifFollow interFollowed"></span>');
+                        }else{
+                            parent.prepend('<span class="ifFollow hasFollowed"></span>');
+                        }
+                        parent.after('<div class="outWrap"><div class="noFollow current" onclick="taagoo_obj.un_fans_follow(this)" >取消关注</div></div>');
+                    }else{
+                        alert(result.msg);
+                    }
+                });
+            });
+        },
+        
+        //粉丝页面取消关注
+        un_fans_follow:function(e){
+            var mythis = $(e);
+            uid = mythis.parent().parent().attr('i');
+            if(confirm('确认取消关注吗？')){
+                $.getJSON("/user/del-attention.html",{uid:uid},function(result){
+                    taagoo_obj.check_ajax_return(result,function(){
+                        if(result.status == 1){
+                            mythis.parent().prev().children('.ifFollow').remove();
+                            mythis.parent().prev().prepend('<span class="ifFollow addFollowed" onclick="taagoo_obj.on_fans_attention(this)"></span>');
+                            mythis.parent().remove();
+                        }else{
+                            alert(result.msg);
+                        }
+                    });
+                });
+            }
+        },
+        ajax_tip:function(type,msg,go_url,tip_obj){
+            alert(msg);
+            if(go_url){
+              location.href = (go_url=='.'?location.href:go_url);
+            }
+        },
+        modal_form_submit:function(){
+            //模态框提交提醒
+            $('body').on('submit','.modal form[data-async]', function(event) {
+                var form_obj = $(this);
+                $.ajax({
+                    type: form_obj.attr('method'),
+                    url: form_obj.attr('action'),
+                    data: form_obj.serialize(),
+                    dataType: "json",
+                    cache:false,
+                    success: function(data, status) {
+                      if(!isNaN(data['status']) && parseInt(data['status'])==1){
+                        if(form_obj.attr('callback')){
+                            window[form_obj.attr('callback')](data);
+                        }else if(undefined!=data['id'] && data['id'] && undefined!=data['title']){//素材管理页面
+                            $('li[data-id='+data['id']+'] p.title').html(data['title']);
+                        }
+                        $('#'+form_obj.parents('div.modal').attr('id')).modal('hide')
+                      }else{
+                        alert('操作失败，'+data['msg']);
+                      }
+                    },
+                    error:function(){
+                      alert('操作失败');
+                    }
+                });
+                event.preventDefault();
+            });
+
+            //禁止模态框缓存
+            $('body').on('hidden.bs.modal', '.modal', function () {
+              $(this).removeData('bs.modal');
+            });
+        },
+        ajax_get:function(){
+            //ajax get json执行请求并提示
+            $('body').on('click','.ajax-btn',function(event){
+              var thisObj = $(this);
+              var confirm_msg = $(this).attr('confirm_msg');
+              if(!confirm_msg || confirm_msg && confirm(confirm_msg)){
+                var btn = $(this).button('loading');
+                var href = $(this).attr('href');
+                var go_url = $(this).attr('go_url');
+                if(href){
+                  $.ajax({
+                    type: "GET",
+                    url: href,
+                    dataType: "json",
+                    cache:false,
+                    success: function(data){
+                        taagoo_obj.check_ajax_return(data,function(){
+                            if(!isNaN(data['status']) && parseInt(data['status'])==1){
+                              taagoo_obj.ajax_tip('success','操作成功！',go_url);
+                            }else{
+                             taagoo_obj.ajax_tip('warning','操作失败，'+data['msg']+'！');
+                            }
+                            btn.button('reset');
+                            if(thisObj.attr('callback')){
+                              eval(thisObj.attr('callback')+'()');
+                            }
+                        });
+                    },
+                    error:function(){
+                      taagoo_obj.ajax_tip('danger','网络错误或超时，请稍后再试！');
+                      btn.button('reset');
+                    }
+                  });
+                }
+              }
+              event.preventDefault();
+            });
+        },
+        uploadify_onSelectError:function(file, errorCode, errorMsg) {
+            var msgText = "上传失败\n";
+            switch (errorCode) {
+                case SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED:
+                    msgText += "每次最多上传 " + this.settings.queueSizeLimit + "个文件";
+                    break;
+                case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
+                    msgText += "文件大小不能超过" + this.settings.fileSizeLimit;
+                    break;
+                case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
+                    msgText += "文件大小为0";
+                    break;
+                case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
+                    msgText += "文件格式不正确，仅限 " + this.settings.fileTypeExts;
+                    break;
+                default:
+                    msgText += "错误代码：" + errorCode + "\n" + errorMsg;
+            }
+            alert(msgText+"。");
+        },
+        browser_versions: {
+            /*trident: u.indexOf('Trident') > -1, //IE内核
+            presto: u.indexOf('Presto') > -1, //opera内核
+            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核*/
+            mobile: !!navigator.userAgent.match(/AppleWebKit.*Mobile.*/)||!!navigator.userAgent.match(/AppleWebKit/), //是否为移动终端
+            ios: !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+            android: navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('Linux') > -1, //android终端或者uc浏览器
+            iPhone: navigator.userAgent.indexOf('iPhone') > -1 || navigator.userAgent.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+            iPad: navigator.userAgent.indexOf('iPad') > -1, //是否iPad
+            webApp: navigator.userAgent.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+        },
+        alert:function(msg,callback){
+            alert(msg);
+            if(callback){
+                callback();
+            }
+        }
+    };
+
+    //百度统计begin 2017-11-08
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?dc85496f126a579bfb3118d5844772e9";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    //百度统计end 2017-11-08
+
+</script>    	<!--[if lte IE 8]>
+	<script src="/js/respond.js"></script>
+	<script src="/js/html5.js"></script>
+	<script src="/js/jquery-1.11.min.js"></script>
+	<script type="text/javascript" src="/js/selectivizr.js"></script>
+    <noscript><link rel="stylesheet" href="[fallback css]" /></noscript>
+	<link rel="stylesheet" type="text/css" href="/css/for-ie8.css"/>
+	<![endif]-->
+	<!--[if gte IE 9]> <script src="/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script> <![endif]-->
+	<!--[if !IE]><!--> <script src="/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script> <!--<![endif]-->
+</head>
+<body class="index-bd" style="">
+    <header class=" shadow-bottom">
+    	<div style="background: #fff;">
+
+    	<!--header、发布样式改.green-line
+    		按钮加.btn-log-ac-->
+		<div class="navbar navbar-default navbar-h">
+			<div class="navbar-header">
+				<!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>-->
+				<a class="navbar-brand head-logo" href="/"></a>
+			</div>
+			<div class="collapse navbar-collapse navbar-responsive-collapse">
+				<ul class="nav navbar-nav">
+					<li class="hd-home "><a class="actived" href="/">首页</a></li>
+                    <li class="hd-works" ><a class="" href="/pano" style="width:auto;">动景组图</a></li>
+                    <li class="hd-works" ><a class="" href="/scenes" style="width:auto;">全景图片</a></li>
+                    <li class="hd-works" ><a class="" href="/video" style="width:auto;">动景视频</a></li>
+                    <li class="hd-author" ><a class="" href="/user">作者</a></li>
+                    <!--<li class="hd-activity" ><a class="" href="/activity">活动</a></li>-->
+					<!-- <li class="hd-works" ><a class="" href="/site/integral.html" style="width:auto;">积分兑换</a></li> -->
+                    <li class="hd-app" ><a class="" href="/download.html">下载</a></li>
+					<li class="hd-vr" ><a class="" href="/site/zhibo.html">VR直播</a></li>
+				</ul>
+				<div class="header-right pull-right">
+					<a class="add-pano " href="/user-panoramic/upload.html">发布</a>
+					<!-- <a class="hd-qq" href=""></a>
+					<a class="hd-weixin" href=""></a>
+					<a class="hd-weibo" href=""></a> -->
+                    <a class="login" href="javascript:void(0);" onclick="taagoo_obj.go_login();return false;">登录</a>
+					<!--<img class="select-arrow" src="/images/header-arrow.png"/>-->
+				</div>
+
+				<div class="header-right-login pull-right">
+    				<div class="user-area">
+
+    				    <ul class="user-list">
+
+    				    </ul>
+    				</div>
+				</div>
+				<div class="search-bar">
+    				<form action="/search/index.html" method="get" id="head-search-form">
+    				    <input class="search-input" type="text" placeholder="请输入关键词" name="search" value="" />
+    					<img class="search-btn-log" src="/images/search.png"/>
+    				</form>
+				</div>
+			</div>
+		</div>
+    	</div>
+	</header>            
+<div id="showContent" style="position:relative;height: 500px;">
+    <div id="showPano" style="position:relative;height: 100%;"></div>
+</div>
+
+<div class="search-index">
+    <div class="search-content">
+        <form action="/search/index.html" method="get" id="head-search-form">
+            <input type="radio" name="radio-btn" data-val="/search/index.html" checked/><label>动景组图</label>
+            <input type="radio" name="radio-btn" data-val="/search/index-video.html"/><label>动景视频</label>
+            <div class="input-btn">
+                <input class="search-input-lg" type="text" placeholder="我想看 动景组图/动景视频" name="search"/>
+                <button class="search-btn"></button>
+            </div>
+        </form>
+        <p class="bottom-tips">
+            作品来自于
+                <a href="/user/515.html" style="color: #5eb2e4" target="_blank">却沉思</a>            <b>69691</b>粉丝观看了他的作品
+        </p>
+    </div>
+    <div class="pano-time-box">
+        <p><span>02</span>/Mar. 2022</p><span>什刹海-原声《李白》</span>    </div>
+</div>
+
+<!--[if !IE]><!-->
+<!--<![endif]-->
+
+<!--[if IE]>
+<style>
+    .search-index {
+        margin-top: -230px;
+    }
+</style>
+<![endif]-->
+
+
+
+<div class="content">
+	<p class="index-title1">
+		编辑推荐
+		<a class="pull-right" href="/pano?recommend=1" target="_blank">更多&nbsp;&gt;</a>	</p>
+	<ul class="index-list1 clearfix fadein-top">
+	        		    			<li>
+    				<a href="/pano/1152.html" target="_blank"><img alt="动景+愚自乐园" src="http://user-data.taagoo.com/we/material/images/202103/7e4d6271a57cbbc4116c78744ffda5a6.png"/></a>    				<div class="list1-synopsis">
+    					<p class="pano-grp-title"><a href="/pano/1152.html" target="_blank">愚自乐园</a></p>
+    					<button class="point-btn button_sub" lng="110.337754" lat="25.047887" address="大埠乡愚自乐园景区内愚自乐园"><img src="/images/point-r.png" /></button>
+    					<a href="/user/506.html" target="_blank"><img alt="摄影师+都不叫事儿" class="lazy pano-grp-tx" src="/uploads/avatar/506/80x80_577dee71c8192.jpg"/></a>    				</div>
+    				<div class="shownu clearfix">
+    					<p class="guanzh">820</p>
+    					<p class="pingl">0</p>
+    					<p class="dianz">0</p>
+    				</div>
+    			</li>
+    		    			<li>
+    				<a href="/pano/2016.html" target="_blank"><img alt="动景+玉渊潭樱花" src="http://user-data.taagoo.com/we/material/thumb/201703/442c8de3b44ba180892089945760a70b.jpg"/></a>    				<div class="list1-synopsis">
+    					<p class="pano-grp-title"><a href="/pano/2016.html" target="_blank">玉渊潭樱花</a></p>
+    					<button class="point-btn button_sub" lng="116.32319" lat="39.917189" address="西三环中路10号玉渊潭公园"><img src="/images/point-r.png" /></button>
+    					<a href="/user/37.html" target="_blank"><img alt="摄影师+过路人" class="lazy pano-grp-tx" src="/uploads/avatar/37/80x80_571499019467a.jpg"/></a>    				</div>
+    				<div class="shownu clearfix">
+    					<p class="guanzh">910</p>
+    					<p class="pingl">0</p>
+    					<p class="dianz">1</p>
+    				</div>
+    			</li>
+    		    			<li>
+    				<a href="/pano/2177.html" target="_blank"><img alt="动景+昆明翠湖" src="http://user-data.taagoo.com/we/material/images/201706/41633d18c0d40180215fff5b767e835b8147295934d1b058831.jpg"/></a>    				<div class="list1-synopsis">
+    					<p class="pano-grp-title"><a href="/pano/2177.html" target="_blank">昆明翠湖</a></p>
+    					<button class="point-btn button_sub" lng="102.70997" lat="25.054855" address="中国|云南省|昆明市|五华区"><img src="/images/point-r.png" /></button>
+    					<a href="/user/729.html" target="_blank"><img alt="摄影师+流泪的树" class="lazy pano-grp-tx" src="/uploads/avatar/729/80x80_57a06645f15ae.jpg"/></a>    				</div>
+    				<div class="shownu clearfix">
+    					<p class="guanzh">585</p>
+    					<p class="pingl">0</p>
+    					<p class="dianz">0</p>
+    				</div>
+    			</li>
+    		    			<li>
+    				<a href="/pano/2669.html" target="_blank"><img alt="动景+福建东南花都景区" src="http://user-data.taagoo.com/we/material/thumb/201712/7ff6c8f4de498e21237b54b1ec610e43.jpg"/></a>    				<div class="list1-synopsis">
+    					<p class="pano-grp-title"><a href="/pano/2669.html" target="_blank">福建东南花都景区</a></p>
+    					<button class="point-btn button_sub" lng="117.690982" lat="24.331326" address="中国|福建省|漳州市|漳浦县"><img src="/images/point-r.png" /></button>
+    					<a href="/user/48.html" target="_blank"><img alt="摄影师+全景聚焦" class="lazy pano-grp-tx" src="/uploads/avatar/48/80x80_571597dd32dfe.jpg"/></a>    				</div>
+    				<div class="shownu clearfix">
+    					<p class="guanzh">584</p>
+    					<p class="pingl">0</p>
+    					<p class="dianz">0</p>
+    				</div>
+    			</li>
+    		    			<li>
+    				<a href="/pano/549.html" target="_blank"><img alt="动景+福建武夷山" src="/uploads/201607/22/5791e7576b6d9.jpg"/></a>    				<div class="list1-synopsis">
+    					<p class="pano-grp-title"><a href="/pano/549.html" target="_blank">福建武夷山</a></p>
+    					<button class="point-btn " lng="" lat="" address=""><img src="/images/point-g.png" /></button>
+    					<a href="/user/63.html" target="_blank"><img alt="摄影师+寻光问影" class="lazy pano-grp-tx" src="/uploads/avatar/63/80x80_571f292965ff9.jpg"/></a>    				</div>
+    				<div class="shownu clearfix">
+    					<p class="guanzh">638</p>
+    					<p class="pingl">0</p>
+    					<p class="dianz">0</p>
+    				</div>
+    			</li>
+    		    			<li>
+    				<a href="/pano/1058.html" target="_blank"><img alt="动景+常德桃园县桃花源景区" src="/uploads/201607/15/578844475d0ce.jpg"/></a>    				<div class="list1-synopsis">
+    					<p class="pano-grp-title"><a href="/pano/1058.html" target="_blank">常德桃园县桃花源景区</a></p>
+    					<button class="point-btn " lng="" lat="" address=""><img src="/images/point-g.png" /></button>
+    					<a href="/user/465.html" target="_blank"><img alt="摄影师+伪装者" class="lazy pano-grp-tx" src="/uploads/avatar/465/80x80_5775e880590e1.jpg"/></a>    				</div>
+    				<div class="shownu clearfix">
+    					<p class="guanzh">502</p>
+    					<p class="pingl">0</p>
+    					<p class="dianz">1</p>
+    				</div>
+    			</li>
+    		    			<li>
+    				<a href="/pano/2051.html" target="_blank"><img alt="动景+新加坡国家胡姬园" src="http://user-data.taagoo.com/we/material/thumb/201704/e9691428f89d4be7ccf3b7f8acac02ae.jpg"/></a>    				<div class="list1-synopsis">
+    					<p class="pano-grp-title"><a href="/pano/2051.html" target="_blank">新加坡国家胡姬园</a></p>
+    					<button class="point-btn " lng="" lat="" address=""><img src="/images/point-g.png" /></button>
+    					<a href="/user/853.html" target="_blank"><img alt="摄影师+松江浪涛" class="lazy pano-grp-tx" src="/uploads/avatar/853/80x80_583e4bc294f92.jpg"/></a>    				</div>
+    				<div class="shownu clearfix">
+    					<p class="guanzh">594</p>
+    					<p class="pingl">0</p>
+    					<p class="dianz">0</p>
+    				</div>
+    			</li>
+    		    			<li>
+    				<a href="/pano/2017.html" target="_blank"><img alt="动景+油菜花" src="http://user-data.taagoo.com/we/material/thumb/201703/a5ee9a70a1262966c38cd5e3748c30f6.jpg"/></a>    				<div class="list1-synopsis">
+    					<p class="pano-grp-title"><a href="/pano/2017.html" target="_blank">油菜花</a></p>
+    					<button class="point-btn " lng="" lat="" address=""><img src="/images/point-g.png" /></button>
+    					<a href="/user/38.html" target="_blank"><img alt="摄影师+街头诗人" class="lazy pano-grp-tx" src="/uploads/avatar/38/80x80_571498cf1f14d.jpg"/></a>    				</div>
+    				<div class="shownu clearfix">
+    					<p class="guanzh">556</p>
+    					<p class="pingl">0</p>
+    					<p class="dianz">0</p>
+    				</div>
+    			</li>
+    		    			<li>
+    				<a href="/pano/2018.html" target="_blank"><img alt="动景+郁金香" src="http://user-data.taagoo.com/we/material/thumb/201703/e62623d91ca212e315461206ee4f105d.jpg"/></a>    				<div class="list1-synopsis">
+    					<p class="pano-grp-title"><a href="/pano/2018.html" target="_blank">郁金香</a></p>
+    					<button class="point-btn " lng="" lat="" address=""><img src="/images/point-g.png" /></button>
+    					<a href="/user/39.html" target="_blank"><img alt="摄影师+孑然一身" class="lazy pano-grp-tx" src="/uploads/avatar/39/80x80_57149add5c155.jpg"/></a>    				</div>
+    				<div class="shownu clearfix">
+    					<p class="guanzh">566</p>
+    					<p class="pingl">0</p>
+    					<p class="dianz">0</p>
+    				</div>
+    			</li>
+    					</ul>
+	<p class="index-title2">
+		优秀摄影师
+		<a class="pull-right nomore" href="/user" target="_blank">更多...</a>	</p>
+	<ul class="index-list2 clearfix fadein-top" >
+	        		    			<li style="height: 230px;">
+    				<a href="/user/1422.html" target="_blank"><img class="lazy" src="http://user-data.taagoo.com/we/material/images/201902/a6965854a8a396568f7a59313fd491ec.jpg"/></a>    				<div class="list2-synopsis">
+    					<a href="/user/1422.html" target="_blank"><img alt="摄影师+小长城" class="lazy" src="/images/headShot.png"/></a>    					<p><a href="/user/1422.html" target="_blank">小长城</a></p>
+    					<!--
+    					<div class="works-num-bottom">
+	    					<div class="pull-left"><span class="sys-name">人气</span><span class="sys-num"></span></div>
+	    					<div class="pull-right"><span class="sys-name">作品</span><span class="sys-num"></span></div>
+    					</div>
+    					 -->
+    				</div>
+    			</li>
+    		    			<li style="height: 230px;">
+    				<a href="/user/1424.html" target="_blank"><img class="lazy" src="http://user-data.taagoo.com/we/material/thumb/201808/6b53bc7916c07cb7324a2555f1448751.jpg"/></a>    				<div class="list2-synopsis">
+    					<a href="/user/1424.html" target="_blank"><img alt="摄影师+背包客QinHang" class="lazy" src="/images/headShot.png"/></a>    					<p><a href="/user/1424.html" target="_blank">背包客QinHang</a></p>
+    					<!--
+    					<div class="works-num-bottom">
+	    					<div class="pull-left"><span class="sys-name">人气</span><span class="sys-num"></span></div>
+	    					<div class="pull-right"><span class="sys-name">作品</span><span class="sys-num"></span></div>
+    					</div>
+    					 -->
+    				</div>
+    			</li>
+    		    			<li style="height: 230px;">
+    				<a href="/user/1386.html" target="_blank"><img class="lazy" src="http://pano.taagoo.com/we/2018/06/08/6275b1a09d7db23e/thumb.jpg"/></a>    				<div class="list2-synopsis">
+    					<a href="/user/1386.html" target="_blank"><img alt="摄影师+吴影踪" class="lazy" src="/images/headShot.png"/></a>    					<p><a href="/user/1386.html" target="_blank">吴影踪</a></p>
+    					<!--
+    					<div class="works-num-bottom">
+	    					<div class="pull-left"><span class="sys-name">人气</span><span class="sys-num"></span></div>
+	    					<div class="pull-right"><span class="sys-name">作品</span><span class="sys-num"></span></div>
+    					</div>
+    					 -->
+    				</div>
+    			</li>
+    		    			<li style="height: 230px;">
+    				<a href="/user/1310.html" target="_blank"><img class="lazy" src="http://user-data.taagoo.com/we/material/thumb/201801/20b926a84362ce8333187f4860e9887c.jpg"/></a>    				<div class="list2-synopsis">
+    					<a href="/user/1310.html" target="_blank"><img alt="摄影师+小小魔图" class="lazy" src="/images/headShot.png"/></a>    					<p><a href="/user/1310.html" target="_blank">小小魔图</a></p>
+    					<!--
+    					<div class="works-num-bottom">
+	    					<div class="pull-left"><span class="sys-name">人气</span><span class="sys-num"></span></div>
+	    					<div class="pull-right"><span class="sys-name">作品</span><span class="sys-num"></span></div>
+    					</div>
+    					 -->
+    				</div>
+    			</li>
+    		    			<li style="height: 230px;">
+    				<a href="/user/878.html" target="_blank"><img class="lazy" src="http://pano.taagoo.com/we/2017/06/02/1385931599d58f58/thumb.jpg"/></a>    				<div class="list2-synopsis">
+    					<a href="/user/878.html" target="_blank"><img alt="摄影师+徐峻-大国慧谷" class="lazy" src="/uploads/users/2017/10/10/259dc793aa8d5c.jpg"/></a>    					<p><a href="/user/878.html" target="_blank">徐峻-大国慧谷</a></p>
+    					<!--
+    					<div class="works-num-bottom">
+	    					<div class="pull-left"><span class="sys-name">人气</span><span class="sys-num"></span></div>
+	    					<div class="pull-right"><span class="sys-name">作品</span><span class="sys-num"></span></div>
+    					</div>
+    					 -->
+    				</div>
+    			</li>
+    		    			<li style="height: 230px;">
+    				<a href="/user/367.html" target="_blank"><img class="lazy" src="/uploads/201607/22/5791d74c3f7b4.jpg"/></a>    				<div class="list2-synopsis">
+    					<a href="/user/367.html" target="_blank"><img alt="摄影师+管理员-小微" class="lazy" src="/uploads/avatar/367/5755238720fb1.jpg"/></a>    					<p><a href="/user/367.html" target="_blank">管理员-小微</a></p>
+    					<!--
+    					<div class="works-num-bottom">
+	    					<div class="pull-left"><span class="sys-name">人气</span><span class="sys-num"></span></div>
+	    					<div class="pull-right"><span class="sys-name">作品</span><span class="sys-num"></span></div>
+    					</div>
+    					 -->
+    				</div>
+    			</li>
+    		    			<li style="height: 230px;">
+    				<a href="/user/744.html" target="_blank"><img class="lazy" src="http://pano.taagoo.cn/normal/2016/08/04/57a2b17973457e1ed3a7fb8f/thumb.jpg"/></a>    				<div class="list2-synopsis">
+    					<a href="/user/744.html" target="_blank"><img alt="摄影师+郭颖超" class="lazy" src="/uploads/avatar/744/57a314864a8de.jpg"/></a>    					<p><a href="/user/744.html" target="_blank">郭颖超</a></p>
+    					<!--
+    					<div class="works-num-bottom">
+	    					<div class="pull-left"><span class="sys-name">人气</span><span class="sys-num"></span></div>
+	    					<div class="pull-right"><span class="sys-name">作品</span><span class="sys-num"></span></div>
+    					</div>
+    					 -->
+    				</div>
+    			</li>
+    		    			<li style="height: 230px;">
+    				<a href="/user/31.html" target="_blank"><img class="lazy" src="http://user-data.taagoo.com/we/material/thumb/201608/4caf6163feb4e5b1d4d583bbfdbe5aa8.jpg"/></a>    				<div class="list2-synopsis">
+    					<a href="/user/31.html" target="_blank"><img alt="摄影师+夜空" class="lazy" src="/uploads/avatar/31/57149954ac3ad.jpg"/></a>    					<p><a href="/user/31.html" target="_blank">夜空</a></p>
+    					<!--
+    					<div class="works-num-bottom">
+	    					<div class="pull-left"><span class="sys-name">人气</span><span class="sys-num"></span></div>
+	    					<div class="pull-right"><span class="sys-name">作品</span><span class="sys-num"></span></div>
+    					</div>
+    					 -->
+    				</div>
+    			</li>
+    					</ul>
+</div>
+
+<div class="modal fade" id="point-modal">
+  <div class="modal-dialog modal-ie8"  style="margin-top:5%;" role="document">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">查看位置</h4>
+         </div>
+
+        <div class="modal-body" id='M_baiduMap' style=" margin:10px;  border: 1px solid gray; overflow:hidden; visibility:visible; ">
+
+        </div>
+
+    	<div class="modal-footer modal-button">
+			<button type="button" class="btn btn-primary btndel determine" data-dismiss="modal">关闭</button>
+		</div>
+    </div>
+  </div>
+</div>
+
+
+        <!--<button style="border: none;background: none;width: 100%;" data-toggle="modal" data-target="#not-signed">未登录</button>-->
+<footer>
+        <div class="footer-content clearfix">
+			<div class="footer-l-1">
+				<img src="/images/footer-logo.png"/>
+				<p>北京大国慧谷科技股份有限公司<br />
+					京ICP备09014899号-1<br />
+					京公网安备110108002368号
+				</p>
+			</div>
+			<div class="footer-l-2">
+				<img src="/images/wzdh.png"/>
+				<a href="http://www.taagoo.com/">动景网首页</a>
+				<a href="http://travel.taagoo.com">动景游</a>
+				<a href="http://zhanhui.taagoo.com/">动景展</a>
+				<a href="http://wenhua.taagoo.com/">动景文化</a>
+			</div>
+			<div class="footer-l-3">
+				<img src="/images/yqlj.png"/>
+				<a href="http://www.taagoo.com" target="_blank">动景网</a>
+<a href="http://www.taagoo.cn" target="_blank">动景游</a>
+<a href="http://www.canmay.com/" target="_blank">嘉美东方</a>
+<a href="http://www.xinshiqu.cn/" target="_blank">新时区</a>
+<a href="http://www.canmay.com/article/1319.html" target="_blank">签证中心</a>
+			</div>
+			<div class="footer-l-4">
+				<img src="/images/gywm.png"/>
+				<a href="http://we.taagoo.com/site/about.html" target="_blank">关于我们</a>
+<a href="http://www.taagoo.com/page/home_contact.html"  target="_blank">联系我们</a>
+<a href="http://www.taagoo.com/page/home_recruit.html" target="_blank">人才招聘</a>
+<a href="http://we.taagoo.com/site/legal.html" target="_blank">法律声明</a>
+			</div>
+			<div class="footer-l-5">
+				<div class="weixin-bd">
+					<img src="/images/weixin2wm.png"/>
+					<p>关注官方微信</p>
+				</div>
+			</div>
+        </div>
+    </footer>
+<div class="modal fade" id="not-signed"  >
+  <div class="modal-dialog modal-no-login" role="document">
+    <div class="modal-content no-login">
+    	<div class="close-cnt">
+			<button class="pull-right close-btn-no" data-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<img src="/images/not-signed.png"/>
+		<p>未登录，请先登录</p>
+    	<div class="modal-footer modal-button">
+    		<a class="color-text" href="">去登录</a>
+		</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+        <script src="/assets/718b479e/jquery.js"></script>
+<script src="/assets/f5b2bb2b/yii.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/video_player/UtoVRPlayerGuide.js"></script>
+<script src="/js/three.min.js"></script>
+<script src="/js/jquery.valiant360.min.js"></script>
+<script src="/js/jquery.valiant360.js"></script>
+<script src="https://webapi.amap.com/maps?v=1.3&amp;key=c6a41fadba9a8a02660d68c99403122d"></script>
+<script src="/js/search-bar.js"></script>
+<script type="text/javascript">    var windowWidth=document.body.clientWidth;
+    $('#showContent').css({'height':windowWidth?windowWidth*0.33:'500'});
+
+    window.onload = function () {
+        //场景数据配置
+        var sceneData = [
+            {
+                sceneId:"v2",
+                sceneName:"高清",
+                sceneFilePath:"https://we.taagoo.com/we/pano_video/201706/19/515/af69055ac3d1de139905eb32dee8c39a_pc.mp4",
+                sceneType:"Video",
+                isVideoPlay:false,
+                initPan:parseInt('180'),
+                initFov:parseInt('135'),
+                isVideoAutoPlay: true  //todo:注意isVideoAutoPlay 是H5 模式下的播放属性，不适用于移动端
+            }
+        ];
+        //播放器初始化
+        var params = {
+            container:document.getElementById("showPano"),
+            name: "SceneViewer",
+            fullScreenMode:false,			      //全屏模式
+            dragDirectionMode: true,
+            dragMode: false,
+            scenesArr: sceneData,
+        };
+        initLoad(params);
+    };
+
+    $('#point-modal').on('shown.bs.modal', function (e) {
+        $('#point-modal .modal-dialog').css({'width':$(window).width()*0.8-20});
+        $('#point-modal .modal-dialog').css({'height':$(window).height()*0.8-20});
+        $('#M_baiduMap').css({'height':$(window).height()*0.8-160});
+        //加载地图
+	    var map = new AMap.Map(M_baiduMap);
+        map.setMapStyle('light');
+        map.setZoom(12);
+
+        var default_lng=$(this).attr("lng");
+    	var default_lat=$(this).attr("lat");
+    	var address=$(this).attr("address");
+
+    	map.setCenter([default_lng,default_lat]);
+
+    	//默认标注,信息窗口
+        var marker = '';
+        var infowindow = '';
+        if(default_lng.length != 0 && default_lat.length != 0){
+            marker = new AMap.Marker({
+                position: [default_lng,default_lat],
+                icon:"http://webapi.amap.com/images/0.png",
+                map:map
+            });
+
+            var infowindow = new AMap.InfoWindow({
+                 content: '<div class="poiinfo-content" style=""><p class="infowindow-poiname">'+address+'</p></div>',
+                 offset: new AMap.Pixel(0, -30),
+                 size:new AMap.Size(230,0),
+                 closeWhenClickMap:true,
+            })
+            infowindow.open(map,new AMap.LngLat(default_lng,default_lat));
+
+            var clickHandle = AMap.event.addListener(marker, 'click', function() {
+                infowindow.open(map, marker.getPosition());
+            });
+        }
+
+    });
+
+    //禁止模态框缓存
+    $('body').on('hidden.bs.modal', '.modal', function () {
+      //$(this).removeData('bs.modal');
+      $('#point-modal .modal-body').empty();
+    });
+
+    $('.list1-synopsis .button_sub').click(function(){
+        $('#point-modal').modal('show');
+        $('#point-modal').attr('lng',$(this).attr('lng'));
+        $('#point-modal').attr('lat',$(this).attr('lat'));
+        $('#point-modal').attr('address',$(this).attr('address'));
+    });
+
+
+</script>
+<script type="text/javascript">jQuery(document).ready(function () {
+$(function () {
+    $("form[id=head-search-form]").submit(function () {
+        var head_search_form_action = $("input[name='radio-btn']:checked").attr('data-val');
+        $("form[id=head-search-form]").attr('action', head_search_form_action);
+    });
+});
+
+    taagoo_obj.check_login();
+
+    /*$("img.lazy").lazyload({
+        threshold : 500
+    });*/
+
+    jQuery(".user-area").ready(function(){
+        jQuery(".user-area").mouseover(function(){
+            jQuery(".user-list").show();
+        });
+        jQuery(".user-area").mouseleave(function(){
+            jQuery(".user-list").hide();
+        });
+    });
+
+    searchInput.keydown(function(event) {
+        var code = event.which;
+        var search_val = searchInput.val();
+        if (code == 13){
+            if(search_val.length > 0){
+                $('#head-search-form').submit();
+            }else{
+                return false;
+            }
+        }
+    });
+
+    searchBtn.click(function() {
+        var search_val = searchInput.val();
+        if(search_val.length > 0){
+            $('#head-search-form').submit();
+        }
+    });
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    $('body').append('<div style="display: none;">'+unescape("%3Cspan id='cnzz_stat_icon_1258842782'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1258842782' type='text/javascript'%3E%3C/script%3E")+'</div>');
+
+   function customRadio(obj){
+   		$("."+obj).parent().parent().addClass(obj +"-btn radio-btn");
+   		<!--$("."+obj).hide();-->
+   		<!--$('.'+obj+'-btn').eq(0).addClass('checkedRadio checkedbor');-->
+	$('.'+obj+'-btn').on('click', function () {
+	    var _this = $(this),
+	        block = _this.parent().parent();
+	    <!--block.find('input:radio').attr('checked', false);-->
+	    block.find("."+obj+"-btn").removeClass('checkedRadio checkedbor');
+	    _this.addClass('checkedRadio checkedbor');
+	    _this.find('input:radio').attr('checked', true);
+	});
+   }
+	$('input[name="check-box"]').wrap('<div class="check-box"><i></i></div>');
+	$.fn.toggleCheckbox = function () {
+	    this.attr('checked', !this.attr('checked'));
+	}
+	$('.check-box').on('click', function () {
+	    $(this).find(':checkbox').toggleCheckbox();
+	    $(this).toggleClass('checkedBox');
+	});
+
+
+
+});</script>    </body>
+</html>

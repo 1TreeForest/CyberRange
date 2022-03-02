@@ -1,0 +1,802 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+    <title>SAGE-CNPeReading</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/common.css?v=1">
+    <script src="/js/html5.js"></script>
+    <script src="/js/respond.js"></script>
+    <script src="/js/jquery-1.12.4.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/common.js"></script>
+</head>
+
+<body>
+<!--头部信息 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>header</title>
+</head>
+<body>
+<!-- style="position: fixed;"  -->
+<input type="hidden" id="ip" value="1.15.220.155">
+<input type="hidden" id="longIp" value="17816731">
+<!--   头部-->
+<div class="topbar">
+    <div class="navbar" role="topnavigation">
+        <div class="container">
+            <!--    登录-->
+            <div class="hidden-xs">
+                <ul class="signIn navbar-right">
+                    
+                    <!-- 添加机构简称 -->
+                    
+                    <li><span><a href="javascript:void(0);" class="signBtn">My Account</a></span>
+                        <div class="signBlock" id="signBlockDisplay">
+                            <h4 class="text-center">Sign in to my Account</h4>
+                            
+                            <font color="red" id="notEmpty"></font>
+                            <p>
+                                <label for="email">Email:</label>
+                                <input type="text" name="mail" id="mail" class="form-control">
+                            </p>
+                            <p>
+                                <label for="password">Password:</label>
+                                <input type="password" name="password" id="password" class="form-control">
+                            </p>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" checked="checked">Remember me
+                                </label>
+                            </div>
+                            <p>
+                                <input class="btn2" type="submit"
+                                       value="Sign In"
+                                       onclick="chksubmit()">
+                            </p>
+                            <div class="text-center">
+                                <div>
+                                    <h3 class="text-center">Login with</h3>
+                                    <a href="javascript:void(0);" class="signBtn" onclick="chksubmitcarsi()"><img src="/images/carsi.png" alt="" style="width: 35px"></a>
+                                </div>
+                                <div>
+                                    <a href="/user/setPassword">Forgotten your password?</a>
+                                </div>
+                                <div>
+                                    <a href="/user/setPassword">Set new password</a>
+                                </div>
+                                <div>
+                                    
+                                </div>
+                            </div>
+                            <hr>
+                            <h4 class="text-center">Register for an Account</h4>
+                            <p>
+                                <a href="/regist/registUser" class="btn2 btnColor1">Register</a></a>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="dropdown manage"><a href="" class="dropdown-toggle" data-toggle="dropdown">
+                        Language<b
+                            class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a name="language" href="javascript:">简体中文</a>
+                            </li>
+                            <li>
+                                <a name="language" href="javascript:">English</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--       导航条-->
+<div class="indexNav">
+    <div class="container">
+        <nav class="navbar" role="navigation">
+            <!--     导航隐藏按钮-->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#example-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--    logo-->
+                <a class="navbar-brand navbar-brand1" href="/"><img src="/images/logo.png" alt=""></a>
+                
+                <span class="navbar-brand navbar-brand2"><img src="/images/footerLogo.png" alt=""
+                                                              height="34"></span>
+
+            </div>
+            <!--     导航-->
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <div class="fr">
+                    <!--    搜索-->
+                    <div class="sear suggest">
+                        <div class="search" id="detailSearch">
+                            <input type="text" id="searchInput"
+                                   placeholder="Search Journals">
+                            <a href="javascript:searchMethod('generalSearch');"><img src="/images/sear.png"
+                                                                                     alt=""></a>
+                            <ul class="searTradition" id="ds">
+                                <li><a href="javascript:searchMethod('detailSearch');"><span><img
+                                        src="/images/sear.png"></span><b></b> in This journal</a></li>
+                                <li><a href="javascript:searchMethod('fullSearch');"><span><img
+                                        src="/images/sear.png"></span><b></b> in SAGE journals</a></li>
+                            </ul>
+                        </div>
+                        <div class="fr"><a href="/search/advanced">Advanced</a></div>
+                        <div>
+                            <ul id="suggestHearderUl" style="display:none" class="suggestUl">
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <!--     三个导航-->
+                <ul class="nav navbar-nav fl">
+                    <li>
+                        <a href="/search/categoryList">
+                            Browse
+                        </a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="selectMyTools()">
+                            My Tools <b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/alerts/selectAlerts">My Alerts</a></li>
+                            <li><a href="/searches/saved">My Saved Searches</a></li>
+                            <li><a href="/favorite/selectFavorite">My Favorite Journals</a></li>
+                            <li><a href="/user/goUpdate">Personal Details</a></li>
+                            <li>
+                                <a href="/instituion/institutionUsageReports/institutionUserId">Usage Reports</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<!--       固定导航条-->
+<div class="indexNav indexNav3">
+    <div class="container">
+        <nav class="navbar" role="navigation">
+            <!--     导航隐藏按钮-->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#example-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--    logo-->
+                <a class="navbar-brand navbar-brand1" href="/"><img src="/images/logo.png" alt=""></a>
+                <a class="navbar-brand navbar-brand2" href="#"><img src="/images/footerLogo.png" alt=""
+                                                                    height="34"></a>
+            </div>
+            <!--     导航-->
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <div class="fr">
+                    <!--搜索-->
+                    <div class="sear">
+                        <div class="search">
+                            <input type="text" id="searchCollapseInput"
+                                   placeholder="Search Journals">
+                            <a href="javascript:searchMethod('generalSearchColl');"><img src="/images/sear.png"
+                                                                                         alt=""></a>
+                        </div>
+                        <div class="fr"><a href="/search/advanced">Advanced</a></div>
+                    </div>
+
+                </div>
+                <!--     三个导航-->
+                <ul class="nav navbar-nav fl">
+                    <li>
+                        <a href="/search/categoryList">
+                            Browse
+                        </a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            My Tools <b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">My Alerts</a></li>
+                            <li><a href="/searches/saved">My Saved Searches</a></li>
+                            <li><a href="/favorite/selectFavorite">My Favorite Journals</a></li>
+                            <li><a href="#">My Account</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <form action="/search/search" method="post" name="generalSearch" id="generalSearch">
+        <input type="hidden" name="searchValue" id="searchValue" value="">
+        <input type="hidden" name="searchType" id="searchTypeHead" value="">
+        <input type="hidden" name="journalId" id="journalId" value="">
+        <input type="hidden" name="journalTitle" id="journalTitle" value="">
+    </form>
+    <form action="/search/search" method="get" id="fuzzySearch">
+        <input type="hidden" name="target" id="target1" value="">
+        <input type="hidden" name="q" id="q1" value="">
+        <input type="hidden" name="searchType" value="generalSearch">
+    </form>
+</div>
+
+</body>
+<script type="text/javascript">
+
+    //登录框提示密码错误
+    var pwdNO = "null";
+    if (pwdNO == "Email address or password error" || pwdNO == "邮箱或密码错误") {
+        $('.signBtn').parent().siblings('div.signBlock').show()
+    } else {
+        $('.signBtn').parent().siblings('div.signBlock').hide()
+    }
+    //测试浏览器版本
+    var userAgent = navigator.userAgent,
+        rMsie = /(msie\s|trident.*rv:)([\w.]+)/,
+        rFirefox = /(firefox)\/([\w.]+)/,
+        rOpera = /(opera).+version\/([\w.]+)/,
+        rChrome = /(chrome)\/([\w.]+)/,
+        rSafari = /version\/([\w.]+).*(safari)/;
+    var browser;
+    var version;
+    var ua = userAgent.toLowerCase();
+
+    function uaMatch(ua) {
+        var match = rMsie.exec(ua);
+        if (match != null) {
+            return {browser: "IE", version: match[2] || "0"};
+        }
+        var match = rFirefox.exec(ua);
+        if (match != null) {
+            return {browser: match[1] || "", version: match[2] || "0"};
+        }
+        var match = rOpera.exec(ua);
+        if (match != null) {
+            return {browser: match[1] || "", version: match[2] || "0"};
+        }
+        var match = rChrome.exec(ua);
+        if (match != null) {
+            return {browser: match[1] || "", version: match[2] || "0"};
+        }
+        var match = rSafari.exec(ua);
+        if (match != null) {
+            return {browser: match[2] || "", version: match[1] || "0"};
+        }
+        if (match != null) {
+            return {browser: "", version: "0"};
+        }
+    }
+
+    var browserMatch = uaMatch(userAgent.toLowerCase());
+    if (browserMatch.browser) {
+        browser = browserMatch.browser;
+        version = browserMatch.version;
+    }
+    //document.write(browser+version);
+
+    //国际化 JS
+    $("a[name='language']").click(function () {
+        var lang = $(this).text();
+        if (lang == "English") {
+            lang = "en_US";
+        } else if (lang == "简体中文") {
+            lang = "zh_CN";
+        } else {
+            lang = "zh_TW";
+        }
+        $.ajax({
+            type: "POST",
+            url: "/common/language",
+            data: {
+                language: lang,
+                r_: new Date().getTime()
+            },
+            success: function (data) {
+                cnpReload();
+            }
+        });
+    });
+
+    function cnpReload() {
+        window.location.reload(true);
+    }
+
+    function searchMethod(searchType) {
+        var searchValue;
+        if (searchType == "generalSearch") { 	                //普通搜索
+            searchValue = $(".search input").val();
+            $("#searchCollapseInput").val("");
+            $("#journalId").val("");
+        }
+        if (searchType == "generalSearchColl") {                   //头部导航栏滑动搜索
+            searchValue = $("#searchCollapseInput").val();
+            $("#searchInput").val("");
+            $("#journalId").val("");
+            searchType = "generalSearch";
+        }
+        if (searchType == "indexGeneralSearch") {				//首页文本框内普通搜索  searchType改为generalSearch提交后台
+            searchValue = $("#indexSearchInput").val();
+            $("#journalId").val("");
+            searchType = "generalSearch";
+        }
+        if (searchType == "openAccess") {					//搜索openAccess
+            searchValue = "open-access";
+        }
+        if (searchType == "detailSearch") {                     //根据搜索内容查询当前期刊文章      头部导航搜索
+            searchValue = $("#searchInput").val();
+            $("#journalId").val($("#mdcProJournalId").val());
+            $("#journalTitle").val($("#mdcProJournalTitle").val());
+            $("#searchInput1").val("");  //清空小导航搜索文本框
+            searchType = "generalSearch";
+        }
+        if (searchType == "fullSearch") {                     //期刊详情页全文搜索    头部导航搜索
+            searchValue = $("#searchInput").val();
+            $("#journalId").val("");
+            $("#searchInput1").val("");  //清空小导航搜索文本框
+            searchType = "generalSearch";
+        }
+        if (searchType == "detailSearch1") {                     //根据搜索内容查询当前期刊文章   小导航搜索
+            searchValue = $("#searchInput1").val();
+            $("#journalId").val($("#mdcProJournalId").val());
+            $("#journalTitle").val($("#mdcProJournalTitle").val());
+            $("#searchInput2").val("");
+            $("#searchInput").val("");  //清空头部导航文本框搜索
+            searchType = "generalSearch";
+        }
+        if (searchType == "fullSearch1") {                     //期刊详情页全文搜索    小导航搜索
+            searchValue = $("#searchInput1").val();
+            $("#searchInput2").val("");
+            $("#journalId").val("");
+            $("#searchInput").val("");  //清空头部导航文本框搜索
+            searchType = "generalSearch";
+        }
+        if (searchType == "detailSearch2") {                     //根据搜索内容查询当前期刊文章   小导航搜索
+            searchValue = $("#searchInput2").val();
+            $("#journalId").val($("#mdcProJournalId").val());
+            $("#journalTitle").val($("#mdcProJournalTitle").val());
+            $("#searchInput1").val("");
+            $("#searchInput").val("");  //清空头部导航文本框搜索
+            searchType = "generalSearch";
+        }
+        if (searchType == "fullSearch2") {                     //期刊详情页全文搜索    小导航搜索
+            searchValue = $("#searchInput2").val();
+            $("#searchInput1").val("");
+            $("#journalId").val("");
+            $("#searchInput").val("");  //清空头部导航文本框搜索
+            searchType = "generalSearch";
+        }
+
+        $("#searchTypeHead").val(searchType);
+        $("#searchValue").val(searchValue);
+        if ($("#searchValue").val() == '') {
+            alert("Please fill in the search content！");
+        } else {
+            document.getElementById("generalSearch").submit();
+        }
+    }
+    function chksubmitcarsi() {
+        window.location.href="https://spoauth2.carsi.edu.cn/api/authorize?response_type=code&client_id=sagecnpiec&state=sagecnpiec";
+    }
+    //邮箱、密码非空验证
+    function chksubmit() {
+        var mail = $('#mail').val();
+        var pwd = $('#password').val();
+        $('#notEmpty').empty();
+        $.ajax({
+            type: "POST",
+            url: "/user/loginUser",
+            data: {"mail": mail, "pwd": pwd},
+            async: false,
+            success: function (data) {
+                if (data == "PleaseTryAgain" || data == "error") {
+                    $('#notEmpty').append("Email and password do not match. Please try again.");
+                } else if (data == "activate") {
+                    $('#notEmpty').append("Activate Mailbox.");
+                } else {
+                    window.location.href = ""
+                }
+            }
+        });
+    }
+
+    $(function () {
+        //首页搜索框  和 头部搜索框绑定回车事件
+        $("#searchInput").keyup(function (evt) {
+            evt = (evt) ? evt : ((window.event) ? window.event
+                : ""); //兼容IE和Firefox获得keyBoardEvent对象
+            var key = evt.keyCode ? evt.keyCode : evt.which; //兼容IE和Firefox获得keyBoardEvent对象的键值
+            if (key == 13) {
+                searchMethod('generalSearch');
+            }
+        });
+
+        $("#indexSearchInput").keyup(function (evt) {
+            evt = (evt) ? evt : ((window.event) ? window.event
+                : ""); //兼容IE和Firefox获得keyBoardEvent对象
+            var key = evt.keyCode ? evt.keyCode : evt.which; //兼容IE和Firefox获得keyBoardEvent对象的键值
+            if (key == 13) {
+                searchMethod('indexGeneralSearch');
+            }
+        });
+        var journalId = $("#mdcProJournalId").val();
+        //存在刊ID时隐藏联想搜索提示框
+        if (journalId == null || journalId == '' || typeof (journalId) == "undefined") {
+            //联想检索
+            var oInput = $("#searchInput");
+            /* 	oInput.seletedIndex = -1; */
+            $("#suggestHearderUl").on("click", "li", function (e) {      //只需要找到你点击的是哪个ul里面的就行
+                var className = $(this).attr('class');
+                var text = $(this).text();
+
+                $("#target1").val(className);
+                $("#q1").val(text);
+                document.getElementById("fuzzySearch").submit();
+            });
+            $("#searchInput").keyup(function (evt) {
+                evt = (evt) ? evt : ((window.event) ? window.event : ""); //兼容IE和Firefox获得keyBoardEvent对象
+                var key = evt.keyCode ? evt.keyCode : evt.which; //兼容IE和Firefox获得keyBoardEvent对象的键值
+                // 当键盘按下的时候获取 suggestUl 里面的 li 中的值
+                oInput.options = $("#suggestHearderUl").find("li");
+
+                var qtext = $(this).val();
+                if (qtext.length > 1) {
+                    $.ajax({
+                        url: "/search/pages/suggest",
+                        data: {wt: "json", q: qtext, row: 5},
+                        success: function (data) {
+                            $("#suggestHearderUl").html("");
+                            if (JSON.stringify(data) != '{}') {
+                                var alist = data.alist;
+                                var authoreList = data.authoreList;
+                                var subjectList = data.subjectList;
+                                var str = "";
+                                if (alist && alist.length) {
+                                    for (var i = 0; i < alist.length; i++) {
+                                        $("#suggestHearderUl").append("<li class='journalTitle'>" + alist[i].title + "</li>");
+                                    }
+                                }
+                                if (authoreList && authoreList.length) {
+                                    for (var i = 0; i < authoreList.length; i++) {
+                                        $("#suggestHearderUl").append("<li class='authors'>" + authoreList[i].authorName + "</li>");
+                                    }
+                                }
+                                if (subjectList && subjectList.length) {
+                                    for (var i = 0; i < subjectList.length; i++) {
+                                        $("#suggestHearderUl").append("<li class='subject'>" + subjectList[i] + "</li>");
+                                    }
+                                }
+                                $("#suggestHearderUl").show();
+                            }
+                        },
+                        dataType: "json"
+                    });
+                }
+            });
+            var searchInput = $("#searchInput");
+            searchInput.blur(function (event) {
+                setTimeout(function () {
+                    $("#suggestHearderUl").hide();
+                }, 300)
+            });
+        }
+    });
+
+
+</script>
+</html>
+
+
+<!--    banner-->
+<div class="banner">
+    <div class="container">
+        <div>
+            <div class="sear2 suggest" id="sear2">
+                <div class="search">
+                    <input type="text" id="indexSearchInput"
+                           placeholder="Search Journals">
+                    <a href="javascript:searchMethod('indexGeneralSearch');"><img src="/images/sear2.png" alt=""></a>
+                </div>
+                <div class="fr adv"><a href="/search/advanced">Advanced</a></div>
+                <div>
+                    <ul id="suggestUl" style="display:none" class="suggestUl">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--    内容部分-->
+<div class="con">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12 conL">
+                <div class="bt">
+                    <h3>Browse Journals By Discipline</h3>
+                </div>
+                
+                    <div class="classify"><a href="/search/categoryList?pSubject=1">Social Sciences & Humanities</a>
+                    </div>
+                
+                    <div class="classify"><a href="/search/categoryList?pSubject=2">Health Sciences</a>
+                    </div>
+                
+                    <div class="classify"><a href="/search/categoryList?pSubject=3">Life & Biomedical Sciences</a>
+                    </div>
+                
+                    <div class="classify"><a href="/search/categoryList?pSubject=4">Materials Science & Engineering</a>
+                    </div>
+                
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 conR">
+                <div class="bt bt2">
+                    <h3>Browse A-Z</h3>
+                </div>
+                <!-- 所有journal查询 -->
+                <div class="classify">
+                    <a href="/search/categoryList">SAGE Journals</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--    开放存取-->
+<div>
+    <div class="container">
+        <div class="openAcess">
+               <span>Welcome to the SAGE Journals CNPIEC platform. Here you can browse full text articles from over 900 SAGE journals. For further information about SAGE please visit
+                 <a href="http://www.sagepub.com" target="view_window">www.sagepub.com</a>.
+                   <a target="_blank"
+                      href="http://sage.cnpereading.com/filestore//SAGE/userguid/SJUserGuide.pdf">User Guide</a>
+               </span>
+        </div>
+    </div>
+</div>
+<!--    登录注册-->
+<div>
+    <div class="container">
+        <div class="regSign">
+            <div class="recontain">
+                <h2>My Journals</h2>
+                <span>Sign in or register for personalized services</span>
+                <div class="row">
+                    <ul class="col-md-6 col-sm-6 col-xs-12">
+                        <li><a href="">Stay up to date with Email Alerts</a></li>
+                        <li><a href="">Manage your search alerts</a></li>
+                    </ul>
+                    <ul class="col-md-6 col-sm-6 col-xs-12">
+                        <li><a href="">Create favorite journal lists</a></li>
+                        <li><a href="">Manage your account preferences</a></li>
+                    </ul>
+                </div>
+                <p class="text-center"><a href="/regist/signIn" class="btn">Register / Sign In</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form action="/search/search" method="get" id="associationSearch">
+    <input type="hidden" name="target" id="target" value="">
+    <input type="hidden" name="q" id="q" value="">
+    <input type="hidden" name="searchType" id="searchType" value="generalSearch">
+
+</form>
+<!-- 底部信息 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>footer</title>
+    <script type="text/javascript" src="/js/jquery/jquery.cookie.1.4.1.js"></script>
+</head>
+<body>
+<!--    sage-->
+<div class="adver">
+</div>
+
+<!--    脚部-->
+<div class="footer">
+    <div class="container">
+        <div class="footCon">
+            <!-- 隐藏SAGE Journals --liuruifang 2017.08.23 -->
+            <a href="https://sagepub.com/company-information">About</a>
+            <a href="https://us.sagepub.com/en-us/nam/privacy-policy">Privacy Policy</a>
+            <a href="http://journals.sagepub.com/page/policies/terms-of-use">Terms of Use</a>
+            <a href="http://journals.sagepub.com/page/contact/home">Contact Us</a>
+            <a href="/help/help">Help</a>
+        </div>
+        <div class="footCon">
+            <span id="footer_bt1" style="padding: 0 10px;">Browse:</span>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+</body>
+
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            type: "POST",
+            url: "/footer/issueFooter",
+            async: false,
+            dataType: "json",
+            success: function (data) {
+                $.each(data, function (i, item) {
+                    $("#footer_bt1").after('<a href=/search/categoryList?pSubject=' + i + '>' + item + '</a>');
+                });
+            }
+        });
+    })
+</script>
+
+
+
+
+
+</html>
+</body>
+
+<script type="text/javascript">
+    $('#myModal').modal({
+        keyboard: true
+    });
+    $(function () {
+        var oInput = $("#indexSearchInput");
+        $("#suggestUl").on("click", "li", function (e) {      //只需要找到你点击的是哪个ul里面的就行
+            var className = $(this).attr('class');
+            var text = $(this).text();
+            $("#target").val(className);
+            $("#q").val(text);
+            document.getElementById("associationSearch").submit();
+        });
+        $("#indexSearchInput").keyup(function (evt) {
+            evt = (evt) ? evt : ((window.event) ? window.event : ""); //兼容IE和Firefox获得keyBoardEvent对象
+            var key = evt.keyCode ? evt.keyCode : evt.which; //兼容IE和Firefox获得keyBoardEvent对象的键值
+            // 当键盘按下的时候获取 suggestUl 里面的 li 中的值
+            oInput.options = $("#suggestUl").find("li");
+
+            var qtext = $(this).val();
+            if (qtext.length > 1) {
+                $.ajax({
+                    url: "/search/pages/suggest",
+                    data: {wt: "json", q: qtext, row: 5},
+                    success: function (data) {
+                        if (JSON.stringify(data) != '{}') {
+                            $("#suggestUl").html("");
+                            var alist = data.alist;
+                            var authoreList = data.authoreList;
+                            var subjectList = data.subjectList;
+
+                            if (JSON.stringify(data) != '{}') {
+                                var str = "";
+                                if (alist && alist.length) {
+                                    for (var i = 0; i < alist.length; i++) {
+                                        $("#suggestUl").append("<li  class='journalTitle'>" + alist[i].title + "</li>");
+                                    }
+                                }
+                                if (authoreList && authoreList.length) {
+                                    for (var i = 0; i < authoreList.length; i++) {
+                                        $("#suggestUl").append("<li class='authors'>" + authoreList[i].authorName + "</li>");
+                                    }
+                                }
+                                if (subjectList && subjectList.length) {
+                                    for (var i = 0; i < subjectList.length; i++) {
+                                        $("#suggestUl").append("<li class='subject'>" + subjectList[i] + "</li>");
+                                    }
+                                }
+                                $("#suggestUl").show();
+                            }
+                        } else {
+                            $("#suggestUl").hide();
+                        }
+
+
+                    },
+                    dataType: "json"
+                });
+            }
+
+
+        });
+
+        var searchInput = $("#indexSearchInput");
+        searchInput.blur(function (event) {
+            setTimeout(function () {
+                $("#suggestUl").hide();
+            }, 300)
+        });
+    });
+
+
+    //统计
+    (function (c, o, m, p, u, t, e) {
+        c['GoStatsObject'] = u;
+        c[u] = c[u] || function () {
+            (c[u].q = c[u].q || []).push(arguments)
+        }, c[u].l = 1 * new Date();
+        t = o.createElement(m);
+        t.async = 1;
+        t.src = p;
+        e = o.getElementsByTagName(m)[0];
+        e.parentNode.insertBefore(t, e);
+    })(window, document, 'script', '//www.gostats.org/5.js', 'go');
+    go('init', 701069461, {
+        'img_counter_type': 5,
+        'img_image_type': 1
+    });
+    go('send');
+</script>
+</html>

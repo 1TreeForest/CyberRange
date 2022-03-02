@@ -1,0 +1,859 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),this._loadEverythingNow()}async _loadEverythingNow(){this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{var n=document.createElement("script");[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type"),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){const n=e[t];Object.defineProperty(e,t,{get:n||function(){},set:n=>{e["rocket"+t]=n}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e?"rocket-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,r=document.createRange(),i=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const a=document.createDocumentFragment();r.setStart(a,0),a.appendChild(r.createContextualFragment(t)),i.insertBefore(a,o)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mouseover","touchmove","touchstart","wheel"]);e._delayEventListeners(),e._delayJQueryReady(e),e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();
+</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<title>枪火重生9.25联机版_小酒资源吧</title>
+<meta name='robots' content='max-image-preview:large' />
+<link href="https://upy.xiaojiu8.cn/2021/09/20210919000055736.png" rel="icon">
+<meta name="keywords" content="游戏,联机,Windows,">
+<meta name="description" content="看论坛发的那个枪火重生不能联机，挺多人要联机的，我就发个自己玩的联机版吧，在外网找的，玩了好久了，目前是9月25日最新版的，{和STEAM的最新版一样} 我也是自己一个人玩，没啥朋友，要玩的可以一起联机，想要一起联机的可以在帖子回复下啊，一">
+<meta property="og:title" content="枪火重生9.25联机版">
+<meta property="og:description" content="看论坛发的那个枪火重生不能联机，挺多人要联机的，我就发个自己玩的联机版吧，在外网找的，玩了好久了，目前是9月25日最新版的，{和STEAM的最新版一样} 我也是自己一个人玩，没啥朋友，要玩的可以一起联机，想要一起联机的可以在帖子回复下啊，一">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.xiaojiu8.cn/2913.html">
+<meta property="og:site_name" content="小酒资源吧">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/HTB1Zpf_XqWs3KVjSZFx761WUXXa1.png">
+<link rel='stylesheet' id='prism-style-css'  href='https://www.xiaojiu8.cn/wp-content/plugins/Pure-Highlightjs/highlight/styles/Default.css?ver=0.9.2' media='all' />
+<link rel='stylesheet' id='pure-highlightjs-css-css'  href='https://www.xiaojiu8.cn/wp-content/plugins/Pure-Highlightjs/assets/pure-highlight.css?ver=0.1.0' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/bootstrap/css/bootstrap.min.css?ver=4.6.0' media='all' />
+<link rel='stylesheet' id='csf-fa5-css'  href='https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/font-awesome/css/all.min.css?ver=5.14.0' media='all' />
+<link rel='stylesheet' id='csf-fa5-v4-shims-css'  href='https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/font-awesome/css/v4-shims.min.css?ver=5.14.0' media='all' />
+<link rel='stylesheet' id='plugins-css'  href='https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/css/plugins.css?ver=1.0.0' media='all' />
+<link rel='stylesheet' id='app-css'  href='https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/css/app.css?ver=3.6.0' media='all' />
+<link rel='stylesheet' id='dark-css'  href='https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/css/dark.css?ver=3.6.0' media='all' />
+<script src='https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/js/jquery.min.js?ver=3.5.1' id='jquery-js'></script>
+<link rel="canonical" href="https://www.xiaojiu8.cn/2913.html" />
+<link rel='shortlink' href='https://www.xiaojiu8.cn/?p=2913' />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com"><meta property="og:title" content='枪火重生9.25联机版' />
+<meta property="og:description" content='' />
+
+<meta name="twitter:card" content='summary_large_image' />
+<meta name="twitter:title" content='枪火重生9.25联机版' />
+<meta name="twitter:description" content='' />		<style id="wp-custom-css">
+			.yfx_ads {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-top: 10px;
+    margin-bottom: 10px !important;
+}
+.yfx_ads li {
+    margin: 5px 0;
+    padding-left: 15px;
+    flex: 0 0 33.33344%;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    list-style: none;
+}
+.yfx_ads a {
+    position: relative;
+    display: block;
+    float: left;
+}
+.yfx_ads a:before {
+    position: absolute;
+    content: " ";
+    width: 26px;
+    height: 1pc;
+    background: url(https://s3.bmp.ovh/imgs/2021/08/748b05991e59fe63.png);
+    right: 0;
+    font-size: 9pt;
+    text-align: center;
+    bottom: 0;
+    color: #fff;
+}
+@media screen and (max-width: 800px) { .yfx_ads{display:none; }
+}
+
+ /*首页广告条-修改了圆角 */
+img {
+    display: block;
+    max-width: 100%;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+ /*首页广告条-修改了圆角 */ 
+
+/*首页模块标题文字 大小颜色修改 */
+.modular-title-1 .section-title {
+    font-size: 20px;
+    letter-spacing: .5px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #292929;
+}
+ /*首页模块标题文字 大小颜色修改 */		</style>
+		</head>
+<body class="post-template-default single single-post postid-2913 single-format-standard wide-screen navbar-sticky with-hero hero-wide hero-shop pagination-infinite_button no-off-canvas sidebar-right">
+<div id="app" class="site">
+	
+<header class="site-header">
+    <div class="container">
+	    <div class="navbar">
+			  <div class="logo-wrapper">
+          <a href="https://www.xiaojiu8.cn/">
+        <img class="logo regular" src="https://upy.xiaojiu8.cn/2021/09/20210918222544583.png" alt="小酒资源吧">
+      </a>
+    
+  </div> 			
+			<div class="sep"></div>
+			
+			<nav class="main-menu d-none d-lg-block">
+			<ul id="menu-ui%e8%ae%be%e8%ae%a1" class="nav-list u-plain-list"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home"><a href="http://www.xiaojiu8.cn/"><i class="fas fa-home"></i><i class="mdi mdi-home"></i>首页</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children"><a href="https://www.xiaojiu8.cn/source"><i class="far fa-file-alt"></i>源码库</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/source/wzyuanma">网站源码</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/source/ysym">影视源码</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/source/cxyuanma">程序源码</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/source/game-source-code">游戏源码</a></li>
+</ul>
+</li>
+<li class="span classnewspan menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children"><a href="https://www.xiaojiu8.cn/sucai"><i class="fas fa-broom"></i>素材库</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/sucai/tubiao">图标</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/sucai/yangji">样机</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/sucai/chahua">插画</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/sucai/ppt">PPT模板</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/sucai/wangyemuban">网页模板</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children"><a href="https://www.xiaojiu8.cn/mould"><i class="fas fa-feather-alt"></i>模板主题</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children"><a href="https://www.xiaojiu8.cn/moban">网站模板</a>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/moban/wordpress">WordPress模板</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/moban/pgcmsmban">苹果CMS模板</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/moban/discuz">Discuz模板</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/moban/dedecms">DEDECMS模板</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/moban/diguocms">帝国CMS模板</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-has-children"><a href="https://www.xiaojiu8.cn/rjck"><i class="fas fa-desktop"></i>软件仓库</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent"><a href="https://www.xiaojiu8.cn/rjck/windows">Windows</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/rjck/macos">MACOS</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/rjck/android">Android</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children"><a href="https://www.xiaojiu8.cn/look"><i class="fa fa-eye"></i> 值得一看</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://www.xiaojiu8.cn/hct"><i class="fas fa-car-side"></i>火车头</a></li>
+</ul>
+</li>
+</ul>			</nav>
+			
+			<div class="actions">
+				
+								<span class="btn btn-sm search-open navbar-button ml-2" rel="nofollow noopener noreferrer" data-action="omnisearch-open" data-target="#omnisearch" title="搜索"><i class="fas fa-search"></i></span>
+				
+								<span class="btn btn-sm toggle-notify navbar-button ml-2" rel="nofollow noopener noreferrer" title="公告"><i class="fa fa-bell-o"></i></span>
+				
+						        <span class="btn btn-sm toggle-dark navbar-button ml-2" rel="nofollow noopener noreferrer" title="夜间模式"><i class="fa fa-moon-o"></i></span>
+                                
+				<!-- user navbar dropdown  -->
+		        				<a class="login-btn navbar-button ml-2" rel="nofollow noopener noreferrer" href="#"><i class="fa fa-user mr-1"></i>登录</a>
+								<!-- user navbar dropdown -->
+
+                
+		        <div class="burger"></div>
+
+		        
+		    </div>
+		    
+	    </div>
+    </div>
+</header>
+
+<div class="header-gap"></div>
+
+
+<div class="hero lazyload visible" data-bg="https://ae01.alicdn.com/kf/HTB1Zpf_XqWs3KVjSZFx761WUXXa1.png">
+
+
+
+<div class="hero-shop-warp">
+    <div class="container-lg">
+        <div class="row">
+            <div class="col-lg-4 img-box">
+                <img class="lazyload" data-src="https://ae01.alicdn.com/kf/HTB1Zpf_XqWs3KVjSZFx761WUXXa1.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="枪火重生9.25联机版" />
+                <noscript><img src="https://ae01.alicdn.com/kf/HTB1Zpf_XqWs3KVjSZFx761WUXXa1.png" alt="枪火重生9.25联机版" /></noscript>
+            </div>
+            <div class="col-lg-8 info-box">
+                <header class="entry-header">
+<h1 class="entry-title">枪火重生9.25联机版</h1>          <div class="entry-meta">
+            
+                          <span class="meta-author">
+                <a href="https://www.xiaojiu8.cn/author/语美@五元" title="语美@五元"><img alt='' data-src='//www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/img/avatar.png' class='lazyload avatar avatar-96 photo' height='96' width='96' />                </a>
+              </span>
+                          <span class="meta-category">
+                <a href="https://www.xiaojiu8.cn/rjck/windows" rel="category">Windows</a>
+              </span>
+                          <span class="meta-date">
+                  <time datetime="2020-10-04T19:35:23+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    1年前                  </time>
+              </span>
+                            <span class="meta-favnum"><i class="far fa-star"></i> 0</span>
+                            <span class="meta-views"><i class="fa fa-eye"></i> 193</span>
+            <span class="meta-shhop-icon"><i class="fas fa-coins"></i> 免费</span>                <span class="meta-edit"></span>
+            
+
+          </div>
+        </header>
+
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <ul class="pricing-options"><li><span>普通用户特权：</span><b>免费</b></li><li><span>会员用户特权：</span><b>免费<small class="badge badge-success-lighten ml-2">5折</small></b></li><li><span>永久会员用户特权：</span><b>免费<small class="badge badge-danger-lighten ml-2">推荐</small></b></li></ul>                    </div>
+                    <div class="col-lg-6 col-12">
+                        <ul class="down-info"><li><p class="data-label">有效期：购买后永久有效</p></li><li><p class="data-label">最近更新：2020年10月04日</p></li></ul>                    </div>
+    
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>	<main id="main" role="main" class="site-content">
+<div class="container">
+	<div class="row">
+		<div class="content-column col-lg-9">
+			<div class="content-area">
+				
+
+
+<div class="single-download-nav">
+  <ul class="nav nav-pills" id="pills-tab" role="tablist">
+
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="pills-details-tab" data-toggle="pill" href="#pills-details" role="tab" aria-controls="pills-details" aria-selected="true"><i class="far fa-file-alt mr-1"></i>详情介绍</a>
+    </li>
+
+    
+        <li class="nav-item" role="presentation">
+      <a class="nav-link" id="pills-faq-tab" data-toggle="pill" href="#pills-faq" role="tab" aria-controls="pills-faq" aria-selected="false"><i class="far fa-question-circle mr-1"></i>常见问题</a>
+    </li>
+        
+  </ul>
+</div>
+
+<div class="tab-content" id="pills-tabContent">
+
+  <div class="tab-pane fade show active" id="pills-details" role="tabpanel" aria-labelledby="pills-details-tab">
+    <article id="post-2913" class="article-content post-2913 post type-post status-publish format-standard hentry category-windows tag-715 tag-1525">
+      <div class="container">
+                <div class="article-crumb"><ol class="breadcrumb">当前位置：<li class="home"><i class="fa fa-home"></i> <a href="https://www.xiaojiu8.cn">首页</a></li><li><a href="https://www.xiaojiu8.cn/rjck">软件仓库</a></li><li><a href="https://www.xiaojiu8.cn/rjck/windows">Windows</a></li><li class="active">正文</li></ol></div>
+        
+        
+        <div class="pt-0 d-none d-block d-xl-none d-lg-none"><aside id="header-widget-shop-down" class="widget-area"><p></p></aside></div>      
+        <div class="entry-wrapper">
+          <div class="site_abc_wrap pc top"><a href="https://www.upyun.com/league/" target="_blank" rel="nofollow noopener noreferrer" data-toggle="tooltip" data-html="true" title="<u>广告：</u>赞助商"><img src="https://upy.xiaojiu8.cn/2022/02/20220217212500982.png" style=" width: 100%; "></a></div>          <div class="entry-content u-text-format u-clearfix">
+            <div>
+<div id="loadad3"></div>
+</div>
+<p><i class="pstatus"> </i></p>
+<p>看论坛发的那个枪火重生不能联机，挺多人要联机的，我就发个自己玩的联机版吧，在外网找的，玩了好久了，目前是9月25日最新版的，{和STEAM的最新版一样}<br />
+我也是自己一个人玩，没啥朋友，要玩的可以一起联机，想要一起联机的可以在帖子回复下啊，一起耍，我还有一些其他的可以通过STEAM联机的游戏<br />
+游戏介绍<br />
+<font color="#c6d4df"><font><font face="Arial, Helvetica, sans-serif"><font style="font-size:13px">《枪火重生》是一款融合了第一人称射击、Roguelite随机要素和RPG策略选择的冒险闯关游戏。玩家在游戏里可以操纵不同能力的英雄组建多种Build玩法，使用随机掉落的武器在随机性关卡中进行冒险挑战。可以单人畅玩，也可以最多四人组队挑战。</font></font></font></font><br />
+<font face="Arial, Helvetica, sans-serif"><font color="#c6d4df"><font style="font-size:13px"><br />
+</font></font></font><br />
+联机教程<br />
+解压游戏，注册STEAM账号，登陆STEAM，运行游戏里面的Gunfire Reborn.exe<br />
+1.双方进入游戏，Steam显示正在运行 Spacewar2.房主创建房间，按下 Shift+Tab 呼出覆盖层找到好友右键 邀请至大厅3.好友接受邀请（必须已经在游戏内且显示正在运行 Spacewar）<br />
+<font face="Microsoft Yahei, Helvetica Neue, Helvetica, Arial, sans-serif"><font color="#262626"><font style="font-size:16px">链接: https://pan.baidu.com/s/1T8lakJG8Gbe8PAOJYAFWCw 提取码: th26 </font></font></font></p>
+<div class="post-note alert alert-warning mt-2" role="alert"><small><strong>声明：</strong>本站所有文章，如无特殊说明或标注，均为本站原创发布。任何个人或组织，在未征得本站同意时，禁止复制、盗用、采集、发布本站内容到任何网站、书籍等各类媒体平台。如若本站内容侵犯了原著者的合法权益，可联系我们进行处理。</small></div><div class="entry-tags"><a href="https://www.xiaojiu8.cn/tags/%e6%b8%b8%e6%88%8f" class="btn btn-sm btn-light mr-2" rel="tag">游戏</a><a href="https://www.xiaojiu8.cn/tags/%e8%81%94%e6%9c%ba" class="btn btn-sm btn-light mr-2" rel="tag">联机</a></div>
+<div class="entry-share">
+	<div class="row">
+		<div class="col d-none d-lg-block">
+            
+                            <a class="share-author" href="https://www.xiaojiu8.cn/author/语美@五元">
+                    <img alt='' data-src='//www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/img/avatar.png' class='lazyload avatar avatar-50 photo' height='50' width='50' />语美@五元<span class="badge badge-info-lighten" ">普通</span>                </a>
+            			
+		</div>
+		<div class="col-auto mb-3 mb-lg-0">
+
+            
+			<button class="go-star-btn btn btn-sm btn-white" data-id="2913"><i class="far fa-star"></i> 收藏</button>            
+			                <button class="share-poster btn btn-sm btn-white" data-id="2913" title="文章封面图"><i class="fa fa-share-alt"></i> 海报</button>
+                        
+            <button class="go-copy btn btn-sm btn-white" data-toggle="tooltip" data-placement="top" title="点击复制链接" data-clipboard-text="https://www.xiaojiu8.cn/2913.html"><i class="fas fa-link"></i> 链接</button>
+		</div>
+	</div>
+</div>
+          </div>
+          <div class="site_abc_wrap pc bottum"><a href="https://www.upyun.com/league/" target="_blank" rel="nofollow noopener noreferrer" data-toggle="tooltip" data-html="true" title="<u>广告：</u>赞助商"><img src="https://upy.xiaojiu8.cn/2022/02/20220217212458343.png" style=" width: 100%; "></a></div>        </div>
+      </div>
+    </article>
+  </div>
+
+  
+    <div class="tab-pane fade" id="pills-faq" role="tabpanel" aria-labelledby="pills-faq-tab">
+
+    <div class="accordion" id="accordionhelp">
+          <div class="card">
+        <div class="card-header" id="heading-0">
+          <h2 class="mb-0">
+            <button class="btn btn-sm btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-0" aria-expanded="false" aria-controls="collapse-0">
+              免费下载或者VIP会员资源能否直接商用？<span class="fa fa-plus"></span><span class="fa fa-minus"></span>
+            </button>
+
+          </h2>
+        </div>
+        <div id="collapse-0" class="collapse" aria-labelledby="heading-0" data-parent="#accordionhelp">
+          <div class="card-body bg-primary text-white">
+            本站所有资源版权均属于原作者所有，这里所提供资源均只能用于参考学习用，请勿直接商用。若由于商用引起版权纠纷，一切责任均由使用者承担。更多说明请参考 VIP介绍。          </div>
+        </div>
+      </div>
+          <div class="card">
+        <div class="card-header" id="heading-1">
+          <h2 class="mb-0">
+            <button class="btn btn-sm btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
+              提示下载完但解压或打开不了？<span class="fa fa-plus"></span><span class="fa fa-minus"></span>
+            </button>
+
+          </h2>
+        </div>
+        <div id="collapse-1" class="collapse" aria-labelledby="heading-1" data-parent="#accordionhelp">
+          <div class="card-body bg-primary text-white">
+            最常见的情况是下载不完整: 可对比下载完压缩包的与网盘上的容量，若小于网盘提示的容量则是这个原因。这是浏览器下载的bug，建议用百度网盘软件或迅雷下载。 若排除这种情况，可在对应资源底部留言，或联络我们。          </div>
+        </div>
+      </div>
+          <div class="card">
+        <div class="card-header" id="heading-2">
+          <h2 class="mb-0">
+            <button class="btn btn-sm btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+              找不到素材资源介绍文章里的示例图片？<span class="fa fa-plus"></span><span class="fa fa-minus"></span>
+            </button>
+
+          </h2>
+        </div>
+        <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordionhelp">
+          <div class="card-body bg-primary text-white">
+            对于会员专享、整站源码、程序插件、网站模板、网页模版等类型的素材，文章内用于介绍的图片通常并不包含在对应可供下载素材包内。这些相关商业图片需另外购买，且本站不负责(也没有办法)找到出处。 同样地一些字体文件也是这种情况，但部分素材会在素材包内有一份字体下载链接清单。          </div>
+        </div>
+      </div>
+          <div class="card">
+        <div class="card-header" id="heading-3">
+          <h2 class="mb-0">
+            <button class="btn btn-sm btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
+              付款后无法显示下载地址或者无法查看内容？<span class="fa fa-plus"></span><span class="fa fa-minus"></span>
+            </button>
+
+          </h2>
+        </div>
+        <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordionhelp">
+          <div class="card-body bg-primary text-white">
+            如果您已经成功付款但是网站没有弹出成功提示，请联系站长提供付款信息为您处理          </div>
+        </div>
+      </div>
+          <div class="card">
+        <div class="card-header" id="heading-4">
+          <h2 class="mb-0">
+            <button class="btn btn-sm btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
+              购买该资源后，可以退款吗？<span class="fa fa-plus"></span><span class="fa fa-minus"></span>
+            </button>
+
+          </h2>
+        </div>
+        <div id="collapse-4" class="collapse" aria-labelledby="heading-4" data-parent="#accordionhelp">
+          <div class="card-body bg-primary text-white">
+            源码素材属于虚拟商品，具有可复制性，可传播性，一旦授予，不接受任何形式的退款、换货要求。请您在购买获取之前确认好 是您所需要的资源          </div>
+        </div>
+      </div>
+        </div>
+  </div>
+  
+
+</div>
+
+
+<div class="entry-navigation">
+	<div class="row">
+            	<div class="col-lg-6 col-12">
+            <a class="entry-page-prev" href="https://www.xiaojiu8.cn/2912.html" title="可能是目前最好用的“行事历”软件：桌面日历（WIN：v2.3.79.5205，安卓：v1.2.30）">
+                <div class="entry-page-icon"><i class="fas fa-arrow-left"></i></div>
+                <div class="entry-page-info">
+                    <span class="d-block rnav">上一篇</span>
+                    <span class="d-block title">可能是目前最好用的“行事历”软件：桌面日历（WIN：v2.3.79.5205，安卓：v1.2.30）</span>
+                </div>
+            </a> 
+        </div>
+                    	<div class="col-lg-6 col-12">
+            <a class="entry-page-next" href="https://www.xiaojiu8.cn/2914.html" title="VMware虚拟机数据恢复SysToolsVMwareRecovery8.0.0便携">
+                <div class="entry-page-info">
+                    <span class="d-block rnav">下一篇</span>
+                    <span class="d-block title">VMware虚拟机数据恢复SysToolsVMwareRecovery8.0.0便携</span>
+                </div>
+                <div class="entry-page-icon"><i class="fas fa-arrow-right"></i></div>
+            </a>
+        </div>
+            </div>
+</div>    <div class="related-posts">
+        <h3 class="u-border-title">相关文章</h3>
+        <div class="row">
+                      <div class="col-lg-6 col-12">
+              <article id="post-6831" class="post post-list post-6831 type-post status-publish format-standard hentry category-android category-game-source-code tag-3943 tag-3944 tag-p tag-964 tag-1080 tag-3974 tag-362 tag-3124 tag-715 tag-1372">
+                  <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.xiaojiu8.cn/6831.html" title="最新斗罗大陆手游服务端源码已测试" rel="nofollow noopener noreferrer"><img class="lazyload" data-src="https://www.klcka.com/uploads/2021/04/22/4376924f1546a7a22d0dad73321d9e67.png" src="https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/img/thumb-ing.gif" alt="最新斗罗大陆手游服务端源码已测试" /></a></div></div>                  <div class="entry-wrapper">
+                    <header class="entry-header"><h2 class="entry-title"><a href="https://www.xiaojiu8.cn/6831.html" title="最新斗罗大陆手游服务端源码已测试" rel="bookmark">最新斗罗大陆手游服务端源码已测试</a></h2></header>
+                                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-category">
+                <a href="https://www.xiaojiu8.cn/rjck/android" rel="category">Android</a>
+              </span>
+                          <span class="meta-date">
+                  <time datetime="2021-04-26T01:00:17+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    10月前                  </time>
+              </span>
+                            <span class="meta-views"><i class="fa fa-eye"></i> 528</span>
+            <span class="meta-shhop-icon"><i class="fas fa-coins"></i> 免费</span>
+
+          </div>
+        </div>
+                                    </div>
+            </article>
+          </div>
+                      <div class="col-lg-6 col-12">
+              <article id="post-3470" class="post post-list post-3470 type-post status-publish format-standard has-post-thumbnail hentry category-look category-jsxx category-wuaihot tag-3946 tag-664 tag-1347 tag-2008 tag-3225 tag-1410 tag-435 tag-2941 tag-986 tag-994 tag-25 tag-2404 tag-545 tag-376 tag-715 tag-2475 tag-961 tag-19 tag-515 tag-1234 tag-580 tag-2797 tag-2579">
+                  <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.xiaojiu8.cn/3470.html" title="小酒资源独家11月最新稳定全球频道蓝光直播源高速稳定播放m3u8" rel="nofollow noopener noreferrer"><img class="lazyload" data-src="https://upy.xiaojiu8.cn/2020/11/1617144770-182e19df9adccd2-150x150.jpg" src="https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/img/thumb-ing.gif" alt="小酒资源独家11月最新稳定全球频道蓝光直播源高速稳定播放m3u8" /></a></div></div>                  <div class="entry-wrapper">
+                    <header class="entry-header"><h2 class="entry-title"><a href="https://www.xiaojiu8.cn/3470.html" title="小酒资源独家11月最新稳定全球频道蓝光直播源高速稳定播放m3u8" rel="bookmark">小酒资源独家11月最新稳定全球频道蓝光直播源高速稳定播放m3u8</a></h2></header>
+                                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-category">
+                <a href="https://www.xiaojiu8.cn/look" rel="category">值得一看</a>
+              </span>
+                          <span class="meta-date">
+                  <time datetime="2020-11-11T08:27:26+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    1年前                  </time>
+              </span>
+                            <span class="meta-views"><i class="fa fa-eye"></i> 677</span>
+            <span class="meta-shhop-icon"><i class="fa fa-diamond"></i> 专属</span>
+
+          </div>
+        </div>
+                                    </div>
+            </article>
+          </div>
+                      <div class="col-lg-6 col-12">
+              <article id="post-3105" class="post post-list post-3105 type-post status-publish format-standard hentry category-windows tag-3555 tag-715 tag-3554">
+                  <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.xiaojiu8.cn/3105.html" title="[单机游戏]符文工房新牧场物语1+2+3+4 游戏" rel="nofollow noopener noreferrer"><img class="lazyload" data-src="https://attach.52pojie.cn/forum/202010/09/105236c7p3lpz3aizzpaap.jpg" src="https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/img/thumb-ing.gif" alt="[单机游戏]符文工房新牧场物语1+2+3+4 游戏" /></a></div></div>                  <div class="entry-wrapper">
+                    <header class="entry-header"><h2 class="entry-title"><a href="https://www.xiaojiu8.cn/3105.html" title="[单机游戏]符文工房新牧场物语1+2+3+4 游戏" rel="bookmark">[单机游戏]符文工房新牧场物语1+2+3+4 游戏</a></h2></header>
+                                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-category">
+                <a href="https://www.xiaojiu8.cn/rjck/windows" rel="category">Windows</a>
+              </span>
+                          <span class="meta-date">
+                  <time datetime="2020-10-15T06:39:55+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    1年前                  </time>
+              </span>
+                            <span class="meta-views"><i class="fa fa-eye"></i> 374</span>
+            <span class="meta-shhop-icon"><i class="fas fa-coins"></i> 免费</span>
+
+          </div>
+        </div>
+                                    </div>
+            </article>
+          </div>
+                      <div class="col-lg-6 col-12">
+              <article id="post-8075" class="post post-list post-8075 type-post status-publish format-standard hentry category-windows">
+                  <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.xiaojiu8.cn/8075.html" title="Windows11安卓子系统安装包，安装akp" rel="nofollow noopener noreferrer"><img class="lazyload" data-src="https://attach.52pojie.cn/forum/202110/27/140629yqr2x236jumlr41r.png" src="https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/img/thumb-ing.gif" alt="Windows11安卓子系统安装包，安装akp" /></a></div></div>                  <div class="entry-wrapper">
+                    <header class="entry-header"><h2 class="entry-title"><a href="https://www.xiaojiu8.cn/8075.html" title="Windows11安卓子系统安装包，安装akp" rel="bookmark">Windows11安卓子系统安装包，安装akp</a></h2></header>
+                                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-category">
+                <a href="https://www.xiaojiu8.cn/rjck/windows" rel="category">Windows</a>
+              </span>
+                          <span class="meta-date">
+                  <time datetime="2021-10-27T20:04:17+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    4月前                  </time>
+              </span>
+                            <span class="meta-views"><i class="fa fa-eye"></i> 97</span>
+            <span class="meta-shhop-icon"><i class="fas fa-coins"></i> 免费</span>
+
+          </div>
+        </div>
+                                    </div>
+            </article>
+          </div>
+                  </div>
+    </div>
+
+			</div>
+		</div>
+					<div class="sidebar-column col-lg-3">
+				<aside id="secondary" class="widget-area">
+	<div id="ripro_v2_shop_down-4" class="widget ripro-v2-widget-shop-down"><div class="price"><h3><i class="fas fa-cloud-download-alt mr-1"></i>免费下载</h3></div><ul class="pricing-options"><li><span>普通用户特权：</span><b>免费</b></li><li><span>会员用户特权：</span><b>免费<small class="badge badge-success-lighten ml-2">5折</small></b></li><li><span>永久会员用户特权：</span><b>免费<small class="badge badge-danger-lighten ml-2">推荐</small></b></li></ul><button type="button" class="btn btn-block btn-primary mb-3 login-btn">登录后下载</button><div class="down-info"><h5>其他信息</h5><ul class="infos"><li><p class="data-label">有效期</p><p class="info">购买后永久有效</p></li><li><p class="data-label">累计下载</p><p class="info">1</p></li><li><p class="data-label">最近更新</p><p class="info">2020年10月04日</p></li></ul></div><div class="down-help mt-2 small text-muted">下载遇到问题？可联系客服或留言反馈</div></div><div id="ripro_v2_widget_post_item-5" class="widget ripro_v2-widget-post"><h5 class="widget-title">推荐文章</h5>        <div class="list"> 
+                                <article id="post-8118" class="post post-list post-8118 type-post status-publish format-standard has-post-thumbnail hentry category-look">
+                      <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.xiaojiu8.cn/8118.html" title="又拍云免费申请Let’s Encrypt SSL证书以及简易部署过程" rel="nofollow noopener noreferrer"><img fifu-featured="1" class="lazyload" data-src="https://upy.xiaojiu8.cn/2022/02/20220226235713286.png" src="https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/img/thumb-ing.gif" alt="自动草稿" title="自动草稿" /></a></div></div>                      <div class="entry-wrapper">
+                        <header class="entry-header">
+                          <h2 class="entry-title"><a href="https://www.xiaojiu8.cn/8118.html" title="又拍云免费申请Let’s Encrypt SSL证书以及简易部署过程" rel="bookmark">又拍云免费申请Let’s Encrypt SSL证书以及简易部署过程</a></h2>                        </header>
+                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-date">
+                  <time datetime="2022-02-27T08:00:42+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    3天前                  </time>
+              </span>
+            
+
+          </div>
+        </div>
+                    </div>
+                </article>
+                                <article id="post-8083" class="post post-list post-8083 type-post status-publish format-standard hentry category-look">
+                      <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.xiaojiu8.cn/8083.html" title="宝塔7.7.0面板底部版权修改-去除宝塔面板强制登录" rel="nofollow noopener noreferrer"><img class="lazyload" data-src="https://upy.xiaojiu8.cn/2021/11/20211031225526853.jpg" src="https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/img/thumb-ing.gif" alt="宝塔7.7.0面板底部版权修改-去除宝塔面板强制登录" /></a></div></div>                      <div class="entry-wrapper">
+                        <header class="entry-header">
+                          <h2 class="entry-title"><a href="https://www.xiaojiu8.cn/8083.html" title="宝塔7.7.0面板底部版权修改-去除宝塔面板强制登录" rel="bookmark">宝塔7.7.0面板底部版权修改-去除宝塔面板强制登录</a></h2>                        </header>
+                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-date">
+                  <time datetime="2021-11-01T06:56:49+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    4月前                  </time>
+              </span>
+            
+
+          </div>
+        </div>
+                    </div>
+                </article>
+                                <article id="post-8078" class="post post-list post-8078 type-post status-publish format-standard hentry category-android">
+                      <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.xiaojiu8.cn/8078.html" title="人升V1.84.4—游戏化待办事项&amp;习惯养成" rel="nofollow noopener noreferrer"><img class="lazyload" data-src="https://attach.52pojie.cn/forum/202110/27/070427q9l8p3kxnica3jdk.jpg" src="https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/img/thumb-ing.gif" alt="人升V1.84.4—游戏化待办事项&amp;习惯养成" /></a></div></div>                      <div class="entry-wrapper">
+                        <header class="entry-header">
+                          <h2 class="entry-title"><a href="https://www.xiaojiu8.cn/8078.html" title="人升V1.84.4—游戏化待办事项&amp;习惯养成" rel="bookmark">人升V1.84.4—游戏化待办事项&amp;习惯养成</a></h2>                        </header>
+                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-date">
+                  <time datetime="2021-10-27T20:08:24+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    4月前                  </time>
+              </span>
+            <span class="meta-shhop-icon"><i class="fas fa-coins"></i> 免费</span>
+
+          </div>
+        </div>
+                    </div>
+                </article>
+                                <article id="post-8077" class="post post-list post-8077 type-post status-publish format-standard hentry category-android">
+                      <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.xiaojiu8.cn/8077.html" title="汉末征途1.1.6" rel="nofollow noopener noreferrer"><img class="lazyload" data-src="https://attach.52pojie.cn/forum/202104/28/193711rv82ou7i729io24w.jpg" src="https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/img/thumb-ing.gif" alt="汉末征途1.1.6" /></a></div></div>                      <div class="entry-wrapper">
+                        <header class="entry-header">
+                          <h2 class="entry-title"><a href="https://www.xiaojiu8.cn/8077.html" title="汉末征途1.1.6" rel="bookmark">汉末征途1.1.6</a></h2>                        </header>
+                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-date">
+                  <time datetime="2021-10-27T20:08:19+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    4月前                  </time>
+              </span>
+            <span class="meta-shhop-icon"><i class="fas fa-coins"></i> 免费</span>
+
+          </div>
+        </div>
+                    </div>
+                </article>
+                      </div>
+        </div><div id="ripro_v2_widget_cats_item-5" class="widget ripro_v2-widget-categories"><h5 class="widget-title">分类标签</h5>
+        <ul class="categories">
+                    <li class="cat-item">
+                <a class="inner" href="https://www.xiaojiu8.cn/source/ysym">
+                    <div class="thumbnail">
+                        <img alt="影视源码" src="https://upy.xiaojiu8.cn/2021/05/20210919152342935.png"></img>
+                    </div>
+                    <div class="content">
+                        <h5 class="title">影视源码</h5>
+                    </div>
+                </a>
+            </li>
+                    <li class="cat-item">
+                <a class="inner" href="https://www.xiaojiu8.cn/source/cxyuanma">
+                    <div class="thumbnail">
+                        <img alt="程序源码" src="https://upy.xiaojiu8.cn/2021/09/20210919154921417.png"></img>
+                    </div>
+                    <div class="content">
+                        <h5 class="title">程序源码</h5>
+                    </div>
+                </a>
+            </li>
+                    <li class="cat-item">
+                <a class="inner" href="https://www.xiaojiu8.cn/source/wzyuanma">
+                    <div class="thumbnail">
+                        <img alt="网站源码" src="https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/img/series-bg.jpg"></img>
+                    </div>
+                    <div class="content">
+                        <h5 class="title">网站源码</h5>
+                    </div>
+                </a>
+            </li>
+                    <li class="cat-item">
+                <a class="inner" href="https://www.xiaojiu8.cn/sucai">
+                    <div class="thumbnail">
+                        <img alt="设计素材" src="http://www.xiaojiu8.cn/wp-content/uploads/2021/08/timthumb.jpg"></img>
+                    </div>
+                    <div class="content">
+                        <h5 class="title">设计素材</h5>
+                    </div>
+                </a>
+            </li>
+                </ul>
+        </div><div id="media_image-6" class="widget widget_media_image"><h5 class="widget-title">免费领取 开发者助力大礼包</h5><a href="https://www.upyun.com/"><img width="1340" height="859" src="https://upy.xiaojiu8.cn/2022/02/20220227000310788.png" class="image wp-image-8121  attachment-full size-full" alt="" loading="lazy" style="max-width: 100%; height: auto;" /></a></div><div id="ripro_v2_widget_post_item-6" class="widget ripro_v2-widget-post">        <div class="list"> 
+                                <article id="post-7555" class="post post-list post-7555 type-post status-publish format-standard has-post-thumbnail hentry category-cxyuanma">
+                      <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.xiaojiu8.cn/7555.html" title="独家普通解析地址变成json接口源码加图片教程" rel="nofollow noopener noreferrer"><img fifu-featured="1" class="lazyload" data-src="https://upy.xiaojiu8.cn/2021/10/20211025224445174.png" src="https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/img/thumb-ing.gif" alt="独家普通解析地址变成json接口源码加图片教程" title="独家普通解析地址变成json接口源码加图片教程" /></a></div></div>                      <div class="entry-wrapper">
+                        <header class="entry-header">
+                          <h2 class="entry-title"><a href="https://www.xiaojiu8.cn/7555.html" title="独家普通解析地址变成json接口源码加图片教程" rel="bookmark">独家普通解析地址变成json接口源码加图片教程</a></h2>                        </header>
+                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-date">
+                  <time datetime="2021-10-26T06:43:17+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    4月前                  </time>
+              </span>
+            <span class="meta-shhop-icon"><i class="fas fa-coins"></i> 20</span>
+
+          </div>
+        </div>
+                    </div>
+                </article>
+                                <article id="post-7550" class="post post-list post-7550 type-post status-publish format-standard has-post-thumbnail hentry category-cxyuanma">
+                      <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.xiaojiu8.cn/7550.html" title="最新云海4.2解析计费系统《小酒资源全解密去后门版》" rel="nofollow noopener noreferrer"><img fifu-featured="1" class="lazyload" data-src="https://upy.xiaojiu8.cn/2021/10/20211025223107724.png" src="https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/img/thumb-ing.gif" alt="自动草稿" title="自动草稿" /></a></div></div>                      <div class="entry-wrapper">
+                        <header class="entry-header">
+                          <h2 class="entry-title"><a href="https://www.xiaojiu8.cn/7550.html" title="最新云海4.2解析计费系统《小酒资源全解密去后门版》" rel="bookmark">最新云海4.2解析计费系统《小酒资源全解密去后门版》</a></h2>                        </header>
+                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-date">
+                  <time datetime="2021-10-26T06:36:37+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    4月前                  </time>
+              </span>
+            <span class="meta-shhop-icon"><i class="fas fa-coins"></i> 99</span>
+
+          </div>
+        </div>
+                    </div>
+                </article>
+                                <article id="post-6984" class="post post-list post-6984 type-post status-publish format-standard has-post-thumbnail hentry category-android category-look category-ysym category-jsxx category-cxyuanma">
+                      <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.xiaojiu8.cn/6984.html" title="蓝猫影视原生JAVA开发对接苹果cms支持投屏画中画点播" rel="nofollow noopener noreferrer"><img fifu-featured="1" class="lazyload" data-src="http://www.xiaojiu8.cn/wp-content/uploads/2021/08/8A3D5DIN9_1DICICQ1.png" src="https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/img/thumb-ing.gif" alt="蓝猫影视原生JAVA开发对接苹果cms支持投屏画中画点播" title="蓝猫影视原生JAVA开发对接苹果cms支持投屏画中画点播" /></a></div></div>                      <div class="entry-wrapper">
+                        <header class="entry-header">
+                          <h2 class="entry-title"><a href="https://www.xiaojiu8.cn/6984.html" title="蓝猫影视原生JAVA开发对接苹果cms支持投屏画中画点播" rel="bookmark">蓝猫影视原生JAVA开发对接苹果cms支持投屏画中画点播</a></h2>                        </header>
+                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-date">
+                  <time datetime="2021-08-28T18:24:56+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    6月前                  </time>
+              </span>
+            
+
+          </div>
+        </div>
+                    </div>
+                </article>
+                                <article id="post-6949" class="post post-list post-6949 type-post status-publish format-standard has-post-thumbnail hentry category-cxyuanma">
+                      <div class="entry-media"><div class="placeholder" style="padding-bottom: 66.666666666667%"><a href="https://www.xiaojiu8.cn/6949.html" title="最新云海开心版解析计费系统v4.1影视解析短视频解析计费平台源码" rel="nofollow noopener noreferrer"><img class="lazyload" data-src="https://upy.xiaojiu8.cn/2021/08/20210919153436835-300x200.png" src="https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/img/thumb-ing.gif" alt="最新云海开心版解析计费系统v4.1影视解析短视频解析计费平台源码" /></a></div></div>                      <div class="entry-wrapper">
+                        <header class="entry-header">
+                          <h2 class="entry-title"><a href="https://www.xiaojiu8.cn/6949.html" title="最新云海开心版解析计费系统v4.1影视解析短视频解析计费平台源码" rel="bookmark">最新云海开心版解析计费系统v4.1影视解析短视频解析计费平台源码</a></h2>                        </header>
+                        <div class="entry-footer">          <div class="entry-meta">
+            
+                          <span class="meta-date">
+                  <time datetime="2021-08-24T18:03:48+08:00">
+                    <i class="fa fa-clock-o"></i>
+                    6月前                  </time>
+              </span>
+            <span class="meta-shhop-icon"><i class="fas fa-coins"></i> 30</span>
+
+          </div>
+        </div>
+                    </div>
+                </article>
+                      </div>
+        </div></aside><!-- #secondary -->
+			</div>
+			</div>
+</div>
+	</main><!-- #main -->
+	
+	<footer class="site-footer">
+		<div class="footer-widget d-none d-lg-block">
+    <div class="container">
+	    <div class="row">
+	        <div class="col-lg-3 col-md">
+	            <div class="footer-info">
+	                <div class="logo mb-2">
+	                    <img class="logo" src="https://upy.xiaojiu8.cn/2021/09/20210918222544583.png" alt="小酒资源吧">
+	                </div>
+	                <p class="desc mb-0">本站资源支持会员下载专享，普通注册会员只能原价购买资源或者限制免费下载次数，付费会员所有资源可无限下载。并可享受资源折扣或者免费下载。</p>
+	            </div>
+	        </div>
+	        <div class="col-lg-9 col-auto widget-warp">
+	        	<div class="d-flex justify-content-xl-between">
+	            	<div id="ripro_v2_widget_btns-2" class="widget ripro-v2-widget-btns"><h5 class="widget-title">外部推荐</h5><a target="_blank" class="btn btn-light btn-block btn-sm" href="#" rel="nofollow noopener noreferrer">WordPresss主题推荐</a><a target="_blank" class="btn btn-light btn-block btn-sm" href="#" rel="nofollow noopener noreferrer">阿里云服务器推荐</a><a target="_blank" class="btn btn-light btn-block btn-sm" href="#" rel="nofollow noopener noreferrer">关于本站</a></div><div id="ripro_v2_widget_btns-3" class="widget ripro-v2-widget-btns"><h5 class="widget-title">外部推荐</h5><a target="_blank" class="btn btn-light btn-block btn-sm" href="https://www.xiaojiu8.cn/tags" rel="nofollow noopener noreferrer">标签云</a><a target="_blank" class="btn btn-light btn-block btn-sm" href="https://www.xiaojiu8.cn/question" rel="nofollow noopener noreferrer">问答社区</a><a target="_blank" class="btn btn-light btn-block btn-sm" href="https://www.xiaojiu8.cn/user?action=vip" rel="nofollow noopener noreferrer">会员中心</a></div><div id="ripro_v2_widget_btns-4" class="widget ripro-v2-widget-btns"><h5 class="widget-title">外部推荐</h5><a target="_blank" class="btn btn-light btn-block btn-sm" href="https://www.xiaojiu8.cn/%E9%9A%90%E7%A7%81%E6%94%BF%E7%AD%96" rel="nofollow noopener noreferrer">隐私政策</a><a target="_blank" class="btn btn-light btn-block btn-sm" href="https://www.xiaojiu8.cn/links" rel="nofollow noopener noreferrer">网址导航</a><a target="_blank" class="btn btn-light btn-block btn-sm" href="#" rel="nofollow noopener noreferrer">关于本站</a></div><div id="media_image-7" class="widget widget_media_image"><h5 class="widget-title">关于本站</h5><img width="430" height="430" src="https://upy.xiaojiu8.cn/2022/02/20220226212810406.jpg" class="image wp-image-8116  attachment-full size-full" alt="" loading="lazy" style="max-width: 100%; height: auto;" /></div><div id="media_image-8" class="widget widget_media_image"><h5 class="widget-title">客服</h5><img width="430" height="430" src="https://upy.xiaojiu8.cn/2022/02/20220226212810406.jpg" class="image wp-image-8116  attachment-full size-full" alt="" loading="lazy" style="max-width: 100%; height: auto;" /></div>	        	</div>
+	        </div>
+	    </div>
+   </div>
+</div>
+		<div class="footer-copyright d-flex text-center">
+			<div class="container">
+							    <p class="m-0 small">Copyright © 2021 <a href="http://www.xiaojiu8.cn/">小酒资源吧</a> - All rights reserved<span class="sep"> | </span><a href="https://beian.miit.gov.cn" target="_blank" rel="noreferrer nofollow">黔ICP备17003460号-5 </a><span class="sep"> | </span><a href="http://www.beian.gov.cn/portal/registerSystemInfo" target="_blank" rel="noreferrer nofollow"> 本站数据为演示数据，均来自互联网采集转载，仅供体验</a>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" src="https://s13.cnzz.com/z_stat.php?id=1274460230&web_id=1274460230"></script>
+<script type="rocketlazyloadscript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ed1b44878485b1768102aee07939c54a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</p>
+								
+							</div>
+		</div>
+
+	</footer><!-- #footer -->
+
+</div><!-- #page -->
+
+<div class="rollbar">
+		<ul class="actions">
+			<li>
+						<a href="https://console.upyun.com/register/?invite=B13Her2Jq" rel="nofollow noopener noreferrer" data-toggle="tooltip" data-html="true" data-placement="left" title="CDN推荐"><i class="far fa-hdd"></i></a>
+		</li>
+				<li>
+						<a href="https://www.xiaojiu8.cn/user" rel="nofollow noopener noreferrer" data-toggle="tooltip" data-html="true" data-placement="left" title="个人中心"><i class="far fa-user"></i></a>
+		</li>
+				<li>
+						<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=603313839&amp;site=qq&amp;menu=yes" rel="nofollow noopener noreferrer" data-toggle="tooltip" data-html="true" data-placement="left" title="&lt;b&gt;在线客服&lt;/b&gt; &lt;u&gt;9:00~21:00&lt;/u&gt;"><i class="fab fa-qq"></i></a>
+		</li>
+				<li>
+						<a href="https://www.xiaojiu8.cn/" rel="nofollow noopener noreferrer" data-toggle="tooltip" data-html="true" data-placement="left" title="首页"><i class="fas fa-home"></i></a>
+		</li>
+				<li>
+						<a href="https://www.xiaojiu8.cn/user?action=vip" rel="nofollow noopener noreferrer" data-toggle="tooltip" data-html="true" data-placement="left" title="VIP会员"><i class="fa fa-diamond"></i></a>
+		</li>
+			</ul>
+		<div class="rollbar-item back-to-top">
+		<i class="fas fa-chevron-up"></i>
+	</div>
+</div>
+<div class="m-menubar">
+		<ul>
+			<li>
+						<a href="https://www.xiaojiu8.cn" rel="nofollow noopener noreferrer"><i class="fas fa-home"></i>首页</a>
+		</li>
+				<li>
+						<a href="https://www.xiaojiu8.cn/uncategorized" rel="nofollow noopener noreferrer"><i class="fas fa-layer-group"></i>分类</a>
+		</li>
+				<li>
+						<a href="https://www.xiaojiu8.cn/question" rel="nofollow noopener noreferrer"><i class="fab fa-ello"></i>问答</a>
+		</li>
+				<li>
+						<a href="https://www.xiaojiu8.cn/user" rel="nofollow noopener noreferrer"><i class="fas fa-user"></i>我的</a>
+		</li>
+				<li>
+			<a href="javacript:void(0);" class="back-to-top" rel="nofollow noopener noreferrer"><i class="fas fa-chevron-up"></i>顶部<span></span></a>
+		</li>
+	</ul>
+	</div>
+<div id="omnisearch" class="omnisearch">
+    <div class="container">
+        <form class="omnisearch-form" method="get" action="https://www.xiaojiu8.cn/">
+            <div class="form-group">
+                <div class="input-group input-group-merge input-group-flush">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    </div>
+
+					<div class="input-group-prepend d-flex align-items-center" style=" max-width: 35%; ">
+                    <select  name='cat' id='omnisearch-cat' class='selectpicker' >
+	<option value=''>全部</option>
+	<option class="level-0" value="3696">WP主题</option>
+	<option class="level-0" value="245">值得一看</option>
+	<option class="level-0" value="1">技术学习</option>
+	<option class="level-0" value="862">最新热门</option>
+	<option class="level-0" value="17">模板主题</option>
+	<option class="level-0" value="11">源码</option>
+	<option class="level-0" value="3527">火车头</option>
+	<option class="level-0" value="3688">猜你在找</option>
+	<option class="level-0" value="3689">网站模板</option>
+	<option class="level-0" value="10">设计素材</option>
+	<option class="level-0" value="3">软件仓库</option>
+</select>
+				  	</div>
+                    <input type="text" class="search-ajax-input form-control" name="s" value="" placeholder="输入关键词 回车搜索..." autocomplete="off">
+
+                </div>
+            </div>
+        </form>
+        <div class="omnisearch-suggestions">
+            <div class="search-keywords">
+                <a href="https://www.xiaojiu8.cn/rjck/android" class="tag-cloud-link tag-link-1043 tag-link-position-1" style="font-size: 14px;">Android</a>
+<a href="https://www.xiaojiu8.cn/rjck/windows" class="tag-cloud-link tag-link-1042 tag-link-position-2" style="font-size: 14px;">Windows</a>
+<a href="https://www.xiaojiu8.cn/tags/%e4%b8%8b%e8%bd%bd" class="tag-cloud-link tag-link-41 tag-link-position-3" style="font-size: 14px;">下载</a>
+<a href="https://www.xiaojiu8.cn/tags/%e4%bc%81%e4%b8%9a%e6%a8%a1%e6%9d%bf%e4%b8%8b%e8%bd%bd" class="tag-cloud-link tag-link-4513 tag-link-position-4" style="font-size: 14px;">企业模板下载</a>
+<a href="https://www.xiaojiu8.cn/tags/%e4%bc%81%e4%b8%9a%e6%ba%90%e7%a0%81" class="tag-cloud-link tag-link-4514 tag-link-position-5" style="font-size: 14px;">企业源码</a>
+<a href="https://www.xiaojiu8.cn/tags/%e4%bc%81%e4%b8%9a%e7%bd%91%e7%ab%99%e6%a8%a1%e6%9d%bf" class="tag-cloud-link tag-link-4332 tag-link-position-6" style="font-size: 14px;">企业网站模板</a>
+<a href="https://www.xiaojiu8.cn/tags/%e5%85%ac%e5%8f%b8%e7%bd%91%e7%ab%99%e6%a8%a1%e6%9d%bf" class="tag-cloud-link tag-link-4515 tag-link-position-7" style="font-size: 14px;">公司网站模板</a>
+<a href="https://www.xiaojiu8.cn/sucai/tubiao" class="tag-cloud-link tag-link-268 tag-link-position-8" style="font-size: 14px;">图标</a>
+<a href="https://www.xiaojiu8.cn/jsxx" class="tag-cloud-link tag-link-1 tag-link-position-9" style="font-size: 14px;">技术学习</a>
+<a href="https://www.xiaojiu8.cn/tags/%e6%8f%92%e7%94%bb" class="tag-cloud-link tag-link-254 tag-link-position-10" style="font-size: 14px;">插画</a>
+<a href="https://www.xiaojiu8.cn/sucai/chahua" class="tag-cloud-link tag-link-3559 tag-link-position-11" style="font-size: 14px;">插画</a>
+<a href="https://www.xiaojiu8.cn/tags/%e6%9b%b4%e6%96%b0" class="tag-cloud-link tag-link-225 tag-link-position-12" style="font-size: 14px;">更新</a>
+<a href="https://www.xiaojiu8.cn/tags/%e6%ba%90%e7%a0%81" class="tag-cloud-link tag-link-135 tag-link-position-13" style="font-size: 14px;">源码</a>
+<a href="https://www.xiaojiu8.cn/source" class="tag-cloud-link tag-link-11 tag-link-position-14" style="font-size: 14px;">源码</a>
+<a href="https://www.xiaojiu8.cn/tags/%e7%9f%a2%e9%87%8f%e6%8f%92%e7%94%bb" class="tag-cloud-link tag-link-3562 tag-link-position-15" style="font-size: 14px;">矢量插画</a>
+<a href="https://www.xiaojiu8.cn/tags/%e7%bd%91%e7%ab%99%e6%a8%a1%e6%9d%bf%e4%b8%8b%e8%bd%bd" class="tag-cloud-link tag-link-4232 tag-link-position-16" style="font-size: 14px;">网站模板下载</a>
+<a href="https://www.xiaojiu8.cn/source/wzyuanma" class="tag-cloud-link tag-link-2 tag-link-position-17" style="font-size: 14px;">网站源码</a>
+<a href="https://www.xiaojiu8.cn/tags/%e8%bd%af%e4%bb%b6" class="tag-cloud-link tag-link-159 tag-link-position-18" style="font-size: 14px;">软件</a>            </div>
+                    </div>
+    </div>
+</div>
+
+<div class="dimmer"></div>
+
+<div class="off-canvas">
+  <div class="canvas-close"><i class="fas fa-times"></i></div>
+  <div class="mobile-menu d-block d-xl-none d-lg-none"></div>
+</div>
+<script src='https://www.xiaojiu8.cn/wp-content/plugins/Pure-Highlightjs/assets/pure-highlight.js?ver=0.1.0' id='pure-highlightjs-js'></script>
+<script src='https://www.xiaojiu8.cn/wp-content/plugins/Pure-Highlightjs/highlight/prism.js?ver=0.9.2' id='Prism-js-js'></script>
+<script src='https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/js/popper.min.js?ver=3.6.0' id='popper-js'></script>
+<script src='https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/bootstrap/js/bootstrap.min.js?ver=4.6.0' id='bootstrap-js'></script>
+<script src='https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/js/plugins.js?ver=3.6.0' id='plugins-js'></script>
+<script id='app-js-extra'>
+var riprov2 = {"home_url":"https:\/\/www.xiaojiu8.cn","admin_url":"https:\/\/www.xiaojiu8.cn\/wp-admin\/admin-ajax.php","is_qq_captcha":"0","is_single_gallery":"1","comment_list_order":"asc","infinite_load":"\u52a0\u8f7d\u66f4\u591a","infinite_loading":"\u52a0\u8f7d\u4e2d...","site_notice":{"is":"1","auto":"1","color":"#f71854","html":"<div class=\"notify-content\"><h3><i class=\"fa fa-bell-o mr-2\"><\/i>\u5c0f\u9152\u8d44\u6e90\u5427\u6e29\u99a8\u63d0\u793a\uff1a<\/h3><div>\u5c0f\u9152\u8d44\u6e90\u5427\u5e73\u53f0\u6574\u6539\u5347\u7ea7\u8fdb\u884c\u4e2d\uff0c\u5347\u7ea7\u8fc7\u7a0b\u53ef\u80fd\u4f1a\u5bfc\u81f4\u65e0\u6cd5\u4e0b\u8f7d\uff0c\u56fe\u7247\u663e\u793a\u5f02\u5e38\u7b49\u60c5\u51b5\u8bf7\u8c05\u89e3...\r\n\u4f59\u989d\u8bf7\u8054\u7cfb\u7ad9\u957fQQ\u5145\u503c\uff1a603313839\r\n<\/div><\/div>"},"site_js_text":{"login_txt":"\u8bf7\u70b9\u51fb\u5b89\u5168\u9a8c\u8bc1","reg1_txt":"\u90ae\u7bb1\u683c\u5f0f\u9519\u8bef","reg2_txt":"\u8bf7\u70b9\u51fb\u5b89\u5168\u9a8c\u8bc1","pass_txt":"\u8bf7\u70b9\u51fb\u5b89\u5168\u9a8c\u8bc1","bind_txt":"\u8bf7\u70b9\u51fb\u9a8c\u8bc1\u6309\u94ae\u8fdb\u884c\u9a8c\u8bc1","copy_txt":" \u590d\u5236\u6210\u529f","poster_txt":"\u6d77\u62a5\u52a0\u8f7d\u5f02\u5e38","mpwx1_txt":"\u8bf7\u4f7f\u7528\u5fae\u4fe1\u626b\u7801\u767b\u5f55","mpwx2_txt":"\u5173\u6ce8\u516c\u4f17\u53f7\u5373\u53ef\u767b\u5f55<\/br>\u4e8c\u7ef4\u7801\u6709\u6548\u671f3\u5206\u949f","pay1_txt":"\u652f\u4ed8\u5b8c\u6210","pay2_txt":"\u53d6\u6d88\u652f\u4ed8","pay3_txt":"\u652f\u4ed8\u6210\u529f","capt_txt":"\u9a8c\u8bc1\u4e2d","capt1_txt":"\u9a8c\u8bc1\u901a\u8fc7","capt2_txt":"\u9a8c\u8bc1\u5931\u8d25","prompt_txt":"\u8bf7\u8f93\u5165\u56fe\u7247URL\u5730\u5740","comment_txt":"\u63d0\u4ea4\u4e2d....","comment1_txt":"\u63d0\u4ea4\u6210\u529f"},"jquey":"1","pay_type_html":{"html":"<div class=\"pay-button-box\"><\/div>","alipay":0,"weixinpay":0,"paypal":0,"iconpay":0},"singular_id":"2913"};
+</script>
+<script src='https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/js/app.js?ver=3.6.0' id='app-js'></script>
+<script src='https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/spotlight/spotlight.bundle.js?ver=0.7.0' id='spotlight-js'></script>
+<script src='https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/jarallax/jarallax.min.js?ver=1.12.5' id='jarallax-js'></script>
+<script src='https://www.xiaojiu8.cn/wp-content/themes/ripro-v2/assets/jarallax/jarallax-video.min.js?ver=1.0.1' id='jarallax-video-js'></script>
+<script src='https://www.xiaojiu8.cn/wp-includes/js/comment-reply.min.js?ver=5.8.3' id='comment-reply-js'></script>
+<script src='https://www.xiaojiu8.cn/wp-includes/js/wp-embed.min.js?ver=5.8.3' id='wp-embed-js'></script>
+<script id='fifu-image-js-js-extra'>
+var fifuImageVars = {"fifu_lazy":"","fifu_woo_lbox_enabled":"1","fifu_woo_zoom":"inline","fifu_is_product":"","fifu_is_flatsome_active":"","fifu_rest_url":"https:\/\/www.xiaojiu8.cn\/wp-json\/","fifu_nonce":"c8bf153eea"};
+</script>
+<script src='https://www.xiaojiu8.cn/wp-content/plugins/featured-image-from-url/includes/html/js/image.js?ver=3.5.8' id='fifu-image-js-js'></script>
+<script src='https://www.xiaojiu8.cn/wp-content/plugins/baidu-submit-link/assets/baidu_push.js' id='wb-baidu-push-js'></script>
+<script src='https://www.xiaojiu8.cn/wp-includes/js/clipboard.min.js?ver=5.8.3' id='clipboard-js'></script>
+
+<!-- 自定义js代码 统计代码 -->
+<div style="display: flex; justify-content: center; align-items: center;"><a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="noopener"><br />
+<img style="height: 30px; width: 60px; display: block; margin: auto;" src="http://www.xiaojiu8.cn/wp-content/uploads/2021/09/又拍云_logo5.png" /><br />
+</a><br />
+<span style="color: #000ff; font-size: 10px; margin-left: 10px; margin-top: 2px;">提供本站 CDN加速/云储存服务</span></div>
+<!-- 自定义js代码 统计代码 END -->
+
+</body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->

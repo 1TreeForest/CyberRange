@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Referrer" content="origin"/>
+
+<style>html, body, #app {background-image: url('https://www.waiwaiit.com/wp-content/uploads/2021/09/memphis-mini.png')!important;background-position: center center;background-attachment: fixed;}</style>    <link rel="icon" href="https://www.waiwaiit.com/wp-content/uploads/2021/09/favicon.ico" type="image/x-icon"/>
+    <style>
+    :root {
+        --Maincolor: #32CCBC !important;
+        --MaincolorHover: #F6416C !important;
+        --fontSelectedColor: #28AB56 !important;
+    }
+
+    #nprogress .bar {
+        background: var(--Maincolor) !important;
+    }
+</style>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ghboke/corepresscdn@master/static/lib/font/ceym/font.css">    <style>
+
+        html, textarea {
+            font-family: ceym, PingFang\ SC, Hiragino\ Sans\ GB, Microsoft\ YaHei, STHeiti, WenQuanYi\ Micro\ Hei, Helvetica, Arial, sans-serif !important;
+        }
+    </style>
+    <link rel="stylesheet" href="https://www.waiwaiit.com/wp-content/themes/CorePress/static/css/main-mobile.css?v=5.8"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ghboke/corepresscdn@master/static/lib/fontawesome5pro/css/all.min.css?v=5.8"><link rel="stylesheet" href="https://www.waiwaiit.com/wp-content/themes/CorePress/static/css/main.css?v=5.8"><link rel='stylesheet' id='corepress-cursor-css'  href='https://www.waiwaiit.com/wp-content/themes/CorePress/static/css/cursor.css?ver=61' type='text/css' media='all' />
+<style id='corepress-cursor-inline-css' type='text/css'>
+:root {--cur-default:url(https://www.waiwaiit.com/wp-content/themes/CorePress/static/img/cur/launa/arrow.png);--cur-pointer:url(https://www.waiwaiit.com/wp-content/themes/CorePress/static/img/cur/launa/link.png)}
+</style>
+<script type='text/javascript' src='https://www.waiwaiit.com/wp-content/themes/CorePress/static/js/jquery.min.js?ver=61' id='corepress_jquery-js'></script>
+<script type='text/javascript' src='https://www.waiwaiit.com/wp-content/themes/CorePress/static/js/jquery.lazyload.min.js?ver=61' id='corepress_jquery_lazyload-js'></script>
+<script type='text/javascript' src='https://www.waiwaiit.com/wp-content/themes/CorePress/static/js/qrcode.min.js?ver=61' id='corepress_jquery_qrcode-js'></script>
+<script type='text/javascript' id='tools-js-extra'>
+/* <![CDATA[ */
+var tools = {"index":"1","page":"","post":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.waiwaiit.com/wp-content/themes/CorePress/static/js/tools.js?ver=61' id='tools-js'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.waiwaiit.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.waiwaiit.com/wp-includes/wlwmanifest.xml" /> 
+
+<link rel="stylesheet" href="https://www.waiwaiit.com/wp-content/themes/CorePress/static/lib/nprogress/nprogress.min.css?v=5.8"><script src="https://www.waiwaiit.com/wp-content/themes/CorePress/static/lib/nprogress/nprogress.min.js?v=5.8"></script><link rel="stylesheet" href="https://www.waiwaiit.com/wp-content/themes/CorePress/static/lib/swiper/swiper.min.css?v=5.8"><script src="https://www.waiwaiit.com/wp-content/themes/CorePress/static/lib/swiper/swiper.min.js?v=5.8"></script><title>歪歪科技 - 免费分享各种资源,免费ssr,v2ray节点机场分享,软件,教程,VPS推荐</title>        <meta name="keywords" content="免费ssr,免费v2ray,vmess机场,vps推荐"/>
+        <meta name="description" content="歪歪科技(www.waiwaiit.com)每天提供最安全免费ssr,v2ray节点,精品软件,QQ技术,机场评测,网站源码,编程资源,活动线报,自学教程,脚本程序等资源平台"/>
+        
+
+
+</head>
+<body>
+
+<script>NProgress.start();</script><div id="app">
+    <header>
+        <div class="header-main-plane">
+            <div class="header-main container">
+                <script>
+    function openMenu() {
+        $('body').css('overflow', 'hidden');
+        $(".drawer-menu-plane").addClass("drawer-menu-plane-show");
+        $(".menu-plane").appendTo($(".drawer-menu-list"));
+        $(".user-menu-plane").appendTo($(".drawer-menu-list"));
+        $(".menu-item-has-children").append('<div class="m-dropdown" onclick="mobile_menuclick(event,this)" ><i class="fa fa-angle-down"></i></div>')
+        $(".user-menu-main").not('.user-menu-main-notlogin').append('<div class="m-dropdown" onclick="mobile_menuclick(event,this)"><i class="fa fa-angle-down"></i></div>')
+    }
+
+    function closeMenu() {
+        $('body').css('overflow', 'auto');
+        $(".drawer-menu-plane").removeClass("drawer-menu-plane-show");
+        $(".user-menu-plane").prependTo($(".header-menu"));
+        $(".menu-plane").prependTo($(".header-menu"));
+        $(".m-dropdown").remove();
+    }
+
+    function openSearch() {
+        $(".dialog-search-plane").addClass("dialog-search-plane-show");
+    }
+
+    function closeSearch() {
+        //$('body').css('overflow', 'auto');
+        $(".dialog-search-plane").removeClass("dialog-search-plane-show");
+    }
+</script>
+<div class="mobile-menu-btn" onclick="openMenu()">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+</div>
+<div class="drawer-menu-plane">
+    <div class="drawer-menu-list">
+    </div>
+    <div class="drawer-menu-write" onclick="closeMenu()">
+    </div>
+</div>
+<div class="header-logo-plane">
+    <div class="header-logo">
+        <a href="https://www.waiwaiit.com"><img src="https://www.waiwaiit.com/wp-content/uploads/2021/09/logo.png" alt=""></a>    </div>
+</div>
+<div class="mobile-search-btn" onclick="openSearch()">
+    <i class="fa fa-search"></i>
+</div>
+<div class="dialog-search-plane">
+    <div class="dialog-mask" onclick="closeSearch()"></div>
+    <div class="dialog-plane">
+        <h2>搜索内容</h2>
+        <form class="search-form" action="https://www.waiwaiit.com" method="get" role="search">
+            <div class="search-form-input-plane">
+                <input type="text" class="search-keyword" name="s" placeholder="搜索内容"
+                       value="">
+            </div>
+            <div>
+                <button type="submit" class="search-submit" value="&#xf002;">搜索</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="header-menu">
+    <div class="menu-plane">
+        <nav class="menu-header-plane"><ul id="menu-%e9%a1%b6%e9%83%a8%e8%8f%9c%e5%8d%95" class="menu-header-list"><li id="menu-item-6541" class="menu-item menu-item-6541"><a href="https://www.waiwaiit.com/post-category/rdzx"><i class="fas fa-mug-hot"> </i> 热点资讯</a></li>
+<li id="menu-item-6528" class="menu-item menu-item-has-children menu-item-6528"><a href="https://www.waiwaiit.com/post-category/zyhz"><i class="fas fa-desktop"></i> 资源汇总</a>
+<ul class="sub-menu">
+	<li id="menu-item-6540" class="menu-item menu-item-6540"><a href="https://www.waiwaiit.com/post-category/zyhz/rjfx">软件分享</a></li>
+	<li id="menu-item-6543" class="menu-item menu-item-6543"><a href="https://www.waiwaiit.com/post-category/zyhz/jczy">教程资源</a></li>
+	<li id="menu-item-6542" class="menu-item menu-item-6542"><a href="https://www.waiwaiit.com/post-category/zyhz/ymfx">源码分享</a></li>
+</ul>
+</li>
+<li id="menu-item-6539" class="menu-item menu-item-6539"><a href="https://www.waiwaiit.com/post-category/free"><i class="fab fa-telegram-plane"></i> SSR/V2ray节点分享</a></li>
+<li id="menu-item-6550" class="menu-item menu-item-6550"><a href="https://www.waiwaiit.com/post-category/vps"><i class="fas fa-server"></i> VPS推荐</a></li>
+<li id="menu-item-6551" class="menu-item menu-item-6551"><a href="https://www.waiwaiit.com/post-category/vpsjiaoben"><i class="fas fa-file-code"></i> VPS脚本</a></li>
+<li id="menu-item-6538" class="menu-item menu-item-6538"><a href="https://www.waiwaiit.com/post-category/xqsb"><i class="fas fa-book"></i> 心情随笔</a></li>
+<li id="menu-item-6552" class="menu-item menu-item-has-children menu-item-6552"><a href="https://www.waiwaiit.com/post-category/bksw"><i class="far fa-clipboard"></i> 博客事务</a>
+<ul class="sub-menu">
+	<li id="menu-item-6553" class="menu-item menu-item-6553"><a href="https://www.waiwaiit.com/post-category/bksw/zngg">站内公告</a></li>
+</ul>
+</li>
+</ul></nav>
+    </div>
+    <div class="user-menu-plane">
+        <div class="user-menu-pc-search" onclick="openSearch()" title="搜索">
+            <i class="fal fa-search"></i>
+        </div>
+                        <span class="user-menu-main user-menu-main-notlogin">
+                 <a href="https://www.waiwaiit.com/wp-login.php?redirect_to=%2F%2Fwww.waiwaiit.com%2F"><button class="login-btn-header">登录</button></a>
+
+                        </span>
+                    </div>
+</div>
+            </div>
+        </div>
+    </header>
+    <div class="top-divider"></div>
+    <main class="container">
+        <div class="html-main">
+                            <div class="post-main">
+                    
+<div class="post-list-page-plane">
+    <div class="list-plane-title">
+                    <div class="index-tab-plane">
+                <div class=""
+                     catid="0">最新文章
+                </div>
+                            </div>
+                        </div>
+    <ul class="post-list">
+            <li class="post-item ">
+        <div class="post-item-container">
+            <div class="post-item-thumbnail">
+                <a href="https://www.waiwaiit.com/post-8087.html" target=""><img src="https://www.waiwaiit.com/wp-content/themes/CorePress/static/img/loading.gif" data-original="https://www.waiwaiit.com/wp-content/uploads/2022/02/202201250005399580.jpg"></a>
+            </div>
+            <div class="post-item-tags">
+                                    <span class="cat-item"><a
+                                target=""
+                                href="https://www.waiwaiit.com/post-category/zyhz/jczy">教程资源</a></span>
+                                </div>
+            <div class="post-item-main">
+                <h2>
+                    <a href="https://www.waiwaiit.com/post-8087.html"
+                         target="">信息系统项目管理师高项课程</a>
+                </h2>
+                <div class="post-item-content">
+                    
+信息系统项目管理师，属于计算机技术与软件（高级）专业技术资格。
+通过本考试的合格人员能够掌握信息系统项目管理的知识体系，
+具备管理大型、复杂信息系统……                </div>
+                <div class="post-item-info">
+                    <div class="post-item-meta">
+                        <div class="post-item-meta-item">
+                            <span class="post-item-meta-author">
+                               <img alt="" src="https://gravatar.loli.net/avatar/1039b5d97348ce8fb061ac015fcd0b96?s=24&d=mm&r=g"  class="post-item-avatar">admin                            </span>
+                            <span class="post-item-time">昨天</span>
+                        </div>
+                        <div class="item-post-meta-other">
+                            <span><i class="fas fa-eye"
+                                 aria-hidden="true"></i>104</span>                            <span><i class="fas fa-comment-alt-lines"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    
+
+    <li class="post-item ">
+        <div class="post-item-container">
+            <div class="post-item-thumbnail">
+                <a href="https://www.waiwaiit.com/post-8085.html" target=""><img src="https://www.waiwaiit.com/wp-content/themes/CorePress/static/img/loading.gif" data-original="https://www.waiwaiit.com/wp-content/uploads/2022/02/202110160052016433.jpg"></a>
+            </div>
+            <div class="post-item-tags">
+                                    <span class="cat-item"><a
+                                target=""
+                                href="https://www.waiwaiit.com/post-category/zyhz/rjfx">软件分享</a></span>
+                                </div>
+            <div class="post-item-main">
+                <h2>
+                    <a href="https://www.waiwaiit.com/post-8085.html"
+                         target="">哔哩喵音乐 v0.1 一款专门提供B站音乐资源试听软件</a>
+                </h2>
+                <div class="post-item-content">
+                    
+「软件名称」哔哩喵音乐
+「软件版本」0.1
+「软件介绍」一款专门提供B站音乐资源试听软件，B站音乐区的音乐资源，提供MP3格式音频文件下载，您还可以直接登录……                </div>
+                <div class="post-item-info">
+                    <div class="post-item-meta">
+                        <div class="post-item-meta-item">
+                            <span class="post-item-meta-author">
+                               <img alt="" src="https://gravatar.loli.net/avatar/1039b5d97348ce8fb061ac015fcd0b96?s=24&d=mm&r=g"  class="post-item-avatar">admin                            </span>
+                            <span class="post-item-time">昨天</span>
+                        </div>
+                        <div class="item-post-meta-other">
+                            <span><i class="fas fa-eye"
+                                 aria-hidden="true"></i>125</span>                            <span><i class="fas fa-comment-alt-lines"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    
+
+    <li class="post-item ">
+        <div class="post-item-container">
+            <div class="post-item-thumbnail">
+                <a href="https://www.waiwaiit.com/post-8083.html" target=""><img src="https://www.waiwaiit.com/wp-content/themes/CorePress/static/img/loading.gif" data-original="https://www.waiwaiit.com/wp-content/uploads/2022/02/202202212238502626.jpg"></a>
+            </div>
+            <div class="post-item-tags">
+                                    <span class="cat-item"><a
+                                target=""
+                                href="https://www.waiwaiit.com/post-category/zyhz/jczy">教程资源</a></span>
+                                </div>
+            <div class="post-item-main">
+                <h2>
+                    <a href="https://www.waiwaiit.com/post-8083.html"
+                         target="">单反实战教学+手机摄影教程6套</a>
+                </h2>
+                <div class="post-item-content">
+                    
+生动形象的介绍了摄影的基础，构图，
+相机的维护及各种流行元素的拍摄方法，
+各种主流相机的快速入门。
+「单反初级教程」https://www.aliyundrive.com/s/ZEBT……                </div>
+                <div class="post-item-info">
+                    <div class="post-item-meta">
+                        <div class="post-item-meta-item">
+                            <span class="post-item-meta-author">
+                               <img alt="" src="https://gravatar.loli.net/avatar/1039b5d97348ce8fb061ac015fcd0b96?s=24&d=mm&r=g"  class="post-item-avatar">admin                            </span>
+                            <span class="post-item-time">昨天</span>
+                        </div>
+                        <div class="item-post-meta-other">
+                            <span><i class="fas fa-eye"
+                                 aria-hidden="true"></i>121</span>                            <span><i class="fas fa-comment-alt-lines"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    
+
+    <li class="post-item ">
+        <div class="post-item-container">
+            <div class="post-item-thumbnail">
+                <a href="https://www.waiwaiit.com/post-8081.html" target=""><img src="https://www.waiwaiit.com/wp-content/themes/CorePress/static/img/loading.gif" data-original="https://www.waiwaiit.com/wp-content/uploads/2022/02/202202212240383413.jpg"></a>
+            </div>
+            <div class="post-item-tags">
+                                    <span class="cat-item"><a
+                                target=""
+                                href="https://www.waiwaiit.com/post-category/zyhz/rjfx">软件分享</a></span>
+                                </div>
+            <div class="post-item-main">
+                <h2>
+                    <a href="https://www.waiwaiit.com/post-8081.html"
+                         target="">PC某音作品批量采集下载工具</a>
+                </h2>
+                <div class="post-item-content">
+                    
+一款可以采集某作者所有作品（含作者喜欢作品）、单个视频作品、
+某话题挑战下指定数量作品、使用某音乐的指定数量作品、某合集的指定数量作品。
+主要是为了……                </div>
+                <div class="post-item-info">
+                    <div class="post-item-meta">
+                        <div class="post-item-meta-item">
+                            <span class="post-item-meta-author">
+                               <img alt="" src="https://gravatar.loli.net/avatar/1039b5d97348ce8fb061ac015fcd0b96?s=24&d=mm&r=g"  class="post-item-avatar">admin                            </span>
+                            <span class="post-item-time">昨天</span>
+                        </div>
+                        <div class="item-post-meta-other">
+                            <span><i class="fas fa-eye"
+                                 aria-hidden="true"></i>93</span>                            <span><i class="fas fa-comment-alt-lines"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    
+
+    <li class="post-item ">
+        <div class="post-item-container">
+            <div class="post-item-thumbnail">
+                <a href="https://www.waiwaiit.com/post-8080.html" target=""><img src="https://www.waiwaiit.com/wp-content/themes/CorePress/static/img/loading.gif" data-original="https://www.xiaoluo3.com/upFiles/infoImg/202202/202202210036187097.jpg"></a>
+            </div>
+            <div class="post-item-tags">
+                                    <span class="cat-item"><a
+                                target=""
+                                href="https://www.waiwaiit.com/post-category/zyhz/jczy">教程资源</a></span>
+                                </div>
+            <div class="post-item-main">
+                <h2>
+                    <a href="https://www.waiwaiit.com/post-8080.html"
+                         target="">2022最新快手电影解说搬运技术</a>
+                </h2>
+                <div class="post-item-content">
+                    
+5分钟即可搬运一部作品，固定模板套用，多层消重视频素材，祝你轻松上热门。
+下载地址：https://www.aliyundrive.com/s/2RMUt7Zfke7
+                </div>
+                <div class="post-item-info">
+                    <div class="post-item-meta">
+                        <div class="post-item-meta-item">
+                            <span class="post-item-meta-author">
+                               <img alt="" src="https://gravatar.loli.net/avatar/1039b5d97348ce8fb061ac015fcd0b96?s=24&d=mm&r=g"  class="post-item-avatar">admin                            </span>
+                            <span class="post-item-time">昨天</span>
+                        </div>
+                        <div class="item-post-meta-other">
+                            <span><i class="fas fa-eye"
+                                 aria-hidden="true"></i>124</span>                            <span><i class="fas fa-comment-alt-lines"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    
+
+    <li class="post-item ">
+        <div class="post-item-container">
+            <div class="post-item-thumbnail">
+                <a href="https://www.waiwaiit.com/post-8078.html" target=""><img src="https://www.waiwaiit.com/wp-content/themes/CorePress/static/img/loading.gif" data-original="https://www.waiwaiit.com/wp-content/uploads/2022/02/202202210034594333.jpg"></a>
+            </div>
+            <div class="post-item-tags">
+                                    <span class="cat-item"><a
+                                target=""
+                                href="https://www.waiwaiit.com/post-category/zyhz/rjfx">软件分享</a></span>
+                                </div>
+            <div class="post-item-main">
+                <h2>
+                    <a href="https://www.waiwaiit.com/post-8078.html"
+                         target="">阿里美团滴滴京东终极面试指导</a>
+                </h2>
+                <div class="post-item-content">
+                    
+课程真实还原互联网架构师面试的全过程，
+带领同学们了解时下的一线互联网大厂的面试真实考验，
+课程会从架构性能，高可用，高并发，JVM和MySQL性能优化及
+很……                </div>
+                <div class="post-item-info">
+                    <div class="post-item-meta">
+                        <div class="post-item-meta-item">
+                            <span class="post-item-meta-author">
+                               <img alt="" src="https://gravatar.loli.net/avatar/1039b5d97348ce8fb061ac015fcd0b96?s=24&d=mm&r=g"  class="post-item-avatar">admin                            </span>
+                            <span class="post-item-time">昨天</span>
+                        </div>
+                        <div class="item-post-meta-other">
+                            <span><i class="fas fa-eye"
+                                 aria-hidden="true"></i>91</span>                            <span><i class="fas fa-comment-alt-lines"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    
+
+    <li class="post-item ">
+        <div class="post-item-container">
+            <div class="post-item-thumbnail">
+                <a href="https://www.waiwaiit.com/post-8076.html" target=""><img src="https://www.waiwaiit.com/wp-content/themes/CorePress/static/img/loading.gif" data-original="https://www.waiwaiit.com/wp-content/uploads/2022/02/202201152013034386.jpg"></a>
+            </div>
+            <div class="post-item-tags">
+                                    <span class="cat-item"><a
+                                target=""
+                                href="https://www.waiwaiit.com/post-category/zyhz/rjfx">软件分享</a></span>
+                                </div>
+            <div class="post-item-main">
+                <h2>
+                    <a href="https://www.waiwaiit.com/post-8076.html"
+                         target="">安卓积分秒领QQ超级会员助手v4.0</a>
+                </h2>
+                <div class="post-item-content">
+                    
+软件支持移动、联通用户使用积分一键兑换对应天数超会，
+积分越多兑换天数越长，可拿父母、同学、爷爷奶奶的手机卡直接领，
+只要卡里有积分可以一直领，无限……                </div>
+                <div class="post-item-info">
+                    <div class="post-item-meta">
+                        <div class="post-item-meta-item">
+                            <span class="post-item-meta-author">
+                               <img alt="" src="https://gravatar.loli.net/avatar/1039b5d97348ce8fb061ac015fcd0b96?s=24&d=mm&r=g"  class="post-item-avatar">admin                            </span>
+                            <span class="post-item-time">昨天</span>
+                        </div>
+                        <div class="item-post-meta-other">
+                            <span><i class="fas fa-eye"
+                                 aria-hidden="true"></i>78</span>                            <span><i class="fas fa-comment-alt-lines"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    
+
+    <li class="post-item ">
+        <div class="post-item-container">
+            <div class="post-item-thumbnail">
+                <a href="https://www.waiwaiit.com/post-8073.html" target=""><img src="https://www.waiwaiit.com/wp-content/themes/CorePress/static/img/loading.gif" data-original="https://www.waiwaiit.com/wp-content/uploads/2022/02/202112222303506590.jpg"></a>
+            </div>
+            <div class="post-item-tags">
+                                    <span class="cat-item"><a
+                                target=""
+                                href="https://www.waiwaiit.com/post-category/zyhz/rjfx">软件分享</a></span>
+                                </div>
+            <div class="post-item-main">
+                <h2>
+                    <a href="https://www.waiwaiit.com/post-8073.html"
+                         target="">安卓曲奇影视内置接口丰富</a>
+                </h2>
+                <div class="post-item-content">
+                    
+是一款免费的追剧APP。网罗热门追到最新最热影视，
+经典美剧、热门韩剧、热门综艺、动漫等全部影片
+实时更新帮你追寻精彩瞬间，急速加载体验极致观影！
+
+
+ ……                </div>
+                <div class="post-item-info">
+                    <div class="post-item-meta">
+                        <div class="post-item-meta-item">
+                            <span class="post-item-meta-author">
+                               <img alt="" src="https://gravatar.loli.net/avatar/1039b5d97348ce8fb061ac015fcd0b96?s=24&d=mm&r=g"  class="post-item-avatar">admin                            </span>
+                            <span class="post-item-time">昨天</span>
+                        </div>
+                        <div class="item-post-meta-other">
+                            <span><i class="fas fa-eye"
+                                 aria-hidden="true"></i>70</span>                            <span><i class="fas fa-comment-alt-lines"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    
+
+    <li class="post-item ">
+        <div class="post-item-container">
+            <div class="post-item-thumbnail">
+                <a href="https://www.waiwaiit.com/post-8071.html" target=""><img src="https://www.waiwaiit.com/wp-content/themes/CorePress/static/img/loading.gif" data-original="https://www.waiwaiit.com/wp-content/uploads/2022/02/202202210029203226.jpg"></a>
+            </div>
+            <div class="post-item-tags">
+                                    <span class="cat-item"><a
+                                target=""
+                                href="https://www.waiwaiit.com/post-category/zyhz/rjfx">软件分享</a></span>
+                                </div>
+            <div class="post-item-main">
+                <h2>
+                    <a href="https://www.waiwaiit.com/post-8071.html"
+                         target="">【免费趣小说】全部小说免费看 分类详细</a>
+                </h2>
+                <div class="post-item-content">
+                    
+【软件名称】：免费趣小说
+【软件版本】：6.6.0.06
+【软件大小】：25.09MB
+【测试系统】：小米
+【使用说明】：一款非常好用的小说看书软件包含各种类型各种篇……                </div>
+                <div class="post-item-info">
+                    <div class="post-item-meta">
+                        <div class="post-item-meta-item">
+                            <span class="post-item-meta-author">
+                               <img alt="" src="https://gravatar.loli.net/avatar/1039b5d97348ce8fb061ac015fcd0b96?s=24&d=mm&r=g"  class="post-item-avatar">admin                            </span>
+                            <span class="post-item-time">昨天</span>
+                        </div>
+                        <div class="item-post-meta-other">
+                            <span><i class="fas fa-eye"
+                                 aria-hidden="true"></i>94</span>                            <span><i class="fas fa-comment-alt-lines"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    
+
+    <li class="post-item ">
+        <div class="post-item-container">
+            <div class="post-item-thumbnail">
+                <a href="https://www.waiwaiit.com/post-8069.html" target=""><img src="https://www.waiwaiit.com/wp-content/themes/CorePress/static/img/loading.gif" data-original="https://www.waiwaiit.com/wp-content/uploads/2022/02/202202200033154140.jpg"></a>
+            </div>
+            <div class="post-item-tags">
+                                    <span class="cat-item"><a
+                                target=""
+                                href="https://www.waiwaiit.com/post-category/zyhz/rjfx">软件分享</a></span>
+                                </div>
+            <div class="post-item-main">
+                <h2>
+                    <a href="https://www.waiwaiit.com/post-8069.html"
+                         target="">安卓写锤子检讨书自动生成软件</a>
+                </h2>
+                <div class="post-item-content">
+                    
+一款超级好用的检讨书自动生成软件，用户通过这款软件可以快速的生成检讨书，
+各种不同的场景都可以设置主题内容，生成的检讨书声情并茂，绝对能够打动对方！……                </div>
+                <div class="post-item-info">
+                    <div class="post-item-meta">
+                        <div class="post-item-meta-item">
+                            <span class="post-item-meta-author">
+                               <img alt="" src="https://gravatar.loli.net/avatar/1039b5d97348ce8fb061ac015fcd0b96?s=24&d=mm&r=g"  class="post-item-avatar">admin                            </span>
+                            <span class="post-item-time">昨天</span>
+                        </div>
+                        <div class="item-post-meta-other">
+                            <span><i class="fas fa-eye"
+                                 aria-hidden="true"></i>81</span>                            <span><i class="fas fa-comment-alt-lines"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    
+
+    </ul>
+    <div class="pages">
+            <button class="index-load-more-btn"><i class="far fa-circle-notch"></i> 加载更多</button>
+    
+<script>
+    var paged =2;
+    var max_page =729;
+    $('.index-load-more-btn').click(() => {
+        var btn_cloass = '.index-load-more-btn';
+        if (paged > max_page) {
+            $(btn_cloass).text('到底啦');
+            return;
+        }
+        $(btn_cloass).html('<i class="far fa-circle-notch fa-spin"></i> 加载中');
+        $.post('https://www.waiwaiit.com/wp-admin/admin-ajax.php', {
+            action: 'corepress_load_post',
+            page: paged,
+            cat: $('.index-tab-item-active').attr('catid')
+        }, (data) => {
+
+            if (data.length == 0) {
+                $(btn_cloass).html('<i class="far fa-circle-notch"></i> 到底啦');
+            } else {
+                $(btn_cloass).html('<i class="far fa-circle-notch"></i> 加载更多');
+            }
+            $('.post-list').append(data);
+             $("img").lazyload({effect: "fadeIn"});            paged++;
+        })
+    })
+
+</script>
+    </div>
+</div>
+
+                </div>
+                <div class="sidebar">
+                    <div class="sidebar-box-list">
+                        <div class="aside-box"><form class="search-form" action="https://www.waiwaiit.com" method="get" role="search">
+    <div class="search-form-input-plane">
+        <input type="text" class="search-keyword" name="s" placeholder="搜索内容"  value="">
+    </div>
+  <div>
+      <button type="submit" class="search-submit" value="&#xf002;">搜索</button>
+  </div>
+</form></div><div class="aside-box"><h2 class="widget-title">有毒鸡汤</h2>
+        <div class="widget-sentence-placeholder widget-sentence-placeholder-jzmk">
+            <ul>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <script>
+            $(document).ready(function () {
+                widget_sentence_load('djt', '.widget-sentence-placeholder-jzmk');
+            });
+        </script>
+        </div><div class="aside-box"><h2 class="widget-title">热门文章</h2>
+                <div class="hot-post-widget-item">
+                    <div>
+                            <span class="hot-post-widget-item-num">
+                                    1                            </span>
+                        <span class="hot-post-widget-item-title">
+                                <a href="https://www.waiwaiit.com/post-6011.html"> 免费SS/SSR/v2ray节点分享网站-每日更新(2021/6/28)</a>
+                            </span>
+                    </div>
+                    <div class="hot-post-widget-item-meta">
+                        <div>
+                            2021-06-28                        </div>
+                        <div>
+                            <a href="https://www.waiwaiit.com/post-category/free"> 免费ssr节点分享</a>
+                        </div>
+                    </div>
+                </div>
+                                <div class="hot-post-widget-item">
+                    <div>
+                            <span class="hot-post-widget-item-num">
+                                    2                            </span>
+                        <span class="hot-post-widget-item-title">
+                                <a href="https://www.waiwaiit.com/post-6128.html"> 免费SS/SSR/v2ray节点分享网站-每日更新(2021/7/6)</a>
+                            </span>
+                    </div>
+                    <div class="hot-post-widget-item-meta">
+                        <div>
+                            2021-07-06                        </div>
+                        <div>
+                            <a href="https://www.waiwaiit.com/post-category/free"> 免费ssr节点分享</a>
+                        </div>
+                    </div>
+                </div>
+                                <div class="hot-post-widget-item">
+                    <div>
+                            <span class="hot-post-widget-item-num">
+                                    3                            </span>
+                        <span class="hot-post-widget-item-title">
+                                <a href="https://www.waiwaiit.com/post-4548.html"> SSTap for Windows 使用教程</a>
+                            </span>
+                    </div>
+                    <div class="hot-post-widget-item-meta">
+                        <div>
+                            2021-03-22                        </div>
+                        <div>
+                            <a href="https://www.waiwaiit.com/post-category/xqsb"> 心情随笔</a>
+                        </div>
+                    </div>
+                </div>
+                                <div class="hot-post-widget-item">
+                    <div>
+                            <span class="hot-post-widget-item-num">
+                                    4                            </span>
+                        <span class="hot-post-widget-item-title">
+                                <a href="https://www.waiwaiit.com/post-926.html"> 易语言绝地求生压枪识别全套源码</a>
+                            </span>
+                    </div>
+                    <div class="hot-post-widget-item-meta">
+                        <div>
+                            2020-01-04                        </div>
+                        <div>
+                            <a href="https://www.waiwaiit.com/post-category/zyhz/rjfx"> 软件分享</a>
+                        </div>
+                    </div>
+                </div>
+                </div><div class="aside-box"><h2 class="widget-title">最新评论</h2>
+            <li>
+                <div class="widger-comment-plane">
+                    <div class="widger-comment-info">
+                        <div class="widger-comment-user">
+                            <div class="widger-avatar">
+                                <img class="user-avatar" width="30" height="30"
+                                     src="https://gravatar.loli.net/avatar/1039b5d97348ce8fb061ac015fcd0b96?s=60&d=mm&r=g">
+                            </div>
+                            <div class="widger-comment-name">
+                                admin                            </div>
+                        </div>
+                        <div class="widger-comment-time">
+                            <span>12月1日</span>
+                        </div>
+                    </div>
+                    <div class="widger-comment-excerpt">
+                        <p>优惠码好像都在他家套餐商店公告里</p>
+                    </div>
+                    <p class="widger-comment-postlink">
+                        评论于 <a href="https://www.waiwaiit.com/post-7278.html"
+                               target="_blank">免费SSR/v2ray节点分享(2021/11/29)</a>
+                    </p>
+                </div>
+
+            </li>
+
+                        <li>
+                <div class="widger-comment-plane">
+                    <div class="widger-comment-info">
+                        <div class="widger-comment-user">
+                            <div class="widger-avatar">
+                                <img class="user-avatar" width="30" height="30"
+                                     src="https://gravatar.loli.net/avatar/0db6456ac9196522138e2cfede5a40f9?s=60&d=mm&r=g">
+                            </div>
+                            <div class="widger-comment-name">
+                                wde                            </div>
+                        </div>
+                        <div class="widger-comment-time">
+                            <span>12月1日</span>
+                        </div>
+                    </div>
+                    <div class="widger-comment-excerpt">
+                        <p>有没有可可云的优惠码？</p>
+                    </div>
+                    <p class="widger-comment-postlink">
+                        评论于 <a href="https://www.waiwaiit.com/post-7278.html"
+                               target="_blank">免费SSR/v2ray节点分享(2021/11/29)</a>
+                    </p>
+                </div>
+
+            </li>
+
+                        <li>
+                <div class="widger-comment-plane">
+                    <div class="widger-comment-info">
+                        <div class="widger-comment-user">
+                            <div class="widger-avatar">
+                                <img class="user-avatar" width="30" height="30"
+                                     src="https://gravatar.loli.net/avatar/cc0f5bd4f03d4e3ab2846a2dc5fc0f15?s=60&d=mm&r=g">
+                            </div>
+                            <div class="widger-comment-name">
+                                dfg                            </div>
+                        </div>
+                        <div class="widger-comment-time">
+                            <span>11月4日</span>
+                        </div>
+                    </div>
+                    <div class="widger-comment-excerpt">
+                        <p>推荐个目前自用的V2ray+Trojan翻墙梯子软件，不限流量免费试用三天能刷奈飞超高清视频，还有高质量IPL...</p>
+                    </div>
+                    <p class="widger-comment-postlink">
+                        评论于 <a href="https://www.waiwaiit.com/post-6330.html"
+                               target="_blank">(2021/8/10)免费SSR/v2ray节点分享</a>
+                    </p>
+                </div>
+
+            </li>
+
+            </div><div class="aside-box"><h2 class="widget-title">标签云</h2>
+<script src="https://www.waiwaiit.com/wp-content/themes/CorePress/static/js/TagCloud.js?v=5.8"></script>            <div class="corepress-tag-cloud">
+                <div class="corepress-tag-container-tag1">
+                </div>
+            </div>
+                        <style>
+                .corepress-tagcloud a {
+                    font-size: 12px;
+                    color: #fff;
+                    padding: 0 !important;
+                }
+
+                .corepress-tagcloud a:hover {
+                    color: #fff !important;
+                }
+
+                .tagcloud--item {
+                    color: #fff;
+                    padding: 2px 4px;
+                    border-radius: 3px;
+                    cursor: pointer;
+                }
+
+                .tagcloud--item:hover {
+                    opacity: 1 !important;
+                    z-index: 100 !important;
+                }
+            </style>
+            <script>
+                                var tag = TagCloud('.corepress-tag-container-tag1', JSON.parse('[{"text":"#\u514d\u8d39SSR","href":"https:\/\/www.waiwaiit.com\/post-tag\/%e5%85%8d%e8%b4%b9ssr"},{"text":"#\u514d\u8d39V2ray","href":"https:\/\/www.waiwaiit.com\/post-tag\/%e5%85%8d%e8%b4%b9v2ray"},{"text":"app\u5b89\u88c5\u673a","href":"https:\/\/www.waiwaiit.com\/post-tag\/app%e5%ae%89%e8%a3%85%e6%9c%ba"},{"text":"Downie 4","href":"https:\/\/www.waiwaiit.com\/post-tag\/downie-4"},{"text":"EwoMail","href":"https:\/\/www.waiwaiit.com\/post-tag\/ewomail"},{"text":"Ripro\u5b50\u4e3b\u9898","href":"https:\/\/www.waiwaiit.com\/post-tag\/ripro%e5%ad%90%e4%b8%bb%e9%a2%98"},{"text":"ripro\u5c0f\u516b\u5b50\u4e3b\u9898","href":"https:\/\/www.waiwaiit.com\/post-tag\/ripro%e5%b0%8f%e5%85%ab%e5%ad%90%e4%b8%bb%e9%a2%98"},{"text":"ssr","href":"https:\/\/www.waiwaiit.com\/post-tag\/ssr"},{"text":"v2ray","href":"https:\/\/www.waiwaiit.com\/post-tag\/v2ray"},{"text":"VPS","href":"https:\/\/www.waiwaiit.com\/post-tag\/vps"},{"text":"\u4e00\u4e07","href":"https:\/\/www.waiwaiit.com\/post-tag\/%e4%b8%80%e4%b8%87"},{"text":"\u4e00\u4e2a","href":"https:\/\/www.waiwaiit.com\/post-tag\/%e4%b8%80%e4%b8%aa"},{"text":"\u4e00\u4f53","href":"https:\/\/www.waiwaiit.com\/post-tag\/%e4%b8%80%e4%bd%93"},{"text":"\u4e00\u53ea","href":"https:\/\/www.waiwaiit.com\/post-tag\/%e4%b8%80%e5%8f%aa"},{"text":"\u4e00\u672c","href":"https:\/\/www.waiwaiit.com\/post-tag\/%e4%b8%80%e6%9c%ac"},{"text":"\u4e00\u6837","href":"https:\/\/www.waiwaiit.com\/post-tag\/%e4%b8%80%e6%a0%b7"},{"text":"\u4e00\u6b3e","href":"https:\/\/www.waiwaiit.com\/post-tag\/%e4%b8%80%e6%ac%be"},{"text":"\u4e00\u70b9","href":"https:\/\/www.waiwaiit.com\/post-tag\/%e4%b8%80%e7%82%b9"},{"text":"\u4e00\u7c7b","href":"https:\/\/www.waiwaiit.com\/post-tag\/%e4%b8%80%e7%b1%bb"},{"text":"\u4e00\u8a00","href":"https:\/\/www.waiwaiit.com\/post-tag\/%e4%b8%80%e8%a8%80"}]'), {}, ['#67C23A', '#E6A23C', '#F56C6C', '#909399', '#CC9966', '#FF6666', '#99CCFF', '#FF9999', '#CC6633']);
+            </script>
+            </div>                    </div>
+                </div>
+
+                        </div>
+                    <div class="frinds-links">
+                <div class="list-plane-title">
+                    <div>友情链接 <span
+                                class="list-plane-linksdescribe"></span>
+                    </div>
+                                    </div>
+                <div class="frinds-links-list">
+                    <li><a href="https://xiaoluo2.com/" target="_blank">小罗娱乐网</a></li>
+<li><a href="https://www.yz58.cn" target="_blank">柚子资源网</a></li>
+<li><a href="https://www.waiwaiit.com" target="_blank">歪歪科技</a></li>
+
+                </div>
+            </div>
+            
+    </main>
+    <footer>
+        <script>console.log("\n %c CorePress主题v 5.8 %c by applek | www.lovestu.com", "color:#fff;background:#409EFF;padding:5px 0;", "color:#eee;background:#444;padding:5px 10px;");
+</script><div class="go-top-plane" title="返回顶部">
+    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+</div>
+
+
+<div class="footer-plane">
+    <div class="footer-container">
+        <div class="footer-left">
+            <div>
+                                                <div class="footer-info">
+                    Copyright © 2021 歪歪科技                    <span class="theme-copyright"><a href="https://www.lovestu.com/corepress.html" target="_blank">CorePress</a>
+                </span>
+                    Powered by WordPress
+                </div>
+                <div class="footer-info">
+                    <span class="footer-icp"><img class="ipc-icon" src="https://www.waiwaiit.com/wp-content/themes/CorePress/static/img/icp.svg" alt=""><a href="https://beian.miit.gov.cn/" target="_blank">澳ICP备00000号</a></span>                </div>
+            </div>
+        </div>
+        <div class="footer-details footer-right">
+            <div>
+                            </div>
+
+        </div>
+        <div>
+            <script type='text/javascript' id='index_js-js-extra'>
+/* <![CDATA[ */
+var set = {"is_single":"","is_page":"","is_home":"1","ajaxurl":"https:\/\/www.waiwaiit.com\/wp-admin\/admin-ajax.php","reprint":{"msg":"","copylenopen":0,"copylen":0,"addurl":0,"siteurl":"https:\/\/www.waiwaiit.com\/"},"module":{"imglightbox":1,"imglazyload":1},"theme":{"loadbar":1},"index":{"linksicon":1,"chromeiconurl":"https:\/\/www.waiwaiit.com\/wp-content\/themes\/CorePress\/static\/img\/chrome.png"},"is_page_template":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.waiwaiit.com/wp-content/themes/CorePress/static/js/index.js?ver=61' id='index_js-js'></script>
+<script type='text/javascript' src='https://www.waiwaiit.com/wp-includes/js/wp-embed.min.js' id='wp-embed-js'></script>
+        </div>
+
+    </div>
+</div>
+
+    </footer>
+</div>
+</body>
+</html>

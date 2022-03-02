@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="uTools 是什么? uTools 是新一代效率工具平台，通过自由选配丰富的插件，打造得心应手的工具集合">
+    <meta name="keywords" content="uTools,uTools下载,uTools官网,uTools是什么软件,uTools开发, uTools插件,国产效率软件,效率工具,生产力工具">
+    <title>uTools官网 - 新一代效率工具平台</title>
+    <script src="assets/siema.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <img class="logo" src="https://res.u-tools.cn/website/logo.png" />
+            <div class="menu">
+                <a href="https://u.tools" class="current">首页</a>
+                <a href="docs/guide/about-uTools.html" target="_blank">帮助教程</a>
+                <a href="https://yuanliao.info" target="_blank">猿料社区</a>
+            </div>
+        </div>
+    </header>
+    <div class="content dark">
+        <div class="container">
+            <div class="main">
+                <div class="slogan">
+                    <div class="title">新一代效率工具平台</div>
+                    <div class="description">自由组合丰富插件，打造随手可取的终极神器</div>
+                    <div class="btns">
+                        <div class="btn main-download" onclick="handleDownload()">下载 Windows 版本</div>
+                        <div class="btn light" onclick="watchVideo()">观看视频</div>
+                    </div>
+                </div>
+                <div class="video">
+                    <img onclick="watchVideo()" src="https://res.u-tools.cn/website/video-play-1.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="utools-input">
+                <div class="content-title">一切皆插件，自取所需</div>
+                <div class="content-desc">每个人遇到的问题各不相同，uTools 优秀的插件化设计，让你可以自取所需，任意组合<br /> 插件一般仅数百 KB 大小，简洁美观、没有广告，解决你的问题，一个插件即可</div>
+                <!-- <img style=" max-width: 912px; width: 100%;" src="https://res.u-tools.cn/website/store.png"> -->
+                <video muted autoplay loop src="https://res.u-tools.cn/home_page-1.mp4" style=" max-width: 1024px; width: 100%;">
+                  你的浏览器不支持 <code>video</code> 标签.
+                </video>
+            </div>
+        </div>
+    </div>
+    <div class="content dark">
+        <div class="container dark">
+            <div class="utools-input">
+                <div class="content-title">呼之即来，用完即走</div>
+                <div class="content-desc"><span id='option'>在任何界面下通过快捷键「Alt + 空格」呼出 uTools，或是点击鼠标中键呼出超级面板</span><br /> 一个软件该有的样子：即用即走，无打扰，不中断你当下的工作
+                </div>
+                <img style=" max-width: 912px; width: 100%;" src="https://res.u-tools.cn/website/mac-utools-input.png">
+                <div class="utools-panel-img">
+                    <img style="max-width: 372px;max-height: 437px;" src="https://res.u-tools.cn/website/mac-utools-panel-1.png">
+                    <img style="max-width: 372px;max-height: 456px;" src="https://res.u-tools.cn/website/mac-utools-panel-2.png">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="utools-input">
+                <div class="content-title">媒体评价</div>
+                <div class="content-desc replace"></div>
+                <div class="siema">
+                    <div class="slide">
+                        <div class="say">“ 相见恨晚，这才是横跨三大操作系统的终极神器。”</div>
+                        <div class="who">《差评》 - 微信公众号</div>
+                    </div>
+                    <div class="slide">
+                        <div class="say">“ 自从下载了 uTools 总感觉自己电脑开了外挂，真的太太太好用了！”</div>
+                        <div class="who">《topbook》</div>
+                    </div>
+                    <div class="slide">
+                        <div class="say">“ 这种插件化的管理方式，为用户带来了很大的自由度，能够帮助你打造出更趁手的「私人专属工具库」 ”</div>
+                        <div class="who">《少数派》</div>
+                    </div>
+                    <div class="slide">
+                        <div class="say">“ 「一切皆插件」让 uTools 拥有了无限的生命力，可以预计在未来越来越多的插件出现，会使得 uTools 变成一个全能的效率利器 ”</div>
+                        <div class="who">《iplaysoft》</div>
+                    </div>
+                </div>
+                <div class="plugin-desc"></div>
+                <dvi class="siema-btn siema-prev siema-btn-disable"></dvi>
+                <dvi class="siema-btn siema-next"></dvi>
+                <script>
+                    function onChangeCallback() {
+                        const count = 4;
+                        if (this.currentSlide === count - 1) {
+                            document.querySelector('.siema-next').setAttribute('class', 'siema-btn siema-next siema-btn-disable');
+                        } else {
+                            document.querySelector('.siema-next').setAttribute('class', 'siema-btn siema-next');
+                        }
+                        if (this.currentSlide == 0) {
+                            document.querySelector('.siema-prev').setAttribute('class', 'siema-btn siema-prev siema-btn-disable');
+                        } else {
+                            document.querySelector('.siema-prev').setAttribute('class', 'siema-btn siema-prev');
+
+                        }
+                    }
+
+                    const mySiema = new Siema({
+                        onChange: onChangeCallback,
+                        duration: 400,
+                    });
+                    const prev = document.querySelector('.siema-prev');
+                    const next = document.querySelector('.siema-next');
+                    prev.addEventListener('click', () => mySiema.prev());
+                    next.addEventListener('click', () => mySiema.next());
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="content dark">
+        <div class="container">
+            <div class="platform">
+                <div>
+                    <div class="logo" style="background: url(https://res.u-tools.cn/website/windows-logo.svg) center center no-repeat;"></div>
+                    <div class="remark">Windows 7, 10, 11</div>
+                    <div>
+                        <div onclick="handleDownloadPackage('win-x64')" class="download">Windows 64 位版本</div>
+                        <div onclick="handleDownloadPackage('win-ia32')" class="download">32 位版本</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="logo" style="background: url(https://res.u-tools.cn/website/apple-logo.svg) center center no-repeat;"></div>
+                    <div class="remark">macOS 10.10+</div>
+                    <div onclick="handleDownloadPackage('mac')" class="download">macOS Intel 版本</div>
+                    <div onclick="handleDownloadPackage('mac-arm64')" class="download">M1 版本</div>
+                </div>
+                <div>
+                    <div class="logo" style="background: url(https://res.u-tools.cn/website/linux-logo.svg) center center no-repeat;"></div>
+                    <div class="remark">UOS, Deepin, Ubuntu</div>
+                    <div onclick="handleDownloadPackage('linux')" class="download">下载 Linux 版本</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="footer">
+            <div class="qrcode">
+                <img src="https://res.u-tools.cn/website/qr-code.png" />
+                <div>
+                    <div>关注「猿料」公众号</div>
+                    <div class="footer-secondary">了解 uTools 的插件、教程、开发故事等</div>
+                </div>
+            </div>
+            <div>
+                <div class="footer-classify">帮助</div>
+                <div><a href="docs/guide/about-uTools.html" target="_blank">帮助中心</a></div>
+                <div><a href="docs/guide/faq.html" target="_blank">常见问题</a></div>
+                <div><a href="docs/developer/welcome.html" target="_blank">插件开发</a></div>
+                <div><a href="https://yuanliao.info" target="_blank">社区讨论</a></div>
+                <div><a href="docs/guide/about-uTools.html#联系方式" target="_blank">联系我们</a></div>
+            </div>
+            <div>
+                <div class="footer-classify">合作与资源</div>
+                <div><a href="docs/guide/ppt.html" target="_blank">向团队介绍 uTools</a></div>
+                <div><a href="docs/guide/sponsor.html" target="_blank">活动赞助</a></div>
+                <div><a href="docs/guide/sponsor.html" target="_blank">自媒体赞助</a></div>
+                <div><a href="docs/guide/enterprise.html" target="_blank">企业定制版</a></div>
+                <div><a href="docs/guide/enterprise.html" target="_blank">内网部署</a></div>
+            </div>
+            <div>
+                <div class="footer-classify">条款与隐私</div>
+                <div><a href="agreement.html" target="_blank">用户协议</a></div>
+                <div><a href="privacy.html" target="_blank">隐私政策</a></div>
+                <div><a href="dev.html" target="_blank">开发者协议</a></div>
+            </div>
+
+        </div>
+        <div class="copyright">
+            © 2021 福州猿力信息科技有限公司<a href="https://beian.miit.gov.cn/" target="_blank">闽ICP备18007474号</a>
+        </div>
+    </div>
+    <div class="qp mask" style="display: none;"></div>
+    <div class="qp close-video" style="display: none;" onclick="closeVideo()"><img src="assets/img/close.png" width="30" /></div>
+    <div class="qp watch-video" style="display: none;">
+        <video id="media" poster="https://res.u-tools.cn/website/video-play.png" src="https://res.u-tools.cn/website/utools-H264.mp4" controls>
+      你的浏览器不支持 <code>video</code> 标签.
+    </video>
+    </div>
+    <script>
+        var _hmt = _hmt || []
+        var downloadURL = ''
+        const publishURL = 'https://res.u-tools.cn/version2/'
+        const publishPlatform = {
+            'win-x64': {
+                version: 'V2.5.2',
+                package: 'uTools-2.5.2.exe'
+            },
+            'win-ia32': {
+                version: 'V2.5.2',
+                package: 'uTools-2.5.2-ia32.exe'
+            },
+            'mac': {
+                version: 'V2.5.2',
+                package: 'uTools-2.5.2.dmg'
+            },
+            'mac-arm64': {
+                version: 'V2.5.2',
+                package: 'uTools-2.5.2-arm64.dmg'
+            },
+            'linux': {
+                version: 'V2.5.2',
+                package: 'utools_2.5.2_amd64.deb'
+            }
+        };
+        (function() {
+            const downloadBtnDom = document.querySelector('.main-download')
+            if (navigator.platform.toUpperCase().includes('MAC')) {
+                downloadBtnDom.innerText = '下载 macOS 版本 ' + publishPlatform.mac.version
+                document.getElementById('option').innerText = '在任何界面下通过快捷键「Option + 空格」呼出 uTools，或是长按鼠标右键呼出超级面板'
+
+                downloadURL = publishURL + publishPlatform.mac.package
+                if (isM1()) {
+                  downloadURL = publishURL + publishPlatform['mac-arm64'].package
+                  downloadBtnDom.innerText = '下载 macOS M1 版本 ' + publishPlatform.mac.version
+                }
+                
+            } else {
+                if (navigator.platform.toUpperCase().includes('LINUX')) {
+                    downloadURL = publishURL + publishPlatform.linux.package
+                    downloadBtnDom.innerText = '下载 Linux 版本 ' + publishPlatform.linux.version
+                } else if (navigator.platform.includes('Win') && !navigator.userAgent.includes('WOW64') && !navigator.userAgent.includes('Win64')) {
+                    downloadURL = publishURL + publishPlatform['win-ia32'].package
+                    downloadBtnDom.innerText = '下载 Windows 32 位版本 ' + publishPlatform['win-ia32'].version
+                } else {
+                    downloadURL = publishURL + publishPlatform['win-x64'].package
+                    downloadBtnDom.innerText = '下载 Windows 版本 ' + publishPlatform['win-x64'].version
+                }
+            }
+            var hm = document.createElement("script")
+            hm.src = "https://hm.baidu.com/hm.js?91d2fe9d2e05a231f56ec4400d1dcd84"
+            var s = document.getElementsByTagName("script")[0]
+            s.parentNode.insertBefore(hm, s)
+        })();
+
+        function watchVideo() {
+            document.querySelectorAll('.qp').forEach((item) => {
+                item.style.display = ''
+            })
+            document.getElementById("media").play();
+        }
+        document.querySelector('.mask').addEventListener('click', closeVideo)
+
+        function closeVideo() {
+            document.querySelectorAll('.qp').forEach((item) => {
+                item.style.display = 'none'
+            })
+            document.getElementById("media").pause();
+        }
+
+        function handleDownload() {
+            if (typeof window.orientation !== 'undefined') return window.alert('请通过电脑浏览器下载')
+            if (!downloadURL) return window.location.reload()
+            window.location.href = downloadURL
+        }
+
+        function handleDownloadPackage(p) {
+            if (typeof window.orientation !== 'undefined') return window.alert('请通过电脑浏览器下载')
+            window.location.href = publishURL + publishPlatform[p].package
+        }
+        function isM1() {
+          var canvas = document.createElement('canvas');
+          var gl;
+          var debugInfo;
+          var vendor;
+          var renderer;
+
+          try {
+            gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+          } catch (e) {
+            console.log(e)
+          }
+
+          if (gl) {
+            debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+            vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+            renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+          }
+          return renderer === 'Apple M1'
+        }
+    </script>
+</body>

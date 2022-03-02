@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+<script>
+	  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="8umFpwEvOnHGHWWKTG3t69rigGefCGxT";analytics.SNIPPET_VERSION="4.13.2";
+	  analytics.load("8umFpwEvOnHGHWWKTG3t69rigGefCGxT");
+	  analytics.page({"testing" : "test 3"});
+	  }}();
+	</script>
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-N5VDQ85');</script>
+
+<meta charset="utf-8"><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam-cell.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"NRJS-08583c234ea7b9f4cbc",applicationID:"771840878"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return s.recordSupportability("API/"+e+"/called"),o(t+e,[u.now()].concat(c(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(10),c=t(11),f=t("ee").get("tracer"),u=t("loader"),s=t(4),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",v=l+"ixn-";a(p,function(t,e){d[e]=i(l,e,!0,"api")}),d.addPageAction=i(l,"addPageAction",!0),d.setCurrentRouteName=i(l,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(v+"tracer",[u.now(),t,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw f.emit("fn-err",[arguments,this,t],n),t}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(v,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),s.recordSupportability("API/noticeError/called"),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],4:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[c,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",c="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:c},recordSupportability:r,recordCustom:i}},{}],5:[function(t,e,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=t(12);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],6:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],7:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?l("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&l("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(u&&u<r.startTime)return;var i=[r],o=a({});o&&i.push(o),l("lcp",i)}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||l("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function c(t){if(t instanceof y&&!w){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=v.now()?n.fid=v.now()-e:e>v.offset&&e<=Date.now()?(e-=v.offset,n.fid=v.now()-e):e=v.now(),w=!0,l("timing",["fi",e,n])}}function f(t){"hidden"===t&&(u=v.now(),l("pageHide",[u]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var u,s,d,p,l=t("handle"),v=t("loader"),m=t(9),g=t(3),y=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){s=new PerformanceObserver(r);try{s.observe({entryTypes:["paint"]})}catch(h){}d=new PerformanceObserver(i);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(h){}p=new PerformanceObserver(o);try{p.observe({type:"layout-shift",buffered:!0})}catch(h){}}if("addEventListener"in document){var w=!1,b=["click","keydown","mousedown","pointerdown","touchstart"];b.forEach(function(t){document.addEventListener(t,c,g(!1))})}m(f)}},{}],8:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}e.exports={agent:i,version:o,match:r}},{}],9:[function(t,e,n){function r(t){function e(){t(c&&document[c]?document[c]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(3);e.exports=r;var o,a,c;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",c="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",c="webkitVisibilityState")},{}],10:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],11:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],12:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var c=e(i),f=m(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[w[n]];return p&&p.push([b,n,r,c]),c}}function o(t,e){h[t]=m(t).concat(e)}function v(t,e){var n=h[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return h[t]||[]}function g(t){return p[t]=p[t]||i(n)}function y(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var h={},w={},b={on:o,addEventListener:o,removeEventListener:v,emit:n,get:g,listeners:m,context:e,buffer:y,abort:c,aborted:!1};return b}function o(t){return u(t,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=t("gos"),s=t(10),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!P++){var t=M.info=NREUM.info,e=g.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(O,function(e,n){t[e]||(t[e]=n)});var n=a();c("mark",["onload",n+M.offset],null,"api"),c("timing",["load",n]);var r=g.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=v+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===g.readyState&&o()}function o(){c("mark",["domContent",a()+M.offset],null,"api")}var a=t(5),c=t("handle"),f=t(10),u=t("ee"),s=t(8),d=t(6),p=t(2),l=t(3),v=p.getConfiguration("ssl")===!1?"http":"https",m=window,g=m.document,y="addEventListener",h="attachEvent",w=m.XMLHttpRequest,b=w&&w.prototype,E=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:w,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,O={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1215.min.js"},T=w&&b&&b[y]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:T,userAgent:s,disabled:E};if(!E){t(1),t(7),g[y]?(g[y]("DOMContentLoaded",o,l(!1)),m[y]("load",r,l(!1))):(g[h]("onreadystatechange",i),m[h]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var P=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],t)}c(n+"start",[o,a,f],s,u);try{return p=e.apply(a,o)}catch(v){throw c(n+"err",[o,a,v],s,u),v}finally{c(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)f=e[u],c=t[f],a(c)||(t[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!v||e){var c=v;v=!0;try{t.emit(n,r,o,e,a)}catch(f){i([f,n,r,o],t)}v=c}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function c(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function f(t,e,n){var r=t[e];t[e]=c(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(11),p="nr@original",l=Object.prototype.hasOwnProperty,v=!1;e.exports=r,e.exports.wrapFunction=c,e.exports.wrapInPlace=f,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<title>The Criterion Collection</title>
+<meta name="description" content="Discover important classic and contemporary cinema from around the world. Browse our continuing series of Blu-ray and DVD editions, featuring award-winning supplemental features." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow" />
+<meta property="fb:app_id" content="121335962047" />
+<meta property="fb:admins" content="801630" />
+<meta property="fb:admins" content="690555828" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="The Criterion Collection" />
+<meta property="og:title" content="The Criterion Collection" />
+<meta property="og:url" content="https://criterion.com" />
+<meta property="og:description" content="Discover important classic and contemporary cinema from around the world. Browse our continuing series of Blu-ray and DVD editions, featuring award-winning supplemental features." />
+<meta property="og:image" content="https://www.criterion.com/assets/img/icons/C.jpg" />
+<meta content="https://www.criterion.com/assets/img/icons/C.jpg" property="thumbnail" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Criterion">
+<meta name="twitter:creator" content="@Criterion">
+<meta name="twitter:title" content="The Criterion Collection">
+<meta name="twitter:description" content="Discover important classic and contemporary cinema from around the world. Browse our continuing series of Blu-ray and DVD editions, featuring award-winning supplemental features.">
+<meta name="twitter:image" content="https://www.criterion.com/assets/img/icons/C.jpg">
+<meta class="swiftype" name="title" data-type="string" content="The Criterion Collection" />
+<meta class="swiftype" name="meta" data-type="string" content="" />
+<meta class="swiftype" name="description" data-type="text" content="Discover important classic and contemporary cinema from around the world. Browse our continuing series of Blu-ray and DVD editions, featuring award-winning supplemental features." />
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://www.criterion.com/assets/img/icons/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://www.criterion.com/assets/img/icons/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://www.criterion.com/assets/img/icons/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://www.criterion.com/assets/img/icons/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://www.criterion.com/assets/img/icons/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://www.criterion.com/assets/img/icons/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://www.criterion.com/assets/img/icons/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://www.criterion.com/assets/img/icons/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="https://www.criterion.com/assets/img/icons/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="https://www.criterion.com/assets/img/icons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="https://www.criterion.com/assets/img/icons/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://www.criterion.com/assets/img/icons/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="https://www.criterion.com/assets/img/icons/favicon-128.png" sizes="128x128" />
+<link rel="mask-icon" href="https://www.criterion.com/assets/img/icons/safari-pinned-tab.svg" color="#737373">
+<link rel="shortcut icon" href="https://www.criterion.com/assets/img/icons/favicon-32x32.ico">
+<meta name="theme-color" content="#ffffff">
+<link rel="manifest" href="https://www.criterion.com/icons/manifest.json">
+<meta name="msapplication-config" content="https://www.criterion.com/icons/browserconfig.xml">
+<meta name="csrf-token" content="asFL2uJK6ai5wLfAncaPuuMeOjTkb82ulqNii9X3">
+<meta name="google-site-verification" content="rsCUNvTgbggfu8XFDrWon5M--7gbt63PnKP3eICVAqk" />
+
+<meta name="google-site-verification" content="dlCxmPh7hANd93GYc3JRFCjD1vIdiy4qy5IyBSorzsY" />
+
+<meta name="facebook-domain-verification" content="gib4g4s5or6k0b6xbny0hmuxdvd2q6" />
+<link rel="alternate" type="application/rss+xml" href="https://www.criterion.com/feeds/the-daily" title="The Criterion Collection: On Film / The Daily">
+<link rel="stylesheet" type="text/css" href="//cloud.typography.com/6649734/6554552/css/fonts.css" />
+<link rel="stylesheet" href="https://www.criterion.com/assets/css/screen.min.css?v=1.72" type="text/css" />
+<script>var FACEBOOK_APP_ID="121335962047";</script>
+<script>var CRITERON_LOGGING_ENABLED = false;</script>
+<script>var CRITERON_DEBUG_LEVEL = "DEBUG";</script>
+</head>
+<body class="criterion-collection   page__home">
+<div class="u-mobile-flag" data-mobile-flag></div>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5VDQ85" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="page-contain">
+<header class="headerSite   fixed" role="banner">
+<p class="vh">The Criterion Collection</p>
+<div class="headContain">
+<div class="headLogo">
+<a href="/" class="homelink">
+<span class="vh">Home</span>
+<div class="logo-c">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M7.1 16.8C-1.2 31 3.5 49.3 17.7 57.6c.1 0 .1.1.2.1 6 3.5 13.1 4.8 19.9 3.7l-2.2-13.3c-.8.1-1.5.2-2.3.2-3 0-6-.8-8.6-2.3-7.8-4.5-10.5-14.5-6-22.3 0 0 0-.1.1-.1 4.6-7.8 14.8-10.4 22.6-5.8 3.3 1.9 5.8 4.9 7.1 8.5l12.8-4.6C55.6 6.1 38.3-1.9 22.7 3.9c-6.6 2.4-12 6.9-15.6 12.9" /></svg>
+</div>
+<div class="logo-type">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 24"><path d="M12.22 17.414H10.8v-6.716H8.25v-1.31h6.512v1.31H12.22zm9.45-3.383v3.383h1.41V9.387h-1.41v3.337h-3.832V9.387h-1.405v8.026h1.405V14.03zm9.175-4.643h-5.948v8.027h6.006v-1.26h-4.595v-2.155h4.022v-1.264h-4.022v-2.088h4.537zm12.128 8.163a4.146 4.146 0 0 0 3.257-1.42l-.906-.92a3.13 3.13 0 0 1-2.303 1.045 2.714 2.714 0 0 1-2.648-2.863 2.695 2.695 0 0 1 2.65-2.845 3.194 3.194 0 0 1 2.244.998l.91-1.043a4.19 4.19 0 0 0-3.147-1.252 4.065 4.065 0 0 0-4.138 4.164 4.035 4.035 0 0 0 4.08 4.136m8.3-6.876c1.044 0 1.666.458 1.666 1.343 0 .824-.644 1.348-1.652 1.348h-2.063v-2.69h2.05m3.353 6.74l-2.172-3.038a2.404 2.404 0 0 0 1.917-2.44c0-1.573-1.134-2.55-2.98-2.55h-3.58v8.027h1.413v-2.797h1.766l1.97 2.797zm3.056 0V9.386h-1.41v8.027zm5.527-6.717h2.543v-1.31H59.24v1.31h2.55v6.716h1.42zm10.018-1.31h-5.954v8.026h6.012v-1.26h-4.6v-2.155h4.023v-1.264h-4.024v-2.088h4.542zm5.32 1.286c1.04 0 1.662.458 1.662 1.343 0 .824-.643 1.348-1.652 1.348h-2.063v-2.69h2.052m3.347 6.74l-2.167-3.038a2.404 2.404 0 0 0 1.91-2.44c0-1.573-1.13-2.55-2.975-2.55h-3.58v8.027h1.413v-2.797h1.762l1.975 2.797zm3.115 0V9.386H83.6v8.027zm5.8-6.868a2.754 2.754 0 0 1 2.73 2.867 2.715 2.715 0 0 1-2.71 2.84 2.752 2.752 0 0 1-2.724-2.862 2.715 2.715 0 0 1 2.705-2.845m0 7.003a4.15 4.15 0 1 0-4.18-4.136 4.11 4.11 0 0 0 4.18 4.136m11.112-2.612l-4.3-5.55h-1.308v8.025h1.39v-5.71l4.425 5.71h1.182V9.387h-1.39zm14.586 2.612a4.14 4.14 0 0 0 3.254-1.42l-.905-.92a3.137 3.137 0 0 1-2.306 1.045 2.718 2.718 0 0 1-2.65-2.863 2.7 2.7 0 0 1 2.65-2.845 3.184 3.184 0 0 1 2.25.998l.904-1.043a4.173 4.173 0 0 0-3.138-1.252 4.066 4.066 0 0 0-4.143 4.164 4.04 4.04 0 0 0 4.085 4.136m8.423-7.003a2.75 2.75 0 0 1 2.73 2.867 2.712 2.712 0 0 1-2.705 2.84 2.752 2.752 0 0 1-2.728-2.862 2.716 2.716 0 0 1 2.704-2.845m0 7.003a4.15 4.15 0 1 0-4.183-4.136 4.11 4.11 0 0 0 4.184 4.136m5.582-.137h5.632V16.13h-4.22V9.387h-1.412zm7.144 0h5.627V16.13h-4.222V9.387h-1.404zm13.085-8.026h-5.948v8.027h6.007v-1.26h-4.597v-2.155h4.022v-1.264h-4.022v-2.088h4.538zm5.468 8.163a4.145 4.145 0 0 0 3.255-1.42l-.906-.92a3.133 3.133 0 0 1-2.303 1.045 2.715 2.715 0 0 1-2.645-2.863 2.695 2.695 0 0 1 2.644-2.845 3.177 3.177 0 0 1 2.245.998l.91-1.043a4.187 4.187 0 0 0-3.142-1.252 4.066 4.066 0 0 0-4.142 4.164 4.037 4.037 0 0 0 4.082 4.136m8.434-6.852h2.55v-1.31h-6.512v1.31h2.544v6.716h1.418zm5.52 6.716V9.387h-1.413v8.027zm5.854-6.867a2.754 2.754 0 0 1 2.73 2.867 2.71 2.71 0 0 1-2.705 2.84 2.755 2.755 0 0 1-2.73-2.862 2.716 2.716 0 0 1 2.706-2.845m0 7.003a4.15 4.15 0 1 0-4.18-4.136 4.11 4.11 0 0 0 4.18 4.136m11.307-2.612l-4.298-5.55h-1.31v8.025h1.39v-5.71l4.425 5.71h1.183V9.387h-1.39z" /></svg>
+</div>
+</a>
+</div>
+<div class="c-global-links">
+<a class="c-global-links__link c-global-links__link--light" href="https://www.criterion.com/shop">Shop the Collection</a>
+<a class="c-global-links__link c-global-links__link--featured c-global-links__link--light" href="https://www.criterion.com/current/posts" class="magtitle">Current</a>
+<a class="c-global-links__link c-global-links__link--light" href="https://www.criterionchannel.com/browse?utm_source=criterion.com&utm_medium=referral&utm_campaign=navigation&utm_content=header">The Criterion Channel</a>
+</div>
+<div class="headControls">
+<a class="headControls__icons but-search" href="/" data-sidebar-toggle="search">
+<span class="vh">Search</span>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><rect id="a" width="24" height="24" /></defs><g fill="none" fill-rule="evenodd"><path d="M18,9 C18,5.13428475 14.8657153,2 11,2 C7.13428475,2 4,5.13428475 4,9 C4,12.8657153 7.13428475,16 11,16 C14.8657153,16 18,12.8657153 18,9 Z M20,9 C20,13.9702847 15.9702847,18 11,18 C6.02971525,18 2,13.9702847 2,9 C2,4.02971525 6.02971525,0 11,0 C15.9702847,0 20,4.02971525 20,9 Z" fill="#252525" fill-rule="nonzero" /><path d="M15.1484325,15.9124888 C14.8084522,15.4772511 14.8856735,14.8488128 15.3209112,14.5088325 C15.7561489,14.1688522 16.3845872,14.2460735 16.7245675,14.6813112 L22.5635675,22.1563112 C22.9035478,22.5915489 22.8263265,23.2199872 22.3910888,23.5599675 C21.9558511,23.8999478 21.3274128,23.8227265 20.9874325,23.3874888 L15.1484325,15.9124888 Z" fill="#252525" fill-rule="nonzero" /></g></svg>
+</a>
+<a class="headControls__icons but-cart is-status-off" href="/">
+<span class="vh">Cart</span>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"><defs><path id="a" d="M0 24h24V0H0z" /></defs><g fill="none" fill-rule="evenodd"><path fill="#FFF" d="M7.5 21a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm11 0a1.5 1.5 0 110 3.001 1.5 1.5 0 010-3.001zM4 .002a1 1 0 01.987.835L5.679 5H23a1 1 0 01.977 1.217l-2 9A1 1 0 0121 16H7.514l.332 2H20v2H7a1 1 0 01-.987-.835L3.153 2.002H1a1 1 0 110-2zM21.753 7H6.013l1.167 7h13.018l1.555-7z" /></g></svg>
+<span class="statusnat"></span>
+</a>
+<div class="nav-dropdown" data-nav-dropdown-container>
+<a data-nav-dropdown-toggle class="headControls__icons but-account" href="/" aria-expanded="false" aria-haspopup="true">
+<span class="vh">Account</span>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><polygon id="a" points="0 24.0002 24 24.0002 24 0.0002 0 0.0002" /></defs><g fill="none" fill-rule="evenodd"><g fill="#252525" fill-rule="nonzero"><path d="M14,4.5 C14,2.56704297 12.4331735,1 10.5,1 C8.56682649,1 7,2.56704297 7,4.5 C7,6.43295703 8.56682649,8 10.5,8 C12.4331735,8 14,6.43295703 14,4.5 Z M16,4.5 C16,7.53746469 13.5378049,10 10.5,10 C7.46219514,10 5,7.53746469 5,4.5 C5,1.46253531 7.46219514,-1 10.5,-1 C13.5378049,-1 16,1.46253531 16,4.5 Z" transform="translate(2 1.011)" /><path d="M1,21 C1,21.5522847 0.55228475,22 0,22 C-0.55228475,22 -1,21.5522847 -1,21 L-1,19.399 C-1,14.8335963 4.41085344,12 10,12 C15.5891466,12 21,14.8335963 21,19.399 L21,21 C21,21.5522847 20.5522847,22 20,22 C19.4477153,22 19,21.5522847 19,21 L19,19.399 C19,16.2885287 14.6299727,14 10,14 C5.37002733,14 1,16.2885287 1,19.399 L1,21 Z" transform="translate(2 1.011)" /></g></g></svg>
+</a>
+<div class="global-nav__subgroup-panel panel panel--expanded" data-nav-dropdown>
+<a href="https://www.criterion.com/account" data-click-tracking='{ "category": "Panel", "action": "click", "label": "Dashboard" }' class="global-nav__item global-nav__item--header global-nav__item--header-dropdown">My Criterion</a>
+<ul role="menu" class="global-nav__subgroup-items">
+<li class="global-nav__subgroup-item">
+<a class="global-nav__subgroup-link" href="https://www.criterion.com/account" data-click-tracking='{ "category": "Panel", "action": "click", "label": "Dashboard" }'>Dashboard</a>
+</li>
+<li class="global-nav__subgroup-item">
+<a class="global-nav__subgroup-link" href="https://www.criterion.com/account/orders" data-click-tracking='{ "category": "Panel", "action": "click", "label": "Orders" }'>Orders</a>
+</li>
+<li class="global-nav__subgroup-item">
+<a class="global-nav__subgroup-link" href="https://www.criterion.com/account/wishlist" data-click-tracking='{ "category": "Panel", "action": "click", "label": "Wishlist" }'>Wish List</a>
+</li>
+<li class="global-nav__subgroup-item">
+<a class="global-nav__subgroup-link" href="https://www.criterion.com/account/my-collection" data-click-tracking='{ "category": "Panel", "action": "click", "label": "My Collection" }'>My Collection</a>
+</li>
+<li class="global-nav__subgroup-item">
+<a class="global-nav__subgroup-link" href="https://www.criterion.com/login">Log In</a>
+</li>
+</ul>
+</div>
+</div>
+<a class="headControls__icons but-mobi" href="/" data-sidebar-toggle="nav">
+<span class="vh">Menu</span>
+<svg class="burger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 11h24v2H0zM0 3h24v2H0zM0 19h24v2H0z" /></svg>
+</a>
+<a class="headControls__icons but-close" data-sidebar-toggle="close">
+<span class="vh">Close Menu</span>
+<svg class="close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="11" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -4.9704 12.0004)" width="2" height="24" /><rect x="0" y="11" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -4.9704 12.0004)" width="24" height="2" /></svg>
+</a>
+</div>
+</div>
+</header>
+<main role="main">
+<div class="home__contain" data-home>
+<article data-scrollify class="home-article home-article-type-default  in is-in " data-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6199-8793b383bbccb7a93e20bf02719d1540/DPZTTskDvLFkBx9UNmPYEbwR5bbrAq_original.jpg" data-mobile-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6200-5f452dfff364b711fddcc6e303eb9893/dIxWGXe0STSNgqUmRmni2Fzpk7bd4G_w1300.jpg ">
+<a href=" https://www.criterion.com/shop/browse?popular=coming-soon " class="home-article__contain" data-parallax-container>
+<div class="" data-parallax-level="1">
+<div class="header" data-parallax-level="1">
+<p class="label"></p>
+<h1>May Titles Announced!</h1>
+</div>
+<div class="summary" data-parallax-level="1">
+<button href="https://www.criterion.com/shop/browse?popular=coming-soon" class="button__secondary">Shop Now</button>
+</div>
+</div> </a>
+</article>
+<article data-scrollify class="home-article home-article-type-post  out " data-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6203-b050b20251a2f262b06127f627954397/zfN91fKAqd95wBeI1W8SHNTjuYnR3g_original.jpg" data-mobile-background-image=" https://s3.amazonaws.com/criterion-production/spotlight_images/6203-b050b20251a2f262b06127f627954397/zfN91fKAqd95wBeI1W8SHNTjuYnR3g_w1300.jpg ">
+<a href=" https://www.criterion.com/current/posts/7711-the-video-provocations-of-ulysses-jenkins " class="home-article__contain" data-parallax-container>
+<div class="" data-parallax-level="1">
+<h1 class="home-article-editorial-title">
+<span class="line">Ulysses Jenkins:<span style="color: rgb(239, 186, 145);"> Video Griot</span></span>
+</h1>
+<div class="post-summary">
+The pioneering artist, whose work is now playing on the Criterion
+Channel, opened up the possibilities of video with his incisive
+critiques of Black representation.
+</div>
+<div class="more-meta">
+<div class="summary_for-posts" data-parallax-level="1">
+<button href="criterionchannel.com/browse" class="button__secondary_for-posts">read the current</button>
+</div>
+</div>
+</div> </a>
+</article>
+<article data-scrollify class="home-article home-article-type-feature  out " data-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6162-98666d351d1c75fce34a738a526a835d/0he5GMT6IZj0KCGtsGmOc1wyMyQFUy_original.jpg" data-mobile-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6168-50d508c8eb4e8cafbe34b66e2dfd2682/xIuhCOGj8Nih9SMd4qffhr25j2VIIW_w1300.jpg " data-video-info='{ "mp4": "https://s3.amazonaws.com/criterion-production/spotlight_images/6160-12731bbf6cbbabede11c353a6f92c270/Boat_People_loop_003-criterionSite_1920x1080p_original.mov" }'>
+<div class="is-home-background-video-container">
+<video src="https://s3.amazonaws.com/criterion-production/spotlight_images/6160-12731bbf6cbbabede11c353a6f92c270/Boat_People_loop_003-criterionSite_1920x1080p_original.mov" autoplay="true" loop="true" preload="auto" muted="true" width="320" height="240" class="home-background-video"></video>
+</div>
+<a href=" https://www.criterion.com/films/30455-boat-people " class="home-article__contain" data-parallax-container>
+<div class="image" data-parallax-level="1">
+<img src="https://s3.amazonaws.com/criterion-production/spotlight_images/6167-7205f7e675091164c0addcd1f9e84423/S5eWfH5acRlLWtoPQPIOTIi14s2bYg_w700.png" />
+</div>
+<div class="summary" data-parallax-level="1">
+<button href="https://www.criterion.com/films/30455-boat-people" class="button__secondary">Buy Now</button>
+</div>
+</a>
+</article>
+<article data-scrollify class="home-article home-article-type-feature  out " data-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6069-b3e3faece0d48a45c46f62ec28026c1c/agqwVH75HFKb196lAiGHtkQj7FoUeH_original.jpg" data-mobile-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6070-9876c136a69536b45c6b547b730dcfc5/qYmTEOOjh3Wr5uOya0N9CB8t2wKmQQ_w1300.jpg ">
+<a href=" https://www.criterion.com/current/top-10-lists/393-ryusuke-hamaguchi-s-top-10 " class="home-article__contain" data-parallax-container>
+<div class="image" data-parallax-level="1">
+<img src="https://s3.amazonaws.com/criterion-production/spotlight_images/6067-dff7ee696ea3e8d9a0cca1213252a44f/NGaYWzfLFsqMkKN1A2SK3ZhHUyZeZg_w700.png" />
+</div>
+<div class="summary" data-parallax-level="1">
+<p "=""><strong>The Oscar-nominated director of <em>Drive My Car</em> selects a group of films that are close to his heart, including work by auteurs he considers underrated.</strong></p>
+<button href="https://www.criterion.com/current/top-10-lists/393-ryusuke-hamaguchi-s-top-10" class="button__secondary">View the List</button>
+</div>
+</a>
+</article>
+<article data-scrollify class="home-article home-article-type-feature  out " data-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6113-fb16df3eaf9532feefc77db015fe57a5/mMngh8QpgynbLAXvq52WcOJUFJ393a_original.jpg" data-mobile-background-image=" https://s3.amazonaws.com/criterion-production/spotlight_images/6113-fb16df3eaf9532feefc77db015fe57a5/mMngh8QpgynbLAXvq52WcOJUFJ393a_w1300.jpg ">
+<a href=" https://www.criterionchannel.com/starring-harry-belafonte " class="home-article__contain" data-parallax-container>
+<div class="image" data-parallax-level="1">
+<img src="https://s3.amazonaws.com/criterion-production/spotlight_images/6121-a302533d47231a50d9cb0f8d538e5a6c/QdOYEjnAfoX91xJDZp8HyadcY38BtY_w700.png" />
+</div>
+<div class="summary" data-parallax-level="1">
+<button href="https://www.criterionchannel.com/starring-harry-belafonte" class="button__secondary">watch now on the channel</button>
+</div>
+</a>
+</article>
+<article data-scrollify class="home-article home-article-type-feature  out " data-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6184-6a32709b66ffa7fa476965776a4e4e55/cSVpSNRNoPQsHLd45mjLCrD72J1ZLx_original.jpg" data-mobile-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6183-3bf4def2de6fc299b85efc4d0ee978a1/jUMJKP8w6BiYfwYmIHJZy88uGEKQTu_w1300.jpg " data-video-info='{ "mp4": "https://s3.amazonaws.com/criterion-production/spotlight_images/6181-b31fb706be6f564971f9cbf77d7b3a38/loop3-criterionSite_1920x1080p_original.mov" }'>
+<div class="is-home-background-video-container">
+<video src="https://s3.amazonaws.com/criterion-production/spotlight_images/6181-b31fb706be6f564971f9cbf77d7b3a38/loop3-criterionSite_1920x1080p_original.mov" autoplay="true" loop="true" preload="auto" muted="true" width="320" height="240" class="home-background-video"></video>
+</div>
+<a href=" https://www.criterion.com/films/32533-love-affair " class="home-article__contain" data-parallax-container>
+<div class="image" data-parallax-level="1">
+<img src="https://s3.amazonaws.com/criterion-production/spotlight_images/6180-a8d4c1192a2e77fd080ef123e1940727/DSgrPr6xqW2j9WsCFgqp6xWa7LAGOH_w700.png" />
+</div>
+<div class="summary" data-parallax-level="1">
+<button href="https://www.criterion.com/films/32533-love-affair" class="button__secondary">Buy Now</button>
+</div>
+</a>
+</article>
+<article data-scrollify class="home-article home-article-type-post  out " data-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6133-d1a49529a9db2540f700b438dbf2d67c/S4mgNTZPRLNEkvNuH4Fgb2bqubNNWI_original.jpg" data-mobile-background-image=" https://s3.amazonaws.com/criterion-production/spotlight_images/6133-d1a49529a9db2540f700b438dbf2d67c/S4mgNTZPRLNEkvNuH4Fgb2bqubNNWI_w1300.jpg ">
+<a href=" https://www.criterion.com/current/posts/7678-as-sure-as-the-sun-will-shine-justine-henzell-on-the-harder-they-come-at-fifty " class="home-article__contain" data-parallax-container>
+<div class="" data-parallax-level="1">
+<h1 class="home-article-editorial-title">
+<span class="line"><i><span style="color: rgb(216, 100, 92);">The Harder They Come</span></i><span style="color: rgb(216, 100, 92);"> </span><span style="color: rgb(143, 164, 157);">at Fifty</span></span>
+</h1>
+<div class="post-summary">
+In a new interview, Justine Henzell reflects on the global influence of her father’s classic reggae film and its beloved soundtrack.
+</div>
+<div class="more-meta">
+<div class="summary_for-posts" data-parallax-level="1">
+<button href="" class="button__secondary_for-posts">read the interview</button>
+</div>
+</div>
+</div> </a>
+</article>
+<article data-scrollify class="home-article home-article-type-feature  out " data-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6094-ad26d5245f86c0bae9468d59a3eab999/yfoD4mzVPigG8mD8D7TNiCxuAplPNk_original.jpg" data-mobile-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6095-08aead61207df82a734196e0db4a4a55/l9UJSPaEIFNN7Ypo9J1ffJQ99KrCgL_w1300.jpg " data-video-info='{ "mp4": "https://s3.amazonaws.com/criterion-production/spotlight_images/6080-3861a88c32fe13799f69cd4b06fc351d/Millers_Crossing_loop2-criterionSite_1920x1080p_original.mov" }'>
+<div class="is-home-background-video-container">
+<video src="https://s3.amazonaws.com/criterion-production/spotlight_images/6080-3861a88c32fe13799f69cd4b06fc351d/Millers_Crossing_loop2-criterionSite_1920x1080p_original.mov" autoplay="true" loop="true" preload="auto" muted="true" width="320" height="240" class="home-background-video"></video>
+</div>
+<a href=" https://www.criterion.com/films/29604-miller-s-crossing " class="home-article__contain" data-parallax-container>
+<div class="image" data-parallax-level="1">
+<img src="https://s3.amazonaws.com/criterion-production/spotlight_images/6079-64dded770396529478593dfdaa9e4053/nqWcyjcsUJKAGAiz92tOu17uxiAGRA_w700.png" />
+</div>
+<div class="summary" data-parallax-level="1">
+<button href="https://www.criterion.com/films/29604-miller-s-crossing" class="button__secondary">Buy Now</button>
+</div>
+</a>
+</article>
+<article data-scrollify class="home-article home-article-type-feature  out " data-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6117-ef33ebfb4d22e69bf3f172d101273e07/lWgUmDikBtSYj6KWKqmj4xUhjRqmU7_original.jpg" data-mobile-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6120-0fe083f67f94632e9be8a298fdfdbbb2/8NvQTKTdjDoPw4U5nWS1c0G9CzXh30_w1300.jpg ">
+<a href=" https://www.criterionchannel.com/documentaries-by-stanley-nelson " class="home-article__contain" data-parallax-container>
+<div class="image" data-parallax-level="1">
+<img src="https://s3.amazonaws.com/criterion-production/spotlight_images/6118-b6825c97514f45b6354da3dc809e283c/4kOuazTob8IHcInCzkQbnJS8uuiZpv_w700.png" />
+</div>
+<div class="summary" data-parallax-level="1">
+<button href="https://www.criterionchannel.com/documentaries-by-stanley-nelson" class="button__secondary">watch now on the channel</button>
+</div>
+</a>
+</article>
+<article data-scrollify class="home-article home-article-type-feature  out " data-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6128-ace127a7e0495d8e421d9d186fd18b74/YM1x8WNEfJ36XHayCkfVP6qQBXnVBc_original.jpg" data-mobile-background-image=" https://s3.amazonaws.com/criterion-production/spotlight_images/6128-ace127a7e0495d8e421d9d186fd18b74/YM1x8WNEfJ36XHayCkfVP6qQBXnVBc_w1300.jpg ">
+<a href=" https://www.criterionchannel.com/roots-revolution-reggae-on-film " class="home-article__contain" data-parallax-container>
+<div class="image" data-parallax-level="1">
+<img src="https://s3.amazonaws.com/criterion-production/spotlight_images/6102-1bc794781317118ceeaac0bc92e1fd92/VebqN2FIBSo9b3t1mhW27nQPwxFg2Y_w700.png" />
+</div>
+<div class="summary" data-parallax-level="1">
+<button href="https://www.criterionchannel.com/roots-revolution-reggae-on-film" class="button__secondary">watch now on the channel</button>
+</div>
+</a>
+</article>
+<article data-scrollify class="home-article home-article-type-feature  out " data-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6107-7ce0bb548f6b701494e5a9579d3dafbd/2Gavgi80W518zbnAKZMDWxQiwkCJzQ_original.jpg" data-mobile-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6112-45628bf723f696407770ad1739d1bfdd/SvY7TQdnrab00DNYoU0d9cpE1unI2W_w1300.jpg ">
+<a href=" https://www.criterionchannel.com/douglas-sirk-melodramas " class="home-article__contain" data-parallax-container>
+<div class="image" data-parallax-level="1">
+<img src="https://s3.amazonaws.com/criterion-production/spotlight_images/6109-22f35018c3f3edc8be24b489d8673a8f/WljrLYZApEUJOV6BdBXeFW5rLfFrur_w700.png" />
+</div>
+<div class="summary" data-parallax-level="1">
+<button href="https://www.criterionchannel.com/douglas-sirk-melodramas" class="button__secondary">watch now on the channel</button>
+</div>
+</a>
+</article>
+<article data-scrollify class="home-article home-article-type-feature  out " data-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6134-5f2eb339a7e20fe1d742184a0892124c/pi95JxcDZ1yJ0Wph7QpBBUjQud84Pi_original.jpg" data-mobile-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6139-20ea8e61f8a568a3c59608efa44bbf60/i5OtosNvb8voNuu4uCMgpRWwG3h7GG_w1300.jpg " data-video-info='{ "mp4": "https://s3.amazonaws.com/criterion-production/spotlight_images/6137-ce4cf2585d35b5cfb5391d427b5ccff0/MVP_Spot 2-criterionSite_1920x1080p_original.mov" }'>
+<div class="is-home-background-video-container">
+<video src="https://s3.amazonaws.com/criterion-production/spotlight_images/6137-ce4cf2585d35b5cfb5391d427b5ccff0/MVP_Spot 2-criterionSite_1920x1080p_original.mov" autoplay="true" loop="true" preload="auto" muted="true" width="320" height="240" class="home-background-video"></video>
+</div>
+<a href=" https://www.criterionchannel.com/directed-by-melvin-van-peebles " class="home-article__contain" data-parallax-container>
+<div class="image" data-parallax-level="1">
+<img src="https://s3.amazonaws.com/criterion-production/spotlight_images/5097-5703e37ea11de509e1c5499e5fbe681e/ffqhaninMeGv1hubLWlxjTn5Ckpipz_w700.png" />
+</div>
+<div class="summary" data-parallax-level="1">
+<button href="https://www.criterionchannel.com/directed-by-melvin-van-peebles" class="button__secondary">watch now on the channel</button>
+</div>
+</a>
+</article>
+<article data-scrollify class="home-article home-article-type-feature  out " data-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6122-47a22c8babb86871ea69db11e16e5a89/9Cln7My1CKqyJx5Y8gU37xPVh1SiEj_original.jpg" data-mobile-background-image="https://s3.amazonaws.com/criterion-production/spotlight_images/6126-a1c458b036cb726bb905da7d2a49f2d4/DHPRKTH4WkbHHjtz7xa1awtHIXqX42_w1300.jpg ">
+<a href=" https://www.criterionchannel.com/alan-arkin-s-adventures-in-moviegoing " class="home-article__contain" data-parallax-container>
+<div class="image" data-parallax-level="1">
+<img src="https://s3.amazonaws.com/criterion-production/spotlight_images/6123-5871964e6926dff6349eefd8d654546d/vGeeHIzA9X5BcvTcKngu4rVdJ5ThI2_w700.png" />
+</div>
+<div class="summary" data-parallax-level="1">
+<button href="https://www.criterionchannel.com/alan-arkin-s-adventures-in-moviegoing" class="button__secondary">watch now on the channel</button>
+</div>
+</a>
+</article>
+<div class="home-article home-article-type-supertouts dark out" data-scrollify>
+<div class="home-article__contain">
+<a href="/shop" class="supertout" data-parallax-level="1">
+<div class="supertout__right supertout__section supertout__background_image" data-background-image="https://s3.amazonaws.com/criterion-production/tout_media/12-6c98c0fc276c752c3082b4dd7b1f7b8d/OXHvm9mjD3xJ3AqI64ZHv0uAANPSEc_w464.jpg" data-mobile-background-image="https://s3.amazonaws.com/criterion-production/tout_media/12-6c98c0fc276c752c3082b4dd7b1f7b8d/OXHvm9mjD3xJ3AqI64ZHv0uAANPSEc_w464.jpg" data-tout-video-info='{ "playOnHover": true, "mp4": "https://s3.amazonaws.com/criterion-production/tout_media/1-a03e6868a3dec227e63d89c17363329c/blackgirl_original.mp4" }'></div>
+<div class="supertout__right supertout__section">
+<div class="supertout__section__content">
+<p class="label">OUR FILMS</p>
+<h2>Shop the Collection</h2>
+<p class="summary"><em>A series of important classic and contemporary films in special editions, plus T-shirts, posters, and more</em></p>
+</div>
+</div>
+</a>
+<a href="/the-current" class="supertout" data-parallax-level="2">
+<div class="supertout__left supertout__section">
+<div class="supertout__section__content">
+<p class="label">Our magazine</p>
+<h2><em>Current</em></h2>
+<p class="summary"><em>In-depth film writing, daily news, Top 10 lists, video essays, interviews, and sneak peeks inside Criterion</em></p>
+</div>
+</div>
+<div class="supertout__left supertout__section supertout__background_image" data-background-image="https://s3.amazonaws.com/criterion-production/tout_media/8-f6465df27816491a8e225cac77d4c27c/JkpFY67cjYPJVQXqjXiOiE8OtyIiYC_w464.png" data-mobile-background-image="https://s3.amazonaws.com/criterion-production/tout_media/8-f6465df27816491a8e225cac77d4c27c/JkpFY67cjYPJVQXqjXiOiE8OtyIiYC_w464.png"></div>
+</a>
+</div>
+</div>
+<div class="home-pagination-dots-container"></div>
+</div>
+</main>
+<footer data-scrollify class="global-footer">
+<div class="site-footer-contain">
+<div class="logo-c-foot">
+<a href="https://www.criterion.com">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M7.1 16.8C-1.2 31 3.5 49.3 17.7 57.6c.1 0 .1.1.2.1 6 3.5 13.1 4.8 19.9 3.7l-2.2-13.3c-.8.1-1.5.2-2.3.2-3 0-6-.8-8.6-2.3-7.8-4.5-10.5-14.5-6-22.3 0 0 0-.1.1-.1 4.6-7.8 14.8-10.4 22.6-5.8 3.3 1.9 5.8 4.9 7.1 8.5l12.8-4.6C55.6 6.1 38.3-1.9 22.7 3.9c-6.6 2.4-12 6.9-15.6 12.9" /></svg>
+</a>
+</div>
+<div class="footer-inner-contain">
+<nav class="nav-footer">
+<div class="nav-group-footer nav-group-footer--medium nav-foot-shop">
+<h6><a href="https://www.criterion.com/shop" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Shop" }'>Shop the Collection</a></h6>
+<ul>
+<li>
+<a href="https://www.criterion.com/shop/browse/list" data-click-tracking='{ "category": "Footer", "action": "click", "label": "All Films" }'>All Films</a>
+</li>
+<li>
+<a href="https://www.criterion.com/shop/browse?popular=new-releases" data-click-tracking='{ "category": "Footer", "action": "click", "label": "New Releases" }'>New Releases</a>
+</li>
+<li>
+<a href="https://www.criterion.com/shop/browse?popular=coming-soon" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Coming Soon" }'>Coming Soon</a>
+</li>
+<li>
+<a href="https://www.criterion.com/shop/collection/325-gift-shop" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Gift Shop" }'>Gift Shop</a>
+</li>
+</ul>
+</div>
+<div class="nav-group-footer nav-group-footer--medium nav-foot-current">
+<h6><a href="https://www.criterion.com/current/posts" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Current" }'><i>Current</i></a></h6>
+<ul>
+<li><a href="https://www.criterion.com/current/top-10-lists" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Top 10 Lists" }'>Top 10 Lists</a></li>
+<li><a href="https://www.criterion.com/current/category/2-essays" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Essays" }'>Essays</a></li>
+<li><a href="https://www.criterion.com/current/category/3-features" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Features" }'>Features</a></li>
+<li><a href="https://www.criterion.com/current/category/20-the-daily" data-click-tracking='{ "category": "Footer", "action": "click", "label": "The Daily" }'>The Daily</a></li>
+</ul>
+</div>
+<div class="nav-group-footer nav-group-footer--medium nav-foot-about">
+<h6 class="orphan"><a class="nav-group-footer--channel" href="https://www.criterionchannel.com/browse?utm_source=criterion.com&utm_medium=referral&utm_campaign=navigation&utm_content=footer" target="_blank" data-click-tracking='{ "category": "Footer", "action": "click", "label": "The Criterion Channel" }'>The Criterion Channel</a></h6>
+<ul>
+<li><a href="https://www.criterionchannel.com/browse?utm_source=criterion.com&utm_medium=referral&utm_campaign=navigation&utm_content=footer" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Channel Browse" }'>Browse</a></li>
+<li><a href="https://www.criterionchannel.com/checkout/subscribe/purchase?utm_source=criterion.com&utm_medium=referral&utm_campaign=navigation&utm_content=footer" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Channel Sign Up" }'>Sign Up</a></li>
+</ul>
+</div>
+<div class="nav-group-footer nav-group-footer--medium nav-foot-about">
+<h6 class="orphan"><a href="https://www.criterion.com/about" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Our Mission" }'>Our Mission</a></h6>
+<h6 class="orphan"><a href="https://www.criterion.com/contact_us" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Contact Us" }'>Contact Us</a></h6>
+<h6 class="orphan"><a href="https://www.criterion.com/privacy" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Privacy Policy" }'>Privacy Policy</a></h6>
+</div>
+<div class="nav-group-footer nav-group-footer--medium nav-foot-account">
+<h6><a href="https://www.criterion.com/account" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Account" }'>My Criterion</a></h6>
+<ul>
+<li><a href="https://www.criterion.com/login" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Login" }'>Login</a>
+</ul>
+</div>
+<div class="nav-group-footer nav-group-footer--large nav-foot-faq">
+<h6><a href="https://www.criterion.com/faq" data-click-tracking='{ "category": "Footer", "action": "click", "label": "FAQ" }'>FAQ</a></h6>
+<ul>
+<li><a href="https://www.criterion.com/faq" data-click-tracking='{ "category": "Footer", "action": "click", "label": "FAQ" }'>General</a></li>
+<li><a href="https://www.criterion.com/faq/orders" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Order Support" }'>Order Support</a></li>
+<li><a href="https://www.criterion.com/faq/tech-support" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Tech Support" }'>Tech Support</a></li>
+<li><a href="https://www.criterion.com/faq/channel" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Channel Support" }'>Channel Support</a></li>
+</ul>
+</div>
+<div class="nav-group-footer nav-group-footer--logos nav-group-footer--medium nav-foot-faq">
+<a class="nav-group-footer--janus" href="http://www.janusfilms.com/" target="_blank" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Janus" }'>
+<img src="https://www.criterion.com/assets/img/svg/logo_janusfilms_white.svg" alt="Janus Films" />
+</a>
+</div>
+</nav>
+<div class="footer-extras">
+<div class="newsletter">
+<p class="header_lvl2">Sign Up for Our Newsletter</p>
+<div class="newsletter-intro">
+<p>Get info about new releases, sales, and our online publication, Current.</p>
+</div>
+<div class="signup-form" data-newsletter-signup>
+<label for="email" class="vh">Email:</label>
+<input type="email" name="email" placeholder="E-mail Address" data-newsletter-signup-input />
+<input type="submit" value="Sign Up" data-newsletter-signup-submit-button />
+</div>
+</div>
+<div class="foot-follow">
+<p class="header_lvl2">Follow Us</p>
+<ul class="social-buttons">
+<li>
+<a href="https://www.facebook.com/CriterionCollection" target="_blank" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Facebook" }'>
+<svg viewBox="0 0 8 16" role="img" aria-labelledby="follow_fb">
+<title id="follow_fb">Follow Criterion Collection on Facebook</title>
+<path d="M4.964 16V8h2.21l.292-2.758H4.964l.004-1.38c0-.72.068-1.105 1.1-1.105H7.45V0H5.24C2.59 0 1.655 1.338 1.655 3.587v1.655H0V8h1.654v8h3.31z" fill="#979797" fill-rule="evenodd" />
+</svg>
+</a>
+</li>
+<li>
+<a href="https://twitter.com/Criterion" target="_blank" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Twitter" }'>
+<svg viewBox="0 0 16 14" role="img" aria-labelledby="follow_tw">
+<title id="follow_tw">Follow Criterion Collection on Twitter</title>
+<path d="M7.77 4.295l.034.572-.578-.07c-2.105-.27-3.943-1.18-5.503-2.708L.96 1.33l-.197.56C.347 3.14.613 4.46 1.48 5.346c.462.49.358.56-.44.27-.277-.094-.52-.164-.543-.13-.08.082.197 1.144.416 1.565.3.583.914 1.155 1.584 1.493l.567.27-.67.01c-.648 0-.67.012-.602.257.23.76 1.144 1.564 2.162 1.914l.717.246-.624.373c-.925.537-2.01.84-3.098.864-.52.01-.948.058-.948.093 0 .117 1.41.77 2.23 1.027 2.464.76 5.39.432 7.585-.863 1.56-.923 3.122-2.755 3.85-4.53.393-.944.786-2.672.786-3.5 0-.537.036-.607.683-1.25.382-.373.74-.78.81-.898.115-.222.104-.222-.486-.023-.983.35-1.122.303-.636-.222.36-.373.787-1.05.787-1.248 0-.035-.173.023-.37.128-.208.117-.67.292-1.017.397l-.624.2-.567-.386c-.313-.21-.752-.443-.984-.513-.59-.163-1.49-.14-2.023.047-1.445.525-2.358 1.88-2.254 3.36z" fill="#979797" fill-rule="evenodd" />
+</svg>
+</a>
+</li>
+<li>
+<a href="https://www.youtube.com/user/criterioncollection" target="_blank" data-click-tracking='{ "category": "Footer", "action": "click", "label": "YouTube" }'>
+<svg viewBox="0 0 27 18" role="img" aria-labelledby="follow_yt">
+<title id="follow_yt">Follow Criterion Collection on YouTube</title>
+<path d="M10.41 11.982l-.002-6.986 7.09 3.505-7.09 3.482zm15.564-8.196s-.257-1.713-1.043-2.467C23.934.327 22.816.322 22.303.265c-3.67-.252-9.178-.252-9.178-.252h-.012s-5.507 0-9.178.252c-.513.057-1.63.062-2.63 1.053C.52 2.072.263 3.785.263 3.785S0 5.798 0 7.81v1.886c0 2.012.262 4.024.262 4.024s.256 1.713 1.043 2.468c.998.99 2.31.958 2.893 1.062 2.1.19 8.92.25 8.92.25s5.513-.008 9.184-.26c.513-.057 1.63-.062 2.63-1.052.785-.755 1.042-2.468 1.042-2.468s.262-2.012.262-4.024V7.81c0-2.012-.262-4.024-.262-4.024z" fill="#979797" fill-rule="evenodd" />
+</svg>
+</a>
+</li>
+<li>
+<a href="https://www.instagram.com/criterioncollection/" target="_blank" data-click-tracking='{ "category": "Footer", "action": "click", "label": "Instagram" }'>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32">
+<path d="M16 2.881c4.275 0 4.781 0.019 6.462 0.094 1.563 0.069 2.406 0.331 2.969 0.55 0.744 0.288 1.281 0.638 1.837 1.194 0.563 0.563 0.906 1.094 1.2 1.838 0.219 0.563 0.481 1.412 0.55 2.969 0.075 1.688 0.094 2.194 0.094 6.463s-0.019 4.781-0.094 6.463c-0.069 1.563-0.331 2.406-0.55 2.969-0.288 0.744-0.637 1.281-1.194 1.837-0.563 0.563-1.094 0.906-1.837 1.2-0.563 0.219-1.413 0.481-2.969 0.55-1.688 0.075-2.194 0.094-6.463 0.094s-4.781-0.019-6.463-0.094c-1.563-0.069-2.406-0.331-2.969-0.55-0.744-0.288-1.281-0.637-1.838-1.194-0.563-0.563-0.906-1.094-1.2-1.837-0.219-0.563-0.481-1.413-0.55-2.969-0.075-1.688-0.094-2.194-0.094-6.463s0.019-4.781 0.094-6.463c0.069-1.563 0.331-2.406 0.55-2.969 0.288-0.744 0.638-1.281 1.194-1.838 0.563-0.563 1.094-0.906 1.838-1.2 0.563-0.219 1.412-0.481 2.969-0.55 1.681-0.075 2.188-0.094 6.463-0.094zM16 0c-4.344 0-4.887 0.019-6.594 0.094-1.7 0.075-2.869 0.35-3.881 0.744-1.056 0.412-1.95 0.956-2.837 1.85-0.894 0.888-1.438 1.781-1.85 2.831-0.394 1.019-0.669 2.181-0.744 3.881-0.075 1.713-0.094 2.256-0.094 6.6s0.019 4.887 0.094 6.594c0.075 1.7 0.35 2.869 0.744 3.881 0.413 1.056 0.956 1.95 1.85 2.837 0.887 0.887 1.781 1.438 2.831 1.844 1.019 0.394 2.181 0.669 3.881 0.744 1.706 0.075 2.25 0.094 6.594 0.094s4.888-0.019 6.594-0.094c1.7-0.075 2.869-0.35 3.881-0.744 1.050-0.406 1.944-0.956 2.831-1.844s1.438-1.781 1.844-2.831c0.394-1.019 0.669-2.181 0.744-3.881 0.075-1.706 0.094-2.25 0.094-6.594s-0.019-4.887-0.094-6.594c-0.075-1.7-0.35-2.869-0.744-3.881-0.394-1.063-0.938-1.956-1.831-2.844-0.887-0.887-1.781-1.438-2.831-1.844-1.019-0.394-2.181-0.669-3.881-0.744-1.712-0.081-2.256-0.1-6.6-0.1v0z" fill="#979797"></path>
+<path d="M16 7.781c-4.537 0-8.219 3.681-8.219 8.219s3.681 8.219 8.219 8.219 8.219-3.681 8.219-8.219c0-4.537-3.681-8.219-8.219-8.219zM16 21.331c-2.944 0-5.331-2.387-5.331-5.331s2.387-5.331 5.331-5.331c2.944 0 5.331 2.387 5.331 5.331s-2.387 5.331-5.331 5.331z" fill="#979797"></path>
+<path d="M26.462 7.456c0 1.060-0.859 1.919-1.919 1.919s-1.919-0.859-1.919-1.919c0-1.060 0.859-1.919 1.919-1.919s1.919 0.859 1.919 1.919z" fill="#979797"></path>
+</svg>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<div class="global_cart panel--expanded panel--large panel" data-expanded-cart>
+<div class="global_cart_contain " data-segment-event-data='{}'>
+<ul class="list-of-titles panel__scroll">
+</ul>
+<p class="global_cart_contain__empty-text">You have no items in your shopping cart</p>
+<div class="global_cart_contain__bottom">
+<div class="actions">
+<a href="https://www.criterion.com/shop/cart" class="but but-b" data-click-tracking='{ "category": "Expanded Cart", "action": "Click", "label": "View Cart" }'>View Cart</a>
+<a href="https://www.criterion.com/shop/checkout" class="but but-a" data-click-tracking='{ "category": "Expand Cart", "action": "Click", "label": "Checkout" }'>Check Out</a>
+</div>
+</div>
+</div>
+</div>
+</div> 
+<div class="global-nav sidebar" data-sidebar="nav">
+<div class="global-nav__container sidebar__container">
+<div class="global-nav__sidebar sidebar__bar" data-sidebar-click-container>
+<nav class="global-nav__nav">
+<ul class="global-nav__group">
+<li class="global-nav__group-item global-nav__subgroup">
+<a class="global-nav__item global-nav__item--header" href="https://www.criterion.com/shop" data-click-tracking='{ "category": "Nav", "action": "click", "label": "Shop" }'>Shop the Collection</a>
+<ul class="global-nav__subgroup-items">
+<li class="global-nav__subgroup-item">
+<a class="global-nav__subgroup-link" href="https://www.criterion.com/shop/browse/list" data-click-tracking='{ "category": "Nav", "action": "click", "label": "All Films" }'>All Films</a>
+</li>
+<li class="global-nav__subgroup-item">
+<a class="global-nav__subgroup-link" href="https://www.criterion.com/shop/browse?popular=new-releases" data-click-tracking='{ "category": "Nav", "action": "click", "label": "New Releases" }'>New Releases</a>
+</li>
+<li class="global-nav__subgroup-item">
+<a class="global-nav__subgroup-link" href="https://www.criterion.com/shop/browse?popular=coming-soon" data-click-tracking='{ "category": "Nav", "action": "click", "label": "Coming Soon" }'>Coming Soon</a>
+</li>
+<li class="global-nav__subgroup-item">
+<a class="global-nav__subgroup-link" href="https://www.criterion.com/shop/collection/325-gift-shop" data-click-tracking='{ "category": "Nav", "action": "click", "label": "Gift Shop" }'>Gift Shop</a>
+</li>
+</ul>
+</li>
+<li class="global-nav__subgroup global-nav__group-item">
+<a class="global-nav__item global-nav__item--header" href="https://www.criterion.com/current/posts" data-click-tracking='{ "category": "Nav", "action": "click", "label": "Current" }'><em>Current</em></a>
+<ul class="global-nav__subgroup-items">
+<li class="global-nav__subgroup-item">
+<a class="global-nav__subgroup-link" href="https://www.criterion.com/current/top-10-lists" data-click-tracking='{ "category": "Nav", "action": "click", "label": "Top 10 Lists" }'>Top 10 Lists</a>
+</li>
+<li class="global-nav__subgroup-item">
+<a class="global-nav__subgroup-link" href=https://www.criterion.com/current/category/2-essays data-click-tracking='{ "category": "Nav", "action": "click", "label": "Essays" }'>Essays</a>
+</li>
+<li class="global-nav__subgroup-item">
+<a class="global-nav__subgroup-link" href=https://www.criterion.com/current/category/3-features data-click-tracking='{ "category": "Nav", "action": "click", "label": "Features" }'>Features</a>
+</li>
+<li class="global-nav__subgroup-item">
+<a class="global-nav__subgroup-link" href=https://www.criterion.com/current/category/20-the-daily data-click-tracking='{ "category": "Nav", "action": "click", "label": "The Daily" }'>The Daily</a>
+</li>
+</ul>
+</li>
+<li class="global-nav__subgroup global-nav__group-item">
+<a class="global-nav__item global-nav__item--header" href="https://www.criterionchannel.com/browse?utm_source=criterion.com&utm_medium=referral&utm_campaign=navigation&utm_content=sidebar" data-click-tracking='{ "category": "Nav", "action": "click", "label": "The Criterion Channel" }'>The Criterion Channel</a>
+<ul class="global-nav__subgroup-items">
+<li class="global-nav__subgroup-item">
+<a class="global-nav__subgroup-link" href="https://www.criterionchannel.com/browse?utm_source=criterion.com&utm_medium=referral&utm_campaign=navigation&utm_content=sidebar" data-click-tracking='{ "category": "Nav", "action": "click", "label": "Channel Browse" }'>Browse</a>
+</li>
+<li class="global-nav__subgroup-item">
+<a class="global-nav__subgroup-link" href="https://www.criterionchannel.com/checkout/subscribe/purchase?utm_source=criterion.com&utm_medium=referral&utm_campaign=navigation&utm_content=sidebar" data-click-tracking='{ "category": "Nav", "action": "click", "label": "Channel Sign Up" }'>Sign Up</a>
+</li>
+</ul>
+</li>
+<li class="global-nav__group-item">
+<a class="global-nav__item global-nav__item--header" href="https://www.criterion.com/about" data-click-tracking='{ "category": "Nav", "action": "click", "label": "Our Mission" }'>Our Mission</a>
+</li>
+<li class="global-nav__group-item">
+<a class="global-nav__item global-nav__item--header" href="https://www.criterion.com/contact_us" data-click-tracking='{ "category": "Nav", "action": "click", "label": "Contact Us" }'>Contact Us</a>
+</li>
+<li class="global-nav__group-item">
+<a class="global-nav__item global-nav__item--header" href="https://www.criterion.com/faq" data-click-tracking='{ "category": "Nav", "action": "click", "label": "FAQ" }'>FAQ</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="global-search sidebar sidebar--light" data-global-search data-sidebar="search">
+<div class="global-search__container sidebar__container">
+<div class="global-search__sidebar sidebar__bar" data-sidebar-click-container>
+<a class="sidebar__close" href="/" data-sidebar-close="search">
+<span class="vh">Close Menu</span>
+<svg class="close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="11" y="0" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -4.9704 12.0004)" width="2" height="24" /><rect x="0" y="11" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -4.9704 12.0004)" width="24" height="2" /></svg>
+</a>
+<h3 class="global-search__heading" data-global-search-result-autocomplete-header data-global-search-result-header>Search</h3>
+<form class="global-search__field" action="/search">
+<input class="global-search__input" name="stq" type="text" placeholder="Search" data-global-search-user-input />
+<input class="global-search__input u-sr-only" type="text" data-global-search-swiftype-input disabled />
+<button type="submit" class="global-search__submit">
+<span class="vh">Submit</span>
+<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="M20.59961,10 L3.81445,10 L11.707,2.10693 C11.9622537,1.85487952 12.0629256,1.48540534 11.9708151,1.1387073 C11.8787045,0.792009252 11.607928,0.521221298 11.2612339,0.429096022 C10.9145398,0.336970745 10.5450613,0.437627004 10.293,0.69287 L0.69409,10.2923 C0.304586135,10.6837093 0.304586135,11.3162907 0.69409,11.7077 L10.293,21.30664 C10.6841917,21.6929226 11.313858,21.690928 11.7025947,21.3021749 C12.0913314,20.9134217 12.0932992,20.2837553 11.707,19.89258 L3.81445,12 L20.59961,12 C21.1518947,12 21.59961,11.5522847 21.59961,11 C21.59961,10.4477153 21.1518947,10 20.59961,10 Z" transform="rotate(-180 11 11)" fill-rule="evenodd" /></svg>
+</button>
+</form>
+<div class="global-search__channel-note pk-o-caption-text pk-o-caption-text--sm pk-o-type--grey"><span class="global-search__channel-note--italic">For streaming, search the&nbsp;&nbsp;</span><a class="pk-c-global-search__channel-link pk-o-label-text pk-o-label-text--md pk-o-type--golden" href="https://www.criterionchannel.com/search?utm_source=criterion.com&utm_medium=referral&utm_campaign=search-redirect&utm_content=quick-search" target="_blank">Criterion Channel</a></div>
+<div class="global-search__results" data-global-search-autocomplete-results>
+</div>
+</div>
+</div>
+</div>
+<script src="https://www.criterion.com/assets/js/main-public.js?v=1.50"></script>
+<script defer>var segmentIdentifier = new criterion.SegmentAnalytics(); </script><script defer>var segmentTracker = new criterion.SegmentAnalytics();</script>
+<script id="dsq-count-scr" src="//the-criterion-collection.disqus.com/count.js" async></script>
+<script>
+  	var $buoop = {vs:{i:12,f:-4,o:-4,s:8,c:-4},api:4};
+  	function $buo_f(){
+  	 var e = document.createElement("script");
+  	 e.src = "//browser-update.org/update.min.js";
+  	 document.body.appendChild(e);
+  	};
+  	try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+  	catch(e){window.attachEvent("onload", $buo_f)}
+  </script>
+<script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '121335962047',
+        xfbml      : true,
+        version    : 'v2.8',
+        cookie     : true
+      });
+      FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"NRJS-08583c234ea7b9f4cbc","applicationID":"771840878","transactionName":"b1dRNkBXWRIHUhBYW1YdcgFGX1gPSVkLXFE=","queueTime":4,"applicationTime":109,"atts":"QxBSQAhNShw=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>
