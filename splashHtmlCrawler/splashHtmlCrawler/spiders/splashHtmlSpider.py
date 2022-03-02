@@ -85,9 +85,7 @@ class SplashhtmlspiderSpider(scrapy.Spider):
 
     def save_as_text(self, response):
         if response.meta.get('flag') == 'unmarked':
-            sql = 'update `unmarked` set html = 1 where url = "%s"' % response.meta.get('site')
-            self.cursor.execute(sql)
-            self.conn.commit()
+
             with open(self.save_path + 'unmarked/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'w',
                       encoding="utf-8") as f:
                 try:
@@ -95,10 +93,10 @@ class SplashhtmlspiderSpider(scrapy.Spider):
                 except Exception as e:
                     print(e)
                     sleep(3)
+                sql = 'update `unmarked` set html = 1 where url = "%s"' % response.meta.get('site')
+                self.cursor.execute(sql)
+                self.conn.commit()
         elif response.meta.get('flag') == 'pms':
-            sql = 'update `pms` set html = 1 where url = "%s"' % response.meta.get('site')
-            self.cursor.execute(sql)
-            self.conn.commit()
             with open(self.save_path + 'pms/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'w',
                       encoding="utf-8") as f:
                 try:
@@ -106,10 +104,10 @@ class SplashhtmlspiderSpider(scrapy.Spider):
                 except Exception as e:
                     print(e)
                     sleep(3)
+                sql = 'update `pms` set html = 1 where url = "%s"' % response.meta.get('site')
+                self.cursor.execute(sql)
+                self.conn.commit()
         elif response.meta.get('flag') == 'notpms':
-            sql = 'update `notpms` set html = 1 where url = "%s"' % response.meta.get('site')
-            self.cursor.execute(sql)
-            self.conn.commit()
             with open(self.save_path + 'notpms/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'w',
                       encoding="utf-8") as f:
                 try:
@@ -117,17 +115,19 @@ class SplashhtmlspiderSpider(scrapy.Spider):
                 except Exception as e:
                     print(e)
                     sleep(3)
-
+                sql = 'update `notpms` set html = 1 where url = "%s"' % response.meta.get('site')
+                self.cursor.execute(sql)
+                self.conn.commit()
     def save_as_bin(self, response):
         if response.meta.get('flag') == 'pms':
-            sql = 'update `pms` set html = 1 where url = "%s"' % response.meta.get('site')
-            self.cursor.execute(sql)
-            self.conn.commit()
             with open('../html/pms/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'wb') as f:
                 f.write(response.body)
+                sql = 'update `pms` set html = 1 where url = "%s"' % response.meta.get('site')
+                self.cursor.execute(sql)
+                self.conn.commit()
         elif response.meta.get('flag') == 'notpms':
-            sql = 'update `notpms` set html = 1 where url = "%s"' % response.meta.get('site')
-            self.cursor.execute(sql)
-            self.conn.commit()
             with open('../html/notpms/{}.html'.format(self.item_dict.get(response.meta.get('site'))), 'wb') as f:
                 f.write(response.body)
+                sql = 'update `notpms` set html = 1 where url = "%s"' % response.meta.get('site')
+                self.cursor.execute(sql)
+                self.conn.commit()
