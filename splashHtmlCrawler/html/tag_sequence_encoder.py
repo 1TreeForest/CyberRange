@@ -60,15 +60,20 @@ if __name__ == '__main__':
             file_name = file[1]
             with open(file_path, 'r', encoding='utf-8') as f:
                 # print(file_name)
-                li.append(encoder.get_tag_sequence(f))
+                li.append((encoder.get_tag_sequence(f), file_name))
                 # encoder.save_tag_sequence(file_name, sequence)
         except StopIteration:
             print('All item processed')
             break
     with open('./test.txt', 'w+')as f:
-        a = li[11]
-        count = 1
-        for b in li:
-
-            f.write('\t'.join([str(difflib.SequenceMatcher(None, a, b).ratio()), str(count), a, b]) + '\n\n')
-            count += 1
+        count_a = 1
+        for a in li[:10]:
+            c = a[0]
+            count_b = 1
+            for b in li:
+                d = b[0]
+                f.write(
+                    '\t'.join([str(difflib.SequenceMatcher(None, c, d).ratio()), str(count_a), str(count_b), a[1], b[1],
+                               c[:50], d[:50]]) + '\n\n')
+                count_b += 1
+            count_a += 1
