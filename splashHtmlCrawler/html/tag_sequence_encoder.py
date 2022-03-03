@@ -22,7 +22,7 @@ class Encoder():
             charset='UTF8'
         )
         self.cursor = self.conn.cursor()
-        self.tag_white_dict = {'a': 'a', 'div': 'b', 'link': 'c', 'img': 'd', 'script': 'e', 'ul': 'f', 'li': 'g',
+        self.tag_white_dict = {'a': 'a', 'link': 'c', 'img': 'd', 'script': 'e', 'ul': 'f', 'li': 'g',
                                'input': 'h',
                                'form': 'i'}
 
@@ -40,7 +40,7 @@ class Encoder():
                 sequence += code
 
         # print(sequence[:100])
-        return sequence[:100]
+        return sequence[:500]
         # return sequence
 
     def save_tag_sequence(self, domain, sequence):
@@ -67,7 +67,7 @@ if __name__ == '__main__':
             break
     with open('./test.txt', 'w+')as f:
         count_a = 1
-        for a in li[:10]:
+        for a in li[:200]:
             c = a[0]
             count_b = 1
             for b in li:
