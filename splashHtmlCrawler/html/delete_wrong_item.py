@@ -21,7 +21,7 @@ for maindir, subdir, file_name_list in os.walk(r'./pms'):
             print(file_name)
             sql = 'delete from pms where domain = "{0}"'
             cursor.execute(sql.format(file_name[:-5]))
-            sql = 'delete from results where domain = "{0}"'
+            sql = 'delete from sites where domain = "{0}"'
             cursor.execute(sql.format(file_name[:-5]))
             conn.commit()
             os.remove(file_path)
