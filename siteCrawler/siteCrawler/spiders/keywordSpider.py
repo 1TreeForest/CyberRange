@@ -42,7 +42,7 @@ class KeywordSpider(Spider):
                 autocommit=True
             )
             self.cursor = self.conn.cursor()
-            sql = 'SELECT keyword FROM `querys`'
+            sql = 'SELECT keyword FROM `word_bank`'
             # 执行
             self.cursor.execute(sql)
             # 提交事务
@@ -63,10 +63,6 @@ class KeywordSpider(Spider):
         random.shuffle(self.start_urls)  # 用以随机排列start_urls，使每次爬取更加随机化
         logging.info('已获取{}个关键词，即将开始进行搜索'.format(len(self.keyword_list)))
         # print(self.start_urls)
-
-    def start_requests(self):
-        for url in self.start_urls:
-            yield Request(url, dont_filter=True)
 
     def parse(self, response):
         # 提取页面中的元素

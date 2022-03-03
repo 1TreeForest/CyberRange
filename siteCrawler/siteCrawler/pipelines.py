@@ -37,7 +37,7 @@ class SiteCrawlerPipeline(object):
         if isinstance(item, ResultItem):
             # 拼接insert SQL语句，把每项数据的5个属性填充到SQL中作为参数
             try:  # 此项在插入时若数据库中已存在该主键对，则进行更新操作
-                sql = 'INSERT INTO results(domain, name, url, keyword, crawledDate, aliveDate)VALUES("%s","%s","%s","%s","%s", "%s")' % (
+                sql = 'INSERT INTO sites(domain, name, url, keyword, crawledDate, aliveDate)VALUES("%s","%s","%s","%s","%s", "%s")' % (
                     item['domain'], item['name'], item['url'], item['keyword'], item['crawledDate'], item['aliveDate'])
                 # 执行
                 self.cursor.execute(sql)
@@ -51,7 +51,7 @@ class SiteCrawlerPipeline(object):
                 self.conn.commit()
                 logging.info('已进行 {} 次数据采集\t\t获取到新对象: {}'.format(self.count, item['domain']))
             except Exception as e:
-                sql = 'UPDATE results SET name="%s", url="%s", aliveDate="%s" WHERE domain="%s" AND keyword="%s"' \
+                sql = 'UPDATE `sites` SET name="%s", url="%s", aliveDate="%s" WHERE domain="%s" AND keyword="%s"' \
                       % (item['name'], item['url'], item['aliveDate'], item['domain'], item['keyword'])
                 # 执行
                 self.cursor.execute(sql)
