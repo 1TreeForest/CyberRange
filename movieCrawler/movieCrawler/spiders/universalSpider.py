@@ -95,7 +95,7 @@ class UniversalSpider(scrapy.Spider):
             yield item
 
             friend_link_list = response.selector.xpath('//*[@href]')  # 提取所有含href属性的tag，用以解析其中内容
-            for friend_ink in friend_link_list[-10:]:
+            for friend_ink in friend_link_list[:]:
                 href = friend_ink.xpath('./@href').extract()[0]
                 try:
                     name = friend_ink.xpath('./@title').extract()[0]
