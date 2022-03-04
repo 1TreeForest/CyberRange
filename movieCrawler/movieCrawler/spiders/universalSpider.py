@@ -107,9 +107,11 @@ class UniversalSpider(scrapy.Spider):
                         continue
                 if not href.startswith('http'):  # 处理本站内数据，即站内数据要加上前缀url
                         continue
+
                 friend_link_item = FriendLinkItem()
                 friend_link_item['name'] = name
                 friend_link_item['link'] = href
+                friend_link_item['domain'] = re.search(r'://(.+?)[:/]', href).group(1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
                 if any(word in friend_link_item['name'] for word in self.black_word_list) or \
                         any(title == friend_link_item['name'] for title in self.black_title_list) or \
                         any(url == friend_link_item['link'] for url in self.black_link_list or

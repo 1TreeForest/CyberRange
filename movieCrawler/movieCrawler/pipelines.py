@@ -64,8 +64,8 @@ class MoviecrawlerPipeline(object):
             self.count += 1
         # print(item)
         if isinstance(item, FriendLinkItem):
-            sql = 'INSERT INTO `friend_link`(name, link)VALUES("%s","%s") ON DUPLICATE KEY UPDATE name = "%s"' % (
-                item['name'], item['link'], item['name'])
+            sql = 'INSERT IGNORE INTO `friend_link`(name, link, domain)VALUES("%s","%s","%s")' % (
+                item['name'], item['link'], item['domain'])
             # 执行
             self.cursor.execute(sql)
             # 提交事务

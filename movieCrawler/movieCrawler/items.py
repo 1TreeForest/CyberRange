@@ -37,4 +37,5 @@ class FriendLinkItem(scrapy.Item):
     name = scrapy.Field()
     # 链接
     link = scrapy.Field()
+    domain = scrapy.Field()
     pass
