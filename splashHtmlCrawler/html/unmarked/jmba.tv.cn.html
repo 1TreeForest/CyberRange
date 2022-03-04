@@ -1,0 +1,221 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+ 
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+
+<script type="text/javascript">
+// 
+BASE_PATH = '';
+</script>
+<script type="text/javascript" src="/js/lib/common/Cookies.js" /></script>
+ 
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/js/lib/ext-3.4/resources/css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="/js/lib/ext-3.4/ux/css/ux-all.css" />
+ 
+<script type="text/javascript">
+  	 
+	 BASE_PATH = '';
+  	</script>
+
+
+<script type="text/javascript">
+ document.write("<scr"+"ipt src=\"/js/lib/ext-3.4/adapter/ext/ext-base.js\"></sc"+"ript>") ; 
+ document.write("<scr"+"ipt src=\"/js/lib/ext-3.4/ext-all.js\"></sc"+"ript>") ;
+ // document.write("<scr"+"ipt src=\"/js/lib/ext-3.4/src/locale/ext-lang-zh_CN.js\"></sc"+"ript>") ;
+ </script> 
+  <script type="text/javascript" src="/js/lib/ext-3.4/I18N/ext-lang-zh_CN.js"></script>
+ <script type="text/javascript" src="/js/lib/ext-3.4/ux/ux-all.js"></script>
+
+
+ 
+ 
+ 
+
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" href="/style/common/css/IEFixed.css;jsessionid=8986C0D384F853CFD257A850FAE5E175" />
+<![endif]-->
+
+<script type="text/javascript" src="/js/lib/common/common.js" /></script>
+<script type="text/javascript" src="/js/lib/common/Nusof.privilege.js" /></script>
+<script type="text/javascript" src="/js/lib/common/Nusof.iptv.js" /></script>
+<script type="text/javascript" src="/js/lib/common/Nusof.combox.js" /></script>
+<script type="text/javascript" src="/js/lib/common/Nusof.renderer.js" /></script>
+<script type="text/javascript" src="/js/lib/common/Nusof.skin.js" /></script>
+
+
+
+
+		<title>网络视听节目信息备案系统</title>
+		<link  type="text/css" href="/css/style.css" rel="stylesheet" />
+		<link  type="text/css" href="/css/login.css" rel="stylesheet" />
+		<script type="text/javascript">
+	  	 
+		 BASE_PATH = '';
+	  	</script>
+	  	<script type="text/javascript" src="/js/lib/md5.js"></script>
+		<script type="text/javascript">
+		var msg= '';	
+if(msg=='您已经连续三次登录失败，账户锁定5分钟！'){
+ 	window.opener = null;
+ 	window.open('', '_top');
+    window.close();
+}
+// 提交登录表单
+function submitThis(e, t) {
+	if(null == e || e.keyCode == 13) {
+		document.getElementById('loginForm').submit();
+	}
+}
+function login() {
+	 	var loginForm = document.getElementById('loginForm');
+	var password =hex_md5(document.getElementById('password').value);
+	document.getElementById('password').value=password;
+		loginForm.action = "./login.do";
+		loginForm.submit(); 
+	 	
+		 
+	
+	/* Ext.Ajax.request({
+		url : './login.do',
+		params : {
+			username : document.getElementById('username').value,
+			password : hex_md5(document.getElementById('password').value) ,
+			systemId : document.getElementById('systemId').value,
+			code : document.getElementById('showId').value
+		},
+		success : function(resp, option) {
+			if(resp.responseText ==null || resp.responseText==''){
+					document.getElementById('msgReasult').innerText  ="用户名或密码错误！";
+			}else{
+				window.open(resp.responseText,'_self');	
+			}	 	 
+		},
+		failure : function(resp, option) {
+			Nusof.iptv.warning('请联系管理员！');
+			}
+		});			 */		
+}
+function reset1(){
+	
+			var loginForm = document.getElementById('loginForm');
+		loginForm.reset();
+		}
+// 刷新验证码
+function refreshCode(t) {
+	t.src = 'kaptcha.jpg?t=' + new Date().getTime(); 
+}
+function showCode() {
+	if(document.getElementById('codeId').style.display=='none')
+	{
+	document.getElementById('showId').value='';
+	document.getElementById('codeId').style.display='block';
+	}
+}
+</script>
+	</head>
+	<body onload="document.getElementById('username').focus();">
+		<!--底部-->
+		<div class="shybg">
+
+			<!--图片-->
+			<div class="bapng">
+				<form id="loginForm" action="" method="post">
+				<table width="816" border="0">
+					<tr>
+						<td width="510" height="329">&nbsp;	</td>
+						
+						<td width="144" height="210"><input type="hidden" id="systemId" name="systemId" value="first" /></td>
+						<td width="178" height="320"><input type="hidden" name="method" value="doLogin" /></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan="2"><input id="username" name="username" value="" type="text" class="lgoinbut1"  onkeydown="if(event.keyCode==13)login();"/></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						
+							<td><input name="password" id="password" type="password" onkeydown="if(event.keyCode==13)login();" class="lgoinbut3" /></td>
+						
+						
+						<td>
+							<table width="120" border="0">
+								<tr>
+									<td width="90" align="left">
+										<input   name="code" size="2" type="text" maxlength="4" value="点击刷验证码" id="showId"
+									class="lgoinbut3" onclick="showCode()" onkeydown="if(event.keyCode==13)login();" />
+									</td>
+									<td >
+										<img id="codeId" src="kaptcha.jpg" title="点击刷新" width="50" height="22" 
+									style="cursor: pointer; position: relative; top: 2px; display:none;"
+									onclick="refreshCode(this);" />
+									</td>
+								</tr>
+								
+							</table>
+						</td>
+					</tr>
+					
+					<tr>
+						<td height="30">&nbsp;</td><td><font color="" size="2">请注意区分大小写</font></td><td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>
+							<img src="/images/logina.jpg" style="cursor:pointer; width: 90px; height: 29px;" onkeypress="submitThis(event, this);" onclick="login();"/>
+						</td>
+						<td>
+							<img src="/images/loginc.jpg" style="cursor:pointer; width: 90px; height: 29px;" onclick="reset1();"/>
+						</td>
+					</tr>
+				</table>
+					<div style="padding-top: 2px; padding-left: 480px; font-size: 14px; font-family: 幼圆;">
+					<font color="red"><span  id="msgReasult">  </span>  </font>
+				</div>
+				</form>
+				<table width="816" border="0">
+					<tr>
+						<td width="124" height="51">&nbsp;</td>
+						<td width="495">&nbsp;</td>
+						<td width="183">&nbsp;</td>
+					</tr>
+					<tr>
+						<td>
+							&nbsp;
+						</td>
+						<td class="shyfontb">
+							&nbsp;
+						</td>
+						<td class="shywd">
+							&nbsp;
+						</td>
+					</tr>
+				</table>
+<div style="color:white; font-size: 14px; font-weight: bold; text-align: center; line-height:25px; padding-left:130px; margin-top:20px;"><BR/>通知：各位用户，近期网络攻击事件增多，建议提高网络安全防范意识，避免点击不明邮件、未知链接等，<br/>谨慎下载运行可疑程序和文件；同时计算机须安装杀毒软件，及时更新病毒库并定期查杀。</div>
+			</div>
+		</div>
+	</body>
+</html>
