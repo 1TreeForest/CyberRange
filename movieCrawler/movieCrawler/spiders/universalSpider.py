@@ -7,7 +7,7 @@ import scrapy
 import re
 from scrapy_splash import SplashRequest
 
-from movieCrawler.items import UniversalItem
+from movieCrawler.items import UniversalItem, FriendLinkItem
 
 
 class UniversalSpider(scrapy.Spider):
@@ -17,11 +17,11 @@ class UniversalSpider(scrapy.Spider):
     name = 'universalSpider'
     #  黑名单短语列表，若出现在name中则剔除
     black_word_list = ['topics', '会员', 'vip', 'VIP', '围观了', '点击图标', '分享到', '客户端', '热线', 'rss', 'RSS',
-                       '排行榜', '留言', '大全', '？？', '??', '频道', '站点地图', '跳转', '类型的电影', '话题', 'QQ', 'qq',
-                       '直达']
+                       '排行榜', '留言', '大全', '？？', '??', '频道', '地图', '跳转', '类型的电影', '话题', 'QQ', 'qq',
+                       '直达', 'google', 'baidu', 'bing', 'sogou']
     #  黑名单题目列表，若与提取所得title相等则剔除
     black_title_list = ['招聘英才', '联系我们', '关于我们', '', '首页', '观看历史', '播放记录', '资讯', '分享', '评论', '生活',
-                        '电影', '少儿', '剧情', '动作', '歌舞', '冒险', '惊悚', '悬疑', '剧情', '喜剧', '科幻', '爱情']
+                        '电影', '少儿', '剧情', '动作', '歌舞', '冒险', '惊悚', '悬疑', '剧情', '喜剧', '科幻', '爱情', '上一页', '下一页', '\n', '\t']
     #  黑名单url列表，若与提取所得link相等则剔除
     black_link_list = ['javascript::', '#', '']
     start_urls = []
@@ -61,8 +61,8 @@ class UniversalSpider(scrapy.Spider):
         item = UniversalItem()
         for tag in tag_list:
             try:
-                title = tag.xpath('./@title').extract()[0]
                 href = tag.xpath('./@href').extract()[0]
+                title = tag.xpath('./@title').extract()[0]
             except:
                 continue
             if not href.startswith('http'):  # 处理本站内数据，即站内数据要加上前缀url
@@ -93,4 +93,29 @@ class UniversalSpider(scrapy.Spider):
                 continue
 
             yield item
+
+            friend_link_list = response.selector.xpath('//*[@href]')  # 提取所有含href属性的tag，用以解析其中内容
+            for friend_ink in friend_link_list[-10:]:
+                href = friend_ink.xpath('./@href').extract()[0]
+                try:
+                    name = friend_ink.xpath('./@title').extract()[0]
+                except:
+                    name = friend_ink.xpath('./text()').extract()
+                    try:
+                        name = name[0]
+                    except:
+                        continue
+                if not href.startswith('http'):  # 处理本站内数据，即站内数据要加上前缀url
+                        continue
+                friend_link_item = FriendLinkItem()
+                friend_link_item['name'] = name
+                friend_link_item['link'] = href
+                if any(word in friend_link_item['name'] for word in self.black_word_list) or \
+                        any(title == friend_link_item['name'] for title in self.black_title_list) or \
+                        any(url == friend_link_item['link'] for url in self.black_link_list or
+                                                           friend_link_item['name'].isalnum()):  # 若不符合三个黑名单所定义的规则就剔除
+                    continue
+                yield friend_link_item
+
+
             # print(item)
