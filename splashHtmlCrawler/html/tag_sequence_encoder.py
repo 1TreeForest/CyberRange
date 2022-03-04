@@ -72,9 +72,13 @@ if __name__ == '__main__':
             for b in li:
                 d = b[0]
                 f.write(
-                    '\t'.join(['difflib similarity : ' + str(difflib.SequenceMatcher(None, c, d).ratio()), '\n' +
+                    '\t'.join([# 匹配的字符串数/sum, 其中sum是指str1和str2字串的长度总和
+                               'difflib similarity : ' + str(difflib.SequenceMatcher(None, c, d).ratio()), '\n' +
+                               # (sum-ldist)/sum, 其中sum是指str1和str2字串的长度总和，ldist是类编辑距离
                                'Levenshtein.ratio similarity : ' + str(Levenshtein.ratio(c, d)), '\n' +
+                               # 计算jaro距离
                                'Levenshtein.jaro similarity : ' + str(Levenshtein.jaro(c, d)), '\n' +
+                               # 计算jaro–Winkler距离
                                'Levenshtein.jaro_winkler similarity : ' + str(Levenshtein.jaro_winkler(c, d)), '\n' +
                                str(count_a), str(count_b), a[1], b[1],
                                c[:50], d[:50]]) + '\n\n')
