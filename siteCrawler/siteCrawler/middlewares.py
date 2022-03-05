@@ -8,12 +8,13 @@ import random
 import time
 import requests
 from scrapy import signals
-# from fake_useragent import UserAgent
+from fake_useragent import UserAgent
 
-# class RandomUserAgentMiddleware(object):
-#     def process_request(self, request, spider):
-#         ua = UserAgent()
-#         request.headers['User-Agent'] = ua.random
+
+class RandomUserAgentMiddleware(object):
+    def process_request(self, request, spider):
+        ua = UserAgent()
+        request.headers['User-Agent'] = ua.random
 
 class SiteCrawlerSpiderMiddleware:
     # Not all methods need to be defined. If a method is not defined,
@@ -135,7 +136,7 @@ class RandomProxyMiddleware:
 
     def __init__(self):
         self.get_proxy_list()
-        self.check_proxy_list()
+        # self.check_proxy_list()
         logging.info(
             '已成功获取代理池, 代理池余额为:\nhttp:{}\nhttps:{}'.format(len(self.http_proxy_list), len(self.https_proxy_list)))
 
@@ -156,7 +157,7 @@ class RandomProxyMiddleware:
         #         requests.get(url, proxies=proxies, timeout=5)
         #     except:
         #         self.http_proxy_list.remove(proxy)
-        #     logging.info('可用http代理余额:{}'.format(len(self.http_proxy_list)))
+        #         logging.info('可用http代理余额:{}'.format(len(self.http_proxy_list)))
 
         for proxy in self.https_proxy_list:  # 检查https代理可用性
             proxies = {
@@ -188,7 +189,7 @@ class RandomProxyMiddleware:
 
         if len(self.http_proxy_list) == 0 or len(self.https_proxy_list) == 0:  # 若代理池为空则重新获取代理池
             self.get_proxy_list()
-            self.check_proxy_list()
+            # self.check_proxy_list()
         if 'baidu' in request.url:
             if request.url.startswith('https://wappass'):  # 访问百度时，若被ban则删除代理池中失效的代理并且重新进行请求
                 if request.meta['proxy'].startswith('http://'):
@@ -211,12 +212,19 @@ class RandomProxyMiddleware:
                     request.meta['proxy'] = 'https://' + random.choice(self.https_proxy_list)
 
             else:  # 若是正常请求则只设置代理即可
-                if request.url.startswith('http://'):
-                    request.meta['proxy'] = 'http://' + random.choice(self.http_proxy_list)
-                elif request.url.startswith('https://'):
-                    request.meta['proxy'] = 'https://' + random.choice(self.https_proxy_list)
+                # if request.url.startswith('http://'):
+                #     request.meta['proxy'] = 'http://' + random.choice(self.http_proxy_list)
+                # elif request.url.startswith('https://'):
+                #     request.meta['proxy'] = 'https://' + random.choice(self.https_proxy_list)
+                request.meta['proxy'] = 'http://' + random.choice(self.http_proxy_list)
 
         if 'bing' in request.url:
+            if request.url.startswith('http://'):
+                request.meta['proxy'] = 'http://' + random.choice(self.http_proxy_list)
+            elif request.url.startswith('https://'):
+                request.meta['proxy'] = 'https://' + random.choice(self.https_proxy_list)
+
+        if 'google' in request.url:
             if request.url.startswith('http://'):
                 request.meta['proxy'] = 'http://' + random.choice(self.http_proxy_list)
             elif request.url.startswith('https://'):

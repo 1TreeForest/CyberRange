@@ -16,7 +16,7 @@ from siteCrawler.items import ResultItem
 
 
 class KeywordSpider(Spider):
-    name = 'keywordSpider'
+    name = 'keywordSpider_baidu'
     allowed_domains = ['bing.com', 'google.com', 'baidu.com']
     start_urls = []
     keyword_list = None
@@ -28,7 +28,7 @@ class KeywordSpider(Spider):
     cursor = None
     urls_before = []
 
-    def __init__(self, keyword='all', se='bing_global', pages=500, *args, **kwargs):
+    def __init__(self, keyword='all', se='baidu', pages=500, *args, **kwargs):
         super(KeywordSpider, self).__init__(*args, **kwargs)
         if keyword == 'all':  # 用户选择根据数据库中的词库进行搜索
             self.conn = pymysql.Connect(
