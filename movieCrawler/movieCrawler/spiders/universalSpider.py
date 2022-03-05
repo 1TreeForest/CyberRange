@@ -97,6 +97,8 @@ class UniversalSpider(scrapy.Spider):
             friend_link_list = response.selector.xpath('//*[@href]')  # 提取所有含href属性的tag，用以解析其中内容
             for friend_ink in friend_link_list[:]:
                 href = friend_ink.xpath('./@href').extract()[0]
+                if not href.startswith('http'):  # 处理本站内数据，即站内数据要加上前缀url
+                        continue
                 try:
                     name = friend_ink.xpath('./@title').extract()[0]
                 except:
@@ -105,9 +107,6 @@ class UniversalSpider(scrapy.Spider):
                         name = name[0]
                     except:
                         continue
-                if not href.startswith('http'):  # 处理本站内数据，即站内数据要加上前缀url
-                        continue
-
                 friend_link_item = FriendLinkItem()
                 friend_link_item['name'] = name
                 friend_link_item['link'] = href
@@ -118,6 +117,3 @@ class UniversalSpider(scrapy.Spider):
                                                            friend_link_item['name'].isalnum()):  # 若不符合三个黑名单所定义的规则就剔除
                     continue
                 yield friend_link_item
-
-
-            # print(item)
