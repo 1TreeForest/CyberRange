@@ -123,7 +123,7 @@ class UniversalSpider(scrapy.Spider):
                     except Exception as e:
                         continue
                     yield SplashRequest(url=href, callback=self.parse, args={'wait': '10'}, endpoint='render.html',
-                                        meta={'original_url': href})  # 最大时长、固定参数
+                                        meta={'original_url': response.meta.get('original_url')})  # 最大时长、固定参数
                     continue
                 continue
             friend_link_item = FriendLinkItem()
