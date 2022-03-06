@@ -58,7 +58,7 @@ class MoviecrawlerPipeline(object):
             self.cursor.execute(sql, [item['name'], item['link'], item['site'], item['link']])
             # 提交事务
             self.conn.commit()
-            logging.info('已进行 {} 次数据采集\t\t获取到对象: {}，{}'.format(self.count, item['name'], item['link']))
+            logging.info('已进行 {} 次数据采集\t\t获取到对象: {}，{}，{}'.format(self.count, item['name'], item['link'], item['site']))
             self.count += 1
         # print(item)
         if isinstance(item, FriendLinkItem):

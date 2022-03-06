@@ -25,7 +25,7 @@ class UniversalSpider(scrapy.Spider):
                         '\t']
     #  黑名单url列表，若与提取所得link相等则剔除
     black_link_list = ['#', '']
-    black_link_word_list = ['javascript', 'void']
+    black_link_word_list = ['javascript']
     start_urls = []
 
     def __init__(self, **kwargs):
