@@ -28,6 +28,7 @@ class UniversalSpider(scrapy.Spider):
     black_link_word_list = ['javascript']
     start_urls = []
     last_name = None
+    last_page = None
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -123,10 +124,14 @@ class UniversalSpider(scrapy.Spider):
                     else:
                         pre = re.search(r'https?://.+/', response.url).group(1)
                         href = pre + href
+                    if href == self.last_page:
+                        print('此网站已爬取所有页数')
+                        continue
                     yield SplashRequest(url=href, callback=self.parse, args={'wait': '10'}, endpoint='render.html',
                                         meta={'original_url': site_url})  # 最大时长、固定参数
                     print(href)
                     print('下一页处理成功')
+                    self.last_page = href
                     continue
                 continue
             elif href.startswith('http'):  # 处理友情链接
