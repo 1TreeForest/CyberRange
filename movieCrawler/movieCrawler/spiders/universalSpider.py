@@ -97,7 +97,7 @@ class UniversalSpider(scrapy.Spider):
                 continue
             yield item
 
-        yield from self.get_friend_link_and_next_page(response)  # 提取友情链接以及爬取下一页
+        # yield from self.get_friend_link_and_next_page(response)  # 提取友情链接以及爬取下一页
 
     def get_friend_link_and_next_page(self, response):
         link_list = response.selector.xpath('//*[@href]')  # 提取所有含href属性的tag，用以解析其中内容
