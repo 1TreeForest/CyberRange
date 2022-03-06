@@ -131,19 +131,20 @@ class UniversalSpider(scrapy.Spider):
                                         meta={'original_url': site_url})  # 最大时长、固定参数
                     continue
                 continue
-            friend_link_item = FriendLinkItem()
-            friend_link_item['name'] = name
-            friend_link_item['link'] = href
-            try:
-                friend_link_item['domain'] = re.search(r'://(.+?)[:/]?', href).group(
-                    1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
-            except:
-                print(href)
-                continue
-            if any(word in friend_link_item['name'] for word in self.black_word_list) or \
-                    any(title == friend_link_item['name'] for title in self.black_title_list) or \
-                    any(url == friend_link_item['link'] for url in self.black_link_list) or \
-                    any(url in friend_link_item['link'] for url in self.black_link_word_list) or \
-                    friend_link_item['name'].isalnum():  # 若不符合四个黑名单所定义的规则就剔除
-                continue
-            yield friend_link_item
+            elif href.startswith('http'):  # 处理友情链接
+                friend_link_item = FriendLinkItem()
+                friend_link_item['name'] = name
+                friend_link_item['link'] = href
+                try:
+                    friend_link_item['domain'] = re.search(r'://(.+?)[:/]?', href).group(
+                        1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
+                except:
+                    print(href)
+                    continue
+                if any(word in friend_link_item['name'] for word in self.black_word_list) or \
+                        any(title == friend_link_item['name'] for title in self.black_title_list) or \
+                        any(url == friend_link_item['link'] for url in self.black_link_list) or \
+                        any(url in friend_link_item['link'] for url in self.black_link_word_list) or \
+                        friend_link_item['name'].isalnum():  # 若不符合四个黑名单所定义的规则就剔除
+                    continue
+                yield friend_link_item
