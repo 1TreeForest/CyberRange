@@ -27,6 +27,7 @@ class UniversalSpider(scrapy.Spider):
     black_link_list = ['#', '']
     black_link_word_list = ['javascript']
     start_urls = []
+    last_name = None
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -68,6 +69,8 @@ class UniversalSpider(scrapy.Spider):
                 title = tag.xpath('./@title').extract()[0]
             except:
                 continue
+            if title == self.last_name:
+                continue
             if not href.startswith('http'):  # 处理本站内数据，即站内数据要加上前缀url
                 try:
                     if href[0] == '/' and site_url[-1] == '/':
@@ -96,6 +99,7 @@ class UniversalSpider(scrapy.Spider):
                 self.conn.commit()
                 continue
             yield item
+            self.last_name = title
 
         yield from self.get_friend_link_and_next_page(response)  # 提取友情链接以及爬取下一页
 
