@@ -45,29 +45,26 @@ class MoviecrawlerPipeline(object):
 
         # 拼接insert SQL语句
         if isinstance(item, SpecialItem):
-            sql = 'INSERT INTO `movies_special`(name, link, site)VALUES("%s","%s","%s") ON DUPLICATE KEY UPDATE link = "%s"' % (
-                item['name'], item['link'], item['site'], item['link'])
+            sql = 'INSERT INTO `movies_special`(name, link, site)VALUES(%s,%s,%s) ON DUPLICATE KEY UPDATE link = %s'
             # 执行
-            self.cursor.execute(sql)
+            self.cursor.execute(sql, [item['name'], item['link'], item['site'], item['link']])
             # 提交事务
             self.conn.commit()
             logging.info('已进行 {} 次数据采集\t\t获取到对象: {}，{}'.format(self.count, item['name'], item['link']))
             self.count += 1
         if isinstance(item, UniversalItem):
-            sql = 'INSERT INTO `movies_universal`(name, link, site)VALUES("%s","%s","%s") ON DUPLICATE KEY UPDATE link = "%s"' % (
-                item['name'], item['link'], item['site'], item['link'])
+            sql = 'INSERT INTO `movies_universal`(name, link, site)VALUES(%s,%s,%s) ON DUPLICATE KEY UPDATE link = %s'
             # 执行
-            self.cursor.execute(sql)
+            self.cursor.execute(sql, [item['name'], item['link'], item['site'], item['link']])
             # 提交事务
             self.conn.commit()
             logging.info('已进行 {} 次数据采集\t\t获取到对象: {}，{}'.format(self.count, item['name'], item['link']))
             self.count += 1
         # print(item)
         if isinstance(item, FriendLinkItem):
-            sql = 'INSERT IGNORE INTO `friend_link`(name, link, domain)VALUES("%s","%s","%s")' % (
-                item['name'], item['link'], item['domain'])
+            sql = 'INSERT IGNORE INTO `friend_link`(name, link, domain)VALUES(%s,%s,%s)'
             # 执行
-            self.cursor.execute(sql)
+            self.cursor.execute(sql, [item['name'], item['link'], item['domain']])
             # 提交事务
             self.conn.commit()
 

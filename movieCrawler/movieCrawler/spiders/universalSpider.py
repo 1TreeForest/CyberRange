@@ -21,7 +21,8 @@ class UniversalSpider(scrapy.Spider):
                        '直达', 'google', 'baidu', 'bing', 'sogou']
     #  黑名单题目列表，若与提取所得title相等则剔除
     black_title_list = ['招聘英才', '联系我们', '关于我们', '', '首页', '观看历史', '播放记录', '资讯', '分享', '评论', '生活',
-                        '电影', '少儿', '剧情', '动作', '歌舞', '冒险', '惊悚', '悬疑', '剧情', '喜剧', '科幻', '爱情', '上一页', '下一页', '\n', '\t']
+                        '电影', '少儿', '剧情', '动作', '歌舞', '冒险', '惊悚', '悬疑', '剧情', '喜剧', '科幻', '爱情', '上一页', '下一页', '\n',
+                        '\t']
     #  黑名单url列表，若与提取所得link相等则剔除
     black_link_list = ['javascript::', '#', '']
     start_urls = []
@@ -53,7 +54,8 @@ class UniversalSpider(scrapy.Spider):
 
     def start_requests(self):
         for url in self.start_urls:
-            yield SplashRequest(url=url, callback=self.parse, args={'wait': '10'}, endpoint='render.html', meta={'original_url': url})  # 最大时长、固定参数
+            yield SplashRequest(url=url, callback=self.parse, args={'wait': '10'}, endpoint='render.html',
+                                meta={'original_url': url})  # 最大时长、固定参数
 
     def parse(self, response):
         tag_list = response.selector.xpath('//*[@title]')  # 提取所有含title属性的tag，用以解析其中内容
@@ -86,34 +88,52 @@ class UniversalSpider(scrapy.Spider):
             if any(word in item['name'] for word in self.black_word_list) or \
                     any(title == item['name'] for title in self.black_title_list) or \
                     any(url == item['link'] for url in self.black_link_list or
-                    item['name'].isalnum()):  # 若不符合三个黑名单所定义的规则就剔除
+                                                       item['name'].isalnum()):  # 若不符合三个黑名单所定义的规则就剔除
                 sql = 'insert ignore into `black_log` value("%s")' % item['name']
                 self.cursor.execute(sql)
                 self.conn.commit()
                 continue
-
             yield item
 
-            friend_link_list = response.selector.xpath('//*[@href]')  # 提取所有含href属性的tag，用以解析其中内容
-            for friend_ink in friend_link_list[:]:
-                href = friend_ink.xpath('./@href').extract()[0]
-                if not href.startswith('http'):  # 处理本站内数据，即站内数据要加上前缀url
-                        continue
+        yield from self.get_friend_link_and_next_page(response, site_url)  # 提取友情链接以及爬取下一页
+
+    def get_friend_link_and_next_page(self, response, site_url):
+        link_list = response.selector.xpath('//*[@href]')  # 提取所有含href属性的tag，用以解析其中内容
+        for link in link_list[:]:
+            href = link.xpath('./@href').extract()[0]
+            try:
+                name = link.xpath('./@title').extract()[0]
+            except:
+                name = link.xpath('./text()').extract()
                 try:
-                    name = friend_ink.xpath('./@title').extract()[0]
+                    name = name[0]
                 except:
-                    name = friend_ink.xpath('./text()').extract()
-                    try:
-                        name = name[0]
-                    except:
-                        continue
-                friend_link_item = FriendLinkItem()
-                friend_link_item['name'] = name
-                friend_link_item['link'] = href
-                friend_link_item['domain'] = re.search(r'://(.+?)[:/]', href).group(1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
-                if any(word in friend_link_item['name'] for word in self.black_word_list) or \
-                        any(title == friend_link_item['name'] for title in self.black_title_list) or \
-                        any(url == friend_link_item['link'] for url in self.black_link_list or
-                                                           friend_link_item['name'].isalnum()):  # 若不符合三个黑名单所定义的规则就剔除
                     continue
-                yield friend_link_item
+            if not href.startswith('http'):  # 如果是站外链接，证明是友情链接; 如果是站内链接，证明可能为下一页的链接
+                if name == '下一页':
+                    try:
+                        if href[0] == '/' and site_url[-1] == '/':
+                            href = site_url + href[1:]
+                        elif href[0] == '/' and site_url[-1] != '/' or href[0] != '/' and site_url[-1] == '/':
+                            href = site_url + href
+                        elif href[0] != '/' and site_url[-1] != '/':
+                            href = site_url + '/' + href
+                    except Exception as e:
+                        continue
+                    yield SplashRequest(url=href, callback=self.parse, args={'wait': '10'}, endpoint='render.html',
+                                        meta={'original_url': href})  # 最大时长、固定参数
+                    continue
+            friend_link_item = FriendLinkItem()
+            friend_link_item['name'] = name
+            friend_link_item['link'] = href
+            try:
+                friend_link_item['domain'] = re.search(r'://(.+?)[:/]', href).group(1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
+            except:
+                continue
+            if any(word in friend_link_item['name'] for word in self.black_word_list) or \
+                    any(title == friend_link_item['name'] for title in self.black_title_list) or \
+                    any(url == friend_link_item['link'] for url in self.black_link_list or
+                                                                   friend_link_item[
+                                                                       'name'].isalnum()):  # 若不符合三个黑名单所定义的规则就剔除
+                continue
+            yield friend_link_item
