@@ -62,15 +62,12 @@ class UniversalSpider(scrapy.Spider):
         tag_list = response.selector.xpath('//*[@title]')  # 提取所有含title属性的tag，用以解析其中内容
         site_url = response.meta.get('original_url')
         item = UniversalItem()
-        count = 0
         for tag in tag_list:
             try:
                 href = tag.xpath('./@href').extract()[0]
                 title = tag.xpath('./@title').extract()[0]
             except:
                 continue
-            logging.info(title, '\t', str(count))
-            count += 1
             if not href.startswith('http'):  # 处理本站内数据，即站内数据要加上前缀url
                 try:
                     if href[0] == '/' and site_url[-1] == '/':
