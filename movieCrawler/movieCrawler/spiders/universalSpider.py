@@ -67,7 +67,7 @@ class UniversalSpider(scrapy.Spider):
             try:
                 href = tag.xpath('./@href').extract()[0]
                 title = tag.xpath('./@title').extract()[0]
-                print(title, '\t', str(count))
+                logging.info(title, '\t', str(count))
                 count += 1
             except:
                 continue
