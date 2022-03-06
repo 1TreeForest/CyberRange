@@ -64,9 +64,6 @@ DEFAULT_REQUEST_HEADERS = {
 #    'movieCrawler.middlewares.MoviecrawlerSpiderMiddleware': 543,
 #}
 
-# Enable or disable downloader middlewares
-# See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
 #EXTENSIONS = {

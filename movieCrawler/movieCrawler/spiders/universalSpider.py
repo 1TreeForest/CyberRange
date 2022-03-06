@@ -21,7 +21,7 @@ class UniversalSpider(scrapy.Spider):
                        '直达', 'google', 'baidu', 'bing', 'sogou']
     #  黑名单题目列表，若与提取所得title相等则剔除
     black_title_list = ['招聘英才', '联系我们', '关于我们', '', '首页', '观看历史', '播放记录', '资讯', '分享', '评论', '生活',
-                        '电影', '少儿', '剧情', '动作', '歌舞', '冒险', '惊悚', '悬疑', '剧情', '喜剧', '科幻', '爱情', '上一页', '下一页', '\n',
+                        '电影', '少儿', '剧情', '动作', '歌舞', '冒险', '惊悚', '悬疑', '剧情', '喜剧', '科幻', '爱情', '上一页', '\n',
                         '\t']
     #  黑名单url列表，若与提取所得link相等则剔除
     black_link_list = ['#', '']
@@ -97,7 +97,7 @@ class UniversalSpider(scrapy.Spider):
                 continue
             yield item
 
-        # yield from self.get_friend_link_and_next_page(response)  # 提取友情链接以及爬取下一页
+        yield from self.get_friend_link_and_next_page(response)  # 提取友情链接以及爬取下一页
 
     def get_friend_link_and_next_page(self, response):
         link_list = response.selector.xpath('//*[@href]')  # 提取所有含href属性的tag，用以解析其中内容
