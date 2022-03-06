@@ -24,7 +24,8 @@ class UniversalSpider(scrapy.Spider):
                         '电影', '少儿', '剧情', '动作', '歌舞', '冒险', '惊悚', '悬疑', '剧情', '喜剧', '科幻', '爱情', '上一页', '下一页', '\n',
                         '\t']
     #  黑名单url列表，若与提取所得link相等则剔除
-    black_link_list = ['javascript::', '#', '']
+    black_link_list = ['#', '']
+    black_link_word_list = ['javascript', 'void']
     start_urls = []
 
     def __init__(self, **kwargs):
@@ -87,8 +88,9 @@ class UniversalSpider(scrapy.Spider):
 
             if any(word in item['name'] for word in self.black_word_list) or \
                     any(title == item['name'] for title in self.black_title_list) or \
-                    any(url == item['link'] for url in self.black_link_list or
-                                                       item['name'].isalnum()):  # 若不符合三个黑名单所定义的规则就剔除
+                    any(url == item['link'] for url in self.black_link_list) or \
+                    any(url in item['link'] for url in self.black_link_word_list) or \
+                    item['name'].isalnum():  # 若不符合四个黑名单所定义的规则就剔除
                 sql = 'insert ignore into `black_log` value("%s")' % item['name']
                 self.cursor.execute(sql)
                 self.conn.commit()
@@ -123,6 +125,7 @@ class UniversalSpider(scrapy.Spider):
                     yield SplashRequest(url=href, callback=self.parse, args={'wait': '10'}, endpoint='render.html',
                                         meta={'original_url': href})  # 最大时长、固定参数
                     continue
+                continue
             friend_link_item = FriendLinkItem()
             friend_link_item['name'] = name
             friend_link_item['link'] = href
@@ -132,8 +135,8 @@ class UniversalSpider(scrapy.Spider):
                 continue
             if any(word in friend_link_item['name'] for word in self.black_word_list) or \
                     any(title == friend_link_item['name'] for title in self.black_title_list) or \
-                    any(url == friend_link_item['link'] for url in self.black_link_list or
-                                                                   friend_link_item[
-                                                                       'name'].isalnum()):  # 若不符合三个黑名单所定义的规则就剔除
+                    any(url == friend_link_item['link'] for url in self.black_link_list) or \
+                    any(url in friend_link_item['link'] for url in self.black_link_word_list) or \
+                    friend_link_item['name'].isalnum():  # 若不符合四个黑名单所定义的规则就剔除
                 continue
             yield friend_link_item
