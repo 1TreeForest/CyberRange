@@ -62,10 +62,13 @@ class UniversalSpider(scrapy.Spider):
         tag_list = response.selector.xpath('//*[@title]')  # 提取所有含title属性的tag，用以解析其中内容
         site_url = response.meta.get('original_url')
         item = UniversalItem()
+        count = 0
         for tag in tag_list:
             try:
                 href = tag.xpath('./@href').extract()[0]
                 title = tag.xpath('./@title').extract()[0]
+                print(title, '\t', str(count))
+                count += 1
             except:
                 continue
             if not href.startswith('http'):  # 处理本站内数据，即站内数据要加上前缀url
@@ -131,7 +134,8 @@ class UniversalSpider(scrapy.Spider):
             friend_link_item['name'] = name
             friend_link_item['link'] = href
             try:
-                friend_link_item['domain'] = re.search(r'://(.+?)[:/]?', href).group(1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
+                friend_link_item['domain'] = re.search(r'://(.+?)[:/]?', href).group(
+                    1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
             except:
                 print(href)
                 continue
