@@ -115,17 +115,18 @@ class UniversalSpider(scrapy.Spider):
                 except:
                     continue
             if not href.startswith('http'):  # 如果是站内链接，证明可能为下一页的链接
-                if name == '下一页':
+                if '下一页' in name:
                     print('处理下一页')
-
+                    if 'javascript' in href:
+                        continue
                     if href.startswith('/'):
                         pre = re.search(r'https?://.+?/', response.url).group(0)
                         href = pre + href[1:]
                     else:
-                        pre = re.search(r'https?://.+/', response.url).group(1)
+                        pre = re.search(r'https?://.+/', response.url).group(0)
                         href = pre + href
                     if href == self.last_page:
-                        print('此网站已爬取所有页数')
+                        print('此网站已爬取所有页数', '\t', href)
                         continue
                     yield SplashRequest(url=href, callback=self.parse, args={'wait': '10'}, endpoint='render.html',
                                         meta={'original_url': site_url})  # 最大时长、固定参数
@@ -133,7 +134,6 @@ class UniversalSpider(scrapy.Spider):
                     print('下一页处理成功')
                     self.last_page = href
                     continue
-                continue
             elif href.startswith('http'):  # 处理友情链接
                 friend_link_item = FriendLinkItem()
                 friend_link_item['name'] = name
