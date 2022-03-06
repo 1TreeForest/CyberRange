@@ -67,10 +67,10 @@ class UniversalSpider(scrapy.Spider):
             try:
                 href = tag.xpath('./@href').extract()[0]
                 title = tag.xpath('./@title').extract()[0]
-                logging.info(title, '\t', str(count))
-                count += 1
             except:
                 continue
+            logging.info(title, '\t', str(count))
+            count += 1
             if not href.startswith('http'):  # 处理本站内数据，即站内数据要加上前缀url
                 try:
                     if href[0] == '/' and site_url[-1] == '/':
