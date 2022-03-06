@@ -97,10 +97,11 @@ class UniversalSpider(scrapy.Spider):
                 continue
             yield item
 
-        yield from self.get_friend_link_and_next_page(response, site_url)  # 提取友情链接以及爬取下一页
+        yield from self.get_friend_link_and_next_page(response)  # 提取友情链接以及爬取下一页
 
-    def get_friend_link_and_next_page(self, response, site_url):
+    def get_friend_link_and_next_page(self, response):
         link_list = response.selector.xpath('//*[@href]')  # 提取所有含href属性的tag，用以解析其中内容
+        site_url = response.meta.get('original_url')
         for link in link_list[:]:
             href = link.xpath('./@href').extract()[0]
             try:
@@ -123,15 +124,16 @@ class UniversalSpider(scrapy.Spider):
                     except Exception as e:
                         continue
                     yield SplashRequest(url=href, callback=self.parse, args={'wait': '10'}, endpoint='render.html',
-                                        meta={'original_url': response.meta.get('original_url')})  # 最大时长、固定参数
+                                        meta={'original_url': site_url})  # 最大时长、固定参数
                     continue
                 continue
             friend_link_item = FriendLinkItem()
             friend_link_item['name'] = name
             friend_link_item['link'] = href
             try:
-                friend_link_item['domain'] = re.search(r'://(.+?)[:/]', href).group(1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
+                friend_link_item['domain'] = re.search(r'://(.+?)[:/]?', href).group(1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
             except:
+                print(href)
                 continue
             if any(word in friend_link_item['name'] for word in self.black_word_list) or \
                     any(title == friend_link_item['name'] for title in self.black_title_list) or \
