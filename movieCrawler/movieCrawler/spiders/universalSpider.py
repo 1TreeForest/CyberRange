@@ -21,7 +21,7 @@ class UniversalSpider(scrapy.Spider):
                        '直达', 'google', 'baidu', 'bing', 'sogou']
     #  黑名单题目列表，若与提取所得title相等则剔除
     black_title_list = ['招聘英才', '联系我们', '关于我们', '', '首页', '观看历史', '播放记录', '资讯', '分享', '评论', '生活',
-                        '电影', '少儿', '剧情', '动作', '歌舞', '冒险', '惊悚', '悬疑', '剧情', '喜剧', '科幻', '爱情', '上一页', '\n',
+                        '电影', '少儿', '剧情', '动作', '歌舞', '冒险', '惊悚', '悬疑', '剧情', '喜剧', '科幻', '爱情', '上一页', '下一页', '\n',
                         '\t']
     #  黑名单url列表，若与提取所得link相等则剔除
     black_link_list = ['#', '']
@@ -72,15 +72,12 @@ class UniversalSpider(scrapy.Spider):
             if title == self.last_name:
                 continue
             if not href.startswith('http'):  # 处理本站内数据，即站内数据要加上前缀url
-                try:
-                    if href[0] == '/' and site_url[-1] == '/':
-                        href = site_url + href[1:]
-                    elif href[0] == '/' and site_url[-1] != '/' or href[0] != '/' and site_url[-1] == '/':
-                        href = site_url + href
-                    elif href[0] != '/' and site_url[-1] != '/':
-                        href = site_url + '/' + href
-                except Exception as e:
-                    continue
+                if href.startswith('/'):
+                    pre = re.search(r'https?://.+?/', response.url).group(0)  # 匹配最短路径
+                    href = pre + href[1:]
+                else:
+                    pre = re.search(r'https?://.+/', response.url).group(0)  # 匹配最长路径
+                    href = pre + href
             # title_in_brackets = re.search(r'《(.+?)》', title).group(1)  # 去除书名号，慎用
             # if title_in_brackets:
             #     title = title_in_brackets
@@ -116,19 +113,20 @@ class UniversalSpider(scrapy.Spider):
                     name = name[0]
                 except:
                     continue
-            if not href.startswith('http'):  # 如果是站外链接，证明是友情链接; 如果是站内链接，证明可能为下一页的链接
+            if not href.startswith('http'):  # 如果是站内链接，证明可能为下一页的链接
                 if name == '下一页':
-                    try:
-                        if href[0] == '/' and site_url[-1] == '/':
-                            href = site_url + href[1:]
-                        elif href[0] == '/' and site_url[-1] != '/' or href[0] != '/' and site_url[-1] == '/':
-                            href = site_url + href
-                        elif href[0] != '/' and site_url[-1] != '/':
-                            href = site_url + '/' + href
-                    except Exception as e:
-                        continue
+                    print('处理下一页')
+
+                    if href.startswith('/'):
+                        pre = re.search(r'https?://.+?/', response.url).group(0)
+                        href = pre + href[1:]
+                    else:
+                        pre = re.search(r'https?://.+/', response.url).group(1)
+                        href = pre + href
                     yield SplashRequest(url=href, callback=self.parse, args={'wait': '10'}, endpoint='render.html',
                                         meta={'original_url': site_url})  # 最大时长、固定参数
+                    print(href)
+                    print('下一页处理成功')
                     continue
                 continue
             elif href.startswith('http'):  # 处理友情链接
