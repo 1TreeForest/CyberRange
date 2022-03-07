@@ -33,11 +33,11 @@ class Similarity():
         for i in range(len(domain_list)):
             domain_1 = domain_list[i]
             for domain_2 in domain_list[i+1:]:
-                # 计算jaro距离
-                similarity = Levenshtein.jaro(self.item_dict[domain_1][:500], self.item_dict[domain_2][:500])
+                # (sum-ldist)/sum, 其中sum是指str1和str2字串的长度总和，ldist是类编辑距离
+                similarity = Levenshtein.ratio(self.item_dict[domain_1][:1000], self.item_dict[domain_2][:1000])
                 print('domain_1: ' + domain_1)
                 print('domain_2: ' + domain_2)
-                print('similarity: ' + str(similarity) + '\n')
+                #print('similarity: ' + str(similarity) + '\n')
                 self.save_structure_similarity(domain_1, domain_2, similarity)
 
     def save_structure_similarity(self, domain_1, domain_2, similarity):
