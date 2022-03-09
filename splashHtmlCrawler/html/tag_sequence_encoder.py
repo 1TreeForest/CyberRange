@@ -25,17 +25,21 @@ class Encoder():
             for file_name in file_name_list:
                 yield [os.path.join(main_dir, file_name), file_name]  # 返回path与文件名组成的列表
     def get_tag_sequence(self, html):
+        count = 0
         context = html.read()
         sequence = ''
         for tag in self.pattern.finditer(context):
             code = self.tag_white_dict.get(tag.group(1))
             if code is not None:
                 sequence += code
-        return sequence[:2000]
+            count += 1
+            if count > 1010:
+                break
+        return sequence[:1000]
 
     def save_tag_sequence(self, domain, sequence):
-        sql = 'insert into tag_domain(tag_sequence, domain) values("%s","%s") on duplicate key update tag_sequence="%s"' % (sequence, domain, sequence)
-        self.cursor.execute(sql)
+        sql = 'insert into tag_domain(tag_sequence, domain) values(%s,%s) on duplicate key update tag_sequence=%s'
+        self.cursor.execute(sql, [sequence, domain, sequence])
         self.conn.commit()
 
 

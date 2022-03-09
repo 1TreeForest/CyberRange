@@ -29,21 +29,21 @@ class Similarity():
         self.conn.commit()
         self.item_dict = dict(self.cursor.fetchall()[:])
         domain_list = list(self.item_dict.keys())
-        print(domain_list)
+        # print(domain_list)
         for i in range(len(domain_list)):
             domain_1 = domain_list[i]
             for domain_2 in domain_list[i+1:]:
                 # (sum-ldist)/sum, 其中sum是指str1和str2字串的长度总和，ldist是类编辑距离
-                similarity = Levenshtein.ratio(self.item_dict[domain_1][:1000], self.item_dict[domain_2][:1000])
-                print('domain_1: ' + domain_1)
-                print('domain_2: ' + domain_2)
+                similarity = Levenshtein.ratio(self.item_dict[domain_1][:500], self.item_dict[domain_2][:500])
+                print(similarity)
+                # print('domain_1: ' + domain_1)
+                # print('domain_2: ' + domain_2)
                 #print('similarity: ' + str(similarity) + '\n')
                 self.save_structure_similarity(domain_1, domain_2, similarity)
 
     def save_structure_similarity(self, domain_1, domain_2, similarity):
-        sql = 'insert ignore into structure_similarity(domain_1, domain_2, similarity)values("%s","%s","%.2f")' % (
-        domain_1, domain_2, similarity)
-        self.cursor.execute(sql)
+        sql = 'insert ignore into structure_similarity_500(domain_1, domain_2, similarity)values(%s,%s,%s) on duplicate key update similarity=%s'
+        self.cursor.execute(sql, [domain_1, domain_2, similarity, similarity])
         self.conn.commit()
 
 

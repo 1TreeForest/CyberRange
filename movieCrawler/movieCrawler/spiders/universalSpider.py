@@ -6,7 +6,6 @@ import pymysql
 import scrapy
 import re
 from scrapy_splash import SplashRequest
-
 from movieCrawler.items import UniversalItem, FriendLinkItem
 
 
@@ -139,7 +138,7 @@ class UniversalSpider(scrapy.Spider):
                 friend_link_item['name'] = name
                 friend_link_item['link'] = href
                 try:
-                    friend_link_item['domain'] = re.search(r'://(.+?)[:/]?', href).group(
+                    friend_link_item['domain'] = re.search(r'://(.+?)[:/]', href).group(
                         1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
                 except:
                     print(href)
