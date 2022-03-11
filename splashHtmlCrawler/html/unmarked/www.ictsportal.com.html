@@ -1,0 +1,2460 @@
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICTS learning suite</title>
+
+<link href="/u/css/bootstrap.min.css?now=11/03/2022 04:15:55" rel="stylesheet">
+<link href="css/styles.css?now=11/03/2022 04:15:55" rel="stylesheet">
+<link href="/u/css/calendario.css?now=11/03/2022 04:15:55" rel="stylesheet" type="text/css" />
+<script src="https://use.fontawesome.com/fb77fc258e.js?now=11/03/2022 04:15:55"></script>
+
+
+
+
+
+
+
+<script src="/u/js/jquery-1.11.1.min.js?now=11/03/2022 04:15:55"></script>
+	<script src="/u/js/bootstrap.min.js?now=11/03/2022 04:15:55"></script>
+
+
+
+	<script src="/js/Chart.min.js?now=11/03/2022 04:15:55"></script>
+
+	
+<script src="/js/utils.js?now=11/03/2022 04:15:55"></script>
+
+
+
+<script type="text/javascript">
+<!--
+var localLink=false;
+function isLocalLink(){
+localLink = true;
+}
+
+function setupLinks(){
+
+for (var i=0;i<document.links.length;i++){
+
+console.log('30');
+console.log(document.links.href)
+
+if (document.links.href.substring(0, 27) == 'http://www.india-herbs.com/'){
+document.links.onClick = isLocalLink;
+}
+}
+}
+function checkExit(){
+alert(localLink)
+if (!localLink)
+window.open("http://www.india-herbs.com/pop.php");
+}
+// -->
+
+function openevento(id)
+{
+usaoverlay('/ideastudio/evento.asp?pid='+id,'si')
+}
+
+
+
+
+
+
+
+
+</script><script src="/jquery-ui-nodate/jquery-ui.min.js?now=11/03/2022 04:15:55"></script>
+
+	<script src="/js/js.asp?now=11/03/2022 04:15:55&lingua=ITA"></script>
+
+<script src="/js/jquery.tablesorter.js"></script>
+
+
+</head>
+
+<body class="bg" >
+<iframe name="iframe" style="display:none"></iframe>
+
+
+
+<script>
+
+$(document).ready(function() {
+
+
+$.ajax({
+  // definisco il tipo della chiamata
+  type: "POST",
+  // specifico la URL della risorsa da contattare
+  url: "/u/dove.asp",
+  // passo dei dati alla risorsa remota
+  //data: "nome=giovanni&cognome=belelli",
+  // definisco il formato della risposta
+  dataType: "html",
+  // imposto un'azione per il caso di successo
+  success: function(risposta){
+    $("#risposta").html(risposta);
+  },
+  // ed una per il caso di fallimento
+  error: function(){
+    location.reload();
+  }
+})
+});
+
+</script>
+
+
+
+
+	
+<img src="/img/trasp.gif" onload="$(body).attr('style', 'background-image:url(/istanza/applications/18000/2.jpg)')">
+
+<div class="row">
+
+
+		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+			<div class="login-panel panel panel-default">
+			<div class="logo">
+			<br/>
+		
+			<img src="/istanza/applications/18000/icts.png"><br/>
+	
+
+			<br/>
+			</div>
+			
+				<div class="panel-body">
+					
+						<fieldset>
+						
+						<form role="form" action="accesso.asp" method="post" target="iframe">
+						
+						<input type="hidden" name="ma" value="">
+						<input type="hidden" name="lingua" value="ITA">
+						
+							<div class="form-group text-center">
+									
+									<label>Lingua&nbsp;</label>
+									
+									
+									
+									
+						<select name="linguas" id="linguas" class="form-control inline" onchange="window.location.href='default.asp?lingua='+document.getElementById('linguas').value">				
+										
+										
+										
+										<option  value="ALB">ALB</option><option  value="ARA">&#1593;&#1585;&#1576;&#1608;</option><option  value="CIN">&#30005;&#24433;&#38498;</option><option  value="CZE">CZE</option><option  value="DEU">DEU</option><option  value="ENG">ENG</option><option  value="ESP">ESP</option><option  value="FIN">FIN</option><option  value="FRA">FRA</option><option  value="GRE">GRE</option><option  value="HIN">HIN</option><option selected value="ITA">ITA</option><option  value="JPN">&#26085;&#26412;&#20154;</option><option  value="NED">NED</option><option  value="NOR">NOR</option><option  value="POL">POL</option><option  value="POR">POR</option><option  value="RUM">RUM</option><option  value="RUS">&#1088;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;</option><option  value="SVE">SVE</option><option  value="THA">THAI</option><option  value="TUR">Türk</option><option  value="UKR">&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1080;&#1081;</option>
+										
+									</select>
+									
+									<br/><br/>
+									
+								</div>
+						
+						
+						
+						
+							<div class="form-group" id="username">
+								<input class="form-control" placeholder="USERNAME" name="username" type="text">
+							</div>
+							<div class="form-group" id="password">
+								<input  class="form-control" placeholder="PASSWORD" name="password" type="password" >
+							</div>
+							
+						
+							
+							
+							<div class="form-group text-center">
+							<button type="sumbit"  class="btn btn-primary">INVIA</button>
+							</div>
+							
+							
+							
+							<div class="form-group text-center">
+							<a class="btn btn-info btn-sm" href="javascript:usaoverlay('/u/recupero.asp?lingua=ita','si')" >Password dimenticata?</a><br/><br/>
+							</div>
+							</form>
+							
+							
+							
+							<div id="risposta"></div>
+						</fieldset>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<script>
+$( document ).ready(function() {
+    //allarme('',', Profilo Confermato','')
+   // history.replaceState( {} , 'foo', '/u/' );
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<script>
+var ma=""
+var res=""
+var mas=""
+$(document).ready(function(){
+
+    $.ajax({url: "http://127.0.0.1:6969", success: 
+    
+    
+    
+    function(result){
+ 
+
+
+ 
+ 
+    ma=result
+   
+    $.ajax({url: "/verifica_macaddress.asp?macaddress="+result, success: function(resultz){
+   
+
+   
+   if (resultz == 'OK' )
+   {
+   
+  
+   location.href="/u/?m="+ma
+   //location.href="http://www.simulscan.com/s/?m="+ma
+
+ }
+    else
+    {
+    location.href="/u/?m="+ma
+    }
+  },
+  
+   error:
+     function(status){
+      $("#div1").html(status);
+    }
+    
+  
+  });
+      
+      
+      
+      
+    },
+    
+    error:
+     function(status){
+      $("#div1").html('Non è possibile ricavare il mac address del tuo computer');
+    }
+    
+    
+   
+    
+    
+    });
+    
+    
+
+});
+</script>
+
+</div>
+<span id="iframes"></span>
+
+<div class="modal fade" id="recuperopwd" tabindex="-1" role="dialog" aria-labelledby="RecuperoPassword">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Password dimenticata</h4>
+      </div>
+       <form target="iframe" method="post" action="resend.asp">
+      <div class="modal-body">
+       
+          <div class="form-group" id="emailrec">
+            <label class="control-label">E-mail correttamente validata.:</label>
+            <input type="email" class="form-control inline" name="emailrec">
+          </div>
+       
+        
+        
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+        <button type="submit" class="btn btn-primary">INVIA</button>
+      </div>
+       </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+
+#myModal{z-index:10000000}
+body {
+	background: #f2f2f2;
+	color: #062d61;
+font-family: "helvetica", "Helvetica Neue", Helvetica, Arial, cursive;
+
+}
+
+
+.navbar-inverse {
+    background-color: #062d61;
+    border-color:#092a5a ;
+}
+
+
+tr.light td *{font-weight:normal;color:#666}
+tr.strong td h4{font-weight:bold}
+
+p,div,td {
+	color:#062d61;
+}
+
+a*{
+	
+	text-decoration:none
+}
+
+a {
+	color: #092a5a;
+	text-decoration:none
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #062d61;
+}
+
+.navbar-inverse {
+    background-color: ;
+    color: white;
+ }
+ 
+.date-header {
+    background-color: #666;
+}
+
+.date-header h4 *{
+    color: white;
+}
+
+
+.date-item {
+ background-color: #f7f7f7;
+ border: 1px solid #666;
+ padding: 10px;
+}
+
+
+.fixed-table-container thead th.small .th-inner{text-transform:uppercase;padding:3px;font-size:12px;white-space:normal}
+
+.date-item a:hover {
+color:#000;
+text-decoration:none;}
+
+
+.navbar-header .navbar-brand {
+    color: white;
+    background-color: ;
+
+.small-header { font-size: 12px; }
+   
+}
+ 
+ 
+ 
+ 
+ .sidebar ul.nav .active a, .sidebar ul.nav li.parent a.active, .sidebar ul.nav .active > a:hover, .sidebar ul.nav li.parent a.active:hover, .sidebar ul.nav .active > a:focus, .sidebar ul.nav li.parent a.active:focus {
+    color: #062d61;
+    background-color: #f2f2f2;
+}
+
+.panel-teal{background-color: red}
+
+.text-primary{color:#092a5a}
+
+
+.user-menu a {
+    color: #062d61;
+}
+
+
+@media screen and (max-width: 480px) {
+    .navbar-brand {padding:3px;margin:0;width:130px;oveflow:hidden}
+}
+
+
+</style>
+
+
+	<script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	var API = {};
+var nomestudente = "";
+var cognomestudente = "";
+var idstudente = "";
+var status = "";
+var mode = "";
+var tempo = "";
+var varname="";
+var name="";
+var success="";
+	var idanagrafica_lezione=0;
+	
+	
+	function putiniziato (idlezione,idanagrafica,ideventocorso)
+	{
+	 $.ajax(
+	 
+	 {url: "/elearning/aprilezione.asp?idanagrafica="+idanagrafica+"&idlezione="+idlezione+"&idevento_corso="+ideventocorso, success: function(xml)
+	 {}
+	 });
+
+}
+
+
+
+	
+		function aprilezione (idlezione,idanagrafica,ideventocorso,nomestudente,cognomestudente,status,mode,tempo,tiposcorm,success,suspend,pagina)
+		{
+
+ $.ajax({dataType:"xml",url: "/elearning/aprilezione.asp?idanagrafica="+idanagrafica+"&idlezione="+idlezione+"&idevento_corso="+ideventocorso, success: function(xml){
+
+ $(xml).find("lezione").each(function()
+{
+ idanagrafica_lezione=$(this).attr("idanagrafica_lezione");
+ 
+
+ 
+ 
+ if (tiposcorm === "n" )
+ {
+ aprimodulo(pagina)
+ 
+ 
+ }
+ 
+ 
+ else
+ {
+ if (tiposcorm === "2004" )
+{
+
+aprimodulo(pagina+'&lessonsuspend='+suspend+'&lessonstatus='+status+'&lessonmode='+mode)
+
+
+setTimeout(function(){ setupscorm2004(nomestudente,cognomestudente,idstudente,status,mode,tempo,success,idanagrafica_lezione,suspend) }, 1500);
+
+}
+else
+{
+
+paginaz=pagina+'&lessonsuspend='+suspend+'&lessonstatus='+status+'&lessonmode='+mode
+
+console.log(paginaz)
+
+
+aprimodulo(paginaz)
+
+
+
+
+ //setupScormApi(nomestudente,cognomestudente,idanagrafica,status,mode,tempo,success,idanagrafica_lezione,suspend)
+
+
+
+}
+
+}
+ })
+ }});
+
+
+
+
+
+}
+
+	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+function setupscorm2004(nomestudente,cognomestudente,idstudente,status,mode,tempo,success,idanagrafica_lezione,suspend)
+                
+        {        
+          
+      nomestudente = nomestudente;
+cognomestudente = cognomestudente;
+ idstudente = idstudente;
+ status = status;
+ mode = mode;
+ tempo = tempo;    
+     success=success;     
+          
+ API_1484_11 = {
+	version : "1.0", // mandatory version attribute
+	STATE : {
+		NOT_INITIALIZED : "Not Initialized",
+		RUNNING : "Running",
+		TERMINATED : "Terminated"
+	},
+	running : false,
+	debug : typeof (console) == "undefined" ? null : console, // console, false
+	error : 0,
+	cmiDefault : {
+		"cmi._version" : this.version,
+		"cmi.mode" : "normal",
+		"cmi.credit" : "no-credit",
+		"cmi.entry" : "ab-initio",
+		"cmi.location" : "",
+		"cmi.success_status" : "unknown",
+		"cmi.completion_status" : "incomplete",
+		"cmi.score._children" : "scaled,min,max,raw",
+		"cmi.interactions._children" : "", //"id,type,objectives,timestamp,correct_responses,weighting,learner_response,result,latency,description",
+		"cmi.interactions._count" : "0"
+	},
+	cmi : null,
+	_valuesChanged : {},
+	_valueNameSecurityCheckRe : /^cmi\.(\w|\.)+$/,
+
+	// help functions
+	_stringEndsWith : function(str, suffix) {
+		return str.length >= suffix.length && str.substr(str.length - suffix.length) == suffix;
+	},
+	_valueNameSecurityCheck : function(name) {
+		this.error = name.search(this._valueNameSecurityCheckRe) === 0 ? 0 : 401;
+		return this.error === 0;
+	},
+	_valueNameCheckReadOnly : function(name) {
+		this.error = 0;
+		if (this._stringEndsWith(name, "._children")) {
+			this.error = 403;
+		}
+		return this.error === 0;
+	},
+	_checkRunning : function(errBefore, errAfter) {
+		if (this.state === this.STATE.NOT_INITIALIZED) {
+			this.error = errBefore;
+		} else if (this.state === this.STATE.TERMINATED) {
+			this.error = errAfter;
+		} else {
+			this.error = 0;
+		}
+		return this.error === 0;
+	},
+
+	_preInitialize : function() {
+		this.state = this.STATE.NOT_INITIALIZED;
+
+		// set cmi - clone default cmi
+		this.cmi = jQuery.extend(true, {}, this.cmiDefault);
+		
+		// custom code
+	},
+
+	// SCO RTE functions
+	Initialize : function() {
+		if (this.debug) this.debug.log("LMS Initialize");
+		if (this.state === this.STATE.RUNNING) {
+			this.error = 103;
+			return "false";
+		}
+		if (this.state === this.STATE.TERMINATED) {
+			this.error = 103;
+			return "false";
+		}
+		this.state = this.STATE.RUNNING;
+		this.error = 0;
+
+		return "true";
+	},
+
+	Terminate : function() {
+		if (this.debug) this.debug.log("LMS Terminate");
+		if (!this._checkRunning(112, 113)) return "false";
+
+		this.Commit();
+		this.state = this.STATE.TERMINATED;
+		
+		// custom code ...
+		
+		return "true";
+	},
+
+	GetValue : function(name) {
+	
+
+		if (!this._checkRunning(122, 123)) {
+			return "";
+		}
+		
+		
+		
+		  var valore=""
+       
+       if (varname == "cmi.student_name" )
+       {
+ valore =nomestudente+","+cognomestudente
+ }
+ 
+        if (varname == "cmi.student_id" )
+       {
+ valore =idstudente
+ }
+ 
+        if (varname == "cmi.completion_status" )
+       {
+       console.log('metto lo stato'+status)
+ valore =status
+ } 
+ 
+        if (varname == "cmi.success_status" )
+       {
+ valore =success
+ } 
+ 
+ 
+         if (varname == "cmi.session_time" )
+       {
+ valore =tempo
+ } 
+ 
+ 
+return  valore
+		
+		
+		
+		
+		
+		
+		
+		
+		//if (!this._valueNameSecurityCheck(name)) return "";
+
+		//var retval = this.cmi[name];
+		//if (typeof (retval) == "undefined") {
+		//	retval = "";
+		//}
+
+		//if (this.debug) this.debug.log("LMS GetValue return: ", retval);
+		//return retval;
+	},
+
+	SetValue : function(name, value) {
+		if (this.debug) this.debug.log("LMS SetValue", name, value);
+		if (!this._checkRunning(132, 133)) return "false";
+		if (!this._valueNameSecurityCheck(name)) return "false";
+		if (!this._valueNameCheckReadOnly(name)) return "false";
+
+
+ $.ajax({url: "/elearning/setscorm.asp?idanagraficalezione="+idanagrafica_lezione+"&"+name+"="+value, success: function(result){}});
+
+		this._valuesChanged[name] = value;
+		return "true";
+	},
+
+	Commit : function() {
+		if (this.debug) this.debug.log("LMS Commit", this._valuesChanged);
+		if (!this._checkRunning(142, 143)) return "false";
+
+		// merge values
+		jQuery.extend(true, this.cmi, this._valuesChanged);
+
+		// custom code ...
+
+		
+		this._valuesChanged = {}; // clean changed values
+		return "true";
+	},
+
+	GetDiagnostic : function(errCode) {
+		if (this.debug) this.debug.log("LMS GetDiagnostic", errCode);
+		if (!errCode) return this.GetLastError();
+		return this.error_strings[errCode] ? this.error_strings[errCode] : 'Uknown errCode.';
+	},
+
+	GetErrorString : function(errCode) {
+		if (this.debug) this.debug.log("LMS GetErrorString", errCode);
+		return this.error_strings[errCode] ? this.error_strings[errCode] : '';
+	},
+
+	GetLastError : function() {
+		if (this.debug && this.error != 0) this.debug.log("LMS GetLastError return", this.error);
+		return this.error;
+	},
+
+	// predefined constants
+	error_strings : {
+		0 : "No error",
+		// General Errors 100-199
+		101 : "General Exception",
+		102 : "General Initialization Failure",
+		103 : "Already Initialized",
+		104 : "Content Instance Terminated",
+		111 : "General Termination Failure",
+		112 : "Termination Before Initialization",
+		113 : "Termination After Termination",
+		122 : "Retrieve Data Before Initialization",
+		123 : "Retrieve Data After Termination",
+		132 : "Store Data Before Initialization",
+		133 : "Store Data After Termination",
+		142 : "Commit Before Initialization",
+		143 : "Commit After Termination",
+		// Syntax Errors 200-299
+		201 : "General Argument Error",
+		// RTS (LMS) Errors 300-399
+		301 : "General Get Failure",
+		351 : "General Set Failure",
+		391 : "General Commit Failure",
+		// Data Model Errors 400-499
+		401 : "Undefined Data Model Element",
+		402 : "Unimplemented Data Model Element",
+		403 : "Data Model Element Value Not Initialized",
+		404 : "Data Model Element Is Read Only",
+		405 : "Data Model Element Is Write Only",
+		406 : "Data Model Element Type Mismatch",
+		407 : "Data Model Element Value Out Of Range",
+		408 : "Data Model Dependency Not Established",
+		// Implementation-defined Errors 1000-65535
+		1000 : "General communication failure (Ajax)"
+	}
+}}
+
+
+
+
+
+
+
+
+
+function setupScormApi(nomestudente,cognomestudente,idstudente,status,mode,tempo,success,idanagrafica_lezione,suspend) {
+				
+			
+				API.nomestudente = nomestudente;
+				API.cognomestudente = cognomestudente;
+				API.idstudente = idstudente;
+				API.status = status;
+				API.mode = mode;
+				API.tempo = tempo;
+				API.success = success;
+				API.idanagrafica_lezione = idanagrafica_lezione;
+                
+                
+                setTimeout(function(){  
+                 API.LMSInitialize = LMSInitialize;
+                API.LMSGetValue = LMSGetValue;
+                API.LMSSetValue = LMSSetValue;
+                API.LMSCommit = LMSCommit;
+                API.LMSFinish = LMSFinish;
+                API.LMSGetLastError = LMSGetLastError;
+                API.LMSGetDiagnostic = LMSGetDiagnostic;
+                API.LMSGetErrorString = LMSGetErrorString;
+                API.suspend = suspend; }, 1500);
+                
+              
+           
+             }
+            
+   
+            
+            function LMSInitialize(initializeInput) {
+                displayLog("LMSInitialize: " + initializeInput);
+                return true;
+            }
+            
+            
+        
+            
+            
+            
+            function LMSGetValue(varname) {
+       var valore=""
+      
+       if (varname == "cmi.core.student_name" )
+       {
+ valore =API.nomestudente+","+API.cognomestudente
+  displayLog("LMSGetValue: " + varname + "=" + valore);
+
+ }
+ 
+ 
+        if (varname == "cmi.suspend_data" )
+       {
+ valore =API.suspend;
+  displayLog("LMSGetValue: " + varname + "=" + valore);
+
+ }
+
+
+
+
+
+ 
+        if (varname == "cmi.core.student_id" )
+       {
+ valore =API.idstudente
+  displayLog("LMSGetValue: " + varname + "=" + valore);
+
+ }
+ 
+        if (varname == "cmi.core.lesson_status" )
+       {
+ valore =API.status
+  displayLog("LMSGetValue: " + varname + "=" + valore);
+
+ } 
+ 
+        if (varname == "cmi.core.lesson_mode" )
+       {
+ valore =API.mode
+  displayLog("LMSGetValue: " + varname + "=" + valore);
+
+ } 
+ 
+
+return  valore
+
+          
+   }
+          
+
+
+
+  
+            
+            function LMSSetValue(varname, varvalue) {
+                displayLog("LMSSetValue: " + varname + "=" + varvalue);
+                
+                        $.ajax({url: "/elearning/setscorm.asp?idanagraficalezione="+idanagrafica_lezione+"&"+ varname + "=" + varvalue, success: function(result){}});
+                return true;
+            }
+            
+            
+            
+            function LMSCommit(commitInput) {
+                displayLog("LMSCommit: " + commitInput);
+                return true;
+            }
+            
+            
+            function LMSFinish(finishInput) {
+                displayLog("LMSFinish: " + finishInput);
+                return true;
+            }
+            
+            
+            function LMSGetLastError() {
+                displayLog("LMSGetLastError: ");
+                return 0;
+            }
+            
+            
+            function LMSGetDiagnostic(errorCode) {
+                displayLog("LMSGetDiagnostic: " + errorCode);
+                return "";
+            }
+            
+            
+            function LMSGetErrorString(errorCode) {
+                displayLog("LMSGetErrorString: " + errorCode);
+                return "";
+            }
+            
+            function displayLog(textToDisplay){
+            console.log(textToDisplay)
+          
+                
+                //$("#logDisplay").append(textToDisplay)
+                //$("#logDisplay").append("<br>")
+            }
+
+	
+         
+      
+	
+	
+		!function ($) {
+		
+		
+
+
+		
+		
+
+	 $('[data-toggle="tooltip"]').tooltip({html: true}); 
+
+		
+		
+			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
+				$(this).find('em:first').toggleClass("glyphicon-minus");	  
+			}); 
+			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+
+		
+		
+		
+		
+		
+		
+		  
+
+
+
+
+
+    
+
+	 
+	 
+	 
+	 
+	
+	
+	
+
+
+
+		
+	
+	</script>
+
+
+<div  id="EModal" style="overflow:hidden;background-color:rgba(0,0,0,0.8);position:absolute;top:0;left:0;width:100%;height:100%;z-index:2000;display:none">
+<div style="overflow:hidden;position:relative;width:100%;height:100%">
+
+
+
+
+
+ <a href="javascript:void(0)" class="cmodal" onclick="chiudimodulo()" style=";background-color:rgba(0,0,0,0.8);position:absolute;top:0;right:0;z-index:100;color:#fff;PADDING:4px;font-size:12px"><svg style="width:18px;height:18px; stroke: #fff; stroke-width:3px;" class="glyph stroked cancel"><use xlink:href="#stroked-cancel"/></svg>&nbsp;CHIUDI</a><iframe class="modalbody" controls="true" style="overflow:hidden;width:100%;height:100%;border:0" src="" name="framse"></iframe>
+ </div>
+ </div>
+
+
+
+<div class="modal fade" id="myModal"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="bigModal"   role="dialog" aria-labelledby="bigModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width:95%;margin:auto">
+    
+   
+    
+    
+        <div class="modal-content" style="min-height:200px;" >
+        
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel"></h4>
+      </div>
+        
+         <div class="modal-body">
+         </div>
+        
+         <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+        
+      </div>
+        </div> 
+        
+        
+  
+        
+    </div>
+</div>
+
+
+
+
+<script src="/u/js/bootstrap-datepicker.js?now=11/03/2022 04:15:55"></script>
+<script src="/u/js/bootstrap-dialog.min.js?now=11/03/2022 04:15:55"></script>
+<script src="/u/js/bootstrap-select.js?now=11/03/2022 04:15:55"></script>
+<script src="/u/js/bootstrap-table.js?now=11/03/2022 04:15:55"></script>
+	<script src="/js/ajax.js?now=11/03/2022 04:15:55"></script>
+	<script src="/u/js/easypiechart.js?now=11/03/2022 04:15:55"></script>
+	<script src="/u/js/run_prettify.min.js?now=11/03/2022 04:15:55"></script>
+	<script src="/js/jquery.fitvids.js?now=11/03/2022 04:15:55"></script>
+	<script src="/TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js?now=11/03/2022 04:15:55"></script>
+<script src="/u/js/lumino.glyphs.js?now=11/03/2022 04:15:55"></script>
+<script src="/js/cuepoint.js?now=11/03/2022 04:15:55"></script>
+<script src="/js/select2.min.js?now=11/03/2022 04:15:55"></script>
+ <script src="/js/responsivevoice.js"></script>
+  <script src="/jquery_countdown/jquery.timeTo.min.js"></script>
+ <link rel="Stylesheet" type="text/css" href="/jquery_countdown/timeTo.css" />
+<link href="/css/select2.min.css" rel="stylesheet" />
+<link href="/jquery-ui-nodate/jquery-ui.min.css?now=11/03/2022 04:15:55" rel="stylesheet">
+<link href="/u/css/datepicker3.css?now=11/03/2022 04:15:55" rel="stylesheet">
+<link href="/u/css/bootstrap-dialog.min.css?now=11/03/2022 04:15:55" rel="stylesheet" type="text/css" />
+<link href="/u/css/bootstrap-select.css?now=11/03/2022 04:15:55" rel="stylesheet" type="text/css" />
+<link href="/u/css/bootstrap-table.css?now=11/03/2022 04:15:55" rel="stylesheet" type="text/css" />
+
+
+<script src="/js/jquery.ns-autogrow.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>
+
+<script src="https://ictsportal.com/simulscan/js/jquery.smoothZoom.js?11/03/2022 04:15:55" ></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+<script type="text/javascript">
+
+ 
+
+
+
+function controllarole ()
+	{
+	piva=$('#piva').val()
+	
+	  $.ajax({ // create an AJAX call...
+         
+           url: 'role.asp?piva='+piva, 
+           success: function(response) 
+           {
+               $('#ruolos').html(response);
+               
+               
+               
+               
+               $.ajax({ // create an AJAX call...
+         
+           url: 'agenzie.asp?piva='+piva, 
+           success: function(response) 
+           {
+               $('#agenzia').html(response);
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+           }
+       })
+
+               
+               
+               
+               
+               
+           }
+       })
+ 
+	
+	 }
+
+
+
+
+
+
+
+function scaricofile(idanagrafica,idcorso_allegati,ideventocorso_file,ideventocorso,allegato,file)  
+ { $.ajax({
+    url : "/u/scarica.asp?idanagrafica="+idanagrafica+"&idcorso_allegati="+idcorso_allegati+"&file="+allegato+"&ideventocorso="+ideventocorso+"&ideventocorso_file="+ideventocorso_file,
+    success : function (data,stato) {
+      
+       url="/download.asp?file="+file
+       
+       window = window.open(url, 'files','')
+       
+    },
+    error : function (richiesta,stato,errori) {
+        alert("E' evvenuto un errore. Il stato della chiamata: "+stato);
+    }
+});
+}
+
+
+
+
+
+
+
+
+
+
+    jQuery( function( $ ) {
+    
+    
+
+    
+    
+        $( '.carousel-inner' ).swipe( {
+            swipeLeft: function( e, direction, distance, duration, count ) {
+                $( this ).parent().carousel( 'prev' );
+            },
+            swipeRight: function( e, direction, distance, duration, count ) {
+                $( this ).parent().carousel( 'next' );
+            },
+                threshold: 0
+        } );
+    } );
+</script>
+	
+	
+	<script>
+// Open the Modal
+function openModal() {
+  document.getElementById("galleryModal").style.display = "block";
+}
+
+// Close the Modal
+function closeModal() {
+  document.getElementById("galleryModal").style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  
+
+  
+  //var dots = document.getElementsByClassName("demo");
+  //var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  //for (i = 0; i < dots.length; i++) {
+    //dots[i].className = dots[i].className.replace(" active", "");
+  //}
+  
+  if ( slides.length > 0)
+  {
+  slides[slideIndex-1].style.display = "block";
+  }
+  
+  //dots[slideIndex-1].className += " active";
+  //captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>	
+	
+	
+	
+	
+	
+	
+	<script src="/js/jquery.scrollTo.js"></script>
+	
+	
+	
+	<script type='text/javascript'>
+
+function allarme(id,message,chiudi,titolo)
+	{
+	
+	$("body").scrollTo(0);
+	
+	$('.form-group').removeClass('has-error')
+	
+	
+	if(id == "" )
+	{}
+	else
+	
+	{
+	$('#'+id).addClass('has-error')
+	 }
+	 
+	 
+	 if(chiudi == "chiudi" )
+	{
+	
+		 $('.bootstrap-dialog').remove();
+$('.modal-backdrop').remove();
+
+	 $('.modal').modal('hide')
+	
+	 
+	 $('#'+id).hide()
+	 
+
+
+
+	 
+	 }
+	 
+	 
+	 
+	 	 if (titolo == "undefined")
+	 {titlemodal="Alert"
+	 
+	}
+	
+	else
+	
+	{
+	titlemodal=titolo
+	}
+	;
+	
+	
+	
+	  BootstrapDialog.show({
+	  title:titlemodal,
+            message: message,
+            closable: true,
+            closeByBackdrop: false,
+            closeByKeyboard: false,
+            buttons: [{
+                label: 'Chiudi',
+                action: function(dialogRef){
+                
+                
+                $(".modal").css("overflow", "auto");
+                
+                
+                    dialogRef.close();
+                    closemodal()
+                }
+            }]
+            
+            
+   
+	
+            
+            
+        });
+	
+	
+	
+	
+	
+	
+	}
+
+
+
+function gomodal (link) {
+
+   $('#myModal .modal-content').html('')
+   $('#myModal .modal-content').html('<div class="text-center"><img src="/img/loading.gif"></div>')
+  
+ var dataURL = link;
+   
+        $('#myModal .modal-content').load(dataURL,function(){
+            
+         $('[data-toggle="tooltip"]').tooltip()
+
+         
+         
+       
+            $('#myModal').modal({show:true});
+        });
+
+
+    
+    
+    }
+    
+    
+    
+
+    
+    
+    
+    function gobigmodal (link) {
+   
+   
+   
+   $('#bigModal').css("position", "fixed");
+   $('#bigModal .modal-body').css("position", "relativer");
+    $('#bigModal').css("height", "auto");
+   
+   $('#bigModal .modal-body').html('')
+    $('#bigModal .modal-body').html('<div class="text-center"><img src="/img/loading.gif"></div>')
+   
+   
+   var dataURL = link.replace(" ", "%20");
+        $('#bigModal .modal-body').load(dataURL,function(){
+        
+         $('[data-toggle="tooltip"]').tooltip()
+         
+         
+      $( "#accordion" ).accordion({
+			collapsible: true,
+			heightStyle: "content",
+			navigation: true,
+			
+			active:false
+		});
+	
+
+      $("#tabellas").tablesorter({
+      widthFixed:false,
+      debug: false,
+      widgets: ['zebra']
+      
+      })
+                  
+         
+         $( ".zoom" ).click(function( event ) {
+  event.preventDefault();
+  link = $(this).attr('href');
+  aprimodulo(link)
+  
+});	
+         
+         
+         
+         
+          
+            $('#bigModal').modal({show:true});
+           
+        });
+
+
+    
+    
+    }
+
+function sistemamenu ()
+{}
+
+
+
+function chiudivimeo ()
+{ 
+
+chiudimodulo()
+//$("body").scrollTo("#moduli");
+//$('#EModal').hide()
+//$(".modalbody").attr( "src", '' );
+//$("body").css("padding-top","50px")
+//$("body").css("overflow","auto")
+}
+
+
+function aprimodulo (link) 
+
+{
+$("body").scrollTo(0);
+
+$('#EModal').show()
+
+$("body").css("padding","0")
+ $("body").css("overflow","hidden")
+ 
+    $(".modalbody").attr( "src", link );
+    
+    console.log(link)
+    
+    var n = link.indexOf("modalita");
+    
+    console.log(n)
+    
+    
+     if  ( n == -1 )
+    
+ {
+     
+ $(".cmodal").attr( "onclick", "chiudivimeo()" );
+     }
+     else
+     
+     {
+     
+     var u = link.indexOf("cbt");
+     
+     
+     if (u == -1)
+     {
+     $(".cmodal").attr( "onclick", "chiudimodulo()" );
+      }
+      
+      else
+      
+      
+       {
+       $(".cmodal").attr( "onclick", "chiudicbt()" );
+       }
+     
+     
+     
+     }
+     
+     
+     $('#EModal').show();
+    
+    }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  function chiudicbt()
+
+ {
+ 
+ 
+ var iframe = $('iframe');
+ 
+
+var iframeBody = iframe.contents().find('body');
+console.log(iframeBody)
+var iframeBodyHTML = iframeBody.html();
+
+console.log(iframeBodyHTML)
+ $(iframeBody).removeAttr('onbeforeunload');
+ 
+
+
+  $.get("/u/exit.asp", function(data, status){
+    //alert("Data: " + data + "\nStatus: " + status);
+    
+    
+  });
+
+        
+        
+ parent.location.reload();   
+        
+   
+
+
+
+ }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  function Taprilista()
+  
+   {
+   window.location.reload(true);return (false)
+   }
+  
+  
+
+
+function chiudimodulo()
+
+ {
+ 
+ 
+ //var iframe = $('iframe');
+ 
+
+//var iframeBody = iframe.contents().find('body');
+//console.log(iframeBody)
+//var iframeBodyHTML = iframeBody.html();
+
+//console.log(iframeBodyHTML)
+ //$(iframeBody).removeAttr('onbeforeunload');
+ 
+ $("body").scrollTo("#moduli");
+$('#EModal').hide()
+$(".modalbody").attr( "src", '' );
+$("body").css("padding-top","50px")
+$("body").css("overflow","auto")
+
+
+
+        
+ 
+  
+ 
+        
+
+ $.ajax({
+  url: '/elearning/chiudi_lezione.asp', success: function(result){
+  
+    $.ajax({url: "/u/moduli.asp?idregistrazione_corso=&idcorso=&ideventocorso=&idanagrafica=&idevento=", success: function(result){
+        $("#moduli").html(result);
+  vedimateriale()  
+  }
+  
+  
+  
+  });
+  
+  
+   
+
+        
+        
+     
+        
+    }});
+
+
+
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+function vedimateriale(){
+   $.ajax({url: "/u/material.asp?idregistrazione_corso=", success: function(result){
+
+        $("#materiale").html(result);
+    }});
+}
+ 
+ 
+
+  
+   
+
+
+
+
+
+function aggiornafoto()
+ {
+ $("#fotohome").load("aggiornafoto.asp")
+ }
+
+
+function aggiornafirma()
+ {
+ $("#firmadocente").load("aggiornafirma.asp")
+ }
+
+
+function closemodal()
+{
+
+$('.bootstrap-dialog').remove();
+$('.modal-backdrop').remove();
+//$('#'+id).hide();
+}
+
+
+function chiudimodal()
+
+
+{
+$table = $('#messaggi'),
+$table.bootstrapTable('refresh');
+ $('#myModal').modal('toggle');
+$('#myModal').data('bs.modal', null)  
+
+}
+
+
+
+function apriaccordion(id,classe)
+ {
+
+ //$(classe).css("display","none")
+
+ $(classe+id).toggle()
+ 
+
+ 
+  //$(classe).hide()
+
+
+ 
+ 
+ //if($(classe+id).length == 0)
+//{
+ //$(classe+id).hide()
+//}
+//else
+ 
+ //{
+ //$(classe+id).show()
+//}
+ 
+ 
+ }
+
+
+
+
+
+
+
+
+
+
+$( document ).ready(function() {
+
+
+ 
+
+
+
+
+
+$("head").append('<link rel="icon" id="favicon" href="/istanza/applications/18000/icts.png" ></link>')
+
+
+
+
+
+
+$('[data-toggle="tooltip"]').tooltip();
+
+$('body').css('overflow-x', 'hidden')
+$('body').css('overflow-y', 'auto')   
+   
+   
+   
+ $('.modal').on('hidden.bs.modal', function () {
+$('.modal').data('bs.modal', null)
+$table = $('#messaggi'),
+$table.bootstrapTable('refresh');
+
+})
+
+
+
+})
+
+
+</script>
+
+
+	
+	
+	
+
+
+
+
+
+	<script>
+	
+	
+	
+	
+	function altezzacontent ()
+	
+	
+	 {
+
+   var AltezzaSchermo = $( window ).height();
+   $("#galleryModal").css("height", AltezzaSchermo+"px");
+   var LarghezzaSchermo = $( window ).width();
+    var altezzatop = $( '#mainNav' ).height();
+    
+  var altezzaIntroText = $( '.intro-text').height();
+
+  
+     
+   
+      AltezzaSchermo=AltezzaSchermo-altezzatop
+   
+  
+  
+     
+     
+   
+    
+     
+   
+
+     
+    if ( LarghezzaSchermo > AltezzaSchermo )
+    {
+    
+  //if ( AltezzaSchermo > 700 )
+  //{
+
+    // AltezzaSchermo = 700
+  //}
+ 
+   paddingtop=(AltezzaSchermo-altezzaIntroText)/2
+   $(".intro-text").css("padding-top", paddingtop+"px");
+ $("#myCarousel").css("margin-top", altezzatop+"px");
+    $("#myCarousel").css("height", AltezzaSchermo+"px");
+$("#myCarousel .carousel-inner").css("height", AltezzaSchermo+"px");
+$("#myCarousel .carousel-inner .item").css("height", AltezzaSchermo+"px");
+
+   }
+   else
+   {
+    paddingtop="20"
+   $(".intro-text").css("padding-top", paddingtop+"px");
+   $("#myCarousel").css("margin-top", altezzatop+"px");
+  $("#myCarousel").css("height", "250px");     
+$("#myCarousel .carousel-inner").css("height","250px");
+$("#myCarousel .carousel-inner .item").css("height","250px");
+$("#myCarousel .carousel-inner .item img").css("height","auto");
+$("#myCarousel .carousel-inner .item img").css("width","auto");
+$("#myCarousel .carousel-inner .item").css("background-position","center center");
+
+  }
+
+  }
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	window.onresize = function() {
+	altezzacontent ()
+	}
+	
+	
+$(document).ready(function(){
+
+    
+
+
+
+
+
+
+altezzacontent ()
+
+
+$('.modal').on('show.bs.modal', function() {
+    $("body").scrollTo(0);
+});
+
+
+
+
+
+ $(".data").datepicker();
+ $.fn.datepicker.defaults.language = 'it';
+
+	$.fn.datepicker.dates['it'] = {
+		days: ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"],
+		daysShort: ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"],
+		daysMin: ["Do", "Lu", "Ma", "Me", "Gi", "Ve", "Sa"],
+		months: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
+		monthsShort: ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"],
+		today: "Oggi",
+		monthsTitle: "Mesi",
+		clear: "Cancella",
+		weekStart: 1,
+		format: "dd/mm/yyyy"
+	};
+	
+	
+	
+	
+
+  
+
+
+
+  
+    checkCookie_eu();
+
+    function checkCookie_eu()
+    {
+
+        var consent = getCookie_eu("cookies_consent");
+
+        if (consent == null || consent == "" || consent == undefined)
+        {
+            // show notification bar
+            $('#cookie_directive_container').show();
+        }
+
+    }
+
+    function setCookie_eu(c_name,value,exdays)
+    {
+
+        var exdate = new Date();
+        exdate.setDate(exdate.getDate() + exdays);
+        var c_value = escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+        document.cookie = c_name + "=" + c_value+"; path=/";
+
+        $('#cookie_directive_container').hide('slow');
+    }
+
+
+    function getCookie_eu(c_name)
+    {
+        var i,x,y,ARRcookies=document.cookie.split(";");
+        for (i=0;i<ARRcookies.length;i++)
+        {
+            x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+            y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+            x=x.replace(/^\s+|\s+$/g,"");
+            if (x==c_name)
+            {
+                return unescape(y);
+            }
+        }
+    }
+
+    $("#cookie_accept a").click(function(){
+        setCookie_eu("cookies_consent", 1, 30);
+    });
+
+});
+
+
+
+
+
+
+function usaoverlay(href,ajax,id)
+{
+gobigmodal (href)
+}
+
+function aggiornaoverlay(href,ajax,id)
+{
+gobigmodal (href)
+}
+
+
+
+
+
+function usaoverlayT(href,ajax,id)
+
+{
+
+
+n=0
+
+$( "#dialog:ui-dialog" ).dialog( "destroy" );
+
+if ($("#dialog-message").hasClass("ui-dialog-content") &&
+    $("#dialog-myDialog").dialog("isOpen")) {
+    
+ $('#zoom_container').remove() 
+}
+ else{
+
+ $('#zoom_container').remove()
+ $('#dialog-message').remove();
+$('body').append('<div id="dialog-message" class="contentWrap" title="Threat Library"></div>')
+
+$( "body").css('position','fixed')
+
+}
+
+
+$.ajax({url: href, success: function(result){
+
+$(".contentWrap").css("padding","10px")
+ $(".contentWrap").html(result);
+
+
+ $( "#accordion" ).accordion({
+			collapsible: true,
+			heightStyle: "content",
+			navigation: true,
+			
+			active:false
+		});
+	
+
+      $("#tabellas").tablesorter({
+      widthFixed:false,
+      debug: false,
+      widgets: ['zebra']
+      
+      })
+
+
+
+ $('#torna').append('<a class="bottone" href="javascript:usaoverlayT(\'/simulscan/tip_lista.asp?usasession=si\',\'no\')">Torna</a>');
+   
+		if ($("#dialog-message").hasClass("ui-dialog-content") &&
+    $("#dialog-myDialog").dialog("isOpen")) {
+
+			$("span.ui-dialog-title").text($('.contentWrap h1').text()); 	
+			$('.contentWrap h1').remove()
+			
+			
+$( "a.zoom" ).click(function( event ) {
+  event.preventDefault();
+  $( "<div>" )
+    .append( "default " + event.type + " prevented" )
+    .appendTo( "#log" );
+});				
+			
+			
+				$('.zoom_thumbnails').find('a').each(function (){		
+			$(this).bind('click', {src: $(this).attr('href')}, function (e){
+				
+				//Add your zoom settings here
+				$('#zoom_container').smoothZoom('destroy').css('background-image', 'url(/simulscan/nzoom/Example/zoom_assets/preloader.gif)').smoothZoom({
+					image_url: e.data.src,
+				width: "95%",
+			height: "450px",
+					reset_TO_ZOOM_MIN: true,
+						pan_BUTTONS_SHOW: "YES",
+			pan_LIMIT_BOUNDARY: "NO",
+			reset_TO_ZOOM_MIN: true,
+			initial_ZOOM:80,
+			zoom_MAX: 250,
+			zoom_MIN: 10,
+			border_TRANSPARENCY: 210,
+			button_MARGIN: "2",
+			button_ALIGN: "center right"
+				});
+				return false;
+				
+			});			
+		}).eq(0).trigger('click');
+			
+
+      $( 'a.tooltip' ).tooltip({
+      track: true
+    });
+    
+    
+        
+   
+    
+    
+    
+    
+}
+	
+
+
+
+else
+
+{
+ $( "#dialog-message" ).dialog({
+			height:parseInt(altezzasito)-30,
+			minWidth:parseInt(larghezzasito)-30,
+			modal: true,
+			open: function( event, ui ) {
+			
+				
+
+
+
+	
+			
+		
+					
+			$("span.ui-dialog-title").text($('.contentWrap h1').text()); 	
+			$('.contentWrap h1').remove()	
+			
+			
+$( "a.zoom" ).click(function( event ) {
+  event.preventDefault();
+  $( "<div>" )
+    .append( "default " + event.type + " prevented" )
+    .appendTo( "#log" );
+});
+			
+			
+			
+			
+				$('.zoom_thumbnails').find('a').each(function (){		
+			$(this).bind('click', {src: $(this).attr('href')}, function (e){
+				
+				//Add your zoom settings here
+				$('#zoom_container').smoothZoom('destroy').css('background-image', 'url(/simulscan/nzoom/Example/zoom_assets/preloader.gif)').smoothZoom({
+					image_url: e.data.src,
+				width: "95%",
+			height: "450px",
+					reset_TO_ZOOM_MIN: true,
+						pan_BUTTONS_SHOW: "YES",
+			pan_LIMIT_BOUNDARY: "NO",
+			reset_TO_ZOOM_MIN: true,
+			initial_ZOOM:80,
+			zoom_MAX: 250,
+			zoom_MIN: 10,
+			border_TRANSPARENCY: 210,
+			button_MARGIN: "2",
+			button_ALIGN: "center right"
+				});
+				return false;
+				
+			});			
+		}).eq(0).trigger('click');
+			
+
+      $( 'a.tooltip' ).tooltip({
+      track: true
+    });
+		
+
+  $( "#accordion" ).accordion({
+			collapsible: true,
+			heightStyle: "content",
+			navigation: true,
+			
+			active:false
+		});
+	
+
+      $("#tabellas").tablesorter({
+      widthFixed:false,
+      debug: false,
+      widgets: ['zebra']
+      
+      })
+
+    
+  
+			
+			
+			
+			},
+			close: function( event, ui ) {
+			
+			 $('#zoom_container').remove()
+ $('#dialog-message').remove();
+			
+			$( "body").css('position','relative')
+			
+			
+			if (ajax == "aggiornariga")
+			{
+		//aggiornariga(id,0)
+		}
+			
+			if (ajax == "si" )
+			{
+			//window.location.reload();
+			}
+			
+			
+			
+			}
+			
+		});
+		
+		
+		
+		    
+		
+		 }
+	
+	 }});	
+	 
+
+		
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<img src="/img/trasp.gif" onload="console.log(',0')">
+
+
+
+	
+
+
+
+
+<div id="cookie_directive_container" class="container" style="display: none">
+            <nav class="navbar navbar-default navbar-fixed-bottom">
+
+                <div class="container">
+                <div class="navbar-inner navbar-content-center" id="cookie_accept">
+
+                    <a href="javascript:void(0)" class="btn btn-default pull-right">Chiudi</a>
+                    <p class="text-muted credit">
+Questo sito o gli strumenti terzi da questo utilizzati si avvalgono di cookie necessari al funzionamento e utili alle finalit&#224; illustrate nella&nbsp;<a data-toggle="modal" href="cookies.asp" data-target="#myModal">cookie policy</a>.
+                    </p>
+                    <br>
+
+                </div>
+              </div>
+
+            </nav>
+        </div>
+
+
+<style>
+
+
+
+
+.modal-body h1  {font-size:20px;margin:3px;font-weight:bold}
+.modal-body h2  {font-size:18px;margin:3px}
+.modal-body h3  {font-size:16px;margin:3px}
+.modal-body h4  {font-size:15px;margin:3px}
+.modal-body h5  {font-size:14px;margin:3px}
+
+
+
+
+
+
+
+#galleryModal.modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  padding:0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  overflow:hidden;
+}
+
+/* Modal Content */
+#galleryModal .modal-content {
+  position: relative;
+  text-align:center;
+  background-color: #000;
+  margin: auto;
+  padding: 0;
+  width: 95%;
+  height:100%;
+   overflow:hidden;
+
+}
+
+
+
+/* The Close Button */
+#galleryModal .close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  z-index:100000000;
+  opacity:0.5
+}
+
+#galleryModal .close:hover,
+#galleryModal .close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Hide the slides by default */
+#galleryModal .mySlides {
+  display: none;
+  text-align:center;
+   width: 100%;
+  height:100%;
+   overflow:hidden;
+
+}
+
+#galleryModal .mySlides img{
+max-height:100%;margin:auto
+}
+
+
+
+/* Next & previous buttons */
+#galleryModal .prev,
+#galleryModal .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+#galleryModal .next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+#galleryModal .prev {
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+/* On hover, add a black background color with a little bit see-through */
+#galleryModal .prev:hover,
+#galleryModal .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  text-decoration:none;
+  opacity:0.3
+}
+
+/* Number text (1/3 etc) */
+#galleryModal .numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Caption text */
+#galleryModal .caption {
+  text-align: center;
+position:absolute;
+bottom:0;left:0;width:100%;
+  padding:5px;
+  color:#f2f2f2;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index:1000000
+}
+
+img.demo {
+  opacity: 0.6;
+}
+
+#galleryModal .active,
+#galleryModal .demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 700px) {
+  .text-right {
+    text-align:left
+  }
+}
+
+
+
+
+
+</style>
+
+
+
+</body>
+
+</html>

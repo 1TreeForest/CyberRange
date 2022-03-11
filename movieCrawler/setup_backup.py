@@ -1,4 +1,4 @@
-# Automatically created by: scrapyd-deploy
+# Automatically created by: scrapydweb x scrapyd-client
 
 from setuptools import setup, find_packages
 

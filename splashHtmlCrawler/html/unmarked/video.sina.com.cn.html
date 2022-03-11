@@ -1,789 +1,1139 @@
-<!doctype html>
-<!-- [ published at 2022-02-24 17:27:12 ] -->
-
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
-<meta content="always" name="referrer">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="robots" content="all" />
+<meta name="author" content="sina" />
+<meta name="Copyright" content="http://video.sina.com.cn/movie/" />
+<meta name="Keywords" content="新浪大片,新浪电视,大片,电影,高清,在线,观看" />
+<title>高清大片_新浪大片_新浪视频_新浪网</title>
 
-<title>新浪视频_高清视频在线观看_新浪网</title>
-<meta name="keywords" content="新浪视频, 新浪视频直播, 高清视频在线观看, 新浪视频">
-<meta name="description" content="新浪视频是新浪旗下的专业视频网站，提供最新、最热的新闻、体育、娱乐、话题、搞笑视频，直播热门体育赛事、明星访谈，汇集海量的电影、电视剧、综艺节目、公开课。">
-<link rel="stylesheet" type="text/css" href="//n2.sinaimg.cn/video/home/css/videohome.css?videohome0413">
-<link href="//i.sso.sina.com.cn/css/userpanel/v1/top_account_v2.css" type="text/css" rel="stylesheet" />
-<link href="//sjs0.sinajs.cn/video/common/header/1/css/video_nav.css" type="text/css" rel="stylesheet" />
+<link href="http://i0.sinaimg.cn/ent/deco/2009/0312/base.css" rel="stylesheet" type="text/css" />
+<link href="http://search.video.sina.com.cn/css/autocomplete.css" rel="stylesheet" type="text/css" />
 
-<!--[if IE 6]>
-<script type="text/javascript">try{ document.execCommand("BackgroundImageCache", false, true);}catch(e){}</script>
-<![endif]-->
-<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-<meta name="format-detection" content="telephone=no" />
-<style>
-	#preload_bookmark,
-	#preload_bookmark #sprite{width:0;height:0;position:absolute;left:-9999px;background:url("//i2.sinaimg.cn/dy/sinatag/addfav_pop_bg.png") no-repeat 0 0;}
-	#preload_bookmark #sprite{background:url("//i1.sinaimg.cn/dy/sinatag/btns_addfav_spirite.png") no-repeat 0 0;}
-	#pl_head_upload{display:none;}
-</style>
-<!--[if lte IE 8]>
+<link href="http://i2.sinaimg.cn/ent/deco/2009/0312/dapian.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://i3.sinaimg.cn/ent/deco/2009/0312/js/d_base.js"></script>
+<script type="text/javascript" src="http://i3.sinaimg.cn/ent/deco/2009/0312/js/d_lib.js"></script>
+<script type="text/javascript" src="http://search.video.sina.com.cn/js/ac_compress.js"></script>
+<script type="text/javascript" src="http://i3.sinaimg.cn/ent/deco/2009/0312/js/v.js"></script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+<script>document.domain="sina.com.cn";</script>
+
 <style type="text/css">
-	body,button,input,select,textarea{font-family:'Microsoft Yahei', 'Simsun';}
-	.vdm_focus .focus_videocur .focus_video .focus_videotitle,.vdm_focus .focus_hotcur .focus_hot .focus_hottitle{height:39px;border-bottom:1px solid #E7E7E7}
+ul.sy li {
+	float:left;
+	height:280px;
+	line-height:23px;
+	width:220px;
+}
 </style>
-<![endif]-->
-<!--[if IE 6]>
+
 <style type="text/css">
-	.VDF_header { width: 100%; position:absolute;}
-	.VDF_focus{padding-top:0px;}
+ul.sy {
+	width:800px;
+}
 </style>
-<![endif]-->	
-<script type="text/javascript">
-	document.domain = "sina.com.cn";
-</script>
-<script type="text/javascript">
-	/**
-	 * 广告判断移动设备ua关键词
-	 */
-	window.$VadMobile = ['ipad','android'];
+</head>
 
-	/**
-	 * 对于pc和移动设备，广告节点属性相关配置。说明如下：
-	 * <ins class="sinaads" node="instl"></ins>
-	 * 如以上dom节点，是控制广告加载的节点。
-	 *  键：
-	 *  1. "instl1": 代表给节点设置如下属性 node="instl1"
-	 *  值：
-	 *  2. "pc": 代表在pc端给节点设置属性data-ad-pdps的值
-	 *  3. "mobile" 代表在移动端给节点设置属性data-ad-pdps的值
-	 *  4. "pcclass" 代表是在pc下添加的样式
-	 *  5. "mobileclass" 代表是在移动端下添加的样式
-	 *  下面两项代码广告素材后面的(sinaads = window.sinaads || []).push({});中push的参数，不填则代表{}
-	 *  6. "mobileargs" 移动端参数
-	 *  7. "pcargs" pc端参数
-	 *  8. "id" 添加的pcclass或mobileclass是在此id节点上添加，如果没有此属性，则在node指定的相关属性节点上添加
-	 * 程序通过读取设置了node="instl"属性的节点设置其data-ad-pdps的值。
-	 * 如需增加其他广告配置，请依照相关说明自行配置
-	 */
-	window.$VadConfig = {
-		
-		//全屏广告
-		insqp: {
-			pc: 'PDPS000000051581',
-			pcclass: 'ads_pc',
-			mobileclass: 'ads_mbl',
-			id: 'FullScreenWrap'
-		},
-		//视频频道首页顶部通栏
-		instl1: {
-			pc: 'PDPS000000051579',
-			mobile: 'PDPS000000051587',
-			pcclass: 'ads_pc',
-			mobileclass: 'ads_mbl',
-			mobileargs: {params:{sinaads_ad_fullview:1}}
-		},
-		//视频频道首页通栏01
-		instl2: {
-			pc: 'PDPS000000051583',
-			mobile: 'PDPS000000051586',
-			pcclass: 'ads_pc',
-			mobileclass: 'ads_mbl',
-			mobileargs: {params:{sinaads_ad_fullview:1}}
-		}
-	};
+<!--header start-->
+<style type="text/css">
+/* 通用 */
 
-	/**
-	 * 广告加载器
-	 * 说明如下：
-	 * loaddevie //广告加载设备 all:所有  pc: pc端  mobile:移动端
-	 * js: 广告需要加载的js数组
-	 * before: 加载js前需要执行的方法，分为pc端执行的方法，mobile移动端执行的方法
-	 *
-	 * 一般只需修改js和loaddevice即可
-	 */
-	window.$LiveVad = [{
-		loaddevice: 'all',
-		js: ['//d4.sina.com.cn/litong/zhitou/sinaads/release/sinaads.js'],
-		before: {
-			pc: function(){
-				if(window.$VadConfig){
-					for(var name in window.$VadConfig){
-						var dom = SVK('[node="'+name+'"]');
-						var item = window.$VadConfig[name];
-						dom.attr('data-ad-pdps', item.pc || '');
-						if(item.pcclass){
-							if(item.id){
-								$('#'+item.id).addClass(item.pcclass || '');
-							}
-							else{
-								dom.addClass(item.pcclass || '');
-							}
-						}
-						(sinaads = window.sinaads || []).push(item.pcargs || {});
-					}
-				}
-			},
-			mobile: function(){
-				if(window.$VadConfig){
-					for(var name in window.$VadConfig){
-						var dom = SVK('[node="'+name+'"]');
-						var item = window.$VadConfig[name];
-						dom.attr('data-ad-pdps', item.mobile || '');
-						if(item.mobileclass){
-							if(item.id){
-								$('#'+item.id).addClass(item.mobileclass || '');
-							}
-							else{
-								dom.addClass(item.mobileclass || '');
-							}
-						}
-						(sinaads = window.sinaads || []).push(item.mobileargs || {});
-					}
-				}
-			}
-		}
-	}];
-</script>
-<meta name="sudameta" content="dataid:wpcomos:103880" /></head>
+html, body, ul, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, img {margin: 0;padding: 0;border: 0;}
+ul{list-style-type:none;}
+select,input,img{vertical-align:middle;}
+body{
+	font-size:12px;
+	color:#333;
+}
+select,input,textarea {font-size:12px;}
+h2,h3,h4{font-size:14px;}
 
-<body>
-	<!-- body code begin -->
+a {color:#656565;text-decoration:none;}
+a:hover{color: #f00;text-decoration:underline;}
 
-<!-- SUDA_CODE_START --> 
-<script type="text/javascript"> 
-//<!--
-(function(){var an="V=2.1.16";var ah=window,F=document,s=navigator,W=s.userAgent,ao=ah.screen,j=ah.location.href;var aD="https:"==ah.location.protocol?"https://s":"http://",ay="beacon.sina.com.cn";var N=aD+ay+"/a.gif?",z=aD+ay+"/g.gif?",R=aD+ay+"/f.gif?",ag=aD+ay+"/e.gif?",aB=aD+"beacon.sinauda.com/i.gif?";var aA=F.referrer.toLowerCase();var aa="SINAGLOBAL",Y="FSINAGLOBAL",H="Apache",P="ULV",l="SUP",aE="UOR",E="_s_acc",X="_s_tentry",n=false,az=false,B=(document.domain=="sina.com.cn")?true:false;var o=0;var aG=false,A=false;var al="";var m=16777215,Z=0,C,K=0;var r="",b="",a="";var M=[],S=[],I=[];var u=0;var v=0;var p="";var am=false;var w=false;function O(){var e=document.createElement("iframe");e.src=aD+ay+"/data.html?"+new Date().getTime();e.id="sudaDataFrame";e.style.height="0px";e.style.width="1px";e.style.overflow="hidden";e.frameborder="0";e.scrolling="no";document.getElementsByTagName("head")[0].appendChild(e)}function k(){var e=document.createElement("iframe");e.src=aD+ay+"/ckctl.html";e.id="ckctlFrame";e.style.height="0px";e.style.width="1px";e.style.overflow="hidden";e.frameborder="0";e.scrolling="no";document.getElementsByTagName("head")[0].appendChild(e)}function q(){var e=document.createElement("script");e.src=aD+ay+"/h.js";document.getElementsByTagName("head")[0].appendChild(e)}function h(aH,i){var D=F.getElementsByName(aH);var e=(i>0)?i:0;return(D.length>e)?D[e].content:""}function aF(){var aJ=F.getElementsByName("sudameta");var aR=[];for(var aO=0;aO<aJ.length;aO++){var aK=aJ[aO].content;if(aK){if(aK.indexOf(";")!=-1){var D=aK.split(";");for(var aH=0;aH<D.length;aH++){var aP=aw(D[aH]);if(!aP){continue}aR.push(aP)}}else{aR.push(aK)}}}var aM=F.getElementsByTagName("meta");for(var aO=0,aI=aM.length;aO<aI;aO++){var aN=aM[aO];if(aN.name=="tags"){aR.push("content_tags:"+encodeURI(aN.content))}}var aL=t("vjuids");aR.push("vjuids:"+aL);var e="";var aQ=j.indexOf("#");if(aQ!=-1){e=escape(j.substr(aQ+1));aR.push("hashtag:"+e)}return aR}function V(aK,D,aI,aH){if(aK==""){return""}aH=(aH=="")?"=":aH;D+=aH;var aJ=aK.indexOf(D);if(aJ<0){return""}aJ+=D.length;var i=aK.indexOf(aI,aJ);if(i<aJ){i=aK.length}return aK.substring(aJ,i)}function t(e){if(undefined==e||""==e){return""}return V(F.cookie,e,";","")}function at(aI,e,i,aH){if(e!=null){if((undefined==aH)||(null==aH)){aH="sina.com.cn"}if((undefined==i)||(null==i)||(""==i)){F.cookie=aI+"="+e+";domain="+aH+";path=/"}else{var D=new Date();var aJ=D.getTime();aJ=aJ+86400000*i;D.setTime(aJ);aJ=D.getTime();F.cookie=aI+"="+e+";domain="+aH+";expires="+D.toUTCString()+";path=/"}}}function f(D){try{var i=document.getElementById("sudaDataFrame").contentWindow.storage;return i.get(D)}catch(aH){return false}}function ar(D,aH){try{var i=document.getElementById("sudaDataFrame").contentWindow.storage;i.set(D,aH);return true}catch(aI){return false}}function L(){var aJ=15;var D=window.SUDA.etag;if(!B){return"-"}if(u==0){O();q()}if(D&&D!=undefined){w=true}ls_gid=f(aa);if(ls_gid===false||w==false){return false}else{am=true}if(ls_gid&&ls_gid.length>aJ){at(aa,ls_gid,3650);n=true;return ls_gid}else{if(D&&D.length>aJ){at(aa,D,3650);az=true}var i=0,aI=500;var aH=setInterval((function(){var e=t(aa);if(w){e=D}i+=1;if(i>3){clearInterval(aH)}if(e.length>aJ){clearInterval(aH);ar(aa,e)}}),aI);return w?D:t(aa)}}function U(e,aH,D){var i=e;if(i==null){return false}aH=aH||"click";if((typeof D).toLowerCase()!="function"){return}if(i.attachEvent){i.attachEvent("on"+aH,D)}else{if(i.addEventListener){i.addEventListener(aH,D,false)}else{i["on"+aH]=D}}return true}function af(){if(window.event!=null){return window.event}else{if(window.event){return window.event}var D=arguments.callee.caller;var i;var aH=0;while(D!=null&&aH<40){i=D.arguments[0];if(i&&(i.constructor==Event||i.constructor==MouseEvent||i.constructor==KeyboardEvent)){return i}aH++;D=D.caller}return i}}function g(i){i=i||af();if(!i.target){i.target=i.srcElement;i.pageX=i.x;i.pageY=i.y}if(typeof i.layerX=="undefined"){i.layerX=i.offsetX}if(typeof i.layerY=="undefined"){i.layerY=i.offsetY}return i}function aw(aH){if(typeof aH!=="string"){throw"trim need a string as parameter"}var e=aH.length;var D=0;var i=/(\u3000|\s|\t|\u00A0)/;while(D<e){if(!i.test(aH.charAt(D))){break}D+=1}while(e>D){if(!i.test(aH.charAt(e-1))){break}e-=1}return aH.slice(D,e)}function c(e){return Object.prototype.toString.call(e)==="[object Array]"}function J(aH,aL){var aN=aw(aH).split("&");var aM={};var D=function(i){if(aL){try{return decodeURIComponent(i)}catch(aP){return i}}else{return i}};for(var aJ=0,aK=aN.length;aJ<aK;aJ++){if(aN[aJ]){var aI=aN[aJ].split("=");var e=aI[0];var aO=aI[1];if(aI.length<2){aO=e;e="$nullName"}if(!aM[e]){aM[e]=D(aO)}else{if(c(aM[e])!=true){aM[e]=[aM[e]]}aM[e].push(D(aO))}}}return aM}function ac(D,aI){for(var aH=0,e=D.length;aH<e;aH++){aI(D[aH],aH)}}function ak(i){var e=new RegExp("^http(?:s)?://([^/]+)","im");if(i.match(e)){return i.match(e)[1].toString()}else{return""}}function aj(aO){try{var aL="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";var D="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_=";var aQ=function(e){var aR="",aS=0;for(;aS<e.length;aS++){aR+="%"+aH(e[aS])}return decodeURIComponent(aR)};var aH=function(e){var i="0"+e.toString(16);return i.length<=2?i:i.substr(1)};var aP=function(aY,aV,aR){if(typeof(aY)=="string"){aY=aY.split("")}var aX=function(a7,a9){for(var a8=0;a8<a7.length;a8++){if(a7[a8]==a9){return a8}}return -1};var aS=[];var a6,a4,a1="";var a5,a3,a0,aZ="";if(aY.length%4!=0){}var e=/[^A-Za-z0-9\+\/\=]/g;var a2=aL.split("");if(aV=="urlsafe"){e=/[^A-Za-z0-9\-_\=]/g;a2=D.split("")}var aU=0;if(aV=="binnary"){a2=[];for(aU=0;aU<=64;aU++){a2[aU]=aU+128}}if(aV!="binnary"&&e.exec(aY.join(""))){return aR=="array"?[]:""}aU=0;do{a5=aX(a2,aY[aU++]);a3=aX(a2,aY[aU++]);a0=aX(a2,aY[aU++]);aZ=aX(a2,aY[aU++]);a6=(a5<<2)|(a3>>4);a4=((a3&15)<<4)|(a0>>2);a1=((a0&3)<<6)|aZ;aS.push(a6);if(a0!=64&&a0!=-1){aS.push(a4)}if(aZ!=64&&aZ!=-1){aS.push(a1)}a6=a4=a1="";a5=a3=a0=aZ=""}while(aU<aY.length);if(aR=="array"){return aS}var aW="",aT=0;for(;aT<aS.lenth;aT++){aW+=String.fromCharCode(aS[aT])}return aW};var aI=[];var aN=aO.substr(0,3);var aK=aO.substr(3);switch(aN){case"v01":for(var aJ=0;aJ<aK.length;aJ+=2){aI.push(parseInt(aK.substr(aJ,2),16))}return decodeURIComponent(aQ(aP(aI,"binnary","array")));break;case"v02":aI=aP(aK,"urlsafe","array");return aQ(aP(aI,"binnary","array"));break;default:return decodeURIComponent(aO)}}catch(aM){return""}}var ap={screenSize:function(){return(m&8388608==8388608)?ao.width+"x"+ao.height:""},colorDepth:function(){return(m&4194304==4194304)?ao.colorDepth:""},appCode:function(){return(m&2097152==2097152)?s.appCodeName:""},appName:function(){return(m&1048576==1048576)?((s.appName.indexOf("Microsoft Internet Explorer")>-1)?"MSIE":s.appName):""},cpu:function(){return(m&524288==524288)?(s.cpuClass||s.oscpu):""},platform:function(){return(m&262144==262144)?(s.platform):""},jsVer:function(){if(m&131072!=131072){return""}var aI,e,aK,D=1,aH=0,i=(s.appName.indexOf("Microsoft Internet Explorer")>-1)?"MSIE":s.appName,aJ=s.appVersion;if("MSIE"==i){e="MSIE";aI=aJ.indexOf(e);if(aI>=0){aK=window.parseInt(aJ.substring(aI+5));if(3<=aK){D=1.1;if(4<=aK){D=1.3}}}}else{if(("Netscape"==i)||("Opera"==i)||("Mozilla"==i)){D=1.3;e="Netscape6";aI=aJ.indexOf(e);if(aI>=0){D=1.5}}}return D},network:function(){if(m&65536!=65536){return""}var i="";i=(s.connection&&s.connection.type)?s.connection.type:i;try{F.body.addBehavior("#default#clientCaps");i=F.body.connectionType}catch(D){i="unkown"}return i},language:function(){return(m&32768==32768)?(s.systemLanguage||s.language):""},timezone:function(){return(m&16384==16384)?(new Date().getTimezoneOffset()/60):""},flashVer:function(){if(m&8192!=8192){return""}var aK=s.plugins,aH,aL,aN;if(aK&&aK.length){for(var aJ in aK){aL=aK[aJ];if(aL.description==null){continue}if(aH!=null){break}aN=aL.description.toLowerCase();if(aN.indexOf("flash")!=-1){aH=aL.version?parseInt(aL.version):aN.match(/\d+/);continue}}}else{if(window.ActiveXObject){for(var aI=10;aI>=2;aI--){try{var D=new ActiveXObject("ShockwaveFlash.ShockwaveFlash."+aI);if(D){aH=aI;break}}catch(aM){}}}else{if(W.indexOf("webtv/2.5")!=-1){aH=3}else{if(W.indexOf("webtv")!=-1){aH=2}}}}return aH},javaEnabled:function(){if(m&4096!=4096){return""}var D=s.plugins,i=s.javaEnabled(),aH,aI;if(i==true){return 1}if(D&&D.length){for(var e in D){aH=D[e];if(aH.description==null){continue}if(i!=null){break}aI=aH.description.toLowerCase();if(aI.indexOf("java plug-in")!=-1){i=parseInt(aH.version);continue}}}else{if(window.ActiveXObject){i=(new ActiveXObject("JavaWebStart.IsInstalled")!=null)}}return i?1:0}};var ad={pageId:function(i){var D=i||r,aK="-9999-0-0-1";if((undefined==D)||(""==D)){try{var aH=h("publishid");if(""!=aH){var aJ=aH.split(",");if(aJ.length>0){if(aJ.length>=3){aK="-9999-0-"+aJ[1]+"-"+aJ[2]}D=aJ[0]}}else{D="0"}}catch(aI){D="0"}D=D+aK}return D},sessionCount:function(){var e=t("_s_upa");if(e==""){e=0}return e},excuteCount:function(){return SUDA.sudaCount},referrer:function(){if(m&2048!=2048){return""}var e=/^[^\?&#]*.swf([\?#])?/;if((aA=="")||(aA.match(e))){var i=V(j,"ref","&","");if(i!=""){return escape(i)}}return escape(aA)},isHomepage:function(){if(m&1024!=1024){return""}var D="";try{F.body.addBehavior("#default#homePage");D=F.body.isHomePage(j)?"Y":"N"}catch(i){D="unkown"}return D},PGLS:function(){return(m&512==512)?h("stencil"):""},ZT:function(){if(m&256!=256){return""}var e=h("subjectid");e.replace(",",".");e.replace(";",",");return escape(e)},mediaType:function(){return(m&128==128)?h("mediaid"):""},domCount:function(){return(m&64==64)?F.getElementsByTagName("*").length:""},iframeCount:function(){return(m&32==32)?F.getElementsByTagName("iframe").length:""}};var av={visitorId:function(){var i=15;var e=t(aa);if(e.length>i&&u==0){return e}else{return}},fvisitorId:function(e){if(!e){var e=t(Y);return e}else{at(Y,e,3650)}},sessionId:function(){var e=t(H);if(""==e){var i=new Date();e=Math.random()*10000000000000+"."+i.getTime()}return e},flashCookie:function(e){if(e){}else{return p}},lastVisit:function(){var D=t(H);var aI=t(P);var aH=aI.split(":");var aJ="",i;if(aH.length>=6){if(D!=aH[4]){i=new Date();var e=new Date(window.parseInt(aH[0]));aH[1]=window.parseInt(aH[1])+1;if(i.getMonth()!=e.getMonth()){aH[2]=1}else{aH[2]=window.parseInt(aH[2])+1}if(((i.getTime()-e.getTime())/86400000)>=7){aH[3]=1}else{if(i.getDay()<e.getDay()){aH[3]=1}else{aH[3]=window.parseInt(aH[3])+1}}aJ=aH[0]+":"+aH[1]+":"+aH[2]+":"+aH[3];aH[5]=aH[0];aH[0]=i.getTime();at(P,aH[0]+":"+aH[1]+":"+aH[2]+":"+aH[3]+":"+D+":"+aH[5],360)}else{aJ=aH[5]+":"+aH[1]+":"+aH[2]+":"+aH[3]}}else{i=new Date();aJ=":1:1:1";at(P,i.getTime()+aJ+":"+D+":",360)}return aJ},userNick:function(){if(al!=""){return al}var D=unescape(t(l));if(D!=""){var i=V(D,"ag","&","");var e=V(D,"user","&","");var aH=V(D,"uid","&","");var aJ=V(D,"sex","&","");var aI=V(D,"dob","&","");al=i+":"+e+":"+aH+":"+aJ+":"+aI;return al}else{return""}},userOrigin:function(){if(m&4!=4){return""}var e=t(aE);var i=e.split(":");if(i.length>=2){return i[0]}else{return""}},advCount:function(){return(m&2==2)?t(E):""},setUOR:function(){var aL=t(aE),aP="",i="",aO="",aI="",aM=j.toLowerCase(),D=F.referrer.toLowerCase();var aQ=/[&|?]c=spr(_[A-Za-z0-9]{1,}){3,}/;var aK=new Date();if(aM.match(aQ)){aO=aM.match(aQ)[0]}else{if(D.match(aQ)){aO=D.match(aQ)[0]}}if(aO!=""){aO=aO.substr(3)+":"+aK.getTime()}if(aL==""){if(t(P)==""){aP=ak(D);i=ak(aM)}at(aE,aP+","+i+","+aO,365)}else{var aJ=0,aN=aL.split(",");if(aN.length>=1){aP=aN[0]}if(aN.length>=2){i=aN[1]}if(aN.length>=3){aI=aN[2]}if(aO!=""){aJ=1}else{var aH=aI.split(":");if(aH.length>=2){var e=new Date(window.parseInt(aH[1]));if(e.getTime()<(aK.getTime()-86400000*30)){aJ=1}}}if(aJ){at(aE,aP+","+i+","+aO,365)}}},setAEC:function(e){if(""==e){return}var i=t(E);if(i.indexOf(e+",")<0){i=i+e+","}at(E,i,7)},ssoInfo:function(){var D=unescape(aj(t("sso_info")));if(D!=""){if(D.indexOf("uid=")!=-1){var i=V(D,"uid","&","");return escape("uid:"+i)}else{var e=V(D,"u","&","");return escape("u:"+unescape(e))}}else{return""}},subp:function(){return t("SUBP")}};var ai={CI:function(){var e=["sz:"+ap.screenSize(),"dp:"+ap.colorDepth(),"ac:"+ap.appCode(),"an:"+ap.appName(),"cpu:"+ap.cpu(),"pf:"+ap.platform(),"jv:"+ap.jsVer(),"ct:"+ap.network(),"lg:"+ap.language(),"tz:"+ap.timezone(),"fv:"+ap.flashVer(),"ja:"+ap.javaEnabled()];return"CI="+e.join("|")},PI:function(e){var i=["pid:"+ad.pageId(e),"st:"+ad.sessionCount(),"et:"+ad.excuteCount(),"ref:"+ad.referrer(),"hp:"+ad.isHomepage(),"PGLS:"+ad.PGLS(),"ZT:"+ad.ZT(),"MT:"+ad.mediaType(),"keys:","dom:"+ad.domCount(),"ifr:"+ad.iframeCount()];return"PI="+i.join("|")},UI:function(){var e=["vid:"+av.visitorId(),"sid:"+av.sessionId(),"lv:"+av.lastVisit(),"un:"+av.userNick(),"uo:"+av.userOrigin(),"ae:"+av.advCount(),"lu:"+av.fvisitorId(),"si:"+av.ssoInfo(),"rs:"+(n?1:0),"dm:"+(B?1:0),"su:"+av.subp()];return"UI="+e.join("|")},EX:function(i,e){if(m&1!=1){return""}i=(null!=i)?i||"":b;e=(null!=e)?e||"":a;return"EX=ex1:"+i+"|ex2:"+e},MT:function(){return"MT="+aF().join("|")},V:function(){return an},R:function(){return"gUid_"+new Date().getTime()}};function ax(){var aK="-",aH=F.referrer.toLowerCase(),D=j.toLowerCase();if(""==t(X)){if(""!=aH){aK=ak(aH)}at(X,aK,"","weibo.com")}var aI=/weibo.com\/reg.php/;if(D.match(aI)){var aJ=V(unescape(D),"sharehost","&","");var i=V(unescape(D),"appkey","&","");if(""!=aJ){at(X,aJ,"","weibo.com")}at("appkey",i,"","weibo.com")}}function d(e,i){G(e,i)}function G(i,D){D=D||{};var e=new Image(),aH;if(D&&D.callback&&typeof D.callback=="function"){e.onload=function(){clearTimeout(aH);aH=null;D.callback(true)}}SUDA.img=e;e.src=i;aH=setTimeout(function(){if(D&&D.callback&&typeof D.callback=="function"){D.callback(false);e.onload=null}},D.timeout||2000)}function x(e,aH,D,aI){SUDA.sudaCount++;if(!av.visitorId()&&!L()){if(u<3){u++;setTimeout(x,500);return}}var i=N+[ai.V(),ai.CI(),ai.PI(e),ai.UI(),ai.MT(),ai.EX(aH,D),ai.R()].join("&");G(i,aI);}function y(e,D,i){if(aG||A){return}if(SUDA.sudaCount!=0){return}x(e,D,i)}function ab(e,aH){if((""==e)||(undefined==e)){return}av.setAEC(e);if(0==aH){return}var D="AcTrack||"+t(aa)+"||"+t(H)+"||"+av.userNick()+"||"+e+"||";var i=ag+D+"&gUid_"+new Date().getTime();d(i)}function aq(aI,e,i,aJ){aJ=aJ||{};if(!i){i=""}else{i=escape(i)}var aH="UATrack||"+t(aa)+"||"+t(H)+"||"+av.userNick()+"||"+aI+"||"+e+"||"+ad.referrer()+"||"+i+"||"+(aJ.realUrl||"")+"||"+(aJ.ext||"");var D=ag+aH+"&gUid_"+new Date().getTime();d(D,aJ)}function aC(aK){var i=g(aK);var aI=i.target;var aH="",aL="",D="";var aJ;if(aI!=null&&aI.getAttribute&&(!aI.getAttribute("suda-uatrack")&&!aI.getAttribute("suda-actrack")&&!aI.getAttribute("suda-data"))){while(aI!=null&&aI.getAttribute&&(!!aI.getAttribute("suda-uatrack")||!!aI.getAttribute("suda-actrack")||!!aI.getAttribute("suda-data"))==false){if(aI==F.body){return}aI=aI.parentNode}}if(aI==null||aI.getAttribute==null){return}aH=aI.getAttribute("suda-actrack")||"";aL=aI.getAttribute("suda-uatrack")||aI.getAttribute("suda-data")||"";sudaUrls=aI.getAttribute("suda-urls")||"";if(aL){aJ=J(aL);if(aI.tagName.toLowerCase()=="a"){D=aI.href}opts={};opts.ext=(aJ.ext||"");aJ.key&&SUDA.uaTrack&&SUDA.uaTrack(aJ.key,aJ.value||aJ.key,D,opts)}if(aH){aJ=J(aH);aJ.key&&SUDA.acTrack&&SUDA.acTrack(aJ.key,aJ.value||aJ.key)}}if(window.SUDA&&Object.prototype.toString.call(window.SUDA)==="[object Array]"){for(var Q=0,ae=SUDA.length;Q<ae;Q++){switch(SUDA[Q][0]){case"setGatherType":m=SUDA[Q][1];break;case"setGatherInfo":r=SUDA[Q][1]||r;b=SUDA[Q][2]||b;a=SUDA[Q][3]||a;break;case"setPerformance":Z=SUDA[Q][1];break;case"setPerformanceFilter":C=SUDA[Q][1];break;case"setPerformanceInterval":K=SUDA[Q][1]*1||0;K=isNaN(K)?0:K;break;case"setGatherMore":M.push(SUDA[Q].slice(1));break;case"acTrack":S.push(SUDA[Q].slice(1));break;case"uaTrack":I.push(SUDA[Q].slice(1));break}}}aG=(function(D,i){if(ah.top==ah){return false}else{try{if(F.body.clientHeight==0){return false}return((F.body.clientHeight>=D)&&(F.body.clientWidth>=i))?false:true}catch(aH){return true}}})(320,240);A=(function(){return false})();av.setUOR();var au=av.sessionId();window.SUDA=window.SUDA||[];SUDA.sudaCount=SUDA.sudaCount||0;SUDA.log=function(){x.apply(null,arguments)};SUDA.acTrack=function(){ab.apply(null,arguments)};SUDA.uaTrack=function(){aq.apply(null,arguments)};U(F.body,"click",aC);window.GB_SUDA=SUDA;GB_SUDA._S_pSt=function(){};GB_SUDA._S_acTrack=function(){ab.apply(null,arguments)};GB_SUDA._S_uaTrack=function(){aq.apply(null,arguments)};window._S_pSt=function(){};window._S_acTrack=function(){ab.apply(null,arguments)};window._S_uaTrack=function(){aq.apply(null,arguments)};window._S_PID_="";if(!window.SUDA.disableClickstream){y()}try{k()}catch(T){}})();
-//-->
-</script> 
-<noScript> 
-<div style='position:absolute;top:0;left:0;width:0;height:0;visibility:hidden'><img width=0 height=0 src='//beacon.sina.com.cn/a.gif?noScript' border='0' alt='' /></div> 
-</noScript> 
-<!-- SUDA_CODE_END -->
+#wrap{width:950px;text-align:left;margin:0 auto;padding:5px 0;}
+/* 导航 */
+.TopNav{}
+.TN_A{height:84px; width:950px; text-align:center;margin:0 auto;}
+.TN_A .TN_Logo{background:#fff;width:203px;height:84px;overflow:hidden;float:left;}
+.TN_A .TN_Cont{float:left;width:747px;}
+.TN_A .TN_Links{float:right;height:22px;padding:0 5px 0 0;color:#666;}
+.TN_A .TN_Links a:link,.TN_A .TN_Links a:visited{color:#666; text-decoration:none;}
+.TN_A .TN_Links a:hover{color:#f00; text-decoration:underline;}
+.TN_Menu{height:29px;padding-left:0px;padding-right:0px;padding-bottom:0px;padding-top:33px!important;padding-top:27px;clear:both;}
+.TN_A .TN_Menu h1{width:86px;height:28px;line-height:28px;font-size:14px;color:#fff;float:left;margin-right:5px;background:url(http://i1.sinaimg.cn/video/dapian/v_dp_mj_003.gif) no-repeat 0 -50px #590888;text-align:center;padding:1px 0 0;}
+.TN_A .TN_Menu h1.selected{width:91px;height:30px;background:url(http://i1.sinaimg.cn/video/dapian/v_dp_mj_003.gif) no-repeat 0 0 #c11b0a;margin-bottom:-2px;position:relative;z-index:2;margin-right:0px;}
+.TN_A .TN_Menu a:link,.TN_A .TN_Menu a:visited{color:#fff;text-decoration:none;display:inline-block;}
+.TN_A .TN_Menu a:hover{text-decoration:underline;}
 
+.TN_B{ height:33px;background:url(http://i0.sinaimg.cn/video/dapian/v_dp_mj_002.gif) repeat-x 0 -50px #590888;color:#8930c5;}
+.TN_B .T_Left{padding:3px 0 0 20px;float:left;line-height:28px;}
+.TN_B .T_Right{float:right;padding:5px 10px 0 0;}
+.TN_B a:link,.TN_B a:visited{color:#fff;text-decoration:none;margin:0 3px;}
+.TN_B a:hover{text-decoration:underline;}
+.allBg{ width:950px;margin:0 auto;}
+.input_01{width:282px;padding:3px 0 0 20px;height:15px;background:url(http://i2.sinaimg.cn/video/dapian/v_mj_003.gif) no-repeat -196px 3px #fff;color:#4e4f51;border:1px solid #939fd1;}
+.button_01{width:52px;height:20px;border:none;background:url(http://i2.sinaimg.cn/video/dapian/v_mj_003.gif) no-repeat -100px -50px;}
 
+a.sg:link, a.sg:visited, a.sg:hover, a.sg:active {/* border: 1px solid black; */display: block;color: #777;text-decoration:none;width: 100%;  /* dimensions needed for IE5.x/Win *//* padding: 0 3px; */}
+.TN_B .aTB_t_s_t {color:#fff;float:left;line-height:22px;adding:0 0 0 15px;width:55px;margin:0 3px;}
 
-<!-- body code end -->
-    <div class="VF_wrap" style="overflow: visible; background-color:#fff">
-    	<!-- 大导航默认 -->
-        <div id="videoNav">
-            <div class="vd_nav_2015">
-                <h1 class="logo">
-                    <a href="http://video.sina.com.cn/"  class="vd_15icon vd_15icon_logo"></a>
-                </h1>
-                <ul class="xx_channel">
-                    <li><a target="_blank" href="http://video.sina.com.cn/news/">新闻</a></li>
-                    <li><a target="_blank" href="http://sports.video.sina.com.cn/">体育</a></li>
-                    <li><a target="_blank" href="http://video.sina.com.cn/ent">娱乐</a></li>
-                    <li><a target="_blank" href="http://video.sina.com.cn/l/pub">直播</a></li>
-                    <li><a target="_blank" href="http://video.sina.com.cn/topic/">话题</a></li>
-                </ul>
-                <div class="channel">
-                    <div class="m_channel" data-action="dropdown" data-target="ch_list"><a href="javascript:void(0);" ><i class="vd_15icon vd_15icon_channel"></i></a></div>
-                    <div class="channel_list" id="ch_list">
-                        <ul>
-                            <li><a target="_blank" href="http://video.sina.com.cn/news/">新闻</a></li>
-                            <li><a target="_blank" href="http://sports.video.sina.com.cn/">体育</a></li>
-                            <li><a target="_blank" href="http://video.sina.com.cn/ent">娱乐</a></li>
-                            <li><a target="_blank" href="http://video.sina.com.cn/l/pub">直播</a></li>
-                            <li><a target="_blank" href="http://video.sina.com.cn/topic/">话题</a></li>
-                        </ul>
-                        <a target="_blank" href="http://www.sina.com.cn/" class="tohome">新浪首页</a>
-                    </div>
-                </div>
-                <!--当前状态增加 cur -->
-                <div class="m_app" data-action="dropdown" data-target="pl_client">
-                    <a href="#" class="app">移动客户端<i class="vd_15icon vd_15icon_arrow"></i></a>
-                    <ul class="app_lst" id="pl_client">
-                        <li><a href="http://video.sina.com.cn/app/web/" target="_blank">新浪视频APP</a></li>
-                    </ul>
-                </div>
-                 <a class="video_account_icon" href="#" id="btnBox" suda-uatrack="key=video_2013index&amp;value=login"><i class="vd_15icon vd_15icon_vaccount"></i></a>
-                <!--登陆-->
-                <div id="pl_pc_account" class="sina_account">
-                    <div id="pl_usercenter" class="video_account_center">
-                        <a href="#" target="_blank">个人中心</a>
-                    </div>
-                  <div id="pl_pclogin" class="pclogin TAP14">
-                    <div class="ac-rgst"> <a target="_blank" href="https://login.sina.com.cn/signup/signup?entry=account" class="msg-link">注册</a> </div>
-                    <div class="ac-login">
-                      <div class="ac-login-cnt "> <a href="#" class=""><span class="thumb"><img src="//i.sso.sina.com.cn/images/login/thumb_default.png"></span><span class="log-links">登录</span></a> </div>
-                    </div>
-                  </div>
-                </div>
-                <!--登陆-->
-                <!--个人中心-->
-                <div class="thumb_wrap" id="personBox" data-action="dropdown" data-target="pl_person">
-                    <a class="thumb" id="loginBox"><img id="p_img" src=""></a>
-                    <div class="account_list" id="pl_person">
-                        <ul>
-                            <li><a href="http://video.sina.com.cn/shijiao/favorite/video" target="_blank">我的收藏</a></li>
-                            <li><a href="http://video.sina.com.cn/shijiao/program/orders" target="_blank">我的节目</a></li>
-                            <li><a href="http://video.sina.com.cn/shijiao/video/published" target="_blank">进入个人中心</a></li>
-                        </ul>
-                        <a class="logout" id="logout" href="#" target="_self">退出登录</a>
-                    </div>
-                </div>
-                <!--搜索-->
-                <div  id="pl_searchLayer">
-                    <a href="#" class="video_search_icon" node="search"><i class="vd_15icon vd_15icon_bsearch"></i></a>
-                    <div class="search">
-                        <div class="sarch_key clearfix" node="search_handler">
-                            <input type="text" value="" class="key_word" placeholder="请输入搜索关键字" node="key">
-                            <a href="#" class="search_btn" node="search"><i class="vd_15icon vd_15icon_search"></i></a>
-                        </div>
-                    </div>
-              </div>
-                <!-- 搜索 -->
-            </div>
-        </div>
-        <!-- 大导航默认 -->
-    </div>
-	<!-- 焦点图 -->
-    <div class="VF_focus_wrap">
-        <div class="VF_wrap">
-           <div class="VF_1 VF_slide">
-	<!--播放器容器-->
-	<div class="VM_slid" id="pl_focus_scroll">
-		<div node-type="scroll-box" id="pl_scroll_box">
-			<div id="myFlashBox" style="display:none"></div>
-			<ul class="slids" style="width:1470px;" node-type="scroll-wrapper">
-								 
-																<li data-video_id="">
-					<img src="//n.sinaimg.cn/video/transform/598/w2000h998/20220224/c676-2d2caa533ccc0608c796fcc08829f646.png">
-					<div data-type="slids-poster">
-						<!--专辑的样式名为VC_icon_zhjitg   自制的样式名为VC_icon_zizhitg   没有图标的话只写VC_icon-->
-						<span class="VC_icon "></span>
-						<div class="tl"> <strong data-type="video-title">北京冬奥闭幕，谢谢你北京</strong></div>
-					</div>
-					<a  href="https://video.sina.com.cn/p/news/2022-02-21/detail-imcwipih4465623.d.html" target="_blank"  class="lk"></a>
-				</li>
-																<li data-video_id="">
-					<img src="//n.sinaimg.cn/video/transform/122/w590h332/20220217/2b82-0039f581de4cd5ba292ddc92000321a7.png">
-					<div data-type="slids-poster">
-						<!--专辑的样式名为VC_icon_zhjitg   自制的样式名为VC_icon_zizhitg   没有图标的话只写VC_icon-->
-						<span class="VC_icon "></span>
-						<div class="tl"> <strong data-type="video-title">新浪新闻元宵节短片《爱·联通》</strong></div>
-					</div>
-					<a  href="https://video.sina.com.cn/p/news/2022-02-15/detail-ikyakumy6052382.d.html" target="_blank"  class="lk"></a>
-				</li>
-																<li data-video_id="">
-					<img src="//n.sinaimg.cn/video/transform/122/w590h332/20220114/a274-aaafa4b4ba51707915026266bd2a7712.png">
-					<div data-type="slids-poster">
-						<!--专辑的样式名为VC_icon_zhjitg   自制的样式名为VC_icon_zizhitg   没有图标的话只写VC_icon-->
-						<span class="VC_icon "></span>
-						<div class="tl"> <strong data-type="video-title">百搭星君｜林凡：和风温煦 田野守望</strong></div>
-					</div>
-					<a  href="https://video.sina.com.cn/p/fashion/2022-01-11/detail-ikyakumx9626920.d.html" target="_blank"  class="lk"></a>
-				</li>
-																<li data-video_id="">
-					<img src="//n.sinaimg.cn/video/transform/619/w1970h1049/20211229/59dd-2ea9fc9df9dd6ccd2dd99d605c0e5b7a.png">
-					<div data-type="slids-poster">
-						<!--专辑的样式名为VC_icon_zhjitg   自制的样式名为VC_icon_zizhitg   没有图标的话只写VC_icon-->
-						<span class="VC_icon "></span>
-						<div class="tl"> <strong data-type="video-title">#三山五园#达人行</strong></div>
-					</div>
-					<a  href="https://weibo.com/1714145293/L7yXwigaB?from=page_1006061714145293_profile&wvr=6&mod=weibotime&type=comment" target="_blank"  class="lk"></a>
-				</li>
-																<li data-video_id="">
-					<img src="//n.sinaimg.cn/video/transform/122/w590h332/20211019/3678-698c2da9f32cd09b9725a83973c6e4e6.jpg">
-					<div data-type="slids-poster">
-						<!--专辑的样式名为VC_icon_zhjitg   自制的样式名为VC_icon_zizhitg   没有图标的话只写VC_icon-->
-						<span class="VC_icon VC_icon_zizhitg"></span>
-						<div class="tl"> <strong data-type="video-title">#孙九芳喜剧人AB面#</strong></div>
-					</div>
-					<a  href="https://weibo.com/1714145293/KCZipl2U2?from=page_1006061714145293_profile&wvr=6&mod=weibotime&type=comment" target="_blank"  class="lk"></a>
-				</li>
-																
-			</ul>
-		</div>
-		<ul class="dot_nav">
-						 
-									<li class="cur" action-type="scroll"><a href="javascript:void(0)" class="dot"></a></li>
-									<li class="cur" action-type="scroll"><a href="javascript:void(0)" class="dot"></a></li>
-									<li class="cur" action-type="scroll"><a href="javascript:void(0)" class="dot"></a></li>
-									<li class="cur" action-type="scroll"><a href="javascript:void(0)" class="dot"></a></li>
-									<li class="cur" action-type="scroll"><a href="javascript:void(0)" class="dot"></a></li>
-												
+/* footer */
+.blkContentFooter{overflow:hidden; zoom:1; text-align:center; line-height:35px; font-family:Arial, Helvetica, sans-serif, "宋体";border-top:1px solid #e2e2e2;margin-top:10px; color:#666;clear:both;}
+.blkContentFooter a,.blkContentFooter a:visited{text-decoration:none; color:#666;}
+.blkContentFooter a:hover,.blkContentFooter a:active{text-decoration:underline; color:#c00;} 
+#main .tab .tab2index_bg .intro {
+	font-size: 14px;
+	background: #fff url('http://i2.sinaimg.cn/ent/deco/2009/0312/pic/tab_bg.gif') repeat-x;
+	margin: 20px;
+	text-align: left;
+	text-indent: 28px;
+	padding: 10px;
+	border: 1px solid #EAEAEA;
+	line-height: 24px;
+}
+/* 090313001 ws begin */
+.tab2index{overflow:hidden;height:27px;line-height:27px; margin-top:8px;}
+.tab2index_bg{width:950px;background:#fff; font-size:12px; height:100%; white-space:normal;border:1px solid #dfdfdf;}
+.tab2index_con{width:930px;background:#fff url('http://i2.sinaimg.cn/ent/deco/2009/0312/pic/tab_bg.gif') repeat-x;padding:10px 10px 0 10px;height:100%;}
+.tab2index li {width:170px;height:28px; line-height:28px;float:left; text-align:center;}
+.tab2index li .noright{ border-right:0px;}
+.tab2index li a{width:170px;height:27px; line-height:27px;display:block;color:#333; text-decoration:none;border:1px solid #dfdfdf; border-bottom:0px;position:relative;background:url('http://i1.sinaimg.cn/ent/deco/2009/0312/pic/tab3_bg.gif');}
+.tab2index li a:hover{ width:170px; height:28px; line-height:28px; background:#fff;display:block;text-decoration:none; font-weight:bold; border-bottom:0px; position:absolute;*position:relative;  }
+.tab2index li .current{ width:170px; height:28px; line-height:28px; background:#fff;display:block;text-decoration:none; font-weight:bold; border-bottom:0px; position:absolute;*position:relative; }
+.tab2index li.active a { width:170px; height:28px; line-height:28px; background:#fff;display:block;text-decoration:none;font-weight:bold; border-bottom:0px; position:absolute;*position:relative; }
+/* 090313001 ws end */
+
+/* 导航标题图片 */
+.TN_Menu h1 a:hover{border-bottom:1px solid #fff;padding:0 0 1px;display:inline-block;}
+.navTitle_01{width:28px;height:14px;padding-bottom:1px;_padding-bottom:0;margin-top:6px;background:url(http://i3.sinaimg.cn/video/deco/2009/0601/n_m_01.png) no-repeat 0 0;_background:none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=scale, src='http://i2.sinaimg.cn/video/deco/2009/0601/n_m_01.png');}
+.navTitle_02{width:28px;height:14px;padding-bottom:1px;_padding-bottom:0;margin-top:6px;background:url(http://i0.sinaimg.cn/video/deco/2009/0601/n_m_02.png) no-repeat 0 0;_background:none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=scale, src='http://i3.sinaimg.cn/video/deco/2009/0601/n_m_02.png');}
+.navTitle_03{width:56px;height:14px;padding-bottom:1px;_padding-bottom:0;margin-top:6px;background:url(http://i1.sinaimg.cn/video/deco/2009/0601/n_m_03.png) no-repeat 0 0;_background:none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=scale, src='http://i0.sinaimg.cn/video/deco/2009/0601/n_m_03.png');}
+.navTitle_04{width:28px;height:14px;padding-bottom:1px;_padding-bottom:0;margin-top:6px;background:url(http://i2.sinaimg.cn/video/deco/2009/0601/n_m_04.png) no-repeat 0 0;_background:none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=scale, src='http://i1.sinaimg.cn/video/deco/2009/0601/n_m_04.png');}
+.navTitle_05{width:42px;height:14px;padding-bottom:1px;_padding-bottom:0;margin-top:6px;background:url(http://i1.sinaimg.cn/video/deco/2009/0701/n_m_011.png) no-repeat 0 0;_background:none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=scale, src='http://i0.sinaimg.cn/video/deco/2009/0701/n_m_011.png');}
+.navTitle_06{width:56px;height:14px;padding-bottom:1px;_padding-bottom:0;margin-top:6px;background:url(http://i0.sinaimg.cn/video/deco/2009/0601/n_m_06.png) no-repeat 0 0;_background:none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=scale, src='http://i3.sinaimg.cn/video/deco/2009/0601/n_m_06.png');}
+.navTitle_07{width:56px;height:14px;padding-bottom:1px;_padding-bottom:0;margin-top:6px;background:url(http://i1.sinaimg.cn/video/deco/2009/0601/n_m_07.png) no-repeat 0 0;_background:none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=scale, src='http://i0.sinaimg.cn/video/deco/2009/0601/n_m_07.png');}
+
+/* 090709001 ws begin */
+/* 新版导航 */
+.newTopNav{height:111px;overflow:hidden;zoom:1;position:relative}
+.newTopNav_logo{width:219px;height:75px;overflow:hidden;position:absolute;top:0;left:0}
+.newTopNav_login{width:563px;height:26px;position:absolute;top:5px;right:30px}
+.newTopNav_1{height:36px;overflow:hidden;zoom:1;margin:41px 23px 0 0;_margin-top:40px;padding:0 0 0 3px;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat -10px 4px;position:relative;z-index:99}
+.newTopNav_1 ul{padding:0 3px 0 0;height:36px;overflow:hidden;zoom:1;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat 100% 4px}
+.newTopNav_1 li{float:left;padding:0 20px 0 22px;height:32px;overflow:hidden;margin-top:4px;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat 0 -448px}
+.newTopNav_1 li.last{background:none}
+.newTopNav_1 li.selected{width:97px;height:36px;overflow:hidden;margin:0;padding:0 5px 0 0;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat 0 -100px;text-align:center}
+.newTopNav_ht{display:none}
+.newTopNav_2{height:36px;width:950px;overflow:hidden;zoom:1;clear:both;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat 0 -30px;position:absolute;z-index:98px;bottom:0;color:#b582d1}
+.newTopNav_2_s{width:170px;float:left;padding:7px 0 0 7px}
+.newTopNav_2_s1{float:left;width:111px;height:22px;overflow:hidden;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat 0 -200px}
+.newTopNav_2_s1 input{border:none;padding:0;font-size:12px;margin:4px 0 0 6px;width:100px;color:#999}
+.newTopNav_2_s2{float:left;padding:0 0 0 5px}
+.newTopNav_2_s2 input{width:42px;height:22px;display:block;line-height:22px;color:#fff;cursor:pointer;text-align:center;font-size:12px;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat 0 -250px;border:none;padding:0;margin:0}
+.newTopNav_2_l1{float:left;line-height:22px;padding-top:7px}
+.newTopNav_2_l1 a,.newTopNav_2_l1 a:visited{color:#b582d1;text-decoration:none}
+.newTopNav_2_l1 a:hover,.newTopNav_2_l1 a:active{color:#fff;text-decoration:underline}
+
+.newTopNav_2_l2{line-height:22px;padding:7px 40px 0 0}
+.newTopNav_2_l2 a,.newTopNav_2_l2 a:visited{color:#e1cded;text-decoration:none}
+.newTopNav_2_l2 a:hover,.newTopNav_2_l2 a:active{color:#fff;text-decoration:underline}
+.newTopNav_2_l2 ul{overflow:hidden; zoom:1;}
+.newTopNav_2_l2 li{float:left; background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_005.png) no-repeat 0 5px;}
+.newTopNav_2_l2 li a{display:block; padding-left:10px;}
+.newTopNav_2_l2 li.last{background:none;}
+.newTopNav_2_l2 li .newTopNav_2_l2_t{display:block; padding-right:10px;}
+.newTopNav_2_l2 li.selected{padding:0 4px;}
+.newTopNav_2_l2 li.selected a{background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat 0 -150px;}
+.newTopNav_2_l2 li.selected .newTopNav_2_l2_t{background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat 100% -150px;}
+
+.newTopNav_t01{width:32px;height:17px;margin-top:7px;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat 0 -300px}
+a:hover .newTopNav_t01,a:active .newTopNav_t01,a:focus .newTopNav_t01{background-position:0 -350px}
+.newTopNav_t02{width:32px;height:17px;margin-top:7px;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat -50px -300px}
+a:hover .newTopNav_t02,a:active .newTopNav_t02,a:focus .newTopNav_t02{background-position:-50px -350px}
+.newTopNav_t03{width:64px;height:17px;margin-top:7px;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat -100px -300px}
+a:hover .newTopNav_t03,a:active .newTopNav_t03,a:focus .newTopNav_t03{background-position:-100px -350px}
+.newTopNav_t04{width:40px;height:21px;margin-top:7px;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat 0 -400px;margin-left:28px;*margin-left:0px;}
+.newTopNav_t05{width:47px;height:17px;margin-top:7px;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat -200px -300px}
+a:hover .newTopNav_t05,a:active .newTopNav_t05,a:focus .newTopNav_t05{background-position:-200px -350px}
+.newTopNav_t06{width:64px;height:17px;margin-top:7px;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat -300px -300px}
+a:hover .newTopNav_t06,a:active .newTopNav_t06,a:focus .newTopNav_t06{background-position:-300px -350px}
+.newTopNav_t07{width:64px;height:17px;margin-top:7px;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_001.png) no-repeat -400px -300px}
+a:hover .newTopNav_t07,a:active .newTopNav_t07,a:focus .newTopNav_t07{background-position:-400px -350px}
+
+/* 焦点图 */
+.newFocus{width:950px;height:275px;overflow:hidden;position:relative;margin:10px 0 0;background:#000}
+.newFocus_con{overflow:hidden;zoom:1}
+.newFocus_con .box{float:left;overflow:hidden;zoom:1;width:950px;height:275px}
+.newFocus_con_i{float:left;width:650px;height:275px;overflow:hidden}
+.newFocus_con_i img{background:url(http://video.sina.com.cn/navi/movie/images/loading.gif) no-repeat 50% 50%}
+.newFocus_con_t{float:left;width:300px;height:275px;overflow:hidden}
+.newFocus_con_t h3{text-align:center;padding:30px 40px 20px 0;line-height:40px;font-family:微软雅黑,黑体;font-size:18px;font-weight:400;color:#fff}
+.newFocus_con_t h3 a,.newFocus_con_t h3 a:visited{color:#fff;text-decoration:none}
+.newFocus_con_t h3 a:hover,.newFocus_con_t h3 a:active{color:#fff2d0;text-decoration:none}
+.newFocus_con_t p{line-height:20px;padding:0 40px 0 0;color:#888}
+.newFocus_con_t a.playNow,.newFocus_con_t a.playNow:visited{display:block;width:137px;height:37px;overflow:hidden;text-indent:-999px;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_003.png) no-repeat 0 0;margin:18px auto 0}
+.newFocus_con_t a.playNow:hover,.newFocus_con_t a.playNow:active,.newFocus_con_t a.playNow:focus{background-position:0 -50px}
+.newFocusArrL{width:39px;height:39px;overflow:hidden;cursor:pointer;position:absolute;top:118px;left:0}
+.newFocusArrL a{display:block;height:41px;width:41px;overflow:hidden;text-indent:-999px;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_002.png) no-repeat 1px 1px;margin:-1px 0 0 -1px}
+.newFocusArrL a:hover,.newFocusArrL a:active,.newFocusArrL a:focus{background-position:1px -49px}
+.newFocusArrR{width:39px;height:39px;overflow:hidden;cursor:pointer;position:absolute;top:118px;right:0}
+.newFocusArrR a{display:block;height:41px;width:41px;overflow:hidden;text-indent:-999px;background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_002.png) no-repeat -49px 1px;margin:-1px 0 0 -1px}
+.newFocusArrR a:hover,.newFocusArrR a:active,.newFocusArrR a:focus{background-position:-49px -49px}
+.newFocus_i{background:url(http://video.sina.com.cn/navi/movie/images/bg_movie_004.png) no-repeat;position:absolute;width:3px;height:3px;overflow:hidden}
+.newFocus_i1{background-position:0 0;top:0;left:0}
+.newFocus_i2{background-position:-947px 0;top:0;right:0}
+.newFocus_i3{background-position:0 -272px;top:272px;left:0}
+.newFocus_i4{background-position:-947px -272px;top:272px;right:0}
+/* 090709001 ws end */
+
+</style>
+
+<div id="index_login_error_div" style="position:absolute; top:50%; left:50%;"></div>
+<iframe name="iframe_data" style="display:none"></iframe>
+
+<!-- 081107001 ws end -->
+<div id="wrap" >
+
+<!-- 090709001 ws begin -->
+<!-- 大片导航 begin -->
+<div class="newTopNav">
+	<!-- logo begin -->
+	<div class="newTopNav_logo"><a href="http://video.sina.com.cn/movie/"><img src="http://video.sina.com.cn/navi/movie/images/logo_movie.png" width="219" height="75" alt="新浪视频·大片" /></a></div>
+	<!-- logo end -->
+	<!-- 登陆 begin -->
+	<div class="newTopNav_login">
+		<!-- _Mark_Vnet_B_-->
+		<iframe id="user_login_info" name="user_login_info" frameborder="0" src="http://you.video.sina.com.cn/app/login/index_login2.php?reurl=http://video.sina.com.cn/movie/hdtv/index.shtml" width="563" height="26" scrolling="no"></iframe>
+		<script type="text/javascript">(function(){if(new RegExp("(^|)SINAPRO=([^;]*)(;|$)","gi").exec(document.cookie)!=null){var o=document.getElementById('user_login_info');if(o!=null&&/^http:\/\/you\.video/.test(o.src)){o.src='http://control.video.sina.com.cn/app/login/index_login2.php?reurl=http://video.sina.com.cn/movie/hdtv/index.shtml'}}})();</script>
+		<!-- _Mark_Vnet_E_-->
+	</div>
+	<!-- 登陆 end -->
+	<!-- 主导航 begin -->
+	<table cellspacing="0" style="float:right;"><tr><td>
+	<div class="newTopNav_1">
+		<ul>
+			<li class="last"><a href="http://video.sina.com.cn/"><span class="newTopNav_ht">首页</span><img class="newTopNav_t01" src="http://i0.sinaimg.cn/dy/deco/2008/0331/yocc080331img/news_mj_005.gif" alt="首页" /></a></li>
+			<li class="selected"><a href="http://video.sina.com.cn/movie/"><span class="newTopNav_ht">大片</span><img class="newTopNav_t04" src="http://i0.sinaimg.cn/dy/deco/2008/0331/yocc080331img/news_mj_005.gif" alt="大片" /></a></li>
+			<li class="last"><a href="http://video.sina.com.cn/news/"><span class="newTopNav_ht">视频新闻</span><img class="newTopNav_t07" src="http://i0.sinaimg.cn/dy/deco/2008/0331/yocc080331img/news_mj_005.gif" alt="视频新闻" /></a></li>
+			<li><a href="http://v.sina.com.cn/"><span class="newTopNav_ht">播客</span><img class="newTopNav_t02" src="http://i0.sinaimg.cn/dy/deco/2008/0331/yocc080331img/news_mj_005.gif" alt="播客" /></a></li>
+			<li><a href="http://video.sina.com.cn/live/"><span class="newTopNav_ht">嘉宾聊天</span><img class="newTopNav_t06" src="http://i0.sinaimg.cn/dy/deco/2008/0331/yocc080331img/news_mj_005.gif" alt="嘉宾聊天" /></a></li>
+			<li><a href="http://video.sina.com.cn/tv/"><span class="newTopNav_ht">电视台</span><img class="newTopNav_t05" src="http://i0.sinaimg.cn/dy/deco/2008/0331/yocc080331img/news_mj_005.gif" alt="电视台" /></a></li>
+			<li><a href="http://video.sina.com.cn/life/"><span class="newTopNav_ht">实用生活</span><img class="newTopNav_t03" src="http://i0.sinaimg.cn/dy/deco/2008/0331/yocc080331img/news_mj_005.gif" alt="实用生活" /></a></li>
 		</ul>
 	</div>
-</div>
-<!--视频播放器js-->			
-           <div class="VF_2">
-	 	  
-	 	 		 <div class="VM_2">
-		 <img src="//n.sinaimg.cn/video/transform/718/w2000h1118/20220224/611c-6876febea1954ad347154f361f511cce.jpg">
-		 <span class="tl">#光环之下##倪妮讲述当演员十年感受#</span>
-				 
-		 <a href="https://weibo.com/1714145293/LgXZ2FaNO?from=page_1006061714145293_profile&amp;wvr=6&amp;mod=weibotime&amp;type=comment" target="_blank" class="lnk" title="#光环之下##倪妮讲述当演员十年感受#"></a>
-	 </div>
-	 	 		 <div class="VM_2">
-		 <img src="//n.sinaimg.cn/video/transform/274/w1805h869/20220224/46cb-1c08ecb6d4d089c5f66c250f4b58d8b7.jpg">
-		 <span class="tl">#喜剧人AB面#毛冬用尽全力奔赴热爱#</span>
-				 
-		 <a href="https://weibo.com/1714145293/LgOVgcDOP?from=page_1006061714145293_profile&amp;wvr=6&amp;mod=weibotime&amp;type=comment" target="_blank" class="lnk" title="#喜剧人AB面#毛冬用尽全力奔赴热爱#"></a>
-	 </div>
-	 	 </div>
-			<div class="VF_3 VF_live">
-				<div class="VM_live">
-					<div class="programe" id="pl_focus_video_report">
-					</div>
-					<div class="load_status" id="loadStatus" style="display:none">
-						<span class="loading_icon"></span>正在加载
-					</div>
-					<div class="load_status" id="loadFail" style="display:none">
-						未取到直播信息，<a href="javascript:;" id="reLoad">重新加载</a>
-					</div>
-				</div>
-				<div class="VM_lives">
-					<a href="http://video.sina.com.cn/l/pub" target="_blank"><i class="VC_icon VC_icon_live"></i>直播广场<span class="more">更多>></span></a>
-				</div>
+	</td></tr></table>
+	<!-- 主导航 end -->
+	<!-- 次导航 begin -->
+	<div class="newTopNav_2">
+		<!-- 搜索 begin -->
+		<div class="newTopNav_2_s">
+			<script type="text/javascript">function checkmyform(){if((document.getElementById("k").value=="")||(document.getElementById("k").value=="大片查询")){document.getElementById("k").value="大片查询";document.getElementById("k").focus();return false}document.topSearchform.submit();return true}</script>
+			<form action="http://search.video.sina.com.cn/search.php" method="get" name="topSearchform">
+			<input type="hidden" id="type" name="type" value="movie" />
+			<input type="hidden" id="stype" name="stype" value="1" />
+			<span class="newTopNav_2_s1"><input type="text" id="k" name="k" class="textbox2" autocomplete="off" value="大片查询" onclick="if(this.value == '大片查询')this.value='';" /></span>
+			<span class="newTopNav_2_s2"><input type="button" value="搜索" class="topSearchSbt2" onclick="checkmyform()" /></span>
+			</form>
+		</div>
+		<!-- 搜索 end -->
+		<div class="newTopNav_2_l1"><a href="http://movie.video.sina.com.cn/faq.html" target="_blank">收看帮助</a></div>
+		<table cellspacing="0" style="float:right; width:455px;"><tr><td>
+			<div class="newTopNav_2_l2">
+				<ul>
+					<li class="last"><a href="http://video.sina.com.cn/movie/"><span class="newTopNav_2_l2_t">大片首页</span></a></li>
+					<li><a href="http://movie.video.sina.com.cn/category/teleplay.html"><span class="newTopNav_2_l2_t">电视剧</span></a></li>
+					<li><a href="http://movie.video.sina.com.cn/category/movie.html"><span class="newTopNav_2_l2_t">电影</span></a></li>
+					<li><a href="http://movie.video.sina.com.cn/category/documentary.html"><span class="newTopNav_2_l2_t">纪录片</span></a></li>
+                                        <li><a href="http://movie.video.sina.com.cn/zt/index.html"><span class="newTopNav_2_l2_t">专题</span></a></li>
+					<li class="selected"><a href="http://video.sina.com.cn/movie/hdtv/index.shtml"><span class="newTopNav_2_l2_t">高清大片</span></a></li>
+					<li><a href="http://movie.video.sina.com.cn/golden/golden.html"><span class="newTopNav_2_l2_t">黄金剧场</span></a></li>
+				</ul>
 			</div>
-        </div>
+		</td></tr></table>
+	</div>
+	<!-- 次导航 end -->
+</div>
+<!-- 大片导航 end -->
+
+<!--main start-->
+<div id="main">
+
+<div class="tab">
+  <ul id="tab2index1" class="tab2index">
+    <li tab="1"><a href="javascript:void(null)" class="noright">高清电影</a></li>
+    <li tab="2"><a href="javascript:void(null)">高清电视剧</a></li>
+  </ul>
+  <div class="tab2index_bg">
+    <div class="intro">
+      <p>新浪隆重推出高清大片在线观看，利用最新视频编码方式，全面提升网络视频高清体验，让您抢先欣赏火爆流行大片，重温中外经典影视剧。现已上线高清电影<font color="red">98</font>部，高清电视剧<font color="red">82</font>部。更多精彩高清大片在不断增加中，敬请关注。
+
+<a href="http://comment4.news.sina.com.cn/comment/skin/video.html?channel=bn&amp;newsid=167-1-53110" target="_blank">告诉我们您的意见与建议</a>，我们将不断进步！</p>
+      <p>注意事项：高清大片观看对网速要求较高，建议网速在512k以上的网友体验，网速较低用户可选择“普通模式”播放，流畅欣赏大片。
+</p>
+
+     <p><font color="red">最新上线</font>：<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/znyyddf/detail.html">电视剧《在那遥远的地方》</a> <a target="_blank" href="http://movie.video.sina.com.cn/teleplay/lqh/detail.html">《篮球火》</a> <a target="_blank" href="http://movie.video.sina.com.cn/teleplay/rjzhdshcs/detail.html">《人间正道是沧桑》</a> <a target="_blank" href="http://movie.video.sina.com.cn/teleplay/qf/detail.html">《潜伏》</a> <a target="_blank" href="http://movie.video.sina.com.cn/teleplay/shhk/detail.html">《杀虎口》</a> <a target="_blank" href="http://movie.video.sina.com.cn/teleplay/nlzhn/detail.html">《牛郎织女》</a> <a target="_blank" href="http://movie.video.sina.com.cn/teleplay/xjqxch3/detail.html">《仙剑奇侠传Ⅲ》</a> </p>
+      <p><font color="red">最新上线</font>：<a target="_blank" href="http://movie.video.sina.com.cn/movie/cbx/001.html">电影《赤壁》(下)</a> <a  target="_blank" href="http://movie.video.sina.com.cn/movie/hl2008/detail.html">《婚礼2008》</a><a linkindex="69" target="_blank" href="http://movie.video.sina.com.cn/movie/yw/detail.html">《叶问》</a><a linkindex="67" target="_blank" href="http://movie.video.sina.com.cn/movie/fkdsch/detail.html">《疯狂的赛车》</a><a linkindex="85" target="_blank" href="http://movie.video.sina.com.cn/movie/tulongcq/detail.html">《屠龙传奇》 </a> <a linkindex="89" target="_blank" href="http://movie.video.sina.com.cn/movie/sdjc/001.html">《四大金钗》</a>  <a linkindex="89" target="_blank" href="http://movie.video.sina.com.cn/movie/nw1/001.html">《女王》</a> <a linkindex="89" target="_blank" href="http://movie.video.sina.com.cn/movie/dcdh1/001.html"> 《赌城大亨之新哥传奇》</a></p>
+	     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a linkindex="129" target="_blank" href="http://movie.video.sina.com.cn/movie/hdm/001.html">电影《蝴蝶梦》</a> <a target="_blank" href="http://movie.video.sina.com.cn/movie/dawan/detail.html"> 《大腕》</a> <a target="_blank" href="http://movie.video.sina.com.cn/movie/yeyan/detail.html">《夜宴》</a> <a target="_blank" href="http://movie.video.sina.com.cn/movie/txwz/detail.html">《天下无贼》</a> <a target="_blank" href="http://movie.video.sina.com.cn/movie/klstg/detail.html">《卡拉是条狗》</a> <a target="_blank" href="http://movie.video.sina.com.cn/movie/mt/001.html">《门徒》</a> <a target="_blank" href="http://movie.video.sina.com.cn/movie/xhgj/001.html">《新婚告急》</a> <a target="_blank" href="http://movie.video.sina.com.cn/movie/xtax/001.html">《小偷阿星》</a></p>
+
+         <p align="right"><a href="http://comment4.news.sina.com.cn/comment/skin/video.html?channel=bn&amp;newsid=167-1-53110" target="_blank"><font color=red>点击此处发表留言&gt;&gt;&gt; </font></a>&nbsp;<font color="red"><a href="http://video.sina.com.cn/movie/" target="_blank"><font color=red>返回大片首页&gt;&gt;&gt;</font></a></p>
+
     </div>
-	<!-- 通栏广告 -->
-	<div class="VF_wrap VC_ad">
-		<ins class="sinaads" node="instl1"></ins>
-	</div>
-	<!-- 通栏广告 -->
-    <!-- /焦点图 -->
-	<div class="VF_wrap">
-		<div class="VF_1">
-		 
-				<div class="VM_1">
-		<img src="//n.sinaimg.cn/news/transform/122/w590h332/20191127/b88a-iixntzz6758473.png">
-		<span class="tl">美好生活 始于宪法</span>
-		
-		<span class="VC_icon "></span>
-				
-		<a href="http://video.sina.com.cn/p/news/2019-11-27/detail-iihnzahi3687377.d.html" target="_blank" class="lnk" title="美好生活 始于宪法"></a>
-	</div>
-		</div>
-		<div class="VF_2">				 
-								<div class="VM_2">
-						<img src="//n.sinaimg.cn/news/transform/385/w285h100/20190413/7yvS-hvscktf4699385.jpg">
-			<span class="tl">网络安全预警通报</span>			
-					
-			<a href="http://video.sina.com.cn/p/news/2019-04-13/detail-ihvhiqax2422891.d.html" class="lnk" target="_blank" title="网络安全预警通报"></a>
-		</div>
-										<div class="VM_2">
-						<img src="//n.sinaimg.cn/news/transform/385/w285h100/20181216/CkUC-hqhtqsn9362587.png">
-			<span class="tl">改革开放</span>			
-					
-			<a href="http://opinion.cctv.com/special/lswlggkf/index.shtml" class="lnk" target="_blank" title="改革开放"></a>
-		</div>
-					</div><div class="VF_3">				 
-																<div class="VM_2">
-						<img src="//n.sinaimg.cn/news/transform/385/w285h100/20190417/fcKT-hvvuiym7580842.png">
-			<span class="tl">2019年版权保护动画</span>			
-					
-			<a href="http://video.sina.com.cn/p/news/2019-04-17/detail-ihvhiqax3393960.d.html" class="lnk" target="_blank" title="2019年版权保护动画"></a>
-		</div>
-										<div class="VM_2">
-						<img src="//n.sinaimg.cn/news/transform/385/w285h100/20180820/Dkf9-hhxaafz3462100.png">
-			<span class="tl">蜀黍教你如何提防“冒充公检法诈骗”</span>			
-					
-			<a href="http://video.sina.com.cn/p/news/s/doc/2018-08-20/162768989748.html" class="lnk" target="_blank" title="蜀黍教你如何提防“冒充公检法诈骗”"></a>
-		</div>
-					</div>
-	</div>
-	<!--标题-->
-<div class="VF_wrap VC_tl">
-	<h2>话题</h2>
-	<div class="relate">
-					<a href="http://video.sina.com.cn/topic" target="_blank" class="item">热点</a>			<span class="sep"></span>			<a href="http://video.sina.com.cn/topic/4" target="_blank" class="item">明星</a>			<span class="sep"></span>			<a href="http://video.sina.com.cn/topic/1" target="_blank" class="item">生活</a>			<span class="sep"></span>			<a href="http://video.sina.com.cn/topic/2" target="_blank" class="item">时尚</a>			<span class="sep"></span>			<a href="http://video.sina.com.cn/topic/3" target="_blank" class="item">科技</a>			<span class="sep"></span>			<a href="http://video.sina.com.cn/topic/6" target="_blank" class="item">汽车</a>	</div>
-</div>
-<!---->
-	<div class="VF_wrap">
-		<div class="VF_1">
-		 
-				<div class="VM_1">
-		<img src="//n.sinaimg.cn/video/20170413/O1mb-fyeimqc3326133.jpg">
-		<span class="tl">女神约片室：好声音丁丁与僵尸斗智斗勇</span>
-		
-		<span class="VC_icon "></span>
-				
-		<a href="http://video.sina.com.cn/view/251134258.html" target="_blank" class="lnk" title="女神约片室：好声音丁丁与僵尸斗智斗勇"></a>
-	</div>
-		</div>
-		<div class="VF_2">
-		 
-			<div class="VM_2">
-				<img src="//n.sinaimg.cn/video/20170414/zawG-fyeimqy1501035.jpg">
-		<span class="tl">相恋七年，往昔恋人变小三</span>
-				<a href="http://video.sina.com.cn/view/251136725.html" target="_blank" class="lnk" title="相恋七年，往昔恋人变小三"></a>
-	</div>
-			<div class="VM_2">
-				<img src="//n.sinaimg.cn/video/20160106/Kcum-fxneefs5594280.jpg">
-		<span class="tl">【牛眼看盘】每个交易日资深分析师直播</span>
-				<a href="http://licaishi.sina.com.cn/web/plannerLive" target="_blank" class="lnk" title="【牛眼看盘】每个交易日资深分析师直播"></a>
-	</div>
-		</div>
 
-		<div class="VF_3">
-	<div class="VM_3" >
-		<ul class="bar_list">
-			<li data-video_id="100003317"><a target="_blank" href="http://video.sina.com.cn/topic/100003317.html">盘点爱女如命的明星爸爸们</a></li><li data-video_id="100003318"><a target="_blank" href="http://video.sina.com.cn/topic/100003318.html">盘点娱乐圈的模范夫妻</a></li><li data-video_id="100003309"><a target="_blank" href="http://video.sina.com.cn/topic/100003309.html">“鱼只有7秒记忆”只是个传说</a></li><li data-video_id="100003350"><a target="_blank" href="http://video.sina.com.cn/topic/100003350.html">贵圈为角色实力扮丑的女星们</a></li><li data-video_id="100003338"><a target="_blank" href="http://video.sina.com.cn/topic/100003338.html">盘点停车不长眼的车主们</a></li><li data-video_id="100003211"><a target="_blank" href="http://video.sina.com.cn/topic/100003211.html">遗传高颜值 女明星都有漂亮妈妈</a></li><li data-video_id="100002357"><a target="_blank" href="http://video.sina.com.cn/topic/100002357.html">笑到不行的泰国奇葩广告</a></li><li data-video_id="100003040"><a target="_blank" href="http://video.sina.com.cn/topic/100003040.html">闺蜜抢男友你怎么办？</a></li><li data-video_id="100003320"><a target="_blank" href="http://video.sina.com.cn/topic/100003320.html">学宋慧乔变冻龄女神</a></li>		</ul>
-	</div>
-</div>
-		  
-	</div>
-	<!--标题-->
-<div class="VF_wrap VC_tl">
-	<h2>今日热点</h2>
-	<div class="relate">
-					<a href="http://video.sina.com.cn/p/news/s/doc/2018-04-09/100968155172.html " target="_blank" class="item">首届“北京大工匠”揭晓活动预告片</a>	</div>
-</div>
-<!---->
-	<div class="VF_wrap">
-		<div class="VF_1">				 
-								<div class="VM_2">
-						<img src="//n.sinaimg.cn/news/transform/385/w285h100/20190220/2Lnl-htfpvza5262694.png">
-			<span class="tl">公安部公益广告</span>			
-					
-			<a href="http://video.sina.com.cn/p/news/2019-02-20/detail-ihqfskcp6829054.d.html" class="lnk" target="_blank" title="公安部公益广告"></a>
-		</div>
-										<div class="VM_2">
-						<img src="//n.sinaimg.cn/news/transform/w285h100/20180202/XJB2-fyrcsrx0351180.png">
-			<span class="tl">看完这个 不要让泪水打湿你的车票</span>			
-					
-			<a href="http://video.sina.com.cn/p/news/c/doc/2018-02-02/154667944537.html" class="lnk" target="_blank" title="看完这个 不要让泪水打湿你的车票"></a>
-		</div>
-										<div class="VM_2">
-						<img src="//n.sinaimg.cn/news/transform/385/w285h100/20180416/4KVU-fytnfyp5917386.png">
-			<span class="tl">国家安全日宣传视频</span>			
-					
-			<a href="http://video.sina.com.cn/p/news/c/doc/2018-04-16/150868185115.html" class="lnk" target="_blank" title="国家安全日宣传视频"></a>
-		</div>
-										<div class="VM_2">
-						<img src="//n.sinaimg.cn/ent/transform/w285h160/20180207/4eVZ-fyrhcqz5436994.jpg">
-			<span class="tl">林依晨与高中同学聚会 少女味显清纯俏皮</span>			
-					
-			<a href="http://video.sina.com.cn/p/ent/doc/2018-02-07/101868002478.html" class="lnk" target="_blank" title="林依晨与高中同学聚会 少女味显清纯俏皮"></a>
-		</div>
-					</div><div class="VF_2">				 
-																								<div class="VM_2">
-						<img src="//n.sinaimg.cn/news/transform/20170921/TnrM-fymesii4674006.png">
-			<span class="tl">女子从娃娃机里一次性抓走十对螃蟹</span>			
-					
-			<a href="http://video.sina.com.cn/news/spj/topvideoes20170919/#251656121" class="lnk" target="_blank" title="女子从娃娃机里一次性抓走十对螃蟹"></a>
-		</div>
-										<div class="VM_2">
-						<img src="//n.sinaimg.cn/ent/transform/w285h160/20180207/sVFx-fyrhcqz5440035.jpg">
-			<span class="tl">周杰伦变“美人鱼” 网友：丑得不忍直视</span>			
-					
-			<a href="http://video.sina.com.cn/p/ent/doc/2018-02-07/094668002355.html" class="lnk" target="_blank" title="周杰伦变“美人鱼” 网友：丑得不忍直视"></a>
-		</div>
-					</div><div class="VF_3">				 
-																																<div class="VM_2">
-						<img src="//n.sinaimg.cn/news/transform/20170921/AtgN-fymesii4674483.png">
-			<span class="tl">民警抓小偷巧遇消防员 大喊求助</span>			
-					
-			<a href="http://video.sina.com.cn/news/spj/topvideoes20170919/#251658791" class="lnk" target="_blank" title="民警抓小偷巧遇消防员 大喊求助"></a>
-		</div>
-										<div class="VM_2">
-						<img src="//n.sinaimg.cn/ent/transform/w285h160/20180207/sCS3-fyrhcqz5446473.jpg">
-			<span class="tl">霍思燕携儿子拍大片 嗯哼镜头感媲美模特</span>			
-					
-			<a href="http://video.sina.com.cn/p/ent/doc/2018-02-07/090668002249.html" class="lnk" target="_blank" title="霍思燕携儿子拍大片 嗯哼镜头感媲美模特"></a>
-		</div>
-					</div>
-	</div>
-	<!--标题-->
-<div class="VF_wrap VC_tl">
-	<h2>体育赛事</h2>
-	<div class="relate">
-					<a href="http://sports.sina.com.cn/uclvideo/" target="_blank" class="item">欧冠</a>			<span class="sep"></span>			<a href="http://sports.sina.com.cn/video/c/j/afccl/" target="_blank" class="item">亚冠</a>			<span class="sep"></span>			<a href="http://sports.sina.com.cn/video/c/j/csl/" target="_blank" class="item">中超</a>			<span class="sep"></span>			<a href="http://sports.sina.com.cn/video/g/pl/" target="_blank" class="item">英超</a>			<span class="sep"></span>			<a href="http://sports.sina.com.cn/video/g/bundesliga/" target="_blank" class="item">德甲</a>	</div>
-</div>
-<!---->
-	<div class="VF_wrap">
-		<div class="VF_1">
-		 
-				<div class="VM_1">
-		<img src="//n.sinaimg.cn/video/transform/w590h332/20171218/LMEv-fypsqka9231678.jpg">
-		<span class="tl">周杰伦直播造势魔杰杯高校电竞联赛</span>
-		
-		<span class="VC_icon "></span>
-				
-		<a href="http://video.sina.com.cn/p/sports/esports/v/doc/2017-12-18/225467637949.html" target="_blank" class="lnk" title="周杰伦直播造势魔杰杯高校电竞联赛"></a>
-	</div>
-		</div>
-		<div class="VF_2">				 
-								<div class="VM_2">
-						<img src="//n.sinaimg.cn/video/transform/20170829/DWKl-fykiufe7390848.jpg">
-			<span class="tl">登贝莱诺坎普颠球连续失误</span>			
-					
-			<a href="http://sports.sina.com.cn/video/g/laliga/#251558022" class="lnk" target="_blank" title="登贝莱诺坎普颠球连续失误"></a>
-		</div>
-										<div class="VM_2">
-						<img src="//n.sinaimg.cn/video/transform/20170829/59po-fykiuex7082257.jpg">
-			<span class="tl">枪手老铁怒喷温格球队管理层</span>			
-					
-			<a href="http://sports.sina.com.cn/video/g/premierleague/#251558169" class="lnk" target="_blank" title="枪手老铁怒喷温格球队管理层"></a>
-		</div>
-					</div><div class="VF_3">				 
-																<div class="VM_2">
-						<img src="//n.sinaimg.cn/video/transform/20170829/Z187-fykiufe7391891.png">
-			<span class="tl">魏秋月全运会宣布退役</span>			
-					
-			<a href="http://video.sina.com.cn/p/sports/o/v/v/doc/2017-08-29/131766978481.html" class="lnk" target="_blank" title="魏秋月全运会宣布退役"></a>
-		</div>
-										<div class="VM_2">
-						<img src="//n.sinaimg.cn/sports/transform/20170109/oVqE-fxzkfuk3060837.png">
-			<span class="tl">皇马官方视频庆祝门神50场里程碑</span>			
-					
-			<a href="http://sports.sina.com.cn/video/g/laliga/#250930082" class="lnk" target="_blank" title="皇马官方视频庆祝门神50场里程碑"></a>
-		</div>
-					</div>
-	</div>
-	<!--通栏广告-->
-	<div class="VF_wrap VC_ad">
-		<ins class="sinaads" node="instl2"></ins>
-	</div>
-	<!--/通栏广告-->
-	<!--标题-->
-<div class="VF_wrap VC_tl">
-	<h2>娱乐</h2>
-	<div class="relate">
-					<a href="http://ent.sina.com.cn/video/vlist/2016-09-13/doc-ifxvukhv8302988.shtml" target="_blank" class="item">星风做浪</a>			<span class="sep"></span>			<a href="http://ent.sina.com.cn/video/vlist/2016-09-13/doc-ifxvukhx5036178.shtml" target="_blank" class="item">星FUN</a>	</div>
-</div>
-<!---->
-	<div class="VF_wrap">
-		<div class="VF_1">
-		 
-				<div class="VM_1">
-		<img src="//n.sinaimg.cn/ent/w590h332/20180207/3t76-fyrhcqz5470978.jpg">
-		<span class="tl">高圆圆包场看赵又廷新片 看到吻戏笑出声</span>
-		
-		<span class="VC_icon "></span>
-				
-		<a href="http://video.sina.com.cn/p/ent/doc/2018-02-07/090568002248.html" target="_blank" class="lnk" title="高圆圆包场看赵又廷新片 看到吻戏笑出声"></a>
-	</div>
-		</div>
-		<div class="VF_2">
-		 
-			<div class="VM_2">
-				<img src="//n.sinaimg.cn/ent/transform/w285h160/20180207/FRi1-fyrhcqz5487739.jpg">
-		<span class="tl">谢娜产后饮食曝光 疼得发抖张杰心痛流泪</span>
-				<a href="http://video.sina.com.cn/p/ent/doc/2018-02-07/125568002930.html" target="_blank" class="lnk" title="谢娜产后饮食曝光 疼得发抖张杰心痛流泪"></a>
-	</div>
-			<div class="VM_2">
-				<img src="//n.sinaimg.cn/ent/transform/w285h160/20180207/6DJe-fyrhcqz5501100.jpg">
-		<span class="tl">胡歌放飞自我拍大片 被调侃：快乐的傻子</span>
-				<a href="http://video.sina.com.cn/p/ent/doc/2018-02-07/133468002987.html" target="_blank" class="lnk" title="胡歌放飞自我拍大片 被调侃：快乐的傻子"></a>
-	</div>
-		</div>
+		<div id="tab2index_con1" class="tab2index_con">
 
-		<!-- testcid 182997 -->
-<div class="VF_3">
-	<div class="VM_2">
-		<img src="//n.sinaimg.cn/ent/transform/w285h160/20171214/FclE-fypsqiz7938849.jpg">
-		<span class="tl">鹿晗关晓彤公开恋情</span>
-		<span class="VC_icon VC_icon_zhjitg"></span>
-		<span class="total">共 140 个视频</span>
-		<a href="http://ent.sina.com.cn/video/vlist/2017-10-08/doc-ifymrcmm9213310.shtml#251746896" target="_blank" class="lnk" title="鹿晗关晓彤公开恋情"></a>
-	</div>
-	<div class="VM_album">
-		<i class="VC_icon VC_icon_tarrow"></i>
-		<ul>
-						<li><a href="http://video.sina.com.cn/p/ent/doc/2017-07-04/163266571971.html" target="_blank" >视频：《复合大师》陈赫单人预告  陈赫化身爆红设计师 女人缘超赞</a></li>
-						<li><a href="http://video.sina.com.cn/p/ent/doc/2017-07-04/161166571825.html" target="_blank" >视频：赖雨濛《火王》片场回应陈柏霖吐槽</a></li>
-						<li><a href="http://video.sina.com.cn/p/ent/m/c/doc/2017-06-19/000466464195.html" target="_blank" >视频：2017微博电影之夜 杜丽莎献唱《wind beneath my wings》</a></li>
-						<li><a href="http://video.sina.com.cn/p/ent/doc/2017-02-20/094665744331.html" target="_blank" >视频：任嘉伦采访快问快答</a></li>
-					</ul>
-	</div>
-</div>
-	</div>
+			<div tab="1" class="link6 dplist" style="text-align:left">
+        <div id="zimu_index" class="fan_az" style="padding-top: 20px; margin-bottom: 40px; margin-left: 20px;"><div class="az_page"><span class="bluezi" style="float: left;">按字母索引：</span></div><div class="az_page style="float: left;""><div id="pinyin_key" class="fanaz"><a rel="0" href="#movie_A" class="page" linkindex="25">A</a><a rel="1" href="#movie_B" class="page" linkindex="26">B</a><a rel="2" href="#movie_C" class="page" linkindex="27">C</a><a rel="3" href="#movie_D" class="page" linkindex="28">D</a><a rel="4" href="#movie_E" class="page" linkindex="29">E</a><a rel="5" href="#movie_F" class="page" linkindex="30">F</a><a rel="6" href="#movie_G" class="page" linkindex="31">G</a><a rel="7" href="#movie_H" class="page" linkindex="32">H</a><a rel="8" href="#movie_I" class="page" linkindex="33">I</a><a rel="9" href="#movie_J" class="page" linkindex="34">J</a><a rel="10" href="#movie_K" class="page" linkindex="35">K</a><a rel="11" href="#movie_L" class="page" linkindex="36">L</a><a rel="12" href="#movie_M" class="page" linkindex="37">M</a><a rel="13" href="#movie_N" class="page" linkindex="38">N</a><a rel="14" href="#movie_O" class="page" linkindex="39">O</a><a rel="15" href="#movie_P" class="page" linkindex="40">P</a><a rel="16" href="#movie_Q" class="page" linkindex="41">Q</a><a rel="17" href="#movie_R" class="page" linkindex="42">R</a><a rel="18" href="#movie_S" class="page" linkindex="43">S</a><a rel="19" href="#movie_T" class="page" linkindex="44">T</a><a rel="20" href="#movie_U" class="page" linkindex="45">U</a><a rel="21" href="#movie_V" class="page" linkindex="46">V</a><a rel="22" href="#movie_W" class="page" linkindex="47">W</a><a rel="23" href="#movie_X" class="page" linkindex="48">X</a><a rel="24" href="#movie_Y" class="page" linkindex="49">Y</a><a rel="25" href="#movie_z" class="page" linkindex="50">Z</a></div></div></div>
 
-	<!--标题-->
-<div class="VF_wrap VC_tl">
-	<h2>综艺</h2>
-	<div class="relate">
-			</div>
-</div>
-<!---->
-	<div class="VF_wrap">
-		<div class="VF_1">
-		 
-				<div class="VM_1">
-		<img src="//n.sinaimg.cn/ent/transform/20161018/kcsf-fxwvpaq1602819.png">
-		<span class="tl">辣眼睛！《爸爸4》田亮扭动唱歌穿秋裤</span>
-		
-		<span class="VC_icon "></span>
-				
-		<a href="http://video.sina.com.cn/p/ent/doc/2016-10-14/225965380865.html" target="_blank" class="lnk" title="辣眼睛！《爸爸4》田亮扭动唱歌穿秋裤"></a>
-	</div>
-		</div>
-		<div class="VF_2">
-		 
-			<div class="VM_2">
-				<img src="//n.sinaimg.cn/ent/transform/20161018/Kv-A-fxwvpar8333446.png">
-		<span class="tl">《百乐门》唐朝美人之贾玲篇</span>
-				<a href="http://video.sina.com.cn/p/ent/doc/2016-10-17/145965382683.html" target="_blank" class="lnk" title="《百乐门》唐朝美人之贾玲篇"></a>
-	</div>
-			<div class="VM_2">
-				<img src="//n.sinaimg.cn/video/transform/20161009/Flsr-fxwrhpn9480629.png">
-		<span class="tl">超燃！《真男》杨幂空军制服帅气回归</span>
-				<a href="http://video.sina.com.cn/p/ent/z/v/doc/2016-10-09/105165374455.html" target="_blank" class="lnk" title="超燃！《真男》杨幂空军制服帅气回归"></a>
-	</div>
-		</div>
+		<a name="movie_A"></a><div class="dt A"></div><div style="float: right; padding-right: 40px;  color:#666666;"><a href="#"><strong>返回顶部</strong></a></div>
 
-		<!-- testcid 186226 -->
-<div class="VF_3">
-	<div class="VM_2">
-		<img src="//n.sinaimg.cn/video/transform/20161009/zYnT-fxwrhpm2734651.png">
-		<span class="tl">《中国新歌声》第五季</span>
-		<span class="VC_icon VC_icon_zhjitg"></span>
-		<span class="total">共 219 个视频</span>
-		<a href="http://ent.sina.com.cn/video/vlist/2016-07-14/doc-ifxuapvs8404599.shtml" target="_blank" class="lnk" title="《中国新歌声》第五季"></a>
-	</div>
-	<div class="VM_album">
-		<i class="VC_icon VC_icon_tarrow"></i>
-		<ul>
-						<li><a href="http://ent.sina.com.cn/music/zy/2017-05-03/doc-ifyetwsm1917247.shtml" target="_blank" >《中国新歌声》赛制大换血 那英恐被“剃光头”？</a></li>
-						<li><a href="http://ent.sina.com.cn/music/zy/2017-04-26/doc-ifyepsec1335046.shtml" target="_blank" >《新歌声》音乐总监刘卓曝汪峰可能不再担任导师</a></li>
-						<li><a href="http://ent.sina.com.cn/music/zy/2016-12-08/doc-ifxypipt0513774.shtml" target="_blank" >刘欢加盟《中国新歌声2》？灿星：是谣传</a></li>
-						<li><a href="http://ent.sina.com.cn/music/zy/2016-10-21/doc-ifxwztru6822207.shtml" target="_blank" >当导师？周杰伦：希望下届新歌声可以夺冠</a></li>
-					</ul>
-	</div>
-</div>
-	</div>
-	<!--标题-->
-<div class="VF_wrap VC_tl">
-	<h2>公开课</h2>
-	<div class="relate">
-					<a href="http://open.sina.com.cn/school/id_57" target="_blank" class="item">TED演讲</a>			<span class="sep"></span>			<a href="http://open.sina.com.cn/school/id_69" target="_blank" class="item">哈佛</a>			<span class="sep"></span>			<a href="http://open.sina.com.cn/school/id_70" target="_blank" class="item">耶鲁</a>			<span class="sep"></span>			<a href="http://open.sina.com.cn/school/id_68" target="_blank" class="item">斯坦福</a>			<span class="sep"></span>			<a href="http://open.sina.com.cn/school/id_63" target="_blank" class="item">MIT</a>	</div>
-</div>
-<!---->
-	<div class="VF_wrap">
-		<div class="VF_1">				 
-								<div class="VM_2">
-						<img src="//n.sinaimg.cn/video/445/w285h160/20191014/c39d-ifvwftk7409832.jpg">
-			<span class="tl">我的青春在海淀：对话海淀名校长</span>			
-					
-			<a href="http://video.sina.com.cn/p/edu/2019-09-29/detail-iicezueu9169018.d.html" class="lnk" target="_blank" title="我的青春在海淀：对话海淀名校长"></a>
-		</div>
-										<div class="VM_2">
-						<img src="//n.sinaimg.cn/edu/transform/445/w285h160/20181130/hl-z-hpinrya8938243.jpg">
-			<span class="tl">胡军：用心陪伴是给孩子最好的教育</span>			
-					
-			<a href="http://video.sina.com.cn/p/edu/2018-11-30/detail-ihmutuec5024743.d.html" class="lnk" target="_blank" title="胡军：用心陪伴是给孩子最好的教育"></a>
-		</div>
-										<div class="VM_2">
-						<img src="//n.sinaimg.cn/edu/transform/445/w285h160/20181130/uTxf-hpfyces8868877.png">
-			<span class="tl">田朴珺：什么是真正的贵族教育</span>			
-					
-			<a href="http://video.sina.com.cn/p/edu/2018-11-30/detail-ihpevhcm4422072.d.html" class="lnk" target="_blank" title="田朴珺：什么是真正的贵族教育"></a>
-		</div>
-										<div class="VM_2">
-						<img src="//n.sinaimg.cn/edu/transform/445/w285h160/20181130/ucAV-hpevhcm5122706.jpg">
-			<span class="tl">张怡筠：家庭教育要从情商教育开始</span>			
-					
-			<a href="http://video.sina.com.cn/p/edu/2018-11-30/detail-ihmutuec4953558.d.html" class="lnk" target="_blank" title="张怡筠：家庭教育要从情商教育开始"></a>
-		</div>
-					</div><div class="VF_2">				 
-																								<div class="VM_2">
-						<img src="//n.sinaimg.cn/edu/transform/445/w285h160/20181130/tjRV-hpinrya8942754.jpg">
-			<span class="tl">刘璇：把握教育的“冠军法则”</span>			
-					
-			<a href="http://video.sina.com.cn/p/edu/2018-11-30/detail-ihmutuec5030286.d.html" class="lnk" target="_blank" title="刘璇：把握教育的“冠军法则”"></a>
-		</div>
-										<div class="VM_2">
-						<img src="//n.sinaimg.cn/edu/transform/445/w285h160/20181130/Zxpg-hpfyces8872050.jpg">
-			<span class="tl">朱永新：中国教育需要进一步改革开放</span>			
-					
-			<a href="http://video.sina.com.cn/p/edu/2018-11-30/detail-ihpevhcm4427953.d.html" class="lnk" target="_blank" title="朱永新：中国教育需要进一步改革开放"></a>
-		</div>
-					</div><div class="VF_3">				 
-																																<div class="VM_2">
-						<img src="//n.sinaimg.cn/edu/transform/445/w285h160/20181130/S0SQ-hpinrya8943824.jpg">
-			<span class="tl">人大辩论队精彩激辩家长群利弊</span>			
-					
-			<a href="http://video.sina.com.cn/p/edu/2018-11-30/detail-ihmutuec4954442.d.html" class="lnk" target="_blank" title="人大辩论队精彩激辩家长群利弊"></a>
-		</div>
-										<div class="VM_2">
-						<img src="//n.sinaimg.cn/edu/transform/445/w285h160/20181130/msqU-hpfyces8875499.jpg">
-			<span class="tl">翟小宁：育德树人 生命与使命同行</span>			
-					
-			<a href="http://video.sina.com.cn/p/edu/2018-11-30/detail-ihpevhcm4866400.d.html" class="lnk" target="_blank" title="翟小宁：育德树人 生命与使命同行"></a>
-		</div>
-					</div>
-	</div>
-<!--foot-->
-<div class="VM_subfooter">
-	<div class="ft_wrap">
-    	<div class="item item1">
-        	<ul class="svc">
-            	<li><i class="TMF_icon TMF_icon_ftqun"></i>新浪视频官方交流群：298929939</li>
-                <li><i class="TMF_icon TMF_icon_ftweibo"></i>关注官方微博：<a href="http://weibo.com/u/2183512987" target="_blank">@视频小助手</a></li>
-                <li><i class="TMF_icon TMF_icon_ftkf"></i>24小时电话客服：400 052 0066</li>
+		<ul class="sy">
+
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/aqhjzy2/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/22/1922_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/aqhjzy2/001.html">《爱情呼叫转移2》</a><br>导演：张建亚<br>主演：林嘉欣 范伟<br>类型：爱情<br>片长：107分钟</li>
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/adhdf/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/48/948_120160.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/adhdf/001.html">《爱德华大夫》</a><br>导演：希区柯克<br>主演：英格丽-褒曼 格里高利-派克 <br>类型：悬疑/爱情<br>片长：107分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/amypj/detail.html" target="_blank"><img 
+
+src="http://i0.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090805102654.jpg" style="border:solid 1px #000000;"  
+
+/></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/amypj/detail.html">《傲慢与偏见》</a><br>导演：罗伯特<br>主演：葛丽亚-嘉逊 <br>类型：爱情<br>片长：117分钟</li>
+
+		</ul>
+
+		<div class="sy_dot"></div>
+
+		<a name="movie_B"></a><div class="dt B"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+
+		<ul class="sy">
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/bcth/detail.html
+" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/73/1973_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/bcth/detail.html
+">《保持通话》</a><br>导演：陈木胜<br>主演：刘烨 大S<br>类型：剧情/犯罪<br>片长：106分钟</li>
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/blsmy/detail.html
+" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/2/1502_120160.jpg" style="border:solid 1px #000000;" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/blsmy/detail.html
+">《巴黎圣母院》</a><br>导演：让-德拉努瓦<br>主演：安东尼-奎恩<br>类型：剧情/爱情<br>片长：109分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/bjj/001.html
+" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/83/1783_120160.jpg" style="border:solid 1px #000000;" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/bjj/001.html
+">《白鲸记》</a><br>导演：约翰-休斯顿 <br>主演：格利高里-派 <br>类型：剧情/冒险<br>片长：109分钟</li>
+		</ul>
+
+		<div class="sy_dot"></div>
+
+		<a name="movie_C"></a><div class="dt C"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/cbx/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/95/2095_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/cbx/001.html">《赤壁》(下)</a><br>导演：吴宇森<br>主演：梁朝伟 金城武 赵薇 林志玲<br>类型：古装/战争<br>片长：135分钟</li>
+
+	<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/cnwz/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/62/1762_120160.jpg" style="border:solid 1px #000000;" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/cnwz/001.html">《丑男无罪》</a><br>导演：宋熹新<br>主演：金贤珠 李成宰 <br>类型：喜剧<br>片长：111分钟</li>
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/cszg/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/51/951_120160.jpg" style="border:solid 1px #000000;" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/cszg/001.html">《城市之光》</a><br>导演：卓别林<br>主演：卓别林  <br>类型：喜剧/爱情<br>片长：82分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/cs/detail.html" target="_blank"><img 
+
+src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/30/1730_120160.jpg" style="border:solid 1px #000000;" /></a></td><a 
+
+target="_blank" href="http://movie.video.sina.com.cn/movie/cs/detail.html">《缠身》</a><br>导演：王凯旋<br>主演：河莉秀  <br>
+
+类型：恐怖<br>片长：84分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/chsfr/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/8/2108_120160.jpg" style="border:solid 1px #000000;" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/chsfr/detail.html">《出水芙蓉》</a><br>导演：George Sidney<br>主演：雷德-斯克尔顿<br>类型：歌舞<br>片长：109分钟</li>
+			  </ul>
+		<div class="sy_dot"></div>
+
+		<a name="movie_D"></a><div class="dt D"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/dgl/001.html" target="_blank"><img src="http://i0.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8353F8926DT20090313124159.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/dgl/001.html">《大灌篮》</a><br>导演：朱延平<br>主演：周杰伦 黄渤 陈柏霖<br>类型：动作/剧情<br>片长：97分钟</li>
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/ds/001.html" target="_blank"><img src="http://i2.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8353F8928DT20090313124650.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/ds/001.html">《夺帅》</a><br>导演：罗守耀<br>主演：洪金宝 任达华 吴京<br>类型：动作/剧情<br>片长：117分钟</li>
+
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/djx/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/59/1659_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/djx/001.html">《刀剑笑》</a><br>
+导演：黄泰来<br>主演：林青霞 刘德华 徐锦江 <br>类型：动作/武侠<br>
+片长：86分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/dhmsa/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/2/802_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/dhmsa/001.html">《电话谋杀案》</a><br>
+导演：希区柯克<br>
+主演：格蕾丝-凯利<br>
+类型：剧情/悬疑<br>
+片长：86分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/ddjx/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/3/803_120160.jpg" style="border:solid 1px #000000;"  /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/ddjx/001.html">《当代奸雄》</a><br>
+导演：罗伯特-罗森 <br>
+主演：约翰-爱尔兰 <br>
+类型：犯罪/动作  <br>
+片长：86分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/dcdh1/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/48/2148_120160.jpg" style="border:solid 1px #000000;"  /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/dcdh1/001.html">《赌城大亨之新哥传奇》</a><br>
+导演：王晶<br>
+主演：刘德华 王祖贤  <br>
+类型：剧情/动作  <br>
+片长：124分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/dcdh2/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/46/2146_120160.jpg" style="border:solid 1px #000000;"  /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/dcdh2/001.html">《赌城大亨II之至尊无敌》</a><br>
+导演：王晶 <br>
+主演：刘德华 邱淑贞 刘兆铭 万梓良 <br>
+类型：剧情/动作  <br>
+片长：107分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/dawan/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/58/2158_120160.jpg" style="border:solid 1px #000000;"  /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/dawan/detail.html">《大腕》</a><br>
+导演：冯小刚 <br>
+主演：葛优 关之琳 <br>
+类型：剧情/喜剧  <br>
+片长：106分钟</li>
+		</ul>
+
+		<div class="sy_dot"></div>
+
+		<a name="movie_F"></a><div class="dt F"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/fkdsch/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/94/2094_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/fkdsch/detail.html">《疯狂的赛车》</a><br>导演：宁浩<br>主演：黄渤 徐峥 九孔<br>类型：喜剧/动作<br>片长：100分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/fytl/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/37/2137_120160.jpg" style="border:solid 1px #000000;" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/fytl/001.html">《风雨同路》</a><br>导演：黄柏文<br>主演：周星驰 周慧敏<br>类型：喜剧/动作<br>片长：94分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/fsd/detail.html" target="_blank"><img 
+
+src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/49/649_120160.jpg" style="border:solid 1px #000000;" /></a></td><a 
+
+target="_blank" href="http://movie.video.sina.com.cn/movie/fsd/detail.html">《浮士德》</a><br>导演：f-w-茂瑙  <br>主演：爱米尔-强宁斯 <br>类型：恐怖<br>片长：115分钟</li>
+		</ul>
+
+		<div class="sy_dot"></div><a name="movie_G"></a><div class="dt G"></div>
+		<ul class="sy">
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/gyx/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/52/1752_120160.jpg" style="border:solid 1px #000000;"/></a></td>
+			<a target="_blank" href="http://movie.video.sina.com.cn/movie/gyx/001.html">《高压线》</a><br>
+			导演：金杨桦<br>
+			主演：李丽丽 张耀扬<br>
+			类型：犯罪/动作<br>片长：84分钟</li>
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/gxxl/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/99/799_120160.jpg" style="border:solid 1px #000000;"/></a></td>
+			<a target="_blank" href="http://movie.video.sina.com.cn/movie/gxxl/001.html">《孤星血泪》</a><br>
+			导演：大卫-里恩 <br>
+			主演：约翰-米尔斯<br>
+			类型：剧情/爱情<br>片长：118分钟</li>
+					<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/gjdds/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/72/772_120160.jpg" style="border:solid 1px #000000;"/></a></td>
+			<a target="_blank" href="http://movie.video.sina.com.cn/movie/gjdds/001.html">《国家的诞生》</a><br>
+			导演：格里菲思 <br>
+			主演：拉尔夫-刘易斯<br>
+			类型：剧情/历史<br>片长：211分钟</li>
+				<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/gwyw/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/83/683_120160.jpg" style="border:solid 1px #000000;"/></a></td>
+			<a target="_blank" href="http://movie.video.sina.com.cn/movie/gwyw/detail.html">《国王与我》</a><br>
+			导演：Lang Walter<br>
+			主演：丽塔-莫雷诺 黛博拉-蔻尔<br>
+			类型：爱情/歌舞<br>片长：132分钟</li>
+		</ul>
+<div class="sy_dot"></div>
+		<a name="movie_H"></a><div class="dt H"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/hckzh/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/4/2104_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/hckzh/001.html">《荒村客栈》</a><br>导演：张菁<br>主演：何美钿 张檬<br>类型：惊悚/恐怖<br>片长：84分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/hl2008/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/24/2124_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/hl2008/001.html">《婚礼2008》</a><br>
+导演：张承<br>主演：陶虹 郭涛<br>类型：喜剧/剧情<br>
+片长：93分钟</li>
+
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/hcgk/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/29/929_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/hcgk/001.html">《火车怪客》</a><br>
+导演：希区柯克<br>
+主演：法利-格兰杰 鲁思-罗曼<br>
+类型：悬疑/剧情<br>
+片长：93分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/hjqx/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/26/926_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/hjqx/001.html">《海角擒凶》</a><br>
+导演：希区柯克<br>
+主演：奥托-卡明斯 克鲁格-罗伯特<br>
+类型：悬疑/剧情<br>
+片长：93分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/hdm/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/27/927_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/hdm/001.html">《蝴蝶梦》</a><br>
+导演：希区柯克<br>
+主演：劳伦斯-奥利弗 琼-芳登<br>
+类型：悬疑/剧情<br>
+片长：120分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/h/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/91/691_120160.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/h/001.html">《红河谷》</a><br>
+导演：雷华-霍克斯 <br>
+主演：约翰-韦恩<br>
+类型：动作/战争<br>
+片长：132分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/hxzhj2/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/33/2133_120160.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/hxzhj2/detail.html">《火线战将2》</a><br>
+导演：Sebast<br>
+主演：朱丽亚-史汀 汉德瑞克-都<br>
+类型：动作<br>
+片长：93分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/hxzhj3/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/36/2136_120160.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/hxzhj3/001.html">《火线战将3》</a><br>
+导演：赫蒙尼-卓旱<br>
+主演：瑞内-斯坦恩克 安德绀-阿塔来<br>
+类型：动作<br>
+片长：95分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/hdf/detail.html" target="_blank"><img 
+src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/64/1764_120160.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/hdf/detail.html">《蝴蝶飞》</a><br>
+导演：杜琪峰<br>
+主演：李冰冰 周渝民<br>
+类型：爱情<br>
+片长：84分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/hmf/detail.html" target="_blank"><img 
+src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/48/648_120160.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/hmf/detail.html">《红磨坊》</a><br>
+导演：巴兹-鲁赫曼<br>
+主演：尼科尔-基德曼<br>
+类型：爱情<br>
+片长：118分钟</li>
+</ul>
+
+		<div class="sy_dot"></div>
+
+		<a name="movie_J"></a><div class="dt J"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">			
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/jlxj/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8353F8929DT20090313125352.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/jlxj/detail.html">《见龙卸甲》</a><br>导演：李仁港<br>主演：刘德华 洪金宝 Maggie Q<br>类型：古装/战争<br>片长：102分钟</li>
+
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/jsr/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/35/1835_s.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/jsr/001.html">《寄生人》</a><br>
+导演：李仁港<br>主演：范冰冰 张家辉<br>类型：惊悚/剧情<br>
+片长：123分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/jst/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/94/794_120160.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/jst/001.html">《救生艇》</a><br>
+导演：希区柯克<br>主演：加利-格兰特<br>类型：剧情<br>
+片长：96分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/jd/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/30/930_120160.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/jd/001.html">《间谍》</a><br>
+导演：弗里茨-朗 <br>主演：Rudolf Klein-Rogge <br>类型：剧情/惊悚<br>
+片长：85分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/jmfx/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/86/1786_120160.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/jmfx/001.html">《寂寞芳心》</a><br>
+导演：Clifford Odets <br>主演：加里-格兰特  凯瑟琳-赫本 <br>类型：剧情<br>
+片长：85分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/jw/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/1/1601_120160.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/jw/001.html">《救我》</a><br>
+导演：张琦 <br>主演：阿斯茹 石凉 小宋佳 朱宏嘉  <br>类型：剧情/惊悚<br>
+片长：85分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/jsmr/detail.html" target="_blank"><img 
+
+src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/66/1766_120160.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/jsmr/detail.html">《江山美人》</a><br>
+导演：程小东 <br>主演：陈慧琳 黎明  <br>类型：爱情<br>
+片长：91分钟</li>
+		</ul>
+<div class="sy_dot"></div>
+
+		<div class="dt K"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">			
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/klstg/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/61/2161_120160.jpg" style="border:solid 1px #000000;" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/klstg/detail.html">《卡拉是条狗》</a><br>导演：路学长<br>主演：葛优 丁嘉丽 <br>类型：喜剧/家庭<br>片长：96分钟</li>
+
+		</ul>
+		<div class="sy_dot"></div>
+
+		<a name="movie_L"></a><div class="dt L"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/lzhzhzh/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/5/2105_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/lzhzhzh/001.html">《龙之战争》</a><br>导演：Hyung- Shim<br>主演：杰森-贝尔<br>类型：科幻/魔幻<br>片长：102分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/lnzsy/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/5/705_120160.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/lnzsy/001.html">《列宁在十月》</a><br>导演：Mikhail Romm <br>主演：Boris Nikolai Okhlopkov<br>类型：历史/传记<br>片长：105分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/llkp/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/31/2131_120160.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/llkp/001.html">《罗拉快跑》</a><br>导演：汤姆-提克威  <br>主演：弗兰卡-波坦特 莫里兹-布雷多<br>类型：剧情/爱情<br>片长：105分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/lyxz/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/41/641_120160.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/lyxz/detail.html">《绿野仙踪》</a><br>导演：维克托  <br>主演：弗兰克-摩根 朱迪-加兰<br>类型：奇幻/冒险<br>片长：101分钟</li>
+		</ul>
+
+		<div class="sy_dot"></div>
+		<a name="movie_M"></a><div class="dt M"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/mmyy/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/2/2102_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/mmyy/001.html">《密码疑云》</a><br>导演：季姆-舒梅<br>主演：安娜斯塔西娅<br>类型：动作/犯罪<br>片长：105分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/mxxz/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/50/1750_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/mxxz/001.html">《马戏小子》</a><br>
+导演：午马<br>主演：温碧霞 元彪<br>
+类型：动作/剧情<br>
+片长：104分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/myhjzy/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/ent/pc/2009-03-20/296/U2519P28T296D8457F8929DT20090320183237.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/myhjzy/detail.html ">《命运呼叫转移》</a><br>
+导演：刘仪伟<br>主演：葛优 徐峥 徐帆<br>
+类型：短片/剧情<br>
+片长：110分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/mmzawyc1/001.html" target="_blank"><img src="http://i0.sinaimg.cn/ent/pc/2009-03-20/296/U2519P28T296D8457F8931DT20090320191240.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/mmzawyc1/001.html ">《妈妈再爱我一次》</a><br>
+导演：陈朱煌<br>主演：杨贵媚 谢小鱼<br>
+类型：家庭/剧情<br>
+片长：85分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/mzyx/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/42/942_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/mzyx/001.html ">《面子游戏》</a><br>
+导演：希区柯克<br>
+主演：赫伯特-郎顿 罗斯-约翰<br>
+类型：悬疑/剧情<br>
+片长：78分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/mt/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/91/391_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/mt/001.html ">《门徒》</a><br>
+导演：尔冬升 <br>
+主演：古天乐 刘德华 <br>
+类型：犯罪/动作<br>
+片长：101分钟</li>
+		</ul>
+		<div class="sy_dot"></div>
+		<div class="dt N"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/nrbs/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/ent/pc/2009-03-20/296/U2519P28T296D8457F8928DT20090320181636.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/nrbs/detail.html">《女人本色》</a><br>导演：黄真真<br>主演：梁咏琪 薛凯琪<br>类型：剧情<br>片长：101分钟</li>
+	<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/nw1/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/32/2132_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/nw1/001.html">《女王》</a><br>导演：斯蒂芬-弗雷斯<br>主演：海伦-米伦 麦克-辛<br>类型：传记/剧情<br>片长：104分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/n/detail.html" target="_blank"><img 
+
+src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/39/939_120160.jpg" style="border:solid 1px #000000;" 
+
+originalimg="http://cache.mars.sina.com.cn/nd/movievideo/thumb/39/939_120160.jpg" /></a></td><a target="_blank" 
+
+href="http://movie.video.sina.com.cn/movie/n/detail.html">《鸟》</a><br>导演：希区柯克<br>主演：蒂比-赫德伦<br>类型：惊悚<br>
+
+片长：118分钟</li>
+		</ul>
+
+		<div class="sy_dot"></div>
+<a name="movie_Q"></a><div class="dt Q"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+			<li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/qydch/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/38/938_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/qydch/001.html">《凄艳断肠花》</a><br>
+			  导演：希区柯克<br>
+		    主演：格里高利-派克<br>
+		    类型：悬疑/爱情<br>
+		    片长：114分钟</li>
+						<li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/qlmzldx/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/34/1834_s.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/qlmzldx/001.html">《乞力马扎罗的雪》</a><br>
+			  导演：亨利-金 <br>
+		    主演：艾娃-加德纳<br>
+		    类型：剧情/爱情<br>
+		    片长：113分钟</li>
             </ul>
-        </div>
-        <div class="item item2">
-        	<div class="td_scan">
-            	<img class="td" src="//n.sinaimg.cn/default/162ffe2b/20151214/td.jpg">
-                <span>扫描二维码下载<br>新浪视频App</span>
-            </div>
-            <a href="http://video.sina.com.cn/app/web/" target="_blank" class="down_cate dn_ip">
-            	<i class="TMF_icon TMF_icon_ios"></i>iPhone版下载
-            </a>
-            <a href="http://video.sina.com.cn/app/web/" target="_blank" class="down_cate dn_ad">
-            	<i class="TMF_icon TMF_icon_and"></i>Android版下载
-            </a>
-        </div>
-    </div>
+            <div class="sy_dot"></div>
+			<a name="movie_S"></a><div class="dt S"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+			<li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/sdcs/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/25/1925_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/sdcs/001.html">《圣诞传说》</a><br>导演：卓哈-沃里诸<br>主演：汉努-珀卡<br>类型：科幻/魔幻<br>片长：77分钟</li>
+
+			<li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/sqjm/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/1/2101_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/sqjm/001.html">《十全九美》</a><br>导演：王岳伦<br>主演：黄奕 立威廉<br>类型：爱情/喜剧<br>片长：92分钟</li>
+
+			<li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/sxwd/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/3/2103_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/sxwd/001.html">《水啸雾都》</a><br>导演：托尼-米切尔<br>主演：罗伯特-卡莱<br>类型：剧情/动作<br>片长：185分钟</li>
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/sdyjqzaekb/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/70/1970_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/sdyjqzaekb/001.html">《速度与激情之A2狂飙》</a><br>导演：迈克尔-库奇<br>主演：亚历桑德娜<br>类型：喜剧/动作<br>片长：83分钟</li>
+            <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/ssxs/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/76/1976_120160.jpg" width="120" height="160" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+            <a target="_blank" href="http://movie.video.sina.com.cn/movie/ssxs/001.html">《时尚先生》</a><br>
+            导演：乔梁<br>主演：方中信 孔维<br>类型：爱情/剧情<br>
+            片长：93分钟</li>
+            <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/sjbfh/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/25/2125_120160.jpg" width="120" height="160" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+            <a target="_blank" href="http://movie.video.sina.com.cn/movie/sjbfh/001.html">《山鸡变凤凰》</a><br>
+            导演：邱礼涛 萧伟强 <br>主演：毛舜筠 刘青云 <br>类型：喜剧/动作 <br>
+            片长：89分钟</li>
+            <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/syj/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/36/936_120160.jpg" width="120" height="160" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+            <a target="_blank" href="http://movie.video.sina.com.cn/movie/syj/001.html">《伸冤记》</a><br>
+            导演：希区柯克<br>主演：亨利-方达 维拉-迈尔斯 <br>
+            类型：剧情/悬疑 <br>
+            片长：105分钟</li>
+
+						         <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/sdjc/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/71/1471_120160.jpg" width="120" height="160" style="border:solid 1px #000000;"  /></a></td>
+            <a target="_blank" href="http://movie.video.sina.com.cn/movie/sdjc/001.html">《四大金钗》</a><br>
+            导演：吴宗宪 <br>主演：莫少聪 史可 <br>
+            类型：动作/喜剧 <br>
+            片长：101分钟</li>
+				         <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/spl/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/36/336_120160.jpg" width="120" height="160" style="border:solid 1px #000000;"  /></a></td>
+            <a target="_blank" href="http://movie.video.sina.com.cn/movie/spl/001.html">《杀破狼》</a><br>
+            导演：叶伟信 <br>主演：洪金宝 任达华  <br>
+            类型：动作/犯罪 <br>
+            片长：93分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/snzd/detail.html" target="_blank"><img 
+
+src="http://i2.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090805101734.jpg" width="120" height="160" 
+
+style="border:solid 1px #000000;"  /></a></td>
+            <a target="_blank" href="http://movie.video.sina.com.cn/movie/snzd/detail.html">《圣女贞德》</a><br>
+            导演：维克多-弗莱明 <br>主演：英格丽-褒曼  <br>
+            类型：伦理 <br>
+            片长：81分钟</li>
+		</ul>
+
+		<div class="sy_dot"></div>
+
+		<a name="movie_T"></a><div class="dt T"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+<ul class="sy">
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/thy/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/28/1928_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/thy/001.html">《桃花运》</a><br>导演：马俪文<br>主演：梅婷 葛优 耿乐 段奕宏<br>类型：喜剧/爱情<br>片长：107分钟</li>
+
+		    <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/tyzcsq/001.html" target="_blank"><img src="http://i2.sinaimg.cn/ent/pc/2009-03-20/296/U2519P28T296D8457F8932DT20090320191601.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/tyzcsq/001.html">《太阳照常升起》</a><br>导演：姜文<br>主演：姜文 黄秋生 陈冲<br>类型：爱情/剧情<br>片长：111分钟</li>
+					    <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/ttdyj/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/34/334_120160.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/ttdyj/001.html">《天堂的眼睛》</a><br>导演：张华<br>主演：黄圣依 宋祖德<br>类型：爱情/剧情<br>片长：90分钟</li>
+						  <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/tt/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/78/1478_120160.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/tt/001.html">《天台》</a><br>导演：李长欣<br>主演：邓紫衣 黄渤 <br>类型：青春/喜剧<br>片长：79分钟</li>
+						 	  <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/tulongcq/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/34/2134_120160.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/tulongcq/detail.html">《屠龙传奇》</a><br>导演：马瑞克-布罗德斯基<br>主演：麦克尔-泽伯夫斯基 <br>类型：动作/魔幻<br>片长：126分钟</li>
+
+						 	  <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/tiantangkou/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/63/2163_120160.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/tiantangkou/detail.html">《天堂口》</a><br>导演：陈奕利 <br>主演：吴彦祖 舒淇 张震<br>类型：剧情<br>片长：90分钟</li>
+						 	  <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/txwz/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/59/2159_120160.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/txwz/detail.html">《天下无贼》</a><br>导演：冯小刚 <br>主演：刘德华 葛优 王宝强<br>类型：剧情<br>片长：123分钟</li>
+
+</ul>
+		<div class="sy_dot"></div>
+
+		<a name="movie_W"></a><div class="dt W"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+<ul class="sy">
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/wszsnx/001.html" target="_blank"><img src="http://i0.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8353F8931DT20090313132138.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/wszsnx/001.html">《武术之少年行》</a><br>导演：司徒永华<br>主演：洪金宝<br>类型：动作/剧情<br>片长：101分钟</li>
+
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/wcwrs/001.html" target="_blank"><img src="http://i2.sinaimg.cn/ent/pc/2009-03-20/296/U2519P28T296D8457F8933DT20090320192436.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/wcwrs/001.html">《舞出我人生》</a><br>导演：安妮-弗莱彻<br>主演：查宁-塔图姆<br>类型：歌舞/爱情<br>片长：103分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/wtshy/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/28/2128_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/wtshy/001.html">《舞台生涯》</a><br>
+导演：查理-卓别林<br>
+主演：查理-卓别林 巴斯特-基顿 <br>
+类型：喜剧/爱情<br>
+片长：130分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/wycm/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/55/555_120160.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/wycm/001.html">《我要成名》</a><br>
+导演：刘国昌<br>
+主演：霍思燕 刘青云<br>
+类型：喜剧/剧情<br>
+片长：89分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/wj/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/35/335_120160.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/movie/wj/001.html">《无极》</a><br>
+导演：陈凯歌<br>
+主演：刘烨 谢霆锋 张柏芝<br>
+类型：魔幻/古装<br>
+片长：116分钟</li>
+		</ul>
+		<div class="sy_dot"></div>
+
+		<a name="movie_X"></a><div class="dt X"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+<ul class="sy">
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/xsn/001.html" target="_blank"><img src="http://i0.sinaimg.cn/ent/pc/2009-03-20/296/U2519P28T296D8457F8930DT20090320183550.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/xsn/001.html">《吓死你》</a><br>导演：钱江汉<br>主演：李璨琛 江若琳 阮民安<br>类型：惊悚<br>片长：85分钟</li>
+	<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/xhgj/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/86/786_120160.jpg" style="border:solid 1px #000000;" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/xhgj/001.html">《新婚告急》</a><br>导演：沈丽滨<br>主演：柯受良 李灿森<br>类型：惊悚<br>片长：85分钟</li>
+	<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/xtax/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/87/1687_120160.jpg" style="border:solid 1px #000000;" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/xtax/001.html">《小偷阿星》</a><br>导演：楚原 <br>主演：方中信 胡慧中 周星驰<br>类型：喜剧<br>片长：92分钟</li>
+
+	<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/xbpb/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/23/923_120160.jpg" style="border:solid 1px #000000;" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/xbpb/001.html">《西北偏北》</a><br>导演：希区柯克  <br>主演：加里-格兰特<br>类型：剧情<br>片长：136分钟</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/movie/xjhw/detail.html" target="_blank"><img 
+
+src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/59/759_120160.jpg" style="border:solid 1px #000000;" /></a></td><a 
+
+target="_blank" href="http://movie.video.sina.com.cn/movie/xjhw/detail.html">《相见恨晚》</a><br>导演：大卫-里恩<br>主演：特雷弗-霍华德<br>类型：爱情<br>片长：86分钟</li>
+		</ul>
+
+		<div class="sy_dot"></div>
+
+		<a name="movie_Y"></a><div class="dt Y"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+<ul class="sy">
+			<li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/yt/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/79/1979_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/movie/yt/detail.html">《樱桃》</a><br>导演：张加贝<br>主演：苗圃<br>类型：家庭/剧情<br>片长：101分钟</li>
+            <li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/ymjld/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/35/935_120160.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+            <a target="_blank" href="http://movie.video.sina.com.cn/movie/ymjld/detail.html">《牙买加旅店》</a><br>
+            导演：吉尔-贝阿特<br>
+            主演：哈里-克莱文<br>
+            类型：冒险/悬疑<br>
+            片长：89分钟</li>
+            <li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/ymph/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/34/934_120160.jpg" style="border:solid 1px #000000;" /></a></td>
+            <a target="_blank" href="http://movie.video.sina.com.cn/movie/ymph/detail.html">《阴谋破坏》</a><br>
+            导演：希区柯克<br>
+            主演：克里斯汀-斯莱特<br>
+            类型：剧情/悬疑<br>
+            片长：76分钟</li>
+			            <li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/yw/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/43/1943_120160.jpg" style="border:solid 1px #000000;"  /></a></td>
+            <a target="_blank" href="http://movie.video.sina.com.cn/movie/yw/detail.html">《叶问》</a><br>
+            导演：叶伟信<br>
+            主演：甄子丹 池内博之 任达华<br>
+            类型：剧情/动作<br>
+            片长：109分钟</li>
+			<li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/ywtx/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/32/332_120160.jpg" style="border:solid 1px #000000;"  /></a></td>
+            <a target="_blank" href="http://movie.video.sina.com.cn/movie/ywtx/detail.html">《与我同行》</a><br>
+            导演：李奥-麦凯里<br>
+            主演：宾-克罗斯拜 <br>
+            类型：剧情/动作<br>
+            片长：126分钟</li>
+				<li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/ydlrzelsdqy/001.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/10/610_120160.jpg" style="border:solid 1px #000000;"  /></a></td>
+            <a target="_blank" href="http://movie.video.sina.com.cn/movie/ydlrzelsdqy/001.html">《意大利人在俄罗斯》</a><br>
+            导演：梁赞诺夫<br>
+            主演：安德雷-米罗 <br>
+            类型：冒险/喜剧<br>
+            片长：97分钟</li>
+	    <li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/yeyan/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/62/2162_120160.jpg" style="border:solid 1px #000000;"  /></a></td>
+            <a target="_blank" href="http://movie.video.sina.com.cn/movie/yeyan/detail.html">《夜宴》</a><br>
+            导演：冯小刚<br>
+            主演：葛优 章子怡 <br>
+            类型：古装 动作 <br>
+            片长：124分钟</li>
+            </ul>
+<div class="sy_dot"></div>
+
+		<a name="movie_z"></a><div class="dt Z"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+	<ul class="sy">
+			<li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/zw/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/79/779_120160.jpg" style="border:solid 1px #000000;"  /></a></td>
+			<a target="_blank" href="http://movie.video.sina.com.cn/movie/zw/detail.html">《正午》</a><br>
+			导演：弗雷德-金尼曼<br>
+			主演：加里-库柏<br>
+			类型：犯罪/剧情<br>
+			片长：84分钟</li>
+            <li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/zzj/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/31/931_120160.jpg" style="border:solid 1px #000000;"  /></a></td>
+			<a target="_blank" href="http://movie.video.sina.com.cn/movie/zzj/detail.html">《捉贼记》</a><br>
+			导演：弗雷德-金尼曼<br>
+			主演：格蕾丝-凯利<br>
+			类型：悬疑/剧情<br>
+			片长：105分钟</li>
+            <li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/zy001/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/91/1591_120160.jpg" style="border:solid 1px #000000;"  /></a></td>
+			<a target="_blank" href="http://movie.video.sina.com.cn/movie/zy001/detail.html">《左右》</a><br>
+			导演：王小帅<br>
+			主演：高圆圆 刘威葳 余男 张嘉译<br>
+			类型：剧情/伦理<br>
+			片长：110分钟</li>
+			     <li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/zs/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/86/1486_120160.jpg" style="border:solid 1px #000000;"  /></a></td>
+			<a target="_blank" href="http://movie.video.sina.com.cn/movie/zs/detail.html">《证书》</a><br>
+			导演：夏咏<br>
+			主演：高发 李琦<br>
+			类型：剧情/喜剧<br>
+			片长：85分钟</li>
+						     <li><td width="110" align="center"><a href="http://movie.video.sina.com.cn/movie/zdzs/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo//thumb/61/761_120160.jpg" style="border:solid 1px #000000;"  /></a></td>
+			<a target="_blank" href="http://movie.video.sina.com.cn/movie/zdzs/detail.html">《战地钟声》</a><br>
+			导演：山姆-伍德<br>
+			主演：加里-库柏<br>
+			类型：战争/剧情 <br>
+			片长：154分钟</li>
+		</ul>
+		</ul>
+			</div>
+			<div tab="2" class="link6 dplist" style="text-align:left">
+      <div id="zimu_index" class="fan_az" style="padding-top: 20px; margin-bottom: 40px; margin-left: 20px;"><div class="az_page"><span class="bluezi" style="float: left;">按字母索引：</span></div><div class="az_page style="float: left;""><div id="pinyin_key" class="fanaz"><a rel="0" href="#teleplay_A" class="page" linkindex="25">A</a><a rel="1" href="#teleplay_B" class="page" linkindex="26">B</a><a rel="2" href="#teleplay_C" class="page" linkindex="27">C</a><a rel="3" href="#teleplay_D" class="page" linkindex="28">D</a><a rel="4" href="#teleplay_E" class="page" linkindex="29">E</a><a rel="5" href="#teleplay_F" class="page" linkindex="30">F</a><a rel="6" href="#teleplay_G" class="page" linkindex="31">G</a><a rel="7" href="#teleplay_H" class="page" linkindex="32">H</a><a rel="8" href="#teleplay_I" class="page" linkindex="33">I</a><a rel="9" href="#teleplay_J" class="page" linkindex="34">J</a><a rel="10" href="#teleplay_K" class="page" linkindex="35">K</a><a rel="11" href="#teleplay_L" class="page" linkindex="36">L</a><a rel="12" href="#teleplay_M" class="page" linkindex="37">M</a><a rel="13" href="#teleplay_N" class="page" linkindex="38">N</a><a rel="14" href="#teleplay_O" class="page" linkindex="39">O</a><a rel="15" href="#teleplay_P" class="page" linkindex="40">P</a><a rel="16" href="#teleplay_Q" class="page" linkindex="41">Q</a><a rel="17" href="#teleplay_R" class="page" linkindex="42">R</a><a rel="18" href="#teleplay_S" class="page" linkindex="43">S</a><a rel="19" href="#teleplay_T" class="page" linkindex="44">T</a><a rel="20" href="#teleplay_U" class="page" linkindex="45">U</a><a rel="21" href="#teleplay_V" class="page" linkindex="46">V</a><a rel="22" href="#teleplay_W" class="page" linkindex="47">W</a><a rel="23" href="#teleplay_X" class="page" linkindex="48">X</a><a rel="24" href="#teleplay_Y" class="page" linkindex="49">Y</a><a rel="25" href="#teleplay_z" class="page" linkindex="50">Z</a></div></div></div>
+
+		</ul>
+
+		<a name="teleplay_A"></a><div class="dt A"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+
+		<ul class="sy">
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/ashykxfdzd/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/book/2004-01-02/U2290P167T1D321F5DT20090424162825.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/ashykxfdzd/detail.html">《爱是一颗幸福的子弹》</a><br>导演：胡坤<br>主演：沈佳妮 张歆艺 陈思成 张子晨<br>全长：25集</li>
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/aiqxyqj/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/book/2004-01-02/U2290P167T1D321F6DT20090424175623.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/aiqxyqj/detail.html">《爱情需要奇迹》</a><br>导演：高鸿植 <br>主演：金元姬 李奎汉 李世恩 吴大奎<br>全长：20集</li>
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/awh/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F8DT20090605152138.jpg" style="border:solid 1px #000000;" originalimg="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F8DT20090605152138.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/awh/detail.html">《爱无悔》(又名:江南第一店)</a><br>导演：赖水清 <br>主演：杜淳 高圆圆 刘德凯 保剑锋<br>全长：36集</li>
+
+		</ul>
+		<div class="sy_dot"></div>
+
+		<a name="movie_B"></a><div class="dt B"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+
+		<ul class="sy">
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/bfngc/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F205DT20090605144444.jpg" style="border:solid 1px #000000;" originalimg="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F205DT20090605144444.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/bfngc/detail.html">《北风那个吹》</a><br>导演：安建 <br>主演：夏雨 闫妮<br>全长：36集</li>
+
+		</ul>
+		<div class="sy_dot"></div>
+		<a name="teleplay_C"></a><div class="dt C"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+
+		<ul class="sy">
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/cgd/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8353F8932DT20090313133005.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/cgd/detail.html">《闯关东》</a><br>导演：张新建<br>主演：李幼斌<br>全长：52集</li>
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/cnwd/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8353F8933DT20090313133410.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/cnwd/detail.html">《丑女无敌》</a><br>导演：张峰<br>主演：李欣汝<br>全长：43集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/cnwd2/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2007-09-08/U3099P167T1D42812F203DT20090721113257.jpg" style="border:solid 1px #000000;" originalimg="http://i0.sinaimg.cn/book/2007-09-08/U3099P167T1D42812F203DT20090721113257.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/cnwd2/detail.html">《丑女无敌Ⅱ》</a><br>导演：张峰<br>主演：李欣汝<br>全长：40集</li>
+		</ul>
+
+		<div class="sy_dot"></div>
+			<a name="teleplay_D"></a><div class="dt D"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+
+		<ul class="sy">
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/dlm/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/book/2004-01-02/U2290P167T1D321F1459DT20090330172342.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/dlm/detail.html">《大龙脉》</a><br>导演：蒋秋霞  <br>主演：张复建 郭金 杜志国 <br>全长：24集</li>
+
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/dzhzh/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2004-01-02/U2290P167T1D321F5DT20090424184208.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/dzhzh/detail.html">《大珍珠》</a><br>导演：白韬  <br>主演：保剑锋 殷桃 岳跃利 陆廷威  <br>全长：36集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/daguoyi/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F8DT20090605145635.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/daguoyi/detail.html">《大国医》</a><br>导演：吴子牛<br>主演：赵文瑄 徐帆 岳跃利 陆廷威  <br>全长：36集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/dsd/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U3099P167T1D321F204DT20090701171437.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/dsd/detail.html">《大时代》</a><br>导演：韦家辉<br>主演：刘青云 郑少秋 周慧敏  <br>全长：40集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/dsh/detail.html" target="_blank"><img src="http://cache.mars.sina.com.cn/nd/movievideo/thumb/90/2190_120160.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/dsh/detail.html">《对手》</a><br>导演：尤小刚<br>主演：赵文瑄 冯远征  <br>全长：45集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/df1937/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090730165228.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/df1937/detail.html">《刀锋1937》</a><br>导演：郭靖宇<br>主演：寇世勋 孙红雷  <br>全长：39集</li>
+
+		</ul>
+
+		<div class="sy_dot"></div>
+
+		<a name="teleplay_F"></a><div class="dt F"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/fsb/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8353F8916DT20090313134527.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/fsb/detail.html">《封神榜》</a><br>导演：金国钊<br>主演：范冰冰<br>全长：40集</li>
+
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/fy2/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2004-01-02/U2290P167T1D321F5DT20090424165304.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/fy2/detail.html">《风云2》</a><br>导演：彭顺 彭发<br>主演：赵文卓 何润东<br>全长：42集</li></li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/fenghuajd/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U2290P167T1D321F8DT20090513104649.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/book/2004-01-02/U2290P167T1D321F8DT20090513104649.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/fenghuajd/detail.html">《风华绝代》</a><br>导演：宗华<br>主演：刘晓庆 陈小艺<br>全长：41集</li>
+		</ul>
+
+		<div class="sy_dot"></div>
+       <a name="teleplay_G"></a> <div class="dt G"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/grsy/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U2290P167T1D321F6DT20090321205455.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+		  <a target="_blank" href="http://movie.video.sina.com.cn/teleplay/grsy/detail.html">《光荣岁月》</a><br>导演：高希希<br>
+		  主演：陈建斌 朱媛媛 黄海波<br>
+		  全长：40集</li>
+
+		</ul>
+		<div class="sy_dot"></div>
+
+		<a name="teleplay_H"></a><div class="dt H"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+
+        <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/hlm/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/book/2004-01-02/U2290P167T1D321F6DT20090321201633.jpg" style="border:solid 1px #000000;" /></a></td>
+        <a target="_blank" href="http://movie.video.sina.com.cn/teleplay/hlm/detail.html">《红楼梦》</a><br>
+        导演：王扶林<br>
+        主演：欧阳奋强 邓婕 陈晓旭<br>
+        全长：36集</li>
+   <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/hnw/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2004-01-02/U2290P167T1D321F205DT20090403201049.jpg" style="border:solid 1px #000000;" /></a></td>
+        <a target="_blank" href="http://movie.video.sina.com.cn/teleplay/hnw/detail.html">《婚内外》</a><br>
+        导演：蒋钦民 <br>
+        主演：任泉 苗圃 赵琳 <br>
+        全长：25集</li>
+		</ul>
+		<div class="sy_dot"></div>
+
+		<a name="teleplay_J"></a><div class="dt J"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/jh/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U3099P167T1D321F8DT20090605160300.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/book/2004-01-02/U3099P167T1D321F8DT20090605160300.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/jh/detail.html">《金婚》</a><br>导演：郑晓龙<br>主演：张国立 蒋雯丽<br>全长：50集</li>
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/jwcz/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8353F8920DT20090313140251.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/jwcz/detail.html">《精武陈真》</a><br>导演：蔡晶盛(香港)<br>主演：陈小春 董洁<br>全长：30集</li>
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/jssj/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090605155735.jpg" style="border:solid 1px #000000;" originalimg="http://i2.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090605155735.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/jssj/detail.html">《绝色双娇》</a><br>导演：华践盟<br>主演：张婷 焦恩俊 吴孟达 宋丹丹<br>全长：40集</li>
+
+		</ul>
+				<div class="sy_dot"></div>
+
+		<a name="teleplay_K"></a><div class="dt K"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/kshu/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U2290P167T1D321F204DT20090403201049.jpg" style="border:solid 1px #000000;" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/kshu/detail.html">《宽恕》</a><br>导演：陈燕民 <br>主演：许晴 王志文<br>全长：32集</li>
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/kjnwnw/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/book/2004-01-02/U2290P167T1D321F204DT20090403205152.jpg" style="border:solid 1px #000000;" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/kjnwnw/detail.html">《靠近你 温暖我》</a><br>导演：张建栋 姜伟 <br>主演：许晴 梅婷 柯蓝<br>全长：26集</li>
+
+		</ul>
+
+		<div class="sy_dot"></div>
+
+			<a name="teleplay_L"></a><div class="dt L"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/lj1/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8353F8921DT20090313142043.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/lj1/detail.html">《亮剑》</a><br>导演：张前<br>主演：李幼斌<br>全长：36集</li>
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/lxlcq/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8353F8922DT20090313142343.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/lxlcq/detail.html">《李小龙传奇》</a><br>导演：李文歧<br>主演：陈国坤<br>全长：50集</li>
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/ldj/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2004-01-02/U2290P167T1D321F5DT20090424160040.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/ldj/detail.html">《鹿鼎记》</a><br>导演：马玉辉<br>主演：梁朝伟 刘德华 刘嘉玲 毛舜筠<br>全长：36集</li>
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/ldqksj/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2004-01-02/U2290P167T1D321F5DT20090424184846.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/ldqksj/detail.html">《落地请开手机》</a><br>导演：李骏 <br>主演：孙红雷 傅晶 <br>全长：26集</li>
+                <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/lxg/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U3099P167T1D321F205DT20090701165105.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/lxg/detail.html">《龙须沟》</a><br>导演：李诚儒<br>主演：李诚儒 马以 <br>全长：34集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/lqh/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090724183513.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/lqh/detail.html">《篮球火》</a><br>导演：林合隆<br>主演：言承旭 罗志祥 <br>全长：24集</li>
+
+		</ul>
+
+		<div class="sy_dot"></div>
+
+			<a name="teleplay_M"></a><div class="dt M"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+			<ul class="sy">
+
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/mmsj/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8353F8923DT20090313142633.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/mmsj/detail.html">《魔幻手机》</a><br>导演：余明生<br>主演：焦恩俊<br>全长：42集</li><li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/mygjdnr/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U3099P167T1D321F204DT20090612110138.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/book/2004-01-02/U3099P167T1D321F204DT20090612110138.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/mygjdnr/detail.html">《没有国籍的女人》</a><br>导演：叶清纯<br>主演：陈宝国 艾丽娅<br>全长：20集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/mlwsh/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/book/2004-01-02/U3099P167T1D321F204DT20090701165703.jpg" style="border:solid 1px #000000;" originalimg="http://i2.sinaimg.cn/book/2004-01-02/U3099P167T1D321F204DT20090701165703.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/mlwsh/detail.html">《美丽无声》</a><br>导演：黄健中<br>主演：马伊俐 王姬<br>全长：30集</li>
+		</ul>
+		<div class="sy_dot"></div>
+
+			<a name="teleplay_N"></a><div class="dt N"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+			<ul class="sy">
+
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/nyqy/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090605153533.jpg" style="border:solid 1px #000000;" originalimg="http://i0.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090605153533.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/nyqy/detail.html">《南洋奇缘》</a><br>导演：张营<br>主演：李志奇 史兰芽 万弘杰<br>全长：20集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/nlzhn/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2007-09-08/U3099P167T1D42812F6DT20090721113939.jpg" style="border:solid 1px #000000;" originalimg="http://i0.sinaimg.cn/book/2007-09-08/U3099P167T1D42812F6DT20090721113939.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/nlzhn/detail.html">《牛郎织女》</a><br>导演：鞠觉亮<br>主演：田亮 安以轩 <br>全长：38集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/nsmzjnwdar/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090730164335.jpg" style="border:solid 1px #000000;" originalimg="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090730164335.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/nsmzjnwdar/detail.html">《拿什么拯救你 我的爱人》</a><br>导演：赵宝刚<br>主演：刘烨 印小天 <br>全长：23集</li>
+
+		</ul>
+
+		<div class="sy_dot"></div>
+		<a name="teleplay_O"></a><div class="dt O"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/onair/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8353F8924DT20090313142937.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/onair/detail.html">韩剧《ON AIR》</a><br>导演：申宇哲<br>主演：金荷娜<br>全长：21集</li>
+
+		</ul>
+		<div class="sy_dot"></div>
+		<a name="teleplay_P"></a><div class="dt P"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/ppxfxg/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090605154532.jpg" style="border:solid 1px #000000;" originalimg="http://i0.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090605154532.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/ppxfxg/detail.html">《婆婆媳妇小姑》</a><br>导演：江海洋<br>主演：郑毓芝 傅艺伟<br>全长：23集</li>
+
+		</ul>
+
+		<div class="sy_dot"></div>
+		<a name="teleplay_Q"></a><div class="dt Q"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/qf/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/book/2004-01-02/U2290P167T1D321F1459DT20090330171824.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/qf/detail.html">《潜伏》</a><br>导演：陶玲玲 尤小刚<br>主演：孙红雷 姚晨<br>全长：30集</li>
+	<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/qw1/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2004-01-02/U2290P167T1D321F5DT20090405231141.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/qw1/detail.html">《祈望》</a><br>导演：姜伟<br>主演：茹萍 孙淳<br>全长：32集</li>
+
+		</ul>
+
+		<div class="sy_dot"></div>
+		<a name="teleplay_R"></a><div class="dt R"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+        <ul class="sy">
+
+		  <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/reai/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U2290P167T1D321F5DT20090424183428.jpg" style="border:solid 1px #000000;" /></a></td>
+		  <a target="_blank" href="http://movie.video.sina.com.cn/teleplay/reai/detail.html">《热爱》(又名：大镇反)</a><br>
+		  导演：范小天<br>主演：苏有朋 韩雪 赵君 陈龙 薛佳凝<br>
+		  全长：33集</li>
+		   <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/rjzhdshcs/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090605142151.jpg" style="border:solid 1px #000000;" /></a></td>
+		  <a target="_blank" href="http://movie.video.sina.com.cn/teleplay/rjzhdshcs/detail.html">《人间正道是沧桑》</a><br>
+		  导演：张黎<br>主演：孙红雷 黄志忠 张恒 柯蓝<br>
+		  全长：50集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/razy/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2004-01-02/U3099P167T1D321F204DT20090701170655.jpg" style="border:solid 1px #000000;" /></a></td>
+		  <a target="_blank" href="http://movie.video.sina.com.cn/teleplay/razy/detail.html">《让爱自由》</a><br>
+		  导演：曾丽珍<br>主演：古巨基 杨千嬅<br>
+		  全长：20集</li>
+		</ul>
+
+		<div class="sy_dot"></div>
+
+		<a name="teleplay_S"></a><div class="dt S"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/sdyxc/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8353F8927DT20090313143743.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/sdyxc/detail.html ">《射雕英雄传》</a><br>导演：李国立<br>主演：胡歌 林依晨<br>全长：50集</li>
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/sgyy1994/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8357F8926DT20090313144113.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/sgyy1994/detail.html ">《三国演义》</a><br>导演：王扶林<br>主演：唐国强<br>全长：84集</li>
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/sbtj/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8357F8928DT20090313144952.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/sbtj/detail.html">《士兵突击》</a><br>导演：康洪雷<br>主演：王宝强<br>全长：30集</li>
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/stdrj3/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8357F8929DT20090313145546.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+		<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/stdrj3/detail.html">《神探狄仁杰III》</a><br>导演：钱雁秋 张文玲<br>主演：梁冠华<br>全长：38集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/shz/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/book/2004-01-02/U2290P167T1D321F6DT20090321202642.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/shz/detail.html">《水浒传》</a><br>
+导演：张绍林<br>
+主演：李雪健 野芒 臧金生等<br>
+全长：43集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/sjb/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U2290P167T1D321F7DT20090324151455.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/sjb/detail.html">《沙家浜》</a><br>
+导演：沈星浩<br>
+主演：许晴 陈道明 任程伟 刘金山<br>
+全长：30集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/sht/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U2290P167T1D321F5DT20090424154417.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/sht/detail.html">《上海滩》</a><br>
+导演：招振强 <br>
+主演：赵雅芝 周润发 刘丹 吕良伟 <br>
+全长：25集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/newsstt/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2004-01-02/U2290P167T1D321F204DT20090507110033.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/newsstt/detail.html">《四世同堂》(新版)</a><br>
+导演：汪俊<br>
+主演：黄磊 蒋勤勤 曾静 赵宝刚 <br>
+全长：36集</li><li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/suiyangdi/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/book/2004-01-02/U2290P167T1D321F7DT20090513104649.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/suiyangdi/detail.html">《隋炀帝》</a><br>
+导演：张丽娟<br>
+主演：姚鲁 余立文 <br>
+全长：25集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/shyyh/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090721120214.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/shyyh/detail.html">《誓言永恒》</a><br>
+导演：毛卫宁<br>
+主演：高明 李强 <br>
+全长：28集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/shhk/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090730163052.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/shhk/detail.html">《杀虎口》</a><br>
+导演：徐纪周<br>
+主演：李光洁 陶蓉 <br>
+全长：31集</li>
+		</ul>
+
+		<div class="sy_dot"></div>
+
+		<a name="teleplay_T"></a><div class="dt T"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/tgdjt/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8357F8930DT20090313150051.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/tgdjt/detail.html">《天国的阶梯》</a><br>导演：李长秀<br>主演：崔智友 金泰熙 权相宇 申铉俊<br>全长：28集</li>
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/tmm/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U3099P167T1D321F204DT20090326114136.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/tmm/detail.html">《甜蜜蜜》</a><br>导演：高希希<br>主演：孙俪 邓超<br>全长：26集</li>
+
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/tongrt/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/book/2004-01-02/U2290P167T1D321F5DT20090424180430.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/tongrt/detail.html">《同仁堂》</a><br>导演：宫晓东<br>主演：王学圻 周舟 张绍荣 <br>全长：35集</li>
+                        <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/tssm/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/book/2004-01-02/U3099P167T1D321F205DT20090605143509.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/tssm/detail.html">《特殊使命》</a><br>
+导演：彦小追<br>
+主演：李光洁 周扬<br>
+全长：40集</li>
+
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/tjshjdeshbgbm/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090721120801.jpg" style="border:solid 1px #000000;" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/tjshjdeshbgbm/detail.html">《田教授家的二十八个保姆》</a><br>
+导演：吴培民<br>
+主演：李立群 顾永菲<br>
+全长：20集</li>
+		</ul>
+
+        <div class="sy_dot"></div>
+				<a name="teleplay_W"></a><div class="dt W"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+
+			<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/wdaqmb/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U3099P167T1D321F205DT20090605150311.jpg" style="border:solid 1px #000000;" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/wdaqmb/detail.html">《我的爱情面包》</a><br>导演：林合隆 <br>主演：郑元畅 林依晨<br>全长：25集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/wfyx/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090730164736.jpg" style="border:solid 1px #000000;" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/wfyx/detail.html">《我非英雄》</a><br>导演：郭靖宇 <br>主演：孙红雷 李强<br>全长：26集</li>
+
+		</ul>
+
+        <div class="sy_dot"></div>
+		<a name="teleplay_X"></a><div class="dt X"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/xyj/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8357F8931DT20090313150218.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/xyj/detail.html">《西游记》</a><br>导演：杨洁<br>主演：六小龄童 徐少华 马德华<br>全长：41集</li>
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/xslm/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/book/2004-01-02/U3099P167T1D321F204DT20090320144305.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/xslm/detail.html">《血色浪漫》</a><br>导演：滕文骥<br>主演：刘烨 孙俪<br>全长：32集</li>
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/xsmw/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8357F8933DT20090313150937.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/xsmw/detail.html">《血色迷雾》</a><br>导演：柳云龙<br>主演：柳云龙<br>全长：42集</li>
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/xzhxq/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8357F8934DT20090313151202.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/xzhxq/detail.html">《笑着活下去》</a><br>导演：澄丰<br>主演：黄海波 王琳 萨日娜<br>全长：32集</li>
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/xadn/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/book/2004-01-02/U2290P167T1D321F5DT20090424171009.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/xadn/detail.html">《想爱都难》</a><br>导演：罗长安<br>主演：张国立 陈小艺<br>全长：30集</li>
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/xjhshd/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F204DT20090612112004.jpg" style="border:solid 1px #000000;" originalimg="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F204DT20090612112004.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/xjhshd/detail.html">《新结婚时代》</a><br>导演：鄢泼<br>主演：刘若英 郭小冬<br>全长：26集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/xjqxch3/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/book/2007-09-08/U3099P167T1D42812F6DT20090721114656.jpg" style="border:solid 1px #000000;" originalimg="http://i1.sinaimg.cn/book/2007-09-08/U3099P167T1D42812F6DT20090721114656.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/xjqxch3/detail.html">《仙剑奇侠传Ⅲ》</a><br>导演：李国立<br>主演：胡歌 霍建华<br>全长：37集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/xbzg/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090730165828.jpg" style="border:solid 1px #000000;" originalimg="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090730165828.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/xbzg/detail.html">《小兵张嘎》</a><br>导演：徐耿<br>主演：杜雨 王莎莎<br>全长：20集</li>
+		</ul>
+
+		<div class="sy_dot"></div>
+
+		<a name="teleplay_Y"></a><div class="dt Y"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy">
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/yqcygdrz/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8357F8916DT20090313151441.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/yqcygdrz/detail.html">《与青春有关的日子》</a><br>导演：叶京<br>主演：陈羽凡 文章 佟大为<br>全长：52集</li>
+		 <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/ygnrdss/detail.html" target="_blank"><img src="http://i3.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8357F8917DT20090313151707.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/ygnrdss/detail.html">《一个女人的史诗》</a><br>导演：夏钢 孟朱<br>主演：赵薇 刘烨 景甜 孙海英<br>全长：34集</li>
+
+		 <li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/yzx/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8357F8918DT20090313151918.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/yzx/detail.html">《胭脂雪》</a><br>导演：滕文骥<br>主演：范冰冰 霍建华  刘雪华<br>全长：32集</li>
+
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/yjylym/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2004-01-02/U2290P167T1D321F7DT20090326143354.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/yjylym/detail.html">《又见一帘幽梦》</a><br>
+导演：麦大杰<br>主演：方中信 张嘉倪   刘雪华<br>全长：46集</li><li><td width="120" align="center"><a href="http://video.sina.com.cn/movie/ygdklsh/index.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2004-01-02/U2290P167T1D321F5DT20090513104649.jpg" style="border:solid 1px #000000;" originalimg="http://i0.sinaimg.cn/book/2004-01-02/U2290P167T1D321F5DT20090513104649.jpg" /></a></td>
+<a target="_blank" href="http://video.sina.com.cn/movie/ygdklsh/index.html">《杨光的快乐生活》共六部</a><br>
+导演：杨议 许瑞生<br>主演：杨议 杨少华<br>
+全长：162集</li><li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/ycfhxyds/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/book/2004-01-02/U2290P167T1D321F6DT20090513104649.jpg" style="border:solid 1px #000000;" originalimg="http://i1.sinaimg.cn/book/2004-01-02/U2290P167T1D321F6DT20090513104649.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/ycfhxyds/detail.html">《一场风花雪月的事》</a><br>
+导演：赵宝刚<br>主演：徐静蕾 刘汉强<br>
+全长：20集</li><li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/yljgl/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/book/2004-01-02/U3099P167T1D321F204DT20090612103328.jpg" style="border:solid 1px #000000;" originalimg="http://i2.sinaimg.cn/book/2004-01-02/U3099P167T1D321F204DT20090612103328.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/yljgl/detail.html">《有泪尽情流》</a><br>
+导演：康洪雷<br>主演：徐帆 丁海峰<br>
+全长：21集</li><li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/ynyyn/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F205DT20090612105049.jpg" style="border:solid 1px #000000;" originalimg="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F205DT20090612105049.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/ynyyn/detail.html">《一年又一年》</a><br>
+导演：安战军<br>主演：刘威 许亚军<br>
+全长：21集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/ybmm/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090730163826.jpg" style="border:solid 1px #000000;" originalimg="http://i1.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090730163826.jpg" /></a></td>
+<a target="_blank" href="http://movie.video.sina.com.cn/teleplay/ybmm/detail.html">《永不瞑目》</a><br>
+导演：赵宝刚<br>主演：陆毅 苏瑾<br>
+全长：27集</li>
+		</ul>
+		<div class="sy_dot"></div>
+		<a name="teleplay_Z"></a><div class="dt Z"></div><div style="float: right; padding-right: 40px;  color:#666666; padding-top:10px;"><a href="#"><strong>返回顶部</strong></a></div>
+		<ul class="sy" >
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/zf/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8357F8919DT20090313152200.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/zf/detail.html">《征服》</a><br>导演：高群书<br>主演：江珊 刘威 石兆琪 孙红雷<br>全长：20集</li>
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/zxk/detail.html" target="_blank"><img src="http://i1.sinaimg.cn/ent/pc/2009-03-13/296/U2519P28T296D8357F8920DT20090313152755.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/zxk/detail.html">《走西口》</a><br>导演：李三林<br>主演：苗圃 杜淳 富大龙<br>全长：52集</li>
+
+		<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/zshy/detail.html" target="_blank"><img src="http://i0.sinaimg.cn/book/2004-01-02/U2290P167T1D321F5DT20090424175415.jpg" style="border:solid 1px #000000;" originalimg="http://i3.sinaimg.cn/ent/s/p/2009-03-13/U2223P28T3D2417504F346DT20090313113339.jpg" /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/zshy/detail.html">《再生缘》</a><br>导演：李惠民 谢益文<br>主演：李冰冰 黄海冰 陈龙 高鑫 <br>全长：42集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/zgshlh/detail.html" target="_blank"><img src="http://i2.sinaimg.cn/book/2004-01-02/U2290P167T1D321F5DT20090424184620.jpg" style="border:solid 1px #000000;"  /></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/zgshlh/detail.html">《中国式离婚》</a><br>导演：沈严 <br>主演：陈道明 蒋雯丽  <br>全长：23集</li>
+<li><td width="120" align="center"><a href="http://movie.video.sina.com.cn/teleplay/znyyddf/detail.html" target="_blank"><img 
+
+src="http://i2.sinaimg.cn/book/2004-01-02/U3099P167T1D321F7DT20090805101208.jpg" style="border:solid 1px #000000;"  
+
+/></a></td><a target="_blank" href="http://movie.video.sina.com.cn/teleplay/znyyddf/detail.html">《在那遥远的地方》</a><br>导
+
+演：俞钟 <br>主演：李幼斌 殷桃  <br>全长：29集</li>
+		</ul>
+
+			</div>
+
+		</div>			
+
 </div>
-<div class="VM_foot">
-	Copyright &copy; 1996-2022 SINA Corporation. All Rights Reserved <span class="cn_nm">新浪公司 版权所有</span>
-</div>
-
-
-<script src="//sjs2.sinajs.cn/video/lib/js/core.js" type="text/javascript"  charset="utf-8"></script>	
-<!--页面js-->
-<script src="//sjs1.sinajs.cn/video/common/header/1/js/page/index.js" type="text/javascript" charset="utf-8"></script>
-<!--导航js-->
-<script src="//n3.sinaimg.cn/video/home/js/page/index.js?v=2022011201" type="text/javascript" charset="utf-8"></script>
-
-
-<!--新浪视窗广告 Start -->
-<script async charset="utf-8" src="//d9.sina.com.cn/litong/zhitou/sinaads/release/sinaads.js"></script><ins class="sinaads" data-ad-pdps="PDPS000000056035"></ins><script>(sinaads = window.sinaads || []).push({params:{
-		sinaads_frequence: 600
-}});</script>
-<!--新浪视窗广告 End -->
-<script type="text/javascript" src="//www.sinaimg.cn/unipro/pub/suda_m_v629.js"></script>
-<script type="text/javascript">suds_init(2925,10.0000,1415,2);</script>
-
-	
-<!-- import sinaads.js start-->
-<script>(function(d,s,id){var s,n=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;s=d.createElement(s);s.id=id;s.setAttribute('charset','utf-8');s.src='//d'+Math.floor(0+Math.random()*(9-0+1))+'.sina.com.cn/litong/zhitou/sinaads/release/sinaads.js';n.parentNode.insertBefore(s,n);})(document,'script','sinaads-script');</script>
-<!-- import sinaads.js end-->	
-<!--车展早晚报 start-->
-		<!--车展早晚报 end-->
-<!-- body code begin -->
 <script type="text/javascript">
-(function(){
-    if(window.top !== window.self || window._thereIsNoRealTimeMessage){return};
-    var script = document.createElement('script');
-    script.setAttribute('charset', 'gb2312');
-    script.src = '//news.sina.com.cn/js/694/2012/0830/realtime.js?ver=1.5.1';
-    document.getElementsByTagName('head')[0].appendChild(script);
-})();
+	new sina.D.tab({
+		tabs: "tab2index1",
+		view: "tab2index_con1",
+		action: "mouseover",
+		func: function(t) {
+
+		}
+	});
 </script>
 
-<!-- start dmp -->
 <script type="text/javascript">
-(function(d, s, id) {
-var n = d.getElementsByTagName(s)[0];
-if (d.getElementById(id)) return;
-s = d.createElement(s);
-s.id = id;
-s.setAttribute('charset', 'utf-8');
-s.src = '//d' + Math.floor(0 + Math.random() * (8 - 0 + 1)) + '.sina.com.cn/litong/zhitou/sinaads/src/spec/sinaads_ck.js';
-n.parentNode.insertBefore(s, n);
-})(document, 'script', 'sinaads-ck-script');
-</script>
-<!-- end dmp -->
+	new sina.D.tab({
+		tabs: "tab2index2",
+		view: "tab2index_con2",
+		action: "mouseover",
+		func: function(t) {
 
-<!-- body code end -->
-	
-<script src="https://pluto.sina.cn/gk/match?id=1"></script></body>
+		}
+	});
+</script>
+
+</div>
+
+<!--main end-->
+
+<!-- footer begin -->
+	<div class="blkContentFooter">
+
+<p><a target="_blank" href="http://comment4.news.sina.com.cn/comment/skin/feedback.html">网友意见反馈留言板</a>　电话：010-95105670　　欢迎批评指正</p>
+
+		<p><a href="http://corp.sina.com.cn/chn/" target="_blank">新浪简介</a>┊<a href="http://corp.sina.com.cn/eng/" target="_blank">About Sina</a>┊<a href="http://emarketing.sina.com.cn/" target="_blank">广告服务</a>┊<a href="http://www.sina.com.cn/contactus.html" target="_blank">联系我们</a>┊<a href="http://career.sina.com.cn/" target="_blank">招聘信息</a>┊<a href="http://www.sina.com.cn/intro/lawfirm.shtml" target="_blank">网站律师</a>┊<a href="http://english.sina.com/" target="_blank">SINA English</a>┊<a href="http://login.sina.com.cn/cgi/register/reg_sso.php" target="_blank">会员注册</a>┊<a href="http://help.sina.com.cn/" target="_blank">产品答疑</a>┊Copyright &copy; 1996-2010 SINA Corporation, All Rights Reserved</p>
+
+	</div>
+	<!-- footer end -->
+
+</body>
 </html>
+
+<!--167-10-1398-->
