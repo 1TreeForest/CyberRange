@@ -1,0 +1,400 @@
+﻿<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href=" https://chujianld.oss-cn-beijing.aliyuncs.com/logo_lvcha2.png" type="image/x-icon">
+		<title>初见</title>
+                                <span style="display: none;"> 
+<script type="text/javascript" src="https://s4.cnzz.com/z_stat.php?id=1280638332&web_id=1280638332"></script>
+                                </span>		
+		<style type="text/css">
+		    html,body{
+		    	margin: 0;
+		    	padidng: 0;
+		    	height: 100%;
+		    	overflow: hidden;		    	
+		    }
+		    .pc{
+		    	display: none;
+		    	height: 100%;
+		    	background: black;
+		    }
+			.video{
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 100%;
+				overflow: hidden;
+				z-index: 1;			
+			}
+			.logo{
+				position: absolute;
+				top: 20px;
+				left: 20px;
+				z-index: 3;
+			}
+			.content{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 100%;
+				transform: translate(-50%,-30%);
+				text-align: center;
+				z-index: 2;
+			}
+			.pcText{
+				margin: auto;				
+			}
+			.pcText img{
+				width: 864px;
+			}
+			.pcButton{
+				margin: 40px auto;
+			}
+			.pcButton img{
+				margin-left: 30px;
+			}
+			.box1,.box2{
+				display: inline-block;
+				position: relative;
+				background: white;
+				margin: 0 90px;
+				width: 200px;
+				height: 200px;
+				opacity:0;
+			}
+
+			#qrcode1,#qrcode2{
+				margin: 36px 36px;
+			}						
+		</style>
+
+		<style>
+			.mobile{
+				height: 100%;
+				display: block;
+				background: url(" https://chujianld.oss-cn-beijing.aliyuncs.com/qwembg.jpg");
+				background-size: cover;
+				overflow: hidden;
+			}
+			.mcontent{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 100%;
+				transform: translate(-50%,-60%);
+				text-align: center;
+			}
+			
+			.mlogo img{
+				width: 40%;
+			}
+			.mText{
+				margin: 40px 0 40px;
+			}
+			.mText img{
+				width: 80%;
+			}
+
+			.mbtn img{
+				width: 50%;
+				display: none;
+			}
+			.tips{
+				display: none;
+				position: absolute;
+				bottom: 10px;
+				width: 100%;
+				text-align: center;
+				color: white;
+				font-size: 20px;
+			}
+
+			.jc{
+				display: none;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				z-index: 99;
+				color: white;
+				background-color: rgb(39, 39, 39);
+			}
+			.jc{
+				text-align: center;
+				padding: 75px 0;
+			}
+			.jc img{
+				width: 95%;
+			}
+			.close{
+				position: absolute;
+				top: 0px;
+				right: 20px;
+				font-size: 50px;
+				transform: rotate(45deg);
+			}
+		</style>
+	</head>
+	<body>
+	<div class="pc" style="display: none;">
+		<div class="logo">
+			<img src=" https://chujianld.oss-cn-beijing.aliyuncs.com/logo_lvcha2.png">
+		</div>
+		
+		<img src=" https://chujianld.oss-cn-beijing.aliyuncs.com/qwembg.jpg">
+		<div class="content">
+			<div class="pcText">
+				<img src=" https://chujianld.oss-cn-beijing.aliyuncs.com/wenzi_lvcha.png">
+			</div>
+			<div class="pcButton">			
+				<img class="btn1" src=" https://chujianld.oss-cn-beijing.aliyuncs.com/and.png">
+				<img class="btn2" src=" https://chujianld.oss-cn-beijing.aliyuncs.com/ios.png">
+			</div>
+		    <div class="box1">
+				<div id="qrcode1" title=""><canvas width="128" height="128" style="display: none;"></canvas><img  ></div>
+			</div>
+			<div class="box2">
+				<div id="qrcode2" title=""><canvas width="128" height="128" style="display: none;"></canvas><img ></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="mobile" style="display: block;"">
+		<div class="mcontent">
+			<div class="mlogo">
+				<img src=" https://chujianld.oss-cn-beijing.aliyuncs.com/logo_lvchad.png">
+			</div>
+			<div class="mText">
+				<img src=" https://chujianld.oss-cn-beijing.aliyuncs.com/wenzi_lvcha_2.png">
+			</div>
+
+			<div class="mbtn">
+				<img class="mand" src=" https://chujianld.oss-cn-beijing.aliyuncs.com/mand.png" style="display: inline;">
+				<img class="mios" src=" https://chujianld.oss-cn-beijing.aliyuncs.com/mios.png" style="display: none;">
+			</div>
+		</div>		
+
+		<div class="tips" style="display: block;">
+			<p>安装教程</p>
+		</div>
+
+		<div class="jc" style="display: none;">
+			<div class="close">+</div>
+			<div class="antips">
+				<h1>Q：安卓安装教程</h1>
+				<img src=" https://chujianld.oss-cn-beijing.aliyuncs.com/andtips.jpg">
+			</div>			
+		</div>		
+	</div>
+	
+
+<script src=" https://chujianld.oss-cn-beijing.aliyuncs.com/jquery.js"></script>
+<script src=" https://chujianld.oss-cn-beijing.aliyuncs.com/qrcode.js"></script>
+<script src=" https://chujianld.oss-cn-beijing.aliyuncs.com/jscj.js"></script><!-- 加密文件获取注册信息，可下载到本地服务器 -->
+<script src=" https://chujianld.oss-cn-beijing.aliyuncs.com/axios.min.js"></script><!-- 请求接口方法，可下载到本地服务器 -->
+
+<script type="text/javascript">
+	var qrcode1 = new QRCode("qrcode1", {
+	    text: window.location.origin,
+	    width: 128,
+	    height: 128,
+	    colorDark : "#000000",
+	    colorLight : "#ffffff",
+	    correctLevel : QRCode.CorrectLevel.H
+	});
+	var qrcode2 = new QRCode("qrcode2", {
+	    text: window.location.origin,
+	    width: 128,
+	    height: 128,
+	    colorDark : "#000000",
+	    colorLight : "#ffffff",
+	    correctLevel : QRCode.CorrectLevel.H
+	});
+
+	$(".btn1").mouseenter(function(){
+		$(".box1").css("opacity","1")
+	})
+	$(".btn1").mouseleave(function(){
+		$(".box1").css("opacity","0")
+	})
+	$(".btn2").mouseenter(function(){
+		$(".box2").css("opacity","1")
+	})
+	$(".btn2").mouseleave(function(){
+		$(".box2").css("opacity","0")
+	})
+
+	function load(){
+		var bodyW = $("body").width();
+		if(bodyW < 1000){
+			$(".pc").css("display","none");
+			$(".mobile").css("display","block");
+		}else{
+			$(".pc").css("display","block");
+			$(".mobile").css("display","none");
+		}
+	}
+
+	var u = navigator.userAgent;
+	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+	if(isAndroid){
+		$('.mand').show();
+		$('.mios').hide();
+		$('.tips').show();
+	}else if(isiOS){
+		$('.mand').hide();
+		$('.mios').show();
+		$('.tips').hide();
+	}
+
+	$(".tips").click(function(){
+		$(".jc").slideDown(100);
+	})
+	$(".close").click(function(){
+		$(".jc").slideUp(100);
+	})
+
+	load();
+	window.onresize = load;
+</script>
+  <script type="text/javascript">
+		let url = navigator.userAgent.toLowerCase();
+        if (url.indexOf("micromessenger") > -1) {
+          //单独判断微信内置浏览器
+            if (navigator.userAgent.match(/(iPhone|iPod|iPad|Mac);?/i)) { //判断是否是iOS
+                document.getElementById("WeChat").style.display='inline';
+                document.getElementById("allpng").style.display='none';
+                document.getElementById('imgid').src='https://miaijs.oss-cn-beijing.aliyuncs.com/wechat.png';
+            }
+            if (navigator.userAgent.match(/android/i)) { //判断是否是Android
+                document.getElementById("WeChat").style.display='inline';
+                document.getElementById("allpng").style.display='none';
+                document.getElementById('imgid').src='https://miaijs.oss-cn-beijing.aliyuncs.com/wechatand.png';
+            }
+        }
+        var datas = "";
+        var android_down = ""; /*安卓下载地址*/
+        var iosurl = "";/*ios下载地址*/
+		//调用统计代码
+		var getAppUrl = "https://chujianyk2.oss-cn-shanghai.aliyuncs.com/chujyk.txt";
+		var getAppUrltwo = "https://chujianyk3.oss-cn-shanghai.aliyuncs.com/chujyk.txt";	//备用下载链接
+		/*请求安装包下载的地址getAppUrl请找我方提供，此方法为动态获取下载地址，可通过指定后台进行动态修改。为空时则使用默认固定下载地址请填写android_down和iosurl*/
+		/*是否自动获取下载地址*/
+		getapkurl(getAppUrl);
+        function getapkurl(ossUrl) {
+            if (ossUrl != "") {
+                axios.get(ossUrl).then((res)=>{
+                    urlarray = res.data.split("|");
+					android_down = urlarray[0];
+					iosurl = urlarray[1];
+                }).catch(()=>{
+                    console.log("获取下载链接失败")
+                })
+					if(android_down == "" || iosurl == ""){
+					getapkurltwo(getAppUrltwo);
+				}
+            }
+        };
+		function getapkurltwo(ossUrl) {
+            if (ossUrl != "") {
+                axios.get(ossUrl).then((res)=>{
+                    urlarray = res.data.split("|");
+					android_down = urlarray[0];
+					iosurl = urlarray[1];
+                }).catch(()=>{
+                    console.log("获取下载链接失败")
+                })
+            }
+        };
+		
+		function GetRequest() {
+			var url = location.search; //获取url中"?"符后的字串
+			var theRequest = new Object();
+			if (url.indexOf("?") != -1) {
+				var str = url.substr(1);
+				strs = str.split("&");
+				for(var i = 0; i < strs.length; i ++) {
+					theRequest[strs[i].split("=")[0]]=decodeURI(strs[i].split("=")[1]);
+				}
+			}
+			return theRequest;
+		}
+		
+		if(detect() == "ios") {
+			domain();//调用统计代码
+		}
+		
+		var sUserAgent = navigator.userAgent.toLowerCase();
+		if(sUserAgent.indexOf("baidu") > 0) {
+		}else{
+			/*如果非百度浏览器过1秒自动下载*/
+			setTimeout("downApp()", 5000);
+		}
+
+		/*判断是什么端，苹果还是安卓端*/
+		function detect() {
+            let equipmentType = "";
+            let agent = navigator.userAgent.toLowerCase();
+            let android = agent.indexOf("android");
+            let iphone = agent.indexOf("iphone");
+            let ipad = agent.indexOf("ipad");
+            if (android != -1) {
+                equipmentType = "android";
+            }
+            if (iphone != -1 || ipad != -1) {
+                equipmentType = "ios";
+            }
+            return equipmentType;
+        }
+		
+		/*复制邀请码到剪切板*/
+		function copyText(text){
+			var input = document.createElement('input');
+			input.setAttribute('id', 'input_for_copyText');
+			input.value = text;
+			document.getElementsByTagName('body')[0].appendChild(input);
+			document.getElementById('input_for_copyText').select();
+			document.execCommand('copy');
+			document.getElementById('input_for_copyText').remove();
+		}
+
+        function downApp() {
+            //创建下载,不用超链接标签
+			var appUrl = "";
+			if (detect() == "android") {
+			    domain();//调用统计代码
+				appUrl = android_down /*安卓下载地址*/
+				window.setTimeout("window.location='"+appUrl+"'",300);
+			} else if (detect() == "ios") {
+				appUrl = iosurl/*ios下载地址*/
+				window.location.href=appUrl;
+			}
+        }
+
+		//此方法为统计代码，如果要动态请在页面地址加上?channelCode=10226   10226为要带入的邀请码
+        function domain(appUrl) {
+			var channelCode = "90052"/*邀请码请根据代理商填写，8888为要带入的邀请码*/
+			var Request = new Object();
+			Requestdata = GetRequest();
+			var aa = Requestdata['channelCode'];
+			if(aa != null){
+				channelCode = aa;
+			}
+			copyText("code"+channelCode);
+            new EasyInstall({
+                appId: 100072,/*应用ID固定*/
+                param: {
+                    code: channelCode 
+                }
+            });
+        }
+</script>
+
+<script type="text/javascript">
+	$(".mbtn").click(function(){
+		downApp();
+	})
+</script>
+</body></html>

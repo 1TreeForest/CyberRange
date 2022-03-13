@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+  <title>在线播放</title> <meta http-equiv="Cache-Control" content="no-cache" /> <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.4" /> <meta name="MobileOptimized" content="240" /> <link href="http://p0.ifengimg.com/l/2017/3/84d39e84429d0bf/blue.css" rel="stylesheet" type="text/css" /> <script type="text/javascript" src="http://p1.ifengimg.com/l/2017/3/84d39e84429d0bf/jquery.js"></script> <script type="text/javascript" src="http://p2.ifengimg.com/l/2017/3/84d39e84429d0bf/jquery.jplayer.js"></script> <script type="text/javascript" src="http://p1.ifengimg.com/l/2017/3/84d39e84429d0bf/lrc.js"></script> <link rel="stylesheet" type="text/css" href="http://p2.ifengimg.com/l/2017/3/84d39e84429d0bf/163mulic.css" /> <style type="text/css">* {
+				margin: 0;
+				padding: 0;
+				outline: none;
+			}
+			
+			ul,
+			ol,
+			dl {
+				list-style: none;
+			}
+			
+			.music_box {
+				margin: 50px auto;
+				width: 422px;
+			}
+			
+			.content {
+				width: 100%;
+				height: 200px;
+				overflow: hidden;
+				/*padding: 10px;*/
+				border-top: 1px solid #e6e6e6;
+			}
+			
+			#lrc_list {
+				height: 100%;
+				position: relative;
+			}
+			
+			#lrc_list li {
+				font: normal 14px/2.1 'microsoft yahei';
+				text-align: center;
+			}
+			
+			#lrc_list li.hover {
+				color: red;
+				font-weight: bold;
+			}
+			
+@font-face {
+  font-family: 'iconfont';  /* project id 206567 */
+  src: url('//at.alicdn.com/t/font_im8a5zw7ogqilik9.eot');
+  src: url('//at.alicdn.com/t/font_im8a5zw7ogqilik9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_im8a5zw7ogqilik9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_im8a5zw7ogqilik9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_im8a5zw7ogqilik9.svg#iconfont') format('svg');
+}
+			.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}</style> <script>//<![CDATA[
+			$(document).ready(function() {
+				$("#jquery_jplayer_1").jPlayer({
+					ready: function(event) {
+						$(this).jPlayer("setMedia", {
+							mp3: "http://p0.ifengimg.com/d64a7065b9a7e751/2017/3/icoming3.mp3" //mp3的播放地址
+						}).jPlayer('play').jPlayer('repeat');
+						
+						
+						
+						/*var progressSetInterval = setInterval(function(){
+							var $current = $('.time.jp-current-time').text().split(':');
+							var $duration = $('.oprBox .jp-duration').text().split(':');
+							var $durtime = ($duration[0] * 60) + Number($duration[1]);
+							var $currtime = ($current[0] * 60) + Number($current[1]);
+							
+							var pect = ($currtime/$durtime*100).toFixed(2);
+							$('.played').css('width',pect + '%');
+							if(pect >= 100){
+								clearInterval(progressSetInterval);
+								$('.played').css('width','0%'); 
+								time = 0;
+							}
+							
+						},30);*/
+					},
+					timeupdate: function(event) {
+						if(event.jPlayer.status.currentTime == 0) {
+							time = "";
+						} else {
+							time = event.jPlayer.status.currentTime;
+						}
+                var pect2 = event.jPlayer.status.currentPercentRelative.toFixed(2);
+                $('.played').css('width',pect2 + '%');
+                      
+					},
+					play: function(event) {
+                    
+                      
+						//点击开始方法调用lrc。start歌词方法 返回时间time
+						$.lrc.start($('#lrc_content').val(), function() {
+                          
+                          return time?time:0;
+						});
+						
+					},
+					ended: function(event) {
+						$("#lrc_list").removeAttr("style").html("<li>歌曲播放完毕！</li>");
+ 
+					},
+					swfPath: "http://p1.ifengimg.com/d64a7065b9a7e751/2017/3/", //存放jplayer.swf的决定路径
+					solution: "html, flash", //支持的页面
+					supplied: "mp3", //支持的音频的格式
+					wmode: "window"
+				});
+			});
+			//]]></script> </head><body> <textarea id="lrc_content" name="textfield" cols="70" rows="10" style="display:none;"> 
+[00:02.00]我回家啦
+[00:03.00]演唱：毕骄
+[00:09.00]
+[00:03.28]许多年前的秋天
+[00:05.59]离开了这座城我爱的家
+[00:08.89]不羁的青春年少
+[00:11.03]就这样浪迹天涯
+[00:15.17]临行前满满而载的行装
+[00:18.41]未来的一切是什么样啊
+[00:22.47]爸妈的叮嘱 敷衍的应答
+[00:25.33]心哪在乎这些话
+[00:26.85]
+[00:28.89]生活的酸甜苦辣
+[00:31.24]倔强的我在不觉中长大
+[00:34.39]忙碌中渐忘了这
+[00:36.84]疼我爱我的人啊
+[00:40.72]看不到天上眨眼的星星
+[00:44.28]一个人面对陌生的繁华
+[00:47.95]霓虹灯闪烁 人群喧杂
+[00:51]我却突然想起 自己的家
+[00:56.7]我有些想你 爸爸
+[00:54.35]
+[00:59.81]我有些想你 妈妈
+[01:3.88]我出来后
+[01:5.61]家中一切还好吗
+[01:9.37]我特别想你 爸爸
+[01:12.53]我特别想你 妈妈
+[01:54.38]说他越来越想你
+[01:18.78]
+[01:56.5]却羞于向你表达
+[01:51.12]说起对我严厉的老爸
+[01:16.84]过年时我一定回家
+[02:0.84]他说独自在外面闯荡
+[02:4.14]不像想象中那么的潇洒
+[02:8]一个人奋斗 一个人挣扎
+[02:11.16]那里却没有家
+[02:12.74]
+[02:17.62]爸爸妈妈 我回来啦
+[02:20]回到我日思梦想你身边啊
+[02:23.62]陪你去看看泉 陪你去泡泡茶
+[01:48.87]前几天老妈电话
+[02:26.68]陪你一起聊天说话
+[02:30.34]爸爸妈妈 依然唠叨
+[02:33.05]我却喜欢他们这样的说话
+[02:36.4]他们的头上已经被岁月
+[02:39.25]涂上银发
+[02:43.07]外面的世界很精彩
+[02:45.53]却找不到也没有我自己的家
+[02:49.19]回到这座城
+[02:50.86]这座城才是真正的家
+[02:52.34]
+[02:56.02]啊 啊
+[03:3.19]爸爸妈妈 我回来啦
+[03:5.34]回到我日思梦想你身边啊
+[03:8.96]陪你去看看泉 陪你去泡泡茶
+[03:12.12]陪你一起聊天说话
+[03:15.72]爸爸妈妈 依然唠叨
+[03:18.12]我却喜欢他们这样的说话
+[03:21.8]他们的头上已经被岁月
+[03:24.49]涂上银发
+[03:28.61]外面的世界很精彩
+[03:30.97]却找不到也没有我自己的家
+[03:34.59]回到这座城
+[03:36.22]这座城才是真正的家
+[03:37.31]
+[03:44.72]许多年后的春天
+[03:47.36]我回到这座城我爱的家
+[03:50.68]不再是青春年少
+[03:53.12]就这样回到了家
+</textarea> <style type="text/css">div.content.z-close {
+			    height: 0 !important;
+			    overflow: hidden;
+			    display: none;
+			}</style> <div id="jp_container_1" style="width: 220px; height: 300px;position: relative;margin-left: 5px;"> 
+ <div class="player"> 
+  <div class="f-cb"> 
+   <div class="cover" style="display: none;"> 
+    <img id="cover" src="http://p3.ifengimg.com/l/2017/3/84d39e84429d0bf/109951162834570762.jpg" /> 
+   </div> 
+   <div id="ctrl-box" class="ctrlBox" style="width: 200px;"> 
+    <h2 class="f-pr"> 
+     <!--<i data-action="home" class="bg logo"></i>--> <i class="iconfont" style="font-size: 22px;color: red;position: absolute;left: 0;top: 2px;"></i> 
+     <div id="title" class="title">
+      <marquee scrollamount="2" onmouseover="this.stop()" onmouseout="this.start()">
+        我回来啦 - 毕骄
+      </marquee> 
+     </div> </h2> 
+    <div id="bar" class="bar"> 
+     <div class="played j-flag" style="width: 0%;">
+      <span class="bg thumb j-flag" id="auto-id-N7BGue80TgJbf4Oq"></span>
+     </div> 
+    </div> 
+    <div class="oprBox"> 
+     <div id="time" class="time jp-current-time">
+      - 00:05
+     </div> 
+     <div class="jp-duration" style="color: #999;"></div> 
+     <div class="btnGroup f-cb"> 
+      <div id="prev" class="bg prev " data-action="prev"></div> 
+      <div id="pause" class="bg mid pause  jp-pause" data-action="pause" style="display: none;"></div> 
+      <div id="play" class="bg mid play jp-play" data-action="play"></div> 
+      <div id="next" class="bg next" data-action="next"></div> 
+     </div> 
+     <div class="bg open " data-action="open" style="display: none;"></div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="close" style="position: absolute;top:-1px;right: 6px;"> 
+   <i class="iconfont" style="font-size: 12px;color: #939292;cursor: pointer;opacity: 0.7;"></i> 
+  </div> 
+  <div class="content"> 
+   <ul id="lrc_list"> 
+    <li>点击开始播放……</li> 
+   </ul> 
+  </div> 
+ </div> 
+ <div id="jquery_jplayer_1" class="jp-jplayer"></div> 
+</div> <script>$('#play').click(function(){
+				var progressSetInterval = setInterval(function(){
+					var $current = $('.time.jp-current-time').text().split(':');
+					var $duration = $('.oprBox .jp-duration').text().split(':');
+					var $durtime = ($duration[0] * 60) + Number($duration[1]);
+					var $currtime = ($current[0] * 60) + Number($current[1]);
+					
+					var pect = ($currtime/$durtime*100).toFixed(2);
+					$('.played').css('width',pect + '%');
+					if(pect >= 100){
+						clearInterval(progressSetInterval);
+					}
+					
+				},30);
+			});
+			$('.close i').click(function(){
+				$('#jp_container_1').hide();
+				$('#jquery_jplayer_1').remove();
+              parent.document.getElementById('onlineMusic').style.display = 'none'; 
+			})</script> <!-- 页尾通栏  --></body></html>

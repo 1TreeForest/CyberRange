@@ -1,6 +1,6 @@
 import json
 import pymysql
-from movieCrawler.items import SpecialItem, UniversalItem
+from movieCrawler.items import SpecialItem, UniversalItem, FriendLinkItem
 import codecs
 import logging
 
@@ -45,18 +45,32 @@ class MoviecrawlerPipeline(object):
 
         # 拼接insert SQL语句
         if isinstance(item, SpecialItem):
-            sql = 'INSERT INTO `movies_special`(name, link, site)VALUES("%s","%s","%s") ON DUPLICATE KEY UPDATE link = "%s"' % (
-                item['name'], item['link'], item['site'], item['link'])
+            sql = 'INSERT INTO `movies_special`(name, link, site)VALUES(%s,%s,%s) ON DUPLICATE KEY UPDATE link = %s'
+            # 执行
+            self.cursor.execute(sql, [item['name'], item['link'], item['site'], item['link']])
+            # 提交事务
+            self.conn.commit()
+            logging.info('已进行 {} 次数据采集\t\t获取到对象: {}，{}'.format(self.count, item['name'], item['link']))
+            self.count += 1
         if isinstance(item, UniversalItem):
-            sql = 'INSERT INTO `movies_universal`(name, link, site)VALUES("%s","%s","%s") ON DUPLICATE KEY UPDATE link = "%s"' % (
-                item['name'], item['link'], item['site'], item['link'])
-        # 执行
-        self.cursor.execute(sql)
-        # 提交事务
-        self.conn.commit()
-        logging.info('已进行 {} 次数据采集\t\t获取到对象: {}，{}'.format(self.count, item['name'], item['link']))
-        self.count += 1
+            sql = 'INSERT INTO `movies_universal`(name, link, site)VALUES(%s,%s,%s) ON DUPLICATE KEY UPDATE link = %s'
+            # 执行
+            try:
+                self.cursor.execute(sql, [item['name'], item['link'], item['site'], item['link']])
+            except Exception as e:
+                print(e)
+                return
+            # 提交事务
+            self.conn.commit()
+            logging.info('已进行 {} 次数据采集\t\t获取到对象: {}，{}，{}'.format(self.count, item['name'], item['link'], item['site']))
+            self.count += 1
         # print(item)
+        if isinstance(item, FriendLinkItem):
+            sql = 'INSERT IGNORE INTO `friend_link`(name, link, domain)VALUES(%s,%s,%s)'
+            # 执行
+            self.cursor.execute(sql, [item['name'], item['link'], item['domain']])
+            # 提交事务
+            self.conn.commit()
 
         # content = json.dumps(dict(item), ensure_ascii=False) + '\n'
         # self.filename.write(content)

@@ -28,7 +28,7 @@ class KeywordSpider(Spider):
     cursor = None
     urls_before = []
 
-    def __init__(self, keyword='all', se='bing', pages=500, *args, **kwargs):
+    def __init__(self, keyword='all', se='bing_global', pages=500, *args, **kwargs):
         super(KeywordSpider, self).__init__(*args, **kwargs)
         if keyword == 'all':  # 用户选择根据数据库中的词库进行搜索
             self.conn = pymysql.Connect(
@@ -98,5 +98,5 @@ class KeywordSpider(Spider):
             elif self.search_engine == 'google':  # 谷歌的结果无需进行额外处理
                 item['name'] = names[i]
                 item['url'] = urls[i]
-            item['domain'] = re.search(r'://(.+?)[:/]', item['url']).group(1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
+            item['domain'] = re.search(r'://(.+?)[:/\s]', item['url']).group(1)  # 正则匹配提取链接的主要部分，用来判断是否已存在该网站的爬取结果
             yield item
