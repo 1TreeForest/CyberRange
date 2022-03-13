@@ -9,7 +9,7 @@ import numpy as np
 
 MAX_HREF_NUM = 1000
 
-def predict_url(url):
+def predict_url(url, model, tfidf):
     """
     args:
     url : The site Url to be classify: Movie Site or Not Movie Site
@@ -18,14 +18,34 @@ def predict_url(url):
     0 : Not Movie Site
     2 : Request Failed
     """
-    model = joblib.load('movie_website.pkl')
-    tfidf = joblib.load('tf-idf.pkl')
+#     model = joblib.load('movie_website.pkl')
+#     tfidf = joblib.load('tf-idf.pkl')
     try:
         response = requests.get(url, timeout=5)
     except:
         return 2
     response.encoding = response.apparent_encoding
-    html = etree.HTML(response.text)
+    
+    results = response.content
+    code = chardet.detect(results)
+    try:
+        if code['encoding'] is None:
+            results = results.decode('utf8')
+        else:
+            results = results.decode(code['encoding'])
+    except:
+        try:
+            results = results.decode('GB18030')
+        except:
+            try:
+                results = results.decode('utf8', errors='ignore')
+            except:
+                return False
+    
+    try:
+        html = etree.HTML(results)
+    except:
+        return False
     if html is None:
         return 2
 #     html_data = html.xpath('//*[@href]/text()')  # 只选取“带有链接”的文本
@@ -53,9 +73,9 @@ def predict_url(url):
     return int(result)
 
 
-def predict_file(file_path):
-    model = joblib.load('movie_website.pkl')
-    tfidf = joblib.load('tf-idf.pkl')
+def predict_file(file_path, model, tfidf):
+#     model = joblib.load('movie_website.pkl')
+#     tfidf = joblib.load('tf-idf.pkl')
     with open(file_path, 'rb') as f:
         results = f.read()
         code = chardet.detect(results)
@@ -72,7 +92,10 @@ def predict_file(file_path):
                     results = results.decode('utf8', errors='ignore')
                 except:
                     return False
-        html = etree.HTML(results)
+        try:
+            html = etree.HTML(results)
+        except:
+            return False
         if html is None:
             return False
 #         html_data = html.xpath('//*[@href]/text()')
