@@ -51,17 +51,17 @@ class SplashhtmlspiderSpider(scrapy.Spider):
             print("Other System tasks")
 
     def get_unmarked_pages(self):
-        sql = "select url, domain from `unmarked` where html = 0"  # 若要整体重爬，注释掉where子句
+        sql = "select url, domain from `unmarked`-- where html = 0"  # 若要整体重爬，注释掉where子句
         self.cursor.execute(sql)
         item_list = self.cursor.fetchall()
         return item_list
 
     def get_marked_pages(self):
-        sql = "select url, domain from `pms` where html = 0"  # 若要整体重爬，注释掉where子句
+        sql = "select url, domain from `pms`-- where html = 0"  # 若要整体重爬，注释掉where子句
         self.cursor.execute(sql)
         item_list = self.cursor.fetchall()
         self.pms_count = len(item_list)
-        sql = "select url, domain from `notpms` where html = 0"  # 若要整体重爬，注释掉where子句
+        sql = "select url, domain from `notpms`-- where html = 0"  # 若要整体重爬，注释掉where子句
         self.cursor.execute(sql)
         item_list += self.cursor.fetchall()
         print("读取完成,共需爬取%d个网页" % len(item_list))
