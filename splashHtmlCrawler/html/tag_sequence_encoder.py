@@ -32,13 +32,14 @@ class Encoder():
             code = self.tag_white_dict.get(tag.group(1))
             if code is not None:
                 sequence += code
-            count += 1
-            if count > 1010:
+                count += 1
+            if count >= 1000:
                 break
+        print(count)
         return sequence[:1000]
 
     def save_tag_sequence(self, domain, sequence):
-        sql = 'insert into tag_domain(tag_sequence, domain) values(%s,%s) on duplicate key update tag_sequence=%s'
+        sql = 'insert ignore into tag_domain(tag_sequence, domain) values(%s,%s) on duplicate key update tag_sequence=%s'
         self.cursor.execute(sql, [sequence, domain, sequence])
         self.conn.commit()
 
@@ -55,7 +56,6 @@ if __name__ == '__main__':
                 # print(file_name)
                 sequence = encoder.get_tag_sequence(f)
                 encoder.save_tag_sequence(file_name[:-5], sequence)
-                print(len(sequence))
         except StopIteration:
             print('All item processed')
             break
