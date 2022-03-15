@@ -46,7 +46,7 @@ class SplashhtmlspiderSpider(scrapy.Spider):
         if sysstr == "Windows":
             self.save_path = '../html/'
         elif sysstr == "Linux":
-            self.save_path = '/home/ubuntu/CyberRange/splashHtmlCrawler/html/'
+            self.save_path = '/home/ubuntu/html/'
         else:
             print("Other System tasks")
 
