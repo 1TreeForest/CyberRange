@@ -1,0 +1,1261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我们只专注于电影 - 就要搜电影(www.91soudy.com)</title>
+<meta name="keywords" content="就要搜电影，汇集各种电影资源，下载，最新" />
+<meta name="description" content="飞就要搜电影，汇集各种电影资源，下载，最新" />
+<link rel="stylesheet" type="text/css" href="/statics/css/common.css" />
+</head>
+<body>
+<style>
+.head{width:100%;height:74px;margin:0 auto;overflow:hidden;padding:0;background:#2d2d2d;}
+.head .main{width:980px;height:70px;margin:2px auto 0 auto;padding:0;border-bottom:0;background:#2d2d2d;}
+.head .main .logo{float:left;height:100%;}
+.head .main .logo img{width:180px;height:100%;}
+.head .main .center{float:left;height:100%;}
+
+.head .main .page-set{float:right;height:100%;margin-right:6px;}
+.head .main .page-set{float:right;}
+.head .main .page-set a{line-height:25px;color:#fff;margin:0 0 0 10px;text-decoration:none;}
+.head .main .page-set a:hover{text-decoration:underline;}
+.body{width:980px;margin:5px auto;}
+</style>
+<script src='/statics/js/jquery.js'></script>
+<script language='javascript'>
+//添加到收藏夹
+function AddFavorite(sURL, sTitle) 
+{ 
+    try {window.external.addFavorite(sURL,sTitle);} 
+    catch(e){try{window.sidebar.addPanel(sTitle,sURL,"");} 
+        catch(e){ alert("加入收藏失败，请使用Ctrl+D进行添加");}} 
+} 
+//设为首页
+function SetHome(url)
+{
+     try{document.body.style.behavior='url(#default#homepage)';document.body.setHomePage(url);}
+     catch(e){if(window.netscape){
+	 try {netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");}
+     catch (e){alert("您的浏览器不支持自动设为主页！请手动设置");}}
+	 else{alert("您的浏览器不支持自动设为主页！请手动设置");}}
+}
+</script>
+<div class='head'>
+	 <div class="main">
+		<div class='logo'>
+			<a href="./"><img src="/statics/images/logo.png" title="www.91soudy.com 主页" alt="www.91soudy.com 主页" /></a>
+		</div>
+		<div class='center ad-head-center-banner'></div>
+		<div class="page-set"><a href='javascript:;'  onclick="SetHome(window.location.href); return false;">设为主页</a><a href='javascript:;' onclick="AddFavorite(window.location.href,document.title); return false;">加入收藏</a></div>
+		<div class='clearfix'></div>
+	 </div> 
+</div>
+<script>
+function DynamicJs()
+{
+	var url='./?m=ad&a=load&t='+Math.random();
+	var head=document.getElementsByTagName('head')[0];
+	var script_el=document.createElement('script');
+	script_el.src=url;
+	script_el.type='text/javascript';
+	head.appendChild(script_el);
+}
+$(document).ready(function()
+					{
+						DynamicJs();
+						$('.hide-dom').each(function()
+											{
+												var real_dom_class=$(this).attr('data-real-dom-class'),
+													html=$(this).html();
+												$(this).prev('.'+real_dom_class).html(html);
+												$(this).remove();
+											});
+					});
+</script><style>
+.search-in-p{width:100%;background:#f1f1f1;border-bottom:1px solid #e5e5e5;margin-bottom:10px;}
+.search-in{width:600px;height:60px;font-size:14px;padding:20px 0;margin:0 auto;}
+.search-in .search-form{position:relative;}
+#search-kw-in{width:450px;height:20px;line-height:20px;padding:5px;font-size:14px;color:#808080;border:2px solid #F27B04;}
+.search-in .search-sbt{background-color:#F27B04;border:1px none #D25102;color:#fff;cursor:pointer;font-size:18px;font-weight:bold;height:34px;line-height:34px;width:120px;}
+.search-in .type-p{margin:6px 0 0 10px;font-size:12px;color:#505050;line-height:22px;height:22px;}
+.search-in .type-p .data-type-item{margin:0 10px 0 6px;display:inline-block;}
+.search-in .type-p .data-type-item .data-type-in{height:22px;line-height:22px;}
+.search-in .type-p .data-type-select{color:#404040;background:#d2d2d2;padding:0 6px;text-decoration:none;margin-right:12px;display:inline-block;}
+.search-in .type-p .select-active{background:#101010;color:#fff;}
+
+.search-in .search-form .kw-tips{position:absolute;top:32px;width:460px;background:#fff;border:2px solid #F27B04;display:none;}
+.search-in .search-form .kw-tips .kw-tips-item{width:450px;padding:5px;overflow:hidden;}
+.search-in .search-form .kw-tips .kw-tips-item-focus{background:#ebebeb;}
+
+.body{min-height:420px;}
+.body .m-nav{height:26px;line-height:26px;font-size:14px;color:#606060;font-family:"宋体";margin-bottom:8px;padding-left:6px;border-bottom:1px solid #d4d4d4;}
+.body .m-nav a{color:#0000cc;font-size:14px !important;text-decoration:none;}
+.body .m-nav a:hover{color:#ee3300;text-decoration:underline;}
+.body .m-nav a:visited{color:#0000cc;}
+.body .m-nav .kw-remark{display:inline-block;margin:0 4px;color:#dd4b39;font-size:14px;}
+.body .m-nav .result-sumcount{font-family:arial,sans-serif;}
+
+.list{font-size:14px;height:auto;}
+.last{border-bottom-width:1px;}
+
+.list li{float:left;margin-bottom:8px;padding:4px 0 10px;}
+.list .li-mark{background:#ebebeb;}
+.list .last{border:0;}
+.list li .lf{float:left;width:120px;line-height:26px;text-align:center;font-size:14px;/*color:#1e0fbe;*/}
+.list li .rg{float:right;width:860px;text-align:left;}
+.list li .rg .snapshot{display:block;}
+.list li .rg .resource-a:link{font-weight:normal;font-family: "宋体";line-height:1.54;font-size:medium;}
+.list li .rg .resource-a:visited{/*color:#609;*/}
+.list li .rg .resource-a:hover{/*color:#ee3300;text-decoration:underline;*/}
+.list li .rg .play-type{}
+.list li .rg .mark-color{color:#cc0000;}
+.list li .rg .data-mark{color:#008000;font-weight:bold;}
+
+.list li .rg .abstract{color:#444;font-size:13px;line-height:1.54;font-family: "宋体";}
+.list li .rg .snapshot{color:gray;line-height:1.54;}
+.list li .rg .resource-url-span{/*color:#666;*/color:#008000;font-size:12px;}
+.list li .rg .resource-snapshot-a{color:#666;font-size:12px;}
+
+.body .nors{font-family:arial,sans-serif;font-size:18px;color:#333;margin:24px 0 0 10px;}
+.body .nors .kw{color:#dd4b39;font-weight:normal;font-style:normal;font-family:"宋体";}
+.body .nors .no-list-tips,.body .nors .no-list-tips li{list-style:disc;}
+
+
+.page{font-size:14px;line-height:22px;height:22px;text-align:center;line-height:32px;height:32px;background:#f2f2f2;margin-bottom:6px;overflow:hidden;}
+.page a,.page b{font-size:14px;display: inline-block;border:1px solid #ccc;text-decoration: none;color: #3463e7;margin: 3px 5px;padding: 0 10px;line-height: 24px;height:24px;}
+.page b,.page a:hover{display: inline-block;color: #ff5500;border: 1px solid #F27B04;margin: 3px 5px;padding: 0 10px;line-height: 24px;height:24px;background: #ffeee5;}
+
+</style>
+<div class='search-in-p'>
+	<div class='search-in'>
+		<form method='get' action='./' class='search-form' onsubmit="return CheckKw();">
+			<input name='m' type='hidden' value='search' />
+			<input name='a' type='hidden' value='result' />
+			<input name='data_type' type='hidden' value='0' />
+			<input id='search-kw-in' name='kw' type='text' value="输入电影关键词搜索一下" data-tips='输入电影关键词搜索一下'          autocomplete='off' /><input type='submit' value='搜的一下' class='search-sbt' />
+			<div class='type-p'>
+				<a href='javascript:;' data-v='0' class='data-type-select select-active'>全部</a>
+				<a href='javascript:;' data-v='1' class='data-type-select'>下载</a>
+				<a href='javascript:;' data-v='2' class='data-type-select'>在线观看</a>
+			</div>
+			<div class='kw-tips'></div>
+		</form>
+	</div>
+</div>
+	
+<div class='body'>
+	
+			<ul class='list'>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<a href='http://top.femtoon.com/' target='_blank' title='飞兔排行' data-id='430065' class='nd' class='resource-a'>飞兔排行</a>
+												<h3><a href='http://www.dygang.com/dmq/20220315/48994.htm' target='_blank' title='伦敦一家人' data-id='430065' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>伦敦一家人</a></h3>
+												<div class='abstract'>
+							　　手绘动画电影，改编自Raymond Briggs以其父母真实人生为故事所绘的获奖和畅销绘本，讲述Raymond Briggs的父母，一对普通夫妇从1928年初遇相爱到1971年相继离世的故事，日子随男主人的发际线一起消逝，一生平淡...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/dmq/20220315/48994.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=b14c599362d3babeed22a0e4fca786f5' data-title='伦敦一家人' target='_blank' data-id='430065' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<a href='http://top.femtoon.com/' target='_blank' title='飞兔排行' data-id='430064' class='nd' class='resource-a'>飞兔排行</a>
+												<h3><a href='http://www.dygang.com/gp/20220315/48991.htm' target='_blank' title='上海正午俩部全' data-id='430064' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>上海正午俩部全</a></h3>
+												<div class='abstract'>
+							　　1887年，在西部某镇担任治安官的强（ 饰）忽然收到一封家信，惊闻看护玉玺的父亲被人杀死，玉玺失踪，妹妹铃（范文芳 饰）追踪犯人一路到了。于是强匆忙奔赴纽约，寻找老友罗伊（欧文•威尔逊 饰），强本想用上次得来的皇家黄金帮助自己，岂...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/gp/20220315/48991.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=2813cbff18133cce8abc6ac3cb4dcca9' data-title='上海正午俩部全' target='_blank' data-id='430064' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<a href='http://www.o-bccity.com/index.php' target='_blank' title='噢 BC城' data-id='430063' class='nd' class='resource-a'>噢 BC城</a>
+												<h3><a href='http://www.dygang.com/gp/20220315/48990.htm' target='_blank' title='黄飞鸿之王者之风' data-id='430063' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>黄飞鸿之王者之风</a></h3>
+												<div class='abstract'>
+							　　黄飞鸿（赵文卓 饰）夺得狮王争霸金牌后飘然而去，一时间广东会馆高朋云集纷纷做贺，八旗将军府副都统瓜鄂尔·成都（陈继铭 饰）大人登门拜访，原来八国联军欲使用各自的巨型赛狮挑战清廷，为维护国体，黄飞鸿决定出战与瓜鄂尔·成都将军共赴国难...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/gp/20220315/48990.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=f1e5ee19ba98134561c35917828b9a15' data-title='黄飞鸿之王者之风' target='_blank' data-id='430063' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<h3><a href='http://www.dygang.com/bd/20220315/48993.htm' target='_blank' title='身后事' data-id='430062' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>身后事</a></h3>
+												<a href='http://www.taoshenpang.cn/' target='_blank' title='淘身旁' data-id='430062' class='nd' class='resource-a'>淘身旁</a>
+												<div class='abstract'>
+							　　&quot;这首先是一个故事&quot;，阿格尼兹卡说：&quot;这个故事要从一开始就牢牢抓住你，有了这样的故事之后，才是考虑如何添加情节、如何表现情节的。对于我而言，最重要的是故事本身。作为一个电影工作者，总要有正确的故事，拍...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/bd/20220315/48993.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=b8e19ceff7b7e39d1dfc2b19ed80d893' data-title='身后事' target='_blank' data-id='430062' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<h3><a href='http://www.dygang.com/ys/20220314/48989.htm' target='_blank' title='浩哥爱情故事' data-id='430061' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>浩哥爱情故事</a></h3>
+												<a href='http://www.o-bccity.com/10001' target='_blank' title='噢 BC城 AD' data-id='430061' class='nd' class='resource-a'>噢 BC城 AD</a>
+												<div class='abstract'>
+							　　讲述张浩和春晓一路历经坎坷，最终彼此敞开心扉解除误会，配合警方将梅老板等不法分子抓捕归案的故事。,    |  |  |  |  |  |  |  |  |  |  |  |  |  |  |,提示：4K高清区和3D电影的资源大多...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/ys/20220314/48989.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=6d8b85ae459eefc414bc1aa3fd4c2be6' data-title='浩哥爱情故事' target='_blank' data-id='430061' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<a href='http://top.femtoon.com/' target='_blank' title='飞兔排行' data-id='430060' class='nd' class='resource-a'>飞兔排行</a>
+												<h3><a href='http://www.dygang.com/ys/20220314/48988.htm' target='_blank' title='一切顺利' data-id='430060' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>一切顺利</a></h3>
+												<div class='abstract'>
+							　　年过八十的父亲突然中风，艾曼纽在医院和之间来回奔波，要面对罹患帕金森氏症的忧鬱母亲，跟父亲有暧昧关係的昔日情人还时不时跑出来乱。孩提时期的她总因父亲严厉的管教，恨不得将他杀掉，如今父亲竟向她提出请求：“请帮我了结这一切吧！”让她百...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/ys/20220314/48988.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=60ddb736db16c7a1acdae7ec23886f49' data-title='一切顺利' target='_blank' data-id='430060' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<a href='http://www.cc917.com/index.php' target='_blank' title='从这里开始' data-id='430059' class='nd' class='resource-a'>从这里开始</a>
+												<h3><a href='http://www.dygang.com/ys/20220314/48987.htm' target='_blank' title='帮我看看' data-id='430059' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>帮我看看</a></h3>
+												<div class='abstract'>
+							　　盲人前滑雪選手蘇菲（斯凱勒達文波特飾演），某日前往友人豪宅，協助照顧對方的寵物。她透過手機下載的「幫我看」APP，尋求全國各地串連起的陌生人口述協助，帶她初步了解這個陌生環境。不過當天晚上，她發現三名歹徒潛入這處豪宅行竊。面對自己...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/ys/20220314/48987.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=b02d6839e60591ea09a8669fedba06c1' data-title='帮我看看' target='_blank' data-id='430059' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<a href='http://top.femtoon.com/' target='_blank' title='飞兔排行' data-id='430058' class='nd' class='resource-a'>飞兔排行</a>
+												<h3><a href='http://www.dygang.com/ys/20220314/48986.htm' target='_blank' title='红纸鹤' data-id='430058' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>红纸鹤</a></h3>
+												<div class='abstract'>
+							　　影片主要讲述了一名空姐不堪忍受长期的家暴，在一个雷雨交加的深夜将丈夫残忍杀害后一心求死，最后在法律援助律师的帮助下重拾对生活的信心的故事。灯光幽暗一片狼藉的房间内，衣衫破烂不整、 嘴角红肿带血、头发凌乱、目光绝望的欧阳祉鹤光着脚拖...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/ys/20220314/48986.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=0cf9d4630eb1ea4bdb7f2e791ca41dc7' data-title='红纸鹤' target='_blank' data-id='430058' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<h3><a href='http://www.dygang.com/ys/20220314/48985.htm' target='_blank' title='一日赴死' data-id='430057' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>一日赴死</a></h3>
+												<a href='http://www.o-bccity.com/10001' target='_blank' title='噢 BC城 AD' data-id='430057' class='nd' class='resource-a'>噢 BC城 AD</a>
+												<div class='abstract'>
+							　　一个不道德的假释官(狄龙饰)欠下了当地黑帮头目的债务，被迫在12小时内完成一系列危险的毒品抢劫行动，以偿还他所欠的200万美元，同时解救他被绑架的怀孕妻子，并与该市腐败的警察局长(威利斯饰)算账，后者与该黑帮头目合作，多年前曾出卖...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/ys/20220314/48985.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=bcc914727466d1a190fa3861502bb1f4' data-title='一日赴死' target='_blank' data-id='430057' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<a href='http://www.cc917.com/index.php' target='_blank' title='从这里开始' data-id='430056' class='nd' class='resource-a'>从这里开始</a>
+												<h3><a href='http://www.dygang.com/ys/20220314/48984.htm' target='_blank' title='美国围攻' data-id='430056' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>美国围攻</a></h3>
+												<div class='abstract'>
+							　　破产警长本·沃茨(布鲁斯·威利斯饰)守卫着乔治亚州一个小镇上富有居民的秘密。一天，三个不法分子劫持了镇上著名的医生作为人质，市长查尔斯向警长施压，要求他出动击杀这三个不法分子，并消灭所有目击者。随着时间的推移，本·沃茨意识到他其实...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/ys/20220314/48984.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=4605702e1d261132158d25462c26b646' data-title='美国围攻' target='_blank' data-id='430056' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<h3><a href='http://www.6vhao.com/gq/2022-03-14/39138.html' target='_blank' title='经典动作《黄飞鸿之王者之风》1080p.国粤双语.BD中字' data-id='430055' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>经典动作《黄飞鸿之王者之风》1080p.国粤双语.BD中字</a></h3>
+												<a href='http://www.taoshenpang.cn/' target='_blank' title='淘身旁' data-id='430055' class='nd' class='resource-a'>淘身旁</a>
+												<div class='abstract'>
+							　　黄飞鸿（赵文卓 饰）夺得狮王争霸金牌后飘然而去，一时间广东会馆高朋云集纷纷做贺，八旗将军府副都统瓜鄂尔·成都（陈继铭 饰）大人登门拜访，原来八国联军欲使用各自的巨型赛狮挑战清廷，为维护国体，黄飞鸿决定出战与瓜鄂尔·成都将军共赴国难...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.com/gq/2022-03-14/39138.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=c2e2b8bf10d1476663313cdf78653cd2' data-title='经典动作《黄飞鸿之王者之风》1080p.国粤双语.BD中字' target='_blank' data-id='430055' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<a href='http://top.femtoon.com/' target='_blank' title='飞兔排行' data-id='430054' class='nd' class='resource-a'>飞兔排行</a>
+												<h3><a href='http://www.6vhao.com/gq/2022-03-14/39137.html' target='_blank' title='经典纪录片《金钱无用：深入美联储》1080p.BD中英双字' data-id='430054' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>经典纪录片《金钱无用：深入美联储》1080p.BD中英双字</a></h3>
+												<div class='abstract'>
+							美联储成立近 100 年后，其权力从未如此强大。世界各地的市场和政府都屏住呼吸，期待美联储主席的每一句话。然而，普通人对地球上最强大——也是最不了解的——金融机构知之甚少。Liev Schreiber 讲述的《金钱无所不能》,1.下载...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.com/gq/2022-03-14/39137.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=de602f3a6057326b575ce0360f2f782a' data-title='经典纪录片《金钱无用：深入美联储》1080p.BD中英双字' target='_blank' data-id='430054' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<a href='http://top.femtoon.com/' target='_blank' title='飞兔排行' data-id='430053' class='nd' class='resource-a'>飞兔排行</a>
+												<h3><a href='http://www.6vhao.com/gq/2010-08-03/12201.html' target='_blank' title='经典恐怖惊悚《身后事》1080p.BD中英双字' data-id='430053' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>经典恐怖惊悚《身后事》1080p.BD中英双字</a></h3>
+												<div class='abstract'>
+							　　&quot;这首先是一个故事&quot;，阿格尼兹卡说：&quot;这个故事要从一开始就牢牢抓住你，有了这样的故事之后，才是考虑如何添加情节、如何表现情节的。对于我而言，最重要的是故事本身。作为一个电影工作者，总要有正确的故事，拍...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.com/gq/2010-08-03/12201.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=7a7cb3be8d6dc4c63dd32cdf28224c03' data-title='经典恐怖惊悚《身后事》1080p.BD中英双字' target='_blank' data-id='430053' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<a href='http://www.o-bccity.com/index.php' target='_blank' title='噢 BC城' data-id='430052' class='nd' class='resource-a'>噢 BC城</a>
+												<h3><a href='http://www.dy131.com/jddy/2022-03-14/42472.html' target='_blank' title='一切顺利' data-id='430052' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>一切顺利</a></h3>
+												<div class='abstract'>
+							　　年过八十的父亲突然中风，艾曼纽在医院和家庭之间来回奔波，要面对罹患帕金森氏症的忧鬱母亲，跟父亲有暧昧关係的昔日情人还时不时跑出来乱。孩提时期的她总因父亲严厉的管教，恨不得将他杀掉，如今父亲竟向她提出请求：“请帮我了结这一切吧！”让...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dy131.com/jddy/2022-03-14/42472.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=94c5825877e805527a38078847583132' data-title='一切顺利' target='_blank' data-id='430052' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<h3><a href='http://www.dy131.com/jddy/2022-03-14/42471.html' target='_blank' title='帮我看看' data-id='430051' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>帮我看看</a></h3>
+												<a href='http://www.o-bccity.com/10001' target='_blank' title='噢 BC城 AD' data-id='430051' class='nd' class='resource-a'>噢 BC城 AD</a>
+												<div class='abstract'>
+							　　盲人前滑雪選手蘇菲（斯凱勒達文波特飾演），某日前往友人豪宅，協助照顧對方的寵物。她透過手機下載的「幫我看」APP，尋求全國各地串連起的陌生人口述協助，帶她初步了解這個陌生環境。不過當天晚上，她發現三名歹徒潛入這處豪宅行竊。面對自己...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dy131.com/jddy/2022-03-14/42471.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=904dce250f22e5aacce34dbec07ffbb1' data-title='帮我看看' target='_blank' data-id='430051' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<a href='http://top.femtoon.com/' target='_blank' title='飞兔排行' data-id='430050' class='nd' class='resource-a'>飞兔排行</a>
+												<h3><a href='http://www.dy131.com/jddy/2022-03-14/42470.html' target='_blank' title='红纸鹤' data-id='430050' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>红纸鹤</a></h3>
+												<div class='abstract'>
+							　　影片主要讲述了一名空姐不堪忍受长期的家暴，在一个雷雨交加的深夜将丈夫残忍杀害后一心求死，最后在法律援助律师的帮助下重拾对生活的信心的故事。灯光幽暗一片狼藉的房间内，衣衫破烂不整、 嘴角红肿带血、头发凌乱、目光绝望的欧阳祉鹤光着脚拖...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dy131.com/jddy/2022-03-14/42470.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=2a77347e309e1c00ebaf7e8658dfa8d5' data-title='红纸鹤' target='_blank' data-id='430050' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<h3><a href='http://www.6vhao.net/jlp/2022-03-15/42476.html' target='_blank' title='金钱无用：深入美联储' data-id='430049' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>金钱无用：深入美联储</a></h3>
+												<a href='http://www.taoshenpang.cn/' target='_blank' title='淘身旁' data-id='430049' class='nd' class='resource-a'>淘身旁</a>
+												<div class='abstract'>
+							纪录片金钱无用：深入美联储下载,纪录片金钱无用：深入美联储迅雷下载,金钱无用：深入美联储是由6v电影www.6vgood.com搜集于互联网.纪录片金钱无用：深入美联储剧情简介：金钱无用：深入美联储 Money for Nothing...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.net/jlp/2022-03-15/42476.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=2350c3932b9b39dabff96a8613806142' data-title='金钱无用：深入美联储' target='_blank' data-id='430049' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<a href='http://www.o-bccity.com/index.php' target='_blank' title='噢 BC城' data-id='430048' class='nd' class='resource-a'>噢 BC城</a>
+												<h3><a href='http://www.6vhao.net/dy5/2022-03-15/42477.html' target='_blank' title='身后事' data-id='430048' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>身后事</a></h3>
+												<div class='abstract'>
+							　　&quot;这首先是一个故事&quot;，阿格尼兹卡说：&quot;这个故事要从一开始就牢牢抓住你，有了这样的故事之后，才是考虑如何添加情节、如何表现情节的。对于我而言，最重要的是故事本身。作为一个电影工作者，总要有正确的故事，拍...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.net/dy5/2022-03-15/42477.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=2c1f295c770ca5eb7c644f26de2f0634' data-title='身后事' target='_blank' data-id='430048' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<a href='http://www.cc917.com/index.php' target='_blank' title='从这里开始' data-id='430047' class='nd' class='resource-a'>从这里开始</a>
+												<h3><a href='http://www.6vhao.net/dy4/2022-03-15/42478.html' target='_blank' title='伦敦一家人' data-id='430047' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>伦敦一家人</a></h3>
+												<div class='abstract'>
+							　　英国手绘动画电影，改编自Raymond Briggs以其父母真实人生为故事所绘的获奖和畅销绘本，讲述Raymond Briggs的父母，一对普通英国夫妇从1928年初遇相爱到1971年相继离世的故事，日子随男主人的发际线一起消逝，...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.net/dy4/2022-03-15/42478.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=63f1d5436a0c402064c294ca4ba903ac' data-title='伦敦一家人' target='_blank' data-id='430047' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<h3><a href='http://www.6vhao.net/dy2/2022-03-15/42475.html' target='_blank' title='上海正午俩部全' data-id='430046' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>上海正午俩部全</a></h3>
+												<a href='http://www.o-bccity.com/10001' target='_blank' title='噢 BC城 AD' data-id='430046' class='nd' class='resource-a'>噢 BC城 AD</a>
+												<div class='abstract'>
+							　　1887年，在西部某镇担任治安官的强（成龙 饰）忽然收到一封家信，惊闻看护玉玺的父亲被人杀死，玉玺失踪，妹妹铃（范文芳 饰）追踪犯人一路到了英国。于是强匆忙奔赴纽约，寻找老友罗伊（欧文•威尔逊 饰），强本想用上次得来的皇家黄金帮助...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.net/dy2/2022-03-15/42475.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=d3f5cad0e13933c4b3477e383c677895' data-title='上海正午俩部全' target='_blank' data-id='430046' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<h3><a href='http://www.6vhao.net/dy2/2022-03-15/42474.html' target='_blank' title='黄飞鸿之王者之风' data-id='430045' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>黄飞鸿之王者之风</a></h3>
+												<a href='http://www.o-bccity.com/10001' target='_blank' title='噢 BC城 AD' data-id='430045' class='nd' class='resource-a'>噢 BC城 AD</a>
+												<div class='abstract'>
+							　　黄飞鸿（赵文卓 饰）夺得狮王争霸金牌后飘然而去，一时间广东会馆高朋云集纷纷做贺，八旗将军府副都统瓜鄂尔·成都（陈继铭 饰）大人登门拜访，原来八国联军欲使用各自的巨型赛狮挑战清廷，为维护国体，黄飞鸿决定出战与瓜鄂尔·成都将军共赴国难...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.net/dy2/2022-03-15/42474.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=ef75916a9937b0355862f5740277a26f' data-title='黄飞鸿之王者之风' target='_blank' data-id='430045' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<h3><a href='http://www.6vhao.net/dy2/2022-03-14/42469.html' target='_blank' title='一日赴死' data-id='430044' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>一日赴死</a></h3>
+												<a href='http://www.taoshenpang.cn/' target='_blank' title='淘身旁' data-id='430044' class='nd' class='resource-a'>淘身旁</a>
+												<div class='abstract'>
+							　　一个不道德的假释官(狄龙饰)欠下了当地黑帮头目的债务，被迫在12小时内完成一系列危险的毒品抢劫行动，以偿还他所欠的200万美元，同时解救他被绑架的怀孕妻子，并与该市腐败的警察局长(威利斯饰)算账，后者与该黑帮头目合作，多年前曾出卖...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.net/dy2/2022-03-14/42469.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=5d4900ed0d01199630beef8f84cc5f9a' data-title='一日赴死' target='_blank' data-id='430044' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<a href='http://www.cc917.com/index.php' target='_blank' title='从这里开始' data-id='430043' class='nd' class='resource-a'>从这里开始</a>
+												<h3><a href='http://www.6vhao.net/dy2/2022-03-14/42468.html' target='_blank' title='美国围攻' data-id='430043' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>美国围攻</a></h3>
+												<div class='abstract'>
+							　　破产警长本·沃茨(布鲁斯·威利斯饰)守卫着乔治亚州一个小镇上富有居民的秘密。一天，三个不法分子劫持了镇上著名的医生作为人质，市长查尔斯向警长施压，要求他出动击杀这三个不法分子，并消灭所有目击者。随着时间的推移，本·沃茨意识到他其实...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.net/dy2/2022-03-14/42468.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=11cc00d50a3ba998d7ad4dbc6f491cf4' data-title='美国围攻' target='_blank' data-id='430043' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-15】</div>
+					<div class='rg'>
+												
+												<a href='http://top.femtoon.com/' target='_blank' title='飞兔排行' data-id='430042' class='nd' class='resource-a'>飞兔排行</a>
+												<h3><a href='http://www.6vhao.net/dy1/2022-03-14/42473.html' target='_blank' title='浩哥爱情故事' data-id='430042' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>浩哥爱情故事</a></h3>
+												<div class='abstract'>
+							喜剧片浩哥爱情故事下载,喜剧片浩哥爱情故事迅雷下载,浩哥爱情故事是由6v电影www.6vgood.com搜集于互联网.喜剧片浩哥爱情故事剧情简介：◎译　　名　浩哥爱情故事,3. 下载如提示‘任务错误，未知错误，敏感资源，违规内容，版权...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.net/dy1/2022-03-14/42473.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=d6e6504e7ebba34123064912b093c4c7' data-title='浩哥爱情故事' target='_blank' data-id='430042' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-14】</div>
+					<div class='rg'>
+												
+												<a href='http://www.o-bccity.com/index.php' target='_blank' title='噢 BC城' data-id='430041' class='nd' class='resource-a'>噢 BC城</a>
+												<h3><a href='http://www.6vhao.com/dy/2022-03-13/39132.html' target='_blank' title='2022爱情喜剧《浩哥爱情故事》4K.HD国语中字' data-id='430041' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>2022爱情喜剧《浩哥爱情故事》4K.HD国语中字</a></h3>
+												<div class='abstract'>
+							1.下载时迅雷软件如提示‘任务错误，未知错误，敏感资源，违规内容，版权等等’都是迅雷屏蔽资源的表现，和6v无关。请仔细浏览下载帮助，依旧可以正常下载。,2022爱情喜剧《浩哥爱情故事》4K.HD国语中字免费下载，2022爱情喜剧《浩哥...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.com/dy/2022-03-13/39132.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=954c7d5b57f2075479952181b1a3f3c6' data-title='2022爱情喜剧《浩哥爱情故事》4K.HD国语中字' target='_blank' data-id='430041' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-14】</div>
+					<div class='rg'>
+												
+												<a href='http://www.cc917.com/index.php' target='_blank' title='从这里开始' data-id='430040' class='nd' class='resource-a'>从这里开始</a>
+												<h3><a href='http://www.6vhao.com/dy/2022-03-14/39136.html' target='_blank' title='2022动作《一日赴死》1080p.BD中英双字' data-id='430040' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>2022动作《一日赴死》1080p.BD中英双字</a></h3>
+												<div class='abstract'>
+							　　一个不道德的假释官(狄龙饰)欠下了当地黑帮头目的债务，被迫在12小时内完成一系列危险的毒品抢劫行动，以偿还他所欠的200万美元，同时解救他被绑架的怀孕妻子，并与该市腐败的警察局长(威利斯饰)算账，后者与该黑帮头目合作，多年前曾出卖...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.com/dy/2022-03-14/39136.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=3cb0a8d18ff01508ba9c43f4042b65e1' data-title='2022动作《一日赴死》1080p.BD中英双字' target='_blank' data-id='430040' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-14】</div>
+					<div class='rg'>
+												
+												<h3><a href='http://www.6vhao.com/dy/2022-03-14/39135.html' target='_blank' title='2022动作惊悚《美国围攻》1080p.BD中英双字' data-id='430039' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>2022动作惊悚《美国围攻》1080p.BD中英双字</a></h3>
+												<a href='http://www.o-bccity.com/10001' target='_blank' title='噢 BC城 AD' data-id='430039' class='nd' class='resource-a'>噢 BC城 AD</a>
+												<div class='abstract'>
+							　　破产警长本·沃茨(布鲁斯·威利斯饰)守卫着乔治亚州一个小镇上富有居民的秘密。一天，三个不法分子劫持了镇上著名的医生作为人质，市长查尔斯向警长施压，要求他出动击杀这三个不法分子，并消灭所有目击者。随着时间的推移，本·沃茨意识到他其实...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.com/dy/2022-03-14/39135.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=0285631e847ed33ab1b3aca4f2b573ec' data-title='2022动作惊悚《美国围攻》1080p.BD中英双字' target='_blank' data-id='430039' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-14】</div>
+					<div class='rg'>
+												
+												<h3><a href='http://www.6vhao.com/dy/2022-03-13/39134.html' target='_blank' title='2021惊悚剧情《帮我看看》1080p.BD中字' data-id='430038' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>2021惊悚剧情《帮我看看》1080p.BD中字</a></h3>
+												<a href='http://www.o-bccity.com/10001' target='_blank' title='噢 BC城 AD' data-id='430038' class='nd' class='resource-a'>噢 BC城 AD</a>
+												<div class='abstract'>
+							　　盲人前滑雪選手蘇菲（斯凱勒達文波特飾演），某日前往友人豪宅，協助照顧對方的寵物。她透過手機下載的「幫我看」APP，尋求全國各地串連起的陌生人口述協助，帶她初步了解這個陌生環境。不過當天晚上，她發現三名歹徒潛入這處豪宅行竊。面對自己...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.com/dy/2022-03-13/39134.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=740af0aee84125c9758f623fe1e3c89d' data-title='2021惊悚剧情《帮我看看》1080p.BD中字' target='_blank' data-id='430038' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-14】</div>
+					<div class='rg'>
+												
+												<a href='http://top.femtoon.com/' target='_blank' title='飞兔排行' data-id='430037' class='nd' class='resource-a'>飞兔排行</a>
+												<h3><a href='http://www.6vhao.com/dy/2022-03-13/39133.html' target='_blank' title='2021剧情《一切顺利》1080p.BD中字' data-id='430037' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>2021剧情《一切顺利》1080p.BD中字</a></h3>
+												<div class='abstract'>
+							　　年过八十的父亲突然中风，艾曼纽在医院和家庭之间来回奔波，要面对罹患帕金森氏症的忧鬱母亲，跟父亲有暧昧关係的昔日情人还时不时跑出来乱。孩提时期的她总因父亲严厉的管教，恨不得将他杀掉，如今父亲竟向她提出请求：“请帮我了结这一切吧！”让...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.com/dy/2022-03-13/39133.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=9e7feb738aa735931ce544703dff01fb' data-title='2021剧情《一切顺利》1080p.BD中字' target='_blank' data-id='430037' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-14】</div>
+					<div class='rg'>
+												
+												<a href='http://top.femtoon.com/' target='_blank' title='飞兔排行' data-id='430036' class='nd' class='resource-a'>飞兔排行</a>
+												<h3><a href='http://www.6vhao.com/dy/2022-03-10/39122.html' target='_blank' title='2022剧情《红纸鹤》1080p.HD国语中字' data-id='430036' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>2022剧情《红纸鹤》1080p.HD国语中字</a></h3>
+												<div class='abstract'>
+							　　影片主要讲述了一名空姐不堪忍受长期的家暴，在一个雷雨交加的深夜将丈夫残忍杀害后一心求死，最后在法律援助律师的帮助下重拾对生活的信心的故事。灯光幽暗一片狼藉的房间内，衣衫破烂不整、 嘴角红肿带血、头发凌乱、目光绝望的欧阳祉鹤光着脚拖...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.com/dy/2022-03-10/39122.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=b07b41717c07b0af2ef35b0102be42d0' data-title='2022剧情《红纸鹤》1080p.HD国语中字' target='_blank' data-id='430036' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-14】</div>
+					<div class='rg'>
+												
+												<a href='http://top.femtoon.com/' target='_blank' title='飞兔排行' data-id='430035' class='nd' class='resource-a'>飞兔排行</a>
+												<h3><a href='http://www.dygang.com/gp/20220314/48982.htm' target='_blank' title='富贵逼人三部曲' data-id='430035' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>富贵逼人三部曲</a></h3>
+												<div class='abstract'>
+							　　在报馆任职的骠叔（董骠 饰）因为工作的关系带着全家到加拿大工作。一家五口都全身心投入新环境新生活中，骠叔却因得罪上司被解雇了。由于大女儿、二女儿（李丽珍 饰）已开始了学业，他唯有带着妻子骠婶（沈殿霞 饰）与最小的女儿回到继续生活，...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/gp/20220314/48982.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=6b3fe42a5be9cf367600473ce3965292' data-title='富贵逼人三部曲' target='_blank' data-id='430035' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-14】</div>
+					<div class='rg'>
+												
+												<a href='http://www.o-bccity.com/index.php' target='_blank' title='噢 BC城' data-id='430034' class='nd' class='resource-a'>噢 BC城</a>
+												<h3><a href='http://www.6vhao.com/gq/2012-05-05/18006.html' target='_blank' title='经典喜剧《富贵逼人三部曲》1080p.国粤双语.BD中字' data-id='430034' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>经典喜剧《富贵逼人三部曲》1080p.国粤双语.BD中字</a></h3>
+												<div class='abstract'>
+							　　在报馆任职的骠叔（董骠 饰）因为工作的关系带着全家到加拿大工作。一家五口都全身心投入新环境新生活中，骠叔却因得罪上司被解雇了。由于大女儿、二女儿（李丽珍 饰）已开始了学业，他唯有带着妻子骠婶（沈殿霞 饰）与最小的女儿回到继续生活，...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.com/gq/2012-05-05/18006.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=96f06096f74a039440e3a6e7c712b254' data-title='经典喜剧《富贵逼人三部曲》1080p.国粤双语.BD中字' target='_blank' data-id='430034' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-14】</div>
+					<div class='rg'>
+												
+												<h3><a href='http://www.6vhao.net/dy1/2022-03-14/42466.html' target='_blank' title='富贵逼人三部曲' data-id='430033' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>富贵逼人三部曲</a></h3>
+												<a href='http://www.o-bccity.com/10001' target='_blank' title='噢 BC城 AD' data-id='430033' class='nd' class='resource-a'>噢 BC城 AD</a>
+												<div class='abstract'>
+							　　在报馆任职的骠叔（董骠 饰）因为工作的关系带着全家到加拿大工作。一家五口都全身心投入新环境新生活中，骠叔却因得罪上司被解雇了。由于大女儿、二女儿（李丽珍 饰）已开始了学业，他唯有带着妻子骠婶（沈殿霞 饰）与最小的女儿回到香港继续生...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.net/dy1/2022-03-14/42466.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=cbe2c4f2c1ab36f99558363b84c949fb' data-title='富贵逼人三部曲' target='_blank' data-id='430033' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-12】</div>
+					<div class='rg'>
+												
+												<a href='http://www.o-bccity.com/index.php' target='_blank' title='噢 BC城' data-id='430032' class='nd' class='resource-a'>噢 BC城</a>
+												<h3><a href='http://www.dygang.com/dmq/20220311/48977.htm' target='_blank' title='青春变形记' data-id='430032' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>青春变形记</a></h3>
+												<div class='abstract'>
+							　　正值青春期的13岁华裔女孩小美，当她兴奋或压力过大时，就会变身成为一只巨型红色小熊猫。这一奇妙的超能力，将为成长中的她带来多少烦恼？,　　　　　　菲尼亚斯·奥康奈尔 / Finneas O‘Connell | 配 Jesse - ...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/dmq/20220311/48977.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=89dcf05ac98839be889fe40d7fd6cd05' data-title='青春变形记' target='_blank' data-id='430032' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-12】</div>
+					<div class='rg'>
+												
+												<a href='http://www.o-bccity.com/index.php' target='_blank' title='噢 BC城' data-id='430031' class='nd' class='resource-a'>噢 BC城</a>
+												<h3><a href='http://www.dygang.com/gp/20220311/48973.htm' target='_blank' title='投奔怒海' data-id='430031' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>投奔怒海</a></h3>
+												<div class='abstract'>
+							　　在《投奔怒海》中首次亮相银幕，他的回忆文章中很清晰地记得当时的情形，“夏梦就坐在我面前，架着茶色的眼镜，和颜悦色地说‘刘先生，很抱歉这么匆忙地找你，我们找你演的角色，坦白说，原本属于的，但一开始接触他时，他就推了，我们不得不找第二...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/gp/20220311/48973.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=15e87795c06932f21ac11961d00d4321' data-title='投奔怒海' target='_blank' data-id='430031' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-12】</div>
+					<div class='rg'>
+												
+												<a href='http://www.cc917.com/index.php' target='_blank' title='从这里开始' data-id='430030' class='nd' class='resource-a'>从这里开始</a>
+												<h3><a href='http://www.dygang.com/ys/20220311/48976.htm' target='_blank' title='亚当计划' data-id='430030' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>亚当计划</a></h3>
+												<div class='abstract'>
+							◎编　　剧　乔纳森·崔普尔 Jonathan Tropper / T·S·诺林 T.S. Nowlin / 珍妮佛·弗莱基特 Jennifer Flackett / 马克·莱温 Mark Levin,◎译　　名　亚当计划/超时空亚当计...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/ys/20220311/48976.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=2af995323f27fc675d3dbb0a7151844a' data-title='亚当计划' target='_blank' data-id='430030' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-12】</div>
+					<div class='rg'>
+												
+												<a href='http://top.femtoon.com/' target='_blank' title='飞兔排行' data-id='430029' class='nd' class='resource-a'>飞兔排行</a>
+												<h3><a href='http://www.6vhao.net/dy6/2022-03-11/42460.html' target='_blank' title='亚当计划' data-id='430029' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>亚当计划</a></h3>
+												<div class='abstract'>
+							科幻片亚当计划下载,科幻片亚当计划迅雷下载,亚当计划是由6v电影www.6vgood.com搜集于互联网.科幻片亚当计划剧情简介：◎译　　名　亚当计划/超时空亚当计划(港)/超时空亚当计画(台)/Our Name Is Adam,◎编...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.net/dy6/2022-03-11/42460.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=335a80fd81c69894bed3ac97dfcdcb4d' data-title='亚当计划' target='_blank' data-id='430029' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-12】</div>
+					<div class='rg'>
+												
+												<a href='http://www.cc917.com/index.php' target='_blank' title='从这里开始' data-id='430028' class='nd' class='resource-a'>从这里开始</a>
+												<h3><a href='http://www.6vhao.net/dy4/2022-03-11/42461.html' target='_blank' title='青春变形记' data-id='430028' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>青春变形记</a></h3>
+												<div class='abstract'>
+							动画片青春变形记下载,动画片青春变形记迅雷下载,青春变形记是由6v电影www.6vgood.com搜集于互联网.动画片青春变形记剧情简介： ◎译　　名　青春变形记 / 熊抱青春记(港) / 青春养成记(台) / 变红,　　正值青春期的...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.6vhao.net/dy4/2022-03-11/42461.html</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=631a0f7dbadd3a7feb63e810b7e0b399' data-title='青春变形记' target='_blank' data-id='430028' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li						 					>
+					<div class='lf'>【2022-03-12】</div>
+					<div class='rg'>
+												
+												<a href='http://top.femtoon.com/' target='_blank' title='飞兔排行' data-id='430027' class='nd' class='resource-a'>飞兔排行</a>
+												<h3><a href='http://www.dygang.com/ys/20220311/48975.htm' target='_blank' title='东京大震荡' data-id='430027' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>东京大震荡</a></h3>
+												<div class='abstract'>
+							　　2011年3月11日，遭遇史上最大地震的襲擊，引發福島海嘯災難。亞歷珊卓拉剛從法國來到東京，正準備在當地法商銀行工作，卻突然遭逢這場核災危機。在工作與間拉扯，逐漸浮現的恐懼與焦慮就要吞噬亞歷珊卓拉。離開或者留下，丈夫兒女與仰賴她的...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/ys/20220311/48975.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=2865e9c1d38651eb25badbdf3e28281b' data-title='东京大震荡' target='_blank' data-id='430027' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+							<li class='last '
+					>
+					<div class='lf'>【2022-03-12】</div>
+					<div class='rg'>
+												
+												<a href='http://top.femtoon.com/' target='_blank' title='飞兔排行' data-id='430026' class='nd' class='resource-a'>飞兔排行</a>
+												<h3><a href='http://www.dygang.com/ys/20220311/48974.htm' target='_blank' title='我眼中的阴影' data-id='430026' class='resource-a'>
+												<span class='play-type mark-color' title='下载'>[下载]</span>我眼中的阴影</a></h3>
+												<div class='abstract'>
+							　　1945 年 3 月 21 日，皇家空军开始执行轰炸哥本哈根盖世太保总部的任务。这次袭击造成了致命的后果，因为一些轰炸机意外袭击了一所学校，造成 120 多人丧生，其中 86 人是儿童。,    |  |  |  |  |  | ...						</div>
+						<div class='snapshot'>
+							<span class='resource-url-span'>http://www.dygang.com/ys/20220311/48974.htm</span>
+														&nbsp;-&nbsp;
+							<a href='./cache.php?key=41b29f20000f34cdff4ffa9f4c43b4b8' data-title='我眼中的阴影' target='_blank' data-id='430026' class='resource-snapshot-a'>网页快照</a>
+													</div>
+					</div>
+					<div class='clearfix'></div>
+				</li>
+						<div class='clearfix'></div>
+		</ul>
+			<div class='page'></div>
+	<div class='hide-dom' class='nd' data-real-dom-class='page'>
+		<b>1</b><a href="/?m=content&a=lists&page=fb" >2</a><a href="/?m=content&a=lists&page=feba" >3</a><a href="/?m=content&a=lists&page=gC" >4</a><a href="/?m=content&a=lists&page=geCa" >5</a><a href="/?m=content&a=lists&page=fb" >下一页</a><a href="/?m=content&a=lists&page=rpMLigfeCa" >尾页</a>
+	</div>
+	</div>
+
+<script>
+var script_el='';
+function CountClick(ele,site_id)
+{
+	if(typeof($(ele).attr('title'))!='undefined')
+	{
+		var a_title=$(ele).attr('title');
+	}
+	else
+	{
+		var a_title=$(ele).attr('data-title');
+	}
+	
+	var a_url=$(ele).attr('href');
+	var url='./?m=pub_module&a=count_url_click&title='+encodeURIComponent(a_title)+'&url='+encodeURIComponent(a_url)+'&site_id='+site_id+'&site_type=movie&t='+Math.random();
+	if(script_el!='')
+	{
+		script_el.parentNode.removeChild(script_el);
+	}
+	var head=document.getElementsByTagName('head')[0];
+	script_el=document.createElement('script');
+	script_el.src=url;
+	script_el.type='text/javascript';
+	head.appendChild(script_el);
+}
+
+function CheckKw()
+{
+	var kw=$('#search-kw-in').val(),
+		kw_tips=$('#search-kw-in').attr('data-tips');
+	kw=$.trim(kw);
+	if(kw=='' || kw==kw_tips)
+	{
+		$('#search-kw-in').val('').focus();
+		return false;
+	}
+	return true;
+}
+
+function GetKwTips()
+{
+	var v=$('#search-kw-in').val();
+	v=$.trim(v);
+	var url='/?m=analysis&c=op&a=kw_tips';
+	$.ajax({url:url,
+			type:'get',
+			data:{kw:v},
+			dataType:'json',
+			success:function(data)
+					{
+						var curr_v=$('#search-kw-in').val();
+						curr_v=$.trim(curr_v);
+						if(curr_v!=v)
+						{
+							return;
+						}
+						var html='';
+						if(data.length>0)
+						{
+							for(var i=0;i<data.length;i++)
+							{
+								var item_html="<div class='kw-tips-item'>"+data[i]+"</div>";
+								html+=item_html;
+							}
+							$('.kw-tips').show().html(html);
+						}
+						else
+						{
+							$('.kw-tips').html('').hide();
+						}
+					}
+			});
+}
+
+function BindEvent()
+{
+	var is_click=0;
+	$('#search-kw-in').bind('focus',function()
+							{
+								var v=$(this).val(),
+									tips=$(this).attr('data-tips');
+								v=$.trim(v);
+								if(v==tips)
+								{
+									$(this).val('');
+								}
+								else if(v!='')
+								{
+									var html=$('.kw-tips').html();
+									html=$.trim(html);
+									if(html!='')
+									{
+										$('.kw-tips').show();
+									}
+									else
+									{
+										GetKwTips();
+									}
+								}
+							}).bind('blur',function()
+							{
+								var v=$(this).val(),
+									tips=$(this).attr('data-tips');
+								v=$.trim(v);
+								if(v=='')
+								{
+									$(this).val(tips);
+								}
+								if(!is_click)
+								{
+									$('.kw-tips').hide();
+								}
+							}).bind('input propertychange',function()
+							{
+								GetKwTips();
+							}).bind('keyup',function(event)
+							{
+								if (event.keyCode == 38 || event.keyCode == 40)
+								{
+									if($('.kw-tips-item').length<1)
+									{
+										return;
+									}
+									
+									//获取kw-tips-item中kw-tips-item-focus的序号
+									var ix=-1;
+									var last_ix=$('.kw-tips-item').length-1;
+									
+									if($('.kw-tips-item-focus').length>0)				//存在
+									{
+										$('.kw-tips-item').each(function()
+																{
+																	ix++;
+																	if($(this).hasClass('kw-tips-item-focus'))
+																	{
+																		return false;
+																	}
+																});
+									}
+									
+									//上移
+									if (event.keyCode == 38)
+									{
+										if(ix==-1)
+										{
+											ix=last_ix;
+										}
+										else
+										{
+											ix--;
+										}
+									}
+									else if(event.keyCode == 40)			//下移
+									{
+										if(ix==last_ix)
+										{
+											ix=-1;
+										}
+										else
+										{
+											ix++;
+										}
+									}
+									$('.kw-tips-item').removeClass('kw-tips-item-focus');
+									if(ix==-1)
+									{
+										var t_v=unescape($(this).attr('data-user-in'));
+									}
+									else
+									{
+										$('.kw-tips-item').eq(ix).addClass('kw-tips-item-focus');
+										var t_v=$('.kw-tips-item-focus').html();
+									}
+									$(this).val(t_v);
+								}
+								else
+								{
+									var kw=$.trim($(this).val());
+									$(this).attr({'data-user-in':escape(kw)});
+								}
+							});
+
+	$('.kw-tips-item').die('mouseover').live('mouseover',function()
+										{
+											is_click=0;
+											$('.kw-tips-item').removeClass('kw-tips-item-focus');
+											$(this).addClass('kw-tips-item-focus');
+										}).die('mouseout').live('mouseout',function()
+										{
+											is_click=0;
+											$(this).removeClass('kw-tips-item-focus');
+										}).die('mousedown').live('mousedown',function()
+										{
+											is_click=1;
+										}).die('click').live('click',function()
+										{
+											var v=$.trim($(this).html());
+											$('#search-kw-in').val(v);
+
+											$('.search-form').submit();
+											$('.kw-tips').hide();
+										});
+
+	$('.resource-a,.resource-snapshot-a').die('click').live('click',function()
+										{
+											var site_id=$(this).attr('data-id');
+											CountClick(this,site_id);
+										});
+
+	$('.data-type-select').die('click').live('click',function()
+										{
+											var data_type=$(this).attr('data-v'),
+												kw=$('#search-kw-in').val(),
+												kw_tips=$('#search-kw-in').attr('data-tips');
+											kw=$.trim(kw);
+											if(kw!=''&&kw!=kw_tips)
+											{
+												var url='/?m=search&a=result&kw='+encodeURIComponent(kw)+'&data_type='+data_type;
+											}
+											else
+											{
+												var url='/index.php?data_type='+data_type;
+											}
+											window.location.href=url;
+										});
+}
+
+$(document).ready(function()
+					{
+						BindEvent();
+					});
+</script>
+
+<style>
+.feedback{position:absolute;right:1px;background:#fff;}
+.feedback-min{width:24px;height:180px;text-align:center;background:#f1f1f1;overflow:hidden;background:url("/statics/images/feedback-bg-min.jpg") no-repeat center center;}
+.feedback-min .feedback-max-a{margin-top:14px;font-size:14px;/*color:rgb(210,75,57);*/color:#505050;display:inline-block;}
+.feedback-max{width:300px;height:164px;padding:3px;background:url("/statics/images/feedback-bg-max.png") repeat-x left 0;border:1px solid #ededed;}
+.feedback-max .max-top{width:100%;_height:28px;line-height:20px;font-size:14px;color:#808080;padding-left:4px;}
+.feedback-max .max-top .feedback-min-a{float:right;height:30px;line-height:30px;font-size:14px;font-weight:bold;font-family:"宋体";color:#FF8055;margin-right:6px;}
+.feedback-max .max-mid{width:100%;}
+#feedback-in{width:290px;height:90px;padding:4px;color:#606060;font-size:12px;color:#808080;border:1px solid #d8d8d8;}
+.feedback-max .max-bottom{width:100%;height:30px;line-height:30px;margin-top:4px;}
+.feedback-max .max-bottom .input-tips{color:#777;}
+#feedback-sbt{width:52px;height:25px;border:0;cursor:pointer;margin-left:5px;}
+</style>
+<div class='feedback'>
+	<div class='feedback-min'>
+		<a href='javascript:;' class='feedback-max-a' title='展开'>
+			<span style='font-weight:bold;font-family:"宋体";display:inline-block;text-align:center;color:rgb(210,75,57);'>&lt;&lt;</span>
+			给我们建议或意见
+		</a>
+	</div>
+	<div class='feedback-max nd'>
+		<div class='max-top'>
+			给我们建议或意见<a href='javascript:;' class='feedback-min-a' title='收缩'>&gt;&gt;</a>
+			<br>(<span style='font-size:12px;'>期待您能留下您的联系方式，我们进一步沟通</span>)
+		</div>
+		<div class='max-mid'>
+			<textarea id='feedback-in'></textarea>
+		</div>
+		<div class='max-bottom'>
+			<img id='feedback-sbt' src="/statics/images/sbt.gif" alt="提交" title='提交' >
+			<span class='input-tips'>(最多300个字符)</span>
+		</div>
+	</div>
+</div>
+
+<style>
+.page-fixed{position:fixed;right:0;bottom:0;margin-right:16px;color:#222;line-height:24px;padding:0 4px;background:#f2f2f2;border:1px solid #ccc;border-bottom:0;z-index:100;overflow:hidden;}
+.page-fixed a{font-size:12px;color:#333 !important;font-weight:bold;}
+.page-fixed .to-top{background:url('/statics/images/totop_icon.gif') 3px 0 no-repeat;display:inline-block;width:41px;height:30px;}
+</style>
+<!--[if IE 6]>
+<style type="text/css">
+*{padding:0;margin:0;}
+html{background-image:url(about:blank);background-attachment:fixed;}
+.page-fixed{position:absolute;z-index:1000;bottom:0;}
+</style>
+<![endif]-->
+<div id='page-fixed' class="page-fixed"><a href="javascript:;" onclick="window.scrollTo(0,0);return false;" title='返回顶部' class='to-top'></a></div>
+<div class='clearfix'></div>
+<div class='foot' align="center">
+	<div class="main">
+		<a href="http://www.91soudy.com/aboutus.html" target="_blank">关于我们</a> QQ群: 154644642 欢迎加入我们!  
+	</div>
+	<div class="main">
+	 	站外链接：<a href="http://www.femtoon.com/" target="_blank">飞兔网（www.femtoon.com）</a>·<a href="http://www.cc917.com/" target="_blank">cc917导航(www.cc917.com)</a>
+		<br><a href='http://www.bilin365.com/' target="_blank">比邻365 - 据说很牛叉</a>
+	 </div>
+	 <div class='main' style='margin-top:6px;'>
+		<a href='https://beian.miit.gov.cn' target='_blank' style='color:#999;'>蜀ICP备13017736号</a>
+		<span style='display:none;'>
+		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5797955'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/stat.php%3Fid%3D5797955%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+		<span>
+	 </div>
+</div>
+<script>
+//全局变量
+var isIE=0;
+var isFirefox=0;
+var isChrome=0;
+var isOpera=0;
+var isSafari=0;
+var nu=navigator.userAgent;
+if(nu.indexOf("MSIE")>0)
+{ 
+	isIE=1;
+} 
+else if(nu.indexOf("Firefox")>0)
+{ 
+	isFirefox=1;
+} 
+else if(nu.indexOf("Chrome")>0)
+{ 
+	isChrome=1;
+}
+else if(nu.indexOf("Safari")>0) 
+{ 
+	isSafari=1;
+}  
+else if(nu.indexOf("Opera")>0)
+{ 
+	isOpera=1;
+} 
+//获取ie浏览器的版本
+function GetIEVersion()
+{
+	var ua=navigator.userAgent; //获取用户端信息
+  	var b=ua.indexOf("MSIE "); //检测特殊字符串"MSIE "的位置
+  	if (b<0) 
+	{
+    	return 0;
+    }
+    return parseFloat(ua.substring(b+5,ua.indexOf(";",b))); //截取版本号字符串，并转换为数值
+}
+
+//获取对象
+function $_fmt(id)
+{
+	 return(document.getElementById(id));
+}
+function FixElement()
+{
+	var win_h=$(window).height(),
+		scroll_top=$(window).scrollTop();
+	if(isIE)
+	{
+		var ieVersion=GetIEVersion();
+		if(ieVersion==6)
+		{
+			var $_ele=$('page-fixed');
+			var top=scroll_top+win_h-$_ele.outerHeight();
+			$_ele.css({top:top+'px'});
+		}
+	}
+	
+	var $_feedback=$('.feedback'),
+		ele_h=$_feedback.outerHeight();
+
+	var top=$(window).scrollTop()+win_h/2-ele_h/2;
+	$_feedback.css({top:top+'px'});
+}
+
+function FeedbackBindEvent()
+{
+	$('.feedback-max-a').bind('click',function()
+										{
+											$('.feedback-min').addClass('nd');
+											$('.feedback-max').removeClass('nd');
+										});
+	$('.feedback-min-a').bind('click',function()
+										{
+											$('.feedback-max').addClass('nd');
+											$('.feedback-min').removeClass('nd');
+										});
+										
+	$('#feedback-sbt').bind('click',function()
+							{
+								var content=$('#feedback-in').val();
+								content=$.trim(content);
+								if(content=='')
+								{
+									alert('感谢您的关注，但内容不可以为空，请填写');
+									return;
+								}
+								if(content.length>300)
+								{
+									alert('感谢您的关注，但内容太长，超过了300个字符，您可以分多次提交');
+									return;
+								}
+								var url='./?m=netself&a=user_feedback_add';
+								$.ajax({url:url,
+										type:'post',
+										data:{content:content},
+										dataType:'json',
+										success:function(data)
+												{
+													if(data.code)
+													{
+														$('#feedback-in').val('');
+													}
+													alert(data.msg);
+												},
+										error:function()
+												{
+													alert('很抱歉，系统错误，您的建议或意见未发送成功，请稍后再试，再次感谢您的关注.');
+												}
+									});
+							});
+}
+
+window.onscroll=function()
+ 				{
+					FixElement();
+				};
+$(document).ready(function()
+				{
+					FixElement();
+					FeedbackBindEvent();
+				});
+</script>
+</body>
+</html>

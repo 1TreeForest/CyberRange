@@ -1,0 +1,301 @@
+<script type="text/javascript" src="http://www.rijushe.com/wp-content/themes/Rijushe/js/jquery.min.js"></script>
+<script type="text/javascript">
+	// Options
+	$(document).ready(function() {
+			var getSavedata = $('#rijushe_type').val()
+			if (getSavedata==''){
+				$("#rijusheinfo").css({"display":"none"});
+				//$('#rijusheinfo').addClass('himwehide');
+			}else if (getSavedata=='paid'){
+				$("#rijusheinfo").css({"display":"block"});
+				//$('#rijusheinfo').removeClass('himwehide');
+			}else if (getSavedata=='free'){
+				$("#rijusheinfo").css({"display":"block"});
+				//$('#rijusheinfo').removeClass('himwehide');
+			}
+			$('#rijushe_type').bind('change',function(){
+			var getValue = $(this).val();
+			if (getValue == '') {
+				$("#rijusheinfo").css({"display":"none"});
+				//$('#rijusheinfo').addClass('himwehide');
+			} else if (getValue == 'paid') {
+				$("#rijusheinfo").css({"display":"block"});
+				//$('#rijusheinfo').removeClass('himwehide');
+			} else if (getValue == 'free') {
+				$("#rijusheinfo").css({"display":"block"});
+				//$('#rijusheinfo').removeClass('himwehide');
+			}else {
+				$("#rijusheinfo").css({"display":"none"});
+				//$('#rijusheinfo').addClass('himwehide');
+			}
+		});
+	});
+	// 图片上传
+	jQuery(document).ready(function(){
+		//
+		jQuery('input.product_upload_botton').click(function() {      
+			custom_editor = true;          
+			targetfield = jQuery(this).prev('input');      
+			tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');   
+			window.original_send_to_editor = window.send_to_editor;   
+			window.send_to_editor = function(html) {   
+				if (custom_editor) {       
+					imgurl = jQuery('img',html).attr('src');   
+					jQuery(targetfield).val(imgurl).focus();   
+					custom_editor = false;   
+					tb_remove();   
+				}else{   
+					window.original_send_to_editor(html);   
+				}   
+			}           
+			return false;
+		});  
+		// 图片实时预览"product_upload_input"为图片url文本框的class属性      
+		jQuery('input.product_upload_input').each(function(){      
+			jQuery(this).bind('change focus blur', function(){         
+				//获取改文本框的name属性后面      
+				$select = '#' + jQuery(this).attr('name') + '_img';      
+				$value = jQuery(this).val();      
+				$image = '<img src ="'+$value+'" />';                   
+				var $image = jQuery($select).html('').append($image).find('img');                 
+				//set timeout because of safari      
+				window.setTimeout(function(){      
+					if(parseInt($image.attr('width')) < 20){         
+						jQuery($select).html('');      
+					}      
+				},500);      
+			});      
+		});      
+    });
+</script><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head profile="http://gmpg.org/xfn/11">
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		  			<title>日剧社 RiJuShe - 全网最全的日本影视资源(你想要这里都有) By HimWe Mall</title>
+          	<meta name="description" content="日剧社RiJuShe，黑沐唯影视官方资源站。日剧社RiJuShe涵盖2017年最新最全的日剧、日影及日系综艺，日剧社RiJuShe提供的热门日本电影、日本动漫、日本综艺均为黑沐唯官方指定热卖资源，均为720高清与1080超清稀有影视。凡日剧社RiJuShe列出的影视，均可在黑沐唯官方商城及黑沐唯淘宝店订购。" />
+			<meta name="keywords" content="日剧社,RiJuShe,日剧,日漫,日影,最新日剧,经典日剧,高清日剧,中文字幕,最新版日剧,rijushe.com,日本电视剧,日本电影,Live现场,日本综艺,月九剧,日本720高清,日本1080超清" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="alternate" type="application/rss+xml" title="日剧社 RiJuShe - 最全的日本影视网络聚集地 RSS Feed" href="http://www.rijushe.com/feed/" />
+		<link rel="alternate" type="application/atom+xml" title="日剧社 RiJuShe - 最全的日本影视网络聚集地 Atom Feed" href="http://www.rijushe.com/feed/atom/" />
+		<link rel="shortcut icon" href="/wp-content/themes/RiJuShe/images/rijushe.png" type="image/x-icon" />
+		<link rel="pingback" href="http://www.rijushe.com/xmlrpc.php" />
+		<!---ty-0614[if lt IE 9]>
+			<script src="http://www.rijushe.com/wp-content/themes/Rijushe/js/html5.js"></script>
+			<script src="http://www.rijushe.com/wp-content/themes/Rijushe/js/css3-mediaqueries.js"></script>
+		<![endif]-->
+		<!--[if lte IE 7]>
+			<script>window.location.href='http://7xkipo.com1.z0.glb.clouddn.com/upgrade-your-browser.html?referrer='+location.href;</script>
+		<![endif]-->
+		<script type="text/javascript">var himwe_theme_ajax_search_loc = {}</script><link rel='dns-prefetch' href='//www.rijushe.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel='stylesheet' id='wp-block-library-css'  href='http://www.rijushe.com/wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='kube-css'  href='http://www.rijushe.com/wp-content/themes/Rijushe/css/kube.css' type='text/css' media='all' />
+<link rel='stylesheet' id='rijushe-fonts-css'  href='http://www.rijushe.com/wp-content/themes/Rijushe/css/rijushe-fonts.css' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome.min-css'  href='http://www.rijushe.com/wp-content/themes/Rijushe/css/font-awesome.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-header-css'  href='http://www.rijushe.com/wp-content/themes/Rijushe/css/responsive-header.css' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.rijushe.com/wp-content/themes/Rijushe/js/jquery.min.js'></script>
+<link rel='https://api.w.org/' href='http://www.rijushe.com/wp-json/' />
+<link rel="stylesheet" type="text/css" href="http://www.rijushe.com/wp-content/themes/Rijushe/css/style/pink.css" />
+<link rel="stylesheet" type="text/css" href="http://www.rijushe.com/wp-content/themes/Rijushe/css/rijushe.css" />
+				<style type="text/css">
+			#post_container .fixed-hight .thumbnail{height:200px; overflow: hidden;}
+			.related,.related_box{height: 185px;}
+			.related_box .r_pic,.related_box .r_pic img {height: 95px;}	
+		</style>
+	</head>
+	<body  class="custom-background">
+			<!---加载进度条---->
+<script type="text/javascript">
+jQuery(function(){
+jQuery('#loading-one').empty().append('页面载入完毕.').parent().fadeOut('slow');
+});
+</script>
+<div id="main_loading"  onclick="javascript:turnoff('loading')">
+<p id="loading-one" onclick="javascript:turnoff('loading')">页面载入中...</p>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+function turnoff(obj){
+document.getElementById(obj).style.display="none";
+}
+//]]&gt;
+</script>
+<!---加载进度条---->
+		<div id="head" class="row">
+					<div class="mainbar">
+				<div class="container fullheader">
+					<div id="topbar">
+						<ul id="toolbar" class="menu"><li class="page_item page-item-2"><a href="http://www.rijushe.com/new/"><i class="rijushe himwe-yingshi"></i>最新影视列表<i class="rijushe himwe-zuixin-4" style="color:#ff0000;font-size:26px;"></i></a></li>
+</ul>
+					</div>
+					<div id="rss">
+						<ul>
+							<li><a href="http://www.rijushe.com/feed/" target="_blank" class="icon1" title="欢迎订阅日剧社 RiJuShe - 最全的日本影视网络聚集地"></a></li>
+																						<li><a href="输入QQ空间地址" target="_blank" class="icon22" title="关注我们的QQ空间" rel="nofollow"><i class="rijushe himwe-qqkongjian hsl24px"></i></a></li>
+																						<li>
+									<a href="#" id="ShowWeixin" class="icon22" title="关注我们的微信" rel="nofollow">
+										<i class="rijushe himwe-weixin hsl24px"></i>
+									</a>
+									<div id="shilinweixin"></div>
+									<div id="weixincode">
+										<div class="close">
+											<a href="javascript:void(0)" id="wxclose">
+												<img src="http://www.rijushe.com/wp-content/themes/Rijushe/images/close.gif">
+											</a>
+										</div>
+										 <div class="weixintext"><i class="rijushe himwe-weixin hsl24px"></i>扫扫二维码，关注我们的微信吧！</div>
+										<div class="weixin-img">
+											<img id="weixinsrc"  src="输入微信二维码地址">
+										</div>
+									</div>
+								</li>
+																						<li><a href="输入腾讯微博地址" target="_blank" class="icon22" title="关注我们的腾讯微博" rel="nofollow"><i class="rijushe himwe-qqweibo hsl24px"></i></a></li>
+																						<li><a href="输入新浪微博地址" target="_blank" class="icon33" title="关注我们的新浪微博" rel="nofollow"><i class="rijushe himwe-sinaweibo hsl24px"></i></a></li>
+																													<li><a href="#" id="StranLink"><i class="rijushe himwe-jianfan"></i>繁體中文</a><script type="text/javascript" src="http://www.rijushe.com/wp-content/themes/Rijushe/js/jianfan.js"></script></li>
+													</ul>
+					</div>
+				</div>  
+			</div>
+			<div class="clear"></div>
+				<div class="himweheader">
+							<div class="responsive-header clearfix deferred-block-exclude">
+					<div class="responsive-header-container clearfix">
+						<div class="menu-container close">
+							<span class="menu-handler">
+								<span class="lines"></span>
+							</span>
+							<div class="menu-box clearfix">
+								<ul id="resp-navigation" class="resp-menu menu clearfix">
+																	</ul>
+							</div>
+						</div><!-- .menu-container -->
+						<div class="logo-container">
+							<a href="http://www.rijushe.com/" title="日剧社 RiJuShe - 最全的日本影视网络聚集地">
+																	<h1>日剧社 RiJuShe - 最全的日本影视网络聚集地</h1>
+																	<!-- <i class="rijushe himwe-rijushe"></i> -->
+								<img src="/wp-content/themes/Rijushe/images/logo2.png" alt="日剧社 RiJuShe - 最全的日本影视网络聚集地" />
+							</a>
+						</div><!-- .logo-container -->
+						<div class="search-container close">
+							<span class="search-handler">
+								<i class="fa fa-search"></i>
+							</span>
+							<div class="search-box clearfix">
+								<form role="search" method="get" class="search-form clearfix" action="http://www.rijushe.com">
+									<input type="search" class="search-field" placeholder=" 请在此输入关键词 ... " value="" name="s" title=" 请在此输入关键词 ... " autocomplete="on">
+									<input type="submit" class="search-submit rijushe" value="&#xe625; 搜索">
+								</form><!-- .search-form -->
+							</div>
+						</div><!-- .search-container -->
+					</div><!-- .responsive-header-container -->
+				</div><!-- .responsive-header -->
+						<div class="mainheader">
+				<div id="blogname" class="logo">
+					<a href="http://www.rijushe.com/" title="日剧社 RiJuShe - 最全的日本影视网络聚集地">
+													<h1>日剧社 RiJuShe - 最全的日本影视网络聚集地</h1>
+													<!-- <i class="rijushe himwe-rijushe hsl16x"></i> -->
+						<img src="/wp-content/themes/Rijushe/images/logo2.png" alt="日剧社 RiJuShe - 最全的日本影视网络聚集地" />
+					</a>
+				</div>
+								<div class="mainmenu">
+					<div class="topnav">
+												<!-- <div class="menu-button"><i class="menu-ico"></i></div> -->
+						<ul id="menu-%e4%b8%bb%e5%af%bc%e8%88%aa%e8%8f%9c%e5%8d%95" class="menu"><li id="menu-item-5" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-5"><a href="/" aria-current="page"><i class="himwe-home"></i><i class="himwe-shouye"></i><i class="hide">首页</i></a></li>
+<li id="menu-item-4" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4"><a href="http://www.rijushe.com/./dianshiju/"><i class="himwe-drama"></i><i class="himwe-dianshiju"></i><i class="hide">电视剧</i></a></li>
+<li id="menu-item-7" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7"><a href="http://www.rijushe.com/./dianying-sp/"><i class="himwe-movie"></i><i class="himwe-dianying"></i><i class="himwe-sp"></i><i class="hide">电影SP</i></a></li>
+<li id="menu-item-6" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6"><a href="http://www.rijushe.com/./dongman/"><i class="himwe-anime"></i><i class="himwe-dongman"></i><i class="hide">动漫</i></a></li>
+<li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a href="http://www.rijushe.com/./zongyi/"><i class="himwe-variety"></i><i class="himwe-zongyi"></i><i class="hide">综艺</i></a></li>
+<li id="menu-item-13" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13"><a href="http://www.rijushe.com/new/"><i class="himwe-zuixin-4"></i><i class="hide">最新影视</i></a></li>
+</ul>					</div>
+				</div>
+				<div id="searchform-wrap" class="headersearch">
+					<div id="search-icon" class="mobile-button"></div>
+						<form id="searchform" class="header-search" method="get" action="http://www.rijushe.com/">
+							<input placeholder=" 请在此输入关键词 ... " type="text" name="s" id="s" class="" />
+							<input type="submit" value=" &#xe625; " class="buttonicon rijushe" />
+						</form><div class="clear"></div>
+					</div>
+			</div>
+											<!-- <ul class="menu-right">
+					<li class="menu-search">
+						<a href="#" id="menu-search" title="搜索"></a>
+							<div class="menu-search-form ">
+								<form action="http://www.rijushe.com" method="get">
+									<input name="s" type="text" id="search" value="" maxlength="150" placeholder="请输入搜索内容" x-webkit-speech style="width:135px">
+									<input type="submit" value="搜索" class="button"/>
+								</form>
+							</div>
+					</li>
+				</ul> --> 
+					</div>
+		<div class="clear"></div>
+	</div>
+	<div class="container">
+	<div class="row"></div>    
+    <div class="mainleft">
+    		<div class="himwelist">
+			<ul id="post_container" class="masonry clearfix">
+																				<li class="post box row fixed-hight">
+                	<div class="rijushetype">电视剧<i class="paid"><a href="http://www.rijushe.com/tag/fufei">付费</a></i></div>                	                    <div class="thumbnail">
+                        <a href="http://www.rijushe.com/dianshiju/silimalulan/" class="zoom" rel="bookmark" target="_blank" title="私立马鹿兰高校电视剧版">
+                                                      	                                <img src="http://www.rijushe.com/wp-content/themes/Rijushe/timthumb.php?src=http://www.rijushe.com/wp-content/uploads/2018/10/真假学园-第一部.jpg&amp;h=200&amp;w=300&amp;zc=1" width="300" height="200" alt="私立马鹿兰高校电视剧版" />                                                  <div class="zoomOverlay"></div>
+                        </a>
+                    </div>
+                    <div class="article">
+                        <h2><a href="http://www.rijushe.com/dianshiju/silimalulan/" rel="bookmark" target="_blank" title="私立马鹿兰高校电视剧版">私立马鹿兰高校电视剧版</a></h2>
+                                             </div>
+    				<div class="info">
+                        <span class=""><i class="rijushe himwe-zuozhe-1"></i><a href="http://www.rijushe.com/author/rijushe/" title="由日剧社发布" rel="author">日剧社</a></span> 
+                        <span class=""><i class="rijushe himwe-fenlei"></i><a href="http://www.rijushe.com/./dianshiju/" rel="category tag">电视剧</a></span> 
+                        <span class=""><i class="rijushe himwe-riqi"></i>10-23</span>
+                        <span class=""><i class="rijushe himwe-chakan"></i>373287</span>
+                        <span class=""><i class="rijushe himwe-pinglun"></i><a href="http://www.rijushe.com/dianshiju/silimalulan/#respond">0</a></span>
+    				</div>
+    		</li>
+				<li class="post box row fixed-hight">
+                	<div class="rijushetype">电视剧<i class="paid"><a href="http://www.rijushe.com/tag/fufei">付费</a></i></div>                	                    <div class="thumbnail">
+                        <a href="http://www.rijushe.com/dianshiju/zhenjiaxueyuan1-7/" class="zoom" rel="bookmark" target="_blank" title="真假学园(马路须加学园)1~7部全系列合集">
+                                                      	                                <img src="http://www.rijushe.com/wp-content/themes/Rijushe/timthumb.php?src=http://www.rijushe.com/wp-content/uploads/2018/10/真假学园-第一部.jpg&amp;h=200&amp;w=300&amp;zc=1" width="300" height="200" alt="真假学园(马路须加学园)1~7部全系列合集" />                                                  <div class="zoomOverlay"></div>
+                        </a>
+                    </div>
+                    <div class="article">
+                        <h2><a href="http://www.rijushe.com/dianshiju/zhenjiaxueyuan1-7/" rel="bookmark" target="_blank" title="真假学园(马路须加学园)1~7部全系列合集">真假学园(马路须加学园)1~7部全系列合集</a></h2>
+                                             </div>
+    				<div class="info">
+                        <span class=""><i class="rijushe himwe-zuozhe-1"></i><a href="http://www.rijushe.com/author/rijushe/" title="由日剧社发布" rel="author">日剧社</a></span> 
+                        <span class=""><i class="rijushe himwe-fenlei"></i><a href="http://www.rijushe.com/./dianshiju/" rel="category tag">电视剧</a></span> 
+                        <span class=""><i class="rijushe himwe-riqi"></i>10-23</span>
+                        <span class=""><i class="rijushe himwe-chakan"></i>374602</span>
+                        <span class=""><i class="rijushe himwe-pinglun"></i><a href="http://www.rijushe.com/dianshiju/zhenjiaxueyuan1-7/#respond">0</a></span>
+    				</div>
+    		</li>
+	    		</ul>
+		</div>
+		<div class="clear"></div>
+		<div class="navigation container"><div class='pagination'></div></div>
+		</div>
+	</div>
+<div class="clear"></div>
+<div class="clear"></div>
+<div id="footer">
+      <div class="copyright">
+  <p><a href="http://www.rijushe.com/">日剧社 RiJuShe - 最全的日本影视网络聚集地</a> 版权所有 侵者必究 &copy; 2018<i class="rijushe himwe-copyright" style="font-size: 18px;"></i> <a href="http://www.himwe.com/" target="_blank"> 黑沐唯商城(HimWe Mall)</a><br />
+          </p>
+  <p class="author"><i class="rijushe himwe-zuozhe" style="font-size: 30px;"></i><a href="http://shilin.studio/" target="_blank" rel="external">Theme By ShiLin Studio</a></p>
+  </div>
+</div>
+</div>
+<!--gototop-->
+<div id="tbox">
+				<a href="javascript:StranBody()" id="StranLink" class="sidejianfan"><i class="rijushe himwe-jianfan" style="font-size: 35px;color:#fff;" ></i><i style="display:none;">繁體中文</i></a>
+			<a id="gotop" href="javascript:void(0)"></a>
+</div>
+<script type='text/javascript' src='http://www.rijushe.com/wp-content/themes/Rijushe/js/rijushe.js'></script>
+<script type='text/javascript' src='http://www.rijushe.com/wp-content/themes/Rijushe/js/rijushe-fonts.js'></script>
+<script type='text/javascript' src='http://www.rijushe.com/wp-content/themes/Rijushe/js/responsive-header.js'></script>
+<script type='text/javascript' src='http://www.rijushe.com/wp-content/themes/Rijushe/js/jianfan.js'></script>
+<script type='text/javascript' src='http://www.rijushe.com/wp-includes/js/wp-embed.min.js'></script>
+
+</body></html>
