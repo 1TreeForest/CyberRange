@@ -27,18 +27,18 @@ def slave(task_queue, group, count, grouped_item_dict, domain_list, item_dict, d
             if similarity >= 0.9:
                 exist_group = grouped_item_dict.get(domain_1)
                 if exist_group is not None:
-                    sql = 'insert ignore into structure_group_test(group_tag, domain) values(%s, %s)'
-                    cursor.execute(sql, [exist_group, domain_2])
+            #        sql = 'insert ignore into structure_group_test(group_tag, domain) values(%s, %s)'
+            #        cursor.execute(sql, [exist_group, domain_2])
                     grouped_item_dict[domain_2] = exist_group
                 else:
                     group_num = group.value
                     group.value += 1
                     grouped_item_dict[domain_1] = group_num
                     grouped_item_dict[domain_2] = group_num
-                    sql = 'insert ignore into structure_group_test(group_tag, domain) values(%s, %s)'
-                    cursor.execute(sql, [group_num, domain_1])
-                    sql = 'insert ignore into structure_group_test(group_tag, domain) values(%s, %s)'
-                    cursor.execute(sql, [group_num, domain_2])
+            #        sql = 'insert ignore into structure_group_test(group_tag, domain) values(%s, %s)'
+            #        cursor.execute(sql, [group_num, domain_1])
+            #        sql = 'insert ignore into structure_group_test(group_tag, domain) values(%s, %s)'
+            #        cursor.execute(sql, [group_num, domain_2])
                 conn.commit()
             # sql = 'insert ignore into structure_similarity_{0}(domain_1, domain_2, similarity)values(%s,%s,%s)'.format(
             #     task[1])

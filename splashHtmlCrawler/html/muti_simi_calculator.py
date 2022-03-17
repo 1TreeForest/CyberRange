@@ -19,13 +19,13 @@ def slave(task_queue, count, domain_list, item_dict, domain_list_len):
     cursor = conn.cursor()
     for task in iter(task_queue.get, 'STOP'):
         domain_1 = domain_list[task[0]]
-        sql = 'SELECT count(*) FROM `structure_similarity_{0}` where domain_1=%s'.format(str(task[1]))
+    #    sql = 'SELECT count(*) FROM `structure_similarity_{0}` where domain_1=%s'.format(str(task[1]))
         # 执行
-        cursor.execute(sql, domain_1)
-        exist_count = cursor.fetchone()[0]
-        if exist_count == domain_list_len - task[0] - 1:  # 对库中初始样本进行断点续连式对比，如果相等则证明该条已经和所有其他项目对比过了
+    #    cursor.execute(sql, domain_1)
+    #    exist_count = cursor.fetchone()[0]
+    #    if exist_count == domain_list_len - task[0] - 1:  # 对库中初始样本进行断点续连式对比，如果相等则证明该条已经和所有其他项目对比过了
             # print('{0}:\t{1}\t{2}\t已全部处理完毕，跳过'.format(current_process().name, task[1], domain_1))
-            continue
+    #        continue
         for domain_2 in domain_list[task[0] + 1:]:
             # (sum-ldist)/sum, 其中sum是指str1和str2字串的长度总和，ldist是类编辑距离
             similarity = Levenshtein.ratio(item_dict[domain_1][:task[1]],
