@@ -10,8 +10,8 @@ conn = pymysql.Connect(  # 配置数据库
 )
 
 cursor = conn.cursor()
-sql_1 = 'select distinct domain_1 from structure_similarity'
-sql_2 = 'select domain_2 from structure_similarity where domain_1 = %s and similarity >= 0.9'
+sql_1 = 'select distinct domain_1 from structure_similarity_250'
+sql_2 = 'select domain_2 from structure_similarity_250 where domain_1 = %s and similarity > 0.9'
 sql_3 = 'insert ignore into `structure_group` values(%s, %s)'
 cursor.execute(sql_1)
 domain_list = cursor.fetchall()  # 获得了所有domain_1
