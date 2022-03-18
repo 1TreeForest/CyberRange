@@ -19,7 +19,7 @@ def slave(task_queue, count, domain_list, item_dict, domain_list_len):
     cursor = conn.cursor()
     for task in iter(task_queue.get, 'STOP'):
         domain_1 = domain_list[task[0]]
-        sql = 'SELECT count(*) FROM `structure_similarity_{0}` where domain_1=%s'.format(str(task[1]))
+        sql = 'SELECT count(*) FROM `structure_similarity_{0}` where domain_1=%s'.format(str('all'))
         # 执行
         cursor.execute(sql, domain_1)
         exist_count = cursor.fetchone()[0]
@@ -28,13 +28,22 @@ def slave(task_queue, count, domain_list, item_dict, domain_list_len):
             continue
         for domain_2 in domain_list[task[0] + 1:]:
             # (sum-ldist)/sum, 其中sum是指str1和str2字串的长度总和，ldist是类编辑距离
-            similarity = Levenshtein.ratio(item_dict[domain_1][:task[1]],
-                                           item_dict[domain_2][:task[1]])  # task[1]是用户选择的tag长度
+            # similarity = Levenshtein.ratio(item_dict[domain_1][:task[1]],
+            #                                item_dict[domain_2][:task[1]])  # task[1]是用户选择的tag长度
+            s1 = Levenshtein.ratio(item_dict[domain_1][:250], item_dict[domain_2][:250])
+            s2 = Levenshtein.ratio(item_dict[domain_1][250:500], item_dict[domain_2][250:500])
+            s3 = Levenshtein.ratio(item_dict[domain_1][500:750], item_dict[domain_2][500:750])
+            s4 = Levenshtein.ratio(item_dict[domain_1][750:], item_dict[domain_2][750:])
+
             count.value += 1
             print('{0}:  {1}'.format(current_process().name, count.value))
-            sql = 'insert ignore into structure_similarity_{0}(domain_1, domain_2, similarity)values(%s,%s,%s)'.format(
-                task[1])
-            cursor.execute(sql, [domain_1, domain_2, similarity])
+            sql1 = 'insert ignore into structure_similarity_all(domain_1, domain_2, similarity_1, similarity_2, similarity_3, similarity_4)values(%s,%s,%s,%s,%s,%s)'
+
+            cursor.execute(sql1, [domain_1, domain_2, s1, s2, s3, s4])
+
+            # sql = 'insert ignore into structure_similarity_{0}(domain_1, domain_2, similarity)values(%s,%s,%s)'.format(
+            #     task[1])
+            # cursor.execute(sql, [domain_1, domain_2, similarity])
             conn.commit()
 
 
@@ -59,7 +68,7 @@ def master():
     domain_list = list(item_dict.keys())
     domain_list_len = len(domain_list)
 
-    for tag_len in [600]:  # 对多长的tag进行对比
+    for tag_len in [1000]:  # 对多长的tag进行对比
         for i in range(domain_list_len):
             task_queue.put([i, tag_len])
 

@@ -19,8 +19,11 @@ def slave(task_queue, group, count, grouped_item_dict, domain_list, item_dict, d
         domain_1 = domain_list[task[0]]
         for domain_2 in domain_list[task[0] + 1:]:
             # (sum-ldist)/sum, 其中sum是指str1和str2字串的长度总和，ldist是类编辑距离
-            similarity = Levenshtein.ratio(item_dict[domain_1][:task[1]],
-                                           item_dict[domain_2][:task[1]])  # task[1]是用户选择的tag长度
+            # similarity = Levenshtein.ratio(item_dict[domain_1][:task[1]],
+            #                                item_dict[domain_2][:task[1]])  # task[1]是用户选择的tag长度
+            similarity = Levenshtein.ratio(item_dict[domain_1][:500], item_dict[domain_2][:500]) * 0.7 + \
+                         Levenshtein.ratio(item_dict[domain_1][500:750], item_dict[domain_2][500:750]) * 0.2 + \
+                         Levenshtein.ratio(item_dict[domain_1][750:], item_dict[domain_2][750:]) * 0.1
             # print('\t'.join(['{0}:'.format(current_process().name), str(task[1]), domain_1, domain_2, str(similarity)]))
             count.value += 1
             print('{0}:  {1}'.format(current_process().name, count.value))
@@ -65,7 +68,7 @@ def master():
     domain_list = list(item_dict.keys())
     domain_list_len = len(domain_list)
 
-    for tag_len in [600]:  # 对多长的tag进行对比
+    for tag_len in [1000]:  # 对多长的tag进行对比
         for i in range(domain_list_len):
             task_queue.put([i, tag_len])
 
