@@ -23,7 +23,7 @@ class Encoder():
         self.cursor = self.conn.cursor()
         self.tag_white_dict = {'a': 'A', 'div': 'B', 'link': 'C', 'img': 'D', 'script': 'E', 'ul': 'F', 'li': 'G',
                                'input': 'H', 'form': 'I', 'p': 'J', 'table': 'K'}
-        sql3 = 'SELECT domain, tag_sequence FROM `tag_domain`'
+        sql3 = 'SELECT domain, tag_sequence FROM `tag_domain_new`'
         # 执行
         self.cursor.execute(sql3)
         self.item_dict = dict(self.cursor.fetchall()[:])
@@ -47,7 +47,7 @@ class Encoder():
         return sequence[:1000]
 
     def save_tag_sequence(self, domain, sequence):
-        sql2 = 'insert ignore into tag_domain(tag_sequence, domain) values(%s,%s)'
+        sql2 = 'insert ignore into tag_domain_new(tag_sequence, domain) values(%s,%s)'
         self.cursor.execute(sql2, [sequence, domain])
         self.conn.commit()
 
@@ -90,7 +90,7 @@ if __name__ == '__main__':
             print((file_name[:-5],))
             if (file_name[:-5],) not in pms:  # 不是pms的网站不提取序列
                 continue
-            sql = 'SELECT count(*) FROM `tag_domain` where domain=%s'
+            sql = 'SELECT count(*) FROM `tag_domain_new` where domain=%s'
             # 执行
             encoder.cursor.execute(sql, file_name[:-5])
             exist_count = encoder.cursor.fetchone()[0]

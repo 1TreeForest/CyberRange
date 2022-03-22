@@ -62,7 +62,7 @@ def master():
         charset='UTF8'
     )
     cursor = conn.cursor()
-    sql = 'SELECT domain, tag_sequence FROM `tag_domain_test`'
+    sql = 'SELECT domain, tag_sequence FROM `tag_domain`'
     # 执行
     cursor.execute(sql)
     item_dict = dict(cursor.fetchall()[:])
