@@ -12,38 +12,20 @@ conn = pymysql.Connect(  # 配置数据库
 )
 
 cursor = conn.cursor()
-sql = 'select similarity from structure_similarity_750'
-cursor.execute(sql)
-results = cursor.fetchall()
 
 count = {}
-for i in range(20):
-    count[i] = 0
 
-for i in results:
-    v = float(i[0])
-    try:
-        count[int(v * 20)] += 1
-    except:
-        count[19] += 1
+sql2 = 'SELECT group_tag,count(*) FROM `structure_group_test` group by group_tag order by count(*) desc limit 30'
+cursor.execute(sql2)
+res = cursor.fetchall()
+res_list = [i[1] for i in res]
+xticks = [i for i in range(30)]
 
-xticks = [i for i in range(20)]
-
-plt.bar(range(20), [count.get(xtick) for xtick in xticks], align='center', yerr=0.000001)
+plt.bar(range(30), res_list, align='center', yerr=0.000001)
 
 xalas = []
-for i in range(20):
-    xalas.append('{0}-{1}'.format(i/20, (i+1)/20))
-# 设置柱的文字说明
-# 第一个参数为文字说明的横坐标
-# 第二个参数为文字说明的内容
-plt.xticks(range(20), xalas)
-
-# 设置横坐标轴的标签说明
-plt.xlabel('similarity')
-# 设置纵坐标轴的标签说明
-plt.ylabel('count')
-# 设置标题
-plt.title('count of each similarity')
-# 绘图
+for i in range(30):
+    xalas.append('Group {0}'.format(i))
+plt.xticks([i for i in range(30)], xalas)
+plt.xticks(rotation=90)
 plt.show()

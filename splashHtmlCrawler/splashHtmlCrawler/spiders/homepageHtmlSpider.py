@@ -26,7 +26,7 @@ class SplashhtmlspiderSpider(scrapy.Spider):
         )
         self.cursor = self.conn.cursor()
         # 从数据库中读取需要爬取html的url
-        sql = 'select domain from domain_homepage where html = 0'
+        sql = 'select domain from domain_homepage where html = 0 order by domain desc'
         self.cursor.execute(sql)
         results = self.cursor.fetchall()
         for item in results:

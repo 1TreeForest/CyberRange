@@ -21,13 +21,14 @@ def slave(task_queue, group, count, grouped_item_dict, domain_list, item_dict, d
             # (sum-ldist)/sum, 其中sum是指str1和str2字串的长度总和，ldist是类编辑距离
             # similarity = Levenshtein.ratio(item_dict[domain_1][:task[1]],
             #                                item_dict[domain_2][:task[1]])  # task[1]是用户选择的tag长度
-            similarity = Levenshtein.ratio(item_dict[domain_1][:500], item_dict[domain_2][:500]) * 0.7 + \
-                         Levenshtein.ratio(item_dict[domain_1][500:750], item_dict[domain_2][500:750]) * 0.2 + \
-                         Levenshtein.ratio(item_dict[domain_1][750:], item_dict[domain_2][750:]) * 0.1
+            similarity = Levenshtein.ratio(item_dict[domain_1][:500], item_dict[domain_2][:500])
+            # similarity = Levenshtein.ratio(item_dict[domain_1][:500], item_dict[domain_2][:500]) * 0.65 + \
+            #              Levenshtein.ratio(item_dict[domain_1][500:750], item_dict[domain_2][500:750]) * 0.25 + \
+            #              Levenshtein.ratio(item_dict[domain_1][750:], item_dict[domain_2][750:]) * 0.1
             # print('\t'.join(['{0}:'.format(current_process().name), str(task[1]), domain_1, domain_2, str(similarity)]))
             count.value += 1
             print('{0}:  {1}'.format(current_process().name, count.value))
-            if similarity >= 0.9:
+            if similarity >= 0.8:
                 exist_group = grouped_item_dict.get(domain_1)
                 if exist_group is not None:
                     sql = 'insert ignore into structure_group_test(group_tag, domain) values(%s, %s)'
@@ -46,7 +47,7 @@ def slave(task_queue, group, count, grouped_item_dict, domain_list, item_dict, d
 
 
 def master():
-    NUMBER_OF_PROCESSES = 30  # 最大进程数量
+    NUMBER_OF_PROCESSES = 20  # 最大进程数量
     mgr = Manager()
     task_queue = Queue()
     count = mgr.Value(int, 0)
@@ -61,7 +62,7 @@ def master():
         charset='UTF8'
     )
     cursor = conn.cursor()
-    sql = 'SELECT domain, tag_sequence FROM `tag_domain`'
+    sql = 'SELECT domain, tag_sequence FROM `tag_domain_test`'
     # 执行
     cursor.execute(sql)
     item_dict = dict(cursor.fetchall()[:])
