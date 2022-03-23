@@ -15,8 +15,15 @@ def slave(task_queue, group, count, grouped_item_dict, domain_list, item_dict, d
         charset='UTF8'
     )
     cursor = conn.cursor()
+    sql_check = 'select count(*) from structure_group_test where domain = %s'
     for task in iter(task_queue.get, 'STOP'):
         domain_1 = domain_list[task[0]]
+        cursor.execute(sql_check, domain_1)
+        exist = (cursor.fetchone())[0]
+        if exist:  # 断点重连
+            continue
+        if domain_1 in grouped_item_dict.keys():  # 已经被分组的项目不再计算，不给第二次机会
+            continue
         for domain_2 in domain_list[task[0] + 1:]:
             # (sum-ldist)/sum, 其中sum是指str1和str2字串的长度总和，ldist是类编辑距离
             # similarity = Levenshtein.ratio(item_dict[domain_1][:task[1]],
@@ -27,8 +34,9 @@ def slave(task_queue, group, count, grouped_item_dict, domain_list, item_dict, d
             #              Levenshtein.ratio(item_dict[domain_1][750:], item_dict[domain_2][750:]) * 0.1
             # print('\t'.join(['{0}:'.format(current_process().name), str(task[1]), domain_1, domain_2, str(similarity)]))
             count.value += 1
+            print(item_dict.get(domain_1), item_dict.get(domain_2), similarity)
             print('{0}:  {1}'.format(current_process().name, count.value))
-            if similarity >= 0.8:
+            if similarity >= 0.85:
                 exist_group = grouped_item_dict.get(domain_1)
                 if exist_group is not None:
                     sql = 'insert ignore into structure_group_test(group_tag, domain) values(%s, %s)'
@@ -82,6 +90,7 @@ def master():
                           domain_list_len))  # 创建进程，使用队列通信，共同完成队列中的任务
         p.start()
         proc_list.append(p)
+        time.sleep(2)
     print('{0} slaves are working'.format(NUMBER_OF_PROCESSES))
 
     # Tell child processes to stop

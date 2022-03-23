@@ -26,11 +26,16 @@ def main():
         except Exception as e:
             print(e)
         else:
-            sql2 = 'update cluster set ipc = %s where domain = %s'
+            sql2 = 'update cluster set ipc = %s, ipc_code = %s where domain = %s'
             ip = host.split('.')
             ipc = '{}.{}.{}'.format(ip[0], ip[1], ip[2])
-            print(ipc)
-            cursor.execute(sql2, [ipc, line])
+            ipc_code = ''
+            for i in ip[:-1]:
+                while len(i) < 3:
+                    i = '0' + i
+                ipc_code += i
+            print(ipc, ipc_code)
+            cursor.execute(sql2, [ipc, ipc_code, line])
             conn.commit()
             # result.txt里面存储的是批量解析后的结果，不用提前创建
             # with open('result.txt', 'a+') as r:
