@@ -15,7 +15,7 @@ def slave(task_queue, group, count, grouped_item_dict, domain_list, item_dict, d
         charset='UTF8'
     )
     cursor = conn.cursor()
-    sql_check = 'select count(title) from cluster where domain = %s'
+    sql_check = 'select count(title_group) from cluster where domain = %s'
     for task in iter(task_queue.get, 'STOP'):
         domain_1 = domain_list[task[0]]
         cursor.execute(sql_check, domain_1)
