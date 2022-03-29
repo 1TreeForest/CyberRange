@@ -15,36 +15,35 @@ def slave(task_queue, group, count, grouped_item_dict, domain_list, item_dict, d
         charset='UTF8'
     )
     cursor = conn.cursor()
-    sql_check = 'select count(tfidf_group_95) from cluster where domain = %s'
     for task in iter(task_queue.get, 'STOP'):
         domain_1 = domain_list[task[0]]
-        cursor.execute(sql_check, domain_1)
-        exist = (cursor.fetchone())[0]
-        # if exist:  # 断点重连
-        #     continue
+        old_similarity = 0
+        pal = domain_1
         if domain_1 in grouped_item_dict.keys():  # 已经被分组的项目不再计算，不给第二次机会
             continue
-        for domain_2 in domain_list[task[0] + 1:]:
-            similarity = Levenshtein.ratio(item_dict.get(domain_1), item_dict.get(domain_2))
+        for domain_2 in domain_list:
+            similarity = Levenshtein.ratio((item_dict.get(domain_1))[:500], (item_dict.get(domain_2))[:500])
             # print(item_dict.get(domain_1), item_dict.get(domain_2), similarity)
             count.value += 1
-            print('{0}:  {1}'.format(current_process().name, count.value))
-            if similarity >= 0.8:
-                exist_group = grouped_item_dict.get(domain_1)
-                if exist_group is not None:
-                    sql = 'update cluster set tfidf_group_95 = %s where domain = %s'
-                    cursor.execute(sql, [exist_group, domain_2])
-                    grouped_item_dict[domain_2] = exist_group
-                else:
-                    group_num = group.value
-                    group.value += 1
-                    grouped_item_dict[domain_1] = group_num
-                    grouped_item_dict[domain_2] = group_num
-                    sql = 'update cluster set tfidf_group_95 = %s where domain = %s'
-                    cursor.execute(sql, [group_num, domain_1])
-                    sql = 'update cluster set tfidf_group_95 = %s where domain = %s'
-                    cursor.execute(sql, [group_num, domain_2])
-                conn.commit()
+            if similarity > old_similarity and domain_1 != domain_2:
+                pal = domain_2
+                old_similarity = similarity
+                print('{0}:  {1}\t{2}\t{3}'.format(current_process().name, domain_1, pal, similarity))
+        exist_group = grouped_item_dict.get(pal)
+        if exist_group is not None:
+            sql = 'update cluster set test_group = %s where domain = %s'
+            cursor.execute(sql, [exist_group, domain_1])
+            grouped_item_dict[domain_1] = exist_group
+        else:
+            group_num = group.value
+            group.value += 1
+            grouped_item_dict[domain_1] = group_num
+            grouped_item_dict[pal] = group_num
+            sql = 'update cluster set test_group = %s where domain = %s'
+            cursor.execute(sql, [group_num, domain_1])
+            sql = 'update cluster set test_group = %s where domain = %s'
+            cursor.execute(sql, [group_num, pal])
+        conn.commit()
 
 
 def master():
@@ -63,14 +62,14 @@ def master():
         charset='UTF8'
     )
     cursor = conn.cursor()
-    sql = 'SELECT domain, tfidf_sequence FROM `cluster`'
+    sql = 'SELECT domain, tag_sequence FROM `tag_domain`'
     # 执行
     cursor.execute(sql)
     item_dict = dict(cursor.fetchall()[:])
     domain_list = list(item_dict.keys())
     domain_list_len = len(domain_list)
 
-    for tag_len in [1000]:  # 对多长的tag进行对比
+    for tag_len in [500]:  # 对多长的tag进行对比
         for i in range(domain_list_len):
             task_queue.put([i, tag_len])
 
