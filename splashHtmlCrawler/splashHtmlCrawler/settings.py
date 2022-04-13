@@ -9,7 +9,7 @@
 
 BOT_NAME = 'splashHtmlCrawler'
 
-# CONCURRENT_REQUESTS = 100  # 并发数
+CONCURRENT_REQUESTS = 4  # 并发数
 LOG_LEVEL = 'INFO'
 
 SPIDER_MODULES = ['splashHtmlCrawler.spiders']

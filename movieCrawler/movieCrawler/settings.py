@@ -13,7 +13,7 @@ SPIDER_MODULES = ['movieCrawler.spiders']
 NEWSPIDER_MODULE = 'movieCrawler.spiders'
 
 LOG_LEVEL = 'INFO'
-# CONCURRENT_REQUESTS = 100  # 并发数
+CONCURRENT_REQUESTS = 4  # 并发数
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'movieCrawler (+http://www.yourdomain.com)'

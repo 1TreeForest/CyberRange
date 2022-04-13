@@ -20,7 +20,7 @@ ITEM_PIPELINES = {'siteCrawler.pipelines.SiteCrawlerPipeline': 1}
 DEPTH_LIMIT = 1
 
 LOG_LEVEL = 'INFO'
-# CONCURRENT_REQUESTS = 100  # 并发数
+CONCURRENT_REQUESTS = 4  # 并发数
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

@@ -22,7 +22,10 @@ def slave(task_queue, group, count, grouped_item_dict, domain_list, item_dict, d
         if domain_1 in grouped_item_dict.keys():  # 已经被分组的项目不再计算，不给第二次机会
             continue
         for domain_2 in domain_list:
-            similarity = Levenshtein.ratio((item_dict.get(domain_1))[:500], (item_dict.get(domain_2))[:500])
+            try:
+                similarity = Levenshtein.ratio((item_dict.get(domain_1))[:500], (item_dict.get(domain_2))[:500])
+            except:
+                continue
             # print(item_dict.get(domain_1), item_dict.get(domain_2), similarity)
             count.value += 1
             if similarity > old_similarity and domain_1 != domain_2:
@@ -31,7 +34,7 @@ def slave(task_queue, group, count, grouped_item_dict, domain_list, item_dict, d
                 print('{0}:  {1}\t{2}\t{3}'.format(current_process().name, domain_1, pal, similarity))
         exist_group = grouped_item_dict.get(pal)
         if exist_group is not None:
-            sql = 'update cluster set test_group = %s where domain = %s'
+            sql = 'update cluster set test_tfidf_group = %s where domain = %s'
             cursor.execute(sql, [exist_group, domain_1])
             grouped_item_dict[domain_1] = exist_group
         else:
@@ -39,15 +42,15 @@ def slave(task_queue, group, count, grouped_item_dict, domain_list, item_dict, d
             group.value += 1
             grouped_item_dict[domain_1] = group_num
             grouped_item_dict[pal] = group_num
-            sql = 'update cluster set test_group = %s where domain = %s'
+            sql = 'update cluster set test_tfidf_group = %s where domain = %s'
             cursor.execute(sql, [group_num, domain_1])
-            sql = 'update cluster set test_group = %s where domain = %s'
+            sql = 'update cluster set test_tfidf_group = %s where domain = %s'
             cursor.execute(sql, [group_num, pal])
         conn.commit()
 
 
 def master():
-    NUMBER_OF_PROCESSES = 20  # 最大进程数量
+    NUMBER_OF_PROCESSES = 30  # 最大进程数量
     mgr = Manager()
     task_queue = Queue()
     count = mgr.Value(int, 0)
@@ -62,7 +65,7 @@ def master():
         charset='UTF8'
     )
     cursor = conn.cursor()
-    sql = 'SELECT domain, tag_sequence FROM `tag_domain`'
+    sql = 'SELECT domain, tfidf_sequence FROM `cluster`'
     # 执行
     cursor.execute(sql)
     item_dict = dict(cursor.fetchall()[:])

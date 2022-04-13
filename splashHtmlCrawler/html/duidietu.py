@@ -62,12 +62,14 @@ width_val = 0.8
 # plt.bar(xs, data[3][:], width=width_val, alpha=1, label='750-1000', facecolor='#cfcfcf')
 #
 #
+fig, ax = plt.subplots()
 x = range(50)
 width = 1
 # 将bottom_y元素都初始化为0
 bottom_y = [0] * 50
 labels = ['0-250', '250-500', '500-750', '750-1000']
-colors = ['#cfcfcf', '#aaaaaa', '#777777', '#222222']
+# colors = ['#CCE5FF', '#66B2FF', '#0078F0', '#0051A3']
+colors = ['#CCE5FF', '#99CCFF', '#5FA6ED', '#1F77B4']
 i = 0
 for y in data:
     plt.bar(x, y, width, bottom=bottom_y, label=labels[i], facecolor=colors[i])
@@ -83,3 +85,4 @@ plt.xticks([i * 5 - 0.5 for i in range(11)], xalas)
 # plt.ylim((0, 250000))
 
 plt.show()  # 显示图像
+fig.savefig('stacked_fig.pdf', dpi=600, bbox_inches='tight')
