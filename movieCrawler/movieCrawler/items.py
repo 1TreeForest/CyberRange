@@ -15,6 +15,7 @@ class SpecialItem(scrapy.Item):
     link = scrapy.Field()
     # 爬取的电影网站
     site = scrapy.Field()
+    crawledDate = scrapy.Field()
     pass
 
 
@@ -27,6 +28,7 @@ class UniversalItem(scrapy.Item):
     link = scrapy.Field()
     # 爬取的电影网站
     site = scrapy.Field()
+    crawledDate = scrapy.Field()
     pass
 
 

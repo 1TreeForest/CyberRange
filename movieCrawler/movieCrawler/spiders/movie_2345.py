@@ -1,3 +1,5 @@
+import time
+
 import scrapy
 from movieCrawler.items import SpecialItem
 import re
@@ -7,6 +9,7 @@ class Movie2345Spider(scrapy.Spider):
     name = 'movie_2345'
     allowed_domains = ['dianying.2345.com']
     start_urls = ['http://dianying.2345.com/list/------1.html']
+    crawledDate = time.strftime("%Y-%m-%d", time.localtime(time.time()))
     # https://www.bdcmkj.com/ty/1.html
 
 
@@ -30,6 +33,7 @@ class Movie2345Spider(scrapy.Spider):
             # 拼接URL，获取所有电影详情的URL，拼成完整的URL来访问地址
             item['link'] = "http:" + link[i]
             item['site'] = 'dianying.2345.com'
+            item['crawledDate'] = self.crawledDate
             #print(item)
             yield item
 

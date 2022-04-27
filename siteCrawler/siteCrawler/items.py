@@ -21,4 +21,5 @@ class ResultItem(scrapy.Item):
     keyword = scrapy.Field()
     crawledDate = scrapy.Field()
     aliveDate = scrapy.Field()
+    job = scrapy.Field()
     pass

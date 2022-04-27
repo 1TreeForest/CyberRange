@@ -1,5 +1,6 @@
 import logging
 import random
+import time
 from time import sleep
 
 import pymysql
@@ -12,6 +13,7 @@ from movieCrawler.items import UniversalItem, FriendLinkItem
 class UniversalSpider(scrapy.Spider):
     conn = None
     cursor = None
+    crawledDate = None
     item_dict = []
     name = 'universalSpider'
     #  黑名单短语列表，若出现在name中则剔除
@@ -31,6 +33,7 @@ class UniversalSpider(scrapy.Spider):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.crawledDate = time.strftime("%Y-%m-%d", time.localtime(time.time()))
         self.conn = pymysql.Connect(
             host='1.15.220.155',
             # host='localhost',
@@ -83,6 +86,7 @@ class UniversalSpider(scrapy.Spider):
             item['link'] = href
             item['name'] = title
             item['site'] = self.item_dict.get(site_url)
+            item['crawledDate'] = self.crawledDate
             # print(item)
 
             if any(word in item['name'] for word in self.black_word_list) or \

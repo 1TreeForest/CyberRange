@@ -1,4 +1,6 @@
 import json
+import time
+
 import pymysql
 from movieCrawler.items import SpecialItem, UniversalItem, FriendLinkItem
 import codecs
@@ -45,18 +47,18 @@ class MoviecrawlerPipeline(object):
 
         # 拼接insert SQL语句
         if isinstance(item, SpecialItem):
-            sql = 'INSERT INTO `movies_special`(name, link, site)VALUES(%s,%s,%s) ON DUPLICATE KEY UPDATE link = %s'
+            sql = 'INSERT INTO `movies_special`(name, link, site, crawledDate)VALUES(%s,%s,%s,%s) ON DUPLICATE KEY UPDATE link = %s'
             # 执行
-            self.cursor.execute(sql, [item['name'], item['link'], item['site'], item['link']])
+            self.cursor.execute(sql, [item['name'], item['link'], item['site'], item['crawledDate'], item['link']])
             # 提交事务
             self.conn.commit()
             logging.info('已进行 {} 次数据采集\t\t获取到对象: {}，{}'.format(self.count, item['name'], item['link']))
             self.count += 1
         if isinstance(item, UniversalItem):
-            sql = 'INSERT INTO `movies_universal`(name, link, site)VALUES(%s,%s,%s) ON DUPLICATE KEY UPDATE link = %s'
+            sql = 'INSERT INTO `movies_universal`(name, link, site, crawledDate)VALUES(%s,%s,%s,%s) ON DUPLICATE KEY UPDATE link = %s'
             # 执行
             try:
-                self.cursor.execute(sql, [item['name'], item['link'], item['site'], item['link']])
+                self.cursor.execute(sql, [item['name'], item['link'], item['site'], item['crawledDate'], item['link']])
             except Exception as e:
                 print(e)
                 return

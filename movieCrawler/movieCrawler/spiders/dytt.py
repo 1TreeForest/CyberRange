@@ -1,3 +1,5 @@
+import time
+
 import scrapy
 from movieCrawler.items import SpecialItem
 import re
@@ -9,6 +11,7 @@ class DyttSpider(scrapy.Spider):
     allowed_domains = ['dytt8.net']
     # 开始爬取的链接
     start_urls = ['http://www.dytt8.net/html/gndy/dyzz/list_23_1.html']
+    crawledDate = time.strftime("%Y-%m-%d", time.localtime(time.time()))
 
     def parse(self, response):
         # 标题列表
@@ -25,6 +28,7 @@ class DyttSpider(scrapy.Spider):
             # 拼接URL，获取所有电影详情的URL，拼成完整的URL来访问地址
             item['link'] = 'http://www.dytt8.net' + link[i]
             item['site'] = 'www.dytt8.net'
+            item['crawledDate'] = self.crawledDate
             # print(item)
             yield item
 
