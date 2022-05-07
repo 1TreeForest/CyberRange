@@ -1,6 +1,7 @@
 import logging
 import random
 import time
+from datetime import datetime
 from time import sleep
 
 import pymysql
@@ -33,7 +34,7 @@ class UniversalSpider(scrapy.Spider):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.crawledDate = time.strftime("%Y-%m-%d", time.localtime(time.time()))
+        self.crawledDate = datetime.now()
         self.conn = pymysql.Connect(
             host='1.15.220.155',
             # host='localhost',

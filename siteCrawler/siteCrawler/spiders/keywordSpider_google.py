@@ -2,6 +2,7 @@
 import logging
 import random
 import time
+from datetime import datetime
 from urllib.parse import quote
 
 import requests
@@ -69,7 +70,7 @@ class KeywordSpider(Spider):
         keyword = response.selector.xpath(self.keyword_selector).extract()
         names = response.selector.xpath(self.name_selector)
         urls = response.selector.xpath(self.url_selector).extract()
-        now = time.strftime("%Y-%m-%d", time.localtime(time.time()))
+        now = datetime.now()
         if urls == self.urls_before or not urls:  # 对相同url去重
             print(response.url, '\t', '重复')
             yield Request(url=response.url)
