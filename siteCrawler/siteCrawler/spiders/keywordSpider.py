@@ -82,8 +82,8 @@ class KeywordSpider(Spider):
         item = ResultItem()
         for i in range(len(urls)):  # 对页面中所有的结果进行处理
             item['keyword'] = keyword[0]
-            item['crawledDate'] = str(now.date()) + '00:00:00'
-            item['aliveDate'] = str(now.date()) + '00:00:00'
+            item['crawledDate'] = str(now.date()) + ' 00:00:00'
+            item['aliveDate'] = str(now.date()) + ' 00:00:00'
             if self.search_engine == 'baidu':
                 item['name'] = ''.join(names[i].xpath('./text() | ./em/text()').extract())  # baidu的标题经过高亮处理，需要进一步提取
                 try:

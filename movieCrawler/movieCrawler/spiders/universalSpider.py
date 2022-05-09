@@ -87,7 +87,7 @@ class UniversalSpider(scrapy.Spider):
             item['link'] = href
             item['name'] = title
             item['site'] = self.item_dict.get(site_url)
-            item['crawledDate'] = str(self.crawledDate.date()) + '00:00:00'
+            item['crawledDate'] = str(self.crawledDate.date()) + ' 00:00:00'
             # print(item)
 
             if any(word in item['name'] for word in self.black_word_list) or \
