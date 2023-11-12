@@ -33,17 +33,17 @@ class KeywordSpider(Spider):
         super(KeywordSpider, self).__init__(*args, **kwargs)
         if keyword == 'all':  # 用户选择根据数据库中的词库进行搜索
             self.conn = pymysql.Connect(
-                host='1.15.220.155',
+                host='localhost',
                 # host='localhost',
                 port=3306,
-                user='test',
-                password='991125',
-                db='spider',
-                charset='UTF8',
+                user='clwang23',
+                password='123456',
+                db='mlproj',
+                charset='utf8',
                 autocommit=True
             )
             self.cursor = self.conn.cursor()
-            sql = 'SELECT keyword FROM `word_bank`'
+            sql = 'SELECT keyword FROM `querys`'
             # 执行
             self.cursor.execute(sql)
             # 提交事务

@@ -4,7 +4,7 @@ SearchEngines = {  # 记录搜索站及搜索url格式
     'google': 'https://www.google.com/search?q={0}&start={1}',
     'bing_global': 'https://global.bing.com/search?q={0}&first={1}',
     'bing_cn': 'https://cn.bing.com/search?q={0}&first={1}',
-    'bing': 'https://cn.bing.com/search?q={0}&first={1}',
+    'bing': 'https://www.bing.com/search?q={0}&first={1}',
     'baidu': 'https://www.baidu.com/s?wd={0}&pn={1}'
 }
 

@@ -21,12 +21,12 @@ class SiteCrawlerPipeline(object):
 
     def db_connect(self):
         self.conn = pymysql.Connect(  # 配置数据库
-            host='1.15.220.155',
+            host='localhost',
             port=3306,
-            user='test',
-            password='991125',
-            db='spider',
-            charset='UTF8'
+            user='clwang23',
+            password='123456',
+            db='mlproj',
+            charset='utf8'
         )
         self.cursor = self.conn.cursor()
 
@@ -37,18 +37,19 @@ class SiteCrawlerPipeline(object):
         if isinstance(item, ResultItem):
             # 拼接insert SQL语句，把每项数据的5个属性填充到SQL中作为参数
             try:  # 此项在插入时若数据库中已存在该主键对，则进行更新操作
-                sql = 'INSERT INTO sites(domain, title, url, keyword, crawledDate, aliveDate)VALUES(%s,%s,%s,%s,%s, %s)'
+                sql = 'INSERT INTO sites(domain, title, url, keyword, crawledDate, aliveDate)VALUES(%s,%s,%s,%s,%s,%s)'
                 # 执行
                 self.cursor.execute(sql, [item['domain'], item['name'], item['url'], item['keyword'], item['crawledDate'], item['aliveDate']])
                 # 提交事务
                 self.conn.commit()
-                sql = 'INSERT IGNORE INTO unmarked(domain, name, url)VALUES(%s,%s,%s)'
+                #sql = 'INSERT IGNORE INTO unmarked(domain, name, url)VALUES(%s,%s,%s)'
                 # 执行
-                self.cursor.execute(sql, [item['domain'], item['name'], item['url']])
+                #self.cursor.execute(sql, [item['domain'], item['name'], item['url']])
                 # 提交事务
                 self.conn.commit()
                 logging.info('已进行 {} 次数据采集\t\t获取到新对象: {}'.format(self.count, item['domain']))
             except Exception as e:
+                print(e)
                 sql = 'UPDATE `sites` SET title=%s, url=%s, aliveDate=%s WHERE domain=%s AND keyword=%s'
                 # 执行
                 self.cursor.execute(sql, [item['name'], item['url'], item['aliveDate'], item['domain'], item['keyword']])
